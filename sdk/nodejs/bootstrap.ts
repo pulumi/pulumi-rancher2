@@ -33,9 +33,13 @@ export class Bootstrap extends pulumi.CustomResource {
     }
 
     /**
-     * Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+     * (Computed/Sensitive) Current password for Admin user (string)
      */
-    public readonly currentPassword!: pulumi.Output<string>;
+    public /*out*/ readonly currentPassword!: pulumi.Output<string>;
+    /**
+     * Initial password for Admin user. Default: `admin` (string)
+     */
+    public readonly initialPassword!: pulumi.Output<string | undefined>;
     /**
      * Password for Admin user or random generated if empty (string)
      */
@@ -95,6 +99,7 @@ export class Bootstrap extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BootstrapState | undefined;
             inputs["currentPassword"] = state ? state.currentPassword : undefined;
+            inputs["initialPassword"] = state ? state.initialPassword : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["telemetry"] = state ? state.telemetry : undefined;
             inputs["tempToken"] = state ? state.tempToken : undefined;
@@ -108,12 +113,13 @@ export class Bootstrap extends pulumi.CustomResource {
             inputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as BootstrapArgs | undefined;
-            inputs["currentPassword"] = args ? args.currentPassword : undefined;
+            inputs["initialPassword"] = args ? args.initialPassword : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["telemetry"] = args ? args.telemetry : undefined;
             inputs["tokenTtl"] = args ? args.tokenTtl : undefined;
             inputs["tokenUpdate"] = args ? args.tokenUpdate : undefined;
             inputs["uiDefaultLanding"] = args ? args.uiDefaultLanding : undefined;
+            inputs["currentPassword"] = undefined /*out*/;
             inputs["tempToken"] = undefined /*out*/;
             inputs["tempTokenId"] = undefined /*out*/;
             inputs["token"] = undefined /*out*/;
@@ -133,9 +139,13 @@ export class Bootstrap extends pulumi.CustomResource {
  */
 export interface BootstrapState {
     /**
-     * Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+     * (Computed/Sensitive) Current password for Admin user (string)
      */
     readonly currentPassword?: pulumi.Input<string>;
+    /**
+     * Initial password for Admin user. Default: `admin` (string)
+     */
+    readonly initialPassword?: pulumi.Input<string>;
     /**
      * Password for Admin user or random generated if empty (string)
      */
@@ -187,9 +197,9 @@ export interface BootstrapState {
  */
 export interface BootstrapArgs {
     /**
-     * Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+     * Initial password for Admin user. Default: `admin` (string)
      */
-    readonly currentPassword?: pulumi.Input<string>;
+    readonly initialPassword?: pulumi.Input<string>;
     /**
      * Password for Admin user or random generated if empty (string)
      */

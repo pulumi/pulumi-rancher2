@@ -17,10 +17,10 @@ namespace Pulumi.Rancher2.Outputs
         public readonly ImmutableArray<string> AuthorizedIpRanges;
         public readonly string? BaseUrl;
         public readonly string CloudCredentialId;
-        public readonly string DnsPrefix;
+        public readonly string? DnsPrefix;
         public readonly bool HttpApplicationRouting;
         public readonly bool? Imported;
-        public readonly string KubernetesVersion;
+        public readonly string? KubernetesVersion;
         public readonly string LinuxAdminUsername;
         public readonly string LinuxSshPublicKey;
         public readonly string LoadBalancerSku;
@@ -33,7 +33,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string Name;
         public readonly string NetworkDnsServiceIp;
         public readonly string NetworkDockerBridgeCidr;
-        public readonly string NetworkPlugin;
+        public readonly string? NetworkPlugin;
         public readonly string NetworkPodCidr;
         public readonly string NetworkPolicy;
         public readonly string NetworkServiceCidr;
@@ -56,13 +56,13 @@ namespace Pulumi.Rancher2.Outputs
 
             string cloudCredentialId,
 
-            string dnsPrefix,
+            string? dnsPrefix,
 
             bool httpApplicationRouting,
 
             bool? imported,
 
-            string kubernetesVersion,
+            string? kubernetesVersion,
 
             string linuxAdminUsername,
 
@@ -82,7 +82,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string networkDockerBridgeCidr,
 
-            string networkPlugin,
+            string? networkPlugin,
 
             string networkPodCidr,
 

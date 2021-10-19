@@ -12,7 +12,7 @@ replace (
 	github.com/rancher/rancher => github.com/rancher/rancher v0.0.0-20210830223634-df2432ad895c
 	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20210830223634-df2432ad895c
 	github.com/rancher/rancher/pkg/client => github.com/rancher/rancher/pkg/client v0.0.0-20210830223634-df2432ad895c
-	github.com/rancher/terraform-provider-rancher2 => github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20211004153351-214efeb15376
+	github.com/rancher/terraform-provider-rancher2 => github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20211019171743-27b837742f90
 	helm.sh/helm/v3 => github.com/rancher/helm/v3 v3.5.4-rancher.1
 	k8s.io/api => k8s.io/api v0.21.0
 	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.21.0
@@ -44,7 +44,6 @@ replace (
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.14.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.0.0
-	github.com/pulumi/pulumi/pkg/v3 v3.0.0
 	github.com/pulumi/pulumi/sdk/v3 v3.0.0
 	github.com/rancher/terraform-provider-rancher2 v1.10.2
 )

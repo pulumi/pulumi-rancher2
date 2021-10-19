@@ -13,10 +13,16 @@ namespace Pulumi.Rancher2
     public partial class Bootstrap : Pulumi.CustomResource
     {
         /// <summary>
-        /// Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+        /// (Computed/Sensitive) Current password for Admin user (string)
         /// </summary>
         [Output("currentPassword")]
         public Output<string> CurrentPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// Initial password for Admin user. Default: `admin` (string)
+        /// </summary>
+        [Output("initialPassword")]
+        public Output<string?> InitialPassword { get; private set; } = null!;
 
         /// <summary>
         /// Password for Admin user or random generated if empty (string)
@@ -131,10 +137,10 @@ namespace Pulumi.Rancher2
     public sealed class BootstrapArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+        /// Initial password for Admin user. Default: `admin` (string)
         /// </summary>
-        [Input("currentPassword")]
-        public Input<string>? CurrentPassword { get; set; }
+        [Input("initialPassword")]
+        public Input<string>? InitialPassword { get; set; }
 
         /// <summary>
         /// Password for Admin user or random generated if empty (string)
@@ -174,10 +180,16 @@ namespace Pulumi.Rancher2
     public sealed class BootstrapState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+        /// (Computed/Sensitive) Current password for Admin user (string)
         /// </summary>
         [Input("currentPassword")]
         public Input<string>? CurrentPassword { get; set; }
+
+        /// <summary>
+        /// Initial password for Admin user. Default: `admin` (string)
+        /// </summary>
+        [Input("initialPassword")]
+        public Input<string>? InitialPassword { get; set; }
 
         /// <summary>
         /// Password for Admin user or random generated if empty (string)
