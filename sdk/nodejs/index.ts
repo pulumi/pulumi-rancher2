@@ -33,6 +33,7 @@ export * from "./clusterRoleTemplateBinding";
 export * from "./clusterSync";
 export * from "./clusterTemplate";
 export * from "./clusterV2";
+export * from "./configMapV2";
 export * from "./etcdBackup";
 export * from "./feature";
 export * from "./getApp";
@@ -49,6 +50,7 @@ export * from "./getClusterRoleTemplateBinding";
 export * from "./getClusterScan";
 export * from "./getClusterTemplate";
 export * from "./getClusterV2";
+export * from "./getConfigMapV2";
 export * from "./getEtcdBackup";
 export * from "./getGlobalDnsProvider";
 export * from "./getGlobalRole";
@@ -60,6 +62,7 @@ export * from "./getNodePool";
 export * from "./getNodeTemplate";
 export * from "./getNotifier";
 export * from "./getPodSecurityPolicyTemplate";
+export * from "./getPrincipal";
 export * from "./getProject";
 export * from "./getProjectAlertGroup";
 export * from "./getProjectAlertRule";
@@ -139,6 +142,7 @@ import { ClusterRoleTemplateBinding } from "./clusterRoleTemplateBinding";
 import { ClusterSync } from "./clusterSync";
 import { ClusterTemplate } from "./clusterTemplate";
 import { ClusterV2 } from "./clusterV2";
+import { ConfigMapV2 } from "./configMapV2";
 import { EtcdBackup } from "./etcdBackup";
 import { Feature } from "./feature";
 import { GlobalDns } from "./globalDns";
@@ -228,6 +232,8 @@ const _module = {
                 return new ClusterTemplate(name, <any>undefined, { urn })
             case "rancher2:index/clusterV2:ClusterV2":
                 return new ClusterV2(name, <any>undefined, { urn })
+            case "rancher2:index/configMapV2:ConfigMapV2":
+                return new ConfigMapV2(name, <any>undefined, { urn })
             case "rancher2:index/etcdBackup:EtcdBackup":
                 return new EtcdBackup(name, <any>undefined, { urn })
             case "rancher2:index/feature:Feature":
@@ -317,6 +323,7 @@ pulumi.runtime.registerResourceModule("rancher2", "index/clusterRoleTemplateBind
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterSync", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterV2", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/configMapV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/etcdBackup", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/feature", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalDns", _module)

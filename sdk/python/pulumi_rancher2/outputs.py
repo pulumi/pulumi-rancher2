@@ -28494,9 +28494,7 @@ class GetClusterAksConfigResult(dict):
 class GetClusterAksConfigV2Result(dict):
     def __init__(__self__, *,
                  cloud_credential_id: str,
-                 dns_prefix: str,
                  http_application_routing: bool,
-                 kubernetes_version: str,
                  linux_admin_username: str,
                  linux_ssh_public_key: str,
                  load_balancer_sku: str,
@@ -28506,11 +28504,9 @@ class GetClusterAksConfigV2Result(dict):
                  name: str,
                  network_dns_service_ip: str,
                  network_docker_bridge_cidr: str,
-                 network_plugin: str,
                  network_pod_cidr: str,
                  network_policy: str,
                  network_service_cidr: str,
-                 node_pools: Sequence['outputs.GetClusterAksConfigV2NodePoolResult'],
                  private_cluster: bool,
                  resource_group: str,
                  resource_location: str,
@@ -28521,14 +28517,16 @@ class GetClusterAksConfigV2Result(dict):
                  auth_base_url: Optional[str] = None,
                  authorized_ip_ranges: Optional[Sequence[str]] = None,
                  base_url: Optional[str] = None,
-                 imported: Optional[bool] = None):
+                 dns_prefix: Optional[str] = None,
+                 imported: Optional[bool] = None,
+                 kubernetes_version: Optional[str] = None,
+                 network_plugin: Optional[str] = None,
+                 node_pools: Optional[Sequence['outputs.GetClusterAksConfigV2NodePoolResult']] = None):
         """
         :param str name: The name of the Cluster (string)
         """
         pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
-        pulumi.set(__self__, "dns_prefix", dns_prefix)
         pulumi.set(__self__, "http_application_routing", http_application_routing)
-        pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         pulumi.set(__self__, "linux_admin_username", linux_admin_username)
         pulumi.set(__self__, "linux_ssh_public_key", linux_ssh_public_key)
         pulumi.set(__self__, "load_balancer_sku", load_balancer_sku)
@@ -28538,11 +28536,9 @@ class GetClusterAksConfigV2Result(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_dns_service_ip", network_dns_service_ip)
         pulumi.set(__self__, "network_docker_bridge_cidr", network_docker_bridge_cidr)
-        pulumi.set(__self__, "network_plugin", network_plugin)
         pulumi.set(__self__, "network_pod_cidr", network_pod_cidr)
         pulumi.set(__self__, "network_policy", network_policy)
         pulumi.set(__self__, "network_service_cidr", network_service_cidr)
-        pulumi.set(__self__, "node_pools", node_pools)
         pulumi.set(__self__, "private_cluster", private_cluster)
         pulumi.set(__self__, "resource_group", resource_group)
         pulumi.set(__self__, "resource_location", resource_location)
@@ -28556,8 +28552,16 @@ class GetClusterAksConfigV2Result(dict):
             pulumi.set(__self__, "authorized_ip_ranges", authorized_ip_ranges)
         if base_url is not None:
             pulumi.set(__self__, "base_url", base_url)
+        if dns_prefix is not None:
+            pulumi.set(__self__, "dns_prefix", dns_prefix)
         if imported is not None:
             pulumi.set(__self__, "imported", imported)
+        if kubernetes_version is not None:
+            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        if network_plugin is not None:
+            pulumi.set(__self__, "network_plugin", network_plugin)
+        if node_pools is not None:
+            pulumi.set(__self__, "node_pools", node_pools)
 
     @property
     @pulumi.getter(name="cloudCredentialId")
@@ -28565,19 +28569,9 @@ class GetClusterAksConfigV2Result(dict):
         return pulumi.get(self, "cloud_credential_id")
 
     @property
-    @pulumi.getter(name="dnsPrefix")
-    def dns_prefix(self) -> str:
-        return pulumi.get(self, "dns_prefix")
-
-    @property
     @pulumi.getter(name="httpApplicationRouting")
     def http_application_routing(self) -> bool:
         return pulumi.get(self, "http_application_routing")
-
-    @property
-    @pulumi.getter(name="kubernetesVersion")
-    def kubernetes_version(self) -> str:
-        return pulumi.get(self, "kubernetes_version")
 
     @property
     @pulumi.getter(name="linuxAdminUsername")
@@ -28628,11 +28622,6 @@ class GetClusterAksConfigV2Result(dict):
         return pulumi.get(self, "network_docker_bridge_cidr")
 
     @property
-    @pulumi.getter(name="networkPlugin")
-    def network_plugin(self) -> str:
-        return pulumi.get(self, "network_plugin")
-
-    @property
     @pulumi.getter(name="networkPodCidr")
     def network_pod_cidr(self) -> str:
         return pulumi.get(self, "network_pod_cidr")
@@ -28646,11 +28635,6 @@ class GetClusterAksConfigV2Result(dict):
     @pulumi.getter(name="networkServiceCidr")
     def network_service_cidr(self) -> str:
         return pulumi.get(self, "network_service_cidr")
-
-    @property
-    @pulumi.getter(name="nodePools")
-    def node_pools(self) -> Sequence['outputs.GetClusterAksConfigV2NodePoolResult']:
-        return pulumi.get(self, "node_pools")
 
     @property
     @pulumi.getter(name="privateCluster")
@@ -28703,9 +28687,29 @@ class GetClusterAksConfigV2Result(dict):
         return pulumi.get(self, "base_url")
 
     @property
+    @pulumi.getter(name="dnsPrefix")
+    def dns_prefix(self) -> Optional[str]:
+        return pulumi.get(self, "dns_prefix")
+
+    @property
     @pulumi.getter
     def imported(self) -> Optional[bool]:
         return pulumi.get(self, "imported")
+
+    @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> Optional[str]:
+        return pulumi.get(self, "kubernetes_version")
+
+    @property
+    @pulumi.getter(name="networkPlugin")
+    def network_plugin(self) -> Optional[str]:
+        return pulumi.get(self, "network_plugin")
+
+    @property
+    @pulumi.getter(name="nodePools")
+    def node_pools(self) -> Optional[Sequence['outputs.GetClusterAksConfigV2NodePoolResult']]:
+        return pulumi.get(self, "node_pools")
 
 
 @pulumi.output_type

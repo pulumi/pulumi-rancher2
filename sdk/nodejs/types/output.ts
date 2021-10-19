@@ -281,7 +281,7 @@ export interface ClusterAksConfigV2 {
     /**
      * The AKS dns prefix. Required if `imported=false` (string)
      */
-    dnsPrefix: string;
+    dnsPrefix?: string;
     /**
      * Enable AKS http application routing? (bool)
      */
@@ -293,7 +293,7 @@ export interface ClusterAksConfigV2 {
     /**
      * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      */
-    kubernetesVersion: string;
+    kubernetesVersion?: string;
     /**
      * The AKS linux admin username (string)
      */
@@ -333,7 +333,7 @@ export interface ClusterAksConfigV2 {
     /**
      * The AKS network plugin. Required if `imported=false` (string)
      */
-    networkPlugin: string;
+    networkPlugin?: string;
     /**
      * The AKS network pod cidr (string)
      */
@@ -349,7 +349,7 @@ export interface ClusterAksConfigV2 {
     /**
      * The GKE cluster node pools. Required for create new cluster (List)
      */
-    nodePools: outputs.ClusterAksConfigV2NodePool[];
+    nodePools?: outputs.ClusterAksConfigV2NodePool[];
     /**
      * Is AKS cluster private? (bool)
      */
@@ -4635,10 +4635,10 @@ export interface GetClusterAksConfigV2 {
     authorizedIpRanges?: string[];
     baseUrl?: string;
     cloudCredentialId: string;
-    dnsPrefix: string;
+    dnsPrefix?: string;
     httpApplicationRouting: boolean;
     imported?: boolean;
-    kubernetesVersion: string;
+    kubernetesVersion?: string;
     linuxAdminUsername: string;
     linuxSshPublicKey: string;
     loadBalancerSku: string;
@@ -4651,11 +4651,11 @@ export interface GetClusterAksConfigV2 {
     name: string;
     networkDnsServiceIp: string;
     networkDockerBridgeCidr: string;
-    networkPlugin: string;
+    networkPlugin?: string;
     networkPodCidr: string;
     networkPolicy: string;
     networkServiceCidr: string;
-    nodePools: outputs.GetClusterAksConfigV2NodePool[];
+    nodePools?: outputs.GetClusterAksConfigV2NodePool[];
     privateCluster: boolean;
     resourceGroup: string;
     resourceLocation: string;

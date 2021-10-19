@@ -994,9 +994,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "cloudCredentialId",
-                        "dnsPrefix",
                         "httpApplicationRouting",
-                        "kubernetesVersion",
                         "linuxAdminUsername",
                         "linuxSshPublicKey",
                         "loadBalancerSku",
@@ -1006,11 +1004,9 @@
                         "name",
                         "networkDnsServiceIp",
                         "networkDockerBridgeCidr",
-                        "networkPlugin",
                         "networkPodCidr",
                         "networkPolicy",
                         "networkServiceCidr",
-                        "nodePools",
                         "privateCluster",
                         "resourceGroup",
                         "resourceLocation",
@@ -20710,9 +20706,7 @@
             "type": "object",
             "required": [
                 "cloudCredentialId",
-                "dnsPrefix",
                 "httpApplicationRouting",
-                "kubernetesVersion",
                 "linuxAdminUsername",
                 "linuxSshPublicKey",
                 "loadBalancerSku",
@@ -20722,11 +20716,9 @@
                 "name",
                 "networkDnsServiceIp",
                 "networkDockerBridgeCidr",
-                "networkPlugin",
                 "networkPodCidr",
                 "networkPolicy",
                 "networkServiceCidr",
-                "nodePools",
                 "privateCluster",
                 "resourceGroup",
                 "resourceLocation",
@@ -36076,7 +36068,7 @@
             }
         },
         "rancher2:index/appV2:AppV2": {
-            "description": "Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\nimport * from \"fs\";\n\n// Create a new Rancher2 App V2 using\nconst foo = new rancher2.AppV2(\"foo\", {\n    clusterId: \"\u003cCLUSTER_ID\u003e\",\n    namespace: \"cattle-monitoring-system\",\n    repoName: \"rancher-charts\",\n    chartName: \"rancher-monitoring\",\n    chartVersion: \"9.4.200\",\n    values: fs.readFileSync(\"values.yaml\"),\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new Rancher2 App V2 using\nfoo = rancher2.AppV2(\"foo\",\n    cluster_id=\"\u003cCLUSTER_ID\u003e\",\n    namespace=\"cattle-monitoring-system\",\n    repo_name=\"rancher-charts\",\n    chart_name=\"rancher-monitoring\",\n    chart_version=\"9.4.200\",\n    values=(lambda path: open(path).read())(\"values.yaml\"))\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Rancher2 App V2 using\n        var foo = new Rancher2.AppV2(\"foo\", new Rancher2.AppV2Args\n        {\n            ClusterId = \"\u003cCLUSTER_ID\u003e\",\n            Namespace = \"cattle-monitoring-system\",\n            RepoName = \"rancher-charts\",\n            ChartName = \"rancher-monitoring\",\n            ChartVersion = \"9.4.200\",\n            Values = File.ReadAllText(\"values.yaml\"),\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nV2 apps can be imported using the Rancher cluster ID and App V2 name.\n\n```sh\n $ pulumi import rancher2:index/appV2:AppV2 foo \u0026lt;CLUSTER_ID\u0026gt;.\u0026lt;APP_V2_NAME\u0026gt;\n```\n\n ",
+            "description": "Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\nimport * from \"fs\";\n\n// Create a new Rancher2 App V2 using\nconst foo = new rancher2.AppV2(\"foo\", {\n    clusterId: \"\u003cCLUSTER_ID\u003e\",\n    namespace: \"cattle-monitoring-system\",\n    repoName: \"rancher-charts\",\n    chartName: \"rancher-monitoring\",\n    chartVersion: \"9.4.200\",\n    values: fs.readFileSync(\"values.yaml\"),\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new Rancher2 App V2 using\nfoo = rancher2.AppV2(\"foo\",\n    cluster_id=\"\u003cCLUSTER_ID\u003e\",\n    namespace=\"cattle-monitoring-system\",\n    repo_name=\"rancher-charts\",\n    chart_name=\"rancher-monitoring\",\n    chart_version=\"9.4.200\",\n    values=(lambda path: open(path).read())(\"values.yaml\"))\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Rancher2 App V2 using\n        var foo = new Rancher2.AppV2(\"foo\", new Rancher2.AppV2Args\n        {\n            ClusterId = \"\u003cCLUSTER_ID\u003e\",\n            Namespace = \"cattle-monitoring-system\",\n            RepoName = \"rancher-charts\",\n            ChartName = \"rancher-monitoring\",\n            ChartVersion = \"9.4.200\",\n            Values = File.ReadAllText(\"values.yaml\"),\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nV2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `\u003cnamespace\u003e/\u003capplication_name\u003e`.\n\n```sh\n $ pulumi import rancher2:index/appV2:AppV2 foo \u0026lt;CLUSTER_ID\u0026gt;.\u0026lt;APP_V2_NAME\u0026gt;\n```\n\n ",
             "properties": {
                 "annotations": {
                     "type": "object",
@@ -39116,7 +39108,11 @@
             "properties": {
                 "currentPassword": {
                     "type": "string",
-                    "description": "Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)\n"
+                    "description": "(Computed/Sensitive) Current password for Admin user (string)\n"
+                },
+                "initialPassword": {
+                    "type": "string",
+                    "description": "Initial password for Admin user. Default: `admin` (string)\n"
                 },
                 "password": {
                     "type": "string",
@@ -39174,9 +39170,9 @@
                 "user"
             ],
             "inputProperties": {
-                "currentPassword": {
+                "initialPassword": {
                     "type": "string",
-                    "description": "Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)\n"
+                    "description": "Initial password for Admin user. Default: `admin` (string)\n"
                 },
                 "password": {
                     "type": "string",
@@ -39204,7 +39200,11 @@
                 "properties": {
                     "currentPassword": {
                         "type": "string",
-                        "description": "Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)\n"
+                        "description": "(Computed/Sensitive) Current password for Admin user (string)\n"
+                    },
+                    "initialPassword": {
+                        "type": "string",
+                        "description": "Initial password for Admin user. Default: `admin` (string)\n"
                     },
                     "password": {
                         "type": "string",
@@ -42321,6 +42321,150 @@
                     "rkeConfig": {
                         "$ref": "#/types/rancher2:index/ClusterV2RkeConfig:ClusterV2RkeConfig",
                         "description": "The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rancher2:index/configMapV2:ConfigMapV2": {
+            "description": "Provides a Rancher ConfigMap v2 resource. This can be used to create k8s configMaps for Rancher v2 environments and retrieve their information. ConfigMap v2 resource is available at Rancher v2.5.x and above.\n\n\n## Import\n\nV2 configMaps can be imported using the Rancher cluster ID, ConfigMap V2 namespace and name.\n\n```sh\n $ pulumi import rancher2:index/configMapV2:ConfigMapV2 foo \u0026lt;CLUSTER_ID\u0026gt;.\u0026lt;SECRET_V2_NAMESPACE\u0026gt;/\u0026lt;SECRET_V2_NAME\u0026gt;\n```\n\n ",
+            "properties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for the configMap v2 (map)\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster id of the configMap V2 (string)\n"
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The data of the configMap v2 (map)\n"
+                },
+                "immutable": {
+                    "type": "boolean",
+                    "description": "If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for the configMap v2 (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the configMap v2 (string)\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespaces of the configMap v2. Default: `default` (string)\n"
+                },
+                "resourceVersion": {
+                    "type": "string",
+                    "description": "(Computed) The k8s resource version (string)\n"
+                }
+            },
+            "required": [
+                "annotations",
+                "clusterId",
+                "data",
+                "labels",
+                "name",
+                "resourceVersion"
+            ],
+            "inputProperties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for the configMap v2 (map)\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster id of the configMap V2 (string)\n"
+                },
+                "data": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The data of the configMap v2 (map)\n"
+                },
+                "immutable": {
+                    "type": "boolean",
+                    "description": "If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for the configMap v2 (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the configMap v2 (string)\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespaces of the configMap v2. Default: `default` (string)\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId",
+                "data"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConfigMapV2 resources.\n",
+                "properties": {
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Annotations for the configMap v2 (map)\n"
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The cluster id of the configMap V2 (string)\n"
+                    },
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "The data of the configMap v2 (map)\n"
+                    },
+                    "immutable": {
+                        "type": "boolean",
+                        "description": "If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Labels for the configMap v2 (map)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the configMap v2 (string)\n"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "The namespaces of the configMap v2. Default: `default` (string)\n"
+                    },
+                    "resourceVersion": {
+                        "type": "string",
+                        "description": "(Computed) The k8s resource version (string)\n"
                     }
                 },
                 "type": "object"
@@ -48890,6 +49034,89 @@
                 ]
             }
         },
+        "rancher2:index/getConfigMapV2:getConfigMapV2": {
+            "description": "Use this data source to retrieve information about a Rancher2 configMap v2. ConfigMap v2 resource is available at Rancher v2.5.x and above.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConfigMapV2.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The cluster id of the configMap V2 (string)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the configMap v2 (string)\n"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "The namespaces of the configMap v2. Default: `default` (string)\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId",
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConfigMapV2.\n",
+                "properties": {
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "(Computed) Annotations for the configMap v2 (map)\n"
+                    },
+                    "clusterId": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "(Computed) The data of the configMap v2 (map)\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "immutable": {
+                        "type": "boolean",
+                        "description": "(Computed) If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate (bool)\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "(Computed) Labels for the configMap v2 (map)\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "namespace": {
+                        "type": "string"
+                    },
+                    "resourceVersion": {
+                        "type": "string",
+                        "description": "(Computed) The k8s resource version (string)\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "annotations",
+                    "clusterId",
+                    "data",
+                    "immutable",
+                    "labels",
+                    "name",
+                    "resourceVersion",
+                    "id"
+                ]
+            }
+        },
         "rancher2:index/getEtcdBackup:getEtcdBackup": {
             "description": "Use this data source to retrieve information about a Rancher v2 etcd backup.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = pulumi.output(rancher2.getEtcdBackup({\n    clusterId: \"\u003cCLUSTER_ID\u003e\",\n    name: \"foo\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.get_etcd_backup(cluster_id=\"\u003cCLUSTER_ID\u003e\",\n    name=\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Rancher2.GetEtcdBackup.InvokeAsync(new Rancher2.GetEtcdBackupArgs\n        {\n            ClusterId = \"\u003cCLUSTER_ID\u003e\",\n            Name = \"foo\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.LookupEtcdBackup(ctx, \u0026rancher2.LookupEtcdBackupArgs{\n\t\t\tClusterId: \"\u003cCLUSTER_ID\u003e\",\n\t\t\tName:      \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -50112,6 +50339,46 @@
                     "seLinux",
                     "supplementalGroup",
                     "volumes",
+                    "id"
+                ]
+            }
+        },
+        "rancher2:index/getPrincipal:getPrincipal": {
+            "description": "Use this data source to retrieve information about a Rancher v2 Principal resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = pulumi.output(rancher2.getPrincipal({\n    name: \"user@example.com\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.get_principal(name=\"user@example.com\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Rancher2.GetPrincipal.InvokeAsync(new Rancher2.GetPrincipalArgs\n        {\n            Name = \"user@example.com\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.GetPrincipal(ctx, \u0026rancher2.GetPrincipalArgs{\n\t\t\tName: \"user@example.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPrincipal.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The full name of the principal (string)\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPrincipal.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
                     "id"
                 ]
             }

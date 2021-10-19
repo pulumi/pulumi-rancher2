@@ -15,7 +15,7 @@ import (
 //
 // ## Import
 //
-// V2 apps can be imported using the Rancher cluster ID and App V2 name.
+// V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.
 //
 // ```sh
 //  $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;

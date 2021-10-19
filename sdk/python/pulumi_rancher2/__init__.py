@@ -31,6 +31,7 @@ from .cluster_role_template_binding import *
 from .cluster_sync import *
 from .cluster_template import *
 from .cluster_v2 import *
+from .config_map_v2 import *
 from .etcd_backup import *
 from .feature import *
 from .get_app import *
@@ -47,6 +48,7 @@ from .get_cluster_role_template_binding import *
 from .get_cluster_scan import *
 from .get_cluster_template import *
 from .get_cluster_v2 import *
+from .get_config_map_v2 import *
 from .get_etcd_backup import *
 from .get_global_dns_provider import *
 from .get_global_role import *
@@ -58,6 +60,7 @@ from .get_node_pool import *
 from .get_node_template import *
 from .get_notifier import *
 from .get_pod_security_policy_template import *
+from .get_principal import *
 from .get_project import *
 from .get_project_alert_group import *
 from .get_project_alert_rule import *
@@ -174,6 +177,8 @@ def _register_module():
                 return ClusterTemplate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/clusterV2:ClusterV2":
                 return ClusterV2(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/configMapV2:ConfigMapV2":
+                return ConfigMapV2(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/etcdBackup:EtcdBackup":
                 return EtcdBackup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/feature:Feature":
@@ -263,6 +268,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("rancher2", "index/clusterSync", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/clusterTemplate", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/clusterV2", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/configMapV2", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/etcdBackup", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/feature", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/globalDns", _module_instance)

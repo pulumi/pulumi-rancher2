@@ -13,7 +13,7 @@ __all__ = ['BootstrapArgs', 'Bootstrap']
 @pulumi.input_type
 class BootstrapArgs:
     def __init__(__self__, *,
-                 current_password: Optional[pulumi.Input[str]] = None,
+                 initial_password: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[bool]] = None,
                  token_ttl: Optional[pulumi.Input[int]] = None,
@@ -21,15 +21,15 @@ class BootstrapArgs:
                  ui_default_landing: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Bootstrap resource.
-        :param pulumi.Input[str] current_password: Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+        :param pulumi.Input[str] initial_password: Initial password for Admin user. Default: `admin` (string)
         :param pulumi.Input[str] password: Password for Admin user or random generated if empty (string)
         :param pulumi.Input[bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
         :param pulumi.Input[int] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
         :param pulumi.Input[bool] token_update: Regenerate admin token. Default: `false` (bool)
         :param pulumi.Input[str] ui_default_landing: Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
         """
-        if current_password is not None:
-            pulumi.set(__self__, "current_password", current_password)
+        if initial_password is not None:
+            pulumi.set(__self__, "initial_password", initial_password)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if telemetry is not None:
@@ -42,16 +42,16 @@ class BootstrapArgs:
             pulumi.set(__self__, "ui_default_landing", ui_default_landing)
 
     @property
-    @pulumi.getter(name="currentPassword")
-    def current_password(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="initialPassword")
+    def initial_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+        Initial password for Admin user. Default: `admin` (string)
         """
-        return pulumi.get(self, "current_password")
+        return pulumi.get(self, "initial_password")
 
-    @current_password.setter
-    def current_password(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "current_password", value)
+    @initial_password.setter
+    def initial_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "initial_password", value)
 
     @property
     @pulumi.getter
@@ -118,6 +118,7 @@ class BootstrapArgs:
 class _BootstrapState:
     def __init__(__self__, *,
                  current_password: Optional[pulumi.Input[str]] = None,
+                 initial_password: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[bool]] = None,
                  temp_token: Optional[pulumi.Input[str]] = None,
@@ -131,7 +132,8 @@ class _BootstrapState:
                  user: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Bootstrap resources.
-        :param pulumi.Input[str] current_password: Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+        :param pulumi.Input[str] current_password: (Computed/Sensitive) Current password for Admin user (string)
+        :param pulumi.Input[str] initial_password: Initial password for Admin user. Default: `admin` (string)
         :param pulumi.Input[str] password: Password for Admin user or random generated if empty (string)
         :param pulumi.Input[bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
         :param pulumi.Input[str] temp_token: (Computed) Generated API temporary token as helper. Should be empty (string)
@@ -146,6 +148,8 @@ class _BootstrapState:
         """
         if current_password is not None:
             pulumi.set(__self__, "current_password", current_password)
+        if initial_password is not None:
+            pulumi.set(__self__, "initial_password", initial_password)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if telemetry is not None:
@@ -173,13 +177,25 @@ class _BootstrapState:
     @pulumi.getter(name="currentPassword")
     def current_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+        (Computed/Sensitive) Current password for Admin user (string)
         """
         return pulumi.get(self, "current_password")
 
     @current_password.setter
     def current_password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "current_password", value)
+
+    @property
+    @pulumi.getter(name="initialPassword")
+    def initial_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Initial password for Admin user. Default: `admin` (string)
+        """
+        return pulumi.get(self, "initial_password")
+
+    @initial_password.setter
+    def initial_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "initial_password", value)
 
     @property
     @pulumi.getter
@@ -319,7 +335,7 @@ class Bootstrap(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 current_password: Optional[pulumi.Input[str]] = None,
+                 initial_password: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[bool]] = None,
                  token_ttl: Optional[pulumi.Input[int]] = None,
@@ -330,7 +346,7 @@ class Bootstrap(pulumi.CustomResource):
         Create a Bootstrap resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] current_password: Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+        :param pulumi.Input[str] initial_password: Initial password for Admin user. Default: `admin` (string)
         :param pulumi.Input[str] password: Password for Admin user or random generated if empty (string)
         :param pulumi.Input[bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
         :param pulumi.Input[int] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
@@ -360,7 +376,7 @@ class Bootstrap(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 current_password: Optional[pulumi.Input[str]] = None,
+                 initial_password: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[bool]] = None,
                  token_ttl: Optional[pulumi.Input[int]] = None,
@@ -378,12 +394,13 @@ class Bootstrap(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BootstrapArgs.__new__(BootstrapArgs)
 
-            __props__.__dict__["current_password"] = current_password
+            __props__.__dict__["initial_password"] = initial_password
             __props__.__dict__["password"] = password
             __props__.__dict__["telemetry"] = telemetry
             __props__.__dict__["token_ttl"] = token_ttl
             __props__.__dict__["token_update"] = token_update
             __props__.__dict__["ui_default_landing"] = ui_default_landing
+            __props__.__dict__["current_password"] = None
             __props__.__dict__["temp_token"] = None
             __props__.__dict__["temp_token_id"] = None
             __props__.__dict__["token"] = None
@@ -401,6 +418,7 @@ class Bootstrap(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             current_password: Optional[pulumi.Input[str]] = None,
+            initial_password: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             telemetry: Optional[pulumi.Input[bool]] = None,
             temp_token: Optional[pulumi.Input[str]] = None,
@@ -419,7 +437,8 @@ class Bootstrap(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] current_password: Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+        :param pulumi.Input[str] current_password: (Computed/Sensitive) Current password for Admin user (string)
+        :param pulumi.Input[str] initial_password: Initial password for Admin user. Default: `admin` (string)
         :param pulumi.Input[str] password: Password for Admin user or random generated if empty (string)
         :param pulumi.Input[bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
         :param pulumi.Input[str] temp_token: (Computed) Generated API temporary token as helper. Should be empty (string)
@@ -437,6 +456,7 @@ class Bootstrap(pulumi.CustomResource):
         __props__ = _BootstrapState.__new__(_BootstrapState)
 
         __props__.__dict__["current_password"] = current_password
+        __props__.__dict__["initial_password"] = initial_password
         __props__.__dict__["password"] = password
         __props__.__dict__["telemetry"] = telemetry
         __props__.__dict__["temp_token"] = temp_token
@@ -454,9 +474,17 @@ class Bootstrap(pulumi.CustomResource):
     @pulumi.getter(name="currentPassword")
     def current_password(self) -> pulumi.Output[str]:
         """
-        Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+        (Computed/Sensitive) Current password for Admin user (string)
         """
         return pulumi.get(self, "current_password")
+
+    @property
+    @pulumi.getter(name="initialPassword")
+    def initial_password(self) -> pulumi.Output[Optional[str]]:
+        """
+        Initial password for Admin user. Default: `admin` (string)
+        """
+        return pulumi.get(self, "initial_password")
 
     @property
     @pulumi.getter

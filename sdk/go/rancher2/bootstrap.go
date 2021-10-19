@@ -13,8 +13,10 @@ import (
 type Bootstrap struct {
 	pulumi.CustomResourceState
 
-	// Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+	// (Computed/Sensitive) Current password for Admin user (string)
 	CurrentPassword pulumi.StringOutput `pulumi:"currentPassword"`
+	// Initial password for Admin user. Default: `admin` (string)
+	InitialPassword pulumi.StringPtrOutput `pulumi:"initialPassword"`
 	// Password for Admin user or random generated if empty (string)
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Send telemetry anonymous data. Default: `false` (bool)
@@ -68,8 +70,10 @@ func GetBootstrap(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Bootstrap resources.
 type bootstrapState struct {
-	// Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+	// (Computed/Sensitive) Current password for Admin user (string)
 	CurrentPassword *string `pulumi:"currentPassword"`
+	// Initial password for Admin user. Default: `admin` (string)
+	InitialPassword *string `pulumi:"initialPassword"`
 	// Password for Admin user or random generated if empty (string)
 	Password *string `pulumi:"password"`
 	// Send telemetry anonymous data. Default: `false` (bool)
@@ -95,8 +99,10 @@ type bootstrapState struct {
 }
 
 type BootstrapState struct {
-	// Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+	// (Computed/Sensitive) Current password for Admin user (string)
 	CurrentPassword pulumi.StringPtrInput
+	// Initial password for Admin user. Default: `admin` (string)
+	InitialPassword pulumi.StringPtrInput
 	// Password for Admin user or random generated if empty (string)
 	Password pulumi.StringPtrInput
 	// Send telemetry anonymous data. Default: `false` (bool)
@@ -126,8 +132,8 @@ func (BootstrapState) ElementType() reflect.Type {
 }
 
 type bootstrapArgs struct {
-	// Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
-	CurrentPassword *string `pulumi:"currentPassword"`
+	// Initial password for Admin user. Default: `admin` (string)
+	InitialPassword *string `pulumi:"initialPassword"`
 	// Password for Admin user or random generated if empty (string)
 	Password *string `pulumi:"password"`
 	// Send telemetry anonymous data. Default: `false` (bool)
@@ -142,8 +148,8 @@ type bootstrapArgs struct {
 
 // The set of arguments for constructing a Bootstrap resource.
 type BootstrapArgs struct {
-	// Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
-	CurrentPassword pulumi.StringPtrInput
+	// Initial password for Admin user. Default: `admin` (string)
+	InitialPassword pulumi.StringPtrInput
 	// Password for Admin user or random generated if empty (string)
 	Password pulumi.StringPtrInput
 	// Send telemetry anonymous data. Default: `false` (bool)
