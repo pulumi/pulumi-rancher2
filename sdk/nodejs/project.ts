@@ -225,47 +225,47 @@ export interface ProjectState {
     /**
      * Annotations for Node Pool object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id where create project (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * Default containers resource limits on project (List maxitem:1)
      */
-    readonly containerResourceLimit?: pulumi.Input<inputs.ProjectContainerResourceLimit>;
+    containerResourceLimit?: pulumi.Input<inputs.ProjectContainerResourceLimit>;
     /**
      * A project description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Enable built-in project monitoring. Default `false` (bool)
      */
-    readonly enableProjectMonitoring?: pulumi.Input<boolean>;
+    enableProjectMonitoring?: pulumi.Input<boolean>;
     /**
      * Labels for Node Pool object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the project (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Default Pod Security Policy ID for the project (string)
      */
-    readonly podSecurityPolicyTemplateId?: pulumi.Input<string>;
+    podSecurityPolicyTemplateId?: pulumi.Input<string>;
     /**
      * Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
      */
-    readonly projectMonitoringInput?: pulumi.Input<inputs.ProjectProjectMonitoringInput>;
+    projectMonitoringInput?: pulumi.Input<inputs.ProjectProjectMonitoringInput>;
     /**
      * Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
      */
-    readonly resourceQuota?: pulumi.Input<inputs.ProjectResourceQuota>;
+    resourceQuota?: pulumi.Input<inputs.ProjectResourceQuota>;
     /**
      * Wait for cluster becomes active. Default `false` (bool)
      */
-    readonly waitForCluster?: pulumi.Input<boolean>;
+    waitForCluster?: pulumi.Input<boolean>;
 }
 
 /**
@@ -275,45 +275,45 @@ export interface ProjectArgs {
     /**
      * Annotations for Node Pool object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id where create project (string)
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * Default containers resource limits on project (List maxitem:1)
      */
-    readonly containerResourceLimit?: pulumi.Input<inputs.ProjectContainerResourceLimit>;
+    containerResourceLimit?: pulumi.Input<inputs.ProjectContainerResourceLimit>;
     /**
      * A project description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Enable built-in project monitoring. Default `false` (bool)
      */
-    readonly enableProjectMonitoring?: pulumi.Input<boolean>;
+    enableProjectMonitoring?: pulumi.Input<boolean>;
     /**
      * Labels for Node Pool object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the project (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Default Pod Security Policy ID for the project (string)
      */
-    readonly podSecurityPolicyTemplateId?: pulumi.Input<string>;
+    podSecurityPolicyTemplateId?: pulumi.Input<string>;
     /**
      * Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
      */
-    readonly projectMonitoringInput?: pulumi.Input<inputs.ProjectProjectMonitoringInput>;
+    projectMonitoringInput?: pulumi.Input<inputs.ProjectProjectMonitoringInput>;
     /**
      * Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
      */
-    readonly resourceQuota?: pulumi.Input<inputs.ProjectResourceQuota>;
+    resourceQuota?: pulumi.Input<inputs.ProjectResourceQuota>;
     /**
      * Wait for cluster becomes active. Default `false` (bool)
      */
-    readonly waitForCluster?: pulumi.Input<boolean>;
+    waitForCluster?: pulumi.Input<boolean>;
 }

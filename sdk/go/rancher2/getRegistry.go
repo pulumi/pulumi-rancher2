@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupRegistry(ctx, &rancher2.LookupRegistryArgs{
+// 		_, err := rancher2.LookupRegistry(ctx, &GetRegistryArgs{
 // 			Name:      "<name>",
 // 			ProjectId: "<project_id>",
 // 		}, nil)
@@ -48,7 +51,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "<namespace_id>"
-// 		_, err := rancher2.LookupRegistry(ctx, &rancher2.LookupRegistryArgs{
+// 		_, err := rancher2.LookupRegistry(ctx, &GetRegistryArgs{
 // 			Name:        "<name>",
 // 			NamespaceId: &opt0,
 // 			ProjectId:   "<project_id>",
@@ -94,4 +97,83 @@ type LookupRegistryResult struct {
 	ProjectId   string                 `pulumi:"projectId"`
 	// (Computed) Registries data for registry (list)
 	Registries []GetRegistryRegistry `pulumi:"registries"`
+}
+
+func LookupRegistryOutput(ctx *pulumi.Context, args LookupRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupRegistryResult, error) {
+			args := v.(LookupRegistryArgs)
+			r, err := LookupRegistry(ctx, &args, opts...)
+			return *r, err
+		}).(LookupRegistryResultOutput)
+}
+
+// A collection of arguments for invoking getRegistry.
+type LookupRegistryOutputArgs struct {
+	// The name of the registry (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace id where to assign the namespaced registry (string)
+	NamespaceId pulumi.StringPtrInput `pulumi:"namespaceId"`
+	// The project id where to assign the registry (string)
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (LookupRegistryOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegistryArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRegistry.
+type LookupRegistryResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRegistryResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegistryResult)(nil)).Elem()
+}
+
+func (o LookupRegistryResultOutput) ToLookupRegistryResultOutput() LookupRegistryResultOutput {
+	return o
+}
+
+func (o LookupRegistryResultOutput) ToLookupRegistryResultOutputWithContext(ctx context.Context) LookupRegistryResultOutput {
+	return o
+}
+
+// (Computed) Annotations for Registry object (map)
+func (o LookupRegistryResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupRegistryResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) A registry description (string)
+func (o LookupRegistryResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRegistryResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels for Registry object (map)
+func (o LookupRegistryResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupRegistryResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupRegistryResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupRegistryResultOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRegistryResult) *string { return v.NamespaceId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupRegistryResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// (Computed) Registries data for registry (list)
+func (o LookupRegistryResultOutput) Registries() GetRegistryRegistryArrayOutput {
+	return o.ApplyT(func(v LookupRegistryResult) []GetRegistryRegistry { return v.Registries }).(GetRegistryRegistryArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRegistryResultOutput{})
 }

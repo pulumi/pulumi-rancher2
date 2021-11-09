@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetGlobalRoleResult> InvokeAsync(GetGlobalRoleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalRoleResult>("rancher2:index/getGlobalRole:getGlobalRole", args ?? new GetGlobalRoleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 global role resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetGlobalRole.InvokeAsync(new Rancher2.GetGlobalRoleArgs
+        ///         {
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGlobalRoleResult> Invoke(GetGlobalRoleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGlobalRoleResult>("rancher2:index/getGlobalRole:getGlobalRole", args ?? new GetGlobalRoleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.Rancher2
         public string Name { get; set; } = null!;
 
         public GetGlobalRoleArgs()
+        {
+        }
+    }
+
+    public sealed class GetGlobalRoleInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the Global Role (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetGlobalRoleInvokeArgs()
         {
         }
     }

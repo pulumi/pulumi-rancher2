@@ -13,6 +13,7 @@ __all__ = [
     'GetGlobalDnsProviderResult',
     'AwaitableGetGlobalDnsProviderResult',
     'get_global_dns_provider',
+    'get_global_dns_provider_output',
 ]
 
 @pulumi.output_type
@@ -159,3 +160,24 @@ def get_global_dns_provider(name: Optional[str] = None,
         name=__ret__.name,
         root_domain=__ret__.root_domain,
         route53_config=__ret__.route53_config)
+
+
+@_utilities.lift_output_func(get_global_dns_provider)
+def get_global_dns_provider_output(name: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalDnsProviderResult]:
+    """
+    Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_global_dns_provider(name="foo")
+    ```
+
+
+    :param str name: The name of the global DNS provider (string)
+    """
+    ...

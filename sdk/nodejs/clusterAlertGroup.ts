@@ -149,39 +149,39 @@ export interface ClusterAlertGroupState {
     /**
      * The cluster alert group annotations (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id where create cluster alert group (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The cluster alert group description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The cluster alert group interval seconds. Default: `180` (int)
      */
-    readonly groupIntervalSeconds?: pulumi.Input<number>;
+    groupIntervalSeconds?: pulumi.Input<number>;
     /**
      * The cluster alert group wait seconds. Default: `180` (int)
      */
-    readonly groupWaitSeconds?: pulumi.Input<number>;
+    groupWaitSeconds?: pulumi.Input<number>;
     /**
      * The cluster alert group labels (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster alert group name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The cluster alert group recipients (list)
      */
-    readonly recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlertGroupRecipient>[]>;
+    recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlertGroupRecipient>[]>;
     /**
      * The cluster alert group wait seconds. Default: `3600` (int)
      */
-    readonly repeatIntervalSeconds?: pulumi.Input<number>;
+    repeatIntervalSeconds?: pulumi.Input<number>;
 }
 
 /**
@@ -191,37 +191,37 @@ export interface ClusterAlertGroupArgs {
     /**
      * The cluster alert group annotations (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id where create cluster alert group (string)
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The cluster alert group description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The cluster alert group interval seconds. Default: `180` (int)
      */
-    readonly groupIntervalSeconds?: pulumi.Input<number>;
+    groupIntervalSeconds?: pulumi.Input<number>;
     /**
      * The cluster alert group wait seconds. Default: `180` (int)
      */
-    readonly groupWaitSeconds?: pulumi.Input<number>;
+    groupWaitSeconds?: pulumi.Input<number>;
     /**
      * The cluster alert group labels (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster alert group name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The cluster alert group recipients (list)
      */
-    readonly recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlertGroupRecipient>[]>;
+    recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlertGroupRecipient>[]>;
     /**
      * The cluster alert group wait seconds. Default: `3600` (int)
      */
-    readonly repeatIntervalSeconds?: pulumi.Input<number>;
+    repeatIntervalSeconds?: pulumi.Input<number>;
 }

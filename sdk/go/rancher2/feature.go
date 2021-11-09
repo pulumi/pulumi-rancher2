@@ -166,7 +166,7 @@ type FeatureArrayInput interface {
 type FeatureArray []FeatureInput
 
 func (FeatureArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Feature)(nil))
+	return reflect.TypeOf((*[]*Feature)(nil)).Elem()
 }
 
 func (i FeatureArray) ToFeatureArrayOutput() FeatureArrayOutput {
@@ -191,7 +191,7 @@ type FeatureMapInput interface {
 type FeatureMap map[string]FeatureInput
 
 func (FeatureMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Feature)(nil))
+	return reflect.TypeOf((*map[string]*Feature)(nil)).Elem()
 }
 
 func (i FeatureMap) ToFeatureMapOutput() FeatureMapOutput {
@@ -202,9 +202,7 @@ func (i FeatureMap) ToFeatureMapOutputWithContext(ctx context.Context) FeatureMa
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMapOutput)
 }
 
-type FeatureOutput struct {
-	*pulumi.OutputState
-}
+type FeatureOutput struct{ *pulumi.OutputState }
 
 func (FeatureOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Feature)(nil))
@@ -223,14 +221,12 @@ func (o FeatureOutput) ToFeaturePtrOutput() FeaturePtrOutput {
 }
 
 func (o FeatureOutput) ToFeaturePtrOutputWithContext(ctx context.Context) FeaturePtrOutput {
-	return o.ApplyT(func(v Feature) *Feature {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Feature) *Feature {
 		return &v
 	}).(FeaturePtrOutput)
 }
 
-type FeaturePtrOutput struct {
-	*pulumi.OutputState
-}
+type FeaturePtrOutput struct{ *pulumi.OutputState }
 
 func (FeaturePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Feature)(nil))
@@ -242,6 +238,16 @@ func (o FeaturePtrOutput) ToFeaturePtrOutput() FeaturePtrOutput {
 
 func (o FeaturePtrOutput) ToFeaturePtrOutputWithContext(ctx context.Context) FeaturePtrOutput {
 	return o
+}
+
+func (o FeaturePtrOutput) Elem() FeatureOutput {
+	return o.ApplyT(func(v *Feature) Feature {
+		if v != nil {
+			return *v
+		}
+		var ret Feature
+		return ret
+	}).(FeatureOutput)
 }
 
 type FeatureArrayOutput struct{ *pulumi.OutputState }
@@ -285,6 +291,10 @@ func (o FeatureMapOutput) MapIndex(k pulumi.StringInput) FeatureOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureInput)(nil)).Elem(), &Feature{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeaturePtrInput)(nil)).Elem(), &Feature{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureArrayInput)(nil)).Elem(), FeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMapInput)(nil)).Elem(), FeatureMap{})
 	pulumi.RegisterOutputType(FeatureOutput{})
 	pulumi.RegisterOutputType(FeaturePtrOutput{})
 	pulumi.RegisterOutputType(FeatureArrayOutput{})

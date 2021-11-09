@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +25,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "fleet-ns"
-// 		_, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
+// 		_, err := rancher2.LookupClusterV2(ctx, &GetClusterV2Args{
 // 			FleetNamespace: &opt0,
 // 			Name:           "foo",
 // 		}, nil)
@@ -80,4 +83,120 @@ type LookupClusterV2Result struct {
 	ResourceVersion string `pulumi:"resourceVersion"`
 	// (Computed) The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
 	RkeConfig GetClusterV2RkeConfig `pulumi:"rkeConfig"`
+}
+
+func LookupClusterV2Output(ctx *pulumi.Context, args LookupClusterV2OutputArgs, opts ...pulumi.InvokeOption) LookupClusterV2ResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupClusterV2Result, error) {
+			args := v.(LookupClusterV2Args)
+			r, err := LookupClusterV2(ctx, &args, opts...)
+			return *r, err
+		}).(LookupClusterV2ResultOutput)
+}
+
+// A collection of arguments for invoking getClusterV2.
+type LookupClusterV2OutputArgs struct {
+	// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
+	FleetNamespace pulumi.StringPtrInput `pulumi:"fleetNamespace"`
+	// The name of the Cluster v2 (string)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupClusterV2OutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterV2Args)(nil)).Elem()
+}
+
+// A collection of values returned by getClusterV2.
+type LookupClusterV2ResultOutput struct{ *pulumi.OutputState }
+
+func (LookupClusterV2ResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterV2Result)(nil)).Elem()
+}
+
+func (o LookupClusterV2ResultOutput) ToLookupClusterV2ResultOutput() LookupClusterV2ResultOutput {
+	return o
+}
+
+func (o LookupClusterV2ResultOutput) ToLookupClusterV2ResultOutputWithContext(ctx context.Context) LookupClusterV2ResultOutput {
+	return o
+}
+
+// (Computed) Optional Agent Env Vars for Rancher agent (list)
+func (o LookupClusterV2ResultOutput) AgentEnvVars() GetClusterV2AgentEnvVarArrayOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) []GetClusterV2AgentEnvVar { return v.AgentEnvVars }).(GetClusterV2AgentEnvVarArrayOutput)
+}
+
+func (o LookupClusterV2ResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) Cluster V2 cloud credential secret name (string)
+func (o LookupClusterV2ResultOutput) CloudCredentialSecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) string { return v.CloudCredentialSecretName }).(pulumi.StringOutput)
+}
+
+// (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
+func (o LookupClusterV2ResultOutput) ClusterRegistrationToken() GetClusterV2ClusterRegistrationTokenOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) GetClusterV2ClusterRegistrationToken { return v.ClusterRegistrationToken }).(GetClusterV2ClusterRegistrationTokenOutput)
+}
+
+// (Computed) Cluster v1 id for cluster v2 (string)
+func (o LookupClusterV2ResultOutput) ClusterV1Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) string { return v.ClusterV1Id }).(pulumi.StringOutput)
+}
+
+// (Computed) Cluster V2 default cluster role for project members (string)
+func (o LookupClusterV2ResultOutput) DefaultClusterRoleForProjectMembers() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) string { return v.DefaultClusterRoleForProjectMembers }).(pulumi.StringOutput)
+}
+
+// (Computed) Cluster V2 default pod security policy template name (string)
+func (o LookupClusterV2ResultOutput) DefaultPodSecurityPolicyTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) string { return v.DefaultPodSecurityPolicyTemplateName }).(pulumi.StringOutput)
+}
+
+// (Computed) Enable k8s network policy at Cluster V2 (bool)
+func (o LookupClusterV2ResultOutput) EnableNetworkPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) bool { return v.EnableNetworkPolicy }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterV2ResultOutput) FleetNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) *string { return v.FleetNamespace }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupClusterV2ResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
+func (o LookupClusterV2ResultOutput) KubeConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) string { return v.KubeConfig }).(pulumi.StringOutput)
+}
+
+// (Computed) The kubernetes version of the Cluster v2 (list maxitems:1)
+func (o LookupClusterV2ResultOutput) KubernetesVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) string { return v.KubernetesVersion }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterV2ResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupClusterV2ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed) Cluster v2 k8s resource version (string)
+func (o LookupClusterV2ResultOutput) ResourceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) string { return v.ResourceVersion }).(pulumi.StringOutput)
+}
+
+// (Computed) The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
+func (o LookupClusterV2ResultOutput) RkeConfig() GetClusterV2RkeConfigOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) GetClusterV2RkeConfig { return v.RkeConfig }).(GetClusterV2RkeConfigOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupClusterV2ResultOutput{})
 }

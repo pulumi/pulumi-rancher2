@@ -12,6 +12,7 @@ __all__ = [
     'GetNodeDriverResult',
     'AwaitableGetNodeDriverResult',
     'get_node_driver',
+    'get_node_driver_output',
 ]
 
 @pulumi.output_type
@@ -209,3 +210,26 @@ def get_node_driver(name: Optional[str] = None,
         ui_url=__ret__.ui_url,
         url=__ret__.url,
         whitelist_domains=__ret__.whitelist_domains)
+
+
+@_utilities.lift_output_func(get_node_driver)
+def get_node_driver_output(name: Optional[pulumi.Input[str]] = None,
+                           url: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeDriverResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 Node Driver resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_node_driver(name="foo")
+    ```
+
+
+    :param str name: Name of the node driver (string)
+    :param str url: The URL to download the machine driver binary for 64-bit Linux (string)
+    """
+    ...

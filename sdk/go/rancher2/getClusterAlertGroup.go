@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupClusterAlertGroup(ctx, &rancher2.LookupClusterAlertGroupArgs{
+// 		_, err := rancher2.LookupClusterAlertGroup(ctx, &GetClusterAlertGroupArgs{
 // 			ClusterId: "<cluster_id>",
 // 			Name:      "<cluster_alert_group_name>",
 // 		}, nil)
@@ -69,4 +72,92 @@ type LookupClusterAlertGroupResult struct {
 	Recipients []GetClusterAlertGroupRecipient `pulumi:"recipients"`
 	// (Computed) The cluster alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds int `pulumi:"repeatIntervalSeconds"`
+}
+
+func LookupClusterAlertGroupOutput(ctx *pulumi.Context, args LookupClusterAlertGroupOutputArgs, opts ...pulumi.InvokeOption) LookupClusterAlertGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupClusterAlertGroupResult, error) {
+			args := v.(LookupClusterAlertGroupArgs)
+			r, err := LookupClusterAlertGroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupClusterAlertGroupResultOutput)
+}
+
+// A collection of arguments for invoking getClusterAlertGroup.
+type LookupClusterAlertGroupOutputArgs struct {
+	// The cluster id where create cluster alert group (string)
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The cluster alert group name (string)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupClusterAlertGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterAlertGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getClusterAlertGroup.
+type LookupClusterAlertGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupClusterAlertGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterAlertGroupResult)(nil)).Elem()
+}
+
+func (o LookupClusterAlertGroupResultOutput) ToLookupClusterAlertGroupResultOutput() LookupClusterAlertGroupResultOutput {
+	return o
+}
+
+func (o LookupClusterAlertGroupResultOutput) ToLookupClusterAlertGroupResultOutputWithContext(ctx context.Context) LookupClusterAlertGroupResultOutput {
+	return o
+}
+
+// (Computed) The cluster alert group annotations (map)
+func (o LookupClusterAlertGroupResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupClusterAlertGroupResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+func (o LookupClusterAlertGroupResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterAlertGroupResult) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// (Computed) The cluster alert group description (string)
+func (o LookupClusterAlertGroupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterAlertGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// (Computed) The cluster alert group interval seconds. Default: `180` (int)
+func (o LookupClusterAlertGroupResultOutput) GroupIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterAlertGroupResult) int { return v.GroupIntervalSeconds }).(pulumi.IntOutput)
+}
+
+// (Computed) The cluster alert group wait seconds. Default: `180` (int)
+func (o LookupClusterAlertGroupResultOutput) GroupWaitSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterAlertGroupResult) int { return v.GroupWaitSeconds }).(pulumi.IntOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupClusterAlertGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterAlertGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) The cluster alert group labels (map)
+func (o LookupClusterAlertGroupResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupClusterAlertGroupResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupClusterAlertGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterAlertGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed) The cluster alert group recipients (list)
+func (o LookupClusterAlertGroupResultOutput) Recipients() GetClusterAlertGroupRecipientArrayOutput {
+	return o.ApplyT(func(v LookupClusterAlertGroupResult) []GetClusterAlertGroupRecipient { return v.Recipients }).(GetClusterAlertGroupRecipientArrayOutput)
+}
+
+// (Computed) The cluster alert group wait seconds. Default: `3600` (int)
+func (o LookupClusterAlertGroupResultOutput) RepeatIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterAlertGroupResult) int { return v.RepeatIntervalSeconds }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupClusterAlertGroupResultOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetSecretV2Result> InvokeAsync(GetSecretV2Args args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretV2Result>("rancher2:index/getSecretV2:getSecretV2", args ?? new GetSecretV2Args(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
+        /// </summary>
+        public static Output<GetSecretV2Result> Invoke(GetSecretV2InvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSecretV2Result>("rancher2:index/getSecretV2:getSecretV2", args ?? new GetSecretV2InvokeArgs(), options.WithVersion());
     }
 
 
@@ -40,6 +47,31 @@ namespace Pulumi.Rancher2
         public string? Namespace { get; set; }
 
         public GetSecretV2Args()
+        {
+        }
+    }
+
+    public sealed class GetSecretV2InvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The cluster id of the secret V2 (string)
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the secret v2 (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The namespaces of the secret v2. Default: `default` (string)
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        public GetSecretV2InvokeArgs()
         {
         }
     }

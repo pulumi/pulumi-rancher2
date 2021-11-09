@@ -174,55 +174,55 @@ export interface NotifierState {
     /**
      * Annotations for notifier object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id where create notifier (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The notifier description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Dingtalk config for notifier (list maxitems:1)
      */
-    readonly dingtalkConfig?: pulumi.Input<inputs.NotifierDingtalkConfig>;
+    dingtalkConfig?: pulumi.Input<inputs.NotifierDingtalkConfig>;
     /**
      * Labels for notifier object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * MSTeams config for notifier (list maxitems:1)
      */
-    readonly msteamsConfig?: pulumi.Input<inputs.NotifierMsteamsConfig>;
+    msteamsConfig?: pulumi.Input<inputs.NotifierMsteamsConfig>;
     /**
      * The name of the notifier (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Pagerduty config for notifier (list maxitems:1)
      */
-    readonly pagerdutyConfig?: pulumi.Input<inputs.NotifierPagerdutyConfig>;
+    pagerdutyConfig?: pulumi.Input<inputs.NotifierPagerdutyConfig>;
     /**
      * = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
-    readonly sendResolved?: pulumi.Input<boolean>;
+    sendResolved?: pulumi.Input<boolean>;
     /**
      * Slack config for notifier (list maxitems:1)
      */
-    readonly slackConfig?: pulumi.Input<inputs.NotifierSlackConfig>;
+    slackConfig?: pulumi.Input<inputs.NotifierSlackConfig>;
     /**
      * SMTP config for notifier (list maxitems:1)
      */
-    readonly smtpConfig?: pulumi.Input<inputs.NotifierSmtpConfig>;
+    smtpConfig?: pulumi.Input<inputs.NotifierSmtpConfig>;
     /**
      * Webhook config for notifier (list maxitems:1)
      */
-    readonly webhookConfig?: pulumi.Input<inputs.NotifierWebhookConfig>;
+    webhookConfig?: pulumi.Input<inputs.NotifierWebhookConfig>;
     /**
      * Wechat config for notifier (list maxitems:1)
      */
-    readonly wechatConfig?: pulumi.Input<inputs.NotifierWechatConfig>;
+    wechatConfig?: pulumi.Input<inputs.NotifierWechatConfig>;
 }
 
 /**
@@ -232,53 +232,53 @@ export interface NotifierArgs {
     /**
      * Annotations for notifier object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id where create notifier (string)
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The notifier description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Dingtalk config for notifier (list maxitems:1)
      */
-    readonly dingtalkConfig?: pulumi.Input<inputs.NotifierDingtalkConfig>;
+    dingtalkConfig?: pulumi.Input<inputs.NotifierDingtalkConfig>;
     /**
      * Labels for notifier object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * MSTeams config for notifier (list maxitems:1)
      */
-    readonly msteamsConfig?: pulumi.Input<inputs.NotifierMsteamsConfig>;
+    msteamsConfig?: pulumi.Input<inputs.NotifierMsteamsConfig>;
     /**
      * The name of the notifier (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Pagerduty config for notifier (list maxitems:1)
      */
-    readonly pagerdutyConfig?: pulumi.Input<inputs.NotifierPagerdutyConfig>;
+    pagerdutyConfig?: pulumi.Input<inputs.NotifierPagerdutyConfig>;
     /**
      * = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
-    readonly sendResolved?: pulumi.Input<boolean>;
+    sendResolved?: pulumi.Input<boolean>;
     /**
      * Slack config for notifier (list maxitems:1)
      */
-    readonly slackConfig?: pulumi.Input<inputs.NotifierSlackConfig>;
+    slackConfig?: pulumi.Input<inputs.NotifierSlackConfig>;
     /**
      * SMTP config for notifier (list maxitems:1)
      */
-    readonly smtpConfig?: pulumi.Input<inputs.NotifierSmtpConfig>;
+    smtpConfig?: pulumi.Input<inputs.NotifierSmtpConfig>;
     /**
      * Webhook config for notifier (list maxitems:1)
      */
-    readonly webhookConfig?: pulumi.Input<inputs.NotifierWebhookConfig>;
+    webhookConfig?: pulumi.Input<inputs.NotifierWebhookConfig>;
     /**
      * Wechat config for notifier (list maxitems:1)
      */
-    readonly wechatConfig?: pulumi.Input<inputs.NotifierWechatConfig>;
+    wechatConfig?: pulumi.Input<inputs.NotifierWechatConfig>;
 }

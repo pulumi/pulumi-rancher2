@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getClusterV2({
  *     fleetNamespace: "fleet-ns",
  *     name: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getClusterV2(args: GetClusterV2Args, opts?: pulumi.InvokeOptions): Promise<GetClusterV2Result> {
@@ -41,11 +41,11 @@ export interface GetClusterV2Args {
     /**
      * The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
      */
-    readonly fleetNamespace?: string;
+    fleetNamespace?: string;
     /**
      * The name of the Cluster v2 (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -104,4 +104,22 @@ export interface GetClusterV2Result {
      * (Computed) The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
      */
     readonly rkeConfig: outputs.GetClusterV2RkeConfig;
+}
+
+export function getClusterV2Output(args: GetClusterV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterV2Result> {
+    return pulumi.output(args).apply(a => getClusterV2(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusterV2.
+ */
+export interface GetClusterV2OutputArgs {
+    /**
+     * The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
+     */
+    fleetNamespace?: pulumi.Input<string>;
+    /**
+     * The name of the Cluster v2 (string)
+     */
+    name: pulumi.Input<string>;
 }

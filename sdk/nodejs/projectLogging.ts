@@ -190,63 +190,63 @@ export interface ProjectLoggingState {
     /**
      * Annotations for Project Logging object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly customTargetConfig?: pulumi.Input<inputs.ProjectLoggingCustomTargetConfig>;
+    customTargetConfig?: pulumi.Input<inputs.ProjectLoggingCustomTargetConfig>;
     /**
      * The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly elasticsearchConfig?: pulumi.Input<inputs.ProjectLoggingElasticsearchConfig>;
+    elasticsearchConfig?: pulumi.Input<inputs.ProjectLoggingElasticsearchConfig>;
     /**
      * Enable json log parsing. Default: `false` (bool)
      */
-    readonly enableJsonParsing?: pulumi.Input<boolean>;
+    enableJsonParsing?: pulumi.Input<boolean>;
     /**
      * The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly fluentdConfig?: pulumi.Input<inputs.ProjectLoggingFluentdConfig>;
+    fluentdConfig?: pulumi.Input<inputs.ProjectLoggingFluentdConfig>;
     /**
      * The kafka config for Project Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly kafkaConfig?: pulumi.Input<inputs.ProjectLoggingKafkaConfig>;
+    kafkaConfig?: pulumi.Input<inputs.ProjectLoggingKafkaConfig>;
     /**
      * The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Labels for Project Logging object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the Project Logging config (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace id from Project logging (string)
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
     /**
      * How often buffered logs would be flushed. Default: `3` seconds (int)
      */
-    readonly outputFlushInterval?: pulumi.Input<number>;
+    outputFlushInterval?: pulumi.Input<number>;
     /**
      * The output tags for Project Logging (map)
      */
-    readonly outputTags?: pulumi.Input<{[key: string]: any}>;
+    outputTags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The project id to configure logging (string)
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The splunk config for Project Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
      */
-    readonly splunkConfig?: pulumi.Input<inputs.ProjectLoggingSplunkConfig>;
+    splunkConfig?: pulumi.Input<inputs.ProjectLoggingSplunkConfig>;
     /**
      * The syslog config for Project Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
      */
-    readonly syslogConfig?: pulumi.Input<inputs.ProjectLoggingSyslogConfig>;
+    syslogConfig?: pulumi.Input<inputs.ProjectLoggingSyslogConfig>;
 }
 
 /**
@@ -256,61 +256,61 @@ export interface ProjectLoggingArgs {
     /**
      * Annotations for Project Logging object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly customTargetConfig?: pulumi.Input<inputs.ProjectLoggingCustomTargetConfig>;
+    customTargetConfig?: pulumi.Input<inputs.ProjectLoggingCustomTargetConfig>;
     /**
      * The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly elasticsearchConfig?: pulumi.Input<inputs.ProjectLoggingElasticsearchConfig>;
+    elasticsearchConfig?: pulumi.Input<inputs.ProjectLoggingElasticsearchConfig>;
     /**
      * Enable json log parsing. Default: `false` (bool)
      */
-    readonly enableJsonParsing?: pulumi.Input<boolean>;
+    enableJsonParsing?: pulumi.Input<boolean>;
     /**
      * The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly fluentdConfig?: pulumi.Input<inputs.ProjectLoggingFluentdConfig>;
+    fluentdConfig?: pulumi.Input<inputs.ProjectLoggingFluentdConfig>;
     /**
      * The kafka config for Project Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly kafkaConfig?: pulumi.Input<inputs.ProjectLoggingKafkaConfig>;
+    kafkaConfig?: pulumi.Input<inputs.ProjectLoggingKafkaConfig>;
     /**
      * The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
      */
-    readonly kind: pulumi.Input<string>;
+    kind: pulumi.Input<string>;
     /**
      * Labels for Project Logging object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the Project Logging config (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace id from Project logging (string)
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
     /**
      * How often buffered logs would be flushed. Default: `3` seconds (int)
      */
-    readonly outputFlushInterval?: pulumi.Input<number>;
+    outputFlushInterval?: pulumi.Input<number>;
     /**
      * The output tags for Project Logging (map)
      */
-    readonly outputTags?: pulumi.Input<{[key: string]: any}>;
+    outputTags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The project id to configure logging (string)
      */
-    readonly projectId: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
     /**
      * The splunk config for Project Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
      */
-    readonly splunkConfig?: pulumi.Input<inputs.ProjectLoggingSplunkConfig>;
+    splunkConfig?: pulumi.Input<inputs.ProjectLoggingSplunkConfig>;
     /**
      * The syslog config for Project Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
      */
-    readonly syslogConfig?: pulumi.Input<inputs.ProjectLoggingSyslogConfig>;
+    syslogConfig?: pulumi.Input<inputs.ProjectLoggingSyslogConfig>;
 }

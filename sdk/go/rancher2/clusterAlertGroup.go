@@ -261,7 +261,7 @@ type ClusterAlertGroupArrayInput interface {
 type ClusterAlertGroupArray []ClusterAlertGroupInput
 
 func (ClusterAlertGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ClusterAlertGroup)(nil))
+	return reflect.TypeOf((*[]*ClusterAlertGroup)(nil)).Elem()
 }
 
 func (i ClusterAlertGroupArray) ToClusterAlertGroupArrayOutput() ClusterAlertGroupArrayOutput {
@@ -286,7 +286,7 @@ type ClusterAlertGroupMapInput interface {
 type ClusterAlertGroupMap map[string]ClusterAlertGroupInput
 
 func (ClusterAlertGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ClusterAlertGroup)(nil))
+	return reflect.TypeOf((*map[string]*ClusterAlertGroup)(nil)).Elem()
 }
 
 func (i ClusterAlertGroupMap) ToClusterAlertGroupMapOutput() ClusterAlertGroupMapOutput {
@@ -297,9 +297,7 @@ func (i ClusterAlertGroupMap) ToClusterAlertGroupMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupMapOutput)
 }
 
-type ClusterAlertGroupOutput struct {
-	*pulumi.OutputState
-}
+type ClusterAlertGroupOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlertGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterAlertGroup)(nil))
@@ -318,14 +316,12 @@ func (o ClusterAlertGroupOutput) ToClusterAlertGroupPtrOutput() ClusterAlertGrou
 }
 
 func (o ClusterAlertGroupOutput) ToClusterAlertGroupPtrOutputWithContext(ctx context.Context) ClusterAlertGroupPtrOutput {
-	return o.ApplyT(func(v ClusterAlertGroup) *ClusterAlertGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAlertGroup) *ClusterAlertGroup {
 		return &v
 	}).(ClusterAlertGroupPtrOutput)
 }
 
-type ClusterAlertGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type ClusterAlertGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlertGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterAlertGroup)(nil))
@@ -337,6 +333,16 @@ func (o ClusterAlertGroupPtrOutput) ToClusterAlertGroupPtrOutput() ClusterAlertG
 
 func (o ClusterAlertGroupPtrOutput) ToClusterAlertGroupPtrOutputWithContext(ctx context.Context) ClusterAlertGroupPtrOutput {
 	return o
+}
+
+func (o ClusterAlertGroupPtrOutput) Elem() ClusterAlertGroupOutput {
+	return o.ApplyT(func(v *ClusterAlertGroup) ClusterAlertGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAlertGroup
+		return ret
+	}).(ClusterAlertGroupOutput)
 }
 
 type ClusterAlertGroupArrayOutput struct{ *pulumi.OutputState }
@@ -380,6 +386,10 @@ func (o ClusterAlertGroupMapOutput) MapIndex(k pulumi.StringInput) ClusterAlertG
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlertGroupInput)(nil)).Elem(), &ClusterAlertGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlertGroupPtrInput)(nil)).Elem(), &ClusterAlertGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlertGroupArrayInput)(nil)).Elem(), ClusterAlertGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlertGroupMapInput)(nil)).Elem(), ClusterAlertGroupMap{})
 	pulumi.RegisterOutputType(ClusterAlertGroupOutput{})
 	pulumi.RegisterOutputType(ClusterAlertGroupPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAlertGroupArrayOutput{})

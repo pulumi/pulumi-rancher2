@@ -13,6 +13,7 @@ __all__ = [
     'GetRegistryResult',
     'AwaitableGetRegistryResult',
     'get_registry',
+    'get_registry_output',
 ]
 
 @pulumi.output_type
@@ -172,3 +173,42 @@ def get_registry(name: Optional[str] = None,
         namespace_id=__ret__.namespace_id,
         project_id=__ret__.project_id,
         registries=__ret__.registries)
+
+
+@_utilities.lift_output_func(get_registry)
+def get_registry_output(name: Optional[pulumi.Input[str]] = None,
+                        namespace_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        project_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 docker registry.
+
+    Depending of the availability, there are 2 types of Rancher v2 docker registries:
+    - Project registry: Available to all namespaces in the `project_id`
+    - Namespaced registry: Available to just `namespace_id` in the `project_id`
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_registry(name="<name>",
+        project_id="<project_id>")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_registry(name="<name>",
+        namespace_id="<namespace_id>",
+        project_id="<project_id>")
+    ```
+
+
+    :param str name: The name of the registry (string)
+    :param str namespace_id: The namespace id where to assign the namespaced registry (string)
+    :param str project_id: The project id where to assign the registry (string)
+    """
+    ...

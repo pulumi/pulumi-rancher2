@@ -257,7 +257,7 @@ type ProjectRoleTemplateBindingArrayInput interface {
 type ProjectRoleTemplateBindingArray []ProjectRoleTemplateBindingInput
 
 func (ProjectRoleTemplateBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectRoleTemplateBinding)(nil))
+	return reflect.TypeOf((*[]*ProjectRoleTemplateBinding)(nil)).Elem()
 }
 
 func (i ProjectRoleTemplateBindingArray) ToProjectRoleTemplateBindingArrayOutput() ProjectRoleTemplateBindingArrayOutput {
@@ -282,7 +282,7 @@ type ProjectRoleTemplateBindingMapInput interface {
 type ProjectRoleTemplateBindingMap map[string]ProjectRoleTemplateBindingInput
 
 func (ProjectRoleTemplateBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectRoleTemplateBinding)(nil))
+	return reflect.TypeOf((*map[string]*ProjectRoleTemplateBinding)(nil)).Elem()
 }
 
 func (i ProjectRoleTemplateBindingMap) ToProjectRoleTemplateBindingMapOutput() ProjectRoleTemplateBindingMapOutput {
@@ -293,9 +293,7 @@ func (i ProjectRoleTemplateBindingMap) ToProjectRoleTemplateBindingMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectRoleTemplateBindingMapOutput)
 }
 
-type ProjectRoleTemplateBindingOutput struct {
-	*pulumi.OutputState
-}
+type ProjectRoleTemplateBindingOutput struct{ *pulumi.OutputState }
 
 func (ProjectRoleTemplateBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectRoleTemplateBinding)(nil))
@@ -314,14 +312,12 @@ func (o ProjectRoleTemplateBindingOutput) ToProjectRoleTemplateBindingPtrOutput(
 }
 
 func (o ProjectRoleTemplateBindingOutput) ToProjectRoleTemplateBindingPtrOutputWithContext(ctx context.Context) ProjectRoleTemplateBindingPtrOutput {
-	return o.ApplyT(func(v ProjectRoleTemplateBinding) *ProjectRoleTemplateBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectRoleTemplateBinding) *ProjectRoleTemplateBinding {
 		return &v
 	}).(ProjectRoleTemplateBindingPtrOutput)
 }
 
-type ProjectRoleTemplateBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectRoleTemplateBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectRoleTemplateBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectRoleTemplateBinding)(nil))
@@ -333,6 +329,16 @@ func (o ProjectRoleTemplateBindingPtrOutput) ToProjectRoleTemplateBindingPtrOutp
 
 func (o ProjectRoleTemplateBindingPtrOutput) ToProjectRoleTemplateBindingPtrOutputWithContext(ctx context.Context) ProjectRoleTemplateBindingPtrOutput {
 	return o
+}
+
+func (o ProjectRoleTemplateBindingPtrOutput) Elem() ProjectRoleTemplateBindingOutput {
+	return o.ApplyT(func(v *ProjectRoleTemplateBinding) ProjectRoleTemplateBinding {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectRoleTemplateBinding
+		return ret
+	}).(ProjectRoleTemplateBindingOutput)
 }
 
 type ProjectRoleTemplateBindingArrayOutput struct{ *pulumi.OutputState }
@@ -376,6 +382,10 @@ func (o ProjectRoleTemplateBindingMapOutput) MapIndex(k pulumi.StringInput) Proj
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRoleTemplateBindingInput)(nil)).Elem(), &ProjectRoleTemplateBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRoleTemplateBindingPtrInput)(nil)).Elem(), &ProjectRoleTemplateBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRoleTemplateBindingArrayInput)(nil)).Elem(), ProjectRoleTemplateBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRoleTemplateBindingMapInput)(nil)).Elem(), ProjectRoleTemplateBindingMap{})
 	pulumi.RegisterOutputType(ProjectRoleTemplateBindingOutput{})
 	pulumi.RegisterOutputType(ProjectRoleTemplateBindingPtrOutput{})
 	pulumi.RegisterOutputType(ProjectRoleTemplateBindingArrayOutput{})

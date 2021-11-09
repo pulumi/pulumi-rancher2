@@ -131,27 +131,27 @@ export interface GlobalRoleBindingState {
     /**
      * Annotations for global role binding (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The role id from create global role binding (string)
      */
-    readonly globalRoleId?: pulumi.Input<string>;
+    globalRoleId?: pulumi.Input<string>;
     /**
      * The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
      */
-    readonly groupPrincipalId?: pulumi.Input<string>;
+    groupPrincipalId?: pulumi.Input<string>;
     /**
      * Labels for global role binding (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the global role binding (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The user ID to assign global role binding (string)
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
 }
 
 /**
@@ -161,25 +161,25 @@ export interface GlobalRoleBindingArgs {
     /**
      * Annotations for global role binding (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The role id from create global role binding (string)
      */
-    readonly globalRoleId: pulumi.Input<string>;
+    globalRoleId: pulumi.Input<string>;
     /**
      * The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
      */
-    readonly groupPrincipalId?: pulumi.Input<string>;
+    groupPrincipalId?: pulumi.Input<string>;
     /**
      * Labels for global role binding (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the global role binding (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The user ID to assign global role binding (string)
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
 }

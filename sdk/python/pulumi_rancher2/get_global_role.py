@@ -13,6 +13,7 @@ __all__ = [
     'GetGlobalRoleResult',
     'AwaitableGetGlobalRoleResult',
     'get_global_role',
+    'get_global_role_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,24 @@ def get_global_role(name: Optional[str] = None,
         name=__ret__.name,
         new_user_default=__ret__.new_user_default,
         rules=__ret__.rules)
+
+
+@_utilities.lift_output_func(get_global_role)
+def get_global_role_output(name: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalRoleResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 global role resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_global_role(name="foo")
+    ```
+
+
+    :param str name: The name of the Global Role (string)
+    """
+    ...

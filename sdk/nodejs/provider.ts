@@ -25,6 +25,30 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * API Key used to authenticate with the rancher server
+     */
+    public readonly accessKey!: pulumi.Output<string | undefined>;
+    /**
+     * The URL to the rancher API
+     */
+    public readonly apiUrl!: pulumi.Output<string>;
+    /**
+     * CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
+     */
+    public readonly caCerts!: pulumi.Output<string | undefined>;
+    /**
+     * API secret used to authenticate with the rancher server
+     */
+    public readonly secretKey!: pulumi.Output<string | undefined>;
+    /**
+     * Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
+     */
+    public readonly timeout!: pulumi.Output<string | undefined>;
+    /**
+     * API token used to authenticate with the rancher server
+     */
+    public readonly tokenKey!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -64,39 +88,39 @@ export interface ProviderArgs {
     /**
      * API Key used to authenticate with the rancher server
      */
-    readonly accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * The URL to the rancher API
      */
-    readonly apiUrl: pulumi.Input<string>;
+    apiUrl: pulumi.Input<string>;
     /**
      * Bootstrap rancher server
      */
-    readonly bootstrap?: pulumi.Input<boolean>;
+    bootstrap?: pulumi.Input<boolean>;
     /**
      * CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
      */
-    readonly caCerts?: pulumi.Input<string>;
+    caCerts?: pulumi.Input<string>;
     /**
      * Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
      */
-    readonly insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean>;
     /**
      * Rancher connection retries
      *
      * @deprecated Use timeout instead
      */
-    readonly retries?: pulumi.Input<number>;
+    retries?: pulumi.Input<number>;
     /**
      * API secret used to authenticate with the rancher server
      */
-    readonly secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
     /**
      * Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
      */
-    readonly timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string>;
     /**
      * API token used to authenticate with the rancher server
      */
-    readonly tokenKey?: pulumi.Input<string>;
+    tokenKey?: pulumi.Input<string>;
 }

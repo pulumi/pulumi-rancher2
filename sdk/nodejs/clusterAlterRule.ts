@@ -161,59 +161,59 @@ export interface ClusterAlterRuleState {
     /**
      * Annotations of the resource
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Alert rule cluster ID
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * Alert event rule
      */
-    readonly eventRule?: pulumi.Input<inputs.ClusterAlterRuleEventRule>;
+    eventRule?: pulumi.Input<inputs.ClusterAlterRuleEventRule>;
     /**
      * Alert rule group ID
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * Alert rule interval seconds
      */
-    readonly groupIntervalSeconds?: pulumi.Input<number>;
+    groupIntervalSeconds?: pulumi.Input<number>;
     /**
      * Alert rule wait seconds
      */
-    readonly groupWaitSeconds?: pulumi.Input<number>;
+    groupWaitSeconds?: pulumi.Input<number>;
     /**
      * Alert rule inherited
      */
-    readonly inherited?: pulumi.Input<boolean>;
+    inherited?: pulumi.Input<boolean>;
     /**
      * Labels of the resource
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Alert metric rule
      */
-    readonly metricRule?: pulumi.Input<inputs.ClusterAlterRuleMetricRule>;
+    metricRule?: pulumi.Input<inputs.ClusterAlterRuleMetricRule>;
     /**
      * Alert rule name
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Alert node rule
      */
-    readonly nodeRule?: pulumi.Input<inputs.ClusterAlterRuleNodeRule>;
+    nodeRule?: pulumi.Input<inputs.ClusterAlterRuleNodeRule>;
     /**
      * Alert rule repeat interval seconds
      */
-    readonly repeatIntervalSeconds?: pulumi.Input<number>;
+    repeatIntervalSeconds?: pulumi.Input<number>;
     /**
      * Alert rule severity
      */
-    readonly severity?: pulumi.Input<string>;
+    severity?: pulumi.Input<string>;
     /**
      * Alert system service rule
      */
-    readonly systemServiceRule?: pulumi.Input<inputs.ClusterAlterRuleSystemServiceRule>;
+    systemServiceRule?: pulumi.Input<inputs.ClusterAlterRuleSystemServiceRule>;
 }
 
 /**
@@ -223,57 +223,57 @@ export interface ClusterAlterRuleArgs {
     /**
      * Annotations of the resource
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Alert rule cluster ID
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * Alert event rule
      */
-    readonly eventRule?: pulumi.Input<inputs.ClusterAlterRuleEventRule>;
+    eventRule?: pulumi.Input<inputs.ClusterAlterRuleEventRule>;
     /**
      * Alert rule group ID
      */
-    readonly groupId: pulumi.Input<string>;
+    groupId: pulumi.Input<string>;
     /**
      * Alert rule interval seconds
      */
-    readonly groupIntervalSeconds?: pulumi.Input<number>;
+    groupIntervalSeconds?: pulumi.Input<number>;
     /**
      * Alert rule wait seconds
      */
-    readonly groupWaitSeconds?: pulumi.Input<number>;
+    groupWaitSeconds?: pulumi.Input<number>;
     /**
      * Alert rule inherited
      */
-    readonly inherited?: pulumi.Input<boolean>;
+    inherited?: pulumi.Input<boolean>;
     /**
      * Labels of the resource
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Alert metric rule
      */
-    readonly metricRule?: pulumi.Input<inputs.ClusterAlterRuleMetricRule>;
+    metricRule?: pulumi.Input<inputs.ClusterAlterRuleMetricRule>;
     /**
      * Alert rule name
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Alert node rule
      */
-    readonly nodeRule?: pulumi.Input<inputs.ClusterAlterRuleNodeRule>;
+    nodeRule?: pulumi.Input<inputs.ClusterAlterRuleNodeRule>;
     /**
      * Alert rule repeat interval seconds
      */
-    readonly repeatIntervalSeconds?: pulumi.Input<number>;
+    repeatIntervalSeconds?: pulumi.Input<number>;
     /**
      * Alert rule severity
      */
-    readonly severity?: pulumi.Input<string>;
+    severity?: pulumi.Input<string>;
     /**
      * Alert system service rule
      */
-    readonly systemServiceRule?: pulumi.Input<inputs.ClusterAlterRuleSystemServiceRule>;
+    systemServiceRule?: pulumi.Input<inputs.ClusterAlterRuleSystemServiceRule>;
 }

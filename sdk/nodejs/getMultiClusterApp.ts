@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(rancher2.getMultiClusterApp({
  *     name: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getMultiClusterApp(args: GetMultiClusterAppArgs, opts?: pulumi.InvokeOptions): Promise<GetMultiClusterAppResult> {
@@ -39,7 +39,7 @@ export interface GetMultiClusterAppArgs {
     /**
      * The multi cluster app name (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -103,4 +103,18 @@ export interface GetMultiClusterAppResult {
      * (Computed) The multi cluster app upgrade strategy (list)
      */
     readonly upgradeStrategies: outputs.GetMultiClusterAppUpgradeStrategy[];
+}
+
+export function getMultiClusterAppOutput(args: GetMultiClusterAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMultiClusterAppResult> {
+    return pulumi.output(args).apply(a => getMultiClusterApp(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMultiClusterApp.
+ */
+export interface GetMultiClusterAppOutputArgs {
+    /**
+     * The multi cluster app name (string)
+     */
+    name: pulumi.Input<string>;
 }

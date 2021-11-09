@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetProjectLoggingResult> InvokeAsync(GetProjectLoggingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectLoggingResult>("rancher2:index/getProjectLogging:getProjectLogging", args ?? new GetProjectLoggingArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Project Logging.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetProjectLogging.InvokeAsync(new Rancher2.GetProjectLoggingArgs
+        ///         {
+        ///             ProjectId = "&lt;project_id&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetProjectLoggingResult> Invoke(GetProjectLoggingInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectLoggingResult>("rancher2:index/getProjectLogging:getProjectLogging", args ?? new GetProjectLoggingInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.Rancher2
         public string ProjectId { get; set; } = null!;
 
         public GetProjectLoggingArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectLoggingInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The project id to configure logging (string)
+        /// </summary>
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
+        public GetProjectLoggingInvokeArgs()
         {
         }
     }

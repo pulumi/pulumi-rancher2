@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const server_image = pulumi.output(rancher2.getSetting({
  *     name: "server-image",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSetting(args: GetSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetSettingResult> {
@@ -39,7 +38,7 @@ export interface GetSettingArgs {
     /**
      * The setting name.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -55,4 +54,18 @@ export interface GetSettingResult {
      * the settting's value.
      */
     readonly value: string;
+}
+
+export function getSettingOutput(args: GetSettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSettingResult> {
+    return pulumi.output(args).apply(a => getSetting(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSetting.
+ */
+export interface GetSettingOutputArgs {
+    /**
+     * The setting name.
+     */
+    name: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupCertificate(ctx, &rancher2.LookupCertificateArgs{
+// 		_, err := rancher2.LookupCertificate(ctx, &GetCertificateArgs{
 // 			Name:      "<name>",
 // 			ProjectId: "<project_id>",
 // 		}, nil)
@@ -48,7 +51,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "<namespace_id>"
-// 		_, err := rancher2.LookupCertificate(ctx, &rancher2.LookupCertificateArgs{
+// 		_, err := rancher2.LookupCertificate(ctx, &GetCertificateArgs{
 // 			Name:        "<name>",
 // 			NamespaceId: &opt0,
 // 			ProjectId:   "<project_id>",
@@ -94,4 +97,83 @@ type LookupCertificateResult struct {
 	Name        string                 `pulumi:"name"`
 	NamespaceId *string                `pulumi:"namespaceId"`
 	ProjectId   string                 `pulumi:"projectId"`
+}
+
+func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupCertificateResult, error) {
+			args := v.(LookupCertificateArgs)
+			r, err := LookupCertificate(ctx, &args, opts...)
+			return *r, err
+		}).(LookupCertificateResultOutput)
+}
+
+// A collection of arguments for invoking getCertificate.
+type LookupCertificateOutputArgs struct {
+	// The name of the certificate (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace id where to assign the namespaced certificate (string)
+	NamespaceId pulumi.StringPtrInput `pulumi:"namespaceId"`
+	// The project id where to assign the certificate (string)
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (LookupCertificateOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCertificateArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCertificate.
+type LookupCertificateResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCertificateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCertificateResult)(nil)).Elem()
+}
+
+func (o LookupCertificateResultOutput) ToLookupCertificateResultOutput() LookupCertificateResultOutput {
+	return o
+}
+
+func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContext(ctx context.Context) LookupCertificateResultOutput {
+	return o
+}
+
+// (Computed) Annotations for certificate object (map)
+func (o LookupCertificateResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupCertificateResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) Base64 encoded certs (string)
+func (o LookupCertificateResultOutput) Certs() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Certs }).(pulumi.StringOutput)
+}
+
+// (Computed) A certificate description (string)
+func (o LookupCertificateResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupCertificateResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels for certificate object (map)
+func (o LookupCertificateResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupCertificateResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupCertificateResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupCertificateResultOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCertificateResult) *string { return v.NamespaceId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupCertificateResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCertificateResultOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetClusterAlterRuleResult> InvokeAsync(GetClusterAlterRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? new GetClusterAlterRuleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 cluster alert rule.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetClusterAlterRule.InvokeAsync(new Rancher2.GetClusterAlterRuleArgs
+        ///         {
+        ///             ClusterId = "&lt;cluster_id&gt;",
+        ///             Name = "&lt;cluster_alert_rule_name&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClusterAlterRuleResult> Invoke(GetClusterAlterRuleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? new GetClusterAlterRuleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -70,6 +101,37 @@ namespace Pulumi.Rancher2
         public string Name { get; set; } = null!;
 
         public GetClusterAlterRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterAlterRuleInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The cluster id where create cluster alert rule (string)
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        [Input("labels")]
+        private InputMap<object>? _labels;
+
+        /// <summary>
+        /// (Computed) The cluster alert rule labels (map)
+        /// </summary>
+        public InputMap<object> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<object>());
+            set => _labels = value;
+        }
+
+        /// <summary>
+        /// The cluster alert rule name (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetClusterAlterRuleInvokeArgs()
         {
         }
     }

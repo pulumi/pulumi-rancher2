@@ -12,6 +12,7 @@ __all__ = [
     'GetUserResult',
     'AwaitableGetUserResult',
     'get_user',
+    'get_user_output',
 ]
 
 @pulumi.output_type
@@ -160,3 +161,28 @@ def get_user(is_external: Optional[bool] = None,
         name=__ret__.name,
         principal_ids=__ret__.principal_ids,
         username=__ret__.username)
+
+
+@_utilities.lift_output_func(get_user)
+def get_user_output(is_external: Optional[pulumi.Input[Optional[bool]]] = None,
+                    name: Optional[pulumi.Input[Optional[str]]] = None,
+                    username: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 user
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_user(username="foo")
+    ```
+
+
+    :param bool is_external: Set is the user if the user is external. Default: `false` (bool)
+    :param str name: The name of the user (string)
+    :param str username: The username of the user (string)
+    """
+    ...

@@ -253,7 +253,7 @@ type RoleTempalteArrayInput interface {
 type RoleTempalteArray []RoleTempalteInput
 
 func (RoleTempalteArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RoleTempalte)(nil))
+	return reflect.TypeOf((*[]*RoleTempalte)(nil)).Elem()
 }
 
 func (i RoleTempalteArray) ToRoleTempalteArrayOutput() RoleTempalteArrayOutput {
@@ -278,7 +278,7 @@ type RoleTempalteMapInput interface {
 type RoleTempalteMap map[string]RoleTempalteInput
 
 func (RoleTempalteMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RoleTempalte)(nil))
+	return reflect.TypeOf((*map[string]*RoleTempalte)(nil)).Elem()
 }
 
 func (i RoleTempalteMap) ToRoleTempalteMapOutput() RoleTempalteMapOutput {
@@ -289,9 +289,7 @@ func (i RoleTempalteMap) ToRoleTempalteMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RoleTempalteMapOutput)
 }
 
-type RoleTempalteOutput struct {
-	*pulumi.OutputState
-}
+type RoleTempalteOutput struct{ *pulumi.OutputState }
 
 func (RoleTempalteOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RoleTempalte)(nil))
@@ -310,14 +308,12 @@ func (o RoleTempalteOutput) ToRoleTempaltePtrOutput() RoleTempaltePtrOutput {
 }
 
 func (o RoleTempalteOutput) ToRoleTempaltePtrOutputWithContext(ctx context.Context) RoleTempaltePtrOutput {
-	return o.ApplyT(func(v RoleTempalte) *RoleTempalte {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoleTempalte) *RoleTempalte {
 		return &v
 	}).(RoleTempaltePtrOutput)
 }
 
-type RoleTempaltePtrOutput struct {
-	*pulumi.OutputState
-}
+type RoleTempaltePtrOutput struct{ *pulumi.OutputState }
 
 func (RoleTempaltePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RoleTempalte)(nil))
@@ -329,6 +325,16 @@ func (o RoleTempaltePtrOutput) ToRoleTempaltePtrOutput() RoleTempaltePtrOutput {
 
 func (o RoleTempaltePtrOutput) ToRoleTempaltePtrOutputWithContext(ctx context.Context) RoleTempaltePtrOutput {
 	return o
+}
+
+func (o RoleTempaltePtrOutput) Elem() RoleTempalteOutput {
+	return o.ApplyT(func(v *RoleTempalte) RoleTempalte {
+		if v != nil {
+			return *v
+		}
+		var ret RoleTempalte
+		return ret
+	}).(RoleTempalteOutput)
 }
 
 type RoleTempalteArrayOutput struct{ *pulumi.OutputState }
@@ -372,6 +378,10 @@ func (o RoleTempalteMapOutput) MapIndex(k pulumi.StringInput) RoleTempalteOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleTempalteInput)(nil)).Elem(), &RoleTempalte{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleTempaltePtrInput)(nil)).Elem(), &RoleTempalte{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleTempalteArrayInput)(nil)).Elem(), RoleTempalteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleTempalteMapInput)(nil)).Elem(), RoleTempalteMap{})
 	pulumi.RegisterOutputType(RoleTempalteOutput{})
 	pulumi.RegisterOutputType(RoleTempaltePtrOutput{})
 	pulumi.RegisterOutputType(RoleTempalteArrayOutput{})

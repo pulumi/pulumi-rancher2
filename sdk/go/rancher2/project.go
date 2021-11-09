@@ -27,19 +27,19 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
 // 			ClusterId: pulumi.String("<CLUSTER_ID>"),
-// 			ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
+// 			ContainerResourceLimit: &ProjectContainerResourceLimitArgs{
 // 				LimitsCpu:      pulumi.String("20m"),
 // 				LimitsMemory:   pulumi.String("20Mi"),
 // 				RequestsCpu:    pulumi.String("1m"),
 // 				RequestsMemory: pulumi.String("1Mi"),
 // 			},
-// 			ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
-// 				NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
+// 			ResourceQuota: &ProjectResourceQuotaArgs{
+// 				NamespaceDefaultLimit: &ProjectResourceQuotaNamespaceDefaultLimitArgs{
 // 					LimitsCpu:       pulumi.String("2000m"),
 // 					LimitsMemory:    pulumi.String("500Mi"),
 // 					RequestsStorage: pulumi.String("1Gi"),
 // 				},
-// 				ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
+// 				ProjectLimit: &ProjectResourceQuotaProjectLimitArgs{
 // 					LimitsCpu:       pulumi.String("2000m"),
 // 					LimitsMemory:    pulumi.String("2000Mi"),
 // 					RequestsStorage: pulumi.String("2Gi"),
@@ -66,42 +66,42 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
 // 			ClusterId: pulumi.String("<CLUSTER_ID>"),
-// 			ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
+// 			ContainerResourceLimit: &ProjectContainerResourceLimitArgs{
 // 				LimitsCpu:      pulumi.String("20m"),
 // 				LimitsMemory:   pulumi.String("20Mi"),
 // 				RequestsCpu:    pulumi.String("1m"),
 // 				RequestsMemory: pulumi.String("1Mi"),
 // 			},
 // 			EnableProjectMonitoring: pulumi.Bool(true),
-// 			ProjectMonitoringInput: &rancher2.ProjectProjectMonitoringInputArgs{
-// 				Answers: pulumi.Map{
-// 					"exporter-kubelets.https":                   pulumi.Bool(true),
-// 					"exporter-node.enabled":                     pulumi.Bool(true),
-// 					"exporter-node.ports.metrics.port":          pulumi.Float64(9796),
-// 					"exporter-node.resources.limits.cpu":        pulumi.String("200m"),
-// 					"exporter-node.resources.limits.memory":     pulumi.String("200Mi"),
-// 					"grafana.persistence.enabled":               pulumi.Bool(false),
-// 					"grafana.persistence.size":                  pulumi.String("10Gi"),
-// 					"grafana.persistence.storageClass":          pulumi.String("default"),
-// 					"operator.resources.limits.memory":          pulumi.String("500Mi"),
-// 					"prometheus.persistence.enabled":            pulumi.String("false"),
-// 					"prometheus.persistence.size":               pulumi.String("50Gi"),
-// 					"prometheus.persistence.storageClass":       pulumi.String("default"),
-// 					"prometheus.persistent.useReleaseName":      pulumi.String("true"),
-// 					"prometheus.resources.core.limits.cpu":      pulumi.String("1000m"),
-// 					"prometheus.resources.core.limits.memory":   pulumi.String("1500Mi"),
-// 					"prometheus.resources.core.requests.cpu":    pulumi.String("750m"),
-// 					"prometheus.resources.core.requests.memory": pulumi.String("750Mi"),
-// 					"prometheus.retention":                      pulumi.String("12h"),
+// 			ProjectMonitoringInput: &ProjectProjectMonitoringInputArgs{
+// 				Answers: pulumi.AnyMap{
+// 					"exporter-kubelets.https":                   pulumi.Any(true),
+// 					"exporter-node.enabled":                     pulumi.Any(true),
+// 					"exporter-node.ports.metrics.port":          pulumi.Any(9796),
+// 					"exporter-node.resources.limits.cpu":        pulumi.Any("200m"),
+// 					"exporter-node.resources.limits.memory":     pulumi.Any("200Mi"),
+// 					"grafana.persistence.enabled":               pulumi.Any(false),
+// 					"grafana.persistence.size":                  pulumi.Any("10Gi"),
+// 					"grafana.persistence.storageClass":          pulumi.Any("default"),
+// 					"operator.resources.limits.memory":          pulumi.Any("500Mi"),
+// 					"prometheus.persistence.enabled":            pulumi.Any("false"),
+// 					"prometheus.persistence.size":               pulumi.Any("50Gi"),
+// 					"prometheus.persistence.storageClass":       pulumi.Any("default"),
+// 					"prometheus.persistent.useReleaseName":      pulumi.Any("true"),
+// 					"prometheus.resources.core.limits.cpu":      pulumi.Any("1000m"),
+// 					"prometheus.resources.core.limits.memory":   pulumi.Any("1500Mi"),
+// 					"prometheus.resources.core.requests.cpu":    pulumi.Any("750m"),
+// 					"prometheus.resources.core.requests.memory": pulumi.Any("750Mi"),
+// 					"prometheus.retention":                      pulumi.Any("12h"),
 // 				},
 // 			},
-// 			ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
-// 				NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
+// 			ResourceQuota: &ProjectResourceQuotaArgs{
+// 				NamespaceDefaultLimit: &ProjectResourceQuotaNamespaceDefaultLimitArgs{
 // 					LimitsCpu:       pulumi.String("2000m"),
 // 					LimitsMemory:    pulumi.String("500Mi"),
 // 					RequestsStorage: pulumi.String("1Gi"),
 // 				},
-// 				ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
+// 				ProjectLimit: &ProjectResourceQuotaProjectLimitArgs{
 // 					LimitsCpu:       pulumi.String("2000m"),
 // 					LimitsMemory:    pulumi.String("2000Mi"),
 // 					RequestsStorage: pulumi.String("2Gi"),
@@ -352,7 +352,7 @@ type ProjectArrayInput interface {
 type ProjectArray []ProjectInput
 
 func (ProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Project)(nil))
+	return reflect.TypeOf((*[]*Project)(nil)).Elem()
 }
 
 func (i ProjectArray) ToProjectArrayOutput() ProjectArrayOutput {
@@ -377,7 +377,7 @@ type ProjectMapInput interface {
 type ProjectMap map[string]ProjectInput
 
 func (ProjectMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Project)(nil))
+	return reflect.TypeOf((*map[string]*Project)(nil)).Elem()
 }
 
 func (i ProjectMap) ToProjectMapOutput() ProjectMapOutput {
@@ -388,9 +388,7 @@ func (i ProjectMap) ToProjectMapOutputWithContext(ctx context.Context) ProjectMa
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMapOutput)
 }
 
-type ProjectOutput struct {
-	*pulumi.OutputState
-}
+type ProjectOutput struct{ *pulumi.OutputState }
 
 func (ProjectOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Project)(nil))
@@ -409,14 +407,12 @@ func (o ProjectOutput) ToProjectPtrOutput() ProjectPtrOutput {
 }
 
 func (o ProjectOutput) ToProjectPtrOutputWithContext(ctx context.Context) ProjectPtrOutput {
-	return o.ApplyT(func(v Project) *Project {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Project) *Project {
 		return &v
 	}).(ProjectPtrOutput)
 }
 
-type ProjectPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Project)(nil))
@@ -428,6 +424,16 @@ func (o ProjectPtrOutput) ToProjectPtrOutput() ProjectPtrOutput {
 
 func (o ProjectPtrOutput) ToProjectPtrOutputWithContext(ctx context.Context) ProjectPtrOutput {
 	return o
+}
+
+func (o ProjectPtrOutput) Elem() ProjectOutput {
+	return o.ApplyT(func(v *Project) Project {
+		if v != nil {
+			return *v
+		}
+		var ret Project
+		return ret
+	}).(ProjectOutput)
 }
 
 type ProjectArrayOutput struct{ *pulumi.OutputState }
@@ -471,6 +477,10 @@ func (o ProjectMapOutput) MapIndex(k pulumi.StringInput) ProjectOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectInput)(nil)).Elem(), &Project{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPtrInput)(nil)).Elem(), &Project{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectArrayInput)(nil)).Elem(), ProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMapInput)(nil)).Elem(), ProjectMap{})
 	pulumi.RegisterOutputType(ProjectOutput{})
 	pulumi.RegisterOutputType(ProjectPtrOutput{})
 	pulumi.RegisterOutputType(ProjectArrayOutput{})

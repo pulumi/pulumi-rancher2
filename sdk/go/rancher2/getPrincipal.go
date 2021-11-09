@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.GetPrincipal(ctx, &rancher2.GetPrincipalArgs{
+// 		_, err := rancher2.GetPrincipal(ctx, &GetPrincipalArgs{
 // 			Name: "user@example.com",
 // 		}, nil)
 // 		if err != nil {
@@ -54,4 +57,57 @@ type GetPrincipalResult struct {
 	Id   string  `pulumi:"id"`
 	Name string  `pulumi:"name"`
 	Type *string `pulumi:"type"`
+}
+
+func GetPrincipalOutput(ctx *pulumi.Context, args GetPrincipalOutputArgs, opts ...pulumi.InvokeOption) GetPrincipalResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetPrincipalResult, error) {
+			args := v.(GetPrincipalArgs)
+			r, err := GetPrincipal(ctx, &args, opts...)
+			return *r, err
+		}).(GetPrincipalResultOutput)
+}
+
+// A collection of arguments for invoking getPrincipal.
+type GetPrincipalOutputArgs struct {
+	// The full name of the principal (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetPrincipalOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrincipalArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getPrincipal.
+type GetPrincipalResultOutput struct{ *pulumi.OutputState }
+
+func (GetPrincipalResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrincipalResult)(nil)).Elem()
+}
+
+func (o GetPrincipalResultOutput) ToGetPrincipalResultOutput() GetPrincipalResultOutput {
+	return o
+}
+
+func (o GetPrincipalResultOutput) ToGetPrincipalResultOutputWithContext(ctx context.Context) GetPrincipalResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPrincipalResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrincipalResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPrincipalResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrincipalResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetPrincipalResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPrincipalResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPrincipalResultOutput{})
 }

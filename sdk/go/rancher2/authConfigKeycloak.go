@@ -336,7 +336,7 @@ type AuthConfigKeycloakArrayInput interface {
 type AuthConfigKeycloakArray []AuthConfigKeycloakInput
 
 func (AuthConfigKeycloakArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AuthConfigKeycloak)(nil))
+	return reflect.TypeOf((*[]*AuthConfigKeycloak)(nil)).Elem()
 }
 
 func (i AuthConfigKeycloakArray) ToAuthConfigKeycloakArrayOutput() AuthConfigKeycloakArrayOutput {
@@ -361,7 +361,7 @@ type AuthConfigKeycloakMapInput interface {
 type AuthConfigKeycloakMap map[string]AuthConfigKeycloakInput
 
 func (AuthConfigKeycloakMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AuthConfigKeycloak)(nil))
+	return reflect.TypeOf((*map[string]*AuthConfigKeycloak)(nil)).Elem()
 }
 
 func (i AuthConfigKeycloakMap) ToAuthConfigKeycloakMapOutput() AuthConfigKeycloakMapOutput {
@@ -372,9 +372,7 @@ func (i AuthConfigKeycloakMap) ToAuthConfigKeycloakMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigKeycloakMapOutput)
 }
 
-type AuthConfigKeycloakOutput struct {
-	*pulumi.OutputState
-}
+type AuthConfigKeycloakOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigKeycloakOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AuthConfigKeycloak)(nil))
@@ -393,14 +391,12 @@ func (o AuthConfigKeycloakOutput) ToAuthConfigKeycloakPtrOutput() AuthConfigKeyc
 }
 
 func (o AuthConfigKeycloakOutput) ToAuthConfigKeycloakPtrOutputWithContext(ctx context.Context) AuthConfigKeycloakPtrOutput {
-	return o.ApplyT(func(v AuthConfigKeycloak) *AuthConfigKeycloak {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigKeycloak) *AuthConfigKeycloak {
 		return &v
 	}).(AuthConfigKeycloakPtrOutput)
 }
 
-type AuthConfigKeycloakPtrOutput struct {
-	*pulumi.OutputState
-}
+type AuthConfigKeycloakPtrOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigKeycloakPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AuthConfigKeycloak)(nil))
@@ -412,6 +408,16 @@ func (o AuthConfigKeycloakPtrOutput) ToAuthConfigKeycloakPtrOutput() AuthConfigK
 
 func (o AuthConfigKeycloakPtrOutput) ToAuthConfigKeycloakPtrOutputWithContext(ctx context.Context) AuthConfigKeycloakPtrOutput {
 	return o
+}
+
+func (o AuthConfigKeycloakPtrOutput) Elem() AuthConfigKeycloakOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) AuthConfigKeycloak {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigKeycloak
+		return ret
+	}).(AuthConfigKeycloakOutput)
 }
 
 type AuthConfigKeycloakArrayOutput struct{ *pulumi.OutputState }
@@ -455,6 +461,10 @@ func (o AuthConfigKeycloakMapOutput) MapIndex(k pulumi.StringInput) AuthConfigKe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigKeycloakInput)(nil)).Elem(), &AuthConfigKeycloak{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigKeycloakPtrInput)(nil)).Elem(), &AuthConfigKeycloak{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigKeycloakArrayInput)(nil)).Elem(), AuthConfigKeycloakArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigKeycloakMapInput)(nil)).Elem(), AuthConfigKeycloakMap{})
 	pulumi.RegisterOutputType(AuthConfigKeycloakOutput{})
 	pulumi.RegisterOutputType(AuthConfigKeycloakPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigKeycloakArrayOutput{})

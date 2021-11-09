@@ -29,11 +29,11 @@ export interface GetClusterScanArgs {
     /**
      * Cluster ID for CIS Scan (string)
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * Name of the cluster Scan (string)
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -70,4 +70,22 @@ export interface GetClusterScanResult {
      * (Computed) Cluster Scan status (string)
      */
     readonly status: string;
+}
+
+export function getClusterScanOutput(args: GetClusterScanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterScanResult> {
+    return pulumi.output(args).apply(a => getClusterScan(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusterScan.
+ */
+export interface GetClusterScanOutputArgs {
+    /**
+     * Cluster ID for CIS Scan (string)
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * Name of the cluster Scan (string)
+     */
+    name?: pulumi.Input<string>;
 }

@@ -141,55 +141,55 @@ export interface BootstrapState {
     /**
      * (Computed/Sensitive) Current password for Admin user (string)
      */
-    readonly currentPassword?: pulumi.Input<string>;
+    currentPassword?: pulumi.Input<string>;
     /**
      * Initial password for Admin user. Default: `admin` (string)
      */
-    readonly initialPassword?: pulumi.Input<string>;
+    initialPassword?: pulumi.Input<string>;
     /**
      * Password for Admin user or random generated if empty (string)
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Send telemetry anonymous data. Default: `false` (bool)
      */
-    readonly telemetry?: pulumi.Input<boolean>;
+    telemetry?: pulumi.Input<boolean>;
     /**
      * (Computed) Generated API temporary token as helper. Should be empty (string)
      */
-    readonly tempToken?: pulumi.Input<string>;
+    tempToken?: pulumi.Input<string>;
     /**
      * (Computed) Generated API temporary token id as helper. Should be empty (string)
      */
-    readonly tempTokenId?: pulumi.Input<string>;
+    tempTokenId?: pulumi.Input<string>;
     /**
      * (Computed) Generated API token for Admin User (string)
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * (Computed) Generated API token id for Admin User (string)
      */
-    readonly tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string>;
     /**
      * TTL in seconds for generated admin token. Default: `0`  (int)
      */
-    readonly tokenTtl?: pulumi.Input<number>;
+    tokenTtl?: pulumi.Input<number>;
     /**
      * Regenerate admin token. Default: `false` (bool)
      */
-    readonly tokenUpdate?: pulumi.Input<boolean>;
+    tokenUpdate?: pulumi.Input<boolean>;
     /**
      * Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
      */
-    readonly uiDefaultLanding?: pulumi.Input<string>;
+    uiDefaultLanding?: pulumi.Input<string>;
     /**
      * (Computed) URL set as server-url (string)
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
     /**
      * (Computed) Admin username (string)
      */
-    readonly user?: pulumi.Input<string>;
+    user?: pulumi.Input<string>;
 }
 
 /**
@@ -199,25 +199,25 @@ export interface BootstrapArgs {
     /**
      * Initial password for Admin user. Default: `admin` (string)
      */
-    readonly initialPassword?: pulumi.Input<string>;
+    initialPassword?: pulumi.Input<string>;
     /**
      * Password for Admin user or random generated if empty (string)
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Send telemetry anonymous data. Default: `false` (bool)
      */
-    readonly telemetry?: pulumi.Input<boolean>;
+    telemetry?: pulumi.Input<boolean>;
     /**
      * TTL in seconds for generated admin token. Default: `0`  (int)
      */
-    readonly tokenTtl?: pulumi.Input<number>;
+    tokenTtl?: pulumi.Input<number>;
     /**
      * Regenerate admin token. Default: `false` (bool)
      */
-    readonly tokenUpdate?: pulumi.Input<boolean>;
+    tokenUpdate?: pulumi.Input<boolean>;
     /**
      * Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
      */
-    readonly uiDefaultLanding?: pulumi.Input<string>;
+    uiDefaultLanding?: pulumi.Input<string>;
 }

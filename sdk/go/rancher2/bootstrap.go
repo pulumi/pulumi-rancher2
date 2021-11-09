@@ -228,7 +228,7 @@ type BootstrapArrayInput interface {
 type BootstrapArray []BootstrapInput
 
 func (BootstrapArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Bootstrap)(nil))
+	return reflect.TypeOf((*[]*Bootstrap)(nil)).Elem()
 }
 
 func (i BootstrapArray) ToBootstrapArrayOutput() BootstrapArrayOutput {
@@ -253,7 +253,7 @@ type BootstrapMapInput interface {
 type BootstrapMap map[string]BootstrapInput
 
 func (BootstrapMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Bootstrap)(nil))
+	return reflect.TypeOf((*map[string]*Bootstrap)(nil)).Elem()
 }
 
 func (i BootstrapMap) ToBootstrapMapOutput() BootstrapMapOutput {
@@ -264,9 +264,7 @@ func (i BootstrapMap) ToBootstrapMapOutputWithContext(ctx context.Context) Boots
 	return pulumi.ToOutputWithContext(ctx, i).(BootstrapMapOutput)
 }
 
-type BootstrapOutput struct {
-	*pulumi.OutputState
-}
+type BootstrapOutput struct{ *pulumi.OutputState }
 
 func (BootstrapOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Bootstrap)(nil))
@@ -285,14 +283,12 @@ func (o BootstrapOutput) ToBootstrapPtrOutput() BootstrapPtrOutput {
 }
 
 func (o BootstrapOutput) ToBootstrapPtrOutputWithContext(ctx context.Context) BootstrapPtrOutput {
-	return o.ApplyT(func(v Bootstrap) *Bootstrap {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Bootstrap) *Bootstrap {
 		return &v
 	}).(BootstrapPtrOutput)
 }
 
-type BootstrapPtrOutput struct {
-	*pulumi.OutputState
-}
+type BootstrapPtrOutput struct{ *pulumi.OutputState }
 
 func (BootstrapPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Bootstrap)(nil))
@@ -304,6 +300,16 @@ func (o BootstrapPtrOutput) ToBootstrapPtrOutput() BootstrapPtrOutput {
 
 func (o BootstrapPtrOutput) ToBootstrapPtrOutputWithContext(ctx context.Context) BootstrapPtrOutput {
 	return o
+}
+
+func (o BootstrapPtrOutput) Elem() BootstrapOutput {
+	return o.ApplyT(func(v *Bootstrap) Bootstrap {
+		if v != nil {
+			return *v
+		}
+		var ret Bootstrap
+		return ret
+	}).(BootstrapOutput)
 }
 
 type BootstrapArrayOutput struct{ *pulumi.OutputState }
@@ -347,6 +353,10 @@ func (o BootstrapMapOutput) MapIndex(k pulumi.StringInput) BootstrapOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BootstrapInput)(nil)).Elem(), &Bootstrap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BootstrapPtrInput)(nil)).Elem(), &Bootstrap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BootstrapArrayInput)(nil)).Elem(), BootstrapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BootstrapMapInput)(nil)).Elem(), BootstrapMap{})
 	pulumi.RegisterOutputType(BootstrapOutput{})
 	pulumi.RegisterOutputType(BootstrapPtrOutput{})
 	pulumi.RegisterOutputType(BootstrapArrayOutput{})

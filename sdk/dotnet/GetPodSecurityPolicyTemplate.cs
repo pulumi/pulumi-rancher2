@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetPodSecurityPolicyTemplateResult> InvokeAsync(GetPodSecurityPolicyTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetPodSecurityPolicyTemplate.InvokeAsync(new Rancher2.GetPodSecurityPolicyTemplateArgs
+        ///         {
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPodSecurityPolicyTemplateResult> Invoke(GetPodSecurityPolicyTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -288,6 +318,256 @@ namespace Pulumi.Rancher2
         }
 
         public GetPodSecurityPolicyTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetPodSecurityPolicyTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// = (Optional)
+        /// </summary>
+        [Input("allowPrivilegeEscalation")]
+        public Input<bool>? AllowPrivilegeEscalation { get; set; }
+
+        [Input("allowedCapabilities")]
+        private InputList<string>? _allowedCapabilities;
+
+        /// <summary>
+        /// (list)
+        /// </summary>
+        public InputList<string> AllowedCapabilities
+        {
+            get => _allowedCapabilities ?? (_allowedCapabilities = new InputList<string>());
+            set => _allowedCapabilities = value;
+        }
+
+        [Input("allowedCsiDrivers")]
+        private InputList<Inputs.GetPodSecurityPolicyTemplateAllowedCsiDriverInputArgs>? _allowedCsiDrivers;
+
+        /// <summary>
+        /// (list)
+        /// </summary>
+        public InputList<Inputs.GetPodSecurityPolicyTemplateAllowedCsiDriverInputArgs> AllowedCsiDrivers
+        {
+            get => _allowedCsiDrivers ?? (_allowedCsiDrivers = new InputList<Inputs.GetPodSecurityPolicyTemplateAllowedCsiDriverInputArgs>());
+            set => _allowedCsiDrivers = value;
+        }
+
+        [Input("allowedFlexVolumes")]
+        private InputList<Inputs.GetPodSecurityPolicyTemplateAllowedFlexVolumeInputArgs>? _allowedFlexVolumes;
+
+        /// <summary>
+        /// (list)
+        /// </summary>
+        public InputList<Inputs.GetPodSecurityPolicyTemplateAllowedFlexVolumeInputArgs> AllowedFlexVolumes
+        {
+            get => _allowedFlexVolumes ?? (_allowedFlexVolumes = new InputList<Inputs.GetPodSecurityPolicyTemplateAllowedFlexVolumeInputArgs>());
+            set => _allowedFlexVolumes = value;
+        }
+
+        [Input("allowedHostPaths")]
+        private InputList<Inputs.GetPodSecurityPolicyTemplateAllowedHostPathInputArgs>? _allowedHostPaths;
+
+        /// <summary>
+        /// (list)
+        /// </summary>
+        public InputList<Inputs.GetPodSecurityPolicyTemplateAllowedHostPathInputArgs> AllowedHostPaths
+        {
+            get => _allowedHostPaths ?? (_allowedHostPaths = new InputList<Inputs.GetPodSecurityPolicyTemplateAllowedHostPathInputArgs>());
+            set => _allowedHostPaths = value;
+        }
+
+        [Input("allowedProcMountTypes")]
+        private InputList<string>? _allowedProcMountTypes;
+
+        /// <summary>
+        /// (list)
+        /// </summary>
+        public InputList<string> AllowedProcMountTypes
+        {
+            get => _allowedProcMountTypes ?? (_allowedProcMountTypes = new InputList<string>());
+            set => _allowedProcMountTypes = value;
+        }
+
+        [Input("allowedUnsafeSysctls")]
+        private InputList<string>? _allowedUnsafeSysctls;
+
+        /// <summary>
+        /// (list)
+        /// </summary>
+        public InputList<string> AllowedUnsafeSysctls
+        {
+            get => _allowedUnsafeSysctls ?? (_allowedUnsafeSysctls = new InputList<string>());
+            set => _allowedUnsafeSysctls = value;
+        }
+
+        [Input("annotations")]
+        private InputMap<object>? _annotations;
+
+        /// <summary>
+        /// Annotations for PodSecurityPolicyTemplate object (map)
+        /// </summary>
+        public InputMap<object> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<object>());
+            set => _annotations = value;
+        }
+
+        [Input("defaultAddCapabilities")]
+        private InputList<string>? _defaultAddCapabilities;
+
+        /// <summary>
+        /// (list)
+        /// </summary>
+        public InputList<string> DefaultAddCapabilities
+        {
+            get => _defaultAddCapabilities ?? (_defaultAddCapabilities = new InputList<string>());
+            set => _defaultAddCapabilities = value;
+        }
+
+        /// <summary>
+        /// (list)
+        /// </summary>
+        [Input("defaultAllowPrivilegeEscalation")]
+        public Input<bool>? DefaultAllowPrivilegeEscalation { get; set; }
+
+        /// <summary>
+        /// The PodSecurityPolicyTemplate description (string)
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("forbiddenSysctls")]
+        private InputList<string>? _forbiddenSysctls;
+
+        /// <summary>
+        /// (list)
+        /// </summary>
+        public InputList<string> ForbiddenSysctls
+        {
+            get => _forbiddenSysctls ?? (_forbiddenSysctls = new InputList<string>());
+            set => _forbiddenSysctls = value;
+        }
+
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
+        [Input("fsGroup")]
+        public Input<Inputs.GetPodSecurityPolicyTemplateFsGroupInputArgs>? FsGroup { get; set; }
+
+        /// <summary>
+        /// (bool)
+        /// </summary>
+        [Input("hostIpc")]
+        public Input<bool>? HostIpc { get; set; }
+
+        [Input("hostNetwork")]
+        public Input<bool>? HostNetwork { get; set; }
+
+        /// <summary>
+        /// (bool)
+        /// </summary>
+        [Input("hostPid")]
+        public Input<bool>? HostPid { get; set; }
+
+        [Input("hostPorts")]
+        private InputList<Inputs.GetPodSecurityPolicyTemplateHostPortInputArgs>? _hostPorts;
+
+        /// <summary>
+        /// (list)
+        /// </summary>
+        public InputList<Inputs.GetPodSecurityPolicyTemplateHostPortInputArgs> HostPorts
+        {
+            get => _hostPorts ?? (_hostPorts = new InputList<Inputs.GetPodSecurityPolicyTemplateHostPortInputArgs>());
+            set => _hostPorts = value;
+        }
+
+        [Input("labels")]
+        private InputMap<object>? _labels;
+
+        /// <summary>
+        /// Labels for PodSecurityPolicyTemplate object (map)
+        /// </summary>
+        public InputMap<object> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<object>());
+            set => _labels = value;
+        }
+
+        /// <summary>
+        /// The name of the PodSecurityPolicyTemplate (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// (bool)
+        /// </summary>
+        [Input("privileged")]
+        public Input<bool>? Privileged { get; set; }
+
+        /// <summary>
+        /// (bool)
+        /// </summary>
+        [Input("readOnlyRootFilesystem")]
+        public Input<bool>? ReadOnlyRootFilesystem { get; set; }
+
+        [Input("requiredDropCapabilities")]
+        private InputList<string>? _requiredDropCapabilities;
+
+        /// <summary>
+        /// (list)
+        /// </summary>
+        public InputList<string> RequiredDropCapabilities
+        {
+            get => _requiredDropCapabilities ?? (_requiredDropCapabilities = new InputList<string>());
+            set => _requiredDropCapabilities = value;
+        }
+
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
+        [Input("runAsGroup")]
+        public Input<Inputs.GetPodSecurityPolicyTemplateRunAsGroupInputArgs>? RunAsGroup { get; set; }
+
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
+        [Input("runAsUser")]
+        public Input<Inputs.GetPodSecurityPolicyTemplateRunAsUserInputArgs>? RunAsUser { get; set; }
+
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
+        [Input("runtimeClass")]
+        public Input<Inputs.GetPodSecurityPolicyTemplateRuntimeClassInputArgs>? RuntimeClass { get; set; }
+
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
+        [Input("seLinux")]
+        public Input<Inputs.GetPodSecurityPolicyTemplateSeLinuxInputArgs>? SeLinux { get; set; }
+
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
+        [Input("supplementalGroup")]
+        public Input<Inputs.GetPodSecurityPolicyTemplateSupplementalGroupInputArgs>? SupplementalGroup { get; set; }
+
+        [Input("volumes")]
+        private InputList<string>? _volumes;
+
+        /// <summary>
+        /// (list)
+        /// </summary>
+        public InputList<string> Volumes
+        {
+            get => _volumes ?? (_volumes = new InputList<string>());
+            set => _volumes = value;
+        }
+
+        public GetPodSecurityPolicyTemplateInvokeArgs()
         {
         }
     }

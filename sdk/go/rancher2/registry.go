@@ -32,8 +32,8 @@ import (
 // 		_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
 // 			Description: pulumi.String("Terraform registry foo"),
 // 			ProjectId:   pulumi.String("<project_id>"),
-// 			Registries: rancher2.RegistryRegistryArray{
-// 				&rancher2.RegistryRegistryArgs{
+// 			Registries: RegistryRegistryArray{
+// 				&RegistryRegistryArgs{
 // 					Address:  pulumi.String("test.io"),
 // 					Password: pulumi.String("pass"),
 // 					Username: pulumi.String("user"),
@@ -62,8 +62,8 @@ import (
 // 			Description: pulumi.String("Terraform registry foo"),
 // 			NamespaceId: pulumi.String("<namespace_id>"),
 // 			ProjectId:   pulumi.String("<project_id>"),
-// 			Registries: rancher2.RegistryRegistryArray{
-// 				&rancher2.RegistryRegistryArgs{
+// 			Registries: RegistryRegistryArray{
+// 				&RegistryRegistryArgs{
 // 					Address:  pulumi.String("test.io"),
 // 					Password: pulumi.String("pass"),
 // 					Username: pulumi.String("user2"),
@@ -279,7 +279,7 @@ type RegistryArrayInput interface {
 type RegistryArray []RegistryInput
 
 func (RegistryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Registry)(nil))
+	return reflect.TypeOf((*[]*Registry)(nil)).Elem()
 }
 
 func (i RegistryArray) ToRegistryArrayOutput() RegistryArrayOutput {
@@ -304,7 +304,7 @@ type RegistryMapInput interface {
 type RegistryMap map[string]RegistryInput
 
 func (RegistryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Registry)(nil))
+	return reflect.TypeOf((*map[string]*Registry)(nil)).Elem()
 }
 
 func (i RegistryMap) ToRegistryMapOutput() RegistryMapOutput {
@@ -315,9 +315,7 @@ func (i RegistryMap) ToRegistryMapOutputWithContext(ctx context.Context) Registr
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryMapOutput)
 }
 
-type RegistryOutput struct {
-	*pulumi.OutputState
-}
+type RegistryOutput struct{ *pulumi.OutputState }
 
 func (RegistryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Registry)(nil))
@@ -336,14 +334,12 @@ func (o RegistryOutput) ToRegistryPtrOutput() RegistryPtrOutput {
 }
 
 func (o RegistryOutput) ToRegistryPtrOutputWithContext(ctx context.Context) RegistryPtrOutput {
-	return o.ApplyT(func(v Registry) *Registry {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Registry) *Registry {
 		return &v
 	}).(RegistryPtrOutput)
 }
 
-type RegistryPtrOutput struct {
-	*pulumi.OutputState
-}
+type RegistryPtrOutput struct{ *pulumi.OutputState }
 
 func (RegistryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Registry)(nil))
@@ -355,6 +351,16 @@ func (o RegistryPtrOutput) ToRegistryPtrOutput() RegistryPtrOutput {
 
 func (o RegistryPtrOutput) ToRegistryPtrOutputWithContext(ctx context.Context) RegistryPtrOutput {
 	return o
+}
+
+func (o RegistryPtrOutput) Elem() RegistryOutput {
+	return o.ApplyT(func(v *Registry) Registry {
+		if v != nil {
+			return *v
+		}
+		var ret Registry
+		return ret
+	}).(RegistryOutput)
 }
 
 type RegistryArrayOutput struct{ *pulumi.OutputState }
@@ -398,6 +404,10 @@ func (o RegistryMapOutput) MapIndex(k pulumi.StringInput) RegistryOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryInput)(nil)).Elem(), &Registry{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryPtrInput)(nil)).Elem(), &Registry{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryArrayInput)(nil)).Elem(), RegistryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryMapInput)(nil)).Elem(), RegistryMap{})
 	pulumi.RegisterOutputType(RegistryOutput{})
 	pulumi.RegisterOutputType(RegistryPtrOutput{})
 	pulumi.RegisterOutputType(RegistryArrayOutput{})

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(rancher2.getProjectLogging({
  *     projectId: "<project_id>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getProjectLogging(args: GetProjectLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectLoggingResult> {
@@ -39,7 +39,7 @@ export interface GetProjectLoggingArgs {
     /**
      * The project id to configure logging (string)
      */
-    readonly projectId: string;
+    projectId: string;
 }
 
 /**
@@ -101,4 +101,18 @@ export interface GetProjectLoggingResult {
      * (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
      */
     readonly syslogConfig: outputs.GetProjectLoggingSyslogConfig;
+}
+
+export function getProjectLoggingOutput(args: GetProjectLoggingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectLoggingResult> {
+    return pulumi.output(args).apply(a => getProjectLogging(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProjectLogging.
+ */
+export interface GetProjectLoggingOutputArgs {
+    /**
+     * The project id to configure logging (string)
+     */
+    projectId: pulumi.Input<string>;
 }

@@ -124,35 +124,35 @@ export interface EtcdBackupState {
     /**
      * Annotations for Etcd Backup object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Backup config for etcd backup (list maxitems:1)
      */
-    readonly backupConfig?: pulumi.Input<inputs.EtcdBackupBackupConfig>;
+    backupConfig?: pulumi.Input<inputs.EtcdBackupBackupConfig>;
     /**
      * Cluster ID to config Etcd Backup (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * Filename of the Etcd Backup (string)
      */
-    readonly filename?: pulumi.Input<string>;
+    filename?: pulumi.Input<string>;
     /**
      * Labels for Etcd Backup object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Manual execution of the Etcd Backup. Default `false` (bool)
      */
-    readonly manual?: pulumi.Input<boolean>;
+    manual?: pulumi.Input<boolean>;
     /**
      * The name of the Etcd Backup (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Description for the Etcd Backup (string)
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -162,33 +162,33 @@ export interface EtcdBackupArgs {
     /**
      * Annotations for Etcd Backup object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Backup config for etcd backup (list maxitems:1)
      */
-    readonly backupConfig?: pulumi.Input<inputs.EtcdBackupBackupConfig>;
+    backupConfig?: pulumi.Input<inputs.EtcdBackupBackupConfig>;
     /**
      * Cluster ID to config Etcd Backup (string)
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * Filename of the Etcd Backup (string)
      */
-    readonly filename?: pulumi.Input<string>;
+    filename?: pulumi.Input<string>;
     /**
      * Labels for Etcd Backup object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Manual execution of the Etcd Backup. Default `false` (bool)
      */
-    readonly manual?: pulumi.Input<boolean>;
+    manual?: pulumi.Input<boolean>;
     /**
      * The name of the Etcd Backup (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Description for the Etcd Backup (string)
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
 }

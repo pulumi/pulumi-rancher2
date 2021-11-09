@@ -191,35 +191,35 @@ export interface NamespaceState {
     /**
      * Annotations for Node Pool object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Default containers resource limits on namespace (List maxitem:1)
      */
-    readonly containerResourceLimit?: pulumi.Input<inputs.NamespaceContainerResourceLimit>;
+    containerResourceLimit?: pulumi.Input<inputs.NamespaceContainerResourceLimit>;
     /**
      * A namespace description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Labels for Node Pool object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the namespace (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
      */
-    readonly resourceQuota?: pulumi.Input<inputs.NamespaceResourceQuota>;
+    resourceQuota?: pulumi.Input<inputs.NamespaceResourceQuota>;
     /**
      * Wait for cluster becomes active. Default `false` (bool)
      */
-    readonly waitForCluster?: pulumi.Input<boolean>;
+    waitForCluster?: pulumi.Input<boolean>;
 }
 
 /**
@@ -229,33 +229,33 @@ export interface NamespaceArgs {
     /**
      * Annotations for Node Pool object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Default containers resource limits on namespace (List maxitem:1)
      */
-    readonly containerResourceLimit?: pulumi.Input<inputs.NamespaceContainerResourceLimit>;
+    containerResourceLimit?: pulumi.Input<inputs.NamespaceContainerResourceLimit>;
     /**
      * A namespace description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Labels for Node Pool object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the namespace (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
      */
-    readonly projectId: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
     /**
      * Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
      */
-    readonly resourceQuota?: pulumi.Input<inputs.NamespaceResourceQuota>;
+    resourceQuota?: pulumi.Input<inputs.NamespaceResourceQuota>;
     /**
      * Wait for cluster becomes active. Default `false` (bool)
      */
-    readonly waitForCluster?: pulumi.Input<boolean>;
+    waitForCluster?: pulumi.Input<boolean>;
 }

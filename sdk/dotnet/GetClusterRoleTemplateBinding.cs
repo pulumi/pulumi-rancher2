@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetClusterRoleTemplateBindingResult> InvokeAsync(GetClusterRoleTemplateBindingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterRoleTemplateBindingResult>("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", args ?? new GetClusterRoleTemplateBindingArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 cluster role template binding.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetClusterRoleTemplateBinding.InvokeAsync(new Rancher2.GetClusterRoleTemplateBindingArgs
+        ///         {
+        ///             ClusterId = "foo_id",
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClusterRoleTemplateBindingResult> Invoke(GetClusterRoleTemplateBindingInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClusterRoleTemplateBindingResult>("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", args ?? new GetClusterRoleTemplateBindingInvokeArgs(), options.WithVersion());
     }
 
 
@@ -64,6 +95,31 @@ namespace Pulumi.Rancher2
         public string? RoleTemplateId { get; set; }
 
         public GetClusterRoleTemplateBindingArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterRoleTemplateBindingInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The cluster id where bind cluster role template (string)
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the cluster role template binding (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The role template id from create cluster role template binding (string)
+        /// </summary>
+        [Input("roleTemplateId")]
+        public Input<string>? RoleTemplateId { get; set; }
+
+        public GetClusterRoleTemplateBindingInvokeArgs()
         {
         }
     }

@@ -175,63 +175,63 @@ export interface MultiClusterAppState {
     /**
      * Annotations for multi cluster app object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The multi cluster app answers (list)
      */
-    readonly answers?: pulumi.Input<pulumi.Input<inputs.MultiClusterAppAnswer>[]>;
+    answers?: pulumi.Input<pulumi.Input<inputs.MultiClusterAppAnswer>[]>;
     /**
      * The multi cluster app catalog name (string)
      */
-    readonly catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string>;
     /**
      * Labels for multi cluster app object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The multi cluster app answers (list)
      */
-    readonly members?: pulumi.Input<pulumi.Input<inputs.MultiClusterAppMember>[]>;
+    members?: pulumi.Input<pulumi.Input<inputs.MultiClusterAppMember>[]>;
     /**
      * The multi cluster app name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The multi cluster app revision history limit. Default `10` (int)
      */
-    readonly revisionHistoryLimit?: pulumi.Input<number>;
+    revisionHistoryLimit?: pulumi.Input<number>;
     /**
      * Current revision id for the multi cluster app (string)
      */
-    readonly revisionId?: pulumi.Input<string>;
+    revisionId?: pulumi.Input<string>;
     /**
      * The multi cluster app roles (list)
      */
-    readonly roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The multi cluster app target projects (list)
      */
-    readonly targets?: pulumi.Input<pulumi.Input<inputs.MultiClusterAppTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.MultiClusterAppTarget>[]>;
     /**
      * The multi cluster app template name (string)
      */
-    readonly templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string>;
     /**
      * The multi cluster app template version. Default: `latest` (string)
      */
-    readonly templateVersion?: pulumi.Input<string>;
+    templateVersion?: pulumi.Input<string>;
     /**
      * (Computed) The multi cluster app template version ID (string)
      */
-    readonly templateVersionId?: pulumi.Input<string>;
+    templateVersionId?: pulumi.Input<string>;
     /**
      * The multi cluster app upgrade strategy (list MaxItems:1)
      */
-    readonly upgradeStrategy?: pulumi.Input<inputs.MultiClusterAppUpgradeStrategy>;
+    upgradeStrategy?: pulumi.Input<inputs.MultiClusterAppUpgradeStrategy>;
     /**
      * Wait until the multi cluster app is active. Default `true` (bool)
      */
-    readonly wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean>;
 }
 
 /**
@@ -241,57 +241,57 @@ export interface MultiClusterAppArgs {
     /**
      * Annotations for multi cluster app object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The multi cluster app answers (list)
      */
-    readonly answers?: pulumi.Input<pulumi.Input<inputs.MultiClusterAppAnswer>[]>;
+    answers?: pulumi.Input<pulumi.Input<inputs.MultiClusterAppAnswer>[]>;
     /**
      * The multi cluster app catalog name (string)
      */
-    readonly catalogName: pulumi.Input<string>;
+    catalogName: pulumi.Input<string>;
     /**
      * Labels for multi cluster app object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The multi cluster app answers (list)
      */
-    readonly members?: pulumi.Input<pulumi.Input<inputs.MultiClusterAppMember>[]>;
+    members?: pulumi.Input<pulumi.Input<inputs.MultiClusterAppMember>[]>;
     /**
      * The multi cluster app name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The multi cluster app revision history limit. Default `10` (int)
      */
-    readonly revisionHistoryLimit?: pulumi.Input<number>;
+    revisionHistoryLimit?: pulumi.Input<number>;
     /**
      * Current revision id for the multi cluster app (string)
      */
-    readonly revisionId?: pulumi.Input<string>;
+    revisionId?: pulumi.Input<string>;
     /**
      * The multi cluster app roles (list)
      */
-    readonly roles: pulumi.Input<pulumi.Input<string>[]>;
+    roles: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The multi cluster app target projects (list)
      */
-    readonly targets: pulumi.Input<pulumi.Input<inputs.MultiClusterAppTarget>[]>;
+    targets: pulumi.Input<pulumi.Input<inputs.MultiClusterAppTarget>[]>;
     /**
      * The multi cluster app template name (string)
      */
-    readonly templateName: pulumi.Input<string>;
+    templateName: pulumi.Input<string>;
     /**
      * The multi cluster app template version. Default: `latest` (string)
      */
-    readonly templateVersion?: pulumi.Input<string>;
+    templateVersion?: pulumi.Input<string>;
     /**
      * The multi cluster app upgrade strategy (list MaxItems:1)
      */
-    readonly upgradeStrategy?: pulumi.Input<inputs.MultiClusterAppUpgradeStrategy>;
+    upgradeStrategy?: pulumi.Input<inputs.MultiClusterAppUpgradeStrategy>;
     /**
      * Wait until the multi cluster app is active. Default `true` (bool)
      */
-    readonly wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean>;
 }

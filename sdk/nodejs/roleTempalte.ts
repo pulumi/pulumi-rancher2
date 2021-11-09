@@ -149,55 +149,55 @@ export interface RoleTempalteState {
     /**
      * Administrative role template
      */
-    readonly administrative?: pulumi.Input<boolean>;
+    administrative?: pulumi.Input<boolean>;
     /**
      * Annotations of the resource
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Builtin role template
      */
-    readonly builtin?: pulumi.Input<boolean>;
+    builtin?: pulumi.Input<boolean>;
     /**
      * Context role template
      */
-    readonly context?: pulumi.Input<string>;
+    context?: pulumi.Input<string>;
     /**
      * Default role template for new created cluster or project
      */
-    readonly defaultRole?: pulumi.Input<boolean>;
+    defaultRole?: pulumi.Input<boolean>;
     /**
      * Role template policy description
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * External role template
      */
-    readonly external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean>;
     /**
      * Hidden role template
      */
-    readonly hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean>;
     /**
      * Labels of the resource
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Locked role template
      */
-    readonly locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean>;
     /**
      * Role template policy name
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Inherit role template IDs
      */
-    readonly roleTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    roleTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Role template policy rules
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.RoleTempalteRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.RoleTempalteRule>[]>;
 }
 
 /**
@@ -207,49 +207,49 @@ export interface RoleTempalteArgs {
     /**
      * Administrative role template
      */
-    readonly administrative?: pulumi.Input<boolean>;
+    administrative?: pulumi.Input<boolean>;
     /**
      * Annotations of the resource
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Context role template
      */
-    readonly context?: pulumi.Input<string>;
+    context?: pulumi.Input<string>;
     /**
      * Default role template for new created cluster or project
      */
-    readonly defaultRole?: pulumi.Input<boolean>;
+    defaultRole?: pulumi.Input<boolean>;
     /**
      * Role template policy description
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * External role template
      */
-    readonly external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean>;
     /**
      * Hidden role template
      */
-    readonly hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean>;
     /**
      * Labels of the resource
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Locked role template
      */
-    readonly locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean>;
     /**
      * Role template policy name
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Inherit role template IDs
      */
-    readonly roleTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    roleTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Role template policy rules
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.RoleTempalteRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.RoleTempalteRule>[]>;
 }

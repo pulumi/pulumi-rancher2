@@ -13,6 +13,7 @@ __all__ = [
     'GetNamespaceResult',
     'AwaitableGetNamespaceResult',
     'get_namespace',
+    'get_namespace_output',
 ]
 
 @pulumi.output_type
@@ -159,3 +160,27 @@ def get_namespace(name: Optional[str] = None,
         name=__ret__.name,
         project_id=__ret__.project_id,
         resource_quota=__ret__.resource_quota)
+
+
+@_utilities.lift_output_func(get_namespace)
+def get_namespace_output(name: Optional[pulumi.Input[str]] = None,
+                         project_id: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNamespaceResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 namespace.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_namespace(name="foo",
+        project_id=rancher2_cluster["foo-custom"]["default_project_id"])
+    ```
+
+
+    :param str name: The name of the namespace (string)
+    :param str project_id: The project id where namespace is assigned (string)
+    """
+    ...

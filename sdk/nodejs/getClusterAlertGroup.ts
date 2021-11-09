@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getClusterAlertGroup({
  *     clusterId: "<cluster_id>",
  *     name: "<cluster_alert_group_name>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getClusterAlertGroup(args: GetClusterAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlertGroupResult> {
@@ -41,11 +41,11 @@ export interface GetClusterAlertGroupArgs {
     /**
      * The cluster id where create cluster alert group (string)
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The cluster alert group name (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -86,4 +86,22 @@ export interface GetClusterAlertGroupResult {
      * (Computed) The cluster alert group wait seconds. Default: `3600` (int)
      */
     readonly repeatIntervalSeconds: number;
+}
+
+export function getClusterAlertGroupOutput(args: GetClusterAlertGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAlertGroupResult> {
+    return pulumi.output(args).apply(a => getClusterAlertGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusterAlertGroup.
+ */
+export interface GetClusterAlertGroupOutputArgs {
+    /**
+     * The cluster id where create cluster alert group (string)
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The cluster alert group name (string)
+     */
+    name: pulumi.Input<string>;
 }

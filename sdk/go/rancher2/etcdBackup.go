@@ -217,7 +217,7 @@ type EtcdBackupArrayInput interface {
 type EtcdBackupArray []EtcdBackupInput
 
 func (EtcdBackupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EtcdBackup)(nil))
+	return reflect.TypeOf((*[]*EtcdBackup)(nil)).Elem()
 }
 
 func (i EtcdBackupArray) ToEtcdBackupArrayOutput() EtcdBackupArrayOutput {
@@ -242,7 +242,7 @@ type EtcdBackupMapInput interface {
 type EtcdBackupMap map[string]EtcdBackupInput
 
 func (EtcdBackupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EtcdBackup)(nil))
+	return reflect.TypeOf((*map[string]*EtcdBackup)(nil)).Elem()
 }
 
 func (i EtcdBackupMap) ToEtcdBackupMapOutput() EtcdBackupMapOutput {
@@ -253,9 +253,7 @@ func (i EtcdBackupMap) ToEtcdBackupMapOutputWithContext(ctx context.Context) Etc
 	return pulumi.ToOutputWithContext(ctx, i).(EtcdBackupMapOutput)
 }
 
-type EtcdBackupOutput struct {
-	*pulumi.OutputState
-}
+type EtcdBackupOutput struct{ *pulumi.OutputState }
 
 func (EtcdBackupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EtcdBackup)(nil))
@@ -274,14 +272,12 @@ func (o EtcdBackupOutput) ToEtcdBackupPtrOutput() EtcdBackupPtrOutput {
 }
 
 func (o EtcdBackupOutput) ToEtcdBackupPtrOutputWithContext(ctx context.Context) EtcdBackupPtrOutput {
-	return o.ApplyT(func(v EtcdBackup) *EtcdBackup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EtcdBackup) *EtcdBackup {
 		return &v
 	}).(EtcdBackupPtrOutput)
 }
 
-type EtcdBackupPtrOutput struct {
-	*pulumi.OutputState
-}
+type EtcdBackupPtrOutput struct{ *pulumi.OutputState }
 
 func (EtcdBackupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EtcdBackup)(nil))
@@ -293,6 +289,16 @@ func (o EtcdBackupPtrOutput) ToEtcdBackupPtrOutput() EtcdBackupPtrOutput {
 
 func (o EtcdBackupPtrOutput) ToEtcdBackupPtrOutputWithContext(ctx context.Context) EtcdBackupPtrOutput {
 	return o
+}
+
+func (o EtcdBackupPtrOutput) Elem() EtcdBackupOutput {
+	return o.ApplyT(func(v *EtcdBackup) EtcdBackup {
+		if v != nil {
+			return *v
+		}
+		var ret EtcdBackup
+		return ret
+	}).(EtcdBackupOutput)
 }
 
 type EtcdBackupArrayOutput struct{ *pulumi.OutputState }
@@ -336,6 +342,10 @@ func (o EtcdBackupMapOutput) MapIndex(k pulumi.StringInput) EtcdBackupOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EtcdBackupInput)(nil)).Elem(), &EtcdBackup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EtcdBackupPtrInput)(nil)).Elem(), &EtcdBackup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EtcdBackupArrayInput)(nil)).Elem(), EtcdBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EtcdBackupMapInput)(nil)).Elem(), EtcdBackupMap{})
 	pulumi.RegisterOutputType(EtcdBackupOutput{})
 	pulumi.RegisterOutputType(EtcdBackupPtrOutput{})
 	pulumi.RegisterOutputType(EtcdBackupArrayOutput{})

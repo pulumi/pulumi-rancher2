@@ -9363,3 +9363,4 @@ export interface RoleTemplateRule {
      */
     verbs?: string[];
 }
+

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetGlobalRoleBindingResult> InvokeAsync(GetGlobalRoleBindingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 global role binding.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetGlobalRoleBinding.InvokeAsync(new Rancher2.GetGlobalRoleBindingArgs
+        ///         {
+        ///             GlobalRoleId = "foo_id",
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGlobalRoleBindingResult> Invoke(GetGlobalRoleBindingInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingInvokeArgs(), options.WithVersion());
     }
 
 
@@ -58,6 +89,25 @@ namespace Pulumi.Rancher2
         public string Name { get; set; } = null!;
 
         public GetGlobalRoleBindingArgs()
+        {
+        }
+    }
+
+    public sealed class GetGlobalRoleBindingInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The global role id (string)
+        /// </summary>
+        [Input("globalRoleId")]
+        public Input<string>? GlobalRoleId { get; set; }
+
+        /// <summary>
+        /// The name of the global role binding (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetGlobalRoleBindingInvokeArgs()
         {
         }
     }

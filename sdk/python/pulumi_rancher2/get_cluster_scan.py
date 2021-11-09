@@ -13,6 +13,7 @@ __all__ = [
     'GetClusterScanResult',
     'AwaitableGetClusterScanResult',
     'get_cluster_scan',
+    'get_cluster_scan_output',
 ]
 
 @pulumi.output_type
@@ -162,3 +163,17 @@ def get_cluster_scan(cluster_id: Optional[str] = None,
         scan_config=__ret__.scan_config,
         scan_type=__ret__.scan_type,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_cluster_scan)
+def get_cluster_scan_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                            name: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterScanResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
+
+
+    :param str cluster_id: Cluster ID for CIS Scan (string)
+    :param str name: Name of the cluster Scan (string)
+    """
+    ...

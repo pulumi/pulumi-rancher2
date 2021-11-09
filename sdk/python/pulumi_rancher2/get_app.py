@@ -12,6 +12,7 @@ __all__ = [
     'GetAppResult',
     'AwaitableGetAppResult',
     'get_app',
+    'get_app_output',
 ]
 
 @pulumi.output_type
@@ -240,3 +241,32 @@ def get_app(annotations: Optional[Mapping[str, Any]] = None,
         template_name=__ret__.template_name,
         template_version=__ret__.template_version,
         values_yaml=__ret__.values_yaml)
+
+
+@_utilities.lift_output_func(get_app)
+def get_app_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                   name: Optional[pulumi.Input[str]] = None,
+                   project_id: Optional[pulumi.Input[str]] = None,
+                   target_namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 app.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    rancher2 = rancher2.get_app(name="foo",
+        project_id="<project_id>",
+        target_namespace="<namespace_name>")
+    ```
+
+
+    :param Mapping[str, Any] annotations: (Computed) Annotations for the catalog (map)
+    :param str name: The app name (string)
+    :param str project_id: The id of the project where the app is deployed (string)
+    :param str target_namespace: The namespace name where the app is deployed (string)
+    """
+    ...

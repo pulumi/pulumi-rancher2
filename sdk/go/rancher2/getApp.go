@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +25,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "<namespace_name>"
-// 		_, err := rancher2.LookupApp(ctx, &rancher2.LookupAppArgs{
+// 		_, err := rancher2.LookupApp(ctx, &GetAppArgs{
 // 			Name:            "foo",
 // 			ProjectId:       "<project_id>",
 // 			TargetNamespace: &opt0,
@@ -82,4 +85,115 @@ type LookupAppResult struct {
 	TemplateVersion string `pulumi:"templateVersion"`
 	// (Computed) values.yaml base64 encoded file content for the app (string)
 	ValuesYaml string `pulumi:"valuesYaml"`
+}
+
+func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulumi.InvokeOption) LookupAppResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAppResult, error) {
+			args := v.(LookupAppArgs)
+			r, err := LookupApp(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAppResultOutput)
+}
+
+// A collection of arguments for invoking getApp.
+type LookupAppOutputArgs struct {
+	// (Computed) Annotations for the catalog (map)
+	Annotations pulumi.MapInput `pulumi:"annotations"`
+	// The app name (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The id of the project where the app is deployed (string)
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The namespace name where the app is deployed (string)
+	TargetNamespace pulumi.StringPtrInput `pulumi:"targetNamespace"`
+}
+
+func (LookupAppOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAppArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getApp.
+type LookupAppResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAppResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAppResult)(nil)).Elem()
+}
+
+func (o LookupAppResultOutput) ToLookupAppResultOutput() LookupAppResultOutput {
+	return o
+}
+
+func (o LookupAppResultOutput) ToLookupAppResultOutputWithContext(ctx context.Context) LookupAppResultOutput {
+	return o
+}
+
+// (Computed) Annotations for the catalog (map)
+func (o LookupAppResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupAppResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) Answers for the app (map)
+func (o LookupAppResultOutput) Answers() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupAppResult) map[string]interface{} { return v.Answers }).(pulumi.MapOutput)
+}
+
+// (Computed) Catalog name of the app (string)
+func (o LookupAppResultOutput) CatalogName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.CatalogName }).(pulumi.StringOutput)
+}
+
+// (Computed) Description for the app (string)
+func (o LookupAppResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// (Computed) The URL of the helm catalog app (string)
+func (o LookupAppResultOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAppResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels for the catalog (map)
+func (o LookupAppResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupAppResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupAppResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupAppResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// (Computed) Current revision id for the app (string)
+func (o LookupAppResultOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.RevisionId }).(pulumi.StringOutput)
+}
+
+func (o LookupAppResultOutput) TargetNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.TargetNamespace }).(pulumi.StringOutput)
+}
+
+// (Computed) Template name of the app (string)
+func (o LookupAppResultOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// (Computed) Template version of the app (string)
+func (o LookupAppResultOutput) TemplateVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.TemplateVersion }).(pulumi.StringOutput)
+}
+
+// (Computed) values.yaml base64 encoded file content for the app (string)
+func (o LookupAppResultOutput) ValuesYaml() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.ValuesYaml }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAppResultOutput{})
 }

@@ -211,55 +211,55 @@ export interface NodePoolState {
     /**
      * Annotations for Node Pool object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The RKE cluster id to use Node Pool (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * RKE control plane role for created nodes (bool)
      */
-    readonly controlPlane?: pulumi.Input<boolean>;
+    controlPlane?: pulumi.Input<boolean>;
     /**
      * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
      */
-    readonly deleteNotReadyAfterSecs?: pulumi.Input<number>;
+    deleteNotReadyAfterSecs?: pulumi.Input<number>;
     /**
      * Drain nodes before delete. Default: `false` (bool)
      */
-    readonly drainBeforeDelete?: pulumi.Input<boolean>;
+    drainBeforeDelete?: pulumi.Input<boolean>;
     /**
      * RKE etcd role for created nodes (bool)
      */
-    readonly etcd?: pulumi.Input<boolean>;
+    etcd?: pulumi.Input<boolean>;
     /**
      * The prefix for created nodes of the Node Pool (string)
      */
-    readonly hostnamePrefix?: pulumi.Input<string>;
+    hostnamePrefix?: pulumi.Input<string>;
     /**
      * Labels for Node Pool object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the Node Pool (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Node taints. For Rancher v2.3.3 or above (List)
      */
-    readonly nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodePoolNodeTaint>[]>;
+    nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodePoolNodeTaint>[]>;
     /**
      * The Node Template ID to use for node creation (string)
      */
-    readonly nodeTemplateId?: pulumi.Input<string>;
+    nodeTemplateId?: pulumi.Input<string>;
     /**
      * The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
      */
-    readonly quantity?: pulumi.Input<number>;
+    quantity?: pulumi.Input<number>;
     /**
      * RKE role role for created nodes (bool)
      */
-    readonly worker?: pulumi.Input<boolean>;
+    worker?: pulumi.Input<boolean>;
 }
 
 /**
@@ -269,53 +269,53 @@ export interface NodePoolArgs {
     /**
      * Annotations for Node Pool object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The RKE cluster id to use Node Pool (string)
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * RKE control plane role for created nodes (bool)
      */
-    readonly controlPlane?: pulumi.Input<boolean>;
+    controlPlane?: pulumi.Input<boolean>;
     /**
      * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
      */
-    readonly deleteNotReadyAfterSecs?: pulumi.Input<number>;
+    deleteNotReadyAfterSecs?: pulumi.Input<number>;
     /**
      * Drain nodes before delete. Default: `false` (bool)
      */
-    readonly drainBeforeDelete?: pulumi.Input<boolean>;
+    drainBeforeDelete?: pulumi.Input<boolean>;
     /**
      * RKE etcd role for created nodes (bool)
      */
-    readonly etcd?: pulumi.Input<boolean>;
+    etcd?: pulumi.Input<boolean>;
     /**
      * The prefix for created nodes of the Node Pool (string)
      */
-    readonly hostnamePrefix: pulumi.Input<string>;
+    hostnamePrefix: pulumi.Input<string>;
     /**
      * Labels for Node Pool object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the Node Pool (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Node taints. For Rancher v2.3.3 or above (List)
      */
-    readonly nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodePoolNodeTaint>[]>;
+    nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodePoolNodeTaint>[]>;
     /**
      * The Node Template ID to use for node creation (string)
      */
-    readonly nodeTemplateId: pulumi.Input<string>;
+    nodeTemplateId: pulumi.Input<string>;
     /**
      * The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
      */
-    readonly quantity?: pulumi.Input<number>;
+    quantity?: pulumi.Input<number>;
     /**
      * RKE role role for created nodes (bool)
      */
-    readonly worker?: pulumi.Input<boolean>;
+    worker?: pulumi.Input<boolean>;
 }

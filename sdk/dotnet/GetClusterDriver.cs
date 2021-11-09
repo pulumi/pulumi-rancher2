@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetClusterDriverResult> InvokeAsync(GetClusterDriverArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetClusterDriver.InvokeAsync(new Rancher2.GetClusterDriverArgs
+        ///         {
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClusterDriverResult> Invoke(GetClusterDriverInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverInvokeArgs(), options.WithVersion());
     }
 
 
@@ -57,6 +87,25 @@ namespace Pulumi.Rancher2
         public string? Url { get; set; }
 
         public GetClusterDriverArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterDriverInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Name of the cluster driver (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The URL to download the machine driver binary for 64-bit Linux (string)
+        /// </summary>
+        [Input("url")]
+        public Input<string>? Url { get; set; }
+
+        public GetClusterDriverInvokeArgs()
         {
         }
     }

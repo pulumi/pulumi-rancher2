@@ -327,7 +327,7 @@ type ActiveDirectoryArrayInput interface {
 type ActiveDirectoryArray []ActiveDirectoryInput
 
 func (ActiveDirectoryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ActiveDirectory)(nil))
+	return reflect.TypeOf((*[]*ActiveDirectory)(nil)).Elem()
 }
 
 func (i ActiveDirectoryArray) ToActiveDirectoryArrayOutput() ActiveDirectoryArrayOutput {
@@ -352,7 +352,7 @@ type ActiveDirectoryMapInput interface {
 type ActiveDirectoryMap map[string]ActiveDirectoryInput
 
 func (ActiveDirectoryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ActiveDirectory)(nil))
+	return reflect.TypeOf((*map[string]*ActiveDirectory)(nil)).Elem()
 }
 
 func (i ActiveDirectoryMap) ToActiveDirectoryMapOutput() ActiveDirectoryMapOutput {
@@ -363,9 +363,7 @@ func (i ActiveDirectoryMap) ToActiveDirectoryMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryMapOutput)
 }
 
-type ActiveDirectoryOutput struct {
-	*pulumi.OutputState
-}
+type ActiveDirectoryOutput struct{ *pulumi.OutputState }
 
 func (ActiveDirectoryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ActiveDirectory)(nil))
@@ -384,14 +382,12 @@ func (o ActiveDirectoryOutput) ToActiveDirectoryPtrOutput() ActiveDirectoryPtrOu
 }
 
 func (o ActiveDirectoryOutput) ToActiveDirectoryPtrOutputWithContext(ctx context.Context) ActiveDirectoryPtrOutput {
-	return o.ApplyT(func(v ActiveDirectory) *ActiveDirectory {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActiveDirectory) *ActiveDirectory {
 		return &v
 	}).(ActiveDirectoryPtrOutput)
 }
 
-type ActiveDirectoryPtrOutput struct {
-	*pulumi.OutputState
-}
+type ActiveDirectoryPtrOutput struct{ *pulumi.OutputState }
 
 func (ActiveDirectoryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ActiveDirectory)(nil))
@@ -403,6 +399,16 @@ func (o ActiveDirectoryPtrOutput) ToActiveDirectoryPtrOutput() ActiveDirectoryPt
 
 func (o ActiveDirectoryPtrOutput) ToActiveDirectoryPtrOutputWithContext(ctx context.Context) ActiveDirectoryPtrOutput {
 	return o
+}
+
+func (o ActiveDirectoryPtrOutput) Elem() ActiveDirectoryOutput {
+	return o.ApplyT(func(v *ActiveDirectory) ActiveDirectory {
+		if v != nil {
+			return *v
+		}
+		var ret ActiveDirectory
+		return ret
+	}).(ActiveDirectoryOutput)
 }
 
 type ActiveDirectoryArrayOutput struct{ *pulumi.OutputState }
@@ -446,6 +452,10 @@ func (o ActiveDirectoryMapOutput) MapIndex(k pulumi.StringInput) ActiveDirectory
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ActiveDirectoryInput)(nil)).Elem(), &ActiveDirectory{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActiveDirectoryPtrInput)(nil)).Elem(), &ActiveDirectory{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActiveDirectoryArrayInput)(nil)).Elem(), ActiveDirectoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActiveDirectoryMapInput)(nil)).Elem(), ActiveDirectoryMap{})
 	pulumi.RegisterOutputType(ActiveDirectoryOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryPtrOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryArrayOutput{})

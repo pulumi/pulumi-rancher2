@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -30,15 +29,15 @@ export interface GetSecretV2Args {
     /**
      * The cluster id of the secret V2 (string)
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The name of the secret v2 (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The namespaces of the secret v2. Default: `default` (string)
      */
-    readonly namespace?: string;
+    namespace?: string;
 }
 
 /**
@@ -76,4 +75,26 @@ export interface GetSecretV2Result {
      * (Computed) The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format (string)
      */
     readonly type: string;
+}
+
+export function getSecretV2Output(args: GetSecretV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretV2Result> {
+    return pulumi.output(args).apply(a => getSecretV2(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecretV2.
+ */
+export interface GetSecretV2OutputArgs {
+    /**
+     * The cluster id of the secret V2 (string)
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The name of the secret v2 (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespaces of the secret v2. Default: `default` (string)
+     */
+    namespace?: pulumi.Input<string>;
 }

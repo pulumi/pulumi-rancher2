@@ -12,6 +12,7 @@ __all__ = [
     'GetCertificateResult',
     'AwaitableGetCertificateResult',
     'get_certificate',
+    'get_certificate_output',
 ]
 
 @pulumi.output_type
@@ -171,3 +172,42 @@ def get_certificate(name: Optional[str] = None,
         name=__ret__.name,
         namespace_id=__ret__.namespace_id,
         project_id=__ret__.project_id)
+
+
+@_utilities.lift_output_func(get_certificate)
+def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
+                           namespace_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           project_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 certificate.
+
+    Depending of the availability, there are 2 types of Rancher v2 certificates:
+    - Project certificate: Available to all namespaces in the `project_id`
+    - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_certificate(name="<name>",
+        project_id="<project_id>")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_certificate(name="<name>",
+        namespace_id="<namespace_id>",
+        project_id="<project_id>")
+    ```
+
+
+    :param str name: The name of the certificate (string)
+    :param str namespace_id: The namespace id where to assign the namespaced certificate (string)
+    :param str project_id: The project id where to assign the certificate (string)
+    """
+    ...

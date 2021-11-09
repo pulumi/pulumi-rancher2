@@ -29,7 +29,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := rancher2.NewNodeTemplate(ctx, "foo", &rancher2.NodeTemplateArgs{
-// 			Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
+// 			Amazonec2Config: &NodeTemplateAmazonec2ConfigArgs{
 // 				AccessKey: pulumi.String("AWS_ACCESS_KEY"),
 // 				Ami:       pulumi.String("<AMI_ID>"),
 // 				Region:    pulumi.String("<REGION>"),
@@ -63,7 +63,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		fooCloudCredential, err := rancher2.NewCloudCredential(ctx, "fooCloudCredential", &rancher2.CloudCredentialArgs{
 // 			Description: pulumi.String("foo test"),
-// 			Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
+// 			Amazonec2CredentialConfig: &CloudCredentialAmazonec2CredentialConfigArgs{
 // 				AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
 // 				SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
 // 			},
@@ -74,7 +74,7 @@ import (
 // 		_, err = rancher2.NewNodeTemplate(ctx, "fooNodeTemplate", &rancher2.NodeTemplateArgs{
 // 			Description:       pulumi.String("foo test"),
 // 			CloudCredentialId: fooCloudCredential.ID(),
-// 			Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
+// 			Amazonec2Config: &NodeTemplateAmazonec2ConfigArgs{
 // 				Ami:    pulumi.String("<AMI_ID>"),
 // 				Region: pulumi.String("<REGION>"),
 // 				SecurityGroups: pulumi.StringArray{
@@ -118,7 +118,7 @@ import (
 // 		}
 // 		_, err = rancher2.NewNodeTemplate(ctx, "myHetznerNodeTemplate", &rancher2.NodeTemplateArgs{
 // 			DriverId: hetznerNodeDriver.ID(),
-// 			HetznerConfig: &rancher2.NodeTemplateHetznerConfigArgs{
+// 			HetznerConfig: &NodeTemplateHetznerConfigArgs{
 // 				ApiToken:       pulumi.String("XXXXXXXXXX"),
 // 				Image:          pulumi.String("ubuntu-18.04"),
 // 				ServerLocation: pulumi.String("nbg1"),
@@ -512,7 +512,7 @@ type NodeTemplateArrayInput interface {
 type NodeTemplateArray []NodeTemplateInput
 
 func (NodeTemplateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NodeTemplate)(nil))
+	return reflect.TypeOf((*[]*NodeTemplate)(nil)).Elem()
 }
 
 func (i NodeTemplateArray) ToNodeTemplateArrayOutput() NodeTemplateArrayOutput {
@@ -537,7 +537,7 @@ type NodeTemplateMapInput interface {
 type NodeTemplateMap map[string]NodeTemplateInput
 
 func (NodeTemplateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NodeTemplate)(nil))
+	return reflect.TypeOf((*map[string]*NodeTemplate)(nil)).Elem()
 }
 
 func (i NodeTemplateMap) ToNodeTemplateMapOutput() NodeTemplateMapOutput {
@@ -548,9 +548,7 @@ func (i NodeTemplateMap) ToNodeTemplateMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateMapOutput)
 }
 
-type NodeTemplateOutput struct {
-	*pulumi.OutputState
-}
+type NodeTemplateOutput struct{ *pulumi.OutputState }
 
 func (NodeTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodeTemplate)(nil))
@@ -569,14 +567,12 @@ func (o NodeTemplateOutput) ToNodeTemplatePtrOutput() NodeTemplatePtrOutput {
 }
 
 func (o NodeTemplateOutput) ToNodeTemplatePtrOutputWithContext(ctx context.Context) NodeTemplatePtrOutput {
-	return o.ApplyT(func(v NodeTemplate) *NodeTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeTemplate) *NodeTemplate {
 		return &v
 	}).(NodeTemplatePtrOutput)
 }
 
-type NodeTemplatePtrOutput struct {
-	*pulumi.OutputState
-}
+type NodeTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (NodeTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodeTemplate)(nil))
@@ -588,6 +584,16 @@ func (o NodeTemplatePtrOutput) ToNodeTemplatePtrOutput() NodeTemplatePtrOutput {
 
 func (o NodeTemplatePtrOutput) ToNodeTemplatePtrOutputWithContext(ctx context.Context) NodeTemplatePtrOutput {
 	return o
+}
+
+func (o NodeTemplatePtrOutput) Elem() NodeTemplateOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret NodeTemplate
+		return ret
+	}).(NodeTemplateOutput)
 }
 
 type NodeTemplateArrayOutput struct{ *pulumi.OutputState }
@@ -631,6 +637,10 @@ func (o NodeTemplateMapOutput) MapIndex(k pulumi.StringInput) NodeTemplateOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateInput)(nil)).Elem(), &NodeTemplate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplatePtrInput)(nil)).Elem(), &NodeTemplate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateArrayInput)(nil)).Elem(), NodeTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateMapInput)(nil)).Elem(), NodeTemplateMap{})
 	pulumi.RegisterOutputType(NodeTemplateOutput{})
 	pulumi.RegisterOutputType(NodeTemplatePtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateArrayOutput{})

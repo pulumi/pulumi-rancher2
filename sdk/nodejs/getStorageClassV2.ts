@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -29,11 +28,11 @@ export interface GetStorageClassV2Args {
     /**
      * The cluster id of the storageClass V2 (string)
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The name of the storageClass v2 (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -82,4 +81,22 @@ export interface GetStorageClassV2Result {
      * (Computed) The volume binding mode for storageClass v2 (string)
      */
     readonly volumeBindingMode: string;
+}
+
+export function getStorageClassV2Output(args: GetStorageClassV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageClassV2Result> {
+    return pulumi.output(args).apply(a => getStorageClassV2(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getStorageClassV2.
+ */
+export interface GetStorageClassV2OutputArgs {
+    /**
+     * The cluster id of the storageClass V2 (string)
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The name of the storageClass v2 (string)
+     */
+    name: pulumi.Input<string>;
 }

@@ -153,47 +153,47 @@ export interface AuthConfigGithubState {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    readonly accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
      */
-    readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Annotations of the resource (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Github auth Client ID (string)
      */
-    readonly clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
     /**
      * Github auth Client secret (string)
      */
-    readonly clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Github hostname to connect. Default `github.com` (string)
      */
-    readonly hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * (Computed) The name of the resource (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Enable TLS connection. Default `true` (bool)
      */
-    readonly tls?: pulumi.Input<boolean>;
+    tls?: pulumi.Input<boolean>;
     /**
      * (Computed) The type of the resource (string)
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -203,37 +203,37 @@ export interface AuthConfigGithubArgs {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    readonly accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
      */
-    readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Annotations of the resource (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Github auth Client ID (string)
      */
-    readonly clientId: pulumi.Input<string>;
+    clientId: pulumi.Input<string>;
     /**
      * Github auth Client secret (string)
      */
-    readonly clientSecret: pulumi.Input<string>;
+    clientSecret: pulumi.Input<string>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Github hostname to connect. Default `github.com` (string)
      */
-    readonly hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Enable TLS connection. Default `true` (bool)
      */
-    readonly tls?: pulumi.Input<boolean>;
+    tls?: pulumi.Input<boolean>;
 }

@@ -322,7 +322,7 @@ type AuthConfigAzureAdArrayInput interface {
 type AuthConfigAzureAdArray []AuthConfigAzureAdInput
 
 func (AuthConfigAzureAdArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AuthConfigAzureAd)(nil))
+	return reflect.TypeOf((*[]*AuthConfigAzureAd)(nil)).Elem()
 }
 
 func (i AuthConfigAzureAdArray) ToAuthConfigAzureAdArrayOutput() AuthConfigAzureAdArrayOutput {
@@ -347,7 +347,7 @@ type AuthConfigAzureAdMapInput interface {
 type AuthConfigAzureAdMap map[string]AuthConfigAzureAdInput
 
 func (AuthConfigAzureAdMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AuthConfigAzureAd)(nil))
+	return reflect.TypeOf((*map[string]*AuthConfigAzureAd)(nil)).Elem()
 }
 
 func (i AuthConfigAzureAdMap) ToAuthConfigAzureAdMapOutput() AuthConfigAzureAdMapOutput {
@@ -358,9 +358,7 @@ func (i AuthConfigAzureAdMap) ToAuthConfigAzureAdMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAzureAdMapOutput)
 }
 
-type AuthConfigAzureAdOutput struct {
-	*pulumi.OutputState
-}
+type AuthConfigAzureAdOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigAzureAdOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AuthConfigAzureAd)(nil))
@@ -379,14 +377,12 @@ func (o AuthConfigAzureAdOutput) ToAuthConfigAzureAdPtrOutput() AuthConfigAzureA
 }
 
 func (o AuthConfigAzureAdOutput) ToAuthConfigAzureAdPtrOutputWithContext(ctx context.Context) AuthConfigAzureAdPtrOutput {
-	return o.ApplyT(func(v AuthConfigAzureAd) *AuthConfigAzureAd {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigAzureAd) *AuthConfigAzureAd {
 		return &v
 	}).(AuthConfigAzureAdPtrOutput)
 }
 
-type AuthConfigAzureAdPtrOutput struct {
-	*pulumi.OutputState
-}
+type AuthConfigAzureAdPtrOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigAzureAdPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AuthConfigAzureAd)(nil))
@@ -398,6 +394,16 @@ func (o AuthConfigAzureAdPtrOutput) ToAuthConfigAzureAdPtrOutput() AuthConfigAzu
 
 func (o AuthConfigAzureAdPtrOutput) ToAuthConfigAzureAdPtrOutputWithContext(ctx context.Context) AuthConfigAzureAdPtrOutput {
 	return o
+}
+
+func (o AuthConfigAzureAdPtrOutput) Elem() AuthConfigAzureAdOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) AuthConfigAzureAd {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigAzureAd
+		return ret
+	}).(AuthConfigAzureAdOutput)
 }
 
 type AuthConfigAzureAdArrayOutput struct{ *pulumi.OutputState }
@@ -441,6 +447,10 @@ func (o AuthConfigAzureAdMapOutput) MapIndex(k pulumi.StringInput) AuthConfigAzu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigAzureAdInput)(nil)).Elem(), &AuthConfigAzureAd{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigAzureAdPtrInput)(nil)).Elem(), &AuthConfigAzureAd{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigAzureAdArrayInput)(nil)).Elem(), AuthConfigAzureAdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigAzureAdMapInput)(nil)).Elem(), AuthConfigAzureAdMap{})
 	pulumi.RegisterOutputType(AuthConfigAzureAdOutput{})
 	pulumi.RegisterOutputType(AuthConfigAzureAdPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigAzureAdArrayOutput{})

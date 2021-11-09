@@ -307,107 +307,107 @@ export interface NodeTemplateState {
     /**
      * AWS config for the Node Template (list maxitems:1)
      */
-    readonly amazonec2Config?: pulumi.Input<inputs.NodeTemplateAmazonec2Config>;
+    amazonec2Config?: pulumi.Input<inputs.NodeTemplateAmazonec2Config>;
     /**
      * Annotations for Node Template object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Auth certificate authority for the Node Template (string)
      */
-    readonly authCertificateAuthority?: pulumi.Input<string>;
+    authCertificateAuthority?: pulumi.Input<string>;
     /**
      * Auth key for the Node Template (string)
      */
-    readonly authKey?: pulumi.Input<string>;
+    authKey?: pulumi.Input<string>;
     /**
      * Azure config for the Node Template (list maxitems:1)
      */
-    readonly azureConfig?: pulumi.Input<inputs.NodeTemplateAzureConfig>;
+    azureConfig?: pulumi.Input<inputs.NodeTemplateAzureConfig>;
     /**
      * Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
      */
-    readonly cloudCredentialId?: pulumi.Input<string>;
+    cloudCredentialId?: pulumi.Input<string>;
     /**
      * Description for the Node Template (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Digitalocean config for the Node Template (list maxitems:1)
      */
-    readonly digitaloceanConfig?: pulumi.Input<inputs.NodeTemplateDigitaloceanConfig>;
+    digitaloceanConfig?: pulumi.Input<inputs.NodeTemplateDigitaloceanConfig>;
     /**
      * (Computed) The driver of the node template (string)
      */
-    readonly driver?: pulumi.Input<string>;
+    driver?: pulumi.Input<string>;
     /**
      * The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
      */
-    readonly driverId?: pulumi.Input<string>;
+    driverId?: pulumi.Input<string>;
     /**
      * Engine environment for the node template (string)
      */
-    readonly engineEnv?: pulumi.Input<{[key: string]: any}>;
+    engineEnv?: pulumi.Input<{[key: string]: any}>;
     /**
      * Insecure registry for the node template (list)
      */
-    readonly engineInsecureRegistries?: pulumi.Input<pulumi.Input<string>[]>;
+    engineInsecureRegistries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
      */
-    readonly engineInstallUrl?: pulumi.Input<string>;
+    engineInstallUrl?: pulumi.Input<string>;
     /**
      * Engine label for the node template (string)
      */
-    readonly engineLabel?: pulumi.Input<{[key: string]: any}>;
+    engineLabel?: pulumi.Input<{[key: string]: any}>;
     /**
      * Engine options for the node template (map)
      */
-    readonly engineOpt?: pulumi.Input<{[key: string]: any}>;
+    engineOpt?: pulumi.Input<{[key: string]: any}>;
     /**
      * Engine registry mirror for the node template (list)
      */
-    readonly engineRegistryMirrors?: pulumi.Input<pulumi.Input<string>[]>;
+    engineRegistryMirrors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Engine storage driver for the node template (string)
      */
-    readonly engineStorageDriver?: pulumi.Input<string>;
+    engineStorageDriver?: pulumi.Input<string>;
     /**
      * Hetzner config for the Node Template (list maxitems:1)
      */
-    readonly hetznerConfig?: pulumi.Input<inputs.NodeTemplateHetznerConfig>;
+    hetznerConfig?: pulumi.Input<inputs.NodeTemplateHetznerConfig>;
     /**
      * Labels for Node Template object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Linode config for the Node Template (list maxitems:1)
      */
-    readonly linodeConfig?: pulumi.Input<inputs.NodeTemplateLinodeConfig>;
+    linodeConfig?: pulumi.Input<inputs.NodeTemplateLinodeConfig>;
     /**
      * The name of the Node Template (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Node taints. For Rancher v2.3.3 or above (List)
      */
-    readonly nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodeTemplateNodeTaint>[]>;
+    nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodeTemplateNodeTaint>[]>;
     /**
      * Opennebula config for the Node Template (list maxitems:1)
      */
-    readonly opennebulaConfig?: pulumi.Input<inputs.NodeTemplateOpennebulaConfig>;
+    opennebulaConfig?: pulumi.Input<inputs.NodeTemplateOpennebulaConfig>;
     /**
      * Openstack config for the Node Template (list maxitems:1)
      */
-    readonly openstackConfig?: pulumi.Input<inputs.NodeTemplateOpenstackConfig>;
+    openstackConfig?: pulumi.Input<inputs.NodeTemplateOpenstackConfig>;
     /**
      * Engine storage driver for the node template (bool)
      */
-    readonly useInternalIpAddress?: pulumi.Input<boolean>;
+    useInternalIpAddress?: pulumi.Input<boolean>;
     /**
      * vSphere config for the Node Template (list maxitems:1)
      */
-    readonly vsphereConfig?: pulumi.Input<inputs.NodeTemplateVsphereConfig>;
+    vsphereConfig?: pulumi.Input<inputs.NodeTemplateVsphereConfig>;
 }
 
 /**
@@ -417,101 +417,101 @@ export interface NodeTemplateArgs {
     /**
      * AWS config for the Node Template (list maxitems:1)
      */
-    readonly amazonec2Config?: pulumi.Input<inputs.NodeTemplateAmazonec2Config>;
+    amazonec2Config?: pulumi.Input<inputs.NodeTemplateAmazonec2Config>;
     /**
      * Annotations for Node Template object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Auth certificate authority for the Node Template (string)
      */
-    readonly authCertificateAuthority?: pulumi.Input<string>;
+    authCertificateAuthority?: pulumi.Input<string>;
     /**
      * Auth key for the Node Template (string)
      */
-    readonly authKey?: pulumi.Input<string>;
+    authKey?: pulumi.Input<string>;
     /**
      * Azure config for the Node Template (list maxitems:1)
      */
-    readonly azureConfig?: pulumi.Input<inputs.NodeTemplateAzureConfig>;
+    azureConfig?: pulumi.Input<inputs.NodeTemplateAzureConfig>;
     /**
      * Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
      */
-    readonly cloudCredentialId?: pulumi.Input<string>;
+    cloudCredentialId?: pulumi.Input<string>;
     /**
      * Description for the Node Template (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Digitalocean config for the Node Template (list maxitems:1)
      */
-    readonly digitaloceanConfig?: pulumi.Input<inputs.NodeTemplateDigitaloceanConfig>;
+    digitaloceanConfig?: pulumi.Input<inputs.NodeTemplateDigitaloceanConfig>;
     /**
      * The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
      */
-    readonly driverId?: pulumi.Input<string>;
+    driverId?: pulumi.Input<string>;
     /**
      * Engine environment for the node template (string)
      */
-    readonly engineEnv?: pulumi.Input<{[key: string]: any}>;
+    engineEnv?: pulumi.Input<{[key: string]: any}>;
     /**
      * Insecure registry for the node template (list)
      */
-    readonly engineInsecureRegistries?: pulumi.Input<pulumi.Input<string>[]>;
+    engineInsecureRegistries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
      */
-    readonly engineInstallUrl?: pulumi.Input<string>;
+    engineInstallUrl?: pulumi.Input<string>;
     /**
      * Engine label for the node template (string)
      */
-    readonly engineLabel?: pulumi.Input<{[key: string]: any}>;
+    engineLabel?: pulumi.Input<{[key: string]: any}>;
     /**
      * Engine options for the node template (map)
      */
-    readonly engineOpt?: pulumi.Input<{[key: string]: any}>;
+    engineOpt?: pulumi.Input<{[key: string]: any}>;
     /**
      * Engine registry mirror for the node template (list)
      */
-    readonly engineRegistryMirrors?: pulumi.Input<pulumi.Input<string>[]>;
+    engineRegistryMirrors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Engine storage driver for the node template (string)
      */
-    readonly engineStorageDriver?: pulumi.Input<string>;
+    engineStorageDriver?: pulumi.Input<string>;
     /**
      * Hetzner config for the Node Template (list maxitems:1)
      */
-    readonly hetznerConfig?: pulumi.Input<inputs.NodeTemplateHetznerConfig>;
+    hetznerConfig?: pulumi.Input<inputs.NodeTemplateHetznerConfig>;
     /**
      * Labels for Node Template object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Linode config for the Node Template (list maxitems:1)
      */
-    readonly linodeConfig?: pulumi.Input<inputs.NodeTemplateLinodeConfig>;
+    linodeConfig?: pulumi.Input<inputs.NodeTemplateLinodeConfig>;
     /**
      * The name of the Node Template (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Node taints. For Rancher v2.3.3 or above (List)
      */
-    readonly nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodeTemplateNodeTaint>[]>;
+    nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodeTemplateNodeTaint>[]>;
     /**
      * Opennebula config for the Node Template (list maxitems:1)
      */
-    readonly opennebulaConfig?: pulumi.Input<inputs.NodeTemplateOpennebulaConfig>;
+    opennebulaConfig?: pulumi.Input<inputs.NodeTemplateOpennebulaConfig>;
     /**
      * Openstack config for the Node Template (list maxitems:1)
      */
-    readonly openstackConfig?: pulumi.Input<inputs.NodeTemplateOpenstackConfig>;
+    openstackConfig?: pulumi.Input<inputs.NodeTemplateOpenstackConfig>;
     /**
      * Engine storage driver for the node template (bool)
      */
-    readonly useInternalIpAddress?: pulumi.Input<boolean>;
+    useInternalIpAddress?: pulumi.Input<boolean>;
     /**
      * vSphere config for the Node Template (list maxitems:1)
      */
-    readonly vsphereConfig?: pulumi.Input<inputs.NodeTemplateVsphereConfig>;
+    vsphereConfig?: pulumi.Input<inputs.NodeTemplateVsphereConfig>;
 }

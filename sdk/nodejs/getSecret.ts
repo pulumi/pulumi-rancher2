@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -22,7 +21,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getSecret({
  *     name: "<name>",
  *     projectId: "<project_id>",
- * }, { async: true }));
+ * }));
  * ```
  *
  * ```typescript
@@ -34,7 +33,7 @@ import * as utilities from "./utilities";
  *     name: "<name>",
  *     namespaceId: "<namespace_id>",
  *     projectId: "<project_id>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
@@ -59,15 +58,15 @@ export interface GetSecretArgs {
     /**
      * The name of the secret (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The namespace id where to assign the namespaced secret (string)
      */
-    readonly namespaceId?: string;
+    namespaceId?: string;
     /**
      * The project id where to assign the secret (string)
      */
-    readonly projectId: string;
+    projectId: string;
 }
 
 /**
@@ -97,4 +96,26 @@ export interface GetSecretResult {
     readonly name: string;
     readonly namespaceId?: string;
     readonly projectId: string;
+}
+
+export function getSecretOutput(args: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
+    return pulumi.output(args).apply(a => getSecret(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecret.
+ */
+export interface GetSecretOutputArgs {
+    /**
+     * The name of the secret (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace id where to assign the namespaced secret (string)
+     */
+    namespaceId?: pulumi.Input<string>;
+    /**
+     * The project id where to assign the secret (string)
+     */
+    projectId: pulumi.Input<string>;
 }

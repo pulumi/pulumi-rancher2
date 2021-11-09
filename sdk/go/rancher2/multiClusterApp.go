@@ -292,7 +292,7 @@ type MultiClusterAppArrayInput interface {
 type MultiClusterAppArray []MultiClusterAppInput
 
 func (MultiClusterAppArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MultiClusterApp)(nil))
+	return reflect.TypeOf((*[]*MultiClusterApp)(nil)).Elem()
 }
 
 func (i MultiClusterAppArray) ToMultiClusterAppArrayOutput() MultiClusterAppArrayOutput {
@@ -317,7 +317,7 @@ type MultiClusterAppMapInput interface {
 type MultiClusterAppMap map[string]MultiClusterAppInput
 
 func (MultiClusterAppMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MultiClusterApp)(nil))
+	return reflect.TypeOf((*map[string]*MultiClusterApp)(nil)).Elem()
 }
 
 func (i MultiClusterAppMap) ToMultiClusterAppMapOutput() MultiClusterAppMapOutput {
@@ -328,9 +328,7 @@ func (i MultiClusterAppMap) ToMultiClusterAppMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterAppMapOutput)
 }
 
-type MultiClusterAppOutput struct {
-	*pulumi.OutputState
-}
+type MultiClusterAppOutput struct{ *pulumi.OutputState }
 
 func (MultiClusterAppOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MultiClusterApp)(nil))
@@ -349,14 +347,12 @@ func (o MultiClusterAppOutput) ToMultiClusterAppPtrOutput() MultiClusterAppPtrOu
 }
 
 func (o MultiClusterAppOutput) ToMultiClusterAppPtrOutputWithContext(ctx context.Context) MultiClusterAppPtrOutput {
-	return o.ApplyT(func(v MultiClusterApp) *MultiClusterApp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiClusterApp) *MultiClusterApp {
 		return &v
 	}).(MultiClusterAppPtrOutput)
 }
 
-type MultiClusterAppPtrOutput struct {
-	*pulumi.OutputState
-}
+type MultiClusterAppPtrOutput struct{ *pulumi.OutputState }
 
 func (MultiClusterAppPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MultiClusterApp)(nil))
@@ -368,6 +364,16 @@ func (o MultiClusterAppPtrOutput) ToMultiClusterAppPtrOutput() MultiClusterAppPt
 
 func (o MultiClusterAppPtrOutput) ToMultiClusterAppPtrOutputWithContext(ctx context.Context) MultiClusterAppPtrOutput {
 	return o
+}
+
+func (o MultiClusterAppPtrOutput) Elem() MultiClusterAppOutput {
+	return o.ApplyT(func(v *MultiClusterApp) MultiClusterApp {
+		if v != nil {
+			return *v
+		}
+		var ret MultiClusterApp
+		return ret
+	}).(MultiClusterAppOutput)
 }
 
 type MultiClusterAppArrayOutput struct{ *pulumi.OutputState }
@@ -411,6 +417,10 @@ func (o MultiClusterAppMapOutput) MapIndex(k pulumi.StringInput) MultiClusterApp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterAppInput)(nil)).Elem(), &MultiClusterApp{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterAppPtrInput)(nil)).Elem(), &MultiClusterApp{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterAppArrayInput)(nil)).Elem(), MultiClusterAppArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterAppMapInput)(nil)).Elem(), MultiClusterAppMap{})
 	pulumi.RegisterOutputType(MultiClusterAppOutput{})
 	pulumi.RegisterOutputType(MultiClusterAppPtrOutput{})
 	pulumi.RegisterOutputType(MultiClusterAppArrayOutput{})

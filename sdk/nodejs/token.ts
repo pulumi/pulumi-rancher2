@@ -164,55 +164,55 @@ export interface TokenState {
     /**
      * (Computed) Token access key part (string)
      */
-    readonly accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * (Computed) Annotations of the token (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Cluster ID for scoped token (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * Token description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * (Computed) Token is enabled (bool)
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * (Computed) Token is expired (bool)
      */
-    readonly expired?: pulumi.Input<boolean>;
+    expired?: pulumi.Input<boolean>;
     /**
      * (Computed) Labels of the token (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * (Computed) Token name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Renew expired or disabled token
      */
-    readonly renew?: pulumi.Input<boolean>;
+    renew?: pulumi.Input<boolean>;
     /**
      * (Computed/Sensitive) Token secret key part (string)
      */
-    readonly secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
     /**
      * (Computed/Sensitive) Token value (string)
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * Token time to live in seconds. Default `0` (int)
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * (Computed) Token user ID (string)
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
 }
 
 /**
@@ -222,25 +222,25 @@ export interface TokenArgs {
     /**
      * (Computed) Annotations of the token (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Cluster ID for scoped token (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * Token description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * (Computed) Labels of the token (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Renew expired or disabled token
      */
-    readonly renew?: pulumi.Input<boolean>;
+    renew?: pulumi.Input<boolean>;
     /**
      * Token time to live in seconds. Default `0` (int)
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetClusterV2Result> InvokeAsync(GetClusterV2Args args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterV2Result>("rancher2:index/getClusterV2:getClusterV2", args ?? new GetClusterV2Args(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 cluster.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetClusterV2.InvokeAsync(new Rancher2.GetClusterV2Args
+        ///         {
+        ///             FleetNamespace = "fleet-ns",
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClusterV2Result> Invoke(GetClusterV2InvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClusterV2Result>("rancher2:index/getClusterV2:getClusterV2", args ?? new GetClusterV2InvokeArgs(), options.WithVersion());
     }
 
 
@@ -58,6 +89,25 @@ namespace Pulumi.Rancher2
         public string Name { get; set; } = null!;
 
         public GetClusterV2Args()
+        {
+        }
+    }
+
+    public sealed class GetClusterV2InvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
+        /// </summary>
+        [Input("fleetNamespace")]
+        public Input<string>? FleetNamespace { get; set; }
+
+        /// <summary>
+        /// The name of the Cluster v2 (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetClusterV2InvokeArgs()
         {
         }
     }

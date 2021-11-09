@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetNamespaceResult> InvokeAsync(GetNamespaceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceResult>("rancher2:index/getNamespace:getNamespace", args ?? new GetNamespaceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 namespace.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetNamespace.InvokeAsync(new Rancher2.GetNamespaceArgs
+        ///         {
+        ///             Name = "foo",
+        ///             ProjectId = rancher2_cluster.Foo_custom.Default_project_id,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNamespaceResult> Invoke(GetNamespaceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNamespaceResult>("rancher2:index/getNamespace:getNamespace", args ?? new GetNamespaceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -58,6 +89,25 @@ namespace Pulumi.Rancher2
         public string ProjectId { get; set; } = null!;
 
         public GetNamespaceArgs()
+        {
+        }
+    }
+
+    public sealed class GetNamespaceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the namespace (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project id where namespace is assigned (string)
+        /// </summary>
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
+        public GetNamespaceInvokeArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +25,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "foo"
-// 		_, err := rancher2.LookupUser(ctx, &rancher2.LookupUserArgs{
+// 		_, err := rancher2.LookupUser(ctx, &GetUserArgs{
 // 			Username: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -67,4 +70,84 @@ type LookupUserResult struct {
 	// (Computed) The user principal IDs (list)
 	PrincipalIds []string `pulumi:"principalIds"`
 	Username     string   `pulumi:"username"`
+}
+
+func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupUserResult, error) {
+			args := v.(LookupUserArgs)
+			r, err := LookupUser(ctx, &args, opts...)
+			return *r, err
+		}).(LookupUserResultOutput)
+}
+
+// A collection of arguments for invoking getUser.
+type LookupUserOutputArgs struct {
+	// Set is the user if the user is external. Default: `false` (bool)
+	IsExternal pulumi.BoolPtrInput `pulumi:"isExternal"`
+	// The name of the user (string)
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The username of the user (string)
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (LookupUserOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getUser.
+type LookupUserResultOutput struct{ *pulumi.OutputState }
+
+func (LookupUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserResult)(nil)).Elem()
+}
+
+func (o LookupUserResultOutput) ToLookupUserResultOutput() LookupUserResultOutput {
+	return o
+}
+
+func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.Context) LookupUserResultOutput {
+	return o
+}
+
+// (Computed) Annotations of the resource (map)
+func (o LookupUserResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupUserResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) The user is enabled (bool)
+func (o LookupUserResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupUserResultOutput) IsExternal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupUserResult) *bool { return v.IsExternal }).(pulumi.BoolPtrOutput)
+}
+
+// (Computed) Labels of the resource (map)
+func (o LookupUserResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupUserResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The user common name (string)
+func (o LookupUserResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed) The user principal IDs (list)
+func (o LookupUserResultOutput) PrincipalIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupUserResult) []string { return v.PrincipalIds }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupUserResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupUserResultOutput{})
 }

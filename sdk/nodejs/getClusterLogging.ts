@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(rancher2.getClusterLogging({
  *     clusterId: "<cluster_id>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getClusterLogging(args: GetClusterLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterLoggingResult> {
@@ -39,7 +39,7 @@ export interface GetClusterLoggingArgs {
     /**
      * The cluster id to configure logging (string)
      */
-    readonly clusterId: string;
+    clusterId: string;
 }
 
 /**
@@ -101,4 +101,18 @@ export interface GetClusterLoggingResult {
      * (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
      */
     readonly syslogConfig: outputs.GetClusterLoggingSyslogConfig;
+}
+
+export function getClusterLoggingOutput(args: GetClusterLoggingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterLoggingResult> {
+    return pulumi.output(args).apply(a => getClusterLogging(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusterLogging.
+ */
+export interface GetClusterLoggingOutputArgs {
+    /**
+     * The cluster id to configure logging (string)
+     */
+    clusterId: pulumi.Input<string>;
 }

@@ -135,31 +135,31 @@ export interface GlobalRoleState {
     /**
      * Annotations for global role object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * (Computed) Builtin global role (bool)
      */
-    readonly builtin?: pulumi.Input<boolean>;
+    builtin?: pulumi.Input<boolean>;
     /**
      * Global role description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Labels for global role object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Global role name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Whether or not this role should be added to new users. Default `false` (bool)
      */
-    readonly newUserDefault?: pulumi.Input<boolean>;
+    newUserDefault?: pulumi.Input<boolean>;
     /**
      * Global role policy rules (list)
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.GlobalRoleRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.GlobalRoleRule>[]>;
 }
 
 /**
@@ -169,25 +169,25 @@ export interface GlobalRoleArgs {
     /**
      * Annotations for global role object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Global role description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Labels for global role object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Global role name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Whether or not this role should be added to new users. Default `false` (bool)
      */
-    readonly newUserDefault?: pulumi.Input<boolean>;
+    newUserDefault?: pulumi.Input<boolean>;
     /**
      * Global role policy rules (list)
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.GlobalRoleRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.GlobalRoleRule>[]>;
 }

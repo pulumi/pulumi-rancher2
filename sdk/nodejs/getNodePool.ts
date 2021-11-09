@@ -42,15 +42,15 @@ export interface GetNodePoolArgs {
     /**
      * The RKE cluster id to use Node Pool (string)
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The name of the Node Pool (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The Node Template ID to use for node creation (string)
      */
-    readonly nodeTemplateId?: string;
+    nodeTemplateId?: string;
 }
 
 /**
@@ -100,4 +100,26 @@ export interface GetNodePoolResult {
      * (Computed) RKE role role for created nodes (bool)
      */
     readonly worker: boolean;
+}
+
+export function getNodePoolOutput(args: GetNodePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodePoolResult> {
+    return pulumi.output(args).apply(a => getNodePool(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNodePool.
+ */
+export interface GetNodePoolOutputArgs {
+    /**
+     * The RKE cluster id to use Node Pool (string)
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The name of the Node Pool (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Node Template ID to use for node creation (string)
+     */
+    nodeTemplateId?: pulumi.Input<string>;
 }

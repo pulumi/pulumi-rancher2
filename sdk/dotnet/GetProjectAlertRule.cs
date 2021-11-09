@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetProjectAlertRuleResult> InvokeAsync(GetProjectAlertRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? new GetProjectAlertRuleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 project alert rule.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetProjectAlertRule.InvokeAsync(new Rancher2.GetProjectAlertRuleArgs
+        ///         {
+        ///             Name = "&lt;project_alert_rule_name&gt;",
+        ///             ProjectId = "&lt;project_id&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetProjectAlertRuleResult> Invoke(GetProjectAlertRuleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? new GetProjectAlertRuleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -70,6 +101,37 @@ namespace Pulumi.Rancher2
         public string ProjectId { get; set; } = null!;
 
         public GetProjectAlertRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectAlertRuleInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("labels")]
+        private InputMap<object>? _labels;
+
+        /// <summary>
+        /// (Computed) The project alert rule labels (map)
+        /// </summary>
+        public InputMap<object> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<object>());
+            set => _labels = value;
+        }
+
+        /// <summary>
+        /// The project alert rule name (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project id where create project alert rule (string)
+        /// </summary>
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
+        public GetProjectAlertRuleInvokeArgs()
         {
         }
     }

@@ -460,7 +460,7 @@ type AuthConfigOpenLdapArrayInput interface {
 type AuthConfigOpenLdapArray []AuthConfigOpenLdapInput
 
 func (AuthConfigOpenLdapArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AuthConfigOpenLdap)(nil))
+	return reflect.TypeOf((*[]*AuthConfigOpenLdap)(nil)).Elem()
 }
 
 func (i AuthConfigOpenLdapArray) ToAuthConfigOpenLdapArrayOutput() AuthConfigOpenLdapArrayOutput {
@@ -485,7 +485,7 @@ type AuthConfigOpenLdapMapInput interface {
 type AuthConfigOpenLdapMap map[string]AuthConfigOpenLdapInput
 
 func (AuthConfigOpenLdapMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AuthConfigOpenLdap)(nil))
+	return reflect.TypeOf((*map[string]*AuthConfigOpenLdap)(nil)).Elem()
 }
 
 func (i AuthConfigOpenLdapMap) ToAuthConfigOpenLdapMapOutput() AuthConfigOpenLdapMapOutput {
@@ -496,9 +496,7 @@ func (i AuthConfigOpenLdapMap) ToAuthConfigOpenLdapMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOpenLdapMapOutput)
 }
 
-type AuthConfigOpenLdapOutput struct {
-	*pulumi.OutputState
-}
+type AuthConfigOpenLdapOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigOpenLdapOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AuthConfigOpenLdap)(nil))
@@ -517,14 +515,12 @@ func (o AuthConfigOpenLdapOutput) ToAuthConfigOpenLdapPtrOutput() AuthConfigOpen
 }
 
 func (o AuthConfigOpenLdapOutput) ToAuthConfigOpenLdapPtrOutputWithContext(ctx context.Context) AuthConfigOpenLdapPtrOutput {
-	return o.ApplyT(func(v AuthConfigOpenLdap) *AuthConfigOpenLdap {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigOpenLdap) *AuthConfigOpenLdap {
 		return &v
 	}).(AuthConfigOpenLdapPtrOutput)
 }
 
-type AuthConfigOpenLdapPtrOutput struct {
-	*pulumi.OutputState
-}
+type AuthConfigOpenLdapPtrOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigOpenLdapPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AuthConfigOpenLdap)(nil))
@@ -536,6 +532,16 @@ func (o AuthConfigOpenLdapPtrOutput) ToAuthConfigOpenLdapPtrOutput() AuthConfigO
 
 func (o AuthConfigOpenLdapPtrOutput) ToAuthConfigOpenLdapPtrOutputWithContext(ctx context.Context) AuthConfigOpenLdapPtrOutput {
 	return o
+}
+
+func (o AuthConfigOpenLdapPtrOutput) Elem() AuthConfigOpenLdapOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) AuthConfigOpenLdap {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigOpenLdap
+		return ret
+	}).(AuthConfigOpenLdapOutput)
 }
 
 type AuthConfigOpenLdapArrayOutput struct{ *pulumi.OutputState }
@@ -579,6 +585,10 @@ func (o AuthConfigOpenLdapMapOutput) MapIndex(k pulumi.StringInput) AuthConfigOp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigOpenLdapInput)(nil)).Elem(), &AuthConfigOpenLdap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigOpenLdapPtrInput)(nil)).Elem(), &AuthConfigOpenLdap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigOpenLdapArrayInput)(nil)).Elem(), AuthConfigOpenLdapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigOpenLdapMapInput)(nil)).Elem(), AuthConfigOpenLdapMap{})
 	pulumi.RegisterOutputType(AuthConfigOpenLdapOutput{})
 	pulumi.RegisterOutputType(AuthConfigOpenLdapPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigOpenLdapArrayOutput{})

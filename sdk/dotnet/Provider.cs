@@ -19,6 +19,43 @@ namespace Pulumi.Rancher2
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// API Key used to authenticate with the rancher server
+        /// </summary>
+        [Output("accessKey")]
+        public Output<string?> AccessKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL to the rancher API
+        /// </summary>
+        [Output("apiUrl")]
+        public Output<string> ApiUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
+        /// </summary>
+        [Output("caCerts")]
+        public Output<string?> CaCerts { get; private set; } = null!;
+
+        /// <summary>
+        /// API secret used to authenticate with the rancher server
+        /// </summary>
+        [Output("secretKey")]
+        public Output<string?> SecretKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
+        /// </summary>
+        [Output("timeout")]
+        public Output<string?> Timeout { get; private set; } = null!;
+
+        /// <summary>
+        /// API token used to authenticate with the rancher server
+        /// </summary>
+        [Output("tokenKey")]
+        public Output<string?> TokenKey { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

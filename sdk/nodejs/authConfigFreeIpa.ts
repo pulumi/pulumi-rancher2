@@ -278,131 +278,131 @@ export interface AuthConfigFreeIpaState {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    readonly accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `freeipa_user://<DN>`  `freeipa_group://<DN>` (list)
      */
-    readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Annotations of the resource (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
      */
-    readonly certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string>;
     /**
      * FreeIpa connection timeout. Default `5000` (int)
      */
-    readonly connectionTimeout?: pulumi.Input<number>;
+    connectionTimeout?: pulumi.Input<number>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Group DN attribute. Default `entryDN` (string)
      */
-    readonly groupDnAttribute?: pulumi.Input<string>;
+    groupDnAttribute?: pulumi.Input<string>;
     /**
      * Group member mapping attribute. Default `member` (string)
      */
-    readonly groupMemberMappingAttribute?: pulumi.Input<string>;
+    groupMemberMappingAttribute?: pulumi.Input<string>;
     /**
      * Group member user attribute. Default `entryDN` (string)
      */
-    readonly groupMemberUserAttribute?: pulumi.Input<string>;
+    groupMemberUserAttribute?: pulumi.Input<string>;
     /**
      * Group name attribute. Default `cn` (string)
      */
-    readonly groupNameAttribute?: pulumi.Input<string>;
+    groupNameAttribute?: pulumi.Input<string>;
     /**
      * Group object class. Default `groupOfNames` (string)
      */
-    readonly groupObjectClass?: pulumi.Input<string>;
+    groupObjectClass?: pulumi.Input<string>;
     /**
      * Group search attribute. Default `cn` (string)
      */
-    readonly groupSearchAttribute?: pulumi.Input<string>;
+    groupSearchAttribute?: pulumi.Input<string>;
     /**
      * Group search base (string)
      */
-    readonly groupSearchBase?: pulumi.Input<string>;
+    groupSearchBase?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * (Computed) The name of the resource (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Nested group membership enable. Default `false` (bool)
      */
-    readonly nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
+    nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
     /**
      * FreeIpa port. Default `389` (int)
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * FreeIpa servers list (list)
      */
-    readonly servers?: pulumi.Input<pulumi.Input<string>[]>;
+    servers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Service account DN for access FreeIpa service (string)
      */
-    readonly serviceAccountDistinguishedName?: pulumi.Input<string>;
+    serviceAccountDistinguishedName?: pulumi.Input<string>;
     /**
      * Service account password for access FreeIpa service (string)
      */
-    readonly serviceAccountPassword?: pulumi.Input<string>;
+    serviceAccountPassword?: pulumi.Input<string>;
     /**
      * Password for test access to FreeIpa service (string)
      */
-    readonly testPassword?: pulumi.Input<string>;
+    testPassword?: pulumi.Input<string>;
     /**
      * Username for test access to FreeIpa service (string)
      */
-    readonly testUsername?: pulumi.Input<string>;
+    testUsername?: pulumi.Input<string>;
     /**
      * Enable TLS connection (bool)
      */
-    readonly tls?: pulumi.Input<boolean>;
+    tls?: pulumi.Input<boolean>;
     /**
      * (Computed) The type of the resource (string)
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * User disabled bit mask (int)
      */
-    readonly userDisabledBitMask?: pulumi.Input<number>;
+    userDisabledBitMask?: pulumi.Input<number>;
     /**
      * User enable attribute (string)
      */
-    readonly userEnabledAttribute?: pulumi.Input<string>;
+    userEnabledAttribute?: pulumi.Input<string>;
     /**
      * User login attribute. Default `uid` (string)
      */
-    readonly userLoginAttribute?: pulumi.Input<string>;
+    userLoginAttribute?: pulumi.Input<string>;
     /**
      * User member attribute. Default `memberOf` (string)
      */
-    readonly userMemberAttribute?: pulumi.Input<string>;
+    userMemberAttribute?: pulumi.Input<string>;
     /**
      * User name attribute. Default `givenName` (string)
      */
-    readonly userNameAttribute?: pulumi.Input<string>;
+    userNameAttribute?: pulumi.Input<string>;
     /**
      * User object class. Default `inetorgperson` (string)
      */
-    readonly userObjectClass?: pulumi.Input<string>;
+    userObjectClass?: pulumi.Input<string>;
     /**
      * User search attribute. Default `uid|sn|givenName` (string)
      */
-    readonly userSearchAttribute?: pulumi.Input<string>;
+    userSearchAttribute?: pulumi.Input<string>;
     /**
      * User search base DN (string)
      */
-    readonly userSearchBase?: pulumi.Input<string>;
+    userSearchBase?: pulumi.Input<string>;
 }
 
 /**
@@ -412,121 +412,121 @@ export interface AuthConfigFreeIpaArgs {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    readonly accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `freeipa_user://<DN>`  `freeipa_group://<DN>` (list)
      */
-    readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Annotations of the resource (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
      */
-    readonly certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string>;
     /**
      * FreeIpa connection timeout. Default `5000` (int)
      */
-    readonly connectionTimeout?: pulumi.Input<number>;
+    connectionTimeout?: pulumi.Input<number>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Group DN attribute. Default `entryDN` (string)
      */
-    readonly groupDnAttribute?: pulumi.Input<string>;
+    groupDnAttribute?: pulumi.Input<string>;
     /**
      * Group member mapping attribute. Default `member` (string)
      */
-    readonly groupMemberMappingAttribute?: pulumi.Input<string>;
+    groupMemberMappingAttribute?: pulumi.Input<string>;
     /**
      * Group member user attribute. Default `entryDN` (string)
      */
-    readonly groupMemberUserAttribute?: pulumi.Input<string>;
+    groupMemberUserAttribute?: pulumi.Input<string>;
     /**
      * Group name attribute. Default `cn` (string)
      */
-    readonly groupNameAttribute?: pulumi.Input<string>;
+    groupNameAttribute?: pulumi.Input<string>;
     /**
      * Group object class. Default `groupOfNames` (string)
      */
-    readonly groupObjectClass?: pulumi.Input<string>;
+    groupObjectClass?: pulumi.Input<string>;
     /**
      * Group search attribute. Default `cn` (string)
      */
-    readonly groupSearchAttribute?: pulumi.Input<string>;
+    groupSearchAttribute?: pulumi.Input<string>;
     /**
      * Group search base (string)
      */
-    readonly groupSearchBase?: pulumi.Input<string>;
+    groupSearchBase?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Nested group membership enable. Default `false` (bool)
      */
-    readonly nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
+    nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
     /**
      * FreeIpa port. Default `389` (int)
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * FreeIpa servers list (list)
      */
-    readonly servers: pulumi.Input<pulumi.Input<string>[]>;
+    servers: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Service account DN for access FreeIpa service (string)
      */
-    readonly serviceAccountDistinguishedName: pulumi.Input<string>;
+    serviceAccountDistinguishedName: pulumi.Input<string>;
     /**
      * Service account password for access FreeIpa service (string)
      */
-    readonly serviceAccountPassword: pulumi.Input<string>;
+    serviceAccountPassword: pulumi.Input<string>;
     /**
      * Password for test access to FreeIpa service (string)
      */
-    readonly testPassword: pulumi.Input<string>;
+    testPassword: pulumi.Input<string>;
     /**
      * Username for test access to FreeIpa service (string)
      */
-    readonly testUsername: pulumi.Input<string>;
+    testUsername: pulumi.Input<string>;
     /**
      * Enable TLS connection (bool)
      */
-    readonly tls?: pulumi.Input<boolean>;
+    tls?: pulumi.Input<boolean>;
     /**
      * User disabled bit mask (int)
      */
-    readonly userDisabledBitMask?: pulumi.Input<number>;
+    userDisabledBitMask?: pulumi.Input<number>;
     /**
      * User enable attribute (string)
      */
-    readonly userEnabledAttribute?: pulumi.Input<string>;
+    userEnabledAttribute?: pulumi.Input<string>;
     /**
      * User login attribute. Default `uid` (string)
      */
-    readonly userLoginAttribute?: pulumi.Input<string>;
+    userLoginAttribute?: pulumi.Input<string>;
     /**
      * User member attribute. Default `memberOf` (string)
      */
-    readonly userMemberAttribute?: pulumi.Input<string>;
+    userMemberAttribute?: pulumi.Input<string>;
     /**
      * User name attribute. Default `givenName` (string)
      */
-    readonly userNameAttribute?: pulumi.Input<string>;
+    userNameAttribute?: pulumi.Input<string>;
     /**
      * User object class. Default `inetorgperson` (string)
      */
-    readonly userObjectClass?: pulumi.Input<string>;
+    userObjectClass?: pulumi.Input<string>;
     /**
      * User search attribute. Default `uid|sn|givenName` (string)
      */
-    readonly userSearchAttribute?: pulumi.Input<string>;
+    userSearchAttribute?: pulumi.Input<string>;
     /**
      * User search base DN (string)
      */
-    readonly userSearchBase: pulumi.Input<string>;
+    userSearchBase: pulumi.Input<string>;
 }

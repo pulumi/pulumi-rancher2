@@ -12,6 +12,7 @@ __all__ = [
     'GetCatalogV2Result',
     'AwaitableGetCatalogV2Result',
     'get_catalog_v2',
+    'get_catalog_v2_output',
 ]
 
 @pulumi.output_type
@@ -252,3 +253,17 @@ def get_catalog_v2(cluster_id: Optional[str] = None,
         service_account=__ret__.service_account,
         service_account_namespace=__ret__.service_account_namespace,
         url=__ret__.url)
+
+
+@_utilities.lift_output_func(get_catalog_v2)
+def get_catalog_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                          name: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogV2Result]:
+    """
+    Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
+
+
+    :param str cluster_id: The cluster id of the catalog V2 (string)
+    :param str name: The name of the catalog v2 (string)
+    """
+    ...

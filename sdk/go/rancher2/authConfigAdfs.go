@@ -326,7 +326,7 @@ type AuthConfigAdfsArrayInput interface {
 type AuthConfigAdfsArray []AuthConfigAdfsInput
 
 func (AuthConfigAdfsArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AuthConfigAdfs)(nil))
+	return reflect.TypeOf((*[]*AuthConfigAdfs)(nil)).Elem()
 }
 
 func (i AuthConfigAdfsArray) ToAuthConfigAdfsArrayOutput() AuthConfigAdfsArrayOutput {
@@ -351,7 +351,7 @@ type AuthConfigAdfsMapInput interface {
 type AuthConfigAdfsMap map[string]AuthConfigAdfsInput
 
 func (AuthConfigAdfsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AuthConfigAdfs)(nil))
+	return reflect.TypeOf((*map[string]*AuthConfigAdfs)(nil)).Elem()
 }
 
 func (i AuthConfigAdfsMap) ToAuthConfigAdfsMapOutput() AuthConfigAdfsMapOutput {
@@ -362,9 +362,7 @@ func (i AuthConfigAdfsMap) ToAuthConfigAdfsMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAdfsMapOutput)
 }
 
-type AuthConfigAdfsOutput struct {
-	*pulumi.OutputState
-}
+type AuthConfigAdfsOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigAdfsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AuthConfigAdfs)(nil))
@@ -383,14 +381,12 @@ func (o AuthConfigAdfsOutput) ToAuthConfigAdfsPtrOutput() AuthConfigAdfsPtrOutpu
 }
 
 func (o AuthConfigAdfsOutput) ToAuthConfigAdfsPtrOutputWithContext(ctx context.Context) AuthConfigAdfsPtrOutput {
-	return o.ApplyT(func(v AuthConfigAdfs) *AuthConfigAdfs {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigAdfs) *AuthConfigAdfs {
 		return &v
 	}).(AuthConfigAdfsPtrOutput)
 }
 
-type AuthConfigAdfsPtrOutput struct {
-	*pulumi.OutputState
-}
+type AuthConfigAdfsPtrOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigAdfsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AuthConfigAdfs)(nil))
@@ -402,6 +398,16 @@ func (o AuthConfigAdfsPtrOutput) ToAuthConfigAdfsPtrOutput() AuthConfigAdfsPtrOu
 
 func (o AuthConfigAdfsPtrOutput) ToAuthConfigAdfsPtrOutputWithContext(ctx context.Context) AuthConfigAdfsPtrOutput {
 	return o
+}
+
+func (o AuthConfigAdfsPtrOutput) Elem() AuthConfigAdfsOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) AuthConfigAdfs {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigAdfs
+		return ret
+	}).(AuthConfigAdfsOutput)
 }
 
 type AuthConfigAdfsArrayOutput struct{ *pulumi.OutputState }
@@ -445,6 +451,10 @@ func (o AuthConfigAdfsMapOutput) MapIndex(k pulumi.StringInput) AuthConfigAdfsOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigAdfsInput)(nil)).Elem(), &AuthConfigAdfs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigAdfsPtrInput)(nil)).Elem(), &AuthConfigAdfs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigAdfsArrayInput)(nil)).Elem(), AuthConfigAdfsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigAdfsMapInput)(nil)).Elem(), AuthConfigAdfsMap{})
 	pulumi.RegisterOutputType(AuthConfigAdfsOutput{})
 	pulumi.RegisterOutputType(AuthConfigAdfsPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigAdfsArrayOutput{})

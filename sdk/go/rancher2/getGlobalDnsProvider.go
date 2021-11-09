@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupGlobalDnsProvider(ctx, &rancher2.LookupGlobalDnsProviderArgs{
+// 		_, err := rancher2.LookupGlobalDnsProvider(ctx, &GetGlobalDnsProviderArgs{
 // 			Name: "foo",
 // 		}, nil)
 // 		if err != nil {
@@ -61,4 +64,82 @@ type LookupGlobalDnsProviderResult struct {
 	Name          string                            `pulumi:"name"`
 	RootDomain    string                            `pulumi:"rootDomain"`
 	Route53Config GetGlobalDnsProviderRoute53Config `pulumi:"route53Config"`
+}
+
+func LookupGlobalDnsProviderOutput(ctx *pulumi.Context, args LookupGlobalDnsProviderOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalDnsProviderResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupGlobalDnsProviderResult, error) {
+			args := v.(LookupGlobalDnsProviderArgs)
+			r, err := LookupGlobalDnsProvider(ctx, &args, opts...)
+			return *r, err
+		}).(LookupGlobalDnsProviderResultOutput)
+}
+
+// A collection of arguments for invoking getGlobalDnsProvider.
+type LookupGlobalDnsProviderOutputArgs struct {
+	// The name of the global DNS provider (string)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupGlobalDnsProviderOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGlobalDnsProviderArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGlobalDnsProvider.
+type LookupGlobalDnsProviderResultOutput struct{ *pulumi.OutputState }
+
+func (LookupGlobalDnsProviderResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGlobalDnsProviderResult)(nil)).Elem()
+}
+
+func (o LookupGlobalDnsProviderResultOutput) ToLookupGlobalDnsProviderResultOutput() LookupGlobalDnsProviderResultOutput {
+	return o
+}
+
+func (o LookupGlobalDnsProviderResultOutput) ToLookupGlobalDnsProviderResultOutputWithContext(ctx context.Context) LookupGlobalDnsProviderResultOutput {
+	return o
+}
+
+func (o LookupGlobalDnsProviderResultOutput) AlidnsConfig() GetGlobalDnsProviderAlidnsConfigOutput {
+	return o.ApplyT(func(v LookupGlobalDnsProviderResult) GetGlobalDnsProviderAlidnsConfig { return v.AlidnsConfig }).(GetGlobalDnsProviderAlidnsConfigOutput)
+}
+
+// (Computed) Annotations of the resource (map)
+func (o LookupGlobalDnsProviderResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupGlobalDnsProviderResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+func (o LookupGlobalDnsProviderResultOutput) CloudflareConfig() GetGlobalDnsProviderCloudflareConfigOutput {
+	return o.ApplyT(func(v LookupGlobalDnsProviderResult) GetGlobalDnsProviderCloudflareConfig { return v.CloudflareConfig }).(GetGlobalDnsProviderCloudflareConfigOutput)
+}
+
+func (o LookupGlobalDnsProviderResultOutput) DnsProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalDnsProviderResult) string { return v.DnsProvider }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupGlobalDnsProviderResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalDnsProviderResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels of the resource (map)
+func (o LookupGlobalDnsProviderResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupGlobalDnsProviderResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The name of the global DNS provider (string)
+func (o LookupGlobalDnsProviderResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalDnsProviderResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalDnsProviderResultOutput) RootDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalDnsProviderResult) string { return v.RootDomain }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalDnsProviderResultOutput) Route53Config() GetGlobalDnsProviderRoute53ConfigOutput {
+	return o.ApplyT(func(v LookupGlobalDnsProviderResult) GetGlobalDnsProviderRoute53Config { return v.Route53Config }).(GetGlobalDnsProviderRoute53ConfigOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupGlobalDnsProviderResultOutput{})
 }

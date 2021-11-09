@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getProjectAlertRule({
  *     name: "<project_alert_rule_name>",
  *     projectId: "<project_id>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getProjectAlertRule(args: GetProjectAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertRuleResult> {
@@ -42,15 +42,15 @@ export interface GetProjectAlertRuleArgs {
     /**
      * (Computed) The project alert rule labels (map)
      */
-    readonly labels?: {[key: string]: any};
+    labels?: {[key: string]: any};
     /**
      * The project alert rule name (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The project id where create project alert rule (string)
      */
-    readonly projectId: string;
+    projectId: string;
 }
 
 /**
@@ -107,4 +107,26 @@ export interface GetProjectAlertRuleResult {
      * (Computed) The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
      */
     readonly workloadRule: outputs.GetProjectAlertRuleWorkloadRule;
+}
+
+export function getProjectAlertRuleOutput(args: GetProjectAlertRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectAlertRuleResult> {
+    return pulumi.output(args).apply(a => getProjectAlertRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProjectAlertRule.
+ */
+export interface GetProjectAlertRuleOutputArgs {
+    /**
+     * (Computed) The project alert rule labels (map)
+     */
+    labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The project alert rule name (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The project id where create project alert rule (string)
+     */
+    projectId: pulumi.Input<string>;
 }

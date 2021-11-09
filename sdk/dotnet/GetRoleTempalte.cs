@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -14,6 +15,9 @@ namespace Pulumi.Rancher2
     {
         public static Task<GetRoleTempalteResult> InvokeAsync(GetRoleTempalteArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoleTempalteResult>("rancher2:index/getRoleTempalte:getRoleTempalte", args ?? new GetRoleTempalteArgs(), options.WithVersion());
+
+        public static Output<GetRoleTempalteResult> Invoke(GetRoleTempalteInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRoleTempalteResult>("rancher2:index/getRoleTempalte:getRoleTempalte", args ?? new GetRoleTempalteInvokeArgs(), options.WithVersion());
     }
 
 
@@ -26,6 +30,19 @@ namespace Pulumi.Rancher2
         public string Name { get; set; } = null!;
 
         public GetRoleTempalteArgs()
+        {
+        }
+    }
+
+    public sealed class GetRoleTempalteInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("context")]
+        public Input<string>? Context { get; set; }
+
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetRoleTempalteInvokeArgs()
         {
         }
     }

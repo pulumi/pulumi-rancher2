@@ -148,39 +148,39 @@ export interface ProjectRoleTemplateBindingState {
     /**
      * Annotations of the resource (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The group ID to assign project role template binding (string)
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The groupPrincipal ID to assign project role template binding (string)
      */
-    readonly groupPrincipalId?: pulumi.Input<string>;
+    groupPrincipalId?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the project role template binding (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The project id where bind project role template (string)
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The role template id from create project role template binding (string)
      */
-    readonly roleTemplateId?: pulumi.Input<string>;
+    roleTemplateId?: pulumi.Input<string>;
     /**
      * The user ID to assign project role template binding (string)
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
     /**
      * The userPrincipal ID to assign project role template binding (string)
      */
-    readonly userPrincipalId?: pulumi.Input<string>;
+    userPrincipalId?: pulumi.Input<string>;
 }
 
 /**
@@ -190,37 +190,37 @@ export interface ProjectRoleTemplateBindingArgs {
     /**
      * Annotations of the resource (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The group ID to assign project role template binding (string)
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The groupPrincipal ID to assign project role template binding (string)
      */
-    readonly groupPrincipalId?: pulumi.Input<string>;
+    groupPrincipalId?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the project role template binding (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The project id where bind project role template (string)
      */
-    readonly projectId: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
     /**
      * The role template id from create project role template binding (string)
      */
-    readonly roleTemplateId: pulumi.Input<string>;
+    roleTemplateId: pulumi.Input<string>;
     /**
      * The user ID to assign project role template binding (string)
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
     /**
      * The userPrincipal ID to assign project role template binding (string)
      */
-    readonly userPrincipalId?: pulumi.Input<string>;
+    userPrincipalId?: pulumi.Input<string>;
 }

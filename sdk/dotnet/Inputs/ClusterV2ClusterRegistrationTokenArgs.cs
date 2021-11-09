@@ -9,4 +9,101 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2.Inputs
 {
+
+    public sealed class ClusterV2ClusterRegistrationTokenArgs : Pulumi.ResourceArgs
+    {
+        [Input("annotations")]
+        private InputMap<object>? _annotations;
+
+        /// <summary>
+        /// Annotations for cluster registration token object (map)
+        /// </summary>
+        public InputMap<object> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<object>());
+            set => _annotations = value;
+        }
+
+        /// <summary>
+        /// Cluster ID (string)
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// Command to execute in a imported k8s cluster (string)
+        /// </summary>
+        [Input("command")]
+        public Input<string>? Command { get; set; }
+
+        /// <summary>
+        /// (Computed) The ID of the resource (string)
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// Insecure command to execute in a imported k8s cluster (string)
+        /// </summary>
+        [Input("insecureCommand")]
+        public Input<string>? InsecureCommand { get; set; }
+
+        /// <summary>
+        /// Insecure node command to execute in a imported k8s cluster (string)
+        /// </summary>
+        [Input("insecureNodeCommand")]
+        public Input<string>? InsecureNodeCommand { get; set; }
+
+        /// <summary>
+        /// Insecure windows command to execute in a imported k8s cluster (string)
+        /// </summary>
+        [Input("insecureWindowsNodeCommand")]
+        public Input<string>? InsecureWindowsNodeCommand { get; set; }
+
+        [Input("labels")]
+        private InputMap<object>? _labels;
+
+        /// <summary>
+        /// Labels for cluster registration token object (map)
+        /// </summary>
+        public InputMap<object> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<object>());
+            set => _labels = value;
+        }
+
+        /// <summary>
+        /// K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+        /// </summary>
+        [Input("manifestUrl")]
+        public Input<string>? ManifestUrl { get; set; }
+
+        /// <summary>
+        /// Name of cluster registration token (string)
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Node command to execute in linux nodes for custom k8s cluster (string)
+        /// </summary>
+        [Input("nodeCommand")]
+        public Input<string>? NodeCommand { get; set; }
+
+        /// <summary>
+        /// Token for cluster registration token object (string)
+        /// </summary>
+        [Input("token")]
+        public Input<string>? Token { get; set; }
+
+        /// <summary>
+        /// Node command to execute in windows nodes for custom k8s cluster (string)
+        /// </summary>
+        [Input("windowsNodeCommand")]
+        public Input<string>? WindowsNodeCommand { get; set; }
+
+        public ClusterV2ClusterRegistrationTokenArgs()
+        {
+        }
+    }
 }

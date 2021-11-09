@@ -134,39 +134,39 @@ export interface SecretV2State {
     /**
      * Annotations for the secret v2 (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id of the secret V2 (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The data of the secret v2 (map)
      */
-    readonly data?: pulumi.Input<{[key: string]: any}>;
+    data?: pulumi.Input<{[key: string]: any}>;
     /**
      * If set to true, any secret update will remove and recreate the secret. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
      */
-    readonly immutable?: pulumi.Input<boolean>;
+    immutable?: pulumi.Input<boolean>;
     /**
      * Labels for the secret v2 (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the secret v2 (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespaces of the secret v2. Default: `default` (string)
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * (Computed) The k8s resource version (string)
      */
-    readonly resourceVersion?: pulumi.Input<string>;
+    resourceVersion?: pulumi.Input<string>;
     /**
      * The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format.  Default: `Opaque` (string)
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -176,33 +176,33 @@ export interface SecretV2Args {
     /**
      * Annotations for the secret v2 (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id of the secret V2 (string)
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The data of the secret v2 (map)
      */
-    readonly data: pulumi.Input<{[key: string]: any}>;
+    data: pulumi.Input<{[key: string]: any}>;
     /**
      * If set to true, any secret update will remove and recreate the secret. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
      */
-    readonly immutable?: pulumi.Input<boolean>;
+    immutable?: pulumi.Input<boolean>;
     /**
      * Labels for the secret v2 (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the secret v2 (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespaces of the secret v2. Default: `default` (string)
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format.  Default: `Opaque` (string)
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

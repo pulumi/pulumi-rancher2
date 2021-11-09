@@ -13,6 +13,7 @@ __all__ = [
     'GetClusterLoggingResult',
     'AwaitableGetClusterLoggingResult',
     'get_cluster_logging',
+    'get_cluster_logging_output',
 ]
 
 @pulumi.output_type
@@ -256,3 +257,24 @@ def get_cluster_logging(cluster_id: Optional[str] = None,
         output_tags=__ret__.output_tags,
         splunk_config=__ret__.splunk_config,
         syslog_config=__ret__.syslog_config)
+
+
+@_utilities.lift_output_func(get_cluster_logging)
+def get_cluster_logging_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterLoggingResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 Cluster Logging.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_logging(cluster_id="<cluster_id>")
+    ```
+
+
+    :param str cluster_id: The cluster id to configure logging (string)
+    """
+    ...

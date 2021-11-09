@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(rancher2.getRoleTemplate({
  *     name: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRoleTemplate(args: GetRoleTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTemplateResult> {
@@ -40,11 +40,11 @@ export interface GetRoleTemplateArgs {
     /**
      * Role template context. `cluster` and `project` values are supported (string)
      */
-    readonly context?: string;
+    context?: string;
     /**
      * The name of the Role Template (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -101,4 +101,22 @@ export interface GetRoleTemplateResult {
      * (Computed) Role template policy rules (list)
      */
     readonly rules: outputs.GetRoleTemplateRule[];
+}
+
+export function getRoleTemplateOutput(args: GetRoleTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleTemplateResult> {
+    return pulumi.output(args).apply(a => getRoleTemplate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRoleTemplate.
+ */
+export interface GetRoleTemplateOutputArgs {
+    /**
+     * Role template context. `cluster` and `project` values are supported (string)
+     */
+    context?: pulumi.Input<string>;
+    /**
+     * The name of the Role Template (string)
+     */
+    name: pulumi.Input<string>;
 }

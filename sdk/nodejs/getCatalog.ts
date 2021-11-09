@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const library = pulumi.output(rancher2.getCatalog({
  *     name: "catalog",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getCatalog(args: GetCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogResult> {
@@ -40,11 +39,11 @@ export interface GetCatalogArgs {
     /**
      * The catalog name.
      */
-    readonly name: string;
+    name: string;
     /**
      * The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
      */
-    readonly scope?: string;
+    scope?: string;
 }
 
 /**
@@ -101,4 +100,22 @@ export interface GetCatalogResult {
      * (Computed) Helm version for the catalog (string)
      */
     readonly version: string;
+}
+
+export function getCatalogOutput(args: GetCatalogOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogResult> {
+    return pulumi.output(args).apply(a => getCatalog(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCatalog.
+ */
+export interface GetCatalogOutputArgs {
+    /**
+     * The catalog name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+     */
+    scope?: pulumi.Input<string>;
 }

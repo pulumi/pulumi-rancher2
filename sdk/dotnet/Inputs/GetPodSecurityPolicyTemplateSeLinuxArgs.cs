@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateSeLinuxArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateSeLinuxInputArgs : Pulumi.ResourceArgs
     {
         [Input("rule", required: true)]
-        public string Rule { get; set; } = null!;
+        public Input<string> Rule { get; set; } = null!;
 
         [Input("seLinuxOption")]
-        public Inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs? SeLinuxOption { get; set; }
+        public Input<Inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionInputArgs>? SeLinuxOption { get; set; }
 
-        public GetPodSecurityPolicyTemplateSeLinuxArgs()
+        public GetPodSecurityPolicyTemplateSeLinuxInputArgs()
         {
         }
     }

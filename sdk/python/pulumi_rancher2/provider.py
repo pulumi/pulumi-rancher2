@@ -273,3 +273,51 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        API Key used to authenticate with the rancher server
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="apiUrl")
+    def api_url(self) -> pulumi.Output[str]:
+        """
+        The URL to the rancher API
+        """
+        return pulumi.get(self, "api_url")
+
+    @property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> pulumi.Output[Optional[str]]:
+        """
+        CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
+        """
+        return pulumi.get(self, "ca_certs")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        API secret used to authenticate with the rancher server
+        """
+        return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Output[Optional[str]]:
+        """
+        Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
+        """
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter(name="tokenKey")
+    def token_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        API token used to authenticate with the rancher server
+        """
+        return pulumi.get(self, "token_key")
+

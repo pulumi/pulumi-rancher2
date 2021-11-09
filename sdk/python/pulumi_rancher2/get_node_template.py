@@ -13,6 +13,7 @@ __all__ = [
     'GetNodeTemplateResult',
     'AwaitableGetNodeTemplateResult',
     'get_node_template',
+    'get_node_template_output',
 ]
 
 @pulumi.output_type
@@ -265,3 +266,26 @@ def get_node_template(name: Optional[str] = None,
         name=__ret__.name,
         node_taints=__ret__.node_taints,
         use_internal_ip_address=__ret__.use_internal_ip_address)
+
+
+@_utilities.lift_output_func(get_node_template)
+def get_node_template_output(name: Optional[pulumi.Input[str]] = None,
+                             use_internal_ip_address: Optional[pulumi.Input[Optional[bool]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeTemplateResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 Node Template resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_node_template(name="foo")
+    ```
+
+
+    :param str name: The name of the Node Template (string)
+    :param bool use_internal_ip_address: (Computed) Engine storage driver for the node template (bool)
+    """
+    ...

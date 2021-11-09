@@ -157,51 +157,51 @@ export interface CloudCredentialState {
     /**
      * AWS config for the Cloud Credential (list maxitems:1)
      */
-    readonly amazonec2CredentialConfig?: pulumi.Input<inputs.CloudCredentialAmazonec2CredentialConfig>;
+    amazonec2CredentialConfig?: pulumi.Input<inputs.CloudCredentialAmazonec2CredentialConfig>;
     /**
      * Annotations for Cloud Credential object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Azure config for the Cloud Credential (list maxitems:1)
      */
-    readonly azureCredentialConfig?: pulumi.Input<inputs.CloudCredentialAzureCredentialConfig>;
+    azureCredentialConfig?: pulumi.Input<inputs.CloudCredentialAzureCredentialConfig>;
     /**
      * Description for the Cloud Credential (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * DigitalOcean config for the Cloud Credential (list maxitems:1)
      */
-    readonly digitaloceanCredentialConfig?: pulumi.Input<inputs.CloudCredentialDigitaloceanCredentialConfig>;
+    digitaloceanCredentialConfig?: pulumi.Input<inputs.CloudCredentialDigitaloceanCredentialConfig>;
     /**
      * (Computed) The driver of the Cloud Credential (string)
      */
-    readonly driver?: pulumi.Input<string>;
+    driver?: pulumi.Input<string>;
     /**
      * Google config for the Cloud Credential (list maxitems:1)
      */
-    readonly googleCredentialConfig?: pulumi.Input<inputs.CloudCredentialGoogleCredentialConfig>;
+    googleCredentialConfig?: pulumi.Input<inputs.CloudCredentialGoogleCredentialConfig>;
     /**
      * Labels for Cloud Credential object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Linode config for the Cloud Credential (list maxitems:1)
      */
-    readonly linodeCredentialConfig?: pulumi.Input<inputs.CloudCredentialLinodeCredentialConfig>;
+    linodeCredentialConfig?: pulumi.Input<inputs.CloudCredentialLinodeCredentialConfig>;
     /**
      * The name of the Cloud Credential (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * OpenStack config for the Cloud Credential (list maxitems:1)
      */
-    readonly openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig>;
+    openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig>;
     /**
      * vSphere config for the Cloud Credential (list maxitems:1)
      */
-    readonly vsphereCredentialConfig?: pulumi.Input<inputs.CloudCredentialVsphereCredentialConfig>;
+    vsphereCredentialConfig?: pulumi.Input<inputs.CloudCredentialVsphereCredentialConfig>;
 }
 
 /**
@@ -211,45 +211,45 @@ export interface CloudCredentialArgs {
     /**
      * AWS config for the Cloud Credential (list maxitems:1)
      */
-    readonly amazonec2CredentialConfig?: pulumi.Input<inputs.CloudCredentialAmazonec2CredentialConfig>;
+    amazonec2CredentialConfig?: pulumi.Input<inputs.CloudCredentialAmazonec2CredentialConfig>;
     /**
      * Annotations for Cloud Credential object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Azure config for the Cloud Credential (list maxitems:1)
      */
-    readonly azureCredentialConfig?: pulumi.Input<inputs.CloudCredentialAzureCredentialConfig>;
+    azureCredentialConfig?: pulumi.Input<inputs.CloudCredentialAzureCredentialConfig>;
     /**
      * Description for the Cloud Credential (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * DigitalOcean config for the Cloud Credential (list maxitems:1)
      */
-    readonly digitaloceanCredentialConfig?: pulumi.Input<inputs.CloudCredentialDigitaloceanCredentialConfig>;
+    digitaloceanCredentialConfig?: pulumi.Input<inputs.CloudCredentialDigitaloceanCredentialConfig>;
     /**
      * Google config for the Cloud Credential (list maxitems:1)
      */
-    readonly googleCredentialConfig?: pulumi.Input<inputs.CloudCredentialGoogleCredentialConfig>;
+    googleCredentialConfig?: pulumi.Input<inputs.CloudCredentialGoogleCredentialConfig>;
     /**
      * Labels for Cloud Credential object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Linode config for the Cloud Credential (list maxitems:1)
      */
-    readonly linodeCredentialConfig?: pulumi.Input<inputs.CloudCredentialLinodeCredentialConfig>;
+    linodeCredentialConfig?: pulumi.Input<inputs.CloudCredentialLinodeCredentialConfig>;
     /**
      * The name of the Cloud Credential (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * OpenStack config for the Cloud Credential (list maxitems:1)
      */
-    readonly openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig>;
+    openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig>;
     /**
      * vSphere config for the Cloud Credential (list maxitems:1)
      */
-    readonly vsphereCredentialConfig?: pulumi.Input<inputs.CloudCredentialVsphereCredentialConfig>;
+    vsphereCredentialConfig?: pulumi.Input<inputs.CloudCredentialVsphereCredentialConfig>;
 }

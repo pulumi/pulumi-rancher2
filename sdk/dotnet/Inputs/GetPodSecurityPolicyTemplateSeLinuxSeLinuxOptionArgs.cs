@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionInputArgs : Pulumi.ResourceArgs
     {
         [Input("level")]
-        public string? Level { get; set; }
+        public Input<string>? Level { get; set; }
 
         [Input("role")]
-        public string? Role { get; set; }
+        public Input<string>? Role { get; set; }
 
         [Input("type")]
-        public string? Type { get; set; }
+        public Input<string>? Type { get; set; }
 
         [Input("user")]
-        public string? User { get; set; }
+        public Input<string>? User { get; set; }
 
-        public GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs()
+        public GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionInputArgs()
         {
         }
     }

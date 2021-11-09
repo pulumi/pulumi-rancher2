@@ -193,55 +193,55 @@ export interface RoleTemplateState {
     /**
      * Administrative role template. Default `false` (bool)
      */
-    readonly administrative?: pulumi.Input<boolean>;
+    administrative?: pulumi.Input<boolean>;
     /**
      * Annotations for role template object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * (Computed) Builtin role template (string)
      */
-    readonly builtin?: pulumi.Input<boolean>;
+    builtin?: pulumi.Input<boolean>;
     /**
      * Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
      */
-    readonly context?: pulumi.Input<string>;
+    context?: pulumi.Input<string>;
     /**
      * Default role template for new created cluster or project. Default `false` (bool)
      */
-    readonly defaultRole?: pulumi.Input<boolean>;
+    defaultRole?: pulumi.Input<boolean>;
     /**
      * Role template description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * External role template. Default `false` (bool)
      */
-    readonly external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean>;
     /**
      * Hidden role template. Default `false` (bool)
      */
-    readonly hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean>;
     /**
      * Labels for role template object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Locked role template. Default `false` (bool)
      */
-    readonly locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean>;
     /**
      * Role template name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Inherit role template IDs (list)
      */
-    readonly roleTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    roleTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Role template policy rules (list)
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateRule>[]>;
 }
 
 /**
@@ -251,49 +251,49 @@ export interface RoleTemplateArgs {
     /**
      * Administrative role template. Default `false` (bool)
      */
-    readonly administrative?: pulumi.Input<boolean>;
+    administrative?: pulumi.Input<boolean>;
     /**
      * Annotations for role template object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
      */
-    readonly context?: pulumi.Input<string>;
+    context?: pulumi.Input<string>;
     /**
      * Default role template for new created cluster or project. Default `false` (bool)
      */
-    readonly defaultRole?: pulumi.Input<boolean>;
+    defaultRole?: pulumi.Input<boolean>;
     /**
      * Role template description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * External role template. Default `false` (bool)
      */
-    readonly external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean>;
     /**
      * Hidden role template. Default `false` (bool)
      */
-    readonly hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean>;
     /**
      * Labels for role template object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Locked role template. Default `false` (bool)
      */
-    readonly locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean>;
     /**
      * Role template name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Inherit role template IDs (list)
      */
-    readonly roleTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    roleTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Role template policy rules (list)
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateRule>[]>;
 }

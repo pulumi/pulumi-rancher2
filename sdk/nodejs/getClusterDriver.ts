@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(rancher2.getClusterDriver({
  *     name: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getClusterDriver(args: GetClusterDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterDriverResult> {
@@ -40,11 +39,11 @@ export interface GetClusterDriverArgs {
     /**
      * Name of the cluster driver (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The URL to download the machine driver binary for 64-bit Linux (string)
      */
-    readonly url?: string;
+    url?: string;
 }
 
 /**
@@ -89,4 +88,22 @@ export interface GetClusterDriverResult {
      * (Computed) Domains to whitelist for the ui (list)
      */
     readonly whitelistDomains: string[];
+}
+
+export function getClusterDriverOutput(args: GetClusterDriverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterDriverResult> {
+    return pulumi.output(args).apply(a => getClusterDriver(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusterDriver.
+ */
+export interface GetClusterDriverOutputArgs {
+    /**
+     * Name of the cluster driver (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The URL to download the machine driver binary for 64-bit Linux (string)
+     */
+    url?: pulumi.Input<string>;
 }

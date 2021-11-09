@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getClusterAlterRule({
  *     clusterId: "<cluster_id>",
  *     name: "<cluster_alert_rule_name>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getClusterAlterRule(args: GetClusterAlterRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlterRuleResult> {
@@ -42,15 +42,15 @@ export interface GetClusterAlterRuleArgs {
     /**
      * The cluster id where create cluster alert rule (string)
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * (Computed) The cluster alert rule labels (map)
      */
-    readonly labels?: {[key: string]: any};
+    labels?: {[key: string]: any};
     /**
      * The cluster alert rule name (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -111,4 +111,26 @@ export interface GetClusterAlterRuleResult {
      * (Computed) The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
      */
     readonly systemServiceRule: outputs.GetClusterAlterRuleSystemServiceRule;
+}
+
+export function getClusterAlterRuleOutput(args: GetClusterAlterRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAlterRuleResult> {
+    return pulumi.output(args).apply(a => getClusterAlterRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusterAlterRule.
+ */
+export interface GetClusterAlterRuleOutputArgs {
+    /**
+     * The cluster id where create cluster alert rule (string)
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * (Computed) The cluster alert rule labels (map)
+     */
+    labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The cluster alert rule name (string)
+     */
+    name: pulumi.Input<string>;
 }

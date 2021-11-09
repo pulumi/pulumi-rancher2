@@ -162,43 +162,43 @@ export interface ClusterDriverState {
     /**
      * Specify the cluster driver state (bool)
      */
-    readonly active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean>;
     /**
      * Actual url of the cluster driver (string)
      */
-    readonly actualUrl?: pulumi.Input<string>;
+    actualUrl?: pulumi.Input<string>;
     /**
      * Annotations of the resource (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Specify whether the cluster driver is an internal cluster driver or not (bool)
      */
-    readonly builtin?: pulumi.Input<boolean>;
+    builtin?: pulumi.Input<boolean>;
     /**
      * Verify that the downloaded driver matches the expected checksum (string)
      */
-    readonly checksum?: pulumi.Input<string>;
+    checksum?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Name of the cluster driver (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The URL to load for customized Add Clusters screen for this driver (string)
      */
-    readonly uiUrl?: pulumi.Input<string>;
+    uiUrl?: pulumi.Input<string>;
     /**
      * The URL to download the machine driver binary for 64-bit Linux (string)
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
     /**
      * Domains to whitelist for the ui (list)
      */
-    readonly whitelistDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    whitelistDomains?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -208,41 +208,41 @@ export interface ClusterDriverArgs {
     /**
      * Specify the cluster driver state (bool)
      */
-    readonly active: pulumi.Input<boolean>;
+    active: pulumi.Input<boolean>;
     /**
      * Actual url of the cluster driver (string)
      */
-    readonly actualUrl?: pulumi.Input<string>;
+    actualUrl?: pulumi.Input<string>;
     /**
      * Annotations of the resource (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Specify whether the cluster driver is an internal cluster driver or not (bool)
      */
-    readonly builtin: pulumi.Input<boolean>;
+    builtin: pulumi.Input<boolean>;
     /**
      * Verify that the downloaded driver matches the expected checksum (string)
      */
-    readonly checksum?: pulumi.Input<string>;
+    checksum?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Name of the cluster driver (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The URL to load for customized Add Clusters screen for this driver (string)
      */
-    readonly uiUrl?: pulumi.Input<string>;
+    uiUrl?: pulumi.Input<string>;
     /**
      * The URL to download the machine driver binary for 64-bit Linux (string)
      */
-    readonly url: pulumi.Input<string>;
+    url: pulumi.Input<string>;
     /**
      * Domains to whitelist for the ui (list)
      */
-    readonly whitelistDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    whitelistDomains?: pulumi.Input<pulumi.Input<string>[]>;
 }

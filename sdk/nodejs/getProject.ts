@@ -26,11 +26,11 @@ export interface GetProjectArgs {
     /**
      * ID of the Rancher 2 cluster (string)
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The project name (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -75,4 +75,22 @@ export interface GetProjectResult {
      * (Computed) UUID of the project as stored by Rancher 2 (string)
      */
     readonly uuid: string;
+}
+
+export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
+    return pulumi.output(args).apply(a => getProject(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProject.
+ */
+export interface GetProjectOutputArgs {
+    /**
+     * ID of the Rancher 2 cluster (string)
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The project name (string)
+     */
+    name: pulumi.Input<string>;
 }

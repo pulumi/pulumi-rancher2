@@ -285,7 +285,7 @@ type CatalogV2ArrayInput interface {
 type CatalogV2Array []CatalogV2Input
 
 func (CatalogV2Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CatalogV2)(nil))
+	return reflect.TypeOf((*[]*CatalogV2)(nil)).Elem()
 }
 
 func (i CatalogV2Array) ToCatalogV2ArrayOutput() CatalogV2ArrayOutput {
@@ -310,7 +310,7 @@ type CatalogV2MapInput interface {
 type CatalogV2Map map[string]CatalogV2Input
 
 func (CatalogV2Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CatalogV2)(nil))
+	return reflect.TypeOf((*map[string]*CatalogV2)(nil)).Elem()
 }
 
 func (i CatalogV2Map) ToCatalogV2MapOutput() CatalogV2MapOutput {
@@ -321,9 +321,7 @@ func (i CatalogV2Map) ToCatalogV2MapOutputWithContext(ctx context.Context) Catal
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogV2MapOutput)
 }
 
-type CatalogV2Output struct {
-	*pulumi.OutputState
-}
+type CatalogV2Output struct{ *pulumi.OutputState }
 
 func (CatalogV2Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*CatalogV2)(nil))
@@ -342,14 +340,12 @@ func (o CatalogV2Output) ToCatalogV2PtrOutput() CatalogV2PtrOutput {
 }
 
 func (o CatalogV2Output) ToCatalogV2PtrOutputWithContext(ctx context.Context) CatalogV2PtrOutput {
-	return o.ApplyT(func(v CatalogV2) *CatalogV2 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CatalogV2) *CatalogV2 {
 		return &v
 	}).(CatalogV2PtrOutput)
 }
 
-type CatalogV2PtrOutput struct {
-	*pulumi.OutputState
-}
+type CatalogV2PtrOutput struct{ *pulumi.OutputState }
 
 func (CatalogV2PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CatalogV2)(nil))
@@ -361,6 +357,16 @@ func (o CatalogV2PtrOutput) ToCatalogV2PtrOutput() CatalogV2PtrOutput {
 
 func (o CatalogV2PtrOutput) ToCatalogV2PtrOutputWithContext(ctx context.Context) CatalogV2PtrOutput {
 	return o
+}
+
+func (o CatalogV2PtrOutput) Elem() CatalogV2Output {
+	return o.ApplyT(func(v *CatalogV2) CatalogV2 {
+		if v != nil {
+			return *v
+		}
+		var ret CatalogV2
+		return ret
+	}).(CatalogV2Output)
 }
 
 type CatalogV2ArrayOutput struct{ *pulumi.OutputState }
@@ -404,6 +410,10 @@ func (o CatalogV2MapOutput) MapIndex(k pulumi.StringInput) CatalogV2Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CatalogV2Input)(nil)).Elem(), &CatalogV2{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CatalogV2PtrInput)(nil)).Elem(), &CatalogV2{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CatalogV2ArrayInput)(nil)).Elem(), CatalogV2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CatalogV2MapInput)(nil)).Elem(), CatalogV2Map{})
 	pulumi.RegisterOutputType(CatalogV2Output{})
 	pulumi.RegisterOutputType(CatalogV2PtrOutput{})
 	pulumi.RegisterOutputType(CatalogV2ArrayOutput{})

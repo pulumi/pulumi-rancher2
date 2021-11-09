@@ -27,7 +27,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
-// 			Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
+// 			Amazonec2CredentialConfig: &CloudCredentialAmazonec2CredentialConfigArgs{
 // 				AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
 // 				SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
 // 			},
@@ -272,7 +272,7 @@ type CloudCredentialArrayInput interface {
 type CloudCredentialArray []CloudCredentialInput
 
 func (CloudCredentialArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CloudCredential)(nil))
+	return reflect.TypeOf((*[]*CloudCredential)(nil)).Elem()
 }
 
 func (i CloudCredentialArray) ToCloudCredentialArrayOutput() CloudCredentialArrayOutput {
@@ -297,7 +297,7 @@ type CloudCredentialMapInput interface {
 type CloudCredentialMap map[string]CloudCredentialInput
 
 func (CloudCredentialMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CloudCredential)(nil))
+	return reflect.TypeOf((*map[string]*CloudCredential)(nil)).Elem()
 }
 
 func (i CloudCredentialMap) ToCloudCredentialMapOutput() CloudCredentialMapOutput {
@@ -308,9 +308,7 @@ func (i CloudCredentialMap) ToCloudCredentialMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CloudCredentialMapOutput)
 }
 
-type CloudCredentialOutput struct {
-	*pulumi.OutputState
-}
+type CloudCredentialOutput struct{ *pulumi.OutputState }
 
 func (CloudCredentialOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CloudCredential)(nil))
@@ -329,14 +327,12 @@ func (o CloudCredentialOutput) ToCloudCredentialPtrOutput() CloudCredentialPtrOu
 }
 
 func (o CloudCredentialOutput) ToCloudCredentialPtrOutputWithContext(ctx context.Context) CloudCredentialPtrOutput {
-	return o.ApplyT(func(v CloudCredential) *CloudCredential {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudCredential) *CloudCredential {
 		return &v
 	}).(CloudCredentialPtrOutput)
 }
 
-type CloudCredentialPtrOutput struct {
-	*pulumi.OutputState
-}
+type CloudCredentialPtrOutput struct{ *pulumi.OutputState }
 
 func (CloudCredentialPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CloudCredential)(nil))
@@ -348,6 +344,16 @@ func (o CloudCredentialPtrOutput) ToCloudCredentialPtrOutput() CloudCredentialPt
 
 func (o CloudCredentialPtrOutput) ToCloudCredentialPtrOutputWithContext(ctx context.Context) CloudCredentialPtrOutput {
 	return o
+}
+
+func (o CloudCredentialPtrOutput) Elem() CloudCredentialOutput {
+	return o.ApplyT(func(v *CloudCredential) CloudCredential {
+		if v != nil {
+			return *v
+		}
+		var ret CloudCredential
+		return ret
+	}).(CloudCredentialOutput)
 }
 
 type CloudCredentialArrayOutput struct{ *pulumi.OutputState }
@@ -391,6 +397,10 @@ func (o CloudCredentialMapOutput) MapIndex(k pulumi.StringInput) CloudCredential
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudCredentialInput)(nil)).Elem(), &CloudCredential{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudCredentialPtrInput)(nil)).Elem(), &CloudCredential{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudCredentialArrayInput)(nil)).Elem(), CloudCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudCredentialMapInput)(nil)).Elem(), CloudCredentialMap{})
 	pulumi.RegisterOutputType(CloudCredentialOutput{})
 	pulumi.RegisterOutputType(CloudCredentialPtrOutput{})
 	pulumi.RegisterOutputType(CloudCredentialArrayOutput{})

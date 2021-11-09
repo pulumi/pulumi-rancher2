@@ -350,115 +350,115 @@ export interface PodSecurityPolicyTemplateState {
     /**
      * = (Optional)
      */
-    readonly allowPrivilegeEscalation?: pulumi.Input<boolean>;
+    allowPrivilegeEscalation?: pulumi.Input<boolean>;
     /**
      * (list)
      */
-    readonly allowedCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (list)
      */
-    readonly allowedCsiDrivers?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateAllowedCsiDriver>[]>;
+    allowedCsiDrivers?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateAllowedCsiDriver>[]>;
     /**
      * (list)
      */
-    readonly allowedFlexVolumes?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateAllowedFlexVolume>[]>;
+    allowedFlexVolumes?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateAllowedFlexVolume>[]>;
     /**
      * (list)
      */
-    readonly allowedHostPaths?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateAllowedHostPath>[]>;
+    allowedHostPaths?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateAllowedHostPath>[]>;
     /**
      * (list)
      */
-    readonly allowedProcMountTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedProcMountTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (list)
      */
-    readonly allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Annotations for PodSecurityPolicyTemplate object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * (list)
      */
-    readonly defaultAddCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultAddCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (list)
      */
-    readonly defaultAllowPrivilegeEscalation?: pulumi.Input<boolean>;
+    defaultAllowPrivilegeEscalation?: pulumi.Input<boolean>;
     /**
      * The PodSecurityPolicyTemplate description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * (list)
      */
-    readonly forbiddenSysctls?: pulumi.Input<pulumi.Input<string>[]>;
+    forbiddenSysctls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (list maxitems:1)
      */
-    readonly fsGroup?: pulumi.Input<inputs.PodSecurityPolicyTemplateFsGroup>;
+    fsGroup?: pulumi.Input<inputs.PodSecurityPolicyTemplateFsGroup>;
     /**
      * (bool)
      */
-    readonly hostIpc?: pulumi.Input<boolean>;
+    hostIpc?: pulumi.Input<boolean>;
     /**
      * hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
      */
-    readonly hostNetwork?: pulumi.Input<boolean>;
+    hostNetwork?: pulumi.Input<boolean>;
     /**
      * (bool)
      */
-    readonly hostPid?: pulumi.Input<boolean>;
+    hostPid?: pulumi.Input<boolean>;
     /**
      * (list)
      */
-    readonly hostPorts?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateHostPort>[]>;
+    hostPorts?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateHostPort>[]>;
     /**
      * Labels for PodSecurityPolicyTemplate object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the PodSecurityPolicyTemplate (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * (bool)
      */
-    readonly privileged?: pulumi.Input<boolean>;
+    privileged?: pulumi.Input<boolean>;
     /**
      * (bool)
      */
-    readonly readOnlyRootFilesystem?: pulumi.Input<boolean>;
+    readOnlyRootFilesystem?: pulumi.Input<boolean>;
     /**
      * (list)
      */
-    readonly requiredDropCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredDropCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (list maxitems:1)
      */
-    readonly runAsGroup?: pulumi.Input<inputs.PodSecurityPolicyTemplateRunAsGroup>;
+    runAsGroup?: pulumi.Input<inputs.PodSecurityPolicyTemplateRunAsGroup>;
     /**
      * (list maxitems:1)
      */
-    readonly runAsUser?: pulumi.Input<inputs.PodSecurityPolicyTemplateRunAsUser>;
+    runAsUser?: pulumi.Input<inputs.PodSecurityPolicyTemplateRunAsUser>;
     /**
      * (list maxitems:1)
      */
-    readonly runtimeClass?: pulumi.Input<inputs.PodSecurityPolicyTemplateRuntimeClass>;
+    runtimeClass?: pulumi.Input<inputs.PodSecurityPolicyTemplateRuntimeClass>;
     /**
      * (list maxitems:1)
      */
-    readonly seLinux?: pulumi.Input<inputs.PodSecurityPolicyTemplateSeLinux>;
+    seLinux?: pulumi.Input<inputs.PodSecurityPolicyTemplateSeLinux>;
     /**
      * (list maxitems:1)
      */
-    readonly supplementalGroup?: pulumi.Input<inputs.PodSecurityPolicyTemplateSupplementalGroup>;
+    supplementalGroup?: pulumi.Input<inputs.PodSecurityPolicyTemplateSupplementalGroup>;
     /**
      * (list)
      */
-    readonly volumes?: pulumi.Input<pulumi.Input<string>[]>;
+    volumes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -468,113 +468,113 @@ export interface PodSecurityPolicyTemplateArgs {
     /**
      * = (Optional)
      */
-    readonly allowPrivilegeEscalation?: pulumi.Input<boolean>;
+    allowPrivilegeEscalation?: pulumi.Input<boolean>;
     /**
      * (list)
      */
-    readonly allowedCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (list)
      */
-    readonly allowedCsiDrivers?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateAllowedCsiDriver>[]>;
+    allowedCsiDrivers?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateAllowedCsiDriver>[]>;
     /**
      * (list)
      */
-    readonly allowedFlexVolumes?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateAllowedFlexVolume>[]>;
+    allowedFlexVolumes?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateAllowedFlexVolume>[]>;
     /**
      * (list)
      */
-    readonly allowedHostPaths?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateAllowedHostPath>[]>;
+    allowedHostPaths?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateAllowedHostPath>[]>;
     /**
      * (list)
      */
-    readonly allowedProcMountTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedProcMountTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (list)
      */
-    readonly allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Annotations for PodSecurityPolicyTemplate object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * (list)
      */
-    readonly defaultAddCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultAddCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (list)
      */
-    readonly defaultAllowPrivilegeEscalation?: pulumi.Input<boolean>;
+    defaultAllowPrivilegeEscalation?: pulumi.Input<boolean>;
     /**
      * The PodSecurityPolicyTemplate description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * (list)
      */
-    readonly forbiddenSysctls?: pulumi.Input<pulumi.Input<string>[]>;
+    forbiddenSysctls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (list maxitems:1)
      */
-    readonly fsGroup?: pulumi.Input<inputs.PodSecurityPolicyTemplateFsGroup>;
+    fsGroup?: pulumi.Input<inputs.PodSecurityPolicyTemplateFsGroup>;
     /**
      * (bool)
      */
-    readonly hostIpc?: pulumi.Input<boolean>;
+    hostIpc?: pulumi.Input<boolean>;
     /**
      * hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
      */
-    readonly hostNetwork?: pulumi.Input<boolean>;
+    hostNetwork?: pulumi.Input<boolean>;
     /**
      * (bool)
      */
-    readonly hostPid?: pulumi.Input<boolean>;
+    hostPid?: pulumi.Input<boolean>;
     /**
      * (list)
      */
-    readonly hostPorts?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateHostPort>[]>;
+    hostPorts?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateHostPort>[]>;
     /**
      * Labels for PodSecurityPolicyTemplate object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the PodSecurityPolicyTemplate (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * (bool)
      */
-    readonly privileged?: pulumi.Input<boolean>;
+    privileged?: pulumi.Input<boolean>;
     /**
      * (bool)
      */
-    readonly readOnlyRootFilesystem?: pulumi.Input<boolean>;
+    readOnlyRootFilesystem?: pulumi.Input<boolean>;
     /**
      * (list)
      */
-    readonly requiredDropCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredDropCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (list maxitems:1)
      */
-    readonly runAsGroup?: pulumi.Input<inputs.PodSecurityPolicyTemplateRunAsGroup>;
+    runAsGroup?: pulumi.Input<inputs.PodSecurityPolicyTemplateRunAsGroup>;
     /**
      * (list maxitems:1)
      */
-    readonly runAsUser?: pulumi.Input<inputs.PodSecurityPolicyTemplateRunAsUser>;
+    runAsUser?: pulumi.Input<inputs.PodSecurityPolicyTemplateRunAsUser>;
     /**
      * (list maxitems:1)
      */
-    readonly runtimeClass?: pulumi.Input<inputs.PodSecurityPolicyTemplateRuntimeClass>;
+    runtimeClass?: pulumi.Input<inputs.PodSecurityPolicyTemplateRuntimeClass>;
     /**
      * (list maxitems:1)
      */
-    readonly seLinux?: pulumi.Input<inputs.PodSecurityPolicyTemplateSeLinux>;
+    seLinux?: pulumi.Input<inputs.PodSecurityPolicyTemplateSeLinux>;
     /**
      * (list maxitems:1)
      */
-    readonly supplementalGroup?: pulumi.Input<inputs.PodSecurityPolicyTemplateSupplementalGroup>;
+    supplementalGroup?: pulumi.Input<inputs.PodSecurityPolicyTemplateSupplementalGroup>;
     /**
      * (list)
      */
-    readonly volumes?: pulumi.Input<pulumi.Input<string>[]>;
+    volumes?: pulumi.Input<pulumi.Input<string>[]>;
 }

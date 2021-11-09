@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupCatalog(ctx, &rancher2.LookupCatalogArgs{
+// 		_, err := rancher2.LookupCatalog(ctx, &GetCatalogArgs{
 // 			Name: "catalog",
 // 		}, nil)
 // 		if err != nil {
@@ -76,4 +79,112 @@ type LookupCatalogResult struct {
 	Username string `pulumi:"username"`
 	// (Computed) Helm version for the catalog (string)
 	Version string `pulumi:"version"`
+}
+
+func LookupCatalogOutput(ctx *pulumi.Context, args LookupCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupCatalogResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupCatalogResult, error) {
+			args := v.(LookupCatalogArgs)
+			r, err := LookupCatalog(ctx, &args, opts...)
+			return *r, err
+		}).(LookupCatalogResultOutput)
+}
+
+// A collection of arguments for invoking getCatalog.
+type LookupCatalogOutputArgs struct {
+	// The catalog name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+}
+
+func (LookupCatalogOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCatalogArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCatalog.
+type LookupCatalogResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCatalogResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCatalogResult)(nil)).Elem()
+}
+
+func (o LookupCatalogResultOutput) ToLookupCatalogResultOutput() LookupCatalogResultOutput {
+	return o
+}
+
+func (o LookupCatalogResultOutput) ToLookupCatalogResultOutputWithContext(ctx context.Context) LookupCatalogResultOutput {
+	return o
+}
+
+// (Computed) Annotations for the catalog (map)
+func (o LookupCatalogResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupCatalogResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) The branch of the catalog repo to use (string)
+func (o LookupCatalogResultOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// (Computed) The cluster id of the catalog (string)
+func (o LookupCatalogResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// (Computed) A catalog description (string)
+func (o LookupCatalogResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupCatalogResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) The kind of the catalog. Just helm by the moment (string)
+func (o LookupCatalogResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels for the catalog (map)
+func (o LookupCatalogResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupCatalogResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupCatalogResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed/Sensitive) The password to access the catalog if needed (string)
+func (o LookupCatalogResultOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// (Computed) The project id of the catalog (string)
+func (o LookupCatalogResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o LookupCatalogResultOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCatalogResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// (Computed) The url of the catalog repo (string)
+func (o LookupCatalogResultOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// (Computed/Sensitive) The username to access the catalog if needed (string)
+func (o LookupCatalogResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// (Computed) Helm version for the catalog (string)
+func (o LookupCatalogResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCatalogResultOutput{})
 }

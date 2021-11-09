@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupCluster(ctx, &rancher2.LookupClusterArgs{
+// 		_, err := rancher2.LookupCluster(ctx, &GetClusterArgs{
 // 			Name: "foo-custom",
 // 		}, nil)
 // 		if err != nil {
@@ -113,4 +116,209 @@ type LookupClusterResult struct {
 	ScheduledClusterScans []GetClusterScheduledClusterScan `pulumi:"scheduledClusterScans"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId string `pulumi:"systemProjectId"`
+}
+
+func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupClusterResult, error) {
+			args := v.(LookupClusterArgs)
+			r, err := LookupCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupClusterResultOutput)
+}
+
+// A collection of arguments for invoking getCluster.
+type LookupClusterOutputArgs struct {
+	// The name of the Cluster (string)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCluster.
+type LookupClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterResult)(nil)).Elem()
+}
+
+func (o LookupClusterResultOutput) ToLookupClusterResultOutput() LookupClusterResultOutput {
+	return o
+}
+
+func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx context.Context) LookupClusterResultOutput {
+	return o
+}
+
+// (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+func (o LookupClusterResultOutput) AgentEnvVars() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []string { return v.AgentEnvVars }).(pulumi.StringArrayOutput)
+}
+
+// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o LookupClusterResultOutput) AksConfig() GetClusterAksConfigOutput {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterAksConfig { return v.AksConfig }).(GetClusterAksConfigOutput)
+}
+
+// (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o LookupClusterResultOutput) AksConfigV2() GetClusterAksConfigV2Output {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterAksConfigV2 { return v.AksConfigV2 }).(GetClusterAksConfigV2Output)
+}
+
+// (Computed) Annotations for Node Pool object (map)
+func (o LookupClusterResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) K8s cluster ca cert (string)
+func (o LookupClusterResultOutput) CaCert() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.CaCert }).(pulumi.StringOutput)
+}
+
+// (Computed) Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
+func (o LookupClusterResultOutput) ClusterAuthEndpoint() GetClusterClusterAuthEndpointOutput {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterClusterAuthEndpoint { return v.ClusterAuthEndpoint }).(GetClusterClusterAuthEndpointOutput)
+}
+
+// (Computed) Cluster monitoring config (list maxitems:1)
+func (o LookupClusterResultOutput) ClusterMonitoringInput() GetClusterClusterMonitoringInputOutput {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterClusterMonitoringInput { return v.ClusterMonitoringInput }).(GetClusterClusterMonitoringInputOutput)
+}
+
+// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
+func (o LookupClusterResultOutput) ClusterRegistrationToken() GetClusterClusterRegistrationTokenOutput {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterClusterRegistrationToken { return v.ClusterRegistrationToken }).(GetClusterClusterRegistrationTokenOutput)
+}
+
+// (Computed) Cluster template answers (list maxitems:1)
+func (o LookupClusterResultOutput) ClusterTemplateAnswers() GetClusterClusterTemplateAnswersOutput {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterClusterTemplateAnswers { return v.ClusterTemplateAnswers }).(GetClusterClusterTemplateAnswersOutput)
+}
+
+// (Computed) Cluster template ID (string)
+func (o LookupClusterResultOutput) ClusterTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterTemplateId }).(pulumi.StringOutput)
+}
+
+// (Computed) Cluster template questions (list)
+func (o LookupClusterResultOutput) ClusterTemplateQuestions() GetClusterClusterTemplateQuestionArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterClusterTemplateQuestion { return v.ClusterTemplateQuestions }).(GetClusterClusterTemplateQuestionArrayOutput)
+}
+
+// (Computed) Cluster template revision ID (string)
+func (o LookupClusterResultOutput) ClusterTemplateRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterTemplateRevisionId }).(pulumi.StringOutput)
+}
+
+// (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
+func (o LookupClusterResultOutput) DefaultPodSecurityPolicyTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DefaultPodSecurityPolicyTemplateId }).(pulumi.StringOutput)
+}
+
+// (Computed) Default project ID for the cluster (string)
+func (o LookupClusterResultOutput) DefaultProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DefaultProjectId }).(pulumi.StringOutput)
+}
+
+// (Computed) The description for Cluster (string)
+func (o LookupClusterResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
+func (o LookupClusterResultOutput) Driver() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Driver }).(pulumi.StringOutput)
+}
+
+// (Computed) The Amazon eks configuration for `eks` Conflicts with `aksConfig`, `aksConfigV2`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o LookupClusterResultOutput) EksConfig() GetClusterEksConfigOutput {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterEksConfig { return v.EksConfig }).(GetClusterEksConfigOutput)
+}
+
+// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+func (o LookupClusterResultOutput) EksConfigV2() GetClusterEksConfigV2Output {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterEksConfigV2 { return v.EksConfigV2 }).(GetClusterEksConfigV2Output)
+}
+
+func (o LookupClusterResultOutput) EnableClusterAlerting() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableClusterAlerting }).(pulumi.BoolOutput)
+}
+
+// (Computed) Enable built-in cluster monitoring. Default `false` (bool)
+func (o LookupClusterResultOutput) EnableClusterMonitoring() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableClusterMonitoring }).(pulumi.BoolOutput)
+}
+
+// (Computed) Enable project network isolation. Default `false` (bool)
+func (o LookupClusterResultOutput) EnableNetworkPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableNetworkPolicy }).(pulumi.BoolOutput)
+}
+
+// (Computed) Fleet workspace name (string)
+func (o LookupClusterResultOutput) FleetWorkspaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.FleetWorkspaceName }).(pulumi.StringOutput)
+}
+
+// (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1) (list maxitems:1)
+func (o LookupClusterResultOutput) GkeConfig() GetClusterGkeConfigOutput {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterGkeConfig { return v.GkeConfig }).(GetClusterGkeConfigOutput)
+}
+
+// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+func (o LookupClusterResultOutput) GkeConfigV2() GetClusterGkeConfigV2Output {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterGkeConfigV2 { return v.GkeConfigV2 }).(GetClusterGkeConfigV2Output)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
+func (o LookupClusterResultOutput) K3sConfig() GetClusterK3sConfigOutput {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterK3sConfig { return v.K3sConfig }).(GetClusterK3sConfigOutput)
+}
+
+// (Computed) Kube Config generated for the cluster (string)
+func (o LookupClusterResultOutput) KubeConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.KubeConfig }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels for Node Pool object (map)
+func (o LookupClusterResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o LookupClusterResultOutput) OkeConfig() GetClusterOkeConfigOutput {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterOkeConfig { return v.OkeConfig }).(GetClusterOkeConfigOutput)
+}
+
+// (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o LookupClusterResultOutput) Rke2Config() GetClusterRke2ConfigOutput {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterRke2Config { return v.Rke2Config }).(GetClusterRke2ConfigOutput)
+}
+
+// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
+func (o LookupClusterResultOutput) RkeConfig() GetClusterRkeConfigOutput {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterRkeConfig { return v.RkeConfig }).(GetClusterRkeConfigOutput)
+}
+
+func (o LookupClusterResultOutput) ScheduledClusterScans() GetClusterScheduledClusterScanArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterScheduledClusterScan { return v.ScheduledClusterScans }).(GetClusterScheduledClusterScanArrayOutput)
+}
+
+// (Computed) System project ID for the cluster (string)
+func (o LookupClusterResultOutput) SystemProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.SystemProjectId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupClusterResultOutput{})
 }

@@ -87,19 +87,19 @@ export interface FeatureState {
     /**
      * Annotations for feature object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Labels for feature object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the feature (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The value of the feature. Default: `false` (bool)
      */
-    readonly value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean>;
 }
 
 /**
@@ -109,17 +109,17 @@ export interface FeatureArgs {
     /**
      * Annotations for feature object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Labels for feature object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the feature (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The value of the feature. Default: `false` (bool)
      */
-    readonly value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean>;
 }

@@ -10,20 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateRunAsGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateRunAsGroupInputArgs : Pulumi.ResourceArgs
     {
         [Input("ranges")]
-        private List<Inputs.GetPodSecurityPolicyTemplateRunAsGroupRangeArgs>? _ranges;
-        public List<Inputs.GetPodSecurityPolicyTemplateRunAsGroupRangeArgs> Ranges
+        private InputList<Inputs.GetPodSecurityPolicyTemplateRunAsGroupRangeInputArgs>? _ranges;
+        public InputList<Inputs.GetPodSecurityPolicyTemplateRunAsGroupRangeInputArgs> Ranges
         {
-            get => _ranges ?? (_ranges = new List<Inputs.GetPodSecurityPolicyTemplateRunAsGroupRangeArgs>());
+            get => _ranges ?? (_ranges = new InputList<Inputs.GetPodSecurityPolicyTemplateRunAsGroupRangeInputArgs>());
             set => _ranges = value;
         }
 
         [Input("rule", required: true)]
-        public string Rule { get; set; } = null!;
+        public Input<string> Rule { get; set; } = null!;
 
-        public GetPodSecurityPolicyTemplateRunAsGroupArgs()
+        public GetPodSecurityPolicyTemplateRunAsGroupInputArgs()
         {
         }
     }

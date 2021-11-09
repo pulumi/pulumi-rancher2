@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupProjectRoleTemplateBinding(ctx, &rancher2.LookupProjectRoleTemplateBindingArgs{
+// 		_, err := rancher2.LookupProjectRoleTemplateBinding(ctx, &GetProjectRoleTemplateBindingArgs{
 // 			Name:      "foo",
 // 			ProjectId: "foo_id",
 // 		}, nil)
@@ -70,4 +73,93 @@ type LookupProjectRoleTemplateBindingResult struct {
 	UserId string `pulumi:"userId"`
 	// (Computed) The userPrincipal ID to assign project role template binding (string)
 	UserPrincipalId string `pulumi:"userPrincipalId"`
+}
+
+func LookupProjectRoleTemplateBindingOutput(ctx *pulumi.Context, args LookupProjectRoleTemplateBindingOutputArgs, opts ...pulumi.InvokeOption) LookupProjectRoleTemplateBindingResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupProjectRoleTemplateBindingResult, error) {
+			args := v.(LookupProjectRoleTemplateBindingArgs)
+			r, err := LookupProjectRoleTemplateBinding(ctx, &args, opts...)
+			return *r, err
+		}).(LookupProjectRoleTemplateBindingResultOutput)
+}
+
+// A collection of arguments for invoking getProjectRoleTemplateBinding.
+type LookupProjectRoleTemplateBindingOutputArgs struct {
+	// The name of the project role template binding (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project id where bind project role template (string)
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The role template id from create project role template binding (string)
+	RoleTemplateId pulumi.StringPtrInput `pulumi:"roleTemplateId"`
+}
+
+func (LookupProjectRoleTemplateBindingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectRoleTemplateBindingArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProjectRoleTemplateBinding.
+type LookupProjectRoleTemplateBindingResultOutput struct{ *pulumi.OutputState }
+
+func (LookupProjectRoleTemplateBindingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectRoleTemplateBindingResult)(nil)).Elem()
+}
+
+func (o LookupProjectRoleTemplateBindingResultOutput) ToLookupProjectRoleTemplateBindingResultOutput() LookupProjectRoleTemplateBindingResultOutput {
+	return o
+}
+
+func (o LookupProjectRoleTemplateBindingResultOutput) ToLookupProjectRoleTemplateBindingResultOutputWithContext(ctx context.Context) LookupProjectRoleTemplateBindingResultOutput {
+	return o
+}
+
+// (Computed) Annotations of the resource (map)
+func (o LookupProjectRoleTemplateBindingResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) The group ID to assign project role template binding (string)
+func (o LookupProjectRoleTemplateBindingResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// (Computed) The groupPrincipal ID to assign project role template binding (string)
+func (o LookupProjectRoleTemplateBindingResultOutput) GroupPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) string { return v.GroupPrincipalId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupProjectRoleTemplateBindingResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels of the resource (map)
+func (o LookupProjectRoleTemplateBindingResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupProjectRoleTemplateBindingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectRoleTemplateBindingResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectRoleTemplateBindingResultOutput) RoleTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) string { return v.RoleTemplateId }).(pulumi.StringOutput)
+}
+
+// (Computed) The user ID to assign project role template binding (string)
+func (o LookupProjectRoleTemplateBindingResultOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// (Computed) The userPrincipal ID to assign project role template binding (string)
+func (o LookupProjectRoleTemplateBindingResultOutput) UserPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) string { return v.UserPrincipalId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupProjectRoleTemplateBindingResultOutput{})
 }

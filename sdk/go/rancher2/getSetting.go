@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupSetting(ctx, &rancher2.LookupSettingArgs{
+// 		_, err := rancher2.LookupSetting(ctx, &GetSettingArgs{
 // 			Name: "server-image",
 // 		}, nil)
 // 		if err != nil {
@@ -53,4 +56,56 @@ type LookupSettingResult struct {
 	Name string `pulumi:"name"`
 	// the settting's value.
 	Value string `pulumi:"value"`
+}
+
+func LookupSettingOutput(ctx *pulumi.Context, args LookupSettingOutputArgs, opts ...pulumi.InvokeOption) LookupSettingResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSettingResult, error) {
+			args := v.(LookupSettingArgs)
+			r, err := LookupSetting(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSettingResultOutput)
+}
+
+// A collection of arguments for invoking getSetting.
+type LookupSettingOutputArgs struct {
+	// The setting name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupSettingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSettingArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSetting.
+type LookupSettingResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSettingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSettingResult)(nil)).Elem()
+}
+
+func (o LookupSettingResultOutput) ToLookupSettingResultOutput() LookupSettingResultOutput {
+	return o
+}
+
+func (o LookupSettingResultOutput) ToLookupSettingResultOutputWithContext(ctx context.Context) LookupSettingResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSettingResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSettingResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupSettingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSettingResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// the settting's value.
+func (o LookupSettingResultOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSettingResult) string { return v.Value }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSettingResultOutput{})
 }

@@ -146,51 +146,51 @@ export interface MachineConfigV2State {
     /**
      * AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    readonly amazonec2Config?: pulumi.Input<inputs.MachineConfigV2Amazonec2Config>;
+    amazonec2Config?: pulumi.Input<inputs.MachineConfigV2Amazonec2Config>;
     /**
      * Annotations for Machine Config V2 object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    readonly azureConfig?: pulumi.Input<inputs.MachineConfigV2AzureConfig>;
+    azureConfig?: pulumi.Input<inputs.MachineConfigV2AzureConfig>;
     /**
      * Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    readonly digitaloceanConfig?: pulumi.Input<inputs.MachineConfigV2DigitaloceanConfig>;
+    digitaloceanConfig?: pulumi.Input<inputs.MachineConfigV2DigitaloceanConfig>;
     /**
      * Cluster V2 fleet namespace
      */
-    readonly fleetNamespace?: pulumi.Input<string>;
+    fleetNamespace?: pulumi.Input<string>;
     /**
      * Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\"prod-pool1\" will generate \"nc-prod-pool1-?????\" name computed at `name` attribute (string)
      */
-    readonly generateName?: pulumi.Input<string>;
+    generateName?: pulumi.Input<string>;
     /**
      * (Computed) The machine config kind (string)
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Labels for Machine Config V2 object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    readonly linodeConfig?: pulumi.Input<inputs.MachineConfigV2LinodeConfig>;
+    linodeConfig?: pulumi.Input<inputs.MachineConfigV2LinodeConfig>;
     /**
      * (Computed) The machine config name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `vsphereConfig` (list maxitems:1)
      */
-    readonly openstackConfig?: pulumi.Input<inputs.MachineConfigV2OpenstackConfig>;
+    openstackConfig?: pulumi.Input<inputs.MachineConfigV2OpenstackConfig>;
     /**
      * vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `openstackConfig` (list maxitems:1)
      */
-    readonly vsphereConfig?: pulumi.Input<inputs.MachineConfigV2VsphereConfig>;
+    vsphereConfig?: pulumi.Input<inputs.MachineConfigV2VsphereConfig>;
 }
 
 /**
@@ -200,41 +200,41 @@ export interface MachineConfigV2Args {
     /**
      * AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    readonly amazonec2Config?: pulumi.Input<inputs.MachineConfigV2Amazonec2Config>;
+    amazonec2Config?: pulumi.Input<inputs.MachineConfigV2Amazonec2Config>;
     /**
      * Annotations for Machine Config V2 object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    readonly azureConfig?: pulumi.Input<inputs.MachineConfigV2AzureConfig>;
+    azureConfig?: pulumi.Input<inputs.MachineConfigV2AzureConfig>;
     /**
      * Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    readonly digitaloceanConfig?: pulumi.Input<inputs.MachineConfigV2DigitaloceanConfig>;
+    digitaloceanConfig?: pulumi.Input<inputs.MachineConfigV2DigitaloceanConfig>;
     /**
      * Cluster V2 fleet namespace
      */
-    readonly fleetNamespace?: pulumi.Input<string>;
+    fleetNamespace?: pulumi.Input<string>;
     /**
      * Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\"prod-pool1\" will generate \"nc-prod-pool1-?????\" name computed at `name` attribute (string)
      */
-    readonly generateName: pulumi.Input<string>;
+    generateName: pulumi.Input<string>;
     /**
      * Labels for Machine Config V2 object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    readonly linodeConfig?: pulumi.Input<inputs.MachineConfigV2LinodeConfig>;
+    linodeConfig?: pulumi.Input<inputs.MachineConfigV2LinodeConfig>;
     /**
      * Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `vsphereConfig` (list maxitems:1)
      */
-    readonly openstackConfig?: pulumi.Input<inputs.MachineConfigV2OpenstackConfig>;
+    openstackConfig?: pulumi.Input<inputs.MachineConfigV2OpenstackConfig>;
     /**
      * vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `openstackConfig` (list maxitems:1)
      */
-    readonly vsphereConfig?: pulumi.Input<inputs.MachineConfigV2VsphereConfig>;
+    vsphereConfig?: pulumi.Input<inputs.MachineConfigV2VsphereConfig>;
 }
