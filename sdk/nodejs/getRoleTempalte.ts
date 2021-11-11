@@ -25,8 +25,8 @@ export function getRoleTempalte(args: GetRoleTempalteArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getRoleTempalte.
  */
 export interface GetRoleTempalteArgs {
-    readonly context?: string;
-    readonly name: string;
+    context?: string;
+    name: string;
 }
 
 /**
@@ -50,4 +50,16 @@ export interface GetRoleTempalteResult {
     readonly name: string;
     readonly roleTemplateIds: string[];
     readonly rules: outputs.GetRoleTempalteRule[];
+}
+
+export function getRoleTempalteOutput(args: GetRoleTempalteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleTempalteResult> {
+    return pulumi.output(args).apply(a => getRoleTempalte(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRoleTempalte.
+ */
+export interface GetRoleTempalteOutputArgs {
+    context?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }

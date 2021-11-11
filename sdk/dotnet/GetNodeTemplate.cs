@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetNodeTemplateResult> InvokeAsync(GetNodeTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? new GetNodeTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Node Template resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetNodeTemplate.InvokeAsync(new Rancher2.GetNodeTemplateArgs
+        ///         {
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNodeTemplateResult> Invoke(GetNodeTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? new GetNodeTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -57,6 +87,25 @@ namespace Pulumi.Rancher2
         public bool? UseInternalIpAddress { get; set; }
 
         public GetNodeTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetNodeTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the Node Template (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// (Computed) Engine storage driver for the node template (bool)
+        /// </summary>
+        [Input("useInternalIpAddress")]
+        public Input<bool>? UseInternalIpAddress { get; set; }
+
+        public GetNodeTemplateInvokeArgs()
         {
         }
     }

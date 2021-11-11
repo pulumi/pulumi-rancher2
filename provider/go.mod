@@ -6,7 +6,7 @@ replace (
 	github.com/crewjam/saml => github.com/crewjam/saml v0.4.1
 	github.com/docker/distribution => github.com/docker/distribution v0.0.0-20191216044856-a8371794149d
 	github.com/docker/docker => github.com/moby/moby v17.12.0-ce-rc1.0.20200618181300-9dc6525e6118+incompatible
-	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
+	github.com/hashicorp/go-getter => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/rancher/norman => github.com/rancher/norman v0.0.0-20210608202517-59b3523c3133
 	github.com/rancher/rancher => github.com/rancher/rancher v0.0.0-20210830223634-df2432ad895c
@@ -43,7 +43,7 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.14.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.0.0
-	github.com/pulumi/pulumi/sdk/v3 v3.0.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.11.0
+	github.com/pulumi/pulumi/sdk/v3 v3.17.0
 	github.com/rancher/terraform-provider-rancher2 v1.10.2
 )

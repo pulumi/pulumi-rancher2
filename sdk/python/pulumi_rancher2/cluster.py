@@ -1400,17 +1400,17 @@ class Cluster(pulumi.CustomResource):
             template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
                 name="V1",
                 cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config={
-                        "network": {
-                            "plugin": "canal",
-                        },
-                        "services": {
-                            "etcd": {
-                                "creation": "6h",
-                                "retention": "24h",
-                            },
-                        },
-                    },
+                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
+                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
+                            plugin="canal",
+                        ),
+                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
+                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
+                                creation="6h",
+                                retention="24h",
+                            ),
+                        ),
+                    ),
                 ),
                 default=True,
             )],
@@ -1463,10 +1463,10 @@ class Cluster(pulumi.CustomResource):
                         ),
                     ),
                 ),
-                upgrade_strategy={
-                    "drain": True,
-                    "maxUnavailableWorker": "20%",
-                },
+                upgrade_strategy=rancher2.ClusterRkeConfigUpgradeStrategyArgs(
+                    drain=True,
+                    max_unavailable_worker="20%",
+                ),
             ))
         ```
         ### Creating Rancher v2 RKE cluster with scheduled cluster scan. For Rancher v2.4.x or above.
@@ -1877,17 +1877,17 @@ class Cluster(pulumi.CustomResource):
             template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
                 name="V1",
                 cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config={
-                        "network": {
-                            "plugin": "canal",
-                        },
-                        "services": {
-                            "etcd": {
-                                "creation": "6h",
-                                "retention": "24h",
-                            },
-                        },
-                    },
+                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
+                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
+                            plugin="canal",
+                        ),
+                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
+                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
+                                creation="6h",
+                                retention="24h",
+                            ),
+                        ),
+                    ),
                 ),
                 default=True,
             )],
@@ -1940,10 +1940,10 @@ class Cluster(pulumi.CustomResource):
                         ),
                     ),
                 ),
-                upgrade_strategy={
-                    "drain": True,
-                    "maxUnavailableWorker": "20%",
-                },
+                upgrade_strategy=rancher2.ClusterRkeConfigUpgradeStrategyArgs(
+                    drain=True,
+                    max_unavailable_worker="20%",
+                ),
             ))
         ```
         ### Creating Rancher v2 RKE cluster with scheduled cluster scan. For Rancher v2.4.x or above.

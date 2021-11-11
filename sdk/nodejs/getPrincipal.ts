@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(rancher2.getPrincipal({
  *     name: "user@example.com",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPrincipal(args: GetPrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetPrincipalResult> {
@@ -40,11 +39,11 @@ export interface GetPrincipalArgs {
     /**
      * The full name of the principal (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)
      */
-    readonly type?: string;
+    type?: string;
 }
 
 /**
@@ -57,4 +56,22 @@ export interface GetPrincipalResult {
     readonly id: string;
     readonly name: string;
     readonly type?: string;
+}
+
+export function getPrincipalOutput(args: GetPrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrincipalResult> {
+    return pulumi.output(args).apply(a => getPrincipal(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPrincipal.
+ */
+export interface GetPrincipalOutputArgs {
+    /**
+     * The full name of the principal (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)
+     */
+    type?: pulumi.Input<string>;
 }

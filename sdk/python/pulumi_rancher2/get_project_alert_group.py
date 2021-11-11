@@ -13,6 +13,7 @@ __all__ = [
     'GetProjectAlertGroupResult',
     'AwaitableGetProjectAlertGroupResult',
     'get_project_alert_group',
+    'get_project_alert_group_output',
 ]
 
 @pulumi.output_type
@@ -185,3 +186,27 @@ def get_project_alert_group(name: Optional[str] = None,
         project_id=__ret__.project_id,
         recipients=__ret__.recipients,
         repeat_interval_seconds=__ret__.repeat_interval_seconds)
+
+
+@_utilities.lift_output_func(get_project_alert_group)
+def get_project_alert_group_output(name: Optional[pulumi.Input[str]] = None,
+                                   project_id: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectAlertGroupResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 project alert group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_project_alert_group(name="<project_alert_group_name>",
+        project_id="<project_id>")
+    ```
+
+
+    :param str name: The project alert group name (string)
+    :param str project_id: The project id where create project alert group (string)
+    """
+    ...

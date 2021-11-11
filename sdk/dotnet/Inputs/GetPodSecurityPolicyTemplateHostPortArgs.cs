@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateHostPortArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateHostPortInputArgs : Pulumi.ResourceArgs
     {
         [Input("max", required: true)]
-        public int Max { get; set; }
+        public Input<int> Max { get; set; } = null!;
 
         [Input("min", required: true)]
-        public int Min { get; set; }
+        public Input<int> Min { get; set; } = null!;
 
-        public GetPodSecurityPolicyTemplateHostPortArgs()
+        public GetPodSecurityPolicyTemplateHostPortInputArgs()
         {
         }
     }

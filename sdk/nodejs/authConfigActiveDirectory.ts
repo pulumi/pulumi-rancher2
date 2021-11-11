@@ -298,143 +298,143 @@ export interface AuthConfigActiveDirectoryState {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    readonly accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
      */
-    readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Annotations of the resource (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * CA certificate for TLS if selfsigned (string)
      */
-    readonly certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string>;
     /**
      * ActiveDirectory connection timeout. Default `5000` (int)
      */
-    readonly connectionTimeout?: pulumi.Input<number>;
+    connectionTimeout?: pulumi.Input<number>;
     /**
      * ActiveDirectory defult login domain (string)
      */
-    readonly defaultLoginDomain?: pulumi.Input<string>;
+    defaultLoginDomain?: pulumi.Input<string>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Group DN attribute. Default `distinguishedName` (string)
      */
-    readonly groupDnAttribute?: pulumi.Input<string>;
+    groupDnAttribute?: pulumi.Input<string>;
     /**
      * Group member mapping attribute. Default `member` (string)
      */
-    readonly groupMemberMappingAttribute?: pulumi.Input<string>;
+    groupMemberMappingAttribute?: pulumi.Input<string>;
     /**
      * Group member user attribute. Default `distinguishedName` (string)
      */
-    readonly groupMemberUserAttribute?: pulumi.Input<string>;
+    groupMemberUserAttribute?: pulumi.Input<string>;
     /**
      * Group name attribute. Default `name` (string)
      */
-    readonly groupNameAttribute?: pulumi.Input<string>;
+    groupNameAttribute?: pulumi.Input<string>;
     /**
      * Group object class. Default `group` (string)
      */
-    readonly groupObjectClass?: pulumi.Input<string>;
+    groupObjectClass?: pulumi.Input<string>;
     /**
      * Group search attribute. Default `sAMAccountName` (string)
      */
-    readonly groupSearchAttribute?: pulumi.Input<string>;
+    groupSearchAttribute?: pulumi.Input<string>;
     /**
      * Group search base (string)
      */
-    readonly groupSearchBase?: pulumi.Input<string>;
+    groupSearchBase?: pulumi.Input<string>;
     /**
      * Group search filter (string)
      */
-    readonly groupSearchFilter?: pulumi.Input<string>;
+    groupSearchFilter?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * (Computed) The name of the resource (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Nested group membership enable. Default `false` (bool)
      */
-    readonly nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
+    nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
     /**
      * ActiveDirectory port. Default `389` (int)
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * ActiveDirectory servers list (list)
      */
-    readonly servers?: pulumi.Input<pulumi.Input<string>[]>;
+    servers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Service account password for access ActiveDirectory service (string)
      */
-    readonly serviceAccountPassword?: pulumi.Input<string>;
+    serviceAccountPassword?: pulumi.Input<string>;
     /**
      * Service account DN for access ActiveDirectory service (string)
      */
-    readonly serviceAccountUsername?: pulumi.Input<string>;
+    serviceAccountUsername?: pulumi.Input<string>;
     /**
      * Enable start TLS connection (bool)
      */
-    readonly startTls?: pulumi.Input<boolean>;
+    startTls?: pulumi.Input<boolean>;
     /**
      * Password for test access to ActiveDirectory service (string)
      */
-    readonly testPassword?: pulumi.Input<string>;
+    testPassword?: pulumi.Input<string>;
     /**
      * Username for test access to ActiveDirectory service (string)
      */
-    readonly testUsername?: pulumi.Input<string>;
+    testUsername?: pulumi.Input<string>;
     /**
      * Enable TLS connection (bool)
      */
-    readonly tls?: pulumi.Input<boolean>;
+    tls?: pulumi.Input<boolean>;
     /**
      * (Computed) The type of the resource (string)
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * User disabled bit mask. Default `2` (int)
      */
-    readonly userDisabledBitMask?: pulumi.Input<number>;
+    userDisabledBitMask?: pulumi.Input<number>;
     /**
      * User enable attribute (string)
      */
-    readonly userEnabledAttribute?: pulumi.Input<string>;
+    userEnabledAttribute?: pulumi.Input<string>;
     /**
      * User login attribute. Default `sAMAccountName` (string)
      */
-    readonly userLoginAttribute?: pulumi.Input<string>;
+    userLoginAttribute?: pulumi.Input<string>;
     /**
      * User name attribute. Default `name` (string)
      */
-    readonly userNameAttribute?: pulumi.Input<string>;
+    userNameAttribute?: pulumi.Input<string>;
     /**
      * User object class. Default `person` (string)
      */
-    readonly userObjectClass?: pulumi.Input<string>;
+    userObjectClass?: pulumi.Input<string>;
     /**
      * User search attribute. Default `sAMAccountName|sn|givenName` (string)
      */
-    readonly userSearchAttribute?: pulumi.Input<string>;
+    userSearchAttribute?: pulumi.Input<string>;
     /**
      * User search base DN (string)
      */
-    readonly userSearchBase?: pulumi.Input<string>;
+    userSearchBase?: pulumi.Input<string>;
     /**
      * User search filter (string)
      */
-    readonly userSearchFilter?: pulumi.Input<string>;
+    userSearchFilter?: pulumi.Input<string>;
 }
 
 /**
@@ -444,133 +444,133 @@ export interface AuthConfigActiveDirectoryArgs {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    readonly accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
      */
-    readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Annotations of the resource (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * CA certificate for TLS if selfsigned (string)
      */
-    readonly certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string>;
     /**
      * ActiveDirectory connection timeout. Default `5000` (int)
      */
-    readonly connectionTimeout?: pulumi.Input<number>;
+    connectionTimeout?: pulumi.Input<number>;
     /**
      * ActiveDirectory defult login domain (string)
      */
-    readonly defaultLoginDomain?: pulumi.Input<string>;
+    defaultLoginDomain?: pulumi.Input<string>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Group DN attribute. Default `distinguishedName` (string)
      */
-    readonly groupDnAttribute?: pulumi.Input<string>;
+    groupDnAttribute?: pulumi.Input<string>;
     /**
      * Group member mapping attribute. Default `member` (string)
      */
-    readonly groupMemberMappingAttribute?: pulumi.Input<string>;
+    groupMemberMappingAttribute?: pulumi.Input<string>;
     /**
      * Group member user attribute. Default `distinguishedName` (string)
      */
-    readonly groupMemberUserAttribute?: pulumi.Input<string>;
+    groupMemberUserAttribute?: pulumi.Input<string>;
     /**
      * Group name attribute. Default `name` (string)
      */
-    readonly groupNameAttribute?: pulumi.Input<string>;
+    groupNameAttribute?: pulumi.Input<string>;
     /**
      * Group object class. Default `group` (string)
      */
-    readonly groupObjectClass?: pulumi.Input<string>;
+    groupObjectClass?: pulumi.Input<string>;
     /**
      * Group search attribute. Default `sAMAccountName` (string)
      */
-    readonly groupSearchAttribute?: pulumi.Input<string>;
+    groupSearchAttribute?: pulumi.Input<string>;
     /**
      * Group search base (string)
      */
-    readonly groupSearchBase?: pulumi.Input<string>;
+    groupSearchBase?: pulumi.Input<string>;
     /**
      * Group search filter (string)
      */
-    readonly groupSearchFilter?: pulumi.Input<string>;
+    groupSearchFilter?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Nested group membership enable. Default `false` (bool)
      */
-    readonly nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
+    nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
     /**
      * ActiveDirectory port. Default `389` (int)
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * ActiveDirectory servers list (list)
      */
-    readonly servers: pulumi.Input<pulumi.Input<string>[]>;
+    servers: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Service account password for access ActiveDirectory service (string)
      */
-    readonly serviceAccountPassword: pulumi.Input<string>;
+    serviceAccountPassword: pulumi.Input<string>;
     /**
      * Service account DN for access ActiveDirectory service (string)
      */
-    readonly serviceAccountUsername: pulumi.Input<string>;
+    serviceAccountUsername: pulumi.Input<string>;
     /**
      * Enable start TLS connection (bool)
      */
-    readonly startTls?: pulumi.Input<boolean>;
+    startTls?: pulumi.Input<boolean>;
     /**
      * Password for test access to ActiveDirectory service (string)
      */
-    readonly testPassword: pulumi.Input<string>;
+    testPassword: pulumi.Input<string>;
     /**
      * Username for test access to ActiveDirectory service (string)
      */
-    readonly testUsername: pulumi.Input<string>;
+    testUsername: pulumi.Input<string>;
     /**
      * Enable TLS connection (bool)
      */
-    readonly tls?: pulumi.Input<boolean>;
+    tls?: pulumi.Input<boolean>;
     /**
      * User disabled bit mask. Default `2` (int)
      */
-    readonly userDisabledBitMask?: pulumi.Input<number>;
+    userDisabledBitMask?: pulumi.Input<number>;
     /**
      * User enable attribute (string)
      */
-    readonly userEnabledAttribute?: pulumi.Input<string>;
+    userEnabledAttribute?: pulumi.Input<string>;
     /**
      * User login attribute. Default `sAMAccountName` (string)
      */
-    readonly userLoginAttribute?: pulumi.Input<string>;
+    userLoginAttribute?: pulumi.Input<string>;
     /**
      * User name attribute. Default `name` (string)
      */
-    readonly userNameAttribute?: pulumi.Input<string>;
+    userNameAttribute?: pulumi.Input<string>;
     /**
      * User object class. Default `person` (string)
      */
-    readonly userObjectClass?: pulumi.Input<string>;
+    userObjectClass?: pulumi.Input<string>;
     /**
      * User search attribute. Default `sAMAccountName|sn|givenName` (string)
      */
-    readonly userSearchAttribute?: pulumi.Input<string>;
+    userSearchAttribute?: pulumi.Input<string>;
     /**
      * User search base DN (string)
      */
-    readonly userSearchBase: pulumi.Input<string>;
+    userSearchBase: pulumi.Input<string>;
     /**
      * User search filter (string)
      */
-    readonly userSearchFilter?: pulumi.Input<string>;
+    userSearchFilter?: pulumi.Input<string>;
 }

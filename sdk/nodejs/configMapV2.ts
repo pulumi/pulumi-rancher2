@@ -128,35 +128,35 @@ export interface ConfigMapV2State {
     /**
      * Annotations for the configMap v2 (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id of the configMap V2 (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The data of the configMap v2 (map)
      */
-    readonly data?: pulumi.Input<{[key: string]: any}>;
+    data?: pulumi.Input<{[key: string]: any}>;
     /**
      * If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
      */
-    readonly immutable?: pulumi.Input<boolean>;
+    immutable?: pulumi.Input<boolean>;
     /**
      * Labels for the configMap v2 (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the configMap v2 (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespaces of the configMap v2. Default: `default` (string)
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * (Computed) The k8s resource version (string)
      */
-    readonly resourceVersion?: pulumi.Input<string>;
+    resourceVersion?: pulumi.Input<string>;
 }
 
 /**
@@ -166,29 +166,29 @@ export interface ConfigMapV2Args {
     /**
      * Annotations for the configMap v2 (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id of the configMap V2 (string)
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The data of the configMap v2 (map)
      */
-    readonly data: pulumi.Input<{[key: string]: any}>;
+    data: pulumi.Input<{[key: string]: any}>;
     /**
      * If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
      */
-    readonly immutable?: pulumi.Input<boolean>;
+    immutable?: pulumi.Input<boolean>;
     /**
      * Labels for the configMap v2 (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the configMap v2 (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespaces of the configMap v2. Default: `default` (string)
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
 }

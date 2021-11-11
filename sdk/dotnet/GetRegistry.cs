@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -63,6 +64,59 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetRegistryResult> InvokeAsync(GetRegistryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryResult>("rancher2:index/getRegistry:getRegistry", args ?? new GetRegistryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 docker registry.
+        /// 
+        /// Depending of the availability, there are 2 types of Rancher v2 docker registries:
+        /// - Project registry: Available to all namespaces in the `project_id`
+        /// - Namespaced registry: Available to just `namespace_id` in the `project_id`
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetRegistry.InvokeAsync(new Rancher2.GetRegistryArgs
+        ///         {
+        ///             Name = "&lt;name&gt;",
+        ///             ProjectId = "&lt;project_id&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetRegistry.InvokeAsync(new Rancher2.GetRegistryArgs
+        ///         {
+        ///             Name = "&lt;name&gt;",
+        ///             NamespaceId = "&lt;namespace_id&gt;",
+        ///             ProjectId = "&lt;project_id&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRegistryResult> Invoke(GetRegistryInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegistryResult>("rancher2:index/getRegistry:getRegistry", args ?? new GetRegistryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -87,6 +141,31 @@ namespace Pulumi.Rancher2
         public string ProjectId { get; set; } = null!;
 
         public GetRegistryArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegistryInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the registry (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The namespace id where to assign the namespaced registry (string)
+        /// </summary>
+        [Input("namespaceId")]
+        public Input<string>? NamespaceId { get; set; }
+
+        /// <summary>
+        /// The project id where to assign the registry (string)
+        /// </summary>
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
+        public GetRegistryInvokeArgs()
         {
         }
     }

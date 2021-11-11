@@ -13,6 +13,7 @@ __all__ = [
     'GetClusterV2Result',
     'AwaitableGetClusterV2Result',
     'get_cluster_v2',
+    'get_cluster_v2_output',
 ]
 
 @pulumi.output_type
@@ -257,3 +258,27 @@ def get_cluster_v2(fleet_namespace: Optional[str] = None,
         name=__ret__.name,
         resource_version=__ret__.resource_version,
         rke_config=__ret__.rke_config)
+
+
+@_utilities.lift_output_func(get_cluster_v2)
+def get_cluster_v2_output(fleet_namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                          name: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterV2Result]:
+    """
+    Use this data source to retrieve information about a Rancher v2 cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_v2(fleet_namespace="fleet-ns",
+        name="foo")
+    ```
+
+
+    :param str fleet_namespace: The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
+    :param str name: The name of the Cluster v2 (string)
+    """
+    ...

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetStorageClassV2Result> InvokeAsync(GetStorageClassV2Args args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStorageClassV2Result>("rancher2:index/getStorageClassV2:getStorageClassV2", args ?? new GetStorageClassV2Args(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
+        /// </summary>
+        public static Output<GetStorageClassV2Result> Invoke(GetStorageClassV2InvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetStorageClassV2Result>("rancher2:index/getStorageClassV2:getStorageClassV2", args ?? new GetStorageClassV2InvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.Rancher2
         public string Name { get; set; } = null!;
 
         public GetStorageClassV2Args()
+        {
+        }
+    }
+
+    public sealed class GetStorageClassV2InvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The cluster id of the storageClass V2 (string)
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the storageClass v2 (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetStorageClassV2InvokeArgs()
         {
         }
     }

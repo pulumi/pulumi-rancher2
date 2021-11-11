@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupClusterTemplate(ctx, &rancher2.LookupClusterTemplateArgs{
+// 		_, err := rancher2.LookupClusterTemplate(ctx, &GetClusterTemplateArgs{
 // 			Name: "foo",
 // 		}, nil)
 // 		if err != nil {
@@ -69,4 +72,85 @@ type LookupClusterTemplateResult struct {
 	Name    string                     `pulumi:"name"`
 	// (Computed) Cluster template revisions (list)
 	TemplateRevisions []GetClusterTemplateTemplateRevision `pulumi:"templateRevisions"`
+}
+
+func LookupClusterTemplateOutput(ctx *pulumi.Context, args LookupClusterTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupClusterTemplateResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupClusterTemplateResult, error) {
+			args := v.(LookupClusterTemplateArgs)
+			r, err := LookupClusterTemplate(ctx, &args, opts...)
+			return *r, err
+		}).(LookupClusterTemplateResultOutput)
+}
+
+// A collection of arguments for invoking getClusterTemplate.
+type LookupClusterTemplateOutputArgs struct {
+	// (Computed) Annotations for the cluster template (map)
+	Annotations pulumi.MapInput       `pulumi:"annotations"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Computed) Labels for the cluster template (map)
+	Labels pulumi.MapInput `pulumi:"labels"`
+	// The cluster template name (string)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupClusterTemplateOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterTemplateArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getClusterTemplate.
+type LookupClusterTemplateResultOutput struct{ *pulumi.OutputState }
+
+func (LookupClusterTemplateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterTemplateResult)(nil)).Elem()
+}
+
+func (o LookupClusterTemplateResultOutput) ToLookupClusterTemplateResultOutput() LookupClusterTemplateResultOutput {
+	return o
+}
+
+func (o LookupClusterTemplateResultOutput) ToLookupClusterTemplateResultOutputWithContext(ctx context.Context) LookupClusterTemplateResultOutput {
+	return o
+}
+
+// (Computed) Annotations for the cluster template (map)
+func (o LookupClusterTemplateResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) Default cluster template revision ID (string)
+func (o LookupClusterTemplateResultOutput) DefaultRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.DefaultRevisionId }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterTemplateResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupClusterTemplateResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels for the cluster template (map)
+func (o LookupClusterTemplateResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) Cluster template members (list)
+func (o LookupClusterTemplateResultOutput) Members() GetClusterTemplateMemberArrayOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) []GetClusterTemplateMember { return v.Members }).(GetClusterTemplateMemberArrayOutput)
+}
+
+func (o LookupClusterTemplateResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed) Cluster template revisions (list)
+func (o LookupClusterTemplateResultOutput) TemplateRevisions() GetClusterTemplateTemplateRevisionArrayOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) []GetClusterTemplateTemplateRevision { return v.TemplateRevisions }).(GetClusterTemplateTemplateRevisionArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupClusterTemplateResultOutput{})
 }

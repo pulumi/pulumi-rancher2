@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetNotifierResult> InvokeAsync(GetNotifierArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 notifier.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetNotifier.InvokeAsync(new Rancher2.GetNotifierArgs
+        ///         {
+        ///             ClusterId = "&lt;cluster_id&gt;",
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNotifierResult> Invoke(GetNotifierInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierInvokeArgs(), options.WithVersion());
     }
 
 
@@ -70,6 +101,37 @@ namespace Pulumi.Rancher2
         public string Name { get; set; } = null!;
 
         public GetNotifierArgs()
+        {
+        }
+    }
+
+    public sealed class GetNotifierInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The cluster id where create notifier (string)
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// (Computed) Dingtalk config for notifier (list maxitems:1)
+        /// </summary>
+        [Input("dingtalkConfig")]
+        public Input<Inputs.GetNotifierDingtalkConfigInputArgs>? DingtalkConfig { get; set; }
+
+        /// <summary>
+        /// (Computed) MSTeams config for notifier (list maxitems:1)
+        /// </summary>
+        [Input("msteamsConfig")]
+        public Input<Inputs.GetNotifierMsteamsConfigInputArgs>? MsteamsConfig { get; set; }
+
+        /// <summary>
+        /// The name of the notifier (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetNotifierInvokeArgs()
         {
         }
     }

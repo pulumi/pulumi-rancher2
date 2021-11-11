@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(rancher2.getUser({
  *     username: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
@@ -42,15 +41,15 @@ export interface GetUserArgs {
     /**
      * Set is the user if the user is external. Default: `false` (bool)
      */
-    readonly isExternal?: boolean;
+    isExternal?: boolean;
     /**
      * The name of the user (string)
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The username of the user (string)
      */
-    readonly username?: string;
+    username?: string;
 }
 
 /**
@@ -83,4 +82,26 @@ export interface GetUserResult {
      */
     readonly principalIds: string[];
     readonly username: string;
+}
+
+export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
+    return pulumi.output(args).apply(a => getUser(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUser.
+ */
+export interface GetUserOutputArgs {
+    /**
+     * Set is the user if the user is external. Default: `false` (bool)
+     */
+    isExternal?: pulumi.Input<boolean>;
+    /**
+     * The name of the user (string)
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The username of the user (string)
+     */
+    username?: pulumi.Input<string>;
 }

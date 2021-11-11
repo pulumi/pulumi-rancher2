@@ -460,7 +460,7 @@ type AuthConfigFreeIpaArrayInput interface {
 type AuthConfigFreeIpaArray []AuthConfigFreeIpaInput
 
 func (AuthConfigFreeIpaArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AuthConfigFreeIpa)(nil))
+	return reflect.TypeOf((*[]*AuthConfigFreeIpa)(nil)).Elem()
 }
 
 func (i AuthConfigFreeIpaArray) ToAuthConfigFreeIpaArrayOutput() AuthConfigFreeIpaArrayOutput {
@@ -485,7 +485,7 @@ type AuthConfigFreeIpaMapInput interface {
 type AuthConfigFreeIpaMap map[string]AuthConfigFreeIpaInput
 
 func (AuthConfigFreeIpaMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AuthConfigFreeIpa)(nil))
+	return reflect.TypeOf((*map[string]*AuthConfigFreeIpa)(nil)).Elem()
 }
 
 func (i AuthConfigFreeIpaMap) ToAuthConfigFreeIpaMapOutput() AuthConfigFreeIpaMapOutput {
@@ -496,9 +496,7 @@ func (i AuthConfigFreeIpaMap) ToAuthConfigFreeIpaMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigFreeIpaMapOutput)
 }
 
-type AuthConfigFreeIpaOutput struct {
-	*pulumi.OutputState
-}
+type AuthConfigFreeIpaOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigFreeIpaOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AuthConfigFreeIpa)(nil))
@@ -517,14 +515,12 @@ func (o AuthConfigFreeIpaOutput) ToAuthConfigFreeIpaPtrOutput() AuthConfigFreeIp
 }
 
 func (o AuthConfigFreeIpaOutput) ToAuthConfigFreeIpaPtrOutputWithContext(ctx context.Context) AuthConfigFreeIpaPtrOutput {
-	return o.ApplyT(func(v AuthConfigFreeIpa) *AuthConfigFreeIpa {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigFreeIpa) *AuthConfigFreeIpa {
 		return &v
 	}).(AuthConfigFreeIpaPtrOutput)
 }
 
-type AuthConfigFreeIpaPtrOutput struct {
-	*pulumi.OutputState
-}
+type AuthConfigFreeIpaPtrOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigFreeIpaPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AuthConfigFreeIpa)(nil))
@@ -536,6 +532,16 @@ func (o AuthConfigFreeIpaPtrOutput) ToAuthConfigFreeIpaPtrOutput() AuthConfigFre
 
 func (o AuthConfigFreeIpaPtrOutput) ToAuthConfigFreeIpaPtrOutputWithContext(ctx context.Context) AuthConfigFreeIpaPtrOutput {
 	return o
+}
+
+func (o AuthConfigFreeIpaPtrOutput) Elem() AuthConfigFreeIpaOutput {
+	return o.ApplyT(func(v *AuthConfigFreeIpa) AuthConfigFreeIpa {
+		if v != nil {
+			return *v
+		}
+		var ret AuthConfigFreeIpa
+		return ret
+	}).(AuthConfigFreeIpaOutput)
 }
 
 type AuthConfigFreeIpaArrayOutput struct{ *pulumi.OutputState }
@@ -579,6 +585,10 @@ func (o AuthConfigFreeIpaMapOutput) MapIndex(k pulumi.StringInput) AuthConfigFre
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigFreeIpaInput)(nil)).Elem(), &AuthConfigFreeIpa{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigFreeIpaPtrInput)(nil)).Elem(), &AuthConfigFreeIpa{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigFreeIpaArrayInput)(nil)).Elem(), AuthConfigFreeIpaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigFreeIpaMapInput)(nil)).Elem(), AuthConfigFreeIpaMap{})
 	pulumi.RegisterOutputType(AuthConfigFreeIpaOutput{})
 	pulumi.RegisterOutputType(AuthConfigFreeIpaPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigFreeIpaArrayOutput{})

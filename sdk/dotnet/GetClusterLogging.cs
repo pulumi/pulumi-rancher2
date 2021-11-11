@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetClusterLoggingResult> InvokeAsync(GetClusterLoggingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterLoggingResult>("rancher2:index/getClusterLogging:getClusterLogging", args ?? new GetClusterLoggingArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Cluster Logging.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetClusterLogging.InvokeAsync(new Rancher2.GetClusterLoggingArgs
+        ///         {
+        ///             ClusterId = "&lt;cluster_id&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClusterLoggingResult> Invoke(GetClusterLoggingInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClusterLoggingResult>("rancher2:index/getClusterLogging:getClusterLogging", args ?? new GetClusterLoggingInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.Rancher2
         public string ClusterId { get; set; } = null!;
 
         public GetClusterLoggingArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterLoggingInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The cluster id to configure logging (string)
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        public GetClusterLoggingInvokeArgs()
         {
         }
     }

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getEtcdBackup({
  *     clusterId: "<CLUSTER_ID>",
  *     name: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getEtcdBackup(args: GetEtcdBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetEtcdBackupResult> {
@@ -41,11 +41,11 @@ export interface GetEtcdBackupArgs {
     /**
      * Cluster ID to config Etcd Backup (string)
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The name of the Etcd Backup (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -82,4 +82,22 @@ export interface GetEtcdBackupResult {
      * (Computed) Description for the Etcd Backup (string)
      */
     readonly namespaceId: string;
+}
+
+export function getEtcdBackupOutput(args: GetEtcdBackupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEtcdBackupResult> {
+    return pulumi.output(args).apply(a => getEtcdBackup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEtcdBackup.
+ */
+export interface GetEtcdBackupOutputArgs {
+    /**
+     * Cluster ID to config Etcd Backup (string)
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The name of the Etcd Backup (string)
+     */
+    name: pulumi.Input<string>;
 }

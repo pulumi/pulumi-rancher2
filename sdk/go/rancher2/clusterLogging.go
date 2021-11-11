@@ -28,7 +28,7 @@ import (
 // 		_, err := rancher2.NewClusterLogging(ctx, "foo", &rancher2.ClusterLoggingArgs{
 // 			ClusterId: pulumi.String("<cluster_id>"),
 // 			Kind:      pulumi.String("syslog"),
-// 			SyslogConfig: &rancher2.ClusterLoggingSyslogConfigArgs{
+// 			SyslogConfig: &ClusterLoggingSyslogConfigArgs{
 // 				Endpoint:  pulumi.String("<syslog_endpoint>"),
 // 				Protocol:  pulumi.String("udp"),
 // 				Severity:  pulumi.String("notice"),
@@ -322,7 +322,7 @@ type ClusterLoggingArrayInput interface {
 type ClusterLoggingArray []ClusterLoggingInput
 
 func (ClusterLoggingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ClusterLogging)(nil))
+	return reflect.TypeOf((*[]*ClusterLogging)(nil)).Elem()
 }
 
 func (i ClusterLoggingArray) ToClusterLoggingArrayOutput() ClusterLoggingArrayOutput {
@@ -347,7 +347,7 @@ type ClusterLoggingMapInput interface {
 type ClusterLoggingMap map[string]ClusterLoggingInput
 
 func (ClusterLoggingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ClusterLogging)(nil))
+	return reflect.TypeOf((*map[string]*ClusterLogging)(nil)).Elem()
 }
 
 func (i ClusterLoggingMap) ToClusterLoggingMapOutput() ClusterLoggingMapOutput {
@@ -358,9 +358,7 @@ func (i ClusterLoggingMap) ToClusterLoggingMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingMapOutput)
 }
 
-type ClusterLoggingOutput struct {
-	*pulumi.OutputState
-}
+type ClusterLoggingOutput struct{ *pulumi.OutputState }
 
 func (ClusterLoggingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterLogging)(nil))
@@ -379,14 +377,12 @@ func (o ClusterLoggingOutput) ToClusterLoggingPtrOutput() ClusterLoggingPtrOutpu
 }
 
 func (o ClusterLoggingOutput) ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput {
-	return o.ApplyT(func(v ClusterLogging) *ClusterLogging {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterLogging) *ClusterLogging {
 		return &v
 	}).(ClusterLoggingPtrOutput)
 }
 
-type ClusterLoggingPtrOutput struct {
-	*pulumi.OutputState
-}
+type ClusterLoggingPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterLoggingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterLogging)(nil))
@@ -398,6 +394,16 @@ func (o ClusterLoggingPtrOutput) ToClusterLoggingPtrOutput() ClusterLoggingPtrOu
 
 func (o ClusterLoggingPtrOutput) ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput {
 	return o
+}
+
+func (o ClusterLoggingPtrOutput) Elem() ClusterLoggingOutput {
+	return o.ApplyT(func(v *ClusterLogging) ClusterLogging {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterLogging
+		return ret
+	}).(ClusterLoggingOutput)
 }
 
 type ClusterLoggingArrayOutput struct{ *pulumi.OutputState }
@@ -441,6 +447,10 @@ func (o ClusterLoggingMapOutput) MapIndex(k pulumi.StringInput) ClusterLoggingOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLoggingInput)(nil)).Elem(), &ClusterLogging{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLoggingPtrInput)(nil)).Elem(), &ClusterLogging{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLoggingArrayInput)(nil)).Elem(), ClusterLoggingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLoggingMapInput)(nil)).Elem(), ClusterLoggingMap{})
 	pulumi.RegisterOutputType(ClusterLoggingOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingArrayOutput{})

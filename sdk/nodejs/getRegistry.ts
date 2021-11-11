@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getRegistry({
  *     name: "<name>",
  *     projectId: "<project_id>",
- * }, { async: true }));
+ * }));
  * ```
  *
  * ```typescript
@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *     name: "<name>",
  *     namespaceId: "<namespace_id>",
  *     projectId: "<project_id>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryResult> {
@@ -59,15 +59,15 @@ export interface GetRegistryArgs {
     /**
      * The name of the registry (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The namespace id where to assign the namespaced registry (string)
      */
-    readonly namespaceId?: string;
+    namespaceId?: string;
     /**
      * The project id where to assign the registry (string)
      */
-    readonly projectId: string;
+    projectId: string;
 }
 
 /**
@@ -97,4 +97,26 @@ export interface GetRegistryResult {
      * (Computed) Registries data for registry (list)
      */
     readonly registries: outputs.GetRegistryRegistry[];
+}
+
+export function getRegistryOutput(args: GetRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryResult> {
+    return pulumi.output(args).apply(a => getRegistry(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegistry.
+ */
+export interface GetRegistryOutputArgs {
+    /**
+     * The name of the registry (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace id where to assign the namespaced registry (string)
+     */
+    namespaceId?: pulumi.Input<string>;
+    /**
+     * The project id where to assign the registry (string)
+     */
+    projectId: pulumi.Input<string>;
 }

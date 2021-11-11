@@ -221,7 +221,7 @@ type CertificateArrayInput interface {
 type CertificateArray []CertificateInput
 
 func (CertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Certificate)(nil))
+	return reflect.TypeOf((*[]*Certificate)(nil)).Elem()
 }
 
 func (i CertificateArray) ToCertificateArrayOutput() CertificateArrayOutput {
@@ -246,7 +246,7 @@ type CertificateMapInput interface {
 type CertificateMap map[string]CertificateInput
 
 func (CertificateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Certificate)(nil))
+	return reflect.TypeOf((*map[string]*Certificate)(nil)).Elem()
 }
 
 func (i CertificateMap) ToCertificateMapOutput() CertificateMapOutput {
@@ -257,9 +257,7 @@ func (i CertificateMap) ToCertificateMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapOutput)
 }
 
-type CertificateOutput struct {
-	*pulumi.OutputState
-}
+type CertificateOutput struct{ *pulumi.OutputState }
 
 func (CertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Certificate)(nil))
@@ -278,14 +276,12 @@ func (o CertificateOutput) ToCertificatePtrOutput() CertificatePtrOutput {
 }
 
 func (o CertificateOutput) ToCertificatePtrOutputWithContext(ctx context.Context) CertificatePtrOutput {
-	return o.ApplyT(func(v Certificate) *Certificate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Certificate) *Certificate {
 		return &v
 	}).(CertificatePtrOutput)
 }
 
-type CertificatePtrOutput struct {
-	*pulumi.OutputState
-}
+type CertificatePtrOutput struct{ *pulumi.OutputState }
 
 func (CertificatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Certificate)(nil))
@@ -297,6 +293,16 @@ func (o CertificatePtrOutput) ToCertificatePtrOutput() CertificatePtrOutput {
 
 func (o CertificatePtrOutput) ToCertificatePtrOutputWithContext(ctx context.Context) CertificatePtrOutput {
 	return o
+}
+
+func (o CertificatePtrOutput) Elem() CertificateOutput {
+	return o.ApplyT(func(v *Certificate) Certificate {
+		if v != nil {
+			return *v
+		}
+		var ret Certificate
+		return ret
+	}).(CertificateOutput)
 }
 
 type CertificateArrayOutput struct{ *pulumi.OutputState }
@@ -340,6 +346,10 @@ func (o CertificateMapOutput) MapIndex(k pulumi.StringInput) CertificateOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateInput)(nil)).Elem(), &Certificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePtrInput)(nil)).Elem(), &Certificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateArrayInput)(nil)).Elem(), CertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapInput)(nil)).Elem(), CertificateMap{})
 	pulumi.RegisterOutputType(CertificateOutput{})
 	pulumi.RegisterOutputType(CertificatePtrOutput{})
 	pulumi.RegisterOutputType(CertificateArrayOutput{})

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -18,7 +17,7 @@ import * as utilities from "./utilities";
  *     name: "foo",
  *     projectId: "<project_id>",
  *     targetNamespace: "<namespace_name>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResult> {
@@ -44,19 +43,19 @@ export interface GetAppArgs {
     /**
      * (Computed) Annotations for the catalog (map)
      */
-    readonly annotations?: {[key: string]: any};
+    annotations?: {[key: string]: any};
     /**
      * The app name (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The id of the project where the app is deployed (string)
      */
-    readonly projectId: string;
+    projectId: string;
     /**
      * The namespace name where the app is deployed (string)
      */
-    readonly targetNamespace?: string;
+    targetNamespace?: string;
 }
 
 /**
@@ -110,4 +109,30 @@ export interface GetAppResult {
      * (Computed) values.yaml base64 encoded file content for the app (string)
      */
     readonly valuesYaml: string;
+}
+
+export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResult> {
+    return pulumi.output(args).apply(a => getApp(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApp.
+ */
+export interface GetAppOutputArgs {
+    /**
+     * (Computed) Annotations for the catalog (map)
+     */
+    annotations?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The app name (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The id of the project where the app is deployed (string)
+     */
+    projectId: pulumi.Input<string>;
+    /**
+     * The namespace name where the app is deployed (string)
+     */
+    targetNamespace?: pulumi.Input<string>;
 }

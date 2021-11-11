@@ -13,6 +13,7 @@ __all__ = [
     'GetClusterTemplateResult',
     'AwaitableGetClusterTemplateResult',
     'get_cluster_template',
+    'get_cluster_template_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,31 @@ def get_cluster_template(annotations: Optional[Mapping[str, Any]] = None,
         members=__ret__.members,
         name=__ret__.name,
         template_revisions=__ret__.template_revisions)
+
+
+@_utilities.lift_output_func(get_cluster_template)
+def get_cluster_template_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                description: Optional[pulumi.Input[Optional[str]]] = None,
+                                labels: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                name: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterTemplateResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 cluster template.
+
+    Cluster Templates are available from Rancher v2.3.x and above.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_template(name="foo")
+    ```
+
+
+    :param Mapping[str, Any] annotations: (Computed) Annotations for the cluster template (map)
+    :param Mapping[str, Any] labels: (Computed) Labels for the cluster template (map)
+    :param str name: The cluster template name (string)
+    """
+    ...

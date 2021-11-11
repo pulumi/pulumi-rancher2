@@ -13,6 +13,7 @@ __all__ = [
     'GetClusterResult',
     'AwaitableGetClusterResult',
     'get_cluster',
+    'get_cluster_output',
 ]
 
 @pulumi.output_type
@@ -490,3 +491,24 @@ def get_cluster(name: Optional[str] = None,
         rke_config=__ret__.rke_config,
         scheduled_cluster_scans=__ret__.scheduled_cluster_scans,
         system_project_id=__ret__.system_project_id)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo_custom = rancher2.get_cluster(name="foo-custom")
+    ```
+
+
+    :param str name: The name of the Cluster (string)
+    """
+    ...

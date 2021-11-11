@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupProjectAlertGroup(ctx, &rancher2.LookupProjectAlertGroupArgs{
+// 		_, err := rancher2.LookupProjectAlertGroup(ctx, &GetProjectAlertGroupArgs{
 // 			Name:      "<project_alert_group_name>",
 // 			ProjectId: "<project_id>",
 // 		}, nil)
@@ -69,4 +72,92 @@ type LookupProjectAlertGroupResult struct {
 	Recipients []GetProjectAlertGroupRecipient `pulumi:"recipients"`
 	// (Computed) The project alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds int `pulumi:"repeatIntervalSeconds"`
+}
+
+func LookupProjectAlertGroupOutput(ctx *pulumi.Context, args LookupProjectAlertGroupOutputArgs, opts ...pulumi.InvokeOption) LookupProjectAlertGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupProjectAlertGroupResult, error) {
+			args := v.(LookupProjectAlertGroupArgs)
+			r, err := LookupProjectAlertGroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupProjectAlertGroupResultOutput)
+}
+
+// A collection of arguments for invoking getProjectAlertGroup.
+type LookupProjectAlertGroupOutputArgs struct {
+	// The project alert group name (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project id where create project alert group (string)
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (LookupProjectAlertGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectAlertGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProjectAlertGroup.
+type LookupProjectAlertGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupProjectAlertGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectAlertGroupResult)(nil)).Elem()
+}
+
+func (o LookupProjectAlertGroupResultOutput) ToLookupProjectAlertGroupResultOutput() LookupProjectAlertGroupResultOutput {
+	return o
+}
+
+func (o LookupProjectAlertGroupResultOutput) ToLookupProjectAlertGroupResultOutputWithContext(ctx context.Context) LookupProjectAlertGroupResultOutput {
+	return o
+}
+
+// (Computed) The project alert group annotations (map)
+func (o LookupProjectAlertGroupResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupProjectAlertGroupResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) The project alert group description (string)
+func (o LookupProjectAlertGroupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectAlertGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// (Computed) The project alert group interval seconds. Default: `180` (int)
+func (o LookupProjectAlertGroupResultOutput) GroupIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupProjectAlertGroupResult) int { return v.GroupIntervalSeconds }).(pulumi.IntOutput)
+}
+
+// (Computed) The project alert group wait seconds. Default: `180` (int)
+func (o LookupProjectAlertGroupResultOutput) GroupWaitSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupProjectAlertGroupResult) int { return v.GroupWaitSeconds }).(pulumi.IntOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupProjectAlertGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectAlertGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) The project alert group labels (map)
+func (o LookupProjectAlertGroupResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupProjectAlertGroupResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupProjectAlertGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectAlertGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectAlertGroupResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectAlertGroupResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// (Computed) The project alert group recipients (list)
+func (o LookupProjectAlertGroupResultOutput) Recipients() GetProjectAlertGroupRecipientArrayOutput {
+	return o.ApplyT(func(v LookupProjectAlertGroupResult) []GetProjectAlertGroupRecipient { return v.Recipients }).(GetProjectAlertGroupRecipientArrayOutput)
+}
+
+// (Computed) The project alert group wait seconds. Default: `3600` (int)
+func (o LookupProjectAlertGroupResultOutput) RepeatIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupProjectAlertGroupResult) int { return v.RepeatIntervalSeconds }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupProjectAlertGroupResultOutput{})
 }

@@ -177,35 +177,35 @@ export interface GlobalDnsState {
     /**
      * Annotations for Global DNS (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The Global DNS record (string)
      */
-    readonly fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string>;
     /**
      * Labels for Global DNS (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The MultiCluster App ID to assign to the Global DNS. Conflicts with `projectIds` (string)
      */
-    readonly multiClusterAppId?: pulumi.Input<string>;
+    multiClusterAppId?: pulumi.Input<string>;
     /**
      * The name of the Global DNS (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of projectIds to assign to the Global DNS. Conflicts with `multiClusterAppId` (list(string))
      */
-    readonly projectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    projectIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Global DNS provider ID to use (string)
      */
-    readonly providerId?: pulumi.Input<string>;
+    providerId?: pulumi.Input<string>;
     /**
      * TTL in seconds for DNS record. Default: `300` (int)
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
 }
 
 /**
@@ -215,33 +215,33 @@ export interface GlobalDnsArgs {
     /**
      * Annotations for Global DNS (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The Global DNS record (string)
      */
-    readonly fqdn: pulumi.Input<string>;
+    fqdn: pulumi.Input<string>;
     /**
      * Labels for Global DNS (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The MultiCluster App ID to assign to the Global DNS. Conflicts with `projectIds` (string)
      */
-    readonly multiClusterAppId?: pulumi.Input<string>;
+    multiClusterAppId?: pulumi.Input<string>;
     /**
      * The name of the Global DNS (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of projectIds to assign to the Global DNS. Conflicts with `multiClusterAppId` (list(string))
      */
-    readonly projectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    projectIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Global DNS provider ID to use (string)
      */
-    readonly providerId: pulumi.Input<string>;
+    providerId: pulumi.Input<string>;
     /**
      * TTL in seconds for DNS record. Default: `300` (int)
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
 }

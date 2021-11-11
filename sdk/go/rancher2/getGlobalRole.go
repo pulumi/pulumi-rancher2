@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupGlobalRole(ctx, &rancher2.LookupGlobalRoleArgs{
+// 		_, err := rancher2.LookupGlobalRole(ctx, &GetGlobalRoleArgs{
 // 			Name: "foo",
 // 		}, nil)
 // 		if err != nil {
@@ -63,4 +66,81 @@ type LookupGlobalRoleResult struct {
 	NewUserDefault bool `pulumi:"newUserDefault"`
 	// (Computed) Global role policy rules (list)
 	Rules []GetGlobalRoleRule `pulumi:"rules"`
+}
+
+func LookupGlobalRoleOutput(ctx *pulumi.Context, args LookupGlobalRoleOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalRoleResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupGlobalRoleResult, error) {
+			args := v.(LookupGlobalRoleArgs)
+			r, err := LookupGlobalRole(ctx, &args, opts...)
+			return *r, err
+		}).(LookupGlobalRoleResultOutput)
+}
+
+// A collection of arguments for invoking getGlobalRole.
+type LookupGlobalRoleOutputArgs struct {
+	// The name of the Global Role (string)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupGlobalRoleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGlobalRoleArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGlobalRole.
+type LookupGlobalRoleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupGlobalRoleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGlobalRoleResult)(nil)).Elem()
+}
+
+func (o LookupGlobalRoleResultOutput) ToLookupGlobalRoleResultOutput() LookupGlobalRoleResultOutput {
+	return o
+}
+
+func (o LookupGlobalRoleResultOutput) ToLookupGlobalRoleResultOutputWithContext(ctx context.Context) LookupGlobalRoleResultOutput {
+	return o
+}
+
+// (Computed) Annotations for global role object (map)
+func (o LookupGlobalRoleResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) Builtin global role (bool)
+func (o LookupGlobalRoleResultOutput) Builtin() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) bool { return v.Builtin }).(pulumi.BoolOutput)
+}
+
+// (Computed) Global role description (string)
+func (o LookupGlobalRoleResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupGlobalRoleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels for global role object (map)
+func (o LookupGlobalRoleResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupGlobalRoleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed) Whether or not this role should be added to new users (bool)
+func (o LookupGlobalRoleResultOutput) NewUserDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) bool { return v.NewUserDefault }).(pulumi.BoolOutput)
+}
+
+// (Computed) Global role policy rules (list)
+func (o LookupGlobalRoleResultOutput) Rules() GetGlobalRoleRuleArrayOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) []GetGlobalRoleRule { return v.Rules }).(GetGlobalRoleRuleArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupGlobalRoleResultOutput{})
 }

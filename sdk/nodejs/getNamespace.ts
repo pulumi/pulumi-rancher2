@@ -41,11 +41,11 @@ export interface GetNamespaceArgs {
     /**
      * The name of the namespace (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The project id where namespace is assigned (string)
      */
-    readonly projectId: string;
+    projectId: string;
 }
 
 /**
@@ -78,4 +78,22 @@ export interface GetNamespaceResult {
      * (Computed) Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
      */
     readonly resourceQuota: outputs.GetNamespaceResourceQuota;
+}
+
+export function getNamespaceOutput(args: GetNamespaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceResult> {
+    return pulumi.output(args).apply(a => getNamespace(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNamespace.
+ */
+export interface GetNamespaceOutputArgs {
+    /**
+     * The name of the namespace (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The project id where namespace is assigned (string)
+     */
+    projectId: pulumi.Input<string>;
 }

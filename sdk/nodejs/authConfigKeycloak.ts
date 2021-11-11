@@ -207,67 +207,67 @@ export interface AuthConfigKeycloakState {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    readonly accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
      */
-    readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Annotations of the resource (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * KeyCloak display name field (string)
      */
-    readonly displayNameField?: pulumi.Input<string>;
+    displayNameField?: pulumi.Input<string>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * KeyCloak Client ID field (string)
      */
-    readonly entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string>;
     /**
      * KeyCloak group field (string)
      */
-    readonly groupsField?: pulumi.Input<string>;
+    groupsField?: pulumi.Input<string>;
     /**
      * KeyCloak IDP metadata content (string)
      */
-    readonly idpMetadataContent?: pulumi.Input<string>;
+    idpMetadataContent?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * (Computed) The name of the resource (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
      */
-    readonly rancherApiHost?: pulumi.Input<string>;
+    rancherApiHost?: pulumi.Input<string>;
     /**
      * KeyCloak SP cert (string)
      */
-    readonly spCert?: pulumi.Input<string>;
+    spCert?: pulumi.Input<string>;
     /**
      * KeyCloak SP key (string)
      */
-    readonly spKey?: pulumi.Input<string>;
+    spKey?: pulumi.Input<string>;
     /**
      * (Computed) The type of the resource (string)
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * KeyCloak UID field (string)
      */
-    readonly uidField?: pulumi.Input<string>;
+    uidField?: pulumi.Input<string>;
     /**
      * KeyCloak user name field (string)
      */
-    readonly userNameField?: pulumi.Input<string>;
+    userNameField?: pulumi.Input<string>;
 }
 
 /**
@@ -277,57 +277,57 @@ export interface AuthConfigKeycloakArgs {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    readonly accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
      */
-    readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Annotations of the resource (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * KeyCloak display name field (string)
      */
-    readonly displayNameField: pulumi.Input<string>;
+    displayNameField: pulumi.Input<string>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * KeyCloak Client ID field (string)
      */
-    readonly entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string>;
     /**
      * KeyCloak group field (string)
      */
-    readonly groupsField: pulumi.Input<string>;
+    groupsField: pulumi.Input<string>;
     /**
      * KeyCloak IDP metadata content (string)
      */
-    readonly idpMetadataContent: pulumi.Input<string>;
+    idpMetadataContent: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
      */
-    readonly rancherApiHost: pulumi.Input<string>;
+    rancherApiHost: pulumi.Input<string>;
     /**
      * KeyCloak SP cert (string)
      */
-    readonly spCert: pulumi.Input<string>;
+    spCert: pulumi.Input<string>;
     /**
      * KeyCloak SP key (string)
      */
-    readonly spKey: pulumi.Input<string>;
+    spKey: pulumi.Input<string>;
     /**
      * KeyCloak UID field (string)
      */
-    readonly uidField: pulumi.Input<string>;
+    uidField: pulumi.Input<string>;
     /**
      * KeyCloak user name field (string)
      */
-    readonly userNameField: pulumi.Input<string>;
+    userNameField: pulumi.Input<string>;
 }

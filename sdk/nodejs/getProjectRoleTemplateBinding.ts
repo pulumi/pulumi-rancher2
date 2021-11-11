@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getProjectRoleTemplateBinding({
  *     name: "foo",
  *     projectId: "foo_id",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getProjectRoleTemplateBinding(args: GetProjectRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectRoleTemplateBindingResult> {
@@ -42,15 +41,15 @@ export interface GetProjectRoleTemplateBindingArgs {
     /**
      * The name of the project role template binding (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The project id where bind project role template (string)
      */
-    readonly projectId: string;
+    projectId: string;
     /**
      * The role template id from create project role template binding (string)
      */
-    readonly roleTemplateId?: string;
+    roleTemplateId?: string;
 }
 
 /**
@@ -88,4 +87,26 @@ export interface GetProjectRoleTemplateBindingResult {
      * (Computed) The userPrincipal ID to assign project role template binding (string)
      */
     readonly userPrincipalId: string;
+}
+
+export function getProjectRoleTemplateBindingOutput(args: GetProjectRoleTemplateBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectRoleTemplateBindingResult> {
+    return pulumi.output(args).apply(a => getProjectRoleTemplateBinding(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProjectRoleTemplateBinding.
+ */
+export interface GetProjectRoleTemplateBindingOutputArgs {
+    /**
+     * The name of the project role template binding (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The project id where bind project role template (string)
+     */
+    projectId: pulumi.Input<string>;
+    /**
+     * The role template id from create project role template binding (string)
+     */
+    roleTemplateId?: pulumi.Input<string>;
 }

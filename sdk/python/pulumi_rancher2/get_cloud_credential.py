@@ -12,6 +12,7 @@ __all__ = [
     'GetCloudCredentialResult',
     'AwaitableGetCloudCredentialResult',
     'get_cloud_credential',
+    'get_cloud_credential_output',
 ]
 
 @pulumi.output_type
@@ -105,3 +106,24 @@ def get_cloud_credential(name: Optional[str] = None,
         id=__ret__.id,
         labels=__ret__.labels,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_cloud_credential)
+def get_cloud_credential_output(name: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudCredentialResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 Cloud Credential.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    test = rancher2.get_cloud_credential(name="test")
+    ```
+
+
+    :param str name: The Cloud Credential name.
+    """
+    ...

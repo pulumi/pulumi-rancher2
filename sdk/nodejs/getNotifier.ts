@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getNotifier({
  *     clusterId: "<cluster_id>",
  *     name: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getNotifier(args: GetNotifierArgs, opts?: pulumi.InvokeOptions): Promise<GetNotifierResult> {
@@ -43,19 +43,19 @@ export interface GetNotifierArgs {
     /**
      * The cluster id where create notifier (string)
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * (Computed) Dingtalk config for notifier (list maxitems:1)
      */
-    readonly dingtalkConfig?: inputs.GetNotifierDingtalkConfig;
+    dingtalkConfig?: inputs.GetNotifierDingtalkConfig;
     /**
      * (Computed) MSTeams config for notifier (list maxitems:1)
      */
-    readonly msteamsConfig?: inputs.GetNotifierMsteamsConfig;
+    msteamsConfig?: inputs.GetNotifierMsteamsConfig;
     /**
      * The name of the notifier (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -108,4 +108,30 @@ export interface GetNotifierResult {
      * (Computed) Wechat config for notifier (list maxitems:1)
      */
     readonly wechatConfig: outputs.GetNotifierWechatConfig;
+}
+
+export function getNotifierOutput(args: GetNotifierOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotifierResult> {
+    return pulumi.output(args).apply(a => getNotifier(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNotifier.
+ */
+export interface GetNotifierOutputArgs {
+    /**
+     * The cluster id where create notifier (string)
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * (Computed) Dingtalk config for notifier (list maxitems:1)
+     */
+    dingtalkConfig?: pulumi.Input<inputs.GetNotifierDingtalkConfigArgs>;
+    /**
+     * (Computed) MSTeams config for notifier (list maxitems:1)
+     */
+    msteamsConfig?: pulumi.Input<inputs.GetNotifierMsteamsConfigArgs>;
+    /**
+     * The name of the notifier (string)
+     */
+    name: pulumi.Input<string>;
 }

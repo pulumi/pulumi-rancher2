@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getGlobalRoleBinding({
  *     globalRoleId: "foo_id",
  *     name: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getGlobalRoleBinding(args: GetGlobalRoleBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalRoleBindingResult> {
@@ -41,11 +40,11 @@ export interface GetGlobalRoleBindingArgs {
     /**
      * The global role id (string)
      */
-    readonly globalRoleId?: string;
+    globalRoleId?: string;
     /**
      * The name of the global role binding (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -74,4 +73,22 @@ export interface GetGlobalRoleBindingResult {
      * (Computed) The user ID to assign global role binding (string)
      */
     readonly userId: string;
+}
+
+export function getGlobalRoleBindingOutput(args: GetGlobalRoleBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalRoleBindingResult> {
+    return pulumi.output(args).apply(a => getGlobalRoleBinding(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGlobalRoleBinding.
+ */
+export interface GetGlobalRoleBindingOutputArgs {
+    /**
+     * The global role id (string)
+     */
+    globalRoleId?: pulumi.Input<string>;
+    /**
+     * The name of the global role binding (string)
+     */
+    name: pulumi.Input<string>;
 }

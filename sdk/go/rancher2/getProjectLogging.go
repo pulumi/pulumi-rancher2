@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupProjectLogging(ctx, &rancher2.LookupProjectLoggingArgs{
+// 		_, err := rancher2.LookupProjectLogging(ctx, &GetProjectLoggingArgs{
 // 			ProjectId: "<project_id>",
 // 		}, nil)
 // 		if err != nil {
@@ -77,4 +80,119 @@ type LookupProjectLoggingResult struct {
 	SplunkConfig GetProjectLoggingSplunkConfig `pulumi:"splunkConfig"`
 	// (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
 	SyslogConfig GetProjectLoggingSyslogConfig `pulumi:"syslogConfig"`
+}
+
+func LookupProjectLoggingOutput(ctx *pulumi.Context, args LookupProjectLoggingOutputArgs, opts ...pulumi.InvokeOption) LookupProjectLoggingResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupProjectLoggingResult, error) {
+			args := v.(LookupProjectLoggingArgs)
+			r, err := LookupProjectLogging(ctx, &args, opts...)
+			return *r, err
+		}).(LookupProjectLoggingResultOutput)
+}
+
+// A collection of arguments for invoking getProjectLogging.
+type LookupProjectLoggingOutputArgs struct {
+	// The project id to configure logging (string)
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (LookupProjectLoggingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectLoggingArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProjectLogging.
+type LookupProjectLoggingResultOutput struct{ *pulumi.OutputState }
+
+func (LookupProjectLoggingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectLoggingResult)(nil)).Elem()
+}
+
+func (o LookupProjectLoggingResultOutput) ToLookupProjectLoggingResultOutput() LookupProjectLoggingResultOutput {
+	return o
+}
+
+func (o LookupProjectLoggingResultOutput) ToLookupProjectLoggingResultOutputWithContext(ctx context.Context) LookupProjectLoggingResultOutput {
+	return o
+}
+
+// (Computed) Annotations for Cluster Logging object (map)
+func (o LookupProjectLoggingResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+func (o LookupProjectLoggingResultOutput) CustomTargetConfig() GetProjectLoggingCustomTargetConfigOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) GetProjectLoggingCustomTargetConfig { return v.CustomTargetConfig }).(GetProjectLoggingCustomTargetConfigOutput)
+}
+
+// (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
+func (o LookupProjectLoggingResultOutput) ElasticsearchConfig() GetProjectLoggingElasticsearchConfigOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) GetProjectLoggingElasticsearchConfig { return v.ElasticsearchConfig }).(GetProjectLoggingElasticsearchConfigOutput)
+}
+
+func (o LookupProjectLoggingResultOutput) EnableJsonParsing() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) bool { return v.EnableJsonParsing }).(pulumi.BoolOutput)
+}
+
+// (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
+func (o LookupProjectLoggingResultOutput) FluentdConfig() GetProjectLoggingFluentdConfigOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) GetProjectLoggingFluentdConfig { return v.FluentdConfig }).(GetProjectLoggingFluentdConfigOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupProjectLoggingResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) The kafka config for Cluster Logging. For `kind = kafka` (list maxitems:1)
+func (o LookupProjectLoggingResultOutput) KafkaConfig() GetProjectLoggingKafkaConfigOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) GetProjectLoggingKafkaConfig { return v.KafkaConfig }).(GetProjectLoggingKafkaConfigOutput)
+}
+
+// (Computed) The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+func (o LookupProjectLoggingResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels for Cluster Logging object (map)
+func (o LookupProjectLoggingResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The name of the cluster logging config (string)
+func (o LookupProjectLoggingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed) The namespace id from cluster logging (string)
+func (o LookupProjectLoggingResultOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// (Computed) How often buffered logs would be flushed. Default: `3` seconds (int)
+func (o LookupProjectLoggingResultOutput) OutputFlushInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) int { return v.OutputFlushInterval }).(pulumi.IntOutput)
+}
+
+// (computed) The output tags for Cluster Logging (map)
+func (o LookupProjectLoggingResultOutput) OutputTags() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) map[string]interface{} { return v.OutputTags }).(pulumi.MapOutput)
+}
+
+func (o LookupProjectLoggingResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// (Computed) The splunk config for Cluster Logging. For `kind = splunk` (list maxitems:1)
+func (o LookupProjectLoggingResultOutput) SplunkConfig() GetProjectLoggingSplunkConfigOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) GetProjectLoggingSplunkConfig { return v.SplunkConfig }).(GetProjectLoggingSplunkConfigOutput)
+}
+
+// (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
+func (o LookupProjectLoggingResultOutput) SyslogConfig() GetProjectLoggingSyslogConfigOutput {
+	return o.ApplyT(func(v LookupProjectLoggingResult) GetProjectLoggingSyslogConfig { return v.SyslogConfig }).(GetProjectLoggingSyslogConfigOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupProjectLoggingResultOutput{})
 }

@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupSecret(ctx, &rancher2.LookupSecretArgs{
+// 		_, err := rancher2.LookupSecret(ctx, &GetSecretArgs{
 // 			Name:      "<name>",
 // 			ProjectId: "<project_id>",
 // 		}, nil)
@@ -48,7 +51,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "<namespace_id>"
-// 		_, err := rancher2.LookupSecret(ctx, &rancher2.LookupSecretArgs{
+// 		_, err := rancher2.LookupSecret(ctx, &GetSecretArgs{
 // 			Name:        "<name>",
 // 			NamespaceId: &opt0,
 // 			ProjectId:   "<project_id>",
@@ -94,4 +97,83 @@ type LookupSecretResult struct {
 	Name        string                 `pulumi:"name"`
 	NamespaceId *string                `pulumi:"namespaceId"`
 	ProjectId   string                 `pulumi:"projectId"`
+}
+
+func LookupSecretOutput(ctx *pulumi.Context, args LookupSecretOutputArgs, opts ...pulumi.InvokeOption) LookupSecretResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSecretResult, error) {
+			args := v.(LookupSecretArgs)
+			r, err := LookupSecret(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSecretResultOutput)
+}
+
+// A collection of arguments for invoking getSecret.
+type LookupSecretOutputArgs struct {
+	// The name of the secret (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace id where to assign the namespaced secret (string)
+	NamespaceId pulumi.StringPtrInput `pulumi:"namespaceId"`
+	// The project id where to assign the secret (string)
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (LookupSecretOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSecret.
+type LookupSecretResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSecretResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretResult)(nil)).Elem()
+}
+
+func (o LookupSecretResultOutput) ToLookupSecretResultOutput() LookupSecretResultOutput {
+	return o
+}
+
+func (o LookupSecretResultOutput) ToLookupSecretResultOutputWithContext(ctx context.Context) LookupSecretResultOutput {
+	return o
+}
+
+// (Computed) Annotations for secret object (map)
+func (o LookupSecretResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) Secret key/value data. Base64 encoding required for values (map)
+func (o LookupSecretResultOutput) Data() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]interface{} { return v.Data }).(pulumi.MapOutput)
+}
+
+// (Computed) A secret description (string)
+func (o LookupSecretResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSecretResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels for secret object (map)
+func (o LookupSecretResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupSecretResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretResultOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecretResult) *string { return v.NamespaceId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupSecretResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSecretResultOutput{})
 }

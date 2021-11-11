@@ -13,6 +13,7 @@ __all__ = [
     'GetRoleTempalteResult',
     'AwaitableGetRoleTempalteResult',
     'get_role_tempalte',
+    'get_role_tempalte_output',
 ]
 
 warnings.warn("""rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate""", DeprecationWarning)
@@ -193,3 +194,14 @@ def get_role_tempalte(context: Optional[str] = None,
         name=__ret__.name,
         role_template_ids=__ret__.role_template_ids,
         rules=__ret__.rules)
+
+
+@_utilities.lift_output_func(get_role_tempalte)
+def get_role_tempalte_output(context: Optional[pulumi.Input[Optional[str]]] = None,
+                             name: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleTempalteResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    pulumi.log.warn("""get_role_tempalte is deprecated: rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate""")
+    ...

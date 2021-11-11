@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(rancher2.getGlobalDnsProvider({
  *     name: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getGlobalDnsProvider(args: GetGlobalDnsProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalDnsProviderResult> {
@@ -39,7 +39,7 @@ export interface GetGlobalDnsProviderArgs {
     /**
      * The name of the global DNS provider (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -67,4 +67,18 @@ export interface GetGlobalDnsProviderResult {
     readonly name: string;
     readonly rootDomain: string;
     readonly route53Config: outputs.GetGlobalDnsProviderRoute53Config;
+}
+
+export function getGlobalDnsProviderOutput(args: GetGlobalDnsProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalDnsProviderResult> {
+    return pulumi.output(args).apply(a => getGlobalDnsProvider(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGlobalDnsProvider.
+ */
+export interface GetGlobalDnsProviderOutputArgs {
+    /**
+     * The name of the global DNS provider (string)
+     */
+    name: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,4 +43,99 @@ type LookupRoleTempalteResult struct {
 	Name            string                 `pulumi:"name"`
 	RoleTemplateIds []string               `pulumi:"roleTemplateIds"`
 	Rules           []GetRoleTempalteRule  `pulumi:"rules"`
+}
+
+func LookupRoleTempalteOutput(ctx *pulumi.Context, args LookupRoleTempalteOutputArgs, opts ...pulumi.InvokeOption) LookupRoleTempalteResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupRoleTempalteResult, error) {
+			args := v.(LookupRoleTempalteArgs)
+			r, err := LookupRoleTempalte(ctx, &args, opts...)
+			return *r, err
+		}).(LookupRoleTempalteResultOutput)
+}
+
+// A collection of arguments for invoking getRoleTempalte.
+type LookupRoleTempalteOutputArgs struct {
+	Context pulumi.StringPtrInput `pulumi:"context"`
+	Name    pulumi.StringInput    `pulumi:"name"`
+}
+
+func (LookupRoleTempalteOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleTempalteArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRoleTempalte.
+type LookupRoleTempalteResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRoleTempalteResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleTempalteResult)(nil)).Elem()
+}
+
+func (o LookupRoleTempalteResultOutput) ToLookupRoleTempalteResultOutput() LookupRoleTempalteResultOutput {
+	return o
+}
+
+func (o LookupRoleTempalteResultOutput) ToLookupRoleTempalteResultOutputWithContext(ctx context.Context) LookupRoleTempalteResultOutput {
+	return o
+}
+
+func (o LookupRoleTempalteResultOutput) Administrative() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) bool { return v.Administrative }).(pulumi.BoolOutput)
+}
+
+func (o LookupRoleTempalteResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+func (o LookupRoleTempalteResultOutput) Builtin() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) bool { return v.Builtin }).(pulumi.BoolOutput)
+}
+
+func (o LookupRoleTempalteResultOutput) Context() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) string { return v.Context }).(pulumi.StringOutput)
+}
+
+func (o LookupRoleTempalteResultOutput) DefaultRole() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) bool { return v.DefaultRole }).(pulumi.BoolOutput)
+}
+
+func (o LookupRoleTempalteResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupRoleTempalteResultOutput) External() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) bool { return v.External }).(pulumi.BoolOutput)
+}
+
+func (o LookupRoleTempalteResultOutput) Hidden() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) bool { return v.Hidden }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRoleTempalteResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRoleTempalteResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupRoleTempalteResultOutput) Locked() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) bool { return v.Locked }).(pulumi.BoolOutput)
+}
+
+func (o LookupRoleTempalteResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupRoleTempalteResultOutput) RoleTemplateIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) []string { return v.RoleTemplateIds }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupRoleTempalteResultOutput) Rules() GetRoleTempalteRuleArrayOutput {
+	return o.ApplyT(func(v LookupRoleTempalteResult) []GetRoleTempalteRule { return v.Rules }).(GetRoleTempalteRuleArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRoleTempalteResultOutput{})
 }

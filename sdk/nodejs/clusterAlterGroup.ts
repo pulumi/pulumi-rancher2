@@ -128,39 +128,39 @@ export interface ClusterAlterGroupState {
     /**
      * Annotations of the resource
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Alert group Cluster ID
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * Alert group description
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Alert group interval seconds
      */
-    readonly groupIntervalSeconds?: pulumi.Input<number>;
+    groupIntervalSeconds?: pulumi.Input<number>;
     /**
      * Alert group wait seconds
      */
-    readonly groupWaitSeconds?: pulumi.Input<number>;
+    groupWaitSeconds?: pulumi.Input<number>;
     /**
      * Labels of the resource
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Alert group name
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Alert group recipients
      */
-    readonly recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlterGroupRecipient>[]>;
+    recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlterGroupRecipient>[]>;
     /**
      * Alert group repeat interval seconds
      */
-    readonly repeatIntervalSeconds?: pulumi.Input<number>;
+    repeatIntervalSeconds?: pulumi.Input<number>;
 }
 
 /**
@@ -170,37 +170,37 @@ export interface ClusterAlterGroupArgs {
     /**
      * Annotations of the resource
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Alert group Cluster ID
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * Alert group description
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Alert group interval seconds
      */
-    readonly groupIntervalSeconds?: pulumi.Input<number>;
+    groupIntervalSeconds?: pulumi.Input<number>;
     /**
      * Alert group wait seconds
      */
-    readonly groupWaitSeconds?: pulumi.Input<number>;
+    groupWaitSeconds?: pulumi.Input<number>;
     /**
      * Labels of the resource
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Alert group name
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Alert group recipients
      */
-    readonly recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlterGroupRecipient>[]>;
+    recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlterGroupRecipient>[]>;
     /**
      * Alert group repeat interval seconds
      */
-    readonly repeatIntervalSeconds?: pulumi.Input<number>;
+    repeatIntervalSeconds?: pulumi.Input<number>;
 }

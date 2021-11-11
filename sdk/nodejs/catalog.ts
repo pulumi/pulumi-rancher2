@@ -183,59 +183,59 @@ export interface CatalogState {
     /**
      * Annotations for the catalog (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The branch of the catalog repo to use. Default `master` (string)
      */
-    readonly branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string>;
     /**
      * The cluster id of the catalog. Mandatory if `scope = cluster` (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * A catalog description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The kind of the catalog. Just helm by the moment (string)
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Labels for the catalog (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the catalog (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The password to access the catalog if needed (string)
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The project id of the catalog. Mandatory if `scope = project` (string)
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
      */
-    readonly refresh?: pulumi.Input<boolean>;
+    refresh?: pulumi.Input<boolean>;
     /**
      * The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
      */
-    readonly scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
     /**
      * The url of the catalog repo (string)
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
     /**
      * The username to access the catalog if needed (string)
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
     /**
      * Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -245,57 +245,57 @@ export interface CatalogArgs {
     /**
      * Annotations for the catalog (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The branch of the catalog repo to use. Default `master` (string)
      */
-    readonly branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string>;
     /**
      * The cluster id of the catalog. Mandatory if `scope = cluster` (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * A catalog description (string)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The kind of the catalog. Just helm by the moment (string)
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Labels for the catalog (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the catalog (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The password to access the catalog if needed (string)
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The project id of the catalog. Mandatory if `scope = project` (string)
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
      */
-    readonly refresh?: pulumi.Input<boolean>;
+    refresh?: pulumi.Input<boolean>;
     /**
      * The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
      */
-    readonly scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
     /**
      * The url of the catalog repo (string)
      */
-    readonly url: pulumi.Input<string>;
+    url: pulumi.Input<string>;
     /**
      * The username to access the catalog if needed (string)
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
     /**
      * Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }

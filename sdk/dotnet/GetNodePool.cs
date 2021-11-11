@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetNodePoolResult> InvokeAsync(GetNodePoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Node Pool resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetNodePool.InvokeAsync(new Rancher2.GetNodePoolArgs
+        ///         {
+        ///             ClusterId = rancher2_cluster.Foo_custom.Id,
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNodePoolResult> Invoke(GetNodePoolInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolInvokeArgs(), options.WithVersion());
     }
 
 
@@ -64,6 +95,31 @@ namespace Pulumi.Rancher2
         public string? NodeTemplateId { get; set; }
 
         public GetNodePoolArgs()
+        {
+        }
+    }
+
+    public sealed class GetNodePoolInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The RKE cluster id to use Node Pool (string)
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Node Pool (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The Node Template ID to use for node creation (string)
+        /// </summary>
+        [Input("nodeTemplateId")]
+        public Input<string>? NodeTemplateId { get; set; }
+
+        public GetNodePoolInvokeArgs()
         {
         }
     }

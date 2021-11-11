@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetMultiClusterAppResult> InvokeAsync(GetMultiClusterAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMultiClusterAppResult>("rancher2:index/getMultiClusterApp:getMultiClusterApp", args ?? new GetMultiClusterAppArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 multi cluster app.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetMultiClusterApp.InvokeAsync(new Rancher2.GetMultiClusterAppArgs
+        ///         {
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMultiClusterAppResult> Invoke(GetMultiClusterAppInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMultiClusterAppResult>("rancher2:index/getMultiClusterApp:getMultiClusterApp", args ?? new GetMultiClusterAppInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.Rancher2
         public string Name { get; set; } = null!;
 
         public GetMultiClusterAppArgs()
+        {
+        }
+    }
+
+    public sealed class GetMultiClusterAppInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The multi cluster app name (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetMultiClusterAppInvokeArgs()
         {
         }
     }

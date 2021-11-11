@@ -146,47 +146,47 @@ export interface StorageClassV2State {
     /**
      * Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
      */
-    readonly allowVolumeExpansion?: pulumi.Input<boolean>;
+    allowVolumeExpansion?: pulumi.Input<boolean>;
     /**
      * Annotations for the storageClass v2 (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id of the storageClass V2 (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The provisioner of the storageClass v2 (string)
      */
-    readonly k8sProvisioner?: pulumi.Input<string>;
+    k8sProvisioner?: pulumi.Input<string>;
     /**
      * Labels for the storageClass v2 (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The mount options for storageClass v2 (list)
      */
-    readonly mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
+    mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the storageClass v2 (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The parameters for storageClass v2 (string)
      */
-    readonly parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: any}>;
     /**
      * The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
      */
-    readonly reclaimPolicy?: pulumi.Input<string>;
+    reclaimPolicy?: pulumi.Input<string>;
     /**
      * (Computed) The k8s resource version (string)
      */
-    readonly resourceVersion?: pulumi.Input<string>;
+    resourceVersion?: pulumi.Input<string>;
     /**
      * The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
      */
-    readonly volumeBindingMode?: pulumi.Input<string>;
+    volumeBindingMode?: pulumi.Input<string>;
 }
 
 /**
@@ -196,41 +196,41 @@ export interface StorageClassV2Args {
     /**
      * Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
      */
-    readonly allowVolumeExpansion?: pulumi.Input<boolean>;
+    allowVolumeExpansion?: pulumi.Input<boolean>;
     /**
      * Annotations for the storageClass v2 (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id of the storageClass V2 (string)
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The provisioner of the storageClass v2 (string)
      */
-    readonly k8sProvisioner: pulumi.Input<string>;
+    k8sProvisioner: pulumi.Input<string>;
     /**
      * Labels for the storageClass v2 (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The mount options for storageClass v2 (list)
      */
-    readonly mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
+    mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the storageClass v2 (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The parameters for storageClass v2 (string)
      */
-    readonly parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: any}>;
     /**
      * The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
      */
-    readonly reclaimPolicy?: pulumi.Input<string>;
+    reclaimPolicy?: pulumi.Input<string>;
     /**
      * The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
      */
-    readonly volumeBindingMode?: pulumi.Input<string>;
+    volumeBindingMode?: pulumi.Input<string>;
 }

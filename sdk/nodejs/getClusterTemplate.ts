@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(rancher2.getClusterTemplate({
  *     name: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
@@ -44,16 +44,16 @@ export interface GetClusterTemplateArgs {
     /**
      * (Computed) Annotations for the cluster template (map)
      */
-    readonly annotations?: {[key: string]: any};
-    readonly description?: string;
+    annotations?: {[key: string]: any};
+    description?: string;
     /**
      * (Computed) Labels for the cluster template (map)
      */
-    readonly labels?: {[key: string]: any};
+    labels?: {[key: string]: any};
     /**
      * The cluster template name (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -86,4 +86,27 @@ export interface GetClusterTemplateResult {
      * (Computed) Cluster template revisions (list)
      */
     readonly templateRevisions: outputs.GetClusterTemplateTemplateRevision[];
+}
+
+export function getClusterTemplateOutput(args: GetClusterTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterTemplateResult> {
+    return pulumi.output(args).apply(a => getClusterTemplate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusterTemplate.
+ */
+export interface GetClusterTemplateOutputArgs {
+    /**
+     * (Computed) Annotations for the cluster template (map)
+     */
+    annotations?: pulumi.Input<{[key: string]: any}>;
+    description?: pulumi.Input<string>;
+    /**
+     * (Computed) Labels for the cluster template (map)
+     */
+    labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The cluster template name (string)
+     */
+    name: pulumi.Input<string>;
 }

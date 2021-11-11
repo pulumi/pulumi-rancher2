@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetNotifierMsteamsConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetNotifierMsteamsConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("proxyUrl")]
-        public string? ProxyUrl { get; set; }
+        public Input<string>? ProxyUrl { get; set; }
 
         [Input("url", required: true)]
-        public string Url { get; set; } = null!;
+        public Input<string> Url { get; set; } = null!;
 
-        public GetNotifierMsteamsConfigArgs()
+        public GetNotifierMsteamsConfigInputArgs()
         {
         }
     }

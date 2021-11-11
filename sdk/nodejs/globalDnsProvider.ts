@@ -161,52 +161,52 @@ export class GlobalDnsProvider extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GlobalDnsProvider resources.
  */
 export interface GlobalDnsProviderState {
-    readonly alidnsConfig?: pulumi.Input<inputs.GlobalDnsProviderAlidnsConfig>;
+    alidnsConfig?: pulumi.Input<inputs.GlobalDnsProviderAlidnsConfig>;
     /**
      * Annotations for Global DNS Provider (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    readonly cloudflareConfig?: pulumi.Input<inputs.GlobalDnsProviderCloudflareConfig>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
+    cloudflareConfig?: pulumi.Input<inputs.GlobalDnsProviderCloudflareConfig>;
     /**
      * (Computed) The Global DNS Provider `alidns, cloudflare, route53` (string)
      */
-    readonly dnsProvider?: pulumi.Input<string>;
+    dnsProvider?: pulumi.Input<string>;
     /**
      * Labels for Global DNS Provider (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the Global DNS Provider (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The user ID to assign Global DNS Provider (string)
      */
-    readonly rootDomain?: pulumi.Input<string>;
-    readonly route53Config?: pulumi.Input<inputs.GlobalDnsProviderRoute53Config>;
+    rootDomain?: pulumi.Input<string>;
+    route53Config?: pulumi.Input<inputs.GlobalDnsProviderRoute53Config>;
 }
 
 /**
  * The set of arguments for constructing a GlobalDnsProvider resource.
  */
 export interface GlobalDnsProviderArgs {
-    readonly alidnsConfig?: pulumi.Input<inputs.GlobalDnsProviderAlidnsConfig>;
+    alidnsConfig?: pulumi.Input<inputs.GlobalDnsProviderAlidnsConfig>;
     /**
      * Annotations for Global DNS Provider (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    readonly cloudflareConfig?: pulumi.Input<inputs.GlobalDnsProviderCloudflareConfig>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
+    cloudflareConfig?: pulumi.Input<inputs.GlobalDnsProviderCloudflareConfig>;
     /**
      * Labels for Global DNS Provider (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the Global DNS Provider (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The user ID to assign Global DNS Provider (string)
      */
-    readonly rootDomain: pulumi.Input<string>;
-    readonly route53Config?: pulumi.Input<inputs.GlobalDnsProviderRoute53Config>;
+    rootDomain: pulumi.Input<string>;
+    route53Config?: pulumi.Input<inputs.GlobalDnsProviderRoute53Config>;
 }

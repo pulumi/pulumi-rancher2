@@ -10,20 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateRuntimeClassArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateRuntimeClassInputArgs : Pulumi.ResourceArgs
     {
         [Input("allowedRuntimeClassNames", required: true)]
-        private List<string>? _allowedRuntimeClassNames;
-        public List<string> AllowedRuntimeClassNames
+        private InputList<string>? _allowedRuntimeClassNames;
+        public InputList<string> AllowedRuntimeClassNames
         {
-            get => _allowedRuntimeClassNames ?? (_allowedRuntimeClassNames = new List<string>());
+            get => _allowedRuntimeClassNames ?? (_allowedRuntimeClassNames = new InputList<string>());
             set => _allowedRuntimeClassNames = value;
         }
 
         [Input("defaultRuntimeClassName")]
-        public string? DefaultRuntimeClassName { get; set; }
+        public Input<string>? DefaultRuntimeClassName { get; set; }
 
-        public GetPodSecurityPolicyTemplateRuntimeClassArgs()
+        public GetPodSecurityPolicyTemplateRuntimeClassInputArgs()
         {
         }
     }

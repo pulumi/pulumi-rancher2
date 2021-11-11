@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -22,7 +21,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getCertificate({
  *     name: "<name>",
  *     projectId: "<project_id>",
- * }, { async: true }));
+ * }));
  * ```
  *
  * ```typescript
@@ -34,7 +33,7 @@ import * as utilities from "./utilities";
  *     name: "<name>",
  *     namespaceId: "<namespace_id>",
  *     projectId: "<project_id>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
@@ -59,15 +58,15 @@ export interface GetCertificateArgs {
     /**
      * The name of the certificate (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The namespace id where to assign the namespaced certificate (string)
      */
-    readonly namespaceId?: string;
+    namespaceId?: string;
     /**
      * The project id where to assign the certificate (string)
      */
-    readonly projectId: string;
+    projectId: string;
 }
 
 /**
@@ -97,4 +96,26 @@ export interface GetCertificateResult {
     readonly name: string;
     readonly namespaceId?: string;
     readonly projectId: string;
+}
+
+export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateResult> {
+    return pulumi.output(args).apply(a => getCertificate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCertificate.
+ */
+export interface GetCertificateOutputArgs {
+    /**
+     * The name of the certificate (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace id where to assign the namespaced certificate (string)
+     */
+    namespaceId?: pulumi.Input<string>;
+    /**
+     * The project id where to assign the certificate (string)
+     */
+    projectId: pulumi.Input<string>;
 }

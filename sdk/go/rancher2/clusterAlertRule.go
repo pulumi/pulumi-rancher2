@@ -323,7 +323,7 @@ type ClusterAlertRuleArrayInput interface {
 type ClusterAlertRuleArray []ClusterAlertRuleInput
 
 func (ClusterAlertRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ClusterAlertRule)(nil))
+	return reflect.TypeOf((*[]*ClusterAlertRule)(nil)).Elem()
 }
 
 func (i ClusterAlertRuleArray) ToClusterAlertRuleArrayOutput() ClusterAlertRuleArrayOutput {
@@ -348,7 +348,7 @@ type ClusterAlertRuleMapInput interface {
 type ClusterAlertRuleMap map[string]ClusterAlertRuleInput
 
 func (ClusterAlertRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ClusterAlertRule)(nil))
+	return reflect.TypeOf((*map[string]*ClusterAlertRule)(nil)).Elem()
 }
 
 func (i ClusterAlertRuleMap) ToClusterAlertRuleMapOutput() ClusterAlertRuleMapOutput {
@@ -359,9 +359,7 @@ func (i ClusterAlertRuleMap) ToClusterAlertRuleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleMapOutput)
 }
 
-type ClusterAlertRuleOutput struct {
-	*pulumi.OutputState
-}
+type ClusterAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlertRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterAlertRule)(nil))
@@ -380,14 +378,12 @@ func (o ClusterAlertRuleOutput) ToClusterAlertRulePtrOutput() ClusterAlertRulePt
 }
 
 func (o ClusterAlertRuleOutput) ToClusterAlertRulePtrOutputWithContext(ctx context.Context) ClusterAlertRulePtrOutput {
-	return o.ApplyT(func(v ClusterAlertRule) *ClusterAlertRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAlertRule) *ClusterAlertRule {
 		return &v
 	}).(ClusterAlertRulePtrOutput)
 }
 
-type ClusterAlertRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type ClusterAlertRulePtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlertRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterAlertRule)(nil))
@@ -399,6 +395,16 @@ func (o ClusterAlertRulePtrOutput) ToClusterAlertRulePtrOutput() ClusterAlertRul
 
 func (o ClusterAlertRulePtrOutput) ToClusterAlertRulePtrOutputWithContext(ctx context.Context) ClusterAlertRulePtrOutput {
 	return o
+}
+
+func (o ClusterAlertRulePtrOutput) Elem() ClusterAlertRuleOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) ClusterAlertRule {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAlertRule
+		return ret
+	}).(ClusterAlertRuleOutput)
 }
 
 type ClusterAlertRuleArrayOutput struct{ *pulumi.OutputState }
@@ -442,6 +448,10 @@ func (o ClusterAlertRuleMapOutput) MapIndex(k pulumi.StringInput) ClusterAlertRu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlertRuleInput)(nil)).Elem(), &ClusterAlertRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlertRulePtrInput)(nil)).Elem(), &ClusterAlertRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlertRuleArrayInput)(nil)).Elem(), ClusterAlertRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlertRuleMapInput)(nil)).Elem(), ClusterAlertRuleMap{})
 	pulumi.RegisterOutputType(ClusterAlertRuleOutput{})
 	pulumi.RegisterOutputType(ClusterAlertRulePtrOutput{})
 	pulumi.RegisterOutputType(ClusterAlertRuleArrayOutput{})

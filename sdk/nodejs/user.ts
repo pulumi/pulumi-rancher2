@@ -140,28 +140,28 @@ export interface UserState {
     /**
      * Annotations for global role binding (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    readonly enabled?: pulumi.Input<boolean>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Labels for global role binding (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The user full name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The user password (string)
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * (Computed) The user principal IDs (list)
      */
-    readonly principalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    principalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The user username (string)
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -171,22 +171,22 @@ export interface UserArgs {
     /**
      * Annotations for global role binding (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    readonly enabled?: pulumi.Input<boolean>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Labels for global role binding (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The user full name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The user password (string)
      */
-    readonly password: pulumi.Input<string>;
+    password: pulumi.Input<string>;
     /**
      * The user username (string)
      */
-    readonly username: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }

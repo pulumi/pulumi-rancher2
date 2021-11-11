@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -41,6 +42,37 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetClusterTemplateResult> InvokeAsync(GetClusterTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 cluster template.
+        /// 
+        /// Cluster Templates are available from Rancher v2.3.x and above.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetClusterTemplate.InvokeAsync(new Rancher2.GetClusterTemplateArgs
+        ///         {
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClusterTemplateResult> Invoke(GetClusterTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -80,6 +112,46 @@ namespace Pulumi.Rancher2
         public string Name { get; set; } = null!;
 
         public GetClusterTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("annotations")]
+        private InputMap<object>? _annotations;
+
+        /// <summary>
+        /// (Computed) Annotations for the cluster template (map)
+        /// </summary>
+        public InputMap<object> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<object>());
+            set => _annotations = value;
+        }
+
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("labels")]
+        private InputMap<object>? _labels;
+
+        /// <summary>
+        /// (Computed) Labels for the cluster template (map)
+        /// </summary>
+        public InputMap<object> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<object>());
+            set => _labels = value;
+        }
+
+        /// <summary>
+        /// The cluster template name (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetClusterTemplateInvokeArgs()
         {
         }
     }

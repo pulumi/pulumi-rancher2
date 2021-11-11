@@ -268,17 +268,17 @@ class ClusterTemplate(pulumi.CustomResource):
             )],
             template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
                 cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config={
-                        "network": {
-                            "plugin": "canal",
-                        },
-                        "services": {
-                            "etcd": {
-                                "creation": "6h",
-                                "retention": "24h",
-                            },
-                        },
-                    },
+                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
+                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
+                            plugin="canal",
+                        ),
+                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
+                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
+                                creation="6h",
+                                retention="24h",
+                            ),
+                        ),
+                    ),
                 ),
                 default=True,
                 name="V1",
@@ -300,21 +300,21 @@ class ClusterTemplate(pulumi.CustomResource):
             )],
             template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
                 cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config={
-                        "network": {
-                            "plugin": "canal",
-                        },
-                        "services": {
-                            "etcd": {
-                                "creation": "6h",
-                                "retention": "24h",
-                            },
-                        },
-                        "upgrade_strategy": {
-                            "drain": True,
-                            "maxUnavailableWorker": "20%",
-                        },
-                    },
+                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
+                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
+                            plugin="canal",
+                        ),
+                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
+                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
+                                creation="6h",
+                                retention="24h",
+                            ),
+                        ),
+                        upgrade_strategy=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs(
+                            drain=True,
+                            max_unavailable_worker="20%",
+                        ),
+                    ),
                 ),
                 default=True,
                 name="V1",
@@ -336,30 +336,30 @@ class ClusterTemplate(pulumi.CustomResource):
             )],
             template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
                 cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config={
-                        "network": {
-                            "plugin": "canal",
-                        },
-                        "services": {
-                            "etcd": {
-                                "creation": "6h",
-                                "retention": "24h",
-                            },
-                        },
-                    },
-                    scheduled_cluster_scan={
-                        "enabled": True,
-                        "scanConfig": {
-                            "cisScanConfig": {
-                                "debugMaster": True,
-                                "debugWorker": True,
-                            },
-                        },
-                        "scheduleConfig": {
-                            "cronSchedule": "30 * * * *",
-                            "retention": 5,
-                        },
-                    },
+                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
+                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
+                            plugin="canal",
+                        ),
+                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
+                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
+                                creation="6h",
+                                retention="24h",
+                            ),
+                        ),
+                    ),
+                    scheduled_cluster_scan=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs(
+                        enabled=True,
+                        scan_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs(
+                            cis_scan_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs(
+                                debug_master=True,
+                                debug_worker=True,
+                            ),
+                        ),
+                        schedule_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs(
+                            cron_schedule="30 * * * *",
+                            retention=5,
+                        ),
+                    ),
                 ),
                 default=True,
                 name="V1",
@@ -409,17 +409,17 @@ class ClusterTemplate(pulumi.CustomResource):
             )],
             template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
                 cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config={
-                        "network": {
-                            "plugin": "canal",
-                        },
-                        "services": {
-                            "etcd": {
-                                "creation": "6h",
-                                "retention": "24h",
-                            },
-                        },
-                    },
+                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
+                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
+                            plugin="canal",
+                        ),
+                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
+                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
+                                creation="6h",
+                                retention="24h",
+                            ),
+                        ),
+                    ),
                 ),
                 default=True,
                 name="V1",
@@ -441,21 +441,21 @@ class ClusterTemplate(pulumi.CustomResource):
             )],
             template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
                 cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config={
-                        "network": {
-                            "plugin": "canal",
-                        },
-                        "services": {
-                            "etcd": {
-                                "creation": "6h",
-                                "retention": "24h",
-                            },
-                        },
-                        "upgrade_strategy": {
-                            "drain": True,
-                            "maxUnavailableWorker": "20%",
-                        },
-                    },
+                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
+                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
+                            plugin="canal",
+                        ),
+                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
+                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
+                                creation="6h",
+                                retention="24h",
+                            ),
+                        ),
+                        upgrade_strategy=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs(
+                            drain=True,
+                            max_unavailable_worker="20%",
+                        ),
+                    ),
                 ),
                 default=True,
                 name="V1",
@@ -477,30 +477,30 @@ class ClusterTemplate(pulumi.CustomResource):
             )],
             template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
                 cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config={
-                        "network": {
-                            "plugin": "canal",
-                        },
-                        "services": {
-                            "etcd": {
-                                "creation": "6h",
-                                "retention": "24h",
-                            },
-                        },
-                    },
-                    scheduled_cluster_scan={
-                        "enabled": True,
-                        "scanConfig": {
-                            "cisScanConfig": {
-                                "debugMaster": True,
-                                "debugWorker": True,
-                            },
-                        },
-                        "scheduleConfig": {
-                            "cronSchedule": "30 * * * *",
-                            "retention": 5,
-                        },
-                    },
+                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
+                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
+                            plugin="canal",
+                        ),
+                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
+                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
+                                creation="6h",
+                                retention="24h",
+                            ),
+                        ),
+                    ),
+                    scheduled_cluster_scan=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs(
+                        enabled=True,
+                        scan_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs(
+                            cis_scan_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs(
+                                debug_master=True,
+                                debug_worker=True,
+                            ),
+                        ),
+                        schedule_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs(
+                            cron_schedule="30 * * * *",
+                            retention=5,
+                        ),
+                    ),
                 ),
                 default=True,
                 name="V1",

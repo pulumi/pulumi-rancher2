@@ -28,7 +28,7 @@ import (
 // 		_, err := rancher2.NewNotifier(ctx, "foo", &rancher2.NotifierArgs{
 // 			ClusterId:   pulumi.String("<cluster_id>"),
 // 			Description: pulumi.String("Terraform notifier acceptance test"),
-// 			PagerdutyConfig: &rancher2.NotifierPagerdutyConfigArgs{
+// 			PagerdutyConfig: &NotifierPagerdutyConfigArgs{
 // 				ProxyUrl:   pulumi.String("http://proxy.test.io"),
 // 				ServiceKey: pulumi.String("XXXXXXXX"),
 // 			},
@@ -298,7 +298,7 @@ type NotifierArrayInput interface {
 type NotifierArray []NotifierInput
 
 func (NotifierArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Notifier)(nil))
+	return reflect.TypeOf((*[]*Notifier)(nil)).Elem()
 }
 
 func (i NotifierArray) ToNotifierArrayOutput() NotifierArrayOutput {
@@ -323,7 +323,7 @@ type NotifierMapInput interface {
 type NotifierMap map[string]NotifierInput
 
 func (NotifierMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Notifier)(nil))
+	return reflect.TypeOf((*map[string]*Notifier)(nil)).Elem()
 }
 
 func (i NotifierMap) ToNotifierMapOutput() NotifierMapOutput {
@@ -334,9 +334,7 @@ func (i NotifierMap) ToNotifierMapOutputWithContext(ctx context.Context) Notifie
 	return pulumi.ToOutputWithContext(ctx, i).(NotifierMapOutput)
 }
 
-type NotifierOutput struct {
-	*pulumi.OutputState
-}
+type NotifierOutput struct{ *pulumi.OutputState }
 
 func (NotifierOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Notifier)(nil))
@@ -355,14 +353,12 @@ func (o NotifierOutput) ToNotifierPtrOutput() NotifierPtrOutput {
 }
 
 func (o NotifierOutput) ToNotifierPtrOutputWithContext(ctx context.Context) NotifierPtrOutput {
-	return o.ApplyT(func(v Notifier) *Notifier {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Notifier) *Notifier {
 		return &v
 	}).(NotifierPtrOutput)
 }
 
-type NotifierPtrOutput struct {
-	*pulumi.OutputState
-}
+type NotifierPtrOutput struct{ *pulumi.OutputState }
 
 func (NotifierPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Notifier)(nil))
@@ -374,6 +370,16 @@ func (o NotifierPtrOutput) ToNotifierPtrOutput() NotifierPtrOutput {
 
 func (o NotifierPtrOutput) ToNotifierPtrOutputWithContext(ctx context.Context) NotifierPtrOutput {
 	return o
+}
+
+func (o NotifierPtrOutput) Elem() NotifierOutput {
+	return o.ApplyT(func(v *Notifier) Notifier {
+		if v != nil {
+			return *v
+		}
+		var ret Notifier
+		return ret
+	}).(NotifierOutput)
 }
 
 type NotifierArrayOutput struct{ *pulumi.OutputState }
@@ -417,6 +423,10 @@ func (o NotifierMapOutput) MapIndex(k pulumi.StringInput) NotifierOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NotifierInput)(nil)).Elem(), &Notifier{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotifierPtrInput)(nil)).Elem(), &Notifier{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotifierArrayInput)(nil)).Elem(), NotifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotifierMapInput)(nil)).Elem(), NotifierMap{})
 	pulumi.RegisterOutputType(NotifierOutput{})
 	pulumi.RegisterOutputType(NotifierPtrOutput{})
 	pulumi.RegisterOutputType(NotifierArrayOutput{})

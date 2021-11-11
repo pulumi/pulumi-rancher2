@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupClusterRoleTemplateBinding(ctx, &rancher2.LookupClusterRoleTemplateBindingArgs{
+// 		_, err := rancher2.LookupClusterRoleTemplateBinding(ctx, &GetClusterRoleTemplateBindingArgs{
 // 			ClusterId: "foo_id",
 // 			Name:      "foo",
 // 		}, nil)
@@ -70,4 +73,93 @@ type LookupClusterRoleTemplateBindingResult struct {
 	UserId string `pulumi:"userId"`
 	// (Computed) The userPrincipal ID to assign cluster role template binding (string)
 	UserPrincipalId string `pulumi:"userPrincipalId"`
+}
+
+func LookupClusterRoleTemplateBindingOutput(ctx *pulumi.Context, args LookupClusterRoleTemplateBindingOutputArgs, opts ...pulumi.InvokeOption) LookupClusterRoleTemplateBindingResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupClusterRoleTemplateBindingResult, error) {
+			args := v.(LookupClusterRoleTemplateBindingArgs)
+			r, err := LookupClusterRoleTemplateBinding(ctx, &args, opts...)
+			return *r, err
+		}).(LookupClusterRoleTemplateBindingResultOutput)
+}
+
+// A collection of arguments for invoking getClusterRoleTemplateBinding.
+type LookupClusterRoleTemplateBindingOutputArgs struct {
+	// The cluster id where bind cluster role template (string)
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The name of the cluster role template binding (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The role template id from create cluster role template binding (string)
+	RoleTemplateId pulumi.StringPtrInput `pulumi:"roleTemplateId"`
+}
+
+func (LookupClusterRoleTemplateBindingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterRoleTemplateBindingArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getClusterRoleTemplateBinding.
+type LookupClusterRoleTemplateBindingResultOutput struct{ *pulumi.OutputState }
+
+func (LookupClusterRoleTemplateBindingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterRoleTemplateBindingResult)(nil)).Elem()
+}
+
+func (o LookupClusterRoleTemplateBindingResultOutput) ToLookupClusterRoleTemplateBindingResultOutput() LookupClusterRoleTemplateBindingResultOutput {
+	return o
+}
+
+func (o LookupClusterRoleTemplateBindingResultOutput) ToLookupClusterRoleTemplateBindingResultOutputWithContext(ctx context.Context) LookupClusterRoleTemplateBindingResultOutput {
+	return o
+}
+
+// (Computed) Annotations of the resource (map)
+func (o LookupClusterRoleTemplateBindingResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+func (o LookupClusterRoleTemplateBindingResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// (Computed) The group ID to assign cluster role template binding (string)
+func (o LookupClusterRoleTemplateBindingResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// (Computed) The groupPrincipal ID to assign cluster role template binding (string)
+func (o LookupClusterRoleTemplateBindingResultOutput) GroupPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) string { return v.GroupPrincipalId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupClusterRoleTemplateBindingResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels of the resource (map)
+func (o LookupClusterRoleTemplateBindingResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupClusterRoleTemplateBindingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterRoleTemplateBindingResultOutput) RoleTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) string { return v.RoleTemplateId }).(pulumi.StringOutput)
+}
+
+// (Computed) The user ID to assign cluster role template binding (string)
+func (o LookupClusterRoleTemplateBindingResultOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// (Computed) The userPrincipal ID to assign cluster role template binding (string)
+func (o LookupClusterRoleTemplateBindingResultOutput) UserPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) string { return v.UserPrincipalId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupClusterRoleTemplateBindingResultOutput{})
 }

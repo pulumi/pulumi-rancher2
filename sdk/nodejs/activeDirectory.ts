@@ -196,90 +196,90 @@ export class ActiveDirectory extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ActiveDirectory resources.
  */
 export interface ActiveDirectoryState {
-    readonly accessMode?: pulumi.Input<string>;
-    readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accessMode?: pulumi.Input<string>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Annotations of the resource
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    readonly certificate?: pulumi.Input<string>;
-    readonly connectionTimeout?: pulumi.Input<number>;
-    readonly defaultLoginDomain?: pulumi.Input<string>;
-    readonly enabled?: pulumi.Input<boolean>;
-    readonly groupDnAttribute?: pulumi.Input<string>;
-    readonly groupMemberMappingAttribute?: pulumi.Input<string>;
-    readonly groupMemberUserAttribute?: pulumi.Input<string>;
-    readonly groupNameAttribute?: pulumi.Input<string>;
-    readonly groupObjectClass?: pulumi.Input<string>;
-    readonly groupSearchAttribute?: pulumi.Input<string>;
-    readonly groupSearchBase?: pulumi.Input<string>;
-    readonly groupSearchFilter?: pulumi.Input<string>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
+    certificate?: pulumi.Input<string>;
+    connectionTimeout?: pulumi.Input<number>;
+    defaultLoginDomain?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    groupDnAttribute?: pulumi.Input<string>;
+    groupMemberMappingAttribute?: pulumi.Input<string>;
+    groupMemberUserAttribute?: pulumi.Input<string>;
+    groupNameAttribute?: pulumi.Input<string>;
+    groupObjectClass?: pulumi.Input<string>;
+    groupSearchAttribute?: pulumi.Input<string>;
+    groupSearchBase?: pulumi.Input<string>;
+    groupSearchFilter?: pulumi.Input<string>;
     /**
      * Labels of the resource
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
-    readonly name?: pulumi.Input<string>;
-    readonly nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
-    readonly port?: pulumi.Input<number>;
-    readonly servers?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly serviceAccountPassword?: pulumi.Input<string>;
-    readonly serviceAccountUsername?: pulumi.Input<string>;
-    readonly startTls?: pulumi.Input<boolean>;
-    readonly testPassword?: pulumi.Input<string>;
-    readonly testUsername?: pulumi.Input<string>;
-    readonly tls?: pulumi.Input<boolean>;
-    readonly type?: pulumi.Input<string>;
-    readonly userDisabledBitMask?: pulumi.Input<number>;
-    readonly userEnabledAttribute?: pulumi.Input<string>;
-    readonly userLoginAttribute?: pulumi.Input<string>;
-    readonly userNameAttribute?: pulumi.Input<string>;
-    readonly userObjectClass?: pulumi.Input<string>;
-    readonly userSearchAttribute?: pulumi.Input<string>;
-    readonly userSearchBase?: pulumi.Input<string>;
-    readonly userSearchFilter?: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: any}>;
+    name?: pulumi.Input<string>;
+    nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
+    port?: pulumi.Input<number>;
+    servers?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceAccountPassword?: pulumi.Input<string>;
+    serviceAccountUsername?: pulumi.Input<string>;
+    startTls?: pulumi.Input<boolean>;
+    testPassword?: pulumi.Input<string>;
+    testUsername?: pulumi.Input<string>;
+    tls?: pulumi.Input<boolean>;
+    type?: pulumi.Input<string>;
+    userDisabledBitMask?: pulumi.Input<number>;
+    userEnabledAttribute?: pulumi.Input<string>;
+    userLoginAttribute?: pulumi.Input<string>;
+    userNameAttribute?: pulumi.Input<string>;
+    userObjectClass?: pulumi.Input<string>;
+    userSearchAttribute?: pulumi.Input<string>;
+    userSearchBase?: pulumi.Input<string>;
+    userSearchFilter?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a ActiveDirectory resource.
  */
 export interface ActiveDirectoryArgs {
-    readonly accessMode?: pulumi.Input<string>;
-    readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accessMode?: pulumi.Input<string>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Annotations of the resource
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    readonly certificate?: pulumi.Input<string>;
-    readonly connectionTimeout?: pulumi.Input<number>;
-    readonly defaultLoginDomain?: pulumi.Input<string>;
-    readonly enabled?: pulumi.Input<boolean>;
-    readonly groupDnAttribute?: pulumi.Input<string>;
-    readonly groupMemberMappingAttribute?: pulumi.Input<string>;
-    readonly groupMemberUserAttribute?: pulumi.Input<string>;
-    readonly groupNameAttribute?: pulumi.Input<string>;
-    readonly groupObjectClass?: pulumi.Input<string>;
-    readonly groupSearchAttribute?: pulumi.Input<string>;
-    readonly groupSearchBase?: pulumi.Input<string>;
-    readonly groupSearchFilter?: pulumi.Input<string>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
+    certificate?: pulumi.Input<string>;
+    connectionTimeout?: pulumi.Input<number>;
+    defaultLoginDomain?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    groupDnAttribute?: pulumi.Input<string>;
+    groupMemberMappingAttribute?: pulumi.Input<string>;
+    groupMemberUserAttribute?: pulumi.Input<string>;
+    groupNameAttribute?: pulumi.Input<string>;
+    groupObjectClass?: pulumi.Input<string>;
+    groupSearchAttribute?: pulumi.Input<string>;
+    groupSearchBase?: pulumi.Input<string>;
+    groupSearchFilter?: pulumi.Input<string>;
     /**
      * Labels of the resource
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
-    readonly nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
-    readonly port?: pulumi.Input<number>;
-    readonly servers: pulumi.Input<pulumi.Input<string>[]>;
-    readonly serviceAccountPassword: pulumi.Input<string>;
-    readonly serviceAccountUsername: pulumi.Input<string>;
-    readonly startTls?: pulumi.Input<boolean>;
-    readonly testPassword: pulumi.Input<string>;
-    readonly testUsername: pulumi.Input<string>;
-    readonly tls?: pulumi.Input<boolean>;
-    readonly userDisabledBitMask?: pulumi.Input<number>;
-    readonly userEnabledAttribute?: pulumi.Input<string>;
-    readonly userLoginAttribute?: pulumi.Input<string>;
-    readonly userNameAttribute?: pulumi.Input<string>;
-    readonly userObjectClass?: pulumi.Input<string>;
-    readonly userSearchAttribute?: pulumi.Input<string>;
-    readonly userSearchBase: pulumi.Input<string>;
-    readonly userSearchFilter?: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: any}>;
+    nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
+    port?: pulumi.Input<number>;
+    servers: pulumi.Input<pulumi.Input<string>[]>;
+    serviceAccountPassword: pulumi.Input<string>;
+    serviceAccountUsername: pulumi.Input<string>;
+    startTls?: pulumi.Input<boolean>;
+    testPassword: pulumi.Input<string>;
+    testUsername: pulumi.Input<string>;
+    tls?: pulumi.Input<boolean>;
+    userDisabledBitMask?: pulumi.Input<number>;
+    userEnabledAttribute?: pulumi.Input<string>;
+    userLoginAttribute?: pulumi.Input<string>;
+    userNameAttribute?: pulumi.Input<string>;
+    userObjectClass?: pulumi.Input<string>;
+    userSearchAttribute?: pulumi.Input<string>;
+    userSearchBase: pulumi.Input<string>;
+    userSearchFilter?: pulumi.Input<string>;
 }

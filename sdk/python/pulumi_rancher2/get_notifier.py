@@ -14,6 +14,7 @@ __all__ = [
     'GetNotifierResult',
     'AwaitableGetNotifierResult',
     'get_notifier',
+    'get_notifier_output',
 ]
 
 @pulumi.output_type
@@ -231,3 +232,31 @@ def get_notifier(cluster_id: Optional[str] = None,
         smtp_config=__ret__.smtp_config,
         webhook_config=__ret__.webhook_config,
         wechat_config=__ret__.wechat_config)
+
+
+@_utilities.lift_output_func(get_notifier)
+def get_notifier_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                        dingtalk_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetNotifierDingtalkConfigArgs']]]] = None,
+                        msteams_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetNotifierMsteamsConfigArgs']]]] = None,
+                        name: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotifierResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 notifier.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_notifier(cluster_id="<cluster_id>",
+        name="foo")
+    ```
+
+
+    :param str cluster_id: The cluster id where create notifier (string)
+    :param pulumi.InputType['GetNotifierDingtalkConfigArgs'] dingtalk_config: (Computed) Dingtalk config for notifier (list maxitems:1)
+    :param pulumi.InputType['GetNotifierMsteamsConfigArgs'] msteams_config: (Computed) MSTeams config for notifier (list maxitems:1)
+    :param str name: The name of the notifier (string)
+    """
+    ...

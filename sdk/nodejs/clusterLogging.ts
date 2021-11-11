@@ -190,63 +190,63 @@ export interface ClusterLoggingState {
     /**
      * Annotations for Cluster Logging object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id to configure logging (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly customTargetConfig?: pulumi.Input<inputs.ClusterLoggingCustomTargetConfig>;
+    customTargetConfig?: pulumi.Input<inputs.ClusterLoggingCustomTargetConfig>;
     /**
      * The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly elasticsearchConfig?: pulumi.Input<inputs.ClusterLoggingElasticsearchConfig>;
+    elasticsearchConfig?: pulumi.Input<inputs.ClusterLoggingElasticsearchConfig>;
     /**
      * Enable json log parsing. Default: `false` (bool)
      */
-    readonly enableJsonParsing?: pulumi.Input<boolean>;
+    enableJsonParsing?: pulumi.Input<boolean>;
     /**
      * The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly fluentdConfig?: pulumi.Input<inputs.ClusterLoggingFluentdConfig>;
+    fluentdConfig?: pulumi.Input<inputs.ClusterLoggingFluentdConfig>;
     /**
      * The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly kafkaConfig?: pulumi.Input<inputs.ClusterLoggingKafkaConfig>;
+    kafkaConfig?: pulumi.Input<inputs.ClusterLoggingKafkaConfig>;
     /**
      * The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Labels for Cluster Logging object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the cluster logging config (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace id from cluster logging (string)
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
     /**
      * How often buffered logs would be flushed. Default: `3` seconds (int)
      */
-    readonly outputFlushInterval?: pulumi.Input<number>;
+    outputFlushInterval?: pulumi.Input<number>;
     /**
      * The output tags for Cluster Logging (map)
      */
-    readonly outputTags?: pulumi.Input<{[key: string]: any}>;
+    outputTags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
      */
-    readonly splunkConfig?: pulumi.Input<inputs.ClusterLoggingSplunkConfig>;
+    splunkConfig?: pulumi.Input<inputs.ClusterLoggingSplunkConfig>;
     /**
      * The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
      */
-    readonly syslogConfig?: pulumi.Input<inputs.ClusterLoggingSyslogConfig>;
+    syslogConfig?: pulumi.Input<inputs.ClusterLoggingSyslogConfig>;
 }
 
 /**
@@ -256,61 +256,61 @@ export interface ClusterLoggingArgs {
     /**
      * Annotations for Cluster Logging object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The cluster id to configure logging (string)
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly customTargetConfig?: pulumi.Input<inputs.ClusterLoggingCustomTargetConfig>;
+    customTargetConfig?: pulumi.Input<inputs.ClusterLoggingCustomTargetConfig>;
     /**
      * The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly elasticsearchConfig?: pulumi.Input<inputs.ClusterLoggingElasticsearchConfig>;
+    elasticsearchConfig?: pulumi.Input<inputs.ClusterLoggingElasticsearchConfig>;
     /**
      * Enable json log parsing. Default: `false` (bool)
      */
-    readonly enableJsonParsing?: pulumi.Input<boolean>;
+    enableJsonParsing?: pulumi.Input<boolean>;
     /**
      * The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly fluentdConfig?: pulumi.Input<inputs.ClusterLoggingFluentdConfig>;
+    fluentdConfig?: pulumi.Input<inputs.ClusterLoggingFluentdConfig>;
     /**
      * The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
-    readonly kafkaConfig?: pulumi.Input<inputs.ClusterLoggingKafkaConfig>;
+    kafkaConfig?: pulumi.Input<inputs.ClusterLoggingKafkaConfig>;
     /**
      * The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
      */
-    readonly kind: pulumi.Input<string>;
+    kind: pulumi.Input<string>;
     /**
      * Labels for Cluster Logging object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the cluster logging config (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace id from cluster logging (string)
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
     /**
      * How often buffered logs would be flushed. Default: `3` seconds (int)
      */
-    readonly outputFlushInterval?: pulumi.Input<number>;
+    outputFlushInterval?: pulumi.Input<number>;
     /**
      * The output tags for Cluster Logging (map)
      */
-    readonly outputTags?: pulumi.Input<{[key: string]: any}>;
+    outputTags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
      */
-    readonly splunkConfig?: pulumi.Input<inputs.ClusterLoggingSplunkConfig>;
+    splunkConfig?: pulumi.Input<inputs.ClusterLoggingSplunkConfig>;
     /**
      * The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
      */
-    readonly syslogConfig?: pulumi.Input<inputs.ClusterLoggingSyslogConfig>;
+    syslogConfig?: pulumi.Input<inputs.ClusterLoggingSyslogConfig>;
 }

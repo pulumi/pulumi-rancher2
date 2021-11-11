@@ -186,63 +186,63 @@ export interface ClusterV2State {
     /**
      * Optional Agent Env Vars for Rancher agent (list)
      */
-    readonly agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterV2AgentEnvVar>[]>;
+    agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterV2AgentEnvVar>[]>;
     /**
      * Annotations for cluster registration token object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Cluster V2 cloud credential secret name (string)
      */
-    readonly cloudCredentialSecretName?: pulumi.Input<string>;
+    cloudCredentialSecretName?: pulumi.Input<string>;
     /**
      * (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
      */
-    readonly clusterRegistrationToken?: pulumi.Input<inputs.ClusterV2ClusterRegistrationToken>;
+    clusterRegistrationToken?: pulumi.Input<inputs.ClusterV2ClusterRegistrationToken>;
     /**
      * (Computed) Cluster v1 id for cluster v2. (e.g to be used with `rancher2Sync`) (string)
      */
-    readonly clusterV1Id?: pulumi.Input<string>;
+    clusterV1Id?: pulumi.Input<string>;
     /**
      * Cluster V2 default cluster role for project members (string)
      */
-    readonly defaultClusterRoleForProjectMembers?: pulumi.Input<string>;
+    defaultClusterRoleForProjectMembers?: pulumi.Input<string>;
     /**
      * Cluster V2 default pod security policy template name (string)
      */
-    readonly defaultPodSecurityPolicyTemplateName?: pulumi.Input<string>;
+    defaultPodSecurityPolicyTemplateName?: pulumi.Input<string>;
     /**
      * Enable k8s network policy at Cluster V2 (bool)
      */
-    readonly enableNetworkPolicy?: pulumi.Input<boolean>;
+    enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
      * The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
      */
-    readonly fleetNamespace?: pulumi.Input<string>;
+    fleetNamespace?: pulumi.Input<string>;
     /**
      * (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
      */
-    readonly kubeConfig?: pulumi.Input<string>;
+    kubeConfig?: pulumi.Input<string>;
     /**
      * The kubernetes version of the Cluster v2 (list maxitems:1)
      */
-    readonly kubernetesVersion?: pulumi.Input<string>;
+    kubernetesVersion?: pulumi.Input<string>;
     /**
      * Labels for cluster registration token object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Name of cluster registration token (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * (Computed) Cluster v2 k8s resource version (string)
      */
-    readonly resourceVersion?: pulumi.Input<string>;
+    resourceVersion?: pulumi.Input<string>;
     /**
      * The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
      */
-    readonly rkeConfig?: pulumi.Input<inputs.ClusterV2RkeConfig>;
+    rkeConfig?: pulumi.Input<inputs.ClusterV2RkeConfig>;
 }
 
 /**
@@ -252,45 +252,45 @@ export interface ClusterV2Args {
     /**
      * Optional Agent Env Vars for Rancher agent (list)
      */
-    readonly agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterV2AgentEnvVar>[]>;
+    agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterV2AgentEnvVar>[]>;
     /**
      * Annotations for cluster registration token object (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Cluster V2 cloud credential secret name (string)
      */
-    readonly cloudCredentialSecretName?: pulumi.Input<string>;
+    cloudCredentialSecretName?: pulumi.Input<string>;
     /**
      * Cluster V2 default cluster role for project members (string)
      */
-    readonly defaultClusterRoleForProjectMembers?: pulumi.Input<string>;
+    defaultClusterRoleForProjectMembers?: pulumi.Input<string>;
     /**
      * Cluster V2 default pod security policy template name (string)
      */
-    readonly defaultPodSecurityPolicyTemplateName?: pulumi.Input<string>;
+    defaultPodSecurityPolicyTemplateName?: pulumi.Input<string>;
     /**
      * Enable k8s network policy at Cluster V2 (bool)
      */
-    readonly enableNetworkPolicy?: pulumi.Input<boolean>;
+    enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
      * The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
      */
-    readonly fleetNamespace?: pulumi.Input<string>;
+    fleetNamespace?: pulumi.Input<string>;
     /**
      * The kubernetes version of the Cluster v2 (list maxitems:1)
      */
-    readonly kubernetesVersion: pulumi.Input<string>;
+    kubernetesVersion: pulumi.Input<string>;
     /**
      * Labels for cluster registration token object (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Name of cluster registration token (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
      */
-    readonly rkeConfig?: pulumi.Input<inputs.ClusterV2RkeConfig>;
+    rkeConfig?: pulumi.Input<inputs.ClusterV2RkeConfig>;
 }

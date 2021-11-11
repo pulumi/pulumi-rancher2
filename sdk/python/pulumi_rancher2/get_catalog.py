@@ -12,6 +12,7 @@ __all__ = [
     'GetCatalogResult',
     'AwaitableGetCatalogResult',
     'get_catalog',
+    'get_catalog_output',
 ]
 
 @pulumi.output_type
@@ -235,3 +236,26 @@ def get_catalog(name: Optional[str] = None,
         url=__ret__.url,
         username=__ret__.username,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_catalog)
+def get_catalog_output(name: Optional[pulumi.Input[str]] = None,
+                       scope: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 catalog.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    library = rancher2.get_catalog(name="catalog")
+    ```
+
+
+    :param str name: The catalog name.
+    :param str scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+    """
+    ...

@@ -12,6 +12,7 @@ __all__ = [
     'GetProjectRoleTemplateBindingResult',
     'AwaitableGetProjectRoleTemplateBindingResult',
     'get_project_role_template_binding',
+    'get_project_role_template_binding_output',
 ]
 
 @pulumi.output_type
@@ -184,3 +185,29 @@ def get_project_role_template_binding(name: Optional[str] = None,
         role_template_id=__ret__.role_template_id,
         user_id=__ret__.user_id,
         user_principal_id=__ret__.user_principal_id)
+
+
+@_utilities.lift_output_func(get_project_role_template_binding)
+def get_project_role_template_binding_output(name: Optional[pulumi.Input[str]] = None,
+                                             project_id: Optional[pulumi.Input[str]] = None,
+                                             role_template_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectRoleTemplateBindingResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 project role template binding.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_project_role_template_binding(name="foo",
+        project_id="foo_id")
+    ```
+
+
+    :param str name: The name of the project role template binding (string)
+    :param str project_id: The project id where bind project role template (string)
+    :param str role_template_id: The role template id from create project role template binding (string)
+    """
+    ...

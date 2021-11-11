@@ -13,6 +13,7 @@ __all__ = [
     'GetProjectAlertRuleResult',
     'AwaitableGetProjectAlertRuleResult',
     'get_project_alert_rule',
+    'get_project_alert_rule_output',
 ]
 
 @pulumi.output_type
@@ -240,3 +241,29 @@ def get_project_alert_rule(labels: Optional[Mapping[str, Any]] = None,
         repeat_interval_seconds=__ret__.repeat_interval_seconds,
         severity=__ret__.severity,
         workload_rule=__ret__.workload_rule)
+
+
+@_utilities.lift_output_func(get_project_alert_rule)
+def get_project_alert_rule_output(labels: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                  name: Optional[pulumi.Input[str]] = None,
+                                  project_id: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectAlertRuleResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 project alert rule.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_project_alert_rule(name="<project_alert_rule_name>",
+        project_id="<project_id>")
+    ```
+
+
+    :param Mapping[str, Any] labels: (Computed) The project alert rule labels (map)
+    :param str name: The project alert rule name (string)
+    :param str project_id: The project id where create project alert rule (string)
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetProjectLoggingResult',
     'AwaitableGetProjectLoggingResult',
     'get_project_logging',
+    'get_project_logging_output',
 ]
 
 @pulumi.output_type
@@ -256,3 +257,24 @@ def get_project_logging(project_id: Optional[str] = None,
         project_id=__ret__.project_id,
         splunk_config=__ret__.splunk_config,
         syslog_config=__ret__.syslog_config)
+
+
+@_utilities.lift_output_func(get_project_logging)
+def get_project_logging_output(project_id: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectLoggingResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 Project Logging.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_project_logging(project_id="<project_id>")
+    ```
+
+
+    :param str project_id: The project id to configure logging (string)
+    """
+    ...

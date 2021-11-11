@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(rancher2.getNodeTemplate({
  *     name: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTemplateResult> {
@@ -40,11 +40,11 @@ export interface GetNodeTemplateArgs {
     /**
      * The name of the Node Template (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * (Computed) Engine storage driver for the node template (bool)
      */
-    readonly useInternalIpAddress?: boolean;
+    useInternalIpAddress?: boolean;
 }
 
 /**
@@ -112,4 +112,22 @@ export interface GetNodeTemplateResult {
      * (Computed) Engine storage driver for the node template (bool)
      */
     readonly useInternalIpAddress?: boolean;
+}
+
+export function getNodeTemplateOutput(args: GetNodeTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTemplateResult> {
+    return pulumi.output(args).apply(a => getNodeTemplate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNodeTemplate.
+ */
+export interface GetNodeTemplateOutputArgs {
+    /**
+     * The name of the Node Template (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * (Computed) Engine storage driver for the node template (bool)
+     */
+    useInternalIpAddress?: pulumi.Input<boolean>;
 }

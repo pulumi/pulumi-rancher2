@@ -12,6 +12,7 @@ __all__ = [
     'GetSecretV2Result',
     'AwaitableGetSecretV2Result',
     'get_secret_v2',
+    'get_secret_v2_output',
 ]
 
 @pulumi.output_type
@@ -174,3 +175,19 @@ def get_secret_v2(cluster_id: Optional[str] = None,
         namespace=__ret__.namespace,
         resource_version=__ret__.resource_version,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_secret_v2)
+def get_secret_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                         name: Optional[pulumi.Input[str]] = None,
+                         namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretV2Result]:
+    """
+    Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
+
+
+    :param str cluster_id: The cluster id of the secret V2 (string)
+    :param str name: The name of the secret v2 (string)
+    :param str namespace: The namespaces of the secret v2. Default: `default` (string)
+    """
+    ...

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -30,15 +29,15 @@ export interface GetConfigMapV2Args {
     /**
      * The cluster id of the configMap V2 (string)
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The name of the configMap v2 (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The namespaces of the configMap v2. Default: `default` (string)
      */
-    readonly namespace?: string;
+    namespace?: string;
 }
 
 /**
@@ -72,4 +71,26 @@ export interface GetConfigMapV2Result {
      * (Computed) The k8s resource version (string)
      */
     readonly resourceVersion: string;
+}
+
+export function getConfigMapV2Output(args: GetConfigMapV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigMapV2Result> {
+    return pulumi.output(args).apply(a => getConfigMapV2(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getConfigMapV2.
+ */
+export interface GetConfigMapV2OutputArgs {
+    /**
+     * The cluster id of the configMap V2 (string)
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The name of the configMap v2 (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespaces of the configMap v2. Default: `default` (string)
+     */
+    namespace?: pulumi.Input<string>;
 }

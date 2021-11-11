@@ -12,6 +12,7 @@ __all__ = [
     'GetPrincipalResult',
     'AwaitableGetPrincipalResult',
     'get_principal',
+    'get_principal_output',
 ]
 
 @pulumi.output_type
@@ -92,3 +93,26 @@ def get_principal(name: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_principal)
+def get_principal_output(name: Optional[pulumi.Input[str]] = None,
+                         type: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrincipalResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 Principal resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_principal(name="user@example.com")
+    ```
+
+
+    :param str name: The full name of the principal (string)
+    :param str type: The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)
+    """
+    ...

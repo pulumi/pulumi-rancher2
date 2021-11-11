@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateAllowedHostPathArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateAllowedHostPathInputArgs : Pulumi.ResourceArgs
     {
         [Input("pathPrefix", required: true)]
-        public string PathPrefix { get; set; } = null!;
+        public Input<string> PathPrefix { get; set; } = null!;
 
         [Input("readOnly")]
-        public bool? ReadOnly { get; set; }
+        public Input<bool>? ReadOnly { get; set; }
 
-        public GetPodSecurityPolicyTemplateAllowedHostPathArgs()
+        public GetPodSecurityPolicyTemplateAllowedHostPathInputArgs()
         {
         }
     }

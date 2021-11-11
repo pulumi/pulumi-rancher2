@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,4 +49,93 @@ type LookupSecretV2Result struct {
 	ResourceVersion string `pulumi:"resourceVersion"`
 	// (Computed) The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format (string)
 	Type string `pulumi:"type"`
+}
+
+func LookupSecretV2Output(ctx *pulumi.Context, args LookupSecretV2OutputArgs, opts ...pulumi.InvokeOption) LookupSecretV2ResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSecretV2Result, error) {
+			args := v.(LookupSecretV2Args)
+			r, err := LookupSecretV2(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSecretV2ResultOutput)
+}
+
+// A collection of arguments for invoking getSecretV2.
+type LookupSecretV2OutputArgs struct {
+	// The cluster id of the secret V2 (string)
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The name of the secret v2 (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespaces of the secret v2. Default: `default` (string)
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (LookupSecretV2OutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretV2Args)(nil)).Elem()
+}
+
+// A collection of values returned by getSecretV2.
+type LookupSecretV2ResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSecretV2ResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretV2Result)(nil)).Elem()
+}
+
+func (o LookupSecretV2ResultOutput) ToLookupSecretV2ResultOutput() LookupSecretV2ResultOutput {
+	return o
+}
+
+func (o LookupSecretV2ResultOutput) ToLookupSecretV2ResultOutputWithContext(ctx context.Context) LookupSecretV2ResultOutput {
+	return o
+}
+
+// (Computed) Annotations for the secret v2 (map)
+func (o LookupSecretV2ResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+func (o LookupSecretV2ResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// (Computed/Sensitive) The data of the secret v2 (map)
+func (o LookupSecretV2ResultOutput) Data() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) map[string]interface{} { return v.Data }).(pulumi.MapOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSecretV2ResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) If set to true, any secret update will remove and recreate the secret. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate (bool)
+func (o LookupSecretV2ResultOutput) Immutable() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) bool { return v.Immutable }).(pulumi.BoolOutput)
+}
+
+// (Computed) Labels for the secret v2 (map)
+func (o LookupSecretV2ResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupSecretV2ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretV2ResultOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// (Computed) The k8s resource version (string)
+func (o LookupSecretV2ResultOutput) ResourceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) string { return v.ResourceVersion }).(pulumi.StringOutput)
+}
+
+// (Computed) The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format (string)
+func (o LookupSecretV2ResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSecretV2ResultOutput{})
 }

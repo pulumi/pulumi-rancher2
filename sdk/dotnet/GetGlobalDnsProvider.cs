@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetGlobalDnsProviderResult> InvokeAsync(GetGlobalDnsProviderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalDnsProviderResult>("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", args ?? new GetGlobalDnsProviderArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetGlobalDnsProvider.InvokeAsync(new Rancher2.GetGlobalDnsProviderArgs
+        ///         {
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGlobalDnsProviderResult> Invoke(GetGlobalDnsProviderInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGlobalDnsProviderResult>("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", args ?? new GetGlobalDnsProviderInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.Rancher2
         public string Name { get; set; } = null!;
 
         public GetGlobalDnsProviderArgs()
+        {
+        }
+    }
+
+    public sealed class GetGlobalDnsProviderInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the global DNS provider (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetGlobalDnsProviderInvokeArgs()
         {
         }
     }

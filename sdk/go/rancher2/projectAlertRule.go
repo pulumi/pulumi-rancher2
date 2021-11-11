@@ -28,19 +28,19 @@ import (
 // 		fooProject, err := rancher2.NewProject(ctx, "fooProject", &rancher2.ProjectArgs{
 // 			ClusterId:   pulumi.String("<cluster_id>"),
 // 			Description: pulumi.String("Terraform project "),
-// 			ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
-// 				ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
+// 			ResourceQuota: &ProjectResourceQuotaArgs{
+// 				ProjectLimit: &ProjectResourceQuotaProjectLimitArgs{
 // 					LimitsCpu:       pulumi.String("2000m"),
 // 					LimitsMemory:    pulumi.String("2000Mi"),
 // 					RequestsStorage: pulumi.String("2Gi"),
 // 				},
-// 				NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
+// 				NamespaceDefaultLimit: &ProjectResourceQuotaNamespaceDefaultLimitArgs{
 // 					LimitsCpu:       pulumi.String("500m"),
 // 					LimitsMemory:    pulumi.String("500Mi"),
 // 					RequestsStorage: pulumi.String("1Gi"),
 // 				},
 // 			},
-// 			ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
+// 			ContainerResourceLimit: &ProjectContainerResourceLimitArgs{
 // 				LimitsCpu:      pulumi.String("20m"),
 // 				LimitsMemory:   pulumi.String("20Mi"),
 // 				RequestsCpu:    pulumi.String("1m"),
@@ -332,7 +332,7 @@ type ProjectAlertRuleArrayInput interface {
 type ProjectAlertRuleArray []ProjectAlertRuleInput
 
 func (ProjectAlertRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectAlertRule)(nil))
+	return reflect.TypeOf((*[]*ProjectAlertRule)(nil)).Elem()
 }
 
 func (i ProjectAlertRuleArray) ToProjectAlertRuleArrayOutput() ProjectAlertRuleArrayOutput {
@@ -357,7 +357,7 @@ type ProjectAlertRuleMapInput interface {
 type ProjectAlertRuleMap map[string]ProjectAlertRuleInput
 
 func (ProjectAlertRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectAlertRule)(nil))
+	return reflect.TypeOf((*map[string]*ProjectAlertRule)(nil)).Elem()
 }
 
 func (i ProjectAlertRuleMap) ToProjectAlertRuleMapOutput() ProjectAlertRuleMapOutput {
@@ -368,9 +368,7 @@ func (i ProjectAlertRuleMap) ToProjectAlertRuleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRuleMapOutput)
 }
 
-type ProjectAlertRuleOutput struct {
-	*pulumi.OutputState
-}
+type ProjectAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (ProjectAlertRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectAlertRule)(nil))
@@ -389,14 +387,12 @@ func (o ProjectAlertRuleOutput) ToProjectAlertRulePtrOutput() ProjectAlertRulePt
 }
 
 func (o ProjectAlertRuleOutput) ToProjectAlertRulePtrOutputWithContext(ctx context.Context) ProjectAlertRulePtrOutput {
-	return o.ApplyT(func(v ProjectAlertRule) *ProjectAlertRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectAlertRule) *ProjectAlertRule {
 		return &v
 	}).(ProjectAlertRulePtrOutput)
 }
 
-type ProjectAlertRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectAlertRulePtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectAlertRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectAlertRule)(nil))
@@ -408,6 +404,16 @@ func (o ProjectAlertRulePtrOutput) ToProjectAlertRulePtrOutput() ProjectAlertRul
 
 func (o ProjectAlertRulePtrOutput) ToProjectAlertRulePtrOutputWithContext(ctx context.Context) ProjectAlertRulePtrOutput {
 	return o
+}
+
+func (o ProjectAlertRulePtrOutput) Elem() ProjectAlertRuleOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) ProjectAlertRule {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectAlertRule
+		return ret
+	}).(ProjectAlertRuleOutput)
 }
 
 type ProjectAlertRuleArrayOutput struct{ *pulumi.OutputState }
@@ -451,6 +457,10 @@ func (o ProjectAlertRuleMapOutput) MapIndex(k pulumi.StringInput) ProjectAlertRu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAlertRuleInput)(nil)).Elem(), &ProjectAlertRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAlertRulePtrInput)(nil)).Elem(), &ProjectAlertRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAlertRuleArrayInput)(nil)).Elem(), ProjectAlertRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAlertRuleMapInput)(nil)).Elem(), ProjectAlertRuleMap{})
 	pulumi.RegisterOutputType(ProjectAlertRuleOutput{})
 	pulumi.RegisterOutputType(ProjectAlertRulePtrOutput{})
 	pulumi.RegisterOutputType(ProjectAlertRuleArrayOutput{})

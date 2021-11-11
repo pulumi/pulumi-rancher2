@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getProjectAlertGroup({
  *     name: "<project_alert_group_name>",
  *     projectId: "<project_id>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getProjectAlertGroup(args: GetProjectAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertGroupResult> {
@@ -41,11 +41,11 @@ export interface GetProjectAlertGroupArgs {
     /**
      * The project alert group name (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The project id where create project alert group (string)
      */
-    readonly projectId: string;
+    projectId: string;
 }
 
 /**
@@ -86,4 +86,22 @@ export interface GetProjectAlertGroupResult {
      * (Computed) The project alert group wait seconds. Default: `3600` (int)
      */
     readonly repeatIntervalSeconds: number;
+}
+
+export function getProjectAlertGroupOutput(args: GetProjectAlertGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectAlertGroupResult> {
+    return pulumi.output(args).apply(a => getProjectAlertGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProjectAlertGroup.
+ */
+export interface GetProjectAlertGroupOutputArgs {
+    /**
+     * The project alert group name (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The project id where create project alert group (string)
+     */
+    projectId: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupNamespace(ctx, &rancher2.LookupNamespaceArgs{
+// 		_, err := rancher2.LookupNamespace(ctx, &GetNamespaceArgs{
 // 			Name:      "foo",
 // 			ProjectId: rancher2_cluster.Foo - custom.Default_project_id,
 // 		}, nil)
@@ -65,4 +68,82 @@ type LookupNamespaceResult struct {
 	ProjectId string                 `pulumi:"projectId"`
 	// (Computed) Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
 	ResourceQuota GetNamespaceResourceQuota `pulumi:"resourceQuota"`
+}
+
+func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupNamespaceResult, error) {
+			args := v.(LookupNamespaceArgs)
+			r, err := LookupNamespace(ctx, &args, opts...)
+			return *r, err
+		}).(LookupNamespaceResultOutput)
+}
+
+// A collection of arguments for invoking getNamespace.
+type LookupNamespaceOutputArgs struct {
+	// The name of the namespace (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project id where namespace is assigned (string)
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (LookupNamespaceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNamespaceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNamespace.
+type LookupNamespaceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupNamespaceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNamespaceResult)(nil)).Elem()
+}
+
+func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutput() LookupNamespaceResultOutput {
+	return o
+}
+
+func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutputWithContext(ctx context.Context) LookupNamespaceResultOutput {
+	return o
+}
+
+// (Computed) Annotations for Node Pool object (map)
+func (o LookupNamespaceResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) Default containers resource limits on namespace (List maxitem:1)
+func (o LookupNamespaceResultOutput) ContainerResourceLimit() GetNamespaceContainerResourceLimitOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) GetNamespaceContainerResourceLimit { return v.ContainerResourceLimit }).(GetNamespaceContainerResourceLimitOutput)
+}
+
+// (Computed) A namespace description (string)
+func (o LookupNamespaceResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupNamespaceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels for Node Pool object (map)
+func (o LookupNamespaceResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupNamespaceResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// (Computed) Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+func (o LookupNamespaceResultOutput) ResourceQuota() GetNamespaceResourceQuotaOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) GetNamespaceResourceQuota { return v.ResourceQuota }).(GetNamespaceResourceQuotaOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupNamespaceResultOutput{})
 }

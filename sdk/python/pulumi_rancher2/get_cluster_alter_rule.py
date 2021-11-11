@@ -13,6 +13,7 @@ __all__ = [
     'GetClusterAlterRuleResult',
     'AwaitableGetClusterAlterRuleResult',
     'get_cluster_alter_rule',
+    'get_cluster_alter_rule_output',
 ]
 
 @pulumi.output_type
@@ -253,3 +254,29 @@ def get_cluster_alter_rule(cluster_id: Optional[str] = None,
         repeat_interval_seconds=__ret__.repeat_interval_seconds,
         severity=__ret__.severity,
         system_service_rule=__ret__.system_service_rule)
+
+
+@_utilities.lift_output_func(get_cluster_alter_rule)
+def get_cluster_alter_rule_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                                  labels: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                  name: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterAlterRuleResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 cluster alert rule.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_alter_rule(cluster_id="<cluster_id>",
+        name="<cluster_alert_rule_name>")
+    ```
+
+
+    :param str cluster_id: The cluster id where create cluster alert rule (string)
+    :param Mapping[str, Any] labels: (Computed) The cluster alert rule labels (map)
+    :param str name: The cluster alert rule name (string)
+    """
+    ...

@@ -130,44 +130,44 @@ export interface ClusterSyncState {
     /**
      * The Cluster ID of the node (string).
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * (Computed) Default project ID for the cluster sync (string)
      */
-    readonly defaultProjectId?: pulumi.Input<string>;
+    defaultProjectId?: pulumi.Input<string>;
     /**
      * (Computed/Sensitive) Kube Config generated for the cluster sync (string)
      */
-    readonly kubeConfig?: pulumi.Input<string>;
+    kubeConfig?: pulumi.Input<string>;
     /**
      * The node pool IDs used by the cluster id (list)
      */
-    readonly nodePoolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    nodePoolIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (Computed) The cluster nodes (list).
      */
-    readonly nodes?: pulumi.Input<pulumi.Input<inputs.ClusterSyncNode>[]>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.ClusterSyncNode>[]>;
     /**
      * Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
      */
-    readonly stateConfirm?: pulumi.Input<number>;
-    readonly synced?: pulumi.Input<boolean>;
+    stateConfirm?: pulumi.Input<number>;
+    synced?: pulumi.Input<boolean>;
     /**
      * (Computed) System project ID for the cluster sync (string)
      */
-    readonly systemProjectId?: pulumi.Input<string>;
+    systemProjectId?: pulumi.Input<string>;
     /**
      * Wait until alerting is up and running. Default: `false` (bool)
      */
-    readonly waitAlerting?: pulumi.Input<boolean>;
+    waitAlerting?: pulumi.Input<boolean>;
     /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      */
-    readonly waitCatalogs?: pulumi.Input<boolean>;
+    waitCatalogs?: pulumi.Input<boolean>;
     /**
      * Wait until monitoring is up and running. Default: `false` (bool)
      */
-    readonly waitMonitoring?: pulumi.Input<boolean>;
+    waitMonitoring?: pulumi.Input<boolean>;
 }
 
 /**
@@ -177,26 +177,26 @@ export interface ClusterSyncArgs {
     /**
      * The Cluster ID of the node (string).
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The node pool IDs used by the cluster id (list)
      */
-    readonly nodePoolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    nodePoolIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
      */
-    readonly stateConfirm?: pulumi.Input<number>;
-    readonly synced?: pulumi.Input<boolean>;
+    stateConfirm?: pulumi.Input<number>;
+    synced?: pulumi.Input<boolean>;
     /**
      * Wait until alerting is up and running. Default: `false` (bool)
      */
-    readonly waitAlerting?: pulumi.Input<boolean>;
+    waitAlerting?: pulumi.Input<boolean>;
     /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      */
-    readonly waitCatalogs?: pulumi.Input<boolean>;
+    waitCatalogs?: pulumi.Input<boolean>;
     /**
      * Wait until monitoring is up and running. Default: `false` (bool)
      */
-    readonly waitMonitoring?: pulumi.Input<boolean>;
+    waitMonitoring?: pulumi.Input<boolean>;
 }

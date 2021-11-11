@@ -4,41 +4,105 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("rancher2");
+declare var exports: any;
+const __config = new pulumi.Config("rancher2");
 
 /**
  * API Key used to authenticate with the rancher server
  */
-export let accessKey: string | undefined = __config.get("accessKey");
+export declare const accessKey: string | undefined;
+Object.defineProperty(exports, "accessKey", {
+    get() {
+        return __config.get("accessKey");
+    },
+    enumerable: true,
+});
+
 /**
  * The URL to the rancher API
  */
-export let apiUrl: string | undefined = __config.get("apiUrl");
+export declare const apiUrl: string | undefined;
+Object.defineProperty(exports, "apiUrl", {
+    get() {
+        return __config.get("apiUrl");
+    },
+    enumerable: true,
+});
+
 /**
  * Bootstrap rancher server
  */
-export let bootstrap: boolean | undefined = __config.getObject<boolean>("bootstrap") || (<any>utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false);
+export declare const bootstrap: boolean;
+Object.defineProperty(exports, "bootstrap", {
+    get() {
+        return __config.getObject<boolean>("bootstrap") ?? (<any>utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false);
+    },
+    enumerable: true,
+});
+
 /**
  * CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
  */
-export let caCerts: string | undefined = __config.get("caCerts");
+export declare const caCerts: string | undefined;
+Object.defineProperty(exports, "caCerts", {
+    get() {
+        return __config.get("caCerts");
+    },
+    enumerable: true,
+});
+
 /**
  * Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
  */
-export let insecure: boolean | undefined = __config.getObject<boolean>("insecure") || (<any>utilities.getEnvBoolean("RANCHER_INSECURE") || false);
+export declare const insecure: boolean;
+Object.defineProperty(exports, "insecure", {
+    get() {
+        return __config.getObject<boolean>("insecure") ?? (<any>utilities.getEnvBoolean("RANCHER_INSECURE") || false);
+    },
+    enumerable: true,
+});
+
 /**
  * Rancher connection retries
  */
-export let retries: number | undefined = __config.getObject<number>("retries");
+export declare const retries: number | undefined;
+Object.defineProperty(exports, "retries", {
+    get() {
+        return __config.getObject<number>("retries");
+    },
+    enumerable: true,
+});
+
 /**
  * API secret used to authenticate with the rancher server
  */
-export let secretKey: string | undefined = __config.get("secretKey");
+export declare const secretKey: string | undefined;
+Object.defineProperty(exports, "secretKey", {
+    get() {
+        return __config.get("secretKey");
+    },
+    enumerable: true,
+});
+
 /**
  * Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
  */
-export let timeout: string | undefined = __config.get("timeout");
+export declare const timeout: string | undefined;
+Object.defineProperty(exports, "timeout", {
+    get() {
+        return __config.get("timeout");
+    },
+    enumerable: true,
+});
+
 /**
  * API token used to authenticate with the rancher server
  */
-export let tokenKey: string | undefined = __config.get("tokenKey");
+export declare const tokenKey: string | undefined;
+Object.defineProperty(exports, "tokenKey", {
+    get() {
+        return __config.get("tokenKey");
+    },
+    enumerable: true,
+});
+

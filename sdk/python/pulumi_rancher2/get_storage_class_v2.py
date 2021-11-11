@@ -12,6 +12,7 @@ __all__ = [
     'GetStorageClassV2Result',
     'AwaitableGetStorageClassV2Result',
     'get_storage_class_v2',
+    'get_storage_class_v2_output',
 ]
 
 @pulumi.output_type
@@ -200,3 +201,17 @@ def get_storage_class_v2(cluster_id: Optional[str] = None,
         reclaim_policy=__ret__.reclaim_policy,
         resource_version=__ret__.resource_version,
         volume_binding_mode=__ret__.volume_binding_mode)
+
+
+@_utilities.lift_output_func(get_storage_class_v2)
+def get_storage_class_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                                name: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageClassV2Result]:
+    """
+    Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
+
+
+    :param str cluster_id: The cluster id of the storageClass V2 (string)
+    :param str name: The name of the storageClass v2 (string)
+    """
+    ...

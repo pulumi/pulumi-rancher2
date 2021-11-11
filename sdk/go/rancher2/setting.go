@@ -206,7 +206,7 @@ type SettingArrayInput interface {
 type SettingArray []SettingInput
 
 func (SettingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Setting)(nil))
+	return reflect.TypeOf((*[]*Setting)(nil)).Elem()
 }
 
 func (i SettingArray) ToSettingArrayOutput() SettingArrayOutput {
@@ -231,7 +231,7 @@ type SettingMapInput interface {
 type SettingMap map[string]SettingInput
 
 func (SettingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Setting)(nil))
+	return reflect.TypeOf((*map[string]*Setting)(nil)).Elem()
 }
 
 func (i SettingMap) ToSettingMapOutput() SettingMapOutput {
@@ -242,9 +242,7 @@ func (i SettingMap) ToSettingMapOutputWithContext(ctx context.Context) SettingMa
 	return pulumi.ToOutputWithContext(ctx, i).(SettingMapOutput)
 }
 
-type SettingOutput struct {
-	*pulumi.OutputState
-}
+type SettingOutput struct{ *pulumi.OutputState }
 
 func (SettingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Setting)(nil))
@@ -263,14 +261,12 @@ func (o SettingOutput) ToSettingPtrOutput() SettingPtrOutput {
 }
 
 func (o SettingOutput) ToSettingPtrOutputWithContext(ctx context.Context) SettingPtrOutput {
-	return o.ApplyT(func(v Setting) *Setting {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Setting) *Setting {
 		return &v
 	}).(SettingPtrOutput)
 }
 
-type SettingPtrOutput struct {
-	*pulumi.OutputState
-}
+type SettingPtrOutput struct{ *pulumi.OutputState }
 
 func (SettingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Setting)(nil))
@@ -282,6 +278,16 @@ func (o SettingPtrOutput) ToSettingPtrOutput() SettingPtrOutput {
 
 func (o SettingPtrOutput) ToSettingPtrOutputWithContext(ctx context.Context) SettingPtrOutput {
 	return o
+}
+
+func (o SettingPtrOutput) Elem() SettingOutput {
+	return o.ApplyT(func(v *Setting) Setting {
+		if v != nil {
+			return *v
+		}
+		var ret Setting
+		return ret
+	}).(SettingOutput)
 }
 
 type SettingArrayOutput struct{ *pulumi.OutputState }
@@ -325,6 +331,10 @@ func (o SettingMapOutput) MapIndex(k pulumi.StringInput) SettingOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingInput)(nil)).Elem(), &Setting{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingPtrInput)(nil)).Elem(), &Setting{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingArrayInput)(nil)).Elem(), SettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMapInput)(nil)).Elem(), SettingMap{})
 	pulumi.RegisterOutputType(SettingOutput{})
 	pulumi.RegisterOutputType(SettingPtrOutput{})
 	pulumi.RegisterOutputType(SettingArrayOutput{})

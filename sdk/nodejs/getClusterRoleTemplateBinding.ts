@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "./utilities";
  * const foo = pulumi.output(rancher2.getClusterRoleTemplateBinding({
  *     clusterId: "foo_id",
  *     name: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getClusterRoleTemplateBinding(args: GetClusterRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterRoleTemplateBindingResult> {
@@ -42,15 +41,15 @@ export interface GetClusterRoleTemplateBindingArgs {
     /**
      * The cluster id where bind cluster role template (string)
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The name of the cluster role template binding (string)
      */
-    readonly name: string;
+    name: string;
     /**
      * The role template id from create cluster role template binding (string)
      */
-    readonly roleTemplateId?: string;
+    roleTemplateId?: string;
 }
 
 /**
@@ -88,4 +87,26 @@ export interface GetClusterRoleTemplateBindingResult {
      * (Computed) The userPrincipal ID to assign cluster role template binding (string)
      */
     readonly userPrincipalId: string;
+}
+
+export function getClusterRoleTemplateBindingOutput(args: GetClusterRoleTemplateBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterRoleTemplateBindingResult> {
+    return pulumi.output(args).apply(a => getClusterRoleTemplateBinding(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusterRoleTemplateBinding.
+ */
+export interface GetClusterRoleTemplateBindingOutputArgs {
+    /**
+     * The cluster id where bind cluster role template (string)
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The name of the cluster role template binding (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The role template id from create cluster role template binding (string)
+     */
+    roleTemplateId?: pulumi.Input<string>;
 }

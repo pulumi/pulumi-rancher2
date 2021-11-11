@@ -206,71 +206,71 @@ export interface AppV2State {
     /**
      * Annotations for the app v2 (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The app v2 chart name (string)
      */
-    readonly chartName?: pulumi.Input<string>;
+    chartName?: pulumi.Input<string>;
     /**
      * The app v2 chart version (string)
      */
-    readonly chartVersion?: pulumi.Input<string>;
+    chartVersion?: pulumi.Input<string>;
     /**
      * Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
      */
-    readonly cleanupOnFail?: pulumi.Input<boolean>;
+    cleanupOnFail?: pulumi.Input<boolean>;
     /**
      * The cluster id of the app (string)
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * (Computed) The cluster name of the app (string)
      */
-    readonly clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string>;
     /**
      * Disable app v2 chart hooks. Default: `false` (bool)
      */
-    readonly disableHooks?: pulumi.Input<boolean>;
+    disableHooks?: pulumi.Input<boolean>;
     /**
      * Disable app V2 Open API Validation. Default: `false` (bool)
      */
-    readonly disableOpenApiValidation?: pulumi.Input<boolean>;
+    disableOpenApiValidation?: pulumi.Input<boolean>;
     /**
      * Force app V2 chart upgrade. Default: `false` (bool)
      */
-    readonly forceUpgrade?: pulumi.Input<boolean>;
+    forceUpgrade?: pulumi.Input<boolean>;
     /**
      * Labels for the app v2 (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the app v2 (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace of the app v2 (string)
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * Deploy the app v2 within project ID (string)
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * Repo name (string)
      */
-    readonly repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string>;
     /**
      * (Computed) The system default registry of the app (string)
      */
-    readonly systemDefaultRegistry?: pulumi.Input<string>;
+    systemDefaultRegistry?: pulumi.Input<string>;
     /**
      * The app v2 values yaml. Yaml format is required (string)
      */
-    readonly values?: pulumi.Input<string>;
+    values?: pulumi.Input<string>;
     /**
      * Wait until app is deployed. Default: `true` (bool)
      */
-    readonly wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean>;
 }
 
 /**
@@ -280,61 +280,61 @@ export interface AppV2Args {
     /**
      * Annotations for the app v2 (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The app v2 chart name (string)
      */
-    readonly chartName: pulumi.Input<string>;
+    chartName: pulumi.Input<string>;
     /**
      * The app v2 chart version (string)
      */
-    readonly chartVersion?: pulumi.Input<string>;
+    chartVersion?: pulumi.Input<string>;
     /**
      * Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
      */
-    readonly cleanupOnFail?: pulumi.Input<boolean>;
+    cleanupOnFail?: pulumi.Input<boolean>;
     /**
      * The cluster id of the app (string)
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * Disable app v2 chart hooks. Default: `false` (bool)
      */
-    readonly disableHooks?: pulumi.Input<boolean>;
+    disableHooks?: pulumi.Input<boolean>;
     /**
      * Disable app V2 Open API Validation. Default: `false` (bool)
      */
-    readonly disableOpenApiValidation?: pulumi.Input<boolean>;
+    disableOpenApiValidation?: pulumi.Input<boolean>;
     /**
      * Force app V2 chart upgrade. Default: `false` (bool)
      */
-    readonly forceUpgrade?: pulumi.Input<boolean>;
+    forceUpgrade?: pulumi.Input<boolean>;
     /**
      * Labels for the app v2 (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the app v2 (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace of the app v2 (string)
      */
-    readonly namespace: pulumi.Input<string>;
+    namespace: pulumi.Input<string>;
     /**
      * Deploy the app v2 within project ID (string)
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * Repo name (string)
      */
-    readonly repoName: pulumi.Input<string>;
+    repoName: pulumi.Input<string>;
     /**
      * The app v2 values yaml. Yaml format is required (string)
      */
-    readonly values?: pulumi.Input<string>;
+    values?: pulumi.Input<string>;
     /**
      * Wait until app is deployed. Default: `true` (bool)
      */
-    readonly wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean>;
 }

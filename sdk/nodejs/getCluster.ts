@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const foo_custom = pulumi.output(rancher2.getCluster({
  *     name: "foo-custom",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
@@ -39,7 +39,7 @@ export interface GetClusterArgs {
     /**
      * The name of the Cluster (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -173,4 +173,18 @@ export interface GetClusterResult {
      * (Computed) System project ID for the cluster (string)
      */
     readonly systemProjectId: string;
+}
+
+export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCluster.
+ */
+export interface GetClusterOutputArgs {
+    /**
+     * The name of the Cluster (string)
+     */
+    name: pulumi.Input<string>;
 }

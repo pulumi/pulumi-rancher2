@@ -28,7 +28,7 @@ import (
 // 		_, err := rancher2.NewProjectLogging(ctx, "foo", &rancher2.ProjectLoggingArgs{
 // 			Kind:      pulumi.String("syslog"),
 // 			ProjectId: pulumi.String("<project_id>"),
-// 			SyslogConfig: &rancher2.ProjectLoggingSyslogConfigArgs{
+// 			SyslogConfig: &ProjectLoggingSyslogConfigArgs{
 // 				Endpoint:  pulumi.String("<syslog_endpoint>"),
 // 				Protocol:  pulumi.String("udp"),
 // 				Severity:  pulumi.String("notice"),
@@ -322,7 +322,7 @@ type ProjectLoggingArrayInput interface {
 type ProjectLoggingArray []ProjectLoggingInput
 
 func (ProjectLoggingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectLogging)(nil))
+	return reflect.TypeOf((*[]*ProjectLogging)(nil)).Elem()
 }
 
 func (i ProjectLoggingArray) ToProjectLoggingArrayOutput() ProjectLoggingArrayOutput {
@@ -347,7 +347,7 @@ type ProjectLoggingMapInput interface {
 type ProjectLoggingMap map[string]ProjectLoggingInput
 
 func (ProjectLoggingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectLogging)(nil))
+	return reflect.TypeOf((*map[string]*ProjectLogging)(nil)).Elem()
 }
 
 func (i ProjectLoggingMap) ToProjectLoggingMapOutput() ProjectLoggingMapOutput {
@@ -358,9 +358,7 @@ func (i ProjectLoggingMap) ToProjectLoggingMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLoggingMapOutput)
 }
 
-type ProjectLoggingOutput struct {
-	*pulumi.OutputState
-}
+type ProjectLoggingOutput struct{ *pulumi.OutputState }
 
 func (ProjectLoggingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectLogging)(nil))
@@ -379,14 +377,12 @@ func (o ProjectLoggingOutput) ToProjectLoggingPtrOutput() ProjectLoggingPtrOutpu
 }
 
 func (o ProjectLoggingOutput) ToProjectLoggingPtrOutputWithContext(ctx context.Context) ProjectLoggingPtrOutput {
-	return o.ApplyT(func(v ProjectLogging) *ProjectLogging {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectLogging) *ProjectLogging {
 		return &v
 	}).(ProjectLoggingPtrOutput)
 }
 
-type ProjectLoggingPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectLoggingPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectLoggingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectLogging)(nil))
@@ -398,6 +394,16 @@ func (o ProjectLoggingPtrOutput) ToProjectLoggingPtrOutput() ProjectLoggingPtrOu
 
 func (o ProjectLoggingPtrOutput) ToProjectLoggingPtrOutputWithContext(ctx context.Context) ProjectLoggingPtrOutput {
 	return o
+}
+
+func (o ProjectLoggingPtrOutput) Elem() ProjectLoggingOutput {
+	return o.ApplyT(func(v *ProjectLogging) ProjectLogging {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectLogging
+		return ret
+	}).(ProjectLoggingOutput)
 }
 
 type ProjectLoggingArrayOutput struct{ *pulumi.OutputState }
@@ -441,6 +447,10 @@ func (o ProjectLoggingMapOutput) MapIndex(k pulumi.StringInput) ProjectLoggingOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLoggingInput)(nil)).Elem(), &ProjectLogging{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLoggingPtrInput)(nil)).Elem(), &ProjectLogging{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLoggingArrayInput)(nil)).Elem(), ProjectLoggingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLoggingMapInput)(nil)).Elem(), ProjectLoggingMap{})
 	pulumi.RegisterOutputType(ProjectLoggingOutput{})
 	pulumi.RegisterOutputType(ProjectLoggingPtrOutput{})
 	pulumi.RegisterOutputType(ProjectLoggingArrayOutput{})

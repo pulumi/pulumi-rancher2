@@ -13,6 +13,7 @@ __all__ = [
     'GetMultiClusterAppResult',
     'AwaitableGetMultiClusterAppResult',
     'get_multi_cluster_app',
+    'get_multi_cluster_app_output',
 ]
 
 @pulumi.output_type
@@ -249,3 +250,24 @@ def get_multi_cluster_app(name: Optional[str] = None,
         template_version=__ret__.template_version,
         template_version_id=__ret__.template_version_id,
         upgrade_strategies=__ret__.upgrade_strategies)
+
+
+@_utilities.lift_output_func(get_multi_cluster_app)
+def get_multi_cluster_app_output(name: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMultiClusterAppResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 multi cluster app.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_multi_cluster_app(name="foo")
+    ```
+
+
+    :param str name: The multi cluster app name (string)
+    """
+    ...

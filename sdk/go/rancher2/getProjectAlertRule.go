@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupProjectAlertRule(ctx, &rancher2.LookupProjectAlertRuleArgs{
+// 		_, err := rancher2.LookupProjectAlertRule(ctx, &GetProjectAlertRuleArgs{
 // 			Name:      "<project_alert_rule_name>",
 // 			ProjectId: "<project_id>",
 // 		}, nil)
@@ -79,4 +82,114 @@ type LookupProjectAlertRuleResult struct {
 	Severity string `pulumi:"severity"`
 	// (Computed) The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
 	WorkloadRule GetProjectAlertRuleWorkloadRule `pulumi:"workloadRule"`
+}
+
+func LookupProjectAlertRuleOutput(ctx *pulumi.Context, args LookupProjectAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupProjectAlertRuleResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupProjectAlertRuleResult, error) {
+			args := v.(LookupProjectAlertRuleArgs)
+			r, err := LookupProjectAlertRule(ctx, &args, opts...)
+			return *r, err
+		}).(LookupProjectAlertRuleResultOutput)
+}
+
+// A collection of arguments for invoking getProjectAlertRule.
+type LookupProjectAlertRuleOutputArgs struct {
+	// (Computed) The project alert rule labels (map)
+	Labels pulumi.MapInput `pulumi:"labels"`
+	// The project alert rule name (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project id where create project alert rule (string)
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (LookupProjectAlertRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectAlertRuleArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProjectAlertRule.
+type LookupProjectAlertRuleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupProjectAlertRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectAlertRuleResult)(nil)).Elem()
+}
+
+func (o LookupProjectAlertRuleResultOutput) ToLookupProjectAlertRuleResultOutput() LookupProjectAlertRuleResultOutput {
+	return o
+}
+
+func (o LookupProjectAlertRuleResultOutput) ToLookupProjectAlertRuleResultOutputWithContext(ctx context.Context) LookupProjectAlertRuleResultOutput {
+	return o
+}
+
+// (Computed) The project alert rule annotations (map)
+func (o LookupProjectAlertRuleResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) The project alert rule alert group ID (string)
+func (o LookupProjectAlertRuleResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// (Computed) The project alert rule group interval seconds. Default: `180` (int)
+func (o LookupProjectAlertRuleResultOutput) GroupIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) int { return v.GroupIntervalSeconds }).(pulumi.IntOutput)
+}
+
+// (Computed) The project alert rule group wait seconds. Default: `180` (int)
+func (o LookupProjectAlertRuleResultOutput) GroupWaitSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) int { return v.GroupWaitSeconds }).(pulumi.IntOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupProjectAlertRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) The project alert rule inherited. Default: `true` (bool)
+func (o LookupProjectAlertRuleResultOutput) Inherited() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) bool { return v.Inherited }).(pulumi.BoolOutput)
+}
+
+// (Computed) The project alert rule labels (map)
+func (o LookupProjectAlertRuleResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
+func (o LookupProjectAlertRuleResultOutput) MetricRule() GetProjectAlertRuleMetricRuleOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) GetProjectAlertRuleMetricRule { return v.MetricRule }).(GetProjectAlertRuleMetricRuleOutput)
+}
+
+func (o LookupProjectAlertRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed) The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"`` (list Maxitems:1)
+func (o LookupProjectAlertRuleResultOutput) PodRule() GetProjectAlertRulePodRuleOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) GetProjectAlertRulePodRule { return v.PodRule }).(GetProjectAlertRulePodRuleOutput)
+}
+
+func (o LookupProjectAlertRuleResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// (Computed) The project alert rule wait seconds. Default: `3600` (int)
+func (o LookupProjectAlertRuleResultOutput) RepeatIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) int { return v.RepeatIntervalSeconds }).(pulumi.IntOutput)
+}
+
+// (Computed) The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
+func (o LookupProjectAlertRuleResultOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// (Computed) The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
+func (o LookupProjectAlertRuleResultOutput) WorkloadRule() GetProjectAlertRuleWorkloadRuleOutput {
+	return o.ApplyT(func(v LookupProjectAlertRuleResult) GetProjectAlertRuleWorkloadRule { return v.WorkloadRule }).(GetProjectAlertRuleWorkloadRuleOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupProjectAlertRuleResultOutput{})
 }

@@ -4,6 +4,9 @@
 package rancher2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupMultiClusterApp(ctx, &rancher2.LookupMultiClusterAppArgs{
+// 		_, err := rancher2.LookupMultiClusterApp(ctx, &GetMultiClusterAppArgs{
 // 			Name: "foo",
 // 		}, nil)
 // 		if err != nil {
@@ -77,4 +80,116 @@ type LookupMultiClusterAppResult struct {
 	TemplateVersionId string `pulumi:"templateVersionId"`
 	// (Computed) The multi cluster app upgrade strategy (list)
 	UpgradeStrategies []GetMultiClusterAppUpgradeStrategy `pulumi:"upgradeStrategies"`
+}
+
+func LookupMultiClusterAppOutput(ctx *pulumi.Context, args LookupMultiClusterAppOutputArgs, opts ...pulumi.InvokeOption) LookupMultiClusterAppResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupMultiClusterAppResult, error) {
+			args := v.(LookupMultiClusterAppArgs)
+			r, err := LookupMultiClusterApp(ctx, &args, opts...)
+			return *r, err
+		}).(LookupMultiClusterAppResultOutput)
+}
+
+// A collection of arguments for invoking getMultiClusterApp.
+type LookupMultiClusterAppOutputArgs struct {
+	// The multi cluster app name (string)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupMultiClusterAppOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMultiClusterAppArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMultiClusterApp.
+type LookupMultiClusterAppResultOutput struct{ *pulumi.OutputState }
+
+func (LookupMultiClusterAppResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMultiClusterAppResult)(nil)).Elem()
+}
+
+func (o LookupMultiClusterAppResultOutput) ToLookupMultiClusterAppResultOutput() LookupMultiClusterAppResultOutput {
+	return o
+}
+
+func (o LookupMultiClusterAppResultOutput) ToLookupMultiClusterAppResultOutputWithContext(ctx context.Context) LookupMultiClusterAppResultOutput {
+	return o
+}
+
+// (Computed) Annotations for multi cluster app object (map)
+func (o LookupMultiClusterAppResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) The multi cluster app answers (list)
+func (o LookupMultiClusterAppResultOutput) Answers() GetMultiClusterAppAnswerArrayOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) []GetMultiClusterAppAnswer { return v.Answers }).(GetMultiClusterAppAnswerArrayOutput)
+}
+
+// (Computed) The multi cluster app catalog name (string)
+func (o LookupMultiClusterAppResultOutput) CatalogName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) string { return v.CatalogName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupMultiClusterAppResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed) Labels for multi cluster app object (map)
+func (o LookupMultiClusterAppResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The multi cluster app members (list)
+func (o LookupMultiClusterAppResultOutput) Members() GetMultiClusterAppMemberArrayOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) []GetMultiClusterAppMember { return v.Members }).(GetMultiClusterAppMemberArrayOutput)
+}
+
+func (o LookupMultiClusterAppResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed) The multi cluster app revision history limit (int)
+func (o LookupMultiClusterAppResultOutput) RevisionHistoryLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) int { return v.RevisionHistoryLimit }).(pulumi.IntOutput)
+}
+
+// (Computed) Current revision id for the multi cluster app (string)
+func (o LookupMultiClusterAppResultOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) string { return v.RevisionId }).(pulumi.StringOutput)
+}
+
+// (Computed) The multi cluster app roles (list)
+func (o LookupMultiClusterAppResultOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// (Computed) The multi cluster app target projects (list)
+func (o LookupMultiClusterAppResultOutput) Targets() GetMultiClusterAppTargetArrayOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) []GetMultiClusterAppTarget { return v.Targets }).(GetMultiClusterAppTargetArrayOutput)
+}
+
+// (Computed) The multi cluster app template name (string)
+func (o LookupMultiClusterAppResultOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) string { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// (Computed) The multi cluster app template version (string)
+func (o LookupMultiClusterAppResultOutput) TemplateVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) string { return v.TemplateVersion }).(pulumi.StringOutput)
+}
+
+// (Computed) The multi cluster app template version ID (string)
+func (o LookupMultiClusterAppResultOutput) TemplateVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) string { return v.TemplateVersionId }).(pulumi.StringOutput)
+}
+
+// (Computed) The multi cluster app upgrade strategy (list)
+func (o LookupMultiClusterAppResultOutput) UpgradeStrategies() GetMultiClusterAppUpgradeStrategyArrayOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) []GetMultiClusterAppUpgradeStrategy { return v.UpgradeStrategies }).(GetMultiClusterAppUpgradeStrategyArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupMultiClusterAppResultOutput{})
 }

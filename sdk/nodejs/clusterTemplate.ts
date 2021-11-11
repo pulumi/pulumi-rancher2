@@ -235,31 +235,31 @@ export interface ClusterTemplateState {
     /**
      * Annotations for the cluster template revision (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * (Computed) Default cluster template revision ID (string)
      */
-    readonly defaultRevisionId?: pulumi.Input<string>;
+    defaultRevisionId?: pulumi.Input<string>;
     /**
      * Cluster template description
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Labels for the cluster template revision (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Cluster template members (list)
      */
-    readonly members?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateMember>[]>;
+    members?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateMember>[]>;
     /**
      * The cluster template revision name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Cluster template revisions (list)
      */
-    readonly templateRevisions?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevision>[]>;
+    templateRevisions?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevision>[]>;
 }
 
 /**
@@ -269,25 +269,25 @@ export interface ClusterTemplateArgs {
     /**
      * Annotations for the cluster template revision (map)
      */
-    readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Cluster template description
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Labels for the cluster template revision (map)
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Cluster template members (list)
      */
-    readonly members?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateMember>[]>;
+    members?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateMember>[]>;
     /**
      * The cluster template revision name (string)
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Cluster template revisions (list)
      */
-    readonly templateRevisions?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevision>[]>;
+    templateRevisions?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevision>[]>;
 }

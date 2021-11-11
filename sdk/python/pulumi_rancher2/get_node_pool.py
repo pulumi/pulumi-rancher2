@@ -13,6 +13,7 @@ __all__ = [
     'GetNodePoolResult',
     'AwaitableGetNodePoolResult',
     'get_node_pool',
+    'get_node_pool_output',
 ]
 
 @pulumi.output_type
@@ -224,3 +225,29 @@ def get_node_pool(cluster_id: Optional[str] = None,
         node_template_id=__ret__.node_template_id,
         quantity=__ret__.quantity,
         worker=__ret__.worker)
+
+
+@_utilities.lift_output_func(get_node_pool)
+def get_node_pool_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                         name: Optional[pulumi.Input[str]] = None,
+                         node_template_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodePoolResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 Node Pool resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_node_pool(cluster_id=rancher2_cluster["foo-custom"]["id"],
+        name="foo")
+    ```
+
+
+    :param str cluster_id: The RKE cluster id to use Node Pool (string)
+    :param str name: The name of the Node Pool (string)
+    :param str node_template_id: The Node Template ID to use for node creation (string)
+    """
+    ...

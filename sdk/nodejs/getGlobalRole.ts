@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(rancher2.getGlobalRole({
  *     name: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getGlobalRole(args: GetGlobalRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalRoleResult> {
@@ -39,7 +39,7 @@ export interface GetGlobalRoleArgs {
     /**
      * The name of the Global Role (string)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -75,4 +75,18 @@ export interface GetGlobalRoleResult {
      * (Computed) Global role policy rules (list)
      */
     readonly rules: outputs.GetGlobalRoleRule[];
+}
+
+export function getGlobalRoleOutput(args: GetGlobalRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalRoleResult> {
+    return pulumi.output(args).apply(a => getGlobalRole(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGlobalRole.
+ */
+export interface GetGlobalRoleOutputArgs {
+    /**
+     * The name of the Global Role (string)
+     */
+    name: pulumi.Input<string>;
 }

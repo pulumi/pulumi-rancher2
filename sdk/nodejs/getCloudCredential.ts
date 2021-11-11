@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const test = pulumi.output(rancher2.getCloudCredential({
  *     name: "test",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getCloudCredential(args: GetCloudCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudCredentialResult> {
@@ -39,7 +38,7 @@ export interface GetCloudCredentialArgs {
     /**
      * The Cloud Credential name.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -59,4 +58,18 @@ export interface GetCloudCredentialResult {
      */
     readonly labels: {[key: string]: any};
     readonly name: string;
+}
+
+export function getCloudCredentialOutput(args: GetCloudCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudCredentialResult> {
+    return pulumi.output(args).apply(a => getCloudCredential(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCloudCredential.
+ */
+export interface GetCloudCredentialOutputArgs {
+    /**
+     * The Cloud Credential name.
+     */
+    name: pulumi.Input<string>;
 }

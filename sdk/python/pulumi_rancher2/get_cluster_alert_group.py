@@ -13,6 +13,7 @@ __all__ = [
     'GetClusterAlertGroupResult',
     'AwaitableGetClusterAlertGroupResult',
     'get_cluster_alert_group',
+    'get_cluster_alert_group_output',
 ]
 
 @pulumi.output_type
@@ -185,3 +186,27 @@ def get_cluster_alert_group(cluster_id: Optional[str] = None,
         name=__ret__.name,
         recipients=__ret__.recipients,
         repeat_interval_seconds=__ret__.repeat_interval_seconds)
+
+
+@_utilities.lift_output_func(get_cluster_alert_group)
+def get_cluster_alert_group_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                                   name: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterAlertGroupResult]:
+    """
+    Use this data source to retrieve information about a Rancher v2 cluster alert group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_alert_group(cluster_id="<cluster_id>",
+        name="<cluster_alert_group_name>")
+    ```
+
+
+    :param str cluster_id: The cluster id where create cluster alert group (string)
+    :param str name: The cluster alert group name (string)
+    """
+    ...

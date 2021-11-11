@@ -26,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
-// 			AlidnsConfig: &rancher2.GlobalDnsProviderAlidnsConfigArgs{
+// 			AlidnsConfig: &GlobalDnsProviderAlidnsConfigArgs{
 // 				AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
 // 				SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
 // 			},
@@ -51,7 +51,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
-// 			CloudflareConfig: &rancher2.GlobalDnsProviderCloudflareConfigArgs{
+// 			CloudflareConfig: &GlobalDnsProviderCloudflareConfigArgs{
 // 				ApiEmail:     pulumi.String("test@test.local"),
 // 				ApiKey:       pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
 // 				ProxySetting: pulumi.Bool(true),
@@ -78,7 +78,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
 // 			RootDomain: pulumi.String("example.com"),
-// 			Route53Config: &rancher2.GlobalDnsProviderRoute53ConfigArgs{
+// 			Route53Config: &GlobalDnsProviderRoute53ConfigArgs{
 // 				AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
 // 				Region:    pulumi.String("us-east-1"),
 // 				SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
@@ -280,7 +280,7 @@ type GlobalDnsProviderArrayInput interface {
 type GlobalDnsProviderArray []GlobalDnsProviderInput
 
 func (GlobalDnsProviderArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GlobalDnsProvider)(nil))
+	return reflect.TypeOf((*[]*GlobalDnsProvider)(nil)).Elem()
 }
 
 func (i GlobalDnsProviderArray) ToGlobalDnsProviderArrayOutput() GlobalDnsProviderArrayOutput {
@@ -305,7 +305,7 @@ type GlobalDnsProviderMapInput interface {
 type GlobalDnsProviderMap map[string]GlobalDnsProviderInput
 
 func (GlobalDnsProviderMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GlobalDnsProvider)(nil))
+	return reflect.TypeOf((*map[string]*GlobalDnsProvider)(nil)).Elem()
 }
 
 func (i GlobalDnsProviderMap) ToGlobalDnsProviderMapOutput() GlobalDnsProviderMapOutput {
@@ -316,9 +316,7 @@ func (i GlobalDnsProviderMap) ToGlobalDnsProviderMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderMapOutput)
 }
 
-type GlobalDnsProviderOutput struct {
-	*pulumi.OutputState
-}
+type GlobalDnsProviderOutput struct{ *pulumi.OutputState }
 
 func (GlobalDnsProviderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GlobalDnsProvider)(nil))
@@ -337,14 +335,12 @@ func (o GlobalDnsProviderOutput) ToGlobalDnsProviderPtrOutput() GlobalDnsProvide
 }
 
 func (o GlobalDnsProviderOutput) ToGlobalDnsProviderPtrOutputWithContext(ctx context.Context) GlobalDnsProviderPtrOutput {
-	return o.ApplyT(func(v GlobalDnsProvider) *GlobalDnsProvider {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalDnsProvider) *GlobalDnsProvider {
 		return &v
 	}).(GlobalDnsProviderPtrOutput)
 }
 
-type GlobalDnsProviderPtrOutput struct {
-	*pulumi.OutputState
-}
+type GlobalDnsProviderPtrOutput struct{ *pulumi.OutputState }
 
 func (GlobalDnsProviderPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GlobalDnsProvider)(nil))
@@ -356,6 +352,16 @@ func (o GlobalDnsProviderPtrOutput) ToGlobalDnsProviderPtrOutput() GlobalDnsProv
 
 func (o GlobalDnsProviderPtrOutput) ToGlobalDnsProviderPtrOutputWithContext(ctx context.Context) GlobalDnsProviderPtrOutput {
 	return o
+}
+
+func (o GlobalDnsProviderPtrOutput) Elem() GlobalDnsProviderOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) GlobalDnsProvider {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalDnsProvider
+		return ret
+	}).(GlobalDnsProviderOutput)
 }
 
 type GlobalDnsProviderArrayOutput struct{ *pulumi.OutputState }
@@ -399,6 +405,10 @@ func (o GlobalDnsProviderMapOutput) MapIndex(k pulumi.StringInput) GlobalDnsProv
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalDnsProviderInput)(nil)).Elem(), &GlobalDnsProvider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalDnsProviderPtrInput)(nil)).Elem(), &GlobalDnsProvider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalDnsProviderArrayInput)(nil)).Elem(), GlobalDnsProviderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalDnsProviderMapInput)(nil)).Elem(), GlobalDnsProviderMap{})
 	pulumi.RegisterOutputType(GlobalDnsProviderOutput{})
 	pulumi.RegisterOutputType(GlobalDnsProviderPtrOutput{})
 	pulumi.RegisterOutputType(GlobalDnsProviderArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Task<GetConfigMapV2Result> InvokeAsync(GetConfigMapV2Args args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConfigMapV2Result>("rancher2:index/getConfigMapV2:getConfigMapV2", args ?? new GetConfigMapV2Args(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher2 configMap v2. ConfigMap v2 resource is available at Rancher v2.5.x and above.
+        /// </summary>
+        public static Output<GetConfigMapV2Result> Invoke(GetConfigMapV2InvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConfigMapV2Result>("rancher2:index/getConfigMapV2:getConfigMapV2", args ?? new GetConfigMapV2InvokeArgs(), options.WithVersion());
     }
 
 
@@ -40,6 +47,31 @@ namespace Pulumi.Rancher2
         public string? Namespace { get; set; }
 
         public GetConfigMapV2Args()
+        {
+        }
+    }
+
+    public sealed class GetConfigMapV2InvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The cluster id of the configMap V2 (string)
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the configMap v2 (string)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The namespaces of the configMap v2. Default: `default` (string)
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        public GetConfigMapV2InvokeArgs()
         {
         }
     }

@@ -13,6 +13,7 @@ __all__ = [
     'GetProjectResult',
     'AwaitableGetProjectResult',
     'get_project',
+    'get_project_output',
 ]
 
 @pulumi.output_type
@@ -187,3 +188,16 @@ def get_project(cluster_id: Optional[str] = None,
         pod_security_policy_template_id=__ret__.pod_security_policy_template_id,
         resource_quota=__ret__.resource_quota,
         uuid=__ret__.uuid)
+
+
+@_utilities.lift_output_func(get_project)
+def get_project_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                       name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param str cluster_id: ID of the Rancher 2 cluster (string)
+    :param str name: The project name (string)
+    """
+    ...
