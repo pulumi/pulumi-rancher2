@@ -41,6 +41,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("dns")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsGetArgs>? Dns { get; set; }
 
+        [Input("enableCriDockerd")]
+        public Input<bool>? EnableCriDockerd { get; set; }
+
         [Input("ignoreDockerVersion")]
         public Input<bool>? IgnoreDockerVersion { get; set; }
 

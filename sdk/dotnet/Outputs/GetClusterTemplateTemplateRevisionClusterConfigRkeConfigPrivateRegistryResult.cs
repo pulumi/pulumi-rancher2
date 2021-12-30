@@ -13,6 +13,7 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryResult
     {
+        public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginResult? EcrCredentialPlugin;
         public readonly bool? IsDefault;
         public readonly string? Password;
         public readonly string Url;
@@ -20,6 +21,8 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryResult(
+            Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginResult? ecrCredentialPlugin,
+
             bool? isDefault,
 
             string? password,
@@ -28,6 +31,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? user)
         {
+            EcrCredentialPlugin = ecrCredentialPlugin;
             IsDefault = isDefault;
             Password = password;
             Url = url;

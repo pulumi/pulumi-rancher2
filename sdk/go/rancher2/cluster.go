@@ -674,7 +674,7 @@ type Cluster struct {
 	IstioEnabled pulumi.BoolOutput `pulumi:"istioEnabled"`
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig ClusterK3sConfigOutput `pulumi:"k3sConfig"`
-	// (Computed/Sensitive) Kube Config generated for the cluster (string)
+	// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
 	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
 	// Labels for cluster registration token object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
@@ -785,7 +785,7 @@ type clusterState struct {
 	IstioEnabled *bool `pulumi:"istioEnabled"`
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig *ClusterK3sConfig `pulumi:"k3sConfig"`
-	// (Computed/Sensitive) Kube Config generated for the cluster (string)
+	// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// Labels for cluster registration token object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -868,7 +868,7 @@ type ClusterState struct {
 	IstioEnabled pulumi.BoolPtrInput
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig ClusterK3sConfigPtrInput
-	// (Computed/Sensitive) Kube Config generated for the cluster (string)
+	// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
 	KubeConfig pulumi.StringPtrInput
 	// Labels for cluster registration token object (map)
 	Labels pulumi.MapInput

@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? CloneFrom { get; set; }
 
         /// <summary>
-        /// Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
+        /// Cloud Config YAML content to inject as user-data. From Rancher v2.3.3 (string)
         /// </summary>
         [Input("cloudConfig")]
         public Input<string>? CloudConfig { get; set; }

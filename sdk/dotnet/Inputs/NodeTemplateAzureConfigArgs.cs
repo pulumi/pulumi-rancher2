@@ -109,6 +109,12 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
+        /// Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. Just for Rancher v2.6.3 and above. (string)
+        /// </summary>
+        [Input("plan")]
+        public Input<string>? Plan { get; set; }
+
+        /// <summary>
         /// Specify a static private IP address for the machine. (string)
         /// </summary>
         [Input("privateIpAddress")]

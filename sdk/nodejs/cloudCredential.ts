@@ -99,6 +99,10 @@ export class CloudCredential extends pulumi.CustomResource {
      */
     public readonly openstackCredentialConfig!: pulumi.Output<outputs.CloudCredentialOpenstackCredentialConfig | undefined>;
     /**
+     * S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+     */
+    public readonly s3CredentialConfig!: pulumi.Output<outputs.CloudCredentialS3CredentialConfig | undefined>;
+    /**
      * vSphere config for the Cloud Credential (list maxitems:1)
      */
     public readonly vsphereCredentialConfig!: pulumi.Output<outputs.CloudCredentialVsphereCredentialConfig | undefined>;
@@ -127,6 +131,7 @@ export class CloudCredential extends pulumi.CustomResource {
             inputs["linodeCredentialConfig"] = state ? state.linodeCredentialConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["openstackCredentialConfig"] = state ? state.openstackCredentialConfig : undefined;
+            inputs["s3CredentialConfig"] = state ? state.s3CredentialConfig : undefined;
             inputs["vsphereCredentialConfig"] = state ? state.vsphereCredentialConfig : undefined;
         } else {
             const args = argsOrState as CloudCredentialArgs | undefined;
@@ -140,6 +145,7 @@ export class CloudCredential extends pulumi.CustomResource {
             inputs["linodeCredentialConfig"] = args ? args.linodeCredentialConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["openstackCredentialConfig"] = args ? args.openstackCredentialConfig : undefined;
+            inputs["s3CredentialConfig"] = args ? args.s3CredentialConfig : undefined;
             inputs["vsphereCredentialConfig"] = args ? args.vsphereCredentialConfig : undefined;
             inputs["driver"] = undefined /*out*/;
         }
@@ -199,6 +205,10 @@ export interface CloudCredentialState {
      */
     openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig>;
     /**
+     * S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+     */
+    s3CredentialConfig?: pulumi.Input<inputs.CloudCredentialS3CredentialConfig>;
+    /**
      * vSphere config for the Cloud Credential (list maxitems:1)
      */
     vsphereCredentialConfig?: pulumi.Input<inputs.CloudCredentialVsphereCredentialConfig>;
@@ -248,6 +258,10 @@ export interface CloudCredentialArgs {
      * OpenStack config for the Cloud Credential (list maxitems:1)
      */
     openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig>;
+    /**
+     * S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+     */
+    s3CredentialConfig?: pulumi.Input<inputs.CloudCredentialS3CredentialConfig>;
     /**
      * vSphere config for the Cloud Credential (list maxitems:1)
      */

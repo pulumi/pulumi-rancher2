@@ -610,7 +610,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly k3sConfig!: pulumi.Output<outputs.ClusterK3sConfig>;
     /**
-     * (Computed/Sensitive) Kube Config generated for the cluster (string)
+     * (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
      */
     public /*out*/ readonly kubeConfig!: pulumi.Output<string>;
     /**
@@ -874,7 +874,7 @@ export interface ClusterState {
      */
     k3sConfig?: pulumi.Input<inputs.ClusterK3sConfig>;
     /**
-     * (Computed/Sensitive) Kube Config generated for the cluster (string)
+     * (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
      */
     kubeConfig?: pulumi.Input<string>;
     /**

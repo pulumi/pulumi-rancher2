@@ -14,6 +14,10 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigPrivateRegistry
     {
         /// <summary>
+        /// ECR credential plugin config (list maxitems:1)
+        /// </summary>
+        public readonly Outputs.ClusterRkeConfigPrivateRegistryEcrCredentialPlugin? EcrCredentialPlugin;
+        /// <summary>
         /// Set as default registry. Default `false` (bool)
         /// </summary>
         public readonly bool? IsDefault;
@@ -32,6 +36,8 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private ClusterRkeConfigPrivateRegistry(
+            Outputs.ClusterRkeConfigPrivateRegistryEcrCredentialPlugin? ecrCredentialPlugin,
+
             bool? isDefault,
 
             string? password,
@@ -40,6 +46,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? user)
         {
+            EcrCredentialPlugin = ecrCredentialPlugin;
             IsDefault = isDefault;
             Password = password;
             Url = url;

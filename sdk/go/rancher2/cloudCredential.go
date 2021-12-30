@@ -65,6 +65,8 @@ type CloudCredential struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig CloudCredentialOpenstackCredentialConfigPtrOutput `pulumi:"openstackCredentialConfig"`
+	// S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+	S3CredentialConfig CloudCredentialS3CredentialConfigPtrOutput `pulumi:"s3CredentialConfig"`
 	// vSphere config for the Cloud Credential (list maxitems:1)
 	VsphereCredentialConfig CloudCredentialVsphereCredentialConfigPtrOutput `pulumi:"vsphereCredentialConfig"`
 }
@@ -120,6 +122,8 @@ type cloudCredentialState struct {
 	Name *string `pulumi:"name"`
 	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig *CloudCredentialOpenstackCredentialConfig `pulumi:"openstackCredentialConfig"`
+	// S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+	S3CredentialConfig *CloudCredentialS3CredentialConfig `pulumi:"s3CredentialConfig"`
 	// vSphere config for the Cloud Credential (list maxitems:1)
 	VsphereCredentialConfig *CloudCredentialVsphereCredentialConfig `pulumi:"vsphereCredentialConfig"`
 }
@@ -147,6 +151,8 @@ type CloudCredentialState struct {
 	Name pulumi.StringPtrInput
 	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig CloudCredentialOpenstackCredentialConfigPtrInput
+	// S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+	S3CredentialConfig CloudCredentialS3CredentialConfigPtrInput
 	// vSphere config for the Cloud Credential (list maxitems:1)
 	VsphereCredentialConfig CloudCredentialVsphereCredentialConfigPtrInput
 }
@@ -176,6 +182,8 @@ type cloudCredentialArgs struct {
 	Name *string `pulumi:"name"`
 	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig *CloudCredentialOpenstackCredentialConfig `pulumi:"openstackCredentialConfig"`
+	// S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+	S3CredentialConfig *CloudCredentialS3CredentialConfig `pulumi:"s3CredentialConfig"`
 	// vSphere config for the Cloud Credential (list maxitems:1)
 	VsphereCredentialConfig *CloudCredentialVsphereCredentialConfig `pulumi:"vsphereCredentialConfig"`
 }
@@ -202,6 +210,8 @@ type CloudCredentialArgs struct {
 	Name pulumi.StringPtrInput
 	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig CloudCredentialOpenstackCredentialConfigPtrInput
+	// S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+	S3CredentialConfig CloudCredentialS3CredentialConfigPtrInput
 	// vSphere config for the Cloud Credential (list maxitems:1)
 	VsphereCredentialConfig CloudCredentialVsphereCredentialConfigPtrInput
 }

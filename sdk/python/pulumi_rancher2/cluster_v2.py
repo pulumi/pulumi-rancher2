@@ -24,6 +24,7 @@ class ClusterV2Args:
                  enable_network_policy: Optional[pulumi.Input[bool]] = None,
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 local_auth_endpoint: Optional[pulumi.Input['ClusterV2LocalAuthEndpointArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rke_config: Optional[pulumi.Input['ClusterV2RkeConfigArgs']] = None):
         """
@@ -37,6 +38,7 @@ class ClusterV2Args:
         :param pulumi.Input[bool] enable_network_policy: Enable k8s network policy at Cluster V2 (bool)
         :param pulumi.Input[str] fleet_namespace: The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
+        :param pulumi.Input['ClusterV2LocalAuthEndpointArgs'] local_auth_endpoint: Use rancher2_cluster_v2.local_auth_endpoint instead
         :param pulumi.Input[str] name: Name of cluster registration token (string)
         :param pulumi.Input['ClusterV2RkeConfigArgs'] rke_config: The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
         """
@@ -57,6 +59,8 @@ class ClusterV2Args:
             pulumi.set(__self__, "fleet_namespace", fleet_namespace)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if local_auth_endpoint is not None:
+            pulumi.set(__self__, "local_auth_endpoint", local_auth_endpoint)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if rke_config is not None:
@@ -171,6 +175,18 @@ class ClusterV2Args:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="localAuthEndpoint")
+    def local_auth_endpoint(self) -> Optional[pulumi.Input['ClusterV2LocalAuthEndpointArgs']]:
+        """
+        Use rancher2_cluster_v2.local_auth_endpoint instead
+        """
+        return pulumi.get(self, "local_auth_endpoint")
+
+    @local_auth_endpoint.setter
+    def local_auth_endpoint(self, value: Optional[pulumi.Input['ClusterV2LocalAuthEndpointArgs']]):
+        pulumi.set(self, "local_auth_endpoint", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -210,6 +226,7 @@ class _ClusterV2State:
                  kube_config: Optional[pulumi.Input[str]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 local_auth_endpoint: Optional[pulumi.Input['ClusterV2LocalAuthEndpointArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_version: Optional[pulumi.Input[str]] = None,
                  rke_config: Optional[pulumi.Input['ClusterV2RkeConfigArgs']] = None):
@@ -224,9 +241,10 @@ class _ClusterV2State:
         :param pulumi.Input[str] default_pod_security_policy_template_name: Cluster V2 default pod security policy template name (string)
         :param pulumi.Input[bool] enable_network_policy: Enable k8s network policy at Cluster V2 (bool)
         :param pulumi.Input[str] fleet_namespace: The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
-        :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
+        :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         :param pulumi.Input[str] kubernetes_version: The kubernetes version of the Cluster v2 (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
+        :param pulumi.Input['ClusterV2LocalAuthEndpointArgs'] local_auth_endpoint: Use rancher2_cluster_v2.local_auth_endpoint instead
         :param pulumi.Input[str] name: Name of cluster registration token (string)
         :param pulumi.Input[str] resource_version: (Computed) Cluster v2 k8s resource version (string)
         :param pulumi.Input['ClusterV2RkeConfigArgs'] rke_config: The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
@@ -255,6 +273,8 @@ class _ClusterV2State:
             pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if local_auth_endpoint is not None:
+            pulumi.set(__self__, "local_auth_endpoint", local_auth_endpoint)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if resource_version is not None:
@@ -374,7 +394,7 @@ class _ClusterV2State:
     @pulumi.getter(name="kubeConfig")
     def kube_config(self) -> Optional[pulumi.Input[str]]:
         """
-        (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
+        (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         """
         return pulumi.get(self, "kube_config")
 
@@ -405,6 +425,18 @@ class _ClusterV2State:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="localAuthEndpoint")
+    def local_auth_endpoint(self) -> Optional[pulumi.Input['ClusterV2LocalAuthEndpointArgs']]:
+        """
+        Use rancher2_cluster_v2.local_auth_endpoint instead
+        """
+        return pulumi.get(self, "local_auth_endpoint")
+
+    @local_auth_endpoint.setter
+    def local_auth_endpoint(self, value: Optional[pulumi.Input['ClusterV2LocalAuthEndpointArgs']]):
+        pulumi.set(self, "local_auth_endpoint", value)
 
     @property
     @pulumi.getter
@@ -457,6 +489,7 @@ class ClusterV2(pulumi.CustomResource):
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 local_auth_endpoint: Optional[pulumi.Input[pulumi.InputType['ClusterV2LocalAuthEndpointArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rke_config: Optional[pulumi.Input[pulumi.InputType['ClusterV2RkeConfigArgs']]] = None,
                  __props__=None):
@@ -499,6 +532,7 @@ class ClusterV2(pulumi.CustomResource):
         :param pulumi.Input[str] fleet_namespace: The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
         :param pulumi.Input[str] kubernetes_version: The kubernetes version of the Cluster v2 (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
+        :param pulumi.Input[pulumi.InputType['ClusterV2LocalAuthEndpointArgs']] local_auth_endpoint: Use rancher2_cluster_v2.local_auth_endpoint instead
         :param pulumi.Input[str] name: Name of cluster registration token (string)
         :param pulumi.Input[pulumi.InputType['ClusterV2RkeConfigArgs']] rke_config: The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
         """
@@ -560,6 +594,7 @@ class ClusterV2(pulumi.CustomResource):
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 local_auth_endpoint: Optional[pulumi.Input[pulumi.InputType['ClusterV2LocalAuthEndpointArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rke_config: Optional[pulumi.Input[pulumi.InputType['ClusterV2RkeConfigArgs']]] = None,
                  __props__=None):
@@ -585,6 +620,7 @@ class ClusterV2(pulumi.CustomResource):
                 raise TypeError("Missing required property 'kubernetes_version'")
             __props__.__dict__["kubernetes_version"] = kubernetes_version
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["local_auth_endpoint"] = local_auth_endpoint
             __props__.__dict__["name"] = name
             __props__.__dict__["rke_config"] = rke_config
             __props__.__dict__["cluster_registration_token"] = None
@@ -613,6 +649,7 @@ class ClusterV2(pulumi.CustomResource):
             kube_config: Optional[pulumi.Input[str]] = None,
             kubernetes_version: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            local_auth_endpoint: Optional[pulumi.Input[pulumi.InputType['ClusterV2LocalAuthEndpointArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_version: Optional[pulumi.Input[str]] = None,
             rke_config: Optional[pulumi.Input[pulumi.InputType['ClusterV2RkeConfigArgs']]] = None) -> 'ClusterV2':
@@ -632,9 +669,10 @@ class ClusterV2(pulumi.CustomResource):
         :param pulumi.Input[str] default_pod_security_policy_template_name: Cluster V2 default pod security policy template name (string)
         :param pulumi.Input[bool] enable_network_policy: Enable k8s network policy at Cluster V2 (bool)
         :param pulumi.Input[str] fleet_namespace: The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
-        :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
+        :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         :param pulumi.Input[str] kubernetes_version: The kubernetes version of the Cluster v2 (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
+        :param pulumi.Input[pulumi.InputType['ClusterV2LocalAuthEndpointArgs']] local_auth_endpoint: Use rancher2_cluster_v2.local_auth_endpoint instead
         :param pulumi.Input[str] name: Name of cluster registration token (string)
         :param pulumi.Input[str] resource_version: (Computed) Cluster v2 k8s resource version (string)
         :param pulumi.Input[pulumi.InputType['ClusterV2RkeConfigArgs']] rke_config: The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
@@ -655,6 +693,7 @@ class ClusterV2(pulumi.CustomResource):
         __props__.__dict__["kube_config"] = kube_config
         __props__.__dict__["kubernetes_version"] = kubernetes_version
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["local_auth_endpoint"] = local_auth_endpoint
         __props__.__dict__["name"] = name
         __props__.__dict__["resource_version"] = resource_version
         __props__.__dict__["rke_config"] = rke_config
@@ -736,7 +775,7 @@ class ClusterV2(pulumi.CustomResource):
     @pulumi.getter(name="kubeConfig")
     def kube_config(self) -> pulumi.Output[str]:
         """
-        (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
+        (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         """
         return pulumi.get(self, "kube_config")
 
@@ -755,6 +794,14 @@ class ClusterV2(pulumi.CustomResource):
         Labels for cluster registration token object (map)
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="localAuthEndpoint")
+    def local_auth_endpoint(self) -> pulumi.Output[Optional['outputs.ClusterV2LocalAuthEndpoint']]:
+        """
+        Use rancher2_cluster_v2.local_auth_endpoint instead
+        """
+        return pulumi.get(self, "local_auth_endpoint")
 
     @property
     @pulumi.getter

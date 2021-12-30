@@ -10,9 +10,10 @@ replace (
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/rancher/norman => github.com/rancher/norman v0.0.0-20210608202517-59b3523c3133
 	github.com/rancher/rancher => github.com/rancher/rancher v0.0.0-20210830223634-df2432ad895c
-	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20210830223634-df2432ad895c
-	github.com/rancher/rancher/pkg/client => github.com/rancher/rancher/pkg/client v0.0.0-20210830223634-df2432ad895c
-	github.com/rancher/terraform-provider-rancher2 => github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20211019171743-27b837742f90
+	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20211218171736-3c1d5fac3248
+	github.com/rancher/rancher/pkg/client => github.com/rancher/rancher/pkg/client v0.0.0-20211218171736-3c1d5fac3248
+	github.com/rancher/terraform-provider-rancher2 => github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20211229204246-0e08f125d8f7
+	github.com/spf13/afero => github.com/spf13/afero v1.2.2
 	helm.sh/helm/v3 => github.com/rancher/helm/v3 v3.5.4-rancher.1
 	k8s.io/api => k8s.io/api v0.21.0
 	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.21.0
@@ -45,5 +46,5 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.14.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.11.0
 	github.com/pulumi/pulumi/sdk/v3 v3.17.0
-	github.com/rancher/terraform-provider-rancher2 v1.10.2
+	github.com/rancher/terraform-provider-rancher2 v1.22.1
 )

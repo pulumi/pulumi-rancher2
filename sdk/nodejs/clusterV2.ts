@@ -99,7 +99,7 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     public readonly fleetNamespace!: pulumi.Output<string | undefined>;
     /**
-     * (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
+     * (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
      */
     public /*out*/ readonly kubeConfig!: pulumi.Output<string>;
     /**
@@ -110,6 +110,10 @@ export class ClusterV2 extends pulumi.CustomResource {
      * Labels for cluster registration token object (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     */
+    public readonly localAuthEndpoint!: pulumi.Output<outputs.ClusterV2LocalAuthEndpoint | undefined>;
     /**
      * Name of cluster registration token (string)
      */
@@ -148,6 +152,7 @@ export class ClusterV2 extends pulumi.CustomResource {
             inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
             inputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["localAuthEndpoint"] = state ? state.localAuthEndpoint : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["resourceVersion"] = state ? state.resourceVersion : undefined;
             inputs["rkeConfig"] = state ? state.rkeConfig : undefined;
@@ -165,6 +170,7 @@ export class ClusterV2 extends pulumi.CustomResource {
             inputs["fleetNamespace"] = args ? args.fleetNamespace : undefined;
             inputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["localAuthEndpoint"] = args ? args.localAuthEndpoint : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["rkeConfig"] = args ? args.rkeConfig : undefined;
             inputs["clusterRegistrationToken"] = undefined /*out*/;
@@ -220,7 +226,7 @@ export interface ClusterV2State {
      */
     fleetNamespace?: pulumi.Input<string>;
     /**
-     * (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
+     * (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
      */
     kubeConfig?: pulumi.Input<string>;
     /**
@@ -231,6 +237,10 @@ export interface ClusterV2State {
      * Labels for cluster registration token object (map)
      */
     labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     */
+    localAuthEndpoint?: pulumi.Input<inputs.ClusterV2LocalAuthEndpoint>;
     /**
      * Name of cluster registration token (string)
      */
@@ -285,6 +295,10 @@ export interface ClusterV2Args {
      * Labels for cluster registration token object (map)
      */
     labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     */
+    localAuthEndpoint?: pulumi.Input<inputs.ClusterV2LocalAuthEndpoint>;
     /**
      * Name of cluster registration token (string)
      */

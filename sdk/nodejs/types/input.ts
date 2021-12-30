@@ -70,6 +70,41 @@ export interface CloudCredentialOpenstackCredentialConfig {
     password: pulumi.Input<string>;
 }
 
+export interface CloudCredentialS3CredentialConfig {
+    /**
+     * AWS access key (string)
+     */
+    accessKey: pulumi.Input<string>;
+    /**
+     * AWS default bucket (string)
+     */
+    defaultBucket?: pulumi.Input<string>;
+    /**
+     * AWS default endpoint (string)
+     */
+    defaultEndpoint?: pulumi.Input<string>;
+    /**
+     * AWS default endpoint CA (string)
+     */
+    defaultEndpointCa?: pulumi.Input<string>;
+    /**
+     * AWS default folder (string)
+     */
+    defaultFolder?: pulumi.Input<string>;
+    /**
+     * AWS default region (string)
+     */
+    defaultRegion?: pulumi.Input<string>;
+    /**
+     * AWS default skip ssl verify. Default: `false` (bool)
+     */
+    defaultSkipSslVerify?: pulumi.Input<boolean>;
+    /**
+     * AWS secret key (string)
+     */
+    secretKey: pulumi.Input<string>;
+}
+
 export interface CloudCredentialVsphereCredentialConfig {
     /**
      * vSphere password (string)
@@ -1860,6 +1895,10 @@ export interface ClusterRkeConfig {
      */
     dns?: pulumi.Input<inputs.ClusterRkeConfigDns>;
     /**
+     * Enable/disable using cri-dockerd. Deafult: `false` [enableCriDockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
+     */
+    enableCriDockerd?: pulumi.Input<boolean>;
+    /**
      * Ignore docker version. Default `true` (bool)
      */
     ignoreDockerVersion?: pulumi.Input<boolean>;
@@ -2870,6 +2909,10 @@ export interface ClusterRkeConfigNode {
 
 export interface ClusterRkeConfigPrivateRegistry {
     /**
+     * ECR credential plugin config (list maxitems:1)
+     */
+    ecrCredentialPlugin?: pulumi.Input<inputs.ClusterRkeConfigPrivateRegistryEcrCredentialPlugin>;
+    /**
      * Set as default registry. Default `false` (bool)
      */
     isDefault?: pulumi.Input<boolean>;
@@ -2885,6 +2928,21 @@ export interface ClusterRkeConfigPrivateRegistry {
      * Registry user (string)
      */
     user?: pulumi.Input<string>;
+}
+
+export interface ClusterRkeConfigPrivateRegistryEcrCredentialPlugin {
+    /**
+     * AWS access key ID (string)
+     */
+    awsAccessKeyId?: pulumi.Input<string>;
+    /**
+     * AWS secret access key (string)
+     */
+    awsSecretAccessKey?: pulumi.Input<string>;
+    /**
+     * AWS session token (string)
+     */
+    awsSessionToken?: pulumi.Input<string>;
 }
 
 export interface ClusterRkeConfigServices {
@@ -3538,6 +3596,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     bastionHost?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost>;
     cloudProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider>;
     dns?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns>;
+    enableCriDockerd?: pulumi.Input<boolean>;
     ignoreDockerVersion?: pulumi.Input<boolean>;
     ingress?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress>;
     kubernetesVersion?: pulumi.Input<string>;
@@ -3894,10 +3953,17 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode {
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry {
+    ecrCredentialPlugin?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin>;
     isDefault?: pulumi.Input<boolean>;
     password?: pulumi.Input<string>;
     url: pulumi.Input<string>;
     user?: pulumi.Input<string>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin {
+    awsAccessKeyId?: pulumi.Input<string>;
+    awsSecretAccessKey?: pulumi.Input<string>;
+    awsSessionToken?: pulumi.Input<string>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices {
@@ -4158,6 +4224,21 @@ export interface ClusterV2ClusterRegistrationToken {
     windowsNodeCommand?: pulumi.Input<string>;
 }
 
+export interface ClusterV2LocalAuthEndpoint {
+    /**
+     * CA certs for the authorized cluster endpoint (string)
+     */
+    caCerts?: pulumi.Input<string>;
+    /**
+     * Drain options enabled? Default `true` (bool)
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * FQDN for the authorized cluster endpoint (string)
+     */
+    fqdn?: pulumi.Input<string>;
+}
+
 export interface ClusterV2RkeConfig {
     /**
      * Cluster V2 additional manifest (string)
@@ -4172,7 +4253,9 @@ export interface ClusterV2RkeConfig {
      */
     etcd?: pulumi.Input<inputs.ClusterV2RkeConfigEtcd>;
     /**
-     * Cluster V2 local auth endpoint (list maxitems:1)
+     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     *
+     * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      */
     localAuthEndpoint?: pulumi.Input<inputs.ClusterV2RkeConfigLocalAuthEndpoint>;
     /**
@@ -5878,6 +5961,10 @@ export interface NodeTemplateAzureConfig {
      */
     openPorts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Azure marketplace purchase plan for Azure Virtual Machine. Format is `<publisher>:<product>:<plan>`. Just for Rancher v2.6.3 and above. (string)
+     */
+    plan?: pulumi.Input<string>;
+    /**
      * Specify a static private IP address for the machine. (string)
      */
     privateIpAddress?: pulumi.Input<string>;
@@ -6355,7 +6442,7 @@ export interface NodeTemplateVsphereConfig {
      */
     cloneFrom?: pulumi.Input<string>;
     /**
-     * Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
+     * Cloud Config YAML content to inject as user-data. From Rancher v2.3.3 (string)
      */
     cloudConfig?: pulumi.Input<string>;
     /**

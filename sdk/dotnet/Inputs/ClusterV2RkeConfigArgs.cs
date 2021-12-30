@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterV2RkeConfigEtcdArgs>? Etcd { get; set; }
 
         /// <summary>
-        /// Cluster V2 local auth endpoint (list maxitems:1)
+        /// Use rancher2_cluster_v2.local_auth_endpoint instead
         /// </summary>
         [Input("localAuthEndpoint")]
         public Input<Inputs.ClusterV2RkeConfigLocalAuthEndpointArgs>? LocalAuthEndpoint { get; set; }

@@ -85,6 +85,10 @@ export class MachineConfigV2 extends pulumi.CustomResource {
      */
     public readonly openstackConfig!: pulumi.Output<outputs.MachineConfigV2OpenstackConfig | undefined>;
     /**
+     * (Computed) The machine config k8s resource version (string)
+     */
+    public /*out*/ readonly resourceVersion!: pulumi.Output<string>;
+    /**
      * vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `openstackConfig` (list maxitems:1)
      */
     public readonly vsphereConfig!: pulumi.Output<outputs.MachineConfigV2VsphereConfig | undefined>;
@@ -113,6 +117,7 @@ export class MachineConfigV2 extends pulumi.CustomResource {
             inputs["linodeConfig"] = state ? state.linodeConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["openstackConfig"] = state ? state.openstackConfig : undefined;
+            inputs["resourceVersion"] = state ? state.resourceVersion : undefined;
             inputs["vsphereConfig"] = state ? state.vsphereConfig : undefined;
         } else {
             const args = argsOrState as MachineConfigV2Args | undefined;
@@ -131,6 +136,7 @@ export class MachineConfigV2 extends pulumi.CustomResource {
             inputs["vsphereConfig"] = args ? args.vsphereConfig : undefined;
             inputs["kind"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["resourceVersion"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -187,6 +193,10 @@ export interface MachineConfigV2State {
      * Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `vsphereConfig` (list maxitems:1)
      */
     openstackConfig?: pulumi.Input<inputs.MachineConfigV2OpenstackConfig>;
+    /**
+     * (Computed) The machine config k8s resource version (string)
+     */
+    resourceVersion?: pulumi.Input<string>;
     /**
      * vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `openstackConfig` (list maxitems:1)
      */

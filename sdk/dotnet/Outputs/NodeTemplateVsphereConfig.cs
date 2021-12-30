@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? CloneFrom;
         /// <summary>
-        /// Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
+        /// Cloud Config YAML content to inject as user-data. From Rancher v2.3.3 (string)
         /// </summary>
         public readonly string? CloudConfig;
         /// <summary>

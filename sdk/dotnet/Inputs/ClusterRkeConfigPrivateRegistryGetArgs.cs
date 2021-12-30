@@ -13,6 +13,12 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigPrivateRegistryGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// ECR credential plugin config (list maxitems:1)
+        /// </summary>
+        [Input("ecrCredentialPlugin")]
+        public Input<Inputs.ClusterRkeConfigPrivateRegistryEcrCredentialPluginGetArgs>? EcrCredentialPlugin { get; set; }
+
+        /// <summary>
         /// Set as default registry. Default `false` (bool)
         /// </summary>
         [Input("isDefault")]

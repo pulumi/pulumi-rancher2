@@ -25,6 +25,7 @@ class CloudCredentialArgs:
                  linode_credential_config: Optional[pulumi.Input['CloudCredentialLinodeCredentialConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  openstack_credential_config: Optional[pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs']] = None,
+                 s3_credential_config: Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']] = None,
                  vsphere_credential_config: Optional[pulumi.Input['CloudCredentialVsphereCredentialConfigArgs']] = None):
         """
         The set of arguments for constructing a CloudCredential resource.
@@ -38,6 +39,7 @@ class CloudCredentialArgs:
         :param pulumi.Input['CloudCredentialLinodeCredentialConfigArgs'] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
         :param pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs'] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input['CloudCredentialS3CredentialConfigArgs'] s3_credential_config: S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
         :param pulumi.Input['CloudCredentialVsphereCredentialConfigArgs'] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
         """
         if amazonec2_credential_config is not None:
@@ -60,6 +62,8 @@ class CloudCredentialArgs:
             pulumi.set(__self__, "name", name)
         if openstack_credential_config is not None:
             pulumi.set(__self__, "openstack_credential_config", openstack_credential_config)
+        if s3_credential_config is not None:
+            pulumi.set(__self__, "s3_credential_config", s3_credential_config)
         if vsphere_credential_config is not None:
             pulumi.set(__self__, "vsphere_credential_config", vsphere_credential_config)
 
@@ -184,6 +188,18 @@ class CloudCredentialArgs:
         pulumi.set(self, "openstack_credential_config", value)
 
     @property
+    @pulumi.getter(name="s3CredentialConfig")
+    def s3_credential_config(self) -> Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']]:
+        """
+        S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        """
+        return pulumi.get(self, "s3_credential_config")
+
+    @s3_credential_config.setter
+    def s3_credential_config(self, value: Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']]):
+        pulumi.set(self, "s3_credential_config", value)
+
+    @property
     @pulumi.getter(name="vsphereCredentialConfig")
     def vsphere_credential_config(self) -> Optional[pulumi.Input['CloudCredentialVsphereCredentialConfigArgs']]:
         """
@@ -210,6 +226,7 @@ class _CloudCredentialState:
                  linode_credential_config: Optional[pulumi.Input['CloudCredentialLinodeCredentialConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  openstack_credential_config: Optional[pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs']] = None,
+                 s3_credential_config: Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']] = None,
                  vsphere_credential_config: Optional[pulumi.Input['CloudCredentialVsphereCredentialConfigArgs']] = None):
         """
         Input properties used for looking up and filtering CloudCredential resources.
@@ -224,6 +241,7 @@ class _CloudCredentialState:
         :param pulumi.Input['CloudCredentialLinodeCredentialConfigArgs'] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
         :param pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs'] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input['CloudCredentialS3CredentialConfigArgs'] s3_credential_config: S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
         :param pulumi.Input['CloudCredentialVsphereCredentialConfigArgs'] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
         """
         if amazonec2_credential_config is not None:
@@ -248,6 +266,8 @@ class _CloudCredentialState:
             pulumi.set(__self__, "name", name)
         if openstack_credential_config is not None:
             pulumi.set(__self__, "openstack_credential_config", openstack_credential_config)
+        if s3_credential_config is not None:
+            pulumi.set(__self__, "s3_credential_config", s3_credential_config)
         if vsphere_credential_config is not None:
             pulumi.set(__self__, "vsphere_credential_config", vsphere_credential_config)
 
@@ -384,6 +404,18 @@ class _CloudCredentialState:
         pulumi.set(self, "openstack_credential_config", value)
 
     @property
+    @pulumi.getter(name="s3CredentialConfig")
+    def s3_credential_config(self) -> Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']]:
+        """
+        S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        """
+        return pulumi.get(self, "s3_credential_config")
+
+    @s3_credential_config.setter
+    def s3_credential_config(self, value: Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']]):
+        pulumi.set(self, "s3_credential_config", value)
+
+    @property
     @pulumi.getter(name="vsphereCredentialConfig")
     def vsphere_credential_config(self) -> Optional[pulumi.Input['CloudCredentialVsphereCredentialConfigArgs']]:
         """
@@ -411,6 +443,7 @@ class CloudCredential(pulumi.CustomResource):
                  linode_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  openstack_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialOpenstackCredentialConfigArgs']]] = None,
+                 s3_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']]] = None,
                  vsphere_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialVsphereCredentialConfigArgs']]] = None,
                  __props__=None):
         """
@@ -445,6 +478,7 @@ class CloudCredential(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
         :param pulumi.Input[pulumi.InputType['CloudCredentialOpenstackCredentialConfigArgs']] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']] s3_credential_config: S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['CloudCredentialVsphereCredentialConfigArgs']] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
         """
         ...
@@ -498,6 +532,7 @@ class CloudCredential(pulumi.CustomResource):
                  linode_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  openstack_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialOpenstackCredentialConfigArgs']]] = None,
+                 s3_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']]] = None,
                  vsphere_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialVsphereCredentialConfigArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -521,6 +556,7 @@ class CloudCredential(pulumi.CustomResource):
             __props__.__dict__["linode_credential_config"] = linode_credential_config
             __props__.__dict__["name"] = name
             __props__.__dict__["openstack_credential_config"] = openstack_credential_config
+            __props__.__dict__["s3_credential_config"] = s3_credential_config
             __props__.__dict__["vsphere_credential_config"] = vsphere_credential_config
             __props__.__dict__["driver"] = None
         super(CloudCredential, __self__).__init__(
@@ -544,6 +580,7 @@ class CloudCredential(pulumi.CustomResource):
             linode_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             openstack_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialOpenstackCredentialConfigArgs']]] = None,
+            s3_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']]] = None,
             vsphere_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialVsphereCredentialConfigArgs']]] = None) -> 'CloudCredential':
         """
         Get an existing CloudCredential resource's state with the given name, id, and optional extra
@@ -563,6 +600,7 @@ class CloudCredential(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
         :param pulumi.Input[pulumi.InputType['CloudCredentialOpenstackCredentialConfigArgs']] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']] s3_credential_config: S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['CloudCredentialVsphereCredentialConfigArgs']] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -580,6 +618,7 @@ class CloudCredential(pulumi.CustomResource):
         __props__.__dict__["linode_credential_config"] = linode_credential_config
         __props__.__dict__["name"] = name
         __props__.__dict__["openstack_credential_config"] = openstack_credential_config
+        __props__.__dict__["s3_credential_config"] = s3_credential_config
         __props__.__dict__["vsphere_credential_config"] = vsphere_credential_config
         return CloudCredential(resource_name, opts=opts, __props__=__props__)
 
@@ -670,6 +709,14 @@ class CloudCredential(pulumi.CustomResource):
         OpenStack config for the Cloud Credential (list maxitems:1)
         """
         return pulumi.get(self, "openstack_credential_config")
+
+    @property
+    @pulumi.getter(name="s3CredentialConfig")
+    def s3_credential_config(self) -> pulumi.Output[Optional['outputs.CloudCredentialS3CredentialConfig']]:
+        """
+        S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        """
+        return pulumi.get(self, "s3_credential_config")
 
     @property
     @pulumi.getter(name="vsphereCredentialConfig")

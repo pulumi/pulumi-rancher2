@@ -104,7 +104,7 @@ namespace Pulumi.Rancher2
         public Output<string?> FleetNamespace { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
+        /// (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         /// </summary>
         [Output("kubeConfig")]
         public Output<string> KubeConfig { get; private set; } = null!;
@@ -120,6 +120,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Use rancher2_cluster_v2.local_auth_endpoint instead
+        /// </summary>
+        [Output("localAuthEndpoint")]
+        public Output<Outputs.ClusterV2LocalAuthEndpoint?> LocalAuthEndpoint { get; private set; } = null!;
 
         /// <summary>
         /// Name of cluster registration token (string)
@@ -258,6 +264,12 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
+        /// Use rancher2_cluster_v2.local_auth_endpoint instead
+        /// </summary>
+        [Input("localAuthEndpoint")]
+        public Input<Inputs.ClusterV2LocalAuthEndpointArgs>? LocalAuthEndpoint { get; set; }
+
+        /// <summary>
         /// Name of cluster registration token (string)
         /// </summary>
         [Input("name")]
@@ -343,7 +355,7 @@ namespace Pulumi.Rancher2
         public Input<string>? FleetNamespace { get; set; }
 
         /// <summary>
-        /// (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
+        /// (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
@@ -365,6 +377,12 @@ namespace Pulumi.Rancher2
             get => _labels ?? (_labels = new InputMap<object>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Use rancher2_cluster_v2.local_auth_endpoint instead
+        /// </summary>
+        [Input("localAuthEndpoint")]
+        public Input<Inputs.ClusterV2LocalAuthEndpointGetArgs>? LocalAuthEndpoint { get; set; }
 
         /// <summary>
         /// Name of cluster registration token (string)

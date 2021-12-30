@@ -21,6 +21,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostResult BastionHost;
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderResult CloudProvider;
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult Dns;
+        public readonly bool? EnableCriDockerd;
         public readonly bool? IgnoreDockerVersion;
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult Ingress;
         public readonly string KubernetesVersion;
@@ -53,6 +54,8 @@ namespace Pulumi.Rancher2.Outputs
             Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderResult cloudProvider,
 
             Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult dns,
+
+            bool? enableCriDockerd,
 
             bool? ignoreDockerVersion,
 
@@ -90,6 +93,7 @@ namespace Pulumi.Rancher2.Outputs
             BastionHost = bastionHost;
             CloudProvider = cloudProvider;
             Dns = dns;
+            EnableCriDockerd = enableCriDockerd;
             IgnoreDockerVersion = ignoreDockerVersion;
             Ingress = ingress;
             KubernetesVersion = kubernetesVersion;

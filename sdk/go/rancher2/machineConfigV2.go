@@ -41,6 +41,8 @@ type MachineConfigV2 struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `vsphereConfig` (list maxitems:1)
 	OpenstackConfig MachineConfigV2OpenstackConfigPtrOutput `pulumi:"openstackConfig"`
+	// (Computed) The machine config k8s resource version (string)
+	ResourceVersion pulumi.StringOutput `pulumi:"resourceVersion"`
 	// vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `openstackConfig` (list maxitems:1)
 	VsphereConfig MachineConfigV2VsphereConfigPtrOutput `pulumi:"vsphereConfig"`
 }
@@ -99,6 +101,8 @@ type machineConfigV2State struct {
 	Name *string `pulumi:"name"`
 	// Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `vsphereConfig` (list maxitems:1)
 	OpenstackConfig *MachineConfigV2OpenstackConfig `pulumi:"openstackConfig"`
+	// (Computed) The machine config k8s resource version (string)
+	ResourceVersion *string `pulumi:"resourceVersion"`
 	// vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `openstackConfig` (list maxitems:1)
 	VsphereConfig *MachineConfigV2VsphereConfig `pulumi:"vsphereConfig"`
 }
@@ -126,6 +130,8 @@ type MachineConfigV2State struct {
 	Name pulumi.StringPtrInput
 	// Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `vsphereConfig` (list maxitems:1)
 	OpenstackConfig MachineConfigV2OpenstackConfigPtrInput
+	// (Computed) The machine config k8s resource version (string)
+	ResourceVersion pulumi.StringPtrInput
 	// vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig` and `openstackConfig` (list maxitems:1)
 	VsphereConfig MachineConfigV2VsphereConfigPtrInput
 }

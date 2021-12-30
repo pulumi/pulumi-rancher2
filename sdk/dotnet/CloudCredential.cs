@@ -109,6 +109,12 @@ namespace Pulumi.Rancher2
         public Output<Outputs.CloudCredentialOpenstackCredentialConfig?> OpenstackCredentialConfig { get; private set; } = null!;
 
         /// <summary>
+        /// S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        /// </summary>
+        [Output("s3CredentialConfig")]
+        public Output<Outputs.CloudCredentialS3CredentialConfig?> S3CredentialConfig { get; private set; } = null!;
+
+        /// <summary>
         /// vSphere config for the Cloud Credential (list maxitems:1)
         /// </summary>
         [Output("vsphereCredentialConfig")]
@@ -233,6 +239,12 @@ namespace Pulumi.Rancher2
         public Input<Inputs.CloudCredentialOpenstackCredentialConfigArgs>? OpenstackCredentialConfig { get; set; }
 
         /// <summary>
+        /// S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        /// </summary>
+        [Input("s3CredentialConfig")]
+        public Input<Inputs.CloudCredentialS3CredentialConfigArgs>? S3CredentialConfig { get; set; }
+
+        /// <summary>
         /// vSphere config for the Cloud Credential (list maxitems:1)
         /// </summary>
         [Input("vsphereCredentialConfig")]
@@ -322,6 +334,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("openstackCredentialConfig")]
         public Input<Inputs.CloudCredentialOpenstackCredentialConfigGetArgs>? OpenstackCredentialConfig { get; set; }
+
+        /// <summary>
+        /// S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        /// </summary>
+        [Input("s3CredentialConfig")]
+        public Input<Inputs.CloudCredentialS3CredentialConfigGetArgs>? S3CredentialConfig { get; set; }
 
         /// <summary>
         /// vSphere config for the Cloud Credential (list maxitems:1)
