@@ -193,6 +193,7 @@ class _MachineConfigV2State:
                  linode_config: Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  openstack_config: Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']] = None,
+                 resource_version: Optional[pulumi.Input[str]] = None,
                  vsphere_config: Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']] = None):
         """
         Input properties used for looking up and filtering MachineConfigV2 resources.
@@ -207,6 +208,7 @@ class _MachineConfigV2State:
         :param pulumi.Input['MachineConfigV2LinodeConfigArgs'] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] name: (Computed) The machine config name (string)
         :param pulumi.Input['MachineConfigV2OpenstackConfigArgs'] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input[str] resource_version: (Computed) The machine config k8s resource version (string)
         :param pulumi.Input['MachineConfigV2VsphereConfigArgs'] vsphere_config: vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)
         """
         if amazonec2_config is not None:
@@ -231,6 +233,8 @@ class _MachineConfigV2State:
             pulumi.set(__self__, "name", name)
         if openstack_config is not None:
             pulumi.set(__self__, "openstack_config", openstack_config)
+        if resource_version is not None:
+            pulumi.set(__self__, "resource_version", resource_version)
         if vsphere_config is not None:
             pulumi.set(__self__, "vsphere_config", vsphere_config)
 
@@ -367,6 +371,18 @@ class _MachineConfigV2State:
         pulumi.set(self, "openstack_config", value)
 
     @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The machine config k8s resource version (string)
+        """
+        return pulumi.get(self, "resource_version")
+
+    @resource_version.setter
+    def resource_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_version", value)
+
+    @property
     @pulumi.getter(name="vsphereConfig")
     def vsphere_config(self) -> Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']]:
         """
@@ -479,6 +495,7 @@ class MachineConfigV2(pulumi.CustomResource):
             __props__.__dict__["vsphere_config"] = vsphere_config
             __props__.__dict__["kind"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["resource_version"] = None
         super(MachineConfigV2, __self__).__init__(
             'rancher2:index/machineConfigV2:MachineConfigV2',
             resource_name,
@@ -500,6 +517,7 @@ class MachineConfigV2(pulumi.CustomResource):
             linode_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2LinodeConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             openstack_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2OpenstackConfigArgs']]] = None,
+            resource_version: Optional[pulumi.Input[str]] = None,
             vsphere_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2VsphereConfigArgs']]] = None) -> 'MachineConfigV2':
         """
         Get an existing MachineConfigV2 resource's state with the given name, id, and optional extra
@@ -519,6 +537,7 @@ class MachineConfigV2(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MachineConfigV2LinodeConfigArgs']] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] name: (Computed) The machine config name (string)
         :param pulumi.Input[pulumi.InputType['MachineConfigV2OpenstackConfigArgs']] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input[str] resource_version: (Computed) The machine config k8s resource version (string)
         :param pulumi.Input[pulumi.InputType['MachineConfigV2VsphereConfigArgs']] vsphere_config: vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -536,6 +555,7 @@ class MachineConfigV2(pulumi.CustomResource):
         __props__.__dict__["linode_config"] = linode_config
         __props__.__dict__["name"] = name
         __props__.__dict__["openstack_config"] = openstack_config
+        __props__.__dict__["resource_version"] = resource_version
         __props__.__dict__["vsphere_config"] = vsphere_config
         return MachineConfigV2(resource_name, opts=opts, __props__=__props__)
 
@@ -626,6 +646,14 @@ class MachineConfigV2(pulumi.CustomResource):
         Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "openstack_config")
+
+    @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> pulumi.Output[str]:
+        """
+        (Computed) The machine config k8s resource version (string)
+        """
+        return pulumi.get(self, "resource_version")
 
     @property
     @pulumi.getter(name="vsphereConfig")

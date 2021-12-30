@@ -70,6 +70,41 @@ export interface CloudCredentialOpenstackCredentialConfig {
     password: string;
 }
 
+export interface CloudCredentialS3CredentialConfig {
+    /**
+     * AWS access key (string)
+     */
+    accessKey: string;
+    /**
+     * AWS default bucket (string)
+     */
+    defaultBucket?: string;
+    /**
+     * AWS default endpoint (string)
+     */
+    defaultEndpoint?: string;
+    /**
+     * AWS default endpoint CA (string)
+     */
+    defaultEndpointCa?: string;
+    /**
+     * AWS default folder (string)
+     */
+    defaultFolder?: string;
+    /**
+     * AWS default region (string)
+     */
+    defaultRegion?: string;
+    /**
+     * AWS default skip ssl verify. Default: `false` (bool)
+     */
+    defaultSkipSslVerify?: boolean;
+    /**
+     * AWS secret key (string)
+     */
+    secretKey: string;
+}
+
 export interface CloudCredentialVsphereCredentialConfig {
     /**
      * vSphere password (string)
@@ -1860,6 +1895,10 @@ export interface ClusterRkeConfig {
      */
     dns: outputs.ClusterRkeConfigDns;
     /**
+     * Enable/disable using cri-dockerd. Deafult: `false` [enableCriDockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
+     */
+    enableCriDockerd?: boolean;
+    /**
      * Ignore docker version. Default `true` (bool)
      */
     ignoreDockerVersion?: boolean;
@@ -2870,6 +2909,10 @@ export interface ClusterRkeConfigNode {
 
 export interface ClusterRkeConfigPrivateRegistry {
     /**
+     * ECR credential plugin config (list maxitems:1)
+     */
+    ecrCredentialPlugin?: outputs.ClusterRkeConfigPrivateRegistryEcrCredentialPlugin;
+    /**
      * Set as default registry. Default `false` (bool)
      */
     isDefault?: boolean;
@@ -2885,6 +2928,21 @@ export interface ClusterRkeConfigPrivateRegistry {
      * Registry user (string)
      */
     user?: string;
+}
+
+export interface ClusterRkeConfigPrivateRegistryEcrCredentialPlugin {
+    /**
+     * AWS access key ID (string)
+     */
+    awsAccessKeyId?: string;
+    /**
+     * AWS secret access key (string)
+     */
+    awsSecretAccessKey?: string;
+    /**
+     * AWS session token (string)
+     */
+    awsSessionToken?: string;
 }
 
 export interface ClusterRkeConfigServices {
@@ -3538,6 +3596,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     bastionHost: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost;
     cloudProvider: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider;
     dns: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns;
+    enableCriDockerd?: boolean;
     ignoreDockerVersion?: boolean;
     ingress: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress;
     kubernetesVersion: string;
@@ -3894,10 +3953,17 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode {
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry {
+    ecrCredentialPlugin?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin;
     isDefault?: boolean;
     password?: string;
     url: string;
     user?: string;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin {
+    awsAccessKeyId?: string;
+    awsSecretAccessKey?: string;
+    awsSessionToken?: string;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices {
@@ -4158,6 +4224,21 @@ export interface ClusterV2ClusterRegistrationToken {
     windowsNodeCommand: string;
 }
 
+export interface ClusterV2LocalAuthEndpoint {
+    /**
+     * CA certs for the authorized cluster endpoint (string)
+     */
+    caCerts?: string;
+    /**
+     * Drain options enabled? Default `true` (bool)
+     */
+    enabled?: boolean;
+    /**
+     * FQDN for the authorized cluster endpoint (string)
+     */
+    fqdn?: string;
+}
+
 export interface ClusterV2RkeConfig {
     /**
      * Cluster V2 additional manifest (string)
@@ -4172,7 +4253,9 @@ export interface ClusterV2RkeConfig {
      */
     etcd: outputs.ClusterV2RkeConfigEtcd;
     /**
-     * Cluster V2 local auth endpoint (list maxitems:1)
+     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     *
+     * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      */
     localAuthEndpoint?: outputs.ClusterV2RkeConfigLocalAuthEndpoint;
     /**
@@ -5170,6 +5253,7 @@ export interface GetClusterRkeConfig {
     bastionHost: outputs.GetClusterRkeConfigBastionHost;
     cloudProvider: outputs.GetClusterRkeConfigCloudProvider;
     dns: outputs.GetClusterRkeConfigDns;
+    enableCriDockerd?: boolean;
     ignoreDockerVersion?: boolean;
     ingress: outputs.GetClusterRkeConfigIngress;
     kubernetesVersion: string;
@@ -5526,10 +5610,17 @@ export interface GetClusterRkeConfigNode {
 }
 
 export interface GetClusterRkeConfigPrivateRegistry {
+    ecrCredentialPlugin?: outputs.GetClusterRkeConfigPrivateRegistryEcrCredentialPlugin;
     isDefault?: boolean;
     password?: string;
     url: string;
     user?: string;
+}
+
+export interface GetClusterRkeConfigPrivateRegistryEcrCredentialPlugin {
+    awsAccessKeyId?: string;
+    awsSecretAccessKey?: string;
+    awsSessionToken?: string;
 }
 
 export interface GetClusterRkeConfigServices {
@@ -5783,6 +5874,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     bastionHost: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost;
     cloudProvider: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider;
     dns: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns;
+    enableCriDockerd?: boolean;
     ignoreDockerVersion?: boolean;
     ingress: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress;
     kubernetesVersion: string;
@@ -6139,10 +6231,17 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNode {
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry {
+    ecrCredentialPlugin?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin;
     isDefault?: boolean;
     password?: string;
     url: string;
     user?: string;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin {
+    awsAccessKeyId?: string;
+    awsSecretAccessKey?: string;
+    awsSessionToken?: string;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices {
@@ -6344,6 +6443,9 @@ export interface GetClusterV2RkeConfig {
     additionalManifest?: string;
     chartValues?: string;
     etcd: outputs.GetClusterV2RkeConfigEtcd;
+    /**
+     * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
+     */
     localAuthEndpoint?: outputs.GetClusterV2RkeConfigLocalAuthEndpoint;
     machineGlobalConfig?: string;
     machinePools: outputs.GetClusterV2RkeConfigMachinePool[];
@@ -8002,6 +8104,10 @@ export interface NodeTemplateAzureConfig {
      */
     openPorts?: string[];
     /**
+     * Azure marketplace purchase plan for Azure Virtual Machine. Format is `<publisher>:<product>:<plan>`. Just for Rancher v2.6.3 and above. (string)
+     */
+    plan?: string;
+    /**
      * Specify a static private IP address for the machine. (string)
      */
     privateIpAddress?: string;
@@ -8479,7 +8585,7 @@ export interface NodeTemplateVsphereConfig {
      */
     cloneFrom?: string;
     /**
-     * Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
+     * Cloud Config YAML content to inject as user-data. From Rancher v2.3.3 (string)
      */
     cloudConfig?: string;
     /**
@@ -9363,4 +9469,3 @@ export interface RoleTemplateRule {
      */
     verbs?: string[];
 }
-

@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigEtcd? Etcd;
         /// <summary>
-        /// Cluster V2 local auth endpoint (list maxitems:1)
+        /// Use rancher2_cluster_v2.local_auth_endpoint instead
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigLocalAuthEndpoint? LocalAuthEndpoint;
         /// <summary>

@@ -810,7 +810,7 @@ namespace Pulumi.Rancher2
         public Output<Outputs.ClusterK3sConfig> K3sConfig { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed/Sensitive) Kube Config generated for the cluster (string)
+        /// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         /// </summary>
         [Output("kubeConfig")]
         public Output<string> KubeConfig { get; private set; } = null!;
@@ -1331,7 +1331,7 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterK3sConfigGetArgs>? K3sConfig { get; set; }
 
         /// <summary>
-        /// (Computed/Sensitive) Kube Config generated for the cluster (string)
+        /// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }

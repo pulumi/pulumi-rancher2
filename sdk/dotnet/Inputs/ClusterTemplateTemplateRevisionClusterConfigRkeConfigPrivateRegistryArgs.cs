@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs : Pulumi.ResourceArgs
     {
+        [Input("ecrCredentialPlugin")]
+        public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgs>? EcrCredentialPlugin { get; set; }
+
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 

@@ -74,6 +74,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> OpenPorts;
         /// <summary>
+        /// Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. Just for Rancher v2.6.3 and above. (string)
+        /// </summary>
+        public readonly string? Plan;
+        /// <summary>
         /// Specify a static private IP address for the machine. (string)
         /// </summary>
         public readonly string? PrivateIpAddress;
@@ -154,6 +158,8 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableArray<string> openPorts,
 
+            string? plan,
+
             string? privateIpAddress,
 
             string? resourceGroup,
@@ -193,6 +199,7 @@ namespace Pulumi.Rancher2.Outputs
             NoPublicIp = noPublicIp;
             Nsg = nsg;
             OpenPorts = openPorts;
+            Plan = plan;
             PrivateIpAddress = privateIpAddress;
             ResourceGroup = resourceGroup;
             Size = size;

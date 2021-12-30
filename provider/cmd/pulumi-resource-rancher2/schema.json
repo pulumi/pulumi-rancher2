@@ -240,6 +240,87 @@
                 "password"
             ]
         },
+        "rancher2:index/CloudCredentialS3CredentialConfig:CloudCredentialS3CredentialConfig": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "description": "AWS access key (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "defaultBucket": {
+                    "type": "string",
+                    "description": "AWS default bucket (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "defaultEndpoint": {
+                    "type": "string",
+                    "description": "AWS default endpoint (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "defaultEndpointCa": {
+                    "type": "string",
+                    "description": "AWS default endpoint CA (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "defaultFolder": {
+                    "type": "string",
+                    "description": "AWS default folder (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "defaultRegion": {
+                    "type": "string",
+                    "description": "AWS default region (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "defaultSkipSslVerify": {
+                    "type": "boolean",
+                    "description": "AWS default skip ssl verify. Default: `false` (bool)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretKey": {
+                    "type": "string",
+                    "description": "AWS secret key (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessKey",
+                "secretKey"
+            ]
+        },
         "rancher2:index/CloudCredentialVsphereCredentialConfig:CloudCredentialVsphereCredentialConfig": {
             "properties": {
                 "password": {
@@ -4866,6 +4947,15 @@
                         }
                     }
                 },
+                "enableCriDockerd": {
+                    "type": "boolean",
+                    "description": "Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ignoreDockerVersion": {
                     "type": "boolean",
                     "description": "Ignore docker version. Default `true` (bool)\n",
@@ -7542,6 +7632,15 @@
         },
         "rancher2:index/ClusterRkeConfigPrivateRegistry:ClusterRkeConfigPrivateRegistry": {
             "properties": {
+                "ecrCredentialPlugin": {
+                    "$ref": "#/types/rancher2:index/ClusterRkeConfigPrivateRegistryEcrCredentialPlugin:ClusterRkeConfigPrivateRegistryEcrCredentialPlugin",
+                    "description": "ECR credential plugin config (list maxitems:1)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "isDefault": {
                     "type": "boolean",
                     "description": "Set as default registry. Default `false` (bool)\n",
@@ -7583,6 +7682,38 @@
             "required": [
                 "url"
             ]
+        },
+        "rancher2:index/ClusterRkeConfigPrivateRegistryEcrCredentialPlugin:ClusterRkeConfigPrivateRegistryEcrCredentialPlugin": {
+            "properties": {
+                "awsAccessKeyId": {
+                    "type": "string",
+                    "description": "AWS access key ID (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsSecretAccessKey": {
+                    "type": "string",
+                    "description": "AWS secret access key (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsSessionToken": {
+                    "type": "string",
+                    "description": "AWS session token (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:index/ClusterRkeConfigServices:ClusterRkeConfigServices": {
             "properties": {
@@ -9339,6 +9470,14 @@
                 },
                 "dns": {
                     "$ref": "#/types/rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns:ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableCriDockerd": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11803,6 +11942,14 @@
         },
         "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry:ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry": {
             "properties": {
+                "ecrCredentialPlugin": {
+                    "$ref": "#/types/rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin:ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "isDefault": {
                     "type": "boolean",
                     "language": {
@@ -11840,6 +11987,35 @@
             "required": [
                 "url"
             ]
+        },
+        "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin:ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin": {
+            "properties": {
+                "awsAccessKeyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsSecretAccessKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsSessionToken": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices:ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices": {
             "properties": {
@@ -13168,6 +13344,38 @@
                 }
             }
         },
+        "rancher2:index/ClusterV2LocalAuthEndpoint:ClusterV2LocalAuthEndpoint": {
+            "properties": {
+                "caCerts": {
+                    "type": "string",
+                    "description": "CA certs for the authorized cluster endpoint (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Drain options enabled? Default `true` (bool)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fqdn": {
+                    "type": "string",
+                    "description": "FQDN for the authorized cluster endpoint (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "rancher2:index/ClusterV2RkeConfig:ClusterV2RkeConfig": {
             "properties": {
                 "additionalManifest": {
@@ -13199,7 +13407,8 @@
                 },
                 "localAuthEndpoint": {
                     "$ref": "#/types/rancher2:index/ClusterV2RkeConfigLocalAuthEndpoint:ClusterV2RkeConfigLocalAuthEndpoint",
-                    "description": "Cluster V2 local auth endpoint (list maxitems:1)\n",
+                    "description": "Use rancher2_cluster_v2.local_auth_endpoint instead\n",
+                    "deprecationMessage": "Use rancher2_cluster_v2.local_auth_endpoint instead",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -16824,6 +17033,15 @@
                         }
                     }
                 },
+                "plan": {
+                    "type": "string",
+                    "description": "Azure marketplace purchase plan for Azure Virtual Machine. Format is `\u003cpublisher\u003e:\u003cproduct\u003e:\u003cplan\u003e`. Just for Rancher v2.6.3 and above. (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "privateIpAddress": {
                     "type": "string",
                     "description": "Specify a static private IP address for the machine. (string)\n",
@@ -17916,7 +18134,7 @@
                 },
                 "cloudConfig": {
                     "type": "string",
-                    "description": "Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)\n",
+                    "description": "Cloud Config YAML content to inject as user-data. From Rancher v2.3.3 (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -24100,6 +24318,14 @@
                         }
                     }
                 },
+                "enableCriDockerd": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ignoreDockerVersion": {
                     "type": "boolean",
                     "language": {
@@ -26543,6 +26769,14 @@
         },
         "rancher2:index/getClusterRkeConfigPrivateRegistry:getClusterRkeConfigPrivateRegistry": {
             "properties": {
+                "ecrCredentialPlugin": {
+                    "$ref": "#/types/rancher2:index/getClusterRkeConfigPrivateRegistryEcrCredentialPlugin:getClusterRkeConfigPrivateRegistryEcrCredentialPlugin",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "isDefault": {
                     "type": "boolean",
                     "language": {
@@ -26585,6 +26819,35 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "rancher2:index/getClusterRkeConfigPrivateRegistryEcrCredentialPlugin:getClusterRkeConfigPrivateRegistryEcrCredentialPlugin": {
+            "properties": {
+                "awsAccessKeyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsSecretAccessKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsSessionToken": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:index/getClusterRkeConfigServices:getClusterRkeConfigServices": {
             "properties": {
@@ -28133,6 +28396,14 @@
                 },
                 "dns": {
                     "$ref": "#/types/rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigDns:getClusterTemplateTemplateRevisionClusterConfigRkeConfigDns",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableCriDockerd": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -30582,6 +30853,14 @@
         },
         "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry:getClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry": {
             "properties": {
+                "ecrCredentialPlugin": {
+                    "$ref": "#/types/rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin:getClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "isDefault": {
                     "type": "boolean",
                     "language": {
@@ -30624,6 +30903,35 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin:getClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin": {
+            "properties": {
+                "awsAccessKeyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsSecretAccessKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsSessionToken": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServices:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServices": {
             "properties": {
@@ -31999,6 +32307,7 @@
                 },
                 "localAuthEndpoint": {
                     "$ref": "#/types/rancher2:index/getClusterV2RkeConfigLocalAuthEndpoint:getClusterV2RkeConfigLocalAuthEndpoint",
+                    "deprecationMessage": "Use rancher2_cluster_v2.local_auth_endpoint instead",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -39916,6 +40225,10 @@
                     "$ref": "#/types/rancher2:index/CloudCredentialOpenstackCredentialConfig:CloudCredentialOpenstackCredentialConfig",
                     "description": "OpenStack config for the Cloud Credential (list maxitems:1)\n"
                 },
+                "s3CredentialConfig": {
+                    "$ref": "#/types/rancher2:index/CloudCredentialS3CredentialConfig:CloudCredentialS3CredentialConfig",
+                    "description": "S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)\n"
+                },
                 "vsphereCredentialConfig": {
                     "$ref": "#/types/rancher2:index/CloudCredentialVsphereCredentialConfig:CloudCredentialVsphereCredentialConfig",
                     "description": "vSphere config for the Cloud Credential (list maxitems:1)\n"
@@ -39974,6 +40287,10 @@
                     "$ref": "#/types/rancher2:index/CloudCredentialOpenstackCredentialConfig:CloudCredentialOpenstackCredentialConfig",
                     "description": "OpenStack config for the Cloud Credential (list maxitems:1)\n"
                 },
+                "s3CredentialConfig": {
+                    "$ref": "#/types/rancher2:index/CloudCredentialS3CredentialConfig:CloudCredentialS3CredentialConfig",
+                    "description": "S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)\n"
+                },
                 "vsphereCredentialConfig": {
                     "$ref": "#/types/rancher2:index/CloudCredentialVsphereCredentialConfig:CloudCredentialVsphereCredentialConfig",
                     "description": "vSphere config for the Cloud Credential (list maxitems:1)\n"
@@ -40031,6 +40348,10 @@
                     "openstackCredentialConfig": {
                         "$ref": "#/types/rancher2:index/CloudCredentialOpenstackCredentialConfig:CloudCredentialOpenstackCredentialConfig",
                         "description": "OpenStack config for the Cloud Credential (list maxitems:1)\n"
+                    },
+                    "s3CredentialConfig": {
+                        "$ref": "#/types/rancher2:index/CloudCredentialS3CredentialConfig:CloudCredentialS3CredentialConfig",
+                        "description": "S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)\n"
                     },
                     "vsphereCredentialConfig": {
                         "$ref": "#/types/rancher2:index/CloudCredentialVsphereCredentialConfig:CloudCredentialVsphereCredentialConfig",
@@ -40175,7 +40496,7 @@
                 },
                 "kubeConfig": {
                     "type": "string",
-                    "description": "(Computed/Sensitive) Kube Config generated for the cluster (string)\n"
+                    "description": "(Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)\n"
                 },
                 "labels": {
                     "type": "object",
@@ -40519,7 +40840,7 @@
                     },
                     "kubeConfig": {
                         "type": "string",
-                        "description": "(Computed/Sensitive) Kube Config generated for the cluster (string)\n"
+                        "description": "(Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)\n"
                     },
                     "labels": {
                         "type": "object",
@@ -42196,7 +42517,7 @@
                 },
                 "kubeConfig": {
                     "type": "string",
-                    "description": "(Computed/Sensitive) Kube Config generated for the cluster v2 (string)\n"
+                    "description": "(Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)\n"
                 },
                 "kubernetesVersion": {
                     "type": "string",
@@ -42208,6 +42529,10 @@
                         "$ref": "pulumi.json#/Any"
                     },
                     "description": "Labels for cluster registration token object (map)\n"
+                },
+                "localAuthEndpoint": {
+                    "$ref": "#/types/rancher2:index/ClusterV2LocalAuthEndpoint:ClusterV2LocalAuthEndpoint",
+                    "description": "Use rancher2_cluster_v2.local_auth_endpoint instead\n"
                 },
                 "name": {
                     "type": "string",
@@ -42280,6 +42605,10 @@
                     },
                     "description": "Labels for cluster registration token object (map)\n"
                 },
+                "localAuthEndpoint": {
+                    "$ref": "#/types/rancher2:index/ClusterV2LocalAuthEndpoint:ClusterV2LocalAuthEndpoint",
+                    "description": "Use rancher2_cluster_v2.local_auth_endpoint instead\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of cluster registration token (string)\n"
@@ -42339,7 +42668,7 @@
                     },
                     "kubeConfig": {
                         "type": "string",
-                        "description": "(Computed/Sensitive) Kube Config generated for the cluster v2 (string)\n"
+                        "description": "(Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)\n"
                     },
                     "kubernetesVersion": {
                         "type": "string",
@@ -42351,6 +42680,10 @@
                             "$ref": "pulumi.json#/Any"
                         },
                         "description": "Labels for cluster registration token object (map)\n"
+                    },
+                    "localAuthEndpoint": {
+                        "$ref": "#/types/rancher2:index/ClusterV2LocalAuthEndpoint:ClusterV2LocalAuthEndpoint",
+                        "description": "Use rancher2_cluster_v2.local_auth_endpoint instead\n"
                     },
                     "name": {
                         "type": "string",
@@ -43300,6 +43633,10 @@
                     "$ref": "#/types/rancher2:index/MachineConfigV2OpenstackConfig:MachineConfigV2OpenstackConfig",
                     "description": "Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)\n"
                 },
+                "resourceVersion": {
+                    "type": "string",
+                    "description": "(Computed) The machine config k8s resource version (string)\n"
+                },
                 "vsphereConfig": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2VsphereConfig:MachineConfigV2VsphereConfig",
                     "description": "vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)\n"
@@ -43310,7 +43647,8 @@
                 "generateName",
                 "kind",
                 "labels",
-                "name"
+                "name",
+                "resourceVersion"
             ],
             "inputProperties": {
                 "amazonec2Config": {
@@ -43415,6 +43753,10 @@
                     "openstackConfig": {
                         "$ref": "#/types/rancher2:index/MachineConfigV2OpenstackConfig:MachineConfigV2OpenstackConfig",
                         "description": "Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)\n"
+                    },
+                    "resourceVersion": {
+                        "type": "string",
+                        "description": "(Computed) The machine config k8s resource version (string)\n"
                     },
                     "vsphereConfig": {
                         "$ref": "#/types/rancher2:index/MachineConfigV2VsphereConfig:MachineConfigV2VsphereConfig",

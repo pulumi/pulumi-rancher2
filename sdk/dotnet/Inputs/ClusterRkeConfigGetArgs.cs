@@ -67,6 +67,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigDnsGetArgs>? Dns { get; set; }
 
         /// <summary>
+        /// Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
+        /// </summary>
+        [Input("enableCriDockerd")]
+        public Input<bool>? EnableCriDockerd { get; set; }
+
+        /// <summary>
         /// Ignore docker version. Default `true` (bool)
         /// </summary>
         [Input("ignoreDockerVersion")]

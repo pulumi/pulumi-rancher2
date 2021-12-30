@@ -16,6 +16,7 @@ __all__ = [
     'CloudCredentialGoogleCredentialConfig',
     'CloudCredentialLinodeCredentialConfig',
     'CloudCredentialOpenstackCredentialConfig',
+    'CloudCredentialS3CredentialConfig',
     'CloudCredentialVsphereCredentialConfig',
     'ClusterAgentEnvVar',
     'ClusterAksConfig',
@@ -107,6 +108,7 @@ __all__ = [
     'ClusterRkeConfigNetworkWeaveNetworkProvider',
     'ClusterRkeConfigNode',
     'ClusterRkeConfigPrivateRegistry',
+    'ClusterRkeConfigPrivateRegistryEcrCredentialPlugin',
     'ClusterRkeConfigServices',
     'ClusterRkeConfigServicesEtcd',
     'ClusterRkeConfigServicesEtcdBackupConfig',
@@ -174,6 +176,7 @@ __all__ = [
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig',
@@ -196,6 +199,7 @@ __all__ = [
     'ClusterTemplateTemplateRevisionQuestion',
     'ClusterV2AgentEnvVar',
     'ClusterV2ClusterRegistrationToken',
+    'ClusterV2LocalAuthEndpoint',
     'ClusterV2RkeConfig',
     'ClusterV2RkeConfigEtcd',
     'ClusterV2RkeConfigEtcdS3Config',
@@ -368,6 +372,7 @@ __all__ = [
     'GetClusterRkeConfigNetworkWeaveNetworkProviderResult',
     'GetClusterRkeConfigNodeResult',
     'GetClusterRkeConfigPrivateRegistryResult',
+    'GetClusterRkeConfigPrivateRegistryEcrCredentialPluginResult',
     'GetClusterRkeConfigServicesResult',
     'GetClusterRkeConfigServicesEtcdResult',
     'GetClusterRkeConfigServicesEtcdBackupConfigResult',
@@ -436,6 +441,7 @@ __all__ = [
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryResult',
+    'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigResult',
@@ -786,6 +792,138 @@ class CloudCredentialOpenstackCredentialConfig(dict):
         vSphere password (string)
         """
         return pulumi.get(self, "password")
+
+
+@pulumi.output_type
+class CloudCredentialS3CredentialConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+        elif key == "secretKey":
+            suggest = "secret_key"
+        elif key == "defaultBucket":
+            suggest = "default_bucket"
+        elif key == "defaultEndpoint":
+            suggest = "default_endpoint"
+        elif key == "defaultEndpointCa":
+            suggest = "default_endpoint_ca"
+        elif key == "defaultFolder":
+            suggest = "default_folder"
+        elif key == "defaultRegion":
+            suggest = "default_region"
+        elif key == "defaultSkipSslVerify":
+            suggest = "default_skip_ssl_verify"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudCredentialS3CredentialConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudCredentialS3CredentialConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudCredentialS3CredentialConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key: str,
+                 secret_key: str,
+                 default_bucket: Optional[str] = None,
+                 default_endpoint: Optional[str] = None,
+                 default_endpoint_ca: Optional[str] = None,
+                 default_folder: Optional[str] = None,
+                 default_region: Optional[str] = None,
+                 default_skip_ssl_verify: Optional[bool] = None):
+        """
+        :param str access_key: AWS access key (string)
+        :param str secret_key: AWS secret key (string)
+        :param str default_bucket: AWS default bucket (string)
+        :param str default_endpoint: AWS default endpoint (string)
+        :param str default_endpoint_ca: AWS default endpoint CA (string)
+        :param str default_folder: AWS default folder (string)
+        :param str default_region: AWS default region (string)
+        :param bool default_skip_ssl_verify: AWS default skip ssl verify. Default: `false` (bool)
+        """
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "secret_key", secret_key)
+        if default_bucket is not None:
+            pulumi.set(__self__, "default_bucket", default_bucket)
+        if default_endpoint is not None:
+            pulumi.set(__self__, "default_endpoint", default_endpoint)
+        if default_endpoint_ca is not None:
+            pulumi.set(__self__, "default_endpoint_ca", default_endpoint_ca)
+        if default_folder is not None:
+            pulumi.set(__self__, "default_folder", default_folder)
+        if default_region is not None:
+            pulumi.set(__self__, "default_region", default_region)
+        if default_skip_ssl_verify is not None:
+            pulumi.set(__self__, "default_skip_ssl_verify", default_skip_ssl_verify)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        """
+        AWS access key (string)
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> str:
+        """
+        AWS secret key (string)
+        """
+        return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="defaultBucket")
+    def default_bucket(self) -> Optional[str]:
+        """
+        AWS default bucket (string)
+        """
+        return pulumi.get(self, "default_bucket")
+
+    @property
+    @pulumi.getter(name="defaultEndpoint")
+    def default_endpoint(self) -> Optional[str]:
+        """
+        AWS default endpoint (string)
+        """
+        return pulumi.get(self, "default_endpoint")
+
+    @property
+    @pulumi.getter(name="defaultEndpointCa")
+    def default_endpoint_ca(self) -> Optional[str]:
+        """
+        AWS default endpoint CA (string)
+        """
+        return pulumi.get(self, "default_endpoint_ca")
+
+    @property
+    @pulumi.getter(name="defaultFolder")
+    def default_folder(self) -> Optional[str]:
+        """
+        AWS default folder (string)
+        """
+        return pulumi.get(self, "default_folder")
+
+    @property
+    @pulumi.getter(name="defaultRegion")
+    def default_region(self) -> Optional[str]:
+        """
+        AWS default region (string)
+        """
+        return pulumi.get(self, "default_region")
+
+    @property
+    @pulumi.getter(name="defaultSkipSslVerify")
+    def default_skip_ssl_verify(self) -> Optional[bool]:
+        """
+        AWS default skip ssl verify. Default: `false` (bool)
+        """
+        return pulumi.get(self, "default_skip_ssl_verify")
 
 
 @pulumi.output_type
@@ -7148,6 +7286,8 @@ class ClusterRkeConfig(dict):
             suggest = "bastion_host"
         elif key == "cloudProvider":
             suggest = "cloud_provider"
+        elif key == "enableCriDockerd":
+            suggest = "enable_cri_dockerd"
         elif key == "ignoreDockerVersion":
             suggest = "ignore_docker_version"
         elif key == "kubernetesVersion":
@@ -7187,6 +7327,7 @@ class ClusterRkeConfig(dict):
                  bastion_host: Optional['outputs.ClusterRkeConfigBastionHost'] = None,
                  cloud_provider: Optional['outputs.ClusterRkeConfigCloudProvider'] = None,
                  dns: Optional['outputs.ClusterRkeConfigDns'] = None,
+                 enable_cri_dockerd: Optional[bool] = None,
                  ignore_docker_version: Optional[bool] = None,
                  ingress: Optional['outputs.ClusterRkeConfigIngress'] = None,
                  kubernetes_version: Optional[str] = None,
@@ -7210,6 +7351,7 @@ class ClusterRkeConfig(dict):
         :param 'ClusterRkeConfigBastionHostArgs' bastion_host: RKE bastion host (list maxitems:1)
         :param 'ClusterRkeConfigCloudProviderArgs' cloud_provider: RKE options for Calico network provider (string)
         :param 'ClusterRkeConfigDnsArgs' dns: RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+        :param bool enable_cri_dockerd: Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
         :param bool ignore_docker_version: Ignore docker version. Default `true` (bool)
         :param 'ClusterRkeConfigIngressArgs' ingress: Kubernetes ingress configuration (list maxitems:1)
         :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
@@ -7241,6 +7383,8 @@ class ClusterRkeConfig(dict):
             pulumi.set(__self__, "cloud_provider", cloud_provider)
         if dns is not None:
             pulumi.set(__self__, "dns", dns)
+        if enable_cri_dockerd is not None:
+            pulumi.set(__self__, "enable_cri_dockerd", enable_cri_dockerd)
         if ignore_docker_version is not None:
             pulumi.set(__self__, "ignore_docker_version", ignore_docker_version)
         if ingress is not None:
@@ -7333,6 +7477,14 @@ class ClusterRkeConfig(dict):
         RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
         """
         return pulumi.get(self, "dns")
+
+    @property
+    @pulumi.getter(name="enableCriDockerd")
+    def enable_cri_dockerd(self) -> Optional[bool]:
+        """
+        Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
+        """
+        return pulumi.get(self, "enable_cri_dockerd")
 
     @property
     @pulumi.getter(name="ignoreDockerVersion")
@@ -10923,7 +11075,9 @@ class ClusterRkeConfigPrivateRegistry(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "isDefault":
+        if key == "ecrCredentialPlugin":
+            suggest = "ecr_credential_plugin"
+        elif key == "isDefault":
             suggest = "is_default"
 
         if suggest:
@@ -10939,16 +11093,20 @@ class ClusterRkeConfigPrivateRegistry(dict):
 
     def __init__(__self__, *,
                  url: str,
+                 ecr_credential_plugin: Optional['outputs.ClusterRkeConfigPrivateRegistryEcrCredentialPlugin'] = None,
                  is_default: Optional[bool] = None,
                  password: Optional[str] = None,
                  user: Optional[str] = None):
         """
         :param str url: Registry URL (string)
+        :param 'ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs' ecr_credential_plugin: ECR credential plugin config (list maxitems:1)
         :param bool is_default: Set as default registry. Default `false` (bool)
         :param str password: Registry password (string)
         :param str user: Registry user (string)
         """
         pulumi.set(__self__, "url", url)
+        if ecr_credential_plugin is not None:
+            pulumi.set(__self__, "ecr_credential_plugin", ecr_credential_plugin)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if password is not None:
@@ -10963,6 +11121,14 @@ class ClusterRkeConfigPrivateRegistry(dict):
         Registry URL (string)
         """
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="ecrCredentialPlugin")
+    def ecr_credential_plugin(self) -> Optional['outputs.ClusterRkeConfigPrivateRegistryEcrCredentialPlugin']:
+        """
+        ECR credential plugin config (list maxitems:1)
+        """
+        return pulumi.get(self, "ecr_credential_plugin")
 
     @property
     @pulumi.getter(name="isDefault")
@@ -10987,6 +11153,70 @@ class ClusterRkeConfigPrivateRegistry(dict):
         Registry user (string)
         """
         return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class ClusterRkeConfigPrivateRegistryEcrCredentialPlugin(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "awsAccessKeyId":
+            suggest = "aws_access_key_id"
+        elif key == "awsSecretAccessKey":
+            suggest = "aws_secret_access_key"
+        elif key == "awsSessionToken":
+            suggest = "aws_session_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterRkeConfigPrivateRegistryEcrCredentialPlugin. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterRkeConfigPrivateRegistryEcrCredentialPlugin.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterRkeConfigPrivateRegistryEcrCredentialPlugin.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aws_access_key_id: Optional[str] = None,
+                 aws_secret_access_key: Optional[str] = None,
+                 aws_session_token: Optional[str] = None):
+        """
+        :param str aws_access_key_id: AWS access key ID (string)
+        :param str aws_secret_access_key: AWS secret access key (string)
+        :param str aws_session_token: AWS session token (string)
+        """
+        if aws_access_key_id is not None:
+            pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
+        if aws_secret_access_key is not None:
+            pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        if aws_session_token is not None:
+            pulumi.set(__self__, "aws_session_token", aws_session_token)
+
+    @property
+    @pulumi.getter(name="awsAccessKeyId")
+    def aws_access_key_id(self) -> Optional[str]:
+        """
+        AWS access key ID (string)
+        """
+        return pulumi.get(self, "aws_access_key_id")
+
+    @property
+    @pulumi.getter(name="awsSecretAccessKey")
+    def aws_secret_access_key(self) -> Optional[str]:
+        """
+        AWS secret access key (string)
+        """
+        return pulumi.get(self, "aws_secret_access_key")
+
+    @property
+    @pulumi.getter(name="awsSessionToken")
+    def aws_session_token(self) -> Optional[str]:
+        """
+        AWS session token (string)
+        """
+        return pulumi.get(self, "aws_session_token")
 
 
 @pulumi.output_type
@@ -13392,6 +13622,8 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfig(dict):
             suggest = "bastion_host"
         elif key == "cloudProvider":
             suggest = "cloud_provider"
+        elif key == "enableCriDockerd":
+            suggest = "enable_cri_dockerd"
         elif key == "ignoreDockerVersion":
             suggest = "ignore_docker_version"
         elif key == "kubernetesVersion":
@@ -13431,6 +13663,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfig(dict):
                  bastion_host: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost'] = None,
                  cloud_provider: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider'] = None,
                  dns: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns'] = None,
+                 enable_cri_dockerd: Optional[bool] = None,
                  ignore_docker_version: Optional[bool] = None,
                  ingress: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress'] = None,
                  kubernetes_version: Optional[str] = None,
@@ -13461,6 +13694,8 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfig(dict):
             pulumi.set(__self__, "cloud_provider", cloud_provider)
         if dns is not None:
             pulumi.set(__self__, "dns", dns)
+        if enable_cri_dockerd is not None:
+            pulumi.set(__self__, "enable_cri_dockerd", enable_cri_dockerd)
         if ignore_docker_version is not None:
             pulumi.set(__self__, "ignore_docker_version", ignore_docker_version)
         if ingress is not None:
@@ -13529,6 +13764,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfig(dict):
     @pulumi.getter
     def dns(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns']:
         return pulumi.get(self, "dns")
+
+    @property
+    @pulumi.getter(name="enableCriDockerd")
+    def enable_cri_dockerd(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_cri_dockerd")
 
     @property
     @pulumi.getter(name="ignoreDockerVersion")
@@ -16185,7 +16425,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry(dict)
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "isDefault":
+        if key == "ecrCredentialPlugin":
+            suggest = "ecr_credential_plugin"
+        elif key == "isDefault":
             suggest = "is_default"
 
         if suggest:
@@ -16201,10 +16443,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry(dict)
 
     def __init__(__self__, *,
                  url: str,
+                 ecr_credential_plugin: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin'] = None,
                  is_default: Optional[bool] = None,
                  password: Optional[str] = None,
                  user: Optional[str] = None):
         pulumi.set(__self__, "url", url)
+        if ecr_credential_plugin is not None:
+            pulumi.set(__self__, "ecr_credential_plugin", ecr_credential_plugin)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if password is not None:
@@ -16216,6 +16461,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry(dict)
     @pulumi.getter
     def url(self) -> str:
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="ecrCredentialPlugin")
+    def ecr_credential_plugin(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin']:
+        return pulumi.get(self, "ecr_credential_plugin")
 
     @property
     @pulumi.getter(name="isDefault")
@@ -16231,6 +16481,56 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry(dict)
     @pulumi.getter
     def user(self) -> Optional[str]:
         return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "awsAccessKeyId":
+            suggest = "aws_access_key_id"
+        elif key == "awsSecretAccessKey":
+            suggest = "aws_secret_access_key"
+        elif key == "awsSessionToken":
+            suggest = "aws_session_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aws_access_key_id: Optional[str] = None,
+                 aws_secret_access_key: Optional[str] = None,
+                 aws_session_token: Optional[str] = None):
+        if aws_access_key_id is not None:
+            pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
+        if aws_secret_access_key is not None:
+            pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        if aws_session_token is not None:
+            pulumi.set(__self__, "aws_session_token", aws_session_token)
+
+    @property
+    @pulumi.getter(name="awsAccessKeyId")
+    def aws_access_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "aws_access_key_id")
+
+    @property
+    @pulumi.getter(name="awsSecretAccessKey")
+    def aws_secret_access_key(self) -> Optional[str]:
+        return pulumi.get(self, "aws_secret_access_key")
+
+    @property
+    @pulumi.getter(name="awsSessionToken")
+    def aws_session_token(self) -> Optional[str]:
+        return pulumi.get(self, "aws_session_token")
 
 
 @pulumi.output_type
@@ -17817,6 +18117,66 @@ class ClusterV2ClusterRegistrationToken(dict):
 
 
 @pulumi.output_type
+class ClusterV2LocalAuthEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCerts":
+            suggest = "ca_certs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2LocalAuthEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2LocalAuthEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2LocalAuthEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certs: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 fqdn: Optional[str] = None):
+        """
+        :param str ca_certs: CA certs for the authorized cluster endpoint (string)
+        :param bool enabled: Drain options enabled? Default `true` (bool)
+        :param str fqdn: FQDN for the authorized cluster endpoint (string)
+        """
+        if ca_certs is not None:
+            pulumi.set(__self__, "ca_certs", ca_certs)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+
+    @property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> Optional[str]:
+        """
+        CA certs for the authorized cluster endpoint (string)
+        """
+        return pulumi.get(self, "ca_certs")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Drain options enabled? Default `true` (bool)
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[str]:
+        """
+        FQDN for the authorized cluster endpoint (string)
+        """
+        return pulumi.get(self, "fqdn")
+
+
+@pulumi.output_type
 class ClusterV2RkeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -17861,7 +18221,7 @@ class ClusterV2RkeConfig(dict):
         :param str additional_manifest: Cluster V2 additional manifest (string)
         :param str chart_values: Cluster V2 chart values. Must be in YAML format (string)
         :param 'ClusterV2RkeConfigEtcdArgs' etcd: Cluster V2 etcd (list maxitems:1)
-        :param 'ClusterV2RkeConfigLocalAuthEndpointArgs' local_auth_endpoint: Cluster V2 local auth endpoint (list maxitems:1)
+        :param 'ClusterV2RkeConfigLocalAuthEndpointArgs' local_auth_endpoint: Use rancher2_cluster_v2.local_auth_endpoint instead
         :param str machine_global_config: Cluster V2 machine global config. Must be in YAML format (string)
         :param Sequence['ClusterV2RkeConfigMachinePoolArgs'] machine_pools: Cluster V2 machine pools (list)
         :param Sequence['ClusterV2RkeConfigMachineSelectorConfigArgs'] machine_selector_configs: Cluster V2 machine selector config (list)
@@ -17915,7 +18275,7 @@ class ClusterV2RkeConfig(dict):
     @pulumi.getter(name="localAuthEndpoint")
     def local_auth_endpoint(self) -> Optional['outputs.ClusterV2RkeConfigLocalAuthEndpoint']:
         """
-        Cluster V2 local auth endpoint (list maxitems:1)
+        Use rancher2_cluster_v2.local_auth_endpoint instead
         """
         return pulumi.get(self, "local_auth_endpoint")
 
@@ -23197,6 +23557,7 @@ class NodeTemplateAzureConfig(dict):
                  no_public_ip: Optional[bool] = None,
                  nsg: Optional[str] = None,
                  open_ports: Optional[Sequence[str]] = None,
+                 plan: Optional[str] = None,
                  private_ip_address: Optional[str] = None,
                  resource_group: Optional[str] = None,
                  size: Optional[str] = None,
@@ -23225,6 +23586,7 @@ class NodeTemplateAzureConfig(dict):
         :param bool no_public_ip: Do not create a public IP address for the machine. Default `false` (bool)
         :param str nsg: Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
         :param Sequence[str] open_ports: Make the specified port number accessible from the Internet. (list)
+        :param str plan: Azure marketplace purchase plan for Azure Virtual Machine. Format is `<publisher>:<product>:<plan>`. Just for Rancher v2.6.3 and above. (string)
         :param str private_ip_address: Specify a static private IP address for the machine. (string)
         :param str resource_group: Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
         :param str size: Digital Ocean size. Default `s-1vcpu-1gb` (string)
@@ -23268,6 +23630,8 @@ class NodeTemplateAzureConfig(dict):
             pulumi.set(__self__, "nsg", nsg)
         if open_ports is not None:
             pulumi.set(__self__, "open_ports", open_ports)
+        if plan is not None:
+            pulumi.set(__self__, "plan", plan)
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if resource_group is not None:
@@ -23412,6 +23776,14 @@ class NodeTemplateAzureConfig(dict):
         Make the specified port number accessible from the Internet. (list)
         """
         return pulumi.get(self, "open_ports")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[str]:
+        """
+        Azure marketplace purchase plan for Azure Virtual Machine. Format is `<publisher>:<product>:<plan>`. Just for Rancher v2.6.3 and above. (string)
+        """
+        return pulumi.get(self, "plan")
 
     @property
     @pulumi.getter(name="privateIpAddress")
@@ -25048,7 +25420,7 @@ class NodeTemplateVsphereConfig(dict):
         :param str boot2docker_url: vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
         :param Sequence[str] cfgparams: vSphere vm configuration parameters (used for guestinfo) (list)
         :param str clone_from: If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
-        :param str cloud_config: Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
+        :param str cloud_config: Cloud Config YAML content to inject as user-data. From Rancher v2.3.3 (string)
         :param str cloudinit: vSphere cloud-init file or url to set in the guestinfo (string)
         :param str content_library: If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
         :param str cpu_count: vSphere CPU number for docker VM. Default `2` (string)
@@ -25168,7 +25540,7 @@ class NodeTemplateVsphereConfig(dict):
     @pulumi.getter(name="cloudConfig")
     def cloud_config(self) -> Optional[str]:
         """
-        Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
+        Cloud Config YAML content to inject as user-data. From Rancher v2.3.3 (string)
         """
         return pulumi.get(self, "cloud_config")
 
@@ -31474,6 +31846,7 @@ class GetClusterRkeConfigResult(dict):
                  win_prefix_path: str,
                  addons: Optional[str] = None,
                  addons_includes: Optional[Sequence[str]] = None,
+                 enable_cri_dockerd: Optional[bool] = None,
                  ignore_docker_version: Optional[bool] = None,
                  nodes: Optional[Sequence['outputs.GetClusterRkeConfigNodeResult']] = None,
                  private_registries: Optional[Sequence['outputs.GetClusterRkeConfigPrivateRegistryResult']] = None,
@@ -31498,6 +31871,8 @@ class GetClusterRkeConfigResult(dict):
             pulumi.set(__self__, "addons", addons)
         if addons_includes is not None:
             pulumi.set(__self__, "addons_includes", addons_includes)
+        if enable_cri_dockerd is not None:
+            pulumi.set(__self__, "enable_cri_dockerd", enable_cri_dockerd)
         if ignore_docker_version is not None:
             pulumi.set(__self__, "ignore_docker_version", ignore_docker_version)
         if nodes is not None:
@@ -31596,6 +31971,11 @@ class GetClusterRkeConfigResult(dict):
     @pulumi.getter(name="addonsIncludes")
     def addons_includes(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "addons_includes")
+
+    @property
+    @pulumi.getter(name="enableCriDockerd")
+    def enable_cri_dockerd(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_cri_dockerd")
 
     @property
     @pulumi.getter(name="ignoreDockerVersion")
@@ -33362,10 +33742,13 @@ class GetClusterRkeConfigNodeResult(dict):
 class GetClusterRkeConfigPrivateRegistryResult(dict):
     def __init__(__self__, *,
                  url: str,
+                 ecr_credential_plugin: Optional['outputs.GetClusterRkeConfigPrivateRegistryEcrCredentialPluginResult'] = None,
                  is_default: Optional[bool] = None,
                  password: Optional[str] = None,
                  user: Optional[str] = None):
         pulumi.set(__self__, "url", url)
+        if ecr_credential_plugin is not None:
+            pulumi.set(__self__, "ecr_credential_plugin", ecr_credential_plugin)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if password is not None:
@@ -33377,6 +33760,11 @@ class GetClusterRkeConfigPrivateRegistryResult(dict):
     @pulumi.getter
     def url(self) -> str:
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="ecrCredentialPlugin")
+    def ecr_credential_plugin(self) -> Optional['outputs.GetClusterRkeConfigPrivateRegistryEcrCredentialPluginResult']:
+        return pulumi.get(self, "ecr_credential_plugin")
 
     @property
     @pulumi.getter(name="isDefault")
@@ -33392,6 +33780,35 @@ class GetClusterRkeConfigPrivateRegistryResult(dict):
     @pulumi.getter
     def user(self) -> Optional[str]:
         return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class GetClusterRkeConfigPrivateRegistryEcrCredentialPluginResult(dict):
+    def __init__(__self__, *,
+                 aws_access_key_id: Optional[str] = None,
+                 aws_secret_access_key: Optional[str] = None,
+                 aws_session_token: Optional[str] = None):
+        if aws_access_key_id is not None:
+            pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
+        if aws_secret_access_key is not None:
+            pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        if aws_session_token is not None:
+            pulumi.set(__self__, "aws_session_token", aws_session_token)
+
+    @property
+    @pulumi.getter(name="awsAccessKeyId")
+    def aws_access_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "aws_access_key_id")
+
+    @property
+    @pulumi.getter(name="awsSecretAccessKey")
+    def aws_secret_access_key(self) -> Optional[str]:
+        return pulumi.get(self, "aws_secret_access_key")
+
+    @property
+    @pulumi.getter(name="awsSessionToken")
+    def aws_session_token(self) -> Optional[str]:
+        return pulumi.get(self, "aws_session_token")
 
 
 @pulumi.output_type
@@ -34603,6 +35020,7 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigResult(dict):
                  win_prefix_path: str,
                  addons: Optional[str] = None,
                  addons_includes: Optional[Sequence[str]] = None,
+                 enable_cri_dockerd: Optional[bool] = None,
                  ignore_docker_version: Optional[bool] = None,
                  nodes: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeResult']] = None,
                  private_registries: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryResult']] = None,
@@ -34627,6 +35045,8 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigResult(dict):
             pulumi.set(__self__, "addons", addons)
         if addons_includes is not None:
             pulumi.set(__self__, "addons_includes", addons_includes)
+        if enable_cri_dockerd is not None:
+            pulumi.set(__self__, "enable_cri_dockerd", enable_cri_dockerd)
         if ignore_docker_version is not None:
             pulumi.set(__self__, "ignore_docker_version", ignore_docker_version)
         if nodes is not None:
@@ -34725,6 +35145,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigResult(dict):
     @pulumi.getter(name="addonsIncludes")
     def addons_includes(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "addons_includes")
+
+    @property
+    @pulumi.getter(name="enableCriDockerd")
+    def enable_cri_dockerd(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_cri_dockerd")
 
     @property
     @pulumi.getter(name="ignoreDockerVersion")
@@ -36491,10 +36916,13 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeResult(dict):
 class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryResult(dict):
     def __init__(__self__, *,
                  url: str,
+                 ecr_credential_plugin: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginResult'] = None,
                  is_default: Optional[bool] = None,
                  password: Optional[str] = None,
                  user: Optional[str] = None):
         pulumi.set(__self__, "url", url)
+        if ecr_credential_plugin is not None:
+            pulumi.set(__self__, "ecr_credential_plugin", ecr_credential_plugin)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if password is not None:
@@ -36506,6 +36934,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryRes
     @pulumi.getter
     def url(self) -> str:
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="ecrCredentialPlugin")
+    def ecr_credential_plugin(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginResult']:
+        return pulumi.get(self, "ecr_credential_plugin")
 
     @property
     @pulumi.getter(name="isDefault")
@@ -36521,6 +36954,35 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryRes
     @pulumi.getter
     def user(self) -> Optional[str]:
         return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginResult(dict):
+    def __init__(__self__, *,
+                 aws_access_key_id: Optional[str] = None,
+                 aws_secret_access_key: Optional[str] = None,
+                 aws_session_token: Optional[str] = None):
+        if aws_access_key_id is not None:
+            pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
+        if aws_secret_access_key is not None:
+            pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        if aws_session_token is not None:
+            pulumi.set(__self__, "aws_session_token", aws_session_token)
+
+    @property
+    @pulumi.getter(name="awsAccessKeyId")
+    def aws_access_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "aws_access_key_id")
+
+    @property
+    @pulumi.getter(name="awsSecretAccessKey")
+    def aws_secret_access_key(self) -> Optional[str]:
+        return pulumi.get(self, "aws_secret_access_key")
+
+    @property
+    @pulumi.getter(name="awsSessionToken")
+    def aws_session_token(self) -> Optional[str]:
+        return pulumi.get(self, "aws_session_token")
 
 
 @pulumi.output_type

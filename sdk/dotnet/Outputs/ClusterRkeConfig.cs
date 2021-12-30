@@ -46,6 +46,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigDns? Dns;
         /// <summary>
+        /// Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
+        /// </summary>
+        public readonly bool? EnableCriDockerd;
+        /// <summary>
         /// Ignore docker version. Default `true` (bool)
         /// </summary>
         public readonly bool? IgnoreDockerVersion;
@@ -120,6 +124,8 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.ClusterRkeConfigDns? dns,
 
+            bool? enableCriDockerd,
+
             bool? ignoreDockerVersion,
 
             Outputs.ClusterRkeConfigIngress? ingress,
@@ -156,6 +162,7 @@ namespace Pulumi.Rancher2.Outputs
             BastionHost = bastionHost;
             CloudProvider = cloudProvider;
             Dns = dns;
+            EnableCriDockerd = enableCriDockerd;
             IgnoreDockerVersion = ignoreDockerVersion;
             Ingress = ingress;
             KubernetesVersion = kubernetesVersion;

@@ -86,6 +86,12 @@ namespace Pulumi.Rancher2
         public Output<Outputs.MachineConfigV2OpenstackConfig?> OpenstackConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (Computed) The machine config k8s resource version (string)
+        /// </summary>
+        [Output("resourceVersion")]
+        public Output<string> ResourceVersion { get; private set; } = null!;
+
+        /// <summary>
         /// vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)
         /// </summary>
         [Output("vsphereConfig")]
@@ -293,6 +299,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("openstackConfig")]
         public Input<Inputs.MachineConfigV2OpenstackConfigGetArgs>? OpenstackConfig { get; set; }
+
+        /// <summary>
+        /// (Computed) The machine config k8s resource version (string)
+        /// </summary>
+        [Input("resourceVersion")]
+        public Input<string>? ResourceVersion { get; set; }
 
         /// <summary>
         /// vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)

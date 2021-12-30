@@ -70,12 +70,14 @@ type ClusterV2 struct {
 	EnableNetworkPolicy pulumi.BoolOutput `pulumi:"enableNetworkPolicy"`
 	// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
 	FleetNamespace pulumi.StringPtrOutput `pulumi:"fleetNamespace"`
-	// (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
+	// (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
 	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
 	// The kubernetes version of the Cluster v2 (list maxitems:1)
 	KubernetesVersion pulumi.StringOutput `pulumi:"kubernetesVersion"`
 	// Labels for cluster registration token object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
+	// Use rancher2_cluster_v2.local_auth_endpoint instead
+	LocalAuthEndpoint ClusterV2LocalAuthEndpointPtrOutput `pulumi:"localAuthEndpoint"`
 	// Name of cluster registration token (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Computed) Cluster v2 k8s resource version (string)
@@ -134,12 +136,14 @@ type clusterV2State struct {
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
 	// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
 	FleetNamespace *string `pulumi:"fleetNamespace"`
-	// (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
+	// (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The kubernetes version of the Cluster v2 (list maxitems:1)
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// Labels for cluster registration token object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
+	// Use rancher2_cluster_v2.local_auth_endpoint instead
+	LocalAuthEndpoint *ClusterV2LocalAuthEndpoint `pulumi:"localAuthEndpoint"`
 	// Name of cluster registration token (string)
 	Name *string `pulumi:"name"`
 	// (Computed) Cluster v2 k8s resource version (string)
@@ -167,12 +171,14 @@ type ClusterV2State struct {
 	EnableNetworkPolicy pulumi.BoolPtrInput
 	// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
 	FleetNamespace pulumi.StringPtrInput
-	// (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
+	// (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
 	KubeConfig pulumi.StringPtrInput
 	// The kubernetes version of the Cluster v2 (list maxitems:1)
 	KubernetesVersion pulumi.StringPtrInput
 	// Labels for cluster registration token object (map)
 	Labels pulumi.MapInput
+	// Use rancher2_cluster_v2.local_auth_endpoint instead
+	LocalAuthEndpoint ClusterV2LocalAuthEndpointPtrInput
 	// Name of cluster registration token (string)
 	Name pulumi.StringPtrInput
 	// (Computed) Cluster v2 k8s resource version (string)
@@ -204,6 +210,8 @@ type clusterV2Args struct {
 	KubernetesVersion string `pulumi:"kubernetesVersion"`
 	// Labels for cluster registration token object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
+	// Use rancher2_cluster_v2.local_auth_endpoint instead
+	LocalAuthEndpoint *ClusterV2LocalAuthEndpoint `pulumi:"localAuthEndpoint"`
 	// Name of cluster registration token (string)
 	Name *string `pulumi:"name"`
 	// The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
@@ -230,6 +238,8 @@ type ClusterV2Args struct {
 	KubernetesVersion pulumi.StringInput
 	// Labels for cluster registration token object (map)
 	Labels pulumi.MapInput
+	// Use rancher2_cluster_v2.local_auth_endpoint instead
+	LocalAuthEndpoint ClusterV2LocalAuthEndpointPtrInput
 	// Name of cluster registration token (string)
 	Name pulumi.StringPtrInput
 	// The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
