@@ -14608,7 +14608,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)\n",
+                    "description": "Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -20320,7 +20320,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)\n",
+                    "description": "Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)\n",
                     "language": {
                         "python": {
                             "mapCase": false

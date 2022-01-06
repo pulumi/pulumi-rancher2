@@ -19976,7 +19976,7 @@ class GlobalRoleRule(dict):
         :param Sequence[str] non_resource_urls: Policy rule non resource urls (list)
         :param Sequence[str] resource_names: Policy rule resource names (list)
         :param Sequence[str] resources: Policy rule resources (list)
-        :param Sequence[str] verbs: Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
+        :param Sequence[str] verbs: Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
         """
         if api_groups is not None:
             pulumi.set(__self__, "api_groups", api_groups)
@@ -20025,7 +20025,7 @@ class GlobalRoleRule(dict):
     @pulumi.getter
     def verbs(self) -> Optional[Sequence[str]]:
         """
-        Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
+        Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
         """
         return pulumi.get(self, "verbs")
 
@@ -28506,7 +28506,7 @@ class RoleTemplateRule(dict):
         :param Sequence[str] non_resource_urls: Policy rule non resource urls (list)
         :param Sequence[str] resource_names: Policy rule resource names (list)
         :param Sequence[str] resources: Policy rule resources (list)
-        :param Sequence[str] verbs: Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
+        :param Sequence[str] verbs: Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
         """
         if api_groups is not None:
             pulumi.set(__self__, "api_groups", api_groups)
@@ -28555,7 +28555,7 @@ class RoleTemplateRule(dict):
     @pulumi.getter
     def verbs(self) -> Optional[Sequence[str]]:
         """
-        Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
+        Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
         """
         return pulumi.get(self, "verbs")
 

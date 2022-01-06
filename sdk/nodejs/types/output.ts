@@ -7060,7 +7060,7 @@ export interface GlobalRoleRule {
      */
     resources?: string[];
     /**
-     * Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
+     * Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
      */
     verbs?: string[];
 }
@@ -9465,7 +9465,7 @@ export interface RoleTemplateRule {
      */
     resources?: string[];
     /**
-     * Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
+     * Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
      */
     verbs?: string[];
 }

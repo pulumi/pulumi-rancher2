@@ -4917,7 +4917,7 @@ export interface GlobalRoleRule {
      */
     resources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
+     * Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
      */
     verbs?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -7322,7 +7322,7 @@ export interface RoleTemplateRule {
      */
     resources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
+     * Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
      */
     verbs?: pulumi.Input<pulumi.Input<string>[]>;
 }
