@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade terraform-provider-rancher2 to v1.22.2
+_(none)_
 
 ---
+
+## 3.6.1 (2022-01-07)
+* Upgrade terraform-provider-rancher2 to v1.22.2
 
 ## 3.6.0 (2021-12-30)
 * Upgrade terraform-provider-rancher2 to v1.22.1
