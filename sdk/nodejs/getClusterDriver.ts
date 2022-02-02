@@ -23,9 +23,7 @@ export function getClusterDriver(args: GetClusterDriverArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getClusterDriver:getClusterDriver", {
         "name": args.name,
         "url": args.url,

@@ -268,7 +268,7 @@ type ClusterLoggingInput interface {
 }
 
 func (*ClusterLogging) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterLogging)(nil))
+	return reflect.TypeOf((**ClusterLogging)(nil)).Elem()
 }
 
 func (i *ClusterLogging) ToClusterLoggingOutput() ClusterLoggingOutput {
@@ -277,35 +277,6 @@ func (i *ClusterLogging) ToClusterLoggingOutput() ClusterLoggingOutput {
 
 func (i *ClusterLogging) ToClusterLoggingOutputWithContext(ctx context.Context) ClusterLoggingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingOutput)
-}
-
-func (i *ClusterLogging) ToClusterLoggingPtrOutput() ClusterLoggingPtrOutput {
-	return i.ToClusterLoggingPtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterLogging) ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingPtrOutput)
-}
-
-type ClusterLoggingPtrInput interface {
-	pulumi.Input
-
-	ToClusterLoggingPtrOutput() ClusterLoggingPtrOutput
-	ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput
-}
-
-type clusterLoggingPtrType ClusterLoggingArgs
-
-func (*clusterLoggingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterLogging)(nil))
-}
-
-func (i *clusterLoggingPtrType) ToClusterLoggingPtrOutput() ClusterLoggingPtrOutput {
-	return i.ToClusterLoggingPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterLoggingPtrType) ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingPtrOutput)
 }
 
 // ClusterLoggingArrayInput is an input type that accepts ClusterLoggingArray and ClusterLoggingArrayOutput values.
@@ -361,7 +332,7 @@ func (i ClusterLoggingMap) ToClusterLoggingMapOutputWithContext(ctx context.Cont
 type ClusterLoggingOutput struct{ *pulumi.OutputState }
 
 func (ClusterLoggingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterLogging)(nil))
+	return reflect.TypeOf((**ClusterLogging)(nil)).Elem()
 }
 
 func (o ClusterLoggingOutput) ToClusterLoggingOutput() ClusterLoggingOutput {
@@ -372,44 +343,10 @@ func (o ClusterLoggingOutput) ToClusterLoggingOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ClusterLoggingOutput) ToClusterLoggingPtrOutput() ClusterLoggingPtrOutput {
-	return o.ToClusterLoggingPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterLoggingOutput) ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterLogging) *ClusterLogging {
-		return &v
-	}).(ClusterLoggingPtrOutput)
-}
-
-type ClusterLoggingPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterLoggingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterLogging)(nil))
-}
-
-func (o ClusterLoggingPtrOutput) ToClusterLoggingPtrOutput() ClusterLoggingPtrOutput {
-	return o
-}
-
-func (o ClusterLoggingPtrOutput) ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput {
-	return o
-}
-
-func (o ClusterLoggingPtrOutput) Elem() ClusterLoggingOutput {
-	return o.ApplyT(func(v *ClusterLogging) ClusterLogging {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterLogging
-		return ret
-	}).(ClusterLoggingOutput)
-}
-
 type ClusterLoggingArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterLoggingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterLogging)(nil))
+	return reflect.TypeOf((*[]*ClusterLogging)(nil)).Elem()
 }
 
 func (o ClusterLoggingArrayOutput) ToClusterLoggingArrayOutput() ClusterLoggingArrayOutput {
@@ -421,15 +358,15 @@ func (o ClusterLoggingArrayOutput) ToClusterLoggingArrayOutputWithContext(ctx co
 }
 
 func (o ClusterLoggingArrayOutput) Index(i pulumi.IntInput) ClusterLoggingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterLogging {
-		return vs[0].([]ClusterLogging)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterLogging {
+		return vs[0].([]*ClusterLogging)[vs[1].(int)]
 	}).(ClusterLoggingOutput)
 }
 
 type ClusterLoggingMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterLoggingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterLogging)(nil))
+	return reflect.TypeOf((*map[string]*ClusterLogging)(nil)).Elem()
 }
 
 func (o ClusterLoggingMapOutput) ToClusterLoggingMapOutput() ClusterLoggingMapOutput {
@@ -441,18 +378,16 @@ func (o ClusterLoggingMapOutput) ToClusterLoggingMapOutputWithContext(ctx contex
 }
 
 func (o ClusterLoggingMapOutput) MapIndex(k pulumi.StringInput) ClusterLoggingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterLogging {
-		return vs[0].(map[string]ClusterLogging)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterLogging {
+		return vs[0].(map[string]*ClusterLogging)[vs[1].(string)]
 	}).(ClusterLoggingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLoggingInput)(nil)).Elem(), &ClusterLogging{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLoggingPtrInput)(nil)).Elem(), &ClusterLogging{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLoggingArrayInput)(nil)).Elem(), ClusterLoggingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLoggingMapInput)(nil)).Elem(), ClusterLoggingMap{})
 	pulumi.RegisterOutputType(ClusterLoggingOutput{})
-	pulumi.RegisterOutputType(ClusterLoggingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingArrayOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingMapOutput{})
 }

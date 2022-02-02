@@ -84,42 +84,40 @@ export class ClusterSync extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterSyncArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterSyncArgs | ClusterSyncState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterSyncState | undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
-            inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
-            inputs["nodePoolIds"] = state ? state.nodePoolIds : undefined;
-            inputs["nodes"] = state ? state.nodes : undefined;
-            inputs["stateConfirm"] = state ? state.stateConfirm : undefined;
-            inputs["synced"] = state ? state.synced : undefined;
-            inputs["systemProjectId"] = state ? state.systemProjectId : undefined;
-            inputs["waitAlerting"] = state ? state.waitAlerting : undefined;
-            inputs["waitCatalogs"] = state ? state.waitCatalogs : undefined;
-            inputs["waitMonitoring"] = state ? state.waitMonitoring : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
+            resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
+            resourceInputs["nodePoolIds"] = state ? state.nodePoolIds : undefined;
+            resourceInputs["nodes"] = state ? state.nodes : undefined;
+            resourceInputs["stateConfirm"] = state ? state.stateConfirm : undefined;
+            resourceInputs["synced"] = state ? state.synced : undefined;
+            resourceInputs["systemProjectId"] = state ? state.systemProjectId : undefined;
+            resourceInputs["waitAlerting"] = state ? state.waitAlerting : undefined;
+            resourceInputs["waitCatalogs"] = state ? state.waitCatalogs : undefined;
+            resourceInputs["waitMonitoring"] = state ? state.waitMonitoring : undefined;
         } else {
             const args = argsOrState as ClusterSyncArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["nodePoolIds"] = args ? args.nodePoolIds : undefined;
-            inputs["stateConfirm"] = args ? args.stateConfirm : undefined;
-            inputs["synced"] = args ? args.synced : undefined;
-            inputs["waitAlerting"] = args ? args.waitAlerting : undefined;
-            inputs["waitCatalogs"] = args ? args.waitCatalogs : undefined;
-            inputs["waitMonitoring"] = args ? args.waitMonitoring : undefined;
-            inputs["defaultProjectId"] = undefined /*out*/;
-            inputs["kubeConfig"] = undefined /*out*/;
-            inputs["nodes"] = undefined /*out*/;
-            inputs["systemProjectId"] = undefined /*out*/;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["nodePoolIds"] = args ? args.nodePoolIds : undefined;
+            resourceInputs["stateConfirm"] = args ? args.stateConfirm : undefined;
+            resourceInputs["synced"] = args ? args.synced : undefined;
+            resourceInputs["waitAlerting"] = args ? args.waitAlerting : undefined;
+            resourceInputs["waitCatalogs"] = args ? args.waitCatalogs : undefined;
+            resourceInputs["waitMonitoring"] = args ? args.waitMonitoring : undefined;
+            resourceInputs["defaultProjectId"] = undefined /*out*/;
+            resourceInputs["kubeConfig"] = undefined /*out*/;
+            resourceInputs["nodes"] = undefined /*out*/;
+            resourceInputs["systemProjectId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ClusterSync.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ClusterSync.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -151,36 +151,34 @@ export class Namespace extends pulumi.CustomResource {
      */
     constructor(name: string, args: NamespaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NamespaceArgs | NamespaceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["containerResourceLimit"] = state ? state.containerResourceLimit : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["resourceQuota"] = state ? state.resourceQuota : undefined;
-            inputs["waitForCluster"] = state ? state.waitForCluster : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["containerResourceLimit"] = state ? state.containerResourceLimit : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["resourceQuota"] = state ? state.resourceQuota : undefined;
+            resourceInputs["waitForCluster"] = state ? state.waitForCluster : undefined;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["containerResourceLimit"] = args ? args.containerResourceLimit : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["resourceQuota"] = args ? args.resourceQuota : undefined;
-            inputs["waitForCluster"] = args ? args.waitForCluster : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["containerResourceLimit"] = args ? args.containerResourceLimit : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["resourceQuota"] = args ? args.resourceQuota : undefined;
+            resourceInputs["waitForCluster"] = args ? args.waitForCluster : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Namespace.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Namespace.__pulumiType, name, resourceInputs, opts);
     }
 }
 

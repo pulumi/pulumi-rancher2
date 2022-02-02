@@ -104,21 +104,21 @@ export class AuthConfigGithub extends pulumi.CustomResource {
      */
     constructor(name: string, args: AuthConfigGithubArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuthConfigGithubArgs | AuthConfigGithubState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthConfigGithubState | undefined;
-            inputs["accessMode"] = state ? state.accessMode : undefined;
-            inputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["clientId"] = state ? state.clientId : undefined;
-            inputs["clientSecret"] = state ? state.clientSecret : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["hostname"] = state ? state.hostname : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["tls"] = state ? state.tls : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
+            resourceInputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["clientId"] = state ? state.clientId : undefined;
+            resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["tls"] = state ? state.tls : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AuthConfigGithubArgs | undefined;
             if ((!args || args.clientId === undefined) && !opts.urn) {
@@ -127,22 +127,20 @@ export class AuthConfigGithub extends pulumi.CustomResource {
             if ((!args || args.clientSecret === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clientSecret'");
             }
-            inputs["accessMode"] = args ? args.accessMode : undefined;
-            inputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["clientId"] = args ? args.clientId : undefined;
-            inputs["clientSecret"] = args ? args.clientSecret : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["hostname"] = args ? args.hostname : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["tls"] = args ? args.tls : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
+            resourceInputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["clientId"] = args ? args.clientId : undefined;
+            resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["tls"] = args ? args.tls : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AuthConfigGithub.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AuthConfigGithub.__pulumiType, name, resourceInputs, opts);
     }
 }
 

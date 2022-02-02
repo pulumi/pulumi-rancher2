@@ -289,7 +289,7 @@ type RoleTemplateInput interface {
 }
 
 func (*RoleTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleTemplate)(nil))
+	return reflect.TypeOf((**RoleTemplate)(nil)).Elem()
 }
 
 func (i *RoleTemplate) ToRoleTemplateOutput() RoleTemplateOutput {
@@ -298,35 +298,6 @@ func (i *RoleTemplate) ToRoleTemplateOutput() RoleTemplateOutput {
 
 func (i *RoleTemplate) ToRoleTemplateOutputWithContext(ctx context.Context) RoleTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleTemplateOutput)
-}
-
-func (i *RoleTemplate) ToRoleTemplatePtrOutput() RoleTemplatePtrOutput {
-	return i.ToRoleTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *RoleTemplate) ToRoleTemplatePtrOutputWithContext(ctx context.Context) RoleTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoleTemplatePtrOutput)
-}
-
-type RoleTemplatePtrInput interface {
-	pulumi.Input
-
-	ToRoleTemplatePtrOutput() RoleTemplatePtrOutput
-	ToRoleTemplatePtrOutputWithContext(ctx context.Context) RoleTemplatePtrOutput
-}
-
-type roleTemplatePtrType RoleTemplateArgs
-
-func (*roleTemplatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoleTemplate)(nil))
-}
-
-func (i *roleTemplatePtrType) ToRoleTemplatePtrOutput() RoleTemplatePtrOutput {
-	return i.ToRoleTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *roleTemplatePtrType) ToRoleTemplatePtrOutputWithContext(ctx context.Context) RoleTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoleTemplatePtrOutput)
 }
 
 // RoleTemplateArrayInput is an input type that accepts RoleTemplateArray and RoleTemplateArrayOutput values.
@@ -382,7 +353,7 @@ func (i RoleTemplateMap) ToRoleTemplateMapOutputWithContext(ctx context.Context)
 type RoleTemplateOutput struct{ *pulumi.OutputState }
 
 func (RoleTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleTemplate)(nil))
+	return reflect.TypeOf((**RoleTemplate)(nil)).Elem()
 }
 
 func (o RoleTemplateOutput) ToRoleTemplateOutput() RoleTemplateOutput {
@@ -393,44 +364,10 @@ func (o RoleTemplateOutput) ToRoleTemplateOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o RoleTemplateOutput) ToRoleTemplatePtrOutput() RoleTemplatePtrOutput {
-	return o.ToRoleTemplatePtrOutputWithContext(context.Background())
-}
-
-func (o RoleTemplateOutput) ToRoleTemplatePtrOutputWithContext(ctx context.Context) RoleTemplatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoleTemplate) *RoleTemplate {
-		return &v
-	}).(RoleTemplatePtrOutput)
-}
-
-type RoleTemplatePtrOutput struct{ *pulumi.OutputState }
-
-func (RoleTemplatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoleTemplate)(nil))
-}
-
-func (o RoleTemplatePtrOutput) ToRoleTemplatePtrOutput() RoleTemplatePtrOutput {
-	return o
-}
-
-func (o RoleTemplatePtrOutput) ToRoleTemplatePtrOutputWithContext(ctx context.Context) RoleTemplatePtrOutput {
-	return o
-}
-
-func (o RoleTemplatePtrOutput) Elem() RoleTemplateOutput {
-	return o.ApplyT(func(v *RoleTemplate) RoleTemplate {
-		if v != nil {
-			return *v
-		}
-		var ret RoleTemplate
-		return ret
-	}).(RoleTemplateOutput)
-}
-
 type RoleTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (RoleTemplateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoleTemplate)(nil))
+	return reflect.TypeOf((*[]*RoleTemplate)(nil)).Elem()
 }
 
 func (o RoleTemplateArrayOutput) ToRoleTemplateArrayOutput() RoleTemplateArrayOutput {
@@ -442,15 +379,15 @@ func (o RoleTemplateArrayOutput) ToRoleTemplateArrayOutputWithContext(ctx contex
 }
 
 func (o RoleTemplateArrayOutput) Index(i pulumi.IntInput) RoleTemplateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoleTemplate {
-		return vs[0].([]RoleTemplate)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RoleTemplate {
+		return vs[0].([]*RoleTemplate)[vs[1].(int)]
 	}).(RoleTemplateOutput)
 }
 
 type RoleTemplateMapOutput struct{ *pulumi.OutputState }
 
 func (RoleTemplateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RoleTemplate)(nil))
+	return reflect.TypeOf((*map[string]*RoleTemplate)(nil)).Elem()
 }
 
 func (o RoleTemplateMapOutput) ToRoleTemplateMapOutput() RoleTemplateMapOutput {
@@ -462,18 +399,16 @@ func (o RoleTemplateMapOutput) ToRoleTemplateMapOutputWithContext(ctx context.Co
 }
 
 func (o RoleTemplateMapOutput) MapIndex(k pulumi.StringInput) RoleTemplateOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RoleTemplate {
-		return vs[0].(map[string]RoleTemplate)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RoleTemplate {
+		return vs[0].(map[string]*RoleTemplate)[vs[1].(string)]
 	}).(RoleTemplateOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleTemplateInput)(nil)).Elem(), &RoleTemplate{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoleTemplatePtrInput)(nil)).Elem(), &RoleTemplate{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleTemplateArrayInput)(nil)).Elem(), RoleTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleTemplateMapInput)(nil)).Elem(), RoleTemplateMap{})
 	pulumi.RegisterOutputType(RoleTemplateOutput{})
-	pulumi.RegisterOutputType(RoleTemplatePtrOutput{})
 	pulumi.RegisterOutputType(RoleTemplateArrayOutput{})
 	pulumi.RegisterOutputType(RoleTemplateMapOutput{})
 }

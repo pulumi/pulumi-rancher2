@@ -24,9 +24,7 @@ export function getGlobalRoleBinding(args: GetGlobalRoleBindingArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", {
         "globalRoleId": args.globalRoleId,
         "name": args.name,

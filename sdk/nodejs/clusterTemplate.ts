@@ -200,31 +200,29 @@ export class ClusterTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ClusterTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterTemplateArgs | ClusterTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterTemplateState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["defaultRevisionId"] = state ? state.defaultRevisionId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["templateRevisions"] = state ? state.templateRevisions : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["defaultRevisionId"] = state ? state.defaultRevisionId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["templateRevisions"] = state ? state.templateRevisions : undefined;
         } else {
             const args = argsOrState as ClusterTemplateArgs | undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["templateRevisions"] = args ? args.templateRevisions : undefined;
-            inputs["defaultRevisionId"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["templateRevisions"] = args ? args.templateRevisions : undefined;
+            resourceInputs["defaultRevisionId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ClusterTemplate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ClusterTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

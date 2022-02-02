@@ -81,18 +81,18 @@ export class Certificate extends pulumi.CustomResource {
      */
     constructor(name: string, args: CertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertificateArgs | CertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["certs"] = state ? state.certs : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespaceId"] = state ? state.namespaceId : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["certs"] = state ? state.certs : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
             if ((!args || args.certs === undefined) && !opts.urn) {
@@ -104,19 +104,17 @@ export class Certificate extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["certs"] = args ? args.certs : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["key"] = args ? args.key : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespaceId"] = args ? args.namespaceId : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["certs"] = args ? args.certs : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Certificate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Certificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

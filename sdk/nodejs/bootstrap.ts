@@ -94,43 +94,41 @@ export class Bootstrap extends pulumi.CustomResource {
      */
     constructor(name: string, args?: BootstrapArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BootstrapArgs | BootstrapState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BootstrapState | undefined;
-            inputs["currentPassword"] = state ? state.currentPassword : undefined;
-            inputs["initialPassword"] = state ? state.initialPassword : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["telemetry"] = state ? state.telemetry : undefined;
-            inputs["tempToken"] = state ? state.tempToken : undefined;
-            inputs["tempTokenId"] = state ? state.tempTokenId : undefined;
-            inputs["token"] = state ? state.token : undefined;
-            inputs["tokenId"] = state ? state.tokenId : undefined;
-            inputs["tokenTtl"] = state ? state.tokenTtl : undefined;
-            inputs["tokenUpdate"] = state ? state.tokenUpdate : undefined;
-            inputs["uiDefaultLanding"] = state ? state.uiDefaultLanding : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["user"] = state ? state.user : undefined;
+            resourceInputs["currentPassword"] = state ? state.currentPassword : undefined;
+            resourceInputs["initialPassword"] = state ? state.initialPassword : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["telemetry"] = state ? state.telemetry : undefined;
+            resourceInputs["tempToken"] = state ? state.tempToken : undefined;
+            resourceInputs["tempTokenId"] = state ? state.tempTokenId : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
+            resourceInputs["tokenTtl"] = state ? state.tokenTtl : undefined;
+            resourceInputs["tokenUpdate"] = state ? state.tokenUpdate : undefined;
+            resourceInputs["uiDefaultLanding"] = state ? state.uiDefaultLanding : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as BootstrapArgs | undefined;
-            inputs["initialPassword"] = args ? args.initialPassword : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["telemetry"] = args ? args.telemetry : undefined;
-            inputs["tokenTtl"] = args ? args.tokenTtl : undefined;
-            inputs["tokenUpdate"] = args ? args.tokenUpdate : undefined;
-            inputs["uiDefaultLanding"] = args ? args.uiDefaultLanding : undefined;
-            inputs["currentPassword"] = undefined /*out*/;
-            inputs["tempToken"] = undefined /*out*/;
-            inputs["tempTokenId"] = undefined /*out*/;
-            inputs["token"] = undefined /*out*/;
-            inputs["tokenId"] = undefined /*out*/;
-            inputs["url"] = undefined /*out*/;
-            inputs["user"] = undefined /*out*/;
+            resourceInputs["initialPassword"] = args ? args.initialPassword : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["telemetry"] = args ? args.telemetry : undefined;
+            resourceInputs["tokenTtl"] = args ? args.tokenTtl : undefined;
+            resourceInputs["tokenUpdate"] = args ? args.tokenUpdate : undefined;
+            resourceInputs["uiDefaultLanding"] = args ? args.uiDefaultLanding : undefined;
+            resourceInputs["currentPassword"] = undefined /*out*/;
+            resourceInputs["tempToken"] = undefined /*out*/;
+            resourceInputs["tempTokenId"] = undefined /*out*/;
+            resourceInputs["token"] = undefined /*out*/;
+            resourceInputs["tokenId"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
+            resourceInputs["user"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Bootstrap.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Bootstrap.__pulumiType, name, resourceInputs, opts);
     }
 }
 

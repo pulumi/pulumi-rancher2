@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -16,13 +15,13 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Task<GetCatalogV2Result> InvokeAsync(GetCatalogV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogV2Result>("rancher2:index/getCatalogV2:getCatalogV2", args ?? new GetCatalogV2Args(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogV2Result>("rancher2:index/getCatalogV2:getCatalogV2", args ?? new GetCatalogV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Output<GetCatalogV2Result> Invoke(GetCatalogV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCatalogV2Result>("rancher2:index/getCatalogV2:getCatalogV2", args ?? new GetCatalogV2InvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCatalogV2Result>("rancher2:index/getCatalogV2:getCatalogV2", args ?? new GetCatalogV2InvokeArgs(), options.WithDefaults());
     }
 
 

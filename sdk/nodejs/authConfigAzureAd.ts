@@ -125,25 +125,25 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
      */
     constructor(name: string, args: AuthConfigAzureAdArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuthConfigAzureAdArgs | AuthConfigAzureAdState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthConfigAzureAdState | undefined;
-            inputs["accessMode"] = state ? state.accessMode : undefined;
-            inputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["applicationId"] = state ? state.applicationId : undefined;
-            inputs["applicationSecret"] = state ? state.applicationSecret : undefined;
-            inputs["authEndpoint"] = state ? state.authEndpoint : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["endpoint"] = state ? state.endpoint : undefined;
-            inputs["graphEndpoint"] = state ? state.graphEndpoint : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["rancherUrl"] = state ? state.rancherUrl : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["tokenEndpoint"] = state ? state.tokenEndpoint : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
+            resourceInputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
+            resourceInputs["applicationSecret"] = state ? state.applicationSecret : undefined;
+            resourceInputs["authEndpoint"] = state ? state.authEndpoint : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["graphEndpoint"] = state ? state.graphEndpoint : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["rancherUrl"] = state ? state.rancherUrl : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["tokenEndpoint"] = state ? state.tokenEndpoint : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AuthConfigAzureAdArgs | undefined;
             if ((!args || args.applicationId === undefined) && !opts.urn) {
@@ -167,26 +167,24 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
             if ((!args || args.tokenEndpoint === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tokenEndpoint'");
             }
-            inputs["accessMode"] = args ? args.accessMode : undefined;
-            inputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["applicationId"] = args ? args.applicationId : undefined;
-            inputs["applicationSecret"] = args ? args.applicationSecret : undefined;
-            inputs["authEndpoint"] = args ? args.authEndpoint : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["endpoint"] = args ? args.endpoint : undefined;
-            inputs["graphEndpoint"] = args ? args.graphEndpoint : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["rancherUrl"] = args ? args.rancherUrl : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["tokenEndpoint"] = args ? args.tokenEndpoint : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
+            resourceInputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
+            resourceInputs["applicationSecret"] = args ? args.applicationSecret : undefined;
+            resourceInputs["authEndpoint"] = args ? args.authEndpoint : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
+            resourceInputs["graphEndpoint"] = args ? args.graphEndpoint : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["rancherUrl"] = args ? args.rancherUrl : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["tokenEndpoint"] = args ? args.tokenEndpoint : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AuthConfigAzureAd.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AuthConfigAzureAd.__pulumiType, name, resourceInputs, opts);
     }
 }
 

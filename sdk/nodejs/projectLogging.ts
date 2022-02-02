@@ -133,25 +133,25 @@ export class ProjectLogging extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectLoggingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectLoggingArgs | ProjectLoggingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectLoggingState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["customTargetConfig"] = state ? state.customTargetConfig : undefined;
-            inputs["elasticsearchConfig"] = state ? state.elasticsearchConfig : undefined;
-            inputs["enableJsonParsing"] = state ? state.enableJsonParsing : undefined;
-            inputs["fluentdConfig"] = state ? state.fluentdConfig : undefined;
-            inputs["kafkaConfig"] = state ? state.kafkaConfig : undefined;
-            inputs["kind"] = state ? state.kind : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespaceId"] = state ? state.namespaceId : undefined;
-            inputs["outputFlushInterval"] = state ? state.outputFlushInterval : undefined;
-            inputs["outputTags"] = state ? state.outputTags : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["splunkConfig"] = state ? state.splunkConfig : undefined;
-            inputs["syslogConfig"] = state ? state.syslogConfig : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["customTargetConfig"] = state ? state.customTargetConfig : undefined;
+            resourceInputs["elasticsearchConfig"] = state ? state.elasticsearchConfig : undefined;
+            resourceInputs["enableJsonParsing"] = state ? state.enableJsonParsing : undefined;
+            resourceInputs["fluentdConfig"] = state ? state.fluentdConfig : undefined;
+            resourceInputs["kafkaConfig"] = state ? state.kafkaConfig : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
+            resourceInputs["outputFlushInterval"] = state ? state.outputFlushInterval : undefined;
+            resourceInputs["outputTags"] = state ? state.outputTags : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["splunkConfig"] = state ? state.splunkConfig : undefined;
+            resourceInputs["syslogConfig"] = state ? state.syslogConfig : undefined;
         } else {
             const args = argsOrState as ProjectLoggingArgs | undefined;
             if ((!args || args.kind === undefined) && !opts.urn) {
@@ -160,26 +160,24 @@ export class ProjectLogging extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["customTargetConfig"] = args ? args.customTargetConfig : undefined;
-            inputs["elasticsearchConfig"] = args ? args.elasticsearchConfig : undefined;
-            inputs["enableJsonParsing"] = args ? args.enableJsonParsing : undefined;
-            inputs["fluentdConfig"] = args ? args.fluentdConfig : undefined;
-            inputs["kafkaConfig"] = args ? args.kafkaConfig : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespaceId"] = args ? args.namespaceId : undefined;
-            inputs["outputFlushInterval"] = args ? args.outputFlushInterval : undefined;
-            inputs["outputTags"] = args ? args.outputTags : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["splunkConfig"] = args ? args.splunkConfig : undefined;
-            inputs["syslogConfig"] = args ? args.syslogConfig : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["customTargetConfig"] = args ? args.customTargetConfig : undefined;
+            resourceInputs["elasticsearchConfig"] = args ? args.elasticsearchConfig : undefined;
+            resourceInputs["enableJsonParsing"] = args ? args.enableJsonParsing : undefined;
+            resourceInputs["fluentdConfig"] = args ? args.fluentdConfig : undefined;
+            resourceInputs["kafkaConfig"] = args ? args.kafkaConfig : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["outputFlushInterval"] = args ? args.outputFlushInterval : undefined;
+            resourceInputs["outputTags"] = args ? args.outputTags : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["splunkConfig"] = args ? args.splunkConfig : undefined;
+            resourceInputs["syslogConfig"] = args ? args.syslogConfig : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectLogging.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectLogging.__pulumiType, name, resourceInputs, opts);
     }
 }
 

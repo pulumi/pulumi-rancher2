@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,7 +39,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEtcdBackupResult> InvokeAsync(GetEtcdBackupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 etcd backup.
@@ -70,7 +69,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEtcdBackupResult> Invoke(GetEtcdBackupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupInvokeArgs(), options.WithDefaults());
     }
 
 

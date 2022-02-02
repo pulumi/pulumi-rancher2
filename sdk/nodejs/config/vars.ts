@@ -35,7 +35,7 @@ Object.defineProperty(exports, "apiUrl", {
 export declare const bootstrap: boolean;
 Object.defineProperty(exports, "bootstrap", {
     get() {
-        return __config.getObject<boolean>("bootstrap") ?? (<any>utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false);
+        return __config.getObject<boolean>("bootstrap") ?? (utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false);
     },
     enumerable: true,
 });
@@ -57,7 +57,7 @@ Object.defineProperty(exports, "caCerts", {
 export declare const insecure: boolean;
 Object.defineProperty(exports, "insecure", {
     get() {
-        return __config.getObject<boolean>("insecure") ?? (<any>utilities.getEnvBoolean("RANCHER_INSECURE") || false);
+        return __config.getObject<boolean>("insecure") ?? (utilities.getEnvBoolean("RANCHER_INSECURE") || false);
     },
     enumerable: true,
 });

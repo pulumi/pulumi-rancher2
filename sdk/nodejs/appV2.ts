@@ -139,27 +139,27 @@ export class AppV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args: AppV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppV2Args | AppV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppV2State | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["chartName"] = state ? state.chartName : undefined;
-            inputs["chartVersion"] = state ? state.chartVersion : undefined;
-            inputs["cleanupOnFail"] = state ? state.cleanupOnFail : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["clusterName"] = state ? state.clusterName : undefined;
-            inputs["disableHooks"] = state ? state.disableHooks : undefined;
-            inputs["disableOpenApiValidation"] = state ? state.disableOpenApiValidation : undefined;
-            inputs["forceUpgrade"] = state ? state.forceUpgrade : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["repoName"] = state ? state.repoName : undefined;
-            inputs["systemDefaultRegistry"] = state ? state.systemDefaultRegistry : undefined;
-            inputs["values"] = state ? state.values : undefined;
-            inputs["wait"] = state ? state.wait : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["chartName"] = state ? state.chartName : undefined;
+            resourceInputs["chartVersion"] = state ? state.chartVersion : undefined;
+            resourceInputs["cleanupOnFail"] = state ? state.cleanupOnFail : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
+            resourceInputs["disableHooks"] = state ? state.disableHooks : undefined;
+            resourceInputs["disableOpenApiValidation"] = state ? state.disableOpenApiValidation : undefined;
+            resourceInputs["forceUpgrade"] = state ? state.forceUpgrade : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["repoName"] = state ? state.repoName : undefined;
+            resourceInputs["systemDefaultRegistry"] = state ? state.systemDefaultRegistry : undefined;
+            resourceInputs["values"] = state ? state.values : undefined;
+            resourceInputs["wait"] = state ? state.wait : undefined;
         } else {
             const args = argsOrState as AppV2Args | undefined;
             if ((!args || args.chartName === undefined) && !opts.urn) {
@@ -174,28 +174,26 @@ export class AppV2 extends pulumi.CustomResource {
             if ((!args || args.repoName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repoName'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["chartName"] = args ? args.chartName : undefined;
-            inputs["chartVersion"] = args ? args.chartVersion : undefined;
-            inputs["cleanupOnFail"] = args ? args.cleanupOnFail : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["disableHooks"] = args ? args.disableHooks : undefined;
-            inputs["disableOpenApiValidation"] = args ? args.disableOpenApiValidation : undefined;
-            inputs["forceUpgrade"] = args ? args.forceUpgrade : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["repoName"] = args ? args.repoName : undefined;
-            inputs["values"] = args ? args.values : undefined;
-            inputs["wait"] = args ? args.wait : undefined;
-            inputs["clusterName"] = undefined /*out*/;
-            inputs["systemDefaultRegistry"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["chartName"] = args ? args.chartName : undefined;
+            resourceInputs["chartVersion"] = args ? args.chartVersion : undefined;
+            resourceInputs["cleanupOnFail"] = args ? args.cleanupOnFail : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["disableHooks"] = args ? args.disableHooks : undefined;
+            resourceInputs["disableOpenApiValidation"] = args ? args.disableOpenApiValidation : undefined;
+            resourceInputs["forceUpgrade"] = args ? args.forceUpgrade : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["repoName"] = args ? args.repoName : undefined;
+            resourceInputs["values"] = args ? args.values : undefined;
+            resourceInputs["wait"] = args ? args.wait : undefined;
+            resourceInputs["clusterName"] = undefined /*out*/;
+            resourceInputs["systemDefaultRegistry"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AppV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AppV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

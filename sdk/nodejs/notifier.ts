@@ -124,46 +124,44 @@ export class Notifier extends pulumi.CustomResource {
      */
     constructor(name: string, args: NotifierArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NotifierArgs | NotifierState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotifierState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dingtalkConfig"] = state ? state.dingtalkConfig : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["msteamsConfig"] = state ? state.msteamsConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["pagerdutyConfig"] = state ? state.pagerdutyConfig : undefined;
-            inputs["sendResolved"] = state ? state.sendResolved : undefined;
-            inputs["slackConfig"] = state ? state.slackConfig : undefined;
-            inputs["smtpConfig"] = state ? state.smtpConfig : undefined;
-            inputs["webhookConfig"] = state ? state.webhookConfig : undefined;
-            inputs["wechatConfig"] = state ? state.wechatConfig : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dingtalkConfig"] = state ? state.dingtalkConfig : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["msteamsConfig"] = state ? state.msteamsConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pagerdutyConfig"] = state ? state.pagerdutyConfig : undefined;
+            resourceInputs["sendResolved"] = state ? state.sendResolved : undefined;
+            resourceInputs["slackConfig"] = state ? state.slackConfig : undefined;
+            resourceInputs["smtpConfig"] = state ? state.smtpConfig : undefined;
+            resourceInputs["webhookConfig"] = state ? state.webhookConfig : undefined;
+            resourceInputs["wechatConfig"] = state ? state.wechatConfig : undefined;
         } else {
             const args = argsOrState as NotifierArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dingtalkConfig"] = args ? args.dingtalkConfig : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["msteamsConfig"] = args ? args.msteamsConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["pagerdutyConfig"] = args ? args.pagerdutyConfig : undefined;
-            inputs["sendResolved"] = args ? args.sendResolved : undefined;
-            inputs["slackConfig"] = args ? args.slackConfig : undefined;
-            inputs["smtpConfig"] = args ? args.smtpConfig : undefined;
-            inputs["webhookConfig"] = args ? args.webhookConfig : undefined;
-            inputs["wechatConfig"] = args ? args.wechatConfig : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dingtalkConfig"] = args ? args.dingtalkConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["msteamsConfig"] = args ? args.msteamsConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pagerdutyConfig"] = args ? args.pagerdutyConfig : undefined;
+            resourceInputs["sendResolved"] = args ? args.sendResolved : undefined;
+            resourceInputs["slackConfig"] = args ? args.slackConfig : undefined;
+            resourceInputs["smtpConfig"] = args ? args.smtpConfig : undefined;
+            resourceInputs["webhookConfig"] = args ? args.webhookConfig : undefined;
+            resourceInputs["wechatConfig"] = args ? args.wechatConfig : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Notifier.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Notifier.__pulumiType, name, resourceInputs, opts);
     }
 }
 

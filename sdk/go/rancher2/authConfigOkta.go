@@ -272,7 +272,7 @@ type AuthConfigOktaInput interface {
 }
 
 func (*AuthConfigOkta) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigOkta)(nil))
+	return reflect.TypeOf((**AuthConfigOkta)(nil)).Elem()
 }
 
 func (i *AuthConfigOkta) ToAuthConfigOktaOutput() AuthConfigOktaOutput {
@@ -281,35 +281,6 @@ func (i *AuthConfigOkta) ToAuthConfigOktaOutput() AuthConfigOktaOutput {
 
 func (i *AuthConfigOkta) ToAuthConfigOktaOutputWithContext(ctx context.Context) AuthConfigOktaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaOutput)
-}
-
-func (i *AuthConfigOkta) ToAuthConfigOktaPtrOutput() AuthConfigOktaPtrOutput {
-	return i.ToAuthConfigOktaPtrOutputWithContext(context.Background())
-}
-
-func (i *AuthConfigOkta) ToAuthConfigOktaPtrOutputWithContext(ctx context.Context) AuthConfigOktaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaPtrOutput)
-}
-
-type AuthConfigOktaPtrInput interface {
-	pulumi.Input
-
-	ToAuthConfigOktaPtrOutput() AuthConfigOktaPtrOutput
-	ToAuthConfigOktaPtrOutputWithContext(ctx context.Context) AuthConfigOktaPtrOutput
-}
-
-type authConfigOktaPtrType AuthConfigOktaArgs
-
-func (*authConfigOktaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthConfigOkta)(nil))
-}
-
-func (i *authConfigOktaPtrType) ToAuthConfigOktaPtrOutput() AuthConfigOktaPtrOutput {
-	return i.ToAuthConfigOktaPtrOutputWithContext(context.Background())
-}
-
-func (i *authConfigOktaPtrType) ToAuthConfigOktaPtrOutputWithContext(ctx context.Context) AuthConfigOktaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaPtrOutput)
 }
 
 // AuthConfigOktaArrayInput is an input type that accepts AuthConfigOktaArray and AuthConfigOktaArrayOutput values.
@@ -365,7 +336,7 @@ func (i AuthConfigOktaMap) ToAuthConfigOktaMapOutputWithContext(ctx context.Cont
 type AuthConfigOktaOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigOktaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigOkta)(nil))
+	return reflect.TypeOf((**AuthConfigOkta)(nil)).Elem()
 }
 
 func (o AuthConfigOktaOutput) ToAuthConfigOktaOutput() AuthConfigOktaOutput {
@@ -376,44 +347,10 @@ func (o AuthConfigOktaOutput) ToAuthConfigOktaOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o AuthConfigOktaOutput) ToAuthConfigOktaPtrOutput() AuthConfigOktaPtrOutput {
-	return o.ToAuthConfigOktaPtrOutputWithContext(context.Background())
-}
-
-func (o AuthConfigOktaOutput) ToAuthConfigOktaPtrOutputWithContext(ctx context.Context) AuthConfigOktaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigOkta) *AuthConfigOkta {
-		return &v
-	}).(AuthConfigOktaPtrOutput)
-}
-
-type AuthConfigOktaPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthConfigOktaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthConfigOkta)(nil))
-}
-
-func (o AuthConfigOktaPtrOutput) ToAuthConfigOktaPtrOutput() AuthConfigOktaPtrOutput {
-	return o
-}
-
-func (o AuthConfigOktaPtrOutput) ToAuthConfigOktaPtrOutputWithContext(ctx context.Context) AuthConfigOktaPtrOutput {
-	return o
-}
-
-func (o AuthConfigOktaPtrOutput) Elem() AuthConfigOktaOutput {
-	return o.ApplyT(func(v *AuthConfigOkta) AuthConfigOkta {
-		if v != nil {
-			return *v
-		}
-		var ret AuthConfigOkta
-		return ret
-	}).(AuthConfigOktaOutput)
-}
-
 type AuthConfigOktaArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigOktaArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuthConfigOkta)(nil))
+	return reflect.TypeOf((*[]*AuthConfigOkta)(nil)).Elem()
 }
 
 func (o AuthConfigOktaArrayOutput) ToAuthConfigOktaArrayOutput() AuthConfigOktaArrayOutput {
@@ -425,15 +362,15 @@ func (o AuthConfigOktaArrayOutput) ToAuthConfigOktaArrayOutputWithContext(ctx co
 }
 
 func (o AuthConfigOktaArrayOutput) Index(i pulumi.IntInput) AuthConfigOktaOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthConfigOkta {
-		return vs[0].([]AuthConfigOkta)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigOkta {
+		return vs[0].([]*AuthConfigOkta)[vs[1].(int)]
 	}).(AuthConfigOktaOutput)
 }
 
 type AuthConfigOktaMapOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigOktaMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AuthConfigOkta)(nil))
+	return reflect.TypeOf((*map[string]*AuthConfigOkta)(nil)).Elem()
 }
 
 func (o AuthConfigOktaMapOutput) ToAuthConfigOktaMapOutput() AuthConfigOktaMapOutput {
@@ -445,18 +382,16 @@ func (o AuthConfigOktaMapOutput) ToAuthConfigOktaMapOutputWithContext(ctx contex
 }
 
 func (o AuthConfigOktaMapOutput) MapIndex(k pulumi.StringInput) AuthConfigOktaOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthConfigOkta {
-		return vs[0].(map[string]AuthConfigOkta)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AuthConfigOkta {
+		return vs[0].(map[string]*AuthConfigOkta)[vs[1].(string)]
 	}).(AuthConfigOktaOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigOktaInput)(nil)).Elem(), &AuthConfigOkta{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigOktaPtrInput)(nil)).Elem(), &AuthConfigOkta{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigOktaArrayInput)(nil)).Elem(), AuthConfigOktaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigOktaMapInput)(nil)).Elem(), AuthConfigOktaMap{})
 	pulumi.RegisterOutputType(AuthConfigOktaOutput{})
-	pulumi.RegisterOutputType(AuthConfigOktaPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigOktaArrayOutput{})
 	pulumi.RegisterOutputType(AuthConfigOktaMapOutput{})
 }

@@ -12,9 +12,7 @@ export function getConfigMapV2(args: GetConfigMapV2Args, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getConfigMapV2:getConfigMapV2", {
         "clusterId": args.clusterId,
         "name": args.name,

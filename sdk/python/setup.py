@@ -55,6 +55,7 @@ setup(name='pulumi_rancher2',
       package_data={
           'pulumi_rancher2': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

@@ -144,45 +144,43 @@ export class RoleTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args?: RoleTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoleTemplateArgs | RoleTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleTemplateState | undefined;
-            inputs["administrative"] = state ? state.administrative : undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["builtin"] = state ? state.builtin : undefined;
-            inputs["context"] = state ? state.context : undefined;
-            inputs["defaultRole"] = state ? state.defaultRole : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["external"] = state ? state.external : undefined;
-            inputs["hidden"] = state ? state.hidden : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["locked"] = state ? state.locked : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["roleTemplateIds"] = state ? state.roleTemplateIds : undefined;
-            inputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["administrative"] = state ? state.administrative : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["builtin"] = state ? state.builtin : undefined;
+            resourceInputs["context"] = state ? state.context : undefined;
+            resourceInputs["defaultRole"] = state ? state.defaultRole : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["external"] = state ? state.external : undefined;
+            resourceInputs["hidden"] = state ? state.hidden : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["locked"] = state ? state.locked : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["roleTemplateIds"] = state ? state.roleTemplateIds : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as RoleTemplateArgs | undefined;
-            inputs["administrative"] = args ? args.administrative : undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["context"] = args ? args.context : undefined;
-            inputs["defaultRole"] = args ? args.defaultRole : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["external"] = args ? args.external : undefined;
-            inputs["hidden"] = args ? args.hidden : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["locked"] = args ? args.locked : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["roleTemplateIds"] = args ? args.roleTemplateIds : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["builtin"] = undefined /*out*/;
+            resourceInputs["administrative"] = args ? args.administrative : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["context"] = args ? args.context : undefined;
+            resourceInputs["defaultRole"] = args ? args.defaultRole : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["external"] = args ? args.external : undefined;
+            resourceInputs["hidden"] = args ? args.hidden : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["locked"] = args ? args.locked : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["roleTemplateIds"] = args ? args.roleTemplateIds : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["builtin"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "rancher2:index/roleTempalte:RoleTempalte" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        super(RoleTemplate.__pulumiType, name, inputs, opts);
+        super(RoleTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

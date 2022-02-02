@@ -258,7 +258,7 @@ type ClusterV2Input interface {
 }
 
 func (*ClusterV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterV2)(nil))
+	return reflect.TypeOf((**ClusterV2)(nil)).Elem()
 }
 
 func (i *ClusterV2) ToClusterV2Output() ClusterV2Output {
@@ -267,35 +267,6 @@ func (i *ClusterV2) ToClusterV2Output() ClusterV2Output {
 
 func (i *ClusterV2) ToClusterV2OutputWithContext(ctx context.Context) ClusterV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2Output)
-}
-
-func (i *ClusterV2) ToClusterV2PtrOutput() ClusterV2PtrOutput {
-	return i.ToClusterV2PtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterV2) ToClusterV2PtrOutputWithContext(ctx context.Context) ClusterV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2PtrOutput)
-}
-
-type ClusterV2PtrInput interface {
-	pulumi.Input
-
-	ToClusterV2PtrOutput() ClusterV2PtrOutput
-	ToClusterV2PtrOutputWithContext(ctx context.Context) ClusterV2PtrOutput
-}
-
-type clusterV2PtrType ClusterV2Args
-
-func (*clusterV2PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterV2)(nil))
-}
-
-func (i *clusterV2PtrType) ToClusterV2PtrOutput() ClusterV2PtrOutput {
-	return i.ToClusterV2PtrOutputWithContext(context.Background())
-}
-
-func (i *clusterV2PtrType) ToClusterV2PtrOutputWithContext(ctx context.Context) ClusterV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2PtrOutput)
 }
 
 // ClusterV2ArrayInput is an input type that accepts ClusterV2Array and ClusterV2ArrayOutput values.
@@ -351,7 +322,7 @@ func (i ClusterV2Map) ToClusterV2MapOutputWithContext(ctx context.Context) Clust
 type ClusterV2Output struct{ *pulumi.OutputState }
 
 func (ClusterV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterV2)(nil))
+	return reflect.TypeOf((**ClusterV2)(nil)).Elem()
 }
 
 func (o ClusterV2Output) ToClusterV2Output() ClusterV2Output {
@@ -362,44 +333,10 @@ func (o ClusterV2Output) ToClusterV2OutputWithContext(ctx context.Context) Clust
 	return o
 }
 
-func (o ClusterV2Output) ToClusterV2PtrOutput() ClusterV2PtrOutput {
-	return o.ToClusterV2PtrOutputWithContext(context.Background())
-}
-
-func (o ClusterV2Output) ToClusterV2PtrOutputWithContext(ctx context.Context) ClusterV2PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterV2) *ClusterV2 {
-		return &v
-	}).(ClusterV2PtrOutput)
-}
-
-type ClusterV2PtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterV2PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterV2)(nil))
-}
-
-func (o ClusterV2PtrOutput) ToClusterV2PtrOutput() ClusterV2PtrOutput {
-	return o
-}
-
-func (o ClusterV2PtrOutput) ToClusterV2PtrOutputWithContext(ctx context.Context) ClusterV2PtrOutput {
-	return o
-}
-
-func (o ClusterV2PtrOutput) Elem() ClusterV2Output {
-	return o.ApplyT(func(v *ClusterV2) ClusterV2 {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterV2
-		return ret
-	}).(ClusterV2Output)
-}
-
 type ClusterV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterV2ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterV2)(nil))
+	return reflect.TypeOf((*[]*ClusterV2)(nil)).Elem()
 }
 
 func (o ClusterV2ArrayOutput) ToClusterV2ArrayOutput() ClusterV2ArrayOutput {
@@ -411,15 +348,15 @@ func (o ClusterV2ArrayOutput) ToClusterV2ArrayOutputWithContext(ctx context.Cont
 }
 
 func (o ClusterV2ArrayOutput) Index(i pulumi.IntInput) ClusterV2Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterV2 {
-		return vs[0].([]ClusterV2)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterV2 {
+		return vs[0].([]*ClusterV2)[vs[1].(int)]
 	}).(ClusterV2Output)
 }
 
 type ClusterV2MapOutput struct{ *pulumi.OutputState }
 
 func (ClusterV2MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterV2)(nil))
+	return reflect.TypeOf((*map[string]*ClusterV2)(nil)).Elem()
 }
 
 func (o ClusterV2MapOutput) ToClusterV2MapOutput() ClusterV2MapOutput {
@@ -431,18 +368,16 @@ func (o ClusterV2MapOutput) ToClusterV2MapOutputWithContext(ctx context.Context)
 }
 
 func (o ClusterV2MapOutput) MapIndex(k pulumi.StringInput) ClusterV2Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterV2 {
-		return vs[0].(map[string]ClusterV2)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterV2 {
+		return vs[0].(map[string]*ClusterV2)[vs[1].(string)]
 	}).(ClusterV2Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2Input)(nil)).Elem(), &ClusterV2{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2PtrInput)(nil)).Elem(), &ClusterV2{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ArrayInput)(nil)).Elem(), ClusterV2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2MapInput)(nil)).Elem(), ClusterV2Map{})
 	pulumi.RegisterOutputType(ClusterV2Output{})
-	pulumi.RegisterOutputType(ClusterV2PtrOutput{})
 	pulumi.RegisterOutputType(ClusterV2ArrayOutput{})
 	pulumi.RegisterOutputType(ClusterV2MapOutput{})
 }

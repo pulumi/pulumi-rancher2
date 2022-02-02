@@ -179,42 +179,40 @@ export class Project extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["containerResourceLimit"] = state ? state.containerResourceLimit : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enableProjectMonitoring"] = state ? state.enableProjectMonitoring : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["podSecurityPolicyTemplateId"] = state ? state.podSecurityPolicyTemplateId : undefined;
-            inputs["projectMonitoringInput"] = state ? state.projectMonitoringInput : undefined;
-            inputs["resourceQuota"] = state ? state.resourceQuota : undefined;
-            inputs["waitForCluster"] = state ? state.waitForCluster : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["containerResourceLimit"] = state ? state.containerResourceLimit : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableProjectMonitoring"] = state ? state.enableProjectMonitoring : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["podSecurityPolicyTemplateId"] = state ? state.podSecurityPolicyTemplateId : undefined;
+            resourceInputs["projectMonitoringInput"] = state ? state.projectMonitoringInput : undefined;
+            resourceInputs["resourceQuota"] = state ? state.resourceQuota : undefined;
+            resourceInputs["waitForCluster"] = state ? state.waitForCluster : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["containerResourceLimit"] = args ? args.containerResourceLimit : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableProjectMonitoring"] = args ? args.enableProjectMonitoring : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["podSecurityPolicyTemplateId"] = args ? args.podSecurityPolicyTemplateId : undefined;
-            inputs["projectMonitoringInput"] = args ? args.projectMonitoringInput : undefined;
-            inputs["resourceQuota"] = args ? args.resourceQuota : undefined;
-            inputs["waitForCluster"] = args ? args.waitForCluster : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["containerResourceLimit"] = args ? args.containerResourceLimit : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableProjectMonitoring"] = args ? args.enableProjectMonitoring : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["podSecurityPolicyTemplateId"] = args ? args.podSecurityPolicyTemplateId : undefined;
+            resourceInputs["projectMonitoringInput"] = args ? args.projectMonitoringInput : undefined;
+            resourceInputs["resourceQuota"] = args ? args.resourceQuota : undefined;
+            resourceInputs["waitForCluster"] = args ? args.waitForCluster : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Project.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Project.__pulumiType, name, resourceInputs, opts);
     }
 }
 

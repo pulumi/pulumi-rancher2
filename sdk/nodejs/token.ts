@@ -117,43 +117,41 @@ export class Token extends pulumi.CustomResource {
      */
     constructor(name: string, args?: TokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TokenArgs | TokenState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TokenState | undefined;
-            inputs["accessKey"] = state ? state.accessKey : undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["expired"] = state ? state.expired : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["renew"] = state ? state.renew : undefined;
-            inputs["secretKey"] = state ? state.secretKey : undefined;
-            inputs["token"] = state ? state.token : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["expired"] = state ? state.expired : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["renew"] = state ? state.renew : undefined;
+            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as TokenArgs | undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["renew"] = args ? args.renew : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["accessKey"] = undefined /*out*/;
-            inputs["enabled"] = undefined /*out*/;
-            inputs["expired"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["secretKey"] = undefined /*out*/;
-            inputs["token"] = undefined /*out*/;
-            inputs["userId"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["renew"] = args ? args.renew : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["accessKey"] = undefined /*out*/;
+            resourceInputs["enabled"] = undefined /*out*/;
+            resourceInputs["expired"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["secretKey"] = undefined /*out*/;
+            resourceInputs["token"] = undefined /*out*/;
+            resourceInputs["userId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Token.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Token.__pulumiType, name, resourceInputs, opts);
     }
 }
 

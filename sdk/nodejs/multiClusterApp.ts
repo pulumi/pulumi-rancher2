@@ -112,25 +112,25 @@ export class MultiClusterApp extends pulumi.CustomResource {
      */
     constructor(name: string, args: MultiClusterAppArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MultiClusterAppArgs | MultiClusterAppState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MultiClusterAppState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["answers"] = state ? state.answers : undefined;
-            inputs["catalogName"] = state ? state.catalogName : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["revisionHistoryLimit"] = state ? state.revisionHistoryLimit : undefined;
-            inputs["revisionId"] = state ? state.revisionId : undefined;
-            inputs["roles"] = state ? state.roles : undefined;
-            inputs["targets"] = state ? state.targets : undefined;
-            inputs["templateName"] = state ? state.templateName : undefined;
-            inputs["templateVersion"] = state ? state.templateVersion : undefined;
-            inputs["templateVersionId"] = state ? state.templateVersionId : undefined;
-            inputs["upgradeStrategy"] = state ? state.upgradeStrategy : undefined;
-            inputs["wait"] = state ? state.wait : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["answers"] = state ? state.answers : undefined;
+            resourceInputs["catalogName"] = state ? state.catalogName : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["revisionHistoryLimit"] = state ? state.revisionHistoryLimit : undefined;
+            resourceInputs["revisionId"] = state ? state.revisionId : undefined;
+            resourceInputs["roles"] = state ? state.roles : undefined;
+            resourceInputs["targets"] = state ? state.targets : undefined;
+            resourceInputs["templateName"] = state ? state.templateName : undefined;
+            resourceInputs["templateVersion"] = state ? state.templateVersion : undefined;
+            resourceInputs["templateVersionId"] = state ? state.templateVersionId : undefined;
+            resourceInputs["upgradeStrategy"] = state ? state.upgradeStrategy : undefined;
+            resourceInputs["wait"] = state ? state.wait : undefined;
         } else {
             const args = argsOrState as MultiClusterAppArgs | undefined;
             if ((!args || args.catalogName === undefined) && !opts.urn) {
@@ -145,26 +145,24 @@ export class MultiClusterApp extends pulumi.CustomResource {
             if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["answers"] = args ? args.answers : undefined;
-            inputs["catalogName"] = args ? args.catalogName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["revisionHistoryLimit"] = args ? args.revisionHistoryLimit : undefined;
-            inputs["revisionId"] = args ? args.revisionId : undefined;
-            inputs["roles"] = args ? args.roles : undefined;
-            inputs["targets"] = args ? args.targets : undefined;
-            inputs["templateName"] = args ? args.templateName : undefined;
-            inputs["templateVersion"] = args ? args.templateVersion : undefined;
-            inputs["upgradeStrategy"] = args ? args.upgradeStrategy : undefined;
-            inputs["wait"] = args ? args.wait : undefined;
-            inputs["templateVersionId"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["answers"] = args ? args.answers : undefined;
+            resourceInputs["catalogName"] = args ? args.catalogName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["revisionHistoryLimit"] = args ? args.revisionHistoryLimit : undefined;
+            resourceInputs["revisionId"] = args ? args.revisionId : undefined;
+            resourceInputs["roles"] = args ? args.roles : undefined;
+            resourceInputs["targets"] = args ? args.targets : undefined;
+            resourceInputs["templateName"] = args ? args.templateName : undefined;
+            resourceInputs["templateVersion"] = args ? args.templateVersion : undefined;
+            resourceInputs["upgradeStrategy"] = args ? args.upgradeStrategy : undefined;
+            resourceInputs["wait"] = args ? args.wait : undefined;
+            resourceInputs["templateVersionId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MultiClusterApp.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MultiClusterApp.__pulumiType, name, resourceInputs, opts);
     }
 }
 

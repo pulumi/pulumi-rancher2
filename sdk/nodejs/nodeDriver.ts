@@ -116,21 +116,21 @@ export class NodeDriver extends pulumi.CustomResource {
      */
     constructor(name: string, args: NodeDriverArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeDriverArgs | NodeDriverState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeDriverState | undefined;
-            inputs["active"] = state ? state.active : undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["builtin"] = state ? state.builtin : undefined;
-            inputs["checksum"] = state ? state.checksum : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["externalId"] = state ? state.externalId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["uiUrl"] = state ? state.uiUrl : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["whitelistDomains"] = state ? state.whitelistDomains : undefined;
+            resourceInputs["active"] = state ? state.active : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["builtin"] = state ? state.builtin : undefined;
+            resourceInputs["checksum"] = state ? state.checksum : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["externalId"] = state ? state.externalId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["uiUrl"] = state ? state.uiUrl : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["whitelistDomains"] = state ? state.whitelistDomains : undefined;
         } else {
             const args = argsOrState as NodeDriverArgs | undefined;
             if ((!args || args.active === undefined) && !opts.urn) {
@@ -142,22 +142,20 @@ export class NodeDriver extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            inputs["active"] = args ? args.active : undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["builtin"] = args ? args.builtin : undefined;
-            inputs["checksum"] = args ? args.checksum : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["externalId"] = args ? args.externalId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["uiUrl"] = args ? args.uiUrl : undefined;
-            inputs["url"] = args ? args.url : undefined;
-            inputs["whitelistDomains"] = args ? args.whitelistDomains : undefined;
+            resourceInputs["active"] = args ? args.active : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["builtin"] = args ? args.builtin : undefined;
+            resourceInputs["checksum"] = args ? args.checksum : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["externalId"] = args ? args.externalId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["uiUrl"] = args ? args.uiUrl : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["whitelistDomains"] = args ? args.whitelistDomains : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NodeDriver.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NodeDriver.__pulumiType, name, resourceInputs, opts);
     }
 }
 
