@@ -92,7 +92,7 @@ echo ${k3s_imported_server} >> ${TESTACC_DOCKER_LIST}
 k3s_imported_server_ip=$(${DOCKER_BIN} inspect ${k3s_imported_server} -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}')
 k3s_imported_node=$(${DOCKER_BIN} run -d \
   --privileged \
-  --tmpfs /run \
+  --tmpfs /run \  
   --tmpfs /var/run \
   -e K3S_URL=https://${k3s_server_ip}:${TESTACC_K3S_PORT} \
   -e K3S_CLUSTER_SECRET=${TESTACC_K3S_SECRET} \
