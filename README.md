@@ -45,7 +45,7 @@ To use from .NET, install using `dotnet add package`:
 
 ## Configuration
 
-The following configuration points are available for the `xyz` provider:
+The following configuration points are available for the `rancher2` provider:
 
 - `rancher2:apiUrl` (Required) - The URL to the rancher API. It must be provided, but it can also be sourced from the 
   `RANCHER_URL` environment variable.
