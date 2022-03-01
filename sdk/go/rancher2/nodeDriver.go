@@ -233,7 +233,7 @@ type NodeDriverInput interface {
 }
 
 func (*NodeDriver) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeDriver)(nil))
+	return reflect.TypeOf((**NodeDriver)(nil)).Elem()
 }
 
 func (i *NodeDriver) ToNodeDriverOutput() NodeDriverOutput {
@@ -242,35 +242,6 @@ func (i *NodeDriver) ToNodeDriverOutput() NodeDriverOutput {
 
 func (i *NodeDriver) ToNodeDriverOutputWithContext(ctx context.Context) NodeDriverOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeDriverOutput)
-}
-
-func (i *NodeDriver) ToNodeDriverPtrOutput() NodeDriverPtrOutput {
-	return i.ToNodeDriverPtrOutputWithContext(context.Background())
-}
-
-func (i *NodeDriver) ToNodeDriverPtrOutputWithContext(ctx context.Context) NodeDriverPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeDriverPtrOutput)
-}
-
-type NodeDriverPtrInput interface {
-	pulumi.Input
-
-	ToNodeDriverPtrOutput() NodeDriverPtrOutput
-	ToNodeDriverPtrOutputWithContext(ctx context.Context) NodeDriverPtrOutput
-}
-
-type nodeDriverPtrType NodeDriverArgs
-
-func (*nodeDriverPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeDriver)(nil))
-}
-
-func (i *nodeDriverPtrType) ToNodeDriverPtrOutput() NodeDriverPtrOutput {
-	return i.ToNodeDriverPtrOutputWithContext(context.Background())
-}
-
-func (i *nodeDriverPtrType) ToNodeDriverPtrOutputWithContext(ctx context.Context) NodeDriverPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeDriverPtrOutput)
 }
 
 // NodeDriverArrayInput is an input type that accepts NodeDriverArray and NodeDriverArrayOutput values.
@@ -326,7 +297,7 @@ func (i NodeDriverMap) ToNodeDriverMapOutputWithContext(ctx context.Context) Nod
 type NodeDriverOutput struct{ *pulumi.OutputState }
 
 func (NodeDriverOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeDriver)(nil))
+	return reflect.TypeOf((**NodeDriver)(nil)).Elem()
 }
 
 func (o NodeDriverOutput) ToNodeDriverOutput() NodeDriverOutput {
@@ -337,44 +308,10 @@ func (o NodeDriverOutput) ToNodeDriverOutputWithContext(ctx context.Context) Nod
 	return o
 }
 
-func (o NodeDriverOutput) ToNodeDriverPtrOutput() NodeDriverPtrOutput {
-	return o.ToNodeDriverPtrOutputWithContext(context.Background())
-}
-
-func (o NodeDriverOutput) ToNodeDriverPtrOutputWithContext(ctx context.Context) NodeDriverPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeDriver) *NodeDriver {
-		return &v
-	}).(NodeDriverPtrOutput)
-}
-
-type NodeDriverPtrOutput struct{ *pulumi.OutputState }
-
-func (NodeDriverPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeDriver)(nil))
-}
-
-func (o NodeDriverPtrOutput) ToNodeDriverPtrOutput() NodeDriverPtrOutput {
-	return o
-}
-
-func (o NodeDriverPtrOutput) ToNodeDriverPtrOutputWithContext(ctx context.Context) NodeDriverPtrOutput {
-	return o
-}
-
-func (o NodeDriverPtrOutput) Elem() NodeDriverOutput {
-	return o.ApplyT(func(v *NodeDriver) NodeDriver {
-		if v != nil {
-			return *v
-		}
-		var ret NodeDriver
-		return ret
-	}).(NodeDriverOutput)
-}
-
 type NodeDriverArrayOutput struct{ *pulumi.OutputState }
 
 func (NodeDriverArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NodeDriver)(nil))
+	return reflect.TypeOf((*[]*NodeDriver)(nil)).Elem()
 }
 
 func (o NodeDriverArrayOutput) ToNodeDriverArrayOutput() NodeDriverArrayOutput {
@@ -386,15 +323,15 @@ func (o NodeDriverArrayOutput) ToNodeDriverArrayOutputWithContext(ctx context.Co
 }
 
 func (o NodeDriverArrayOutput) Index(i pulumi.IntInput) NodeDriverOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeDriver {
-		return vs[0].([]NodeDriver)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NodeDriver {
+		return vs[0].([]*NodeDriver)[vs[1].(int)]
 	}).(NodeDriverOutput)
 }
 
 type NodeDriverMapOutput struct{ *pulumi.OutputState }
 
 func (NodeDriverMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NodeDriver)(nil))
+	return reflect.TypeOf((*map[string]*NodeDriver)(nil)).Elem()
 }
 
 func (o NodeDriverMapOutput) ToNodeDriverMapOutput() NodeDriverMapOutput {
@@ -406,18 +343,16 @@ func (o NodeDriverMapOutput) ToNodeDriverMapOutputWithContext(ctx context.Contex
 }
 
 func (o NodeDriverMapOutput) MapIndex(k pulumi.StringInput) NodeDriverOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NodeDriver {
-		return vs[0].(map[string]NodeDriver)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NodeDriver {
+		return vs[0].(map[string]*NodeDriver)[vs[1].(string)]
 	}).(NodeDriverOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeDriverInput)(nil)).Elem(), &NodeDriver{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeDriverPtrInput)(nil)).Elem(), &NodeDriver{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeDriverArrayInput)(nil)).Elem(), NodeDriverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeDriverMapInput)(nil)).Elem(), NodeDriverMap{})
 	pulumi.RegisterOutputType(NodeDriverOutput{})
-	pulumi.RegisterOutputType(NodeDriverPtrOutput{})
 	pulumi.RegisterOutputType(NodeDriverArrayOutput{})
 	pulumi.RegisterOutputType(NodeDriverMapOutput{})
 }

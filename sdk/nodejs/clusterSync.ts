@@ -5,6 +5,76 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 rke Cluster 
+ * const foo_customCluster = new rancher2.Cluster("foo-customCluster", {
+ *     description: "Foo rancher2 custom cluster",
+ *     rkeConfig: {
+ *         network: {
+ *             plugin: "canal",
+ *         },
+ *     },
+ * });
+ * // Create a new rancher2 Node Template
+ * const fooNodeTemplate = new rancher2.NodeTemplate("fooNodeTemplate", {
+ *     description: "foo test",
+ *     amazonec2Config: {
+ *         accessKey: "<AWS_ACCESS_KEY>",
+ *         secretKey: "<AWS_SECRET_KEY>",
+ *         ami: "<AMI_ID>",
+ *         region: "<REGION>",
+ *         securityGroups: ["<AWS_SECURITY_GROUP>"],
+ *         subnetId: "<SUBNET_ID>",
+ *         vpcId: "<VPC_ID>",
+ *         zone: "<ZONE>",
+ *     },
+ * });
+ * // Create a new rancher2 Node Pool
+ * const fooNodePool = new rancher2.NodePool("fooNodePool", {
+ *     clusterId: foo_customCluster.id,
+ *     hostnamePrefix: "foo-cluster-0",
+ *     nodeTemplateId: fooNodeTemplate.id,
+ *     quantity: 3,
+ *     controlPlane: true,
+ *     etcd: true,
+ *     worker: true,
+ * });
+ * // Create a new rancher2 Cluster Sync
+ * const foo_customClusterSync = new rancher2.ClusterSync("foo-customClusterSync", {
+ *     clusterId: foo_customCluster.id,
+ *     nodePoolIds: [fooNodePool.id],
+ * });
+ * // Create a new rancher2 Project
+ * const fooProject = new rancher2.Project("fooProject", {
+ *     clusterId: foo_customClusterSync.id,
+ *     description: "Terraform namespace acceptance test",
+ *     resourceQuota: {
+ *         projectLimit: {
+ *             limitsCpu: "2000m",
+ *             limitsMemory: "2000Mi",
+ *             requestsStorage: "2Gi",
+ *         },
+ *         namespaceDefaultLimit: {
+ *             limitsCpu: "500m",
+ *             limitsMemory: "500Mi",
+ *             requestsStorage: "1Gi",
+ *         },
+ *     },
+ *     containerResourceLimit: {
+ *         limitsCpu: "20m",
+ *         limitsMemory: "20Mi",
+ *         requestsCpu: "1m",
+ *         requestsMemory: "1Mi",
+ *     },
+ * });
+ * ```
+ */
 export class ClusterSync extends pulumi.CustomResource {
     /**
      * Get an existing ClusterSync resource's state with the given name, ID, and optional extra
@@ -84,42 +154,40 @@ export class ClusterSync extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterSyncArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterSyncArgs | ClusterSyncState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterSyncState | undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
-            inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
-            inputs["nodePoolIds"] = state ? state.nodePoolIds : undefined;
-            inputs["nodes"] = state ? state.nodes : undefined;
-            inputs["stateConfirm"] = state ? state.stateConfirm : undefined;
-            inputs["synced"] = state ? state.synced : undefined;
-            inputs["systemProjectId"] = state ? state.systemProjectId : undefined;
-            inputs["waitAlerting"] = state ? state.waitAlerting : undefined;
-            inputs["waitCatalogs"] = state ? state.waitCatalogs : undefined;
-            inputs["waitMonitoring"] = state ? state.waitMonitoring : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
+            resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
+            resourceInputs["nodePoolIds"] = state ? state.nodePoolIds : undefined;
+            resourceInputs["nodes"] = state ? state.nodes : undefined;
+            resourceInputs["stateConfirm"] = state ? state.stateConfirm : undefined;
+            resourceInputs["synced"] = state ? state.synced : undefined;
+            resourceInputs["systemProjectId"] = state ? state.systemProjectId : undefined;
+            resourceInputs["waitAlerting"] = state ? state.waitAlerting : undefined;
+            resourceInputs["waitCatalogs"] = state ? state.waitCatalogs : undefined;
+            resourceInputs["waitMonitoring"] = state ? state.waitMonitoring : undefined;
         } else {
             const args = argsOrState as ClusterSyncArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["nodePoolIds"] = args ? args.nodePoolIds : undefined;
-            inputs["stateConfirm"] = args ? args.stateConfirm : undefined;
-            inputs["synced"] = args ? args.synced : undefined;
-            inputs["waitAlerting"] = args ? args.waitAlerting : undefined;
-            inputs["waitCatalogs"] = args ? args.waitCatalogs : undefined;
-            inputs["waitMonitoring"] = args ? args.waitMonitoring : undefined;
-            inputs["defaultProjectId"] = undefined /*out*/;
-            inputs["kubeConfig"] = undefined /*out*/;
-            inputs["nodes"] = undefined /*out*/;
-            inputs["systemProjectId"] = undefined /*out*/;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["nodePoolIds"] = args ? args.nodePoolIds : undefined;
+            resourceInputs["stateConfirm"] = args ? args.stateConfirm : undefined;
+            resourceInputs["synced"] = args ? args.synced : undefined;
+            resourceInputs["waitAlerting"] = args ? args.waitAlerting : undefined;
+            resourceInputs["waitCatalogs"] = args ? args.waitCatalogs : undefined;
+            resourceInputs["waitMonitoring"] = args ? args.waitMonitoring : undefined;
+            resourceInputs["defaultProjectId"] = undefined /*out*/;
+            resourceInputs["kubeConfig"] = undefined /*out*/;
+            resourceInputs["nodes"] = undefined /*out*/;
+            resourceInputs["systemProjectId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ClusterSync.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ClusterSync.__pulumiType, name, resourceInputs, opts);
     }
 }
 

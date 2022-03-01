@@ -11,6 +11,97 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewCluster(ctx, "foo-customCluster", &rancher2.ClusterArgs{
+// 			Description: pulumi.String("Foo rancher2 custom cluster"),
+// 			RkeConfig: &ClusterRkeConfigArgs{
+// 				Network: &ClusterRkeConfigNetworkArgs{
+// 					Plugin: pulumi.String("canal"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooNodeTemplate, err := rancher2.NewNodeTemplate(ctx, "fooNodeTemplate", &rancher2.NodeTemplateArgs{
+// 			Description: pulumi.String("foo test"),
+// 			Amazonec2Config: &NodeTemplateAmazonec2ConfigArgs{
+// 				AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
+// 				SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
+// 				Ami:       pulumi.String("<AMI_ID>"),
+// 				Region:    pulumi.String("<REGION>"),
+// 				SecurityGroups: pulumi.StringArray{
+// 					pulumi.String("<AWS_SECURITY_GROUP>"),
+// 				},
+// 				SubnetId: pulumi.String("<SUBNET_ID>"),
+// 				VpcId:    pulumi.String("<VPC_ID>"),
+// 				Zone:     pulumi.String("<ZONE>"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooNodePool, err := rancher2.NewNodePool(ctx, "fooNodePool", &rancher2.NodePoolArgs{
+// 			ClusterId:      foo_customCluster.ID(),
+// 			HostnamePrefix: pulumi.String("foo-cluster-0"),
+// 			NodeTemplateId: fooNodeTemplate.ID(),
+// 			Quantity:       pulumi.Int(3),
+// 			ControlPlane:   pulumi.Bool(true),
+// 			Etcd:           pulumi.Bool(true),
+// 			Worker:         pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewClusterSync(ctx, "foo-customClusterSync", &rancher2.ClusterSyncArgs{
+// 			ClusterId: foo_customCluster.ID(),
+// 			NodePoolIds: pulumi.StringArray{
+// 				fooNodePool.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewProject(ctx, "fooProject", &rancher2.ProjectArgs{
+// 			ClusterId:   foo_customClusterSync.ID(),
+// 			Description: pulumi.String("Terraform namespace acceptance test"),
+// 			ResourceQuota: &ProjectResourceQuotaArgs{
+// 				ProjectLimit: &ProjectResourceQuotaProjectLimitArgs{
+// 					LimitsCpu:       pulumi.String("2000m"),
+// 					LimitsMemory:    pulumi.String("2000Mi"),
+// 					RequestsStorage: pulumi.String("2Gi"),
+// 				},
+// 				NamespaceDefaultLimit: &ProjectResourceQuotaNamespaceDefaultLimitArgs{
+// 					LimitsCpu:       pulumi.String("500m"),
+// 					LimitsMemory:    pulumi.String("500Mi"),
+// 					RequestsStorage: pulumi.String("1Gi"),
+// 				},
+// 			},
+// 			ContainerResourceLimit: &ProjectContainerResourceLimitArgs{
+// 				LimitsCpu:      pulumi.String("20m"),
+// 				LimitsMemory:   pulumi.String("20Mi"),
+// 				RequestsCpu:    pulumi.String("1m"),
+// 				RequestsMemory: pulumi.String("1Mi"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ClusterSync struct {
 	pulumi.CustomResourceState
 
@@ -165,7 +256,7 @@ type ClusterSyncInput interface {
 }
 
 func (*ClusterSync) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterSync)(nil))
+	return reflect.TypeOf((**ClusterSync)(nil)).Elem()
 }
 
 func (i *ClusterSync) ToClusterSyncOutput() ClusterSyncOutput {
@@ -174,35 +265,6 @@ func (i *ClusterSync) ToClusterSyncOutput() ClusterSyncOutput {
 
 func (i *ClusterSync) ToClusterSyncOutputWithContext(ctx context.Context) ClusterSyncOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncOutput)
-}
-
-func (i *ClusterSync) ToClusterSyncPtrOutput() ClusterSyncPtrOutput {
-	return i.ToClusterSyncPtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterSync) ToClusterSyncPtrOutputWithContext(ctx context.Context) ClusterSyncPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncPtrOutput)
-}
-
-type ClusterSyncPtrInput interface {
-	pulumi.Input
-
-	ToClusterSyncPtrOutput() ClusterSyncPtrOutput
-	ToClusterSyncPtrOutputWithContext(ctx context.Context) ClusterSyncPtrOutput
-}
-
-type clusterSyncPtrType ClusterSyncArgs
-
-func (*clusterSyncPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterSync)(nil))
-}
-
-func (i *clusterSyncPtrType) ToClusterSyncPtrOutput() ClusterSyncPtrOutput {
-	return i.ToClusterSyncPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterSyncPtrType) ToClusterSyncPtrOutputWithContext(ctx context.Context) ClusterSyncPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncPtrOutput)
 }
 
 // ClusterSyncArrayInput is an input type that accepts ClusterSyncArray and ClusterSyncArrayOutput values.
@@ -258,7 +320,7 @@ func (i ClusterSyncMap) ToClusterSyncMapOutputWithContext(ctx context.Context) C
 type ClusterSyncOutput struct{ *pulumi.OutputState }
 
 func (ClusterSyncOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterSync)(nil))
+	return reflect.TypeOf((**ClusterSync)(nil)).Elem()
 }
 
 func (o ClusterSyncOutput) ToClusterSyncOutput() ClusterSyncOutput {
@@ -269,44 +331,10 @@ func (o ClusterSyncOutput) ToClusterSyncOutputWithContext(ctx context.Context) C
 	return o
 }
 
-func (o ClusterSyncOutput) ToClusterSyncPtrOutput() ClusterSyncPtrOutput {
-	return o.ToClusterSyncPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterSyncOutput) ToClusterSyncPtrOutputWithContext(ctx context.Context) ClusterSyncPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterSync) *ClusterSync {
-		return &v
-	}).(ClusterSyncPtrOutput)
-}
-
-type ClusterSyncPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterSyncPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterSync)(nil))
-}
-
-func (o ClusterSyncPtrOutput) ToClusterSyncPtrOutput() ClusterSyncPtrOutput {
-	return o
-}
-
-func (o ClusterSyncPtrOutput) ToClusterSyncPtrOutputWithContext(ctx context.Context) ClusterSyncPtrOutput {
-	return o
-}
-
-func (o ClusterSyncPtrOutput) Elem() ClusterSyncOutput {
-	return o.ApplyT(func(v *ClusterSync) ClusterSync {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterSync
-		return ret
-	}).(ClusterSyncOutput)
-}
-
 type ClusterSyncArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterSyncArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterSync)(nil))
+	return reflect.TypeOf((*[]*ClusterSync)(nil)).Elem()
 }
 
 func (o ClusterSyncArrayOutput) ToClusterSyncArrayOutput() ClusterSyncArrayOutput {
@@ -318,15 +346,15 @@ func (o ClusterSyncArrayOutput) ToClusterSyncArrayOutputWithContext(ctx context.
 }
 
 func (o ClusterSyncArrayOutput) Index(i pulumi.IntInput) ClusterSyncOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterSync {
-		return vs[0].([]ClusterSync)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterSync {
+		return vs[0].([]*ClusterSync)[vs[1].(int)]
 	}).(ClusterSyncOutput)
 }
 
 type ClusterSyncMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterSyncMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterSync)(nil))
+	return reflect.TypeOf((*map[string]*ClusterSync)(nil)).Elem()
 }
 
 func (o ClusterSyncMapOutput) ToClusterSyncMapOutput() ClusterSyncMapOutput {
@@ -338,18 +366,16 @@ func (o ClusterSyncMapOutput) ToClusterSyncMapOutputWithContext(ctx context.Cont
 }
 
 func (o ClusterSyncMapOutput) MapIndex(k pulumi.StringInput) ClusterSyncOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterSync {
-		return vs[0].(map[string]ClusterSync)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterSync {
+		return vs[0].(map[string]*ClusterSync)[vs[1].(string)]
 	}).(ClusterSyncOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSyncInput)(nil)).Elem(), &ClusterSync{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSyncPtrInput)(nil)).Elem(), &ClusterSync{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSyncArrayInput)(nil)).Elem(), ClusterSyncArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSyncMapInput)(nil)).Elem(), ClusterSyncMap{})
 	pulumi.RegisterOutputType(ClusterSyncOutput{})
-	pulumi.RegisterOutputType(ClusterSyncPtrOutput{})
 	pulumi.RegisterOutputType(ClusterSyncArrayOutput{})
 	pulumi.RegisterOutputType(ClusterSyncMapOutput{})
 }

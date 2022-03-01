@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,7 +39,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectRoleTemplateBindingResult> InvokeAsync(GetProjectRoleTemplateBindingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? new GetProjectRoleTemplateBindingArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? new GetProjectRoleTemplateBindingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 project role template binding.
@@ -70,7 +69,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectRoleTemplateBindingResult> Invoke(GetProjectRoleTemplateBindingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? new GetProjectRoleTemplateBindingInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? new GetProjectRoleTemplateBindingInvokeArgs(), options.WithDefaults());
     }
 
 

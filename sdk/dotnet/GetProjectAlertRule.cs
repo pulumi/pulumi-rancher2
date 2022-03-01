@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,7 +39,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectAlertRuleResult> InvokeAsync(GetProjectAlertRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? new GetProjectAlertRuleArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? new GetProjectAlertRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 project alert rule.
@@ -70,7 +69,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectAlertRuleResult> Invoke(GetProjectAlertRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? new GetProjectAlertRuleInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? new GetProjectAlertRuleInvokeArgs(), options.WithDefaults());
     }
 
 

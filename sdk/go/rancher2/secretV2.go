@@ -174,7 +174,7 @@ type SecretV2Input interface {
 }
 
 func (*SecretV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretV2)(nil))
+	return reflect.TypeOf((**SecretV2)(nil)).Elem()
 }
 
 func (i *SecretV2) ToSecretV2Output() SecretV2Output {
@@ -183,35 +183,6 @@ func (i *SecretV2) ToSecretV2Output() SecretV2Output {
 
 func (i *SecretV2) ToSecretV2OutputWithContext(ctx context.Context) SecretV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV2Output)
-}
-
-func (i *SecretV2) ToSecretV2PtrOutput() SecretV2PtrOutput {
-	return i.ToSecretV2PtrOutputWithContext(context.Background())
-}
-
-func (i *SecretV2) ToSecretV2PtrOutputWithContext(ctx context.Context) SecretV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretV2PtrOutput)
-}
-
-type SecretV2PtrInput interface {
-	pulumi.Input
-
-	ToSecretV2PtrOutput() SecretV2PtrOutput
-	ToSecretV2PtrOutputWithContext(ctx context.Context) SecretV2PtrOutput
-}
-
-type secretV2PtrType SecretV2Args
-
-func (*secretV2PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretV2)(nil))
-}
-
-func (i *secretV2PtrType) ToSecretV2PtrOutput() SecretV2PtrOutput {
-	return i.ToSecretV2PtrOutputWithContext(context.Background())
-}
-
-func (i *secretV2PtrType) ToSecretV2PtrOutputWithContext(ctx context.Context) SecretV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretV2PtrOutput)
 }
 
 // SecretV2ArrayInput is an input type that accepts SecretV2Array and SecretV2ArrayOutput values.
@@ -267,7 +238,7 @@ func (i SecretV2Map) ToSecretV2MapOutputWithContext(ctx context.Context) SecretV
 type SecretV2Output struct{ *pulumi.OutputState }
 
 func (SecretV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretV2)(nil))
+	return reflect.TypeOf((**SecretV2)(nil)).Elem()
 }
 
 func (o SecretV2Output) ToSecretV2Output() SecretV2Output {
@@ -278,44 +249,10 @@ func (o SecretV2Output) ToSecretV2OutputWithContext(ctx context.Context) SecretV
 	return o
 }
 
-func (o SecretV2Output) ToSecretV2PtrOutput() SecretV2PtrOutput {
-	return o.ToSecretV2PtrOutputWithContext(context.Background())
-}
-
-func (o SecretV2Output) ToSecretV2PtrOutputWithContext(ctx context.Context) SecretV2PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretV2) *SecretV2 {
-		return &v
-	}).(SecretV2PtrOutput)
-}
-
-type SecretV2PtrOutput struct{ *pulumi.OutputState }
-
-func (SecretV2PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretV2)(nil))
-}
-
-func (o SecretV2PtrOutput) ToSecretV2PtrOutput() SecretV2PtrOutput {
-	return o
-}
-
-func (o SecretV2PtrOutput) ToSecretV2PtrOutputWithContext(ctx context.Context) SecretV2PtrOutput {
-	return o
-}
-
-func (o SecretV2PtrOutput) Elem() SecretV2Output {
-	return o.ApplyT(func(v *SecretV2) SecretV2 {
-		if v != nil {
-			return *v
-		}
-		var ret SecretV2
-		return ret
-	}).(SecretV2Output)
-}
-
 type SecretV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (SecretV2ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecretV2)(nil))
+	return reflect.TypeOf((*[]*SecretV2)(nil)).Elem()
 }
 
 func (o SecretV2ArrayOutput) ToSecretV2ArrayOutput() SecretV2ArrayOutput {
@@ -327,15 +264,15 @@ func (o SecretV2ArrayOutput) ToSecretV2ArrayOutputWithContext(ctx context.Contex
 }
 
 func (o SecretV2ArrayOutput) Index(i pulumi.IntInput) SecretV2Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretV2 {
-		return vs[0].([]SecretV2)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecretV2 {
+		return vs[0].([]*SecretV2)[vs[1].(int)]
 	}).(SecretV2Output)
 }
 
 type SecretV2MapOutput struct{ *pulumi.OutputState }
 
 func (SecretV2MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SecretV2)(nil))
+	return reflect.TypeOf((*map[string]*SecretV2)(nil)).Elem()
 }
 
 func (o SecretV2MapOutput) ToSecretV2MapOutput() SecretV2MapOutput {
@@ -347,18 +284,16 @@ func (o SecretV2MapOutput) ToSecretV2MapOutputWithContext(ctx context.Context) S
 }
 
 func (o SecretV2MapOutput) MapIndex(k pulumi.StringInput) SecretV2Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecretV2 {
-		return vs[0].(map[string]SecretV2)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SecretV2 {
+		return vs[0].(map[string]*SecretV2)[vs[1].(string)]
 	}).(SecretV2Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretV2Input)(nil)).Elem(), &SecretV2{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretV2PtrInput)(nil)).Elem(), &SecretV2{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretV2ArrayInput)(nil)).Elem(), SecretV2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretV2MapInput)(nil)).Elem(), SecretV2Map{})
 	pulumi.RegisterOutputType(SecretV2Output{})
-	pulumi.RegisterOutputType(SecretV2PtrOutput{})
 	pulumi.RegisterOutputType(SecretV2ArrayOutput{})
 	pulumi.RegisterOutputType(SecretV2MapOutput{})
 }

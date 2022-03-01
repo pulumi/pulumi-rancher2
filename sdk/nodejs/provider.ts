@@ -58,26 +58,24 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
             if ((!args || args.apiUrl === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiUrl'");
             }
-            inputs["accessKey"] = args ? args.accessKey : undefined;
-            inputs["apiUrl"] = args ? args.apiUrl : undefined;
-            inputs["bootstrap"] = pulumi.output((args ? args.bootstrap : undefined) ?? (<any>utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false)).apply(JSON.stringify);
-            inputs["caCerts"] = args ? args.caCerts : undefined;
-            inputs["insecure"] = pulumi.output((args ? args.insecure : undefined) ?? (<any>utilities.getEnvBoolean("RANCHER_INSECURE") || false)).apply(JSON.stringify);
-            inputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
-            inputs["secretKey"] = args ? args.secretKey : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["tokenKey"] = args ? args.tokenKey : undefined;
+            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
+            resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
+            resourceInputs["bootstrap"] = pulumi.output((args ? args.bootstrap : undefined) ?? (utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false)).apply(JSON.stringify);
+            resourceInputs["caCerts"] = args ? args.caCerts : undefined;
+            resourceInputs["insecure"] = pulumi.output((args ? args.insecure : undefined) ?? (utilities.getEnvBoolean("RANCHER_INSECURE") || false)).apply(JSON.stringify);
+            resourceInputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
+            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["tokenKey"] = args ? args.tokenKey : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Provider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -134,18 +134,18 @@ export class GlobalDns extends pulumi.CustomResource {
      */
     constructor(name: string, args: GlobalDnsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalDnsArgs | GlobalDnsState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalDnsState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["fqdn"] = state ? state.fqdn : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["multiClusterAppId"] = state ? state.multiClusterAppId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectIds"] = state ? state.projectIds : undefined;
-            inputs["providerId"] = state ? state.providerId : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["fqdn"] = state ? state.fqdn : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["multiClusterAppId"] = state ? state.multiClusterAppId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectIds"] = state ? state.projectIds : undefined;
+            resourceInputs["providerId"] = state ? state.providerId : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
         } else {
             const args = argsOrState as GlobalDnsArgs | undefined;
             if ((!args || args.fqdn === undefined) && !opts.urn) {
@@ -154,19 +154,17 @@ export class GlobalDns extends pulumi.CustomResource {
             if ((!args || args.providerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'providerId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["fqdn"] = args ? args.fqdn : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["multiClusterAppId"] = args ? args.multiClusterAppId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["projectIds"] = args ? args.projectIds : undefined;
-            inputs["providerId"] = args ? args.providerId : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["fqdn"] = args ? args.fqdn : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["multiClusterAppId"] = args ? args.multiClusterAppId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectIds"] = args ? args.projectIds : undefined;
+            resourceInputs["providerId"] = args ? args.providerId : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GlobalDns.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GlobalDns.__pulumiType, name, resourceInputs, opts);
     }
 }
 

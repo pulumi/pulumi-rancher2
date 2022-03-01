@@ -44,7 +44,7 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.14.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.11.0
-	github.com/pulumi/pulumi/sdk/v3 v3.17.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.19.1
+	github.com/pulumi/pulumi/sdk/v3 v3.25.0
 	github.com/rancher/terraform-provider-rancher2 v1.22.1
 )

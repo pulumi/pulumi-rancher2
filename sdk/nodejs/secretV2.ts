@@ -89,19 +89,19 @@ export class SecretV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecretV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretV2Args | SecretV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretV2State | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["data"] = state ? state.data : undefined;
-            inputs["immutable"] = state ? state.immutable : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["resourceVersion"] = state ? state.resourceVersion : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["data"] = state ? state.data : undefined;
+            resourceInputs["immutable"] = state ? state.immutable : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["resourceVersion"] = state ? state.resourceVersion : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as SecretV2Args | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -110,20 +110,18 @@ export class SecretV2 extends pulumi.CustomResource {
             if ((!args || args.data === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'data'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["data"] = args ? args.data : undefined;
-            inputs["immutable"] = args ? args.immutable : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["resourceVersion"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["data"] = args ? args.data : undefined;
+            resourceInputs["immutable"] = args ? args.immutable : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["resourceVersion"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SecretV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SecretV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

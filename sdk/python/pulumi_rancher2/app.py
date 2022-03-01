@@ -515,6 +515,56 @@ class App(pulumi.CustomResource):
                  wait: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 App
+        foo = rancher2.App("foo",
+            answers={
+                "foo": "bar",
+                "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
+                "ingress_host": "test.xip.io",
+            },
+            catalog_name="<catalog_name>",
+            description="Foo app",
+            project_id="<project_id>",
+            target_namespace="<namespace_name>",
+            template_name="<template_name>",
+            template_version="<template_version>")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 App in a new namespace
+        foo_namespace = rancher2.Namespace("fooNamespace",
+            description="Foo namespace",
+            project_id="<project_id>",
+            resource_quota=rancher2.NamespaceResourceQuotaArgs(
+                limit=rancher2.NamespaceResourceQuotaLimitArgs(
+                    limits_cpu="100m",
+                    limits_memory="100Mi",
+                    requests_storage="1Gi",
+                ),
+            ))
+        foo_app = rancher2.App("fooApp",
+            catalog_name="<catalog_name>",
+            description="Foo app",
+            project_id="<project_id>",
+            template_name="<template_name>",
+            template_version="<template_version>",
+            target_namespace=foo_namespace.id,
+            answers={
+                "ingress_host": "test.xip.io",
+                "foo": "bar",
+                "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
+            })
+        ```
+
         ## Import
 
         Apps can be imported using the app ID in the format `<project_id>:<app_name>`
@@ -549,6 +599,56 @@ class App(pulumi.CustomResource):
                  args: AppArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 App
+        foo = rancher2.App("foo",
+            answers={
+                "foo": "bar",
+                "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
+                "ingress_host": "test.xip.io",
+            },
+            catalog_name="<catalog_name>",
+            description="Foo app",
+            project_id="<project_id>",
+            target_namespace="<namespace_name>",
+            template_name="<template_name>",
+            template_version="<template_version>")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 App in a new namespace
+        foo_namespace = rancher2.Namespace("fooNamespace",
+            description="Foo namespace",
+            project_id="<project_id>",
+            resource_quota=rancher2.NamespaceResourceQuotaArgs(
+                limit=rancher2.NamespaceResourceQuotaLimitArgs(
+                    limits_cpu="100m",
+                    limits_memory="100Mi",
+                    requests_storage="1Gi",
+                ),
+            ))
+        foo_app = rancher2.App("fooApp",
+            catalog_name="<catalog_name>",
+            description="Foo app",
+            project_id="<project_id>",
+            template_name="<template_name>",
+            template_version="<template_version>",
+            target_namespace=foo_namespace.id,
+            answers={
+                "ingress_host": "test.xip.io",
+                "foo": "bar",
+                "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
+            })
+        ```
+
         ## Import
 
         Apps can be imported using the app ID in the format `<project_id>:<app_name>`

@@ -136,52 +136,50 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterV2Args | ClusterV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterV2State | undefined;
-            inputs["agentEnvVars"] = state ? state.agentEnvVars : undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["cloudCredentialSecretName"] = state ? state.cloudCredentialSecretName : undefined;
-            inputs["clusterRegistrationToken"] = state ? state.clusterRegistrationToken : undefined;
-            inputs["clusterV1Id"] = state ? state.clusterV1Id : undefined;
-            inputs["defaultClusterRoleForProjectMembers"] = state ? state.defaultClusterRoleForProjectMembers : undefined;
-            inputs["defaultPodSecurityPolicyTemplateName"] = state ? state.defaultPodSecurityPolicyTemplateName : undefined;
-            inputs["enableNetworkPolicy"] = state ? state.enableNetworkPolicy : undefined;
-            inputs["fleetNamespace"] = state ? state.fleetNamespace : undefined;
-            inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
-            inputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["localAuthEndpoint"] = state ? state.localAuthEndpoint : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["resourceVersion"] = state ? state.resourceVersion : undefined;
-            inputs["rkeConfig"] = state ? state.rkeConfig : undefined;
+            resourceInputs["agentEnvVars"] = state ? state.agentEnvVars : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["cloudCredentialSecretName"] = state ? state.cloudCredentialSecretName : undefined;
+            resourceInputs["clusterRegistrationToken"] = state ? state.clusterRegistrationToken : undefined;
+            resourceInputs["clusterV1Id"] = state ? state.clusterV1Id : undefined;
+            resourceInputs["defaultClusterRoleForProjectMembers"] = state ? state.defaultClusterRoleForProjectMembers : undefined;
+            resourceInputs["defaultPodSecurityPolicyTemplateName"] = state ? state.defaultPodSecurityPolicyTemplateName : undefined;
+            resourceInputs["enableNetworkPolicy"] = state ? state.enableNetworkPolicy : undefined;
+            resourceInputs["fleetNamespace"] = state ? state.fleetNamespace : undefined;
+            resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
+            resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["localAuthEndpoint"] = state ? state.localAuthEndpoint : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["resourceVersion"] = state ? state.resourceVersion : undefined;
+            resourceInputs["rkeConfig"] = state ? state.rkeConfig : undefined;
         } else {
             const args = argsOrState as ClusterV2Args | undefined;
             if ((!args || args.kubernetesVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kubernetesVersion'");
             }
-            inputs["agentEnvVars"] = args ? args.agentEnvVars : undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["cloudCredentialSecretName"] = args ? args.cloudCredentialSecretName : undefined;
-            inputs["defaultClusterRoleForProjectMembers"] = args ? args.defaultClusterRoleForProjectMembers : undefined;
-            inputs["defaultPodSecurityPolicyTemplateName"] = args ? args.defaultPodSecurityPolicyTemplateName : undefined;
-            inputs["enableNetworkPolicy"] = args ? args.enableNetworkPolicy : undefined;
-            inputs["fleetNamespace"] = args ? args.fleetNamespace : undefined;
-            inputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["localAuthEndpoint"] = args ? args.localAuthEndpoint : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["rkeConfig"] = args ? args.rkeConfig : undefined;
-            inputs["clusterRegistrationToken"] = undefined /*out*/;
-            inputs["clusterV1Id"] = undefined /*out*/;
-            inputs["kubeConfig"] = undefined /*out*/;
-            inputs["resourceVersion"] = undefined /*out*/;
+            resourceInputs["agentEnvVars"] = args ? args.agentEnvVars : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["cloudCredentialSecretName"] = args ? args.cloudCredentialSecretName : undefined;
+            resourceInputs["defaultClusterRoleForProjectMembers"] = args ? args.defaultClusterRoleForProjectMembers : undefined;
+            resourceInputs["defaultPodSecurityPolicyTemplateName"] = args ? args.defaultPodSecurityPolicyTemplateName : undefined;
+            resourceInputs["enableNetworkPolicy"] = args ? args.enableNetworkPolicy : undefined;
+            resourceInputs["fleetNamespace"] = args ? args.fleetNamespace : undefined;
+            resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["localAuthEndpoint"] = args ? args.localAuthEndpoint : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["rkeConfig"] = args ? args.rkeConfig : undefined;
+            resourceInputs["clusterRegistrationToken"] = undefined /*out*/;
+            resourceInputs["clusterV1Id"] = undefined /*out*/;
+            resourceInputs["kubeConfig"] = undefined /*out*/;
+            resourceInputs["resourceVersion"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ClusterV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ClusterV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -24,9 +24,7 @@ export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getNodeTemplate:getNodeTemplate", {
         "name": args.name,
         "useInternalIpAddress": args.useInternalIpAddress,

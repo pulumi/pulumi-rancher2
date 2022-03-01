@@ -151,23 +151,23 @@ export class ProjectAlertRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectAlertRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectAlertRuleArgs | ProjectAlertRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectAlertRuleState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["groupIntervalSeconds"] = state ? state.groupIntervalSeconds : undefined;
-            inputs["groupWaitSeconds"] = state ? state.groupWaitSeconds : undefined;
-            inputs["inherited"] = state ? state.inherited : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["metricRule"] = state ? state.metricRule : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["podRule"] = state ? state.podRule : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
-            inputs["severity"] = state ? state.severity : undefined;
-            inputs["workloadRule"] = state ? state.workloadRule : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["groupIntervalSeconds"] = state ? state.groupIntervalSeconds : undefined;
+            resourceInputs["groupWaitSeconds"] = state ? state.groupWaitSeconds : undefined;
+            resourceInputs["inherited"] = state ? state.inherited : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["metricRule"] = state ? state.metricRule : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["podRule"] = state ? state.podRule : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
+            resourceInputs["severity"] = state ? state.severity : undefined;
+            resourceInputs["workloadRule"] = state ? state.workloadRule : undefined;
         } else {
             const args = argsOrState as ProjectAlertRuleArgs | undefined;
             if ((!args || args.groupId === undefined) && !opts.urn) {
@@ -176,24 +176,22 @@ export class ProjectAlertRule extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["groupIntervalSeconds"] = args ? args.groupIntervalSeconds : undefined;
-            inputs["groupWaitSeconds"] = args ? args.groupWaitSeconds : undefined;
-            inputs["inherited"] = args ? args.inherited : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["metricRule"] = args ? args.metricRule : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["podRule"] = args ? args.podRule : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["repeatIntervalSeconds"] = args ? args.repeatIntervalSeconds : undefined;
-            inputs["severity"] = args ? args.severity : undefined;
-            inputs["workloadRule"] = args ? args.workloadRule : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["groupIntervalSeconds"] = args ? args.groupIntervalSeconds : undefined;
+            resourceInputs["groupWaitSeconds"] = args ? args.groupWaitSeconds : undefined;
+            resourceInputs["inherited"] = args ? args.inherited : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["metricRule"] = args ? args.metricRule : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["podRule"] = args ? args.podRule : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["repeatIntervalSeconds"] = args ? args.repeatIntervalSeconds : undefined;
+            resourceInputs["severity"] = args ? args.severity : undefined;
+            resourceInputs["workloadRule"] = args ? args.workloadRule : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectAlertRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectAlertRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

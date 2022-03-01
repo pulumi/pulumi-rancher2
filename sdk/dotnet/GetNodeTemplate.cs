@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodeTemplateResult> InvokeAsync(GetNodeTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? new GetNodeTemplateArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? new GetNodeTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Node Template resource.
@@ -68,7 +67,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNodeTemplateResult> Invoke(GetNodeTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? new GetNodeTemplateInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? new GetNodeTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

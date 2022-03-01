@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,7 +39,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodePoolResult> InvokeAsync(GetNodePoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Node Pool resource.
@@ -70,7 +69,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNodePoolResult> Invoke(GetNodePoolInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -9,6 +9,101 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 rke Cluster 
+    ///         var foo_customCluster = new Rancher2.Cluster("foo-customCluster", new Rancher2.ClusterArgs
+    ///         {
+    ///             Description = "Foo rancher2 custom cluster",
+    ///             RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///             {
+    ///                 Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
+    ///                 {
+    ///                     Plugin = "canal",
+    ///                 },
+    ///             },
+    ///         });
+    ///         // Create a new rancher2 Node Template
+    ///         var fooNodeTemplate = new Rancher2.NodeTemplate("fooNodeTemplate", new Rancher2.NodeTemplateArgs
+    ///         {
+    ///             Description = "foo test",
+    ///             Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
+    ///             {
+    ///                 AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
+    ///                 SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///                 Ami = "&lt;AMI_ID&gt;",
+    ///                 Region = "&lt;REGION&gt;",
+    ///                 SecurityGroups = 
+    ///                 {
+    ///                     "&lt;AWS_SECURITY_GROUP&gt;",
+    ///                 },
+    ///                 SubnetId = "&lt;SUBNET_ID&gt;",
+    ///                 VpcId = "&lt;VPC_ID&gt;",
+    ///                 Zone = "&lt;ZONE&gt;",
+    ///             },
+    ///         });
+    ///         // Create a new rancher2 Node Pool
+    ///         var fooNodePool = new Rancher2.NodePool("fooNodePool", new Rancher2.NodePoolArgs
+    ///         {
+    ///             ClusterId = foo_customCluster.Id,
+    ///             HostnamePrefix = "foo-cluster-0",
+    ///             NodeTemplateId = fooNodeTemplate.Id,
+    ///             Quantity = 3,
+    ///             ControlPlane = true,
+    ///             Etcd = true,
+    ///             Worker = true,
+    ///         });
+    ///         // Create a new rancher2 Cluster Sync
+    ///         var foo_customClusterSync = new Rancher2.ClusterSync("foo-customClusterSync", new Rancher2.ClusterSyncArgs
+    ///         {
+    ///             ClusterId = foo_customCluster.Id,
+    ///             NodePoolIds = 
+    ///             {
+    ///                 fooNodePool.Id,
+    ///             },
+    ///         });
+    ///         // Create a new rancher2 Project
+    ///         var fooProject = new Rancher2.Project("fooProject", new Rancher2.ProjectArgs
+    ///         {
+    ///             ClusterId = foo_customClusterSync.Id,
+    ///             Description = "Terraform namespace acceptance test",
+    ///             ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
+    ///             {
+    ///                 ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "2000m",
+    ///                     LimitsMemory = "2000Mi",
+    ///                     RequestsStorage = "2Gi",
+    ///                 },
+    ///                 NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "500m",
+    ///                     LimitsMemory = "500Mi",
+    ///                     RequestsStorage = "1Gi",
+    ///                 },
+    ///             },
+    ///             ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
+    ///             {
+    ///                 LimitsCpu = "20m",
+    ///                 LimitsMemory = "20Mi",
+    ///                 RequestsCpu = "1m",
+    ///                 RequestsMemory = "1Mi",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterSync:ClusterSync")]
     public partial class ClusterSync : Pulumi.CustomResource
     {

@@ -90,45 +90,45 @@ export class ActiveDirectory extends pulumi.CustomResource {
     /** @deprecated rancher2.ActiveDirectory has been deprecated in favor of rancher2.AuthConfigActiveDirectory */
     constructor(name: string, argsOrState?: ActiveDirectoryArgs | ActiveDirectoryState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("ActiveDirectory is deprecated: rancher2.ActiveDirectory has been deprecated in favor of rancher2.AuthConfigActiveDirectory")
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ActiveDirectoryState | undefined;
-            inputs["accessMode"] = state ? state.accessMode : undefined;
-            inputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["certificate"] = state ? state.certificate : undefined;
-            inputs["connectionTimeout"] = state ? state.connectionTimeout : undefined;
-            inputs["defaultLoginDomain"] = state ? state.defaultLoginDomain : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["groupDnAttribute"] = state ? state.groupDnAttribute : undefined;
-            inputs["groupMemberMappingAttribute"] = state ? state.groupMemberMappingAttribute : undefined;
-            inputs["groupMemberUserAttribute"] = state ? state.groupMemberUserAttribute : undefined;
-            inputs["groupNameAttribute"] = state ? state.groupNameAttribute : undefined;
-            inputs["groupObjectClass"] = state ? state.groupObjectClass : undefined;
-            inputs["groupSearchAttribute"] = state ? state.groupSearchAttribute : undefined;
-            inputs["groupSearchBase"] = state ? state.groupSearchBase : undefined;
-            inputs["groupSearchFilter"] = state ? state.groupSearchFilter : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nestedGroupMembershipEnabled"] = state ? state.nestedGroupMembershipEnabled : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["servers"] = state ? state.servers : undefined;
-            inputs["serviceAccountPassword"] = state ? state.serviceAccountPassword : undefined;
-            inputs["serviceAccountUsername"] = state ? state.serviceAccountUsername : undefined;
-            inputs["startTls"] = state ? state.startTls : undefined;
-            inputs["testPassword"] = state ? state.testPassword : undefined;
-            inputs["testUsername"] = state ? state.testUsername : undefined;
-            inputs["tls"] = state ? state.tls : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["userDisabledBitMask"] = state ? state.userDisabledBitMask : undefined;
-            inputs["userEnabledAttribute"] = state ? state.userEnabledAttribute : undefined;
-            inputs["userLoginAttribute"] = state ? state.userLoginAttribute : undefined;
-            inputs["userNameAttribute"] = state ? state.userNameAttribute : undefined;
-            inputs["userObjectClass"] = state ? state.userObjectClass : undefined;
-            inputs["userSearchAttribute"] = state ? state.userSearchAttribute : undefined;
-            inputs["userSearchBase"] = state ? state.userSearchBase : undefined;
-            inputs["userSearchFilter"] = state ? state.userSearchFilter : undefined;
+            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
+            resourceInputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["connectionTimeout"] = state ? state.connectionTimeout : undefined;
+            resourceInputs["defaultLoginDomain"] = state ? state.defaultLoginDomain : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["groupDnAttribute"] = state ? state.groupDnAttribute : undefined;
+            resourceInputs["groupMemberMappingAttribute"] = state ? state.groupMemberMappingAttribute : undefined;
+            resourceInputs["groupMemberUserAttribute"] = state ? state.groupMemberUserAttribute : undefined;
+            resourceInputs["groupNameAttribute"] = state ? state.groupNameAttribute : undefined;
+            resourceInputs["groupObjectClass"] = state ? state.groupObjectClass : undefined;
+            resourceInputs["groupSearchAttribute"] = state ? state.groupSearchAttribute : undefined;
+            resourceInputs["groupSearchBase"] = state ? state.groupSearchBase : undefined;
+            resourceInputs["groupSearchFilter"] = state ? state.groupSearchFilter : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nestedGroupMembershipEnabled"] = state ? state.nestedGroupMembershipEnabled : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["servers"] = state ? state.servers : undefined;
+            resourceInputs["serviceAccountPassword"] = state ? state.serviceAccountPassword : undefined;
+            resourceInputs["serviceAccountUsername"] = state ? state.serviceAccountUsername : undefined;
+            resourceInputs["startTls"] = state ? state.startTls : undefined;
+            resourceInputs["testPassword"] = state ? state.testPassword : undefined;
+            resourceInputs["testUsername"] = state ? state.testUsername : undefined;
+            resourceInputs["tls"] = state ? state.tls : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["userDisabledBitMask"] = state ? state.userDisabledBitMask : undefined;
+            resourceInputs["userEnabledAttribute"] = state ? state.userEnabledAttribute : undefined;
+            resourceInputs["userLoginAttribute"] = state ? state.userLoginAttribute : undefined;
+            resourceInputs["userNameAttribute"] = state ? state.userNameAttribute : undefined;
+            resourceInputs["userObjectClass"] = state ? state.userObjectClass : undefined;
+            resourceInputs["userSearchAttribute"] = state ? state.userSearchAttribute : undefined;
+            resourceInputs["userSearchBase"] = state ? state.userSearchBase : undefined;
+            resourceInputs["userSearchFilter"] = state ? state.userSearchFilter : undefined;
         } else {
             const args = argsOrState as ActiveDirectoryArgs | undefined;
             if ((!args || args.servers === undefined) && !opts.urn) {
@@ -149,46 +149,44 @@ export class ActiveDirectory extends pulumi.CustomResource {
             if ((!args || args.userSearchBase === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userSearchBase'");
             }
-            inputs["accessMode"] = args ? args.accessMode : undefined;
-            inputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["certificate"] = args ? args.certificate : undefined;
-            inputs["connectionTimeout"] = args ? args.connectionTimeout : undefined;
-            inputs["defaultLoginDomain"] = args ? args.defaultLoginDomain : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["groupDnAttribute"] = args ? args.groupDnAttribute : undefined;
-            inputs["groupMemberMappingAttribute"] = args ? args.groupMemberMappingAttribute : undefined;
-            inputs["groupMemberUserAttribute"] = args ? args.groupMemberUserAttribute : undefined;
-            inputs["groupNameAttribute"] = args ? args.groupNameAttribute : undefined;
-            inputs["groupObjectClass"] = args ? args.groupObjectClass : undefined;
-            inputs["groupSearchAttribute"] = args ? args.groupSearchAttribute : undefined;
-            inputs["groupSearchBase"] = args ? args.groupSearchBase : undefined;
-            inputs["groupSearchFilter"] = args ? args.groupSearchFilter : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["nestedGroupMembershipEnabled"] = args ? args.nestedGroupMembershipEnabled : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["servers"] = args ? args.servers : undefined;
-            inputs["serviceAccountPassword"] = args ? args.serviceAccountPassword : undefined;
-            inputs["serviceAccountUsername"] = args ? args.serviceAccountUsername : undefined;
-            inputs["startTls"] = args ? args.startTls : undefined;
-            inputs["testPassword"] = args ? args.testPassword : undefined;
-            inputs["testUsername"] = args ? args.testUsername : undefined;
-            inputs["tls"] = args ? args.tls : undefined;
-            inputs["userDisabledBitMask"] = args ? args.userDisabledBitMask : undefined;
-            inputs["userEnabledAttribute"] = args ? args.userEnabledAttribute : undefined;
-            inputs["userLoginAttribute"] = args ? args.userLoginAttribute : undefined;
-            inputs["userNameAttribute"] = args ? args.userNameAttribute : undefined;
-            inputs["userObjectClass"] = args ? args.userObjectClass : undefined;
-            inputs["userSearchAttribute"] = args ? args.userSearchAttribute : undefined;
-            inputs["userSearchBase"] = args ? args.userSearchBase : undefined;
-            inputs["userSearchFilter"] = args ? args.userSearchFilter : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
+            resourceInputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["connectionTimeout"] = args ? args.connectionTimeout : undefined;
+            resourceInputs["defaultLoginDomain"] = args ? args.defaultLoginDomain : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["groupDnAttribute"] = args ? args.groupDnAttribute : undefined;
+            resourceInputs["groupMemberMappingAttribute"] = args ? args.groupMemberMappingAttribute : undefined;
+            resourceInputs["groupMemberUserAttribute"] = args ? args.groupMemberUserAttribute : undefined;
+            resourceInputs["groupNameAttribute"] = args ? args.groupNameAttribute : undefined;
+            resourceInputs["groupObjectClass"] = args ? args.groupObjectClass : undefined;
+            resourceInputs["groupSearchAttribute"] = args ? args.groupSearchAttribute : undefined;
+            resourceInputs["groupSearchBase"] = args ? args.groupSearchBase : undefined;
+            resourceInputs["groupSearchFilter"] = args ? args.groupSearchFilter : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["nestedGroupMembershipEnabled"] = args ? args.nestedGroupMembershipEnabled : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["servers"] = args ? args.servers : undefined;
+            resourceInputs["serviceAccountPassword"] = args ? args.serviceAccountPassword : undefined;
+            resourceInputs["serviceAccountUsername"] = args ? args.serviceAccountUsername : undefined;
+            resourceInputs["startTls"] = args ? args.startTls : undefined;
+            resourceInputs["testPassword"] = args ? args.testPassword : undefined;
+            resourceInputs["testUsername"] = args ? args.testUsername : undefined;
+            resourceInputs["tls"] = args ? args.tls : undefined;
+            resourceInputs["userDisabledBitMask"] = args ? args.userDisabledBitMask : undefined;
+            resourceInputs["userEnabledAttribute"] = args ? args.userEnabledAttribute : undefined;
+            resourceInputs["userLoginAttribute"] = args ? args.userLoginAttribute : undefined;
+            resourceInputs["userNameAttribute"] = args ? args.userNameAttribute : undefined;
+            resourceInputs["userObjectClass"] = args ? args.userObjectClass : undefined;
+            resourceInputs["userSearchAttribute"] = args ? args.userSearchAttribute : undefined;
+            resourceInputs["userSearchBase"] = args ? args.userSearchBase : undefined;
+            resourceInputs["userSearchFilter"] = args ? args.userSearchFilter : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ActiveDirectory.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ActiveDirectory.__pulumiType, name, resourceInputs, opts);
     }
 }
 

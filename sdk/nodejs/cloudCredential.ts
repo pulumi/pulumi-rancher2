@@ -116,43 +116,41 @@ export class CloudCredential extends pulumi.CustomResource {
      */
     constructor(name: string, args?: CloudCredentialArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CloudCredentialArgs | CloudCredentialState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudCredentialState | undefined;
-            inputs["amazonec2CredentialConfig"] = state ? state.amazonec2CredentialConfig : undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["azureCredentialConfig"] = state ? state.azureCredentialConfig : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["digitaloceanCredentialConfig"] = state ? state.digitaloceanCredentialConfig : undefined;
-            inputs["driver"] = state ? state.driver : undefined;
-            inputs["googleCredentialConfig"] = state ? state.googleCredentialConfig : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["linodeCredentialConfig"] = state ? state.linodeCredentialConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["openstackCredentialConfig"] = state ? state.openstackCredentialConfig : undefined;
-            inputs["s3CredentialConfig"] = state ? state.s3CredentialConfig : undefined;
-            inputs["vsphereCredentialConfig"] = state ? state.vsphereCredentialConfig : undefined;
+            resourceInputs["amazonec2CredentialConfig"] = state ? state.amazonec2CredentialConfig : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["azureCredentialConfig"] = state ? state.azureCredentialConfig : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["digitaloceanCredentialConfig"] = state ? state.digitaloceanCredentialConfig : undefined;
+            resourceInputs["driver"] = state ? state.driver : undefined;
+            resourceInputs["googleCredentialConfig"] = state ? state.googleCredentialConfig : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["linodeCredentialConfig"] = state ? state.linodeCredentialConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["openstackCredentialConfig"] = state ? state.openstackCredentialConfig : undefined;
+            resourceInputs["s3CredentialConfig"] = state ? state.s3CredentialConfig : undefined;
+            resourceInputs["vsphereCredentialConfig"] = state ? state.vsphereCredentialConfig : undefined;
         } else {
             const args = argsOrState as CloudCredentialArgs | undefined;
-            inputs["amazonec2CredentialConfig"] = args ? args.amazonec2CredentialConfig : undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["azureCredentialConfig"] = args ? args.azureCredentialConfig : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["digitaloceanCredentialConfig"] = args ? args.digitaloceanCredentialConfig : undefined;
-            inputs["googleCredentialConfig"] = args ? args.googleCredentialConfig : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["linodeCredentialConfig"] = args ? args.linodeCredentialConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["openstackCredentialConfig"] = args ? args.openstackCredentialConfig : undefined;
-            inputs["s3CredentialConfig"] = args ? args.s3CredentialConfig : undefined;
-            inputs["vsphereCredentialConfig"] = args ? args.vsphereCredentialConfig : undefined;
-            inputs["driver"] = undefined /*out*/;
+            resourceInputs["amazonec2CredentialConfig"] = args ? args.amazonec2CredentialConfig : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["azureCredentialConfig"] = args ? args.azureCredentialConfig : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["digitaloceanCredentialConfig"] = args ? args.digitaloceanCredentialConfig : undefined;
+            resourceInputs["googleCredentialConfig"] = args ? args.googleCredentialConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["linodeCredentialConfig"] = args ? args.linodeCredentialConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["openstackCredentialConfig"] = args ? args.openstackCredentialConfig : undefined;
+            resourceInputs["s3CredentialConfig"] = args ? args.s3CredentialConfig : undefined;
+            resourceInputs["vsphereCredentialConfig"] = args ? args.vsphereCredentialConfig : undefined;
+            resourceInputs["driver"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CloudCredential.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CloudCredential.__pulumiType, name, resourceInputs, opts);
     }
 }
 

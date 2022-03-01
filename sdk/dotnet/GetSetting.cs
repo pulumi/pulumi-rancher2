@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSettingResult> InvokeAsync(GetSettingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSettingResult>("rancher2:index/getSetting:getSetting", args ?? new GetSettingArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSettingResult>("rancher2:index/getSetting:getSetting", args ?? new GetSettingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 setting.
@@ -68,7 +67,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSettingResult> Invoke(GetSettingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSettingResult>("rancher2:index/getSetting:getSetting", args ?? new GetSettingInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSettingResult>("rancher2:index/getSetting:getSetting", args ?? new GetSettingInvokeArgs(), options.WithDefaults());
     }
 
 

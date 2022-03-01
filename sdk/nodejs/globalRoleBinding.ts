@@ -95,32 +95,30 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: GlobalRoleBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalRoleBindingArgs | GlobalRoleBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalRoleBindingState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["globalRoleId"] = state ? state.globalRoleId : undefined;
-            inputs["groupPrincipalId"] = state ? state.groupPrincipalId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["globalRoleId"] = state ? state.globalRoleId : undefined;
+            resourceInputs["groupPrincipalId"] = state ? state.groupPrincipalId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as GlobalRoleBindingArgs | undefined;
             if ((!args || args.globalRoleId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'globalRoleId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["globalRoleId"] = args ? args.globalRoleId : undefined;
-            inputs["groupPrincipalId"] = args ? args.groupPrincipalId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["globalRoleId"] = args ? args.globalRoleId : undefined;
+            resourceInputs["groupPrincipalId"] = args ? args.groupPrincipalId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GlobalRoleBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GlobalRoleBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

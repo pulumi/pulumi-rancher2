@@ -100,31 +100,29 @@ export class GlobalRole extends pulumi.CustomResource {
      */
     constructor(name: string, args?: GlobalRoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalRoleArgs | GlobalRoleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalRoleState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["builtin"] = state ? state.builtin : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["newUserDefault"] = state ? state.newUserDefault : undefined;
-            inputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["builtin"] = state ? state.builtin : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["newUserDefault"] = state ? state.newUserDefault : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as GlobalRoleArgs | undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["newUserDefault"] = args ? args.newUserDefault : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["builtin"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["newUserDefault"] = args ? args.newUserDefault : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["builtin"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GlobalRole.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GlobalRole.__pulumiType, name, resourceInputs, opts);
     }
 }
 

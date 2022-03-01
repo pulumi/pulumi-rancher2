@@ -10,6 +10,42 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Etcd Backup
+    ///         var foo = new Rancher2.EtcdBackup("foo", new Rancher2.EtcdBackupArgs
+    ///         {
+    ///             BackupConfig = new Rancher2.Inputs.EtcdBackupBackupConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 IntervalHours = 20,
+    ///                 Retention = 10,
+    ///                 S3BackupConfig = new Rancher2.Inputs.EtcdBackupBackupConfigS3BackupConfigArgs
+    ///                 {
+    ///                     AccessKey = "access_key",
+    ///                     BucketName = "bucket_name",
+    ///                     Endpoint = "endpoint",
+    ///                     Folder = "/folder",
+    ///                     Region = "region",
+    ///                     SecretKey = "secret_key",
+    ///                 },
+    ///             },
+    ///             ClusterId = "&lt;CLUSTER_ID&gt;",
+    ///             Filename = "&lt;FILENAME&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Etcd Backup can be imported using the Rancher etcd backup ID

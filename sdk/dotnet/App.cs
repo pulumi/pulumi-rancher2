@@ -10,6 +10,80 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 App
+    ///         var foo = new Rancher2.App("foo", new Rancher2.AppArgs
+    ///         {
+    ///             Answers = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///                 { "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true },
+    ///                 { "ingress_host", "test.xip.io" },
+    ///             },
+    ///             CatalogName = "&lt;catalog_name&gt;",
+    ///             Description = "Foo app",
+    ///             ProjectId = "&lt;project_id&gt;",
+    ///             TargetNamespace = "&lt;namespace_name&gt;",
+    ///             TemplateName = "&lt;template_name&gt;",
+    ///             TemplateVersion = "&lt;template_version&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 App in a new namespace
+    ///         var fooNamespace = new Rancher2.Namespace("fooNamespace", new Rancher2.NamespaceArgs
+    ///         {
+    ///             Description = "Foo namespace",
+    ///             ProjectId = "&lt;project_id&gt;",
+    ///             ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
+    ///             {
+    ///                 Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "100m",
+    ///                     LimitsMemory = "100Mi",
+    ///                     RequestsStorage = "1Gi",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var fooApp = new Rancher2.App("fooApp", new Rancher2.AppArgs
+    ///         {
+    ///             CatalogName = "&lt;catalog_name&gt;",
+    ///             Description = "Foo app",
+    ///             ProjectId = "&lt;project_id&gt;",
+    ///             TemplateName = "&lt;template_name&gt;",
+    ///             TemplateVersion = "&lt;template_version&gt;",
+    ///             TargetNamespace = fooNamespace.Id,
+    ///             Answers = 
+    ///             {
+    ///                 { "ingress_host", "test.xip.io" },
+    ///                 { "foo", "bar" },
+    ///                 { "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Apps can be imported using the app ID in the format `&lt;project_id&gt;:&lt;app_name&gt;`

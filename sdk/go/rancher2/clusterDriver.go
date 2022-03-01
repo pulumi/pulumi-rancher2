@@ -191,7 +191,7 @@ type ClusterDriverInput interface {
 }
 
 func (*ClusterDriver) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterDriver)(nil))
+	return reflect.TypeOf((**ClusterDriver)(nil)).Elem()
 }
 
 func (i *ClusterDriver) ToClusterDriverOutput() ClusterDriverOutput {
@@ -200,35 +200,6 @@ func (i *ClusterDriver) ToClusterDriverOutput() ClusterDriverOutput {
 
 func (i *ClusterDriver) ToClusterDriverOutputWithContext(ctx context.Context) ClusterDriverOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverOutput)
-}
-
-func (i *ClusterDriver) ToClusterDriverPtrOutput() ClusterDriverPtrOutput {
-	return i.ToClusterDriverPtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterDriver) ToClusterDriverPtrOutputWithContext(ctx context.Context) ClusterDriverPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverPtrOutput)
-}
-
-type ClusterDriverPtrInput interface {
-	pulumi.Input
-
-	ToClusterDriverPtrOutput() ClusterDriverPtrOutput
-	ToClusterDriverPtrOutputWithContext(ctx context.Context) ClusterDriverPtrOutput
-}
-
-type clusterDriverPtrType ClusterDriverArgs
-
-func (*clusterDriverPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterDriver)(nil))
-}
-
-func (i *clusterDriverPtrType) ToClusterDriverPtrOutput() ClusterDriverPtrOutput {
-	return i.ToClusterDriverPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterDriverPtrType) ToClusterDriverPtrOutputWithContext(ctx context.Context) ClusterDriverPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverPtrOutput)
 }
 
 // ClusterDriverArrayInput is an input type that accepts ClusterDriverArray and ClusterDriverArrayOutput values.
@@ -284,7 +255,7 @@ func (i ClusterDriverMap) ToClusterDriverMapOutputWithContext(ctx context.Contex
 type ClusterDriverOutput struct{ *pulumi.OutputState }
 
 func (ClusterDriverOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterDriver)(nil))
+	return reflect.TypeOf((**ClusterDriver)(nil)).Elem()
 }
 
 func (o ClusterDriverOutput) ToClusterDriverOutput() ClusterDriverOutput {
@@ -295,44 +266,10 @@ func (o ClusterDriverOutput) ToClusterDriverOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ClusterDriverOutput) ToClusterDriverPtrOutput() ClusterDriverPtrOutput {
-	return o.ToClusterDriverPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterDriverOutput) ToClusterDriverPtrOutputWithContext(ctx context.Context) ClusterDriverPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterDriver) *ClusterDriver {
-		return &v
-	}).(ClusterDriverPtrOutput)
-}
-
-type ClusterDriverPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterDriverPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterDriver)(nil))
-}
-
-func (o ClusterDriverPtrOutput) ToClusterDriverPtrOutput() ClusterDriverPtrOutput {
-	return o
-}
-
-func (o ClusterDriverPtrOutput) ToClusterDriverPtrOutputWithContext(ctx context.Context) ClusterDriverPtrOutput {
-	return o
-}
-
-func (o ClusterDriverPtrOutput) Elem() ClusterDriverOutput {
-	return o.ApplyT(func(v *ClusterDriver) ClusterDriver {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterDriver
-		return ret
-	}).(ClusterDriverOutput)
-}
-
 type ClusterDriverArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterDriverArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterDriver)(nil))
+	return reflect.TypeOf((*[]*ClusterDriver)(nil)).Elem()
 }
 
 func (o ClusterDriverArrayOutput) ToClusterDriverArrayOutput() ClusterDriverArrayOutput {
@@ -344,15 +281,15 @@ func (o ClusterDriverArrayOutput) ToClusterDriverArrayOutputWithContext(ctx cont
 }
 
 func (o ClusterDriverArrayOutput) Index(i pulumi.IntInput) ClusterDriverOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterDriver {
-		return vs[0].([]ClusterDriver)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterDriver {
+		return vs[0].([]*ClusterDriver)[vs[1].(int)]
 	}).(ClusterDriverOutput)
 }
 
 type ClusterDriverMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterDriverMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterDriver)(nil))
+	return reflect.TypeOf((*map[string]*ClusterDriver)(nil)).Elem()
 }
 
 func (o ClusterDriverMapOutput) ToClusterDriverMapOutput() ClusterDriverMapOutput {
@@ -364,18 +301,16 @@ func (o ClusterDriverMapOutput) ToClusterDriverMapOutputWithContext(ctx context.
 }
 
 func (o ClusterDriverMapOutput) MapIndex(k pulumi.StringInput) ClusterDriverOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterDriver {
-		return vs[0].(map[string]ClusterDriver)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterDriver {
+		return vs[0].(map[string]*ClusterDriver)[vs[1].(string)]
 	}).(ClusterDriverOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDriverInput)(nil)).Elem(), &ClusterDriver{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDriverPtrInput)(nil)).Elem(), &ClusterDriver{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDriverArrayInput)(nil)).Elem(), ClusterDriverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDriverMapInput)(nil)).Elem(), ClusterDriverMap{})
 	pulumi.RegisterOutputType(ClusterDriverOutput{})
-	pulumi.RegisterOutputType(ClusterDriverPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDriverArrayOutput{})
 	pulumi.RegisterOutputType(ClusterDriverMapOutput{})
 }

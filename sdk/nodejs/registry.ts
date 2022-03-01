@@ -123,17 +123,17 @@ export class Registry extends pulumi.CustomResource {
      */
     constructor(name: string, args: RegistryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegistryArgs | RegistryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistryState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespaceId"] = state ? state.namespaceId : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["registries"] = state ? state.registries : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["registries"] = state ? state.registries : undefined;
         } else {
             const args = argsOrState as RegistryArgs | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
@@ -142,18 +142,16 @@ export class Registry extends pulumi.CustomResource {
             if ((!args || args.registries === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'registries'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespaceId"] = args ? args.namespaceId : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["registries"] = args ? args.registries : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["registries"] = args ? args.registries : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Registry.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Registry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

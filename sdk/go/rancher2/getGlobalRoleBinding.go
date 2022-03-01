@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "foo_id"
 // 		_, err := rancher2.LookupGlobalRoleBinding(ctx, &GetGlobalRoleBindingArgs{
-// 			GlobalRoleId: &opt0,
+// 			GlobalRoleId: pulumi.StringRef("foo_id"),
 // 			Name:         "foo",
 // 		}, nil)
 // 		if err != nil {

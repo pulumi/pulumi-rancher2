@@ -24,9 +24,7 @@ export function getRoleTemplate(args: GetRoleTemplateArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getRoleTemplate:getRoleTemplate", {
         "context": args.context,
         "name": args.name,

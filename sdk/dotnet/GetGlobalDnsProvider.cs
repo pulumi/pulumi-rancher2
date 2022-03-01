@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGlobalDnsProviderResult> InvokeAsync(GetGlobalDnsProviderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalDnsProviderResult>("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", args ?? new GetGlobalDnsProviderArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalDnsProviderResult>("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", args ?? new GetGlobalDnsProviderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
@@ -68,7 +67,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGlobalDnsProviderResult> Invoke(GetGlobalDnsProviderInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlobalDnsProviderResult>("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", args ?? new GetGlobalDnsProviderInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetGlobalDnsProviderResult>("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", args ?? new GetGlobalDnsProviderInvokeArgs(), options.WithDefaults());
     }
 
 

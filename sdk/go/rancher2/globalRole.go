@@ -184,7 +184,7 @@ type GlobalRoleInput interface {
 }
 
 func (*GlobalRole) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalRole)(nil))
+	return reflect.TypeOf((**GlobalRole)(nil)).Elem()
 }
 
 func (i *GlobalRole) ToGlobalRoleOutput() GlobalRoleOutput {
@@ -193,35 +193,6 @@ func (i *GlobalRole) ToGlobalRoleOutput() GlobalRoleOutput {
 
 func (i *GlobalRole) ToGlobalRoleOutputWithContext(ctx context.Context) GlobalRoleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleOutput)
-}
-
-func (i *GlobalRole) ToGlobalRolePtrOutput() GlobalRolePtrOutput {
-	return i.ToGlobalRolePtrOutputWithContext(context.Background())
-}
-
-func (i *GlobalRole) ToGlobalRolePtrOutputWithContext(ctx context.Context) GlobalRolePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalRolePtrOutput)
-}
-
-type GlobalRolePtrInput interface {
-	pulumi.Input
-
-	ToGlobalRolePtrOutput() GlobalRolePtrOutput
-	ToGlobalRolePtrOutputWithContext(ctx context.Context) GlobalRolePtrOutput
-}
-
-type globalRolePtrType GlobalRoleArgs
-
-func (*globalRolePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalRole)(nil))
-}
-
-func (i *globalRolePtrType) ToGlobalRolePtrOutput() GlobalRolePtrOutput {
-	return i.ToGlobalRolePtrOutputWithContext(context.Background())
-}
-
-func (i *globalRolePtrType) ToGlobalRolePtrOutputWithContext(ctx context.Context) GlobalRolePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalRolePtrOutput)
 }
 
 // GlobalRoleArrayInput is an input type that accepts GlobalRoleArray and GlobalRoleArrayOutput values.
@@ -277,7 +248,7 @@ func (i GlobalRoleMap) ToGlobalRoleMapOutputWithContext(ctx context.Context) Glo
 type GlobalRoleOutput struct{ *pulumi.OutputState }
 
 func (GlobalRoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalRole)(nil))
+	return reflect.TypeOf((**GlobalRole)(nil)).Elem()
 }
 
 func (o GlobalRoleOutput) ToGlobalRoleOutput() GlobalRoleOutput {
@@ -288,44 +259,10 @@ func (o GlobalRoleOutput) ToGlobalRoleOutputWithContext(ctx context.Context) Glo
 	return o
 }
 
-func (o GlobalRoleOutput) ToGlobalRolePtrOutput() GlobalRolePtrOutput {
-	return o.ToGlobalRolePtrOutputWithContext(context.Background())
-}
-
-func (o GlobalRoleOutput) ToGlobalRolePtrOutputWithContext(ctx context.Context) GlobalRolePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalRole) *GlobalRole {
-		return &v
-	}).(GlobalRolePtrOutput)
-}
-
-type GlobalRolePtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalRolePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalRole)(nil))
-}
-
-func (o GlobalRolePtrOutput) ToGlobalRolePtrOutput() GlobalRolePtrOutput {
-	return o
-}
-
-func (o GlobalRolePtrOutput) ToGlobalRolePtrOutputWithContext(ctx context.Context) GlobalRolePtrOutput {
-	return o
-}
-
-func (o GlobalRolePtrOutput) Elem() GlobalRoleOutput {
-	return o.ApplyT(func(v *GlobalRole) GlobalRole {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalRole
-		return ret
-	}).(GlobalRoleOutput)
-}
-
 type GlobalRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (GlobalRoleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GlobalRole)(nil))
+	return reflect.TypeOf((*[]*GlobalRole)(nil)).Elem()
 }
 
 func (o GlobalRoleArrayOutput) ToGlobalRoleArrayOutput() GlobalRoleArrayOutput {
@@ -337,15 +274,15 @@ func (o GlobalRoleArrayOutput) ToGlobalRoleArrayOutputWithContext(ctx context.Co
 }
 
 func (o GlobalRoleArrayOutput) Index(i pulumi.IntInput) GlobalRoleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlobalRole {
-		return vs[0].([]GlobalRole)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalRole {
+		return vs[0].([]*GlobalRole)[vs[1].(int)]
 	}).(GlobalRoleOutput)
 }
 
 type GlobalRoleMapOutput struct{ *pulumi.OutputState }
 
 func (GlobalRoleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GlobalRole)(nil))
+	return reflect.TypeOf((*map[string]*GlobalRole)(nil)).Elem()
 }
 
 func (o GlobalRoleMapOutput) ToGlobalRoleMapOutput() GlobalRoleMapOutput {
@@ -357,18 +294,16 @@ func (o GlobalRoleMapOutput) ToGlobalRoleMapOutputWithContext(ctx context.Contex
 }
 
 func (o GlobalRoleMapOutput) MapIndex(k pulumi.StringInput) GlobalRoleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GlobalRole {
-		return vs[0].(map[string]GlobalRole)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GlobalRole {
+		return vs[0].(map[string]*GlobalRole)[vs[1].(string)]
 	}).(GlobalRoleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalRoleInput)(nil)).Elem(), &GlobalRole{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalRolePtrInput)(nil)).Elem(), &GlobalRole{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalRoleArrayInput)(nil)).Elem(), GlobalRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalRoleMapInput)(nil)).Elem(), GlobalRoleMap{})
 	pulumi.RegisterOutputType(GlobalRoleOutput{})
-	pulumi.RegisterOutputType(GlobalRolePtrOutput{})
 	pulumi.RegisterOutputType(GlobalRoleArrayOutput{})
 	pulumi.RegisterOutputType(GlobalRoleMapOutput{})
 }

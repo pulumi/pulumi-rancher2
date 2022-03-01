@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrincipalResult> InvokeAsync(GetPrincipalArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPrincipalResult>("rancher2:index/getPrincipal:getPrincipal", args ?? new GetPrincipalArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPrincipalResult>("rancher2:index/getPrincipal:getPrincipal", args ?? new GetPrincipalArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Principal resource.
@@ -68,7 +67,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrincipalResult> Invoke(GetPrincipalInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPrincipalResult>("rancher2:index/getPrincipal:getPrincipal", args ?? new GetPrincipalInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPrincipalResult>("rancher2:index/getPrincipal:getPrincipal", args ?? new GetPrincipalInvokeArgs(), options.WithDefaults());
     }
 
 
