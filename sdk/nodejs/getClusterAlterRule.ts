@@ -25,9 +25,7 @@ export function getClusterAlterRule(args: GetClusterAlterRuleArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getClusterAlterRule:getClusterAlterRule", {
         "clusterId": args.clusterId,
         "labels": args.labels,

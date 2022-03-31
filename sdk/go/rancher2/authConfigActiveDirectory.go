@@ -442,7 +442,7 @@ type AuthConfigActiveDirectoryInput interface {
 }
 
 func (*AuthConfigActiveDirectory) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigActiveDirectory)(nil))
+	return reflect.TypeOf((**AuthConfigActiveDirectory)(nil)).Elem()
 }
 
 func (i *AuthConfigActiveDirectory) ToAuthConfigActiveDirectoryOutput() AuthConfigActiveDirectoryOutput {
@@ -451,35 +451,6 @@ func (i *AuthConfigActiveDirectory) ToAuthConfigActiveDirectoryOutput() AuthConf
 
 func (i *AuthConfigActiveDirectory) ToAuthConfigActiveDirectoryOutputWithContext(ctx context.Context) AuthConfigActiveDirectoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigActiveDirectoryOutput)
-}
-
-func (i *AuthConfigActiveDirectory) ToAuthConfigActiveDirectoryPtrOutput() AuthConfigActiveDirectoryPtrOutput {
-	return i.ToAuthConfigActiveDirectoryPtrOutputWithContext(context.Background())
-}
-
-func (i *AuthConfigActiveDirectory) ToAuthConfigActiveDirectoryPtrOutputWithContext(ctx context.Context) AuthConfigActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigActiveDirectoryPtrOutput)
-}
-
-type AuthConfigActiveDirectoryPtrInput interface {
-	pulumi.Input
-
-	ToAuthConfigActiveDirectoryPtrOutput() AuthConfigActiveDirectoryPtrOutput
-	ToAuthConfigActiveDirectoryPtrOutputWithContext(ctx context.Context) AuthConfigActiveDirectoryPtrOutput
-}
-
-type authConfigActiveDirectoryPtrType AuthConfigActiveDirectoryArgs
-
-func (*authConfigActiveDirectoryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthConfigActiveDirectory)(nil))
-}
-
-func (i *authConfigActiveDirectoryPtrType) ToAuthConfigActiveDirectoryPtrOutput() AuthConfigActiveDirectoryPtrOutput {
-	return i.ToAuthConfigActiveDirectoryPtrOutputWithContext(context.Background())
-}
-
-func (i *authConfigActiveDirectoryPtrType) ToAuthConfigActiveDirectoryPtrOutputWithContext(ctx context.Context) AuthConfigActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigActiveDirectoryPtrOutput)
 }
 
 // AuthConfigActiveDirectoryArrayInput is an input type that accepts AuthConfigActiveDirectoryArray and AuthConfigActiveDirectoryArrayOutput values.
@@ -535,7 +506,7 @@ func (i AuthConfigActiveDirectoryMap) ToAuthConfigActiveDirectoryMapOutputWithCo
 type AuthConfigActiveDirectoryOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigActiveDirectoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigActiveDirectory)(nil))
+	return reflect.TypeOf((**AuthConfigActiveDirectory)(nil)).Elem()
 }
 
 func (o AuthConfigActiveDirectoryOutput) ToAuthConfigActiveDirectoryOutput() AuthConfigActiveDirectoryOutput {
@@ -546,44 +517,10 @@ func (o AuthConfigActiveDirectoryOutput) ToAuthConfigActiveDirectoryOutputWithCo
 	return o
 }
 
-func (o AuthConfigActiveDirectoryOutput) ToAuthConfigActiveDirectoryPtrOutput() AuthConfigActiveDirectoryPtrOutput {
-	return o.ToAuthConfigActiveDirectoryPtrOutputWithContext(context.Background())
-}
-
-func (o AuthConfigActiveDirectoryOutput) ToAuthConfigActiveDirectoryPtrOutputWithContext(ctx context.Context) AuthConfigActiveDirectoryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigActiveDirectory) *AuthConfigActiveDirectory {
-		return &v
-	}).(AuthConfigActiveDirectoryPtrOutput)
-}
-
-type AuthConfigActiveDirectoryPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthConfigActiveDirectoryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthConfigActiveDirectory)(nil))
-}
-
-func (o AuthConfigActiveDirectoryPtrOutput) ToAuthConfigActiveDirectoryPtrOutput() AuthConfigActiveDirectoryPtrOutput {
-	return o
-}
-
-func (o AuthConfigActiveDirectoryPtrOutput) ToAuthConfigActiveDirectoryPtrOutputWithContext(ctx context.Context) AuthConfigActiveDirectoryPtrOutput {
-	return o
-}
-
-func (o AuthConfigActiveDirectoryPtrOutput) Elem() AuthConfigActiveDirectoryOutput {
-	return o.ApplyT(func(v *AuthConfigActiveDirectory) AuthConfigActiveDirectory {
-		if v != nil {
-			return *v
-		}
-		var ret AuthConfigActiveDirectory
-		return ret
-	}).(AuthConfigActiveDirectoryOutput)
-}
-
 type AuthConfigActiveDirectoryArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigActiveDirectoryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuthConfigActiveDirectory)(nil))
+	return reflect.TypeOf((*[]*AuthConfigActiveDirectory)(nil)).Elem()
 }
 
 func (o AuthConfigActiveDirectoryArrayOutput) ToAuthConfigActiveDirectoryArrayOutput() AuthConfigActiveDirectoryArrayOutput {
@@ -595,15 +532,15 @@ func (o AuthConfigActiveDirectoryArrayOutput) ToAuthConfigActiveDirectoryArrayOu
 }
 
 func (o AuthConfigActiveDirectoryArrayOutput) Index(i pulumi.IntInput) AuthConfigActiveDirectoryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthConfigActiveDirectory {
-		return vs[0].([]AuthConfigActiveDirectory)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigActiveDirectory {
+		return vs[0].([]*AuthConfigActiveDirectory)[vs[1].(int)]
 	}).(AuthConfigActiveDirectoryOutput)
 }
 
 type AuthConfigActiveDirectoryMapOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigActiveDirectoryMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AuthConfigActiveDirectory)(nil))
+	return reflect.TypeOf((*map[string]*AuthConfigActiveDirectory)(nil)).Elem()
 }
 
 func (o AuthConfigActiveDirectoryMapOutput) ToAuthConfigActiveDirectoryMapOutput() AuthConfigActiveDirectoryMapOutput {
@@ -615,18 +552,16 @@ func (o AuthConfigActiveDirectoryMapOutput) ToAuthConfigActiveDirectoryMapOutput
 }
 
 func (o AuthConfigActiveDirectoryMapOutput) MapIndex(k pulumi.StringInput) AuthConfigActiveDirectoryOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthConfigActiveDirectory {
-		return vs[0].(map[string]AuthConfigActiveDirectory)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AuthConfigActiveDirectory {
+		return vs[0].(map[string]*AuthConfigActiveDirectory)[vs[1].(string)]
 	}).(AuthConfigActiveDirectoryOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigActiveDirectoryInput)(nil)).Elem(), &AuthConfigActiveDirectory{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigActiveDirectoryPtrInput)(nil)).Elem(), &AuthConfigActiveDirectory{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigActiveDirectoryArrayInput)(nil)).Elem(), AuthConfigActiveDirectoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigActiveDirectoryMapInput)(nil)).Elem(), AuthConfigActiveDirectoryMap{})
 	pulumi.RegisterOutputType(AuthConfigActiveDirectoryOutput{})
-	pulumi.RegisterOutputType(AuthConfigActiveDirectoryPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigActiveDirectoryArrayOutput{})
 	pulumi.RegisterOutputType(AuthConfigActiveDirectoryMapOutput{})
 }

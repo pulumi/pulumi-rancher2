@@ -220,7 +220,7 @@ type ClusterAlterRuleInput interface {
 }
 
 func (*ClusterAlterRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAlterRule)(nil))
+	return reflect.TypeOf((**ClusterAlterRule)(nil)).Elem()
 }
 
 func (i *ClusterAlterRule) ToClusterAlterRuleOutput() ClusterAlterRuleOutput {
@@ -229,35 +229,6 @@ func (i *ClusterAlterRule) ToClusterAlterRuleOutput() ClusterAlterRuleOutput {
 
 func (i *ClusterAlterRule) ToClusterAlterRuleOutputWithContext(ctx context.Context) ClusterAlterRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterRuleOutput)
-}
-
-func (i *ClusterAlterRule) ToClusterAlterRulePtrOutput() ClusterAlterRulePtrOutput {
-	return i.ToClusterAlterRulePtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterAlterRule) ToClusterAlterRulePtrOutputWithContext(ctx context.Context) ClusterAlterRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterRulePtrOutput)
-}
-
-type ClusterAlterRulePtrInput interface {
-	pulumi.Input
-
-	ToClusterAlterRulePtrOutput() ClusterAlterRulePtrOutput
-	ToClusterAlterRulePtrOutputWithContext(ctx context.Context) ClusterAlterRulePtrOutput
-}
-
-type clusterAlterRulePtrType ClusterAlterRuleArgs
-
-func (*clusterAlterRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterAlterRule)(nil))
-}
-
-func (i *clusterAlterRulePtrType) ToClusterAlterRulePtrOutput() ClusterAlterRulePtrOutput {
-	return i.ToClusterAlterRulePtrOutputWithContext(context.Background())
-}
-
-func (i *clusterAlterRulePtrType) ToClusterAlterRulePtrOutputWithContext(ctx context.Context) ClusterAlterRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterRulePtrOutput)
 }
 
 // ClusterAlterRuleArrayInput is an input type that accepts ClusterAlterRuleArray and ClusterAlterRuleArrayOutput values.
@@ -313,7 +284,7 @@ func (i ClusterAlterRuleMap) ToClusterAlterRuleMapOutputWithContext(ctx context.
 type ClusterAlterRuleOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlterRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAlterRule)(nil))
+	return reflect.TypeOf((**ClusterAlterRule)(nil)).Elem()
 }
 
 func (o ClusterAlterRuleOutput) ToClusterAlterRuleOutput() ClusterAlterRuleOutput {
@@ -324,44 +295,10 @@ func (o ClusterAlterRuleOutput) ToClusterAlterRuleOutputWithContext(ctx context.
 	return o
 }
 
-func (o ClusterAlterRuleOutput) ToClusterAlterRulePtrOutput() ClusterAlterRulePtrOutput {
-	return o.ToClusterAlterRulePtrOutputWithContext(context.Background())
-}
-
-func (o ClusterAlterRuleOutput) ToClusterAlterRulePtrOutputWithContext(ctx context.Context) ClusterAlterRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAlterRule) *ClusterAlterRule {
-		return &v
-	}).(ClusterAlterRulePtrOutput)
-}
-
-type ClusterAlterRulePtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterAlterRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterAlterRule)(nil))
-}
-
-func (o ClusterAlterRulePtrOutput) ToClusterAlterRulePtrOutput() ClusterAlterRulePtrOutput {
-	return o
-}
-
-func (o ClusterAlterRulePtrOutput) ToClusterAlterRulePtrOutputWithContext(ctx context.Context) ClusterAlterRulePtrOutput {
-	return o
-}
-
-func (o ClusterAlterRulePtrOutput) Elem() ClusterAlterRuleOutput {
-	return o.ApplyT(func(v *ClusterAlterRule) ClusterAlterRule {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterAlterRule
-		return ret
-	}).(ClusterAlterRuleOutput)
-}
-
 type ClusterAlterRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlterRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterAlterRule)(nil))
+	return reflect.TypeOf((*[]*ClusterAlterRule)(nil)).Elem()
 }
 
 func (o ClusterAlterRuleArrayOutput) ToClusterAlterRuleArrayOutput() ClusterAlterRuleArrayOutput {
@@ -373,15 +310,15 @@ func (o ClusterAlterRuleArrayOutput) ToClusterAlterRuleArrayOutputWithContext(ct
 }
 
 func (o ClusterAlterRuleArrayOutput) Index(i pulumi.IntInput) ClusterAlterRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterAlterRule {
-		return vs[0].([]ClusterAlterRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterAlterRule {
+		return vs[0].([]*ClusterAlterRule)[vs[1].(int)]
 	}).(ClusterAlterRuleOutput)
 }
 
 type ClusterAlterRuleMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlterRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterAlterRule)(nil))
+	return reflect.TypeOf((*map[string]*ClusterAlterRule)(nil)).Elem()
 }
 
 func (o ClusterAlterRuleMapOutput) ToClusterAlterRuleMapOutput() ClusterAlterRuleMapOutput {
@@ -393,18 +330,16 @@ func (o ClusterAlterRuleMapOutput) ToClusterAlterRuleMapOutputWithContext(ctx co
 }
 
 func (o ClusterAlterRuleMapOutput) MapIndex(k pulumi.StringInput) ClusterAlterRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterAlterRule {
-		return vs[0].(map[string]ClusterAlterRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterAlterRule {
+		return vs[0].(map[string]*ClusterAlterRule)[vs[1].(string)]
 	}).(ClusterAlterRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlterRuleInput)(nil)).Elem(), &ClusterAlterRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlterRulePtrInput)(nil)).Elem(), &ClusterAlterRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlterRuleArrayInput)(nil)).Elem(), ClusterAlterRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlterRuleMapInput)(nil)).Elem(), ClusterAlterRuleMap{})
 	pulumi.RegisterOutputType(ClusterAlterRuleOutput{})
-	pulumi.RegisterOutputType(ClusterAlterRulePtrOutput{})
 	pulumi.RegisterOutputType(ClusterAlterRuleArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAlterRuleMapOutput{})
 }

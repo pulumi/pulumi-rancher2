@@ -105,38 +105,36 @@ export class ProjectAlertGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectAlertGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectAlertGroupArgs | ProjectAlertGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectAlertGroupState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["groupIntervalSeconds"] = state ? state.groupIntervalSeconds : undefined;
-            inputs["groupWaitSeconds"] = state ? state.groupWaitSeconds : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["recipients"] = state ? state.recipients : undefined;
-            inputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["groupIntervalSeconds"] = state ? state.groupIntervalSeconds : undefined;
+            resourceInputs["groupWaitSeconds"] = state ? state.groupWaitSeconds : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["recipients"] = state ? state.recipients : undefined;
+            resourceInputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
         } else {
             const args = argsOrState as ProjectAlertGroupArgs | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["groupIntervalSeconds"] = args ? args.groupIntervalSeconds : undefined;
-            inputs["groupWaitSeconds"] = args ? args.groupWaitSeconds : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["recipients"] = args ? args.recipients : undefined;
-            inputs["repeatIntervalSeconds"] = args ? args.repeatIntervalSeconds : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["groupIntervalSeconds"] = args ? args.groupIntervalSeconds : undefined;
+            resourceInputs["groupWaitSeconds"] = args ? args.groupWaitSeconds : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["recipients"] = args ? args.recipients : undefined;
+            resourceInputs["repeatIntervalSeconds"] = args ? args.repeatIntervalSeconds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectAlertGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectAlertGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

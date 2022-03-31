@@ -25,9 +25,7 @@ export function getClusterV2(args: GetClusterV2Args, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getClusterV2:getClusterV2", {
         "fleetNamespace": args.fleetNamespace,
         "name": args.name,

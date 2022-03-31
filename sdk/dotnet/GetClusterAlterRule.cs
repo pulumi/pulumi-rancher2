@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,7 +39,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterAlterRuleResult> InvokeAsync(GetClusterAlterRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? new GetClusterAlterRuleArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? new GetClusterAlterRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 cluster alert rule.
@@ -70,7 +69,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterAlterRuleResult> Invoke(GetClusterAlterRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? new GetClusterAlterRuleInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? new GetClusterAlterRuleInvokeArgs(), options.WithDefaults());
     }
 
 

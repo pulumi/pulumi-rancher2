@@ -199,7 +199,7 @@ type MachineConfigV2Input interface {
 }
 
 func (*MachineConfigV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineConfigV2)(nil))
+	return reflect.TypeOf((**MachineConfigV2)(nil)).Elem()
 }
 
 func (i *MachineConfigV2) ToMachineConfigV2Output() MachineConfigV2Output {
@@ -208,35 +208,6 @@ func (i *MachineConfigV2) ToMachineConfigV2Output() MachineConfigV2Output {
 
 func (i *MachineConfigV2) ToMachineConfigV2OutputWithContext(ctx context.Context) MachineConfigV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigV2Output)
-}
-
-func (i *MachineConfigV2) ToMachineConfigV2PtrOutput() MachineConfigV2PtrOutput {
-	return i.ToMachineConfigV2PtrOutputWithContext(context.Background())
-}
-
-func (i *MachineConfigV2) ToMachineConfigV2PtrOutputWithContext(ctx context.Context) MachineConfigV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigV2PtrOutput)
-}
-
-type MachineConfigV2PtrInput interface {
-	pulumi.Input
-
-	ToMachineConfigV2PtrOutput() MachineConfigV2PtrOutput
-	ToMachineConfigV2PtrOutputWithContext(ctx context.Context) MachineConfigV2PtrOutput
-}
-
-type machineConfigV2PtrType MachineConfigV2Args
-
-func (*machineConfigV2PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MachineConfigV2)(nil))
-}
-
-func (i *machineConfigV2PtrType) ToMachineConfigV2PtrOutput() MachineConfigV2PtrOutput {
-	return i.ToMachineConfigV2PtrOutputWithContext(context.Background())
-}
-
-func (i *machineConfigV2PtrType) ToMachineConfigV2PtrOutputWithContext(ctx context.Context) MachineConfigV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigV2PtrOutput)
 }
 
 // MachineConfigV2ArrayInput is an input type that accepts MachineConfigV2Array and MachineConfigV2ArrayOutput values.
@@ -292,7 +263,7 @@ func (i MachineConfigV2Map) ToMachineConfigV2MapOutputWithContext(ctx context.Co
 type MachineConfigV2Output struct{ *pulumi.OutputState }
 
 func (MachineConfigV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineConfigV2)(nil))
+	return reflect.TypeOf((**MachineConfigV2)(nil)).Elem()
 }
 
 func (o MachineConfigV2Output) ToMachineConfigV2Output() MachineConfigV2Output {
@@ -303,44 +274,10 @@ func (o MachineConfigV2Output) ToMachineConfigV2OutputWithContext(ctx context.Co
 	return o
 }
 
-func (o MachineConfigV2Output) ToMachineConfigV2PtrOutput() MachineConfigV2PtrOutput {
-	return o.ToMachineConfigV2PtrOutputWithContext(context.Background())
-}
-
-func (o MachineConfigV2Output) ToMachineConfigV2PtrOutputWithContext(ctx context.Context) MachineConfigV2PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineConfigV2) *MachineConfigV2 {
-		return &v
-	}).(MachineConfigV2PtrOutput)
-}
-
-type MachineConfigV2PtrOutput struct{ *pulumi.OutputState }
-
-func (MachineConfigV2PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MachineConfigV2)(nil))
-}
-
-func (o MachineConfigV2PtrOutput) ToMachineConfigV2PtrOutput() MachineConfigV2PtrOutput {
-	return o
-}
-
-func (o MachineConfigV2PtrOutput) ToMachineConfigV2PtrOutputWithContext(ctx context.Context) MachineConfigV2PtrOutput {
-	return o
-}
-
-func (o MachineConfigV2PtrOutput) Elem() MachineConfigV2Output {
-	return o.ApplyT(func(v *MachineConfigV2) MachineConfigV2 {
-		if v != nil {
-			return *v
-		}
-		var ret MachineConfigV2
-		return ret
-	}).(MachineConfigV2Output)
-}
-
 type MachineConfigV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (MachineConfigV2ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MachineConfigV2)(nil))
+	return reflect.TypeOf((*[]*MachineConfigV2)(nil)).Elem()
 }
 
 func (o MachineConfigV2ArrayOutput) ToMachineConfigV2ArrayOutput() MachineConfigV2ArrayOutput {
@@ -352,15 +289,15 @@ func (o MachineConfigV2ArrayOutput) ToMachineConfigV2ArrayOutputWithContext(ctx 
 }
 
 func (o MachineConfigV2ArrayOutput) Index(i pulumi.IntInput) MachineConfigV2Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineConfigV2 {
-		return vs[0].([]MachineConfigV2)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MachineConfigV2 {
+		return vs[0].([]*MachineConfigV2)[vs[1].(int)]
 	}).(MachineConfigV2Output)
 }
 
 type MachineConfigV2MapOutput struct{ *pulumi.OutputState }
 
 func (MachineConfigV2MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MachineConfigV2)(nil))
+	return reflect.TypeOf((*map[string]*MachineConfigV2)(nil)).Elem()
 }
 
 func (o MachineConfigV2MapOutput) ToMachineConfigV2MapOutput() MachineConfigV2MapOutput {
@@ -372,18 +309,16 @@ func (o MachineConfigV2MapOutput) ToMachineConfigV2MapOutputWithContext(ctx cont
 }
 
 func (o MachineConfigV2MapOutput) MapIndex(k pulumi.StringInput) MachineConfigV2Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MachineConfigV2 {
-		return vs[0].(map[string]MachineConfigV2)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MachineConfigV2 {
+		return vs[0].(map[string]*MachineConfigV2)[vs[1].(string)]
 	}).(MachineConfigV2Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigV2Input)(nil)).Elem(), &MachineConfigV2{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigV2PtrInput)(nil)).Elem(), &MachineConfigV2{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigV2ArrayInput)(nil)).Elem(), MachineConfigV2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigV2MapInput)(nil)).Elem(), MachineConfigV2Map{})
 	pulumi.RegisterOutputType(MachineConfigV2Output{})
-	pulumi.RegisterOutputType(MachineConfigV2PtrOutput{})
 	pulumi.RegisterOutputType(MachineConfigV2ArrayOutput{})
 	pulumi.RegisterOutputType(MachineConfigV2MapOutput{})
 }

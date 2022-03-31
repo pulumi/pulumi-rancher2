@@ -5,6 +5,59 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 App
+ * const foo = new rancher2.App("foo", {
+ *     answers: {
+ *         foo: "bar",
+ *         "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": true,
+ *         ingress_host: "test.xip.io",
+ *     },
+ *     catalogName: "<catalog_name>",
+ *     description: "Foo app",
+ *     projectId: "<project_id>",
+ *     targetNamespace: "<namespace_name>",
+ *     templateName: "<template_name>",
+ *     templateVersion: "<template_version>",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 App in a new namespace
+ * const fooNamespace = new rancher2.Namespace("fooNamespace", {
+ *     description: "Foo namespace",
+ *     projectId: "<project_id>",
+ *     resourceQuota: {
+ *         limit: {
+ *             limitsCpu: "100m",
+ *             limitsMemory: "100Mi",
+ *             requestsStorage: "1Gi",
+ *         },
+ *     },
+ * });
+ * const fooApp = new rancher2.App("fooApp", {
+ *     catalogName: "<catalog_name>",
+ *     description: "Foo app",
+ *     projectId: "<project_id>",
+ *     templateName: "<template_name>",
+ *     templateVersion: "<template_version>",
+ *     targetNamespace: fooNamespace.id,
+ *     answers: {
+ *         ingress_host: "test.xip.io",
+ *         foo: "bar",
+ *         "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": true,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Apps can be imported using the app ID in the format `<project_id>:<app_name>`
@@ -113,25 +166,25 @@ export class App extends pulumi.CustomResource {
      */
     constructor(name: string, args: AppArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppArgs | AppState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["answers"] = state ? state.answers : undefined;
-            inputs["catalogName"] = state ? state.catalogName : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["externalId"] = state ? state.externalId : undefined;
-            inputs["forceUpgrade"] = state ? state.forceUpgrade : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["revisionId"] = state ? state.revisionId : undefined;
-            inputs["targetNamespace"] = state ? state.targetNamespace : undefined;
-            inputs["templateName"] = state ? state.templateName : undefined;
-            inputs["templateVersion"] = state ? state.templateVersion : undefined;
-            inputs["valuesYaml"] = state ? state.valuesYaml : undefined;
-            inputs["wait"] = state ? state.wait : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["answers"] = state ? state.answers : undefined;
+            resourceInputs["catalogName"] = state ? state.catalogName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["externalId"] = state ? state.externalId : undefined;
+            resourceInputs["forceUpgrade"] = state ? state.forceUpgrade : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["revisionId"] = state ? state.revisionId : undefined;
+            resourceInputs["targetNamespace"] = state ? state.targetNamespace : undefined;
+            resourceInputs["templateName"] = state ? state.templateName : undefined;
+            resourceInputs["templateVersion"] = state ? state.templateVersion : undefined;
+            resourceInputs["valuesYaml"] = state ? state.valuesYaml : undefined;
+            resourceInputs["wait"] = state ? state.wait : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
             if ((!args || args.catalogName === undefined) && !opts.urn) {
@@ -146,26 +199,24 @@ export class App extends pulumi.CustomResource {
             if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["answers"] = args ? args.answers : undefined;
-            inputs["catalogName"] = args ? args.catalogName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["forceUpgrade"] = args ? args.forceUpgrade : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["revisionId"] = args ? args.revisionId : undefined;
-            inputs["targetNamespace"] = args ? args.targetNamespace : undefined;
-            inputs["templateName"] = args ? args.templateName : undefined;
-            inputs["templateVersion"] = args ? args.templateVersion : undefined;
-            inputs["valuesYaml"] = args ? args.valuesYaml : undefined;
-            inputs["wait"] = args ? args.wait : undefined;
-            inputs["externalId"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["answers"] = args ? args.answers : undefined;
+            resourceInputs["catalogName"] = args ? args.catalogName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["forceUpgrade"] = args ? args.forceUpgrade : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["revisionId"] = args ? args.revisionId : undefined;
+            resourceInputs["targetNamespace"] = args ? args.targetNamespace : undefined;
+            resourceInputs["templateName"] = args ? args.templateName : undefined;
+            resourceInputs["templateVersion"] = args ? args.templateVersion : undefined;
+            resourceInputs["valuesYaml"] = args ? args.valuesYaml : undefined;
+            resourceInputs["wait"] = args ? args.wait : undefined;
+            resourceInputs["externalId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(App.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(App.__pulumiType, name, resourceInputs, opts);
     }
 }
 

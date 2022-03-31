@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,7 +39,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGlobalRoleBindingResult> InvokeAsync(GetGlobalRoleBindingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 global role binding.
@@ -70,7 +69,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGlobalRoleBindingResult> Invoke(GetGlobalRoleBindingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -203,7 +203,7 @@ type ClusterRoleTemplateBindingInput interface {
 }
 
 func (*ClusterRoleTemplateBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterRoleTemplateBinding)(nil))
+	return reflect.TypeOf((**ClusterRoleTemplateBinding)(nil)).Elem()
 }
 
 func (i *ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingOutput() ClusterRoleTemplateBindingOutput {
@@ -212,35 +212,6 @@ func (i *ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingOutput() Cluste
 
 func (i *ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingOutput)
-}
-
-func (i *ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingPtrOutput() ClusterRoleTemplateBindingPtrOutput {
-	return i.ToClusterRoleTemplateBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingPtrOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingPtrOutput)
-}
-
-type ClusterRoleTemplateBindingPtrInput interface {
-	pulumi.Input
-
-	ToClusterRoleTemplateBindingPtrOutput() ClusterRoleTemplateBindingPtrOutput
-	ToClusterRoleTemplateBindingPtrOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingPtrOutput
-}
-
-type clusterRoleTemplateBindingPtrType ClusterRoleTemplateBindingArgs
-
-func (*clusterRoleTemplateBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterRoleTemplateBinding)(nil))
-}
-
-func (i *clusterRoleTemplateBindingPtrType) ToClusterRoleTemplateBindingPtrOutput() ClusterRoleTemplateBindingPtrOutput {
-	return i.ToClusterRoleTemplateBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterRoleTemplateBindingPtrType) ToClusterRoleTemplateBindingPtrOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingPtrOutput)
 }
 
 // ClusterRoleTemplateBindingArrayInput is an input type that accepts ClusterRoleTemplateBindingArray and ClusterRoleTemplateBindingArrayOutput values.
@@ -296,7 +267,7 @@ func (i ClusterRoleTemplateBindingMap) ToClusterRoleTemplateBindingMapOutputWith
 type ClusterRoleTemplateBindingOutput struct{ *pulumi.OutputState }
 
 func (ClusterRoleTemplateBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterRoleTemplateBinding)(nil))
+	return reflect.TypeOf((**ClusterRoleTemplateBinding)(nil)).Elem()
 }
 
 func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingOutput() ClusterRoleTemplateBindingOutput {
@@ -307,44 +278,10 @@ func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingOutputWith
 	return o
 }
 
-func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingPtrOutput() ClusterRoleTemplateBindingPtrOutput {
-	return o.ToClusterRoleTemplateBindingPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingPtrOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterRoleTemplateBinding) *ClusterRoleTemplateBinding {
-		return &v
-	}).(ClusterRoleTemplateBindingPtrOutput)
-}
-
-type ClusterRoleTemplateBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterRoleTemplateBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterRoleTemplateBinding)(nil))
-}
-
-func (o ClusterRoleTemplateBindingPtrOutput) ToClusterRoleTemplateBindingPtrOutput() ClusterRoleTemplateBindingPtrOutput {
-	return o
-}
-
-func (o ClusterRoleTemplateBindingPtrOutput) ToClusterRoleTemplateBindingPtrOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingPtrOutput {
-	return o
-}
-
-func (o ClusterRoleTemplateBindingPtrOutput) Elem() ClusterRoleTemplateBindingOutput {
-	return o.ApplyT(func(v *ClusterRoleTemplateBinding) ClusterRoleTemplateBinding {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterRoleTemplateBinding
-		return ret
-	}).(ClusterRoleTemplateBindingOutput)
-}
-
 type ClusterRoleTemplateBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterRoleTemplateBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterRoleTemplateBinding)(nil))
+	return reflect.TypeOf((*[]*ClusterRoleTemplateBinding)(nil)).Elem()
 }
 
 func (o ClusterRoleTemplateBindingArrayOutput) ToClusterRoleTemplateBindingArrayOutput() ClusterRoleTemplateBindingArrayOutput {
@@ -356,15 +293,15 @@ func (o ClusterRoleTemplateBindingArrayOutput) ToClusterRoleTemplateBindingArray
 }
 
 func (o ClusterRoleTemplateBindingArrayOutput) Index(i pulumi.IntInput) ClusterRoleTemplateBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterRoleTemplateBinding {
-		return vs[0].([]ClusterRoleTemplateBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterRoleTemplateBinding {
+		return vs[0].([]*ClusterRoleTemplateBinding)[vs[1].(int)]
 	}).(ClusterRoleTemplateBindingOutput)
 }
 
 type ClusterRoleTemplateBindingMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterRoleTemplateBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterRoleTemplateBinding)(nil))
+	return reflect.TypeOf((*map[string]*ClusterRoleTemplateBinding)(nil)).Elem()
 }
 
 func (o ClusterRoleTemplateBindingMapOutput) ToClusterRoleTemplateBindingMapOutput() ClusterRoleTemplateBindingMapOutput {
@@ -376,18 +313,16 @@ func (o ClusterRoleTemplateBindingMapOutput) ToClusterRoleTemplateBindingMapOutp
 }
 
 func (o ClusterRoleTemplateBindingMapOutput) MapIndex(k pulumi.StringInput) ClusterRoleTemplateBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterRoleTemplateBinding {
-		return vs[0].(map[string]ClusterRoleTemplateBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterRoleTemplateBinding {
+		return vs[0].(map[string]*ClusterRoleTemplateBinding)[vs[1].(string)]
 	}).(ClusterRoleTemplateBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRoleTemplateBindingInput)(nil)).Elem(), &ClusterRoleTemplateBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRoleTemplateBindingPtrInput)(nil)).Elem(), &ClusterRoleTemplateBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRoleTemplateBindingArrayInput)(nil)).Elem(), ClusterRoleTemplateBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRoleTemplateBindingMapInput)(nil)).Elem(), ClusterRoleTemplateBindingMap{})
 	pulumi.RegisterOutputType(ClusterRoleTemplateBindingOutput{})
-	pulumi.RegisterOutputType(ClusterRoleTemplateBindingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRoleTemplateBindingArrayOutput{})
 	pulumi.RegisterOutputType(ClusterRoleTemplateBindingMapOutput{})
 }

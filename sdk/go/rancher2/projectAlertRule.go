@@ -278,7 +278,7 @@ type ProjectAlertRuleInput interface {
 }
 
 func (*ProjectAlertRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectAlertRule)(nil))
+	return reflect.TypeOf((**ProjectAlertRule)(nil)).Elem()
 }
 
 func (i *ProjectAlertRule) ToProjectAlertRuleOutput() ProjectAlertRuleOutput {
@@ -287,35 +287,6 @@ func (i *ProjectAlertRule) ToProjectAlertRuleOutput() ProjectAlertRuleOutput {
 
 func (i *ProjectAlertRule) ToProjectAlertRuleOutputWithContext(ctx context.Context) ProjectAlertRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRuleOutput)
-}
-
-func (i *ProjectAlertRule) ToProjectAlertRulePtrOutput() ProjectAlertRulePtrOutput {
-	return i.ToProjectAlertRulePtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectAlertRule) ToProjectAlertRulePtrOutputWithContext(ctx context.Context) ProjectAlertRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRulePtrOutput)
-}
-
-type ProjectAlertRulePtrInput interface {
-	pulumi.Input
-
-	ToProjectAlertRulePtrOutput() ProjectAlertRulePtrOutput
-	ToProjectAlertRulePtrOutputWithContext(ctx context.Context) ProjectAlertRulePtrOutput
-}
-
-type projectAlertRulePtrType ProjectAlertRuleArgs
-
-func (*projectAlertRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectAlertRule)(nil))
-}
-
-func (i *projectAlertRulePtrType) ToProjectAlertRulePtrOutput() ProjectAlertRulePtrOutput {
-	return i.ToProjectAlertRulePtrOutputWithContext(context.Background())
-}
-
-func (i *projectAlertRulePtrType) ToProjectAlertRulePtrOutputWithContext(ctx context.Context) ProjectAlertRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRulePtrOutput)
 }
 
 // ProjectAlertRuleArrayInput is an input type that accepts ProjectAlertRuleArray and ProjectAlertRuleArrayOutput values.
@@ -371,7 +342,7 @@ func (i ProjectAlertRuleMap) ToProjectAlertRuleMapOutputWithContext(ctx context.
 type ProjectAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (ProjectAlertRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectAlertRule)(nil))
+	return reflect.TypeOf((**ProjectAlertRule)(nil)).Elem()
 }
 
 func (o ProjectAlertRuleOutput) ToProjectAlertRuleOutput() ProjectAlertRuleOutput {
@@ -382,44 +353,10 @@ func (o ProjectAlertRuleOutput) ToProjectAlertRuleOutputWithContext(ctx context.
 	return o
 }
 
-func (o ProjectAlertRuleOutput) ToProjectAlertRulePtrOutput() ProjectAlertRulePtrOutput {
-	return o.ToProjectAlertRulePtrOutputWithContext(context.Background())
-}
-
-func (o ProjectAlertRuleOutput) ToProjectAlertRulePtrOutputWithContext(ctx context.Context) ProjectAlertRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectAlertRule) *ProjectAlertRule {
-		return &v
-	}).(ProjectAlertRulePtrOutput)
-}
-
-type ProjectAlertRulePtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectAlertRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectAlertRule)(nil))
-}
-
-func (o ProjectAlertRulePtrOutput) ToProjectAlertRulePtrOutput() ProjectAlertRulePtrOutput {
-	return o
-}
-
-func (o ProjectAlertRulePtrOutput) ToProjectAlertRulePtrOutputWithContext(ctx context.Context) ProjectAlertRulePtrOutput {
-	return o
-}
-
-func (o ProjectAlertRulePtrOutput) Elem() ProjectAlertRuleOutput {
-	return o.ApplyT(func(v *ProjectAlertRule) ProjectAlertRule {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectAlertRule
-		return ret
-	}).(ProjectAlertRuleOutput)
-}
-
 type ProjectAlertRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectAlertRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectAlertRule)(nil))
+	return reflect.TypeOf((*[]*ProjectAlertRule)(nil)).Elem()
 }
 
 func (o ProjectAlertRuleArrayOutput) ToProjectAlertRuleArrayOutput() ProjectAlertRuleArrayOutput {
@@ -431,15 +368,15 @@ func (o ProjectAlertRuleArrayOutput) ToProjectAlertRuleArrayOutputWithContext(ct
 }
 
 func (o ProjectAlertRuleArrayOutput) Index(i pulumi.IntInput) ProjectAlertRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectAlertRule {
-		return vs[0].([]ProjectAlertRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectAlertRule {
+		return vs[0].([]*ProjectAlertRule)[vs[1].(int)]
 	}).(ProjectAlertRuleOutput)
 }
 
 type ProjectAlertRuleMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectAlertRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectAlertRule)(nil))
+	return reflect.TypeOf((*map[string]*ProjectAlertRule)(nil)).Elem()
 }
 
 func (o ProjectAlertRuleMapOutput) ToProjectAlertRuleMapOutput() ProjectAlertRuleMapOutput {
@@ -451,18 +388,16 @@ func (o ProjectAlertRuleMapOutput) ToProjectAlertRuleMapOutputWithContext(ctx co
 }
 
 func (o ProjectAlertRuleMapOutput) MapIndex(k pulumi.StringInput) ProjectAlertRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectAlertRule {
-		return vs[0].(map[string]ProjectAlertRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectAlertRule {
+		return vs[0].(map[string]*ProjectAlertRule)[vs[1].(string)]
 	}).(ProjectAlertRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAlertRuleInput)(nil)).Elem(), &ProjectAlertRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAlertRulePtrInput)(nil)).Elem(), &ProjectAlertRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAlertRuleArrayInput)(nil)).Elem(), ProjectAlertRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAlertRuleMapInput)(nil)).Elem(), ProjectAlertRuleMap{})
 	pulumi.RegisterOutputType(ProjectAlertRuleOutput{})
-	pulumi.RegisterOutputType(ProjectAlertRulePtrOutput{})
 	pulumi.RegisterOutputType(ProjectAlertRuleArrayOutput{})
 	pulumi.RegisterOutputType(ProjectAlertRuleMapOutput{})
 }

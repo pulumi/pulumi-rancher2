@@ -167,7 +167,7 @@ type ClusterAlterGroupInput interface {
 }
 
 func (*ClusterAlterGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAlterGroup)(nil))
+	return reflect.TypeOf((**ClusterAlterGroup)(nil)).Elem()
 }
 
 func (i *ClusterAlterGroup) ToClusterAlterGroupOutput() ClusterAlterGroupOutput {
@@ -176,35 +176,6 @@ func (i *ClusterAlterGroup) ToClusterAlterGroupOutput() ClusterAlterGroupOutput 
 
 func (i *ClusterAlterGroup) ToClusterAlterGroupOutputWithContext(ctx context.Context) ClusterAlterGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterGroupOutput)
-}
-
-func (i *ClusterAlterGroup) ToClusterAlterGroupPtrOutput() ClusterAlterGroupPtrOutput {
-	return i.ToClusterAlterGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterAlterGroup) ToClusterAlterGroupPtrOutputWithContext(ctx context.Context) ClusterAlterGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterGroupPtrOutput)
-}
-
-type ClusterAlterGroupPtrInput interface {
-	pulumi.Input
-
-	ToClusterAlterGroupPtrOutput() ClusterAlterGroupPtrOutput
-	ToClusterAlterGroupPtrOutputWithContext(ctx context.Context) ClusterAlterGroupPtrOutput
-}
-
-type clusterAlterGroupPtrType ClusterAlterGroupArgs
-
-func (*clusterAlterGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterAlterGroup)(nil))
-}
-
-func (i *clusterAlterGroupPtrType) ToClusterAlterGroupPtrOutput() ClusterAlterGroupPtrOutput {
-	return i.ToClusterAlterGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterAlterGroupPtrType) ToClusterAlterGroupPtrOutputWithContext(ctx context.Context) ClusterAlterGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterGroupPtrOutput)
 }
 
 // ClusterAlterGroupArrayInput is an input type that accepts ClusterAlterGroupArray and ClusterAlterGroupArrayOutput values.
@@ -260,7 +231,7 @@ func (i ClusterAlterGroupMap) ToClusterAlterGroupMapOutputWithContext(ctx contex
 type ClusterAlterGroupOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlterGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAlterGroup)(nil))
+	return reflect.TypeOf((**ClusterAlterGroup)(nil)).Elem()
 }
 
 func (o ClusterAlterGroupOutput) ToClusterAlterGroupOutput() ClusterAlterGroupOutput {
@@ -271,44 +242,10 @@ func (o ClusterAlterGroupOutput) ToClusterAlterGroupOutputWithContext(ctx contex
 	return o
 }
 
-func (o ClusterAlterGroupOutput) ToClusterAlterGroupPtrOutput() ClusterAlterGroupPtrOutput {
-	return o.ToClusterAlterGroupPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterAlterGroupOutput) ToClusterAlterGroupPtrOutputWithContext(ctx context.Context) ClusterAlterGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAlterGroup) *ClusterAlterGroup {
-		return &v
-	}).(ClusterAlterGroupPtrOutput)
-}
-
-type ClusterAlterGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterAlterGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterAlterGroup)(nil))
-}
-
-func (o ClusterAlterGroupPtrOutput) ToClusterAlterGroupPtrOutput() ClusterAlterGroupPtrOutput {
-	return o
-}
-
-func (o ClusterAlterGroupPtrOutput) ToClusterAlterGroupPtrOutputWithContext(ctx context.Context) ClusterAlterGroupPtrOutput {
-	return o
-}
-
-func (o ClusterAlterGroupPtrOutput) Elem() ClusterAlterGroupOutput {
-	return o.ApplyT(func(v *ClusterAlterGroup) ClusterAlterGroup {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterAlterGroup
-		return ret
-	}).(ClusterAlterGroupOutput)
-}
-
 type ClusterAlterGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlterGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterAlterGroup)(nil))
+	return reflect.TypeOf((*[]*ClusterAlterGroup)(nil)).Elem()
 }
 
 func (o ClusterAlterGroupArrayOutput) ToClusterAlterGroupArrayOutput() ClusterAlterGroupArrayOutput {
@@ -320,15 +257,15 @@ func (o ClusterAlterGroupArrayOutput) ToClusterAlterGroupArrayOutputWithContext(
 }
 
 func (o ClusterAlterGroupArrayOutput) Index(i pulumi.IntInput) ClusterAlterGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterAlterGroup {
-		return vs[0].([]ClusterAlterGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterAlterGroup {
+		return vs[0].([]*ClusterAlterGroup)[vs[1].(int)]
 	}).(ClusterAlterGroupOutput)
 }
 
 type ClusterAlterGroupMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlterGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterAlterGroup)(nil))
+	return reflect.TypeOf((*map[string]*ClusterAlterGroup)(nil)).Elem()
 }
 
 func (o ClusterAlterGroupMapOutput) ToClusterAlterGroupMapOutput() ClusterAlterGroupMapOutput {
@@ -340,18 +277,16 @@ func (o ClusterAlterGroupMapOutput) ToClusterAlterGroupMapOutputWithContext(ctx 
 }
 
 func (o ClusterAlterGroupMapOutput) MapIndex(k pulumi.StringInput) ClusterAlterGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterAlterGroup {
-		return vs[0].(map[string]ClusterAlterGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterAlterGroup {
+		return vs[0].(map[string]*ClusterAlterGroup)[vs[1].(string)]
 	}).(ClusterAlterGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlterGroupInput)(nil)).Elem(), &ClusterAlterGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlterGroupPtrInput)(nil)).Elem(), &ClusterAlterGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlterGroupArrayInput)(nil)).Elem(), ClusterAlterGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAlterGroupMapInput)(nil)).Elem(), ClusterAlterGroupMap{})
 	pulumi.RegisterOutputType(ClusterAlterGroupOutput{})
-	pulumi.RegisterOutputType(ClusterAlterGroupPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAlterGroupArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAlterGroupMapOutput{})
 }

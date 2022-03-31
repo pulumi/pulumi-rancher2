@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -16,13 +15,13 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
         /// </summary>
         public static Task<GetClusterScanResult> InvokeAsync(GetClusterScanArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? new GetClusterScanArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? new GetClusterScanArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
         /// </summary>
         public static Output<GetClusterScanResult> Invoke(GetClusterScanInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? new GetClusterScanInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? new GetClusterScanInvokeArgs(), options.WithDefaults());
     }
 
 

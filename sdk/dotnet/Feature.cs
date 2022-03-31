@@ -9,6 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Feature
+    ///         var fleet = new Rancher2.Feature("fleet", new Rancher2.FeatureArgs
+    ///         {
+    ///             Value = "&lt;VALUE&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [Rancher2ResourceType("rancher2:index/feature:Feature")]
     public partial class Feature : Pulumi.CustomResource
     {

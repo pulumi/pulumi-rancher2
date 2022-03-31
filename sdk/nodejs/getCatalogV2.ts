@@ -12,9 +12,7 @@ export function getCatalogV2(args: GetCatalogV2Args, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getCatalogV2:getCatalogV2", {
         "clusterId": args.clusterId,
         "name": args.name,

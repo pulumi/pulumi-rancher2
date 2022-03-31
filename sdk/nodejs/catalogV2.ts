@@ -113,50 +113,48 @@ export class CatalogV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args: CatalogV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CatalogV2Args | CatalogV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CatalogV2State | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["caBundle"] = state ? state.caBundle : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["gitBranch"] = state ? state.gitBranch : undefined;
-            inputs["gitRepo"] = state ? state.gitRepo : undefined;
-            inputs["insecure"] = state ? state.insecure : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["resourceVersion"] = state ? state.resourceVersion : undefined;
-            inputs["secretName"] = state ? state.secretName : undefined;
-            inputs["secretNamespace"] = state ? state.secretNamespace : undefined;
-            inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            inputs["serviceAccountNamespace"] = state ? state.serviceAccountNamespace : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["caBundle"] = state ? state.caBundle : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["gitBranch"] = state ? state.gitBranch : undefined;
+            resourceInputs["gitRepo"] = state ? state.gitRepo : undefined;
+            resourceInputs["insecure"] = state ? state.insecure : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["resourceVersion"] = state ? state.resourceVersion : undefined;
+            resourceInputs["secretName"] = state ? state.secretName : undefined;
+            resourceInputs["secretNamespace"] = state ? state.secretNamespace : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["serviceAccountNamespace"] = state ? state.serviceAccountNamespace : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as CatalogV2Args | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["caBundle"] = args ? args.caBundle : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["gitBranch"] = args ? args.gitBranch : undefined;
-            inputs["gitRepo"] = args ? args.gitRepo : undefined;
-            inputs["insecure"] = args ? args.insecure : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["secretName"] = args ? args.secretName : undefined;
-            inputs["secretNamespace"] = args ? args.secretNamespace : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["serviceAccountNamespace"] = args ? args.serviceAccountNamespace : undefined;
-            inputs["url"] = args ? args.url : undefined;
-            inputs["resourceVersion"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["caBundle"] = args ? args.caBundle : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["gitBranch"] = args ? args.gitBranch : undefined;
+            resourceInputs["gitRepo"] = args ? args.gitRepo : undefined;
+            resourceInputs["insecure"] = args ? args.insecure : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["secretName"] = args ? args.secretName : undefined;
+            resourceInputs["secretNamespace"] = args ? args.secretNamespace : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["serviceAccountNamespace"] = args ? args.serviceAccountNamespace : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["resourceVersion"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CatalogV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CatalogV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -165,7 +165,16 @@ class Feature(pulumi.CustomResource):
                  value: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a Feature resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Feature
+        fleet = rancher2.Feature("fleet", value="<VALUE>")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for feature object (map)
@@ -180,7 +189,16 @@ class Feature(pulumi.CustomResource):
                  args: Optional[FeatureArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Feature resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Feature
+        fleet = rancher2.Feature("fleet", value="<VALUE>")
+        ```
+
         :param str resource_name: The name of the resource.
         :param FeatureArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

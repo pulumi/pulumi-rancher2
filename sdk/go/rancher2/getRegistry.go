@@ -50,10 +50,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "<namespace_id>"
 // 		_, err := rancher2.LookupRegistry(ctx, &GetRegistryArgs{
 // 			Name:        "<name>",
-// 			NamespaceId: &opt0,
+// 			NamespaceId: pulumi.StringRef("<namespace_id>"),
 // 			ProjectId:   "<project_id>",
 // 		}, nil)
 // 		if err != nil {

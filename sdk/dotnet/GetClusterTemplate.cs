@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -41,7 +40,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterTemplateResult> InvokeAsync(GetClusterTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 cluster template.
@@ -72,7 +71,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterTemplateResult> Invoke(GetClusterTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

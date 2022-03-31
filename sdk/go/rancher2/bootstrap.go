@@ -10,6 +10,82 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
+// 			Password:  pulumi.String("blahblah"),
+// 			Telemetry: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
+// 			InitialPassword: pulumi.String("<INSTALL_PASSWORD>"),
+// 			Password:        pulumi.String("blahblah"),
+// 			Telemetry:       pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2/providers"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := providers.Newrancher2(ctx, "bootstrap", &providers.rancher2Args{
+// 			ApiUrl:    "https://rancher.my-domain.com",
+// 			Bootstrap: true,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
+// 			Password:  pulumi.String("blahblah"),
+// 			Telemetry: pulumi.Bool(true),
+// 		}, pulumi.Provider("rancher2.bootstrap"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Bootstrap struct {
 	pulumi.CustomResourceState
 
@@ -174,7 +250,7 @@ type BootstrapInput interface {
 }
 
 func (*Bootstrap) ElementType() reflect.Type {
-	return reflect.TypeOf((*Bootstrap)(nil))
+	return reflect.TypeOf((**Bootstrap)(nil)).Elem()
 }
 
 func (i *Bootstrap) ToBootstrapOutput() BootstrapOutput {
@@ -183,35 +259,6 @@ func (i *Bootstrap) ToBootstrapOutput() BootstrapOutput {
 
 func (i *Bootstrap) ToBootstrapOutputWithContext(ctx context.Context) BootstrapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BootstrapOutput)
-}
-
-func (i *Bootstrap) ToBootstrapPtrOutput() BootstrapPtrOutput {
-	return i.ToBootstrapPtrOutputWithContext(context.Background())
-}
-
-func (i *Bootstrap) ToBootstrapPtrOutputWithContext(ctx context.Context) BootstrapPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BootstrapPtrOutput)
-}
-
-type BootstrapPtrInput interface {
-	pulumi.Input
-
-	ToBootstrapPtrOutput() BootstrapPtrOutput
-	ToBootstrapPtrOutputWithContext(ctx context.Context) BootstrapPtrOutput
-}
-
-type bootstrapPtrType BootstrapArgs
-
-func (*bootstrapPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Bootstrap)(nil))
-}
-
-func (i *bootstrapPtrType) ToBootstrapPtrOutput() BootstrapPtrOutput {
-	return i.ToBootstrapPtrOutputWithContext(context.Background())
-}
-
-func (i *bootstrapPtrType) ToBootstrapPtrOutputWithContext(ctx context.Context) BootstrapPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BootstrapPtrOutput)
 }
 
 // BootstrapArrayInput is an input type that accepts BootstrapArray and BootstrapArrayOutput values.
@@ -267,7 +314,7 @@ func (i BootstrapMap) ToBootstrapMapOutputWithContext(ctx context.Context) Boots
 type BootstrapOutput struct{ *pulumi.OutputState }
 
 func (BootstrapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Bootstrap)(nil))
+	return reflect.TypeOf((**Bootstrap)(nil)).Elem()
 }
 
 func (o BootstrapOutput) ToBootstrapOutput() BootstrapOutput {
@@ -278,44 +325,10 @@ func (o BootstrapOutput) ToBootstrapOutputWithContext(ctx context.Context) Boots
 	return o
 }
 
-func (o BootstrapOutput) ToBootstrapPtrOutput() BootstrapPtrOutput {
-	return o.ToBootstrapPtrOutputWithContext(context.Background())
-}
-
-func (o BootstrapOutput) ToBootstrapPtrOutputWithContext(ctx context.Context) BootstrapPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Bootstrap) *Bootstrap {
-		return &v
-	}).(BootstrapPtrOutput)
-}
-
-type BootstrapPtrOutput struct{ *pulumi.OutputState }
-
-func (BootstrapPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Bootstrap)(nil))
-}
-
-func (o BootstrapPtrOutput) ToBootstrapPtrOutput() BootstrapPtrOutput {
-	return o
-}
-
-func (o BootstrapPtrOutput) ToBootstrapPtrOutputWithContext(ctx context.Context) BootstrapPtrOutput {
-	return o
-}
-
-func (o BootstrapPtrOutput) Elem() BootstrapOutput {
-	return o.ApplyT(func(v *Bootstrap) Bootstrap {
-		if v != nil {
-			return *v
-		}
-		var ret Bootstrap
-		return ret
-	}).(BootstrapOutput)
-}
-
 type BootstrapArrayOutput struct{ *pulumi.OutputState }
 
 func (BootstrapArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Bootstrap)(nil))
+	return reflect.TypeOf((*[]*Bootstrap)(nil)).Elem()
 }
 
 func (o BootstrapArrayOutput) ToBootstrapArrayOutput() BootstrapArrayOutput {
@@ -327,15 +340,15 @@ func (o BootstrapArrayOutput) ToBootstrapArrayOutputWithContext(ctx context.Cont
 }
 
 func (o BootstrapArrayOutput) Index(i pulumi.IntInput) BootstrapOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Bootstrap {
-		return vs[0].([]Bootstrap)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Bootstrap {
+		return vs[0].([]*Bootstrap)[vs[1].(int)]
 	}).(BootstrapOutput)
 }
 
 type BootstrapMapOutput struct{ *pulumi.OutputState }
 
 func (BootstrapMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Bootstrap)(nil))
+	return reflect.TypeOf((*map[string]*Bootstrap)(nil)).Elem()
 }
 
 func (o BootstrapMapOutput) ToBootstrapMapOutput() BootstrapMapOutput {
@@ -347,18 +360,16 @@ func (o BootstrapMapOutput) ToBootstrapMapOutputWithContext(ctx context.Context)
 }
 
 func (o BootstrapMapOutput) MapIndex(k pulumi.StringInput) BootstrapOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Bootstrap {
-		return vs[0].(map[string]Bootstrap)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Bootstrap {
+		return vs[0].(map[string]*Bootstrap)[vs[1].(string)]
 	}).(BootstrapOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BootstrapInput)(nil)).Elem(), &Bootstrap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BootstrapPtrInput)(nil)).Elem(), &Bootstrap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BootstrapArrayInput)(nil)).Elem(), BootstrapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BootstrapMapInput)(nil)).Elem(), BootstrapMap{})
 	pulumi.RegisterOutputType(BootstrapOutput{})
-	pulumi.RegisterOutputType(BootstrapPtrOutput{})
 	pulumi.RegisterOutputType(BootstrapArrayOutput{})
 	pulumi.RegisterOutputType(BootstrapMapOutput{})
 }
