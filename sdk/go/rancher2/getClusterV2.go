@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "fleet-ns"
 // 		_, err := rancher2.LookupClusterV2(ctx, &GetClusterV2Args{
-// 			FleetNamespace: &opt0,
+// 			FleetNamespace: pulumi.StringRef("fleet-ns"),
 // 			Name:           "foo",
 // 		}, nil)
 // 		if err != nil {

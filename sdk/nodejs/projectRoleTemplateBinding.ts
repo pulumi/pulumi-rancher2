@@ -103,19 +103,19 @@ export class ProjectRoleTemplateBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectRoleTemplateBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectRoleTemplateBindingArgs | ProjectRoleTemplateBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectRoleTemplateBindingState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["groupPrincipalId"] = state ? state.groupPrincipalId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["roleTemplateId"] = state ? state.roleTemplateId : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
-            inputs["userPrincipalId"] = state ? state.userPrincipalId : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["groupPrincipalId"] = state ? state.groupPrincipalId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["roleTemplateId"] = state ? state.roleTemplateId : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["userPrincipalId"] = state ? state.userPrincipalId : undefined;
         } else {
             const args = argsOrState as ProjectRoleTemplateBindingArgs | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
@@ -124,20 +124,18 @@ export class ProjectRoleTemplateBinding extends pulumi.CustomResource {
             if ((!args || args.roleTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roleTemplateId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["groupPrincipalId"] = args ? args.groupPrincipalId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["roleTemplateId"] = args ? args.roleTemplateId : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
-            inputs["userPrincipalId"] = args ? args.userPrincipalId : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["groupPrincipalId"] = args ? args.groupPrincipalId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["roleTemplateId"] = args ? args.roleTemplateId : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["userPrincipalId"] = args ? args.userPrincipalId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectRoleTemplateBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectRoleTemplateBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

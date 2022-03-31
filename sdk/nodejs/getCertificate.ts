@@ -41,9 +41,7 @@ export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getCertificate:getCertificate", {
         "name": args.name,
         "namespaceId": args.namespaceId,

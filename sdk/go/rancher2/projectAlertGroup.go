@@ -201,7 +201,7 @@ type ProjectAlertGroupInput interface {
 }
 
 func (*ProjectAlertGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectAlertGroup)(nil))
+	return reflect.TypeOf((**ProjectAlertGroup)(nil)).Elem()
 }
 
 func (i *ProjectAlertGroup) ToProjectAlertGroupOutput() ProjectAlertGroupOutput {
@@ -210,35 +210,6 @@ func (i *ProjectAlertGroup) ToProjectAlertGroupOutput() ProjectAlertGroupOutput 
 
 func (i *ProjectAlertGroup) ToProjectAlertGroupOutputWithContext(ctx context.Context) ProjectAlertGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupOutput)
-}
-
-func (i *ProjectAlertGroup) ToProjectAlertGroupPtrOutput() ProjectAlertGroupPtrOutput {
-	return i.ToProjectAlertGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectAlertGroup) ToProjectAlertGroupPtrOutputWithContext(ctx context.Context) ProjectAlertGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupPtrOutput)
-}
-
-type ProjectAlertGroupPtrInput interface {
-	pulumi.Input
-
-	ToProjectAlertGroupPtrOutput() ProjectAlertGroupPtrOutput
-	ToProjectAlertGroupPtrOutputWithContext(ctx context.Context) ProjectAlertGroupPtrOutput
-}
-
-type projectAlertGroupPtrType ProjectAlertGroupArgs
-
-func (*projectAlertGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectAlertGroup)(nil))
-}
-
-func (i *projectAlertGroupPtrType) ToProjectAlertGroupPtrOutput() ProjectAlertGroupPtrOutput {
-	return i.ToProjectAlertGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *projectAlertGroupPtrType) ToProjectAlertGroupPtrOutputWithContext(ctx context.Context) ProjectAlertGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupPtrOutput)
 }
 
 // ProjectAlertGroupArrayInput is an input type that accepts ProjectAlertGroupArray and ProjectAlertGroupArrayOutput values.
@@ -294,7 +265,7 @@ func (i ProjectAlertGroupMap) ToProjectAlertGroupMapOutputWithContext(ctx contex
 type ProjectAlertGroupOutput struct{ *pulumi.OutputState }
 
 func (ProjectAlertGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectAlertGroup)(nil))
+	return reflect.TypeOf((**ProjectAlertGroup)(nil)).Elem()
 }
 
 func (o ProjectAlertGroupOutput) ToProjectAlertGroupOutput() ProjectAlertGroupOutput {
@@ -305,44 +276,10 @@ func (o ProjectAlertGroupOutput) ToProjectAlertGroupOutputWithContext(ctx contex
 	return o
 }
 
-func (o ProjectAlertGroupOutput) ToProjectAlertGroupPtrOutput() ProjectAlertGroupPtrOutput {
-	return o.ToProjectAlertGroupPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectAlertGroupOutput) ToProjectAlertGroupPtrOutputWithContext(ctx context.Context) ProjectAlertGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectAlertGroup) *ProjectAlertGroup {
-		return &v
-	}).(ProjectAlertGroupPtrOutput)
-}
-
-type ProjectAlertGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectAlertGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectAlertGroup)(nil))
-}
-
-func (o ProjectAlertGroupPtrOutput) ToProjectAlertGroupPtrOutput() ProjectAlertGroupPtrOutput {
-	return o
-}
-
-func (o ProjectAlertGroupPtrOutput) ToProjectAlertGroupPtrOutputWithContext(ctx context.Context) ProjectAlertGroupPtrOutput {
-	return o
-}
-
-func (o ProjectAlertGroupPtrOutput) Elem() ProjectAlertGroupOutput {
-	return o.ApplyT(func(v *ProjectAlertGroup) ProjectAlertGroup {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectAlertGroup
-		return ret
-	}).(ProjectAlertGroupOutput)
-}
-
 type ProjectAlertGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectAlertGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectAlertGroup)(nil))
+	return reflect.TypeOf((*[]*ProjectAlertGroup)(nil)).Elem()
 }
 
 func (o ProjectAlertGroupArrayOutput) ToProjectAlertGroupArrayOutput() ProjectAlertGroupArrayOutput {
@@ -354,15 +291,15 @@ func (o ProjectAlertGroupArrayOutput) ToProjectAlertGroupArrayOutputWithContext(
 }
 
 func (o ProjectAlertGroupArrayOutput) Index(i pulumi.IntInput) ProjectAlertGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectAlertGroup {
-		return vs[0].([]ProjectAlertGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectAlertGroup {
+		return vs[0].([]*ProjectAlertGroup)[vs[1].(int)]
 	}).(ProjectAlertGroupOutput)
 }
 
 type ProjectAlertGroupMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectAlertGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectAlertGroup)(nil))
+	return reflect.TypeOf((*map[string]*ProjectAlertGroup)(nil)).Elem()
 }
 
 func (o ProjectAlertGroupMapOutput) ToProjectAlertGroupMapOutput() ProjectAlertGroupMapOutput {
@@ -374,18 +311,16 @@ func (o ProjectAlertGroupMapOutput) ToProjectAlertGroupMapOutputWithContext(ctx 
 }
 
 func (o ProjectAlertGroupMapOutput) MapIndex(k pulumi.StringInput) ProjectAlertGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectAlertGroup {
-		return vs[0].(map[string]ProjectAlertGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectAlertGroup {
+		return vs[0].(map[string]*ProjectAlertGroup)[vs[1].(string)]
 	}).(ProjectAlertGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAlertGroupInput)(nil)).Elem(), &ProjectAlertGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAlertGroupPtrInput)(nil)).Elem(), &ProjectAlertGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAlertGroupArrayInput)(nil)).Elem(), ProjectAlertGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAlertGroupMapInput)(nil)).Elem(), ProjectAlertGroupMap{})
 	pulumi.RegisterOutputType(ProjectAlertGroupOutput{})
-	pulumi.RegisterOutputType(ProjectAlertGroupPtrOutput{})
 	pulumi.RegisterOutputType(ProjectAlertGroupArrayOutput{})
 	pulumi.RegisterOutputType(ProjectAlertGroupMapOutput{})
 }

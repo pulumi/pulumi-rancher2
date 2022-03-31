@@ -23,9 +23,7 @@ export function getCloudCredential(args: GetCloudCredentialArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getCloudCredential:getCloudCredential", {
         "name": args.name,
     }, opts);

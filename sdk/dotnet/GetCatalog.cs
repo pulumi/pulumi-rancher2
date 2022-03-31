@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCatalogResult> InvokeAsync(GetCatalogArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? new GetCatalogArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? new GetCatalogArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 catalog.
@@ -68,7 +67,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCatalogResult> Invoke(GetCatalogInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? new GetCatalogInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? new GetCatalogInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -16,13 +15,13 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Task<GetStorageClassV2Result> InvokeAsync(GetStorageClassV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStorageClassV2Result>("rancher2:index/getStorageClassV2:getStorageClassV2", args ?? new GetStorageClassV2Args(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetStorageClassV2Result>("rancher2:index/getStorageClassV2:getStorageClassV2", args ?? new GetStorageClassV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Output<GetStorageClassV2Result> Invoke(GetStorageClassV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStorageClassV2Result>("rancher2:index/getStorageClassV2:getStorageClassV2", args ?? new GetStorageClassV2InvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetStorageClassV2Result>("rancher2:index/getStorageClassV2:getStorageClassV2", args ?? new GetStorageClassV2InvokeArgs(), options.WithDefaults());
     }
 
 

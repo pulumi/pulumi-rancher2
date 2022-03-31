@@ -298,6 +298,31 @@ class EtcdBackup(pulumi.CustomResource):
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Etcd Backup
+        foo = rancher2.EtcdBackup("foo",
+            backup_config=rancher2.EtcdBackupBackupConfigArgs(
+                enabled=True,
+                interval_hours=20,
+                retention=10,
+                s3_backup_config=rancher2.EtcdBackupBackupConfigS3BackupConfigArgs(
+                    access_key="access_key",
+                    bucket_name="bucket_name",
+                    endpoint="endpoint",
+                    folder="/folder",
+                    region="region",
+                    secret_key="secret_key",
+                ),
+            ),
+            cluster_id="<CLUSTER_ID>",
+            filename="<FILENAME>")
+        ```
+
         ## Import
 
         Etcd Backup can be imported using the Rancher etcd backup ID
@@ -324,6 +349,31 @@ class EtcdBackup(pulumi.CustomResource):
                  args: EtcdBackupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Etcd Backup
+        foo = rancher2.EtcdBackup("foo",
+            backup_config=rancher2.EtcdBackupBackupConfigArgs(
+                enabled=True,
+                interval_hours=20,
+                retention=10,
+                s3_backup_config=rancher2.EtcdBackupBackupConfigS3BackupConfigArgs(
+                    access_key="access_key",
+                    bucket_name="bucket_name",
+                    endpoint="endpoint",
+                    folder="/folder",
+                    region="region",
+                    secret_key="secret_key",
+                ),
+            ),
+            cluster_id="<CLUSTER_ID>",
+            filename="<FILENAME>")
+        ```
+
         ## Import
 
         Etcd Backup can be imported using the Rancher etcd backup ID

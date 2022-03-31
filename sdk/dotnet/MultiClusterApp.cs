@@ -10,6 +10,102 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Multi Cluster App
+    ///         var foo = new Rancher2.MultiClusterApp("foo", new Rancher2.MultiClusterAppArgs
+    ///         {
+    ///             Answers = 
+    ///             {
+    ///                 new Rancher2.Inputs.MultiClusterAppAnswerArgs
+    ///                 {
+    ///                     Values = 
+    ///                     {
+    ///                         { "ingressHost", "test.xip.io" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             CatalogName = "&lt;catalog_name&gt;",
+    ///             Roles = 
+    ///             {
+    ///                 "project-member",
+    ///             },
+    ///             Targets = 
+    ///             {
+    ///                 new Rancher2.Inputs.MultiClusterAppTargetArgs
+    ///                 {
+    ///                     ProjectId = "&lt;project_id&gt;",
+    ///                 },
+    ///             },
+    ///             TemplateName = "&lt;template_name&gt;",
+    ///             TemplateVersion = "&lt;template_version&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Multi Cluster App overriding answers
+    ///         var foo = new Rancher2.MultiClusterApp("foo", new Rancher2.MultiClusterAppArgs
+    ///         {
+    ///             Answers = 
+    ///             {
+    ///                 new Rancher2.Inputs.MultiClusterAppAnswerArgs
+    ///                 {
+    ///                     Values = 
+    ///                     {
+    ///                         { "ingressHost", "test.xip.io" },
+    ///                     },
+    ///                 },
+    ///                 new Rancher2.Inputs.MultiClusterAppAnswerArgs
+    ///                 {
+    ///                     ProjectId = "&lt;project_id2&gt;",
+    ///                     Values = 
+    ///                     {
+    ///                         { "ingressHost", "test2.xip.io" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             CatalogName = "&lt;catalog_name&gt;",
+    ///             Roles = 
+    ///             {
+    ///                 "project-member",
+    ///             },
+    ///             Targets = 
+    ///             {
+    ///                 new Rancher2.Inputs.MultiClusterAppTargetArgs
+    ///                 {
+    ///                     ProjectId = "&lt;project_id1&gt;",
+    ///                 },
+    ///                 new Rancher2.Inputs.MultiClusterAppTargetArgs
+    ///                 {
+    ///                     ProjectId = "&lt;project_id2&gt;",
+    ///                 },
+    ///             },
+    ///             TemplateName = "&lt;template_name&gt;",
+    ///             TemplateVersion = "&lt;template_version&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Multi cluster app can be imported using the multi cluster app ID in the format `&lt;multi_cluster_app_name&gt;`

@@ -132,24 +132,24 @@ export class ClusterAlertRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterAlertRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterAlertRuleArgs | ClusterAlertRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterAlertRuleState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["eventRule"] = state ? state.eventRule : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["groupIntervalSeconds"] = state ? state.groupIntervalSeconds : undefined;
-            inputs["groupWaitSeconds"] = state ? state.groupWaitSeconds : undefined;
-            inputs["inherited"] = state ? state.inherited : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["metricRule"] = state ? state.metricRule : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nodeRule"] = state ? state.nodeRule : undefined;
-            inputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
-            inputs["severity"] = state ? state.severity : undefined;
-            inputs["systemServiceRule"] = state ? state.systemServiceRule : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["eventRule"] = state ? state.eventRule : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["groupIntervalSeconds"] = state ? state.groupIntervalSeconds : undefined;
+            resourceInputs["groupWaitSeconds"] = state ? state.groupWaitSeconds : undefined;
+            resourceInputs["inherited"] = state ? state.inherited : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["metricRule"] = state ? state.metricRule : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeRule"] = state ? state.nodeRule : undefined;
+            resourceInputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
+            resourceInputs["severity"] = state ? state.severity : undefined;
+            resourceInputs["systemServiceRule"] = state ? state.systemServiceRule : undefined;
         } else {
             const args = argsOrState as ClusterAlertRuleArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -158,27 +158,25 @@ export class ClusterAlertRule extends pulumi.CustomResource {
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["eventRule"] = args ? args.eventRule : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["groupIntervalSeconds"] = args ? args.groupIntervalSeconds : undefined;
-            inputs["groupWaitSeconds"] = args ? args.groupWaitSeconds : undefined;
-            inputs["inherited"] = args ? args.inherited : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["metricRule"] = args ? args.metricRule : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodeRule"] = args ? args.nodeRule : undefined;
-            inputs["repeatIntervalSeconds"] = args ? args.repeatIntervalSeconds : undefined;
-            inputs["severity"] = args ? args.severity : undefined;
-            inputs["systemServiceRule"] = args ? args.systemServiceRule : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["eventRule"] = args ? args.eventRule : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["groupIntervalSeconds"] = args ? args.groupIntervalSeconds : undefined;
+            resourceInputs["groupWaitSeconds"] = args ? args.groupWaitSeconds : undefined;
+            resourceInputs["inherited"] = args ? args.inherited : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["metricRule"] = args ? args.metricRule : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeRule"] = args ? args.nodeRule : undefined;
+            resourceInputs["repeatIntervalSeconds"] = args ? args.repeatIntervalSeconds : undefined;
+            resourceInputs["severity"] = args ? args.severity : undefined;
+            resourceInputs["systemServiceRule"] = args ? args.systemServiceRule : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "rancher2:index/clusterAlterRule:ClusterAlterRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        super(ClusterAlertRule.__pulumiType, name, inputs, opts);
+        super(ClusterAlertRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

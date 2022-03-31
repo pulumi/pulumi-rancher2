@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -40,7 +39,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNotifierResult> InvokeAsync(GetNotifierArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 notifier.
@@ -70,7 +69,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNotifierResult> Invoke(GetNotifierInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -234,69 +234,67 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args?: NodeTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeTemplateArgs | NodeTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeTemplateState | undefined;
-            inputs["amazonec2Config"] = state ? state.amazonec2Config : undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["authCertificateAuthority"] = state ? state.authCertificateAuthority : undefined;
-            inputs["authKey"] = state ? state.authKey : undefined;
-            inputs["azureConfig"] = state ? state.azureConfig : undefined;
-            inputs["cloudCredentialId"] = state ? state.cloudCredentialId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["digitaloceanConfig"] = state ? state.digitaloceanConfig : undefined;
-            inputs["driver"] = state ? state.driver : undefined;
-            inputs["driverId"] = state ? state.driverId : undefined;
-            inputs["engineEnv"] = state ? state.engineEnv : undefined;
-            inputs["engineInsecureRegistries"] = state ? state.engineInsecureRegistries : undefined;
-            inputs["engineInstallUrl"] = state ? state.engineInstallUrl : undefined;
-            inputs["engineLabel"] = state ? state.engineLabel : undefined;
-            inputs["engineOpt"] = state ? state.engineOpt : undefined;
-            inputs["engineRegistryMirrors"] = state ? state.engineRegistryMirrors : undefined;
-            inputs["engineStorageDriver"] = state ? state.engineStorageDriver : undefined;
-            inputs["hetznerConfig"] = state ? state.hetznerConfig : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["linodeConfig"] = state ? state.linodeConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nodeTaints"] = state ? state.nodeTaints : undefined;
-            inputs["opennebulaConfig"] = state ? state.opennebulaConfig : undefined;
-            inputs["openstackConfig"] = state ? state.openstackConfig : undefined;
-            inputs["useInternalIpAddress"] = state ? state.useInternalIpAddress : undefined;
-            inputs["vsphereConfig"] = state ? state.vsphereConfig : undefined;
+            resourceInputs["amazonec2Config"] = state ? state.amazonec2Config : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["authCertificateAuthority"] = state ? state.authCertificateAuthority : undefined;
+            resourceInputs["authKey"] = state ? state.authKey : undefined;
+            resourceInputs["azureConfig"] = state ? state.azureConfig : undefined;
+            resourceInputs["cloudCredentialId"] = state ? state.cloudCredentialId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["digitaloceanConfig"] = state ? state.digitaloceanConfig : undefined;
+            resourceInputs["driver"] = state ? state.driver : undefined;
+            resourceInputs["driverId"] = state ? state.driverId : undefined;
+            resourceInputs["engineEnv"] = state ? state.engineEnv : undefined;
+            resourceInputs["engineInsecureRegistries"] = state ? state.engineInsecureRegistries : undefined;
+            resourceInputs["engineInstallUrl"] = state ? state.engineInstallUrl : undefined;
+            resourceInputs["engineLabel"] = state ? state.engineLabel : undefined;
+            resourceInputs["engineOpt"] = state ? state.engineOpt : undefined;
+            resourceInputs["engineRegistryMirrors"] = state ? state.engineRegistryMirrors : undefined;
+            resourceInputs["engineStorageDriver"] = state ? state.engineStorageDriver : undefined;
+            resourceInputs["hetznerConfig"] = state ? state.hetznerConfig : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["linodeConfig"] = state ? state.linodeConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeTaints"] = state ? state.nodeTaints : undefined;
+            resourceInputs["opennebulaConfig"] = state ? state.opennebulaConfig : undefined;
+            resourceInputs["openstackConfig"] = state ? state.openstackConfig : undefined;
+            resourceInputs["useInternalIpAddress"] = state ? state.useInternalIpAddress : undefined;
+            resourceInputs["vsphereConfig"] = state ? state.vsphereConfig : undefined;
         } else {
             const args = argsOrState as NodeTemplateArgs | undefined;
-            inputs["amazonec2Config"] = args ? args.amazonec2Config : undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["authCertificateAuthority"] = args ? args.authCertificateAuthority : undefined;
-            inputs["authKey"] = args ? args.authKey : undefined;
-            inputs["azureConfig"] = args ? args.azureConfig : undefined;
-            inputs["cloudCredentialId"] = args ? args.cloudCredentialId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["digitaloceanConfig"] = args ? args.digitaloceanConfig : undefined;
-            inputs["driverId"] = args ? args.driverId : undefined;
-            inputs["engineEnv"] = args ? args.engineEnv : undefined;
-            inputs["engineInsecureRegistries"] = args ? args.engineInsecureRegistries : undefined;
-            inputs["engineInstallUrl"] = args ? args.engineInstallUrl : undefined;
-            inputs["engineLabel"] = args ? args.engineLabel : undefined;
-            inputs["engineOpt"] = args ? args.engineOpt : undefined;
-            inputs["engineRegistryMirrors"] = args ? args.engineRegistryMirrors : undefined;
-            inputs["engineStorageDriver"] = args ? args.engineStorageDriver : undefined;
-            inputs["hetznerConfig"] = args ? args.hetznerConfig : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["linodeConfig"] = args ? args.linodeConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodeTaints"] = args ? args.nodeTaints : undefined;
-            inputs["opennebulaConfig"] = args ? args.opennebulaConfig : undefined;
-            inputs["openstackConfig"] = args ? args.openstackConfig : undefined;
-            inputs["useInternalIpAddress"] = args ? args.useInternalIpAddress : undefined;
-            inputs["vsphereConfig"] = args ? args.vsphereConfig : undefined;
-            inputs["driver"] = undefined /*out*/;
+            resourceInputs["amazonec2Config"] = args ? args.amazonec2Config : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["authCertificateAuthority"] = args ? args.authCertificateAuthority : undefined;
+            resourceInputs["authKey"] = args ? args.authKey : undefined;
+            resourceInputs["azureConfig"] = args ? args.azureConfig : undefined;
+            resourceInputs["cloudCredentialId"] = args ? args.cloudCredentialId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["digitaloceanConfig"] = args ? args.digitaloceanConfig : undefined;
+            resourceInputs["driverId"] = args ? args.driverId : undefined;
+            resourceInputs["engineEnv"] = args ? args.engineEnv : undefined;
+            resourceInputs["engineInsecureRegistries"] = args ? args.engineInsecureRegistries : undefined;
+            resourceInputs["engineInstallUrl"] = args ? args.engineInstallUrl : undefined;
+            resourceInputs["engineLabel"] = args ? args.engineLabel : undefined;
+            resourceInputs["engineOpt"] = args ? args.engineOpt : undefined;
+            resourceInputs["engineRegistryMirrors"] = args ? args.engineRegistryMirrors : undefined;
+            resourceInputs["engineStorageDriver"] = args ? args.engineStorageDriver : undefined;
+            resourceInputs["hetznerConfig"] = args ? args.hetznerConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["linodeConfig"] = args ? args.linodeConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeTaints"] = args ? args.nodeTaints : undefined;
+            resourceInputs["opennebulaConfig"] = args ? args.opennebulaConfig : undefined;
+            resourceInputs["openstackConfig"] = args ? args.openstackConfig : undefined;
+            resourceInputs["useInternalIpAddress"] = args ? args.useInternalIpAddress : undefined;
+            resourceInputs["vsphereConfig"] = args ? args.vsphereConfig : undefined;
+            resourceInputs["driver"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NodeTemplate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NodeTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

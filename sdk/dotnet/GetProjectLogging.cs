@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectLoggingResult> InvokeAsync(GetProjectLoggingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectLoggingResult>("rancher2:index/getProjectLogging:getProjectLogging", args ?? new GetProjectLoggingArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectLoggingResult>("rancher2:index/getProjectLogging:getProjectLogging", args ?? new GetProjectLoggingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Project Logging.
@@ -68,7 +67,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectLoggingResult> Invoke(GetProjectLoggingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectLoggingResult>("rancher2:index/getProjectLogging:getProjectLogging", args ?? new GetProjectLoggingInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProjectLoggingResult>("rancher2:index/getProjectLogging:getProjectLogging", args ?? new GetProjectLoggingInvokeArgs(), options.WithDefaults());
     }
 
 

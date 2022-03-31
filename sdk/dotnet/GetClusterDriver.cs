@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterDriverResult> InvokeAsync(GetClusterDriverArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
@@ -68,7 +67,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterDriverResult> Invoke(GetClusterDriverInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -24,9 +24,7 @@ export function getPodSecurityPolicyTemplate(args: GetPodSecurityPolicyTemplateA
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", {
         "allowPrivilegeEscalation": args.allowPrivilegeEscalation,
         "allowedCapabilities": args.allowedCapabilities,

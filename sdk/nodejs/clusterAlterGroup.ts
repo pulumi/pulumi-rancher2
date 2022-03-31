@@ -86,38 +86,36 @@ export class ClusterAlterGroup extends pulumi.CustomResource {
     /** @deprecated rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup */
     constructor(name: string, argsOrState?: ClusterAlterGroupArgs | ClusterAlterGroupState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("ClusterAlterGroup is deprecated: rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup")
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterAlterGroupState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["groupIntervalSeconds"] = state ? state.groupIntervalSeconds : undefined;
-            inputs["groupWaitSeconds"] = state ? state.groupWaitSeconds : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["recipients"] = state ? state.recipients : undefined;
-            inputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["groupIntervalSeconds"] = state ? state.groupIntervalSeconds : undefined;
+            resourceInputs["groupWaitSeconds"] = state ? state.groupWaitSeconds : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["recipients"] = state ? state.recipients : undefined;
+            resourceInputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
         } else {
             const args = argsOrState as ClusterAlterGroupArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["groupIntervalSeconds"] = args ? args.groupIntervalSeconds : undefined;
-            inputs["groupWaitSeconds"] = args ? args.groupWaitSeconds : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["recipients"] = args ? args.recipients : undefined;
-            inputs["repeatIntervalSeconds"] = args ? args.repeatIntervalSeconds : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["groupIntervalSeconds"] = args ? args.groupIntervalSeconds : undefined;
+            resourceInputs["groupWaitSeconds"] = args ? args.groupWaitSeconds : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["recipients"] = args ? args.recipients : undefined;
+            resourceInputs["repeatIntervalSeconds"] = args ? args.repeatIntervalSeconds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ClusterAlterGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ClusterAlterGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

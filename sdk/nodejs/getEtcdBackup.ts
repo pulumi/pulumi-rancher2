@@ -25,9 +25,7 @@ export function getEtcdBackup(args: GetEtcdBackupArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getEtcdBackup:getEtcdBackup", {
         "clusterId": args.clusterId,
         "name": args.name,

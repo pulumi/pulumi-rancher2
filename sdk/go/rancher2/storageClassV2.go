@@ -194,7 +194,7 @@ type StorageClassV2Input interface {
 }
 
 func (*StorageClassV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageClassV2)(nil))
+	return reflect.TypeOf((**StorageClassV2)(nil)).Elem()
 }
 
 func (i *StorageClassV2) ToStorageClassV2Output() StorageClassV2Output {
@@ -203,35 +203,6 @@ func (i *StorageClassV2) ToStorageClassV2Output() StorageClassV2Output {
 
 func (i *StorageClassV2) ToStorageClassV2OutputWithContext(ctx context.Context) StorageClassV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(StorageClassV2Output)
-}
-
-func (i *StorageClassV2) ToStorageClassV2PtrOutput() StorageClassV2PtrOutput {
-	return i.ToStorageClassV2PtrOutputWithContext(context.Background())
-}
-
-func (i *StorageClassV2) ToStorageClassV2PtrOutputWithContext(ctx context.Context) StorageClassV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageClassV2PtrOutput)
-}
-
-type StorageClassV2PtrInput interface {
-	pulumi.Input
-
-	ToStorageClassV2PtrOutput() StorageClassV2PtrOutput
-	ToStorageClassV2PtrOutputWithContext(ctx context.Context) StorageClassV2PtrOutput
-}
-
-type storageClassV2PtrType StorageClassV2Args
-
-func (*storageClassV2PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageClassV2)(nil))
-}
-
-func (i *storageClassV2PtrType) ToStorageClassV2PtrOutput() StorageClassV2PtrOutput {
-	return i.ToStorageClassV2PtrOutputWithContext(context.Background())
-}
-
-func (i *storageClassV2PtrType) ToStorageClassV2PtrOutputWithContext(ctx context.Context) StorageClassV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageClassV2PtrOutput)
 }
 
 // StorageClassV2ArrayInput is an input type that accepts StorageClassV2Array and StorageClassV2ArrayOutput values.
@@ -287,7 +258,7 @@ func (i StorageClassV2Map) ToStorageClassV2MapOutputWithContext(ctx context.Cont
 type StorageClassV2Output struct{ *pulumi.OutputState }
 
 func (StorageClassV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageClassV2)(nil))
+	return reflect.TypeOf((**StorageClassV2)(nil)).Elem()
 }
 
 func (o StorageClassV2Output) ToStorageClassV2Output() StorageClassV2Output {
@@ -298,44 +269,10 @@ func (o StorageClassV2Output) ToStorageClassV2OutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StorageClassV2Output) ToStorageClassV2PtrOutput() StorageClassV2PtrOutput {
-	return o.ToStorageClassV2PtrOutputWithContext(context.Background())
-}
-
-func (o StorageClassV2Output) ToStorageClassV2PtrOutputWithContext(ctx context.Context) StorageClassV2PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageClassV2) *StorageClassV2 {
-		return &v
-	}).(StorageClassV2PtrOutput)
-}
-
-type StorageClassV2PtrOutput struct{ *pulumi.OutputState }
-
-func (StorageClassV2PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageClassV2)(nil))
-}
-
-func (o StorageClassV2PtrOutput) ToStorageClassV2PtrOutput() StorageClassV2PtrOutput {
-	return o
-}
-
-func (o StorageClassV2PtrOutput) ToStorageClassV2PtrOutputWithContext(ctx context.Context) StorageClassV2PtrOutput {
-	return o
-}
-
-func (o StorageClassV2PtrOutput) Elem() StorageClassV2Output {
-	return o.ApplyT(func(v *StorageClassV2) StorageClassV2 {
-		if v != nil {
-			return *v
-		}
-		var ret StorageClassV2
-		return ret
-	}).(StorageClassV2Output)
-}
-
 type StorageClassV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (StorageClassV2ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StorageClassV2)(nil))
+	return reflect.TypeOf((*[]*StorageClassV2)(nil)).Elem()
 }
 
 func (o StorageClassV2ArrayOutput) ToStorageClassV2ArrayOutput() StorageClassV2ArrayOutput {
@@ -347,15 +284,15 @@ func (o StorageClassV2ArrayOutput) ToStorageClassV2ArrayOutputWithContext(ctx co
 }
 
 func (o StorageClassV2ArrayOutput) Index(i pulumi.IntInput) StorageClassV2Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageClassV2 {
-		return vs[0].([]StorageClassV2)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StorageClassV2 {
+		return vs[0].([]*StorageClassV2)[vs[1].(int)]
 	}).(StorageClassV2Output)
 }
 
 type StorageClassV2MapOutput struct{ *pulumi.OutputState }
 
 func (StorageClassV2MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]StorageClassV2)(nil))
+	return reflect.TypeOf((*map[string]*StorageClassV2)(nil)).Elem()
 }
 
 func (o StorageClassV2MapOutput) ToStorageClassV2MapOutput() StorageClassV2MapOutput {
@@ -367,18 +304,16 @@ func (o StorageClassV2MapOutput) ToStorageClassV2MapOutputWithContext(ctx contex
 }
 
 func (o StorageClassV2MapOutput) MapIndex(k pulumi.StringInput) StorageClassV2Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StorageClassV2 {
-		return vs[0].(map[string]StorageClassV2)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *StorageClassV2 {
+		return vs[0].(map[string]*StorageClassV2)[vs[1].(string)]
 	}).(StorageClassV2Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageClassV2Input)(nil)).Elem(), &StorageClassV2{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageClassV2PtrInput)(nil)).Elem(), &StorageClassV2{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageClassV2ArrayInput)(nil)).Elem(), StorageClassV2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageClassV2MapInput)(nil)).Elem(), StorageClassV2Map{})
 	pulumi.RegisterOutputType(StorageClassV2Output{})
-	pulumi.RegisterOutputType(StorageClassV2PtrOutput{})
 	pulumi.RegisterOutputType(StorageClassV2ArrayOutput{})
 	pulumi.RegisterOutputType(StorageClassV2MapOutput{})
 }

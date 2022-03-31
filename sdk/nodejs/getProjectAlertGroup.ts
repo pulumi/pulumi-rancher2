@@ -25,9 +25,7 @@ export function getProjectAlertGroup(args: GetProjectAlertGroupArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", {
         "name": args.name,
         "projectId": args.projectId,

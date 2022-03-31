@@ -130,26 +130,26 @@ export class AuthConfigKeycloak extends pulumi.CustomResource {
      */
     constructor(name: string, args: AuthConfigKeycloakArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuthConfigKeycloakArgs | AuthConfigKeycloakState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthConfigKeycloakState | undefined;
-            inputs["accessMode"] = state ? state.accessMode : undefined;
-            inputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["displayNameField"] = state ? state.displayNameField : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["entityId"] = state ? state.entityId : undefined;
-            inputs["groupsField"] = state ? state.groupsField : undefined;
-            inputs["idpMetadataContent"] = state ? state.idpMetadataContent : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["rancherApiHost"] = state ? state.rancherApiHost : undefined;
-            inputs["spCert"] = state ? state.spCert : undefined;
-            inputs["spKey"] = state ? state.spKey : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["uidField"] = state ? state.uidField : undefined;
-            inputs["userNameField"] = state ? state.userNameField : undefined;
+            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
+            resourceInputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["displayNameField"] = state ? state.displayNameField : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["entityId"] = state ? state.entityId : undefined;
+            resourceInputs["groupsField"] = state ? state.groupsField : undefined;
+            resourceInputs["idpMetadataContent"] = state ? state.idpMetadataContent : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["rancherApiHost"] = state ? state.rancherApiHost : undefined;
+            resourceInputs["spCert"] = state ? state.spCert : undefined;
+            resourceInputs["spKey"] = state ? state.spKey : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["uidField"] = state ? state.uidField : undefined;
+            resourceInputs["userNameField"] = state ? state.userNameField : undefined;
         } else {
             const args = argsOrState as AuthConfigKeycloakArgs | undefined;
             if ((!args || args.displayNameField === undefined) && !opts.urn) {
@@ -176,27 +176,25 @@ export class AuthConfigKeycloak extends pulumi.CustomResource {
             if ((!args || args.userNameField === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userNameField'");
             }
-            inputs["accessMode"] = args ? args.accessMode : undefined;
-            inputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["displayNameField"] = args ? args.displayNameField : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["entityId"] = args ? args.entityId : undefined;
-            inputs["groupsField"] = args ? args.groupsField : undefined;
-            inputs["idpMetadataContent"] = args ? args.idpMetadataContent : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["rancherApiHost"] = args ? args.rancherApiHost : undefined;
-            inputs["spCert"] = args ? args.spCert : undefined;
-            inputs["spKey"] = args ? args.spKey : undefined;
-            inputs["uidField"] = args ? args.uidField : undefined;
-            inputs["userNameField"] = args ? args.userNameField : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
+            resourceInputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["displayNameField"] = args ? args.displayNameField : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["entityId"] = args ? args.entityId : undefined;
+            resourceInputs["groupsField"] = args ? args.groupsField : undefined;
+            resourceInputs["idpMetadataContent"] = args ? args.idpMetadataContent : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["rancherApiHost"] = args ? args.rancherApiHost : undefined;
+            resourceInputs["spCert"] = args ? args.spCert : undefined;
+            resourceInputs["spKey"] = args ? args.spKey : undefined;
+            resourceInputs["uidField"] = args ? args.uidField : undefined;
+            resourceInputs["userNameField"] = args ? args.userNameField : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AuthConfigKeycloak.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AuthConfigKeycloak.__pulumiType, name, resourceInputs, opts);
     }
 }
 

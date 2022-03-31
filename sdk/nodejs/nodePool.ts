@@ -155,23 +155,23 @@ export class NodePool extends pulumi.CustomResource {
      */
     constructor(name: string, args: NodePoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodePoolArgs | NodePoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["controlPlane"] = state ? state.controlPlane : undefined;
-            inputs["deleteNotReadyAfterSecs"] = state ? state.deleteNotReadyAfterSecs : undefined;
-            inputs["drainBeforeDelete"] = state ? state.drainBeforeDelete : undefined;
-            inputs["etcd"] = state ? state.etcd : undefined;
-            inputs["hostnamePrefix"] = state ? state.hostnamePrefix : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nodeTaints"] = state ? state.nodeTaints : undefined;
-            inputs["nodeTemplateId"] = state ? state.nodeTemplateId : undefined;
-            inputs["quantity"] = state ? state.quantity : undefined;
-            inputs["worker"] = state ? state.worker : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
+            resourceInputs["deleteNotReadyAfterSecs"] = state ? state.deleteNotReadyAfterSecs : undefined;
+            resourceInputs["drainBeforeDelete"] = state ? state.drainBeforeDelete : undefined;
+            resourceInputs["etcd"] = state ? state.etcd : undefined;
+            resourceInputs["hostnamePrefix"] = state ? state.hostnamePrefix : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeTaints"] = state ? state.nodeTaints : undefined;
+            resourceInputs["nodeTemplateId"] = state ? state.nodeTemplateId : undefined;
+            resourceInputs["quantity"] = state ? state.quantity : undefined;
+            resourceInputs["worker"] = state ? state.worker : undefined;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -183,24 +183,22 @@ export class NodePool extends pulumi.CustomResource {
             if ((!args || args.nodeTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeTemplateId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["controlPlane"] = args ? args.controlPlane : undefined;
-            inputs["deleteNotReadyAfterSecs"] = args ? args.deleteNotReadyAfterSecs : undefined;
-            inputs["drainBeforeDelete"] = args ? args.drainBeforeDelete : undefined;
-            inputs["etcd"] = args ? args.etcd : undefined;
-            inputs["hostnamePrefix"] = args ? args.hostnamePrefix : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodeTaints"] = args ? args.nodeTaints : undefined;
-            inputs["nodeTemplateId"] = args ? args.nodeTemplateId : undefined;
-            inputs["quantity"] = args ? args.quantity : undefined;
-            inputs["worker"] = args ? args.worker : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
+            resourceInputs["deleteNotReadyAfterSecs"] = args ? args.deleteNotReadyAfterSecs : undefined;
+            resourceInputs["drainBeforeDelete"] = args ? args.drainBeforeDelete : undefined;
+            resourceInputs["etcd"] = args ? args.etcd : undefined;
+            resourceInputs["hostnamePrefix"] = args ? args.hostnamePrefix : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeTaints"] = args ? args.nodeTaints : undefined;
+            resourceInputs["nodeTemplateId"] = args ? args.nodeTemplateId : undefined;
+            resourceInputs["quantity"] = args ? args.quantity : undefined;
+            resourceInputs["worker"] = args ? args.worker : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NodePool.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NodePool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -102,46 +102,44 @@ export class MachineConfigV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args: MachineConfigV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MachineConfigV2Args | MachineConfigV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MachineConfigV2State | undefined;
-            inputs["amazonec2Config"] = state ? state.amazonec2Config : undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["azureConfig"] = state ? state.azureConfig : undefined;
-            inputs["digitaloceanConfig"] = state ? state.digitaloceanConfig : undefined;
-            inputs["fleetNamespace"] = state ? state.fleetNamespace : undefined;
-            inputs["generateName"] = state ? state.generateName : undefined;
-            inputs["kind"] = state ? state.kind : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["linodeConfig"] = state ? state.linodeConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["openstackConfig"] = state ? state.openstackConfig : undefined;
-            inputs["resourceVersion"] = state ? state.resourceVersion : undefined;
-            inputs["vsphereConfig"] = state ? state.vsphereConfig : undefined;
+            resourceInputs["amazonec2Config"] = state ? state.amazonec2Config : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["azureConfig"] = state ? state.azureConfig : undefined;
+            resourceInputs["digitaloceanConfig"] = state ? state.digitaloceanConfig : undefined;
+            resourceInputs["fleetNamespace"] = state ? state.fleetNamespace : undefined;
+            resourceInputs["generateName"] = state ? state.generateName : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["linodeConfig"] = state ? state.linodeConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["openstackConfig"] = state ? state.openstackConfig : undefined;
+            resourceInputs["resourceVersion"] = state ? state.resourceVersion : undefined;
+            resourceInputs["vsphereConfig"] = state ? state.vsphereConfig : undefined;
         } else {
             const args = argsOrState as MachineConfigV2Args | undefined;
             if ((!args || args.generateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'generateName'");
             }
-            inputs["amazonec2Config"] = args ? args.amazonec2Config : undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["azureConfig"] = args ? args.azureConfig : undefined;
-            inputs["digitaloceanConfig"] = args ? args.digitaloceanConfig : undefined;
-            inputs["fleetNamespace"] = args ? args.fleetNamespace : undefined;
-            inputs["generateName"] = args ? args.generateName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["linodeConfig"] = args ? args.linodeConfig : undefined;
-            inputs["openstackConfig"] = args ? args.openstackConfig : undefined;
-            inputs["vsphereConfig"] = args ? args.vsphereConfig : undefined;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["resourceVersion"] = undefined /*out*/;
+            resourceInputs["amazonec2Config"] = args ? args.amazonec2Config : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["azureConfig"] = args ? args.azureConfig : undefined;
+            resourceInputs["digitaloceanConfig"] = args ? args.digitaloceanConfig : undefined;
+            resourceInputs["fleetNamespace"] = args ? args.fleetNamespace : undefined;
+            resourceInputs["generateName"] = args ? args.generateName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["linodeConfig"] = args ? args.linodeConfig : undefined;
+            resourceInputs["openstackConfig"] = args ? args.openstackConfig : undefined;
+            resourceInputs["vsphereConfig"] = args ? args.vsphereConfig : undefined;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["resourceVersion"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MachineConfigV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MachineConfigV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

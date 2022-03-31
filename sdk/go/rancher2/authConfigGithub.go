@@ -208,7 +208,7 @@ type AuthConfigGithubInput interface {
 }
 
 func (*AuthConfigGithub) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigGithub)(nil))
+	return reflect.TypeOf((**AuthConfigGithub)(nil)).Elem()
 }
 
 func (i *AuthConfigGithub) ToAuthConfigGithubOutput() AuthConfigGithubOutput {
@@ -217,35 +217,6 @@ func (i *AuthConfigGithub) ToAuthConfigGithubOutput() AuthConfigGithubOutput {
 
 func (i *AuthConfigGithub) ToAuthConfigGithubOutputWithContext(ctx context.Context) AuthConfigGithubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubOutput)
-}
-
-func (i *AuthConfigGithub) ToAuthConfigGithubPtrOutput() AuthConfigGithubPtrOutput {
-	return i.ToAuthConfigGithubPtrOutputWithContext(context.Background())
-}
-
-func (i *AuthConfigGithub) ToAuthConfigGithubPtrOutputWithContext(ctx context.Context) AuthConfigGithubPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubPtrOutput)
-}
-
-type AuthConfigGithubPtrInput interface {
-	pulumi.Input
-
-	ToAuthConfigGithubPtrOutput() AuthConfigGithubPtrOutput
-	ToAuthConfigGithubPtrOutputWithContext(ctx context.Context) AuthConfigGithubPtrOutput
-}
-
-type authConfigGithubPtrType AuthConfigGithubArgs
-
-func (*authConfigGithubPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthConfigGithub)(nil))
-}
-
-func (i *authConfigGithubPtrType) ToAuthConfigGithubPtrOutput() AuthConfigGithubPtrOutput {
-	return i.ToAuthConfigGithubPtrOutputWithContext(context.Background())
-}
-
-func (i *authConfigGithubPtrType) ToAuthConfigGithubPtrOutputWithContext(ctx context.Context) AuthConfigGithubPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubPtrOutput)
 }
 
 // AuthConfigGithubArrayInput is an input type that accepts AuthConfigGithubArray and AuthConfigGithubArrayOutput values.
@@ -301,7 +272,7 @@ func (i AuthConfigGithubMap) ToAuthConfigGithubMapOutputWithContext(ctx context.
 type AuthConfigGithubOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigGithubOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigGithub)(nil))
+	return reflect.TypeOf((**AuthConfigGithub)(nil)).Elem()
 }
 
 func (o AuthConfigGithubOutput) ToAuthConfigGithubOutput() AuthConfigGithubOutput {
@@ -312,44 +283,10 @@ func (o AuthConfigGithubOutput) ToAuthConfigGithubOutputWithContext(ctx context.
 	return o
 }
 
-func (o AuthConfigGithubOutput) ToAuthConfigGithubPtrOutput() AuthConfigGithubPtrOutput {
-	return o.ToAuthConfigGithubPtrOutputWithContext(context.Background())
-}
-
-func (o AuthConfigGithubOutput) ToAuthConfigGithubPtrOutputWithContext(ctx context.Context) AuthConfigGithubPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigGithub) *AuthConfigGithub {
-		return &v
-	}).(AuthConfigGithubPtrOutput)
-}
-
-type AuthConfigGithubPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthConfigGithubPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthConfigGithub)(nil))
-}
-
-func (o AuthConfigGithubPtrOutput) ToAuthConfigGithubPtrOutput() AuthConfigGithubPtrOutput {
-	return o
-}
-
-func (o AuthConfigGithubPtrOutput) ToAuthConfigGithubPtrOutputWithContext(ctx context.Context) AuthConfigGithubPtrOutput {
-	return o
-}
-
-func (o AuthConfigGithubPtrOutput) Elem() AuthConfigGithubOutput {
-	return o.ApplyT(func(v *AuthConfigGithub) AuthConfigGithub {
-		if v != nil {
-			return *v
-		}
-		var ret AuthConfigGithub
-		return ret
-	}).(AuthConfigGithubOutput)
-}
-
 type AuthConfigGithubArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigGithubArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuthConfigGithub)(nil))
+	return reflect.TypeOf((*[]*AuthConfigGithub)(nil)).Elem()
 }
 
 func (o AuthConfigGithubArrayOutput) ToAuthConfigGithubArrayOutput() AuthConfigGithubArrayOutput {
@@ -361,15 +298,15 @@ func (o AuthConfigGithubArrayOutput) ToAuthConfigGithubArrayOutputWithContext(ct
 }
 
 func (o AuthConfigGithubArrayOutput) Index(i pulumi.IntInput) AuthConfigGithubOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthConfigGithub {
-		return vs[0].([]AuthConfigGithub)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigGithub {
+		return vs[0].([]*AuthConfigGithub)[vs[1].(int)]
 	}).(AuthConfigGithubOutput)
 }
 
 type AuthConfigGithubMapOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigGithubMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AuthConfigGithub)(nil))
+	return reflect.TypeOf((*map[string]*AuthConfigGithub)(nil)).Elem()
 }
 
 func (o AuthConfigGithubMapOutput) ToAuthConfigGithubMapOutput() AuthConfigGithubMapOutput {
@@ -381,18 +318,16 @@ func (o AuthConfigGithubMapOutput) ToAuthConfigGithubMapOutputWithContext(ctx co
 }
 
 func (o AuthConfigGithubMapOutput) MapIndex(k pulumi.StringInput) AuthConfigGithubOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthConfigGithub {
-		return vs[0].(map[string]AuthConfigGithub)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AuthConfigGithub {
+		return vs[0].(map[string]*AuthConfigGithub)[vs[1].(string)]
 	}).(AuthConfigGithubOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigGithubInput)(nil)).Elem(), &AuthConfigGithub{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigGithubPtrInput)(nil)).Elem(), &AuthConfigGithub{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigGithubArrayInput)(nil)).Elem(), AuthConfigGithubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigGithubMapInput)(nil)).Elem(), AuthConfigGithubMap{})
 	pulumi.RegisterOutputType(AuthConfigGithubOutput{})
-	pulumi.RegisterOutputType(AuthConfigGithubPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigGithubArrayOutput{})
 	pulumi.RegisterOutputType(AuthConfigGithubMapOutput{})
 }

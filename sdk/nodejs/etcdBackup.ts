@@ -6,6 +6,32 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Etcd Backup
+ * const foo = new rancher2.EtcdBackup("foo", {
+ *     backupConfig: {
+ *         enabled: true,
+ *         intervalHours: 20,
+ *         retention: 10,
+ *         s3BackupConfig: {
+ *             accessKey: "access_key",
+ *             bucketName: "bucket_name",
+ *             endpoint: "endpoint",
+ *             folder: "/folder",
+ *             region: "region",
+ *             secretKey: "secret_key",
+ *         },
+ *     },
+ *     clusterId: "<CLUSTER_ID>",
+ *     filename: "<FILENAME>",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Etcd Backup can be imported using the Rancher etcd backup ID
@@ -84,36 +110,34 @@ export class EtcdBackup extends pulumi.CustomResource {
      */
     constructor(name: string, args: EtcdBackupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EtcdBackupArgs | EtcdBackupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EtcdBackupState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["backupConfig"] = state ? state.backupConfig : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["filename"] = state ? state.filename : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["manual"] = state ? state.manual : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespaceId"] = state ? state.namespaceId : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["backupConfig"] = state ? state.backupConfig : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["filename"] = state ? state.filename : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["manual"] = state ? state.manual : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
         } else {
             const args = argsOrState as EtcdBackupArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["backupConfig"] = args ? args.backupConfig : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["filename"] = args ? args.filename : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["manual"] = args ? args.manual : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["backupConfig"] = args ? args.backupConfig : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["filename"] = args ? args.filename : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["manual"] = args ? args.manual : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EtcdBackup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EtcdBackup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

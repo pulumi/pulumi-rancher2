@@ -24,11 +24,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "<namespace_name>"
 // 		_, err := rancher2.LookupApp(ctx, &GetAppArgs{
 // 			Name:            "foo",
 // 			ProjectId:       "<project_id>",
-// 			TargetNamespace: &opt0,
+// 			TargetNamespace: pulumi.StringRef("<namespace_name>"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

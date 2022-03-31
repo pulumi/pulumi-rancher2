@@ -272,7 +272,7 @@ type AuthConfigPingInput interface {
 }
 
 func (*AuthConfigPing) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigPing)(nil))
+	return reflect.TypeOf((**AuthConfigPing)(nil)).Elem()
 }
 
 func (i *AuthConfigPing) ToAuthConfigPingOutput() AuthConfigPingOutput {
@@ -281,35 +281,6 @@ func (i *AuthConfigPing) ToAuthConfigPingOutput() AuthConfigPingOutput {
 
 func (i *AuthConfigPing) ToAuthConfigPingOutputWithContext(ctx context.Context) AuthConfigPingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigPingOutput)
-}
-
-func (i *AuthConfigPing) ToAuthConfigPingPtrOutput() AuthConfigPingPtrOutput {
-	return i.ToAuthConfigPingPtrOutputWithContext(context.Background())
-}
-
-func (i *AuthConfigPing) ToAuthConfigPingPtrOutputWithContext(ctx context.Context) AuthConfigPingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigPingPtrOutput)
-}
-
-type AuthConfigPingPtrInput interface {
-	pulumi.Input
-
-	ToAuthConfigPingPtrOutput() AuthConfigPingPtrOutput
-	ToAuthConfigPingPtrOutputWithContext(ctx context.Context) AuthConfigPingPtrOutput
-}
-
-type authConfigPingPtrType AuthConfigPingArgs
-
-func (*authConfigPingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthConfigPing)(nil))
-}
-
-func (i *authConfigPingPtrType) ToAuthConfigPingPtrOutput() AuthConfigPingPtrOutput {
-	return i.ToAuthConfigPingPtrOutputWithContext(context.Background())
-}
-
-func (i *authConfigPingPtrType) ToAuthConfigPingPtrOutputWithContext(ctx context.Context) AuthConfigPingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigPingPtrOutput)
 }
 
 // AuthConfigPingArrayInput is an input type that accepts AuthConfigPingArray and AuthConfigPingArrayOutput values.
@@ -365,7 +336,7 @@ func (i AuthConfigPingMap) ToAuthConfigPingMapOutputWithContext(ctx context.Cont
 type AuthConfigPingOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigPingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigPing)(nil))
+	return reflect.TypeOf((**AuthConfigPing)(nil)).Elem()
 }
 
 func (o AuthConfigPingOutput) ToAuthConfigPingOutput() AuthConfigPingOutput {
@@ -376,44 +347,10 @@ func (o AuthConfigPingOutput) ToAuthConfigPingOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o AuthConfigPingOutput) ToAuthConfigPingPtrOutput() AuthConfigPingPtrOutput {
-	return o.ToAuthConfigPingPtrOutputWithContext(context.Background())
-}
-
-func (o AuthConfigPingOutput) ToAuthConfigPingPtrOutputWithContext(ctx context.Context) AuthConfigPingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigPing) *AuthConfigPing {
-		return &v
-	}).(AuthConfigPingPtrOutput)
-}
-
-type AuthConfigPingPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthConfigPingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthConfigPing)(nil))
-}
-
-func (o AuthConfigPingPtrOutput) ToAuthConfigPingPtrOutput() AuthConfigPingPtrOutput {
-	return o
-}
-
-func (o AuthConfigPingPtrOutput) ToAuthConfigPingPtrOutputWithContext(ctx context.Context) AuthConfigPingPtrOutput {
-	return o
-}
-
-func (o AuthConfigPingPtrOutput) Elem() AuthConfigPingOutput {
-	return o.ApplyT(func(v *AuthConfigPing) AuthConfigPing {
-		if v != nil {
-			return *v
-		}
-		var ret AuthConfigPing
-		return ret
-	}).(AuthConfigPingOutput)
-}
-
 type AuthConfigPingArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigPingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuthConfigPing)(nil))
+	return reflect.TypeOf((*[]*AuthConfigPing)(nil)).Elem()
 }
 
 func (o AuthConfigPingArrayOutput) ToAuthConfigPingArrayOutput() AuthConfigPingArrayOutput {
@@ -425,15 +362,15 @@ func (o AuthConfigPingArrayOutput) ToAuthConfigPingArrayOutputWithContext(ctx co
 }
 
 func (o AuthConfigPingArrayOutput) Index(i pulumi.IntInput) AuthConfigPingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthConfigPing {
-		return vs[0].([]AuthConfigPing)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigPing {
+		return vs[0].([]*AuthConfigPing)[vs[1].(int)]
 	}).(AuthConfigPingOutput)
 }
 
 type AuthConfigPingMapOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigPingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AuthConfigPing)(nil))
+	return reflect.TypeOf((*map[string]*AuthConfigPing)(nil)).Elem()
 }
 
 func (o AuthConfigPingMapOutput) ToAuthConfigPingMapOutput() AuthConfigPingMapOutput {
@@ -445,18 +382,16 @@ func (o AuthConfigPingMapOutput) ToAuthConfigPingMapOutputWithContext(ctx contex
 }
 
 func (o AuthConfigPingMapOutput) MapIndex(k pulumi.StringInput) AuthConfigPingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthConfigPing {
-		return vs[0].(map[string]AuthConfigPing)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AuthConfigPing {
+		return vs[0].(map[string]*AuthConfigPing)[vs[1].(string)]
 	}).(AuthConfigPingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigPingInput)(nil)).Elem(), &AuthConfigPing{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigPingPtrInput)(nil)).Elem(), &AuthConfigPing{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigPingArrayInput)(nil)).Elem(), AuthConfigPingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigPingMapInput)(nil)).Elem(), AuthConfigPingMap{})
 	pulumi.RegisterOutputType(AuthConfigPingOutput{})
-	pulumi.RegisterOutputType(AuthConfigPingPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigPingArrayOutput{})
 	pulumi.RegisterOutputType(AuthConfigPingMapOutput{})
 }

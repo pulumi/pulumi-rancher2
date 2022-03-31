@@ -11,6 +11,84 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewApp(ctx, "foo", &rancher2.AppArgs{
+// 			Answers: pulumi.AnyMap{
+// 				"foo": pulumi.Any("bar"),
+// 				"ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": pulumi.Any(true),
+// 				"ingress_host": pulumi.Any("test.xip.io"),
+// 			},
+// 			CatalogName:     pulumi.String("<catalog_name>"),
+// 			Description:     pulumi.String("Foo app"),
+// 			ProjectId:       pulumi.String("<project_id>"),
+// 			TargetNamespace: pulumi.String("<namespace_name>"),
+// 			TemplateName:    pulumi.String("<template_name>"),
+// 			TemplateVersion: pulumi.String("<template_version>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooNamespace, err := rancher2.NewNamespace(ctx, "fooNamespace", &rancher2.NamespaceArgs{
+// 			Description: pulumi.String("Foo namespace"),
+// 			ProjectId:   pulumi.String("<project_id>"),
+// 			ResourceQuota: &NamespaceResourceQuotaArgs{
+// 				Limit: &NamespaceResourceQuotaLimitArgs{
+// 					LimitsCpu:       pulumi.String("100m"),
+// 					LimitsMemory:    pulumi.String("100Mi"),
+// 					RequestsStorage: pulumi.String("1Gi"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewApp(ctx, "fooApp", &rancher2.AppArgs{
+// 			CatalogName:     pulumi.String("<catalog_name>"),
+// 			Description:     pulumi.String("Foo app"),
+// 			ProjectId:       pulumi.String("<project_id>"),
+// 			TemplateName:    pulumi.String("<template_name>"),
+// 			TemplateVersion: pulumi.String("<template_version>"),
+// 			TargetNamespace: fooNamespace.ID(),
+// 			Answers: pulumi.AnyMap{
+// 				"ingress_host": pulumi.Any("test.xip.io"),
+// 				"foo":          pulumi.Any("bar"),
+// 				"ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": pulumi.Any(true),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Apps can be imported using the app ID in the format `<project_id>:<app_name>`
@@ -248,7 +326,7 @@ type AppInput interface {
 }
 
 func (*App) ElementType() reflect.Type {
-	return reflect.TypeOf((*App)(nil))
+	return reflect.TypeOf((**App)(nil)).Elem()
 }
 
 func (i *App) ToAppOutput() AppOutput {
@@ -257,35 +335,6 @@ func (i *App) ToAppOutput() AppOutput {
 
 func (i *App) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppOutput)
-}
-
-func (i *App) ToAppPtrOutput() AppPtrOutput {
-	return i.ToAppPtrOutputWithContext(context.Background())
-}
-
-func (i *App) ToAppPtrOutputWithContext(ctx context.Context) AppPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppPtrOutput)
-}
-
-type AppPtrInput interface {
-	pulumi.Input
-
-	ToAppPtrOutput() AppPtrOutput
-	ToAppPtrOutputWithContext(ctx context.Context) AppPtrOutput
-}
-
-type appPtrType AppArgs
-
-func (*appPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**App)(nil))
-}
-
-func (i *appPtrType) ToAppPtrOutput() AppPtrOutput {
-	return i.ToAppPtrOutputWithContext(context.Background())
-}
-
-func (i *appPtrType) ToAppPtrOutputWithContext(ctx context.Context) AppPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppPtrOutput)
 }
 
 // AppArrayInput is an input type that accepts AppArray and AppArrayOutput values.
@@ -341,7 +390,7 @@ func (i AppMap) ToAppMapOutputWithContext(ctx context.Context) AppMapOutput {
 type AppOutput struct{ *pulumi.OutputState }
 
 func (AppOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*App)(nil))
+	return reflect.TypeOf((**App)(nil)).Elem()
 }
 
 func (o AppOutput) ToAppOutput() AppOutput {
@@ -352,44 +401,10 @@ func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
 }
 
-func (o AppOutput) ToAppPtrOutput() AppPtrOutput {
-	return o.ToAppPtrOutputWithContext(context.Background())
-}
-
-func (o AppOutput) ToAppPtrOutputWithContext(ctx context.Context) AppPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v App) *App {
-		return &v
-	}).(AppPtrOutput)
-}
-
-type AppPtrOutput struct{ *pulumi.OutputState }
-
-func (AppPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**App)(nil))
-}
-
-func (o AppPtrOutput) ToAppPtrOutput() AppPtrOutput {
-	return o
-}
-
-func (o AppPtrOutput) ToAppPtrOutputWithContext(ctx context.Context) AppPtrOutput {
-	return o
-}
-
-func (o AppPtrOutput) Elem() AppOutput {
-	return o.ApplyT(func(v *App) App {
-		if v != nil {
-			return *v
-		}
-		var ret App
-		return ret
-	}).(AppOutput)
-}
-
 type AppArrayOutput struct{ *pulumi.OutputState }
 
 func (AppArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]App)(nil))
+	return reflect.TypeOf((*[]*App)(nil)).Elem()
 }
 
 func (o AppArrayOutput) ToAppArrayOutput() AppArrayOutput {
@@ -401,15 +416,15 @@ func (o AppArrayOutput) ToAppArrayOutputWithContext(ctx context.Context) AppArra
 }
 
 func (o AppArrayOutput) Index(i pulumi.IntInput) AppOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) App {
-		return vs[0].([]App)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *App {
+		return vs[0].([]*App)[vs[1].(int)]
 	}).(AppOutput)
 }
 
 type AppMapOutput struct{ *pulumi.OutputState }
 
 func (AppMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]App)(nil))
+	return reflect.TypeOf((*map[string]*App)(nil)).Elem()
 }
 
 func (o AppMapOutput) ToAppMapOutput() AppMapOutput {
@@ -421,18 +436,16 @@ func (o AppMapOutput) ToAppMapOutputWithContext(ctx context.Context) AppMapOutpu
 }
 
 func (o AppMapOutput) MapIndex(k pulumi.StringInput) AppOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) App {
-		return vs[0].(map[string]App)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *App {
+		return vs[0].(map[string]*App)[vs[1].(string)]
 	}).(AppOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppInput)(nil)).Elem(), &App{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppPtrInput)(nil)).Elem(), &App{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppArrayInput)(nil)).Elem(), AppArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppMapInput)(nil)).Elem(), AppMap{})
 	pulumi.RegisterOutputType(AppOutput{})
-	pulumi.RegisterOutputType(AppPtrOutput{})
 	pulumi.RegisterOutputType(AppArrayOutput{})
 	pulumi.RegisterOutputType(AppMapOutput{})
 }

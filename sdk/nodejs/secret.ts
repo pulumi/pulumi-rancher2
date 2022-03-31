@@ -87,17 +87,17 @@ export class Secret extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecretArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretArgs | SecretState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["data"] = state ? state.data : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespaceId"] = state ? state.namespaceId : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["data"] = state ? state.data : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as SecretArgs | undefined;
             if ((!args || args.data === undefined) && !opts.urn) {
@@ -106,18 +106,16 @@ export class Secret extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["data"] = args ? args.data : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespaceId"] = args ? args.namespaceId : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["data"] = args ? args.data : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Secret.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Secret.__pulumiType, name, resourceInputs, opts);
     }
 }
 

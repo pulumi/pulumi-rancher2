@@ -312,7 +312,7 @@ type ClusterTemplateInput interface {
 }
 
 func (*ClusterTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterTemplate)(nil))
+	return reflect.TypeOf((**ClusterTemplate)(nil)).Elem()
 }
 
 func (i *ClusterTemplate) ToClusterTemplateOutput() ClusterTemplateOutput {
@@ -321,35 +321,6 @@ func (i *ClusterTemplate) ToClusterTemplateOutput() ClusterTemplateOutput {
 
 func (i *ClusterTemplate) ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateOutput)
-}
-
-func (i *ClusterTemplate) ToClusterTemplatePtrOutput() ClusterTemplatePtrOutput {
-	return i.ToClusterTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterTemplate) ToClusterTemplatePtrOutputWithContext(ctx context.Context) ClusterTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplatePtrOutput)
-}
-
-type ClusterTemplatePtrInput interface {
-	pulumi.Input
-
-	ToClusterTemplatePtrOutput() ClusterTemplatePtrOutput
-	ToClusterTemplatePtrOutputWithContext(ctx context.Context) ClusterTemplatePtrOutput
-}
-
-type clusterTemplatePtrType ClusterTemplateArgs
-
-func (*clusterTemplatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterTemplate)(nil))
-}
-
-func (i *clusterTemplatePtrType) ToClusterTemplatePtrOutput() ClusterTemplatePtrOutput {
-	return i.ToClusterTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *clusterTemplatePtrType) ToClusterTemplatePtrOutputWithContext(ctx context.Context) ClusterTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplatePtrOutput)
 }
 
 // ClusterTemplateArrayInput is an input type that accepts ClusterTemplateArray and ClusterTemplateArrayOutput values.
@@ -405,7 +376,7 @@ func (i ClusterTemplateMap) ToClusterTemplateMapOutputWithContext(ctx context.Co
 type ClusterTemplateOutput struct{ *pulumi.OutputState }
 
 func (ClusterTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterTemplate)(nil))
+	return reflect.TypeOf((**ClusterTemplate)(nil)).Elem()
 }
 
 func (o ClusterTemplateOutput) ToClusterTemplateOutput() ClusterTemplateOutput {
@@ -416,44 +387,10 @@ func (o ClusterTemplateOutput) ToClusterTemplateOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ClusterTemplateOutput) ToClusterTemplatePtrOutput() ClusterTemplatePtrOutput {
-	return o.ToClusterTemplatePtrOutputWithContext(context.Background())
-}
-
-func (o ClusterTemplateOutput) ToClusterTemplatePtrOutputWithContext(ctx context.Context) ClusterTemplatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterTemplate) *ClusterTemplate {
-		return &v
-	}).(ClusterTemplatePtrOutput)
-}
-
-type ClusterTemplatePtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterTemplatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterTemplate)(nil))
-}
-
-func (o ClusterTemplatePtrOutput) ToClusterTemplatePtrOutput() ClusterTemplatePtrOutput {
-	return o
-}
-
-func (o ClusterTemplatePtrOutput) ToClusterTemplatePtrOutputWithContext(ctx context.Context) ClusterTemplatePtrOutput {
-	return o
-}
-
-func (o ClusterTemplatePtrOutput) Elem() ClusterTemplateOutput {
-	return o.ApplyT(func(v *ClusterTemplate) ClusterTemplate {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterTemplate
-		return ret
-	}).(ClusterTemplateOutput)
-}
-
 type ClusterTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterTemplateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterTemplate)(nil))
+	return reflect.TypeOf((*[]*ClusterTemplate)(nil)).Elem()
 }
 
 func (o ClusterTemplateArrayOutput) ToClusterTemplateArrayOutput() ClusterTemplateArrayOutput {
@@ -465,15 +402,15 @@ func (o ClusterTemplateArrayOutput) ToClusterTemplateArrayOutputWithContext(ctx 
 }
 
 func (o ClusterTemplateArrayOutput) Index(i pulumi.IntInput) ClusterTemplateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterTemplate {
-		return vs[0].([]ClusterTemplate)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterTemplate {
+		return vs[0].([]*ClusterTemplate)[vs[1].(int)]
 	}).(ClusterTemplateOutput)
 }
 
 type ClusterTemplateMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterTemplateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterTemplate)(nil))
+	return reflect.TypeOf((*map[string]*ClusterTemplate)(nil)).Elem()
 }
 
 func (o ClusterTemplateMapOutput) ToClusterTemplateMapOutput() ClusterTemplateMapOutput {
@@ -485,18 +422,16 @@ func (o ClusterTemplateMapOutput) ToClusterTemplateMapOutputWithContext(ctx cont
 }
 
 func (o ClusterTemplateMapOutput) MapIndex(k pulumi.StringInput) ClusterTemplateOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterTemplate {
-		return vs[0].(map[string]ClusterTemplate)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterTemplate {
+		return vs[0].(map[string]*ClusterTemplate)[vs[1].(string)]
 	}).(ClusterTemplateOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTemplateInput)(nil)).Elem(), &ClusterTemplate{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTemplatePtrInput)(nil)).Elem(), &ClusterTemplate{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTemplateArrayInput)(nil)).Elem(), ClusterTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTemplateMapInput)(nil)).Elem(), ClusterTemplateMap{})
 	pulumi.RegisterOutputType(ClusterTemplateOutput{})
-	pulumi.RegisterOutputType(ClusterTemplatePtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateArrayOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateMapOutput{})
 }

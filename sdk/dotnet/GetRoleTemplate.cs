@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRoleTemplateResult> InvokeAsync(GetRoleTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleTemplateResult>("rancher2:index/getRoleTemplate:getRoleTemplate", args ?? new GetRoleTemplateArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleTemplateResult>("rancher2:index/getRoleTemplate:getRoleTemplate", args ?? new GetRoleTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 role template resource.
@@ -68,7 +67,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRoleTemplateResult> Invoke(GetRoleTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRoleTemplateResult>("rancher2:index/getRoleTemplate:getRoleTemplate", args ?? new GetRoleTemplateInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRoleTemplateResult>("rancher2:index/getRoleTemplate:getRoleTemplate", args ?? new GetRoleTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

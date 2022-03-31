@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCloudCredentialResult> InvokeAsync(GetCloudCredentialArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? new GetCloudCredentialArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? new GetCloudCredentialArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Cloud Credential.
@@ -68,7 +67,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCloudCredentialResult> Invoke(GetCloudCredentialInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? new GetCloudCredentialInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? new GetCloudCredentialInvokeArgs(), options.WithDefaults());
     }
 
 

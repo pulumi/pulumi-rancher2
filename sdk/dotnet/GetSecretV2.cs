@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -16,13 +15,13 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Task<GetSecretV2Result> InvokeAsync(GetSecretV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretV2Result>("rancher2:index/getSecretV2:getSecretV2", args ?? new GetSecretV2Args(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretV2Result>("rancher2:index/getSecretV2:getSecretV2", args ?? new GetSecretV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Output<GetSecretV2Result> Invoke(GetSecretV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretV2Result>("rancher2:index/getSecretV2:getSecretV2", args ?? new GetSecretV2InvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSecretV2Result>("rancher2:index/getSecretV2:getSecretV2", args ?? new GetSecretV2InvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -16,13 +15,13 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher2 configMap v2. ConfigMap v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Task<GetConfigMapV2Result> InvokeAsync(GetConfigMapV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigMapV2Result>("rancher2:index/getConfigMapV2:getConfigMapV2", args ?? new GetConfigMapV2Args(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigMapV2Result>("rancher2:index/getConfigMapV2:getConfigMapV2", args ?? new GetConfigMapV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher2 configMap v2. ConfigMap v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Output<GetConfigMapV2Result> Invoke(GetConfigMapV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConfigMapV2Result>("rancher2:index/getConfigMapV2:getConfigMapV2", args ?? new GetConfigMapV2InvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConfigMapV2Result>("rancher2:index/getConfigMapV2:getConfigMapV2", args ?? new GetConfigMapV2InvokeArgs(), options.WithDefaults());
     }
 
 

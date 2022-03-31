@@ -131,48 +131,46 @@ export class Catalog extends pulumi.CustomResource {
      */
     constructor(name: string, args: CatalogArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CatalogArgs | CatalogState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CatalogState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["branch"] = state ? state.branch : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["kind"] = state ? state.kind : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["refresh"] = state ? state.refresh : undefined;
-            inputs["scope"] = state ? state.scope : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["username"] = state ? state.username : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["branch"] = state ? state.branch : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["refresh"] = state ? state.refresh : undefined;
+            resourceInputs["scope"] = state ? state.scope : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as CatalogArgs | undefined;
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["branch"] = args ? args.branch : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["refresh"] = args ? args.refresh : undefined;
-            inputs["scope"] = args ? args.scope : undefined;
-            inputs["url"] = args ? args.url : undefined;
-            inputs["username"] = args ? args.username : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["branch"] = args ? args.branch : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["refresh"] = args ? args.refresh : undefined;
+            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Catalog.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Catalog.__pulumiType, name, resourceInputs, opts);
     }
 }
 

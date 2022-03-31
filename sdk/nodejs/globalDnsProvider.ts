@@ -124,36 +124,34 @@ export class GlobalDnsProvider extends pulumi.CustomResource {
      */
     constructor(name: string, args: GlobalDnsProviderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalDnsProviderArgs | GlobalDnsProviderState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalDnsProviderState | undefined;
-            inputs["alidnsConfig"] = state ? state.alidnsConfig : undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["cloudflareConfig"] = state ? state.cloudflareConfig : undefined;
-            inputs["dnsProvider"] = state ? state.dnsProvider : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["rootDomain"] = state ? state.rootDomain : undefined;
-            inputs["route53Config"] = state ? state.route53Config : undefined;
+            resourceInputs["alidnsConfig"] = state ? state.alidnsConfig : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["cloudflareConfig"] = state ? state.cloudflareConfig : undefined;
+            resourceInputs["dnsProvider"] = state ? state.dnsProvider : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["rootDomain"] = state ? state.rootDomain : undefined;
+            resourceInputs["route53Config"] = state ? state.route53Config : undefined;
         } else {
             const args = argsOrState as GlobalDnsProviderArgs | undefined;
             if ((!args || args.rootDomain === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rootDomain'");
             }
-            inputs["alidnsConfig"] = args ? args.alidnsConfig : undefined;
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["cloudflareConfig"] = args ? args.cloudflareConfig : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["rootDomain"] = args ? args.rootDomain : undefined;
-            inputs["route53Config"] = args ? args.route53Config : undefined;
-            inputs["dnsProvider"] = undefined /*out*/;
+            resourceInputs["alidnsConfig"] = args ? args.alidnsConfig : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["cloudflareConfig"] = args ? args.cloudflareConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["rootDomain"] = args ? args.rootDomain : undefined;
+            resourceInputs["route53Config"] = args ? args.route53Config : undefined;
+            resourceInputs["dnsProvider"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GlobalDnsProvider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GlobalDnsProvider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

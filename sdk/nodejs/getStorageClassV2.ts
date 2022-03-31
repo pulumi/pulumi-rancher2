@@ -12,9 +12,7 @@ export function getStorageClassV2(args: GetStorageClassV2Args, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rancher2:index/getStorageClassV2:getStorageClassV2", {
         "clusterId": args.clusterId,
         "name": args.name,

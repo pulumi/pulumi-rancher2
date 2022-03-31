@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Rancher2
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPodSecurityPolicyTemplateResult> InvokeAsync(GetPodSecurityPolicyTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
@@ -68,7 +67,7 @@ namespace Pulumi.Rancher2
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPodSecurityPolicyTemplateResult> Invoke(GetPodSecurityPolicyTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateInvokeArgs(), options.WithDefaults());
     }
 
 
