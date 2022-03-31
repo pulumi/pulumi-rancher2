@@ -45,15 +45,15 @@ To use from .NET, install using `dotnet add package`:
 
 ## Configuration
 
-The following configuration points are available for the `xyz` provider:
+The following configuration points are available for the `rancher2` provider:
 
-- `rancher2:apiUrl` (Required) - The URL to the rancher API. It must be provided, but it can also be sourced from the 
+- `rancher2:apiUrl` (Required) - The URL to the rancher API. It must be provided, but it can also be sourced from the
   `RANCHER_URL` environment variable.
 - `rancher2:accessKey` (Optional) - API Key used to authenticate with the rancher server. It can also be sourced from the
   `RANCHER_ACCESS_KEY` environment variable.
 - `rancher2:secretKey` (Optional) - API secret used to authenticate with the rancher server. It can also be sourced from
   the `RANCHER_SECRET_KEY` environment variable.
-- `rancher2:tokenKey` (Optional) - API token used to authenticate with the rancher server. It can also be sourced from 
+- `rancher2:tokenKey` (Optional) - API token used to authenticate with the rancher server. It can also be sourced from
   the `RANCHER_TOKEN_KEY` environment variable.
 - `rancher2:caCerts` (Optional) - CA certificates used to sign rancher server tls certificates. Mandatory if self signed
   tls and insecure option false. It can also be sourced from the `RANCHER_CA_CERTS` environment variable.
