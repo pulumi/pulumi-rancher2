@@ -12,9 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterAlterRuleEventRuleArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+        /// </summary>
         [Input("eventType")]
         public Input<string>? EventType { get; set; }
 
+        /// <summary>
+        /// Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+        /// </summary>
         [Input("resourceKind", required: true)]
         public Input<string> ResourceKind { get; set; } = null!;
 

@@ -45,6 +45,7 @@ namespace Pulumi.Rancher2.Outputs
         /// Cluster V2 docker registries (list maxitems:1)
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigRegistries? Registries;
+        public readonly Outputs.ClusterV2RkeConfigRotateCertificates? RotateCertificates;
         /// <summary>
         /// Cluster V2 upgrade strategy (list maxitems:1)
         /// </summary>
@@ -68,6 +69,8 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.ClusterV2RkeConfigRegistries? registries,
 
+            Outputs.ClusterV2RkeConfigRotateCertificates? rotateCertificates,
+
             Outputs.ClusterV2RkeConfigUpgradeStrategy? upgradeStrategy)
         {
             AdditionalManifest = additionalManifest;
@@ -78,6 +81,7 @@ namespace Pulumi.Rancher2.Outputs
             MachinePools = machinePools;
             MachineSelectorConfigs = machineSelectorConfigs;
             Registries = registries;
+            RotateCertificates = rotateCertificates;
             UpgradeStrategy = upgradeStrategy;
         }
     }

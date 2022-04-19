@@ -12,7 +12,7 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
     /// 
-    /// amazonec2, azure, digitalocean, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.
+    /// amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.
     /// 
     /// **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
     /// 
@@ -89,6 +89,50 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// ### Using the Harvester Node Driver
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo_harvesterClusterV2 = Output.Create(Rancher2.GetClusterV2.InvokeAsync(new Rancher2.GetClusterV2Args
+    ///         {
+    ///             Name = "foo-harvester",
+    ///         }));
+    ///         // Create a new Cloud Credential for an imported Harvester cluster
+    ///         var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvesterCloudCredential", new Rancher2.CloudCredentialArgs
+    ///         {
+    ///             HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
+    ///             {
+    ///                 ClusterId = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.ClusterV1Id),
+    ///                 ClusterType = "imported",
+    ///                 KubeconfigContent = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.KubeConfig),
+    ///             },
+    ///         });
+    ///         // Create a new rancher2 Node Template using harvester node_driver
+    ///         var foo_harvesterNodeTemplate = new Rancher2.NodeTemplate("foo-harvesterNodeTemplate", new Rancher2.NodeTemplateArgs
+    ///         {
+    ///             CloudCredentialId = foo_harvesterCloudCredential.Id,
+    ///             EngineInstallUrl = "https://releases.rancher.com/install-docker/20.10.sh",
+    ///             HarvesterConfig = new Rancher2.Inputs.NodeTemplateHarvesterConfigArgs
+    ///             {
+    ///                 VmNamespace = "default",
+    ///                 CpuCount = "2",
+    ///                 MemorySize = "4",
+    ///                 DiskSize = "40",
+    ///                 NetworkName = "harvester-public/vlan1",
+    ///                 ImageName = "harvester-public/image-57hzg",
+    ///                 SshUser = "ubuntu",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Using the Hetzner Node Driver
     /// 
     /// ```csharp
@@ -105,7 +149,7 @@ namespace Pulumi.Rancher2
     ///             Active = true,
     ///             Builtin = false,
     ///             UiUrl = "https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
-    ///             Url = "https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz",
+    ///             Url = "https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz",
     ///             WhitelistDomains = 
     ///             {
     ///                 "storage.googleapis.com",
@@ -239,6 +283,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("engineStorageDriver")]
         public Output<string?> EngineStorageDriver { get; private set; } = null!;
+
+        /// <summary>
+        /// Harvester config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Output("harvesterConfig")]
+        public Output<Outputs.NodeTemplateHarvesterConfig?> HarvesterConfig { get; private set; } = null!;
 
         /// <summary>
         /// Hetzner config for the Node Template (list maxitems:1)
@@ -473,6 +523,12 @@ namespace Pulumi.Rancher2
         public Input<string>? EngineStorageDriver { get; set; }
 
         /// <summary>
+        /// Harvester config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Input("harvesterConfig")]
+        public Input<Inputs.NodeTemplateHarvesterConfigArgs>? HarvesterConfig { get; set; }
+
+        /// <summary>
         /// Hetzner config for the Node Template (list maxitems:1)
         /// </summary>
         [Input("hetznerConfig")]
@@ -682,6 +738,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("engineStorageDriver")]
         public Input<string>? EngineStorageDriver { get; set; }
+
+        /// <summary>
+        /// Harvester config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Input("harvesterConfig")]
+        public Input<Inputs.NodeTemplateHarvesterConfigGetArgs>? HarvesterConfig { get; set; }
 
         /// <summary>
         /// Hetzner config for the Node Template (list maxitems:1)

@@ -72,6 +72,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("registries")]
         public Input<Inputs.ClusterV2RkeConfigRegistriesGetArgs>? Registries { get; set; }
 
+        [Input("rotateCertificates")]
+        public Input<Inputs.ClusterV2RkeConfigRotateCertificatesGetArgs>? RotateCertificates { get; set; }
+
         /// <summary>
         /// Cluster V2 upgrade strategy (list maxitems:1)
         /// </summary>

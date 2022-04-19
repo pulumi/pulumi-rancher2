@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
  *
- * amazonec2, azure, digitalocean, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.
+ * amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.
  *
  * **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
  *
@@ -59,6 +59,36 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * ### Using the Harvester Node Driver
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo-harvesterClusterV2 = rancher2.getClusterV2({
+ *     name: "foo-harvester",
+ * });
+ * // Create a new Cloud Credential for an imported Harvester cluster
+ * const foo_harvesterCloudCredential = new rancher2.CloudCredential("foo-harvesterCloudCredential", {harvesterCredentialConfig: {
+ *     clusterId: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.clusterV1Id),
+ *     clusterType: "imported",
+ *     kubeconfigContent: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.kubeConfig),
+ * }});
+ * // Create a new rancher2 Node Template using harvester node_driver
+ * const foo_harvesterNodeTemplate = new rancher2.NodeTemplate("foo-harvesterNodeTemplate", {
+ *     cloudCredentialId: foo_harvesterCloudCredential.id,
+ *     engineInstallUrl: "https://releases.rancher.com/install-docker/20.10.sh",
+ *     harvesterConfig: {
+ *         vmNamespace: "default",
+ *         cpuCount: "2",
+ *         memorySize: "4",
+ *         diskSize: "40",
+ *         networkName: "harvester-public/vlan1",
+ *         imageName: "harvester-public/image-57hzg",
+ *         sshUser: "ubuntu",
+ *     },
+ * });
+ * ```
  * ### Using the Hetzner Node Driver
  *
  * ```typescript
@@ -70,7 +100,7 @@ import * as utilities from "./utilities";
  *     active: true,
  *     builtin: false,
  *     uiUrl: "https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
- *     url: "https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz",
+ *     url: "https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz",
  *     whitelistDomains: ["storage.googleapis.com"],
  * });
  * const myHetznerNodeTemplate = new rancher2.NodeTemplate("myHetznerNodeTemplate", {
@@ -189,6 +219,10 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly engineStorageDriver!: pulumi.Output<string | undefined>;
     /**
+     * Harvester config for the Node Template (list maxitems:1)
+     */
+    public readonly harvesterConfig!: pulumi.Output<outputs.NodeTemplateHarvesterConfig | undefined>;
+    /**
      * Hetzner config for the Node Template (list maxitems:1)
      */
     public readonly hetznerConfig!: pulumi.Output<outputs.NodeTemplateHetznerConfig | undefined>;
@@ -255,6 +289,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             resourceInputs["engineOpt"] = state ? state.engineOpt : undefined;
             resourceInputs["engineRegistryMirrors"] = state ? state.engineRegistryMirrors : undefined;
             resourceInputs["engineStorageDriver"] = state ? state.engineStorageDriver : undefined;
+            resourceInputs["harvesterConfig"] = state ? state.harvesterConfig : undefined;
             resourceInputs["hetznerConfig"] = state ? state.hetznerConfig : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["linodeConfig"] = state ? state.linodeConfig : undefined;
@@ -282,6 +317,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             resourceInputs["engineOpt"] = args ? args.engineOpt : undefined;
             resourceInputs["engineRegistryMirrors"] = args ? args.engineRegistryMirrors : undefined;
             resourceInputs["engineStorageDriver"] = args ? args.engineStorageDriver : undefined;
+            resourceInputs["harvesterConfig"] = args ? args.harvesterConfig : undefined;
             resourceInputs["hetznerConfig"] = args ? args.hetznerConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["linodeConfig"] = args ? args.linodeConfig : undefined;
@@ -370,6 +406,10 @@ export interface NodeTemplateState {
      * Engine storage driver for the node template (string)
      */
     engineStorageDriver?: pulumi.Input<string>;
+    /**
+     * Harvester config for the Node Template (list maxitems:1)
+     */
+    harvesterConfig?: pulumi.Input<inputs.NodeTemplateHarvesterConfig>;
     /**
      * Hetzner config for the Node Template (list maxitems:1)
      */
@@ -476,6 +516,10 @@ export interface NodeTemplateArgs {
      * Engine storage driver for the node template (string)
      */
     engineStorageDriver?: pulumi.Input<string>;
+    /**
+     * Harvester config for the Node Template (list maxitems:1)
+     */
+    harvesterConfig?: pulumi.Input<inputs.NodeTemplateHarvesterConfig>;
     /**
      * Hetzner config for the Node Template (list maxitems:1)
      */

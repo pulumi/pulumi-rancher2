@@ -19,17 +19,22 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string CloudCredentialSecretName;
         public readonly bool? ControlPlaneRole;
+        public readonly bool? DrainBeforeDelete;
         public readonly bool? EtcdRole;
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly Outputs.GetClusterV2RkeConfigMachinePoolMachineConfigResult MachineConfig;
+        public readonly string? MaxUnhealthy;
         /// <summary>
         /// The name of the Cluster v2 (string)
         /// </summary>
         public readonly string Name;
+        public readonly int? NodeStartupTimeoutSeconds;
         public readonly bool? Paused;
         public readonly int? Quantity;
         public readonly Outputs.GetClusterV2RkeConfigMachinePoolRollingUpdateResult? RollingUpdate;
         public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigMachinePoolTaintResult> Taints;
+        public readonly int? UnhealthyNodeTimeoutSeconds;
+        public readonly string? UnhealthyRange;
         public readonly bool? WorkerRole;
 
         [OutputConstructor]
@@ -40,13 +45,19 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? controlPlaneRole,
 
+            bool? drainBeforeDelete,
+
             bool? etcdRole,
 
             ImmutableDictionary<string, object> labels,
 
             Outputs.GetClusterV2RkeConfigMachinePoolMachineConfigResult machineConfig,
 
+            string? maxUnhealthy,
+
             string name,
+
+            int? nodeStartupTimeoutSeconds,
 
             bool? paused,
 
@@ -56,19 +67,28 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableArray<Outputs.GetClusterV2RkeConfigMachinePoolTaintResult> taints,
 
+            int? unhealthyNodeTimeoutSeconds,
+
+            string? unhealthyRange,
+
             bool? workerRole)
         {
             Annotations = annotations;
             CloudCredentialSecretName = cloudCredentialSecretName;
             ControlPlaneRole = controlPlaneRole;
+            DrainBeforeDelete = drainBeforeDelete;
             EtcdRole = etcdRole;
             Labels = labels;
             MachineConfig = machineConfig;
+            MaxUnhealthy = maxUnhealthy;
             Name = name;
+            NodeStartupTimeoutSeconds = nodeStartupTimeoutSeconds;
             Paused = paused;
             Quantity = quantity;
             RollingUpdate = rollingUpdate;
             Taints = taints;
+            UnhealthyNodeTimeoutSeconds = unhealthyNodeTimeoutSeconds;
+            UnhealthyRange = unhealthyRange;
             WorkerRole = workerRole;
         }
     }

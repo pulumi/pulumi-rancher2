@@ -26,6 +26,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Networks;
         /// <summary>
+        /// Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? ServerLabels;
+        /// <summary>
         /// Hetzner Cloud datacenter. Default `nbg1` (string)
         /// </summary>
         public readonly string? ServerLocation;
@@ -54,6 +58,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? networks,
 
+            ImmutableDictionary<string, object>? serverLabels,
+
             string? serverLocation,
 
             string? serverType,
@@ -67,6 +73,7 @@ namespace Pulumi.Rancher2.Outputs
             ApiToken = apiToken;
             Image = image;
             Networks = networks;
+            ServerLabels = serverLabels;
             ServerLocation = serverLocation;
             ServerType = serverType;
             UsePrivateNetwork = usePrivateNetwork;

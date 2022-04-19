@@ -10,6 +10,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to retrieve information about a Rancher v2 role template resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupRoleTemplate(ctx, &GetRoleTemplateArgs{
+// 			Name: "foo",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // Deprecated: rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
 func LookupRoleTempalte(ctx *pulumi.Context, args *LookupRoleTempalteArgs, opts ...pulumi.InvokeOption) (*LookupRoleTempalteResult, error) {
 	var rv LookupRoleTempalteResult
@@ -22,27 +47,40 @@ func LookupRoleTempalte(ctx *pulumi.Context, args *LookupRoleTempalteArgs, opts 
 
 // A collection of arguments for invoking getRoleTempalte.
 type LookupRoleTempalteArgs struct {
+	// Role template context. `cluster` and `project` values are supported (string)
 	Context *string `pulumi:"context"`
-	Name    string  `pulumi:"name"`
+	// The name of the Role Template (string)
+	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getRoleTempalte.
 type LookupRoleTempalteResult struct {
-	Administrative bool                   `pulumi:"administrative"`
-	Annotations    map[string]interface{} `pulumi:"annotations"`
-	Builtin        bool                   `pulumi:"builtin"`
-	Context        string                 `pulumi:"context"`
-	DefaultRole    bool                   `pulumi:"defaultRole"`
-	Description    string                 `pulumi:"description"`
-	External       bool                   `pulumi:"external"`
-	Hidden         bool                   `pulumi:"hidden"`
+	// (Computed) Administrative role template (bool)
+	Administrative bool `pulumi:"administrative"`
+	// (Computed) Annotations for role template object (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// (Computed) Builtin role template (string)
+	Builtin bool   `pulumi:"builtin"`
+	Context string `pulumi:"context"`
+	// (Computed) Default role template for new created cluster or project (bool)
+	DefaultRole bool `pulumi:"defaultRole"`
+	// (Computed) Role template description (string)
+	Description string `pulumi:"description"`
+	// (Computed) External role template (bool)
+	External bool `pulumi:"external"`
+	// (Computed) Hidden role template (bool)
+	Hidden bool `pulumi:"hidden"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                 `pulumi:"id"`
-	Labels          map[string]interface{} `pulumi:"labels"`
-	Locked          bool                   `pulumi:"locked"`
-	Name            string                 `pulumi:"name"`
-	RoleTemplateIds []string               `pulumi:"roleTemplateIds"`
-	Rules           []GetRoleTempalteRule  `pulumi:"rules"`
+	Id string `pulumi:"id"`
+	// (Computed) Labels for role template object (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// (Computed) Locked role template (bool)
+	Locked bool   `pulumi:"locked"`
+	Name   string `pulumi:"name"`
+	// (Computed) Inherit role template IDs (list)
+	RoleTemplateIds []string `pulumi:"roleTemplateIds"`
+	// (Computed) Role template policy rules (list)
+	Rules []GetRoleTempalteRule `pulumi:"rules"`
 }
 
 func LookupRoleTempalteOutput(ctx *pulumi.Context, args LookupRoleTempalteOutputArgs, opts ...pulumi.InvokeOption) LookupRoleTempalteResultOutput {
@@ -56,8 +94,10 @@ func LookupRoleTempalteOutput(ctx *pulumi.Context, args LookupRoleTempalteOutput
 
 // A collection of arguments for invoking getRoleTempalte.
 type LookupRoleTempalteOutputArgs struct {
+	// Role template context. `cluster` and `project` values are supported (string)
 	Context pulumi.StringPtrInput `pulumi:"context"`
-	Name    pulumi.StringInput    `pulumi:"name"`
+	// The name of the Role Template (string)
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (LookupRoleTempalteOutputArgs) ElementType() reflect.Type {
@@ -79,14 +119,17 @@ func (o LookupRoleTempalteResultOutput) ToLookupRoleTempalteResultOutputWithCont
 	return o
 }
 
+// (Computed) Administrative role template (bool)
 func (o LookupRoleTempalteResultOutput) Administrative() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) bool { return v.Administrative }).(pulumi.BoolOutput)
 }
 
+// (Computed) Annotations for role template object (map)
 func (o LookupRoleTempalteResultOutput) Annotations() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
 }
 
+// (Computed) Builtin role template (string)
 func (o LookupRoleTempalteResultOutput) Builtin() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) bool { return v.Builtin }).(pulumi.BoolOutput)
 }
@@ -95,18 +138,22 @@ func (o LookupRoleTempalteResultOutput) Context() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) string { return v.Context }).(pulumi.StringOutput)
 }
 
+// (Computed) Default role template for new created cluster or project (bool)
 func (o LookupRoleTempalteResultOutput) DefaultRole() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) bool { return v.DefaultRole }).(pulumi.BoolOutput)
 }
 
+// (Computed) Role template description (string)
 func (o LookupRoleTempalteResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// (Computed) External role template (bool)
 func (o LookupRoleTempalteResultOutput) External() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) bool { return v.External }).(pulumi.BoolOutput)
 }
 
+// (Computed) Hidden role template (bool)
 func (o LookupRoleTempalteResultOutput) Hidden() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) bool { return v.Hidden }).(pulumi.BoolOutput)
 }
@@ -116,10 +163,12 @@ func (o LookupRoleTempalteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Computed) Labels for role template object (map)
 func (o LookupRoleTempalteResultOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
 }
 
+// (Computed) Locked role template (bool)
 func (o LookupRoleTempalteResultOutput) Locked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) bool { return v.Locked }).(pulumi.BoolOutput)
 }
@@ -128,10 +177,12 @@ func (o LookupRoleTempalteResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// (Computed) Inherit role template IDs (list)
 func (o LookupRoleTempalteResultOutput) RoleTemplateIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) []string { return v.RoleTemplateIds }).(pulumi.StringArrayOutput)
 }
 
+// (Computed) Role template policy rules (list)
 func (o LookupRoleTempalteResultOutput) Rules() GetRoleTempalteRuleArrayOutput {
 	return o.ApplyT(func(v LookupRoleTempalteResult) []GetRoleTempalteRule { return v.Rules }).(GetRoleTempalteRuleArrayOutput)
 }

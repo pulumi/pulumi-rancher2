@@ -206,6 +206,42 @@
                 "authEncodedJson"
             ]
         },
+        "rancher2:index/CloudCredentialHarvesterCredentialConfig:CloudCredentialHarvesterCredentialConfig": {
+            "properties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "Imported Harvester Cluster ID (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterType": {
+                    "type": "string",
+                    "description": "Harvester Cluster Type. Supported values : `\"imported\" | \"external\"` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kubeconfigContent": {
+                    "type": "string",
+                    "description": "Harvester Cluster KubeConfig Content (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "clusterType",
+                "kubeconfigContent"
+            ]
+        },
         "rancher2:index/CloudCredentialLinodeCredentialConfig:CloudCredentialLinodeCredentialConfig": {
             "properties": {
                 "token": {
@@ -1440,6 +1476,7 @@
             "properties": {
                 "defaultRecipient": {
                     "type": "boolean",
+                    "description": "Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1448,6 +1485,7 @@
                 },
                 "notifierId": {
                     "type": "string",
+                    "description": "Recipient notifier ID (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1456,6 +1494,7 @@
                 },
                 "notifierType": {
                     "type": "string",
+                    "description": "Recipient notifier ID. Supported values : `\"dingtalk\" | \"msteams\" | \"pagerduty\" | \"slack\" | \"email\" | \"webhook\" | \"wechat\"` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1464,6 +1503,7 @@
                 },
                 "recipient": {
                     "type": "string",
+                    "description": "Recipient (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1489,6 +1529,7 @@
             "properties": {
                 "eventType": {
                     "type": "string",
+                    "description": "Event type. Supported values : `\"Warning\" | \"Normal\"`. Default: `Warning` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1497,6 +1538,7 @@
                 },
                 "resourceKind": {
                     "type": "string",
+                    "description": "Resource kind. Supported values : `\"DaemonSet\" | \"Deployment\" | \"Node\" | \"Pod\" | \"StatefulSet\"` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1513,6 +1555,7 @@
             "properties": {
                 "comparison": {
                     "type": "string",
+                    "description": "Metric rule comparison. Supported values : `\"equal\" | \"greater-or-equal\" | \"greater-than\" | \"less-or-equal\" | \"less-than\" | \"not-equal\" | \"has-value\"`. Default: `equal`  (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1521,6 +1564,7 @@
                 },
                 "description": {
                     "type": "string",
+                    "description": "Metric rule description (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1529,6 +1573,7 @@
                 },
                 "duration": {
                     "type": "string",
+                    "description": "Metric rule duration (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1537,6 +1582,7 @@
                 },
                 "expression": {
                     "type": "string",
+                    "description": "Metric rule expression (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1545,6 +1591,7 @@
                 },
                 "thresholdValue": {
                     "type": "number",
+                    "description": "Metric rule threshold value (float64)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1563,6 +1610,7 @@
             "properties": {
                 "condition": {
                     "type": "string",
+                    "description": "System service rule condition. Supported values : `\"controller-manager\" | \"etcd\" | \"scheduler\"`. Default: `scheduler` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1571,6 +1619,7 @@
                 },
                 "cpuThreshold": {
                     "type": "integer",
+                    "description": "Node rule cpu threshold. Default: `70` (int)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1579,6 +1628,7 @@
                 },
                 "memThreshold": {
                     "type": "integer",
+                    "description": "Node rule mem threshold. Default: `70` (int)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1587,6 +1637,7 @@
                 },
                 "nodeId": {
                     "type": "string",
+                    "description": "Node ID (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1598,6 +1649,7 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
+                    "description": "Node rule selector (map)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1611,6 +1663,7 @@
             "properties": {
                 "condition": {
                     "type": "string",
+                    "description": "System service rule condition. Supported values : `\"controller-manager\" | \"etcd\" | \"scheduler\"`. Default: `scheduler` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13457,6 +13510,14 @@
                         }
                     }
                 },
+                "rotateCertificates": {
+                    "$ref": "#/types/rancher2:index/ClusterV2RkeConfigRotateCertificates:ClusterV2RkeConfigRotateCertificates",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "upgradeStrategy": {
                     "$ref": "#/types/rancher2:index/ClusterV2RkeConfigUpgradeStrategy:ClusterV2RkeConfigUpgradeStrategy",
                     "description": "Cluster V2 upgrade strategy (list maxitems:1)\n",
@@ -13655,6 +13716,14 @@
                         }
                     }
                 },
+                "drainBeforeDelete": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "etcdRole": {
                     "type": "boolean",
                     "description": "Machine pool etcd role? (bool)\n",
@@ -13685,9 +13754,25 @@
                         }
                     }
                 },
+                "maxUnhealthy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of cluster registration token (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeStartupTimeoutSeconds": {
+                    "type": "integer",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13727,6 +13812,22 @@
                         "$ref": "#/types/rancher2:index/ClusterV2RkeConfigMachinePoolTaint:ClusterV2RkeConfigMachinePoolTaint"
                     },
                     "description": "Machine pool taints (list)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "unhealthyNodeTimeoutSeconds": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "unhealthyRange": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14059,6 +14160,30 @@
             "required": [
                 "hostname"
             ]
+        },
+        "rancher2:index/ClusterV2RkeConfigRotateCertificates:ClusterV2RkeConfigRotateCertificates": {
+            "properties": {
+                "generation": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:index/ClusterV2RkeConfigUpgradeStrategy:ClusterV2RkeConfigUpgradeStrategy": {
             "properties": {
@@ -15340,6 +15465,125 @@
                 }
             },
             "type": "object"
+        },
+        "rancher2:index/MachineConfigV2HarvesterConfig:MachineConfigV2HarvesterConfig": {
+            "properties": {
+                "cpuCount": {
+                    "type": "string",
+                    "description": "vSphere CPU number for docker VM. Default `2` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "diskBus": {
+                    "type": "string",
+                    "description": "Disk bus, Default `virtio` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "diskSize": {
+                    "type": "string",
+                    "description": "vSphere size of disk for docker VM (in MB). Default `20480` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "imageName": {
+                    "type": "string",
+                    "description": "OpenStack image name to use for the instance. Conflicts with `image_id` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "memorySize": {
+                    "type": "string",
+                    "description": "vSphere size of memory for docker VM (in MB). Default `2048` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "networkData": {
+                    "type": "string",
+                    "description": "NetworkData content of cloud-init, base64 is supported (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "networkModel": {
+                    "type": "string",
+                    "description": "Network model, Default `virtio` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "networkName": {
+                    "type": "string",
+                    "description": "Network name e.g. `harvester-public/vlan1` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sshPassword": {
+                    "type": "string",
+                    "description": "If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sshUser": {
+                    "type": "string",
+                    "description": "If using a non-B2D image you can specify the ssh user. Default `docker`. (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userData": {
+                    "type": "string",
+                    "description": "UserData content of cloud-init, base64 is supported (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vmNamespace": {
+                    "type": "string",
+                    "description": "Virtual machine namespace e.g. `default` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "imageName",
+                "networkName",
+                "sshUser",
+                "vmNamespace"
+            ]
         },
         "rancher2:index/MachineConfigV2LinodeConfig:MachineConfigV2LinodeConfig": {
             "properties": {
@@ -17284,6 +17528,125 @@
             },
             "type": "object"
         },
+        "rancher2:index/NodeTemplateHarvesterConfig:NodeTemplateHarvesterConfig": {
+            "properties": {
+                "cpuCount": {
+                    "type": "string",
+                    "description": "vSphere CPU number for docker VM. Default `2` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "diskBus": {
+                    "type": "string",
+                    "description": "Disk bus, Default `virtio` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "diskSize": {
+                    "type": "string",
+                    "description": "vSphere size of disk for docker VM (in MB). Default `20480` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "imageName": {
+                    "type": "string",
+                    "description": "OpenStack image name to use for the instance. Conflicts with `image_id` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "memorySize": {
+                    "type": "string",
+                    "description": "vSphere size of memory for docker VM (in MB). Default `2048` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "networkData": {
+                    "type": "string",
+                    "description": "NetworkData content of cloud-init, base64 is supported (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "networkModel": {
+                    "type": "string",
+                    "description": "Network model, Default `virtio` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "networkName": {
+                    "type": "string",
+                    "description": "Opennebula network to connect the machine to. Conflicts with `network_id` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sshPassword": {
+                    "type": "string",
+                    "description": "If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sshUser": {
+                    "type": "string",
+                    "description": "If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userData": {
+                    "type": "string",
+                    "description": "UserData content of cloud-init, base64 is supported (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vmNamespace": {
+                    "type": "string",
+                    "description": "Virtual machine namespace e.g. `default` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "imageName",
+                "networkName",
+                "sshUser",
+                "vmNamespace"
+            ]
+        },
         "rancher2:index/NodeTemplateHetznerConfig:NodeTemplateHetznerConfig": {
             "properties": {
                 "apiToken": {
@@ -17307,6 +17670,18 @@
                 "networks": {
                     "type": "string",
                     "description": "Comma-separated list of network IDs or names which should be attached to the server private network interface (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverLabels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -20212,6 +20587,7 @@
                     "items": {
                         "type": "string"
                     },
+                    "description": "Policy rule api groups (list)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -20223,6 +20599,7 @@
                     "items": {
                         "type": "string"
                     },
+                    "description": "Policy rule non resource urls (list)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -20234,6 +20611,7 @@
                     "items": {
                         "type": "string"
                     },
+                    "description": "Policy rule resource names (list)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -20245,6 +20623,7 @@
                     "items": {
                         "type": "string"
                     },
+                    "description": "Policy rule resources (list)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -20256,6 +20635,7 @@
                     "items": {
                         "type": "string"
                     },
+                    "description": "Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -32352,6 +32732,14 @@
                         }
                     }
                 },
+                "rotateCertificates": {
+                    "$ref": "#/types/rancher2:index/getClusterV2RkeConfigRotateCertificates:getClusterV2RkeConfigRotateCertificates",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "upgradeStrategy": {
                     "$ref": "#/types/rancher2:index/getClusterV2RkeConfigUpgradeStrategy:getClusterV2RkeConfigUpgradeStrategy",
                     "language": {
@@ -32539,6 +32927,14 @@
                         }
                     }
                 },
+                "drainBeforeDelete": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "etcdRole": {
                     "type": "boolean",
                     "language": {
@@ -32566,9 +32962,25 @@
                         }
                     }
                 },
+                "maxUnhealthy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the Cluster v2 (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeStartupTimeoutSeconds": {
+                    "type": "integer",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -32604,6 +33016,22 @@
                     "items": {
                         "$ref": "#/types/rancher2:index/getClusterV2RkeConfigMachinePoolTaint:getClusterV2RkeConfigMachinePoolTaint"
                     },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "unhealthyNodeTimeoutSeconds": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "unhealthyRange": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -32928,6 +33356,30 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "rancher2:index/getClusterV2RkeConfigRotateCertificates:getClusterV2RkeConfigRotateCertificates": {
+            "properties": {
+                "generation": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:index/getClusterV2RkeConfigUpgradeStrategy:getClusterV2RkeConfigUpgradeStrategy": {
             "properties": {
@@ -35783,125 +36235,159 @@
     },
     "resources": {
         "rancher2:index/activeDirectory:ActiveDirectory": {
+            "description": "Provides a Rancher v2 Auth Config ActiveDirectory resource. This can be used to configure and enable Auth Config ActiveDirectory for Rancher v2 RKE clusters and retrieve their information.\n\nIn addition to the built-in local auth, only one external auth config provider can be enabled at a time.\n",
             "properties": {
                 "accessMode": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)\n"
                 },
                 "allowedPrincipalIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://\u003cDN\u003e`  `activedirectory_group://\u003cDN\u003e`. The local admin (`local://\u003cadmin id\u003e`) and the `test_username` must be added too. (list)\n"
                 },
                 "annotations": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Annotations of the resource\n"
+                    "description": "Annotations of the resource (map)\n"
                 },
                 "certificate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "CA certificate for TLS if selfsigned (string)\n"
                 },
                 "connectionTimeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "ActiveDirectory connection timeout. Default `5000` (int)\n"
                 },
                 "defaultLoginDomain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "ActiveDirectory defult login domain (string)\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable auth config provider. Default `true` (bool)\n"
                 },
                 "groupDnAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group DN attribute. Default `distinguishedName` (string)\n"
                 },
                 "groupMemberMappingAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group member mapping attribute. Default `member` (string)\n"
                 },
                 "groupMemberUserAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group member user attribute. Default `distinguishedName` (string)\n"
                 },
                 "groupNameAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group name attribute. Default `name` (string)\n"
                 },
                 "groupObjectClass": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group object class. Default `group` (string)\n"
                 },
                 "groupSearchAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group search attribute. Default `sAMAccountName` (string)\n"
                 },
                 "groupSearchBase": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group search base (string)\n"
                 },
                 "groupSearchFilter": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group search filter (string)\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Labels of the resource\n"
+                    "description": "Labels of the resource (map)\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "(Computed) The name of the resource (string)\n"
                 },
                 "nestedGroupMembershipEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Nested group membership enable. Default `false` (bool)\n"
                 },
                 "port": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "ActiveDirectory port. Default `389` (int)\n"
                 },
                 "servers": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "ActiveDirectory servers list (list)\n"
                 },
                 "serviceAccountPassword": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Service account password for access ActiveDirectory service (string)\n"
                 },
                 "serviceAccountUsername": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Service account DN for access ActiveDirectory service (string)\n"
                 },
                 "startTls": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable start TLS connection (bool)\n"
                 },
                 "testPassword": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Password for test access to ActiveDirectory service (string)\n"
                 },
                 "testUsername": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Username for test access to ActiveDirectory service (string)\n"
                 },
                 "tls": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable TLS connection (bool)\n"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "(Computed) The type of the resource (string)\n"
                 },
                 "userDisabledBitMask": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "User disabled bit mask. Default `2` (int)\n"
                 },
                 "userEnabledAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User enable attribute (string)\n"
                 },
                 "userLoginAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User login attribute. Default `sAMAccountName` (string)\n"
                 },
                 "userNameAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User name attribute. Default `name` (string)\n"
                 },
                 "userObjectClass": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User object class. Default `person` (string)\n"
                 },
                 "userSearchAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User search attribute. Default `sAMAccountName|sn|givenName` (string)\n"
                 },
                 "userSearchBase": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User search base DN (string)\n"
                 },
                 "userSearchFilter": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User search filter (string)\n"
                 }
             },
             "required": [
@@ -35935,117 +36421,148 @@
             ],
             "inputProperties": {
                 "accessMode": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)\n"
                 },
                 "allowedPrincipalIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://\u003cDN\u003e`  `activedirectory_group://\u003cDN\u003e`. The local admin (`local://\u003cadmin id\u003e`) and the `test_username` must be added too. (list)\n"
                 },
                 "annotations": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Annotations of the resource\n"
+                    "description": "Annotations of the resource (map)\n"
                 },
                 "certificate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "CA certificate for TLS if selfsigned (string)\n"
                 },
                 "connectionTimeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "ActiveDirectory connection timeout. Default `5000` (int)\n"
                 },
                 "defaultLoginDomain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "ActiveDirectory defult login domain (string)\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable auth config provider. Default `true` (bool)\n"
                 },
                 "groupDnAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group DN attribute. Default `distinguishedName` (string)\n"
                 },
                 "groupMemberMappingAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group member mapping attribute. Default `member` (string)\n"
                 },
                 "groupMemberUserAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group member user attribute. Default `distinguishedName` (string)\n"
                 },
                 "groupNameAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group name attribute. Default `name` (string)\n"
                 },
                 "groupObjectClass": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group object class. Default `group` (string)\n"
                 },
                 "groupSearchAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group search attribute. Default `sAMAccountName` (string)\n"
                 },
                 "groupSearchBase": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group search base (string)\n"
                 },
                 "groupSearchFilter": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Group search filter (string)\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Labels of the resource\n"
+                    "description": "Labels of the resource (map)\n"
                 },
                 "nestedGroupMembershipEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Nested group membership enable. Default `false` (bool)\n"
                 },
                 "port": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "ActiveDirectory port. Default `389` (int)\n"
                 },
                 "servers": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "ActiveDirectory servers list (list)\n"
                 },
                 "serviceAccountPassword": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Service account password for access ActiveDirectory service (string)\n"
                 },
                 "serviceAccountUsername": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Service account DN for access ActiveDirectory service (string)\n"
                 },
                 "startTls": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable start TLS connection (bool)\n"
                 },
                 "testPassword": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Password for test access to ActiveDirectory service (string)\n"
                 },
                 "testUsername": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Username for test access to ActiveDirectory service (string)\n"
                 },
                 "tls": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable TLS connection (bool)\n"
                 },
                 "userDisabledBitMask": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "User disabled bit mask. Default `2` (int)\n"
                 },
                 "userEnabledAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User enable attribute (string)\n"
                 },
                 "userLoginAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User login attribute. Default `sAMAccountName` (string)\n"
                 },
                 "userNameAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User name attribute. Default `name` (string)\n"
                 },
                 "userObjectClass": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User object class. Default `person` (string)\n"
                 },
                 "userSearchAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User search attribute. Default `sAMAccountName|sn|givenName` (string)\n"
                 },
                 "userSearchBase": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User search base DN (string)\n"
                 },
                 "userSearchFilter": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User search filter (string)\n"
                 }
             },
             "requiredInputs": [
@@ -36060,123 +36577,156 @@
                 "description": "Input properties used for looking up and filtering ActiveDirectory resources.\n",
                 "properties": {
                     "accessMode": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)\n"
                     },
                     "allowedPrincipalIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://\u003cDN\u003e`  `activedirectory_group://\u003cDN\u003e`. The local admin (`local://\u003cadmin id\u003e`) and the `test_username` must be added too. (list)\n"
                     },
                     "annotations": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Annotations of the resource\n"
+                        "description": "Annotations of the resource (map)\n"
                     },
                     "certificate": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "CA certificate for TLS if selfsigned (string)\n"
                     },
                     "connectionTimeout": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "ActiveDirectory connection timeout. Default `5000` (int)\n"
                     },
                     "defaultLoginDomain": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "ActiveDirectory defult login domain (string)\n"
                     },
                     "enabled": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Enable auth config provider. Default `true` (bool)\n"
                     },
                     "groupDnAttribute": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Group DN attribute. Default `distinguishedName` (string)\n"
                     },
                     "groupMemberMappingAttribute": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Group member mapping attribute. Default `member` (string)\n"
                     },
                     "groupMemberUserAttribute": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Group member user attribute. Default `distinguishedName` (string)\n"
                     },
                     "groupNameAttribute": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Group name attribute. Default `name` (string)\n"
                     },
                     "groupObjectClass": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Group object class. Default `group` (string)\n"
                     },
                     "groupSearchAttribute": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Group search attribute. Default `sAMAccountName` (string)\n"
                     },
                     "groupSearchBase": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Group search base (string)\n"
                     },
                     "groupSearchFilter": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Group search filter (string)\n"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Labels of the resource\n"
+                        "description": "Labels of the resource (map)\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "(Computed) The name of the resource (string)\n"
                     },
                     "nestedGroupMembershipEnabled": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Nested group membership enable. Default `false` (bool)\n"
                     },
                     "port": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "ActiveDirectory port. Default `389` (int)\n"
                     },
                     "servers": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "ActiveDirectory servers list (list)\n"
                     },
                     "serviceAccountPassword": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Service account password for access ActiveDirectory service (string)\n"
                     },
                     "serviceAccountUsername": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Service account DN for access ActiveDirectory service (string)\n"
                     },
                     "startTls": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Enable start TLS connection (bool)\n"
                     },
                     "testPassword": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Password for test access to ActiveDirectory service (string)\n"
                     },
                     "testUsername": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Username for test access to ActiveDirectory service (string)\n"
                     },
                     "tls": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Enable TLS connection (bool)\n"
                     },
                     "type": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "(Computed) The type of the resource (string)\n"
                     },
                     "userDisabledBitMask": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "User disabled bit mask. Default `2` (int)\n"
                     },
                     "userEnabledAttribute": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "User enable attribute (string)\n"
                     },
                     "userLoginAttribute": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "User login attribute. Default `sAMAccountName` (string)\n"
                     },
                     "userNameAttribute": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "User name attribute. Default `name` (string)\n"
                     },
                     "userObjectClass": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "User object class. Default `person` (string)\n"
                     },
                     "userSearchAttribute": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "User search attribute. Default `sAMAccountName|sn|givenName` (string)\n"
                     },
                     "userSearchBase": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "User search base DN (string)\n"
                     },
                     "userSearchFilter": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "User search filter (string)\n"
                     }
                 },
                 "type": "object"
@@ -40174,7 +40724,7 @@
             }
         },
         "rancher2:index/cloudCredential:CloudCredential": {
-            "description": "Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.\n\namazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Cloud Credential\nconst foo = new rancher2.CloudCredential(\"foo\", {\n    amazonec2CredentialConfig: {\n        accessKey: \"\u003cAWS_ACCESS_KEY\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n    },\n    description: \"foo test\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Cloud Credential\nfoo = rancher2.CloudCredential(\"foo\",\n    amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(\n        access_key=\"\u003cAWS_ACCESS_KEY\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n    ),\n    description=\"foo test\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Cloud Credential\n        var foo = new Rancher2.CloudCredential(\"foo\", new Rancher2.CloudCredentialArgs\n        {\n            Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs\n            {\n                AccessKey = \"\u003cAWS_ACCESS_KEY\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n            },\n            Description = \"foo test\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewCloudCredential(ctx, \"foo\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tAmazonec2CredentialConfig: \u0026CloudCredentialAmazonec2CredentialConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"\u003cAWS_ACCESS_KEY\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.\n\namazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Cloud Credential\nconst foo = new rancher2.CloudCredential(\"foo\", {\n    amazonec2CredentialConfig: {\n        accessKey: \"\u003cAWS_ACCESS_KEY\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n    },\n    description: \"foo test\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Cloud Credential\nfoo = rancher2.CloudCredential(\"foo\",\n    amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(\n        access_key=\"\u003cAWS_ACCESS_KEY\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n    ),\n    description=\"foo test\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Cloud Credential\n        var foo = new Rancher2.CloudCredential(\"foo\", new Rancher2.CloudCredentialArgs\n        {\n            Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs\n            {\n                AccessKey = \"\u003cAWS_ACCESS_KEY\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n            },\n            Description = \"foo test\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewCloudCredential(ctx, \"foo\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tAmazonec2CredentialConfig: \u0026CloudCredentialAmazonec2CredentialConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"\u003cAWS_ACCESS_KEY\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo-harvesterClusterV2 = rancher2.getClusterV2({\n    name: \"foo-harvester\",\n});\n// Create a new Cloud Credential for an imported Harvester cluster\nconst foo_harvesterCloudCredential = new rancher2.CloudCredential(\"foo-harvesterCloudCredential\", {harvesterCredentialConfig: {\n    clusterId: foo_harvesterClusterV2.then(foo_harvesterClusterV2 =\u003e foo_harvesterClusterV2.clusterV1Id),\n    clusterType: \"imported\",\n    kubeconfigContent: foo_harvesterClusterV2.then(foo_harvesterClusterV2 =\u003e foo_harvesterClusterV2.kubeConfig),\n}});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo_harvester_cluster_v2 = rancher2.get_cluster_v2(name=\"foo-harvester\")\n# Create a new Cloud Credential for an imported Harvester cluster\nfoo_harvester_cloud_credential = rancher2.CloudCredential(\"foo-harvesterCloudCredential\", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(\n    cluster_id=foo_harvester_cluster_v2.cluster_v1_id,\n    cluster_type=\"imported\",\n    kubeconfig_content=foo_harvester_cluster_v2.kube_config,\n))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo_harvesterClusterV2 = Output.Create(Rancher2.GetClusterV2.InvokeAsync(new Rancher2.GetClusterV2Args\n        {\n            Name = \"foo-harvester\",\n        }));\n        // Create a new Cloud Credential for an imported Harvester cluster\n        var foo_harvesterCloudCredential = new Rancher2.CloudCredential(\"foo-harvesterCloudCredential\", new Rancher2.CloudCredentialArgs\n        {\n            HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs\n            {\n                ClusterId = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =\u003e foo_harvesterClusterV2.ClusterV1Id),\n                ClusterType = \"imported\",\n                KubeconfigContent = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =\u003e foo_harvesterClusterV2.KubeConfig),\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, \u0026GetClusterV2Args{\n\t\t\tName: \"foo-harvester\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewCloudCredential(ctx, \"foo-harvesterCloudCredential\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tHarvesterCredentialConfig: \u0026CloudCredentialHarvesterCredentialConfigArgs{\n\t\t\t\tClusterId:         pulumi.String(foo_harvesterClusterV2.ClusterV1Id),\n\t\t\t\tClusterType:       pulumi.String(\"imported\"),\n\t\t\t\tKubeconfigContent: pulumi.String(foo_harvesterClusterV2.KubeConfig),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCloud Credential can be imported using the Cloud Credential ID and the Driver name. bash\n\n```sh\n $ pulumi import rancher2:index/cloudCredential:CloudCredential foo \u0026lt;CLOUD_CREDENTIAL_ID\u0026gt;.\u0026lt;DRIVER\u0026gt;\n```\n\n The following drivers are supported* amazonec2 * azure * digitalocean * googlekubernetesengine * linode * openstack * s3 * vmwarevsphere ",
             "properties": {
                 "amazonec2CredentialConfig": {
                     "$ref": "#/types/rancher2:index/CloudCredentialAmazonec2CredentialConfig:CloudCredentialAmazonec2CredentialConfig",
@@ -40206,6 +40756,10 @@
                 "googleCredentialConfig": {
                     "$ref": "#/types/rancher2:index/CloudCredentialGoogleCredentialConfig:CloudCredentialGoogleCredentialConfig",
                     "description": "Google config for the Cloud Credential (list maxitems:1)\n"
+                },
+                "harvesterCredentialConfig": {
+                    "$ref": "#/types/rancher2:index/CloudCredentialHarvesterCredentialConfig:CloudCredentialHarvesterCredentialConfig",
+                    "description": "Harvester config for the Cloud Credential (list maxitems:1)\n"
                 },
                 "labels": {
                     "type": "object",
@@ -40269,6 +40823,10 @@
                     "$ref": "#/types/rancher2:index/CloudCredentialGoogleCredentialConfig:CloudCredentialGoogleCredentialConfig",
                     "description": "Google config for the Cloud Credential (list maxitems:1)\n"
                 },
+                "harvesterCredentialConfig": {
+                    "$ref": "#/types/rancher2:index/CloudCredentialHarvesterCredentialConfig:CloudCredentialHarvesterCredentialConfig",
+                    "description": "Harvester config for the Cloud Credential (list maxitems:1)\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -40330,6 +40888,10 @@
                     "googleCredentialConfig": {
                         "$ref": "#/types/rancher2:index/CloudCredentialGoogleCredentialConfig:CloudCredentialGoogleCredentialConfig",
                         "description": "Google config for the Cloud Credential (list maxitems:1)\n"
+                    },
+                    "harvesterCredentialConfig": {
+                        "$ref": "#/types/rancher2:index/CloudCredentialHarvesterCredentialConfig:CloudCredentialHarvesterCredentialConfig",
+                        "description": "Harvester config for the Cloud Credential (list maxitems:1)\n"
                     },
                     "labels": {
                         "type": "object",
@@ -41260,51 +41822,52 @@
             ]
         },
         "rancher2:index/clusterAlterGroup:ClusterAlterGroup": {
+            "description": "Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new Rancher2 Cluster Alert Group\nconst foo = new rancher2.ClusterAlertGroup(\"foo\", {\n    clusterId: \"\u003ccluster_id\u003e\",\n    description: \"Terraform cluster alert group\",\n    groupIntervalSeconds: 300,\n    repeatIntervalSeconds: 3600,\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new Rancher2 Cluster Alert Group\nfoo = rancher2.ClusterAlertGroup(\"foo\",\n    cluster_id=\"\u003ccluster_id\u003e\",\n    description=\"Terraform cluster alert group\",\n    group_interval_seconds=300,\n    repeat_interval_seconds=3600)\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Rancher2 Cluster Alert Group\n        var foo = new Rancher2.ClusterAlertGroup(\"foo\", new Rancher2.ClusterAlertGroupArgs\n        {\n            ClusterId = \"\u003ccluster_id\u003e\",\n            Description = \"Terraform cluster alert group\",\n            GroupIntervalSeconds = 300,\n            RepeatIntervalSeconds = 3600,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewClusterAlertGroup(ctx, \"foo\", \u0026rancher2.ClusterAlertGroupArgs{\n\t\t\tClusterId:             pulumi.String(\"\u003ccluster_id\u003e\"),\n\t\t\tDescription:           pulumi.String(\"Terraform cluster alert group\"),\n\t\t\tGroupIntervalSeconds:  pulumi.Int(300),\n\t\t\tRepeatIntervalSeconds: pulumi.Int(3600),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCluster Alert Group can be imported using the Rancher cluster alert group ID\n\n```sh\n $ pulumi import rancher2:index/clusterAlterGroup:ClusterAlterGroup foo \u0026lt;CLUSTER_ALERT_GROUP_ID\u0026gt;\n```\n\n ",
             "properties": {
                 "annotations": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Annotations of the resource\n"
+                    "description": "The cluster alert group annotations (map)\n"
                 },
                 "clusterId": {
                     "type": "string",
-                    "description": "Alert group Cluster ID\n"
+                    "description": "The cluster id where create cluster alert group (string)\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "Alert group description\n"
+                    "description": "The cluster alert group description (string)\n"
                 },
                 "groupIntervalSeconds": {
                     "type": "integer",
-                    "description": "Alert group interval seconds\n"
+                    "description": "The cluster alert group interval seconds. Default: `180` (int)\n"
                 },
                 "groupWaitSeconds": {
                     "type": "integer",
-                    "description": "Alert group wait seconds\n"
+                    "description": "The cluster alert group wait seconds. Default: `180` (int)\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Labels of the resource\n"
+                    "description": "The cluster alert group labels (map)\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Alert group name\n"
+                    "description": "The cluster alert group name (string)\n"
                 },
                 "recipients": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/rancher2:index/ClusterAlterGroupRecipient:ClusterAlterGroupRecipient"
                     },
-                    "description": "Alert group recipients\n"
+                    "description": "The cluster alert group recipients (list)\n"
                 },
                 "repeatIntervalSeconds": {
                     "type": "integer",
-                    "description": "Alert group repeat interval seconds\n"
+                    "description": "The cluster alert group wait seconds. Default: `3600` (int)\n"
                 }
             },
             "required": [
@@ -41319,45 +41882,45 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Annotations of the resource\n"
+                    "description": "The cluster alert group annotations (map)\n"
                 },
                 "clusterId": {
                     "type": "string",
-                    "description": "Alert group Cluster ID\n"
+                    "description": "The cluster id where create cluster alert group (string)\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "Alert group description\n"
+                    "description": "The cluster alert group description (string)\n"
                 },
                 "groupIntervalSeconds": {
                     "type": "integer",
-                    "description": "Alert group interval seconds\n"
+                    "description": "The cluster alert group interval seconds. Default: `180` (int)\n"
                 },
                 "groupWaitSeconds": {
                     "type": "integer",
-                    "description": "Alert group wait seconds\n"
+                    "description": "The cluster alert group wait seconds. Default: `180` (int)\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Labels of the resource\n"
+                    "description": "The cluster alert group labels (map)\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Alert group name\n"
+                    "description": "The cluster alert group name (string)\n"
                 },
                 "recipients": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/rancher2:index/ClusterAlterGroupRecipient:ClusterAlterGroupRecipient"
                     },
-                    "description": "Alert group recipients\n"
+                    "description": "The cluster alert group recipients (list)\n"
                 },
                 "repeatIntervalSeconds": {
                     "type": "integer",
-                    "description": "Alert group repeat interval seconds\n"
+                    "description": "The cluster alert group wait seconds. Default: `3600` (int)\n"
                 }
             },
             "requiredInputs": [
@@ -41371,45 +41934,45 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Annotations of the resource\n"
+                        "description": "The cluster alert group annotations (map)\n"
                     },
                     "clusterId": {
                         "type": "string",
-                        "description": "Alert group Cluster ID\n"
+                        "description": "The cluster id where create cluster alert group (string)\n"
                     },
                     "description": {
                         "type": "string",
-                        "description": "Alert group description\n"
+                        "description": "The cluster alert group description (string)\n"
                     },
                     "groupIntervalSeconds": {
                         "type": "integer",
-                        "description": "Alert group interval seconds\n"
+                        "description": "The cluster alert group interval seconds. Default: `180` (int)\n"
                     },
                     "groupWaitSeconds": {
                         "type": "integer",
-                        "description": "Alert group wait seconds\n"
+                        "description": "The cluster alert group wait seconds. Default: `180` (int)\n"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Labels of the resource\n"
+                        "description": "The cluster alert group labels (map)\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "Alert group name\n"
+                        "description": "The cluster alert group name (string)\n"
                     },
                     "recipients": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/rancher2:index/ClusterAlterGroupRecipient:ClusterAlterGroupRecipient"
                         },
-                        "description": "Alert group recipients\n"
+                        "description": "The cluster alert group recipients (list)\n"
                     },
                     "repeatIntervalSeconds": {
                         "type": "integer",
-                        "description": "Alert group repeat interval seconds\n"
+                        "description": "The cluster alert group wait seconds. Default: `3600` (int)\n"
                     }
                 },
                 "type": "object"
@@ -41417,68 +41980,69 @@
             "deprecationMessage": "rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup"
         },
         "rancher2:index/clusterAlterRule:ClusterAlterRule": {
+            "description": "Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new Rancher2 Cluster Alert Group\nconst fooClusterAlertGroup = new rancher2.ClusterAlertGroup(\"fooClusterAlertGroup\", {\n    clusterId: \"\u003ccluster_id\u003e\",\n    description: \"Terraform cluster alert group\",\n    groupIntervalSeconds: 300,\n    repeatIntervalSeconds: 3600,\n});\n// Create a new Rancher2 Cluster Alert Rule\nconst fooClusterAlertRule = new rancher2.ClusterAlertRule(\"fooClusterAlertRule\", {\n    clusterId: fooClusterAlertGroup.clusterId,\n    groupId: fooClusterAlertGroup.id,\n    groupIntervalSeconds: 600,\n    repeatIntervalSeconds: 6000,\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new Rancher2 Cluster Alert Group\nfoo_cluster_alert_group = rancher2.ClusterAlertGroup(\"fooClusterAlertGroup\",\n    cluster_id=\"\u003ccluster_id\u003e\",\n    description=\"Terraform cluster alert group\",\n    group_interval_seconds=300,\n    repeat_interval_seconds=3600)\n# Create a new Rancher2 Cluster Alert Rule\nfoo_cluster_alert_rule = rancher2.ClusterAlertRule(\"fooClusterAlertRule\",\n    cluster_id=foo_cluster_alert_group.cluster_id,\n    group_id=foo_cluster_alert_group.id,\n    group_interval_seconds=600,\n    repeat_interval_seconds=6000)\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Rancher2 Cluster Alert Group\n        var fooClusterAlertGroup = new Rancher2.ClusterAlertGroup(\"fooClusterAlertGroup\", new Rancher2.ClusterAlertGroupArgs\n        {\n            ClusterId = \"\u003ccluster_id\u003e\",\n            Description = \"Terraform cluster alert group\",\n            GroupIntervalSeconds = 300,\n            RepeatIntervalSeconds = 3600,\n        });\n        // Create a new Rancher2 Cluster Alert Rule\n        var fooClusterAlertRule = new Rancher2.ClusterAlertRule(\"fooClusterAlertRule\", new Rancher2.ClusterAlertRuleArgs\n        {\n            ClusterId = fooClusterAlertGroup.ClusterId,\n            GroupId = fooClusterAlertGroup.Id,\n            GroupIntervalSeconds = 600,\n            RepeatIntervalSeconds = 6000,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooClusterAlertGroup, err := rancher2.NewClusterAlertGroup(ctx, \"fooClusterAlertGroup\", \u0026rancher2.ClusterAlertGroupArgs{\n\t\t\tClusterId:             pulumi.String(\"\u003ccluster_id\u003e\"),\n\t\t\tDescription:           pulumi.String(\"Terraform cluster alert group\"),\n\t\t\tGroupIntervalSeconds:  pulumi.Int(300),\n\t\t\tRepeatIntervalSeconds: pulumi.Int(3600),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewClusterAlertRule(ctx, \"fooClusterAlertRule\", \u0026rancher2.ClusterAlertRuleArgs{\n\t\t\tClusterId:             fooClusterAlertGroup.ClusterId,\n\t\t\tGroupId:               fooClusterAlertGroup.ID(),\n\t\t\tGroupIntervalSeconds:  pulumi.Int(600),\n\t\t\tRepeatIntervalSeconds: pulumi.Int(6000),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCluster Alert Rule can be imported using the Rancher cluster alert rule ID\n\n```sh\n $ pulumi import rancher2:index/clusterAlterRule:ClusterAlterRule foo \u0026lt;CLUSTER_ALERT_RULE_ID\u0026gt;\n```\n\n ",
             "properties": {
                 "annotations": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Annotations of the resource\n"
+                    "description": "The cluster alert rule annotations (map)\n"
                 },
                 "clusterId": {
                     "type": "string",
-                    "description": "Alert rule cluster ID\n"
+                    "description": "The cluster id where create cluster alert rule (string)\n"
                 },
                 "eventRule": {
                     "$ref": "#/types/rancher2:index/ClusterAlterRuleEventRule:ClusterAlterRuleEventRule",
-                    "description": "Alert event rule\n"
+                    "description": "The cluster alert rule event rule. ConflictsWith: `\"metric_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
                 },
                 "groupId": {
                     "type": "string",
-                    "description": "Alert rule group ID\n"
+                    "description": "The cluster alert rule alert group ID (string)\n"
                 },
                 "groupIntervalSeconds": {
                     "type": "integer",
-                    "description": "Alert rule interval seconds\n"
+                    "description": "The cluster alert rule group interval seconds. Default: `180` (int)\n"
                 },
                 "groupWaitSeconds": {
                     "type": "integer",
-                    "description": "Alert rule wait seconds\n"
+                    "description": "The cluster alert rule group wait seconds. Default: `180` (int)\n"
                 },
                 "inherited": {
                     "type": "boolean",
-                    "description": "Alert rule inherited\n"
+                    "description": "The cluster alert rule inherited. Default: `true` (bool)\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Labels of the resource\n"
+                    "description": "The cluster alert rule labels (map)\n"
                 },
                 "metricRule": {
                     "$ref": "#/types/rancher2:index/ClusterAlterRuleMetricRule:ClusterAlterRuleMetricRule",
-                    "description": "Alert metric rule\n"
+                    "description": "The cluster alert rule metric rule. ConflictsWith: `\"event_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Alert rule name\n"
+                    "description": "The cluster alert rule name (string)\n"
                 },
                 "nodeRule": {
                     "$ref": "#/types/rancher2:index/ClusterAlterRuleNodeRule:ClusterAlterRuleNodeRule",
-                    "description": "Alert node rule\n"
+                    "description": "The cluster alert rule node rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
                 },
                 "repeatIntervalSeconds": {
                     "type": "integer",
-                    "description": "Alert rule repeat interval seconds\n"
+                    "description": "The cluster alert rule wait seconds. Default: `3600` (int)\n"
                 },
                 "severity": {
                     "type": "string",
-                    "description": "Alert rule severity\n"
+                    "description": "The cluster alert rule severity. Supported values : `\"critical\" | \"info\" | \"warning\"`. Default: `critical` (string)\n"
                 },
                 "systemServiceRule": {
                     "$ref": "#/types/rancher2:index/ClusterAlterRuleSystemServiceRule:ClusterAlterRuleSystemServiceRule",
-                    "description": "Alert system service rule\n"
+                    "description": "The cluster alert rule system service rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"node_rule\"` (list Maxitems:1)\n"
                 }
             },
             "required": [
@@ -41494,62 +42058,62 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Annotations of the resource\n"
+                    "description": "The cluster alert rule annotations (map)\n"
                 },
                 "clusterId": {
                     "type": "string",
-                    "description": "Alert rule cluster ID\n"
+                    "description": "The cluster id where create cluster alert rule (string)\n"
                 },
                 "eventRule": {
                     "$ref": "#/types/rancher2:index/ClusterAlterRuleEventRule:ClusterAlterRuleEventRule",
-                    "description": "Alert event rule\n"
+                    "description": "The cluster alert rule event rule. ConflictsWith: `\"metric_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
                 },
                 "groupId": {
                     "type": "string",
-                    "description": "Alert rule group ID\n"
+                    "description": "The cluster alert rule alert group ID (string)\n"
                 },
                 "groupIntervalSeconds": {
                     "type": "integer",
-                    "description": "Alert rule interval seconds\n"
+                    "description": "The cluster alert rule group interval seconds. Default: `180` (int)\n"
                 },
                 "groupWaitSeconds": {
                     "type": "integer",
-                    "description": "Alert rule wait seconds\n"
+                    "description": "The cluster alert rule group wait seconds. Default: `180` (int)\n"
                 },
                 "inherited": {
                     "type": "boolean",
-                    "description": "Alert rule inherited\n"
+                    "description": "The cluster alert rule inherited. Default: `true` (bool)\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Labels of the resource\n"
+                    "description": "The cluster alert rule labels (map)\n"
                 },
                 "metricRule": {
                     "$ref": "#/types/rancher2:index/ClusterAlterRuleMetricRule:ClusterAlterRuleMetricRule",
-                    "description": "Alert metric rule\n"
+                    "description": "The cluster alert rule metric rule. ConflictsWith: `\"event_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Alert rule name\n"
+                    "description": "The cluster alert rule name (string)\n"
                 },
                 "nodeRule": {
                     "$ref": "#/types/rancher2:index/ClusterAlterRuleNodeRule:ClusterAlterRuleNodeRule",
-                    "description": "Alert node rule\n"
+                    "description": "The cluster alert rule node rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
                 },
                 "repeatIntervalSeconds": {
                     "type": "integer",
-                    "description": "Alert rule repeat interval seconds\n"
+                    "description": "The cluster alert rule wait seconds. Default: `3600` (int)\n"
                 },
                 "severity": {
                     "type": "string",
-                    "description": "Alert rule severity\n"
+                    "description": "The cluster alert rule severity. Supported values : `\"critical\" | \"info\" | \"warning\"`. Default: `critical` (string)\n"
                 },
                 "systemServiceRule": {
                     "$ref": "#/types/rancher2:index/ClusterAlterRuleSystemServiceRule:ClusterAlterRuleSystemServiceRule",
-                    "description": "Alert system service rule\n"
+                    "description": "The cluster alert rule system service rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"node_rule\"` (list Maxitems:1)\n"
                 }
             },
             "requiredInputs": [
@@ -41564,62 +42128,62 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Annotations of the resource\n"
+                        "description": "The cluster alert rule annotations (map)\n"
                     },
                     "clusterId": {
                         "type": "string",
-                        "description": "Alert rule cluster ID\n"
+                        "description": "The cluster id where create cluster alert rule (string)\n"
                     },
                     "eventRule": {
                         "$ref": "#/types/rancher2:index/ClusterAlterRuleEventRule:ClusterAlterRuleEventRule",
-                        "description": "Alert event rule\n"
+                        "description": "The cluster alert rule event rule. ConflictsWith: `\"metric_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
                     },
                     "groupId": {
                         "type": "string",
-                        "description": "Alert rule group ID\n"
+                        "description": "The cluster alert rule alert group ID (string)\n"
                     },
                     "groupIntervalSeconds": {
                         "type": "integer",
-                        "description": "Alert rule interval seconds\n"
+                        "description": "The cluster alert rule group interval seconds. Default: `180` (int)\n"
                     },
                     "groupWaitSeconds": {
                         "type": "integer",
-                        "description": "Alert rule wait seconds\n"
+                        "description": "The cluster alert rule group wait seconds. Default: `180` (int)\n"
                     },
                     "inherited": {
                         "type": "boolean",
-                        "description": "Alert rule inherited\n"
+                        "description": "The cluster alert rule inherited. Default: `true` (bool)\n"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Labels of the resource\n"
+                        "description": "The cluster alert rule labels (map)\n"
                     },
                     "metricRule": {
                         "$ref": "#/types/rancher2:index/ClusterAlterRuleMetricRule:ClusterAlterRuleMetricRule",
-                        "description": "Alert metric rule\n"
+                        "description": "The cluster alert rule metric rule. ConflictsWith: `\"event_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "Alert rule name\n"
+                        "description": "The cluster alert rule name (string)\n"
                     },
                     "nodeRule": {
                         "$ref": "#/types/rancher2:index/ClusterAlterRuleNodeRule:ClusterAlterRuleNodeRule",
-                        "description": "Alert node rule\n"
+                        "description": "The cluster alert rule node rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
                     },
                     "repeatIntervalSeconds": {
                         "type": "integer",
-                        "description": "Alert rule repeat interval seconds\n"
+                        "description": "The cluster alert rule wait seconds. Default: `3600` (int)\n"
                     },
                     "severity": {
                         "type": "string",
-                        "description": "Alert rule severity\n"
+                        "description": "The cluster alert rule severity. Supported values : `\"critical\" | \"info\" | \"warning\"`. Default: `critical` (string)\n"
                     },
                     "systemServiceRule": {
                         "$ref": "#/types/rancher2:index/ClusterAlterRuleSystemServiceRule:ClusterAlterRuleSystemServiceRule",
-                        "description": "Alert system service rule\n"
+                        "description": "The cluster alert rule system service rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"node_rule\"` (list Maxitems:1)\n"
                     }
                 },
                 "type": "object"
@@ -43584,11 +44148,11 @@
             }
         },
         "rancher2:index/machineConfigV2:MachineConfigV2": {
-            "description": "Provides a Rancher v2 Machine config v2 resource. This can be used to create Machine Config v2 for Rancher v2 and retrieve their information. This resource is supported as tech preview from Rancher v2.6.0 and above.\n\n`amazonec2`, `azure`, `digitalocean`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2\n\n**Note** This resource is used by \n",
+            "description": "Provides a Rancher v2 Machine config v2 resource. This can be used to create Machine Config v2 for Rancher v2 and retrieve their information. This resource is supported as tech preview from Rancher v2.6.0 and above.\n\n`amazonec2`, `azure`, `digitalocean`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2\n\n**Note** This resource is used by \n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Using the Harvester Node Driver\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo-harvesterClusterV2 = rancher2.getClusterV2({\n    name: \"foo-harvester\",\n});\n// Create a new Cloud Credential for an imported Harvester cluster\nconst foo_harvesterCloudCredential = new rancher2.CloudCredential(\"foo-harvesterCloudCredential\", {harvesterCredentialConfig: {\n    clusterId: foo_harvesterClusterV2.then(foo_harvesterClusterV2 =\u003e foo_harvesterClusterV2.clusterV1Id),\n    clusterType: \"imported\",\n    kubeconfigContent: foo_harvesterClusterV2.then(foo_harvesterClusterV2 =\u003e foo_harvesterClusterV2.kubeConfig),\n}});\n// Create a new rancher2 machine config v2 using harvester node_driver\nconst foo_harvester_v2 = new rancher2.MachineConfigV2(\"foo-harvester-v2\", {\n    generateName: \"foo-harvester-v2\",\n    harvesterConfig: {\n        vmNamespace: \"default\",\n        cpuCount: \"2\",\n        memorySize: \"4\",\n        diskSize: \"40\",\n        networkName: \"harvester-public/vlan1\",\n        imageName: \"harvester-public/image-57hzg\",\n        sshUser: \"ubuntu\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo_harvester_cluster_v2 = rancher2.get_cluster_v2(name=\"foo-harvester\")\n# Create a new Cloud Credential for an imported Harvester cluster\nfoo_harvester_cloud_credential = rancher2.CloudCredential(\"foo-harvesterCloudCredential\", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(\n    cluster_id=foo_harvester_cluster_v2.cluster_v1_id,\n    cluster_type=\"imported\",\n    kubeconfig_content=foo_harvester_cluster_v2.kube_config,\n))\n# Create a new rancher2 machine config v2 using harvester node_driver\nfoo_harvester_v2 = rancher2.MachineConfigV2(\"foo-harvester-v2\",\n    generate_name=\"foo-harvester-v2\",\n    harvester_config=rancher2.MachineConfigV2HarvesterConfigArgs(\n        vm_namespace=\"default\",\n        cpu_count=\"2\",\n        memory_size=\"4\",\n        disk_size=\"40\",\n        network_name=\"harvester-public/vlan1\",\n        image_name=\"harvester-public/image-57hzg\",\n        ssh_user=\"ubuntu\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo_harvesterClusterV2 = Output.Create(Rancher2.GetClusterV2.InvokeAsync(new Rancher2.GetClusterV2Args\n        {\n            Name = \"foo-harvester\",\n        }));\n        // Create a new Cloud Credential for an imported Harvester cluster\n        var foo_harvesterCloudCredential = new Rancher2.CloudCredential(\"foo-harvesterCloudCredential\", new Rancher2.CloudCredentialArgs\n        {\n            HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs\n            {\n                ClusterId = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =\u003e foo_harvesterClusterV2.ClusterV1Id),\n                ClusterType = \"imported\",\n                KubeconfigContent = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =\u003e foo_harvesterClusterV2.KubeConfig),\n            },\n        });\n        // Create a new rancher2 machine config v2 using harvester node_driver\n        var foo_harvester_v2 = new Rancher2.MachineConfigV2(\"foo-harvester-v2\", new Rancher2.MachineConfigV2Args\n        {\n            GenerateName = \"foo-harvester-v2\",\n            HarvesterConfig = new Rancher2.Inputs.MachineConfigV2HarvesterConfigArgs\n            {\n                VmNamespace = \"default\",\n                CpuCount = \"2\",\n                MemorySize = \"4\",\n                DiskSize = \"40\",\n                NetworkName = \"harvester-public/vlan1\",\n                ImageName = \"harvester-public/image-57hzg\",\n                SshUser = \"ubuntu\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, \u0026GetClusterV2Args{\n\t\t\tName: \"foo-harvester\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewCloudCredential(ctx, \"foo-harvesterCloudCredential\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tHarvesterCredentialConfig: \u0026CloudCredentialHarvesterCredentialConfigArgs{\n\t\t\t\tClusterId:         pulumi.String(foo_harvesterClusterV2.ClusterV1Id),\n\t\t\t\tClusterType:       pulumi.String(\"imported\"),\n\t\t\t\tKubeconfigContent: pulumi.String(foo_harvesterClusterV2.KubeConfig),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewMachineConfigV2(ctx, \"foo-harvester-v2\", \u0026rancher2.MachineConfigV2Args{\n\t\t\tGenerateName: pulumi.String(\"foo-harvester-v2\"),\n\t\t\tHarvesterConfig: \u0026MachineConfigV2HarvesterConfigArgs{\n\t\t\t\tVmNamespace: pulumi.String(\"default\"),\n\t\t\t\tCpuCount:    pulumi.String(\"2\"),\n\t\t\t\tMemorySize:  pulumi.String(\"4\"),\n\t\t\t\tDiskSize:    pulumi.String(\"40\"),\n\t\t\t\tNetworkName: pulumi.String(\"harvester-public/vlan1\"),\n\t\t\t\tImageName:   pulumi.String(\"harvester-public/image-57hzg\"),\n\t\t\t\tSshUser:     pulumi.String(\"ubuntu\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "amazonec2Config": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2Amazonec2Config:MachineConfigV2Amazonec2Config",
-                    "description": "AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
+                    "description": "AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                 },
                 "annotations": {
                     "type": "object",
@@ -43599,11 +44163,11 @@
                 },
                 "azureConfig": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2AzureConfig:MachineConfigV2AzureConfig",
-                    "description": "Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
+                    "description": "Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                 },
                 "digitaloceanConfig": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2DigitaloceanConfig:MachineConfigV2DigitaloceanConfig",
-                    "description": "Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
+                    "description": "Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                 },
                 "fleetNamespace": {
                     "type": "string",
@@ -43612,6 +44176,10 @@
                 "generateName": {
                     "type": "string",
                     "description": "Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\\\"prod-pool1\\\" will generate \\\"nc-prod-pool1-?????\\\" name computed at `name` attribute (string)\n"
+                },
+                "harvesterConfig": {
+                    "$ref": "#/types/rancher2:index/MachineConfigV2HarvesterConfig:MachineConfigV2HarvesterConfig",
+                    "description": "Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                 },
                 "kind": {
                     "type": "string",
@@ -43626,7 +44194,7 @@
                 },
                 "linodeConfig": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2LinodeConfig:MachineConfigV2LinodeConfig",
-                    "description": "Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
+                    "description": "Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                 },
                 "name": {
                     "type": "string",
@@ -43634,7 +44202,7 @@
                 },
                 "openstackConfig": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2OpenstackConfig:MachineConfigV2OpenstackConfig",
-                    "description": "Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)\n"
+                    "description": "Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)\n"
                 },
                 "resourceVersion": {
                     "type": "string",
@@ -43642,7 +44210,7 @@
                 },
                 "vsphereConfig": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2VsphereConfig:MachineConfigV2VsphereConfig",
-                    "description": "vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)\n"
+                    "description": "vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)\n"
                 }
             },
             "required": [
@@ -43656,7 +44224,7 @@
             "inputProperties": {
                 "amazonec2Config": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2Amazonec2Config:MachineConfigV2Amazonec2Config",
-                    "description": "AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
+                    "description": "AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                 },
                 "annotations": {
                     "type": "object",
@@ -43667,11 +44235,11 @@
                 },
                 "azureConfig": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2AzureConfig:MachineConfigV2AzureConfig",
-                    "description": "Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
+                    "description": "Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                 },
                 "digitaloceanConfig": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2DigitaloceanConfig:MachineConfigV2DigitaloceanConfig",
-                    "description": "Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
+                    "description": "Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                 },
                 "fleetNamespace": {
                     "type": "string",
@@ -43680,6 +44248,10 @@
                 "generateName": {
                     "type": "string",
                     "description": "Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\\\"prod-pool1\\\" will generate \\\"nc-prod-pool1-?????\\\" name computed at `name` attribute (string)\n"
+                },
+                "harvesterConfig": {
+                    "$ref": "#/types/rancher2:index/MachineConfigV2HarvesterConfig:MachineConfigV2HarvesterConfig",
+                    "description": "Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                 },
                 "labels": {
                     "type": "object",
@@ -43690,15 +44262,15 @@
                 },
                 "linodeConfig": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2LinodeConfig:MachineConfigV2LinodeConfig",
-                    "description": "Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
+                    "description": "Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                 },
                 "openstackConfig": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2OpenstackConfig:MachineConfigV2OpenstackConfig",
-                    "description": "Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)\n"
+                    "description": "Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)\n"
                 },
                 "vsphereConfig": {
                     "$ref": "#/types/rancher2:index/MachineConfigV2VsphereConfig:MachineConfigV2VsphereConfig",
-                    "description": "vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)\n"
+                    "description": "vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)\n"
                 }
             },
             "requiredInputs": [
@@ -43709,7 +44281,7 @@
                 "properties": {
                     "amazonec2Config": {
                         "$ref": "#/types/rancher2:index/MachineConfigV2Amazonec2Config:MachineConfigV2Amazonec2Config",
-                        "description": "AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
+                        "description": "AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                     },
                     "annotations": {
                         "type": "object",
@@ -43720,11 +44292,11 @@
                     },
                     "azureConfig": {
                         "$ref": "#/types/rancher2:index/MachineConfigV2AzureConfig:MachineConfigV2AzureConfig",
-                        "description": "Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
+                        "description": "Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                     },
                     "digitaloceanConfig": {
                         "$ref": "#/types/rancher2:index/MachineConfigV2DigitaloceanConfig:MachineConfigV2DigitaloceanConfig",
-                        "description": "Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
+                        "description": "Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                     },
                     "fleetNamespace": {
                         "type": "string",
@@ -43733,6 +44305,10 @@
                     "generateName": {
                         "type": "string",
                         "description": "Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\\\"prod-pool1\\\" will generate \\\"nc-prod-pool1-?????\\\" name computed at `name` attribute (string)\n"
+                    },
+                    "harvesterConfig": {
+                        "$ref": "#/types/rancher2:index/MachineConfigV2HarvesterConfig:MachineConfigV2HarvesterConfig",
+                        "description": "Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                     },
                     "kind": {
                         "type": "string",
@@ -43747,7 +44323,7 @@
                     },
                     "linodeConfig": {
                         "$ref": "#/types/rancher2:index/MachineConfigV2LinodeConfig:MachineConfigV2LinodeConfig",
-                        "description": "Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
+                        "description": "Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)\n"
                     },
                     "name": {
                         "type": "string",
@@ -43755,7 +44331,7 @@
                     },
                     "openstackConfig": {
                         "$ref": "#/types/rancher2:index/MachineConfigV2OpenstackConfig:MachineConfigV2OpenstackConfig",
-                        "description": "Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)\n"
+                        "description": "Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)\n"
                     },
                     "resourceVersion": {
                         "type": "string",
@@ -43763,7 +44339,7 @@
                     },
                     "vsphereConfig": {
                         "$ref": "#/types/rancher2:index/MachineConfigV2VsphereConfig:MachineConfigV2VsphereConfig",
-                        "description": "vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)\n"
+                        "description": "vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)\n"
                     }
                 },
                 "type": "object"
@@ -44564,7 +45140,7 @@
             }
         },
         "rancher2:index/nodeTemplate:NodeTemplate": {
-            "description": "Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.\n\namazonec2, azure, digitalocean, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.\n\n**Note** If you are upgrading to Rancher v2.3.3, please take a look to final section\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Node Template up to Rancher 2.1.x\nconst foo = new rancher2.NodeTemplate(\"foo\", {\n    amazonec2Config: {\n        accessKey: \"AWS_ACCESS_KEY\",\n        ami: \"\u003cAMI_ID\u003e\",\n        region: \"\u003cREGION\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n        securityGroups: [\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnetId: \"\u003cSUBNET_ID\u003e\",\n        vpcId: \"\u003cVPC_ID\u003e\",\n        zone: \"\u003cZONE\u003e\",\n    },\n    description: \"foo test\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Node Template up to Rancher 2.1.x\nfoo = rancher2.NodeTemplate(\"foo\",\n    amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(\n        access_key=\"AWS_ACCESS_KEY\",\n        ami=\"\u003cAMI_ID\u003e\",\n        region=\"\u003cREGION\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n        security_groups=[\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnet_id=\"\u003cSUBNET_ID\u003e\",\n        vpc_id=\"\u003cVPC_ID\u003e\",\n        zone=\"\u003cZONE\u003e\",\n    ),\n    description=\"foo test\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Node Template up to Rancher 2.1.x\n        var foo = new Rancher2.NodeTemplate(\"foo\", new Rancher2.NodeTemplateArgs\n        {\n            Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs\n            {\n                AccessKey = \"AWS_ACCESS_KEY\",\n                Ami = \"\u003cAMI_ID\u003e\",\n                Region = \"\u003cREGION\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n                SecurityGroups = \n                {\n                    \"\u003cAWS_SECURITY_GROUP\u003e\",\n                },\n                SubnetId = \"\u003cSUBNET_ID\u003e\",\n                VpcId = \"\u003cVPC_ID\u003e\",\n                Zone = \"\u003cZONE\u003e\",\n            },\n            Description = \"foo test\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewNodeTemplate(ctx, \"foo\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tAmazonec2Config: \u0026NodeTemplateAmazonec2ConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"AWS_ACCESS_KEY\"),\n\t\t\t\tAmi:       pulumi.String(\"\u003cAMI_ID\u003e\"),\n\t\t\t\tRegion:    pulumi.String(\"\u003cREGION\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"\u003cAWS_SECURITY_GROUP\u003e\"),\n\t\t\t\t},\n\t\t\t\tSubnetId: pulumi.String(\"\u003cSUBNET_ID\u003e\"),\n\t\t\t\tVpcId:    pulumi.String(\"\u003cVPC_ID\u003e\"),\n\t\t\t\tZone:     pulumi.String(\"\u003cZONE\u003e\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Node Template from Rancher 2.2.x\nconst fooCloudCredential = new rancher2.CloudCredential(\"fooCloudCredential\", {\n    description: \"foo test\",\n    amazonec2CredentialConfig: {\n        accessKey: \"\u003cAWS_ACCESS_KEY\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n    },\n});\nconst fooNodeTemplate = new rancher2.NodeTemplate(\"fooNodeTemplate\", {\n    description: \"foo test\",\n    cloudCredentialId: fooCloudCredential.id,\n    amazonec2Config: {\n        ami: \"\u003cAMI_ID\u003e\",\n        region: \"\u003cREGION\u003e\",\n        securityGroups: [\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnetId: \"\u003cSUBNET_ID\u003e\",\n        vpcId: \"\u003cVPC_ID\u003e\",\n        zone: \"\u003cZONE\u003e\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Node Template from Rancher 2.2.x\nfoo_cloud_credential = rancher2.CloudCredential(\"fooCloudCredential\",\n    description=\"foo test\",\n    amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(\n        access_key=\"\u003cAWS_ACCESS_KEY\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n    ))\nfoo_node_template = rancher2.NodeTemplate(\"fooNodeTemplate\",\n    description=\"foo test\",\n    cloud_credential_id=foo_cloud_credential.id,\n    amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(\n        ami=\"\u003cAMI_ID\u003e\",\n        region=\"\u003cREGION\u003e\",\n        security_groups=[\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnet_id=\"\u003cSUBNET_ID\u003e\",\n        vpc_id=\"\u003cVPC_ID\u003e\",\n        zone=\"\u003cZONE\u003e\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Node Template from Rancher 2.2.x\n        var fooCloudCredential = new Rancher2.CloudCredential(\"fooCloudCredential\", new Rancher2.CloudCredentialArgs\n        {\n            Description = \"foo test\",\n            Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs\n            {\n                AccessKey = \"\u003cAWS_ACCESS_KEY\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n            },\n        });\n        var fooNodeTemplate = new Rancher2.NodeTemplate(\"fooNodeTemplate\", new Rancher2.NodeTemplateArgs\n        {\n            Description = \"foo test\",\n            CloudCredentialId = fooCloudCredential.Id,\n            Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs\n            {\n                Ami = \"\u003cAMI_ID\u003e\",\n                Region = \"\u003cREGION\u003e\",\n                SecurityGroups = \n                {\n                    \"\u003cAWS_SECURITY_GROUP\u003e\",\n                },\n                SubnetId = \"\u003cSUBNET_ID\u003e\",\n                VpcId = \"\u003cVPC_ID\u003e\",\n                Zone = \"\u003cZONE\u003e\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooCloudCredential, err := rancher2.NewCloudCredential(ctx, \"fooCloudCredential\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t\tAmazonec2CredentialConfig: \u0026CloudCredentialAmazonec2CredentialConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"\u003cAWS_ACCESS_KEY\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewNodeTemplate(ctx, \"fooNodeTemplate\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tDescription:       pulumi.String(\"foo test\"),\n\t\t\tCloudCredentialId: fooCloudCredential.ID(),\n\t\t\tAmazonec2Config: \u0026NodeTemplateAmazonec2ConfigArgs{\n\t\t\t\tAmi:    pulumi.String(\"\u003cAMI_ID\u003e\"),\n\t\t\t\tRegion: pulumi.String(\"\u003cREGION\u003e\"),\n\t\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"\u003cAWS_SECURITY_GROUP\u003e\"),\n\t\t\t\t},\n\t\t\t\tSubnetId: pulumi.String(\"\u003cSUBNET_ID\u003e\"),\n\t\t\t\tVpcId:    pulumi.String(\"\u003cVPC_ID\u003e\"),\n\t\t\t\tZone:     pulumi.String(\"\u003cZONE\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Using the Hetzner Node Driver\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Node Template using hetzner node_driver\nconst hetznerNodeDriver = new rancher2.NodeDriver(\"hetznerNodeDriver\", {\n    active: true,\n    builtin: false,\n    uiUrl: \"https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js\",\n    url: \"https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz\",\n    whitelistDomains: [\"storage.googleapis.com\"],\n});\nconst myHetznerNodeTemplate = new rancher2.NodeTemplate(\"myHetznerNodeTemplate\", {\n    driverId: hetznerNodeDriver.id,\n    hetznerConfig: {\n        apiToken: \"XXXXXXXXXX\",\n        image: \"ubuntu-18.04\",\n        serverLocation: \"nbg1\",\n        serverType: \"cx11\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Node Template using hetzner node_driver\nhetzner_node_driver = rancher2.NodeDriver(\"hetznerNodeDriver\",\n    active=True,\n    builtin=False,\n    ui_url=\"https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js\",\n    url=\"https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz\",\n    whitelist_domains=[\"storage.googleapis.com\"])\nmy_hetzner_node_template = rancher2.NodeTemplate(\"myHetznerNodeTemplate\",\n    driver_id=hetzner_node_driver.id,\n    hetzner_config=rancher2.NodeTemplateHetznerConfigArgs(\n        api_token=\"XXXXXXXXXX\",\n        image=\"ubuntu-18.04\",\n        server_location=\"nbg1\",\n        server_type=\"cx11\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Node Template using hetzner node_driver\n        var hetznerNodeDriver = new Rancher2.NodeDriver(\"hetznerNodeDriver\", new Rancher2.NodeDriverArgs\n        {\n            Active = true,\n            Builtin = false,\n            UiUrl = \"https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js\",\n            Url = \"https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz\",\n            WhitelistDomains = \n            {\n                \"storage.googleapis.com\",\n            },\n        });\n        var myHetznerNodeTemplate = new Rancher2.NodeTemplate(\"myHetznerNodeTemplate\", new Rancher2.NodeTemplateArgs\n        {\n            DriverId = hetznerNodeDriver.Id,\n            HetznerConfig = new Rancher2.Inputs.NodeTemplateHetznerConfigArgs\n            {\n                ApiToken = \"XXXXXXXXXX\",\n                Image = \"ubuntu-18.04\",\n                ServerLocation = \"nbg1\",\n                ServerType = \"cx11\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\thetznerNodeDriver, err := rancher2.NewNodeDriver(ctx, \"hetznerNodeDriver\", \u0026rancher2.NodeDriverArgs{\n\t\t\tActive:  pulumi.Bool(true),\n\t\t\tBuiltin: pulumi.Bool(false),\n\t\t\tUiUrl:   pulumi.String(\"https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js\"),\n\t\t\tUrl:     pulumi.String(\"https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz\"),\n\t\t\tWhitelistDomains: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"storage.googleapis.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewNodeTemplate(ctx, \"myHetznerNodeTemplate\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tDriverId: hetznerNodeDriver.ID(),\n\t\t\tHetznerConfig: \u0026NodeTemplateHetznerConfigArgs{\n\t\t\t\tApiToken:       pulumi.String(\"XXXXXXXXXX\"),\n\t\t\t\tImage:          pulumi.String(\"ubuntu-18.04\"),\n\t\t\t\tServerLocation: pulumi.String(\"nbg1\"),\n\t\t\t\tServerType:     pulumi.String(\"cx11\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nNode Template can be imported using the Rancher Node Template ID\n\n```sh\n $ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo \u0026lt;node_template_id\u0026gt;\n```\n\n ",
+            "description": "Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.\n\namazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.\n\n**Note** If you are upgrading to Rancher v2.3.3, please take a look to final section\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Node Template up to Rancher 2.1.x\nconst foo = new rancher2.NodeTemplate(\"foo\", {\n    amazonec2Config: {\n        accessKey: \"AWS_ACCESS_KEY\",\n        ami: \"\u003cAMI_ID\u003e\",\n        region: \"\u003cREGION\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n        securityGroups: [\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnetId: \"\u003cSUBNET_ID\u003e\",\n        vpcId: \"\u003cVPC_ID\u003e\",\n        zone: \"\u003cZONE\u003e\",\n    },\n    description: \"foo test\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Node Template up to Rancher 2.1.x\nfoo = rancher2.NodeTemplate(\"foo\",\n    amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(\n        access_key=\"AWS_ACCESS_KEY\",\n        ami=\"\u003cAMI_ID\u003e\",\n        region=\"\u003cREGION\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n        security_groups=[\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnet_id=\"\u003cSUBNET_ID\u003e\",\n        vpc_id=\"\u003cVPC_ID\u003e\",\n        zone=\"\u003cZONE\u003e\",\n    ),\n    description=\"foo test\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Node Template up to Rancher 2.1.x\n        var foo = new Rancher2.NodeTemplate(\"foo\", new Rancher2.NodeTemplateArgs\n        {\n            Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs\n            {\n                AccessKey = \"AWS_ACCESS_KEY\",\n                Ami = \"\u003cAMI_ID\u003e\",\n                Region = \"\u003cREGION\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n                SecurityGroups = \n                {\n                    \"\u003cAWS_SECURITY_GROUP\u003e\",\n                },\n                SubnetId = \"\u003cSUBNET_ID\u003e\",\n                VpcId = \"\u003cVPC_ID\u003e\",\n                Zone = \"\u003cZONE\u003e\",\n            },\n            Description = \"foo test\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewNodeTemplate(ctx, \"foo\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tAmazonec2Config: \u0026NodeTemplateAmazonec2ConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"AWS_ACCESS_KEY\"),\n\t\t\t\tAmi:       pulumi.String(\"\u003cAMI_ID\u003e\"),\n\t\t\t\tRegion:    pulumi.String(\"\u003cREGION\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"\u003cAWS_SECURITY_GROUP\u003e\"),\n\t\t\t\t},\n\t\t\t\tSubnetId: pulumi.String(\"\u003cSUBNET_ID\u003e\"),\n\t\t\t\tVpcId:    pulumi.String(\"\u003cVPC_ID\u003e\"),\n\t\t\t\tZone:     pulumi.String(\"\u003cZONE\u003e\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Node Template from Rancher 2.2.x\nconst fooCloudCredential = new rancher2.CloudCredential(\"fooCloudCredential\", {\n    description: \"foo test\",\n    amazonec2CredentialConfig: {\n        accessKey: \"\u003cAWS_ACCESS_KEY\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n    },\n});\nconst fooNodeTemplate = new rancher2.NodeTemplate(\"fooNodeTemplate\", {\n    description: \"foo test\",\n    cloudCredentialId: fooCloudCredential.id,\n    amazonec2Config: {\n        ami: \"\u003cAMI_ID\u003e\",\n        region: \"\u003cREGION\u003e\",\n        securityGroups: [\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnetId: \"\u003cSUBNET_ID\u003e\",\n        vpcId: \"\u003cVPC_ID\u003e\",\n        zone: \"\u003cZONE\u003e\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Node Template from Rancher 2.2.x\nfoo_cloud_credential = rancher2.CloudCredential(\"fooCloudCredential\",\n    description=\"foo test\",\n    amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(\n        access_key=\"\u003cAWS_ACCESS_KEY\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n    ))\nfoo_node_template = rancher2.NodeTemplate(\"fooNodeTemplate\",\n    description=\"foo test\",\n    cloud_credential_id=foo_cloud_credential.id,\n    amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(\n        ami=\"\u003cAMI_ID\u003e\",\n        region=\"\u003cREGION\u003e\",\n        security_groups=[\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnet_id=\"\u003cSUBNET_ID\u003e\",\n        vpc_id=\"\u003cVPC_ID\u003e\",\n        zone=\"\u003cZONE\u003e\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Node Template from Rancher 2.2.x\n        var fooCloudCredential = new Rancher2.CloudCredential(\"fooCloudCredential\", new Rancher2.CloudCredentialArgs\n        {\n            Description = \"foo test\",\n            Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs\n            {\n                AccessKey = \"\u003cAWS_ACCESS_KEY\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n            },\n        });\n        var fooNodeTemplate = new Rancher2.NodeTemplate(\"fooNodeTemplate\", new Rancher2.NodeTemplateArgs\n        {\n            Description = \"foo test\",\n            CloudCredentialId = fooCloudCredential.Id,\n            Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs\n            {\n                Ami = \"\u003cAMI_ID\u003e\",\n                Region = \"\u003cREGION\u003e\",\n                SecurityGroups = \n                {\n                    \"\u003cAWS_SECURITY_GROUP\u003e\",\n                },\n                SubnetId = \"\u003cSUBNET_ID\u003e\",\n                VpcId = \"\u003cVPC_ID\u003e\",\n                Zone = \"\u003cZONE\u003e\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooCloudCredential, err := rancher2.NewCloudCredential(ctx, \"fooCloudCredential\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t\tAmazonec2CredentialConfig: \u0026CloudCredentialAmazonec2CredentialConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"\u003cAWS_ACCESS_KEY\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewNodeTemplate(ctx, \"fooNodeTemplate\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tDescription:       pulumi.String(\"foo test\"),\n\t\t\tCloudCredentialId: fooCloudCredential.ID(),\n\t\t\tAmazonec2Config: \u0026NodeTemplateAmazonec2ConfigArgs{\n\t\t\t\tAmi:    pulumi.String(\"\u003cAMI_ID\u003e\"),\n\t\t\t\tRegion: pulumi.String(\"\u003cREGION\u003e\"),\n\t\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"\u003cAWS_SECURITY_GROUP\u003e\"),\n\t\t\t\t},\n\t\t\t\tSubnetId: pulumi.String(\"\u003cSUBNET_ID\u003e\"),\n\t\t\t\tVpcId:    pulumi.String(\"\u003cVPC_ID\u003e\"),\n\t\t\t\tZone:     pulumi.String(\"\u003cZONE\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Using the Harvester Node Driver\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo-harvesterClusterV2 = rancher2.getClusterV2({\n    name: \"foo-harvester\",\n});\n// Create a new Cloud Credential for an imported Harvester cluster\nconst foo_harvesterCloudCredential = new rancher2.CloudCredential(\"foo-harvesterCloudCredential\", {harvesterCredentialConfig: {\n    clusterId: foo_harvesterClusterV2.then(foo_harvesterClusterV2 =\u003e foo_harvesterClusterV2.clusterV1Id),\n    clusterType: \"imported\",\n    kubeconfigContent: foo_harvesterClusterV2.then(foo_harvesterClusterV2 =\u003e foo_harvesterClusterV2.kubeConfig),\n}});\n// Create a new rancher2 Node Template using harvester node_driver\nconst foo_harvesterNodeTemplate = new rancher2.NodeTemplate(\"foo-harvesterNodeTemplate\", {\n    cloudCredentialId: foo_harvesterCloudCredential.id,\n    engineInstallUrl: \"https://releases.rancher.com/install-docker/20.10.sh\",\n    harvesterConfig: {\n        vmNamespace: \"default\",\n        cpuCount: \"2\",\n        memorySize: \"4\",\n        diskSize: \"40\",\n        networkName: \"harvester-public/vlan1\",\n        imageName: \"harvester-public/image-57hzg\",\n        sshUser: \"ubuntu\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo_harvester_cluster_v2 = rancher2.get_cluster_v2(name=\"foo-harvester\")\n# Create a new Cloud Credential for an imported Harvester cluster\nfoo_harvester_cloud_credential = rancher2.CloudCredential(\"foo-harvesterCloudCredential\", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(\n    cluster_id=foo_harvester_cluster_v2.cluster_v1_id,\n    cluster_type=\"imported\",\n    kubeconfig_content=foo_harvester_cluster_v2.kube_config,\n))\n# Create a new rancher2 Node Template using harvester node_driver\nfoo_harvester_node_template = rancher2.NodeTemplate(\"foo-harvesterNodeTemplate\",\n    cloud_credential_id=foo_harvester_cloud_credential.id,\n    engine_install_url=\"https://releases.rancher.com/install-docker/20.10.sh\",\n    harvester_config=rancher2.NodeTemplateHarvesterConfigArgs(\n        vm_namespace=\"default\",\n        cpu_count=\"2\",\n        memory_size=\"4\",\n        disk_size=\"40\",\n        network_name=\"harvester-public/vlan1\",\n        image_name=\"harvester-public/image-57hzg\",\n        ssh_user=\"ubuntu\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo_harvesterClusterV2 = Output.Create(Rancher2.GetClusterV2.InvokeAsync(new Rancher2.GetClusterV2Args\n        {\n            Name = \"foo-harvester\",\n        }));\n        // Create a new Cloud Credential for an imported Harvester cluster\n        var foo_harvesterCloudCredential = new Rancher2.CloudCredential(\"foo-harvesterCloudCredential\", new Rancher2.CloudCredentialArgs\n        {\n            HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs\n            {\n                ClusterId = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =\u003e foo_harvesterClusterV2.ClusterV1Id),\n                ClusterType = \"imported\",\n                KubeconfigContent = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =\u003e foo_harvesterClusterV2.KubeConfig),\n            },\n        });\n        // Create a new rancher2 Node Template using harvester node_driver\n        var foo_harvesterNodeTemplate = new Rancher2.NodeTemplate(\"foo-harvesterNodeTemplate\", new Rancher2.NodeTemplateArgs\n        {\n            CloudCredentialId = foo_harvesterCloudCredential.Id,\n            EngineInstallUrl = \"https://releases.rancher.com/install-docker/20.10.sh\",\n            HarvesterConfig = new Rancher2.Inputs.NodeTemplateHarvesterConfigArgs\n            {\n                VmNamespace = \"default\",\n                CpuCount = \"2\",\n                MemorySize = \"4\",\n                DiskSize = \"40\",\n                NetworkName = \"harvester-public/vlan1\",\n                ImageName = \"harvester-public/image-57hzg\",\n                SshUser = \"ubuntu\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, \u0026GetClusterV2Args{\n\t\t\tName: \"foo-harvester\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewCloudCredential(ctx, \"foo-harvesterCloudCredential\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tHarvesterCredentialConfig: \u0026CloudCredentialHarvesterCredentialConfigArgs{\n\t\t\t\tClusterId:         pulumi.String(foo_harvesterClusterV2.ClusterV1Id),\n\t\t\t\tClusterType:       pulumi.String(\"imported\"),\n\t\t\t\tKubeconfigContent: pulumi.String(foo_harvesterClusterV2.KubeConfig),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewNodeTemplate(ctx, \"foo-harvesterNodeTemplate\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tCloudCredentialId: foo_harvesterCloudCredential.ID(),\n\t\t\tEngineInstallUrl:  pulumi.String(\"https://releases.rancher.com/install-docker/20.10.sh\"),\n\t\t\tHarvesterConfig: \u0026NodeTemplateHarvesterConfigArgs{\n\t\t\t\tVmNamespace: pulumi.String(\"default\"),\n\t\t\t\tCpuCount:    pulumi.String(\"2\"),\n\t\t\t\tMemorySize:  pulumi.String(\"4\"),\n\t\t\t\tDiskSize:    pulumi.String(\"40\"),\n\t\t\t\tNetworkName: pulumi.String(\"harvester-public/vlan1\"),\n\t\t\t\tImageName:   pulumi.String(\"harvester-public/image-57hzg\"),\n\t\t\t\tSshUser:     pulumi.String(\"ubuntu\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Using the Hetzner Node Driver\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Node Template using hetzner node_driver\nconst hetznerNodeDriver = new rancher2.NodeDriver(\"hetznerNodeDriver\", {\n    active: true,\n    builtin: false,\n    uiUrl: \"https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js\",\n    url: \"https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz\",\n    whitelistDomains: [\"storage.googleapis.com\"],\n});\nconst myHetznerNodeTemplate = new rancher2.NodeTemplate(\"myHetznerNodeTemplate\", {\n    driverId: hetznerNodeDriver.id,\n    hetznerConfig: {\n        apiToken: \"XXXXXXXXXX\",\n        image: \"ubuntu-18.04\",\n        serverLocation: \"nbg1\",\n        serverType: \"cx11\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Node Template using hetzner node_driver\nhetzner_node_driver = rancher2.NodeDriver(\"hetznerNodeDriver\",\n    active=True,\n    builtin=False,\n    ui_url=\"https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js\",\n    url=\"https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz\",\n    whitelist_domains=[\"storage.googleapis.com\"])\nmy_hetzner_node_template = rancher2.NodeTemplate(\"myHetznerNodeTemplate\",\n    driver_id=hetzner_node_driver.id,\n    hetzner_config=rancher2.NodeTemplateHetznerConfigArgs(\n        api_token=\"XXXXXXXXXX\",\n        image=\"ubuntu-18.04\",\n        server_location=\"nbg1\",\n        server_type=\"cx11\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Node Template using hetzner node_driver\n        var hetznerNodeDriver = new Rancher2.NodeDriver(\"hetznerNodeDriver\", new Rancher2.NodeDriverArgs\n        {\n            Active = true,\n            Builtin = false,\n            UiUrl = \"https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js\",\n            Url = \"https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz\",\n            WhitelistDomains = \n            {\n                \"storage.googleapis.com\",\n            },\n        });\n        var myHetznerNodeTemplate = new Rancher2.NodeTemplate(\"myHetznerNodeTemplate\", new Rancher2.NodeTemplateArgs\n        {\n            DriverId = hetznerNodeDriver.Id,\n            HetznerConfig = new Rancher2.Inputs.NodeTemplateHetznerConfigArgs\n            {\n                ApiToken = \"XXXXXXXXXX\",\n                Image = \"ubuntu-18.04\",\n                ServerLocation = \"nbg1\",\n                ServerType = \"cx11\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\thetznerNodeDriver, err := rancher2.NewNodeDriver(ctx, \"hetznerNodeDriver\", \u0026rancher2.NodeDriverArgs{\n\t\t\tActive:  pulumi.Bool(true),\n\t\t\tBuiltin: pulumi.Bool(false),\n\t\t\tUiUrl:   pulumi.String(\"https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js\"),\n\t\t\tUrl:     pulumi.String(\"https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz\"),\n\t\t\tWhitelistDomains: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"storage.googleapis.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewNodeTemplate(ctx, \"myHetznerNodeTemplate\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tDriverId: hetznerNodeDriver.ID(),\n\t\t\tHetznerConfig: \u0026NodeTemplateHetznerConfigArgs{\n\t\t\t\tApiToken:       pulumi.String(\"XXXXXXXXXX\"),\n\t\t\t\tImage:          pulumi.String(\"ubuntu-18.04\"),\n\t\t\t\tServerLocation: pulumi.String(\"nbg1\"),\n\t\t\t\tServerType:     pulumi.String(\"cx11\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nNode Template can be imported using the Rancher Node Template ID\n\n```sh\n $ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo \u0026lt;node_template_id\u0026gt;\n```\n\n ",
             "properties": {
                 "amazonec2Config": {
                     "$ref": "#/types/rancher2:index/NodeTemplateAmazonec2Config:NodeTemplateAmazonec2Config",
@@ -44651,6 +45227,10 @@
                 "engineStorageDriver": {
                     "type": "string",
                     "description": "Engine storage driver for the node template (string)\n"
+                },
+                "harvesterConfig": {
+                    "$ref": "#/types/rancher2:index/NodeTemplateHarvesterConfig:NodeTemplateHarvesterConfig",
+                    "description": "Harvester config for the Node Template (list maxitems:1)\n"
                 },
                 "hetznerConfig": {
                     "$ref": "#/types/rancher2:index/NodeTemplateHetznerConfig:NodeTemplateHetznerConfig",
@@ -44786,6 +45366,10 @@
                     "type": "string",
                     "description": "Engine storage driver for the node template (string)\n"
                 },
+                "harvesterConfig": {
+                    "$ref": "#/types/rancher2:index/NodeTemplateHarvesterConfig:NodeTemplateHarvesterConfig",
+                    "description": "Harvester config for the Node Template (list maxitems:1)\n"
+                },
                 "hetznerConfig": {
                     "$ref": "#/types/rancher2:index/NodeTemplateHetznerConfig:NodeTemplateHetznerConfig",
                     "description": "Hetzner config for the Node Template (list maxitems:1)\n"
@@ -44917,6 +45501,10 @@
                     "engineStorageDriver": {
                         "type": "string",
                         "description": "Engine storage driver for the node template (string)\n"
+                    },
+                    "harvesterConfig": {
+                        "$ref": "#/types/rancher2:index/NodeTemplateHarvesterConfig:NodeTemplateHarvesterConfig",
+                        "description": "Harvester config for the Node Template (list maxitems:1)\n"
                     },
                     "hetznerConfig": {
                         "$ref": "#/types/rancher2:index/NodeTemplateHetznerConfig:NodeTemplateHetznerConfig",
@@ -46693,70 +47281,71 @@
             }
         },
         "rancher2:index/roleTempalte:RoleTempalte": {
+            "description": "Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information. \n\n`cluster` and `project` scopes are supported for role templates.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 cluster Role Template\nconst foo = new rancher2.RoleTemplate(\"foo\", {\n    context: \"cluster\",\n    defaultRole: true,\n    description: \"Terraform role template acceptance test\",\n    rules: [{\n        apiGroups: [\"*\"],\n        resources: [\"secrets\"],\n        verbs: [\"create\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 cluster Role Template\nfoo = rancher2.RoleTemplate(\"foo\",\n    context=\"cluster\",\n    default_role=True,\n    description=\"Terraform role template acceptance test\",\n    rules=[rancher2.RoleTemplateRuleArgs(\n        api_groups=[\"*\"],\n        resources=[\"secrets\"],\n        verbs=[\"create\"],\n    )])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 cluster Role Template\n        var foo = new Rancher2.RoleTemplate(\"foo\", new Rancher2.RoleTemplateArgs\n        {\n            Context = \"cluster\",\n            DefaultRole = true,\n            Description = \"Terraform role template acceptance test\",\n            Rules = \n            {\n                new Rancher2.Inputs.RoleTemplateRuleArgs\n                {\n                    ApiGroups = \n                    {\n                        \"*\",\n                    },\n                    Resources = \n                    {\n                        \"secrets\",\n                    },\n                    Verbs = \n                    {\n                        \"create\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewRoleTemplate(ctx, \"foo\", \u0026rancher2.RoleTemplateArgs{\n\t\t\tContext:     pulumi.String(\"cluster\"),\n\t\t\tDefaultRole: pulumi.Bool(true),\n\t\t\tDescription: pulumi.String(\"Terraform role template acceptance test\"),\n\t\t\tRules: RoleTemplateRuleArray{\n\t\t\t\t\u0026RoleTemplateRuleArgs{\n\t\t\t\t\tApiGroups: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"*\"),\n\t\t\t\t\t},\n\t\t\t\t\tResources: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"secrets\"),\n\t\t\t\t\t},\n\t\t\t\t\tVerbs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"create\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 project Role Template\nconst foo = new rancher2.RoleTemplate(\"foo\", {\n    context: \"project\",\n    defaultRole: true,\n    description: \"Terraform role template acceptance test\",\n    rules: [{\n        apiGroups: [\"*\"],\n        resources: [\"secrets\"],\n        verbs: [\"create\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 project Role Template\nfoo = rancher2.RoleTemplate(\"foo\",\n    context=\"project\",\n    default_role=True,\n    description=\"Terraform role template acceptance test\",\n    rules=[rancher2.RoleTemplateRuleArgs(\n        api_groups=[\"*\"],\n        resources=[\"secrets\"],\n        verbs=[\"create\"],\n    )])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 project Role Template\n        var foo = new Rancher2.RoleTemplate(\"foo\", new Rancher2.RoleTemplateArgs\n        {\n            Context = \"project\",\n            DefaultRole = true,\n            Description = \"Terraform role template acceptance test\",\n            Rules = \n            {\n                new Rancher2.Inputs.RoleTemplateRuleArgs\n                {\n                    ApiGroups = \n                    {\n                        \"*\",\n                    },\n                    Resources = \n                    {\n                        \"secrets\",\n                    },\n                    Verbs = \n                    {\n                        \"create\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewRoleTemplate(ctx, \"foo\", \u0026rancher2.RoleTemplateArgs{\n\t\t\tContext:     pulumi.String(\"project\"),\n\t\t\tDefaultRole: pulumi.Bool(true),\n\t\t\tDescription: pulumi.String(\"Terraform role template acceptance test\"),\n\t\t\tRules: RoleTemplateRuleArray{\n\t\t\t\t\u0026RoleTemplateRuleArgs{\n\t\t\t\t\tApiGroups: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"*\"),\n\t\t\t\t\t},\n\t\t\t\t\tResources: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"secrets\"),\n\t\t\t\t\t},\n\t\t\t\t\tVerbs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"create\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nRole Template can be imported using the Rancher Role Template ID\n\n```sh\n $ pulumi import rancher2:index/roleTempalte:RoleTempalte foo \u0026lt;role_template_id\u0026gt;\n```\n\n ",
             "properties": {
                 "administrative": {
                     "type": "boolean",
-                    "description": "Administrative role template\n"
+                    "description": "Administrative role template. Default `false` (bool)\n"
                 },
                 "annotations": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Annotations of the resource\n"
+                    "description": "Annotations for role template object (map)\n"
                 },
                 "builtin": {
                     "type": "boolean",
-                    "description": "Builtin role template\n"
+                    "description": "(Computed) Builtin role template (string)\n"
                 },
                 "context": {
                     "type": "string",
-                    "description": "Context role template\n"
+                    "description": "Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)\n"
                 },
                 "defaultRole": {
                     "type": "boolean",
-                    "description": "Default role template for new created cluster or project\n"
+                    "description": "Default role template for new created cluster or project. Default `false` (bool)\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "Role template policy description\n"
+                    "description": "Role template description (string)\n"
                 },
                 "external": {
                     "type": "boolean",
-                    "description": "External role template\n"
+                    "description": "External role template. Default `false` (bool)\n"
                 },
                 "hidden": {
                     "type": "boolean",
-                    "description": "Hidden role template\n"
+                    "description": "Hidden role template. Default `false` (bool)\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Labels of the resource\n"
+                    "description": "Labels for role template object (map)\n"
                 },
                 "locked": {
                     "type": "boolean",
-                    "description": "Locked role template\n"
+                    "description": "Locked role template. Default `false` (bool)\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Role template policy name\n"
+                    "description": "Role template name (string)\n"
                 },
                 "roleTemplateIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Inherit role template IDs\n"
+                    "description": "Inherit role template IDs (list)\n"
                 },
                 "rules": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/rancher2:index/RoleTempalteRule:RoleTempalteRule"
                     },
-                    "description": "Role template policy rules\n"
+                    "description": "Role template policy rules (list)\n"
                 }
             },
             "required": [
@@ -46771,63 +47360,63 @@
             "inputProperties": {
                 "administrative": {
                     "type": "boolean",
-                    "description": "Administrative role template\n"
+                    "description": "Administrative role template. Default `false` (bool)\n"
                 },
                 "annotations": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Annotations of the resource\n"
+                    "description": "Annotations for role template object (map)\n"
                 },
                 "context": {
                     "type": "string",
-                    "description": "Context role template\n"
+                    "description": "Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)\n"
                 },
                 "defaultRole": {
                     "type": "boolean",
-                    "description": "Default role template for new created cluster or project\n"
+                    "description": "Default role template for new created cluster or project. Default `false` (bool)\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "Role template policy description\n"
+                    "description": "Role template description (string)\n"
                 },
                 "external": {
                     "type": "boolean",
-                    "description": "External role template\n"
+                    "description": "External role template. Default `false` (bool)\n"
                 },
                 "hidden": {
                     "type": "boolean",
-                    "description": "Hidden role template\n"
+                    "description": "Hidden role template. Default `false` (bool)\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Labels of the resource\n"
+                    "description": "Labels for role template object (map)\n"
                 },
                 "locked": {
                     "type": "boolean",
-                    "description": "Locked role template\n"
+                    "description": "Locked role template. Default `false` (bool)\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Role template policy name\n"
+                    "description": "Role template name (string)\n"
                 },
                 "roleTemplateIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Inherit role template IDs\n"
+                    "description": "Inherit role template IDs (list)\n"
                 },
                 "rules": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/rancher2:index/RoleTempalteRule:RoleTempalteRule"
                     },
-                    "description": "Role template policy rules\n"
+                    "description": "Role template policy rules (list)\n"
                 }
             },
             "stateInputs": {
@@ -46835,67 +47424,67 @@
                 "properties": {
                     "administrative": {
                         "type": "boolean",
-                        "description": "Administrative role template\n"
+                        "description": "Administrative role template. Default `false` (bool)\n"
                     },
                     "annotations": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Annotations of the resource\n"
+                        "description": "Annotations for role template object (map)\n"
                     },
                     "builtin": {
                         "type": "boolean",
-                        "description": "Builtin role template\n"
+                        "description": "(Computed) Builtin role template (string)\n"
                     },
                     "context": {
                         "type": "string",
-                        "description": "Context role template\n"
+                        "description": "Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)\n"
                     },
                     "defaultRole": {
                         "type": "boolean",
-                        "description": "Default role template for new created cluster or project\n"
+                        "description": "Default role template for new created cluster or project. Default `false` (bool)\n"
                     },
                     "description": {
                         "type": "string",
-                        "description": "Role template policy description\n"
+                        "description": "Role template description (string)\n"
                     },
                     "external": {
                         "type": "boolean",
-                        "description": "External role template\n"
+                        "description": "External role template. Default `false` (bool)\n"
                     },
                     "hidden": {
                         "type": "boolean",
-                        "description": "Hidden role template\n"
+                        "description": "Hidden role template. Default `false` (bool)\n"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Labels of the resource\n"
+                        "description": "Labels for role template object (map)\n"
                     },
                     "locked": {
                         "type": "boolean",
-                        "description": "Locked role template\n"
+                        "description": "Locked role template. Default `false` (bool)\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "Role template policy name\n"
+                        "description": "Role template name (string)\n"
                     },
                     "roleTemplateIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Inherit role template IDs\n"
+                        "description": "Inherit role template IDs (list)\n"
                     },
                     "rules": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/rancher2:index/RoleTempalteRule:RoleTempalteRule"
                         },
-                        "description": "Role template policy rules\n"
+                        "description": "Role template policy rules (list)\n"
                     }
                 },
                 "type": "object"
@@ -51327,14 +51916,17 @@
             }
         },
         "rancher2:index/getRoleTempalte:getRoleTempalte": {
+            "description": "Use this data source to retrieve information about a Rancher v2 role template resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = pulumi.output(rancher2.getRoleTemplate({\n    name: \"foo\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.get_role_template(name=\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Rancher2.GetRoleTemplate.InvokeAsync(new Rancher2.GetRoleTemplateArgs\n        {\n            Name = \"foo\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.LookupRoleTemplate(ctx, \u0026GetRoleTemplateArgs{\n\t\t\tName: \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getRoleTempalte.\n",
                 "properties": {
                     "context": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Role template context. `cluster` and `project` values are supported (string)\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the Role Template (string)\n"
                     }
                 },
                 "type": "object",
@@ -51346,31 +51938,38 @@
                 "description": "A collection of values returned by getRoleTempalte.\n",
                 "properties": {
                     "administrative": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "(Computed) Administrative role template (bool)\n"
                     },
                     "annotations": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
-                        }
+                        },
+                        "description": "(Computed) Annotations for role template object (map)\n"
                     },
                     "builtin": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "(Computed) Builtin role template (string)\n"
                     },
                     "context": {
                         "type": "string"
                     },
                     "defaultRole": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "(Computed) Default role template for new created cluster or project (bool)\n"
                     },
                     "description": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "(Computed) Role template description (string)\n"
                     },
                     "external": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "(Computed) External role template (bool)\n"
                     },
                     "hidden": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "(Computed) Hidden role template (bool)\n"
                     },
                     "id": {
                         "type": "string",
@@ -51380,10 +51979,12 @@
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
-                        }
+                        },
+                        "description": "(Computed) Labels for role template object (map)\n"
                     },
                     "locked": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "(Computed) Locked role template (bool)\n"
                     },
                     "name": {
                         "type": "string"
@@ -51392,13 +51993,15 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "(Computed) Inherit role template IDs (list)\n"
                     },
                     "rules": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/rancher2:index/getRoleTempalteRule:getRoleTempalteRule"
-                        }
+                        },
+                        "description": "(Computed) Role template policy rules (list)\n"
                     }
                 },
                 "type": "object",

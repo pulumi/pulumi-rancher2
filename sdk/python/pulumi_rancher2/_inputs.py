@@ -13,6 +13,7 @@ __all__ = [
     'CloudCredentialAzureCredentialConfigArgs',
     'CloudCredentialDigitaloceanCredentialConfigArgs',
     'CloudCredentialGoogleCredentialConfigArgs',
+    'CloudCredentialHarvesterCredentialConfigArgs',
     'CloudCredentialLinodeCredentialConfigArgs',
     'CloudCredentialOpenstackCredentialConfigArgs',
     'CloudCredentialS3CredentialConfigArgs',
@@ -213,6 +214,7 @@ __all__ = [
     'ClusterV2RkeConfigRegistriesArgs',
     'ClusterV2RkeConfigRegistriesConfigArgs',
     'ClusterV2RkeConfigRegistriesMirrorArgs',
+    'ClusterV2RkeConfigRotateCertificatesArgs',
     'ClusterV2RkeConfigUpgradeStrategyArgs',
     'ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs',
     'ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs',
@@ -225,6 +227,7 @@ __all__ = [
     'MachineConfigV2Amazonec2ConfigArgs',
     'MachineConfigV2AzureConfigArgs',
     'MachineConfigV2DigitaloceanConfigArgs',
+    'MachineConfigV2HarvesterConfigArgs',
     'MachineConfigV2LinodeConfigArgs',
     'MachineConfigV2OpenstackConfigArgs',
     'MachineConfigV2VsphereConfigArgs',
@@ -240,6 +243,7 @@ __all__ = [
     'NodeTemplateAmazonec2ConfigArgs',
     'NodeTemplateAzureConfigArgs',
     'NodeTemplateDigitaloceanConfigArgs',
+    'NodeTemplateHarvesterConfigArgs',
     'NodeTemplateHetznerConfigArgs',
     'NodeTemplateLinodeConfigArgs',
     'NodeTemplateNodeTaintArgs',
@@ -485,6 +489,59 @@ class CloudCredentialGoogleCredentialConfigArgs:
     @auth_encoded_json.setter
     def auth_encoded_json(self, value: pulumi.Input[str]):
         pulumi.set(self, "auth_encoded_json", value)
+
+
+@pulumi.input_type
+class CloudCredentialHarvesterCredentialConfigArgs:
+    def __init__(__self__, *,
+                 cluster_type: pulumi.Input[str],
+                 kubeconfig_content: pulumi.Input[str],
+                 cluster_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cluster_type: Harvester Cluster Type. Supported values : `"imported" | "external"` (string)
+        :param pulumi.Input[str] kubeconfig_content: Harvester Cluster KubeConfig Content (string)
+        :param pulumi.Input[str] cluster_id: Imported Harvester Cluster ID (string)
+        """
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "kubeconfig_content", kubeconfig_content)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> pulumi.Input[str]:
+        """
+        Harvester Cluster Type. Supported values : `"imported" | "external"` (string)
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @cluster_type.setter
+    def cluster_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_type", value)
+
+    @property
+    @pulumi.getter(name="kubeconfigContent")
+    def kubeconfig_content(self) -> pulumi.Input[str]:
+        """
+        Harvester Cluster KubeConfig Content (string)
+        """
+        return pulumi.get(self, "kubeconfig_content")
+
+    @kubeconfig_content.setter
+    def kubeconfig_content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kubeconfig_content", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Imported Harvester Cluster ID (string)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
 
 
 @pulumi.input_type
@@ -2382,6 +2439,12 @@ class ClusterAlterGroupRecipientArgs:
                  default_recipient: Optional[pulumi.Input[bool]] = None,
                  notifier_type: Optional[pulumi.Input[str]] = None,
                  recipient: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] notifier_id: Recipient notifier ID (string)
+        :param pulumi.Input[bool] default_recipient: Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        :param pulumi.Input[str] notifier_type: Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        :param pulumi.Input[str] recipient: Recipient (string)
+        """
         pulumi.set(__self__, "notifier_id", notifier_id)
         if default_recipient is not None:
             pulumi.set(__self__, "default_recipient", default_recipient)
@@ -2393,6 +2456,9 @@ class ClusterAlterGroupRecipientArgs:
     @property
     @pulumi.getter(name="notifierId")
     def notifier_id(self) -> pulumi.Input[str]:
+        """
+        Recipient notifier ID (string)
+        """
         return pulumi.get(self, "notifier_id")
 
     @notifier_id.setter
@@ -2402,6 +2468,9 @@ class ClusterAlterGroupRecipientArgs:
     @property
     @pulumi.getter(name="defaultRecipient")
     def default_recipient(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        """
         return pulumi.get(self, "default_recipient")
 
     @default_recipient.setter
@@ -2411,6 +2480,9 @@ class ClusterAlterGroupRecipientArgs:
     @property
     @pulumi.getter(name="notifierType")
     def notifier_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        """
         return pulumi.get(self, "notifier_type")
 
     @notifier_type.setter
@@ -2420,6 +2492,9 @@ class ClusterAlterGroupRecipientArgs:
     @property
     @pulumi.getter
     def recipient(self) -> Optional[pulumi.Input[str]]:
+        """
+        Recipient (string)
+        """
         return pulumi.get(self, "recipient")
 
     @recipient.setter
@@ -2432,6 +2507,10 @@ class ClusterAlterRuleEventRuleArgs:
     def __init__(__self__, *,
                  resource_kind: pulumi.Input[str],
                  event_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource_kind: Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+        :param pulumi.Input[str] event_type: Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+        """
         pulumi.set(__self__, "resource_kind", resource_kind)
         if event_type is not None:
             pulumi.set(__self__, "event_type", event_type)
@@ -2439,6 +2518,9 @@ class ClusterAlterRuleEventRuleArgs:
     @property
     @pulumi.getter(name="resourceKind")
     def resource_kind(self) -> pulumi.Input[str]:
+        """
+        Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+        """
         return pulumi.get(self, "resource_kind")
 
     @resource_kind.setter
@@ -2448,6 +2530,9 @@ class ClusterAlterRuleEventRuleArgs:
     @property
     @pulumi.getter(name="eventType")
     def event_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+        """
         return pulumi.get(self, "event_type")
 
     @event_type.setter
@@ -2463,6 +2548,13 @@ class ClusterAlterRuleMetricRuleArgs:
                  threshold_value: pulumi.Input[float],
                  comparison: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] duration: Metric rule duration (string)
+        :param pulumi.Input[str] expression: Metric rule expression (string)
+        :param pulumi.Input[float] threshold_value: Metric rule threshold value (float64)
+        :param pulumi.Input[str] comparison: Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+        :param pulumi.Input[str] description: Metric rule description (string)
+        """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "threshold_value", threshold_value)
@@ -2474,6 +2566,9 @@ class ClusterAlterRuleMetricRuleArgs:
     @property
     @pulumi.getter
     def duration(self) -> pulumi.Input[str]:
+        """
+        Metric rule duration (string)
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -2483,6 +2578,9 @@ class ClusterAlterRuleMetricRuleArgs:
     @property
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
+        """
+        Metric rule expression (string)
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -2492,6 +2590,9 @@ class ClusterAlterRuleMetricRuleArgs:
     @property
     @pulumi.getter(name="thresholdValue")
     def threshold_value(self) -> pulumi.Input[float]:
+        """
+        Metric rule threshold value (float64)
+        """
         return pulumi.get(self, "threshold_value")
 
     @threshold_value.setter
@@ -2501,6 +2602,9 @@ class ClusterAlterRuleMetricRuleArgs:
     @property
     @pulumi.getter
     def comparison(self) -> Optional[pulumi.Input[str]]:
+        """
+        Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+        """
         return pulumi.get(self, "comparison")
 
     @comparison.setter
@@ -2510,6 +2614,9 @@ class ClusterAlterRuleMetricRuleArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Metric rule description (string)
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2525,6 +2632,13 @@ class ClusterAlterRuleNodeRuleArgs:
                  mem_threshold: Optional[pulumi.Input[int]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  selector: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        :param pulumi.Input[str] condition: System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        :param pulumi.Input[int] cpu_threshold: Node rule cpu threshold. Default: `70` (int)
+        :param pulumi.Input[int] mem_threshold: Node rule mem threshold. Default: `70` (int)
+        :param pulumi.Input[str] node_id: Node ID (string)
+        :param pulumi.Input[Mapping[str, Any]] selector: Node rule selector (map)
+        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
         if cpu_threshold is not None:
@@ -2539,6 +2653,9 @@ class ClusterAlterRuleNodeRuleArgs:
     @property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -2548,6 +2665,9 @@ class ClusterAlterRuleNodeRuleArgs:
     @property
     @pulumi.getter(name="cpuThreshold")
     def cpu_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Node rule cpu threshold. Default: `70` (int)
+        """
         return pulumi.get(self, "cpu_threshold")
 
     @cpu_threshold.setter
@@ -2557,6 +2677,9 @@ class ClusterAlterRuleNodeRuleArgs:
     @property
     @pulumi.getter(name="memThreshold")
     def mem_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Node rule mem threshold. Default: `70` (int)
+        """
         return pulumi.get(self, "mem_threshold")
 
     @mem_threshold.setter
@@ -2566,6 +2689,9 @@ class ClusterAlterRuleNodeRuleArgs:
     @property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node ID (string)
+        """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
@@ -2575,6 +2701,9 @@ class ClusterAlterRuleNodeRuleArgs:
     @property
     @pulumi.getter
     def selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Node rule selector (map)
+        """
         return pulumi.get(self, "selector")
 
     @selector.setter
@@ -2586,12 +2715,18 @@ class ClusterAlterRuleNodeRuleArgs:
 class ClusterAlterRuleSystemServiceRuleArgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] condition: System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
 
     @property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -18814,6 +18949,7 @@ class ClusterV2RkeConfigArgs:
                  machine_pools: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachinePoolArgs']]]] = None,
                  machine_selector_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigArgs']]]] = None,
                  registries: Optional[pulumi.Input['ClusterV2RkeConfigRegistriesArgs']] = None,
+                 rotate_certificates: Optional[pulumi.Input['ClusterV2RkeConfigRotateCertificatesArgs']] = None,
                  upgrade_strategy: Optional[pulumi.Input['ClusterV2RkeConfigUpgradeStrategyArgs']] = None):
         """
         :param pulumi.Input[str] additional_manifest: Cluster V2 additional manifest (string)
@@ -18845,6 +18981,8 @@ class ClusterV2RkeConfigArgs:
             pulumi.set(__self__, "machine_selector_configs", machine_selector_configs)
         if registries is not None:
             pulumi.set(__self__, "registries", registries)
+        if rotate_certificates is not None:
+            pulumi.set(__self__, "rotate_certificates", rotate_certificates)
         if upgrade_strategy is not None:
             pulumi.set(__self__, "upgrade_strategy", upgrade_strategy)
 
@@ -18943,6 +19081,15 @@ class ClusterV2RkeConfigArgs:
     @registries.setter
     def registries(self, value: Optional[pulumi.Input['ClusterV2RkeConfigRegistriesArgs']]):
         pulumi.set(self, "registries", value)
+
+    @property
+    @pulumi.getter(name="rotateCertificates")
+    def rotate_certificates(self) -> Optional[pulumi.Input['ClusterV2RkeConfigRotateCertificatesArgs']]:
+        return pulumi.get(self, "rotate_certificates")
+
+    @rotate_certificates.setter
+    def rotate_certificates(self, value: Optional[pulumi.Input['ClusterV2RkeConfigRotateCertificatesArgs']]):
+        pulumi.set(self, "rotate_certificates", value)
 
     @property
     @pulumi.getter(name="upgradeStrategy")
@@ -19208,12 +19355,17 @@ class ClusterV2RkeConfigMachinePoolArgs:
                  name: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  control_plane_role: Optional[pulumi.Input[bool]] = None,
+                 drain_before_delete: Optional[pulumi.Input[bool]] = None,
                  etcd_role: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 max_unhealthy: Optional[pulumi.Input[str]] = None,
+                 node_startup_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  quantity: Optional[pulumi.Input[int]] = None,
                  rolling_update: Optional[pulumi.Input['ClusterV2RkeConfigMachinePoolRollingUpdateArgs']] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachinePoolTaintArgs']]]] = None,
+                 unhealthy_node_timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 unhealthy_range: Optional[pulumi.Input[str]] = None,
                  worker_role: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] cloud_credential_secret_name: Cluster V2 cloud credential secret name (string)
@@ -19236,10 +19388,16 @@ class ClusterV2RkeConfigMachinePoolArgs:
             pulumi.set(__self__, "annotations", annotations)
         if control_plane_role is not None:
             pulumi.set(__self__, "control_plane_role", control_plane_role)
+        if drain_before_delete is not None:
+            pulumi.set(__self__, "drain_before_delete", drain_before_delete)
         if etcd_role is not None:
             pulumi.set(__self__, "etcd_role", etcd_role)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if max_unhealthy is not None:
+            pulumi.set(__self__, "max_unhealthy", max_unhealthy)
+        if node_startup_timeout_seconds is not None:
+            pulumi.set(__self__, "node_startup_timeout_seconds", node_startup_timeout_seconds)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
         if quantity is not None:
@@ -19248,6 +19406,10 @@ class ClusterV2RkeConfigMachinePoolArgs:
             pulumi.set(__self__, "rolling_update", rolling_update)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if unhealthy_node_timeout_seconds is not None:
+            pulumi.set(__self__, "unhealthy_node_timeout_seconds", unhealthy_node_timeout_seconds)
+        if unhealthy_range is not None:
+            pulumi.set(__self__, "unhealthy_range", unhealthy_range)
         if worker_role is not None:
             pulumi.set(__self__, "worker_role", worker_role)
 
@@ -19312,6 +19474,15 @@ class ClusterV2RkeConfigMachinePoolArgs:
         pulumi.set(self, "control_plane_role", value)
 
     @property
+    @pulumi.getter(name="drainBeforeDelete")
+    def drain_before_delete(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "drain_before_delete")
+
+    @drain_before_delete.setter
+    def drain_before_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "drain_before_delete", value)
+
+    @property
     @pulumi.getter(name="etcdRole")
     def etcd_role(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -19334,6 +19505,24 @@ class ClusterV2RkeConfigMachinePoolArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="maxUnhealthy")
+    def max_unhealthy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_unhealthy")
+
+    @max_unhealthy.setter
+    def max_unhealthy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_unhealthy", value)
+
+    @property
+    @pulumi.getter(name="nodeStartupTimeoutSeconds")
+    def node_startup_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "node_startup_timeout_seconds")
+
+    @node_startup_timeout_seconds.setter
+    def node_startup_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "node_startup_timeout_seconds", value)
 
     @property
     @pulumi.getter
@@ -19382,6 +19571,24 @@ class ClusterV2RkeConfigMachinePoolArgs:
     @taints.setter
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachinePoolTaintArgs']]]]):
         pulumi.set(self, "taints", value)
+
+    @property
+    @pulumi.getter(name="unhealthyNodeTimeoutSeconds")
+    def unhealthy_node_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "unhealthy_node_timeout_seconds")
+
+    @unhealthy_node_timeout_seconds.setter
+    def unhealthy_node_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "unhealthy_node_timeout_seconds", value)
+
+    @property
+    @pulumi.getter(name="unhealthyRange")
+    def unhealthy_range(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "unhealthy_range")
+
+    @unhealthy_range.setter
+    def unhealthy_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unhealthy_range", value)
 
     @property
     @pulumi.getter(name="workerRole")
@@ -19835,6 +20042,35 @@ class ClusterV2RkeConfigRegistriesMirrorArgs:
     @rewrites.setter
     def rewrites(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "rewrites", value)
+
+
+@pulumi.input_type
+class ClusterV2RkeConfigRotateCertificatesArgs:
+    def __init__(__self__, *,
+                 generation: Optional[pulumi.Input[int]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generation", value)
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "services", value)
 
 
 @pulumi.input_type
@@ -21937,6 +22173,201 @@ class MachineConfigV2DigitaloceanConfigArgs:
     @userdata.setter
     def userdata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "userdata", value)
+
+
+@pulumi.input_type
+class MachineConfigV2HarvesterConfigArgs:
+    def __init__(__self__, *,
+                 image_name: pulumi.Input[str],
+                 network_name: pulumi.Input[str],
+                 ssh_user: pulumi.Input[str],
+                 vm_namespace: pulumi.Input[str],
+                 cpu_count: Optional[pulumi.Input[str]] = None,
+                 disk_bus: Optional[pulumi.Input[str]] = None,
+                 disk_size: Optional[pulumi.Input[str]] = None,
+                 memory_size: Optional[pulumi.Input[str]] = None,
+                 network_data: Optional[pulumi.Input[str]] = None,
+                 network_model: Optional[pulumi.Input[str]] = None,
+                 ssh_password: Optional[pulumi.Input[str]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        :param pulumi.Input[str] network_name: Network name e.g. `harvester-public/vlan1` (string)
+        :param pulumi.Input[str] ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        :param pulumi.Input[str] vm_namespace: Virtual machine namespace e.g. `default` (string)
+        :param pulumi.Input[str] cpu_count: vSphere CPU number for docker VM. Default `2` (string)
+        :param pulumi.Input[str] disk_bus: Disk bus, Default `virtio` (string)
+        :param pulumi.Input[str] disk_size: vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        :param pulumi.Input[str] memory_size: vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        :param pulumi.Input[str] network_data: NetworkData content of cloud-init, base64 is supported (string)
+        :param pulumi.Input[str] network_model: Network model, Default `virtio` (string)
+        :param pulumi.Input[str] ssh_password: If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+        :param pulumi.Input[str] user_data: UserData content of cloud-init, base64 is supported (string)
+        """
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "network_name", network_name)
+        pulumi.set(__self__, "ssh_user", ssh_user)
+        pulumi.set(__self__, "vm_namespace", vm_namespace)
+        if cpu_count is not None:
+            pulumi.set(__self__, "cpu_count", cpu_count)
+        if disk_bus is not None:
+            pulumi.set(__self__, "disk_bus", disk_bus)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if memory_size is not None:
+            pulumi.set(__self__, "memory_size", memory_size)
+        if network_data is not None:
+            pulumi.set(__self__, "network_data", network_data)
+        if network_model is not None:
+            pulumi.set(__self__, "network_model", network_model)
+        if ssh_password is not None:
+            pulumi.set(__self__, "ssh_password", ssh_password)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> pulumi.Input[str]:
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="networkName")
+    def network_name(self) -> pulumi.Input[str]:
+        """
+        Network name e.g. `harvester-public/vlan1` (string)
+        """
+        return pulumi.get(self, "network_name")
+
+    @network_name.setter
+    def network_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_name", value)
+
+    @property
+    @pulumi.getter(name="sshUser")
+    def ssh_user(self) -> pulumi.Input[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        """
+        return pulumi.get(self, "ssh_user")
+
+    @ssh_user.setter
+    def ssh_user(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ssh_user", value)
+
+    @property
+    @pulumi.getter(name="vmNamespace")
+    def vm_namespace(self) -> pulumi.Input[str]:
+        """
+        Virtual machine namespace e.g. `default` (string)
+        """
+        return pulumi.get(self, "vm_namespace")
+
+    @vm_namespace.setter
+    def vm_namespace(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vm_namespace", value)
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        vSphere CPU number for docker VM. Default `2` (string)
+        """
+        return pulumi.get(self, "cpu_count")
+
+    @cpu_count.setter
+    def cpu_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_count", value)
+
+    @property
+    @pulumi.getter(name="diskBus")
+    def disk_bus(self) -> Optional[pulumi.Input[str]]:
+        """
+        Disk bus, Default `virtio` (string)
+        """
+        return pulumi.get(self, "disk_bus")
+
+    @disk_bus.setter
+    def disk_bus(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_bus", value)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        """
+        return pulumi.get(self, "disk_size")
+
+    @disk_size.setter
+    def disk_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter(name="memorySize")
+    def memory_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        """
+        return pulumi.get(self, "memory_size")
+
+    @memory_size.setter
+    def memory_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "memory_size", value)
+
+    @property
+    @pulumi.getter(name="networkData")
+    def network_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        NetworkData content of cloud-init, base64 is supported (string)
+        """
+        return pulumi.get(self, "network_data")
+
+    @network_data.setter
+    def network_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_data", value)
+
+    @property
+    @pulumi.getter(name="networkModel")
+    def network_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network model, Default `virtio` (string)
+        """
+        return pulumi.get(self, "network_model")
+
+    @network_model.setter
+    def network_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_model", value)
+
+    @property
+    @pulumi.getter(name="sshPassword")
+    def ssh_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+        """
+        return pulumi.get(self, "ssh_password")
+
+    @ssh_password.setter
+    def ssh_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssh_password", value)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        UserData content of cloud-init, base64 is supported (string)
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
 
 
 @pulumi.input_type
@@ -25216,11 +25647,207 @@ class NodeTemplateDigitaloceanConfigArgs:
 
 
 @pulumi.input_type
+class NodeTemplateHarvesterConfigArgs:
+    def __init__(__self__, *,
+                 image_name: pulumi.Input[str],
+                 network_name: pulumi.Input[str],
+                 ssh_user: pulumi.Input[str],
+                 vm_namespace: pulumi.Input[str],
+                 cpu_count: Optional[pulumi.Input[str]] = None,
+                 disk_bus: Optional[pulumi.Input[str]] = None,
+                 disk_size: Optional[pulumi.Input[str]] = None,
+                 memory_size: Optional[pulumi.Input[str]] = None,
+                 network_data: Optional[pulumi.Input[str]] = None,
+                 network_model: Optional[pulumi.Input[str]] = None,
+                 ssh_password: Optional[pulumi.Input[str]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        :param pulumi.Input[str] network_name: Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        :param pulumi.Input[str] ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        :param pulumi.Input[str] vm_namespace: Virtual machine namespace e.g. `default` (string)
+        :param pulumi.Input[str] cpu_count: vSphere CPU number for docker VM. Default `2` (string)
+        :param pulumi.Input[str] disk_bus: Disk bus, Default `virtio` (string)
+        :param pulumi.Input[str] disk_size: vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        :param pulumi.Input[str] memory_size: vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        :param pulumi.Input[str] network_data: NetworkData content of cloud-init, base64 is supported (string)
+        :param pulumi.Input[str] network_model: Network model, Default `virtio` (string)
+        :param pulumi.Input[str] ssh_password: If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+        :param pulumi.Input[str] user_data: UserData content of cloud-init, base64 is supported (string)
+        """
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "network_name", network_name)
+        pulumi.set(__self__, "ssh_user", ssh_user)
+        pulumi.set(__self__, "vm_namespace", vm_namespace)
+        if cpu_count is not None:
+            pulumi.set(__self__, "cpu_count", cpu_count)
+        if disk_bus is not None:
+            pulumi.set(__self__, "disk_bus", disk_bus)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if memory_size is not None:
+            pulumi.set(__self__, "memory_size", memory_size)
+        if network_data is not None:
+            pulumi.set(__self__, "network_data", network_data)
+        if network_model is not None:
+            pulumi.set(__self__, "network_model", network_model)
+        if ssh_password is not None:
+            pulumi.set(__self__, "ssh_password", ssh_password)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> pulumi.Input[str]:
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="networkName")
+    def network_name(self) -> pulumi.Input[str]:
+        """
+        Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        """
+        return pulumi.get(self, "network_name")
+
+    @network_name.setter
+    def network_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_name", value)
+
+    @property
+    @pulumi.getter(name="sshUser")
+    def ssh_user(self) -> pulumi.Input[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
+        return pulumi.get(self, "ssh_user")
+
+    @ssh_user.setter
+    def ssh_user(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ssh_user", value)
+
+    @property
+    @pulumi.getter(name="vmNamespace")
+    def vm_namespace(self) -> pulumi.Input[str]:
+        """
+        Virtual machine namespace e.g. `default` (string)
+        """
+        return pulumi.get(self, "vm_namespace")
+
+    @vm_namespace.setter
+    def vm_namespace(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vm_namespace", value)
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        vSphere CPU number for docker VM. Default `2` (string)
+        """
+        return pulumi.get(self, "cpu_count")
+
+    @cpu_count.setter
+    def cpu_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_count", value)
+
+    @property
+    @pulumi.getter(name="diskBus")
+    def disk_bus(self) -> Optional[pulumi.Input[str]]:
+        """
+        Disk bus, Default `virtio` (string)
+        """
+        return pulumi.get(self, "disk_bus")
+
+    @disk_bus.setter
+    def disk_bus(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_bus", value)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        """
+        return pulumi.get(self, "disk_size")
+
+    @disk_size.setter
+    def disk_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter(name="memorySize")
+    def memory_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        """
+        return pulumi.get(self, "memory_size")
+
+    @memory_size.setter
+    def memory_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "memory_size", value)
+
+    @property
+    @pulumi.getter(name="networkData")
+    def network_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        NetworkData content of cloud-init, base64 is supported (string)
+        """
+        return pulumi.get(self, "network_data")
+
+    @network_data.setter
+    def network_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_data", value)
+
+    @property
+    @pulumi.getter(name="networkModel")
+    def network_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network model, Default `virtio` (string)
+        """
+        return pulumi.get(self, "network_model")
+
+    @network_model.setter
+    def network_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_model", value)
+
+    @property
+    @pulumi.getter(name="sshPassword")
+    def ssh_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+        """
+        return pulumi.get(self, "ssh_password")
+
+    @ssh_password.setter
+    def ssh_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssh_password", value)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        UserData content of cloud-init, base64 is supported (string)
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
+
+
+@pulumi.input_type
 class NodeTemplateHetznerConfigArgs:
     def __init__(__self__, *,
                  api_token: pulumi.Input[str],
                  image: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[str]] = None,
+                 server_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  server_location: Optional[pulumi.Input[str]] = None,
                  server_type: Optional[pulumi.Input[str]] = None,
                  use_private_network: Optional[pulumi.Input[bool]] = None,
@@ -25230,6 +25857,7 @@ class NodeTemplateHetznerConfigArgs:
         :param pulumi.Input[str] api_token: Hetzner Cloud project API token (string)
         :param pulumi.Input[str] image: Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         :param pulumi.Input[str] networks: Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+        :param pulumi.Input[Mapping[str, Any]] server_labels: Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
         :param pulumi.Input[str] server_location: Hetzner Cloud datacenter. Default `nbg1` (string)
         :param pulumi.Input[str] server_type: Hetzner Cloud server type. Default `cx11` (string)
         :param pulumi.Input[bool] use_private_network: Use private network. Default `false` (bool)
@@ -25241,6 +25869,8 @@ class NodeTemplateHetznerConfigArgs:
             pulumi.set(__self__, "image", image)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+        if server_labels is not None:
+            pulumi.set(__self__, "server_labels", server_labels)
         if server_location is not None:
             pulumi.set(__self__, "server_location", server_location)
         if server_type is not None:
@@ -25287,6 +25917,18 @@ class NodeTemplateHetznerConfigArgs:
     @networks.setter
     def networks(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "networks", value)
+
+    @property
+    @pulumi.getter(name="serverLabels")
+    def server_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+        """
+        return pulumi.get(self, "server_labels")
+
+    @server_labels.setter
+    def server_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "server_labels", value)
 
     @property
     @pulumi.getter(name="serverLocation")
@@ -29864,6 +30506,13 @@ class RoleTempalteRuleArgs:
                  resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  verbs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] api_groups: Policy rule api groups (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] non_resource_urls: Policy rule non resource urls (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_names: Policy rule resource names (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: Policy rule resources (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] verbs: Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+        """
         if api_groups is not None:
             pulumi.set(__self__, "api_groups", api_groups)
         if non_resource_urls is not None:
@@ -29878,6 +30527,9 @@ class RoleTempalteRuleArgs:
     @property
     @pulumi.getter(name="apiGroups")
     def api_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Policy rule api groups (list)
+        """
         return pulumi.get(self, "api_groups")
 
     @api_groups.setter
@@ -29887,6 +30539,9 @@ class RoleTempalteRuleArgs:
     @property
     @pulumi.getter(name="nonResourceUrls")
     def non_resource_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Policy rule non resource urls (list)
+        """
         return pulumi.get(self, "non_resource_urls")
 
     @non_resource_urls.setter
@@ -29896,6 +30551,9 @@ class RoleTempalteRuleArgs:
     @property
     @pulumi.getter(name="resourceNames")
     def resource_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Policy rule resource names (list)
+        """
         return pulumi.get(self, "resource_names")
 
     @resource_names.setter
@@ -29905,6 +30563,9 @@ class RoleTempalteRuleArgs:
     @property
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Policy rule resources (list)
+        """
         return pulumi.get(self, "resources")
 
     @resources.setter
@@ -29914,6 +30575,9 @@ class RoleTempalteRuleArgs:
     @property
     @pulumi.getter
     def verbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+        """
         return pulumi.get(self, "verbs")
 
     @verbs.setter

@@ -12,7 +12,7 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
     /// 
-    /// amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+    /// amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
     /// 
     /// ## Example Usage
     /// 
@@ -38,6 +38,43 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo_harvesterClusterV2 = Output.Create(Rancher2.GetClusterV2.InvokeAsync(new Rancher2.GetClusterV2Args
+    ///         {
+    ///             Name = "foo-harvester",
+    ///         }));
+    ///         // Create a new Cloud Credential for an imported Harvester cluster
+    ///         var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvesterCloudCredential", new Rancher2.CloudCredentialArgs
+    ///         {
+    ///             HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
+    ///             {
+    ///                 ClusterId = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.ClusterV1Id),
+    ///                 ClusterType = "imported",
+    ///                 KubeconfigContent = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.KubeConfig),
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Cloud Credential can be imported using the Cloud Credential ID and the Driver name. bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &amp;lt;CLOUD_CREDENTIAL_ID&amp;gt;.&amp;lt;DRIVER&amp;gt;
+    /// ```
+    /// 
+    ///  The following drivers are supported* amazonec2 * azure * digitalocean * googlekubernetesengine * linode * openstack * s3 * vmwarevsphere
     /// </summary>
     [Rancher2ResourceType("rancher2:index/cloudCredential:CloudCredential")]
     public partial class CloudCredential : Pulumi.CustomResource
@@ -83,6 +120,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("googleCredentialConfig")]
         public Output<Outputs.CloudCredentialGoogleCredentialConfig?> GoogleCredentialConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Harvester config for the Cloud Credential (list maxitems:1)
+        /// </summary>
+        [Output("harvesterCredentialConfig")]
+        public Output<Outputs.CloudCredentialHarvesterCredentialConfig?> HarvesterCredentialConfig { get; private set; } = null!;
 
         /// <summary>
         /// Labels for Cloud Credential object (map)
@@ -208,6 +251,12 @@ namespace Pulumi.Rancher2
         [Input("googleCredentialConfig")]
         public Input<Inputs.CloudCredentialGoogleCredentialConfigArgs>? GoogleCredentialConfig { get; set; }
 
+        /// <summary>
+        /// Harvester config for the Cloud Credential (list maxitems:1)
+        /// </summary>
+        [Input("harvesterCredentialConfig")]
+        public Input<Inputs.CloudCredentialHarvesterCredentialConfigArgs>? HarvesterCredentialConfig { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
 
@@ -304,6 +353,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("googleCredentialConfig")]
         public Input<Inputs.CloudCredentialGoogleCredentialConfigGetArgs>? GoogleCredentialConfig { get; set; }
+
+        /// <summary>
+        /// Harvester config for the Cloud Credential (list maxitems:1)
+        /// </summary>
+        [Input("harvesterCredentialConfig")]
+        public Input<Inputs.CloudCredentialHarvesterCredentialConfigGetArgs>? HarvesterCredentialConfig { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;

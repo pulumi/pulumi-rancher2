@@ -21,6 +21,7 @@ class MachineConfigV2Args:
                  azure_config: Optional[pulumi.Input['MachineConfigV2AzureConfigArgs']] = None,
                  digitalocean_config: Optional[pulumi.Input['MachineConfigV2DigitaloceanConfigArgs']] = None,
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
+                 harvester_config: Optional[pulumi.Input['MachineConfigV2HarvesterConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  linode_config: Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']] = None,
                  openstack_config: Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']] = None,
@@ -28,15 +29,16 @@ class MachineConfigV2Args:
         """
         The set of arguments for constructing a MachineConfigV2 resource.
         :param pulumi.Input[str] generate_name: Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\"prod-pool1\" will generate \"nc-prod-pool1-?????\" name computed at `name` attribute (string)
-        :param pulumi.Input['MachineConfigV2Amazonec2ConfigArgs'] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input['MachineConfigV2Amazonec2ConfigArgs'] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Machine Config V2 object (map)
-        :param pulumi.Input['MachineConfigV2AzureConfigArgs'] azure_config: Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
-        :param pulumi.Input['MachineConfigV2DigitaloceanConfigArgs'] digitalocean_config: Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input['MachineConfigV2AzureConfigArgs'] azure_config: Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input['MachineConfigV2DigitaloceanConfigArgs'] digitalocean_config: Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] fleet_namespace: Cluster V2 fleet namespace
+        :param pulumi.Input['MachineConfigV2HarvesterConfigArgs'] harvester_config: Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Machine Config V2 object (map)
-        :param pulumi.Input['MachineConfigV2LinodeConfigArgs'] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
-        :param pulumi.Input['MachineConfigV2OpenstackConfigArgs'] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)
-        :param pulumi.Input['MachineConfigV2VsphereConfigArgs'] vsphere_config: vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)
+        :param pulumi.Input['MachineConfigV2LinodeConfigArgs'] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input['MachineConfigV2OpenstackConfigArgs'] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input['MachineConfigV2VsphereConfigArgs'] vsphere_config: vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)
         """
         pulumi.set(__self__, "generate_name", generate_name)
         if amazonec2_config is not None:
@@ -49,6 +51,8 @@ class MachineConfigV2Args:
             pulumi.set(__self__, "digitalocean_config", digitalocean_config)
         if fleet_namespace is not None:
             pulumi.set(__self__, "fleet_namespace", fleet_namespace)
+        if harvester_config is not None:
+            pulumi.set(__self__, "harvester_config", harvester_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if linode_config is not None:
@@ -74,7 +78,7 @@ class MachineConfigV2Args:
     @pulumi.getter(name="amazonec2Config")
     def amazonec2_config(self) -> Optional[pulumi.Input['MachineConfigV2Amazonec2ConfigArgs']]:
         """
-        AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "amazonec2_config")
 
@@ -98,7 +102,7 @@ class MachineConfigV2Args:
     @pulumi.getter(name="azureConfig")
     def azure_config(self) -> Optional[pulumi.Input['MachineConfigV2AzureConfigArgs']]:
         """
-        Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "azure_config")
 
@@ -110,7 +114,7 @@ class MachineConfigV2Args:
     @pulumi.getter(name="digitaloceanConfig")
     def digitalocean_config(self) -> Optional[pulumi.Input['MachineConfigV2DigitaloceanConfigArgs']]:
         """
-        Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "digitalocean_config")
 
@@ -131,6 +135,18 @@ class MachineConfigV2Args:
         pulumi.set(self, "fleet_namespace", value)
 
     @property
+    @pulumi.getter(name="harvesterConfig")
+    def harvester_config(self) -> Optional[pulumi.Input['MachineConfigV2HarvesterConfigArgs']]:
+        """
+        Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "harvester_config")
+
+    @harvester_config.setter
+    def harvester_config(self, value: Optional[pulumi.Input['MachineConfigV2HarvesterConfigArgs']]):
+        pulumi.set(self, "harvester_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -146,7 +162,7 @@ class MachineConfigV2Args:
     @pulumi.getter(name="linodeConfig")
     def linode_config(self) -> Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']]:
         """
-        Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "linode_config")
 
@@ -158,7 +174,7 @@ class MachineConfigV2Args:
     @pulumi.getter(name="openstackConfig")
     def openstack_config(self) -> Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']]:
         """
-        Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)
+        Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "openstack_config")
 
@@ -170,7 +186,7 @@ class MachineConfigV2Args:
     @pulumi.getter(name="vsphereConfig")
     def vsphere_config(self) -> Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']]:
         """
-        vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)
+        vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)
         """
         return pulumi.get(self, "vsphere_config")
 
@@ -188,6 +204,7 @@ class _MachineConfigV2State:
                  digitalocean_config: Optional[pulumi.Input['MachineConfigV2DigitaloceanConfigArgs']] = None,
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
                  generate_name: Optional[pulumi.Input[str]] = None,
+                 harvester_config: Optional[pulumi.Input['MachineConfigV2HarvesterConfigArgs']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  linode_config: Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']] = None,
@@ -197,19 +214,20 @@ class _MachineConfigV2State:
                  vsphere_config: Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']] = None):
         """
         Input properties used for looking up and filtering MachineConfigV2 resources.
-        :param pulumi.Input['MachineConfigV2Amazonec2ConfigArgs'] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input['MachineConfigV2Amazonec2ConfigArgs'] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Machine Config V2 object (map)
-        :param pulumi.Input['MachineConfigV2AzureConfigArgs'] azure_config: Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
-        :param pulumi.Input['MachineConfigV2DigitaloceanConfigArgs'] digitalocean_config: Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input['MachineConfigV2AzureConfigArgs'] azure_config: Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input['MachineConfigV2DigitaloceanConfigArgs'] digitalocean_config: Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] fleet_namespace: Cluster V2 fleet namespace
         :param pulumi.Input[str] generate_name: Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\"prod-pool1\" will generate \"nc-prod-pool1-?????\" name computed at `name` attribute (string)
+        :param pulumi.Input['MachineConfigV2HarvesterConfigArgs'] harvester_config: Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] kind: (Computed) The machine config kind (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Machine Config V2 object (map)
-        :param pulumi.Input['MachineConfigV2LinodeConfigArgs'] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input['MachineConfigV2LinodeConfigArgs'] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] name: (Computed) The machine config name (string)
-        :param pulumi.Input['MachineConfigV2OpenstackConfigArgs'] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input['MachineConfigV2OpenstackConfigArgs'] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] resource_version: (Computed) The machine config k8s resource version (string)
-        :param pulumi.Input['MachineConfigV2VsphereConfigArgs'] vsphere_config: vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)
+        :param pulumi.Input['MachineConfigV2VsphereConfigArgs'] vsphere_config: vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)
         """
         if amazonec2_config is not None:
             pulumi.set(__self__, "amazonec2_config", amazonec2_config)
@@ -223,6 +241,8 @@ class _MachineConfigV2State:
             pulumi.set(__self__, "fleet_namespace", fleet_namespace)
         if generate_name is not None:
             pulumi.set(__self__, "generate_name", generate_name)
+        if harvester_config is not None:
+            pulumi.set(__self__, "harvester_config", harvester_config)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if labels is not None:
@@ -242,7 +262,7 @@ class _MachineConfigV2State:
     @pulumi.getter(name="amazonec2Config")
     def amazonec2_config(self) -> Optional[pulumi.Input['MachineConfigV2Amazonec2ConfigArgs']]:
         """
-        AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "amazonec2_config")
 
@@ -266,7 +286,7 @@ class _MachineConfigV2State:
     @pulumi.getter(name="azureConfig")
     def azure_config(self) -> Optional[pulumi.Input['MachineConfigV2AzureConfigArgs']]:
         """
-        Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "azure_config")
 
@@ -278,7 +298,7 @@ class _MachineConfigV2State:
     @pulumi.getter(name="digitaloceanConfig")
     def digitalocean_config(self) -> Optional[pulumi.Input['MachineConfigV2DigitaloceanConfigArgs']]:
         """
-        Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "digitalocean_config")
 
@@ -311,6 +331,18 @@ class _MachineConfigV2State:
         pulumi.set(self, "generate_name", value)
 
     @property
+    @pulumi.getter(name="harvesterConfig")
+    def harvester_config(self) -> Optional[pulumi.Input['MachineConfigV2HarvesterConfigArgs']]:
+        """
+        Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "harvester_config")
+
+    @harvester_config.setter
+    def harvester_config(self, value: Optional[pulumi.Input['MachineConfigV2HarvesterConfigArgs']]):
+        pulumi.set(self, "harvester_config", value)
+
+    @property
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
@@ -338,7 +370,7 @@ class _MachineConfigV2State:
     @pulumi.getter(name="linodeConfig")
     def linode_config(self) -> Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']]:
         """
-        Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "linode_config")
 
@@ -362,7 +394,7 @@ class _MachineConfigV2State:
     @pulumi.getter(name="openstackConfig")
     def openstack_config(self) -> Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']]:
         """
-        Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)
+        Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "openstack_config")
 
@@ -386,7 +418,7 @@ class _MachineConfigV2State:
     @pulumi.getter(name="vsphereConfig")
     def vsphere_config(self) -> Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']]:
         """
-        vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)
+        vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)
         """
         return pulumi.get(self, "vsphere_config")
 
@@ -406,6 +438,7 @@ class MachineConfigV2(pulumi.CustomResource):
                  digitalocean_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2DigitaloceanConfigArgs']]] = None,
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
                  generate_name: Optional[pulumi.Input[str]] = None,
+                 harvester_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2HarvesterConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  linode_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2LinodeConfigArgs']]] = None,
                  openstack_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2OpenstackConfigArgs']]] = None,
@@ -418,18 +451,47 @@ class MachineConfigV2(pulumi.CustomResource):
 
         **Note** This resource is used by
 
+        ## Example Usage
+        ### Using the Harvester Node Driver
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
+        # Create a new Cloud Credential for an imported Harvester cluster
+        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
+            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
+            cluster_type="imported",
+            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
+        ))
+        # Create a new rancher2 machine config v2 using harvester node_driver
+        foo_harvester_v2 = rancher2.MachineConfigV2("foo-harvester-v2",
+            generate_name="foo-harvester-v2",
+            harvester_config=rancher2.MachineConfigV2HarvesterConfigArgs(
+                vm_namespace="default",
+                cpu_count="2",
+                memory_size="4",
+                disk_size="40",
+                network_name="harvester-public/vlan1",
+                image_name="harvester-public/image-57hzg",
+                ssh_user="ubuntu",
+            ))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['MachineConfigV2Amazonec2ConfigArgs']] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2Amazonec2ConfigArgs']] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Machine Config V2 object (map)
-        :param pulumi.Input[pulumi.InputType['MachineConfigV2AzureConfigArgs']] azure_config: Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['MachineConfigV2DigitaloceanConfigArgs']] digitalocean_config: Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2AzureConfigArgs']] azure_config: Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2DigitaloceanConfigArgs']] digitalocean_config: Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] fleet_namespace: Cluster V2 fleet namespace
         :param pulumi.Input[str] generate_name: Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\"prod-pool1\" will generate \"nc-prod-pool1-?????\" name computed at `name` attribute (string)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2HarvesterConfigArgs']] harvester_config: Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Machine Config V2 object (map)
-        :param pulumi.Input[pulumi.InputType['MachineConfigV2LinodeConfigArgs']] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['MachineConfigV2OpenstackConfigArgs']] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['MachineConfigV2VsphereConfigArgs']] vsphere_config: vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2LinodeConfigArgs']] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2OpenstackConfigArgs']] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2VsphereConfigArgs']] vsphere_config: vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)
         """
         ...
     @overload
@@ -443,6 +505,34 @@ class MachineConfigV2(pulumi.CustomResource):
         `amazonec2`, `azure`, `digitalocean`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
 
         **Note** This resource is used by
+
+        ## Example Usage
+        ### Using the Harvester Node Driver
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
+        # Create a new Cloud Credential for an imported Harvester cluster
+        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
+            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
+            cluster_type="imported",
+            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
+        ))
+        # Create a new rancher2 machine config v2 using harvester node_driver
+        foo_harvester_v2 = rancher2.MachineConfigV2("foo-harvester-v2",
+            generate_name="foo-harvester-v2",
+            harvester_config=rancher2.MachineConfigV2HarvesterConfigArgs(
+                vm_namespace="default",
+                cpu_count="2",
+                memory_size="4",
+                disk_size="40",
+                network_name="harvester-public/vlan1",
+                image_name="harvester-public/image-57hzg",
+                ssh_user="ubuntu",
+            ))
+        ```
 
         :param str resource_name: The name of the resource.
         :param MachineConfigV2Args args: The arguments to use to populate this resource's properties.
@@ -465,6 +555,7 @@ class MachineConfigV2(pulumi.CustomResource):
                  digitalocean_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2DigitaloceanConfigArgs']]] = None,
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
                  generate_name: Optional[pulumi.Input[str]] = None,
+                 harvester_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2HarvesterConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  linode_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2LinodeConfigArgs']]] = None,
                  openstack_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2OpenstackConfigArgs']]] = None,
@@ -489,6 +580,7 @@ class MachineConfigV2(pulumi.CustomResource):
             if generate_name is None and not opts.urn:
                 raise TypeError("Missing required property 'generate_name'")
             __props__.__dict__["generate_name"] = generate_name
+            __props__.__dict__["harvester_config"] = harvester_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["linode_config"] = linode_config
             __props__.__dict__["openstack_config"] = openstack_config
@@ -512,6 +604,7 @@ class MachineConfigV2(pulumi.CustomResource):
             digitalocean_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2DigitaloceanConfigArgs']]] = None,
             fleet_namespace: Optional[pulumi.Input[str]] = None,
             generate_name: Optional[pulumi.Input[str]] = None,
+            harvester_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2HarvesterConfigArgs']]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             linode_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigV2LinodeConfigArgs']]] = None,
@@ -526,19 +619,20 @@ class MachineConfigV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['MachineConfigV2Amazonec2ConfigArgs']] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2Amazonec2ConfigArgs']] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Machine Config V2 object (map)
-        :param pulumi.Input[pulumi.InputType['MachineConfigV2AzureConfigArgs']] azure_config: Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['MachineConfigV2DigitaloceanConfigArgs']] digitalocean_config: Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2AzureConfigArgs']] azure_config: Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2DigitaloceanConfigArgs']] digitalocean_config: Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] fleet_namespace: Cluster V2 fleet namespace
         :param pulumi.Input[str] generate_name: Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\"prod-pool1\" will generate \"nc-prod-pool1-?????\" name computed at `name` attribute (string)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2HarvesterConfigArgs']] harvester_config: Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] kind: (Computed) The machine config kind (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Machine Config V2 object (map)
-        :param pulumi.Input[pulumi.InputType['MachineConfigV2LinodeConfigArgs']] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2LinodeConfigArgs']] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] name: (Computed) The machine config name (string)
-        :param pulumi.Input[pulumi.InputType['MachineConfigV2OpenstackConfigArgs']] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2OpenstackConfigArgs']] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] resource_version: (Computed) The machine config k8s resource version (string)
-        :param pulumi.Input[pulumi.InputType['MachineConfigV2VsphereConfigArgs']] vsphere_config: vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['MachineConfigV2VsphereConfigArgs']] vsphere_config: vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -550,6 +644,7 @@ class MachineConfigV2(pulumi.CustomResource):
         __props__.__dict__["digitalocean_config"] = digitalocean_config
         __props__.__dict__["fleet_namespace"] = fleet_namespace
         __props__.__dict__["generate_name"] = generate_name
+        __props__.__dict__["harvester_config"] = harvester_config
         __props__.__dict__["kind"] = kind
         __props__.__dict__["labels"] = labels
         __props__.__dict__["linode_config"] = linode_config
@@ -563,7 +658,7 @@ class MachineConfigV2(pulumi.CustomResource):
     @pulumi.getter(name="amazonec2Config")
     def amazonec2_config(self) -> pulumi.Output[Optional['outputs.MachineConfigV2Amazonec2Config']]:
         """
-        AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "amazonec2_config")
 
@@ -579,7 +674,7 @@ class MachineConfigV2(pulumi.CustomResource):
     @pulumi.getter(name="azureConfig")
     def azure_config(self) -> pulumi.Output[Optional['outputs.MachineConfigV2AzureConfig']]:
         """
-        Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "azure_config")
 
@@ -587,7 +682,7 @@ class MachineConfigV2(pulumi.CustomResource):
     @pulumi.getter(name="digitaloceanConfig")
     def digitalocean_config(self) -> pulumi.Output[Optional['outputs.MachineConfigV2DigitaloceanConfig']]:
         """
-        Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "digitalocean_config")
 
@@ -606,6 +701,14 @@ class MachineConfigV2(pulumi.CustomResource):
         Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\"prod-pool1\" will generate \"nc-prod-pool1-?????\" name computed at `name` attribute (string)
         """
         return pulumi.get(self, "generate_name")
+
+    @property
+    @pulumi.getter(name="harvesterConfig")
+    def harvester_config(self) -> pulumi.Output[Optional['outputs.MachineConfigV2HarvesterConfig']]:
+        """
+        Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "harvester_config")
 
     @property
     @pulumi.getter
@@ -627,7 +730,7 @@ class MachineConfigV2(pulumi.CustomResource):
     @pulumi.getter(name="linodeConfig")
     def linode_config(self) -> pulumi.Output[Optional['outputs.MachineConfigV2LinodeConfig']]:
         """
-        Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+        Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "linode_config")
 
@@ -643,7 +746,7 @@ class MachineConfigV2(pulumi.CustomResource):
     @pulumi.getter(name="openstackConfig")
     def openstack_config(self) -> pulumi.Output[Optional['outputs.MachineConfigV2OpenstackConfig']]:
         """
-        Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `vsphere_config` (list maxitems:1)
+        Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "openstack_config")
 
@@ -659,7 +762,7 @@ class MachineConfigV2(pulumi.CustomResource):
     @pulumi.getter(name="vsphereConfig")
     def vsphere_config(self) -> pulumi.Output[Optional['outputs.MachineConfigV2VsphereConfig']]:
         """
-        vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config` and `openstack_config` (list maxitems:1)
+        vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)
         """
         return pulumi.get(self, "vsphere_config")
 

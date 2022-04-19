@@ -29,18 +29,18 @@ class RoleTempalteArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTempalteRuleArgs']]]] = None):
         """
         The set of arguments for constructing a RoleTempalte resource.
-        :param pulumi.Input[bool] administrative: Administrative role template
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[str] context: Context role template
-        :param pulumi.Input[bool] default_role: Default role template for new created cluster or project
-        :param pulumi.Input[str] description: Role template policy description
-        :param pulumi.Input[bool] external: External role template
-        :param pulumi.Input[bool] hidden: Hidden role template
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
-        :param pulumi.Input[bool] locked: Locked role template
-        :param pulumi.Input[str] name: Role template policy name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs
-        :param pulumi.Input[Sequence[pulumi.Input['RoleTempalteRuleArgs']]] rules: Role template policy rules
+        :param pulumi.Input[bool] administrative: Administrative role template. Default `false` (bool)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for role template object (map)
+        :param pulumi.Input[str] context: Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+        :param pulumi.Input[bool] default_role: Default role template for new created cluster or project. Default `false` (bool)
+        :param pulumi.Input[str] description: Role template description (string)
+        :param pulumi.Input[bool] external: External role template. Default `false` (bool)
+        :param pulumi.Input[bool] hidden: Hidden role template. Default `false` (bool)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for role template object (map)
+        :param pulumi.Input[bool] locked: Locked role template. Default `false` (bool)
+        :param pulumi.Input[str] name: Role template name (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs (list)
+        :param pulumi.Input[Sequence[pulumi.Input['RoleTempalteRuleArgs']]] rules: Role template policy rules (list)
         """
         if administrative is not None:
             pulumi.set(__self__, "administrative", administrative)
@@ -71,7 +71,7 @@ class RoleTempalteArgs:
     @pulumi.getter
     def administrative(self) -> Optional[pulumi.Input[bool]]:
         """
-        Administrative role template
+        Administrative role template. Default `false` (bool)
         """
         return pulumi.get(self, "administrative")
 
@@ -83,7 +83,7 @@ class RoleTempalteArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Annotations of the resource
+        Annotations for role template object (map)
         """
         return pulumi.get(self, "annotations")
 
@@ -95,7 +95,7 @@ class RoleTempalteArgs:
     @pulumi.getter
     def context(self) -> Optional[pulumi.Input[str]]:
         """
-        Context role template
+        Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
         """
         return pulumi.get(self, "context")
 
@@ -107,7 +107,7 @@ class RoleTempalteArgs:
     @pulumi.getter(name="defaultRole")
     def default_role(self) -> Optional[pulumi.Input[bool]]:
         """
-        Default role template for new created cluster or project
+        Default role template for new created cluster or project. Default `false` (bool)
         """
         return pulumi.get(self, "default_role")
 
@@ -119,7 +119,7 @@ class RoleTempalteArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Role template policy description
+        Role template description (string)
         """
         return pulumi.get(self, "description")
 
@@ -131,7 +131,7 @@ class RoleTempalteArgs:
     @pulumi.getter
     def external(self) -> Optional[pulumi.Input[bool]]:
         """
-        External role template
+        External role template. Default `false` (bool)
         """
         return pulumi.get(self, "external")
 
@@ -143,7 +143,7 @@ class RoleTempalteArgs:
     @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
         """
-        Hidden role template
+        Hidden role template. Default `false` (bool)
         """
         return pulumi.get(self, "hidden")
 
@@ -155,7 +155,7 @@ class RoleTempalteArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Labels of the resource
+        Labels for role template object (map)
         """
         return pulumi.get(self, "labels")
 
@@ -167,7 +167,7 @@ class RoleTempalteArgs:
     @pulumi.getter
     def locked(self) -> Optional[pulumi.Input[bool]]:
         """
-        Locked role template
+        Locked role template. Default `false` (bool)
         """
         return pulumi.get(self, "locked")
 
@@ -179,7 +179,7 @@ class RoleTempalteArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Role template policy name
+        Role template name (string)
         """
         return pulumi.get(self, "name")
 
@@ -191,7 +191,7 @@ class RoleTempalteArgs:
     @pulumi.getter(name="roleTemplateIds")
     def role_template_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Inherit role template IDs
+        Inherit role template IDs (list)
         """
         return pulumi.get(self, "role_template_ids")
 
@@ -203,7 +203,7 @@ class RoleTempalteArgs:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoleTempalteRuleArgs']]]]:
         """
-        Role template policy rules
+        Role template policy rules (list)
         """
         return pulumi.get(self, "rules")
 
@@ -230,19 +230,19 @@ class _RoleTempalteState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTempalteRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering RoleTempalte resources.
-        :param pulumi.Input[bool] administrative: Administrative role template
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[bool] builtin: Builtin role template
-        :param pulumi.Input[str] context: Context role template
-        :param pulumi.Input[bool] default_role: Default role template for new created cluster or project
-        :param pulumi.Input[str] description: Role template policy description
-        :param pulumi.Input[bool] external: External role template
-        :param pulumi.Input[bool] hidden: Hidden role template
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
-        :param pulumi.Input[bool] locked: Locked role template
-        :param pulumi.Input[str] name: Role template policy name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs
-        :param pulumi.Input[Sequence[pulumi.Input['RoleTempalteRuleArgs']]] rules: Role template policy rules
+        :param pulumi.Input[bool] administrative: Administrative role template. Default `false` (bool)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for role template object (map)
+        :param pulumi.Input[bool] builtin: (Computed) Builtin role template (string)
+        :param pulumi.Input[str] context: Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+        :param pulumi.Input[bool] default_role: Default role template for new created cluster or project. Default `false` (bool)
+        :param pulumi.Input[str] description: Role template description (string)
+        :param pulumi.Input[bool] external: External role template. Default `false` (bool)
+        :param pulumi.Input[bool] hidden: Hidden role template. Default `false` (bool)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for role template object (map)
+        :param pulumi.Input[bool] locked: Locked role template. Default `false` (bool)
+        :param pulumi.Input[str] name: Role template name (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs (list)
+        :param pulumi.Input[Sequence[pulumi.Input['RoleTempalteRuleArgs']]] rules: Role template policy rules (list)
         """
         if administrative is not None:
             pulumi.set(__self__, "administrative", administrative)
@@ -275,7 +275,7 @@ class _RoleTempalteState:
     @pulumi.getter
     def administrative(self) -> Optional[pulumi.Input[bool]]:
         """
-        Administrative role template
+        Administrative role template. Default `false` (bool)
         """
         return pulumi.get(self, "administrative")
 
@@ -287,7 +287,7 @@ class _RoleTempalteState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Annotations of the resource
+        Annotations for role template object (map)
         """
         return pulumi.get(self, "annotations")
 
@@ -299,7 +299,7 @@ class _RoleTempalteState:
     @pulumi.getter
     def builtin(self) -> Optional[pulumi.Input[bool]]:
         """
-        Builtin role template
+        (Computed) Builtin role template (string)
         """
         return pulumi.get(self, "builtin")
 
@@ -311,7 +311,7 @@ class _RoleTempalteState:
     @pulumi.getter
     def context(self) -> Optional[pulumi.Input[str]]:
         """
-        Context role template
+        Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
         """
         return pulumi.get(self, "context")
 
@@ -323,7 +323,7 @@ class _RoleTempalteState:
     @pulumi.getter(name="defaultRole")
     def default_role(self) -> Optional[pulumi.Input[bool]]:
         """
-        Default role template for new created cluster or project
+        Default role template for new created cluster or project. Default `false` (bool)
         """
         return pulumi.get(self, "default_role")
 
@@ -335,7 +335,7 @@ class _RoleTempalteState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Role template policy description
+        Role template description (string)
         """
         return pulumi.get(self, "description")
 
@@ -347,7 +347,7 @@ class _RoleTempalteState:
     @pulumi.getter
     def external(self) -> Optional[pulumi.Input[bool]]:
         """
-        External role template
+        External role template. Default `false` (bool)
         """
         return pulumi.get(self, "external")
 
@@ -359,7 +359,7 @@ class _RoleTempalteState:
     @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
         """
-        Hidden role template
+        Hidden role template. Default `false` (bool)
         """
         return pulumi.get(self, "hidden")
 
@@ -371,7 +371,7 @@ class _RoleTempalteState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Labels of the resource
+        Labels for role template object (map)
         """
         return pulumi.get(self, "labels")
 
@@ -383,7 +383,7 @@ class _RoleTempalteState:
     @pulumi.getter
     def locked(self) -> Optional[pulumi.Input[bool]]:
         """
-        Locked role template
+        Locked role template. Default `false` (bool)
         """
         return pulumi.get(self, "locked")
 
@@ -395,7 +395,7 @@ class _RoleTempalteState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Role template policy name
+        Role template name (string)
         """
         return pulumi.get(self, "name")
 
@@ -407,7 +407,7 @@ class _RoleTempalteState:
     @pulumi.getter(name="roleTemplateIds")
     def role_template_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Inherit role template IDs
+        Inherit role template IDs (list)
         """
         return pulumi.get(self, "role_template_ids")
 
@@ -419,7 +419,7 @@ class _RoleTempalteState:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoleTempalteRuleArgs']]]]:
         """
-        Role template policy rules
+        Role template policy rules (list)
         """
         return pulumi.get(self, "rules")
 
@@ -452,21 +452,66 @@ class RoleTempalte(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]]] = None,
                  __props__=None):
         """
-        Create a RoleTempalte resource with the given unique name, props, and options.
+        Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
+
+        `cluster` and `project` scopes are supported for role templates.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 cluster Role Template
+        foo = rancher2.RoleTemplate("foo",
+            context="cluster",
+            default_role=True,
+            description="Terraform role template acceptance test",
+            rules=[rancher2.RoleTemplateRuleArgs(
+                api_groups=["*"],
+                resources=["secrets"],
+                verbs=["create"],
+            )])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 project Role Template
+        foo = rancher2.RoleTemplate("foo",
+            context="project",
+            default_role=True,
+            description="Terraform role template acceptance test",
+            rules=[rancher2.RoleTemplateRuleArgs(
+                api_groups=["*"],
+                resources=["secrets"],
+                verbs=["create"],
+            )])
+        ```
+
+        ## Import
+
+        Role Template can be imported using the Rancher Role Template ID
+
+        ```sh
+         $ pulumi import rancher2:index/roleTempalte:RoleTempalte foo &lt;role_template_id&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] administrative: Administrative role template
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[str] context: Context role template
-        :param pulumi.Input[bool] default_role: Default role template for new created cluster or project
-        :param pulumi.Input[str] description: Role template policy description
-        :param pulumi.Input[bool] external: External role template
-        :param pulumi.Input[bool] hidden: Hidden role template
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
-        :param pulumi.Input[bool] locked: Locked role template
-        :param pulumi.Input[str] name: Role template policy name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]] rules: Role template policy rules
+        :param pulumi.Input[bool] administrative: Administrative role template. Default `false` (bool)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for role template object (map)
+        :param pulumi.Input[str] context: Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+        :param pulumi.Input[bool] default_role: Default role template for new created cluster or project. Default `false` (bool)
+        :param pulumi.Input[str] description: Role template description (string)
+        :param pulumi.Input[bool] external: External role template. Default `false` (bool)
+        :param pulumi.Input[bool] hidden: Hidden role template. Default `false` (bool)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for role template object (map)
+        :param pulumi.Input[bool] locked: Locked role template. Default `false` (bool)
+        :param pulumi.Input[str] name: Role template name (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]] rules: Role template policy rules (list)
         """
         ...
     @overload
@@ -475,7 +520,52 @@ class RoleTempalte(pulumi.CustomResource):
                  args: Optional[RoleTempalteArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RoleTempalte resource with the given unique name, props, and options.
+        Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
+
+        `cluster` and `project` scopes are supported for role templates.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 cluster Role Template
+        foo = rancher2.RoleTemplate("foo",
+            context="cluster",
+            default_role=True,
+            description="Terraform role template acceptance test",
+            rules=[rancher2.RoleTemplateRuleArgs(
+                api_groups=["*"],
+                resources=["secrets"],
+                verbs=["create"],
+            )])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 project Role Template
+        foo = rancher2.RoleTemplate("foo",
+            context="project",
+            default_role=True,
+            description="Terraform role template acceptance test",
+            rules=[rancher2.RoleTemplateRuleArgs(
+                api_groups=["*"],
+                resources=["secrets"],
+                verbs=["create"],
+            )])
+        ```
+
+        ## Import
+
+        Role Template can be imported using the Rancher Role Template ID
+
+        ```sh
+         $ pulumi import rancher2:index/roleTempalte:RoleTempalte foo &lt;role_template_id&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param RoleTempalteArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -559,19 +649,19 @@ class RoleTempalte(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] administrative: Administrative role template
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[bool] builtin: Builtin role template
-        :param pulumi.Input[str] context: Context role template
-        :param pulumi.Input[bool] default_role: Default role template for new created cluster or project
-        :param pulumi.Input[str] description: Role template policy description
-        :param pulumi.Input[bool] external: External role template
-        :param pulumi.Input[bool] hidden: Hidden role template
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
-        :param pulumi.Input[bool] locked: Locked role template
-        :param pulumi.Input[str] name: Role template policy name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]] rules: Role template policy rules
+        :param pulumi.Input[bool] administrative: Administrative role template. Default `false` (bool)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for role template object (map)
+        :param pulumi.Input[bool] builtin: (Computed) Builtin role template (string)
+        :param pulumi.Input[str] context: Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+        :param pulumi.Input[bool] default_role: Default role template for new created cluster or project. Default `false` (bool)
+        :param pulumi.Input[str] description: Role template description (string)
+        :param pulumi.Input[bool] external: External role template. Default `false` (bool)
+        :param pulumi.Input[bool] hidden: Hidden role template. Default `false` (bool)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for role template object (map)
+        :param pulumi.Input[bool] locked: Locked role template. Default `false` (bool)
+        :param pulumi.Input[str] name: Role template name (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]] rules: Role template policy rules (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -596,7 +686,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter
     def administrative(self) -> pulumi.Output[Optional[bool]]:
         """
-        Administrative role template
+        Administrative role template. Default `false` (bool)
         """
         return pulumi.get(self, "administrative")
 
@@ -604,7 +694,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations of the resource
+        Annotations for role template object (map)
         """
         return pulumi.get(self, "annotations")
 
@@ -612,7 +702,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter
     def builtin(self) -> pulumi.Output[bool]:
         """
-        Builtin role template
+        (Computed) Builtin role template (string)
         """
         return pulumi.get(self, "builtin")
 
@@ -620,7 +710,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter
     def context(self) -> pulumi.Output[Optional[str]]:
         """
-        Context role template
+        Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
         """
         return pulumi.get(self, "context")
 
@@ -628,7 +718,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter(name="defaultRole")
     def default_role(self) -> pulumi.Output[Optional[bool]]:
         """
-        Default role template for new created cluster or project
+        Default role template for new created cluster or project. Default `false` (bool)
         """
         return pulumi.get(self, "default_role")
 
@@ -636,7 +726,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Role template policy description
+        Role template description (string)
         """
         return pulumi.get(self, "description")
 
@@ -644,7 +734,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter
     def external(self) -> pulumi.Output[Optional[bool]]:
         """
-        External role template
+        External role template. Default `false` (bool)
         """
         return pulumi.get(self, "external")
 
@@ -652,7 +742,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter
     def hidden(self) -> pulumi.Output[Optional[bool]]:
         """
-        Hidden role template
+        Hidden role template. Default `false` (bool)
         """
         return pulumi.get(self, "hidden")
 
@@ -660,7 +750,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels of the resource
+        Labels for role template object (map)
         """
         return pulumi.get(self, "labels")
 
@@ -668,7 +758,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter
     def locked(self) -> pulumi.Output[Optional[bool]]:
         """
-        Locked role template
+        Locked role template. Default `false` (bool)
         """
         return pulumi.get(self, "locked")
 
@@ -676,7 +766,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Role template policy name
+        Role template name (string)
         """
         return pulumi.get(self, "name")
 
@@ -684,7 +774,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter(name="roleTemplateIds")
     def role_template_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        Inherit role template IDs
+        Inherit role template IDs (list)
         """
         return pulumi.get(self, "role_template_ids")
 
@@ -692,7 +782,7 @@ class RoleTempalte(pulumi.CustomResource):
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.RoleTempalteRule']]:
         """
-        Role template policy rules
+        Role template policy rules (list)
         """
         return pulumi.get(self, "rules")
 

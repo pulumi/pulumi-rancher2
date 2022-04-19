@@ -9,84 +9,175 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
+    /// 
+    /// `cluster` and `project` scopes are supported for role templates.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 cluster Role Template
+    ///         var foo = new Rancher2.RoleTemplate("foo", new Rancher2.RoleTemplateArgs
+    ///         {
+    ///             Context = "cluster",
+    ///             DefaultRole = true,
+    ///             Description = "Terraform role template acceptance test",
+    ///             Rules = 
+    ///             {
+    ///                 new Rancher2.Inputs.RoleTemplateRuleArgs
+    ///                 {
+    ///                     ApiGroups = 
+    ///                     {
+    ///                         "*",
+    ///                     },
+    ///                     Resources = 
+    ///                     {
+    ///                         "secrets",
+    ///                     },
+    ///                     Verbs = 
+    ///                     {
+    ///                         "create",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 project Role Template
+    ///         var foo = new Rancher2.RoleTemplate("foo", new Rancher2.RoleTemplateArgs
+    ///         {
+    ///             Context = "project",
+    ///             DefaultRole = true,
+    ///             Description = "Terraform role template acceptance test",
+    ///             Rules = 
+    ///             {
+    ///                 new Rancher2.Inputs.RoleTemplateRuleArgs
+    ///                 {
+    ///                     ApiGroups = 
+    ///                     {
+    ///                         "*",
+    ///                     },
+    ///                     Resources = 
+    ///                     {
+    ///                         "secrets",
+    ///                     },
+    ///                     Verbs = 
+    ///                     {
+    ///                         "create",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Role Template can be imported using the Rancher Role Template ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/roleTempalte:RoleTempalte foo &amp;lt;role_template_id&amp;gt;
+    /// ```
+    /// </summary>
     [Obsolete(@"rancher2.RoleTempalte has been deprecated in favor of rancher2.RoleTemplate")]
     [Rancher2ResourceType("rancher2:index/roleTempalte:RoleTempalte")]
     public partial class RoleTempalte : Pulumi.CustomResource
     {
         /// <summary>
-        /// Administrative role template
+        /// Administrative role template. Default `false` (bool)
         /// </summary>
         [Output("administrative")]
         public Output<bool?> Administrative { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for role template object (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Builtin role template
+        /// (Computed) Builtin role template (string)
         /// </summary>
         [Output("builtin")]
         public Output<bool> Builtin { get; private set; } = null!;
 
         /// <summary>
-        /// Context role template
+        /// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
         /// </summary>
         [Output("context")]
         public Output<string?> Context { get; private set; } = null!;
 
         /// <summary>
-        /// Default role template for new created cluster or project
+        /// Default role template for new created cluster or project. Default `false` (bool)
         /// </summary>
         [Output("defaultRole")]
         public Output<bool?> DefaultRole { get; private set; } = null!;
 
         /// <summary>
-        /// Role template policy description
+        /// Role template description (string)
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// External role template
+        /// External role template. Default `false` (bool)
         /// </summary>
         [Output("external")]
         public Output<bool?> External { get; private set; } = null!;
 
         /// <summary>
-        /// Hidden role template
+        /// Hidden role template. Default `false` (bool)
         /// </summary>
         [Output("hidden")]
         public Output<bool?> Hidden { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for role template object (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Locked role template
+        /// Locked role template. Default `false` (bool)
         /// </summary>
         [Output("locked")]
         public Output<bool?> Locked { get; private set; } = null!;
 
         /// <summary>
-        /// Role template policy name
+        /// Role template name (string)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Inherit role template IDs
+        /// Inherit role template IDs (list)
         /// </summary>
         [Output("roleTemplateIds")]
         public Output<ImmutableArray<string>> RoleTemplateIds { get; private set; } = null!;
 
         /// <summary>
-        /// Role template policy rules
+        /// Role template policy rules (list)
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.RoleTempalteRule>> Rules { get; private set; } = null!;
@@ -138,7 +229,7 @@ namespace Pulumi.Rancher2
     public sealed class RoleTempalteArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Administrative role template
+        /// Administrative role template. Default `false` (bool)
         /// </summary>
         [Input("administrative")]
         public Input<bool>? Administrative { get; set; }
@@ -147,7 +238,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for role template object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -156,31 +247,31 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Context role template
+        /// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
         /// </summary>
         [Input("context")]
         public Input<string>? Context { get; set; }
 
         /// <summary>
-        /// Default role template for new created cluster or project
+        /// Default role template for new created cluster or project. Default `false` (bool)
         /// </summary>
         [Input("defaultRole")]
         public Input<bool>? DefaultRole { get; set; }
 
         /// <summary>
-        /// Role template policy description
+        /// Role template description (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// External role template
+        /// External role template. Default `false` (bool)
         /// </summary>
         [Input("external")]
         public Input<bool>? External { get; set; }
 
         /// <summary>
-        /// Hidden role template
+        /// Hidden role template. Default `false` (bool)
         /// </summary>
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }
@@ -189,7 +280,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for role template object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -198,13 +289,13 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Locked role template
+        /// Locked role template. Default `false` (bool)
         /// </summary>
         [Input("locked")]
         public Input<bool>? Locked { get; set; }
 
         /// <summary>
-        /// Role template policy name
+        /// Role template name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -213,7 +304,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _roleTemplateIds;
 
         /// <summary>
-        /// Inherit role template IDs
+        /// Inherit role template IDs (list)
         /// </summary>
         public InputList<string> RoleTemplateIds
         {
@@ -225,7 +316,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.RoleTempalteRuleArgs>? _rules;
 
         /// <summary>
-        /// Role template policy rules
+        /// Role template policy rules (list)
         /// </summary>
         public InputList<Inputs.RoleTempalteRuleArgs> Rules
         {
@@ -241,7 +332,7 @@ namespace Pulumi.Rancher2
     public sealed class RoleTempalteState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Administrative role template
+        /// Administrative role template. Default `false` (bool)
         /// </summary>
         [Input("administrative")]
         public Input<bool>? Administrative { get; set; }
@@ -250,7 +341,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for role template object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -259,37 +350,37 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Builtin role template
+        /// (Computed) Builtin role template (string)
         /// </summary>
         [Input("builtin")]
         public Input<bool>? Builtin { get; set; }
 
         /// <summary>
-        /// Context role template
+        /// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
         /// </summary>
         [Input("context")]
         public Input<string>? Context { get; set; }
 
         /// <summary>
-        /// Default role template for new created cluster or project
+        /// Default role template for new created cluster or project. Default `false` (bool)
         /// </summary>
         [Input("defaultRole")]
         public Input<bool>? DefaultRole { get; set; }
 
         /// <summary>
-        /// Role template policy description
+        /// Role template description (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// External role template
+        /// External role template. Default `false` (bool)
         /// </summary>
         [Input("external")]
         public Input<bool>? External { get; set; }
 
         /// <summary>
-        /// Hidden role template
+        /// Hidden role template. Default `false` (bool)
         /// </summary>
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }
@@ -298,7 +389,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for role template object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -307,13 +398,13 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Locked role template
+        /// Locked role template. Default `false` (bool)
         /// </summary>
         [Input("locked")]
         public Input<bool>? Locked { get; set; }
 
         /// <summary>
-        /// Role template policy name
+        /// Role template name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -322,7 +413,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _roleTemplateIds;
 
         /// <summary>
-        /// Inherit role template IDs
+        /// Inherit role template IDs (list)
         /// </summary>
         public InputList<string> RoleTemplateIds
         {
@@ -334,7 +425,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.RoleTempalteRuleGetArgs>? _rules;
 
         /// <summary>
-        /// Role template policy rules
+        /// Role template policy rules (list)
         /// </summary>
         public InputList<Inputs.RoleTempalteRuleGetArgs> Rules
         {
