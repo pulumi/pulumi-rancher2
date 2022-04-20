@@ -21,6 +21,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigMachinePoolResult> MachinePools;
         public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigMachineSelectorConfigResult> MachineSelectorConfigs;
         public readonly Outputs.GetClusterV2RkeConfigRegistriesResult? Registries;
+        public readonly Outputs.GetClusterV2RkeConfigRotateCertificatesResult? RotateCertificates;
         public readonly Outputs.GetClusterV2RkeConfigUpgradeStrategyResult? UpgradeStrategy;
 
         [OutputConstructor]
@@ -41,6 +42,8 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.GetClusterV2RkeConfigRegistriesResult? registries,
 
+            Outputs.GetClusterV2RkeConfigRotateCertificatesResult? rotateCertificates,
+
             Outputs.GetClusterV2RkeConfigUpgradeStrategyResult? upgradeStrategy)
         {
             AdditionalManifest = additionalManifest;
@@ -51,6 +54,7 @@ namespace Pulumi.Rancher2.Outputs
             MachinePools = machinePools;
             MachineSelectorConfigs = machineSelectorConfigs;
             Registries = registries;
+            RotateCertificates = rotateCertificates;
             UpgradeStrategy = upgradeStrategy;
         }
     }

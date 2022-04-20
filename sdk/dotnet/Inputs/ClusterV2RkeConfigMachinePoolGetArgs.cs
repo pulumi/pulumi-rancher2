@@ -36,6 +36,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("controlPlaneRole")]
         public Input<bool>? ControlPlaneRole { get; set; }
 
+        [Input("drainBeforeDelete")]
+        public Input<bool>? DrainBeforeDelete { get; set; }
+
         /// <summary>
         /// Machine pool etcd role? (bool)
         /// </summary>
@@ -60,11 +63,17 @@ namespace Pulumi.Rancher2.Inputs
         [Input("machineConfig", required: true)]
         public Input<Inputs.ClusterV2RkeConfigMachinePoolMachineConfigGetArgs> MachineConfig { get; set; } = null!;
 
+        [Input("maxUnhealthy")]
+        public Input<string>? MaxUnhealthy { get; set; }
+
         /// <summary>
         /// Name of cluster registration token (string)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("nodeStartupTimeoutSeconds")]
+        public Input<int>? NodeStartupTimeoutSeconds { get; set; }
 
         /// <summary>
         /// Machine pool paused? (bool)
@@ -95,6 +104,12 @@ namespace Pulumi.Rancher2.Inputs
             get => _taints ?? (_taints = new InputList<Inputs.ClusterV2RkeConfigMachinePoolTaintGetArgs>());
             set => _taints = value;
         }
+
+        [Input("unhealthyNodeTimeoutSeconds")]
+        public Input<int>? UnhealthyNodeTimeoutSeconds { get; set; }
+
+        [Input("unhealthyRange")]
+        public Input<string>? UnhealthyRange { get; set; }
 
         /// <summary>
         /// Machine pool worker role? (bool)

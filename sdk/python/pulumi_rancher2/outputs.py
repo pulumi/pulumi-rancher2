@@ -14,6 +14,7 @@ __all__ = [
     'CloudCredentialAzureCredentialConfig',
     'CloudCredentialDigitaloceanCredentialConfig',
     'CloudCredentialGoogleCredentialConfig',
+    'CloudCredentialHarvesterCredentialConfig',
     'CloudCredentialLinodeCredentialConfig',
     'CloudCredentialOpenstackCredentialConfig',
     'CloudCredentialS3CredentialConfig',
@@ -214,6 +215,7 @@ __all__ = [
     'ClusterV2RkeConfigRegistries',
     'ClusterV2RkeConfigRegistriesConfig',
     'ClusterV2RkeConfigRegistriesMirror',
+    'ClusterV2RkeConfigRotateCertificates',
     'ClusterV2RkeConfigUpgradeStrategy',
     'ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions',
     'ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions',
@@ -226,6 +228,7 @@ __all__ = [
     'MachineConfigV2Amazonec2Config',
     'MachineConfigV2AzureConfig',
     'MachineConfigV2DigitaloceanConfig',
+    'MachineConfigV2HarvesterConfig',
     'MachineConfigV2LinodeConfig',
     'MachineConfigV2OpenstackConfig',
     'MachineConfigV2VsphereConfig',
@@ -241,6 +244,7 @@ __all__ = [
     'NodeTemplateAmazonec2Config',
     'NodeTemplateAzureConfig',
     'NodeTemplateDigitaloceanConfig',
+    'NodeTemplateHarvesterConfig',
     'NodeTemplateHetznerConfig',
     'NodeTemplateLinodeConfig',
     'NodeTemplateNodeTaint',
@@ -478,6 +482,7 @@ __all__ = [
     'GetClusterV2RkeConfigRegistriesResult',
     'GetClusterV2RkeConfigRegistriesConfigResult',
     'GetClusterV2RkeConfigRegistriesMirrorResult',
+    'GetClusterV2RkeConfigRotateCertificatesResult',
     'GetClusterV2RkeConfigUpgradeStrategyResult',
     'GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsResult',
     'GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsResult',
@@ -756,6 +761,68 @@ class CloudCredentialGoogleCredentialConfig(dict):
         Google auth encoded json (string)
         """
         return pulumi.get(self, "auth_encoded_json")
+
+
+@pulumi.output_type
+class CloudCredentialHarvesterCredentialConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterType":
+            suggest = "cluster_type"
+        elif key == "kubeconfigContent":
+            suggest = "kubeconfig_content"
+        elif key == "clusterId":
+            suggest = "cluster_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudCredentialHarvesterCredentialConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudCredentialHarvesterCredentialConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudCredentialHarvesterCredentialConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_type: str,
+                 kubeconfig_content: str,
+                 cluster_id: Optional[str] = None):
+        """
+        :param str cluster_type: Harvester Cluster Type. Supported values : `"imported" | "external"` (string)
+        :param str kubeconfig_content: Harvester Cluster KubeConfig Content (string)
+        :param str cluster_id: Imported Harvester Cluster ID (string)
+        """
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "kubeconfig_content", kubeconfig_content)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> str:
+        """
+        Harvester Cluster Type. Supported values : `"imported" | "external"` (string)
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @property
+    @pulumi.getter(name="kubeconfigContent")
+    def kubeconfig_content(self) -> str:
+        """
+        Harvester Cluster KubeConfig Content (string)
+        """
+        return pulumi.get(self, "kubeconfig_content")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[str]:
+        """
+        Imported Harvester Cluster ID (string)
+        """
+        return pulumi.get(self, "cluster_id")
 
 
 @pulumi.output_type
@@ -2522,6 +2589,12 @@ class ClusterAlterGroupRecipient(dict):
                  default_recipient: Optional[bool] = None,
                  notifier_type: Optional[str] = None,
                  recipient: Optional[str] = None):
+        """
+        :param str notifier_id: Recipient notifier ID (string)
+        :param bool default_recipient: Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        :param str notifier_type: Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        :param str recipient: Recipient (string)
+        """
         pulumi.set(__self__, "notifier_id", notifier_id)
         if default_recipient is not None:
             pulumi.set(__self__, "default_recipient", default_recipient)
@@ -2533,21 +2606,33 @@ class ClusterAlterGroupRecipient(dict):
     @property
     @pulumi.getter(name="notifierId")
     def notifier_id(self) -> str:
+        """
+        Recipient notifier ID (string)
+        """
         return pulumi.get(self, "notifier_id")
 
     @property
     @pulumi.getter(name="defaultRecipient")
     def default_recipient(self) -> Optional[bool]:
+        """
+        Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        """
         return pulumi.get(self, "default_recipient")
 
     @property
     @pulumi.getter(name="notifierType")
     def notifier_type(self) -> Optional[str]:
+        """
+        Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        """
         return pulumi.get(self, "notifier_type")
 
     @property
     @pulumi.getter
     def recipient(self) -> Optional[str]:
+        """
+        Recipient (string)
+        """
         return pulumi.get(self, "recipient")
 
 
@@ -2575,6 +2660,10 @@ class ClusterAlterRuleEventRule(dict):
     def __init__(__self__, *,
                  resource_kind: str,
                  event_type: Optional[str] = None):
+        """
+        :param str resource_kind: Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+        :param str event_type: Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+        """
         pulumi.set(__self__, "resource_kind", resource_kind)
         if event_type is not None:
             pulumi.set(__self__, "event_type", event_type)
@@ -2582,11 +2671,17 @@ class ClusterAlterRuleEventRule(dict):
     @property
     @pulumi.getter(name="resourceKind")
     def resource_kind(self) -> str:
+        """
+        Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+        """
         return pulumi.get(self, "resource_kind")
 
     @property
     @pulumi.getter(name="eventType")
     def event_type(self) -> Optional[str]:
+        """
+        Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+        """
         return pulumi.get(self, "event_type")
 
 
@@ -2615,6 +2710,13 @@ class ClusterAlterRuleMetricRule(dict):
                  threshold_value: float,
                  comparison: Optional[str] = None,
                  description: Optional[str] = None):
+        """
+        :param str duration: Metric rule duration (string)
+        :param str expression: Metric rule expression (string)
+        :param float threshold_value: Metric rule threshold value (float64)
+        :param str comparison: Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+        :param str description: Metric rule description (string)
+        """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "threshold_value", threshold_value)
@@ -2626,26 +2728,41 @@ class ClusterAlterRuleMetricRule(dict):
     @property
     @pulumi.getter
     def duration(self) -> str:
+        """
+        Metric rule duration (string)
+        """
         return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter
     def expression(self) -> str:
+        """
+        Metric rule expression (string)
+        """
         return pulumi.get(self, "expression")
 
     @property
     @pulumi.getter(name="thresholdValue")
     def threshold_value(self) -> float:
+        """
+        Metric rule threshold value (float64)
+        """
         return pulumi.get(self, "threshold_value")
 
     @property
     @pulumi.getter
     def comparison(self) -> Optional[str]:
+        """
+        Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+        """
         return pulumi.get(self, "comparison")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        Metric rule description (string)
+        """
         return pulumi.get(self, "description")
 
 
@@ -2678,6 +2795,13 @@ class ClusterAlterRuleNodeRule(dict):
                  mem_threshold: Optional[int] = None,
                  node_id: Optional[str] = None,
                  selector: Optional[Mapping[str, Any]] = None):
+        """
+        :param str condition: System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        :param int cpu_threshold: Node rule cpu threshold. Default: `70` (int)
+        :param int mem_threshold: Node rule mem threshold. Default: `70` (int)
+        :param str node_id: Node ID (string)
+        :param Mapping[str, Any] selector: Node rule selector (map)
+        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
         if cpu_threshold is not None:
@@ -2692,26 +2816,41 @@ class ClusterAlterRuleNodeRule(dict):
     @property
     @pulumi.getter
     def condition(self) -> Optional[str]:
+        """
+        System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        """
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="cpuThreshold")
     def cpu_threshold(self) -> Optional[int]:
+        """
+        Node rule cpu threshold. Default: `70` (int)
+        """
         return pulumi.get(self, "cpu_threshold")
 
     @property
     @pulumi.getter(name="memThreshold")
     def mem_threshold(self) -> Optional[int]:
+        """
+        Node rule mem threshold. Default: `70` (int)
+        """
         return pulumi.get(self, "mem_threshold")
 
     @property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[str]:
+        """
+        Node ID (string)
+        """
         return pulumi.get(self, "node_id")
 
     @property
     @pulumi.getter
     def selector(self) -> Optional[Mapping[str, Any]]:
+        """
+        Node rule selector (map)
+        """
         return pulumi.get(self, "selector")
 
 
@@ -2719,12 +2858,18 @@ class ClusterAlterRuleNodeRule(dict):
 class ClusterAlterRuleSystemServiceRule(dict):
     def __init__(__self__, *,
                  condition: Optional[str] = None):
+        """
+        :param str condition: System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
 
     @property
     @pulumi.getter
     def condition(self) -> Optional[str]:
+        """
+        System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        """
         return pulumi.get(self, "condition")
 
 
@@ -18193,6 +18338,8 @@ class ClusterV2RkeConfig(dict):
             suggest = "machine_pools"
         elif key == "machineSelectorConfigs":
             suggest = "machine_selector_configs"
+        elif key == "rotateCertificates":
+            suggest = "rotate_certificates"
         elif key == "upgradeStrategy":
             suggest = "upgrade_strategy"
 
@@ -18216,6 +18363,7 @@ class ClusterV2RkeConfig(dict):
                  machine_pools: Optional[Sequence['outputs.ClusterV2RkeConfigMachinePool']] = None,
                  machine_selector_configs: Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorConfig']] = None,
                  registries: Optional['outputs.ClusterV2RkeConfigRegistries'] = None,
+                 rotate_certificates: Optional['outputs.ClusterV2RkeConfigRotateCertificates'] = None,
                  upgrade_strategy: Optional['outputs.ClusterV2RkeConfigUpgradeStrategy'] = None):
         """
         :param str additional_manifest: Cluster V2 additional manifest (string)
@@ -18244,6 +18392,8 @@ class ClusterV2RkeConfig(dict):
             pulumi.set(__self__, "machine_selector_configs", machine_selector_configs)
         if registries is not None:
             pulumi.set(__self__, "registries", registries)
+        if rotate_certificates is not None:
+            pulumi.set(__self__, "rotate_certificates", rotate_certificates)
         if upgrade_strategy is not None:
             pulumi.set(__self__, "upgrade_strategy", upgrade_strategy)
 
@@ -18310,6 +18460,11 @@ class ClusterV2RkeConfig(dict):
         Cluster V2 docker registries (list maxitems:1)
         """
         return pulumi.get(self, "registries")
+
+    @property
+    @pulumi.getter(name="rotateCertificates")
+    def rotate_certificates(self) -> Optional['outputs.ClusterV2RkeConfigRotateCertificates']:
+        return pulumi.get(self, "rotate_certificates")
 
     @property
     @pulumi.getter(name="upgradeStrategy")
@@ -18579,10 +18734,20 @@ class ClusterV2RkeConfigMachinePool(dict):
             suggest = "machine_config"
         elif key == "controlPlaneRole":
             suggest = "control_plane_role"
+        elif key == "drainBeforeDelete":
+            suggest = "drain_before_delete"
         elif key == "etcdRole":
             suggest = "etcd_role"
+        elif key == "maxUnhealthy":
+            suggest = "max_unhealthy"
+        elif key == "nodeStartupTimeoutSeconds":
+            suggest = "node_startup_timeout_seconds"
         elif key == "rollingUpdate":
             suggest = "rolling_update"
+        elif key == "unhealthyNodeTimeoutSeconds":
+            suggest = "unhealthy_node_timeout_seconds"
+        elif key == "unhealthyRange":
+            suggest = "unhealthy_range"
         elif key == "workerRole":
             suggest = "worker_role"
 
@@ -18603,12 +18768,17 @@ class ClusterV2RkeConfigMachinePool(dict):
                  name: str,
                  annotations: Optional[Mapping[str, Any]] = None,
                  control_plane_role: Optional[bool] = None,
+                 drain_before_delete: Optional[bool] = None,
                  etcd_role: Optional[bool] = None,
                  labels: Optional[Mapping[str, Any]] = None,
+                 max_unhealthy: Optional[str] = None,
+                 node_startup_timeout_seconds: Optional[int] = None,
                  paused: Optional[bool] = None,
                  quantity: Optional[int] = None,
                  rolling_update: Optional['outputs.ClusterV2RkeConfigMachinePoolRollingUpdate'] = None,
                  taints: Optional[Sequence['outputs.ClusterV2RkeConfigMachinePoolTaint']] = None,
+                 unhealthy_node_timeout_seconds: Optional[int] = None,
+                 unhealthy_range: Optional[str] = None,
                  worker_role: Optional[bool] = None):
         """
         :param str cloud_credential_secret_name: Cluster V2 cloud credential secret name (string)
@@ -18631,10 +18801,16 @@ class ClusterV2RkeConfigMachinePool(dict):
             pulumi.set(__self__, "annotations", annotations)
         if control_plane_role is not None:
             pulumi.set(__self__, "control_plane_role", control_plane_role)
+        if drain_before_delete is not None:
+            pulumi.set(__self__, "drain_before_delete", drain_before_delete)
         if etcd_role is not None:
             pulumi.set(__self__, "etcd_role", etcd_role)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if max_unhealthy is not None:
+            pulumi.set(__self__, "max_unhealthy", max_unhealthy)
+        if node_startup_timeout_seconds is not None:
+            pulumi.set(__self__, "node_startup_timeout_seconds", node_startup_timeout_seconds)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
         if quantity is not None:
@@ -18643,6 +18819,10 @@ class ClusterV2RkeConfigMachinePool(dict):
             pulumi.set(__self__, "rolling_update", rolling_update)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if unhealthy_node_timeout_seconds is not None:
+            pulumi.set(__self__, "unhealthy_node_timeout_seconds", unhealthy_node_timeout_seconds)
+        if unhealthy_range is not None:
+            pulumi.set(__self__, "unhealthy_range", unhealthy_range)
         if worker_role is not None:
             pulumi.set(__self__, "worker_role", worker_role)
 
@@ -18687,6 +18867,11 @@ class ClusterV2RkeConfigMachinePool(dict):
         return pulumi.get(self, "control_plane_role")
 
     @property
+    @pulumi.getter(name="drainBeforeDelete")
+    def drain_before_delete(self) -> Optional[bool]:
+        return pulumi.get(self, "drain_before_delete")
+
+    @property
     @pulumi.getter(name="etcdRole")
     def etcd_role(self) -> Optional[bool]:
         """
@@ -18701,6 +18886,16 @@ class ClusterV2RkeConfigMachinePool(dict):
         Labels for cluster registration token object (map)
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maxUnhealthy")
+    def max_unhealthy(self) -> Optional[str]:
+        return pulumi.get(self, "max_unhealthy")
+
+    @property
+    @pulumi.getter(name="nodeStartupTimeoutSeconds")
+    def node_startup_timeout_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "node_startup_timeout_seconds")
 
     @property
     @pulumi.getter
@@ -18733,6 +18928,16 @@ class ClusterV2RkeConfigMachinePool(dict):
         Machine pool taints (list)
         """
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="unhealthyNodeTimeoutSeconds")
+    def unhealthy_node_timeout_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "unhealthy_node_timeout_seconds")
+
+    @property
+    @pulumi.getter(name="unhealthyRange")
+    def unhealthy_range(self) -> Optional[str]:
+        return pulumi.get(self, "unhealthy_range")
 
     @property
     @pulumi.getter(name="workerRole")
@@ -19162,6 +19367,27 @@ class ClusterV2RkeConfigRegistriesMirror(dict):
         Registry mirror rewrites (map)
         """
         return pulumi.get(self, "rewrites")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigRotateCertificates(dict):
+    def __init__(__self__, *,
+                 generation: Optional[int] = None,
+                 services: Optional[Sequence[str]] = None):
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[int]:
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "services")
 
 
 @pulumi.output_type
@@ -21110,6 +21336,192 @@ class MachineConfigV2DigitaloceanConfig(dict):
         Path to file with cloud-init user-data (string)
         """
         return pulumi.get(self, "userdata")
+
+
+@pulumi.output_type
+class MachineConfigV2HarvesterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageName":
+            suggest = "image_name"
+        elif key == "networkName":
+            suggest = "network_name"
+        elif key == "sshUser":
+            suggest = "ssh_user"
+        elif key == "vmNamespace":
+            suggest = "vm_namespace"
+        elif key == "cpuCount":
+            suggest = "cpu_count"
+        elif key == "diskBus":
+            suggest = "disk_bus"
+        elif key == "diskSize":
+            suggest = "disk_size"
+        elif key == "memorySize":
+            suggest = "memory_size"
+        elif key == "networkData":
+            suggest = "network_data"
+        elif key == "networkModel":
+            suggest = "network_model"
+        elif key == "sshPassword":
+            suggest = "ssh_password"
+        elif key == "userData":
+            suggest = "user_data"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineConfigV2HarvesterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineConfigV2HarvesterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineConfigV2HarvesterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image_name: str,
+                 network_name: str,
+                 ssh_user: str,
+                 vm_namespace: str,
+                 cpu_count: Optional[str] = None,
+                 disk_bus: Optional[str] = None,
+                 disk_size: Optional[str] = None,
+                 memory_size: Optional[str] = None,
+                 network_data: Optional[str] = None,
+                 network_model: Optional[str] = None,
+                 ssh_password: Optional[str] = None,
+                 user_data: Optional[str] = None):
+        """
+        :param str image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        :param str network_name: Network name e.g. `harvester-public/vlan1` (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        :param str vm_namespace: Virtual machine namespace e.g. `default` (string)
+        :param str cpu_count: vSphere CPU number for docker VM. Default `2` (string)
+        :param str disk_bus: Disk bus, Default `virtio` (string)
+        :param str disk_size: vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        :param str memory_size: vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        :param str network_data: NetworkData content of cloud-init, base64 is supported (string)
+        :param str network_model: Network model, Default `virtio` (string)
+        :param str ssh_password: If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+        :param str user_data: UserData content of cloud-init, base64 is supported (string)
+        """
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "network_name", network_name)
+        pulumi.set(__self__, "ssh_user", ssh_user)
+        pulumi.set(__self__, "vm_namespace", vm_namespace)
+        if cpu_count is not None:
+            pulumi.set(__self__, "cpu_count", cpu_count)
+        if disk_bus is not None:
+            pulumi.set(__self__, "disk_bus", disk_bus)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if memory_size is not None:
+            pulumi.set(__self__, "memory_size", memory_size)
+        if network_data is not None:
+            pulumi.set(__self__, "network_data", network_data)
+        if network_model is not None:
+            pulumi.set(__self__, "network_model", network_model)
+        if ssh_password is not None:
+            pulumi.set(__self__, "ssh_password", ssh_password)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> str:
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
+        return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter(name="networkName")
+    def network_name(self) -> str:
+        """
+        Network name e.g. `harvester-public/vlan1` (string)
+        """
+        return pulumi.get(self, "network_name")
+
+    @property
+    @pulumi.getter(name="sshUser")
+    def ssh_user(self) -> str:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        """
+        return pulumi.get(self, "ssh_user")
+
+    @property
+    @pulumi.getter(name="vmNamespace")
+    def vm_namespace(self) -> str:
+        """
+        Virtual machine namespace e.g. `default` (string)
+        """
+        return pulumi.get(self, "vm_namespace")
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> Optional[str]:
+        """
+        vSphere CPU number for docker VM. Default `2` (string)
+        """
+        return pulumi.get(self, "cpu_count")
+
+    @property
+    @pulumi.getter(name="diskBus")
+    def disk_bus(self) -> Optional[str]:
+        """
+        Disk bus, Default `virtio` (string)
+        """
+        return pulumi.get(self, "disk_bus")
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[str]:
+        """
+        vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="memorySize")
+    def memory_size(self) -> Optional[str]:
+        """
+        vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        """
+        return pulumi.get(self, "memory_size")
+
+    @property
+    @pulumi.getter(name="networkData")
+    def network_data(self) -> Optional[str]:
+        """
+        NetworkData content of cloud-init, base64 is supported (string)
+        """
+        return pulumi.get(self, "network_data")
+
+    @property
+    @pulumi.getter(name="networkModel")
+    def network_model(self) -> Optional[str]:
+        """
+        Network model, Default `virtio` (string)
+        """
+        return pulumi.get(self, "network_model")
+
+    @property
+    @pulumi.getter(name="sshPassword")
+    def ssh_password(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+        """
+        return pulumi.get(self, "ssh_password")
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[str]:
+        """
+        UserData content of cloud-init, base64 is supported (string)
+        """
+        return pulumi.get(self, "user_data")
 
 
 @pulumi.output_type
@@ -24085,12 +24497,200 @@ class NodeTemplateDigitaloceanConfig(dict):
 
 
 @pulumi.output_type
+class NodeTemplateHarvesterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageName":
+            suggest = "image_name"
+        elif key == "networkName":
+            suggest = "network_name"
+        elif key == "sshUser":
+            suggest = "ssh_user"
+        elif key == "vmNamespace":
+            suggest = "vm_namespace"
+        elif key == "cpuCount":
+            suggest = "cpu_count"
+        elif key == "diskBus":
+            suggest = "disk_bus"
+        elif key == "diskSize":
+            suggest = "disk_size"
+        elif key == "memorySize":
+            suggest = "memory_size"
+        elif key == "networkData":
+            suggest = "network_data"
+        elif key == "networkModel":
+            suggest = "network_model"
+        elif key == "sshPassword":
+            suggest = "ssh_password"
+        elif key == "userData":
+            suggest = "user_data"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeTemplateHarvesterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeTemplateHarvesterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeTemplateHarvesterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image_name: str,
+                 network_name: str,
+                 ssh_user: str,
+                 vm_namespace: str,
+                 cpu_count: Optional[str] = None,
+                 disk_bus: Optional[str] = None,
+                 disk_size: Optional[str] = None,
+                 memory_size: Optional[str] = None,
+                 network_data: Optional[str] = None,
+                 network_model: Optional[str] = None,
+                 ssh_password: Optional[str] = None,
+                 user_data: Optional[str] = None):
+        """
+        :param str image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        :param str network_name: Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        :param str vm_namespace: Virtual machine namespace e.g. `default` (string)
+        :param str cpu_count: vSphere CPU number for docker VM. Default `2` (string)
+        :param str disk_bus: Disk bus, Default `virtio` (string)
+        :param str disk_size: vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        :param str memory_size: vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        :param str network_data: NetworkData content of cloud-init, base64 is supported (string)
+        :param str network_model: Network model, Default `virtio` (string)
+        :param str ssh_password: If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+        :param str user_data: UserData content of cloud-init, base64 is supported (string)
+        """
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "network_name", network_name)
+        pulumi.set(__self__, "ssh_user", ssh_user)
+        pulumi.set(__self__, "vm_namespace", vm_namespace)
+        if cpu_count is not None:
+            pulumi.set(__self__, "cpu_count", cpu_count)
+        if disk_bus is not None:
+            pulumi.set(__self__, "disk_bus", disk_bus)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if memory_size is not None:
+            pulumi.set(__self__, "memory_size", memory_size)
+        if network_data is not None:
+            pulumi.set(__self__, "network_data", network_data)
+        if network_model is not None:
+            pulumi.set(__self__, "network_model", network_model)
+        if ssh_password is not None:
+            pulumi.set(__self__, "ssh_password", ssh_password)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> str:
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
+        return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter(name="networkName")
+    def network_name(self) -> str:
+        """
+        Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        """
+        return pulumi.get(self, "network_name")
+
+    @property
+    @pulumi.getter(name="sshUser")
+    def ssh_user(self) -> str:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
+        return pulumi.get(self, "ssh_user")
+
+    @property
+    @pulumi.getter(name="vmNamespace")
+    def vm_namespace(self) -> str:
+        """
+        Virtual machine namespace e.g. `default` (string)
+        """
+        return pulumi.get(self, "vm_namespace")
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> Optional[str]:
+        """
+        vSphere CPU number for docker VM. Default `2` (string)
+        """
+        return pulumi.get(self, "cpu_count")
+
+    @property
+    @pulumi.getter(name="diskBus")
+    def disk_bus(self) -> Optional[str]:
+        """
+        Disk bus, Default `virtio` (string)
+        """
+        return pulumi.get(self, "disk_bus")
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[str]:
+        """
+        vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="memorySize")
+    def memory_size(self) -> Optional[str]:
+        """
+        vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        """
+        return pulumi.get(self, "memory_size")
+
+    @property
+    @pulumi.getter(name="networkData")
+    def network_data(self) -> Optional[str]:
+        """
+        NetworkData content of cloud-init, base64 is supported (string)
+        """
+        return pulumi.get(self, "network_data")
+
+    @property
+    @pulumi.getter(name="networkModel")
+    def network_model(self) -> Optional[str]:
+        """
+        Network model, Default `virtio` (string)
+        """
+        return pulumi.get(self, "network_model")
+
+    @property
+    @pulumi.getter(name="sshPassword")
+    def ssh_password(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+        """
+        return pulumi.get(self, "ssh_password")
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[str]:
+        """
+        UserData content of cloud-init, base64 is supported (string)
+        """
+        return pulumi.get(self, "user_data")
+
+
+@pulumi.output_type
 class NodeTemplateHetznerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "apiToken":
             suggest = "api_token"
+        elif key == "serverLabels":
+            suggest = "server_labels"
         elif key == "serverLocation":
             suggest = "server_location"
         elif key == "serverType":
@@ -24113,6 +24713,7 @@ class NodeTemplateHetznerConfig(dict):
                  api_token: str,
                  image: Optional[str] = None,
                  networks: Optional[str] = None,
+                 server_labels: Optional[Mapping[str, Any]] = None,
                  server_location: Optional[str] = None,
                  server_type: Optional[str] = None,
                  use_private_network: Optional[bool] = None,
@@ -24122,6 +24723,7 @@ class NodeTemplateHetznerConfig(dict):
         :param str api_token: Hetzner Cloud project API token (string)
         :param str image: Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         :param str networks: Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+        :param Mapping[str, Any] server_labels: Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
         :param str server_location: Hetzner Cloud datacenter. Default `nbg1` (string)
         :param str server_type: Hetzner Cloud server type. Default `cx11` (string)
         :param bool use_private_network: Use private network. Default `false` (bool)
@@ -24133,6 +24735,8 @@ class NodeTemplateHetznerConfig(dict):
             pulumi.set(__self__, "image", image)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+        if server_labels is not None:
+            pulumi.set(__self__, "server_labels", server_labels)
         if server_location is not None:
             pulumi.set(__self__, "server_location", server_location)
         if server_type is not None:
@@ -24167,6 +24771,14 @@ class NodeTemplateHetznerConfig(dict):
         Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="serverLabels")
+    def server_labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+        """
+        return pulumi.get(self, "server_labels")
 
     @property
     @pulumi.getter(name="serverLocation")
@@ -28435,6 +29047,13 @@ class RoleTempalteRule(dict):
                  resource_names: Optional[Sequence[str]] = None,
                  resources: Optional[Sequence[str]] = None,
                  verbs: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] api_groups: Policy rule api groups (list)
+        :param Sequence[str] non_resource_urls: Policy rule non resource urls (list)
+        :param Sequence[str] resource_names: Policy rule resource names (list)
+        :param Sequence[str] resources: Policy rule resources (list)
+        :param Sequence[str] verbs: Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+        """
         if api_groups is not None:
             pulumi.set(__self__, "api_groups", api_groups)
         if non_resource_urls is not None:
@@ -28449,26 +29068,41 @@ class RoleTempalteRule(dict):
     @property
     @pulumi.getter(name="apiGroups")
     def api_groups(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule api groups (list)
+        """
         return pulumi.get(self, "api_groups")
 
     @property
     @pulumi.getter(name="nonResourceUrls")
     def non_resource_urls(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule non resource urls (list)
+        """
         return pulumi.get(self, "non_resource_urls")
 
     @property
     @pulumi.getter(name="resourceNames")
     def resource_names(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule resource names (list)
+        """
         return pulumi.get(self, "resource_names")
 
     @property
     @pulumi.getter
     def resources(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule resources (list)
+        """
         return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter
     def verbs(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+        """
         return pulumi.get(self, "verbs")
 
 
@@ -38018,6 +38652,7 @@ class GetClusterV2RkeConfigResult(dict):
                  local_auth_endpoint: Optional['outputs.GetClusterV2RkeConfigLocalAuthEndpointResult'] = None,
                  machine_global_config: Optional[str] = None,
                  registries: Optional['outputs.GetClusterV2RkeConfigRegistriesResult'] = None,
+                 rotate_certificates: Optional['outputs.GetClusterV2RkeConfigRotateCertificatesResult'] = None,
                  upgrade_strategy: Optional['outputs.GetClusterV2RkeConfigUpgradeStrategyResult'] = None):
         pulumi.set(__self__, "etcd", etcd)
         pulumi.set(__self__, "machine_pools", machine_pools)
@@ -38032,6 +38667,8 @@ class GetClusterV2RkeConfigResult(dict):
             pulumi.set(__self__, "machine_global_config", machine_global_config)
         if registries is not None:
             pulumi.set(__self__, "registries", registries)
+        if rotate_certificates is not None:
+            pulumi.set(__self__, "rotate_certificates", rotate_certificates)
         if upgrade_strategy is not None:
             pulumi.set(__self__, "upgrade_strategy", upgrade_strategy)
 
@@ -38074,6 +38711,11 @@ class GetClusterV2RkeConfigResult(dict):
     @pulumi.getter
     def registries(self) -> Optional['outputs.GetClusterV2RkeConfigRegistriesResult']:
         return pulumi.get(self, "registries")
+
+    @property
+    @pulumi.getter(name="rotateCertificates")
+    def rotate_certificates(self) -> Optional['outputs.GetClusterV2RkeConfigRotateCertificatesResult']:
+        return pulumi.get(self, "rotate_certificates")
 
     @property
     @pulumi.getter(name="upgradeStrategy")
@@ -38215,11 +38857,16 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
                  machine_config: 'outputs.GetClusterV2RkeConfigMachinePoolMachineConfigResult',
                  name: str,
                  control_plane_role: Optional[bool] = None,
+                 drain_before_delete: Optional[bool] = None,
                  etcd_role: Optional[bool] = None,
+                 max_unhealthy: Optional[str] = None,
+                 node_startup_timeout_seconds: Optional[int] = None,
                  paused: Optional[bool] = None,
                  quantity: Optional[int] = None,
                  rolling_update: Optional['outputs.GetClusterV2RkeConfigMachinePoolRollingUpdateResult'] = None,
                  taints: Optional[Sequence['outputs.GetClusterV2RkeConfigMachinePoolTaintResult']] = None,
+                 unhealthy_node_timeout_seconds: Optional[int] = None,
+                 unhealthy_range: Optional[str] = None,
                  worker_role: Optional[bool] = None):
         """
         :param str cloud_credential_secret_name: (Computed) Cluster V2 cloud credential secret name (string)
@@ -38232,8 +38879,14 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
         pulumi.set(__self__, "name", name)
         if control_plane_role is not None:
             pulumi.set(__self__, "control_plane_role", control_plane_role)
+        if drain_before_delete is not None:
+            pulumi.set(__self__, "drain_before_delete", drain_before_delete)
         if etcd_role is not None:
             pulumi.set(__self__, "etcd_role", etcd_role)
+        if max_unhealthy is not None:
+            pulumi.set(__self__, "max_unhealthy", max_unhealthy)
+        if node_startup_timeout_seconds is not None:
+            pulumi.set(__self__, "node_startup_timeout_seconds", node_startup_timeout_seconds)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
         if quantity is not None:
@@ -38242,6 +38895,10 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
             pulumi.set(__self__, "rolling_update", rolling_update)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if unhealthy_node_timeout_seconds is not None:
+            pulumi.set(__self__, "unhealthy_node_timeout_seconds", unhealthy_node_timeout_seconds)
+        if unhealthy_range is not None:
+            pulumi.set(__self__, "unhealthy_range", unhealthy_range)
         if worker_role is not None:
             pulumi.set(__self__, "worker_role", worker_role)
 
@@ -38282,9 +38939,24 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
         return pulumi.get(self, "control_plane_role")
 
     @property
+    @pulumi.getter(name="drainBeforeDelete")
+    def drain_before_delete(self) -> Optional[bool]:
+        return pulumi.get(self, "drain_before_delete")
+
+    @property
     @pulumi.getter(name="etcdRole")
     def etcd_role(self) -> Optional[bool]:
         return pulumi.get(self, "etcd_role")
+
+    @property
+    @pulumi.getter(name="maxUnhealthy")
+    def max_unhealthy(self) -> Optional[str]:
+        return pulumi.get(self, "max_unhealthy")
+
+    @property
+    @pulumi.getter(name="nodeStartupTimeoutSeconds")
+    def node_startup_timeout_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "node_startup_timeout_seconds")
 
     @property
     @pulumi.getter
@@ -38305,6 +38977,16 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
     @pulumi.getter
     def taints(self) -> Optional[Sequence['outputs.GetClusterV2RkeConfigMachinePoolTaintResult']]:
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="unhealthyNodeTimeoutSeconds")
+    def unhealthy_node_timeout_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "unhealthy_node_timeout_seconds")
+
+    @property
+    @pulumi.getter(name="unhealthyRange")
+    def unhealthy_range(self) -> Optional[str]:
+        return pulumi.get(self, "unhealthy_range")
 
     @property
     @pulumi.getter(name="workerRole")
@@ -38547,6 +39229,27 @@ class GetClusterV2RkeConfigRegistriesMirrorResult(dict):
     @pulumi.getter
     def rewrites(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "rewrites")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigRotateCertificatesResult(dict):
+    def __init__(__self__, *,
+                 generation: Optional[int] = None,
+                 services: Optional[Sequence[str]] = None):
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[int]:
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "services")
 
 
 @pulumi.output_type

@@ -56,6 +56,21 @@ export interface CloudCredentialGoogleCredentialConfig {
     authEncodedJson: string;
 }
 
+export interface CloudCredentialHarvesterCredentialConfig {
+    /**
+     * Imported Harvester Cluster ID (string)
+     */
+    clusterId?: string;
+    /**
+     * Harvester Cluster Type. Supported values : `"imported" | "external"` (string)
+     */
+    clusterType: string;
+    /**
+     * Harvester Cluster KubeConfig Content (string)
+     */
+    kubeconfigContent: string;
+}
+
 export interface CloudCredentialLinodeCredentialConfig {
     /**
      * Linode API token (string)
@@ -554,34 +569,85 @@ export interface ClusterAlertRuleSystemServiceRule {
 }
 
 export interface ClusterAlterGroupRecipient {
+    /**
+     * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+     */
     defaultRecipient?: boolean;
+    /**
+     * Recipient notifier ID (string)
+     */
     notifierId: string;
+    /**
+     * Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+     */
     notifierType: string;
+    /**
+     * Recipient (string)
+     */
     recipient: string;
 }
 
 export interface ClusterAlterRuleEventRule {
+    /**
+     * Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+     */
     eventType?: string;
+    /**
+     * Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+     */
     resourceKind: string;
 }
 
 export interface ClusterAlterRuleMetricRule {
+    /**
+     * Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+     */
     comparison?: string;
+    /**
+     * Metric rule description (string)
+     */
     description?: string;
+    /**
+     * Metric rule duration (string)
+     */
     duration: string;
+    /**
+     * Metric rule expression (string)
+     */
     expression: string;
+    /**
+     * Metric rule threshold value (float64)
+     */
     thresholdValue: number;
 }
 
 export interface ClusterAlterRuleNodeRule {
+    /**
+     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+     */
     condition?: string;
+    /**
+     * Node rule cpu threshold. Default: `70` (int)
+     */
     cpuThreshold?: number;
+    /**
+     * Node rule mem threshold. Default: `70` (int)
+     */
     memThreshold?: number;
+    /**
+     * Node ID (string)
+     */
     nodeId?: string;
+    /**
+     * Node rule selector (map)
+     */
     selector?: {[key: string]: any};
 }
 
 export interface ClusterAlterRuleSystemServiceRule {
+    /**
+     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+     */
     condition?: string;
 }
 
@@ -4274,6 +4340,7 @@ export interface ClusterV2RkeConfig {
      * Cluster V2 docker registries (list maxitems:1)
      */
     registries?: outputs.ClusterV2RkeConfigRegistries;
+    rotateCertificates?: outputs.ClusterV2RkeConfigRotateCertificates;
     /**
      * Cluster V2 upgrade strategy (list maxitems:1)
      */
@@ -4358,6 +4425,7 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool control plane role? (bool)
      */
     controlPlaneRole?: boolean;
+    drainBeforeDelete?: boolean;
     /**
      * Machine pool etcd role? (bool)
      */
@@ -4370,10 +4438,12 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool node config (list)
      */
     machineConfig: outputs.ClusterV2RkeConfigMachinePoolMachineConfig;
+    maxUnhealthy?: string;
     /**
      * Name of cluster registration token (string)
      */
     name: string;
+    nodeStartupTimeoutSeconds?: number;
     /**
      * Machine pool paused? (bool)
      */
@@ -4390,6 +4460,8 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool taints (list)
      */
     taints?: outputs.ClusterV2RkeConfigMachinePoolTaint[];
+    unhealthyNodeTimeoutSeconds?: number;
+    unhealthyRange?: string;
     /**
      * Machine pool worker role? (bool)
      */
@@ -4517,6 +4589,11 @@ export interface ClusterV2RkeConfigRegistriesMirror {
      * Registry mirror rewrites (map)
      */
     rewrites?: {[key: string]: any};
+}
+
+export interface ClusterV2RkeConfigRotateCertificates {
+    generation?: number;
+    services?: string[];
 }
 
 export interface ClusterV2RkeConfigUpgradeStrategy {
@@ -6451,6 +6528,7 @@ export interface GetClusterV2RkeConfig {
     machinePools: outputs.GetClusterV2RkeConfigMachinePool[];
     machineSelectorConfigs: outputs.GetClusterV2RkeConfigMachineSelectorConfig[];
     registries?: outputs.GetClusterV2RkeConfigRegistries;
+    rotateCertificates?: outputs.GetClusterV2RkeConfigRotateCertificates;
     upgradeStrategy?: outputs.GetClusterV2RkeConfigUpgradeStrategy;
 }
 
@@ -6484,17 +6562,22 @@ export interface GetClusterV2RkeConfigMachinePool {
      */
     cloudCredentialSecretName: string;
     controlPlaneRole?: boolean;
+    drainBeforeDelete?: boolean;
     etcdRole?: boolean;
     labels: {[key: string]: any};
     machineConfig: outputs.GetClusterV2RkeConfigMachinePoolMachineConfig;
+    maxUnhealthy?: string;
     /**
      * The name of the Cluster v2 (string)
      */
     name: string;
+    nodeStartupTimeoutSeconds?: number;
     paused?: boolean;
     quantity?: number;
     rollingUpdate?: outputs.GetClusterV2RkeConfigMachinePoolRollingUpdate;
     taints?: outputs.GetClusterV2RkeConfigMachinePoolTaint[];
+    unhealthyNodeTimeoutSeconds?: number;
+    unhealthyRange?: string;
     workerRole?: boolean;
 }
 
@@ -6550,6 +6633,11 @@ export interface GetClusterV2RkeConfigRegistriesMirror {
     endpoints?: string[];
     hostname: string;
     rewrites?: {[key: string]: any};
+}
+
+export interface GetClusterV2RkeConfigRotateCertificates {
+    generation?: number;
+    services?: string[];
 }
 
 export interface GetClusterV2RkeConfigUpgradeStrategy {
@@ -7374,6 +7462,57 @@ export interface MachineConfigV2DigitaloceanConfig {
      * Path to file with cloud-init user-data (string)
      */
     userdata?: string;
+}
+
+export interface MachineConfigV2HarvesterConfig {
+    /**
+     * vSphere CPU number for docker VM. Default `2` (string)
+     */
+    cpuCount?: string;
+    /**
+     * Disk bus, Default `virtio` (string)
+     */
+    diskBus?: string;
+    /**
+     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     */
+    diskSize?: string;
+    /**
+     * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+     */
+    imageName: string;
+    /**
+     * vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     */
+    memorySize?: string;
+    /**
+     * NetworkData content of cloud-init, base64 is supported (string)
+     */
+    networkData?: string;
+    /**
+     * Network model, Default `virtio` (string)
+     */
+    networkModel?: string;
+    /**
+     * Network name e.g. `harvester-public/vlan1` (string)
+     */
+    networkName: string;
+    /**
+     * If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     */
+    sshPassword?: string;
+    /**
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     */
+    sshUser: string;
+    /**
+     * UserData content of cloud-init, base64 is supported (string)
+     */
+    userData?: string;
+    /**
+     * Virtual machine namespace e.g. `default` (string)
+     */
+    vmNamespace: string;
 }
 
 export interface MachineConfigV2LinodeConfig {
@@ -8216,6 +8355,57 @@ export interface NodeTemplateDigitaloceanConfig {
     userdata?: string;
 }
 
+export interface NodeTemplateHarvesterConfig {
+    /**
+     * vSphere CPU number for docker VM. Default `2` (string)
+     */
+    cpuCount?: string;
+    /**
+     * Disk bus, Default `virtio` (string)
+     */
+    diskBus?: string;
+    /**
+     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     */
+    diskSize?: string;
+    /**
+     * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+     */
+    imageName: string;
+    /**
+     * vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     */
+    memorySize?: string;
+    /**
+     * NetworkData content of cloud-init, base64 is supported (string)
+     */
+    networkData?: string;
+    /**
+     * Network model, Default `virtio` (string)
+     */
+    networkModel?: string;
+    /**
+     * Opennebula network to connect the machine to. Conflicts with `networkId` (string)
+     */
+    networkName: string;
+    /**
+     * If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+     */
+    sshPassword?: string;
+    /**
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     */
+    sshUser: string;
+    /**
+     * UserData content of cloud-init, base64 is supported (string)
+     */
+    userData?: string;
+    /**
+     * Virtual machine namespace e.g. `default` (string)
+     */
+    vmNamespace: string;
+}
+
 export interface NodeTemplateHetznerConfig {
     /**
      * Hetzner Cloud project API token (string)
@@ -8229,6 +8419,10 @@ export interface NodeTemplateHetznerConfig {
      * Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
      */
     networks?: string;
+    /**
+     * Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+     */
+    serverLabels?: {[key: string]: any};
     /**
      * Hetzner Cloud datacenter. Default `nbg1` (string)
      */
@@ -9440,10 +9634,25 @@ export interface RegistryRegistry {
 }
 
 export interface RoleTempalteRule {
+    /**
+     * Policy rule api groups (list)
+     */
     apiGroups?: string[];
+    /**
+     * Policy rule non resource urls (list)
+     */
     nonResourceUrls?: string[];
+    /**
+     * Policy rule resource names (list)
+     */
     resourceNames?: string[];
+    /**
+     * Policy rule resources (list)
+     */
     resources?: string[];
+    /**
+     * Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+     */
     verbs?: string[];
 }
 

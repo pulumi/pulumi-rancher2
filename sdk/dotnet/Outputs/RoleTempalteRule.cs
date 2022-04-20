@@ -13,10 +13,25 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class RoleTempalteRule
     {
+        /// <summary>
+        /// Policy rule api groups (list)
+        /// </summary>
         public readonly ImmutableArray<string> ApiGroups;
+        /// <summary>
+        /// Policy rule non resource urls (list)
+        /// </summary>
         public readonly ImmutableArray<string> NonResourceUrls;
+        /// <summary>
+        /// Policy rule resource names (list)
+        /// </summary>
         public readonly ImmutableArray<string> ResourceNames;
+        /// <summary>
+        /// Policy rule resources (list)
+        /// </summary>
         public readonly ImmutableArray<string> Resources;
+        /// <summary>
+        /// Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+        /// </summary>
         public readonly ImmutableArray<string> Verbs;
 
         [OutputConstructor]

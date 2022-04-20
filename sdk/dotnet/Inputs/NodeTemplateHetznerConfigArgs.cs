@@ -30,6 +30,18 @@ namespace Pulumi.Rancher2.Inputs
         [Input("networks")]
         public Input<string>? Networks { get; set; }
 
+        [Input("serverLabels")]
+        private InputMap<object>? _serverLabels;
+
+        /// <summary>
+        /// Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+        /// </summary>
+        public InputMap<object> ServerLabels
+        {
+            get => _serverLabels ?? (_serverLabels = new InputMap<object>());
+            set => _serverLabels = value;
+        }
+
         /// <summary>
         /// Hetzner Cloud datacenter. Default `nbg1` (string)
         /// </summary>

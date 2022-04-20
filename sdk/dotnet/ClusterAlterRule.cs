@@ -9,90 +9,132 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Rancher2 Cluster Alert Group
+    ///         var fooClusterAlertGroup = new Rancher2.ClusterAlertGroup("fooClusterAlertGroup", new Rancher2.ClusterAlertGroupArgs
+    ///         {
+    ///             ClusterId = "&lt;cluster_id&gt;",
+    ///             Description = "Terraform cluster alert group",
+    ///             GroupIntervalSeconds = 300,
+    ///             RepeatIntervalSeconds = 3600,
+    ///         });
+    ///         // Create a new Rancher2 Cluster Alert Rule
+    ///         var fooClusterAlertRule = new Rancher2.ClusterAlertRule("fooClusterAlertRule", new Rancher2.ClusterAlertRuleArgs
+    ///         {
+    ///             ClusterId = fooClusterAlertGroup.ClusterId,
+    ///             GroupId = fooClusterAlertGroup.Id,
+    ///             GroupIntervalSeconds = 600,
+    ///             RepeatIntervalSeconds = 6000,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Cluster Alert Rule can be imported using the Rancher cluster alert rule ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/clusterAlterRule:ClusterAlterRule foo &amp;lt;CLUSTER_ALERT_RULE_ID&amp;gt;
+    /// ```
+    /// </summary>
     [Obsolete(@"rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule")]
     [Rancher2ResourceType("rancher2:index/clusterAlterRule:ClusterAlterRule")]
     public partial class ClusterAlterRule : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations of the resource
+        /// The cluster alert rule annotations (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule cluster ID
+        /// The cluster id where create cluster alert rule (string)
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Alert event rule
+        /// The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
         /// </summary>
         [Output("eventRule")]
         public Output<Outputs.ClusterAlterRuleEventRule?> EventRule { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule group ID
+        /// The cluster alert rule alert group ID (string)
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule interval seconds
+        /// The cluster alert rule group interval seconds. Default: `180` (int)
         /// </summary>
         [Output("groupIntervalSeconds")]
         public Output<int?> GroupIntervalSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule wait seconds
+        /// The cluster alert rule group wait seconds. Default: `180` (int)
         /// </summary>
         [Output("groupWaitSeconds")]
         public Output<int?> GroupWaitSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule inherited
+        /// The cluster alert rule inherited. Default: `true` (bool)
         /// </summary>
         [Output("inherited")]
         public Output<bool?> Inherited { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// The cluster alert rule labels (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Alert metric rule
+        /// The cluster alert rule metric rule. ConflictsWith: `"event_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
         /// </summary>
         [Output("metricRule")]
         public Output<Outputs.ClusterAlterRuleMetricRule?> MetricRule { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule name
+        /// The cluster alert rule name (string)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Alert node rule
+        /// The cluster alert rule node rule. ConflictsWith: `"event_rule", "metric_rule", "system_service_rule"`` (list Maxitems:1)
         /// </summary>
         [Output("nodeRule")]
         public Output<Outputs.ClusterAlterRuleNodeRule?> NodeRule { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule repeat interval seconds
+        /// The cluster alert rule wait seconds. Default: `3600` (int)
         /// </summary>
         [Output("repeatIntervalSeconds")]
         public Output<int?> RepeatIntervalSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule severity
+        /// The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         /// </summary>
         [Output("severity")]
         public Output<string?> Severity { get; private set; } = null!;
 
         /// <summary>
-        /// Alert system service rule
+        /// The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         /// </summary>
         [Output("systemServiceRule")]
         public Output<Outputs.ClusterAlterRuleSystemServiceRule?> SystemServiceRule { get; private set; } = null!;
@@ -147,7 +189,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// The cluster alert rule annotations (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -156,37 +198,37 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert rule cluster ID
+        /// The cluster id where create cluster alert rule (string)
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Alert event rule
+        /// The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
         /// </summary>
         [Input("eventRule")]
         public Input<Inputs.ClusterAlterRuleEventRuleArgs>? EventRule { get; set; }
 
         /// <summary>
-        /// Alert rule group ID
+        /// The cluster alert rule alert group ID (string)
         /// </summary>
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// Alert rule interval seconds
+        /// The cluster alert rule group interval seconds. Default: `180` (int)
         /// </summary>
         [Input("groupIntervalSeconds")]
         public Input<int>? GroupIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Alert rule wait seconds
+        /// The cluster alert rule group wait seconds. Default: `180` (int)
         /// </summary>
         [Input("groupWaitSeconds")]
         public Input<int>? GroupWaitSeconds { get; set; }
 
         /// <summary>
-        /// Alert rule inherited
+        /// The cluster alert rule inherited. Default: `true` (bool)
         /// </summary>
         [Input("inherited")]
         public Input<bool>? Inherited { get; set; }
@@ -195,7 +237,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// The cluster alert rule labels (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -204,37 +246,37 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert metric rule
+        /// The cluster alert rule metric rule. ConflictsWith: `"event_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
         /// </summary>
         [Input("metricRule")]
         public Input<Inputs.ClusterAlterRuleMetricRuleArgs>? MetricRule { get; set; }
 
         /// <summary>
-        /// Alert rule name
+        /// The cluster alert rule name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Alert node rule
+        /// The cluster alert rule node rule. ConflictsWith: `"event_rule", "metric_rule", "system_service_rule"`` (list Maxitems:1)
         /// </summary>
         [Input("nodeRule")]
         public Input<Inputs.ClusterAlterRuleNodeRuleArgs>? NodeRule { get; set; }
 
         /// <summary>
-        /// Alert rule repeat interval seconds
+        /// The cluster alert rule wait seconds. Default: `3600` (int)
         /// </summary>
         [Input("repeatIntervalSeconds")]
         public Input<int>? RepeatIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Alert rule severity
+        /// The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }
 
         /// <summary>
-        /// Alert system service rule
+        /// The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         /// </summary>
         [Input("systemServiceRule")]
         public Input<Inputs.ClusterAlterRuleSystemServiceRuleArgs>? SystemServiceRule { get; set; }
@@ -250,7 +292,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// The cluster alert rule annotations (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -259,37 +301,37 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert rule cluster ID
+        /// The cluster id where create cluster alert rule (string)
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Alert event rule
+        /// The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
         /// </summary>
         [Input("eventRule")]
         public Input<Inputs.ClusterAlterRuleEventRuleGetArgs>? EventRule { get; set; }
 
         /// <summary>
-        /// Alert rule group ID
+        /// The cluster alert rule alert group ID (string)
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// Alert rule interval seconds
+        /// The cluster alert rule group interval seconds. Default: `180` (int)
         /// </summary>
         [Input("groupIntervalSeconds")]
         public Input<int>? GroupIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Alert rule wait seconds
+        /// The cluster alert rule group wait seconds. Default: `180` (int)
         /// </summary>
         [Input("groupWaitSeconds")]
         public Input<int>? GroupWaitSeconds { get; set; }
 
         /// <summary>
-        /// Alert rule inherited
+        /// The cluster alert rule inherited. Default: `true` (bool)
         /// </summary>
         [Input("inherited")]
         public Input<bool>? Inherited { get; set; }
@@ -298,7 +340,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// The cluster alert rule labels (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -307,37 +349,37 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert metric rule
+        /// The cluster alert rule metric rule. ConflictsWith: `"event_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
         /// </summary>
         [Input("metricRule")]
         public Input<Inputs.ClusterAlterRuleMetricRuleGetArgs>? MetricRule { get; set; }
 
         /// <summary>
-        /// Alert rule name
+        /// The cluster alert rule name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Alert node rule
+        /// The cluster alert rule node rule. ConflictsWith: `"event_rule", "metric_rule", "system_service_rule"`` (list Maxitems:1)
         /// </summary>
         [Input("nodeRule")]
         public Input<Inputs.ClusterAlterRuleNodeRuleGetArgs>? NodeRule { get; set; }
 
         /// <summary>
-        /// Alert rule repeat interval seconds
+        /// The cluster alert rule wait seconds. Default: `3600` (int)
         /// </summary>
         [Input("repeatIntervalSeconds")]
         public Input<int>? RepeatIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Alert rule severity
+        /// The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }
 
         /// <summary>
-        /// Alert system service rule
+        /// The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         /// </summary>
         [Input("systemServiceRule")]
         public Input<Inputs.ClusterAlterRuleSystemServiceRuleGetArgs>? SystemServiceRule { get; set; }

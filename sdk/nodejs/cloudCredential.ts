@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
  *
- * amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+ * amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
  *
  * ## Example Usage
  *
@@ -25,6 +25,31 @@ import * as utilities from "./utilities";
  *     description: "foo test",
  * });
  * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo-harvesterClusterV2 = rancher2.getClusterV2({
+ *     name: "foo-harvester",
+ * });
+ * // Create a new Cloud Credential for an imported Harvester cluster
+ * const foo_harvesterCloudCredential = new rancher2.CloudCredential("foo-harvesterCloudCredential", {harvesterCredentialConfig: {
+ *     clusterId: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.clusterV1Id),
+ *     clusterType: "imported",
+ *     kubeconfigContent: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.kubeConfig),
+ * }});
+ * ```
+ *
+ * ## Import
+ *
+ * Cloud Credential can be imported using the Cloud Credential ID and the Driver name. bash
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &lt;CLOUD_CREDENTIAL_ID&gt;.&lt;DRIVER&gt;
+ * ```
+ *
+ *  The following drivers are supported* amazonec2 * azure * digitalocean * googlekubernetesengine * linode * openstack * s3 * vmwarevsphere
  */
 export class CloudCredential extends pulumi.CustomResource {
     /**
@@ -83,6 +108,10 @@ export class CloudCredential extends pulumi.CustomResource {
      */
     public readonly googleCredentialConfig!: pulumi.Output<outputs.CloudCredentialGoogleCredentialConfig | undefined>;
     /**
+     * Harvester config for the Cloud Credential (list maxitems:1)
+     */
+    public readonly harvesterCredentialConfig!: pulumi.Output<outputs.CloudCredentialHarvesterCredentialConfig | undefined>;
+    /**
      * Labels for Cloud Credential object (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
@@ -127,6 +156,7 @@ export class CloudCredential extends pulumi.CustomResource {
             resourceInputs["digitaloceanCredentialConfig"] = state ? state.digitaloceanCredentialConfig : undefined;
             resourceInputs["driver"] = state ? state.driver : undefined;
             resourceInputs["googleCredentialConfig"] = state ? state.googleCredentialConfig : undefined;
+            resourceInputs["harvesterCredentialConfig"] = state ? state.harvesterCredentialConfig : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["linodeCredentialConfig"] = state ? state.linodeCredentialConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -141,6 +171,7 @@ export class CloudCredential extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["digitaloceanCredentialConfig"] = args ? args.digitaloceanCredentialConfig : undefined;
             resourceInputs["googleCredentialConfig"] = args ? args.googleCredentialConfig : undefined;
+            resourceInputs["harvesterCredentialConfig"] = args ? args.harvesterCredentialConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["linodeCredentialConfig"] = args ? args.linodeCredentialConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -186,6 +217,10 @@ export interface CloudCredentialState {
      * Google config for the Cloud Credential (list maxitems:1)
      */
     googleCredentialConfig?: pulumi.Input<inputs.CloudCredentialGoogleCredentialConfig>;
+    /**
+     * Harvester config for the Cloud Credential (list maxitems:1)
+     */
+    harvesterCredentialConfig?: pulumi.Input<inputs.CloudCredentialHarvesterCredentialConfig>;
     /**
      * Labels for Cloud Credential object (map)
      */
@@ -240,6 +275,10 @@ export interface CloudCredentialArgs {
      * Google config for the Cloud Credential (list maxitems:1)
      */
     googleCredentialConfig?: pulumi.Input<inputs.CloudCredentialGoogleCredentialConfig>;
+    /**
+     * Harvester config for the Cloud Credential (list maxitems:1)
+     */
+    harvesterCredentialConfig?: pulumi.Input<inputs.CloudCredentialHarvesterCredentialConfig>;
     /**
      * Labels for Cloud Credential object (map)
      */

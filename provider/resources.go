@@ -232,21 +232,27 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.RenameDataSource("rancher2_role_template", makeDataSource(mainMod, "getRoleTempalte"),
 		makeDataSource(mainMod, "getRoleTemplate"), mainMod, mainMod, &tfbridge.DataSourceInfo{
-			Docs: &tfbridge.DocInfo{Source: "roleTemplate.html.markdown"},
+			Docs: &tfbridge.DocInfo{Source: "role_template.md"},
 		})
 
 	prov.RenameResourceWithAlias("rancher2_cluster_alert_group", makeResource(mainMod, "ClusterAlterGroup"),
 		makeResource(mainMod, "ClusterAlertGroup"), mainMod, mainMod, &tfbridge.ResourceInfo{
-			Docs: &tfbridge.DocInfo{Source: "clusterAlertGroup.html.markdown"},
+			Docs: &tfbridge.DocInfo{Source: "cluster_alert_group.md"},
 		})
 	prov.RenameResourceWithAlias("rancher2_cluster_alert_rule", makeResource(mainMod, "ClusterAlterRule"),
 		makeResource(mainMod, "ClusterAlertRule"), mainMod, mainMod, &tfbridge.ResourceInfo{
-			Docs: &tfbridge.DocInfo{Source: "clusterAlertRule.html.markdown"},
+			Docs: &tfbridge.DocInfo{Source: "cluster_alert_rule.md"},
 		})
 	prov.RenameResourceWithAlias("rancher2_role_template", makeResource(mainMod, "RoleTempalte"),
-		makeResource(mainMod, "RoleTemplate"), mainMod, mainMod, nil)
+		makeResource(mainMod, "RoleTemplate"), mainMod, mainMod, &tfbridge.ResourceInfo{
+			Docs: &tfbridge.DocInfo{Source: "role_template.md"},
+		})
 	prov.RenameResourceWithAlias("rancher2_auth_config_activedirectory", makeResource(mainMod, "ActiveDirectory"),
-		makeResource(mainMod, "AuthConfigActiveDirectory"), mainMod, mainMod, nil)
+		makeResource(mainMod, "AuthConfigActiveDirectory"), mainMod, mainMod, &tfbridge.ResourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "auth_config_activedirectory.md",
+			},
+		})
 
 	prov.SetAutonaming(255, "-")
 

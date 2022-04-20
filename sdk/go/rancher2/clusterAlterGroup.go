@@ -11,27 +11,63 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewClusterAlertGroup(ctx, "foo", &rancher2.ClusterAlertGroupArgs{
+// 			ClusterId:             pulumi.String("<cluster_id>"),
+// 			Description:           pulumi.String("Terraform cluster alert group"),
+// 			GroupIntervalSeconds:  pulumi.Int(300),
+// 			RepeatIntervalSeconds: pulumi.Int(3600),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Cluster Alert Group can be imported using the Rancher cluster alert group ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/clusterAlterGroup:ClusterAlterGroup foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
+// ```
+//
 // Deprecated: rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup
 type ClusterAlterGroup struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
+	// The cluster alert group annotations (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Alert group Cluster ID
+	// The cluster id where create cluster alert group (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Alert group description
+	// The cluster alert group description (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Alert group interval seconds
+	// The cluster alert group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds pulumi.IntPtrOutput `pulumi:"groupIntervalSeconds"`
-	// Alert group wait seconds
+	// The cluster alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrOutput `pulumi:"groupWaitSeconds"`
-	// Labels of the resource
+	// The cluster alert group labels (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// Alert group name
+	// The cluster alert group name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Alert group recipients
+	// The cluster alert group recipients (list)
 	Recipients ClusterAlterGroupRecipientArrayOutput `pulumi:"recipients"`
-	// Alert group repeat interval seconds
+	// The cluster alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds pulumi.IntPtrOutput `pulumi:"repeatIntervalSeconds"`
 }
 
@@ -67,44 +103,44 @@ func GetClusterAlterGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterAlterGroup resources.
 type clusterAlterGroupState struct {
-	// Annotations of the resource
+	// The cluster alert group annotations (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Alert group Cluster ID
+	// The cluster id where create cluster alert group (string)
 	ClusterId *string `pulumi:"clusterId"`
-	// Alert group description
+	// The cluster alert group description (string)
 	Description *string `pulumi:"description"`
-	// Alert group interval seconds
+	// The cluster alert group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds *int `pulumi:"groupIntervalSeconds"`
-	// Alert group wait seconds
+	// The cluster alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds *int `pulumi:"groupWaitSeconds"`
-	// Labels of the resource
+	// The cluster alert group labels (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Alert group name
+	// The cluster alert group name (string)
 	Name *string `pulumi:"name"`
-	// Alert group recipients
+	// The cluster alert group recipients (list)
 	Recipients []ClusterAlterGroupRecipient `pulumi:"recipients"`
-	// Alert group repeat interval seconds
+	// The cluster alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds *int `pulumi:"repeatIntervalSeconds"`
 }
 
 type ClusterAlterGroupState struct {
-	// Annotations of the resource
+	// The cluster alert group annotations (map)
 	Annotations pulumi.MapInput
-	// Alert group Cluster ID
+	// The cluster id where create cluster alert group (string)
 	ClusterId pulumi.StringPtrInput
-	// Alert group description
+	// The cluster alert group description (string)
 	Description pulumi.StringPtrInput
-	// Alert group interval seconds
+	// The cluster alert group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds pulumi.IntPtrInput
-	// Alert group wait seconds
+	// The cluster alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrInput
-	// Labels of the resource
+	// The cluster alert group labels (map)
 	Labels pulumi.MapInput
-	// Alert group name
+	// The cluster alert group name (string)
 	Name pulumi.StringPtrInput
-	// Alert group recipients
+	// The cluster alert group recipients (list)
 	Recipients ClusterAlterGroupRecipientArrayInput
-	// Alert group repeat interval seconds
+	// The cluster alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds pulumi.IntPtrInput
 }
 
@@ -113,45 +149,45 @@ func (ClusterAlterGroupState) ElementType() reflect.Type {
 }
 
 type clusterAlterGroupArgs struct {
-	// Annotations of the resource
+	// The cluster alert group annotations (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Alert group Cluster ID
+	// The cluster id where create cluster alert group (string)
 	ClusterId string `pulumi:"clusterId"`
-	// Alert group description
+	// The cluster alert group description (string)
 	Description *string `pulumi:"description"`
-	// Alert group interval seconds
+	// The cluster alert group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds *int `pulumi:"groupIntervalSeconds"`
-	// Alert group wait seconds
+	// The cluster alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds *int `pulumi:"groupWaitSeconds"`
-	// Labels of the resource
+	// The cluster alert group labels (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Alert group name
+	// The cluster alert group name (string)
 	Name *string `pulumi:"name"`
-	// Alert group recipients
+	// The cluster alert group recipients (list)
 	Recipients []ClusterAlterGroupRecipient `pulumi:"recipients"`
-	// Alert group repeat interval seconds
+	// The cluster alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds *int `pulumi:"repeatIntervalSeconds"`
 }
 
 // The set of arguments for constructing a ClusterAlterGroup resource.
 type ClusterAlterGroupArgs struct {
-	// Annotations of the resource
+	// The cluster alert group annotations (map)
 	Annotations pulumi.MapInput
-	// Alert group Cluster ID
+	// The cluster id where create cluster alert group (string)
 	ClusterId pulumi.StringInput
-	// Alert group description
+	// The cluster alert group description (string)
 	Description pulumi.StringPtrInput
-	// Alert group interval seconds
+	// The cluster alert group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds pulumi.IntPtrInput
-	// Alert group wait seconds
+	// The cluster alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrInput
-	// Labels of the resource
+	// The cluster alert group labels (map)
 	Labels pulumi.MapInput
-	// Alert group name
+	// The cluster alert group name (string)
 	Name pulumi.StringPtrInput
-	// Alert group recipients
+	// The cluster alert group recipients (list)
 	Recipients ClusterAlterGroupRecipientArrayInput
-	// Alert group repeat interval seconds
+	// The cluster alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds pulumi.IntPtrInput
 }
 

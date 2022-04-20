@@ -12,7 +12,7 @@ import (
 
 // Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
 //
-// amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+// amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
 //
 // ## Example Usage
 //
@@ -40,6 +40,47 @@ import (
 // 	})
 // }
 // ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, &GetClusterV2Args{
+// 			Name: "foo-harvester",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
+// 			HarvesterCredentialConfig: &CloudCredentialHarvesterCredentialConfigArgs{
+// 				ClusterId:         pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
+// 				ClusterType:       pulumi.String("imported"),
+// 				KubeconfigContent: pulumi.String(foo_harvesterClusterV2.KubeConfig),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Cloud Credential can be imported using the Cloud Credential ID and the Driver name. bash
+//
+// ```sh
+//  $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &lt;CLOUD_CREDENTIAL_ID&gt;.&lt;DRIVER&gt;
+// ```
+//
+//  The following drivers are supported* amazonec2 * azure * digitalocean * googlekubernetesengine * linode * openstack * s3 * vmwarevsphere
 type CloudCredential struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +98,8 @@ type CloudCredential struct {
 	Driver pulumi.StringOutput `pulumi:"driver"`
 	// Google config for the Cloud Credential (list maxitems:1)
 	GoogleCredentialConfig CloudCredentialGoogleCredentialConfigPtrOutput `pulumi:"googleCredentialConfig"`
+	// Harvester config for the Cloud Credential (list maxitems:1)
+	HarvesterCredentialConfig CloudCredentialHarvesterCredentialConfigPtrOutput `pulumi:"harvesterCredentialConfig"`
 	// Labels for Cloud Credential object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// Linode config for the Cloud Credential (list maxitems:1)
@@ -114,6 +157,8 @@ type cloudCredentialState struct {
 	Driver *string `pulumi:"driver"`
 	// Google config for the Cloud Credential (list maxitems:1)
 	GoogleCredentialConfig *CloudCredentialGoogleCredentialConfig `pulumi:"googleCredentialConfig"`
+	// Harvester config for the Cloud Credential (list maxitems:1)
+	HarvesterCredentialConfig *CloudCredentialHarvesterCredentialConfig `pulumi:"harvesterCredentialConfig"`
 	// Labels for Cloud Credential object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Linode config for the Cloud Credential (list maxitems:1)
@@ -143,6 +188,8 @@ type CloudCredentialState struct {
 	Driver pulumi.StringPtrInput
 	// Google config for the Cloud Credential (list maxitems:1)
 	GoogleCredentialConfig CloudCredentialGoogleCredentialConfigPtrInput
+	// Harvester config for the Cloud Credential (list maxitems:1)
+	HarvesterCredentialConfig CloudCredentialHarvesterCredentialConfigPtrInput
 	// Labels for Cloud Credential object (map)
 	Labels pulumi.MapInput
 	// Linode config for the Cloud Credential (list maxitems:1)
@@ -174,6 +221,8 @@ type cloudCredentialArgs struct {
 	DigitaloceanCredentialConfig *CloudCredentialDigitaloceanCredentialConfig `pulumi:"digitaloceanCredentialConfig"`
 	// Google config for the Cloud Credential (list maxitems:1)
 	GoogleCredentialConfig *CloudCredentialGoogleCredentialConfig `pulumi:"googleCredentialConfig"`
+	// Harvester config for the Cloud Credential (list maxitems:1)
+	HarvesterCredentialConfig *CloudCredentialHarvesterCredentialConfig `pulumi:"harvesterCredentialConfig"`
 	// Labels for Cloud Credential object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Linode config for the Cloud Credential (list maxitems:1)
@@ -202,6 +251,8 @@ type CloudCredentialArgs struct {
 	DigitaloceanCredentialConfig CloudCredentialDigitaloceanCredentialConfigPtrInput
 	// Google config for the Cloud Credential (list maxitems:1)
 	GoogleCredentialConfig CloudCredentialGoogleCredentialConfigPtrInput
+	// Harvester config for the Cloud Credential (list maxitems:1)
+	HarvesterCredentialConfig CloudCredentialHarvesterCredentialConfigPtrInput
 	// Labels for Cloud Credential object (map)
 	Labels pulumi.MapInput
 	// Linode config for the Cloud Credential (list maxitems:1)
