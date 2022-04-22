@@ -8,55 +8,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 RKE Cluster 
- * const foo_custom = new rancher2.Cluster("foo-custom", {
- *     description: "Foo rancher2 custom cluster",
- *     kind: "rke",
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *     },
- * });
- * // Create a new rancher2 Cloud Credential
- * const fooCloudCredential = new rancher2.CloudCredential("fooCloudCredential", {
- *     description: "Terraform cloudCredential acceptance test",
- *     amazonec2CredentialConfig: {
- *         accessKey: "XXXXXXXXXXXXXXXXXXXX",
- *         secretKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
- *     },
- * });
- * // Create a new rancher2 Node Template
- * const fooNodeTemplate = new rancher2.NodeTemplate("fooNodeTemplate", {
- *     description: "foo test",
- *     cloudCredentialId: fooCloudCredential.id,
- *     amazonec2Config: {
- *         ami: "<AMI_ID>",
- *         region: "<REGION>",
- *         securityGroups: ["<AWS_SECURITY_GROUP>"],
- *         subnetId: "<SUBNET_ID>",
- *         vpcId: "<VPC_ID>",
- *         zone: "<ZONE>",
- *     },
- * });
- * // Create a new rancher2 Node Pool
- * const fooNodePool = new rancher2.NodePool("fooNodePool", {
- *     clusterId: foo_custom.id,
- *     hostnamePrefix: "foo-cluster-0",
- *     nodeTemplateId: fooNodeTemplate.id,
- *     quantity: 1,
- *     controlPlane: true,
- *     etcd: true,
- *     worker: true,
- * });
- * ```
- *
  * ## Import
  *
  * Node Pool can be imported using the Rancher Node Pool ID
