@@ -588,66 +588,30 @@ export interface ClusterAlterGroupRecipient {
 }
 
 export interface ClusterAlterRuleEventRule {
-    /**
-     * Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
-     */
     eventType?: string;
-    /**
-     * Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
-     */
     resourceKind: string;
 }
 
 export interface ClusterAlterRuleMetricRule {
-    /**
-     * Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
-     */
     comparison?: string;
     /**
-     * Metric rule description (string)
+     * The cluster alert group description (string)
      */
     description?: string;
-    /**
-     * Metric rule duration (string)
-     */
     duration: string;
-    /**
-     * Metric rule expression (string)
-     */
     expression: string;
-    /**
-     * Metric rule threshold value (float64)
-     */
     thresholdValue: number;
 }
 
 export interface ClusterAlterRuleNodeRule {
-    /**
-     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-     */
     condition?: string;
-    /**
-     * Node rule cpu threshold. Default: `70` (int)
-     */
     cpuThreshold?: number;
-    /**
-     * Node rule mem threshold. Default: `70` (int)
-     */
     memThreshold?: number;
-    /**
-     * Node ID (string)
-     */
     nodeId?: string;
-    /**
-     * Node rule selector (map)
-     */
     selector?: {[key: string]: any};
 }
 
 export interface ClusterAlterRuleSystemServiceRule {
-    /**
-     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-     */
     condition?: string;
 }
 
@@ -4319,6 +4283,14 @@ export interface ClusterV2RkeConfig {
      */
     etcd: outputs.ClusterV2RkeConfigEtcd;
     /**
+     * Cluster V2 etcd snapshot create (list maxitems:1)
+     */
+    etcdSnapshotCreate?: outputs.ClusterV2RkeConfigEtcdSnapshotCreate;
+    /**
+     * Cluster V2 etcd snapshot restore (list maxitems:1)
+     */
+    etcdSnapshotRestore?: outputs.ClusterV2RkeConfigEtcdSnapshotRestore;
+    /**
      * Use rancher2_cluster_v2.local_auth_endpoint instead
      *
      * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
@@ -4340,6 +4312,9 @@ export interface ClusterV2RkeConfig {
      * Cluster V2 docker registries (list maxitems:1)
      */
     registries?: outputs.ClusterV2RkeConfigRegistries;
+    /**
+     * Cluster V2 certificate rotation (list maxitems:1)
+     */
     rotateCertificates?: outputs.ClusterV2RkeConfigRotateCertificates;
     /**
      * Cluster V2 upgrade strategy (list maxitems:1)
@@ -4397,6 +4372,28 @@ export interface ClusterV2RkeConfigEtcdS3Config {
     skipSslVerify?: boolean;
 }
 
+export interface ClusterV2RkeConfigEtcdSnapshotCreate {
+    /**
+     * ETCD snapshot desired generation (int)
+     */
+    generation: number;
+}
+
+export interface ClusterV2RkeConfigEtcdSnapshotRestore {
+    /**
+     * ETCD snapshot desired generation (int)
+     */
+    generation: number;
+    /**
+     * Name of cluster registration token (string)
+     */
+    name: string;
+    /**
+     * ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+     */
+    restoreRkeConfig?: string;
+}
+
 export interface ClusterV2RkeConfigLocalAuthEndpoint {
     /**
      * CA certs for the authorized cluster endpoint (string)
@@ -4425,6 +4422,9 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool control plane role? (bool)
      */
     controlPlaneRole?: boolean;
+    /**
+     * Machine Pool Drain Before Delete? (bool)
+     */
     drainBeforeDelete?: boolean;
     /**
      * Machine pool etcd role? (bool)
@@ -4438,11 +4438,21 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool node config (list)
      */
     machineConfig: outputs.ClusterV2RkeConfigMachinePoolMachineConfig;
+    /**
+     * Max unhealthy nodes for automated replacement to be allowed (string)
+     */
     maxUnhealthy?: string;
     /**
      * Name of cluster registration token (string)
      */
     name: string;
+    /**
+     * Seconds a machine has to drain before deletion (int)
+     */
+    nodeDrainTimeout?: number;
+    /**
+     * Seconds a new node has to become active before it is replaced (int)
+     */
     nodeStartupTimeoutSeconds?: number;
     /**
      * Machine pool paused? (bool)
@@ -4460,7 +4470,13 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool taints (list)
      */
     taints?: outputs.ClusterV2RkeConfigMachinePoolTaint[];
+    /**
+     * Seconds an unhealthy node has to become active before it is replaced (int)
+     */
     unhealthyNodeTimeoutSeconds?: number;
+    /**
+     * Range of unhealthy nodes for automated replacement to be allowed (string)
+     */
     unhealthyRange?: string;
     /**
      * Machine pool worker role? (bool)
@@ -4592,7 +4608,13 @@ export interface ClusterV2RkeConfigRegistriesMirror {
 }
 
 export interface ClusterV2RkeConfigRotateCertificates {
-    generation?: number;
+    /**
+     * ETCD snapshot desired generation (int)
+     */
+    generation: number;
+    /**
+     * Service certificates to rotate with this generation (string)
+     */
     services?: string[];
 }
 
@@ -6520,6 +6542,8 @@ export interface GetClusterV2RkeConfig {
     additionalManifest?: string;
     chartValues?: string;
     etcd: outputs.GetClusterV2RkeConfigEtcd;
+    etcdSnapshotCreate?: outputs.GetClusterV2RkeConfigEtcdSnapshotCreate;
+    etcdSnapshotRestore?: outputs.GetClusterV2RkeConfigEtcdSnapshotRestore;
     /**
      * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      */
@@ -6549,6 +6573,19 @@ export interface GetClusterV2RkeConfigEtcdS3Config {
     skipSslVerify?: boolean;
 }
 
+export interface GetClusterV2RkeConfigEtcdSnapshotCreate {
+    generation: number;
+}
+
+export interface GetClusterV2RkeConfigEtcdSnapshotRestore {
+    generation: number;
+    /**
+     * The name of the Cluster v2 (string)
+     */
+    name: string;
+    restoreRkeConfig?: string;
+}
+
 export interface GetClusterV2RkeConfigLocalAuthEndpoint {
     caCerts?: string;
     enabled?: boolean;
@@ -6571,6 +6608,7 @@ export interface GetClusterV2RkeConfigMachinePool {
      * The name of the Cluster v2 (string)
      */
     name: string;
+    nodeDrainTimeout?: number;
     nodeStartupTimeoutSeconds?: number;
     paused?: boolean;
     quantity?: number;
@@ -6636,7 +6674,7 @@ export interface GetClusterV2RkeConfigRegistriesMirror {
 }
 
 export interface GetClusterV2RkeConfigRotateCertificates {
-    generation?: number;
+    generation: number;
     services?: string[];
 }
 

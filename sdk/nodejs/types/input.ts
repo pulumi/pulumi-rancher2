@@ -588,66 +588,30 @@ export interface ClusterAlterGroupRecipient {
 }
 
 export interface ClusterAlterRuleEventRule {
-    /**
-     * Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
-     */
     eventType?: pulumi.Input<string>;
-    /**
-     * Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
-     */
     resourceKind: pulumi.Input<string>;
 }
 
 export interface ClusterAlterRuleMetricRule {
-    /**
-     * Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
-     */
     comparison?: pulumi.Input<string>;
     /**
-     * Metric rule description (string)
+     * The cluster alert group description (string)
      */
     description?: pulumi.Input<string>;
-    /**
-     * Metric rule duration (string)
-     */
     duration: pulumi.Input<string>;
-    /**
-     * Metric rule expression (string)
-     */
     expression: pulumi.Input<string>;
-    /**
-     * Metric rule threshold value (float64)
-     */
     thresholdValue: pulumi.Input<number>;
 }
 
 export interface ClusterAlterRuleNodeRule {
-    /**
-     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-     */
     condition?: pulumi.Input<string>;
-    /**
-     * Node rule cpu threshold. Default: `70` (int)
-     */
     cpuThreshold?: pulumi.Input<number>;
-    /**
-     * Node rule mem threshold. Default: `70` (int)
-     */
     memThreshold?: pulumi.Input<number>;
-    /**
-     * Node ID (string)
-     */
     nodeId?: pulumi.Input<string>;
-    /**
-     * Node rule selector (map)
-     */
     selector?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface ClusterAlterRuleSystemServiceRule {
-    /**
-     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-     */
     condition?: pulumi.Input<string>;
 }
 
@@ -4319,6 +4283,14 @@ export interface ClusterV2RkeConfig {
      */
     etcd?: pulumi.Input<inputs.ClusterV2RkeConfigEtcd>;
     /**
+     * Cluster V2 etcd snapshot create (list maxitems:1)
+     */
+    etcdSnapshotCreate?: pulumi.Input<inputs.ClusterV2RkeConfigEtcdSnapshotCreate>;
+    /**
+     * Cluster V2 etcd snapshot restore (list maxitems:1)
+     */
+    etcdSnapshotRestore?: pulumi.Input<inputs.ClusterV2RkeConfigEtcdSnapshotRestore>;
+    /**
      * Use rancher2_cluster_v2.local_auth_endpoint instead
      *
      * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
@@ -4340,6 +4312,9 @@ export interface ClusterV2RkeConfig {
      * Cluster V2 docker registries (list maxitems:1)
      */
     registries?: pulumi.Input<inputs.ClusterV2RkeConfigRegistries>;
+    /**
+     * Cluster V2 certificate rotation (list maxitems:1)
+     */
     rotateCertificates?: pulumi.Input<inputs.ClusterV2RkeConfigRotateCertificates>;
     /**
      * Cluster V2 upgrade strategy (list maxitems:1)
@@ -4397,6 +4372,28 @@ export interface ClusterV2RkeConfigEtcdS3Config {
     skipSslVerify?: pulumi.Input<boolean>;
 }
 
+export interface ClusterV2RkeConfigEtcdSnapshotCreate {
+    /**
+     * ETCD snapshot desired generation (int)
+     */
+    generation: pulumi.Input<number>;
+}
+
+export interface ClusterV2RkeConfigEtcdSnapshotRestore {
+    /**
+     * ETCD snapshot desired generation (int)
+     */
+    generation: pulumi.Input<number>;
+    /**
+     * Name of cluster registration token (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+     */
+    restoreRkeConfig?: pulumi.Input<string>;
+}
+
 export interface ClusterV2RkeConfigLocalAuthEndpoint {
     /**
      * CA certs for the authorized cluster endpoint (string)
@@ -4425,6 +4422,9 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool control plane role? (bool)
      */
     controlPlaneRole?: pulumi.Input<boolean>;
+    /**
+     * Machine Pool Drain Before Delete? (bool)
+     */
     drainBeforeDelete?: pulumi.Input<boolean>;
     /**
      * Machine pool etcd role? (bool)
@@ -4438,11 +4438,21 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool node config (list)
      */
     machineConfig: pulumi.Input<inputs.ClusterV2RkeConfigMachinePoolMachineConfig>;
+    /**
+     * Max unhealthy nodes for automated replacement to be allowed (string)
+     */
     maxUnhealthy?: pulumi.Input<string>;
     /**
      * Name of cluster registration token (string)
      */
     name: pulumi.Input<string>;
+    /**
+     * Seconds a machine has to drain before deletion (int)
+     */
+    nodeDrainTimeout?: pulumi.Input<number>;
+    /**
+     * Seconds a new node has to become active before it is replaced (int)
+     */
     nodeStartupTimeoutSeconds?: pulumi.Input<number>;
     /**
      * Machine pool paused? (bool)
@@ -4460,7 +4470,13 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool taints (list)
      */
     taints?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachinePoolTaint>[]>;
+    /**
+     * Seconds an unhealthy node has to become active before it is replaced (int)
+     */
     unhealthyNodeTimeoutSeconds?: pulumi.Input<number>;
+    /**
+     * Range of unhealthy nodes for automated replacement to be allowed (string)
+     */
     unhealthyRange?: pulumi.Input<string>;
     /**
      * Machine pool worker role? (bool)
@@ -4592,7 +4608,13 @@ export interface ClusterV2RkeConfigRegistriesMirror {
 }
 
 export interface ClusterV2RkeConfigRotateCertificates {
-    generation?: pulumi.Input<number>;
+    /**
+     * ETCD snapshot desired generation (int)
+     */
+    generation: pulumi.Input<number>;
+    /**
+     * Service certificates to rotate with this generation (string)
+     */
     services?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -4789,24 +4811,24 @@ export interface GetPodSecurityPolicyTemplateAllowedFlexVolume {
     driver: string;
 }
 
-export interface GetPodSecurityPolicyTemplateAllowedHostPathArgs {
-    pathPrefix: pulumi.Input<string>;
-    readOnly?: pulumi.Input<boolean>;
-}
-
 export interface GetPodSecurityPolicyTemplateAllowedHostPath {
     pathPrefix: string;
     readOnly?: boolean;
 }
 
-export interface GetPodSecurityPolicyTemplateFsGroup {
-    ranges?: inputs.GetPodSecurityPolicyTemplateFsGroupRange[];
-    rule?: string;
+export interface GetPodSecurityPolicyTemplateAllowedHostPathArgs {
+    pathPrefix: pulumi.Input<string>;
+    readOnly?: pulumi.Input<boolean>;
 }
 
 export interface GetPodSecurityPolicyTemplateFsGroupArgs {
     ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateFsGroupRangeArgs>[]>;
     rule?: pulumi.Input<string>;
+}
+
+export interface GetPodSecurityPolicyTemplateFsGroup {
+    ranges?: inputs.GetPodSecurityPolicyTemplateFsGroupRange[];
+    rule?: string;
 }
 
 export interface GetPodSecurityPolicyTemplateFsGroupRange {
@@ -4819,24 +4841,24 @@ export interface GetPodSecurityPolicyTemplateFsGroupRangeArgs {
     min: pulumi.Input<number>;
 }
 
-export interface GetPodSecurityPolicyTemplateHostPort {
-    max: number;
-    min: number;
-}
-
 export interface GetPodSecurityPolicyTemplateHostPortArgs {
     max: pulumi.Input<number>;
     min: pulumi.Input<number>;
 }
 
-export interface GetPodSecurityPolicyTemplateRunAsGroupArgs {
-    ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateRunAsGroupRangeArgs>[]>;
-    rule: pulumi.Input<string>;
+export interface GetPodSecurityPolicyTemplateHostPort {
+    max: number;
+    min: number;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsGroup {
     ranges?: inputs.GetPodSecurityPolicyTemplateRunAsGroupRange[];
     rule: string;
+}
+
+export interface GetPodSecurityPolicyTemplateRunAsGroupArgs {
+    ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateRunAsGroupRangeArgs>[]>;
+    rule: pulumi.Input<string>;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsGroupRangeArgs {
@@ -4903,14 +4925,14 @@ export interface GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs {
     user?: pulumi.Input<string>;
 }
 
-export interface GetPodSecurityPolicyTemplateSupplementalGroupArgs {
-    ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs>[]>;
-    rule?: pulumi.Input<string>;
-}
-
 export interface GetPodSecurityPolicyTemplateSupplementalGroup {
     ranges?: inputs.GetPodSecurityPolicyTemplateSupplementalGroupRange[];
     rule?: string;
+}
+
+export interface GetPodSecurityPolicyTemplateSupplementalGroupArgs {
+    ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs>[]>;
+    rule?: pulumi.Input<string>;
 }
 
 export interface GetPodSecurityPolicyTemplateSupplementalGroupRange {

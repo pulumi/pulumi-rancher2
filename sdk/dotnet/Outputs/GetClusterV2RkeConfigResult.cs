@@ -16,6 +16,8 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string? AdditionalManifest;
         public readonly string? ChartValues;
         public readonly Outputs.GetClusterV2RkeConfigEtcdResult Etcd;
+        public readonly Outputs.GetClusterV2RkeConfigEtcdSnapshotCreateResult? EtcdSnapshotCreate;
+        public readonly Outputs.GetClusterV2RkeConfigEtcdSnapshotRestoreResult? EtcdSnapshotRestore;
         public readonly Outputs.GetClusterV2RkeConfigLocalAuthEndpointResult? LocalAuthEndpoint;
         public readonly string? MachineGlobalConfig;
         public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigMachinePoolResult> MachinePools;
@@ -31,6 +33,10 @@ namespace Pulumi.Rancher2.Outputs
             string? chartValues,
 
             Outputs.GetClusterV2RkeConfigEtcdResult etcd,
+
+            Outputs.GetClusterV2RkeConfigEtcdSnapshotCreateResult? etcdSnapshotCreate,
+
+            Outputs.GetClusterV2RkeConfigEtcdSnapshotRestoreResult? etcdSnapshotRestore,
 
             Outputs.GetClusterV2RkeConfigLocalAuthEndpointResult? localAuthEndpoint,
 
@@ -49,6 +55,8 @@ namespace Pulumi.Rancher2.Outputs
             AdditionalManifest = additionalManifest;
             ChartValues = chartValues;
             Etcd = etcd;
+            EtcdSnapshotCreate = etcdSnapshotCreate;
+            EtcdSnapshotRestore = etcdSnapshotRestore;
             LocalAuthEndpoint = localAuthEndpoint;
             MachineGlobalConfig = machineGlobalConfig;
             MachinePools = machinePools;

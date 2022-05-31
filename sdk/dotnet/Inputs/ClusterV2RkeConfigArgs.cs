@@ -31,6 +31,18 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterV2RkeConfigEtcdArgs>? Etcd { get; set; }
 
         /// <summary>
+        /// Cluster V2 etcd snapshot create (list maxitems:1)
+        /// </summary>
+        [Input("etcdSnapshotCreate")]
+        public Input<Inputs.ClusterV2RkeConfigEtcdSnapshotCreateArgs>? EtcdSnapshotCreate { get; set; }
+
+        /// <summary>
+        /// Cluster V2 etcd snapshot restore (list maxitems:1)
+        /// </summary>
+        [Input("etcdSnapshotRestore")]
+        public Input<Inputs.ClusterV2RkeConfigEtcdSnapshotRestoreArgs>? EtcdSnapshotRestore { get; set; }
+
+        /// <summary>
         /// Use rancher2_cluster_v2.local_auth_endpoint instead
         /// </summary>
         [Input("localAuthEndpoint")]
@@ -72,6 +84,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("registries")]
         public Input<Inputs.ClusterV2RkeConfigRegistriesArgs>? Registries { get; set; }
 
+        /// <summary>
+        /// Cluster V2 certificate rotation (list maxitems:1)
+        /// </summary>
         [Input("rotateCertificates")]
         public Input<Inputs.ClusterV2RkeConfigRotateCertificatesArgs>? RotateCertificates { get; set; }
 

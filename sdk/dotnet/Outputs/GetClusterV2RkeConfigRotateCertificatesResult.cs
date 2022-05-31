@@ -13,12 +13,12 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterV2RkeConfigRotateCertificatesResult
     {
-        public readonly int? Generation;
+        public readonly int Generation;
         public readonly ImmutableArray<string> Services;
 
         [OutputConstructor]
         private GetClusterV2RkeConfigRotateCertificatesResult(
-            int? generation,
+            int generation,
 
             ImmutableArray<string> services)
         {

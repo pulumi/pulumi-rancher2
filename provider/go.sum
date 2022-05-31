@@ -1202,7 +1202,6 @@ github.com/markbates/safe v1.0.1/go.mod h1:nAqgmRi7cY2nqMc92/bSEeQA+R4OheNU2T1kN
 github.com/maruel/panicparse v0.0.0-20171209025017-c0182c169410/go.mod h1:nty42YY5QByNC5MM7q/nj938VbgPU7avs45z6NClpxI=
 github.com/maruel/ut v1.0.0/go.mod h1:I68ffiAt5qre9obEVTy7S2/fj2dJku2NYLvzPuY0gqE=
 github.com/matryer/is v1.2.0/go.mod h1:2fLPjFQM9rhQ15aVEtbuwhJinnOqrmgXPNdZsdwlWXA=
-github.com/matryer/moq v0.0.0-20190312154309-6cfb0558e1bd/go.mod h1:9ELz6aaclSIGnZBoaSLZ3NAl1VTufbOrXBPvtcy6WiQ=
 github.com/matryer/moq v0.0.0-20200607124540-4638a53893e6/go.mod h1:9ELz6aaclSIGnZBoaSLZ3NAl1VTufbOrXBPvtcy6WiQ=
 github.com/mattermost/xml-roundtrip-validator v0.0.0-20201213122252-bcd7e1b9601e/go.mod h1:qccnGMcpgwcNaBnxqpJpWWUiPNr5H3O8eDgGV9gT5To=
 github.com/mattn/go-colorable v0.0.0-20170210172801-5411d3eea597/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
@@ -1516,8 +1515,8 @@ github.com/pulumi/pulumi/sdk/v3 v3.30.0 h1:0X5gSUS3x82XzenpCCW8EdJrmOzoQqHSdQd0O
 github.com/pulumi/pulumi/sdk/v3 v3.30.0/go.mod h1:hGo/+AL1L4sPL9Ukd/i5bNFM3WHs3dHcA+GKEW7M3RA=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Dik4Qe/+xguB8JagPyXNlbOnRiXGmq/PSPQTGunYnTk=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
-github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20220419204302-988fc2fc480f h1:HBd9+VVjc7AJFubT01J+nGjjMeUEM/O74JT/WSoTCFA=
-github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20220419204302-988fc2fc480f/go.mod h1:lCLvSwoLCTobPtPb4AS9G1qkeigIIIALc5Irp3pqhaU=
+github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20220531095104-d8fb47a56ce2 h1:up5EYxb0vw4x5ZFe25xzWEqcF3BnQcLtON3yzZO8maE=
+github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20220531095104-d8fb47a56ce2/go.mod h1:ZC8WNqK4Ndw5eKWDegfB6/46oN+d2rbpxRSEIWnoq5E=
 github.com/qri-io/starlib v0.4.2-0.20200213133954-ff2e8cd5ef8d/go.mod h1:7DPO4domFU579Ga6E61sB9VFNaniPVwJP5C4bBCu3wA=
 github.com/quobyte/api v0.1.8/go.mod h1:jL7lIHrmqQ7yh05OJ+eEEdHr0u/kmT1Ff9iHd+4H6VI=
 github.com/rackspace/gophercloud v0.0.0-20150408191457-ce0f487f6747/go.mod h1:4bJ1FwuaBZ6dt1VcDX5/O662mwR8GWqS4l68H6hkoYQ=
@@ -1554,9 +1553,6 @@ github.com/rancher/lasso v0.0.0-20220303220250-a429cb5cb9c9/go.mod h1:T6WoUopOHB
 github.com/rancher/lasso/controller-runtime v0.0.0-20220303220250-a429cb5cb9c9/go.mod h1:ObsWVtqMsTmIL1xeM2WGvwV4XTHLL8LuB9vDc+uUXtk=
 github.com/rancher/machine v0.15.0-rancher63/go.mod h1:qXYNumxy0J08MO/mh/jNjyRuEc2QKDLUOZIBE5vxaZE=
 github.com/rancher/machine v0.15.0-rancher80/go.mod h1:sA4i8P2mJbw940VBtukyrNvgKBMwANqwZbmazK0HacI=
-github.com/rancher/norman v0.0.0-20200517050325-f53cae161640/go.mod h1:92rz/7QN7DOeLQZlJY/8aFBOmF085igIVguR0wpxLas=
-github.com/rancher/norman v0.0.0-20210423002317-8e6ffc77a819/go.mod h1:hhnf77V2lmZD7cvUqi4vTBpIs3KpHNL/AmuN0MqEClI=
-github.com/rancher/norman v0.0.0-20211201154850-abe17976423e/go.mod h1:hhnf77V2lmZD7cvUqi4vTBpIs3KpHNL/AmuN0MqEClI=
 github.com/rancher/norman v0.0.0-20220107203912-4feb41eafabd h1:N04tea76urCHN5z5b6glUCdzrdFnE1ymxzveeGkNdbU=
 github.com/rancher/norman v0.0.0-20220107203912-4feb41eafabd/go.mod h1:hhnf77V2lmZD7cvUqi4vTBpIs3KpHNL/AmuN0MqEClI=
 github.com/rancher/rancher v0.0.0-20220309231411-e4af2465c5b4 h1:glxDiUhOPQYZtD5T7ghHrsKs4xAHSfJXdB15HgnZsLQ=

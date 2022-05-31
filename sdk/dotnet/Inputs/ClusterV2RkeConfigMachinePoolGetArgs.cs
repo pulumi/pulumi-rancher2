@@ -36,6 +36,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("controlPlaneRole")]
         public Input<bool>? ControlPlaneRole { get; set; }
 
+        /// <summary>
+        /// Machine Pool Drain Before Delete? (bool)
+        /// </summary>
         [Input("drainBeforeDelete")]
         public Input<bool>? DrainBeforeDelete { get; set; }
 
@@ -63,6 +66,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("machineConfig", required: true)]
         public Input<Inputs.ClusterV2RkeConfigMachinePoolMachineConfigGetArgs> MachineConfig { get; set; } = null!;
 
+        /// <summary>
+        /// Max unhealthy nodes for automated replacement to be allowed (string)
+        /// </summary>
         [Input("maxUnhealthy")]
         public Input<string>? MaxUnhealthy { get; set; }
 
@@ -72,6 +78,15 @@ namespace Pulumi.Rancher2.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Seconds a machine has to drain before deletion (int)
+        /// </summary>
+        [Input("nodeDrainTimeout")]
+        public Input<int>? NodeDrainTimeout { get; set; }
+
+        /// <summary>
+        /// Seconds a new node has to become active before it is replaced (int)
+        /// </summary>
         [Input("nodeStartupTimeoutSeconds")]
         public Input<int>? NodeStartupTimeoutSeconds { get; set; }
 
@@ -105,9 +120,15 @@ namespace Pulumi.Rancher2.Inputs
             set => _taints = value;
         }
 
+        /// <summary>
+        /// Seconds an unhealthy node has to become active before it is replaced (int)
+        /// </summary>
         [Input("unhealthyNodeTimeoutSeconds")]
         public Input<int>? UnhealthyNodeTimeoutSeconds { get; set; }
 
+        /// <summary>
+        /// Range of unhealthy nodes for automated replacement to be allowed (string)
+        /// </summary>
         [Input("unhealthyRange")]
         public Input<string>? UnhealthyRange { get; set; }
 

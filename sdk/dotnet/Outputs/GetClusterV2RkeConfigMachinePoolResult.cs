@@ -28,6 +28,7 @@ namespace Pulumi.Rancher2.Outputs
         /// The name of the Cluster v2 (string)
         /// </summary>
         public readonly string Name;
+        public readonly int? NodeDrainTimeout;
         public readonly int? NodeStartupTimeoutSeconds;
         public readonly bool? Paused;
         public readonly int? Quantity;
@@ -57,6 +58,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string name,
 
+            int? nodeDrainTimeout,
+
             int? nodeStartupTimeoutSeconds,
 
             bool? paused,
@@ -82,6 +85,7 @@ namespace Pulumi.Rancher2.Outputs
             MachineConfig = machineConfig;
             MaxUnhealthy = maxUnhealthy;
             Name = name;
+            NodeDrainTimeout = nodeDrainTimeout;
             NodeStartupTimeoutSeconds = nodeStartupTimeoutSeconds;
             Paused = paused;
             Quantity = quantity;

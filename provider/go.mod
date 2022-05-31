@@ -7,9 +7,12 @@ replace (
 	github.com/docker/distribution => github.com/docker/distribution v2.7.1+incompatible
 	github.com/docker/docker => github.com/docker/docker v20.10.6+incompatible
 	github.com/hashicorp/go-getter => github.com/hashicorp/go-getter v1.4.0
+	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
+	github.com/rancher/norman => github.com/rancher/norman v0.0.0-20220107203912-4feb41eafabd
+	github.com/rancher/rancher => github.com/rancher/rancher v0.0.0-20220309231411-e4af2465c5b4
 	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20220411181203-b44d54ae2e81
 	github.com/rancher/rancher/pkg/client => github.com/rancher/rancher/pkg/client v0.0.0-20220411181203-b44d54ae2e81
-	github.com/rancher/terraform-provider-rancher2 => github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20220419204302-988fc2fc480f
+	github.com/rancher/terraform-provider-rancher2 => github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20220531095104-d8fb47a56ce2
 	github.com/spf13/afero => github.com/spf13/afero v1.2.2
 	helm.sh/helm/v3 => github.com/rancher/helm/v3 v3.5.4-rancher.1
 	k8s.io/api => k8s.io/api v0.22.3

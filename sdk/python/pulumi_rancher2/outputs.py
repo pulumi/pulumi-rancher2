@@ -204,6 +204,8 @@ __all__ = [
     'ClusterV2RkeConfig',
     'ClusterV2RkeConfigEtcd',
     'ClusterV2RkeConfigEtcdS3Config',
+    'ClusterV2RkeConfigEtcdSnapshotCreate',
+    'ClusterV2RkeConfigEtcdSnapshotRestore',
     'ClusterV2RkeConfigLocalAuthEndpoint',
     'ClusterV2RkeConfigMachinePool',
     'ClusterV2RkeConfigMachinePoolMachineConfig',
@@ -471,6 +473,8 @@ __all__ = [
     'GetClusterV2RkeConfigResult',
     'GetClusterV2RkeConfigEtcdResult',
     'GetClusterV2RkeConfigEtcdS3ConfigResult',
+    'GetClusterV2RkeConfigEtcdSnapshotCreateResult',
+    'GetClusterV2RkeConfigEtcdSnapshotRestoreResult',
     'GetClusterV2RkeConfigLocalAuthEndpointResult',
     'GetClusterV2RkeConfigMachinePoolResult',
     'GetClusterV2RkeConfigMachinePoolMachineConfigResult',
@@ -2660,10 +2664,6 @@ class ClusterAlterRuleEventRule(dict):
     def __init__(__self__, *,
                  resource_kind: str,
                  event_type: Optional[str] = None):
-        """
-        :param str resource_kind: Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
-        :param str event_type: Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
-        """
         pulumi.set(__self__, "resource_kind", resource_kind)
         if event_type is not None:
             pulumi.set(__self__, "event_type", event_type)
@@ -2671,17 +2671,11 @@ class ClusterAlterRuleEventRule(dict):
     @property
     @pulumi.getter(name="resourceKind")
     def resource_kind(self) -> str:
-        """
-        Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
-        """
         return pulumi.get(self, "resource_kind")
 
     @property
     @pulumi.getter(name="eventType")
     def event_type(self) -> Optional[str]:
-        """
-        Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
-        """
         return pulumi.get(self, "event_type")
 
 
@@ -2711,11 +2705,7 @@ class ClusterAlterRuleMetricRule(dict):
                  comparison: Optional[str] = None,
                  description: Optional[str] = None):
         """
-        :param str duration: Metric rule duration (string)
-        :param str expression: Metric rule expression (string)
-        :param float threshold_value: Metric rule threshold value (float64)
-        :param str comparison: Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
-        :param str description: Metric rule description (string)
+        :param str description: The cluster alert group description (string)
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "expression", expression)
@@ -2728,40 +2718,28 @@ class ClusterAlterRuleMetricRule(dict):
     @property
     @pulumi.getter
     def duration(self) -> str:
-        """
-        Metric rule duration (string)
-        """
         return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter
     def expression(self) -> str:
-        """
-        Metric rule expression (string)
-        """
         return pulumi.get(self, "expression")
 
     @property
     @pulumi.getter(name="thresholdValue")
     def threshold_value(self) -> float:
-        """
-        Metric rule threshold value (float64)
-        """
         return pulumi.get(self, "threshold_value")
 
     @property
     @pulumi.getter
     def comparison(self) -> Optional[str]:
-        """
-        Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
-        """
         return pulumi.get(self, "comparison")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Metric rule description (string)
+        The cluster alert group description (string)
         """
         return pulumi.get(self, "description")
 
@@ -2795,13 +2773,6 @@ class ClusterAlterRuleNodeRule(dict):
                  mem_threshold: Optional[int] = None,
                  node_id: Optional[str] = None,
                  selector: Optional[Mapping[str, Any]] = None):
-        """
-        :param str condition: System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-        :param int cpu_threshold: Node rule cpu threshold. Default: `70` (int)
-        :param int mem_threshold: Node rule mem threshold. Default: `70` (int)
-        :param str node_id: Node ID (string)
-        :param Mapping[str, Any] selector: Node rule selector (map)
-        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
         if cpu_threshold is not None:
@@ -2816,41 +2787,26 @@ class ClusterAlterRuleNodeRule(dict):
     @property
     @pulumi.getter
     def condition(self) -> Optional[str]:
-        """
-        System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-        """
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="cpuThreshold")
     def cpu_threshold(self) -> Optional[int]:
-        """
-        Node rule cpu threshold. Default: `70` (int)
-        """
         return pulumi.get(self, "cpu_threshold")
 
     @property
     @pulumi.getter(name="memThreshold")
     def mem_threshold(self) -> Optional[int]:
-        """
-        Node rule mem threshold. Default: `70` (int)
-        """
         return pulumi.get(self, "mem_threshold")
 
     @property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[str]:
-        """
-        Node ID (string)
-        """
         return pulumi.get(self, "node_id")
 
     @property
     @pulumi.getter
     def selector(self) -> Optional[Mapping[str, Any]]:
-        """
-        Node rule selector (map)
-        """
         return pulumi.get(self, "selector")
 
 
@@ -2858,18 +2814,12 @@ class ClusterAlterRuleNodeRule(dict):
 class ClusterAlterRuleSystemServiceRule(dict):
     def __init__(__self__, *,
                  condition: Optional[str] = None):
-        """
-        :param str condition: System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
 
     @property
     @pulumi.getter
     def condition(self) -> Optional[str]:
-        """
-        System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-        """
         return pulumi.get(self, "condition")
 
 
@@ -18330,6 +18280,10 @@ class ClusterV2RkeConfig(dict):
             suggest = "additional_manifest"
         elif key == "chartValues":
             suggest = "chart_values"
+        elif key == "etcdSnapshotCreate":
+            suggest = "etcd_snapshot_create"
+        elif key == "etcdSnapshotRestore":
+            suggest = "etcd_snapshot_restore"
         elif key == "localAuthEndpoint":
             suggest = "local_auth_endpoint"
         elif key == "machineGlobalConfig":
@@ -18358,6 +18312,8 @@ class ClusterV2RkeConfig(dict):
                  additional_manifest: Optional[str] = None,
                  chart_values: Optional[str] = None,
                  etcd: Optional['outputs.ClusterV2RkeConfigEtcd'] = None,
+                 etcd_snapshot_create: Optional['outputs.ClusterV2RkeConfigEtcdSnapshotCreate'] = None,
+                 etcd_snapshot_restore: Optional['outputs.ClusterV2RkeConfigEtcdSnapshotRestore'] = None,
                  local_auth_endpoint: Optional['outputs.ClusterV2RkeConfigLocalAuthEndpoint'] = None,
                  machine_global_config: Optional[str] = None,
                  machine_pools: Optional[Sequence['outputs.ClusterV2RkeConfigMachinePool']] = None,
@@ -18369,11 +18325,14 @@ class ClusterV2RkeConfig(dict):
         :param str additional_manifest: Cluster V2 additional manifest (string)
         :param str chart_values: Cluster V2 chart values. Must be in YAML format (string)
         :param 'ClusterV2RkeConfigEtcdArgs' etcd: Cluster V2 etcd (list maxitems:1)
+        :param 'ClusterV2RkeConfigEtcdSnapshotCreateArgs' etcd_snapshot_create: Cluster V2 etcd snapshot create (list maxitems:1)
+        :param 'ClusterV2RkeConfigEtcdSnapshotRestoreArgs' etcd_snapshot_restore: Cluster V2 etcd snapshot restore (list maxitems:1)
         :param 'ClusterV2RkeConfigLocalAuthEndpointArgs' local_auth_endpoint: Use rancher2_cluster_v2.local_auth_endpoint instead
         :param str machine_global_config: Cluster V2 machine global config. Must be in YAML format (string)
         :param Sequence['ClusterV2RkeConfigMachinePoolArgs'] machine_pools: Cluster V2 machine pools (list)
         :param Sequence['ClusterV2RkeConfigMachineSelectorConfigArgs'] machine_selector_configs: Cluster V2 machine selector config (list)
         :param 'ClusterV2RkeConfigRegistriesArgs' registries: Cluster V2 docker registries (list maxitems:1)
+        :param 'ClusterV2RkeConfigRotateCertificatesArgs' rotate_certificates: Cluster V2 certificate rotation (list maxitems:1)
         :param 'ClusterV2RkeConfigUpgradeStrategyArgs' upgrade_strategy: Cluster V2 upgrade strategy (list maxitems:1)
         """
         if additional_manifest is not None:
@@ -18382,6 +18341,10 @@ class ClusterV2RkeConfig(dict):
             pulumi.set(__self__, "chart_values", chart_values)
         if etcd is not None:
             pulumi.set(__self__, "etcd", etcd)
+        if etcd_snapshot_create is not None:
+            pulumi.set(__self__, "etcd_snapshot_create", etcd_snapshot_create)
+        if etcd_snapshot_restore is not None:
+            pulumi.set(__self__, "etcd_snapshot_restore", etcd_snapshot_restore)
         if local_auth_endpoint is not None:
             pulumi.set(__self__, "local_auth_endpoint", local_auth_endpoint)
         if machine_global_config is not None:
@@ -18420,6 +18383,22 @@ class ClusterV2RkeConfig(dict):
         Cluster V2 etcd (list maxitems:1)
         """
         return pulumi.get(self, "etcd")
+
+    @property
+    @pulumi.getter(name="etcdSnapshotCreate")
+    def etcd_snapshot_create(self) -> Optional['outputs.ClusterV2RkeConfigEtcdSnapshotCreate']:
+        """
+        Cluster V2 etcd snapshot create (list maxitems:1)
+        """
+        return pulumi.get(self, "etcd_snapshot_create")
+
+    @property
+    @pulumi.getter(name="etcdSnapshotRestore")
+    def etcd_snapshot_restore(self) -> Optional['outputs.ClusterV2RkeConfigEtcdSnapshotRestore']:
+        """
+        Cluster V2 etcd snapshot restore (list maxitems:1)
+        """
+        return pulumi.get(self, "etcd_snapshot_restore")
 
     @property
     @pulumi.getter(name="localAuthEndpoint")
@@ -18464,6 +18443,9 @@ class ClusterV2RkeConfig(dict):
     @property
     @pulumi.getter(name="rotateCertificates")
     def rotate_certificates(self) -> Optional['outputs.ClusterV2RkeConfigRotateCertificates']:
+        """
+        Cluster V2 certificate rotation (list maxitems:1)
+        """
         return pulumi.get(self, "rotate_certificates")
 
     @property
@@ -18664,6 +18646,82 @@ class ClusterV2RkeConfigEtcdS3Config(dict):
 
 
 @pulumi.output_type
+class ClusterV2RkeConfigEtcdSnapshotCreate(dict):
+    def __init__(__self__, *,
+                 generation: int):
+        """
+        :param int generation: ETCD snapshot desired generation (int)
+        """
+        pulumi.set(__self__, "generation", generation)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> int:
+        """
+        ETCD snapshot desired generation (int)
+        """
+        return pulumi.get(self, "generation")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigEtcdSnapshotRestore(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "restoreRkeConfig":
+            suggest = "restore_rke_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigEtcdSnapshotRestore. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigEtcdSnapshotRestore.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigEtcdSnapshotRestore.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 generation: int,
+                 name: str,
+                 restore_rke_config: Optional[str] = None):
+        """
+        :param int generation: ETCD snapshot desired generation (int)
+        :param str name: Name of cluster registration token (string)
+        :param str restore_rke_config: ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+        """
+        pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "name", name)
+        if restore_rke_config is not None:
+            pulumi.set(__self__, "restore_rke_config", restore_rke_config)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> int:
+        """
+        ETCD snapshot desired generation (int)
+        """
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="restoreRkeConfig")
+    def restore_rke_config(self) -> Optional[str]:
+        """
+        ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+        """
+        return pulumi.get(self, "restore_rke_config")
+
+
+@pulumi.output_type
 class ClusterV2RkeConfigLocalAuthEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -18740,6 +18798,8 @@ class ClusterV2RkeConfigMachinePool(dict):
             suggest = "etcd_role"
         elif key == "maxUnhealthy":
             suggest = "max_unhealthy"
+        elif key == "nodeDrainTimeout":
+            suggest = "node_drain_timeout"
         elif key == "nodeStartupTimeoutSeconds":
             suggest = "node_startup_timeout_seconds"
         elif key == "rollingUpdate":
@@ -18772,6 +18832,7 @@ class ClusterV2RkeConfigMachinePool(dict):
                  etcd_role: Optional[bool] = None,
                  labels: Optional[Mapping[str, Any]] = None,
                  max_unhealthy: Optional[str] = None,
+                 node_drain_timeout: Optional[int] = None,
                  node_startup_timeout_seconds: Optional[int] = None,
                  paused: Optional[bool] = None,
                  quantity: Optional[int] = None,
@@ -18786,12 +18847,18 @@ class ClusterV2RkeConfigMachinePool(dict):
         :param str name: Name of cluster registration token (string)
         :param Mapping[str, Any] annotations: Annotations for cluster registration token object (map)
         :param bool control_plane_role: Machine pool control plane role? (bool)
+        :param bool drain_before_delete: Machine Pool Drain Before Delete? (bool)
         :param bool etcd_role: Machine pool etcd role? (bool)
         :param Mapping[str, Any] labels: Labels for cluster registration token object (map)
+        :param str max_unhealthy: Max unhealthy nodes for automated replacement to be allowed (string)
+        :param int node_drain_timeout: Seconds a machine has to drain before deletion (int)
+        :param int node_startup_timeout_seconds: Seconds a new node has to become active before it is replaced (int)
         :param bool paused: Machine pool paused? (bool)
         :param int quantity: Machine pool quantity (int)
         :param 'ClusterV2RkeConfigMachinePoolRollingUpdateArgs' rolling_update: Machine pool rolling update (List maxitems:1)
         :param Sequence['ClusterV2RkeConfigMachinePoolTaintArgs'] taints: Machine pool taints (list)
+        :param int unhealthy_node_timeout_seconds: Seconds an unhealthy node has to become active before it is replaced (int)
+        :param str unhealthy_range: Range of unhealthy nodes for automated replacement to be allowed (string)
         :param bool worker_role: Machine pool worker role? (bool)
         """
         pulumi.set(__self__, "cloud_credential_secret_name", cloud_credential_secret_name)
@@ -18809,6 +18876,8 @@ class ClusterV2RkeConfigMachinePool(dict):
             pulumi.set(__self__, "labels", labels)
         if max_unhealthy is not None:
             pulumi.set(__self__, "max_unhealthy", max_unhealthy)
+        if node_drain_timeout is not None:
+            pulumi.set(__self__, "node_drain_timeout", node_drain_timeout)
         if node_startup_timeout_seconds is not None:
             pulumi.set(__self__, "node_startup_timeout_seconds", node_startup_timeout_seconds)
         if paused is not None:
@@ -18869,6 +18938,9 @@ class ClusterV2RkeConfigMachinePool(dict):
     @property
     @pulumi.getter(name="drainBeforeDelete")
     def drain_before_delete(self) -> Optional[bool]:
+        """
+        Machine Pool Drain Before Delete? (bool)
+        """
         return pulumi.get(self, "drain_before_delete")
 
     @property
@@ -18890,11 +18962,25 @@ class ClusterV2RkeConfigMachinePool(dict):
     @property
     @pulumi.getter(name="maxUnhealthy")
     def max_unhealthy(self) -> Optional[str]:
+        """
+        Max unhealthy nodes for automated replacement to be allowed (string)
+        """
         return pulumi.get(self, "max_unhealthy")
+
+    @property
+    @pulumi.getter(name="nodeDrainTimeout")
+    def node_drain_timeout(self) -> Optional[int]:
+        """
+        Seconds a machine has to drain before deletion (int)
+        """
+        return pulumi.get(self, "node_drain_timeout")
 
     @property
     @pulumi.getter(name="nodeStartupTimeoutSeconds")
     def node_startup_timeout_seconds(self) -> Optional[int]:
+        """
+        Seconds a new node has to become active before it is replaced (int)
+        """
         return pulumi.get(self, "node_startup_timeout_seconds")
 
     @property
@@ -18932,11 +19018,17 @@ class ClusterV2RkeConfigMachinePool(dict):
     @property
     @pulumi.getter(name="unhealthyNodeTimeoutSeconds")
     def unhealthy_node_timeout_seconds(self) -> Optional[int]:
+        """
+        Seconds an unhealthy node has to become active before it is replaced (int)
+        """
         return pulumi.get(self, "unhealthy_node_timeout_seconds")
 
     @property
     @pulumi.getter(name="unhealthyRange")
     def unhealthy_range(self) -> Optional[str]:
+        """
+        Range of unhealthy nodes for automated replacement to be allowed (string)
+        """
         return pulumi.get(self, "unhealthy_range")
 
     @property
@@ -19372,21 +19464,30 @@ class ClusterV2RkeConfigRegistriesMirror(dict):
 @pulumi.output_type
 class ClusterV2RkeConfigRotateCertificates(dict):
     def __init__(__self__, *,
-                 generation: Optional[int] = None,
+                 generation: int,
                  services: Optional[Sequence[str]] = None):
-        if generation is not None:
-            pulumi.set(__self__, "generation", generation)
+        """
+        :param int generation: ETCD snapshot desired generation (int)
+        :param Sequence[str] services: Service certificates to rotate with this generation (string)
+        """
+        pulumi.set(__self__, "generation", generation)
         if services is not None:
             pulumi.set(__self__, "services", services)
 
     @property
     @pulumi.getter
-    def generation(self) -> Optional[int]:
+    def generation(self) -> int:
+        """
+        ETCD snapshot desired generation (int)
+        """
         return pulumi.get(self, "generation")
 
     @property
     @pulumi.getter
     def services(self) -> Optional[Sequence[str]]:
+        """
+        Service certificates to rotate with this generation (string)
+        """
         return pulumi.get(self, "services")
 
 
@@ -38649,6 +38750,8 @@ class GetClusterV2RkeConfigResult(dict):
                  machine_selector_configs: Sequence['outputs.GetClusterV2RkeConfigMachineSelectorConfigResult'],
                  additional_manifest: Optional[str] = None,
                  chart_values: Optional[str] = None,
+                 etcd_snapshot_create: Optional['outputs.GetClusterV2RkeConfigEtcdSnapshotCreateResult'] = None,
+                 etcd_snapshot_restore: Optional['outputs.GetClusterV2RkeConfigEtcdSnapshotRestoreResult'] = None,
                  local_auth_endpoint: Optional['outputs.GetClusterV2RkeConfigLocalAuthEndpointResult'] = None,
                  machine_global_config: Optional[str] = None,
                  registries: Optional['outputs.GetClusterV2RkeConfigRegistriesResult'] = None,
@@ -38661,6 +38764,10 @@ class GetClusterV2RkeConfigResult(dict):
             pulumi.set(__self__, "additional_manifest", additional_manifest)
         if chart_values is not None:
             pulumi.set(__self__, "chart_values", chart_values)
+        if etcd_snapshot_create is not None:
+            pulumi.set(__self__, "etcd_snapshot_create", etcd_snapshot_create)
+        if etcd_snapshot_restore is not None:
+            pulumi.set(__self__, "etcd_snapshot_restore", etcd_snapshot_restore)
         if local_auth_endpoint is not None:
             pulumi.set(__self__, "local_auth_endpoint", local_auth_endpoint)
         if machine_global_config is not None:
@@ -38696,6 +38803,16 @@ class GetClusterV2RkeConfigResult(dict):
     @pulumi.getter(name="chartValues")
     def chart_values(self) -> Optional[str]:
         return pulumi.get(self, "chart_values")
+
+    @property
+    @pulumi.getter(name="etcdSnapshotCreate")
+    def etcd_snapshot_create(self) -> Optional['outputs.GetClusterV2RkeConfigEtcdSnapshotCreateResult']:
+        return pulumi.get(self, "etcd_snapshot_create")
+
+    @property
+    @pulumi.getter(name="etcdSnapshotRestore")
+    def etcd_snapshot_restore(self) -> Optional['outputs.GetClusterV2RkeConfigEtcdSnapshotRestoreResult']:
+        return pulumi.get(self, "etcd_snapshot_restore")
 
     @property
     @pulumi.getter(name="localAuthEndpoint")
@@ -38820,6 +38937,51 @@ class GetClusterV2RkeConfigEtcdS3ConfigResult(dict):
 
 
 @pulumi.output_type
+class GetClusterV2RkeConfigEtcdSnapshotCreateResult(dict):
+    def __init__(__self__, *,
+                 generation: int):
+        pulumi.set(__self__, "generation", generation)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> int:
+        return pulumi.get(self, "generation")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigEtcdSnapshotRestoreResult(dict):
+    def __init__(__self__, *,
+                 generation: int,
+                 name: str,
+                 restore_rke_config: Optional[str] = None):
+        """
+        :param str name: The name of the Cluster v2 (string)
+        """
+        pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "name", name)
+        if restore_rke_config is not None:
+            pulumi.set(__self__, "restore_rke_config", restore_rke_config)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> int:
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster v2 (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="restoreRkeConfig")
+    def restore_rke_config(self) -> Optional[str]:
+        return pulumi.get(self, "restore_rke_config")
+
+
+@pulumi.output_type
 class GetClusterV2RkeConfigLocalAuthEndpointResult(dict):
     def __init__(__self__, *,
                  ca_certs: Optional[str] = None,
@@ -38860,6 +39022,7 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
                  drain_before_delete: Optional[bool] = None,
                  etcd_role: Optional[bool] = None,
                  max_unhealthy: Optional[str] = None,
+                 node_drain_timeout: Optional[int] = None,
                  node_startup_timeout_seconds: Optional[int] = None,
                  paused: Optional[bool] = None,
                  quantity: Optional[int] = None,
@@ -38885,6 +39048,8 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
             pulumi.set(__self__, "etcd_role", etcd_role)
         if max_unhealthy is not None:
             pulumi.set(__self__, "max_unhealthy", max_unhealthy)
+        if node_drain_timeout is not None:
+            pulumi.set(__self__, "node_drain_timeout", node_drain_timeout)
         if node_startup_timeout_seconds is not None:
             pulumi.set(__self__, "node_startup_timeout_seconds", node_startup_timeout_seconds)
         if paused is not None:
@@ -38952,6 +39117,11 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
     @pulumi.getter(name="maxUnhealthy")
     def max_unhealthy(self) -> Optional[str]:
         return pulumi.get(self, "max_unhealthy")
+
+    @property
+    @pulumi.getter(name="nodeDrainTimeout")
+    def node_drain_timeout(self) -> Optional[int]:
+        return pulumi.get(self, "node_drain_timeout")
 
     @property
     @pulumi.getter(name="nodeStartupTimeoutSeconds")
@@ -39234,16 +39404,15 @@ class GetClusterV2RkeConfigRegistriesMirrorResult(dict):
 @pulumi.output_type
 class GetClusterV2RkeConfigRotateCertificatesResult(dict):
     def __init__(__self__, *,
-                 generation: Optional[int] = None,
+                 generation: int,
                  services: Optional[Sequence[str]] = None):
-        if generation is not None:
-            pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "generation", generation)
         if services is not None:
             pulumi.set(__self__, "services", services)
 
     @property
     @pulumi.getter
-    def generation(self) -> Optional[int]:
+    def generation(self) -> int:
         return pulumi.get(self, "generation")
 
     @property
