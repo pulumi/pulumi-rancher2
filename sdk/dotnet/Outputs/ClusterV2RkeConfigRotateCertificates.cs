@@ -13,12 +13,18 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterV2RkeConfigRotateCertificates
     {
-        public readonly int? Generation;
+        /// <summary>
+        /// ETCD snapshot desired generation (int)
+        /// </summary>
+        public readonly int Generation;
+        /// <summary>
+        /// Service certificates to rotate with this generation (string)
+        /// </summary>
         public readonly ImmutableArray<string> Services;
 
         [OutputConstructor]
         private ClusterV2RkeConfigRotateCertificates(
-            int? generation,
+            int generation,
 
             ImmutableArray<string> services)
         {

@@ -25,6 +25,9 @@ namespace Pulumi.Rancher2.Outputs
         /// Machine pool control plane role? (bool)
         /// </summary>
         public readonly bool? ControlPlaneRole;
+        /// <summary>
+        /// Machine Pool Drain Before Delete? (bool)
+        /// </summary>
         public readonly bool? DrainBeforeDelete;
         /// <summary>
         /// Machine pool etcd role? (bool)
@@ -38,11 +41,21 @@ namespace Pulumi.Rancher2.Outputs
         /// Machine pool node config (list)
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigMachinePoolMachineConfig MachineConfig;
+        /// <summary>
+        /// Max unhealthy nodes for automated replacement to be allowed (string)
+        /// </summary>
         public readonly string? MaxUnhealthy;
         /// <summary>
         /// Name of cluster registration token (string)
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Seconds a machine has to drain before deletion (int)
+        /// </summary>
+        public readonly int? NodeDrainTimeout;
+        /// <summary>
+        /// Seconds a new node has to become active before it is replaced (int)
+        /// </summary>
         public readonly int? NodeStartupTimeoutSeconds;
         /// <summary>
         /// Machine pool paused? (bool)
@@ -60,7 +73,13 @@ namespace Pulumi.Rancher2.Outputs
         /// Machine pool taints (list)
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachinePoolTaint> Taints;
+        /// <summary>
+        /// Seconds an unhealthy node has to become active before it is replaced (int)
+        /// </summary>
         public readonly int? UnhealthyNodeTimeoutSeconds;
+        /// <summary>
+        /// Range of unhealthy nodes for automated replacement to be allowed (string)
+        /// </summary>
         public readonly string? UnhealthyRange;
         /// <summary>
         /// Machine pool worker role? (bool)
@@ -87,6 +106,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string name,
 
+            int? nodeDrainTimeout,
+
             int? nodeStartupTimeoutSeconds,
 
             bool? paused,
@@ -112,6 +133,7 @@ namespace Pulumi.Rancher2.Outputs
             MachineConfig = machineConfig;
             MaxUnhealthy = maxUnhealthy;
             Name = name;
+            NodeDrainTimeout = nodeDrainTimeout;
             NodeStartupTimeoutSeconds = nodeStartupTimeoutSeconds;
             Paused = paused;
             Quantity = quantity;

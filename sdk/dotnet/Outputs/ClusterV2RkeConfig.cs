@@ -26,6 +26,14 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigEtcd? Etcd;
         /// <summary>
+        /// Cluster V2 etcd snapshot create (list maxitems:1)
+        /// </summary>
+        public readonly Outputs.ClusterV2RkeConfigEtcdSnapshotCreate? EtcdSnapshotCreate;
+        /// <summary>
+        /// Cluster V2 etcd snapshot restore (list maxitems:1)
+        /// </summary>
+        public readonly Outputs.ClusterV2RkeConfigEtcdSnapshotRestore? EtcdSnapshotRestore;
+        /// <summary>
         /// Use rancher2_cluster_v2.local_auth_endpoint instead
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigLocalAuthEndpoint? LocalAuthEndpoint;
@@ -45,6 +53,9 @@ namespace Pulumi.Rancher2.Outputs
         /// Cluster V2 docker registries (list maxitems:1)
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigRegistries? Registries;
+        /// <summary>
+        /// Cluster V2 certificate rotation (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterV2RkeConfigRotateCertificates? RotateCertificates;
         /// <summary>
         /// Cluster V2 upgrade strategy (list maxitems:1)
@@ -58,6 +69,10 @@ namespace Pulumi.Rancher2.Outputs
             string? chartValues,
 
             Outputs.ClusterV2RkeConfigEtcd? etcd,
+
+            Outputs.ClusterV2RkeConfigEtcdSnapshotCreate? etcdSnapshotCreate,
+
+            Outputs.ClusterV2RkeConfigEtcdSnapshotRestore? etcdSnapshotRestore,
 
             Outputs.ClusterV2RkeConfigLocalAuthEndpoint? localAuthEndpoint,
 
@@ -76,6 +91,8 @@ namespace Pulumi.Rancher2.Outputs
             AdditionalManifest = additionalManifest;
             ChartValues = chartValues;
             Etcd = etcd;
+            EtcdSnapshotCreate = etcdSnapshotCreate;
+            EtcdSnapshotRestore = etcdSnapshotRestore;
             LocalAuthEndpoint = localAuthEndpoint;
             MachineGlobalConfig = machineGlobalConfig;
             MachinePools = machinePools;

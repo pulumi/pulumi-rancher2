@@ -241,14 +241,16 @@ func Provider() tfbridge.ProviderInfo {
 		})
 	prov.RenameResourceWithAlias("rancher2_cluster_alert_rule", makeResource(mainMod, "ClusterAlterRule"),
 		makeResource(mainMod, "ClusterAlertRule"), mainMod, mainMod, &tfbridge.ResourceInfo{
-			Docs: &tfbridge.DocInfo{Source: "cluster_alert_rule.md"},
+			Docs: &tfbridge.DocInfo{Source: "cluster_alert_group.md"},
 		})
 	prov.RenameResourceWithAlias("rancher2_role_template", makeResource(mainMod, "RoleTempalte"),
-		makeResource(mainMod, "RoleTemplate"), mainMod, mainMod, &tfbridge.ResourceInfo{
+		makeResource(mainMod, "RoleTemplate"), mainMod, mainMod,
+		&tfbridge.ResourceInfo{
 			Docs: &tfbridge.DocInfo{Source: "role_template.md"},
 		})
 	prov.RenameResourceWithAlias("rancher2_auth_config_activedirectory", makeResource(mainMod, "ActiveDirectory"),
-		makeResource(mainMod, "AuthConfigActiveDirectory"), mainMod, mainMod, &tfbridge.ResourceInfo{
+		makeResource(mainMod, "AuthConfigActiveDirectory"), mainMod, mainMod,
+		&tfbridge.ResourceInfo{
 			Docs: &tfbridge.DocInfo{
 				Source: "auth_config_activedirectory.md",
 			},

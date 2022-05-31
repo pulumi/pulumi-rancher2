@@ -12,11 +12,18 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterV2RkeConfigRotateCertificatesArgs : Pulumi.ResourceArgs
     {
-        [Input("generation")]
-        public Input<int>? Generation { get; set; }
+        /// <summary>
+        /// ETCD snapshot desired generation (int)
+        /// </summary>
+        [Input("generation", required: true)]
+        public Input<int> Generation { get; set; } = null!;
 
         [Input("services")]
         private InputList<string>? _services;
+
+        /// <summary>
+        /// Service certificates to rotate with this generation (string)
+        /// </summary>
         public InputList<string> Services
         {
             get => _services ?? (_services = new InputList<string>());
