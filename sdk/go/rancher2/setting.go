@@ -227,6 +227,26 @@ func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOu
 	return o
 }
 
+// Annotations for setting object (map)
+func (o SettingOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Setting) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Labels for setting object (map)
+func (o SettingOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Setting) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the setting (string)
+func (o SettingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Setting) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the setting (string)
+func (o SettingOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *Setting) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type SettingArrayOutput struct{ *pulumi.OutputState }
 
 func (SettingArrayOutput) ElementType() reflect.Type {

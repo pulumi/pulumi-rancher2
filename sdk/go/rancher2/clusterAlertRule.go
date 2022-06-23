@@ -344,6 +344,76 @@ func (o ClusterAlertRuleOutput) ToClusterAlertRuleOutputWithContext(ctx context.
 	return o
 }
 
+// The cluster alert rule annotations (map)
+func (o ClusterAlertRuleOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The cluster id where create cluster alert rule (string)
+func (o ClusterAlertRuleOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
+func (o ClusterAlertRuleOutput) EventRule() ClusterAlertRuleEventRulePtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) ClusterAlertRuleEventRulePtrOutput { return v.EventRule }).(ClusterAlertRuleEventRulePtrOutput)
+}
+
+// The cluster alert rule alert group ID (string)
+func (o ClusterAlertRuleOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The cluster alert rule group interval seconds. Default: `180` (int)
+func (o ClusterAlertRuleOutput) GroupIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) pulumi.IntPtrOutput { return v.GroupIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The cluster alert rule group wait seconds. Default: `180` (int)
+func (o ClusterAlertRuleOutput) GroupWaitSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) pulumi.IntPtrOutput { return v.GroupWaitSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The cluster alert rule inherited. Default: `true` (bool)
+func (o ClusterAlertRuleOutput) Inherited() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) pulumi.BoolPtrOutput { return v.Inherited }).(pulumi.BoolPtrOutput)
+}
+
+// The cluster alert rule labels (map)
+func (o ClusterAlertRuleOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
+func (o ClusterAlertRuleOutput) MetricRule() ClusterAlertRuleMetricRulePtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) ClusterAlertRuleMetricRulePtrOutput { return v.MetricRule }).(ClusterAlertRuleMetricRulePtrOutput)
+}
+
+// The cluster alert rule name (string)
+func (o ClusterAlertRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The cluster alert rule node rule. ConflictsWith: `"eventRule", "metricRule", "systemServiceRule"`` (list Maxitems:1)
+func (o ClusterAlertRuleOutput) NodeRule() ClusterAlertRuleNodeRulePtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) ClusterAlertRuleNodeRulePtrOutput { return v.NodeRule }).(ClusterAlertRuleNodeRulePtrOutput)
+}
+
+// The cluster alert rule wait seconds. Default: `3600` (int)
+func (o ClusterAlertRuleOutput) RepeatIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) pulumi.IntPtrOutput { return v.RepeatIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
+func (o ClusterAlertRuleOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) pulumi.StringPtrOutput { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"` (list Maxitems:1)
+func (o ClusterAlertRuleOutput) SystemServiceRule() ClusterAlertRuleSystemServiceRulePtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) ClusterAlertRuleSystemServiceRulePtrOutput { return v.SystemServiceRule }).(ClusterAlertRuleSystemServiceRulePtrOutput)
+}
+
 type ClusterAlertRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlertRuleArrayOutput) ElementType() reflect.Type {

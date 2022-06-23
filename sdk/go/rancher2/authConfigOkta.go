@@ -347,6 +347,81 @@ func (o AuthConfigOktaOutput) ToAuthConfigOktaOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+func (o AuthConfigOktaOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringPtrOutput { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
+func (o AuthConfigOktaOutput) AllowedPrincipalIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringArrayOutput { return v.AllowedPrincipalIds }).(pulumi.StringArrayOutput)
+}
+
+// Annotations of the resource (map)
+func (o AuthConfigOktaOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// OKTA display name field (string)
+func (o AuthConfigOktaOutput) DisplayNameField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringOutput { return v.DisplayNameField }).(pulumi.StringOutput)
+}
+
+// Enable auth config provider. Default `true` (bool)
+func (o AuthConfigOktaOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// OKTA group field (string)
+func (o AuthConfigOktaOutput) GroupsField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringOutput { return v.GroupsField }).(pulumi.StringOutput)
+}
+
+// OKTA IDP metadata content (string)
+func (o AuthConfigOktaOutput) IdpMetadataContent() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringOutput { return v.IdpMetadataContent }).(pulumi.StringOutput)
+}
+
+// Labels of the resource (map)
+func (o AuthConfigOktaOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The name of the resource (string)
+func (o AuthConfigOktaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
+func (o AuthConfigOktaOutput) RancherApiHost() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringOutput { return v.RancherApiHost }).(pulumi.StringOutput)
+}
+
+// OKTA SP cert (string)
+func (o AuthConfigOktaOutput) SpCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringOutput { return v.SpCert }).(pulumi.StringOutput)
+}
+
+// OKTA SP key (string)
+func (o AuthConfigOktaOutput) SpKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringOutput { return v.SpKey }).(pulumi.StringOutput)
+}
+
+// (Computed) The type of the resource (string)
+func (o AuthConfigOktaOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// OKTA UID field (string)
+func (o AuthConfigOktaOutput) UidField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringOutput { return v.UidField }).(pulumi.StringOutput)
+}
+
+// OKTA user name field (string)
+func (o AuthConfigOktaOutput) UserNameField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringOutput { return v.UserNameField }).(pulumi.StringOutput)
+}
+
 type AuthConfigOktaArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigOktaArrayOutput) ElementType() reflect.Type {

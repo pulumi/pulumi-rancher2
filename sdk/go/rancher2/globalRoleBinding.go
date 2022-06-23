@@ -251,6 +251,36 @@ func (o GlobalRoleBindingOutput) ToGlobalRoleBindingOutputWithContext(ctx contex
 	return o
 }
 
+// Annotations for global role binding (map)
+func (o GlobalRoleBindingOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalRoleBinding) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The role id from create global role binding (string)
+func (o GlobalRoleBindingOutput) GlobalRoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalRoleBinding) pulumi.StringOutput { return v.GlobalRoleId }).(pulumi.StringOutput)
+}
+
+// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
+func (o GlobalRoleBindingOutput) GroupPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalRoleBinding) pulumi.StringOutput { return v.GroupPrincipalId }).(pulumi.StringOutput)
+}
+
+// Labels for global role binding (map)
+func (o GlobalRoleBindingOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalRoleBinding) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the global role binding (string)
+func (o GlobalRoleBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalRoleBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The user ID to assign global role binding (string)
+func (o GlobalRoleBindingOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalRoleBinding) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
 type GlobalRoleBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (GlobalRoleBindingArrayOutput) ElementType() reflect.Type {

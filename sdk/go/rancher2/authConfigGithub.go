@@ -283,6 +283,61 @@ func (o AuthConfigGithubOutput) ToAuthConfigGithubOutputWithContext(ctx context.
 	return o
 }
 
+// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+func (o AuthConfigGithubOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.StringPtrOutput { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
+func (o AuthConfigGithubOutput) AllowedPrincipalIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.StringArrayOutput { return v.AllowedPrincipalIds }).(pulumi.StringArrayOutput)
+}
+
+// Annotations of the resource (map)
+func (o AuthConfigGithubOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Github auth Client ID (string)
+func (o AuthConfigGithubOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Github auth Client secret (string)
+func (o AuthConfigGithubOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Enable auth config provider. Default `true` (bool)
+func (o AuthConfigGithubOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Github hostname to connect. Default `github.com` (string)
+func (o AuthConfigGithubOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.StringPtrOutput { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Labels of the resource (map)
+func (o AuthConfigGithubOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The name of the resource (string)
+func (o AuthConfigGithubOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Enable TLS connection. Default `true` (bool)
+func (o AuthConfigGithubOutput) Tls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.BoolPtrOutput { return v.Tls }).(pulumi.BoolPtrOutput)
+}
+
+// (Computed) The type of the resource (string)
+func (o AuthConfigGithubOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type AuthConfigGithubArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigGithubArrayOutput) ElementType() reflect.Type {

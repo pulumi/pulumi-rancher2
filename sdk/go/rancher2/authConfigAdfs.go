@@ -347,6 +347,81 @@ func (o AuthConfigAdfsOutput) ToAuthConfigAdfsOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+func (o AuthConfigAdfsOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.StringPtrOutput { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `adfs_user://<USER_ID>`  `adfs_group://<GROUP_ID>` (list)
+func (o AuthConfigAdfsOutput) AllowedPrincipalIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.StringArrayOutput { return v.AllowedPrincipalIds }).(pulumi.StringArrayOutput)
+}
+
+// Annotations of the resource (map)
+func (o AuthConfigAdfsOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// ADFS display name field (string)
+func (o AuthConfigAdfsOutput) DisplayNameField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.StringOutput { return v.DisplayNameField }).(pulumi.StringOutput)
+}
+
+// Enable auth config provider. Default `true` (bool)
+func (o AuthConfigAdfsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// ADFS group field (string)
+func (o AuthConfigAdfsOutput) GroupsField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.StringOutput { return v.GroupsField }).(pulumi.StringOutput)
+}
+
+// ADFS IDP metadata content (string)
+func (o AuthConfigAdfsOutput) IdpMetadataContent() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.StringOutput { return v.IdpMetadataContent }).(pulumi.StringOutput)
+}
+
+// Labels of the resource (map)
+func (o AuthConfigAdfsOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The name of the resource (string)
+func (o AuthConfigAdfsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
+func (o AuthConfigAdfsOutput) RancherApiHost() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.StringOutput { return v.RancherApiHost }).(pulumi.StringOutput)
+}
+
+// ADFS SP cert (string)
+func (o AuthConfigAdfsOutput) SpCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.StringOutput { return v.SpCert }).(pulumi.StringOutput)
+}
+
+// ADFS SP key (string)
+func (o AuthConfigAdfsOutput) SpKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.StringOutput { return v.SpKey }).(pulumi.StringOutput)
+}
+
+// (Computed) The type of the resource (string)
+func (o AuthConfigAdfsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// ADFS UID field (string)
+func (o AuthConfigAdfsOutput) UidField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.StringOutput { return v.UidField }).(pulumi.StringOutput)
+}
+
+// ADFS user name field (string)
+func (o AuthConfigAdfsOutput) UserNameField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAdfs) pulumi.StringOutput { return v.UserNameField }).(pulumi.StringOutput)
+}
+
 type AuthConfigAdfsArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigAdfsArrayOutput) ElementType() reflect.Type {

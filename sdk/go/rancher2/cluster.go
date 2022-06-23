@@ -331,7 +331,19 @@ import (
 // 								MaxBackup: pulumi.Int(5),
 // 								MaxSize:   pulumi.Int(100),
 // 								Path:      pulumi.String("-"),
-// 								Policy:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "apiVersion: audit.k8s.io/v1\n", "kind: Policy\n", "metadata:\n", "  creationTimestamp: null\n", "omitStages:\n", "- RequestReceived\n", "rules:\n", "- level: RequestResponse\n", "  resources:\n", "  - resources:\n", "    - pods\n", "\n")),
+// 								Policy: pulumi.String(fmt.Sprintf(`apiVersion: audit.k8s.io/v1
+// kind: Policy
+// metadata:
+//   creationTimestamp: null
+// omitStages:
+// - RequestReceived
+// rules:
+// - level: RequestResponse
+//   resources:
+//   - resources:
+//     - pods
+//
+// `)),
 // 							},
 // 							Enabled: pulumi.Bool(true),
 // 						},
@@ -339,7 +351,7 @@ import (
 // 				},
 // 				UpgradeStrategy: &ClusterRkeConfigUpgradeStrategyArgs{
 // 					Drain:                pulumi.Bool(true),
-// 					MaxUnavailableWorker: pulumi.String(fmt.Sprintf("%v%v", "20", "%")),
+// 					MaxUnavailableWorker: pulumi.String(fmt.Sprintf("20%v", "%")),
 // 				},
 // 			},
 // 		})
@@ -1112,6 +1124,203 @@ func (o ClusterOutput) ToClusterOutput() ClusterOutput {
 
 func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return o
+}
+
+// Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+func (o ClusterOutput) AgentEnvVars() ClusterAgentEnvVarArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAgentEnvVarArrayOutput { return v.AgentEnvVars }).(ClusterAgentEnvVarArrayOutput)
+}
+
+// The Azure AKS configuration for `aks` Clusters. Conflicts with `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) AksConfig() ClusterAksConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAksConfigPtrOutput { return v.AksConfig }).(ClusterAksConfigPtrOutput)
+}
+
+// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) AksConfigV2() ClusterAksConfigV2PtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAksConfigV2PtrOutput { return v.AksConfigV2 }).(ClusterAksConfigV2PtrOutput)
+}
+
+// Annotations for cluster registration token object (map)
+func (o ClusterOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// TLS CA certificate for etcd service (string)
+func (o ClusterOutput) CaCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CaCert }).(pulumi.StringOutput)
+}
+
+// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
+func (o ClusterOutput) ClusterAuthEndpoint() ClusterClusterAuthEndpointOutput {
+	return o.ApplyT(func(v *Cluster) ClusterClusterAuthEndpointOutput { return v.ClusterAuthEndpoint }).(ClusterClusterAuthEndpointOutput)
+}
+
+// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
+func (o ClusterOutput) ClusterMonitoringInput() ClusterClusterMonitoringInputPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterClusterMonitoringInputPtrOutput { return v.ClusterMonitoringInput }).(ClusterClusterMonitoringInputPtrOutput)
+}
+
+// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
+func (o ClusterOutput) ClusterRegistrationToken() ClusterClusterRegistrationTokenOutput {
+	return o.ApplyT(func(v *Cluster) ClusterClusterRegistrationTokenOutput { return v.ClusterRegistrationToken }).(ClusterClusterRegistrationTokenOutput)
+}
+
+// Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+func (o ClusterOutput) ClusterTemplateAnswers() ClusterClusterTemplateAnswersOutput {
+	return o.ApplyT(func(v *Cluster) ClusterClusterTemplateAnswersOutput { return v.ClusterTemplateAnswers }).(ClusterClusterTemplateAnswersOutput)
+}
+
+// Cluster template ID. Just for Rancher v2.3.x and above (string)
+func (o ClusterOutput) ClusterTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Cluster template questions. Just for Rancher v2.3.x and above (list)
+func (o ClusterOutput) ClusterTemplateQuestions() ClusterClusterTemplateQuestionArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterClusterTemplateQuestionArrayOutput { return v.ClusterTemplateQuestions }).(ClusterClusterTemplateQuestionArrayOutput)
+}
+
+// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+func (o ClusterOutput) ClusterTemplateRevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterTemplateRevisionId }).(pulumi.StringPtrOutput)
+}
+
+// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
+func (o ClusterOutput) DefaultPodSecurityPolicyTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DefaultPodSecurityPolicyTemplateId }).(pulumi.StringOutput)
+}
+
+// (Computed) Default project ID for the cluster (string)
+func (o ClusterOutput) DefaultProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DefaultProjectId }).(pulumi.StringOutput)
+}
+
+// An optional description of this cluster (string)
+func (o ClusterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Desired agent image. Just for Rancher v2.3.x and above (string)
+func (o ClusterOutput) DesiredAgentImage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DesiredAgentImage }).(pulumi.StringOutput)
+}
+
+// Desired auth image. Just for Rancher v2.3.x and above (string)
+func (o ClusterOutput) DesiredAuthImage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DesiredAuthImage }).(pulumi.StringOutput)
+}
+
+// Desired auth image. Just for Rancher v2.3.x and above (string)
+func (o ClusterOutput) DockerRootDir() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DockerRootDir }).(pulumi.StringOutput)
+}
+
+// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
+func (o ClusterOutput) Driver() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Driver }).(pulumi.StringOutput)
+}
+
+// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) EksConfig() ClusterEksConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterEksConfigPtrOutput { return v.EksConfig }).(ClusterEksConfigPtrOutput)
+}
+
+// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+func (o ClusterOutput) EksConfigV2() ClusterEksConfigV2Output {
+	return o.ApplyT(func(v *Cluster) ClusterEksConfigV2Output { return v.EksConfigV2 }).(ClusterEksConfigV2Output)
+}
+
+// Enable built-in cluster alerting (bool)
+func (o ClusterOutput) EnableClusterAlerting() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableClusterAlerting }).(pulumi.BoolOutput)
+}
+
+// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+//
+// Deprecated: Deploy istio using rancher2_app resource instead
+func (o ClusterOutput) EnableClusterIstio() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableClusterIstio }).(pulumi.BoolOutput)
+}
+
+// Enable built-in cluster monitoring (bool)
+func (o ClusterOutput) EnableClusterMonitoring() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableClusterMonitoring }).(pulumi.BoolOutput)
+}
+
+// Enable project network isolation (bool)
+func (o ClusterOutput) EnableNetworkPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableNetworkPolicy }).(pulumi.BoolOutput)
+}
+
+// Fleet workspace name (string)
+func (o ClusterOutput) FleetWorkspaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.FleetWorkspaceName }).(pulumi.StringOutput)
+}
+
+// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) GkeConfig() ClusterGkeConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterGkeConfigPtrOutput { return v.GkeConfig }).(ClusterGkeConfigPtrOutput)
+}
+
+// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+func (o ClusterOutput) GkeConfigV2() ClusterGkeConfigV2PtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterGkeConfigV2PtrOutput { return v.GkeConfigV2 }).(ClusterGkeConfigV2PtrOutput)
+}
+
+// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+func (o ClusterOutput) IstioEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.IstioEnabled }).(pulumi.BoolOutput)
+}
+
+// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) K3sConfig() ClusterK3sConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterK3sConfigOutput { return v.K3sConfig }).(ClusterK3sConfigOutput)
+}
+
+// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
+func (o ClusterOutput) KubeConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.KubeConfig }).(pulumi.StringOutput)
+}
+
+// Labels for cluster registration token object (map)
+func (o ClusterOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Name of cluster registration token (string)
+func (o ClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) OkeConfig() ClusterOkeConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterOkeConfigPtrOutput { return v.OkeConfig }).(ClusterOkeConfigPtrOutput)
+}
+
+// The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) Rke2Config() ClusterRke2ConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterRke2ConfigOutput { return v.Rke2Config }).(ClusterRke2ConfigOutput)
+}
+
+// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
+func (o ClusterOutput) RkeConfig() ClusterRkeConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterRkeConfigOutput { return v.RkeConfig }).(ClusterRkeConfigOutput)
+}
+
+// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+func (o ClusterOutput) ScheduledClusterScan() ClusterScheduledClusterScanOutput {
+	return o.ApplyT(func(v *Cluster) ClusterScheduledClusterScanOutput { return v.ScheduledClusterScan }).(ClusterScheduledClusterScanOutput)
+}
+
+// (Computed) System project ID for the cluster (string)
+func (o ClusterOutput) SystemProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SystemProjectId }).(pulumi.StringOutput)
+}
+
+// Windows preferred cluster. Default: `false` (bool)
+func (o ClusterOutput) WindowsPreferedCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.WindowsPreferedCluster }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterArrayOutput struct{ *pulumi.OutputState }

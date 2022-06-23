@@ -239,6 +239,46 @@ func (o ConfigMapV2Output) ToConfigMapV2OutputWithContext(ctx context.Context) C
 	return o
 }
 
+// Annotations for the configMap v2 (map)
+func (o ConfigMapV2Output) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ConfigMapV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The cluster id of the configMap V2 (string)
+func (o ConfigMapV2Output) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigMapV2) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The data of the configMap v2 (map)
+func (o ConfigMapV2Output) Data() pulumi.MapOutput {
+	return o.ApplyT(func(v *ConfigMapV2) pulumi.MapOutput { return v.Data }).(pulumi.MapOutput)
+}
+
+// If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
+func (o ConfigMapV2Output) Immutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigMapV2) pulumi.BoolPtrOutput { return v.Immutable }).(pulumi.BoolPtrOutput)
+}
+
+// Labels for the configMap v2 (map)
+func (o ConfigMapV2Output) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ConfigMapV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the configMap v2 (string)
+func (o ConfigMapV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigMapV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespaces of the configMap v2. Default: `default` (string)
+func (o ConfigMapV2Output) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigMapV2) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// (Computed) The k8s resource version (string)
+func (o ConfigMapV2Output) ResourceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigMapV2) pulumi.StringOutput { return v.ResourceVersion }).(pulumi.StringOutput)
+}
+
 type ConfigMapV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapV2ArrayOutput) ElementType() reflect.Type {

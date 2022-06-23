@@ -249,6 +249,51 @@ func (o SecretV2Output) ToSecretV2OutputWithContext(ctx context.Context) SecretV
 	return o
 }
 
+// Annotations for the secret v2 (map)
+func (o SecretV2Output) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *SecretV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The cluster id of the secret V2 (string)
+func (o SecretV2Output) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV2) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The data of the secret v2 (map)
+func (o SecretV2Output) Data() pulumi.MapOutput {
+	return o.ApplyT(func(v *SecretV2) pulumi.MapOutput { return v.Data }).(pulumi.MapOutput)
+}
+
+// If set to true, any secret update will remove and recreate the secret. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
+func (o SecretV2Output) Immutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecretV2) pulumi.BoolPtrOutput { return v.Immutable }).(pulumi.BoolPtrOutput)
+}
+
+// Labels for the secret v2 (map)
+func (o SecretV2Output) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *SecretV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the secret v2 (string)
+func (o SecretV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespaces of the secret v2. Default: `default` (string)
+func (o SecretV2Output) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretV2) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// (Computed) The k8s resource version (string)
+func (o SecretV2Output) ResourceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV2) pulumi.StringOutput { return v.ResourceVersion }).(pulumi.StringOutput)
+}
+
+// The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format.  Default: `Opaque` (string)
+func (o SecretV2Output) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretV2) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 type SecretV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (SecretV2ArrayOutput) ElementType() reflect.Type {

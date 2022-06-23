@@ -239,6 +239,41 @@ func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutpu
 	return o
 }
 
+// Annotations for secret object (map)
+func (o SecretOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Secret key/value data. Base64 encoding required for values (map)
+func (o SecretOutput) Data() pulumi.MapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.MapOutput { return v.Data }).(pulumi.MapOutput)
+}
+
+// A secret description (string)
+func (o SecretOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Labels for secret object (map)
+func (o SecretOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the secret (string)
+func (o SecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace id where to assign the namespaced secret (string)
+func (o SecretOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.NamespaceId }).(pulumi.StringPtrOutput)
+}
+
+// The project id where to assign the secret (string)
+func (o SecretOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
 type SecretArrayOutput struct{ *pulumi.OutputState }
 
 func (SecretArrayOutput) ElementType() reflect.Type {

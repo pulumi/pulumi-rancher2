@@ -517,6 +517,181 @@ func (o AuthConfigActiveDirectoryOutput) ToAuthConfigActiveDirectoryOutputWithCo
 	return o
 }
 
+// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+func (o AuthConfigActiveDirectoryOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringPtrOutput { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
+func (o AuthConfigActiveDirectoryOutput) AllowedPrincipalIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringArrayOutput { return v.AllowedPrincipalIds }).(pulumi.StringArrayOutput)
+}
+
+// Annotations of the resource (map)
+func (o AuthConfigActiveDirectoryOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// CA certificate for TLS if selfsigned (string)
+func (o AuthConfigActiveDirectoryOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringPtrOutput { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// ActiveDirectory connection timeout. Default `5000` (int)
+func (o AuthConfigActiveDirectoryOutput) ConnectionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.IntPtrOutput { return v.ConnectionTimeout }).(pulumi.IntPtrOutput)
+}
+
+// ActiveDirectory defult login domain (string)
+func (o AuthConfigActiveDirectoryOutput) DefaultLoginDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringPtrOutput { return v.DefaultLoginDomain }).(pulumi.StringPtrOutput)
+}
+
+// Enable auth config provider. Default `true` (bool)
+func (o AuthConfigActiveDirectoryOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Group DN attribute. Default `distinguishedName` (string)
+func (o AuthConfigActiveDirectoryOutput) GroupDnAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.GroupDnAttribute }).(pulumi.StringOutput)
+}
+
+// Group member mapping attribute. Default `member` (string)
+func (o AuthConfigActiveDirectoryOutput) GroupMemberMappingAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.GroupMemberMappingAttribute }).(pulumi.StringOutput)
+}
+
+// Group member user attribute. Default `distinguishedName` (string)
+func (o AuthConfigActiveDirectoryOutput) GroupMemberUserAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.GroupMemberUserAttribute }).(pulumi.StringOutput)
+}
+
+// Group name attribute. Default `name` (string)
+func (o AuthConfigActiveDirectoryOutput) GroupNameAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.GroupNameAttribute }).(pulumi.StringOutput)
+}
+
+// Group object class. Default `group` (string)
+func (o AuthConfigActiveDirectoryOutput) GroupObjectClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.GroupObjectClass }).(pulumi.StringOutput)
+}
+
+// Group search attribute. Default `sAMAccountName` (string)
+func (o AuthConfigActiveDirectoryOutput) GroupSearchAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.GroupSearchAttribute }).(pulumi.StringOutput)
+}
+
+// Group search base (string)
+func (o AuthConfigActiveDirectoryOutput) GroupSearchBase() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.GroupSearchBase }).(pulumi.StringOutput)
+}
+
+// Group search filter (string)
+func (o AuthConfigActiveDirectoryOutput) GroupSearchFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.GroupSearchFilter }).(pulumi.StringOutput)
+}
+
+// Labels of the resource (map)
+func (o AuthConfigActiveDirectoryOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The name of the resource (string)
+func (o AuthConfigActiveDirectoryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Nested group membership enable. Default `false` (bool)
+func (o AuthConfigActiveDirectoryOutput) NestedGroupMembershipEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.BoolOutput { return v.NestedGroupMembershipEnabled }).(pulumi.BoolOutput)
+}
+
+// ActiveDirectory port. Default `389` (int)
+func (o AuthConfigActiveDirectoryOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// ActiveDirectory servers list (list)
+func (o AuthConfigActiveDirectoryOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringArrayOutput { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+// Service account password for access ActiveDirectory service (string)
+func (o AuthConfigActiveDirectoryOutput) ServiceAccountPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.ServiceAccountPassword }).(pulumi.StringOutput)
+}
+
+// Service account DN for access ActiveDirectory service (string)
+func (o AuthConfigActiveDirectoryOutput) ServiceAccountUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.ServiceAccountUsername }).(pulumi.StringOutput)
+}
+
+// Enable start TLS connection (bool)
+func (o AuthConfigActiveDirectoryOutput) StartTls() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.BoolOutput { return v.StartTls }).(pulumi.BoolOutput)
+}
+
+// Password for test access to ActiveDirectory service (string)
+func (o AuthConfigActiveDirectoryOutput) TestPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.TestPassword }).(pulumi.StringOutput)
+}
+
+// Username for test access to ActiveDirectory service (string)
+func (o AuthConfigActiveDirectoryOutput) TestUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.TestUsername }).(pulumi.StringOutput)
+}
+
+// Enable TLS connection (bool)
+func (o AuthConfigActiveDirectoryOutput) Tls() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.BoolOutput { return v.Tls }).(pulumi.BoolOutput)
+}
+
+// (Computed) The type of the resource (string)
+func (o AuthConfigActiveDirectoryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// User disabled bit mask. Default `2` (int)
+func (o AuthConfigActiveDirectoryOutput) UserDisabledBitMask() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.IntPtrOutput { return v.UserDisabledBitMask }).(pulumi.IntPtrOutput)
+}
+
+// User enable attribute (string)
+func (o AuthConfigActiveDirectoryOutput) UserEnabledAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.UserEnabledAttribute }).(pulumi.StringOutput)
+}
+
+// User login attribute. Default `sAMAccountName` (string)
+func (o AuthConfigActiveDirectoryOutput) UserLoginAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.UserLoginAttribute }).(pulumi.StringOutput)
+}
+
+// User name attribute. Default `name` (string)
+func (o AuthConfigActiveDirectoryOutput) UserNameAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.UserNameAttribute }).(pulumi.StringOutput)
+}
+
+// User object class. Default `person` (string)
+func (o AuthConfigActiveDirectoryOutput) UserObjectClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.UserObjectClass }).(pulumi.StringOutput)
+}
+
+// User search attribute. Default `sAMAccountName|sn|givenName` (string)
+func (o AuthConfigActiveDirectoryOutput) UserSearchAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.UserSearchAttribute }).(pulumi.StringOutput)
+}
+
+// User search base DN (string)
+func (o AuthConfigActiveDirectoryOutput) UserSearchBase() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.UserSearchBase }).(pulumi.StringOutput)
+}
+
+// User search filter (string)
+func (o AuthConfigActiveDirectoryOutput) UserSearchFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringOutput { return v.UserSearchFilter }).(pulumi.StringOutput)
+}
+
 type AuthConfigActiveDirectoryArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigActiveDirectoryArrayOutput) ElementType() reflect.Type {

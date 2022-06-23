@@ -325,6 +325,71 @@ func (o BootstrapOutput) ToBootstrapOutputWithContext(ctx context.Context) Boots
 	return o
 }
 
+// (Computed/Sensitive) Current password for Admin user (string)
+func (o BootstrapOutput) CurrentPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.StringOutput { return v.CurrentPassword }).(pulumi.StringOutput)
+}
+
+// Initial password for Admin user. Default: `admin` (string)
+func (o BootstrapOutput) InitialPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.StringPtrOutput { return v.InitialPassword }).(pulumi.StringPtrOutput)
+}
+
+// Password for Admin user or random generated if empty (string)
+func (o BootstrapOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// Send telemetry anonymous data. Default: `false` (bool)
+func (o BootstrapOutput) Telemetry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.BoolPtrOutput { return v.Telemetry }).(pulumi.BoolPtrOutput)
+}
+
+// (Computed) Generated API temporary token as helper. Should be empty (string)
+func (o BootstrapOutput) TempToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.StringOutput { return v.TempToken }).(pulumi.StringOutput)
+}
+
+// (Computed) Generated API temporary token id as helper. Should be empty (string)
+func (o BootstrapOutput) TempTokenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.StringOutput { return v.TempTokenId }).(pulumi.StringOutput)
+}
+
+// (Computed) Generated API token for Admin User (string)
+func (o BootstrapOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
+// (Computed) Generated API token id for Admin User (string)
+func (o BootstrapOutput) TokenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.StringOutput { return v.TokenId }).(pulumi.StringOutput)
+}
+
+// TTL in seconds for generated admin token. Default: `0`  (int)
+func (o BootstrapOutput) TokenTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.IntPtrOutput { return v.TokenTtl }).(pulumi.IntPtrOutput)
+}
+
+// Regenerate admin token. Default: `false` (bool)
+func (o BootstrapOutput) TokenUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.BoolPtrOutput { return v.TokenUpdate }).(pulumi.BoolPtrOutput)
+}
+
+// Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+func (o BootstrapOutput) UiDefaultLanding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.StringPtrOutput { return v.UiDefaultLanding }).(pulumi.StringPtrOutput)
+}
+
+// (Computed) URL set as server-url (string)
+func (o BootstrapOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// (Computed) Admin username (string)
+func (o BootstrapOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bootstrap) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
+}
+
 type BootstrapArrayOutput struct{ *pulumi.OutputState }
 
 func (BootstrapArrayOutput) ElementType() reflect.Type {

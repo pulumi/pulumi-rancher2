@@ -319,6 +319,71 @@ func (o NotifierOutput) ToNotifierOutputWithContext(ctx context.Context) Notifie
 	return o
 }
 
+// Annotations for notifier object (map)
+func (o NotifierOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Notifier) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The cluster id where create notifier (string)
+func (o NotifierOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notifier) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The notifier description (string)
+func (o NotifierOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Notifier) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Dingtalk config for notifier (list maxitems:1)
+func (o NotifierOutput) DingtalkConfig() NotifierDingtalkConfigPtrOutput {
+	return o.ApplyT(func(v *Notifier) NotifierDingtalkConfigPtrOutput { return v.DingtalkConfig }).(NotifierDingtalkConfigPtrOutput)
+}
+
+// Labels for notifier object (map)
+func (o NotifierOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Notifier) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// MSTeams config for notifier (list maxitems:1)
+func (o NotifierOutput) MsteamsConfig() NotifierMsteamsConfigPtrOutput {
+	return o.ApplyT(func(v *Notifier) NotifierMsteamsConfigPtrOutput { return v.MsteamsConfig }).(NotifierMsteamsConfigPtrOutput)
+}
+
+// The name of the notifier (string)
+func (o NotifierOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notifier) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Pagerduty config for notifier (list maxitems:1)
+func (o NotifierOutput) PagerdutyConfig() NotifierPagerdutyConfigPtrOutput {
+	return o.ApplyT(func(v *Notifier) NotifierPagerdutyConfigPtrOutput { return v.PagerdutyConfig }).(NotifierPagerdutyConfigPtrOutput)
+}
+
+// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+func (o NotifierOutput) SendResolved() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Notifier) pulumi.BoolPtrOutput { return v.SendResolved }).(pulumi.BoolPtrOutput)
+}
+
+// Slack config for notifier (list maxitems:1)
+func (o NotifierOutput) SlackConfig() NotifierSlackConfigPtrOutput {
+	return o.ApplyT(func(v *Notifier) NotifierSlackConfigPtrOutput { return v.SlackConfig }).(NotifierSlackConfigPtrOutput)
+}
+
+// SMTP config for notifier (list maxitems:1)
+func (o NotifierOutput) SmtpConfig() NotifierSmtpConfigPtrOutput {
+	return o.ApplyT(func(v *Notifier) NotifierSmtpConfigPtrOutput { return v.SmtpConfig }).(NotifierSmtpConfigPtrOutput)
+}
+
+// Webhook config for notifier (list maxitems:1)
+func (o NotifierOutput) WebhookConfig() NotifierWebhookConfigPtrOutput {
+	return o.ApplyT(func(v *Notifier) NotifierWebhookConfigPtrOutput { return v.WebhookConfig }).(NotifierWebhookConfigPtrOutput)
+}
+
+// Wechat config for notifier (list maxitems:1)
+func (o NotifierOutput) WechatConfig() NotifierWechatConfigPtrOutput {
+	return o.ApplyT(func(v *Notifier) NotifierWechatConfigPtrOutput { return v.WechatConfig }).(NotifierWechatConfigPtrOutput)
+}
+
 type NotifierArrayOutput struct{ *pulumi.OutputState }
 
 func (NotifierArrayOutput) ElementType() reflect.Type {

@@ -481,6 +481,166 @@ func (o AuthConfigOpenLdapOutput) ToAuthConfigOpenLdapOutputWithContext(ctx cont
 	return o
 }
 
+// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+func (o AuthConfigOpenLdapOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringPtrOutput { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
+func (o AuthConfigOpenLdapOutput) AllowedPrincipalIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringArrayOutput { return v.AllowedPrincipalIds }).(pulumi.StringArrayOutput)
+}
+
+// Annotations of the resource (map)
+func (o AuthConfigOpenLdapOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
+func (o AuthConfigOpenLdapOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringPtrOutput { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// OpenLdap connection timeout. Default `5000` (int)
+func (o AuthConfigOpenLdapOutput) ConnectionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.IntPtrOutput { return v.ConnectionTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Enable auth config provider. Default `true` (bool)
+func (o AuthConfigOpenLdapOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Group DN attribute. Default `entryDN` (string)
+func (o AuthConfigOpenLdapOutput) GroupDnAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.GroupDnAttribute }).(pulumi.StringOutput)
+}
+
+// Group member mapping attribute. Default `member` (string)
+func (o AuthConfigOpenLdapOutput) GroupMemberMappingAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.GroupMemberMappingAttribute }).(pulumi.StringOutput)
+}
+
+// Group member user attribute. Default `entryDN` (string)
+func (o AuthConfigOpenLdapOutput) GroupMemberUserAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.GroupMemberUserAttribute }).(pulumi.StringOutput)
+}
+
+// Group name attribute. Default `cn` (string)
+func (o AuthConfigOpenLdapOutput) GroupNameAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.GroupNameAttribute }).(pulumi.StringOutput)
+}
+
+// Group object class. Default `groupOfNames` (string)
+func (o AuthConfigOpenLdapOutput) GroupObjectClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.GroupObjectClass }).(pulumi.StringOutput)
+}
+
+// Group search attribute. Default `cn` (string)
+func (o AuthConfigOpenLdapOutput) GroupSearchAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.GroupSearchAttribute }).(pulumi.StringOutput)
+}
+
+// Group search base (string)
+func (o AuthConfigOpenLdapOutput) GroupSearchBase() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.GroupSearchBase }).(pulumi.StringOutput)
+}
+
+// Labels of the resource (map)
+func (o AuthConfigOpenLdapOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The name of the resource (string)
+func (o AuthConfigOpenLdapOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Nested group membership enable. Default `false` (bool)
+func (o AuthConfigOpenLdapOutput) NestedGroupMembershipEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.BoolOutput { return v.NestedGroupMembershipEnabled }).(pulumi.BoolOutput)
+}
+
+// OpenLdap port. Default `389` (int)
+func (o AuthConfigOpenLdapOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// OpenLdap servers list (list)
+func (o AuthConfigOpenLdapOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringArrayOutput { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+// Service account DN for access OpenLdap service (string)
+func (o AuthConfigOpenLdapOutput) ServiceAccountDistinguishedName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.ServiceAccountDistinguishedName }).(pulumi.StringOutput)
+}
+
+// Service account password for access OpenLdap service (string)
+func (o AuthConfigOpenLdapOutput) ServiceAccountPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.ServiceAccountPassword }).(pulumi.StringOutput)
+}
+
+// Password for test access to OpenLdap service (string)
+func (o AuthConfigOpenLdapOutput) TestPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.TestPassword }).(pulumi.StringOutput)
+}
+
+// Username for test access to OpenLdap service (string)
+func (o AuthConfigOpenLdapOutput) TestUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.TestUsername }).(pulumi.StringOutput)
+}
+
+// Enable TLS connection (bool)
+func (o AuthConfigOpenLdapOutput) Tls() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.BoolOutput { return v.Tls }).(pulumi.BoolOutput)
+}
+
+// (Computed) The type of the resource (string)
+func (o AuthConfigOpenLdapOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// User disabled bit mask (int)
+func (o AuthConfigOpenLdapOutput) UserDisabledBitMask() pulumi.IntOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.IntOutput { return v.UserDisabledBitMask }).(pulumi.IntOutput)
+}
+
+// User enable attribute (string)
+func (o AuthConfigOpenLdapOutput) UserEnabledAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.UserEnabledAttribute }).(pulumi.StringOutput)
+}
+
+// User login attribute. Default `uid` (string)
+func (o AuthConfigOpenLdapOutput) UserLoginAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.UserLoginAttribute }).(pulumi.StringOutput)
+}
+
+// User member attribute. Default `memberOf` (string)
+func (o AuthConfigOpenLdapOutput) UserMemberAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.UserMemberAttribute }).(pulumi.StringOutput)
+}
+
+// User name attribute. Default `givenName` (string)
+func (o AuthConfigOpenLdapOutput) UserNameAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.UserNameAttribute }).(pulumi.StringOutput)
+}
+
+// User object class. Default `inetorgperson` (string)
+func (o AuthConfigOpenLdapOutput) UserObjectClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.UserObjectClass }).(pulumi.StringOutput)
+}
+
+// User search attribute. Default `uid|sn|givenName` (string)
+func (o AuthConfigOpenLdapOutput) UserSearchAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.UserSearchAttribute }).(pulumi.StringOutput)
+}
+
+// User search base DN (string)
+func (o AuthConfigOpenLdapOutput) UserSearchBase() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.UserSearchBase }).(pulumi.StringOutput)
+}
+
 type AuthConfigOpenLdapArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigOpenLdapArrayOutput) ElementType() reflect.Type {

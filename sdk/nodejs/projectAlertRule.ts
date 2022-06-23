@@ -8,51 +8,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new Rancher2 Project
- * const fooProject = new rancher2.Project("fooProject", {
- *     clusterId: "<cluster_id>",
- *     description: "Terraform project ",
- *     resourceQuota: {
- *         projectLimit: {
- *             limitsCpu: "2000m",
- *             limitsMemory: "2000Mi",
- *             requestsStorage: "2Gi",
- *         },
- *         namespaceDefaultLimit: {
- *             limitsCpu: "500m",
- *             limitsMemory: "500Mi",
- *             requestsStorage: "1Gi",
- *         },
- *     },
- *     containerResourceLimit: {
- *         limitsCpu: "20m",
- *         limitsMemory: "20Mi",
- *         requestsCpu: "1m",
- *         requestsMemory: "1Mi",
- *     },
- * });
- * // Create a new Rancher2 Project Alert Group
- * const fooProjectAlertGroup = new rancher2.ProjectAlertGroup("fooProjectAlertGroup", {
- *     description: "Terraform project alert group",
- *     projectId: fooProject.id,
- *     groupIntervalSeconds: 300,
- *     repeatIntervalSeconds: 3600,
- * });
- * // Create a new Rancher2 Project Alert Rule
- * const fooProjectAlertRule = new rancher2.ProjectAlertRule("fooProjectAlertRule", {
- *     projectId: fooProjectAlertGroup.projectId,
- *     groupId: fooProjectAlertGroup.id,
- *     groupIntervalSeconds: 600,
- *     repeatIntervalSeconds: 6000,
- * });
- * ```
- *
  * ## Import
  *
  * Project Alert Rule can be imported using the Rancher project alert rule ID

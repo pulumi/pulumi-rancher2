@@ -7,18 +7,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 namespace.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getNamespace({
- *     name: "foo",
- *     projectId: rancher2_cluster["foo-custom"].default_project_id,
- * });
- * ```
  */
 export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceResult> {
     if (!opts) {

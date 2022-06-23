@@ -369,6 +369,91 @@ func (o AppV2Output) ToAppV2OutputWithContext(ctx context.Context) AppV2Output {
 	return o
 }
 
+// Annotations for the app v2 (map)
+func (o AppV2Output) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The app v2 chart name (string)
+func (o AppV2Output) ChartName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.ChartName }).(pulumi.StringOutput)
+}
+
+// The app v2 chart version (string)
+func (o AppV2Output) ChartVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.ChartVersion }).(pulumi.StringOutput)
+}
+
+// Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
+func (o AppV2Output) CleanupOnFail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.BoolPtrOutput { return v.CleanupOnFail }).(pulumi.BoolPtrOutput)
+}
+
+// The cluster id of the app (string)
+func (o AppV2Output) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// (Computed) The cluster name of the app (string)
+func (o AppV2Output) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// Disable app v2 chart hooks. Default: `false` (bool)
+func (o AppV2Output) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.BoolPtrOutput { return v.DisableHooks }).(pulumi.BoolPtrOutput)
+}
+
+// Disable app V2 Open API Validation. Default: `false` (bool)
+func (o AppV2Output) DisableOpenApiValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.BoolPtrOutput { return v.DisableOpenApiValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Force app V2 chart upgrade. Default: `false` (bool)
+func (o AppV2Output) ForceUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.BoolPtrOutput { return v.ForceUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// Labels for the app v2 (map)
+func (o AppV2Output) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the app v2 (string)
+func (o AppV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace of the app v2 (string)
+func (o AppV2Output) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Deploy the app v2 within project ID (string)
+func (o AppV2Output) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Repo name (string)
+func (o AppV2Output) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.RepoName }).(pulumi.StringOutput)
+}
+
+// (Computed) The system default registry of the app (string)
+func (o AppV2Output) SystemDefaultRegistry() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.SystemDefaultRegistry }).(pulumi.StringOutput)
+}
+
+// The app v2 values yaml. Yaml format is required (string)
+func (o AppV2Output) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringPtrOutput { return v.Values }).(pulumi.StringPtrOutput)
+}
+
+// Wait until app is deployed. Default: `true` (bool)
+func (o AppV2Output) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.BoolPtrOutput { return v.Wait }).(pulumi.BoolPtrOutput)
+}
+
 type AppV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (AppV2ArrayOutput) ElementType() reflect.Type {

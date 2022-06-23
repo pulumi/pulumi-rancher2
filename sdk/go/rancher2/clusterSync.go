@@ -331,6 +331,60 @@ func (o ClusterSyncOutput) ToClusterSyncOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// The Cluster ID of the node (string).
+func (o ClusterSyncOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// (Computed) Default project ID for the cluster sync (string)
+func (o ClusterSyncOutput) DefaultProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.StringOutput { return v.DefaultProjectId }).(pulumi.StringOutput)
+}
+
+// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
+func (o ClusterSyncOutput) KubeConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.StringOutput { return v.KubeConfig }).(pulumi.StringOutput)
+}
+
+// The node pool IDs used by the cluster id (list)
+func (o ClusterSyncOutput) NodePoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.StringArrayOutput { return v.NodePoolIds }).(pulumi.StringArrayOutput)
+}
+
+// (Computed) The cluster nodes (list).
+func (o ClusterSyncOutput) Nodes() ClusterSyncNodeArrayOutput {
+	return o.ApplyT(func(v *ClusterSync) ClusterSyncNodeArrayOutput { return v.Nodes }).(ClusterSyncNodeArrayOutput)
+}
+
+// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+func (o ClusterSyncOutput) StateConfirm() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.IntPtrOutput { return v.StateConfirm }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterSyncOutput) Synced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.BoolPtrOutput { return v.Synced }).(pulumi.BoolPtrOutput)
+}
+
+// (Computed) System project ID for the cluster sync (string)
+func (o ClusterSyncOutput) SystemProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.StringOutput { return v.SystemProjectId }).(pulumi.StringOutput)
+}
+
+// Wait until alerting is up and running. Default: `false` (bool)
+func (o ClusterSyncOutput) WaitAlerting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.BoolPtrOutput { return v.WaitAlerting }).(pulumi.BoolPtrOutput)
+}
+
+// Wait until all catalogs are downloaded and active. Default: `false` (bool)
+func (o ClusterSyncOutput) WaitCatalogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.BoolPtrOutput { return v.WaitCatalogs }).(pulumi.BoolPtrOutput)
+}
+
+// Wait until monitoring is up and running. Default: `false` (bool)
+func (o ClusterSyncOutput) WaitMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.BoolPtrOutput { return v.WaitMonitoring }).(pulumi.BoolPtrOutput)
+}
+
 type ClusterSyncArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterSyncArrayOutput) ElementType() reflect.Type {

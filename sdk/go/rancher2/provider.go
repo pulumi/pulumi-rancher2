@@ -140,6 +140,36 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// API Key used to authenticate with the rancher server
+func (o ProviderOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// The URL to the rancher API
+func (o ProviderOutput) ApiUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.ApiUrl }).(pulumi.StringOutput)
+}
+
+// CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
+func (o ProviderOutput) CaCerts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CaCerts }).(pulumi.StringPtrOutput)
+}
+
+// API secret used to authenticate with the rancher server
+func (o ProviderOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
+func (o ProviderOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// API token used to authenticate with the rancher server
+func (o ProviderOutput) TokenKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TokenKey }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})

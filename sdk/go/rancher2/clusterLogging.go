@@ -343,6 +343,81 @@ func (o ClusterLoggingOutput) ToClusterLoggingOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Annotations for Cluster Logging object (map)
+func (o ClusterLoggingOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterLogging) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The cluster id to configure logging (string)
+func (o ClusterLoggingOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterLogging) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+func (o ClusterLoggingOutput) CustomTargetConfig() ClusterLoggingCustomTargetConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterLogging) ClusterLoggingCustomTargetConfigPtrOutput { return v.CustomTargetConfig }).(ClusterLoggingCustomTargetConfigPtrOutput)
+}
+
+// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+func (o ClusterLoggingOutput) ElasticsearchConfig() ClusterLoggingElasticsearchConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterLogging) ClusterLoggingElasticsearchConfigPtrOutput { return v.ElasticsearchConfig }).(ClusterLoggingElasticsearchConfigPtrOutput)
+}
+
+// Enable json log parsing. Default: `false` (bool)
+func (o ClusterLoggingOutput) EnableJsonParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterLogging) pulumi.BoolPtrOutput { return v.EnableJsonParsing }).(pulumi.BoolPtrOutput)
+}
+
+// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+func (o ClusterLoggingOutput) FluentdConfig() ClusterLoggingFluentdConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterLogging) ClusterLoggingFluentdConfigPtrOutput { return v.FluentdConfig }).(ClusterLoggingFluentdConfigPtrOutput)
+}
+
+// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+func (o ClusterLoggingOutput) KafkaConfig() ClusterLoggingKafkaConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterLogging) ClusterLoggingKafkaConfigPtrOutput { return v.KafkaConfig }).(ClusterLoggingKafkaConfigPtrOutput)
+}
+
+// The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+func (o ClusterLoggingOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterLogging) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Labels for Cluster Logging object (map)
+func (o ClusterLoggingOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterLogging) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the cluster logging config (string)
+func (o ClusterLoggingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterLogging) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace id from cluster logging (string)
+func (o ClusterLoggingOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterLogging) pulumi.StringPtrOutput { return v.NamespaceId }).(pulumi.StringPtrOutput)
+}
+
+// How often buffered logs would be flushed. Default: `3` seconds (int)
+func (o ClusterLoggingOutput) OutputFlushInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterLogging) pulumi.IntPtrOutput { return v.OutputFlushInterval }).(pulumi.IntPtrOutput)
+}
+
+// The output tags for Cluster Logging (map)
+func (o ClusterLoggingOutput) OutputTags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterLogging) pulumi.MapOutput { return v.OutputTags }).(pulumi.MapOutput)
+}
+
+// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+func (o ClusterLoggingOutput) SplunkConfig() ClusterLoggingSplunkConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterLogging) ClusterLoggingSplunkConfigPtrOutput { return v.SplunkConfig }).(ClusterLoggingSplunkConfigPtrOutput)
+}
+
+// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+func (o ClusterLoggingOutput) SyslogConfig() ClusterLoggingSyslogConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterLogging) ClusterLoggingSyslogConfigPtrOutput { return v.SyslogConfig }).(ClusterLoggingSyslogConfigPtrOutput)
+}
+
 type ClusterLoggingArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterLoggingArrayOutput) ElementType() reflect.Type {

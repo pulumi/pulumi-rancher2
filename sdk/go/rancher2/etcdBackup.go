@@ -275,6 +275,46 @@ func (o EtcdBackupOutput) ToEtcdBackupOutputWithContext(ctx context.Context) Etc
 	return o
 }
 
+// Annotations for Etcd Backup object (map)
+func (o EtcdBackupOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *EtcdBackup) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Backup config for etcd backup (list maxitems:1)
+func (o EtcdBackupOutput) BackupConfig() EtcdBackupBackupConfigOutput {
+	return o.ApplyT(func(v *EtcdBackup) EtcdBackupBackupConfigOutput { return v.BackupConfig }).(EtcdBackupBackupConfigOutput)
+}
+
+// Cluster ID to config Etcd Backup (string)
+func (o EtcdBackupOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EtcdBackup) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Filename of the Etcd Backup (string)
+func (o EtcdBackupOutput) Filename() pulumi.StringOutput {
+	return o.ApplyT(func(v *EtcdBackup) pulumi.StringOutput { return v.Filename }).(pulumi.StringOutput)
+}
+
+// Labels for Etcd Backup object (map)
+func (o EtcdBackupOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *EtcdBackup) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Manual execution of the Etcd Backup. Default `false` (bool)
+func (o EtcdBackupOutput) Manual() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EtcdBackup) pulumi.BoolPtrOutput { return v.Manual }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Etcd Backup (string)
+func (o EtcdBackupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EtcdBackup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Description for the Etcd Backup (string)
+func (o EtcdBackupOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EtcdBackup) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
 type EtcdBackupArrayOutput struct{ *pulumi.OutputState }
 
 func (EtcdBackupArrayOutput) ElementType() reflect.Type {

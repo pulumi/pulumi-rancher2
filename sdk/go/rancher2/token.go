@@ -281,6 +281,71 @@ func (o TokenOutput) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 	return o
 }
 
+// (Computed) Token access key part (string)
+func (o TokenOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// (Computed) Annotations of the token (map)
+func (o TokenOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Token) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Cluster ID for scoped token (string)
+func (o TokenOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// Token description (string)
+func (o TokenOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Computed) Token is enabled (bool)
+func (o TokenOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Token) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// (Computed) Token is expired (bool)
+func (o TokenOutput) Expired() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Token) pulumi.BoolOutput { return v.Expired }).(pulumi.BoolOutput)
+}
+
+// (Computed) Labels of the token (map)
+func (o TokenOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Token) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) Token name (string)
+func (o TokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Renew expired or disabled token
+func (o TokenOutput) Renew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Token) pulumi.BoolPtrOutput { return v.Renew }).(pulumi.BoolPtrOutput)
+}
+
+// (Computed/Sensitive) Token secret key part (string)
+func (o TokenOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+// (Computed/Sensitive) Token value (string)
+func (o TokenOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
+// Token time to live in seconds. Default `0` (int)
+func (o TokenOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Token) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+// (Computed) Token user ID (string)
+func (o TokenOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
 type TokenArrayOutput struct{ *pulumi.OutputState }
 
 func (TokenArrayOutput) ElementType() reflect.Type {

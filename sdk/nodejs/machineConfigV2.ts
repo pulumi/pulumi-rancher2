@@ -11,37 +11,6 @@ import * as utilities from "./utilities";
  * `amazonec2`, `azure`, `digitalocean`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
  *
  * **Note** This resource is used by
- *
- * ## Example Usage
- * ### Using the Harvester Node Driver
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo-harvesterClusterV2 = rancher2.getClusterV2({
- *     name: "foo-harvester",
- * });
- * // Create a new Cloud Credential for an imported Harvester cluster
- * const foo_harvesterCloudCredential = new rancher2.CloudCredential("foo-harvesterCloudCredential", {harvesterCredentialConfig: {
- *     clusterId: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.clusterV1Id),
- *     clusterType: "imported",
- *     kubeconfigContent: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.kubeConfig),
- * }});
- * // Create a new rancher2 machine config v2 using harvester node_driver
- * const foo_harvester_v2 = new rancher2.MachineConfigV2("foo-harvester-v2", {
- *     generateName: "foo-harvester-v2",
- *     harvesterConfig: {
- *         vmNamespace: "default",
- *         cpuCount: "2",
- *         memorySize: "4",
- *         diskSize: "40",
- *         networkName: "harvester-public/vlan1",
- *         imageName: "harvester-public/image-57hzg",
- *         sshUser: "ubuntu",
- *     },
- * });
- * ```
  */
 export class MachineConfigV2 extends pulumi.CustomResource {
     /**

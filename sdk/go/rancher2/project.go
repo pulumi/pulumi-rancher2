@@ -373,6 +373,61 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+// Annotations for Node Pool object (map)
+func (o ProjectOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Project) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The cluster id where create project (string)
+func (o ProjectOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Default containers resource limits on project (List maxitem:1)
+func (o ProjectOutput) ContainerResourceLimit() ProjectContainerResourceLimitPtrOutput {
+	return o.ApplyT(func(v *Project) ProjectContainerResourceLimitPtrOutput { return v.ContainerResourceLimit }).(ProjectContainerResourceLimitPtrOutput)
+}
+
+// A project description (string)
+func (o ProjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enable built-in project monitoring. Default `false` (bool)
+func (o ProjectOutput) EnableProjectMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.EnableProjectMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+// Labels for Node Pool object (map)
+func (o ProjectOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Project) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the project (string)
+func (o ProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Default Pod Security Policy ID for the project (string)
+func (o ProjectOutput) PodSecurityPolicyTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.PodSecurityPolicyTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
+func (o ProjectOutput) ProjectMonitoringInput() ProjectProjectMonitoringInputPtrOutput {
+	return o.ApplyT(func(v *Project) ProjectProjectMonitoringInputPtrOutput { return v.ProjectMonitoringInput }).(ProjectProjectMonitoringInputPtrOutput)
+}
+
+// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+func (o ProjectOutput) ResourceQuota() ProjectResourceQuotaPtrOutput {
+	return o.ApplyT(func(v *Project) ProjectResourceQuotaPtrOutput { return v.ResourceQuota }).(ProjectResourceQuotaPtrOutput)
+}
+
+// Wait for cluster becomes active. Default `false` (bool)
+func (o ProjectOutput) WaitForCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.WaitForCluster }).(pulumi.BoolPtrOutput)
+}
+
 type ProjectArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectArrayOutput) ElementType() reflect.Type {

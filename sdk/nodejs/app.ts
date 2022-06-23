@@ -5,59 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 App
- * const foo = new rancher2.App("foo", {
- *     answers: {
- *         foo: "bar",
- *         "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": true,
- *         ingress_host: "test.xip.io",
- *     },
- *     catalogName: "<catalog_name>",
- *     description: "Foo app",
- *     projectId: "<project_id>",
- *     targetNamespace: "<namespace_name>",
- *     templateName: "<template_name>",
- *     templateVersion: "<template_version>",
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 App in a new namespace
- * const fooNamespace = new rancher2.Namespace("fooNamespace", {
- *     description: "Foo namespace",
- *     projectId: "<project_id>",
- *     resourceQuota: {
- *         limit: {
- *             limitsCpu: "100m",
- *             limitsMemory: "100Mi",
- *             requestsStorage: "1Gi",
- *         },
- *     },
- * });
- * const fooApp = new rancher2.App("fooApp", {
- *     catalogName: "<catalog_name>",
- *     description: "Foo app",
- *     projectId: "<project_id>",
- *     templateName: "<template_name>",
- *     templateVersion: "<template_version>",
- *     targetNamespace: fooNamespace.id,
- *     answers: {
- *         ingress_host: "test.xip.io",
- *         foo: "bar",
- *         "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": true,
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Apps can be imported using the app ID in the format `<project_id>:<app_name>`

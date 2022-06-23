@@ -269,6 +269,61 @@ func (o StorageClassV2Output) ToStorageClassV2OutputWithContext(ctx context.Cont
 	return o
 }
 
+// Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
+func (o StorageClassV2Output) AllowVolumeExpansion() pulumi.BoolOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.BoolOutput { return v.AllowVolumeExpansion }).(pulumi.BoolOutput)
+}
+
+// Annotations for the storageClass v2 (map)
+func (o StorageClassV2Output) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The cluster id of the storageClass V2 (string)
+func (o StorageClassV2Output) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The provisioner of the storageClass v2 (string)
+func (o StorageClassV2Output) K8sProvisioner() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.StringOutput { return v.K8sProvisioner }).(pulumi.StringOutput)
+}
+
+// Labels for the storageClass v2 (map)
+func (o StorageClassV2Output) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The mount options for storageClass v2 (list)
+func (o StorageClassV2Output) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.StringArrayOutput { return v.MountOptions }).(pulumi.StringArrayOutput)
+}
+
+// The name of the storageClass v2 (string)
+func (o StorageClassV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parameters for storageClass v2 (string)
+func (o StorageClassV2Output) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.MapOutput { return v.Parameters }).(pulumi.MapOutput)
+}
+
+// The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
+func (o StorageClassV2Output) ReclaimPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.StringPtrOutput { return v.ReclaimPolicy }).(pulumi.StringPtrOutput)
+}
+
+// (Computed) The k8s resource version (string)
+func (o StorageClassV2Output) ResourceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.StringOutput { return v.ResourceVersion }).(pulumi.StringOutput)
+}
+
+// The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
+func (o StorageClassV2Output) VolumeBindingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.StringPtrOutput { return v.VolumeBindingMode }).(pulumi.StringPtrOutput)
+}
+
 type StorageClassV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (StorageClassV2ArrayOutput) ElementType() reflect.Type {
