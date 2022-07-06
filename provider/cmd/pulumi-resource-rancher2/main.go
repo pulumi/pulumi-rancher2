@@ -17,11 +17,15 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	_ "embed"
 
 	rancher2 "github.com/pulumi/pulumi-rancher2/provider/v3"
 	"github.com/pulumi/pulumi-rancher2/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
+
+//go:embed schema-embed.json
+var pulumiSchema []byte
 
 func main() {
 	tfbridge.Main("rancher2", version.Version, rancher2.Provider(), pulumiSchema)
