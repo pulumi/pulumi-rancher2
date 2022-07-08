@@ -18,6 +18,7 @@ yarn.lock
 
 ## Provider
 **schema.go
+**schema-embed.json
 
 ## SDKs
 sdk/nodejs/node_modules/yn/package.json
@@ -26,6 +27,12 @@ sdk/dotnet/version.txt
 sdk/nodejs/bin/
 sdk/nodejs/node_modules/
 sdk/python/bin/
+
+sdk/java/build
+sdk/java/.gradle
+sdk/java/gradle
+sdk/java/gradlew
+sdk/java/gradlew.bat
 
 ## Examples
 **.pyc
