@@ -15,56 +15,39 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
      * @return The AWS Client ID to use (string)
      * 
      */
-    private final @Nullable String accessKey;
+    private @Nullable String accessKey;
     /**
      * @return Bucket name for S3 service (string)
      * 
      */
-    private final String bucketName;
+    private String bucketName;
     /**
      * @return Base64 encoded custom CA for S3 service. Use filebase64(&lt;FILE&gt;) for encoding file. Available from Rancher v2.2.5 (string)
      * 
      */
-    private final @Nullable String customCa;
+    private @Nullable String customCa;
     /**
      * @return Endpoint for S3 service (string)
      * 
      */
-    private final String endpoint;
+    private String endpoint;
     /**
      * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
      * 
      */
-    private final @Nullable String folder;
+    private @Nullable String folder;
     /**
      * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return The AWS Client Secret associated with the Client ID (string)
      * 
      */
-    private final @Nullable String secretKey;
+    private @Nullable String secretKey;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig(
-        @CustomType.Parameter("accessKey") @Nullable String accessKey,
-        @CustomType.Parameter("bucketName") String bucketName,
-        @CustomType.Parameter("customCa") @Nullable String customCa,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("folder") @Nullable String folder,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("secretKey") @Nullable String secretKey) {
-        this.accessKey = accessKey;
-        this.bucketName = bucketName;
-        this.customCa = customCa;
-        this.endpoint = endpoint;
-        this.folder = folder;
-        this.region = region;
-        this.secretKey = secretKey;
-    }
-
+    private ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig() {}
     /**
      * @return The AWS Client ID to use (string)
      * 
@@ -122,7 +105,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
     public static Builder builder(ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessKey;
         private String bucketName;
@@ -131,11 +114,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
         private @Nullable String folder;
         private @Nullable String region;
         private @Nullable String secretKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -147,35 +126,51 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
     	      this.secretKey = defaults.secretKey;
         }
 
+        @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
             this.accessKey = accessKey;
             return this;
         }
+        @CustomType.Setter
         public Builder bucketName(String bucketName) {
             this.bucketName = Objects.requireNonNull(bucketName);
             return this;
         }
+        @CustomType.Setter
         public Builder customCa(@Nullable String customCa) {
             this.customCa = customCa;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder folder(@Nullable String folder) {
             this.folder = folder;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(@Nullable String secretKey) {
             this.secretKey = secretKey;
             return this;
-        }        public ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig build() {
-            return new ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig(accessKey, bucketName, customCa, endpoint, folder, region, secretKey);
+        }
+        public ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig build() {
+            final var o = new ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig();
+            o.accessKey = accessKey;
+            o.bucketName = bucketName;
+            o.customCa = customCa;
+            o.endpoint = endpoint;
+            o.folder = folder;
+            o.region = region;
+            o.secretKey = secretKey;
+            return o;
         }
     }
 }

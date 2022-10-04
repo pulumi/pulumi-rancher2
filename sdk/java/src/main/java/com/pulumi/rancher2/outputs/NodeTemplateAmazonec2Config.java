@@ -17,238 +17,169 @@ public final class NodeTemplateAmazonec2Config {
      * @return AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
-    private final @Nullable String accessKey;
+    private @Nullable String accessKey;
     /**
      * @return AWS machine image (string)
      * 
      */
-    private final String ami;
+    private String ami;
     /**
      * @return AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
      * 
      */
-    private final @Nullable String blockDurationMinutes;
+    private @Nullable String blockDurationMinutes;
     /**
      * @return AWS root device name. Default `/dev/sda1` (string)
      * 
      */
-    private final @Nullable String deviceName;
+    private @Nullable String deviceName;
     /**
      * @return Encrypt EBS volume. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean encryptEbsVolume;
+    private @Nullable Boolean encryptEbsVolume;
     /**
      * @return Optional endpoint URL (hostname only or fully qualified URI) (string)
      * 
      */
-    private final @Nullable String endpoint;
+    private @Nullable String endpoint;
     /**
      * @return AWS IAM Instance Profile (string)
      * 
      */
-    private final @Nullable String iamInstanceProfile;
+    private @Nullable String iamInstanceProfile;
     /**
      * @return Disable SSL when sending requests (bool)
      * 
      */
-    private final @Nullable Boolean insecureTransport;
+    private @Nullable Boolean insecureTransport;
     /**
      * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
      * 
      */
-    private final @Nullable String instanceType;
+    private @Nullable String instanceType;
     /**
      * @return OpenStack keypair to use to SSH to the instance (string)
      * 
      */
-    private final @Nullable String keypairName;
+    private @Nullable String keypairName;
     /**
      * @return Custom KMS key ID using the AWS Managed CMK (string)
      * 
      */
-    private final @Nullable String kmsKey;
+    private @Nullable String kmsKey;
     /**
      * @return Enable monitoring for droplet. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean monitoring;
+    private @Nullable Boolean monitoring;
     /**
      * @return Make the specified port number accessible from the Internet. (list)
      * 
      */
-    private final @Nullable List<String> openPorts;
+    private @Nullable List<String> openPorts;
     /**
      * @return Only use a private IP address. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean privateAddressOnly;
+    private @Nullable Boolean privateAddressOnly;
     /**
      * @return OpenStack region name (string)
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return Set this flag to request spot instance. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean requestSpotInstance;
+    private @Nullable Boolean requestSpotInstance;
     /**
      * @return Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
      * 
      */
-    private final @Nullable String retries;
+    private @Nullable String retries;
     /**
      * @return AWS root disk size (in GB). Default `16` (string)
      * 
      */
-    private final @Nullable String rootSize;
+    private @Nullable String rootSize;
     /**
      * @return AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
-    private final @Nullable String secretKey;
+    private @Nullable String secretKey;
     /**
      * @return Skip adding default rules to security groups (bool)
      * 
      */
-    private final @Nullable Boolean securityGroupReadonly;
+    private @Nullable Boolean securityGroupReadonly;
     /**
      * @return AWS VPC security group. (list)
      * 
      */
-    private final List<String> securityGroups;
+    private List<String> securityGroups;
     /**
      * @return AWS Session Token (string)
      * 
      */
-    private final @Nullable String sessionToken;
+    private @Nullable String sessionToken;
     /**
      * @return AWS spot instance bid price (in dollar). Default `0.50` (string)
      * 
      */
-    private final @Nullable String spotPrice;
+    private @Nullable String spotPrice;
     /**
      * @return SSH Key for Instance (string)
      * 
      */
-    private final @Nullable String sshKeypath;
+    private @Nullable String sshKeypath;
     /**
      * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
-    private final @Nullable String sshUser;
+    private @Nullable String sshUser;
     /**
      * @return AWS VPC subnet id (string)
      * 
      */
-    private final String subnetId;
+    private String subnetId;
     /**
      * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
-    private final @Nullable String tags;
+    private @Nullable String tags;
     /**
      * @return Create an EBS optimized instance. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean useEbsOptimizedInstance;
+    private @Nullable Boolean useEbsOptimizedInstance;
     /**
      * @return Force the usage of private IP address. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean usePrivateAddress;
+    private @Nullable Boolean usePrivateAddress;
     /**
      * @return Path to file with cloud-init user-data (string)
      * 
      */
-    private final @Nullable String userdata;
+    private @Nullable String userdata;
     /**
      * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
-    private final @Nullable String volumeType;
+    private @Nullable String volumeType;
     /**
      * @return AWS VPC id. (string)
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return AWS zone for instance (i.e. a,b,c,d,e) (string)
      * 
      */
-    private final String zone;
+    private String zone;
 
-    @CustomType.Constructor
-    private NodeTemplateAmazonec2Config(
-        @CustomType.Parameter("accessKey") @Nullable String accessKey,
-        @CustomType.Parameter("ami") String ami,
-        @CustomType.Parameter("blockDurationMinutes") @Nullable String blockDurationMinutes,
-        @CustomType.Parameter("deviceName") @Nullable String deviceName,
-        @CustomType.Parameter("encryptEbsVolume") @Nullable Boolean encryptEbsVolume,
-        @CustomType.Parameter("endpoint") @Nullable String endpoint,
-        @CustomType.Parameter("iamInstanceProfile") @Nullable String iamInstanceProfile,
-        @CustomType.Parameter("insecureTransport") @Nullable Boolean insecureTransport,
-        @CustomType.Parameter("instanceType") @Nullable String instanceType,
-        @CustomType.Parameter("keypairName") @Nullable String keypairName,
-        @CustomType.Parameter("kmsKey") @Nullable String kmsKey,
-        @CustomType.Parameter("monitoring") @Nullable Boolean monitoring,
-        @CustomType.Parameter("openPorts") @Nullable List<String> openPorts,
-        @CustomType.Parameter("privateAddressOnly") @Nullable Boolean privateAddressOnly,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("requestSpotInstance") @Nullable Boolean requestSpotInstance,
-        @CustomType.Parameter("retries") @Nullable String retries,
-        @CustomType.Parameter("rootSize") @Nullable String rootSize,
-        @CustomType.Parameter("secretKey") @Nullable String secretKey,
-        @CustomType.Parameter("securityGroupReadonly") @Nullable Boolean securityGroupReadonly,
-        @CustomType.Parameter("securityGroups") List<String> securityGroups,
-        @CustomType.Parameter("sessionToken") @Nullable String sessionToken,
-        @CustomType.Parameter("spotPrice") @Nullable String spotPrice,
-        @CustomType.Parameter("sshKeypath") @Nullable String sshKeypath,
-        @CustomType.Parameter("sshUser") @Nullable String sshUser,
-        @CustomType.Parameter("subnetId") String subnetId,
-        @CustomType.Parameter("tags") @Nullable String tags,
-        @CustomType.Parameter("useEbsOptimizedInstance") @Nullable Boolean useEbsOptimizedInstance,
-        @CustomType.Parameter("usePrivateAddress") @Nullable Boolean usePrivateAddress,
-        @CustomType.Parameter("userdata") @Nullable String userdata,
-        @CustomType.Parameter("volumeType") @Nullable String volumeType,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("zone") String zone) {
-        this.accessKey = accessKey;
-        this.ami = ami;
-        this.blockDurationMinutes = blockDurationMinutes;
-        this.deviceName = deviceName;
-        this.encryptEbsVolume = encryptEbsVolume;
-        this.endpoint = endpoint;
-        this.iamInstanceProfile = iamInstanceProfile;
-        this.insecureTransport = insecureTransport;
-        this.instanceType = instanceType;
-        this.keypairName = keypairName;
-        this.kmsKey = kmsKey;
-        this.monitoring = monitoring;
-        this.openPorts = openPorts;
-        this.privateAddressOnly = privateAddressOnly;
-        this.region = region;
-        this.requestSpotInstance = requestSpotInstance;
-        this.retries = retries;
-        this.rootSize = rootSize;
-        this.secretKey = secretKey;
-        this.securityGroupReadonly = securityGroupReadonly;
-        this.securityGroups = securityGroups;
-        this.sessionToken = sessionToken;
-        this.spotPrice = spotPrice;
-        this.sshKeypath = sshKeypath;
-        this.sshUser = sshUser;
-        this.subnetId = subnetId;
-        this.tags = tags;
-        this.useEbsOptimizedInstance = useEbsOptimizedInstance;
-        this.usePrivateAddress = usePrivateAddress;
-        this.userdata = userdata;
-        this.volumeType = volumeType;
-        this.vpcId = vpcId;
-        this.zone = zone;
-    }
-
+    private NodeTemplateAmazonec2Config() {}
     /**
      * @return AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
@@ -488,7 +419,7 @@ public final class NodeTemplateAmazonec2Config {
     public static Builder builder(NodeTemplateAmazonec2Config defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessKey;
         private String ami;
@@ -523,11 +454,7 @@ public final class NodeTemplateAmazonec2Config {
         private @Nullable String volumeType;
         private String vpcId;
         private String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeTemplateAmazonec2Config defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -565,54 +492,67 @@ public final class NodeTemplateAmazonec2Config {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
             this.accessKey = accessKey;
             return this;
         }
+        @CustomType.Setter
         public Builder ami(String ami) {
             this.ami = Objects.requireNonNull(ami);
             return this;
         }
+        @CustomType.Setter
         public Builder blockDurationMinutes(@Nullable String blockDurationMinutes) {
             this.blockDurationMinutes = blockDurationMinutes;
             return this;
         }
+        @CustomType.Setter
         public Builder deviceName(@Nullable String deviceName) {
             this.deviceName = deviceName;
             return this;
         }
+        @CustomType.Setter
         public Builder encryptEbsVolume(@Nullable Boolean encryptEbsVolume) {
             this.encryptEbsVolume = encryptEbsVolume;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
             this.endpoint = endpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder iamInstanceProfile(@Nullable String iamInstanceProfile) {
             this.iamInstanceProfile = iamInstanceProfile;
             return this;
         }
+        @CustomType.Setter
         public Builder insecureTransport(@Nullable Boolean insecureTransport) {
             this.insecureTransport = insecureTransport;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
+        @CustomType.Setter
         public Builder keypairName(@Nullable String keypairName) {
             this.keypairName = keypairName;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
             this.kmsKey = kmsKey;
             return this;
         }
+        @CustomType.Setter
         public Builder monitoring(@Nullable Boolean monitoring) {
             this.monitoring = monitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder openPorts(@Nullable List<String> openPorts) {
             this.openPorts = openPorts;
             return this;
@@ -620,34 +560,42 @@ public final class NodeTemplateAmazonec2Config {
         public Builder openPorts(String... openPorts) {
             return openPorts(List.of(openPorts));
         }
+        @CustomType.Setter
         public Builder privateAddressOnly(@Nullable Boolean privateAddressOnly) {
             this.privateAddressOnly = privateAddressOnly;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder requestSpotInstance(@Nullable Boolean requestSpotInstance) {
             this.requestSpotInstance = requestSpotInstance;
             return this;
         }
+        @CustomType.Setter
         public Builder retries(@Nullable String retries) {
             this.retries = retries;
             return this;
         }
+        @CustomType.Setter
         public Builder rootSize(@Nullable String rootSize) {
             this.rootSize = rootSize;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(@Nullable String secretKey) {
             this.secretKey = secretKey;
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupReadonly(@Nullable Boolean securityGroupReadonly) {
             this.securityGroupReadonly = securityGroupReadonly;
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroups(List<String> securityGroups) {
             this.securityGroups = Objects.requireNonNull(securityGroups);
             return this;
@@ -655,55 +603,102 @@ public final class NodeTemplateAmazonec2Config {
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
         }
+        @CustomType.Setter
         public Builder sessionToken(@Nullable String sessionToken) {
             this.sessionToken = sessionToken;
             return this;
         }
+        @CustomType.Setter
         public Builder spotPrice(@Nullable String spotPrice) {
             this.spotPrice = spotPrice;
             return this;
         }
+        @CustomType.Setter
         public Builder sshKeypath(@Nullable String sshKeypath) {
             this.sshKeypath = sshKeypath;
             return this;
         }
+        @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
             this.sshUser = sshUser;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetId(String subnetId) {
             this.subnetId = Objects.requireNonNull(subnetId);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable String tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder useEbsOptimizedInstance(@Nullable Boolean useEbsOptimizedInstance) {
             this.useEbsOptimizedInstance = useEbsOptimizedInstance;
             return this;
         }
+        @CustomType.Setter
         public Builder usePrivateAddress(@Nullable Boolean usePrivateAddress) {
             this.usePrivateAddress = usePrivateAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder userdata(@Nullable String userdata) {
             this.userdata = userdata;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeType(@Nullable String volumeType) {
             this.volumeType = volumeType;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
-        }        public NodeTemplateAmazonec2Config build() {
-            return new NodeTemplateAmazonec2Config(accessKey, ami, blockDurationMinutes, deviceName, encryptEbsVolume, endpoint, iamInstanceProfile, insecureTransport, instanceType, keypairName, kmsKey, monitoring, openPorts, privateAddressOnly, region, requestSpotInstance, retries, rootSize, secretKey, securityGroupReadonly, securityGroups, sessionToken, spotPrice, sshKeypath, sshUser, subnetId, tags, useEbsOptimizedInstance, usePrivateAddress, userdata, volumeType, vpcId, zone);
+        }
+        public NodeTemplateAmazonec2Config build() {
+            final var o = new NodeTemplateAmazonec2Config();
+            o.accessKey = accessKey;
+            o.ami = ami;
+            o.blockDurationMinutes = blockDurationMinutes;
+            o.deviceName = deviceName;
+            o.encryptEbsVolume = encryptEbsVolume;
+            o.endpoint = endpoint;
+            o.iamInstanceProfile = iamInstanceProfile;
+            o.insecureTransport = insecureTransport;
+            o.instanceType = instanceType;
+            o.keypairName = keypairName;
+            o.kmsKey = kmsKey;
+            o.monitoring = monitoring;
+            o.openPorts = openPorts;
+            o.privateAddressOnly = privateAddressOnly;
+            o.region = region;
+            o.requestSpotInstance = requestSpotInstance;
+            o.retries = retries;
+            o.rootSize = rootSize;
+            o.secretKey = secretKey;
+            o.securityGroupReadonly = securityGroupReadonly;
+            o.securityGroups = securityGroups;
+            o.sessionToken = sessionToken;
+            o.spotPrice = spotPrice;
+            o.sshKeypath = sshKeypath;
+            o.sshUser = sshUser;
+            o.subnetId = subnetId;
+            o.tags = tags;
+            o.useEbsOptimizedInstance = useEbsOptimizedInstance;
+            o.usePrivateAddress = usePrivateAddress;
+            o.userdata = userdata;
+            o.volumeType = volumeType;
+            o.vpcId = vpcId;
+            o.zone = zone;
+            return o;
         }
     }
 }

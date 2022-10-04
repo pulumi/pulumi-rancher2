@@ -18,97 +18,66 @@ public final class GetRoleTempalteResult {
      * @return (Computed) Administrative role template (bool)
      * 
      */
-    private final Boolean administrative;
+    private Boolean administrative;
     /**
      * @return (Computed) Annotations for role template object (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) Builtin role template (string)
      * 
      */
-    private final Boolean builtin;
-    private final String context;
+    private Boolean builtin;
+    private String context;
     /**
      * @return (Computed) Default role template for new created cluster or project (bool)
      * 
      */
-    private final Boolean defaultRole;
+    private Boolean defaultRole;
     /**
      * @return (Computed) Role template description (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return (Computed) External role template (bool)
      * 
      */
-    private final Boolean external;
+    private Boolean external;
     /**
      * @return (Computed) Hidden role template (bool)
      * 
      */
-    private final Boolean hidden;
+    private Boolean hidden;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for role template object (map)
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return (Computed) Locked role template (bool)
      * 
      */
-    private final Boolean locked;
-    private final String name;
+    private Boolean locked;
+    private String name;
     /**
      * @return (Computed) Inherit role template IDs (list)
      * 
      */
-    private final List<String> roleTemplateIds;
+    private List<String> roleTemplateIds;
     /**
      * @return (Computed) Role template policy rules (list)
      * 
      */
-    private final List<GetRoleTempalteRule> rules;
+    private List<GetRoleTempalteRule> rules;
 
-    @CustomType.Constructor
-    private GetRoleTempalteResult(
-        @CustomType.Parameter("administrative") Boolean administrative,
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("builtin") Boolean builtin,
-        @CustomType.Parameter("context") String context,
-        @CustomType.Parameter("defaultRole") Boolean defaultRole,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("external") Boolean external,
-        @CustomType.Parameter("hidden") Boolean hidden,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("locked") Boolean locked,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("roleTemplateIds") List<String> roleTemplateIds,
-        @CustomType.Parameter("rules") List<GetRoleTempalteRule> rules) {
-        this.administrative = administrative;
-        this.annotations = annotations;
-        this.builtin = builtin;
-        this.context = context;
-        this.defaultRole = defaultRole;
-        this.description = description;
-        this.external = external;
-        this.hidden = hidden;
-        this.id = id;
-        this.labels = labels;
-        this.locked = locked;
-        this.name = name;
-        this.roleTemplateIds = roleTemplateIds;
-        this.rules = rules;
-    }
-
+    private GetRoleTempalteResult() {}
     /**
      * @return (Computed) Administrative role template (bool)
      * 
@@ -207,7 +176,7 @@ public final class GetRoleTempalteResult {
     public static Builder builder(GetRoleTempalteResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean administrative;
         private Map<String,Object> annotations;
@@ -223,11 +192,7 @@ public final class GetRoleTempalteResult {
         private String name;
         private List<String> roleTemplateIds;
         private List<GetRoleTempalteRule> rules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRoleTempalteResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.administrative = defaults.administrative;
@@ -246,54 +211,67 @@ public final class GetRoleTempalteResult {
     	      this.rules = defaults.rules;
         }
 
+        @CustomType.Setter
         public Builder administrative(Boolean administrative) {
             this.administrative = Objects.requireNonNull(administrative);
             return this;
         }
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder builtin(Boolean builtin) {
             this.builtin = Objects.requireNonNull(builtin);
             return this;
         }
+        @CustomType.Setter
         public Builder context(String context) {
             this.context = Objects.requireNonNull(context);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultRole(Boolean defaultRole) {
             this.defaultRole = Objects.requireNonNull(defaultRole);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder external(Boolean external) {
             this.external = Objects.requireNonNull(external);
             return this;
         }
+        @CustomType.Setter
         public Builder hidden(Boolean hidden) {
             this.hidden = Objects.requireNonNull(hidden);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder locked(Boolean locked) {
             this.locked = Objects.requireNonNull(locked);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder roleTemplateIds(List<String> roleTemplateIds) {
             this.roleTemplateIds = Objects.requireNonNull(roleTemplateIds);
             return this;
@@ -301,14 +279,31 @@ public final class GetRoleTempalteResult {
         public Builder roleTemplateIds(String... roleTemplateIds) {
             return roleTemplateIds(List.of(roleTemplateIds));
         }
+        @CustomType.Setter
         public Builder rules(List<GetRoleTempalteRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
         }
         public Builder rules(GetRoleTempalteRule... rules) {
             return rules(List.of(rules));
-        }        public GetRoleTempalteResult build() {
-            return new GetRoleTempalteResult(administrative, annotations, builtin, context, defaultRole, description, external, hidden, id, labels, locked, name, roleTemplateIds, rules);
+        }
+        public GetRoleTempalteResult build() {
+            final var o = new GetRoleTempalteResult();
+            o.administrative = administrative;
+            o.annotations = annotations;
+            o.builtin = builtin;
+            o.context = context;
+            o.defaultRole = defaultRole;
+            o.description = description;
+            o.external = external;
+            o.hidden = hidden;
+            o.id = id;
+            o.labels = labels;
+            o.locked = locked;
+            o.name = name;
+            o.roleTemplateIds = roleTemplateIds;
+            o.rules = rules;
+            return o;
         }
     }
 }

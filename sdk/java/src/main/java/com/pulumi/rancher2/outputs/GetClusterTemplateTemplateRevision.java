@@ -21,50 +21,29 @@ public final class GetClusterTemplateTemplateRevision {
      * @return (Computed) Annotations for the cluster template (map)
      * 
      */
-    private final Map<String,Object> annotations;
-    private final GetClusterTemplateTemplateRevisionClusterConfig clusterConfig;
-    private final String clusterTemplateId;
-    private final @Nullable Boolean default_;
-    private final @Nullable Boolean enabled;
+    private Map<String,Object> annotations;
+    private GetClusterTemplateTemplateRevisionClusterConfig clusterConfig;
+    private String clusterTemplateId;
+    private @Nullable Boolean default_;
+    private @Nullable Boolean enabled;
     /**
      * @return (Computed) The ID of the resource (string)
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for the cluster template (map)
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return The cluster template name (string)
      * 
      */
-    private final String name;
-    private final @Nullable List<GetClusterTemplateTemplateRevisionQuestion> questions;
+    private String name;
+    private @Nullable List<GetClusterTemplateTemplateRevisionQuestion> questions;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevision(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("clusterConfig") GetClusterTemplateTemplateRevisionClusterConfig clusterConfig,
-        @CustomType.Parameter("clusterTemplateId") String clusterTemplateId,
-        @CustomType.Parameter("default") @Nullable Boolean default_,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("questions") @Nullable List<GetClusterTemplateTemplateRevisionQuestion> questions) {
-        this.annotations = annotations;
-        this.clusterConfig = clusterConfig;
-        this.clusterTemplateId = clusterTemplateId;
-        this.default_ = default_;
-        this.enabled = enabled;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.questions = questions;
-    }
-
+    private GetClusterTemplateTemplateRevision() {}
     /**
      * @return (Computed) Annotations for the cluster template (map)
      * 
@@ -116,7 +95,7 @@ public final class GetClusterTemplateTemplateRevision {
     public static Builder builder(GetClusterTemplateTemplateRevision defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private GetClusterTemplateTemplateRevisionClusterConfig clusterConfig;
@@ -127,11 +106,7 @@ public final class GetClusterTemplateTemplateRevision {
         private Map<String,Object> labels;
         private String name;
         private @Nullable List<GetClusterTemplateTemplateRevisionQuestion> questions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevision defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -145,46 +120,66 @@ public final class GetClusterTemplateTemplateRevision {
     	      this.questions = defaults.questions;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterConfig(GetClusterTemplateTemplateRevisionClusterConfig clusterConfig) {
             this.clusterConfig = Objects.requireNonNull(clusterConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterTemplateId(String clusterTemplateId) {
             this.clusterTemplateId = Objects.requireNonNull(clusterTemplateId);
             return this;
         }
+        @CustomType.Setter("default")
         public Builder default_(@Nullable Boolean default_) {
             this.default_ = default_;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder questions(@Nullable List<GetClusterTemplateTemplateRevisionQuestion> questions) {
             this.questions = questions;
             return this;
         }
         public Builder questions(GetClusterTemplateTemplateRevisionQuestion... questions) {
             return questions(List.of(questions));
-        }        public GetClusterTemplateTemplateRevision build() {
-            return new GetClusterTemplateTemplateRevision(annotations, clusterConfig, clusterTemplateId, default_, enabled, id, labels, name, questions);
+        }
+        public GetClusterTemplateTemplateRevision build() {
+            final var o = new GetClusterTemplateTemplateRevision();
+            o.annotations = annotations;
+            o.clusterConfig = clusterConfig;
+            o.clusterTemplateId = clusterTemplateId;
+            o.default_ = default_;
+            o.enabled = enabled;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.questions = questions;
+            return o;
         }
     }
 }

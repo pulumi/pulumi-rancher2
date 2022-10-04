@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotifierPagerdutyConfig {
-    private final @Nullable String proxyUrl;
-    private final String serviceKey;
+    private @Nullable String proxyUrl;
+    private String serviceKey;
 
-    @CustomType.Constructor
-    private GetNotifierPagerdutyConfig(
-        @CustomType.Parameter("proxyUrl") @Nullable String proxyUrl,
-        @CustomType.Parameter("serviceKey") String serviceKey) {
-        this.proxyUrl = proxyUrl;
-        this.serviceKey = serviceKey;
-    }
-
+    private GetNotifierPagerdutyConfig() {}
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
@@ -36,30 +29,32 @@ public final class GetNotifierPagerdutyConfig {
     public static Builder builder(GetNotifierPagerdutyConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String proxyUrl;
         private String serviceKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNotifierPagerdutyConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.proxyUrl = defaults.proxyUrl;
     	      this.serviceKey = defaults.serviceKey;
         }
 
+        @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
             this.proxyUrl = proxyUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceKey(String serviceKey) {
             this.serviceKey = Objects.requireNonNull(serviceKey);
             return this;
-        }        public GetNotifierPagerdutyConfig build() {
-            return new GetNotifierPagerdutyConfig(proxyUrl, serviceKey);
+        }
+        public GetNotifierPagerdutyConfig build() {
+            final var o = new GetNotifierPagerdutyConfig();
+            o.proxyUrl = proxyUrl;
+            o.serviceKey = serviceKey;
+            return o;
         }
     }
 }

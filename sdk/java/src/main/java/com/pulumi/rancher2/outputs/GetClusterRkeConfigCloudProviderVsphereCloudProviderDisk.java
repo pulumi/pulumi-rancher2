@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk {
-    private final String scsiControllerType;
+    private String scsiControllerType;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk(@CustomType.Parameter("scsiControllerType") String scsiControllerType) {
-        this.scsiControllerType = scsiControllerType;
-    }
-
+    private GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk() {}
     public String scsiControllerType() {
         return this.scsiControllerType;
     }
@@ -27,24 +23,24 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk {
     public static Builder builder(GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String scsiControllerType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.scsiControllerType = defaults.scsiControllerType;
         }
 
+        @CustomType.Setter
         public Builder scsiControllerType(String scsiControllerType) {
             this.scsiControllerType = Objects.requireNonNull(scsiControllerType);
             return this;
-        }        public GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk build() {
-            return new GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk(scsiControllerType);
+        }
+        public GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk build() {
+            final var o = new GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk();
+            o.scsiControllerType = scsiControllerType;
+            return o;
         }
     }
 }

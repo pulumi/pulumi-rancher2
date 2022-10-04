@@ -15,20 +15,11 @@ public final class GetPrincipalResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final @Nullable String type;
+    private String id;
+    private String name;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private GetPrincipalResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-    }
-
+    private GetPrincipalResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -50,16 +41,12 @@ public final class GetPrincipalResult {
     public static Builder builder(GetPrincipalResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String name;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPrincipalResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -67,19 +54,27 @@ public final class GetPrincipalResult {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public GetPrincipalResult build() {
-            return new GetPrincipalResult(id, name, type);
+        }
+        public GetPrincipalResult build() {
+            final var o = new GetPrincipalResult();
+            o.id = id;
+            o.name = name;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -15,42 +15,29 @@ public final class CloudCredentialAzureCredentialConfig {
      * @return Azure Service Principal Account ID (string)
      * 
      */
-    private final String clientId;
+    private String clientId;
     /**
      * @return Azure Service Principal Account password (string)
      * 
      */
-    private final String clientSecret;
+    private String clientSecret;
     /**
      * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
      * 
      */
-    private final @Nullable String environment;
+    private @Nullable String environment;
     /**
      * @return Azure Subscription ID (string)
      * 
      */
-    private final String subscriptionId;
+    private String subscriptionId;
     /**
      * @return Azure Tenant ID (string)
      * 
      */
-    private final @Nullable String tenantId;
+    private @Nullable String tenantId;
 
-    @CustomType.Constructor
-    private CloudCredentialAzureCredentialConfig(
-        @CustomType.Parameter("clientId") String clientId,
-        @CustomType.Parameter("clientSecret") String clientSecret,
-        @CustomType.Parameter("environment") @Nullable String environment,
-        @CustomType.Parameter("subscriptionId") String subscriptionId,
-        @CustomType.Parameter("tenantId") @Nullable String tenantId) {
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-        this.environment = environment;
-        this.subscriptionId = subscriptionId;
-        this.tenantId = tenantId;
-    }
-
+    private CloudCredentialAzureCredentialConfig() {}
     /**
      * @return Azure Service Principal Account ID (string)
      * 
@@ -94,18 +81,14 @@ public final class CloudCredentialAzureCredentialConfig {
     public static Builder builder(CloudCredentialAzureCredentialConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clientId;
         private String clientSecret;
         private @Nullable String environment;
         private String subscriptionId;
         private @Nullable String tenantId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudCredentialAzureCredentialConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientId = defaults.clientId;
@@ -115,27 +98,39 @@ public final class CloudCredentialAzureCredentialConfig {
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
         public Builder clientId(String clientId) {
             this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecret(String clientSecret) {
             this.clientSecret = Objects.requireNonNull(clientSecret);
             return this;
         }
+        @CustomType.Setter
         public Builder environment(@Nullable String environment) {
             this.environment = environment;
             return this;
         }
+        @CustomType.Setter
         public Builder subscriptionId(String subscriptionId) {
             this.subscriptionId = Objects.requireNonNull(subscriptionId);
             return this;
         }
+        @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
             this.tenantId = tenantId;
             return this;
-        }        public CloudCredentialAzureCredentialConfig build() {
-            return new CloudCredentialAzureCredentialConfig(clientId, clientSecret, environment, subscriptionId, tenantId);
+        }
+        public CloudCredentialAzureCredentialConfig build() {
+            final var o = new CloudCredentialAzureCredentialConfig();
+            o.clientId = clientId;
+            o.clientSecret = clientSecret;
+            o.environment = environment;
+            o.subscriptionId = subscriptionId;
+            o.tenantId = tenantId;
+            return o;
         }
     }
 }

@@ -17,28 +17,19 @@ public final class MultiClusterAppAnswer {
      * @return Cluster ID for answer (string)
      * 
      */
-    private final @Nullable String clusterId;
+    private @Nullable String clusterId;
     /**
      * @return Project ID for target (string)
      * 
      */
-    private final @Nullable String projectId;
+    private @Nullable String projectId;
     /**
      * @return Key/values for answer (map)
      * 
      */
-    private final @Nullable Map<String,Object> values;
+    private @Nullable Map<String,Object> values;
 
-    @CustomType.Constructor
-    private MultiClusterAppAnswer(
-        @CustomType.Parameter("clusterId") @Nullable String clusterId,
-        @CustomType.Parameter("projectId") @Nullable String projectId,
-        @CustomType.Parameter("values") @Nullable Map<String,Object> values) {
-        this.clusterId = clusterId;
-        this.projectId = projectId;
-        this.values = values;
-    }
-
+    private MultiClusterAppAnswer() {}
     /**
      * @return Cluster ID for answer (string)
      * 
@@ -68,16 +59,12 @@ public final class MultiClusterAppAnswer {
     public static Builder builder(MultiClusterAppAnswer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterId;
         private @Nullable String projectId;
         private @Nullable Map<String,Object> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MultiClusterAppAnswer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -85,19 +72,27 @@ public final class MultiClusterAppAnswer {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
             this.clusterId = clusterId;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable Map<String,Object> values) {
             this.values = values;
             return this;
-        }        public MultiClusterAppAnswer build() {
-            return new MultiClusterAppAnswer(clusterId, projectId, values);
+        }
+        public MultiClusterAppAnswer build() {
+            final var o = new MultiClusterAppAnswer();
+            o.clusterId = clusterId;
+            o.projectId = projectId;
+            o.values = values;
+            return o;
         }
     }
 }

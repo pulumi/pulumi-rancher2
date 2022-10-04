@@ -21,38 +21,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooUser, err := rancher2.NewUser(ctx, "fooUser", &rancher2.UserArgs{
-// 			Username: pulumi.String("foo"),
-// 			Password: pulumi.String("changeme"),
-// 			Enabled:  pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewGlobalRoleBinding(ctx, "fooGlobalRoleBinding", &rancher2.GlobalRoleBindingArgs{
-// 			GlobalRoleId: pulumi.String("user-base"),
-// 			UserId:       fooUser.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooUser, err := rancher2.NewUser(ctx, "fooUser", &rancher2.UserArgs{
+//				Username: pulumi.String("foo"),
+//				Password: pulumi.String("changeme"),
+//				Enabled:  pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewGlobalRoleBinding(ctx, "fooGlobalRoleBinding", &rancher2.GlobalRoleBindingArgs{
+//				GlobalRoleId: pulumi.String("user-base"),
+//				UserId:       fooUser.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Users can be imported using the Rancher User ID
+// # Users can be imported using the Rancher User ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
+//
+//	$ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
+//
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -197,7 +202,7 @@ func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
 // You can construct a concrete instance of `UserArrayInput` via:
 //
-//          UserArray{ UserArgs{...} }
+//	UserArray{ UserArgs{...} }
 type UserArrayInput interface {
 	pulumi.Input
 
@@ -222,7 +227,7 @@ func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOu
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
 // You can construct a concrete instance of `UserMapInput` via:
 //
-//          UserMap{ "key": UserArgs{...} }
+//	UserMap{ "key": UserArgs{...} }
 type UserMapInput interface {
 	pulumi.Input
 

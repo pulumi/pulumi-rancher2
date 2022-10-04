@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigMachinePoolRollingUpdate {
-    private final @Nullable String maxSurge;
-    private final @Nullable String maxUnavailable;
+    private @Nullable String maxSurge;
+    private @Nullable String maxUnavailable;
 
-    @CustomType.Constructor
-    private GetClusterV2RkeConfigMachinePoolRollingUpdate(
-        @CustomType.Parameter("maxSurge") @Nullable String maxSurge,
-        @CustomType.Parameter("maxUnavailable") @Nullable String maxUnavailable) {
-        this.maxSurge = maxSurge;
-        this.maxUnavailable = maxUnavailable;
-    }
-
+    private GetClusterV2RkeConfigMachinePoolRollingUpdate() {}
     public Optional<String> maxSurge() {
         return Optional.ofNullable(this.maxSurge);
     }
@@ -36,30 +29,32 @@ public final class GetClusterV2RkeConfigMachinePoolRollingUpdate {
     public static Builder builder(GetClusterV2RkeConfigMachinePoolRollingUpdate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String maxSurge;
         private @Nullable String maxUnavailable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2RkeConfigMachinePoolRollingUpdate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxSurge = defaults.maxSurge;
     	      this.maxUnavailable = defaults.maxUnavailable;
         }
 
+        @CustomType.Setter
         public Builder maxSurge(@Nullable String maxSurge) {
             this.maxSurge = maxSurge;
             return this;
         }
+        @CustomType.Setter
         public Builder maxUnavailable(@Nullable String maxUnavailable) {
             this.maxUnavailable = maxUnavailable;
             return this;
-        }        public GetClusterV2RkeConfigMachinePoolRollingUpdate build() {
-            return new GetClusterV2RkeConfigMachinePoolRollingUpdate(maxSurge, maxUnavailable);
+        }
+        public GetClusterV2RkeConfigMachinePoolRollingUpdate build() {
+            final var o = new GetClusterV2RkeConfigMachinePoolRollingUpdate();
+            o.maxSurge = maxSurge;
+            o.maxUnavailable = maxUnavailable;
+            return o;
         }
     }
 }

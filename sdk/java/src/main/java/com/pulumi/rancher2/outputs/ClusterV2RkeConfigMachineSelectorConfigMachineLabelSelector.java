@@ -18,21 +18,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
      * @return Machine selector label match expressions (list)
      * 
      */
-    private final @Nullable List<ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression> matchExpressions;
+    private @Nullable List<ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression> matchExpressions;
     /**
      * @return Machine selector label match labels (map)
      * 
      */
-    private final @Nullable Map<String,Object> matchLabels;
+    private @Nullable Map<String,Object> matchLabels;
 
-    @CustomType.Constructor
-    private ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector(
-        @CustomType.Parameter("matchExpressions") @Nullable List<ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression> matchExpressions,
-        @CustomType.Parameter("matchLabels") @Nullable Map<String,Object> matchLabels) {
-        this.matchExpressions = matchExpressions;
-        this.matchLabels = matchLabels;
-    }
-
+    private ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector() {}
     /**
      * @return Machine selector label match expressions (list)
      * 
@@ -55,21 +48,18 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
     public static Builder builder(ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression> matchExpressions;
         private @Nullable Map<String,Object> matchLabels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.matchExpressions = defaults.matchExpressions;
     	      this.matchLabels = defaults.matchLabels;
         }
 
+        @CustomType.Setter
         public Builder matchExpressions(@Nullable List<ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression> matchExpressions) {
             this.matchExpressions = matchExpressions;
             return this;
@@ -77,11 +67,16 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
         public Builder matchExpressions(ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression... matchExpressions) {
             return matchExpressions(List.of(matchExpressions));
         }
+        @CustomType.Setter
         public Builder matchLabels(@Nullable Map<String,Object> matchLabels) {
             this.matchLabels = matchLabels;
             return this;
-        }        public ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector build() {
-            return new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector(matchExpressions, matchLabels);
+        }
+        public ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector build() {
+            final var o = new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector();
+            o.matchExpressions = matchExpressions;
+            o.matchLabels = matchLabels;
+            return o;
         }
     }
 }

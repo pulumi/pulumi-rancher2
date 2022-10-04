@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterK3sConfig {
-    private final GetClusterK3sConfigUpgradeStrategy upgradeStrategy;
-    private final String version;
+    private GetClusterK3sConfigUpgradeStrategy upgradeStrategy;
+    private String version;
 
-    @CustomType.Constructor
-    private GetClusterK3sConfig(
-        @CustomType.Parameter("upgradeStrategy") GetClusterK3sConfigUpgradeStrategy upgradeStrategy,
-        @CustomType.Parameter("version") String version) {
-        this.upgradeStrategy = upgradeStrategy;
-        this.version = version;
-    }
-
+    private GetClusterK3sConfig() {}
     public GetClusterK3sConfigUpgradeStrategy upgradeStrategy() {
         return this.upgradeStrategy;
     }
@@ -35,30 +28,32 @@ public final class GetClusterK3sConfig {
     public static Builder builder(GetClusterK3sConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetClusterK3sConfigUpgradeStrategy upgradeStrategy;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterK3sConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.upgradeStrategy = defaults.upgradeStrategy;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder upgradeStrategy(GetClusterK3sConfigUpgradeStrategy upgradeStrategy) {
             this.upgradeStrategy = Objects.requireNonNull(upgradeStrategy);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetClusterK3sConfig build() {
-            return new GetClusterK3sConfig(upgradeStrategy, version);
+        }
+        public GetClusterK3sConfig build() {
+            final var o = new GetClusterK3sConfig();
+            o.upgradeStrategy = upgradeStrategy;
+            o.version = version;
+            return o;
         }
     }
 }

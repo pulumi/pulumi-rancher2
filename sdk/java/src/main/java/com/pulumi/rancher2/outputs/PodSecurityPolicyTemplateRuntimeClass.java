@@ -16,21 +16,14 @@ public final class PodSecurityPolicyTemplateRuntimeClass {
      * @return (list)
      * 
      */
-    private final List<String> allowedRuntimeClassNames;
+    private List<String> allowedRuntimeClassNames;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String defaultRuntimeClassName;
+    private @Nullable String defaultRuntimeClassName;
 
-    @CustomType.Constructor
-    private PodSecurityPolicyTemplateRuntimeClass(
-        @CustomType.Parameter("allowedRuntimeClassNames") List<String> allowedRuntimeClassNames,
-        @CustomType.Parameter("defaultRuntimeClassName") @Nullable String defaultRuntimeClassName) {
-        this.allowedRuntimeClassNames = allowedRuntimeClassNames;
-        this.defaultRuntimeClassName = defaultRuntimeClassName;
-    }
-
+    private PodSecurityPolicyTemplateRuntimeClass() {}
     /**
      * @return (list)
      * 
@@ -53,21 +46,18 @@ public final class PodSecurityPolicyTemplateRuntimeClass {
     public static Builder builder(PodSecurityPolicyTemplateRuntimeClass defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedRuntimeClassNames;
         private @Nullable String defaultRuntimeClassName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PodSecurityPolicyTemplateRuntimeClass defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedRuntimeClassNames = defaults.allowedRuntimeClassNames;
     	      this.defaultRuntimeClassName = defaults.defaultRuntimeClassName;
         }
 
+        @CustomType.Setter
         public Builder allowedRuntimeClassNames(List<String> allowedRuntimeClassNames) {
             this.allowedRuntimeClassNames = Objects.requireNonNull(allowedRuntimeClassNames);
             return this;
@@ -75,11 +65,16 @@ public final class PodSecurityPolicyTemplateRuntimeClass {
         public Builder allowedRuntimeClassNames(String... allowedRuntimeClassNames) {
             return allowedRuntimeClassNames(List.of(allowedRuntimeClassNames));
         }
+        @CustomType.Setter
         public Builder defaultRuntimeClassName(@Nullable String defaultRuntimeClassName) {
             this.defaultRuntimeClassName = defaultRuntimeClassName;
             return this;
-        }        public PodSecurityPolicyTemplateRuntimeClass build() {
-            return new PodSecurityPolicyTemplateRuntimeClass(allowedRuntimeClassNames, defaultRuntimeClassName);
+        }
+        public PodSecurityPolicyTemplateRuntimeClass build() {
+            final var o = new PodSecurityPolicyTemplateRuntimeClass();
+            o.allowedRuntimeClassNames = allowedRuntimeClassNames;
+            o.defaultRuntimeClassName = defaultRuntimeClassName;
+            return o;
         }
     }
 }

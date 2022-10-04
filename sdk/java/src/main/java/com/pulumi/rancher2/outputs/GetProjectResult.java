@@ -18,76 +18,51 @@ public final class GetProjectResult {
      * @return (Computed) Annotations of the rancher2 project (map)
      * 
      */
-    private final Map<String,Object> annotations;
-    private final String clusterId;
+    private Map<String,Object> annotations;
+    private String clusterId;
     /**
      * @return (Computed) Default containers resource limits on project (List maxitem:1)
      * 
      */
-    private final GetProjectContainerResourceLimit containerResourceLimit;
+    private GetProjectContainerResourceLimit containerResourceLimit;
     /**
      * @return (Computed) The project&#39;s description (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return (Computed) Enable built-in project monitoring. Default `false` (bool)
      * 
      */
-    private final Boolean enableProjectMonitoring;
+    private Boolean enableProjectMonitoring;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels of the rancher2 project (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
+    private Map<String,Object> labels;
+    private String name;
     /**
      * @return (Computed) Default Pod Security Policy ID for the project (string)
      * 
      */
-    private final String podSecurityPolicyTemplateId;
+    private String podSecurityPolicyTemplateId;
     /**
      * @return (Computed) Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
      * 
      */
-    private final GetProjectResourceQuota resourceQuota;
+    private GetProjectResourceQuota resourceQuota;
     /**
      * @return (Computed) UUID of the project as stored by Rancher 2 (string)
      * 
      */
-    private final String uuid;
+    private String uuid;
 
-    @CustomType.Constructor
-    private GetProjectResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("containerResourceLimit") GetProjectContainerResourceLimit containerResourceLimit,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enableProjectMonitoring") Boolean enableProjectMonitoring,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("podSecurityPolicyTemplateId") String podSecurityPolicyTemplateId,
-        @CustomType.Parameter("resourceQuota") GetProjectResourceQuota resourceQuota,
-        @CustomType.Parameter("uuid") String uuid) {
-        this.annotations = annotations;
-        this.clusterId = clusterId;
-        this.containerResourceLimit = containerResourceLimit;
-        this.description = description;
-        this.enableProjectMonitoring = enableProjectMonitoring;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.podSecurityPolicyTemplateId = podSecurityPolicyTemplateId;
-        this.resourceQuota = resourceQuota;
-        this.uuid = uuid;
-    }
-
+    private GetProjectResult() {}
     /**
      * @return (Computed) Annotations of the rancher2 project (map)
      * 
@@ -165,7 +140,7 @@ public final class GetProjectResult {
     public static Builder builder(GetProjectResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String clusterId;
@@ -178,11 +153,7 @@ public final class GetProjectResult {
         private String podSecurityPolicyTemplateId;
         private GetProjectResourceQuota resourceQuota;
         private String uuid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -198,51 +169,75 @@ public final class GetProjectResult {
     	      this.uuid = defaults.uuid;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder containerResourceLimit(GetProjectContainerResourceLimit containerResourceLimit) {
             this.containerResourceLimit = Objects.requireNonNull(containerResourceLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enableProjectMonitoring(Boolean enableProjectMonitoring) {
             this.enableProjectMonitoring = Objects.requireNonNull(enableProjectMonitoring);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder podSecurityPolicyTemplateId(String podSecurityPolicyTemplateId) {
             this.podSecurityPolicyTemplateId = Objects.requireNonNull(podSecurityPolicyTemplateId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceQuota(GetProjectResourceQuota resourceQuota) {
             this.resourceQuota = Objects.requireNonNull(resourceQuota);
             return this;
         }
+        @CustomType.Setter
         public Builder uuid(String uuid) {
             this.uuid = Objects.requireNonNull(uuid);
             return this;
-        }        public GetProjectResult build() {
-            return new GetProjectResult(annotations, clusterId, containerResourceLimit, description, enableProjectMonitoring, id, labels, name, podSecurityPolicyTemplateId, resourceQuota, uuid);
+        }
+        public GetProjectResult build() {
+            final var o = new GetProjectResult();
+            o.annotations = annotations;
+            o.clusterId = clusterId;
+            o.containerResourceLimit = containerResourceLimit;
+            o.description = description;
+            o.enableProjectMonitoring = enableProjectMonitoring;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.podSecurityPolicyTemplateId = podSecurityPolicyTemplateId;
+            o.resourceQuota = resourceQuota;
+            o.uuid = uuid;
+            return o;
         }
     }
 }

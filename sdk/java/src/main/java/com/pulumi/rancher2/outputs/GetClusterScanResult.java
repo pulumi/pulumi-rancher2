@@ -16,62 +16,41 @@ public final class GetClusterScanResult {
      * @return (Computed) Annotations of the resource (map)
      * 
      */
-    private final Map<String,Object> annotations;
-    private final String clusterId;
+    private Map<String,Object> annotations;
+    private String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels of the resource (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
+    private Map<String,Object> labels;
+    private String name;
     /**
      * @return (Computed) Cluster Scan run type (string)
      * 
      */
-    private final String runType;
+    private String runType;
     /**
      * @return (Computed) Cluster Scan config (bool)
      * 
      */
-    private final GetClusterScanScanConfig scanConfig;
+    private GetClusterScanScanConfig scanConfig;
     /**
      * @return (Computed) Cluster Scan type (string)
      * 
      */
-    private final String scanType;
+    private String scanType;
     /**
      * @return (Computed) Cluster Scan status (string)
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetClusterScanResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("runType") String runType,
-        @CustomType.Parameter("scanConfig") GetClusterScanScanConfig scanConfig,
-        @CustomType.Parameter("scanType") String scanType,
-        @CustomType.Parameter("status") String status) {
-        this.annotations = annotations;
-        this.clusterId = clusterId;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.runType = runType;
-        this.scanConfig = scanConfig;
-        this.scanType = scanType;
-        this.status = status;
-    }
-
+    private GetClusterScanResult() {}
     /**
      * @return (Computed) Annotations of the resource (map)
      * 
@@ -135,7 +114,7 @@ public final class GetClusterScanResult {
     public static Builder builder(GetClusterScanResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String clusterId;
@@ -146,11 +125,7 @@ public final class GetClusterScanResult {
         private GetClusterScanScanConfig scanConfig;
         private String scanType;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterScanResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -164,43 +139,63 @@ public final class GetClusterScanResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder runType(String runType) {
             this.runType = Objects.requireNonNull(runType);
             return this;
         }
+        @CustomType.Setter
         public Builder scanConfig(GetClusterScanScanConfig scanConfig) {
             this.scanConfig = Objects.requireNonNull(scanConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder scanType(String scanType) {
             this.scanType = Objects.requireNonNull(scanType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetClusterScanResult build() {
-            return new GetClusterScanResult(annotations, clusterId, id, labels, name, runType, scanConfig, scanType, status);
+        }
+        public GetClusterScanResult build() {
+            final var o = new GetClusterScanResult();
+            o.annotations = annotations;
+            o.clusterId = clusterId;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.runType = runType;
+            o.scanConfig = scanConfig;
+            o.scanType = scanType;
+            o.status = status;
+            return o;
         }
     }
 }

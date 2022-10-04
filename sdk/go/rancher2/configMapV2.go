@@ -18,7 +18,9 @@ import (
 // V2 configMaps can be imported using the Rancher cluster ID, ConfigMap V2 namespace and name.
 //
 // ```sh
-//  $ pulumi import rancher2:index/configMapV2:ConfigMapV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
+//
+//	$ pulumi import rancher2:index/configMapV2:ConfigMapV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
+//
 // ```
 type ConfigMapV2 struct {
 	pulumi.CustomResourceState
@@ -178,7 +180,7 @@ func (i *ConfigMapV2) ToConfigMapV2OutputWithContext(ctx context.Context) Config
 // ConfigMapV2ArrayInput is an input type that accepts ConfigMapV2Array and ConfigMapV2ArrayOutput values.
 // You can construct a concrete instance of `ConfigMapV2ArrayInput` via:
 //
-//          ConfigMapV2Array{ ConfigMapV2Args{...} }
+//	ConfigMapV2Array{ ConfigMapV2Args{...} }
 type ConfigMapV2ArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +205,7 @@ func (i ConfigMapV2Array) ToConfigMapV2ArrayOutputWithContext(ctx context.Contex
 // ConfigMapV2MapInput is an input type that accepts ConfigMapV2Map and ConfigMapV2MapOutput values.
 // You can construct a concrete instance of `ConfigMapV2MapInput` via:
 //
-//          ConfigMapV2Map{ "key": ConfigMapV2Args{...} }
+//	ConfigMapV2Map{ "key": ConfigMapV2Args{...} }
 type ConfigMapV2MapInput interface {
 	pulumi.Input
 

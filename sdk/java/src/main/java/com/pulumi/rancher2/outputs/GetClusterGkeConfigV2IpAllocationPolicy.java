@@ -10,35 +10,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterGkeConfigV2IpAllocationPolicy {
-    private final String clusterIpv4CidrBlock;
-    private final String clusterSecondaryRangeName;
-    private final Boolean createSubnetwork;
-    private final String nodeIpv4CidrBlock;
-    private final String servicesIpv4CidrBlock;
-    private final String servicesSecondaryRangeName;
-    private final String subnetworkName;
-    private final Boolean useIpAliases;
+    private String clusterIpv4CidrBlock;
+    private String clusterSecondaryRangeName;
+    private Boolean createSubnetwork;
+    private String nodeIpv4CidrBlock;
+    private String servicesIpv4CidrBlock;
+    private String servicesSecondaryRangeName;
+    private String subnetworkName;
+    private Boolean useIpAliases;
 
-    @CustomType.Constructor
-    private GetClusterGkeConfigV2IpAllocationPolicy(
-        @CustomType.Parameter("clusterIpv4CidrBlock") String clusterIpv4CidrBlock,
-        @CustomType.Parameter("clusterSecondaryRangeName") String clusterSecondaryRangeName,
-        @CustomType.Parameter("createSubnetwork") Boolean createSubnetwork,
-        @CustomType.Parameter("nodeIpv4CidrBlock") String nodeIpv4CidrBlock,
-        @CustomType.Parameter("servicesIpv4CidrBlock") String servicesIpv4CidrBlock,
-        @CustomType.Parameter("servicesSecondaryRangeName") String servicesSecondaryRangeName,
-        @CustomType.Parameter("subnetworkName") String subnetworkName,
-        @CustomType.Parameter("useIpAliases") Boolean useIpAliases) {
-        this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
-        this.clusterSecondaryRangeName = clusterSecondaryRangeName;
-        this.createSubnetwork = createSubnetwork;
-        this.nodeIpv4CidrBlock = nodeIpv4CidrBlock;
-        this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
-        this.servicesSecondaryRangeName = servicesSecondaryRangeName;
-        this.subnetworkName = subnetworkName;
-        this.useIpAliases = useIpAliases;
-    }
-
+    private GetClusterGkeConfigV2IpAllocationPolicy() {}
     public String clusterIpv4CidrBlock() {
         return this.clusterIpv4CidrBlock;
     }
@@ -71,7 +52,7 @@ public final class GetClusterGkeConfigV2IpAllocationPolicy {
     public static Builder builder(GetClusterGkeConfigV2IpAllocationPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterIpv4CidrBlock;
         private String clusterSecondaryRangeName;
@@ -81,11 +62,7 @@ public final class GetClusterGkeConfigV2IpAllocationPolicy {
         private String servicesSecondaryRangeName;
         private String subnetworkName;
         private Boolean useIpAliases;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterGkeConfigV2IpAllocationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
@@ -98,39 +75,57 @@ public final class GetClusterGkeConfigV2IpAllocationPolicy {
     	      this.useIpAliases = defaults.useIpAliases;
         }
 
+        @CustomType.Setter
         public Builder clusterIpv4CidrBlock(String clusterIpv4CidrBlock) {
             this.clusterIpv4CidrBlock = Objects.requireNonNull(clusterIpv4CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterSecondaryRangeName(String clusterSecondaryRangeName) {
             this.clusterSecondaryRangeName = Objects.requireNonNull(clusterSecondaryRangeName);
             return this;
         }
+        @CustomType.Setter
         public Builder createSubnetwork(Boolean createSubnetwork) {
             this.createSubnetwork = Objects.requireNonNull(createSubnetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeIpv4CidrBlock(String nodeIpv4CidrBlock) {
             this.nodeIpv4CidrBlock = Objects.requireNonNull(nodeIpv4CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder servicesIpv4CidrBlock(String servicesIpv4CidrBlock) {
             this.servicesIpv4CidrBlock = Objects.requireNonNull(servicesIpv4CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder servicesSecondaryRangeName(String servicesSecondaryRangeName) {
             this.servicesSecondaryRangeName = Objects.requireNonNull(servicesSecondaryRangeName);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetworkName(String subnetworkName) {
             this.subnetworkName = Objects.requireNonNull(subnetworkName);
             return this;
         }
+        @CustomType.Setter
         public Builder useIpAliases(Boolean useIpAliases) {
             this.useIpAliases = Objects.requireNonNull(useIpAliases);
             return this;
-        }        public GetClusterGkeConfigV2IpAllocationPolicy build() {
-            return new GetClusterGkeConfigV2IpAllocationPolicy(clusterIpv4CidrBlock, clusterSecondaryRangeName, createSubnetwork, nodeIpv4CidrBlock, servicesIpv4CidrBlock, servicesSecondaryRangeName, subnetworkName, useIpAliases);
+        }
+        public GetClusterGkeConfigV2IpAllocationPolicy build() {
+            final var o = new GetClusterGkeConfigV2IpAllocationPolicy();
+            o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
+            o.clusterSecondaryRangeName = clusterSecondaryRangeName;
+            o.createSubnetwork = createSubnetwork;
+            o.nodeIpv4CidrBlock = nodeIpv4CidrBlock;
+            o.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
+            o.servicesSecondaryRangeName = servicesSecondaryRangeName;
+            o.subnetworkName = subnetworkName;
+            o.useIpAliases = useIpAliases;
+            return o;
         }
     }
 }

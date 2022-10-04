@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGlobalDnsProviderAlidnsConfig {
-    private final String accessKey;
-    private final String secretKey;
+    private String accessKey;
+    private String secretKey;
 
-    @CustomType.Constructor
-    private GetGlobalDnsProviderAlidnsConfig(
-        @CustomType.Parameter("accessKey") String accessKey,
-        @CustomType.Parameter("secretKey") String secretKey) {
-        this.accessKey = accessKey;
-        this.secretKey = secretKey;
-    }
-
+    private GetGlobalDnsProviderAlidnsConfig() {}
     public String accessKey() {
         return this.accessKey;
     }
@@ -34,30 +27,32 @@ public final class GetGlobalDnsProviderAlidnsConfig {
     public static Builder builder(GetGlobalDnsProviderAlidnsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessKey;
         private String secretKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGlobalDnsProviderAlidnsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
     	      this.secretKey = defaults.secretKey;
         }
 
+        @CustomType.Setter
         public Builder accessKey(String accessKey) {
             this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(String secretKey) {
             this.secretKey = Objects.requireNonNull(secretKey);
             return this;
-        }        public GetGlobalDnsProviderAlidnsConfig build() {
-            return new GetGlobalDnsProviderAlidnsConfig(accessKey, secretKey);
+        }
+        public GetGlobalDnsProviderAlidnsConfig build() {
+            final var o = new GetGlobalDnsProviderAlidnsConfig();
+            o.accessKey = accessKey;
+            o.secretKey = secretKey;
+            return o;
         }
     }
 }

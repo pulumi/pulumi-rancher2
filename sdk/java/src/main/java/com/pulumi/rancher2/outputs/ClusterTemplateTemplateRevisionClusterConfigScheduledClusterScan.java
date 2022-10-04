@@ -17,20 +17,11 @@ public final class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterS
      * @return Enable cluster template revision. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
-    private final ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig scanConfig;
-    private final ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig scheduleConfig;
+    private @Nullable Boolean enabled;
+    private ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig scanConfig;
+    private ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig scheduleConfig;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("scanConfig") ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig scanConfig,
-        @CustomType.Parameter("scheduleConfig") ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig scheduleConfig) {
-        this.enabled = enabled;
-        this.scanConfig = scanConfig;
-        this.scheduleConfig = scheduleConfig;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan() {}
     /**
      * @return Enable cluster template revision. Default `true` (bool)
      * 
@@ -52,16 +43,12 @@ public final class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterS
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig scanConfig;
         private ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig scheduleConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -69,19 +56,27 @@ public final class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterS
     	      this.scheduleConfig = defaults.scheduleConfig;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder scanConfig(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig scanConfig) {
             this.scanConfig = Objects.requireNonNull(scanConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduleConfig(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig scheduleConfig) {
             this.scheduleConfig = Objects.requireNonNull(scheduleConfig);
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan(enabled, scanConfig, scheduleConfig);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan();
+            o.enabled = enabled;
+            o.scanConfig = scanConfig;
+            o.scheduleConfig = scheduleConfig;
+            return o;
         }
     }
 }

@@ -19,32 +19,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewClusterAlertGroup(ctx, "foo", &rancher2.ClusterAlertGroupArgs{
-// 			ClusterId:             pulumi.String("<cluster_id>"),
-// 			Description:           pulumi.String("Terraform cluster alert group"),
-// 			GroupIntervalSeconds:  pulumi.Int(300),
-// 			RepeatIntervalSeconds: pulumi.Int(3600),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterAlertGroup(ctx, "foo", &rancher2.ClusterAlertGroupArgs{
+//				ClusterId:             pulumi.String("<cluster_id>"),
+//				Description:           pulumi.String("Terraform cluster alert group"),
+//				GroupIntervalSeconds:  pulumi.Int(300),
+//				RepeatIntervalSeconds: pulumi.Int(3600),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Cluster Alert Group can be imported using the Rancher cluster alert group ID
+// # Cluster Alert Group can be imported using the Rancher cluster alert group ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
+//
+//	$ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
+//
 // ```
 type ClusterAlertGroup struct {
 	pulumi.CustomResourceState
@@ -221,7 +226,7 @@ func (i *ClusterAlertGroup) ToClusterAlertGroupOutputWithContext(ctx context.Con
 // ClusterAlertGroupArrayInput is an input type that accepts ClusterAlertGroupArray and ClusterAlertGroupArrayOutput values.
 // You can construct a concrete instance of `ClusterAlertGroupArrayInput` via:
 //
-//          ClusterAlertGroupArray{ ClusterAlertGroupArgs{...} }
+//	ClusterAlertGroupArray{ ClusterAlertGroupArgs{...} }
 type ClusterAlertGroupArrayInput interface {
 	pulumi.Input
 
@@ -246,7 +251,7 @@ func (i ClusterAlertGroupArray) ToClusterAlertGroupArrayOutputWithContext(ctx co
 // ClusterAlertGroupMapInput is an input type that accepts ClusterAlertGroupMap and ClusterAlertGroupMapOutput values.
 // You can construct a concrete instance of `ClusterAlertGroupMapInput` via:
 //
-//          ClusterAlertGroupMap{ "key": ClusterAlertGroupArgs{...} }
+//	ClusterAlertGroupMap{ "key": ClusterAlertGroupArgs{...} }
 type ClusterAlertGroupMapInput interface {
 	pulumi.Input
 

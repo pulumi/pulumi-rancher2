@@ -14,29 +14,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRkeConfigServices {
-    private final GetClusterRkeConfigServicesEtcd etcd;
-    private final GetClusterRkeConfigServicesKubeApi kubeApi;
-    private final GetClusterRkeConfigServicesKubeController kubeController;
-    private final GetClusterRkeConfigServicesKubelet kubelet;
-    private final GetClusterRkeConfigServicesKubeproxy kubeproxy;
-    private final GetClusterRkeConfigServicesScheduler scheduler;
+    private GetClusterRkeConfigServicesEtcd etcd;
+    private GetClusterRkeConfigServicesKubeApi kubeApi;
+    private GetClusterRkeConfigServicesKubeController kubeController;
+    private GetClusterRkeConfigServicesKubelet kubelet;
+    private GetClusterRkeConfigServicesKubeproxy kubeproxy;
+    private GetClusterRkeConfigServicesScheduler scheduler;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigServices(
-        @CustomType.Parameter("etcd") GetClusterRkeConfigServicesEtcd etcd,
-        @CustomType.Parameter("kubeApi") GetClusterRkeConfigServicesKubeApi kubeApi,
-        @CustomType.Parameter("kubeController") GetClusterRkeConfigServicesKubeController kubeController,
-        @CustomType.Parameter("kubelet") GetClusterRkeConfigServicesKubelet kubelet,
-        @CustomType.Parameter("kubeproxy") GetClusterRkeConfigServicesKubeproxy kubeproxy,
-        @CustomType.Parameter("scheduler") GetClusterRkeConfigServicesScheduler scheduler) {
-        this.etcd = etcd;
-        this.kubeApi = kubeApi;
-        this.kubeController = kubeController;
-        this.kubelet = kubelet;
-        this.kubeproxy = kubeproxy;
-        this.scheduler = scheduler;
-    }
-
+    private GetClusterRkeConfigServices() {}
     public GetClusterRkeConfigServicesEtcd etcd() {
         return this.etcd;
     }
@@ -63,7 +48,7 @@ public final class GetClusterRkeConfigServices {
     public static Builder builder(GetClusterRkeConfigServices defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetClusterRkeConfigServicesEtcd etcd;
         private GetClusterRkeConfigServicesKubeApi kubeApi;
@@ -71,11 +56,7 @@ public final class GetClusterRkeConfigServices {
         private GetClusterRkeConfigServicesKubelet kubelet;
         private GetClusterRkeConfigServicesKubeproxy kubeproxy;
         private GetClusterRkeConfigServicesScheduler scheduler;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigServices defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.etcd = defaults.etcd;
@@ -86,31 +67,45 @@ public final class GetClusterRkeConfigServices {
     	      this.scheduler = defaults.scheduler;
         }
 
+        @CustomType.Setter
         public Builder etcd(GetClusterRkeConfigServicesEtcd etcd) {
             this.etcd = Objects.requireNonNull(etcd);
             return this;
         }
+        @CustomType.Setter
         public Builder kubeApi(GetClusterRkeConfigServicesKubeApi kubeApi) {
             this.kubeApi = Objects.requireNonNull(kubeApi);
             return this;
         }
+        @CustomType.Setter
         public Builder kubeController(GetClusterRkeConfigServicesKubeController kubeController) {
             this.kubeController = Objects.requireNonNull(kubeController);
             return this;
         }
+        @CustomType.Setter
         public Builder kubelet(GetClusterRkeConfigServicesKubelet kubelet) {
             this.kubelet = Objects.requireNonNull(kubelet);
             return this;
         }
+        @CustomType.Setter
         public Builder kubeproxy(GetClusterRkeConfigServicesKubeproxy kubeproxy) {
             this.kubeproxy = Objects.requireNonNull(kubeproxy);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduler(GetClusterRkeConfigServicesScheduler scheduler) {
             this.scheduler = Objects.requireNonNull(scheduler);
             return this;
-        }        public GetClusterRkeConfigServices build() {
-            return new GetClusterRkeConfigServices(etcd, kubeApi, kubeController, kubelet, kubeproxy, scheduler);
+        }
+        public GetClusterRkeConfigServices build() {
+            final var o = new GetClusterRkeConfigServices();
+            o.etcd = etcd;
+            o.kubeApi = kubeApi;
+            o.kubeController = kubeController;
+            o.kubelet = kubelet;
+            o.kubeproxy = kubeproxy;
+            o.scheduler = scheduler;
+            return o;
         }
     }
 }

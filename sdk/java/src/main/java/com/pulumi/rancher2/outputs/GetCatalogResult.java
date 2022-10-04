@@ -17,97 +17,66 @@ public final class GetCatalogResult {
      * @return (Computed) Annotations for the catalog (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) The branch of the catalog repo to use (string)
      * 
      */
-    private final String branch;
+    private String branch;
     /**
      * @return (Computed) The cluster id of the catalog (string)
      * 
      */
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return (Computed) A catalog description (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) The kind of the catalog. Just helm by the moment (string)
      * 
      */
-    private final String kind;
+    private String kind;
     /**
      * @return (Computed) Labels for the catalog (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
+    private Map<String,Object> labels;
+    private String name;
     /**
      * @return (Computed/Sensitive) The password to access the catalog if needed (string)
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return (Computed) The project id of the catalog (string)
      * 
      */
-    private final String projectId;
-    private final @Nullable String scope;
+    private String projectId;
+    private @Nullable String scope;
     /**
      * @return (Computed) The url of the catalog repo (string)
      * 
      */
-    private final String url;
+    private String url;
     /**
      * @return (Computed/Sensitive) The username to access the catalog if needed (string)
      * 
      */
-    private final String username;
+    private String username;
     /**
      * @return (Computed) Helm version for the catalog (string)
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private GetCatalogResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("branch") String branch,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("kind") String kind,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("scope") @Nullable String scope,
-        @CustomType.Parameter("url") String url,
-        @CustomType.Parameter("username") String username,
-        @CustomType.Parameter("version") String version) {
-        this.annotations = annotations;
-        this.branch = branch;
-        this.clusterId = clusterId;
-        this.description = description;
-        this.id = id;
-        this.kind = kind;
-        this.labels = labels;
-        this.name = name;
-        this.password = password;
-        this.projectId = projectId;
-        this.scope = scope;
-        this.url = url;
-        this.username = username;
-        this.version = version;
-    }
-
+    private GetCatalogResult() {}
     /**
      * @return (Computed) Annotations for the catalog (map)
      * 
@@ -206,7 +175,7 @@ public final class GetCatalogResult {
     public static Builder builder(GetCatalogResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String branch;
@@ -222,11 +191,7 @@ public final class GetCatalogResult {
         private String url;
         private String username;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCatalogResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -245,63 +210,93 @@ public final class GetCatalogResult {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder branch(String branch) {
             this.branch = Objects.requireNonNull(branch);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder kind(String kind) {
             this.kind = Objects.requireNonNull(kind);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder scope(@Nullable String scope) {
             this.scope = scope;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetCatalogResult build() {
-            return new GetCatalogResult(annotations, branch, clusterId, description, id, kind, labels, name, password, projectId, scope, url, username, version);
+        }
+        public GetCatalogResult build() {
+            final var o = new GetCatalogResult();
+            o.annotations = annotations;
+            o.branch = branch;
+            o.clusterId = clusterId;
+            o.description = description;
+            o.id = id;
+            o.kind = kind;
+            o.labels = labels;
+            o.name = name;
+            o.password = password;
+            o.projectId = projectId;
+            o.scope = scope;
+            o.url = url;
+            o.username = username;
+            o.version = version;
+            return o;
         }
     }
 }

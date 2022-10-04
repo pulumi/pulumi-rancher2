@@ -19,31 +19,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewProjectRoleTemplateBinding(ctx, "foo", &rancher2.ProjectRoleTemplateBindingArgs{
-// 			ProjectId:      pulumi.String("<project_id>"),
-// 			RoleTemplateId: pulumi.String("<role_template_id>"),
-// 			UserId:         pulumi.String("<user_id>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewProjectRoleTemplateBinding(ctx, "foo", &rancher2.ProjectRoleTemplateBindingArgs{
+//				ProjectId:      pulumi.String("<project_id>"),
+//				RoleTemplateId: pulumi.String("<role_template_id>"),
+//				UserId:         pulumi.String("<user_id>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Project Role Template Bindings can be imported using the Rancher Project Role Template Binding ID
+// # Project Role Template Bindings can be imported using the Rancher Project Role Template Binding ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &lt;project_role_template_binding_id&gt;
+//
+//	$ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &lt;project_role_template_binding_id&gt;
+//
 // ```
 type ProjectRoleTemplateBinding struct {
 	pulumi.CustomResourceState
@@ -217,7 +222,7 @@ func (i *ProjectRoleTemplateBinding) ToProjectRoleTemplateBindingOutputWithConte
 // ProjectRoleTemplateBindingArrayInput is an input type that accepts ProjectRoleTemplateBindingArray and ProjectRoleTemplateBindingArrayOutput values.
 // You can construct a concrete instance of `ProjectRoleTemplateBindingArrayInput` via:
 //
-//          ProjectRoleTemplateBindingArray{ ProjectRoleTemplateBindingArgs{...} }
+//	ProjectRoleTemplateBindingArray{ ProjectRoleTemplateBindingArgs{...} }
 type ProjectRoleTemplateBindingArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +247,7 @@ func (i ProjectRoleTemplateBindingArray) ToProjectRoleTemplateBindingArrayOutput
 // ProjectRoleTemplateBindingMapInput is an input type that accepts ProjectRoleTemplateBindingMap and ProjectRoleTemplateBindingMapOutput values.
 // You can construct a concrete instance of `ProjectRoleTemplateBindingMapInput` via:
 //
-//          ProjectRoleTemplateBindingMap{ "key": ProjectRoleTemplateBindingArgs{...} }
+//	ProjectRoleTemplateBindingMap{ "key": ProjectRoleTemplateBindingArgs{...} }
 type ProjectRoleTemplateBindingMapInput interface {
 	pulumi.Input
 

@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterScheduledClusterScan {
-    private final @Nullable Boolean enabled;
-    private final GetClusterScheduledClusterScanScanConfig scanConfig;
-    private final GetClusterScheduledClusterScanScheduleConfig scheduleConfig;
+    private @Nullable Boolean enabled;
+    private GetClusterScheduledClusterScanScanConfig scanConfig;
+    private GetClusterScheduledClusterScanScheduleConfig scheduleConfig;
 
-    @CustomType.Constructor
-    private GetClusterScheduledClusterScan(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("scanConfig") GetClusterScheduledClusterScanScanConfig scanConfig,
-        @CustomType.Parameter("scheduleConfig") GetClusterScheduledClusterScanScheduleConfig scheduleConfig) {
-        this.enabled = enabled;
-        this.scanConfig = scanConfig;
-        this.scheduleConfig = scheduleConfig;
-    }
-
+    private GetClusterScheduledClusterScan() {}
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -44,16 +35,12 @@ public final class GetClusterScheduledClusterScan {
     public static Builder builder(GetClusterScheduledClusterScan defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private GetClusterScheduledClusterScanScanConfig scanConfig;
         private GetClusterScheduledClusterScanScheduleConfig scheduleConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterScheduledClusterScan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -61,19 +48,27 @@ public final class GetClusterScheduledClusterScan {
     	      this.scheduleConfig = defaults.scheduleConfig;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder scanConfig(GetClusterScheduledClusterScanScanConfig scanConfig) {
             this.scanConfig = Objects.requireNonNull(scanConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduleConfig(GetClusterScheduledClusterScanScheduleConfig scheduleConfig) {
             this.scheduleConfig = Objects.requireNonNull(scheduleConfig);
             return this;
-        }        public GetClusterScheduledClusterScan build() {
-            return new GetClusterScheduledClusterScan(enabled, scanConfig, scheduleConfig);
+        }
+        public GetClusterScheduledClusterScan build() {
+            final var o = new GetClusterScheduledClusterScan();
+            o.enabled = enabled;
+            o.scanConfig = scanConfig;
+            o.scheduleConfig = scheduleConfig;
+            return o;
         }
     }
 }

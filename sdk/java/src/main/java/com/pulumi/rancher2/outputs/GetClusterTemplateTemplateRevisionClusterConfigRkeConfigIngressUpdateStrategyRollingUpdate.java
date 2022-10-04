@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate {
-    private final @Nullable Integer maxUnavailable;
+    private @Nullable Integer maxUnavailable;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate(@CustomType.Parameter("maxUnavailable") @Nullable Integer maxUnavailable) {
-        this.maxUnavailable = maxUnavailable;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate() {}
     public Optional<Integer> maxUnavailable() {
         return Optional.ofNullable(this.maxUnavailable);
     }
@@ -29,24 +25,24 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngre
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxUnavailable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxUnavailable = defaults.maxUnavailable;
         }
 
+        @CustomType.Setter
         public Builder maxUnavailable(@Nullable Integer maxUnavailable) {
             this.maxUnavailable = maxUnavailable;
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate(maxUnavailable);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate();
+            o.maxUnavailable = maxUnavailable;
+            return o;
         }
     }
 }

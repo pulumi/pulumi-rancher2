@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork {
-    private final @Nullable String publicNetwork;
+    private @Nullable String publicNetwork;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork(@CustomType.Parameter("publicNetwork") @Nullable String publicNetwork) {
-        this.publicNetwork = publicNetwork;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork() {}
     public Optional<String> publicNetwork() {
         return Optional.ofNullable(this.publicNetwork);
     }
@@ -29,24 +25,24 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String publicNetwork;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.publicNetwork = defaults.publicNetwork;
         }
 
+        @CustomType.Setter
         public Builder publicNetwork(@Nullable String publicNetwork) {
             this.publicNetwork = publicNetwork;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork(publicNetwork);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork();
+            o.publicNetwork = publicNetwork;
+            return o;
         }
     }
 }

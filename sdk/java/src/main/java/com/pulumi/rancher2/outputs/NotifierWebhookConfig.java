@@ -15,21 +15,14 @@ public final class NotifierWebhookConfig {
      * @return Wechat proxy url (string)
      * 
      */
-    private final @Nullable String proxyUrl;
+    private @Nullable String proxyUrl;
     /**
      * @return Webhook url (string)
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private NotifierWebhookConfig(
-        @CustomType.Parameter("proxyUrl") @Nullable String proxyUrl,
-        @CustomType.Parameter("url") String url) {
-        this.proxyUrl = proxyUrl;
-        this.url = url;
-    }
-
+    private NotifierWebhookConfig() {}
     /**
      * @return Wechat proxy url (string)
      * 
@@ -52,30 +45,32 @@ public final class NotifierWebhookConfig {
     public static Builder builder(NotifierWebhookConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String proxyUrl;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NotifierWebhookConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.proxyUrl = defaults.proxyUrl;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
             this.proxyUrl = proxyUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public NotifierWebhookConfig build() {
-            return new NotifierWebhookConfig(proxyUrl, url);
+        }
+        public NotifierWebhookConfig build() {
+            final var o = new NotifierWebhookConfig();
+            o.proxyUrl = proxyUrl;
+            o.url = url;
+            return o;
         }
     }
 }

@@ -16,21 +16,14 @@ public final class ClusterRkeConfigDnsUpdateStrategy {
      * @return Monitoring deployment rolling update (list Maxitems: 1)
      * 
      */
-    private final @Nullable ClusterRkeConfigDnsUpdateStrategyRollingUpdate rollingUpdate;
+    private @Nullable ClusterRkeConfigDnsUpdateStrategyRollingUpdate rollingUpdate;
     /**
      * @return Monitoring deployment update strategy (string)
      * 
      */
-    private final @Nullable String strategy;
+    private @Nullable String strategy;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigDnsUpdateStrategy(
-        @CustomType.Parameter("rollingUpdate") @Nullable ClusterRkeConfigDnsUpdateStrategyRollingUpdate rollingUpdate,
-        @CustomType.Parameter("strategy") @Nullable String strategy) {
-        this.rollingUpdate = rollingUpdate;
-        this.strategy = strategy;
-    }
-
+    private ClusterRkeConfigDnsUpdateStrategy() {}
     /**
      * @return Monitoring deployment rolling update (list Maxitems: 1)
      * 
@@ -53,30 +46,32 @@ public final class ClusterRkeConfigDnsUpdateStrategy {
     public static Builder builder(ClusterRkeConfigDnsUpdateStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRkeConfigDnsUpdateStrategyRollingUpdate rollingUpdate;
         private @Nullable String strategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigDnsUpdateStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rollingUpdate = defaults.rollingUpdate;
     	      this.strategy = defaults.strategy;
         }
 
+        @CustomType.Setter
         public Builder rollingUpdate(@Nullable ClusterRkeConfigDnsUpdateStrategyRollingUpdate rollingUpdate) {
             this.rollingUpdate = rollingUpdate;
             return this;
         }
+        @CustomType.Setter
         public Builder strategy(@Nullable String strategy) {
             this.strategy = strategy;
             return this;
-        }        public ClusterRkeConfigDnsUpdateStrategy build() {
-            return new ClusterRkeConfigDnsUpdateStrategy(rollingUpdate, strategy);
+        }
+        public ClusterRkeConfigDnsUpdateStrategy build() {
+            final var o = new ClusterRkeConfigDnsUpdateStrategy();
+            o.rollingUpdate = rollingUpdate;
+            o.strategy = strategy;
+            return o;
         }
     }
 }

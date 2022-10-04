@@ -20,115 +20,80 @@ public final class GetNodeTemplateResult {
      * @return (Computed) Annotations for Node Template object (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
      * 
      */
-    private final String cloudCredentialId;
+    private String cloudCredentialId;
     /**
      * @return (Computed) Description for the Node Template (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return (Computed) The driver of the node template (string)
      * 
      */
-    private final String driver;
+    private String driver;
     /**
      * @return (Computed) Engine environment for the node template (string)
      * 
      */
-    private final Map<String,Object> engineEnv;
+    private Map<String,Object> engineEnv;
     /**
      * @return (Computed) Insecure registry for the node template (list)
      * 
      */
-    private final List<String> engineInsecureRegistries;
+    private List<String> engineInsecureRegistries;
     /**
      * @return (Computed) Docker engine install URL for the node template (string)
      * 
      */
-    private final String engineInstallUrl;
+    private String engineInstallUrl;
     /**
      * @return (Computed) Engine label for the node template (string)
      * 
      */
-    private final Map<String,Object> engineLabel;
+    private Map<String,Object> engineLabel;
     /**
      * @return (Computed) Engine options for the node template (map)
      * 
      */
-    private final Map<String,Object> engineOpt;
+    private Map<String,Object> engineOpt;
     /**
      * @return (Computed) Engine registry mirror for the node template (list)
      * 
      */
-    private final List<String> engineRegistryMirrors;
+    private List<String> engineRegistryMirrors;
     /**
      * @return (Computed) Engine storage driver for the node template (string)
      * 
      */
-    private final String engineStorageDriver;
+    private String engineStorageDriver;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for Node Template object (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
+    private Map<String,Object> labels;
+    private String name;
     /**
      * @return (Computed) Node taints (List)
      * 
      */
-    private final List<GetNodeTemplateNodeTaint> nodeTaints;
+    private List<GetNodeTemplateNodeTaint> nodeTaints;
     /**
      * @return (Computed) Engine storage driver for the node template (bool)
      * 
      */
-    private final @Nullable Boolean useInternalIpAddress;
+    private @Nullable Boolean useInternalIpAddress;
 
-    @CustomType.Constructor
-    private GetNodeTemplateResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("cloudCredentialId") String cloudCredentialId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("driver") String driver,
-        @CustomType.Parameter("engineEnv") Map<String,Object> engineEnv,
-        @CustomType.Parameter("engineInsecureRegistries") List<String> engineInsecureRegistries,
-        @CustomType.Parameter("engineInstallUrl") String engineInstallUrl,
-        @CustomType.Parameter("engineLabel") Map<String,Object> engineLabel,
-        @CustomType.Parameter("engineOpt") Map<String,Object> engineOpt,
-        @CustomType.Parameter("engineRegistryMirrors") List<String> engineRegistryMirrors,
-        @CustomType.Parameter("engineStorageDriver") String engineStorageDriver,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodeTaints") List<GetNodeTemplateNodeTaint> nodeTaints,
-        @CustomType.Parameter("useInternalIpAddress") @Nullable Boolean useInternalIpAddress) {
-        this.annotations = annotations;
-        this.cloudCredentialId = cloudCredentialId;
-        this.description = description;
-        this.driver = driver;
-        this.engineEnv = engineEnv;
-        this.engineInsecureRegistries = engineInsecureRegistries;
-        this.engineInstallUrl = engineInstallUrl;
-        this.engineLabel = engineLabel;
-        this.engineOpt = engineOpt;
-        this.engineRegistryMirrors = engineRegistryMirrors;
-        this.engineStorageDriver = engineStorageDriver;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.nodeTaints = nodeTaints;
-        this.useInternalIpAddress = useInternalIpAddress;
-    }
-
+    private GetNodeTemplateResult() {}
     /**
      * @return (Computed) Annotations for Node Template object (map)
      * 
@@ -245,7 +210,7 @@ public final class GetNodeTemplateResult {
     public static Builder builder(GetNodeTemplateResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String cloudCredentialId;
@@ -263,11 +228,7 @@ public final class GetNodeTemplateResult {
         private String name;
         private List<GetNodeTemplateNodeTaint> nodeTaints;
         private @Nullable Boolean useInternalIpAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodeTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -288,26 +249,32 @@ public final class GetNodeTemplateResult {
     	      this.useInternalIpAddress = defaults.useInternalIpAddress;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder cloudCredentialId(String cloudCredentialId) {
             this.cloudCredentialId = Objects.requireNonNull(cloudCredentialId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder driver(String driver) {
             this.driver = Objects.requireNonNull(driver);
             return this;
         }
+        @CustomType.Setter
         public Builder engineEnv(Map<String,Object> engineEnv) {
             this.engineEnv = Objects.requireNonNull(engineEnv);
             return this;
         }
+        @CustomType.Setter
         public Builder engineInsecureRegistries(List<String> engineInsecureRegistries) {
             this.engineInsecureRegistries = Objects.requireNonNull(engineInsecureRegistries);
             return this;
@@ -315,18 +282,22 @@ public final class GetNodeTemplateResult {
         public Builder engineInsecureRegistries(String... engineInsecureRegistries) {
             return engineInsecureRegistries(List.of(engineInsecureRegistries));
         }
+        @CustomType.Setter
         public Builder engineInstallUrl(String engineInstallUrl) {
             this.engineInstallUrl = Objects.requireNonNull(engineInstallUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder engineLabel(Map<String,Object> engineLabel) {
             this.engineLabel = Objects.requireNonNull(engineLabel);
             return this;
         }
+        @CustomType.Setter
         public Builder engineOpt(Map<String,Object> engineOpt) {
             this.engineOpt = Objects.requireNonNull(engineOpt);
             return this;
         }
+        @CustomType.Setter
         public Builder engineRegistryMirrors(List<String> engineRegistryMirrors) {
             this.engineRegistryMirrors = Objects.requireNonNull(engineRegistryMirrors);
             return this;
@@ -334,22 +305,27 @@ public final class GetNodeTemplateResult {
         public Builder engineRegistryMirrors(String... engineRegistryMirrors) {
             return engineRegistryMirrors(List.of(engineRegistryMirrors));
         }
+        @CustomType.Setter
         public Builder engineStorageDriver(String engineStorageDriver) {
             this.engineStorageDriver = Objects.requireNonNull(engineStorageDriver);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeTaints(List<GetNodeTemplateNodeTaint> nodeTaints) {
             this.nodeTaints = Objects.requireNonNull(nodeTaints);
             return this;
@@ -357,11 +333,30 @@ public final class GetNodeTemplateResult {
         public Builder nodeTaints(GetNodeTemplateNodeTaint... nodeTaints) {
             return nodeTaints(List.of(nodeTaints));
         }
+        @CustomType.Setter
         public Builder useInternalIpAddress(@Nullable Boolean useInternalIpAddress) {
             this.useInternalIpAddress = useInternalIpAddress;
             return this;
-        }        public GetNodeTemplateResult build() {
-            return new GetNodeTemplateResult(annotations, cloudCredentialId, description, driver, engineEnv, engineInsecureRegistries, engineInstallUrl, engineLabel, engineOpt, engineRegistryMirrors, engineStorageDriver, id, labels, name, nodeTaints, useInternalIpAddress);
+        }
+        public GetNodeTemplateResult build() {
+            final var o = new GetNodeTemplateResult();
+            o.annotations = annotations;
+            o.cloudCredentialId = cloudCredentialId;
+            o.description = description;
+            o.driver = driver;
+            o.engineEnv = engineEnv;
+            o.engineInsecureRegistries = engineInsecureRegistries;
+            o.engineInstallUrl = engineInstallUrl;
+            o.engineLabel = engineLabel;
+            o.engineOpt = engineOpt;
+            o.engineRegistryMirrors = engineRegistryMirrors;
+            o.engineStorageDriver = engineStorageDriver;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.nodeTaints = nodeTaints;
+            o.useInternalIpAddress = useInternalIpAddress;
+            return o;
         }
     }
 }

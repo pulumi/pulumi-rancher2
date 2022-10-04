@@ -21,28 +21,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewAuthConfigKeycloak(ctx, "keycloak", &rancher2.AuthConfigKeycloakArgs{
-// 			DisplayNameField:   pulumi.String("<DISPLAY_NAME_FIELD>"),
-// 			GroupsField:        pulumi.String("<GROUPS_FIELD>"),
-// 			IdpMetadataContent: pulumi.String("<IDP_METADATA_CONTENT>"),
-// 			RancherApiHost:     pulumi.String("https://<RANCHER_API_HOST>"),
-// 			SpCert:             pulumi.String("<SP_CERT>"),
-// 			SpKey:              pulumi.String("<SP_KEY>"),
-// 			UidField:           pulumi.String("<UID_FIELD>"),
-// 			UserNameField:      pulumi.String("<USER_NAME_FIELD>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewAuthConfigKeycloak(ctx, "keycloak", &rancher2.AuthConfigKeycloakArgs{
+//				DisplayNameField:   pulumi.String("<DISPLAY_NAME_FIELD>"),
+//				GroupsField:        pulumi.String("<GROUPS_FIELD>"),
+//				IdpMetadataContent: pulumi.String("<IDP_METADATA_CONTENT>"),
+//				RancherApiHost:     pulumi.String("https://<RANCHER_API_HOST>"),
+//				SpCert:             pulumi.String("<SP_CERT>"),
+//				SpKey:              pulumi.String("<SP_KEY>"),
+//				UidField:           pulumi.String("<UID_FIELD>"),
+//				UserNameField:      pulumi.String("<USER_NAME_FIELD>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type AuthConfigKeycloak struct {
 	pulumi.CustomResourceState
@@ -296,7 +299,7 @@ func (i *AuthConfigKeycloak) ToAuthConfigKeycloakOutputWithContext(ctx context.C
 // AuthConfigKeycloakArrayInput is an input type that accepts AuthConfigKeycloakArray and AuthConfigKeycloakArrayOutput values.
 // You can construct a concrete instance of `AuthConfigKeycloakArrayInput` via:
 //
-//          AuthConfigKeycloakArray{ AuthConfigKeycloakArgs{...} }
+//	AuthConfigKeycloakArray{ AuthConfigKeycloakArgs{...} }
 type AuthConfigKeycloakArrayInput interface {
 	pulumi.Input
 
@@ -321,7 +324,7 @@ func (i AuthConfigKeycloakArray) ToAuthConfigKeycloakArrayOutputWithContext(ctx 
 // AuthConfigKeycloakMapInput is an input type that accepts AuthConfigKeycloakMap and AuthConfigKeycloakMapOutput values.
 // You can construct a concrete instance of `AuthConfigKeycloakMapInput` via:
 //
-//          AuthConfigKeycloakMap{ "key": AuthConfigKeycloakArgs{...} }
+//	AuthConfigKeycloakMap{ "key": AuthConfigKeycloakArgs{...} }
 type AuthConfigKeycloakMapInput interface {
 	pulumi.Input
 

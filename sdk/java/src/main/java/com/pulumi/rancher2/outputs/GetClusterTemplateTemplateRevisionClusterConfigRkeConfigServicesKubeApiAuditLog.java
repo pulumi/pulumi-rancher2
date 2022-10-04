@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog {
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration configuration;
-    private final @Nullable Boolean enabled;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration configuration;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog(
-        @CustomType.Parameter("configuration") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration configuration,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.configuration = configuration;
-        this.enabled = enabled;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog() {}
     public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration configuration() {
         return this.configuration;
     }
@@ -37,30 +30,32 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration configuration;
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configuration = defaults.configuration;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder configuration(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration configuration) {
             this.configuration = Objects.requireNonNull(configuration);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog(configuration, enabled);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog();
+            o.configuration = configuration;
+            o.enabled = enabled;
+            return o;
         }
     }
 }

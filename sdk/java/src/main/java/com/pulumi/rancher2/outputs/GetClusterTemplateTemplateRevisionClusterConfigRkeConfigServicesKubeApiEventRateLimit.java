@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
-    private final String configuration;
-    private final @Nullable Boolean enabled;
+    private String configuration;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit(
-        @CustomType.Parameter("configuration") String configuration,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.configuration = configuration;
-        this.enabled = enabled;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit() {}
     public String configuration() {
         return this.configuration;
     }
@@ -37,30 +30,32 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String configuration;
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configuration = defaults.configuration;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder configuration(String configuration) {
             this.configuration = Objects.requireNonNull(configuration);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit(configuration, enabled);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit();
+            o.configuration = configuration;
+            o.enabled = enabled;
+            return o;
         }
     }
 }

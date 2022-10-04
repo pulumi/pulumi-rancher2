@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRkeConfigNetworkCalicoNetworkProvider {
-    private final String cloudProvider;
+    private String cloudProvider;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigNetworkCalicoNetworkProvider(@CustomType.Parameter("cloudProvider") String cloudProvider) {
-        this.cloudProvider = cloudProvider;
-    }
-
+    private GetClusterRkeConfigNetworkCalicoNetworkProvider() {}
     public String cloudProvider() {
         return this.cloudProvider;
     }
@@ -27,24 +23,24 @@ public final class GetClusterRkeConfigNetworkCalicoNetworkProvider {
     public static Builder builder(GetClusterRkeConfigNetworkCalicoNetworkProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cloudProvider;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigNetworkCalicoNetworkProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudProvider = defaults.cloudProvider;
         }
 
+        @CustomType.Setter
         public Builder cloudProvider(String cloudProvider) {
             this.cloudProvider = Objects.requireNonNull(cloudProvider);
             return this;
-        }        public GetClusterRkeConfigNetworkCalicoNetworkProvider build() {
-            return new GetClusterRkeConfigNetworkCalicoNetworkProvider(cloudProvider);
+        }
+        public GetClusterRkeConfigNetworkCalicoNetworkProvider build() {
+            final var o = new GetClusterRkeConfigNetworkCalicoNetworkProvider();
+            o.cloudProvider = cloudProvider;
+            return o;
         }
     }
 }

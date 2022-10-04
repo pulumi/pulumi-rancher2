@@ -17,56 +17,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd {
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig backupConfig;
-    private final @Nullable String caCert;
-    private final @Nullable String cert;
-    private final @Nullable String creation;
-    private final @Nullable List<String> externalUrls;
-    private final @Nullable Map<String,Object> extraArgs;
-    private final @Nullable List<String> extraBinds;
-    private final @Nullable List<String> extraEnvs;
-    private final @Nullable Integer gid;
-    private final @Nullable String image;
-    private final @Nullable String key;
-    private final @Nullable String path;
-    private final @Nullable String retention;
-    private final @Nullable Boolean snapshot;
-    private final @Nullable Integer uid;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig backupConfig;
+    private @Nullable String caCert;
+    private @Nullable String cert;
+    private @Nullable String creation;
+    private @Nullable List<String> externalUrls;
+    private @Nullable Map<String,Object> extraArgs;
+    private @Nullable List<String> extraBinds;
+    private @Nullable List<String> extraEnvs;
+    private @Nullable Integer gid;
+    private @Nullable String image;
+    private @Nullable String key;
+    private @Nullable String path;
+    private @Nullable String retention;
+    private @Nullable Boolean snapshot;
+    private @Nullable Integer uid;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd(
-        @CustomType.Parameter("backupConfig") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig backupConfig,
-        @CustomType.Parameter("caCert") @Nullable String caCert,
-        @CustomType.Parameter("cert") @Nullable String cert,
-        @CustomType.Parameter("creation") @Nullable String creation,
-        @CustomType.Parameter("externalUrls") @Nullable List<String> externalUrls,
-        @CustomType.Parameter("extraArgs") @Nullable Map<String,Object> extraArgs,
-        @CustomType.Parameter("extraBinds") @Nullable List<String> extraBinds,
-        @CustomType.Parameter("extraEnvs") @Nullable List<String> extraEnvs,
-        @CustomType.Parameter("gid") @Nullable Integer gid,
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("retention") @Nullable String retention,
-        @CustomType.Parameter("snapshot") @Nullable Boolean snapshot,
-        @CustomType.Parameter("uid") @Nullable Integer uid) {
-        this.backupConfig = backupConfig;
-        this.caCert = caCert;
-        this.cert = cert;
-        this.creation = creation;
-        this.externalUrls = externalUrls;
-        this.extraArgs = extraArgs;
-        this.extraBinds = extraBinds;
-        this.extraEnvs = extraEnvs;
-        this.gid = gid;
-        this.image = image;
-        this.key = key;
-        this.path = path;
-        this.retention = retention;
-        this.snapshot = snapshot;
-        this.uid = uid;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd() {}
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig> backupConfig() {
         return Optional.ofNullable(this.backupConfig);
     }
@@ -120,7 +87,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig backupConfig;
         private @Nullable String caCert;
@@ -137,11 +104,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         private @Nullable String retention;
         private @Nullable Boolean snapshot;
         private @Nullable Integer uid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupConfig = defaults.backupConfig;
@@ -161,22 +124,27 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     	      this.uid = defaults.uid;
         }
 
+        @CustomType.Setter
         public Builder backupConfig(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig backupConfig) {
             this.backupConfig = backupConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder caCert(@Nullable String caCert) {
             this.caCert = caCert;
             return this;
         }
+        @CustomType.Setter
         public Builder cert(@Nullable String cert) {
             this.cert = cert;
             return this;
         }
+        @CustomType.Setter
         public Builder creation(@Nullable String creation) {
             this.creation = creation;
             return this;
         }
+        @CustomType.Setter
         public Builder externalUrls(@Nullable List<String> externalUrls) {
             this.externalUrls = externalUrls;
             return this;
@@ -184,10 +152,12 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         public Builder externalUrls(String... externalUrls) {
             return externalUrls(List.of(externalUrls));
         }
+        @CustomType.Setter
         public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
             this.extraArgs = extraArgs;
             return this;
         }
+        @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
             this.extraBinds = extraBinds;
             return this;
@@ -195,6 +165,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         public Builder extraBinds(String... extraBinds) {
             return extraBinds(List.of(extraBinds));
         }
+        @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
             this.extraEnvs = extraEnvs;
             return this;
@@ -202,35 +173,59 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         public Builder extraEnvs(String... extraEnvs) {
             return extraEnvs(List.of(extraEnvs));
         }
+        @CustomType.Setter
         public Builder gid(@Nullable Integer gid) {
             this.gid = gid;
             return this;
         }
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder retention(@Nullable String retention) {
             this.retention = retention;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshot(@Nullable Boolean snapshot) {
             this.snapshot = snapshot;
             return this;
         }
+        @CustomType.Setter
         public Builder uid(@Nullable Integer uid) {
             this.uid = uid;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd(backupConfig, caCert, cert, creation, externalUrls, extraArgs, extraBinds, extraEnvs, gid, image, key, path, retention, snapshot, uid);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd();
+            o.backupConfig = backupConfig;
+            o.caCert = caCert;
+            o.cert = cert;
+            o.creation = creation;
+            o.externalUrls = externalUrls;
+            o.extraArgs = extraArgs;
+            o.extraBinds = extraBinds;
+            o.extraEnvs = extraEnvs;
+            o.gid = gid;
+            o.image = image;
+            o.key = key;
+            o.path = path;
+            o.retention = retention;
+            o.snapshot = snapshot;
+            o.uid = uid;
+            return o;
         }
     }
 }

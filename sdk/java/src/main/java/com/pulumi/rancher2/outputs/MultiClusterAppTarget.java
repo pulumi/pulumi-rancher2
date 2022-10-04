@@ -15,35 +15,24 @@ public final class MultiClusterAppTarget {
      * @return App ID for target (string)
      * 
      */
-    private final @Nullable String appId;
+    private @Nullable String appId;
     /**
      * @return App health state for target (string)
      * 
      */
-    private final @Nullable String healthState;
+    private @Nullable String healthState;
     /**
      * @return Project ID for target (string)
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return App state for target (string)
      * 
      */
-    private final @Nullable String state;
+    private @Nullable String state;
 
-    @CustomType.Constructor
-    private MultiClusterAppTarget(
-        @CustomType.Parameter("appId") @Nullable String appId,
-        @CustomType.Parameter("healthState") @Nullable String healthState,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("state") @Nullable String state) {
-        this.appId = appId;
-        this.healthState = healthState;
-        this.projectId = projectId;
-        this.state = state;
-    }
-
+    private MultiClusterAppTarget() {}
     /**
      * @return App ID for target (string)
      * 
@@ -80,17 +69,13 @@ public final class MultiClusterAppTarget {
     public static Builder builder(MultiClusterAppTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String appId;
         private @Nullable String healthState;
         private String projectId;
         private @Nullable String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MultiClusterAppTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appId = defaults.appId;
@@ -99,23 +84,33 @@ public final class MultiClusterAppTarget {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder appId(@Nullable String appId) {
             this.appId = appId;
             return this;
         }
+        @CustomType.Setter
         public Builder healthState(@Nullable String healthState) {
             this.healthState = healthState;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
-        }        public MultiClusterAppTarget build() {
-            return new MultiClusterAppTarget(appId, healthState, projectId, state);
+        }
+        public MultiClusterAppTarget build() {
+            final var o = new MultiClusterAppTarget();
+            o.appId = appId;
+            o.healthState = healthState;
+            o.projectId = projectId;
+            o.state = state;
+            return o;
         }
     }
 }

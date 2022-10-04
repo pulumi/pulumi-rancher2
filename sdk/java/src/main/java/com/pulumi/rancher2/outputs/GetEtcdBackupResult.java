@@ -17,62 +17,41 @@ public final class GetEtcdBackupResult {
      * @return (Computed) Annotations for Etcd Backup object (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) Backup config for etcd backup (list maxitems:1)
      * 
      */
-    private final GetEtcdBackupBackupConfig backupConfig;
-    private final String clusterId;
+    private GetEtcdBackupBackupConfig backupConfig;
+    private String clusterId;
     /**
      * @return (Computed) Filename of the Etcd Backup (string)
      * 
      */
-    private final String filename;
+    private String filename;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for Etcd Backup object (map)
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return (Computed) Manual execution of the Etcd Backup. Default `false` (bool)
      * 
      */
-    private final Boolean manual;
-    private final String name;
+    private Boolean manual;
+    private String name;
     /**
      * @return (Computed) Description for the Etcd Backup (string)
      * 
      */
-    private final String namespaceId;
+    private String namespaceId;
 
-    @CustomType.Constructor
-    private GetEtcdBackupResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("backupConfig") GetEtcdBackupBackupConfig backupConfig,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("filename") String filename,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("manual") Boolean manual,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("namespaceId") String namespaceId) {
-        this.annotations = annotations;
-        this.backupConfig = backupConfig;
-        this.clusterId = clusterId;
-        this.filename = filename;
-        this.id = id;
-        this.labels = labels;
-        this.manual = manual;
-        this.name = name;
-        this.namespaceId = namespaceId;
-    }
-
+    private GetEtcdBackupResult() {}
     /**
      * @return (Computed) Annotations for Etcd Backup object (map)
      * 
@@ -136,7 +115,7 @@ public final class GetEtcdBackupResult {
     public static Builder builder(GetEtcdBackupResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private GetEtcdBackupBackupConfig backupConfig;
@@ -147,11 +126,7 @@ public final class GetEtcdBackupResult {
         private Boolean manual;
         private String name;
         private String namespaceId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEtcdBackupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -165,43 +140,63 @@ public final class GetEtcdBackupResult {
     	      this.namespaceId = defaults.namespaceId;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder backupConfig(GetEtcdBackupBackupConfig backupConfig) {
             this.backupConfig = Objects.requireNonNull(backupConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder filename(String filename) {
             this.filename = Objects.requireNonNull(filename);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder manual(Boolean manual) {
             this.manual = Objects.requireNonNull(manual);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
             this.namespaceId = Objects.requireNonNull(namespaceId);
             return this;
-        }        public GetEtcdBackupResult build() {
-            return new GetEtcdBackupResult(annotations, backupConfig, clusterId, filename, id, labels, manual, name, namespaceId);
+        }
+        public GetEtcdBackupResult build() {
+            final var o = new GetEtcdBackupResult();
+            o.annotations = annotations;
+            o.backupConfig = backupConfig;
+            o.clusterId = clusterId;
+            o.filename = filename;
+            o.id = id;
+            o.labels = labels;
+            o.manual = manual;
+            o.name = name;
+            o.namespaceId = namespaceId;
+            return o;
         }
     }
 }

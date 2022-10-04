@@ -19,36 +19,39 @@ import (
 // package main
 //
 // import (
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewAppV2(ctx, "foo", &rancher2.AppV2Args{
-// 			ClusterId:    pulumi.String("<CLUSTER_ID>"),
-// 			Namespace:    pulumi.String("cattle-monitoring-system"),
-// 			RepoName:     pulumi.String("rancher-charts"),
-// 			ChartName:    pulumi.String("rancher-monitoring"),
-// 			ChartVersion: pulumi.String("9.4.200"),
-// 			Values:       readFileOrPanic("values.yaml"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewAppV2(ctx, "foo", &rancher2.AppV2Args{
+//				ClusterId:    pulumi.String("<CLUSTER_ID>"),
+//				Namespace:    pulumi.String("cattle-monitoring-system"),
+//				RepoName:     pulumi.String("rancher-charts"),
+//				ChartName:    pulumi.String("rancher-monitoring"),
+//				ChartVersion: pulumi.String("9.4.200"),
+//				Values:       readFileOrPanic("values.yaml"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -56,7 +59,9 @@ import (
 // V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.
 //
 // ```sh
-//  $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
+//
+//	$ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
+//
 // ```
 type AppV2 struct {
 	pulumi.CustomResourceState
@@ -308,7 +313,7 @@ func (i *AppV2) ToAppV2OutputWithContext(ctx context.Context) AppV2Output {
 // AppV2ArrayInput is an input type that accepts AppV2Array and AppV2ArrayOutput values.
 // You can construct a concrete instance of `AppV2ArrayInput` via:
 //
-//          AppV2Array{ AppV2Args{...} }
+//	AppV2Array{ AppV2Args{...} }
 type AppV2ArrayInput interface {
 	pulumi.Input
 
@@ -333,7 +338,7 @@ func (i AppV2Array) ToAppV2ArrayOutputWithContext(ctx context.Context) AppV2Arra
 // AppV2MapInput is an input type that accepts AppV2Map and AppV2MapOutput values.
 // You can construct a concrete instance of `AppV2MapInput` via:
 //
-//          AppV2Map{ "key": AppV2Args{...} }
+//	AppV2Map{ "key": AppV2Args{...} }
 type AppV2MapInput interface {
 	pulumi.Input
 

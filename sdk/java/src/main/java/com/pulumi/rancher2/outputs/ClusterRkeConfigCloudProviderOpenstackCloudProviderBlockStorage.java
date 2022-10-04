@@ -16,28 +16,19 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStora
      * @return (string)
      * 
      */
-    private final @Nullable String bsVersion;
+    private @Nullable String bsVersion;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable Boolean ignoreVolumeAz;
+    private @Nullable Boolean ignoreVolumeAz;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable Boolean trustDevicePath;
+    private @Nullable Boolean trustDevicePath;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage(
-        @CustomType.Parameter("bsVersion") @Nullable String bsVersion,
-        @CustomType.Parameter("ignoreVolumeAz") @Nullable Boolean ignoreVolumeAz,
-        @CustomType.Parameter("trustDevicePath") @Nullable Boolean trustDevicePath) {
-        this.bsVersion = bsVersion;
-        this.ignoreVolumeAz = ignoreVolumeAz;
-        this.trustDevicePath = trustDevicePath;
-    }
-
+    private ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage() {}
     /**
      * @return (string)
      * 
@@ -67,16 +58,12 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStora
     public static Builder builder(ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bsVersion;
         private @Nullable Boolean ignoreVolumeAz;
         private @Nullable Boolean trustDevicePath;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bsVersion = defaults.bsVersion;
@@ -84,19 +71,27 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStora
     	      this.trustDevicePath = defaults.trustDevicePath;
         }
 
+        @CustomType.Setter
         public Builder bsVersion(@Nullable String bsVersion) {
             this.bsVersion = bsVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreVolumeAz(@Nullable Boolean ignoreVolumeAz) {
             this.ignoreVolumeAz = ignoreVolumeAz;
             return this;
         }
+        @CustomType.Setter
         public Builder trustDevicePath(@Nullable Boolean trustDevicePath) {
             this.trustDevicePath = trustDevicePath;
             return this;
-        }        public ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage build() {
-            return new ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage(bsVersion, ignoreVolumeAz, trustDevicePath);
+        }
+        public ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage build() {
+            final var o = new ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage();
+            o.bsVersion = bsVersion;
+            o.ignoreVolumeAz = ignoreVolumeAz;
+            o.trustDevicePath = trustDevicePath;
+            return o;
         }
     }
 }

@@ -18,58 +18,37 @@ public final class GetConfigMapV2Result {
      * @return (Computed) Annotations for the configMap v2 (map)
      * 
      */
-    private final Map<String,Object> annotations;
-    private final String clusterId;
+    private Map<String,Object> annotations;
+    private String clusterId;
     /**
      * @return (Computed) The data of the configMap v2 (map)
      * 
      */
-    private final Map<String,Object> data;
+    private Map<String,Object> data;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate (bool)
      * 
      */
-    private final Boolean immutable;
+    private Boolean immutable;
     /**
      * @return (Computed) Labels for the configMap v2 (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
-    private final @Nullable String namespace;
+    private Map<String,Object> labels;
+    private String name;
+    private @Nullable String namespace;
     /**
      * @return (Computed) The k8s resource version (string)
      * 
      */
-    private final String resourceVersion;
+    private String resourceVersion;
 
-    @CustomType.Constructor
-    private GetConfigMapV2Result(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("data") Map<String,Object> data,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("immutable") Boolean immutable,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("namespace") @Nullable String namespace,
-        @CustomType.Parameter("resourceVersion") String resourceVersion) {
-        this.annotations = annotations;
-        this.clusterId = clusterId;
-        this.data = data;
-        this.id = id;
-        this.immutable = immutable;
-        this.labels = labels;
-        this.name = name;
-        this.namespace = namespace;
-        this.resourceVersion = resourceVersion;
-    }
-
+    private GetConfigMapV2Result() {}
     /**
      * @return (Computed) Annotations for the configMap v2 (map)
      * 
@@ -129,7 +108,7 @@ public final class GetConfigMapV2Result {
     public static Builder builder(GetConfigMapV2Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String clusterId;
@@ -140,11 +119,7 @@ public final class GetConfigMapV2Result {
         private String name;
         private @Nullable String namespace;
         private String resourceVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetConfigMapV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -158,43 +133,63 @@ public final class GetConfigMapV2Result {
     	      this.resourceVersion = defaults.resourceVersion;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder data(Map<String,Object> data) {
             this.data = Objects.requireNonNull(data);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder immutable(Boolean immutable) {
             this.immutable = Objects.requireNonNull(immutable);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceVersion(String resourceVersion) {
             this.resourceVersion = Objects.requireNonNull(resourceVersion);
             return this;
-        }        public GetConfigMapV2Result build() {
-            return new GetConfigMapV2Result(annotations, clusterId, data, id, immutable, labels, name, namespace, resourceVersion);
+        }
+        public GetConfigMapV2Result build() {
+            final var o = new GetConfigMapV2Result();
+            o.annotations = annotations;
+            o.clusterId = clusterId;
+            o.data = data;
+            o.id = id;
+            o.immutable = immutable;
+            o.labels = labels;
+            o.name = name;
+            o.namespace = namespace;
+            o.resourceVersion = resourceVersion;
+            return o;
         }
     }
 }

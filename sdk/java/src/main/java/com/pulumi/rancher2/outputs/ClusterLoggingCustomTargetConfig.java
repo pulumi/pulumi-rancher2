@@ -15,35 +15,24 @@ public final class ClusterLoggingCustomTargetConfig {
      * @return SSL certificate for the syslog service (string)
      * 
      */
-    private final @Nullable String certificate;
+    private @Nullable String certificate;
     /**
      * @return SSL client certificate for the syslog service (string)
      * 
      */
-    private final @Nullable String clientCert;
+    private @Nullable String clientCert;
     /**
      * @return SSL client key for the syslog service (string)
      * 
      */
-    private final @Nullable String clientKey;
+    private @Nullable String clientKey;
     /**
      * @return Custom target config content (string)
      * 
      */
-    private final String content;
+    private String content;
 
-    @CustomType.Constructor
-    private ClusterLoggingCustomTargetConfig(
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("clientCert") @Nullable String clientCert,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("content") String content) {
-        this.certificate = certificate;
-        this.clientCert = clientCert;
-        this.clientKey = clientKey;
-        this.content = content;
-    }
-
+    private ClusterLoggingCustomTargetConfig() {}
     /**
      * @return SSL certificate for the syslog service (string)
      * 
@@ -80,17 +69,13 @@ public final class ClusterLoggingCustomTargetConfig {
     public static Builder builder(ClusterLoggingCustomTargetConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificate;
         private @Nullable String clientCert;
         private @Nullable String clientKey;
         private String content;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterLoggingCustomTargetConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
@@ -99,23 +84,33 @@ public final class ClusterLoggingCustomTargetConfig {
     	      this.content = defaults.content;
         }
 
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
             this.clientCert = clientCert;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
-        }        public ClusterLoggingCustomTargetConfig build() {
-            return new ClusterLoggingCustomTargetConfig(certificate, clientCert, clientKey, content);
+        }
+        public ClusterLoggingCustomTargetConfig build() {
+            final var o = new ClusterLoggingCustomTargetConfig();
+            o.certificate = certificate;
+            o.clientCert = clientCert;
+            o.clientKey = clientKey;
+            o.content = content;
+            return o;
         }
     }
 }

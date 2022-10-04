@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration {
-    private final @Nullable String effect;
-    private final String key;
-    private final @Nullable String operator;
-    private final @Nullable Integer seconds;
-    private final @Nullable String value;
+    private @Nullable String effect;
+    private String key;
+    private @Nullable String operator;
+    private @Nullable Integer seconds;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration(
-        @CustomType.Parameter("effect") @Nullable String effect,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("operator") @Nullable String operator,
-        @CustomType.Parameter("seconds") @Nullable Integer seconds,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.effect = effect;
-        this.key = key;
-        this.operator = operator;
-        this.seconds = seconds;
-        this.value = value;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration() {}
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
@@ -55,18 +42,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToler
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String effect;
         private String key;
         private @Nullable String operator;
         private @Nullable Integer seconds;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -76,27 +59,39 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToler
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder effect(@Nullable String effect) {
             this.effect = effect;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder operator(@Nullable String operator) {
             this.operator = operator;
             return this;
         }
+        @CustomType.Setter
         public Builder seconds(@Nullable Integer seconds) {
             this.seconds = seconds;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration(effect, key, operator, seconds, value);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration();
+            o.effect = effect;
+            o.key = key;
+            o.operator = operator;
+            o.seconds = seconds;
+            o.value = value;
+            return o;
         }
     }
 }

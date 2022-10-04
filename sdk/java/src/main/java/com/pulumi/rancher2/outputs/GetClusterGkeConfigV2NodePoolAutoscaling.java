@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterGkeConfigV2NodePoolAutoscaling {
-    private final @Nullable Boolean enabled;
-    private final Integer maxNodeCount;
-    private final Integer minNodeCount;
+    private @Nullable Boolean enabled;
+    private Integer maxNodeCount;
+    private Integer minNodeCount;
 
-    @CustomType.Constructor
-    private GetClusterGkeConfigV2NodePoolAutoscaling(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("maxNodeCount") Integer maxNodeCount,
-        @CustomType.Parameter("minNodeCount") Integer minNodeCount) {
-        this.enabled = enabled;
-        this.maxNodeCount = maxNodeCount;
-        this.minNodeCount = minNodeCount;
-    }
-
+    private GetClusterGkeConfigV2NodePoolAutoscaling() {}
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -43,16 +34,12 @@ public final class GetClusterGkeConfigV2NodePoolAutoscaling {
     public static Builder builder(GetClusterGkeConfigV2NodePoolAutoscaling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private Integer maxNodeCount;
         private Integer minNodeCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterGkeConfigV2NodePoolAutoscaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -60,19 +47,27 @@ public final class GetClusterGkeConfigV2NodePoolAutoscaling {
     	      this.minNodeCount = defaults.minNodeCount;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder maxNodeCount(Integer maxNodeCount) {
             this.maxNodeCount = Objects.requireNonNull(maxNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder minNodeCount(Integer minNodeCount) {
             this.minNodeCount = Objects.requireNonNull(minNodeCount);
             return this;
-        }        public GetClusterGkeConfigV2NodePoolAutoscaling build() {
-            return new GetClusterGkeConfigV2NodePoolAutoscaling(enabled, maxNodeCount, minNodeCount);
+        }
+        public GetClusterGkeConfigV2NodePoolAutoscaling build() {
+            final var o = new GetClusterGkeConfigV2NodePoolAutoscaling();
+            o.enabled = enabled;
+            o.maxNodeCount = maxNodeCount;
+            o.minNodeCount = minNodeCount;
+            return o;
         }
     }
 }

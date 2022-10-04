@@ -15,93 +15,62 @@ public final class GetAppResult {
      * @return (Computed) Annotations for the catalog (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) Answers for the app (map)
      * 
      */
-    private final Map<String,Object> answers;
+    private Map<String,Object> answers;
     /**
      * @return (Computed) Catalog name of the app (string)
      * 
      */
-    private final String catalogName;
+    private String catalogName;
     /**
      * @return (Computed) Description for the app (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return (Computed) The URL of the helm catalog app (string)
      * 
      */
-    private final String externalId;
+    private String externalId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for the catalog (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
-    private final String projectId;
+    private Map<String,Object> labels;
+    private String name;
+    private String projectId;
     /**
      * @return (Computed) Current revision id for the app (string)
      * 
      */
-    private final String revisionId;
-    private final String targetNamespace;
+    private String revisionId;
+    private String targetNamespace;
     /**
      * @return (Computed) Template name of the app (string)
      * 
      */
-    private final String templateName;
+    private String templateName;
     /**
      * @return (Computed) Template version of the app (string)
      * 
      */
-    private final String templateVersion;
+    private String templateVersion;
     /**
      * @return (Computed) values.yaml base64 encoded file content for the app (string)
      * 
      */
-    private final String valuesYaml;
+    private String valuesYaml;
 
-    @CustomType.Constructor
-    private GetAppResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("answers") Map<String,Object> answers,
-        @CustomType.Parameter("catalogName") String catalogName,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("externalId") String externalId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("revisionId") String revisionId,
-        @CustomType.Parameter("targetNamespace") String targetNamespace,
-        @CustomType.Parameter("templateName") String templateName,
-        @CustomType.Parameter("templateVersion") String templateVersion,
-        @CustomType.Parameter("valuesYaml") String valuesYaml) {
-        this.annotations = annotations;
-        this.answers = answers;
-        this.catalogName = catalogName;
-        this.description = description;
-        this.externalId = externalId;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.projectId = projectId;
-        this.revisionId = revisionId;
-        this.targetNamespace = targetNamespace;
-        this.templateName = templateName;
-        this.templateVersion = templateVersion;
-        this.valuesYaml = valuesYaml;
-    }
-
+    private GetAppResult() {}
     /**
      * @return (Computed) Annotations for the catalog (map)
      * 
@@ -196,7 +165,7 @@ public final class GetAppResult {
     public static Builder builder(GetAppResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private Map<String,Object> answers;
@@ -212,11 +181,7 @@ public final class GetAppResult {
         private String templateName;
         private String templateVersion;
         private String valuesYaml;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -235,63 +200,93 @@ public final class GetAppResult {
     	      this.valuesYaml = defaults.valuesYaml;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder answers(Map<String,Object> answers) {
             this.answers = Objects.requireNonNull(answers);
             return this;
         }
+        @CustomType.Setter
         public Builder catalogName(String catalogName) {
             this.catalogName = Objects.requireNonNull(catalogName);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder externalId(String externalId) {
             this.externalId = Objects.requireNonNull(externalId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder revisionId(String revisionId) {
             this.revisionId = Objects.requireNonNull(revisionId);
             return this;
         }
+        @CustomType.Setter
         public Builder targetNamespace(String targetNamespace) {
             this.targetNamespace = Objects.requireNonNull(targetNamespace);
             return this;
         }
+        @CustomType.Setter
         public Builder templateName(String templateName) {
             this.templateName = Objects.requireNonNull(templateName);
             return this;
         }
+        @CustomType.Setter
         public Builder templateVersion(String templateVersion) {
             this.templateVersion = Objects.requireNonNull(templateVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder valuesYaml(String valuesYaml) {
             this.valuesYaml = Objects.requireNonNull(valuesYaml);
             return this;
-        }        public GetAppResult build() {
-            return new GetAppResult(annotations, answers, catalogName, description, externalId, id, labels, name, projectId, revisionId, targetNamespace, templateName, templateVersion, valuesYaml);
+        }
+        public GetAppResult build() {
+            final var o = new GetAppResult();
+            o.annotations = annotations;
+            o.answers = answers;
+            o.catalogName = catalogName;
+            o.description = description;
+            o.externalId = externalId;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.projectId = projectId;
+            o.revisionId = revisionId;
+            o.targetNamespace = targetNamespace;
+            o.templateName = templateName;
+            o.templateVersion = templateVersion;
+            o.valuesYaml = valuesYaml;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class ProjectResourceQuota {
      * @return Default resource quota limit for  namespaces in project (list maxitems:1)
      * 
      */
-    private final ProjectResourceQuotaNamespaceDefaultLimit namespaceDefaultLimit;
+    private ProjectResourceQuotaNamespaceDefaultLimit namespaceDefaultLimit;
     /**
      * @return Resource quota limit for project (list maxitems:1)
      * 
      */
-    private final ProjectResourceQuotaProjectLimit projectLimit;
+    private ProjectResourceQuotaProjectLimit projectLimit;
 
-    @CustomType.Constructor
-    private ProjectResourceQuota(
-        @CustomType.Parameter("namespaceDefaultLimit") ProjectResourceQuotaNamespaceDefaultLimit namespaceDefaultLimit,
-        @CustomType.Parameter("projectLimit") ProjectResourceQuotaProjectLimit projectLimit) {
-        this.namespaceDefaultLimit = namespaceDefaultLimit;
-        this.projectLimit = projectLimit;
-    }
-
+    private ProjectResourceQuota() {}
     /**
      * @return Default resource quota limit for  namespaces in project (list maxitems:1)
      * 
@@ -51,30 +44,32 @@ public final class ProjectResourceQuota {
     public static Builder builder(ProjectResourceQuota defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private ProjectResourceQuotaNamespaceDefaultLimit namespaceDefaultLimit;
         private ProjectResourceQuotaProjectLimit projectLimit;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ProjectResourceQuota defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.namespaceDefaultLimit = defaults.namespaceDefaultLimit;
     	      this.projectLimit = defaults.projectLimit;
         }
 
+        @CustomType.Setter
         public Builder namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimit namespaceDefaultLimit) {
             this.namespaceDefaultLimit = Objects.requireNonNull(namespaceDefaultLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder projectLimit(ProjectResourceQuotaProjectLimit projectLimit) {
             this.projectLimit = Objects.requireNonNull(projectLimit);
             return this;
-        }        public ProjectResourceQuota build() {
-            return new ProjectResourceQuota(namespaceDefaultLimit, projectLimit);
+        }
+        public ProjectResourceQuota build() {
+            final var o = new ProjectResourceQuota();
+            o.namespaceDefaultLimit = namespaceDefaultLimit;
+            o.projectLimit = projectLimit;
+            return o;
         }
     }
 }

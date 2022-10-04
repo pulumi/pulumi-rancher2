@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication {
-    private final @Nullable List<String> sans;
-    private final @Nullable String strategy;
+    private @Nullable List<String> sans;
+    private @Nullable String strategy;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication(
-        @CustomType.Parameter("sans") @Nullable List<String> sans,
-        @CustomType.Parameter("strategy") @Nullable String strategy) {
-        this.sans = sans;
-        this.strategy = strategy;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication() {}
     public List<String> sans() {
         return this.sans == null ? List.of() : this.sans;
     }
@@ -37,21 +30,18 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenti
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> sans;
         private @Nullable String strategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sans = defaults.sans;
     	      this.strategy = defaults.strategy;
         }
 
+        @CustomType.Setter
         public Builder sans(@Nullable List<String> sans) {
             this.sans = sans;
             return this;
@@ -59,11 +49,16 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenti
         public Builder sans(String... sans) {
             return sans(List.of(sans));
         }
+        @CustomType.Setter
         public Builder strategy(@Nullable String strategy) {
             this.strategy = strategy;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication(sans, strategy);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication();
+            o.sans = sans;
+            o.strategy = strategy;
+            return o;
         }
     }
 }

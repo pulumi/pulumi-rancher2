@@ -17,55 +17,36 @@ public final class GetNamespaceResult {
      * @return (Computed) Annotations for Node Pool object (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) Default containers resource limits on namespace (List maxitem:1)
      * 
      */
-    private final GetNamespaceContainerResourceLimit containerResourceLimit;
+    private GetNamespaceContainerResourceLimit containerResourceLimit;
     /**
      * @return (Computed) A namespace description (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
-    private final String projectId;
+    private Map<String,Object> labels;
+    private String name;
+    private String projectId;
     /**
      * @return (Computed) Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
      * 
      */
-    private final GetNamespaceResourceQuota resourceQuota;
+    private GetNamespaceResourceQuota resourceQuota;
 
-    @CustomType.Constructor
-    private GetNamespaceResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("containerResourceLimit") GetNamespaceContainerResourceLimit containerResourceLimit,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("resourceQuota") GetNamespaceResourceQuota resourceQuota) {
-        this.annotations = annotations;
-        this.containerResourceLimit = containerResourceLimit;
-        this.description = description;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.projectId = projectId;
-        this.resourceQuota = resourceQuota;
-    }
-
+    private GetNamespaceResult() {}
     /**
      * @return (Computed) Annotations for Node Pool object (map)
      * 
@@ -122,7 +103,7 @@ public final class GetNamespaceResult {
     public static Builder builder(GetNamespaceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private GetNamespaceContainerResourceLimit containerResourceLimit;
@@ -132,11 +113,7 @@ public final class GetNamespaceResult {
         private String name;
         private String projectId;
         private GetNamespaceResourceQuota resourceQuota;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNamespaceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -149,39 +126,57 @@ public final class GetNamespaceResult {
     	      this.resourceQuota = defaults.resourceQuota;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder containerResourceLimit(GetNamespaceContainerResourceLimit containerResourceLimit) {
             this.containerResourceLimit = Objects.requireNonNull(containerResourceLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceQuota(GetNamespaceResourceQuota resourceQuota) {
             this.resourceQuota = Objects.requireNonNull(resourceQuota);
             return this;
-        }        public GetNamespaceResult build() {
-            return new GetNamespaceResult(annotations, containerResourceLimit, description, id, labels, name, projectId, resourceQuota);
+        }
+        public GetNamespaceResult build() {
+            final var o = new GetNamespaceResult();
+            o.annotations = annotations;
+            o.containerResourceLimit = containerResourceLimit;
+            o.description = description;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.projectId = projectId;
+            o.resourceQuota = resourceQuota;
+            return o;
         }
     }
 }

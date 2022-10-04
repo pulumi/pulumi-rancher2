@@ -15,13 +15,9 @@ public final class ClusterRkeConfigIngressUpdateStrategyRollingUpdate {
      * @return Monitoring deployment rolling update max unavailable. Default: `1` (int)
      * 
      */
-    private final @Nullable Integer maxUnavailable;
+    private @Nullable Integer maxUnavailable;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigIngressUpdateStrategyRollingUpdate(@CustomType.Parameter("maxUnavailable") @Nullable Integer maxUnavailable) {
-        this.maxUnavailable = maxUnavailable;
-    }
-
+    private ClusterRkeConfigIngressUpdateStrategyRollingUpdate() {}
     /**
      * @return Monitoring deployment rolling update max unavailable. Default: `1` (int)
      * 
@@ -37,24 +33,24 @@ public final class ClusterRkeConfigIngressUpdateStrategyRollingUpdate {
     public static Builder builder(ClusterRkeConfigIngressUpdateStrategyRollingUpdate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxUnavailable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigIngressUpdateStrategyRollingUpdate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxUnavailable = defaults.maxUnavailable;
         }
 
+        @CustomType.Setter
         public Builder maxUnavailable(@Nullable Integer maxUnavailable) {
             this.maxUnavailable = maxUnavailable;
             return this;
-        }        public ClusterRkeConfigIngressUpdateStrategyRollingUpdate build() {
-            return new ClusterRkeConfigIngressUpdateStrategyRollingUpdate(maxUnavailable);
+        }
+        public ClusterRkeConfigIngressUpdateStrategyRollingUpdate build() {
+            final var o = new ClusterRkeConfigIngressUpdateStrategyRollingUpdate();
+            o.maxUnavailable = maxUnavailable;
+            return o;
         }
     }
 }

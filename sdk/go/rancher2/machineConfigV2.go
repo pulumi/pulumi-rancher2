@@ -24,46 +24,49 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, &GetClusterV2Args{
-// 			Name: "foo-harvester",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
-// 			HarvesterCredentialConfig: &CloudCredentialHarvesterCredentialConfigArgs{
-// 				ClusterId:         pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
-// 				ClusterType:       pulumi.String("imported"),
-// 				KubeconfigContent: pulumi.String(foo_harvesterClusterV2.KubeConfig),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewMachineConfigV2(ctx, "foo-harvester-v2", &rancher2.MachineConfigV2Args{
-// 			GenerateName: pulumi.String("foo-harvester-v2"),
-// 			HarvesterConfig: &MachineConfigV2HarvesterConfigArgs{
-// 				VmNamespace: pulumi.String("default"),
-// 				CpuCount:    pulumi.String("2"),
-// 				MemorySize:  pulumi.String("4"),
-// 				DiskSize:    pulumi.String("40"),
-// 				NetworkName: pulumi.String("harvester-public/vlan1"),
-// 				ImageName:   pulumi.String("harvester-public/image-57hzg"),
-// 				SshUser:     pulumi.String("ubuntu"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, &GetClusterV2Args{
+//				Name: "foo-harvester",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
+//				HarvesterCredentialConfig: &CloudCredentialHarvesterCredentialConfigArgs{
+//					ClusterId:         pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
+//					ClusterType:       pulumi.String("imported"),
+//					KubeconfigContent: pulumi.String(foo_harvesterClusterV2.KubeConfig),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewMachineConfigV2(ctx, "foo-harvester-v2", &rancher2.MachineConfigV2Args{
+//				GenerateName: pulumi.String("foo-harvester-v2"),
+//				HarvesterConfig: &MachineConfigV2HarvesterConfigArgs{
+//					VmNamespace: pulumi.String("default"),
+//					CpuCount:    pulumi.String("2"),
+//					MemorySize:  pulumi.String("4"),
+//					DiskSize:    pulumi.String("40"),
+//					NetworkName: pulumi.String("harvester-public/vlan1"),
+//					ImageName:   pulumi.String("harvester-public/image-57hzg"),
+//					SshUser:     pulumi.String("ubuntu"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type MachineConfigV2 struct {
 	pulumi.CustomResourceState
@@ -272,7 +275,7 @@ func (i *MachineConfigV2) ToMachineConfigV2OutputWithContext(ctx context.Context
 // MachineConfigV2ArrayInput is an input type that accepts MachineConfigV2Array and MachineConfigV2ArrayOutput values.
 // You can construct a concrete instance of `MachineConfigV2ArrayInput` via:
 //
-//          MachineConfigV2Array{ MachineConfigV2Args{...} }
+//	MachineConfigV2Array{ MachineConfigV2Args{...} }
 type MachineConfigV2ArrayInput interface {
 	pulumi.Input
 
@@ -297,7 +300,7 @@ func (i MachineConfigV2Array) ToMachineConfigV2ArrayOutputWithContext(ctx contex
 // MachineConfigV2MapInput is an input type that accepts MachineConfigV2Map and MachineConfigV2MapOutput values.
 // You can construct a concrete instance of `MachineConfigV2MapInput` via:
 //
-//          MachineConfigV2Map{ "key": MachineConfigV2Args{...} }
+//	MachineConfigV2Map{ "key": MachineConfigV2Args{...} }
 type MachineConfigV2MapInput interface {
 	pulumi.Input
 

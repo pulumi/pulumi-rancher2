@@ -20,80 +20,88 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewRoleTemplate(ctx, "foo", &rancher2.RoleTemplateArgs{
-// 			Context:     pulumi.String("cluster"),
-// 			DefaultRole: pulumi.Bool(true),
-// 			Description: pulumi.String("Terraform role template acceptance test"),
-// 			Rules: RoleTemplateRuleArray{
-// 				&RoleTemplateRuleArgs{
-// 					ApiGroups: pulumi.StringArray{
-// 						pulumi.String("*"),
-// 					},
-// 					Resources: pulumi.StringArray{
-// 						pulumi.String("secrets"),
-// 					},
-// 					Verbs: pulumi.StringArray{
-// 						pulumi.String("create"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewRoleTemplate(ctx, "foo", &rancher2.RoleTemplateArgs{
+//				Context:     pulumi.String("cluster"),
+//				DefaultRole: pulumi.Bool(true),
+//				Description: pulumi.String("Terraform role template acceptance test"),
+//				Rules: RoleTemplateRuleArray{
+//					&RoleTemplateRuleArgs{
+//						ApiGroups: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						Resources: pulumi.StringArray{
+//							pulumi.String("secrets"),
+//						},
+//						Verbs: pulumi.StringArray{
+//							pulumi.String("create"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewRoleTemplate(ctx, "foo", &rancher2.RoleTemplateArgs{
-// 			Context:     pulumi.String("project"),
-// 			DefaultRole: pulumi.Bool(true),
-// 			Description: pulumi.String("Terraform role template acceptance test"),
-// 			Rules: RoleTemplateRuleArray{
-// 				&RoleTemplateRuleArgs{
-// 					ApiGroups: pulumi.StringArray{
-// 						pulumi.String("*"),
-// 					},
-// 					Resources: pulumi.StringArray{
-// 						pulumi.String("secrets"),
-// 					},
-// 					Verbs: pulumi.StringArray{
-// 						pulumi.String("create"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewRoleTemplate(ctx, "foo", &rancher2.RoleTemplateArgs{
+//				Context:     pulumi.String("project"),
+//				DefaultRole: pulumi.Bool(true),
+//				Description: pulumi.String("Terraform role template acceptance test"),
+//				Rules: RoleTemplateRuleArray{
+//					&RoleTemplateRuleArgs{
+//						ApiGroups: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						Resources: pulumi.StringArray{
+//							pulumi.String("secrets"),
+//						},
+//						Verbs: pulumi.StringArray{
+//							pulumi.String("create"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Role Template can be imported using the Rancher Role Template ID
+// # Role Template can be imported using the Rancher Role Template ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/roleTempalte:RoleTempalte foo &lt;role_template_id&gt;
+//
+//	$ pulumi import rancher2:index/roleTempalte:RoleTempalte foo &lt;role_template_id&gt;
+//
 // ```
 //
 // Deprecated: rancher2.RoleTempalte has been deprecated in favor of rancher2.RoleTemplate
@@ -299,7 +307,7 @@ func (i *RoleTempalte) ToRoleTempalteOutputWithContext(ctx context.Context) Role
 // RoleTempalteArrayInput is an input type that accepts RoleTempalteArray and RoleTempalteArrayOutput values.
 // You can construct a concrete instance of `RoleTempalteArrayInput` via:
 //
-//          RoleTempalteArray{ RoleTempalteArgs{...} }
+//	RoleTempalteArray{ RoleTempalteArgs{...} }
 type RoleTempalteArrayInput interface {
 	pulumi.Input
 
@@ -324,7 +332,7 @@ func (i RoleTempalteArray) ToRoleTempalteArrayOutputWithContext(ctx context.Cont
 // RoleTempalteMapInput is an input type that accepts RoleTempalteMap and RoleTempalteMapOutput values.
 // You can construct a concrete instance of `RoleTempalteMapInput` via:
 //
-//          RoleTempalteMap{ "key": RoleTempalteArgs{...} }
+//	RoleTempalteMap{ "key": RoleTempalteArgs{...} }
 type RoleTempalteMapInput interface {
 	pulumi.Input
 

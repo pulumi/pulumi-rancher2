@@ -16,21 +16,14 @@ public final class ClusterV2RkeConfigRegistries {
      * @return Cluster V2 docker registries config (list)
      * 
      */
-    private final @Nullable List<ClusterV2RkeConfigRegistriesConfig> configs;
+    private @Nullable List<ClusterV2RkeConfigRegistriesConfig> configs;
     /**
      * @return Cluster V2 docker registries mirror (list)
      * 
      */
-    private final @Nullable List<ClusterV2RkeConfigRegistriesMirror> mirrors;
+    private @Nullable List<ClusterV2RkeConfigRegistriesMirror> mirrors;
 
-    @CustomType.Constructor
-    private ClusterV2RkeConfigRegistries(
-        @CustomType.Parameter("configs") @Nullable List<ClusterV2RkeConfigRegistriesConfig> configs,
-        @CustomType.Parameter("mirrors") @Nullable List<ClusterV2RkeConfigRegistriesMirror> mirrors) {
-        this.configs = configs;
-        this.mirrors = mirrors;
-    }
-
+    private ClusterV2RkeConfigRegistries() {}
     /**
      * @return Cluster V2 docker registries config (list)
      * 
@@ -53,21 +46,18 @@ public final class ClusterV2RkeConfigRegistries {
     public static Builder builder(ClusterV2RkeConfigRegistries defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ClusterV2RkeConfigRegistriesConfig> configs;
         private @Nullable List<ClusterV2RkeConfigRegistriesMirror> mirrors;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterV2RkeConfigRegistries defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
     	      this.mirrors = defaults.mirrors;
         }
 
+        @CustomType.Setter
         public Builder configs(@Nullable List<ClusterV2RkeConfigRegistriesConfig> configs) {
             this.configs = configs;
             return this;
@@ -75,14 +65,19 @@ public final class ClusterV2RkeConfigRegistries {
         public Builder configs(ClusterV2RkeConfigRegistriesConfig... configs) {
             return configs(List.of(configs));
         }
+        @CustomType.Setter
         public Builder mirrors(@Nullable List<ClusterV2RkeConfigRegistriesMirror> mirrors) {
             this.mirrors = mirrors;
             return this;
         }
         public Builder mirrors(ClusterV2RkeConfigRegistriesMirror... mirrors) {
             return mirrors(List.of(mirrors));
-        }        public ClusterV2RkeConfigRegistries build() {
-            return new ClusterV2RkeConfigRegistries(configs, mirrors);
+        }
+        public ClusterV2RkeConfigRegistries build() {
+            final var o = new ClusterV2RkeConfigRegistries();
+            o.configs = configs;
+            o.mirrors = mirrors;
+            return o;
         }
     }
 }

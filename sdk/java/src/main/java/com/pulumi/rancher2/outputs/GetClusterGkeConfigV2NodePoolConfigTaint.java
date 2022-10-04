@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterGkeConfigV2NodePoolConfigTaint {
-    private final String effect;
-    private final String key;
-    private final String value;
+    private String effect;
+    private String key;
+    private String value;
 
-    @CustomType.Constructor
-    private GetClusterGkeConfigV2NodePoolConfigTaint(
-        @CustomType.Parameter("effect") String effect,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.effect = effect;
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetClusterGkeConfigV2NodePoolConfigTaint() {}
     public String effect() {
         return this.effect;
     }
@@ -40,16 +31,12 @@ public final class GetClusterGkeConfigV2NodePoolConfigTaint {
     public static Builder builder(GetClusterGkeConfigV2NodePoolConfigTaint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String effect;
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterGkeConfigV2NodePoolConfigTaint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -57,19 +44,27 @@ public final class GetClusterGkeConfigV2NodePoolConfigTaint {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder effect(String effect) {
             this.effect = Objects.requireNonNull(effect);
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetClusterGkeConfigV2NodePoolConfigTaint build() {
-            return new GetClusterGkeConfigV2NodePoolConfigTaint(effect, key, value);
+        }
+        public GetClusterGkeConfigV2NodePoolConfigTaint build() {
+            final var o = new GetClusterGkeConfigV2NodePoolConfigTaint();
+            o.effect = effect;
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

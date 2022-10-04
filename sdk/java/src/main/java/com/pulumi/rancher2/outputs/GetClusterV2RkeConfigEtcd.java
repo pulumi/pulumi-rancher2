@@ -14,23 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigEtcd {
-    private final @Nullable Boolean disableSnapshots;
-    private final @Nullable GetClusterV2RkeConfigEtcdS3Config s3Config;
-    private final @Nullable Integer snapshotRetention;
-    private final @Nullable String snapshotScheduleCron;
+    private @Nullable Boolean disableSnapshots;
+    private @Nullable GetClusterV2RkeConfigEtcdS3Config s3Config;
+    private @Nullable Integer snapshotRetention;
+    private @Nullable String snapshotScheduleCron;
 
-    @CustomType.Constructor
-    private GetClusterV2RkeConfigEtcd(
-        @CustomType.Parameter("disableSnapshots") @Nullable Boolean disableSnapshots,
-        @CustomType.Parameter("s3Config") @Nullable GetClusterV2RkeConfigEtcdS3Config s3Config,
-        @CustomType.Parameter("snapshotRetention") @Nullable Integer snapshotRetention,
-        @CustomType.Parameter("snapshotScheduleCron") @Nullable String snapshotScheduleCron) {
-        this.disableSnapshots = disableSnapshots;
-        this.s3Config = s3Config;
-        this.snapshotRetention = snapshotRetention;
-        this.snapshotScheduleCron = snapshotScheduleCron;
-    }
-
+    private GetClusterV2RkeConfigEtcd() {}
     public Optional<Boolean> disableSnapshots() {
         return Optional.ofNullable(this.disableSnapshots);
     }
@@ -51,17 +40,13 @@ public final class GetClusterV2RkeConfigEtcd {
     public static Builder builder(GetClusterV2RkeConfigEtcd defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disableSnapshots;
         private @Nullable GetClusterV2RkeConfigEtcdS3Config s3Config;
         private @Nullable Integer snapshotRetention;
         private @Nullable String snapshotScheduleCron;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2RkeConfigEtcd defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disableSnapshots = defaults.disableSnapshots;
@@ -70,23 +55,33 @@ public final class GetClusterV2RkeConfigEtcd {
     	      this.snapshotScheduleCron = defaults.snapshotScheduleCron;
         }
 
+        @CustomType.Setter
         public Builder disableSnapshots(@Nullable Boolean disableSnapshots) {
             this.disableSnapshots = disableSnapshots;
             return this;
         }
+        @CustomType.Setter
         public Builder s3Config(@Nullable GetClusterV2RkeConfigEtcdS3Config s3Config) {
             this.s3Config = s3Config;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotRetention(@Nullable Integer snapshotRetention) {
             this.snapshotRetention = snapshotRetention;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotScheduleCron(@Nullable String snapshotScheduleCron) {
             this.snapshotScheduleCron = snapshotScheduleCron;
             return this;
-        }        public GetClusterV2RkeConfigEtcd build() {
-            return new GetClusterV2RkeConfigEtcd(disableSnapshots, s3Config, snapshotRetention, snapshotScheduleCron);
+        }
+        public GetClusterV2RkeConfigEtcd build() {
+            final var o = new GetClusterV2RkeConfigEtcd();
+            o.disableSnapshots = disableSnapshots;
+            o.s3Config = s3Config;
+            o.snapshotRetention = snapshotRetention;
+            o.snapshotScheduleCron = snapshotScheduleCron;
+            return o;
         }
     }
 }

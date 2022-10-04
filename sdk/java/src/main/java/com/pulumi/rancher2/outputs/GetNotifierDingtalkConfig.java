@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotifierDingtalkConfig {
-    private final @Nullable String proxyUrl;
-    private final @Nullable String secret;
-    private final String url;
+    private @Nullable String proxyUrl;
+    private @Nullable String secret;
+    private String url;
 
-    @CustomType.Constructor
-    private GetNotifierDingtalkConfig(
-        @CustomType.Parameter("proxyUrl") @Nullable String proxyUrl,
-        @CustomType.Parameter("secret") @Nullable String secret,
-        @CustomType.Parameter("url") String url) {
-        this.proxyUrl = proxyUrl;
-        this.secret = secret;
-        this.url = url;
-    }
-
+    private GetNotifierDingtalkConfig() {}
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
@@ -42,16 +33,12 @@ public final class GetNotifierDingtalkConfig {
     public static Builder builder(GetNotifierDingtalkConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String proxyUrl;
         private @Nullable String secret;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNotifierDingtalkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.proxyUrl = defaults.proxyUrl;
@@ -59,19 +46,27 @@ public final class GetNotifierDingtalkConfig {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
             this.proxyUrl = proxyUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder secret(@Nullable String secret) {
             this.secret = secret;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GetNotifierDingtalkConfig build() {
-            return new GetNotifierDingtalkConfig(proxyUrl, secret, url);
+        }
+        public GetNotifierDingtalkConfig build() {
+            final var o = new GetNotifierDingtalkConfig();
+            o.proxyUrl = proxyUrl;
+            o.secret = secret;
+            o.url = url;
+            return o;
         }
     }
 }

@@ -16,77 +16,54 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
      * @return Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean disableSecurityGroupIngress;
+    private @Nullable Boolean disableSecurityGroupIngress;
     /**
      * @return Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean disableStrictZoneCheck;
+    private @Nullable Boolean disableStrictZoneCheck;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String elbSecurityGroup;
+    private @Nullable String elbSecurityGroup;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String kubernetesClusterId;
+    private @Nullable String kubernetesClusterId;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String kubernetesClusterTag;
+    private @Nullable String kubernetesClusterTag;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String roleArn;
+    private @Nullable String roleArn;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String routeTableId;
+    private @Nullable String routeTableId;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String subnetId;
+    private @Nullable String subnetId;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String vpc;
+    private @Nullable String vpc;
     /**
      * @return The GKE cluster zone. Required if `region` not set (string)
      * 
      */
-    private final @Nullable String zone;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderAwsCloudProviderGlobal(
-        @CustomType.Parameter("disableSecurityGroupIngress") @Nullable Boolean disableSecurityGroupIngress,
-        @CustomType.Parameter("disableStrictZoneCheck") @Nullable Boolean disableStrictZoneCheck,
-        @CustomType.Parameter("elbSecurityGroup") @Nullable String elbSecurityGroup,
-        @CustomType.Parameter("kubernetesClusterId") @Nullable String kubernetesClusterId,
-        @CustomType.Parameter("kubernetesClusterTag") @Nullable String kubernetesClusterTag,
-        @CustomType.Parameter("roleArn") @Nullable String roleArn,
-        @CustomType.Parameter("routeTableId") @Nullable String routeTableId,
-        @CustomType.Parameter("subnetId") @Nullable String subnetId,
-        @CustomType.Parameter("vpc") @Nullable String vpc,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.disableSecurityGroupIngress = disableSecurityGroupIngress;
-        this.disableStrictZoneCheck = disableStrictZoneCheck;
-        this.elbSecurityGroup = elbSecurityGroup;
-        this.kubernetesClusterId = kubernetesClusterId;
-        this.kubernetesClusterTag = kubernetesClusterTag;
-        this.roleArn = roleArn;
-        this.routeTableId = routeTableId;
-        this.subnetId = subnetId;
-        this.vpc = vpc;
-        this.zone = zone;
-    }
-
+    private ClusterRkeConfigCloudProviderAwsCloudProviderGlobal() {}
     /**
      * @return Default `false` (bool)
      * 
@@ -165,7 +142,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
     public static Builder builder(ClusterRkeConfigCloudProviderAwsCloudProviderGlobal defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disableSecurityGroupIngress;
         private @Nullable Boolean disableStrictZoneCheck;
@@ -177,11 +154,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
         private @Nullable String subnetId;
         private @Nullable String vpc;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderAwsCloudProviderGlobal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disableSecurityGroupIngress = defaults.disableSecurityGroupIngress;
@@ -196,47 +169,69 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder disableSecurityGroupIngress(@Nullable Boolean disableSecurityGroupIngress) {
             this.disableSecurityGroupIngress = disableSecurityGroupIngress;
             return this;
         }
+        @CustomType.Setter
         public Builder disableStrictZoneCheck(@Nullable Boolean disableStrictZoneCheck) {
             this.disableStrictZoneCheck = disableStrictZoneCheck;
             return this;
         }
+        @CustomType.Setter
         public Builder elbSecurityGroup(@Nullable String elbSecurityGroup) {
             this.elbSecurityGroup = elbSecurityGroup;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesClusterId(@Nullable String kubernetesClusterId) {
             this.kubernetesClusterId = kubernetesClusterId;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesClusterTag(@Nullable String kubernetesClusterTag) {
             this.kubernetesClusterTag = kubernetesClusterTag;
             return this;
         }
+        @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
             this.roleArn = roleArn;
             return this;
         }
+        @CustomType.Setter
         public Builder routeTableId(@Nullable String routeTableId) {
             this.routeTableId = routeTableId;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetId(@Nullable String subnetId) {
             this.subnetId = subnetId;
             return this;
         }
+        @CustomType.Setter
         public Builder vpc(@Nullable String vpc) {
             this.vpc = vpc;
             return this;
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public ClusterRkeConfigCloudProviderAwsCloudProviderGlobal build() {
-            return new ClusterRkeConfigCloudProviderAwsCloudProviderGlobal(disableSecurityGroupIngress, disableStrictZoneCheck, elbSecurityGroup, kubernetesClusterId, kubernetesClusterTag, roleArn, routeTableId, subnetId, vpc, zone);
+        }
+        public ClusterRkeConfigCloudProviderAwsCloudProviderGlobal build() {
+            final var o = new ClusterRkeConfigCloudProviderAwsCloudProviderGlobal();
+            o.disableSecurityGroupIngress = disableSecurityGroupIngress;
+            o.disableStrictZoneCheck = disableStrictZoneCheck;
+            o.elbSecurityGroup = elbSecurityGroup;
+            o.kubernetesClusterId = kubernetesClusterId;
+            o.kubernetesClusterTag = kubernetesClusterTag;
+            o.roleArn = roleArn;
+            o.routeTableId = routeTableId;
+            o.subnetId = subnetId;
+            o.vpc = vpc;
+            o.zone = zone;
+            return o;
         }
     }
 }

@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider {
-    private final String cloudProvider;
+    private String cloudProvider;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider(@CustomType.Parameter("cloudProvider") String cloudProvider) {
-        this.cloudProvider = cloudProvider;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider() {}
     public String cloudProvider() {
         return this.cloudProvider;
     }
@@ -27,24 +23,24 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cloudProvider;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudProvider = defaults.cloudProvider;
         }
 
+        @CustomType.Setter
         public Builder cloudProvider(String cloudProvider) {
             this.cloudProvider = Objects.requireNonNull(cloudProvider);
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider(cloudProvider);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider();
+            o.cloudProvider = cloudProvider;
+            return o;
         }
     }
 }

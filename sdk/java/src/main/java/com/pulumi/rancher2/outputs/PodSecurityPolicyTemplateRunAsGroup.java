@@ -16,21 +16,14 @@ public final class PodSecurityPolicyTemplateRunAsGroup {
      * @return (list)
      * 
      */
-    private final @Nullable List<PodSecurityPolicyTemplateRunAsGroupRange> ranges;
+    private @Nullable List<PodSecurityPolicyTemplateRunAsGroupRange> ranges;
     /**
      * @return (string)
      * 
      */
-    private final String rule;
+    private String rule;
 
-    @CustomType.Constructor
-    private PodSecurityPolicyTemplateRunAsGroup(
-        @CustomType.Parameter("ranges") @Nullable List<PodSecurityPolicyTemplateRunAsGroupRange> ranges,
-        @CustomType.Parameter("rule") String rule) {
-        this.ranges = ranges;
-        this.rule = rule;
-    }
-
+    private PodSecurityPolicyTemplateRunAsGroup() {}
     /**
      * @return (list)
      * 
@@ -53,21 +46,18 @@ public final class PodSecurityPolicyTemplateRunAsGroup {
     public static Builder builder(PodSecurityPolicyTemplateRunAsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<PodSecurityPolicyTemplateRunAsGroupRange> ranges;
         private String rule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PodSecurityPolicyTemplateRunAsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ranges = defaults.ranges;
     	      this.rule = defaults.rule;
         }
 
+        @CustomType.Setter
         public Builder ranges(@Nullable List<PodSecurityPolicyTemplateRunAsGroupRange> ranges) {
             this.ranges = ranges;
             return this;
@@ -75,11 +65,16 @@ public final class PodSecurityPolicyTemplateRunAsGroup {
         public Builder ranges(PodSecurityPolicyTemplateRunAsGroupRange... ranges) {
             return ranges(List.of(ranges));
         }
+        @CustomType.Setter
         public Builder rule(String rule) {
             this.rule = Objects.requireNonNull(rule);
             return this;
-        }        public PodSecurityPolicyTemplateRunAsGroup build() {
-            return new PodSecurityPolicyTemplateRunAsGroup(ranges, rule);
+        }
+        public PodSecurityPolicyTemplateRunAsGroup build() {
+            final var o = new PodSecurityPolicyTemplateRunAsGroup();
+            o.ranges = ranges;
+            o.rule = rule;
+            return o;
         }
     }
 }

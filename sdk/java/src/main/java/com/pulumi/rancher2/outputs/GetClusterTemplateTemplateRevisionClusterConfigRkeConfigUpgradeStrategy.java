@@ -13,23 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy {
-    private final @Nullable Boolean drain;
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput drainInput;
-    private final @Nullable String maxUnavailableControlplane;
-    private final @Nullable String maxUnavailableWorker;
+    private @Nullable Boolean drain;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput drainInput;
+    private @Nullable String maxUnavailableControlplane;
+    private @Nullable String maxUnavailableWorker;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy(
-        @CustomType.Parameter("drain") @Nullable Boolean drain,
-        @CustomType.Parameter("drainInput") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput drainInput,
-        @CustomType.Parameter("maxUnavailableControlplane") @Nullable String maxUnavailableControlplane,
-        @CustomType.Parameter("maxUnavailableWorker") @Nullable String maxUnavailableWorker) {
-        this.drain = drain;
-        this.drainInput = drainInput;
-        this.maxUnavailableControlplane = maxUnavailableControlplane;
-        this.maxUnavailableWorker = maxUnavailableWorker;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy() {}
     public Optional<Boolean> drain() {
         return Optional.ofNullable(this.drain);
     }
@@ -50,17 +39,13 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgra
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean drain;
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput drainInput;
         private @Nullable String maxUnavailableControlplane;
         private @Nullable String maxUnavailableWorker;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.drain = defaults.drain;
@@ -69,23 +54,33 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgra
     	      this.maxUnavailableWorker = defaults.maxUnavailableWorker;
         }
 
+        @CustomType.Setter
         public Builder drain(@Nullable Boolean drain) {
             this.drain = drain;
             return this;
         }
+        @CustomType.Setter
         public Builder drainInput(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput drainInput) {
             this.drainInput = Objects.requireNonNull(drainInput);
             return this;
         }
+        @CustomType.Setter
         public Builder maxUnavailableControlplane(@Nullable String maxUnavailableControlplane) {
             this.maxUnavailableControlplane = maxUnavailableControlplane;
             return this;
         }
+        @CustomType.Setter
         public Builder maxUnavailableWorker(@Nullable String maxUnavailableWorker) {
             this.maxUnavailableWorker = maxUnavailableWorker;
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy(drain, drainInput, maxUnavailableControlplane, maxUnavailableWorker);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy();
+            o.drain = drain;
+            o.drainInput = drainInput;
+            o.maxUnavailableControlplane = maxUnavailableControlplane;
+            o.maxUnavailableWorker = maxUnavailableWorker;
+            return o;
         }
     }
 }

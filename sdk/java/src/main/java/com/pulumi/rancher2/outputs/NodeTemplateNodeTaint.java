@@ -15,35 +15,24 @@ public final class NodeTemplateNodeTaint {
      * @return Taint effect. Supported values : `&#34;NoExecute&#34; | &#34;NoSchedule&#34; | &#34;PreferNoSchedule&#34;` (string)
      * 
      */
-    private final @Nullable String effect;
+    private @Nullable String effect;
     /**
      * @return Taint key (string)
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Taint time added (string)
      * 
      */
-    private final @Nullable String timeAdded;
+    private @Nullable String timeAdded;
     /**
      * @return Taint value (string)
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private NodeTemplateNodeTaint(
-        @CustomType.Parameter("effect") @Nullable String effect,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("timeAdded") @Nullable String timeAdded,
-        @CustomType.Parameter("value") String value) {
-        this.effect = effect;
-        this.key = key;
-        this.timeAdded = timeAdded;
-        this.value = value;
-    }
-
+    private NodeTemplateNodeTaint() {}
     /**
      * @return Taint effect. Supported values : `&#34;NoExecute&#34; | &#34;NoSchedule&#34; | &#34;PreferNoSchedule&#34;` (string)
      * 
@@ -80,17 +69,13 @@ public final class NodeTemplateNodeTaint {
     public static Builder builder(NodeTemplateNodeTaint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String effect;
         private String key;
         private @Nullable String timeAdded;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeTemplateNodeTaint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -99,23 +84,33 @@ public final class NodeTemplateNodeTaint {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder effect(@Nullable String effect) {
             this.effect = effect;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder timeAdded(@Nullable String timeAdded) {
             this.timeAdded = timeAdded;
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public NodeTemplateNodeTaint build() {
-            return new NodeTemplateNodeTaint(effect, key, timeAdded, value);
+        }
+        public NodeTemplateNodeTaint build() {
+            final var o = new NodeTemplateNodeTaint();
+            o.effect = effect;
+            o.key = key;
+            o.timeAdded = timeAdded;
+            o.value = value;
+            return o;
         }
     }
 }

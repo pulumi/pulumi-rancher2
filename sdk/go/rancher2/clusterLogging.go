@@ -19,36 +19,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewClusterLogging(ctx, "foo", &rancher2.ClusterLoggingArgs{
-// 			ClusterId: pulumi.String("<cluster_id>"),
-// 			Kind:      pulumi.String("syslog"),
-// 			SyslogConfig: &ClusterLoggingSyslogConfigArgs{
-// 				Endpoint:  pulumi.String("<syslog_endpoint>"),
-// 				Protocol:  pulumi.String("udp"),
-// 				Severity:  pulumi.String("notice"),
-// 				SslVerify: pulumi.Bool(false),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterLogging(ctx, "foo", &rancher2.ClusterLoggingArgs{
+//				ClusterId: pulumi.String("<cluster_id>"),
+//				Kind:      pulumi.String("syslog"),
+//				SyslogConfig: &ClusterLoggingSyslogConfigArgs{
+//					Endpoint:  pulumi.String("<syslog_endpoint>"),
+//					Protocol:  pulumi.String("udp"),
+//					Severity:  pulumi.String("notice"),
+//					SslVerify: pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Cluster Logging can be imported using the Rancher Cluster Logging ID
+// # Cluster Logging can be imported using the Rancher Cluster Logging ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/clusterLogging:ClusterLogging foo &lt;CLUSTER_LOGGING_ID&gt;
+//
+//	$ pulumi import rancher2:index/clusterLogging:ClusterLogging foo &lt;CLUSTER_LOGGING_ID&gt;
+//
 // ```
 type ClusterLogging struct {
 	pulumi.CustomResourceState
@@ -282,7 +287,7 @@ func (i *ClusterLogging) ToClusterLoggingOutputWithContext(ctx context.Context) 
 // ClusterLoggingArrayInput is an input type that accepts ClusterLoggingArray and ClusterLoggingArrayOutput values.
 // You can construct a concrete instance of `ClusterLoggingArrayInput` via:
 //
-//          ClusterLoggingArray{ ClusterLoggingArgs{...} }
+//	ClusterLoggingArray{ ClusterLoggingArgs{...} }
 type ClusterLoggingArrayInput interface {
 	pulumi.Input
 
@@ -307,7 +312,7 @@ func (i ClusterLoggingArray) ToClusterLoggingArrayOutputWithContext(ctx context.
 // ClusterLoggingMapInput is an input type that accepts ClusterLoggingMap and ClusterLoggingMapOutput values.
 // You can construct a concrete instance of `ClusterLoggingMapInput` via:
 //
-//          ClusterLoggingMap{ "key": ClusterLoggingArgs{...} }
+//	ClusterLoggingMap{ "key": ClusterLoggingArgs{...} }
 type ClusterLoggingMapInput interface {
 	pulumi.Input
 

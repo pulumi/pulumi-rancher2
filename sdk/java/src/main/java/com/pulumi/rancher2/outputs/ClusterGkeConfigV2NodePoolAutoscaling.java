@@ -16,28 +16,19 @@ public final class ClusterGkeConfigV2NodePoolAutoscaling {
      * @return Enable scheduled cluster scan. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The GKE node pool config max node count (int)
      * 
      */
-    private final @Nullable Integer maxNodeCount;
+    private @Nullable Integer maxNodeCount;
     /**
      * @return The GKE node pool config min node count (int)
      * 
      */
-    private final @Nullable Integer minNodeCount;
+    private @Nullable Integer minNodeCount;
 
-    @CustomType.Constructor
-    private ClusterGkeConfigV2NodePoolAutoscaling(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("maxNodeCount") @Nullable Integer maxNodeCount,
-        @CustomType.Parameter("minNodeCount") @Nullable Integer minNodeCount) {
-        this.enabled = enabled;
-        this.maxNodeCount = maxNodeCount;
-        this.minNodeCount = minNodeCount;
-    }
-
+    private ClusterGkeConfigV2NodePoolAutoscaling() {}
     /**
      * @return Enable scheduled cluster scan. Default: `false` (bool)
      * 
@@ -67,16 +58,12 @@ public final class ClusterGkeConfigV2NodePoolAutoscaling {
     public static Builder builder(ClusterGkeConfigV2NodePoolAutoscaling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable Integer maxNodeCount;
         private @Nullable Integer minNodeCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterGkeConfigV2NodePoolAutoscaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -84,19 +71,27 @@ public final class ClusterGkeConfigV2NodePoolAutoscaling {
     	      this.minNodeCount = defaults.minNodeCount;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder maxNodeCount(@Nullable Integer maxNodeCount) {
             this.maxNodeCount = maxNodeCount;
             return this;
         }
+        @CustomType.Setter
         public Builder minNodeCount(@Nullable Integer minNodeCount) {
             this.minNodeCount = minNodeCount;
             return this;
-        }        public ClusterGkeConfigV2NodePoolAutoscaling build() {
-            return new ClusterGkeConfigV2NodePoolAutoscaling(enabled, maxNodeCount, minNodeCount);
+        }
+        public ClusterGkeConfigV2NodePoolAutoscaling build() {
+            final var o = new ClusterGkeConfigV2NodePoolAutoscaling();
+            o.enabled = enabled;
+            o.maxNodeCount = maxNodeCount;
+            o.minNodeCount = minNodeCount;
+            return o;
         }
     }
 }

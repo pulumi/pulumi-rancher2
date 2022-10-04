@@ -13,21 +13,14 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfig {
      * @return Machine config kind (string)
      * 
      */
-    private final String kind;
+    private String kind;
     /**
      * @return Name of cluster registration token (string)
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private ClusterV2RkeConfigMachinePoolMachineConfig(
-        @CustomType.Parameter("kind") String kind,
-        @CustomType.Parameter("name") String name) {
-        this.kind = kind;
-        this.name = name;
-    }
-
+    private ClusterV2RkeConfigMachinePoolMachineConfig() {}
     /**
      * @return Machine config kind (string)
      * 
@@ -50,30 +43,32 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfig {
     public static Builder builder(ClusterV2RkeConfigMachinePoolMachineConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kind;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterV2RkeConfigMachinePoolMachineConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kind = defaults.kind;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder kind(String kind) {
             this.kind = Objects.requireNonNull(kind);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public ClusterV2RkeConfigMachinePoolMachineConfig build() {
-            return new ClusterV2RkeConfigMachinePoolMachineConfig(kind, name);
+        }
+        public ClusterV2RkeConfigMachinePoolMachineConfig build() {
+            final var o = new ClusterV2RkeConfigMachinePoolMachineConfig();
+            o.kind = kind;
+            o.name = name;
+            return o;
         }
     }
 }

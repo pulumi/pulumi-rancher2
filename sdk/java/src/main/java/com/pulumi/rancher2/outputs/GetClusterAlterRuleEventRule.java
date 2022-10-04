@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterAlterRuleEventRule {
-    private final @Nullable String eventType;
-    private final String resourceKind;
+    private @Nullable String eventType;
+    private String resourceKind;
 
-    @CustomType.Constructor
-    private GetClusterAlterRuleEventRule(
-        @CustomType.Parameter("eventType") @Nullable String eventType,
-        @CustomType.Parameter("resourceKind") String resourceKind) {
-        this.eventType = eventType;
-        this.resourceKind = resourceKind;
-    }
-
+    private GetClusterAlterRuleEventRule() {}
     public Optional<String> eventType() {
         return Optional.ofNullable(this.eventType);
     }
@@ -36,30 +29,32 @@ public final class GetClusterAlterRuleEventRule {
     public static Builder builder(GetClusterAlterRuleEventRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String eventType;
         private String resourceKind;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAlterRuleEventRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eventType = defaults.eventType;
     	      this.resourceKind = defaults.resourceKind;
         }
 
+        @CustomType.Setter
         public Builder eventType(@Nullable String eventType) {
             this.eventType = eventType;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceKind(String resourceKind) {
             this.resourceKind = Objects.requireNonNull(resourceKind);
             return this;
-        }        public GetClusterAlterRuleEventRule build() {
-            return new GetClusterAlterRuleEventRule(eventType, resourceKind);
+        }
+        public GetClusterAlterRuleEventRule build() {
+            final var o = new GetClusterAlterRuleEventRule();
+            o.eventType = eventType;
+            o.resourceKind = resourceKind;
+            return o;
         }
     }
 }

@@ -18,132 +18,137 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewPodSecurityPolicyTemplate(ctx, "foo", &rancher2.PodSecurityPolicyTemplateArgs{
-// 			AllowPrivilegeEscalation: pulumi.Bool(false),
-// 			AllowedCsiDrivers: PodSecurityPolicyTemplateAllowedCsiDriverArray{
-// 				&PodSecurityPolicyTemplateAllowedCsiDriverArgs{
-// 					Name: pulumi.String("something"),
-// 				},
-// 				&PodSecurityPolicyTemplateAllowedCsiDriverArgs{
-// 					Name: pulumi.String("something-else"),
-// 				},
-// 			},
-// 			AllowedFlexVolumes: PodSecurityPolicyTemplateAllowedFlexVolumeArray{
-// 				&PodSecurityPolicyTemplateAllowedFlexVolumeArgs{
-// 					Driver: pulumi.String("something"),
-// 				},
-// 				&PodSecurityPolicyTemplateAllowedFlexVolumeArgs{
-// 					Driver: pulumi.String("something-else"),
-// 				},
-// 			},
-// 			AllowedHostPaths: PodSecurityPolicyTemplateAllowedHostPathArray{
-// 				&PodSecurityPolicyTemplateAllowedHostPathArgs{
-// 					PathPrefix: pulumi.String("/"),
-// 					ReadOnly:   pulumi.Bool(true),
-// 				},
-// 				&PodSecurityPolicyTemplateAllowedHostPathArgs{
-// 					PathPrefix: pulumi.String("//"),
-// 					ReadOnly:   pulumi.Bool(false),
-// 				},
-// 			},
-// 			AllowedProcMountTypes: pulumi.StringArray{
-// 				pulumi.String("Default"),
-// 			},
-// 			DefaultAllowPrivilegeEscalation: pulumi.Bool(false),
-// 			Description:                     pulumi.String("Terraform PodSecurityPolicyTemplate acceptance test - update"),
-// 			FsGroup: &PodSecurityPolicyTemplateFsGroupArgs{
-// 				Ranges: PodSecurityPolicyTemplateFsGroupRangeArray{
-// 					&PodSecurityPolicyTemplateFsGroupRangeArgs{
-// 						Max: pulumi.Int(100),
-// 						Min: pulumi.Int(0),
-// 					},
-// 					&PodSecurityPolicyTemplateFsGroupRangeArgs{
-// 						Max: pulumi.Int(100),
-// 						Min: pulumi.Int(0),
-// 					},
-// 				},
-// 				Rule: pulumi.String("MustRunAs"),
-// 			},
-// 			HostIpc:     pulumi.Bool(false),
-// 			HostNetwork: pulumi.Bool(false),
-// 			HostPid:     pulumi.Bool(false),
-// 			HostPorts: PodSecurityPolicyTemplateHostPortArray{
-// 				&PodSecurityPolicyTemplateHostPortArgs{
-// 					Max: pulumi.Int(65535),
-// 					Min: pulumi.Int(0),
-// 				},
-// 				&PodSecurityPolicyTemplateHostPortArgs{
-// 					Max: pulumi.Int(8080),
-// 					Min: pulumi.Int(1024),
-// 				},
-// 			},
-// 			Privileged:             pulumi.Bool(false),
-// 			ReadOnlyRootFilesystem: pulumi.Bool(false),
-// 			RequiredDropCapabilities: pulumi.StringArray{
-// 				pulumi.String("something"),
-// 			},
-// 			RunAsGroup: &PodSecurityPolicyTemplateRunAsGroupArgs{
-// 				Ranges: PodSecurityPolicyTemplateRunAsGroupRangeArray{
-// 					&PodSecurityPolicyTemplateRunAsGroupRangeArgs{
-// 						Max: pulumi.Int(100),
-// 						Min: pulumi.Int(1),
-// 					},
-// 					&PodSecurityPolicyTemplateRunAsGroupRangeArgs{
-// 						Max: pulumi.Int(1024),
-// 						Min: pulumi.Int(2),
-// 					},
-// 				},
-// 				Rule: pulumi.String("MustRunAs"),
-// 			},
-// 			RunAsUser: &PodSecurityPolicyTemplateRunAsUserArgs{
-// 				Ranges: PodSecurityPolicyTemplateRunAsUserRangeArray{
-// 					&PodSecurityPolicyTemplateRunAsUserRangeArgs{
-// 						Max: pulumi.Int(100),
-// 						Min: pulumi.Int(1),
-// 					},
-// 					&PodSecurityPolicyTemplateRunAsUserRangeArgs{
-// 						Max: pulumi.Int(1024),
-// 						Min: pulumi.Int(2),
-// 					},
-// 				},
-// 				Rule: pulumi.String("MustRunAs"),
-// 			},
-// 			RuntimeClass: &PodSecurityPolicyTemplateRuntimeClassArgs{
-// 				AllowedRuntimeClassNames: pulumi.StringArray{
-// 					pulumi.String("something"),
-// 				},
-// 				DefaultRuntimeClassName: pulumi.String("something"),
-// 			},
-// 			SeLinux: &PodSecurityPolicyTemplateSeLinuxArgs{
-// 				Rule: pulumi.String("RunAsAny"),
-// 			},
-// 			SupplementalGroup: &PodSecurityPolicyTemplateSupplementalGroupArgs{
-// 				Rule: pulumi.String("RunAsAny"),
-// 			},
-// 			Volumes: pulumi.StringArray{
-// 				pulumi.String("azureFile"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewPodSecurityPolicyTemplate(ctx, "foo", &rancher2.PodSecurityPolicyTemplateArgs{
+//				AllowPrivilegeEscalation: pulumi.Bool(false),
+//				AllowedCsiDrivers: PodSecurityPolicyTemplateAllowedCsiDriverArray{
+//					&PodSecurityPolicyTemplateAllowedCsiDriverArgs{
+//						Name: pulumi.String("something"),
+//					},
+//					&PodSecurityPolicyTemplateAllowedCsiDriverArgs{
+//						Name: pulumi.String("something-else"),
+//					},
+//				},
+//				AllowedFlexVolumes: PodSecurityPolicyTemplateAllowedFlexVolumeArray{
+//					&PodSecurityPolicyTemplateAllowedFlexVolumeArgs{
+//						Driver: pulumi.String("something"),
+//					},
+//					&PodSecurityPolicyTemplateAllowedFlexVolumeArgs{
+//						Driver: pulumi.String("something-else"),
+//					},
+//				},
+//				AllowedHostPaths: PodSecurityPolicyTemplateAllowedHostPathArray{
+//					&PodSecurityPolicyTemplateAllowedHostPathArgs{
+//						PathPrefix: pulumi.String("/"),
+//						ReadOnly:   pulumi.Bool(true),
+//					},
+//					&PodSecurityPolicyTemplateAllowedHostPathArgs{
+//						PathPrefix: pulumi.String("//"),
+//						ReadOnly:   pulumi.Bool(false),
+//					},
+//				},
+//				AllowedProcMountTypes: pulumi.StringArray{
+//					pulumi.String("Default"),
+//				},
+//				DefaultAllowPrivilegeEscalation: pulumi.Bool(false),
+//				Description:                     pulumi.String("Terraform PodSecurityPolicyTemplate acceptance test - update"),
+//				FsGroup: &PodSecurityPolicyTemplateFsGroupArgs{
+//					Ranges: PodSecurityPolicyTemplateFsGroupRangeArray{
+//						&PodSecurityPolicyTemplateFsGroupRangeArgs{
+//							Max: pulumi.Int(100),
+//							Min: pulumi.Int(0),
+//						},
+//						&PodSecurityPolicyTemplateFsGroupRangeArgs{
+//							Max: pulumi.Int(100),
+//							Min: pulumi.Int(0),
+//						},
+//					},
+//					Rule: pulumi.String("MustRunAs"),
+//				},
+//				HostIpc:     pulumi.Bool(false),
+//				HostNetwork: pulumi.Bool(false),
+//				HostPid:     pulumi.Bool(false),
+//				HostPorts: PodSecurityPolicyTemplateHostPortArray{
+//					&PodSecurityPolicyTemplateHostPortArgs{
+//						Max: pulumi.Int(65535),
+//						Min: pulumi.Int(0),
+//					},
+//					&PodSecurityPolicyTemplateHostPortArgs{
+//						Max: pulumi.Int(8080),
+//						Min: pulumi.Int(1024),
+//					},
+//				},
+//				Privileged:             pulumi.Bool(false),
+//				ReadOnlyRootFilesystem: pulumi.Bool(false),
+//				RequiredDropCapabilities: pulumi.StringArray{
+//					pulumi.String("something"),
+//				},
+//				RunAsGroup: &PodSecurityPolicyTemplateRunAsGroupArgs{
+//					Ranges: PodSecurityPolicyTemplateRunAsGroupRangeArray{
+//						&PodSecurityPolicyTemplateRunAsGroupRangeArgs{
+//							Max: pulumi.Int(100),
+//							Min: pulumi.Int(1),
+//						},
+//						&PodSecurityPolicyTemplateRunAsGroupRangeArgs{
+//							Max: pulumi.Int(1024),
+//							Min: pulumi.Int(2),
+//						},
+//					},
+//					Rule: pulumi.String("MustRunAs"),
+//				},
+//				RunAsUser: &PodSecurityPolicyTemplateRunAsUserArgs{
+//					Ranges: PodSecurityPolicyTemplateRunAsUserRangeArray{
+//						&PodSecurityPolicyTemplateRunAsUserRangeArgs{
+//							Max: pulumi.Int(100),
+//							Min: pulumi.Int(1),
+//						},
+//						&PodSecurityPolicyTemplateRunAsUserRangeArgs{
+//							Max: pulumi.Int(1024),
+//							Min: pulumi.Int(2),
+//						},
+//					},
+//					Rule: pulumi.String("MustRunAs"),
+//				},
+//				RuntimeClass: &PodSecurityPolicyTemplateRuntimeClassArgs{
+//					AllowedRuntimeClassNames: pulumi.StringArray{
+//						pulumi.String("something"),
+//					},
+//					DefaultRuntimeClassName: pulumi.String("something"),
+//				},
+//				SeLinux: &PodSecurityPolicyTemplateSeLinuxArgs{
+//					Rule: pulumi.String("RunAsAny"),
+//				},
+//				SupplementalGroup: &PodSecurityPolicyTemplateSupplementalGroupArgs{
+//					Rule: pulumi.String("RunAsAny"),
+//				},
+//				Volumes: pulumi.StringArray{
+//					pulumi.String("azureFile"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// PodSecurityPolicyTemplate can be imported using the Rancher PodSecurityPolicyTemplate Name
+// # PodSecurityPolicyTemplate can be imported using the Rancher PodSecurityPolicyTemplate Name
 //
 // ```sh
-//  $ pulumi import rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate foo &lt;pod_security_policy_name&gt;
+//
+//	$ pulumi import rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate foo &lt;pod_security_policy_name&gt;
+//
 // ```
 type PodSecurityPolicyTemplate struct {
 	pulumi.CustomResourceState
@@ -501,7 +506,7 @@ func (i *PodSecurityPolicyTemplate) ToPodSecurityPolicyTemplateOutputWithContext
 // PodSecurityPolicyTemplateArrayInput is an input type that accepts PodSecurityPolicyTemplateArray and PodSecurityPolicyTemplateArrayOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateArrayInput` via:
 //
-//          PodSecurityPolicyTemplateArray{ PodSecurityPolicyTemplateArgs{...} }
+//	PodSecurityPolicyTemplateArray{ PodSecurityPolicyTemplateArgs{...} }
 type PodSecurityPolicyTemplateArrayInput interface {
 	pulumi.Input
 
@@ -526,7 +531,7 @@ func (i PodSecurityPolicyTemplateArray) ToPodSecurityPolicyTemplateArrayOutputWi
 // PodSecurityPolicyTemplateMapInput is an input type that accepts PodSecurityPolicyTemplateMap and PodSecurityPolicyTemplateMapOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateMapInput` via:
 //
-//          PodSecurityPolicyTemplateMap{ "key": PodSecurityPolicyTemplateArgs{...} }
+//	PodSecurityPolicyTemplateMap{ "key": PodSecurityPolicyTemplateArgs{...} }
 type PodSecurityPolicyTemplateMapInput interface {
 	pulumi.Input
 

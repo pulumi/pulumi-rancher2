@@ -13,44 +13,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer {
-    private final @Nullable Boolean createMonitor;
-    private final @Nullable String floatingNetworkId;
-    private final @Nullable String lbMethod;
-    private final @Nullable String lbProvider;
-    private final @Nullable String lbVersion;
-    private final @Nullable Boolean manageSecurityGroups;
-    private final @Nullable String monitorDelay;
-    private final @Nullable Integer monitorMaxRetries;
-    private final @Nullable String monitorTimeout;
-    private final @Nullable String subnetId;
-    private final @Nullable Boolean useOctavia;
+    private @Nullable Boolean createMonitor;
+    private @Nullable String floatingNetworkId;
+    private @Nullable String lbMethod;
+    private @Nullable String lbProvider;
+    private @Nullable String lbVersion;
+    private @Nullable Boolean manageSecurityGroups;
+    private @Nullable String monitorDelay;
+    private @Nullable Integer monitorMaxRetries;
+    private @Nullable String monitorTimeout;
+    private @Nullable String subnetId;
+    private @Nullable Boolean useOctavia;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer(
-        @CustomType.Parameter("createMonitor") @Nullable Boolean createMonitor,
-        @CustomType.Parameter("floatingNetworkId") @Nullable String floatingNetworkId,
-        @CustomType.Parameter("lbMethod") @Nullable String lbMethod,
-        @CustomType.Parameter("lbProvider") @Nullable String lbProvider,
-        @CustomType.Parameter("lbVersion") @Nullable String lbVersion,
-        @CustomType.Parameter("manageSecurityGroups") @Nullable Boolean manageSecurityGroups,
-        @CustomType.Parameter("monitorDelay") @Nullable String monitorDelay,
-        @CustomType.Parameter("monitorMaxRetries") @Nullable Integer monitorMaxRetries,
-        @CustomType.Parameter("monitorTimeout") @Nullable String monitorTimeout,
-        @CustomType.Parameter("subnetId") @Nullable String subnetId,
-        @CustomType.Parameter("useOctavia") @Nullable Boolean useOctavia) {
-        this.createMonitor = createMonitor;
-        this.floatingNetworkId = floatingNetworkId;
-        this.lbMethod = lbMethod;
-        this.lbProvider = lbProvider;
-        this.lbVersion = lbVersion;
-        this.manageSecurityGroups = manageSecurityGroups;
-        this.monitorDelay = monitorDelay;
-        this.monitorMaxRetries = monitorMaxRetries;
-        this.monitorTimeout = monitorTimeout;
-        this.subnetId = subnetId;
-        this.useOctavia = useOctavia;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer() {}
     public Optional<Boolean> createMonitor() {
         return Optional.ofNullable(this.createMonitor);
     }
@@ -92,7 +67,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean createMonitor;
         private @Nullable String floatingNetworkId;
@@ -105,11 +80,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         private @Nullable String monitorTimeout;
         private @Nullable String subnetId;
         private @Nullable Boolean useOctavia;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createMonitor = defaults.createMonitor;
@@ -125,51 +96,75 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     	      this.useOctavia = defaults.useOctavia;
         }
 
+        @CustomType.Setter
         public Builder createMonitor(@Nullable Boolean createMonitor) {
             this.createMonitor = createMonitor;
             return this;
         }
+        @CustomType.Setter
         public Builder floatingNetworkId(@Nullable String floatingNetworkId) {
             this.floatingNetworkId = floatingNetworkId;
             return this;
         }
+        @CustomType.Setter
         public Builder lbMethod(@Nullable String lbMethod) {
             this.lbMethod = lbMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder lbProvider(@Nullable String lbProvider) {
             this.lbProvider = lbProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder lbVersion(@Nullable String lbVersion) {
             this.lbVersion = lbVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder manageSecurityGroups(@Nullable Boolean manageSecurityGroups) {
             this.manageSecurityGroups = manageSecurityGroups;
             return this;
         }
+        @CustomType.Setter
         public Builder monitorDelay(@Nullable String monitorDelay) {
             this.monitorDelay = monitorDelay;
             return this;
         }
+        @CustomType.Setter
         public Builder monitorMaxRetries(@Nullable Integer monitorMaxRetries) {
             this.monitorMaxRetries = monitorMaxRetries;
             return this;
         }
+        @CustomType.Setter
         public Builder monitorTimeout(@Nullable String monitorTimeout) {
             this.monitorTimeout = monitorTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetId(@Nullable String subnetId) {
             this.subnetId = subnetId;
             return this;
         }
+        @CustomType.Setter
         public Builder useOctavia(@Nullable Boolean useOctavia) {
             this.useOctavia = useOctavia;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer(createMonitor, floatingNetworkId, lbMethod, lbProvider, lbVersion, manageSecurityGroups, monitorDelay, monitorMaxRetries, monitorTimeout, subnetId, useOctavia);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer();
+            o.createMonitor = createMonitor;
+            o.floatingNetworkId = floatingNetworkId;
+            o.lbMethod = lbMethod;
+            o.lbProvider = lbProvider;
+            o.lbVersion = lbVersion;
+            o.manageSecurityGroups = manageSecurityGroups;
+            o.monitorDelay = monitorDelay;
+            o.monitorMaxRetries = monitorMaxRetries;
+            o.monitorTimeout = monitorTimeout;
+            o.subnetId = subnetId;
+            o.useOctavia = useOctavia;
+            return o;
         }
     }
 }

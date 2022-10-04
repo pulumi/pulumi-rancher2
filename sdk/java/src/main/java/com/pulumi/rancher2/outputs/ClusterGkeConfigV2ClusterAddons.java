@@ -15,28 +15,19 @@ public final class ClusterGkeConfigV2ClusterAddons {
      * @return Enable GKE horizontal pod autoscaling. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean horizontalPodAutoscaling;
+    private @Nullable Boolean horizontalPodAutoscaling;
     /**
      * @return Enable GKE HTTP load balancing. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean httpLoadBalancing;
+    private @Nullable Boolean httpLoadBalancing;
     /**
      * @return Enable GKE network policy config. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean networkPolicyConfig;
+    private @Nullable Boolean networkPolicyConfig;
 
-    @CustomType.Constructor
-    private ClusterGkeConfigV2ClusterAddons(
-        @CustomType.Parameter("horizontalPodAutoscaling") @Nullable Boolean horizontalPodAutoscaling,
-        @CustomType.Parameter("httpLoadBalancing") @Nullable Boolean httpLoadBalancing,
-        @CustomType.Parameter("networkPolicyConfig") @Nullable Boolean networkPolicyConfig) {
-        this.horizontalPodAutoscaling = horizontalPodAutoscaling;
-        this.httpLoadBalancing = httpLoadBalancing;
-        this.networkPolicyConfig = networkPolicyConfig;
-    }
-
+    private ClusterGkeConfigV2ClusterAddons() {}
     /**
      * @return Enable GKE horizontal pod autoscaling. Default: `false` (bool)
      * 
@@ -66,16 +57,12 @@ public final class ClusterGkeConfigV2ClusterAddons {
     public static Builder builder(ClusterGkeConfigV2ClusterAddons defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean horizontalPodAutoscaling;
         private @Nullable Boolean httpLoadBalancing;
         private @Nullable Boolean networkPolicyConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterGkeConfigV2ClusterAddons defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.horizontalPodAutoscaling = defaults.horizontalPodAutoscaling;
@@ -83,19 +70,27 @@ public final class ClusterGkeConfigV2ClusterAddons {
     	      this.networkPolicyConfig = defaults.networkPolicyConfig;
         }
 
+        @CustomType.Setter
         public Builder horizontalPodAutoscaling(@Nullable Boolean horizontalPodAutoscaling) {
             this.horizontalPodAutoscaling = horizontalPodAutoscaling;
             return this;
         }
+        @CustomType.Setter
         public Builder httpLoadBalancing(@Nullable Boolean httpLoadBalancing) {
             this.httpLoadBalancing = httpLoadBalancing;
             return this;
         }
+        @CustomType.Setter
         public Builder networkPolicyConfig(@Nullable Boolean networkPolicyConfig) {
             this.networkPolicyConfig = networkPolicyConfig;
             return this;
-        }        public ClusterGkeConfigV2ClusterAddons build() {
-            return new ClusterGkeConfigV2ClusterAddons(horizontalPodAutoscaling, httpLoadBalancing, networkPolicyConfig);
+        }
+        public ClusterGkeConfigV2ClusterAddons build() {
+            final var o = new ClusterGkeConfigV2ClusterAddons();
+            o.horizontalPodAutoscaling = horizontalPodAutoscaling;
+            o.httpLoadBalancing = httpLoadBalancing;
+            o.networkPolicyConfig = networkPolicyConfig;
+            return o;
         }
     }
 }

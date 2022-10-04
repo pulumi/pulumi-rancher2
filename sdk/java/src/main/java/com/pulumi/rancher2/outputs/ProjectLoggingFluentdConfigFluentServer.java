@@ -17,56 +17,39 @@ public final class ProjectLoggingFluentdConfigFluentServer {
      * @return Endpoint of the syslog service (string)
      * 
      */
-    private final String endpoint;
+    private String endpoint;
     /**
      * @return Hostname of the fluentd service (string)
      * 
      */
-    private final @Nullable String hostname;
+    private @Nullable String hostname;
     /**
      * @return User password of the fluentd service (string)
      * 
      */
-    private final @Nullable String password;
+    private @Nullable String password;
     /**
      * @return Shared key of the fluentd service (string)
      * 
      */
-    private final @Nullable String sharedKey;
+    private @Nullable String sharedKey;
     /**
      * @return Standby server of the fluentd service (bool)
      * 
      */
-    private final @Nullable Boolean standby;
+    private @Nullable Boolean standby;
     /**
      * @return Username of the fluentd service (string)
      * 
      */
-    private final @Nullable String username;
+    private @Nullable String username;
     /**
      * @return Weight of the fluentd server (int)
      * 
      */
-    private final @Nullable Integer weight;
+    private @Nullable Integer weight;
 
-    @CustomType.Constructor
-    private ProjectLoggingFluentdConfigFluentServer(
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("hostname") @Nullable String hostname,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("sharedKey") @Nullable String sharedKey,
-        @CustomType.Parameter("standby") @Nullable Boolean standby,
-        @CustomType.Parameter("username") @Nullable String username,
-        @CustomType.Parameter("weight") @Nullable Integer weight) {
-        this.endpoint = endpoint;
-        this.hostname = hostname;
-        this.password = password;
-        this.sharedKey = sharedKey;
-        this.standby = standby;
-        this.username = username;
-        this.weight = weight;
-    }
-
+    private ProjectLoggingFluentdConfigFluentServer() {}
     /**
      * @return Endpoint of the syslog service (string)
      * 
@@ -124,7 +107,7 @@ public final class ProjectLoggingFluentdConfigFluentServer {
     public static Builder builder(ProjectLoggingFluentdConfigFluentServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String endpoint;
         private @Nullable String hostname;
@@ -133,11 +116,7 @@ public final class ProjectLoggingFluentdConfigFluentServer {
         private @Nullable Boolean standby;
         private @Nullable String username;
         private @Nullable Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ProjectLoggingFluentdConfigFluentServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpoint = defaults.endpoint;
@@ -149,35 +128,51 @@ public final class ProjectLoggingFluentdConfigFluentServer {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
             this.hostname = hostname;
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder sharedKey(@Nullable String sharedKey) {
             this.sharedKey = sharedKey;
             return this;
         }
+        @CustomType.Setter
         public Builder standby(@Nullable Boolean standby) {
             this.standby = standby;
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
         }
+        @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
             this.weight = weight;
             return this;
-        }        public ProjectLoggingFluentdConfigFluentServer build() {
-            return new ProjectLoggingFluentdConfigFluentServer(endpoint, hostname, password, sharedKey, standby, username, weight);
+        }
+        public ProjectLoggingFluentdConfigFluentServer build() {
+            final var o = new ProjectLoggingFluentdConfigFluentServer();
+            o.endpoint = endpoint;
+            o.hostname = hostname;
+            o.password = password;
+            o.sharedKey = sharedKey;
+            o.standby = standby;
+            o.username = username;
+            o.weight = weight;
+            return o;
         }
     }
 }

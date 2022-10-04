@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRke2Config {
-    private final GetClusterRke2ConfigUpgradeStrategy upgradeStrategy;
-    private final String version;
+    private GetClusterRke2ConfigUpgradeStrategy upgradeStrategy;
+    private String version;
 
-    @CustomType.Constructor
-    private GetClusterRke2Config(
-        @CustomType.Parameter("upgradeStrategy") GetClusterRke2ConfigUpgradeStrategy upgradeStrategy,
-        @CustomType.Parameter("version") String version) {
-        this.upgradeStrategy = upgradeStrategy;
-        this.version = version;
-    }
-
+    private GetClusterRke2Config() {}
     public GetClusterRke2ConfigUpgradeStrategy upgradeStrategy() {
         return this.upgradeStrategy;
     }
@@ -35,30 +28,32 @@ public final class GetClusterRke2Config {
     public static Builder builder(GetClusterRke2Config defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetClusterRke2ConfigUpgradeStrategy upgradeStrategy;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRke2Config defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.upgradeStrategy = defaults.upgradeStrategy;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder upgradeStrategy(GetClusterRke2ConfigUpgradeStrategy upgradeStrategy) {
             this.upgradeStrategy = Objects.requireNonNull(upgradeStrategy);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetClusterRke2Config build() {
-            return new GetClusterRke2Config(upgradeStrategy, version);
+        }
+        public GetClusterRke2Config build() {
+            final var o = new GetClusterRke2Config();
+            o.upgradeStrategy = upgradeStrategy;
+            o.version = version;
+            return o;
         }
     }
 }

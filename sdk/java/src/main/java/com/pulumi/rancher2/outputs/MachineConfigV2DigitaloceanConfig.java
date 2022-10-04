@@ -16,105 +16,74 @@ public final class MachineConfigV2DigitaloceanConfig {
      * @return Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
-    private final @Nullable String accessToken;
+    private @Nullable String accessToken;
     /**
      * @return Enable backups for droplet. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean backups;
+    private @Nullable Boolean backups;
     /**
      * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
-    private final @Nullable String image;
+    private @Nullable String image;
     /**
      * @return Enable ipv6 for droplet. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean ipv6;
+    private @Nullable Boolean ipv6;
     /**
      * @return Enable monitoring for droplet. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean monitoring;
+    private @Nullable Boolean monitoring;
     /**
      * @return Enable private networking for droplet. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean privateNetworking;
+    private @Nullable Boolean privateNetworking;
     /**
      * @return OpenStack region name (string)
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
      * 
      */
-    private final @Nullable String size;
+    private @Nullable String size;
     /**
      * @return SSH private key contents (string)
      * 
      */
-    private final @Nullable String sshKeyContents;
+    private @Nullable String sshKeyContents;
     /**
      * @return SSH key fingerprint (string)
      * 
      */
-    private final @Nullable String sshKeyFingerprint;
+    private @Nullable String sshKeyFingerprint;
     /**
      * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
-    private final @Nullable String sshPort;
+    private @Nullable String sshPort;
     /**
      * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
-    private final @Nullable String sshUser;
+    private @Nullable String sshUser;
     /**
      * @return vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
-    private final @Nullable String tags;
+    private @Nullable String tags;
     /**
      * @return Path to file with cloud-init user-data (string)
      * 
      */
-    private final @Nullable String userdata;
+    private @Nullable String userdata;
 
-    @CustomType.Constructor
-    private MachineConfigV2DigitaloceanConfig(
-        @CustomType.Parameter("accessToken") @Nullable String accessToken,
-        @CustomType.Parameter("backups") @Nullable Boolean backups,
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("ipv6") @Nullable Boolean ipv6,
-        @CustomType.Parameter("monitoring") @Nullable Boolean monitoring,
-        @CustomType.Parameter("privateNetworking") @Nullable Boolean privateNetworking,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("size") @Nullable String size,
-        @CustomType.Parameter("sshKeyContents") @Nullable String sshKeyContents,
-        @CustomType.Parameter("sshKeyFingerprint") @Nullable String sshKeyFingerprint,
-        @CustomType.Parameter("sshPort") @Nullable String sshPort,
-        @CustomType.Parameter("sshUser") @Nullable String sshUser,
-        @CustomType.Parameter("tags") @Nullable String tags,
-        @CustomType.Parameter("userdata") @Nullable String userdata) {
-        this.accessToken = accessToken;
-        this.backups = backups;
-        this.image = image;
-        this.ipv6 = ipv6;
-        this.monitoring = monitoring;
-        this.privateNetworking = privateNetworking;
-        this.region = region;
-        this.size = size;
-        this.sshKeyContents = sshKeyContents;
-        this.sshKeyFingerprint = sshKeyFingerprint;
-        this.sshPort = sshPort;
-        this.sshUser = sshUser;
-        this.tags = tags;
-        this.userdata = userdata;
-    }
-
+    private MachineConfigV2DigitaloceanConfig() {}
     /**
      * @return Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
@@ -221,7 +190,7 @@ public final class MachineConfigV2DigitaloceanConfig {
     public static Builder builder(MachineConfigV2DigitaloceanConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessToken;
         private @Nullable Boolean backups;
@@ -237,11 +206,7 @@ public final class MachineConfigV2DigitaloceanConfig {
         private @Nullable String sshUser;
         private @Nullable String tags;
         private @Nullable String userdata;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MachineConfigV2DigitaloceanConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessToken = defaults.accessToken;
@@ -260,63 +225,93 @@ public final class MachineConfigV2DigitaloceanConfig {
     	      this.userdata = defaults.userdata;
         }
 
+        @CustomType.Setter
         public Builder accessToken(@Nullable String accessToken) {
             this.accessToken = accessToken;
             return this;
         }
+        @CustomType.Setter
         public Builder backups(@Nullable Boolean backups) {
             this.backups = backups;
             return this;
         }
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6(@Nullable Boolean ipv6) {
             this.ipv6 = ipv6;
             return this;
         }
+        @CustomType.Setter
         public Builder monitoring(@Nullable Boolean monitoring) {
             this.monitoring = monitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder privateNetworking(@Nullable Boolean privateNetworking) {
             this.privateNetworking = privateNetworking;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder size(@Nullable String size) {
             this.size = size;
             return this;
         }
+        @CustomType.Setter
         public Builder sshKeyContents(@Nullable String sshKeyContents) {
             this.sshKeyContents = sshKeyContents;
             return this;
         }
+        @CustomType.Setter
         public Builder sshKeyFingerprint(@Nullable String sshKeyFingerprint) {
             this.sshKeyFingerprint = sshKeyFingerprint;
             return this;
         }
+        @CustomType.Setter
         public Builder sshPort(@Nullable String sshPort) {
             this.sshPort = sshPort;
             return this;
         }
+        @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
             this.sshUser = sshUser;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable String tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder userdata(@Nullable String userdata) {
             this.userdata = userdata;
             return this;
-        }        public MachineConfigV2DigitaloceanConfig build() {
-            return new MachineConfigV2DigitaloceanConfig(accessToken, backups, image, ipv6, monitoring, privateNetworking, region, size, sshKeyContents, sshKeyFingerprint, sshPort, sshUser, tags, userdata);
+        }
+        public MachineConfigV2DigitaloceanConfig build() {
+            final var o = new MachineConfigV2DigitaloceanConfig();
+            o.accessToken = accessToken;
+            o.backups = backups;
+            o.image = image;
+            o.ipv6 = ipv6;
+            o.monitoring = monitoring;
+            o.privateNetworking = privateNetworking;
+            o.region = region;
+            o.size = size;
+            o.sshKeyContents = sshKeyContents;
+            o.sshKeyFingerprint = sshKeyFingerprint;
+            o.sshPort = sshPort;
+            o.sshUser = sshUser;
+            o.tags = tags;
+            o.userdata = userdata;
+            return o;
         }
     }
 }

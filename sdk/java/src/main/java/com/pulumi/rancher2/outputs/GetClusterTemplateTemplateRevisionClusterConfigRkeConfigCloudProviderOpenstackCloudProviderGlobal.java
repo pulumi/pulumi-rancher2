@@ -9,41 +9,18 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal {
-    private final String authUrl;
-    private final String caFile;
-    private final String domainId;
-    private final String domainName;
-    private final String password;
-    private final String region;
-    private final String tenantId;
-    private final String tenantName;
-    private final String trustId;
-    private final String username;
+    private String authUrl;
+    private String caFile;
+    private String domainId;
+    private String domainName;
+    private String password;
+    private String region;
+    private String tenantId;
+    private String tenantName;
+    private String trustId;
+    private String username;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal(
-        @CustomType.Parameter("authUrl") String authUrl,
-        @CustomType.Parameter("caFile") String caFile,
-        @CustomType.Parameter("domainId") String domainId,
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("tenantId") String tenantId,
-        @CustomType.Parameter("tenantName") String tenantName,
-        @CustomType.Parameter("trustId") String trustId,
-        @CustomType.Parameter("username") String username) {
-        this.authUrl = authUrl;
-        this.caFile = caFile;
-        this.domainId = domainId;
-        this.domainName = domainName;
-        this.password = password;
-        this.region = region;
-        this.tenantId = tenantId;
-        this.tenantName = tenantName;
-        this.trustId = trustId;
-        this.username = username;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal() {}
     public String authUrl() {
         return this.authUrl;
     }
@@ -82,7 +59,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String authUrl;
         private String caFile;
@@ -94,11 +71,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
         private String tenantName;
         private String trustId;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authUrl = defaults.authUrl;
@@ -113,47 +86,69 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder authUrl(String authUrl) {
             this.authUrl = Objects.requireNonNull(authUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder caFile(String caFile) {
             this.caFile = Objects.requireNonNull(caFile);
             return this;
         }
+        @CustomType.Setter
         public Builder domainId(String domainId) {
             this.domainId = Objects.requireNonNull(domainId);
             return this;
         }
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder tenantId(String tenantId) {
             this.tenantId = Objects.requireNonNull(tenantId);
             return this;
         }
+        @CustomType.Setter
         public Builder tenantName(String tenantName) {
             this.tenantName = Objects.requireNonNull(tenantName);
             return this;
         }
+        @CustomType.Setter
         public Builder trustId(String trustId) {
             this.trustId = Objects.requireNonNull(trustId);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal(authUrl, caFile, domainId, domainName, password, region, tenantId, tenantName, trustId, username);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal();
+            o.authUrl = authUrl;
+            o.caFile = caFile;
+            o.domainId = domainId;
+            o.domainName = domainName;
+            o.password = password;
+            o.region = region;
+            o.tenantId = tenantId;
+            o.tenantName = tenantName;
+            o.trustId = trustId;
+            o.username = username;
+            return o;
         }
     }
 }

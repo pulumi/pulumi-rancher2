@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork {
-    private final String publicNetwork;
+    private String publicNetwork;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork(@CustomType.Parameter("publicNetwork") String publicNetwork) {
-        this.publicNetwork = publicNetwork;
-    }
-
+    private GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork() {}
     public String publicNetwork() {
         return this.publicNetwork;
     }
@@ -27,24 +23,24 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork {
     public static Builder builder(GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String publicNetwork;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.publicNetwork = defaults.publicNetwork;
         }
 
+        @CustomType.Setter
         public Builder publicNetwork(String publicNetwork) {
             this.publicNetwork = Objects.requireNonNull(publicNetwork);
             return this;
-        }        public GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork build() {
-            return new GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork(publicNetwork);
+        }
+        public GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork build() {
+            final var o = new GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork();
+            o.publicNetwork = publicNetwork;
+            return o;
         }
     }
 }

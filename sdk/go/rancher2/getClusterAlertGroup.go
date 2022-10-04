@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupClusterAlertGroup(ctx, &GetClusterAlertGroupArgs{
-// 			ClusterId: "<cluster_id>",
-// 			Name:      "<cluster_alert_group_name>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.LookupClusterAlertGroup(ctx, &GetClusterAlertGroupArgs{
+//				ClusterId: "<cluster_id>",
+//				Name:      "<cluster_alert_group_name>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupClusterAlertGroup(ctx *pulumi.Context, args *LookupClusterAlertGroupArgs, opts ...pulumi.InvokeOption) (*LookupClusterAlertGroupResult, error) {
 	var rv LookupClusterAlertGroupResult

@@ -16,70 +16,49 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions {
      * @return Drain options delete empty dir data. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean deleteEmptyDirData;
+    private @Nullable Boolean deleteEmptyDirData;
     /**
      * @return Drain options disable eviction. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean disableEviction;
+    private @Nullable Boolean disableEviction;
     /**
      * @return Drain options enabled? Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return Drain options force. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean force;
+    private @Nullable Boolean force;
     /**
      * @return Drain options grace period (int)
      * 
      */
-    private final @Nullable Integer gracePeriod;
+    private @Nullable Integer gracePeriod;
     /**
      * @return Drain options ignore daemon sets. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean ignoreDaemonSets;
+    private @Nullable Boolean ignoreDaemonSets;
     /**
      * @return Drain options ignore errors. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean ignoreErrors;
+    private @Nullable Boolean ignoreErrors;
     /**
      * @return Drain options skip wait for delete timeout seconds (int)
      * 
      */
-    private final @Nullable Integer skipWaitForDeleteTimeoutSeconds;
+    private @Nullable Integer skipWaitForDeleteTimeoutSeconds;
     /**
      * @return Drain options timeout (int)
      * 
      */
-    private final @Nullable Integer timeout;
+    private @Nullable Integer timeout;
 
-    @CustomType.Constructor
-    private ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(
-        @CustomType.Parameter("deleteEmptyDirData") @Nullable Boolean deleteEmptyDirData,
-        @CustomType.Parameter("disableEviction") @Nullable Boolean disableEviction,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("force") @Nullable Boolean force,
-        @CustomType.Parameter("gracePeriod") @Nullable Integer gracePeriod,
-        @CustomType.Parameter("ignoreDaemonSets") @Nullable Boolean ignoreDaemonSets,
-        @CustomType.Parameter("ignoreErrors") @Nullable Boolean ignoreErrors,
-        @CustomType.Parameter("skipWaitForDeleteTimeoutSeconds") @Nullable Integer skipWaitForDeleteTimeoutSeconds,
-        @CustomType.Parameter("timeout") @Nullable Integer timeout) {
-        this.deleteEmptyDirData = deleteEmptyDirData;
-        this.disableEviction = disableEviction;
-        this.enabled = enabled;
-        this.force = force;
-        this.gracePeriod = gracePeriod;
-        this.ignoreDaemonSets = ignoreDaemonSets;
-        this.ignoreErrors = ignoreErrors;
-        this.skipWaitForDeleteTimeoutSeconds = skipWaitForDeleteTimeoutSeconds;
-        this.timeout = timeout;
-    }
-
+    private ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions() {}
     /**
      * @return Drain options delete empty dir data. Default `false` (bool)
      * 
@@ -151,7 +130,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions {
     public static Builder builder(ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean deleteEmptyDirData;
         private @Nullable Boolean disableEviction;
@@ -162,11 +141,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions {
         private @Nullable Boolean ignoreErrors;
         private @Nullable Integer skipWaitForDeleteTimeoutSeconds;
         private @Nullable Integer timeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deleteEmptyDirData = defaults.deleteEmptyDirData;
@@ -180,43 +155,63 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions {
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
         public Builder deleteEmptyDirData(@Nullable Boolean deleteEmptyDirData) {
             this.deleteEmptyDirData = deleteEmptyDirData;
             return this;
         }
+        @CustomType.Setter
         public Builder disableEviction(@Nullable Boolean disableEviction) {
             this.disableEviction = disableEviction;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder force(@Nullable Boolean force) {
             this.force = force;
             return this;
         }
+        @CustomType.Setter
         public Builder gracePeriod(@Nullable Integer gracePeriod) {
             this.gracePeriod = gracePeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreDaemonSets(@Nullable Boolean ignoreDaemonSets) {
             this.ignoreDaemonSets = ignoreDaemonSets;
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreErrors(@Nullable Boolean ignoreErrors) {
             this.ignoreErrors = ignoreErrors;
             return this;
         }
+        @CustomType.Setter
         public Builder skipWaitForDeleteTimeoutSeconds(@Nullable Integer skipWaitForDeleteTimeoutSeconds) {
             this.skipWaitForDeleteTimeoutSeconds = skipWaitForDeleteTimeoutSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
             this.timeout = timeout;
             return this;
-        }        public ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions build() {
-            return new ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(deleteEmptyDirData, disableEviction, enabled, force, gracePeriod, ignoreDaemonSets, ignoreErrors, skipWaitForDeleteTimeoutSeconds, timeout);
+        }
+        public ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions build() {
+            final var o = new ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions();
+            o.deleteEmptyDirData = deleteEmptyDirData;
+            o.disableEviction = disableEviction;
+            o.enabled = enabled;
+            o.force = force;
+            o.gracePeriod = gracePeriod;
+            o.ignoreDaemonSets = ignoreDaemonSets;
+            o.ignoreErrors = ignoreErrors;
+            o.skipWaitForDeleteTimeoutSeconds = skipWaitForDeleteTimeoutSeconds;
+            o.timeout = timeout;
+            return o;
         }
     }
 }

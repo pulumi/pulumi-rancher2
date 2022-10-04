@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider {
-    private final @Nullable String iface;
+    private @Nullable String iface;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider(@CustomType.Parameter("iface") @Nullable String iface) {
-        this.iface = iface;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider() {}
     public Optional<String> iface() {
         return Optional.ofNullable(this.iface);
     }
@@ -29,24 +25,24 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkC
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String iface;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iface = defaults.iface;
         }
 
+        @CustomType.Setter
         public Builder iface(@Nullable String iface) {
             this.iface = iface;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider(iface);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider();
+            o.iface = iface;
+            return o;
         }
     }
 }

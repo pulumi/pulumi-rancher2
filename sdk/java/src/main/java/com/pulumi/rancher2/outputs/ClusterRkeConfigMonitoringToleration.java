@@ -16,42 +16,29 @@ public final class ClusterRkeConfigMonitoringToleration {
      * @return The GKE taint effect (string)
      * 
      */
-    private final @Nullable String effect;
+    private @Nullable String effect;
     /**
      * @return The GKE taint key (string)
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
      * 
      */
-    private final @Nullable String operator;
+    private @Nullable String operator;
     /**
      * @return The toleration seconds (int)
      * 
      */
-    private final @Nullable Integer seconds;
+    private @Nullable Integer seconds;
     /**
      * @return The GKE taint value (string)
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigMonitoringToleration(
-        @CustomType.Parameter("effect") @Nullable String effect,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("operator") @Nullable String operator,
-        @CustomType.Parameter("seconds") @Nullable Integer seconds,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.effect = effect;
-        this.key = key;
-        this.operator = operator;
-        this.seconds = seconds;
-        this.value = value;
-    }
-
+    private ClusterRkeConfigMonitoringToleration() {}
     /**
      * @return The GKE taint effect (string)
      * 
@@ -95,18 +82,14 @@ public final class ClusterRkeConfigMonitoringToleration {
     public static Builder builder(ClusterRkeConfigMonitoringToleration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String effect;
         private String key;
         private @Nullable String operator;
         private @Nullable Integer seconds;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigMonitoringToleration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -116,27 +99,39 @@ public final class ClusterRkeConfigMonitoringToleration {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder effect(@Nullable String effect) {
             this.effect = effect;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder operator(@Nullable String operator) {
             this.operator = operator;
             return this;
         }
+        @CustomType.Setter
         public Builder seconds(@Nullable Integer seconds) {
             this.seconds = seconds;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public ClusterRkeConfigMonitoringToleration build() {
-            return new ClusterRkeConfigMonitoringToleration(effect, key, operator, seconds, value);
+        }
+        public ClusterRkeConfigMonitoringToleration build() {
+            final var o = new ClusterRkeConfigMonitoringToleration();
+            o.effect = effect;
+            o.key = key;
+            o.operator = operator;
+            o.seconds = seconds;
+            o.value = value;
+            return o;
         }
     }
 }

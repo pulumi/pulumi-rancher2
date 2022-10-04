@@ -16,224 +16,159 @@ public final class MachineConfigV2VsphereConfig {
      * @return vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
      * 
      */
-    private final @Nullable String boot2dockerUrl;
+    private @Nullable String boot2dockerUrl;
     /**
      * @return vSphere vm configuration parameters (used for guestinfo) (list)
      * 
      */
-    private final @Nullable List<String> cfgparams;
+    private @Nullable List<String> cfgparams;
     /**
      * @return If you choose creation type vm (clone vm) a name of what vm you want to clone is required (string)
      * 
      */
-    private final @Nullable String cloneFrom;
+    private @Nullable String cloneFrom;
     /**
      * @return Filepath to a cloud-config yaml file to put into the ISO user-data (string)
      * 
      */
-    private final @Nullable String cloudConfig;
+    private @Nullable String cloudConfig;
     /**
      * @return vSphere cloud-init file or url to set in the guestinfo (string)
      * 
      */
-    private final @Nullable String cloudinit;
+    private @Nullable String cloudinit;
     /**
      * @return If you choose to clone from a content library template specify the name of the library (string)
      * 
      */
-    private final @Nullable String contentLibrary;
+    private @Nullable String contentLibrary;
     /**
      * @return vSphere CPU number for docker VM. Default `2` (string)
      * 
      */
-    private final @Nullable String cpuCount;
+    private @Nullable String cpuCount;
     /**
      * @return Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy` (string)
      * 
      */
-    private final @Nullable String creationType;
+    private @Nullable String creationType;
     /**
      * @return vSphere custom attributes, format key/value e.g. `200=my custom value` (List)
      * 
      */
-    private final @Nullable List<String> customAttributes;
+    private @Nullable List<String> customAttributes;
     /**
      * @return vSphere datacenter for docker VM (string)
      * 
      */
-    private final @Nullable String datacenter;
+    private @Nullable String datacenter;
     /**
      * @return vSphere datastore for docker VM (string)
      * 
      */
-    private final @Nullable String datastore;
+    private @Nullable String datastore;
     /**
      * @return vSphere datastore cluster for virtual machine (string)
      * 
      */
-    private final @Nullable String datastoreCluster;
+    private @Nullable String datastoreCluster;
     /**
      * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
-    private final @Nullable String diskSize;
+    private @Nullable String diskSize;
     /**
      * @return vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
      * 
      */
-    private final @Nullable String folder;
+    private @Nullable String folder;
     /**
      * @return vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
      * 
      */
-    private final @Nullable String hostsystem;
+    private @Nullable String hostsystem;
     /**
      * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
      * 
      */
-    private final @Nullable String memorySize;
+    private @Nullable String memorySize;
     /**
      * @return vSphere network where the docker VM will be attached (list)
      * 
      */
-    private final @Nullable List<String> networks;
+    private @Nullable List<String> networks;
     /**
      * @return OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
-    private final @Nullable String password;
+    private @Nullable String password;
     /**
      * @return vSphere resource pool for docker VM (string)
      * 
      */
-    private final @Nullable String pool;
+    private @Nullable String pool;
     /**
      * @return If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
      * 
      */
-    private final @Nullable String sshPassword;
+    private @Nullable String sshPassword;
     /**
      * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
-    private final @Nullable String sshPort;
+    private @Nullable String sshPort;
     /**
      * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
-    private final @Nullable String sshUser;
+    private @Nullable String sshUser;
     /**
      * @return If using a non-B2D image the uploaded keys will need chown&#39;ed. Default `staff` (string)
      * 
      */
-    private final @Nullable String sshUserGroup;
+    private @Nullable String sshUserGroup;
     /**
      * @return vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
-    private final @Nullable List<String> tags;
+    private @Nullable List<String> tags;
     /**
      * @return OpenStack username (string)
      * 
      */
-    private final @Nullable String username;
+    private @Nullable String username;
     /**
      * @return vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
      * 
      */
-    private final @Nullable String vappIpAllocationPolicy;
+    private @Nullable String vappIpAllocationPolicy;
     /**
      * @return vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
      * 
      */
-    private final @Nullable String vappIpProtocol;
+    private @Nullable String vappIpProtocol;
     /**
      * @return vSphere vApp properties (list)
      * 
      */
-    private final @Nullable List<String> vappProperties;
+    private @Nullable List<String> vappProperties;
     /**
      * @return vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
      * 
      */
-    private final @Nullable String vappTransport;
+    private @Nullable String vappTransport;
     /**
      * @return vSphere IP/hostname for vCenter (string)
      * 
      */
-    private final @Nullable String vcenter;
+    private @Nullable String vcenter;
     /**
      * @return vSphere Port for vCenter Default `443` (string)
      * 
      */
-    private final @Nullable String vcenterPort;
+    private @Nullable String vcenterPort;
 
-    @CustomType.Constructor
-    private MachineConfigV2VsphereConfig(
-        @CustomType.Parameter("boot2dockerUrl") @Nullable String boot2dockerUrl,
-        @CustomType.Parameter("cfgparams") @Nullable List<String> cfgparams,
-        @CustomType.Parameter("cloneFrom") @Nullable String cloneFrom,
-        @CustomType.Parameter("cloudConfig") @Nullable String cloudConfig,
-        @CustomType.Parameter("cloudinit") @Nullable String cloudinit,
-        @CustomType.Parameter("contentLibrary") @Nullable String contentLibrary,
-        @CustomType.Parameter("cpuCount") @Nullable String cpuCount,
-        @CustomType.Parameter("creationType") @Nullable String creationType,
-        @CustomType.Parameter("customAttributes") @Nullable List<String> customAttributes,
-        @CustomType.Parameter("datacenter") @Nullable String datacenter,
-        @CustomType.Parameter("datastore") @Nullable String datastore,
-        @CustomType.Parameter("datastoreCluster") @Nullable String datastoreCluster,
-        @CustomType.Parameter("diskSize") @Nullable String diskSize,
-        @CustomType.Parameter("folder") @Nullable String folder,
-        @CustomType.Parameter("hostsystem") @Nullable String hostsystem,
-        @CustomType.Parameter("memorySize") @Nullable String memorySize,
-        @CustomType.Parameter("networks") @Nullable List<String> networks,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("pool") @Nullable String pool,
-        @CustomType.Parameter("sshPassword") @Nullable String sshPassword,
-        @CustomType.Parameter("sshPort") @Nullable String sshPort,
-        @CustomType.Parameter("sshUser") @Nullable String sshUser,
-        @CustomType.Parameter("sshUserGroup") @Nullable String sshUserGroup,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("username") @Nullable String username,
-        @CustomType.Parameter("vappIpAllocationPolicy") @Nullable String vappIpAllocationPolicy,
-        @CustomType.Parameter("vappIpProtocol") @Nullable String vappIpProtocol,
-        @CustomType.Parameter("vappProperties") @Nullable List<String> vappProperties,
-        @CustomType.Parameter("vappTransport") @Nullable String vappTransport,
-        @CustomType.Parameter("vcenter") @Nullable String vcenter,
-        @CustomType.Parameter("vcenterPort") @Nullable String vcenterPort) {
-        this.boot2dockerUrl = boot2dockerUrl;
-        this.cfgparams = cfgparams;
-        this.cloneFrom = cloneFrom;
-        this.cloudConfig = cloudConfig;
-        this.cloudinit = cloudinit;
-        this.contentLibrary = contentLibrary;
-        this.cpuCount = cpuCount;
-        this.creationType = creationType;
-        this.customAttributes = customAttributes;
-        this.datacenter = datacenter;
-        this.datastore = datastore;
-        this.datastoreCluster = datastoreCluster;
-        this.diskSize = diskSize;
-        this.folder = folder;
-        this.hostsystem = hostsystem;
-        this.memorySize = memorySize;
-        this.networks = networks;
-        this.password = password;
-        this.pool = pool;
-        this.sshPassword = sshPassword;
-        this.sshPort = sshPort;
-        this.sshUser = sshUser;
-        this.sshUserGroup = sshUserGroup;
-        this.tags = tags;
-        this.username = username;
-        this.vappIpAllocationPolicy = vappIpAllocationPolicy;
-        this.vappIpProtocol = vappIpProtocol;
-        this.vappProperties = vappProperties;
-        this.vappTransport = vappTransport;
-        this.vcenter = vcenter;
-        this.vcenterPort = vcenterPort;
-    }
-
+    private MachineConfigV2VsphereConfig() {}
     /**
      * @return vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
      * 
@@ -459,7 +394,7 @@ public final class MachineConfigV2VsphereConfig {
     public static Builder builder(MachineConfigV2VsphereConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String boot2dockerUrl;
         private @Nullable List<String> cfgparams;
@@ -492,11 +427,7 @@ public final class MachineConfigV2VsphereConfig {
         private @Nullable String vappTransport;
         private @Nullable String vcenter;
         private @Nullable String vcenterPort;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MachineConfigV2VsphereConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.boot2dockerUrl = defaults.boot2dockerUrl;
@@ -532,10 +463,12 @@ public final class MachineConfigV2VsphereConfig {
     	      this.vcenterPort = defaults.vcenterPort;
         }
 
+        @CustomType.Setter
         public Builder boot2dockerUrl(@Nullable String boot2dockerUrl) {
             this.boot2dockerUrl = boot2dockerUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder cfgparams(@Nullable List<String> cfgparams) {
             this.cfgparams = cfgparams;
             return this;
@@ -543,30 +476,37 @@ public final class MachineConfigV2VsphereConfig {
         public Builder cfgparams(String... cfgparams) {
             return cfgparams(List.of(cfgparams));
         }
+        @CustomType.Setter
         public Builder cloneFrom(@Nullable String cloneFrom) {
             this.cloneFrom = cloneFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudConfig(@Nullable String cloudConfig) {
             this.cloudConfig = cloudConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudinit(@Nullable String cloudinit) {
             this.cloudinit = cloudinit;
             return this;
         }
+        @CustomType.Setter
         public Builder contentLibrary(@Nullable String contentLibrary) {
             this.contentLibrary = contentLibrary;
             return this;
         }
+        @CustomType.Setter
         public Builder cpuCount(@Nullable String cpuCount) {
             this.cpuCount = cpuCount;
             return this;
         }
+        @CustomType.Setter
         public Builder creationType(@Nullable String creationType) {
             this.creationType = creationType;
             return this;
         }
+        @CustomType.Setter
         public Builder customAttributes(@Nullable List<String> customAttributes) {
             this.customAttributes = customAttributes;
             return this;
@@ -574,34 +514,42 @@ public final class MachineConfigV2VsphereConfig {
         public Builder customAttributes(String... customAttributes) {
             return customAttributes(List.of(customAttributes));
         }
+        @CustomType.Setter
         public Builder datacenter(@Nullable String datacenter) {
             this.datacenter = datacenter;
             return this;
         }
+        @CustomType.Setter
         public Builder datastore(@Nullable String datastore) {
             this.datastore = datastore;
             return this;
         }
+        @CustomType.Setter
         public Builder datastoreCluster(@Nullable String datastoreCluster) {
             this.datastoreCluster = datastoreCluster;
             return this;
         }
+        @CustomType.Setter
         public Builder diskSize(@Nullable String diskSize) {
             this.diskSize = diskSize;
             return this;
         }
+        @CustomType.Setter
         public Builder folder(@Nullable String folder) {
             this.folder = folder;
             return this;
         }
+        @CustomType.Setter
         public Builder hostsystem(@Nullable String hostsystem) {
             this.hostsystem = hostsystem;
             return this;
         }
+        @CustomType.Setter
         public Builder memorySize(@Nullable String memorySize) {
             this.memorySize = memorySize;
             return this;
         }
+        @CustomType.Setter
         public Builder networks(@Nullable List<String> networks) {
             this.networks = networks;
             return this;
@@ -609,30 +557,37 @@ public final class MachineConfigV2VsphereConfig {
         public Builder networks(String... networks) {
             return networks(List.of(networks));
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder pool(@Nullable String pool) {
             this.pool = pool;
             return this;
         }
+        @CustomType.Setter
         public Builder sshPassword(@Nullable String sshPassword) {
             this.sshPassword = sshPassword;
             return this;
         }
+        @CustomType.Setter
         public Builder sshPort(@Nullable String sshPort) {
             this.sshPort = sshPort;
             return this;
         }
+        @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
             this.sshUser = sshUser;
             return this;
         }
+        @CustomType.Setter
         public Builder sshUserGroup(@Nullable String sshUserGroup) {
             this.sshUserGroup = sshUserGroup;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -640,18 +595,22 @@ public final class MachineConfigV2VsphereConfig {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
         }
+        @CustomType.Setter
         public Builder vappIpAllocationPolicy(@Nullable String vappIpAllocationPolicy) {
             this.vappIpAllocationPolicy = vappIpAllocationPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder vappIpProtocol(@Nullable String vappIpProtocol) {
             this.vappIpProtocol = vappIpProtocol;
             return this;
         }
+        @CustomType.Setter
         public Builder vappProperties(@Nullable List<String> vappProperties) {
             this.vappProperties = vappProperties;
             return this;
@@ -659,19 +618,55 @@ public final class MachineConfigV2VsphereConfig {
         public Builder vappProperties(String... vappProperties) {
             return vappProperties(List.of(vappProperties));
         }
+        @CustomType.Setter
         public Builder vappTransport(@Nullable String vappTransport) {
             this.vappTransport = vappTransport;
             return this;
         }
+        @CustomType.Setter
         public Builder vcenter(@Nullable String vcenter) {
             this.vcenter = vcenter;
             return this;
         }
+        @CustomType.Setter
         public Builder vcenterPort(@Nullable String vcenterPort) {
             this.vcenterPort = vcenterPort;
             return this;
-        }        public MachineConfigV2VsphereConfig build() {
-            return new MachineConfigV2VsphereConfig(boot2dockerUrl, cfgparams, cloneFrom, cloudConfig, cloudinit, contentLibrary, cpuCount, creationType, customAttributes, datacenter, datastore, datastoreCluster, diskSize, folder, hostsystem, memorySize, networks, password, pool, sshPassword, sshPort, sshUser, sshUserGroup, tags, username, vappIpAllocationPolicy, vappIpProtocol, vappProperties, vappTransport, vcenter, vcenterPort);
+        }
+        public MachineConfigV2VsphereConfig build() {
+            final var o = new MachineConfigV2VsphereConfig();
+            o.boot2dockerUrl = boot2dockerUrl;
+            o.cfgparams = cfgparams;
+            o.cloneFrom = cloneFrom;
+            o.cloudConfig = cloudConfig;
+            o.cloudinit = cloudinit;
+            o.contentLibrary = contentLibrary;
+            o.cpuCount = cpuCount;
+            o.creationType = creationType;
+            o.customAttributes = customAttributes;
+            o.datacenter = datacenter;
+            o.datastore = datastore;
+            o.datastoreCluster = datastoreCluster;
+            o.diskSize = diskSize;
+            o.folder = folder;
+            o.hostsystem = hostsystem;
+            o.memorySize = memorySize;
+            o.networks = networks;
+            o.password = password;
+            o.pool = pool;
+            o.sshPassword = sshPassword;
+            o.sshPort = sshPort;
+            o.sshUser = sshUser;
+            o.sshUserGroup = sshUserGroup;
+            o.tags = tags;
+            o.username = username;
+            o.vappIpAllocationPolicy = vappIpAllocationPolicy;
+            o.vappIpProtocol = vappIpProtocol;
+            o.vappProperties = vappProperties;
+            o.vappTransport = vappTransport;
+            o.vcenter = vcenter;
+            o.vcenterPort = vcenterPort;
+            return o;
         }
     }
 }

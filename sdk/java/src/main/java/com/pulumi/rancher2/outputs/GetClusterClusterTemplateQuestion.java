@@ -12,23 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterTemplateQuestion {
-    private final String default_;
-    private final @Nullable Boolean required;
-    private final @Nullable String type;
-    private final String variable;
+    private String default_;
+    private @Nullable Boolean required;
+    private @Nullable String type;
+    private String variable;
 
-    @CustomType.Constructor
-    private GetClusterClusterTemplateQuestion(
-        @CustomType.Parameter("default") String default_,
-        @CustomType.Parameter("required") @Nullable Boolean required,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("variable") String variable) {
-        this.default_ = default_;
-        this.required = required;
-        this.type = type;
-        this.variable = variable;
-    }
-
+    private GetClusterClusterTemplateQuestion() {}
     public String default_() {
         return this.default_;
     }
@@ -49,17 +38,13 @@ public final class GetClusterClusterTemplateQuestion {
     public static Builder builder(GetClusterClusterTemplateQuestion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String default_;
         private @Nullable Boolean required;
         private @Nullable String type;
         private String variable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterTemplateQuestion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
@@ -68,23 +53,33 @@ public final class GetClusterClusterTemplateQuestion {
     	      this.variable = defaults.variable;
         }
 
+        @CustomType.Setter("default")
         public Builder default_(String default_) {
             this.default_ = Objects.requireNonNull(default_);
             return this;
         }
+        @CustomType.Setter
         public Builder required(@Nullable Boolean required) {
             this.required = required;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder variable(String variable) {
             this.variable = Objects.requireNonNull(variable);
             return this;
-        }        public GetClusterClusterTemplateQuestion build() {
-            return new GetClusterClusterTemplateQuestion(default_, required, type, variable);
+        }
+        public GetClusterClusterTemplateQuestion build() {
+            final var o = new GetClusterClusterTemplateQuestion();
+            o.default_ = default_;
+            o.required = required;
+            o.type = type;
+            o.variable = variable;
+            return o;
         }
     }
 }

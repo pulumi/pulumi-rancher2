@@ -26,80 +26,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfig {
-    private final Integer addonJobTimeout;
-    private final @Nullable String addons;
-    private final @Nullable List<String> addonsIncludes;
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication authentication;
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization authorization;
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost bastionHost;
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider cloudProvider;
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns dns;
-    private final @Nullable Boolean enableCriDockerd;
-    private final @Nullable Boolean ignoreDockerVersion;
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress ingress;
-    private final String kubernetesVersion;
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring monitoring;
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork network;
-    private final @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNode> nodes;
-    private final String prefixPath;
-    private final @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry> privateRegistries;
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices services;
-    private final @Nullable Boolean sshAgentAuth;
-    private final String sshCertPath;
-    private final String sshKeyPath;
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy upgradeStrategy;
-    private final String winPrefixPath;
+    private Integer addonJobTimeout;
+    private @Nullable String addons;
+    private @Nullable List<String> addonsIncludes;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication authentication;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization authorization;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost bastionHost;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider cloudProvider;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns dns;
+    private @Nullable Boolean enableCriDockerd;
+    private @Nullable Boolean ignoreDockerVersion;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress ingress;
+    private String kubernetesVersion;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring monitoring;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork network;
+    private @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNode> nodes;
+    private String prefixPath;
+    private @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry> privateRegistries;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices services;
+    private @Nullable Boolean sshAgentAuth;
+    private String sshCertPath;
+    private String sshKeyPath;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy upgradeStrategy;
+    private String winPrefixPath;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfig(
-        @CustomType.Parameter("addonJobTimeout") Integer addonJobTimeout,
-        @CustomType.Parameter("addons") @Nullable String addons,
-        @CustomType.Parameter("addonsIncludes") @Nullable List<String> addonsIncludes,
-        @CustomType.Parameter("authentication") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication authentication,
-        @CustomType.Parameter("authorization") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization authorization,
-        @CustomType.Parameter("bastionHost") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost bastionHost,
-        @CustomType.Parameter("cloudProvider") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider cloudProvider,
-        @CustomType.Parameter("dns") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns dns,
-        @CustomType.Parameter("enableCriDockerd") @Nullable Boolean enableCriDockerd,
-        @CustomType.Parameter("ignoreDockerVersion") @Nullable Boolean ignoreDockerVersion,
-        @CustomType.Parameter("ingress") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress ingress,
-        @CustomType.Parameter("kubernetesVersion") String kubernetesVersion,
-        @CustomType.Parameter("monitoring") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring monitoring,
-        @CustomType.Parameter("network") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork network,
-        @CustomType.Parameter("nodes") @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNode> nodes,
-        @CustomType.Parameter("prefixPath") String prefixPath,
-        @CustomType.Parameter("privateRegistries") @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry> privateRegistries,
-        @CustomType.Parameter("services") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices services,
-        @CustomType.Parameter("sshAgentAuth") @Nullable Boolean sshAgentAuth,
-        @CustomType.Parameter("sshCertPath") String sshCertPath,
-        @CustomType.Parameter("sshKeyPath") String sshKeyPath,
-        @CustomType.Parameter("upgradeStrategy") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy upgradeStrategy,
-        @CustomType.Parameter("winPrefixPath") String winPrefixPath) {
-        this.addonJobTimeout = addonJobTimeout;
-        this.addons = addons;
-        this.addonsIncludes = addonsIncludes;
-        this.authentication = authentication;
-        this.authorization = authorization;
-        this.bastionHost = bastionHost;
-        this.cloudProvider = cloudProvider;
-        this.dns = dns;
-        this.enableCriDockerd = enableCriDockerd;
-        this.ignoreDockerVersion = ignoreDockerVersion;
-        this.ingress = ingress;
-        this.kubernetesVersion = kubernetesVersion;
-        this.monitoring = monitoring;
-        this.network = network;
-        this.nodes = nodes;
-        this.prefixPath = prefixPath;
-        this.privateRegistries = privateRegistries;
-        this.services = services;
-        this.sshAgentAuth = sshAgentAuth;
-        this.sshCertPath = sshCertPath;
-        this.sshKeyPath = sshKeyPath;
-        this.upgradeStrategy = upgradeStrategy;
-        this.winPrefixPath = winPrefixPath;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfig() {}
     public Integer addonJobTimeout() {
         return this.addonJobTimeout;
     }
@@ -177,7 +128,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer addonJobTimeout;
         private @Nullable String addons;
@@ -202,11 +153,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfig {
         private String sshKeyPath;
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy upgradeStrategy;
         private String winPrefixPath;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addonJobTimeout = defaults.addonJobTimeout;
@@ -234,14 +181,17 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     	      this.winPrefixPath = defaults.winPrefixPath;
         }
 
+        @CustomType.Setter
         public Builder addonJobTimeout(Integer addonJobTimeout) {
             this.addonJobTimeout = Objects.requireNonNull(addonJobTimeout);
             return this;
         }
+        @CustomType.Setter
         public Builder addons(@Nullable String addons) {
             this.addons = addons;
             return this;
         }
+        @CustomType.Setter
         public Builder addonsIncludes(@Nullable List<String> addonsIncludes) {
             this.addonsIncludes = addonsIncludes;
             return this;
@@ -249,50 +199,62 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfig {
         public Builder addonsIncludes(String... addonsIncludes) {
             return addonsIncludes(List.of(addonsIncludes));
         }
+        @CustomType.Setter
         public Builder authentication(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication authentication) {
             this.authentication = Objects.requireNonNull(authentication);
             return this;
         }
+        @CustomType.Setter
         public Builder authorization(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization authorization) {
             this.authorization = Objects.requireNonNull(authorization);
             return this;
         }
+        @CustomType.Setter
         public Builder bastionHost(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost bastionHost) {
             this.bastionHost = Objects.requireNonNull(bastionHost);
             return this;
         }
+        @CustomType.Setter
         public Builder cloudProvider(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider cloudProvider) {
             this.cloudProvider = Objects.requireNonNull(cloudProvider);
             return this;
         }
+        @CustomType.Setter
         public Builder dns(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns dns) {
             this.dns = Objects.requireNonNull(dns);
             return this;
         }
+        @CustomType.Setter
         public Builder enableCriDockerd(@Nullable Boolean enableCriDockerd) {
             this.enableCriDockerd = enableCriDockerd;
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreDockerVersion(@Nullable Boolean ignoreDockerVersion) {
             this.ignoreDockerVersion = ignoreDockerVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder ingress(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress ingress) {
             this.ingress = Objects.requireNonNull(ingress);
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
             this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder monitoring(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring monitoring) {
             this.monitoring = Objects.requireNonNull(monitoring);
             return this;
         }
+        @CustomType.Setter
         public Builder network(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder nodes(@Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNode> nodes) {
             this.nodes = nodes;
             return this;
@@ -300,10 +262,12 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfig {
         public Builder nodes(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNode... nodes) {
             return nodes(List.of(nodes));
         }
+        @CustomType.Setter
         public Builder prefixPath(String prefixPath) {
             this.prefixPath = Objects.requireNonNull(prefixPath);
             return this;
         }
+        @CustomType.Setter
         public Builder privateRegistries(@Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry> privateRegistries) {
             this.privateRegistries = privateRegistries;
             return this;
@@ -311,31 +275,62 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfig {
         public Builder privateRegistries(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry... privateRegistries) {
             return privateRegistries(List.of(privateRegistries));
         }
+        @CustomType.Setter
         public Builder services(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices services) {
             this.services = Objects.requireNonNull(services);
             return this;
         }
+        @CustomType.Setter
         public Builder sshAgentAuth(@Nullable Boolean sshAgentAuth) {
             this.sshAgentAuth = sshAgentAuth;
             return this;
         }
+        @CustomType.Setter
         public Builder sshCertPath(String sshCertPath) {
             this.sshCertPath = Objects.requireNonNull(sshCertPath);
             return this;
         }
+        @CustomType.Setter
         public Builder sshKeyPath(String sshKeyPath) {
             this.sshKeyPath = Objects.requireNonNull(sshKeyPath);
             return this;
         }
+        @CustomType.Setter
         public Builder upgradeStrategy(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy upgradeStrategy) {
             this.upgradeStrategy = Objects.requireNonNull(upgradeStrategy);
             return this;
         }
+        @CustomType.Setter
         public Builder winPrefixPath(String winPrefixPath) {
             this.winPrefixPath = Objects.requireNonNull(winPrefixPath);
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfig build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfig(addonJobTimeout, addons, addonsIncludes, authentication, authorization, bastionHost, cloudProvider, dns, enableCriDockerd, ignoreDockerVersion, ingress, kubernetesVersion, monitoring, network, nodes, prefixPath, privateRegistries, services, sshAgentAuth, sshCertPath, sshKeyPath, upgradeStrategy, winPrefixPath);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfig build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfig();
+            o.addonJobTimeout = addonJobTimeout;
+            o.addons = addons;
+            o.addonsIncludes = addonsIncludes;
+            o.authentication = authentication;
+            o.authorization = authorization;
+            o.bastionHost = bastionHost;
+            o.cloudProvider = cloudProvider;
+            o.dns = dns;
+            o.enableCriDockerd = enableCriDockerd;
+            o.ignoreDockerVersion = ignoreDockerVersion;
+            o.ingress = ingress;
+            o.kubernetesVersion = kubernetesVersion;
+            o.monitoring = monitoring;
+            o.network = network;
+            o.nodes = nodes;
+            o.prefixPath = prefixPath;
+            o.privateRegistries = privateRegistries;
+            o.services = services;
+            o.sshAgentAuth = sshAgentAuth;
+            o.sshCertPath = sshCertPath;
+            o.sshKeyPath = sshKeyPath;
+            o.upgradeStrategy = upgradeStrategy;
+            o.winPrefixPath = winPrefixPath;
+            return o;
         }
     }
 }

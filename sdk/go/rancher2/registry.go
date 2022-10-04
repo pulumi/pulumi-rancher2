@@ -23,59 +23,65 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
-// 			Description: pulumi.String("Terraform registry foo"),
-// 			ProjectId:   pulumi.String("<project_id>"),
-// 			Registries: RegistryRegistryArray{
-// 				&RegistryRegistryArgs{
-// 					Address:  pulumi.String("test.io"),
-// 					Password: pulumi.String("pass"),
-// 					Username: pulumi.String("user"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
+//				Description: pulumi.String("Terraform registry foo"),
+//				ProjectId:   pulumi.String("<project_id>"),
+//				Registries: RegistryRegistryArray{
+//					&RegistryRegistryArgs{
+//						Address:  pulumi.String("test.io"),
+//						Password: pulumi.String("pass"),
+//						Username: pulumi.String("user"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
-// 			Description: pulumi.String("Terraform registry foo"),
-// 			NamespaceId: pulumi.String("<namespace_id>"),
-// 			ProjectId:   pulumi.String("<project_id>"),
-// 			Registries: RegistryRegistryArray{
-// 				&RegistryRegistryArgs{
-// 					Address:  pulumi.String("test.io"),
-// 					Password: pulumi.String("pass"),
-// 					Username: pulumi.String("user2"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
+//				Description: pulumi.String("Terraform registry foo"),
+//				NamespaceId: pulumi.String("<namespace_id>"),
+//				ProjectId:   pulumi.String("<project_id>"),
+//				Registries: RegistryRegistryArray{
+//					&RegistryRegistryArgs{
+//						Address:  pulumi.String("test.io"),
+//						Password: pulumi.String("pass"),
+//						Username: pulumi.String("user2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -83,10 +89,12 @@ import (
 // Registries can be imported using the registry ID in the format `<namespace_id>.<project_id>.<registry_id>`
 //
 // ```sh
-//  $ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
+//
+//	$ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
+//
 // ```
 //
-//  `<namespace_id>` is optional, just needed for namespaced registry.
+//	`<namespace_id>` is optional, just needed for namespaced registry.
 type Registry struct {
 	pulumi.CustomResourceState
 
@@ -239,7 +247,7 @@ func (i *Registry) ToRegistryOutputWithContext(ctx context.Context) RegistryOutp
 // RegistryArrayInput is an input type that accepts RegistryArray and RegistryArrayOutput values.
 // You can construct a concrete instance of `RegistryArrayInput` via:
 //
-//          RegistryArray{ RegistryArgs{...} }
+//	RegistryArray{ RegistryArgs{...} }
 type RegistryArrayInput interface {
 	pulumi.Input
 
@@ -264,7 +272,7 @@ func (i RegistryArray) ToRegistryArrayOutputWithContext(ctx context.Context) Reg
 // RegistryMapInput is an input type that accepts RegistryMap and RegistryMapOutput values.
 // You can construct a concrete instance of `RegistryMapInput` via:
 //
-//          RegistryMap{ "key": RegistryArgs{...} }
+//	RegistryMap{ "key": RegistryArgs{...} }
 type RegistryMapInput interface {
 	pulumi.Input
 

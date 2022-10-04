@@ -11,29 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride {
-    private final @Nullable String region;
-    private final String service;
-    private final @Nullable String signingMethod;
-    private final @Nullable String signingName;
-    private final @Nullable String signingRegion;
-    private final @Nullable String url;
+    private @Nullable String region;
+    private String service;
+    private @Nullable String signingMethod;
+    private @Nullable String signingName;
+    private @Nullable String signingRegion;
+    private @Nullable String url;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride(
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("service") String service,
-        @CustomType.Parameter("signingMethod") @Nullable String signingMethod,
-        @CustomType.Parameter("signingName") @Nullable String signingName,
-        @CustomType.Parameter("signingRegion") @Nullable String signingRegion,
-        @CustomType.Parameter("url") @Nullable String url) {
-        this.region = region;
-        this.service = service;
-        this.signingMethod = signingMethod;
-        this.signingName = signingName;
-        this.signingRegion = signingRegion;
-        this.url = url;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride() {}
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -60,7 +45,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String region;
         private String service;
@@ -68,11 +53,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         private @Nullable String signingName;
         private @Nullable String signingRegion;
         private @Nullable String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.region = defaults.region;
@@ -83,31 +64,45 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
         }
+        @CustomType.Setter
         public Builder signingMethod(@Nullable String signingMethod) {
             this.signingMethod = signingMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder signingName(@Nullable String signingName) {
             this.signingName = signingName;
             return this;
         }
+        @CustomType.Setter
         public Builder signingRegion(@Nullable String signingRegion) {
             this.signingRegion = signingRegion;
             return this;
         }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride(region, service, signingMethod, signingName, signingRegion, url);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride();
+            o.region = region;
+            o.service = service;
+            o.signingMethod = signingMethod;
+            o.signingName = signingName;
+            o.signingRegion = signingRegion;
+            o.url = url;
+            return o;
         }
     }
 }

@@ -16,63 +16,28 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterEksConfigV2 {
-    private final String cloudCredentialId;
-    private final @Nullable Boolean imported;
-    private final @Nullable String kmsKey;
-    private final String kubernetesVersion;
-    private final @Nullable List<String> loggingTypes;
+    private String cloudCredentialId;
+    private @Nullable Boolean imported;
+    private @Nullable String kmsKey;
+    private String kubernetesVersion;
+    private @Nullable List<String> loggingTypes;
     /**
      * @return The name of the Cluster (string)
      * 
      */
-    private final String name;
-    private final List<GetClusterEksConfigV2NodeGroup> nodeGroups;
-    private final Boolean privateAccess;
-    private final Boolean publicAccess;
-    private final List<String> publicAccessSources;
-    private final @Nullable String region;
-    private final Boolean secretsEncryption;
-    private final @Nullable List<String> securityGroups;
-    private final @Nullable String serviceRole;
-    private final @Nullable List<String> subnets;
-    private final @Nullable Map<String,Object> tags;
+    private String name;
+    private List<GetClusterEksConfigV2NodeGroup> nodeGroups;
+    private Boolean privateAccess;
+    private Boolean publicAccess;
+    private List<String> publicAccessSources;
+    private @Nullable String region;
+    private Boolean secretsEncryption;
+    private @Nullable List<String> securityGroups;
+    private @Nullable String serviceRole;
+    private @Nullable List<String> subnets;
+    private @Nullable Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetClusterEksConfigV2(
-        @CustomType.Parameter("cloudCredentialId") String cloudCredentialId,
-        @CustomType.Parameter("imported") @Nullable Boolean imported,
-        @CustomType.Parameter("kmsKey") @Nullable String kmsKey,
-        @CustomType.Parameter("kubernetesVersion") String kubernetesVersion,
-        @CustomType.Parameter("loggingTypes") @Nullable List<String> loggingTypes,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodeGroups") List<GetClusterEksConfigV2NodeGroup> nodeGroups,
-        @CustomType.Parameter("privateAccess") Boolean privateAccess,
-        @CustomType.Parameter("publicAccess") Boolean publicAccess,
-        @CustomType.Parameter("publicAccessSources") List<String> publicAccessSources,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("secretsEncryption") Boolean secretsEncryption,
-        @CustomType.Parameter("securityGroups") @Nullable List<String> securityGroups,
-        @CustomType.Parameter("serviceRole") @Nullable String serviceRole,
-        @CustomType.Parameter("subnets") @Nullable List<String> subnets,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
-        this.cloudCredentialId = cloudCredentialId;
-        this.imported = imported;
-        this.kmsKey = kmsKey;
-        this.kubernetesVersion = kubernetesVersion;
-        this.loggingTypes = loggingTypes;
-        this.name = name;
-        this.nodeGroups = nodeGroups;
-        this.privateAccess = privateAccess;
-        this.publicAccess = publicAccess;
-        this.publicAccessSources = publicAccessSources;
-        this.region = region;
-        this.secretsEncryption = secretsEncryption;
-        this.securityGroups = securityGroups;
-        this.serviceRole = serviceRole;
-        this.subnets = subnets;
-        this.tags = tags;
-    }
-
+    private GetClusterEksConfigV2() {}
     public String cloudCredentialId() {
         return this.cloudCredentialId;
     }
@@ -133,7 +98,7 @@ public final class GetClusterEksConfigV2 {
     public static Builder builder(GetClusterEksConfigV2 defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cloudCredentialId;
         private @Nullable Boolean imported;
@@ -151,11 +116,7 @@ public final class GetClusterEksConfigV2 {
         private @Nullable String serviceRole;
         private @Nullable List<String> subnets;
         private @Nullable Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterEksConfigV2 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudCredentialId = defaults.cloudCredentialId;
@@ -176,22 +137,27 @@ public final class GetClusterEksConfigV2 {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder cloudCredentialId(String cloudCredentialId) {
             this.cloudCredentialId = Objects.requireNonNull(cloudCredentialId);
             return this;
         }
+        @CustomType.Setter
         public Builder imported(@Nullable Boolean imported) {
             this.imported = imported;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
             this.kmsKey = kmsKey;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
             this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder loggingTypes(@Nullable List<String> loggingTypes) {
             this.loggingTypes = loggingTypes;
             return this;
@@ -199,10 +165,12 @@ public final class GetClusterEksConfigV2 {
         public Builder loggingTypes(String... loggingTypes) {
             return loggingTypes(List.of(loggingTypes));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeGroups(List<GetClusterEksConfigV2NodeGroup> nodeGroups) {
             this.nodeGroups = Objects.requireNonNull(nodeGroups);
             return this;
@@ -210,14 +178,17 @@ public final class GetClusterEksConfigV2 {
         public Builder nodeGroups(GetClusterEksConfigV2NodeGroup... nodeGroups) {
             return nodeGroups(List.of(nodeGroups));
         }
+        @CustomType.Setter
         public Builder privateAccess(Boolean privateAccess) {
             this.privateAccess = Objects.requireNonNull(privateAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccess(Boolean publicAccess) {
             this.publicAccess = Objects.requireNonNull(publicAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccessSources(List<String> publicAccessSources) {
             this.publicAccessSources = Objects.requireNonNull(publicAccessSources);
             return this;
@@ -225,14 +196,17 @@ public final class GetClusterEksConfigV2 {
         public Builder publicAccessSources(String... publicAccessSources) {
             return publicAccessSources(List.of(publicAccessSources));
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder secretsEncryption(Boolean secretsEncryption) {
             this.secretsEncryption = Objects.requireNonNull(secretsEncryption);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroups(@Nullable List<String> securityGroups) {
             this.securityGroups = securityGroups;
             return this;
@@ -240,10 +214,12 @@ public final class GetClusterEksConfigV2 {
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
         }
+        @CustomType.Setter
         public Builder serviceRole(@Nullable String serviceRole) {
             this.serviceRole = serviceRole;
             return this;
         }
+        @CustomType.Setter
         public Builder subnets(@Nullable List<String> subnets) {
             this.subnets = subnets;
             return this;
@@ -251,11 +227,30 @@ public final class GetClusterEksConfigV2 {
         public Builder subnets(String... subnets) {
             return subnets(List.of(subnets));
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }        public GetClusterEksConfigV2 build() {
-            return new GetClusterEksConfigV2(cloudCredentialId, imported, kmsKey, kubernetesVersion, loggingTypes, name, nodeGroups, privateAccess, publicAccess, publicAccessSources, region, secretsEncryption, securityGroups, serviceRole, subnets, tags);
+        }
+        public GetClusterEksConfigV2 build() {
+            final var o = new GetClusterEksConfigV2();
+            o.cloudCredentialId = cloudCredentialId;
+            o.imported = imported;
+            o.kmsKey = kmsKey;
+            o.kubernetesVersion = kubernetesVersion;
+            o.loggingTypes = loggingTypes;
+            o.name = name;
+            o.nodeGroups = nodeGroups;
+            o.privateAccess = privateAccess;
+            o.publicAccess = publicAccess;
+            o.publicAccessSources = publicAccessSources;
+            o.region = region;
+            o.secretsEncryption = secretsEncryption;
+            o.securityGroups = securityGroups;
+            o.serviceRole = serviceRole;
+            o.subnets = subnets;
+            o.tags = tags;
+            return o;
         }
     }
 }

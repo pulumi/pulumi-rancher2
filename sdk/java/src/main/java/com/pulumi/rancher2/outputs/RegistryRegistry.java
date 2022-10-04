@@ -15,28 +15,19 @@ public final class RegistryRegistry {
      * @return Address for registry.
      * 
      */
-    private final String address;
+    private String address;
     /**
      * @return Password for the registry (string)
      * 
      */
-    private final @Nullable String password;
+    private @Nullable String password;
     /**
      * @return Username for the registry (string)
      * 
      */
-    private final @Nullable String username;
+    private @Nullable String username;
 
-    @CustomType.Constructor
-    private RegistryRegistry(
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("username") @Nullable String username) {
-        this.address = address;
-        this.password = password;
-        this.username = username;
-    }
-
+    private RegistryRegistry() {}
     /**
      * @return Address for registry.
      * 
@@ -66,16 +57,12 @@ public final class RegistryRegistry {
     public static Builder builder(RegistryRegistry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
         private @Nullable String password;
         private @Nullable String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegistryRegistry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -83,19 +70,27 @@ public final class RegistryRegistry {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
-        }        public RegistryRegistry build() {
-            return new RegistryRegistry(address, password, username);
+        }
+        public RegistryRegistry build() {
+            final var o = new RegistryRegistry();
+            o.address = address;
+            o.password = password;
+            o.username = username;
+            return o;
         }
     }
 }

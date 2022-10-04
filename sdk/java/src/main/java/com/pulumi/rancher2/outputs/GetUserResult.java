@@ -19,55 +19,36 @@ public final class GetUserResult {
      * @return (Computed) Annotations of the resource (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) The user is enabled (bool)
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable Boolean isExternal;
+    private String id;
+    private @Nullable Boolean isExternal;
     /**
      * @return (Computed) Labels of the resource (map)
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return (Computed) The user common name (string)
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return (Computed) The user principal IDs (list)
      * 
      */
-    private final List<String> principalIds;
-    private final String username;
+    private List<String> principalIds;
+    private String username;
 
-    @CustomType.Constructor
-    private GetUserResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isExternal") @Nullable Boolean isExternal,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("principalIds") List<String> principalIds,
-        @CustomType.Parameter("username") String username) {
-        this.annotations = annotations;
-        this.enabled = enabled;
-        this.id = id;
-        this.isExternal = isExternal;
-        this.labels = labels;
-        this.name = name;
-        this.principalIds = principalIds;
-        this.username = username;
-    }
-
+    private GetUserResult() {}
     /**
      * @return (Computed) Annotations of the resource (map)
      * 
@@ -124,7 +105,7 @@ public final class GetUserResult {
     public static Builder builder(GetUserResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private Boolean enabled;
@@ -134,11 +115,7 @@ public final class GetUserResult {
         private String name;
         private List<String> principalIds;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -151,30 +128,37 @@ public final class GetUserResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isExternal(@Nullable Boolean isExternal) {
             this.isExternal = isExternal;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder principalIds(List<String> principalIds) {
             this.principalIds = Objects.requireNonNull(principalIds);
             return this;
@@ -182,11 +166,22 @@ public final class GetUserResult {
         public Builder principalIds(String... principalIds) {
             return principalIds(List.of(principalIds));
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetUserResult build() {
-            return new GetUserResult(annotations, enabled, id, isExternal, labels, name, principalIds, username);
+        }
+        public GetUserResult build() {
+            final var o = new GetUserResult();
+            o.annotations = annotations;
+            o.enabled = enabled;
+            o.id = id;
+            o.isExternal = isExternal;
+            o.labels = labels;
+            o.name = name;
+            o.principalIds = principalIds;
+            o.username = username;
+            return o;
         }
     }
 }

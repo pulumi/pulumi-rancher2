@@ -15,49 +15,34 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride 
      * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return (string)
      * 
      */
-    private final String service;
+    private String service;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String signingMethod;
+    private @Nullable String signingMethod;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String signingName;
+    private @Nullable String signingName;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String signingRegion;
+    private @Nullable String signingRegion;
     /**
      * @return Registry URL (string)
      * 
      */
-    private final @Nullable String url;
+    private @Nullable String url;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride(
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("service") String service,
-        @CustomType.Parameter("signingMethod") @Nullable String signingMethod,
-        @CustomType.Parameter("signingName") @Nullable String signingName,
-        @CustomType.Parameter("signingRegion") @Nullable String signingRegion,
-        @CustomType.Parameter("url") @Nullable String url) {
-        this.region = region;
-        this.service = service;
-        this.signingMethod = signingMethod;
-        this.signingName = signingName;
-        this.signingRegion = signingRegion;
-        this.url = url;
-    }
-
+    private ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride() {}
     /**
      * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
@@ -108,7 +93,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride 
     public static Builder builder(ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String region;
         private String service;
@@ -116,11 +101,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride 
         private @Nullable String signingName;
         private @Nullable String signingRegion;
         private @Nullable String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.region = defaults.region;
@@ -131,31 +112,45 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride 
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
         }
+        @CustomType.Setter
         public Builder signingMethod(@Nullable String signingMethod) {
             this.signingMethod = signingMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder signingName(@Nullable String signingName) {
             this.signingName = signingName;
             return this;
         }
+        @CustomType.Setter
         public Builder signingRegion(@Nullable String signingRegion) {
             this.signingRegion = signingRegion;
             return this;
         }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }        public ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride build() {
-            return new ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride(region, service, signingMethod, signingName, signingRegion, url);
+        }
+        public ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride build() {
+            final var o = new ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride();
+            o.region = region;
+            o.service = service;
+            o.signingMethod = signingMethod;
+            o.signingName = signingName;
+            o.signingRegion = signingRegion;
+            o.url = url;
+            return o;
         }
     }
 }

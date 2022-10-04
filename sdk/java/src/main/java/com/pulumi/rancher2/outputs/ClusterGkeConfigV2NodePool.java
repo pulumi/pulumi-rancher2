@@ -19,56 +19,39 @@ public final class ClusterGkeConfigV2NodePool {
      * @return The GKE node pool config autoscaling (List maxitems:1)
      * 
      */
-    private final @Nullable ClusterGkeConfigV2NodePoolAutoscaling autoscaling;
+    private @Nullable ClusterGkeConfigV2NodePoolAutoscaling autoscaling;
     /**
      * @return The GKE node pool node config (List maxitems:1)
      * 
      */
-    private final @Nullable ClusterGkeConfigV2NodePoolConfig config;
+    private @Nullable ClusterGkeConfigV2NodePoolConfig config;
     /**
      * @return The GKE node pool config initial node count (int)
      * 
      */
-    private final Integer initialNodeCount;
+    private Integer initialNodeCount;
     /**
      * @return The GKE node pool config management (List maxitems:1)
      * 
      */
-    private final @Nullable ClusterGkeConfigV2NodePoolManagement management;
+    private @Nullable ClusterGkeConfigV2NodePoolManagement management;
     /**
      * @return The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
      * 
      */
-    private final @Nullable Integer maxPodsConstraint;
+    private @Nullable Integer maxPodsConstraint;
     /**
      * @return Name of cluster registration token (string)
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return rancher-monitoring chart version (string)
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private ClusterGkeConfigV2NodePool(
-        @CustomType.Parameter("autoscaling") @Nullable ClusterGkeConfigV2NodePoolAutoscaling autoscaling,
-        @CustomType.Parameter("config") @Nullable ClusterGkeConfigV2NodePoolConfig config,
-        @CustomType.Parameter("initialNodeCount") Integer initialNodeCount,
-        @CustomType.Parameter("management") @Nullable ClusterGkeConfigV2NodePoolManagement management,
-        @CustomType.Parameter("maxPodsConstraint") @Nullable Integer maxPodsConstraint,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("version") String version) {
-        this.autoscaling = autoscaling;
-        this.config = config;
-        this.initialNodeCount = initialNodeCount;
-        this.management = management;
-        this.maxPodsConstraint = maxPodsConstraint;
-        this.name = name;
-        this.version = version;
-    }
-
+    private ClusterGkeConfigV2NodePool() {}
     /**
      * @return The GKE node pool config autoscaling (List maxitems:1)
      * 
@@ -126,7 +109,7 @@ public final class ClusterGkeConfigV2NodePool {
     public static Builder builder(ClusterGkeConfigV2NodePool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterGkeConfigV2NodePoolAutoscaling autoscaling;
         private @Nullable ClusterGkeConfigV2NodePoolConfig config;
@@ -135,11 +118,7 @@ public final class ClusterGkeConfigV2NodePool {
         private @Nullable Integer maxPodsConstraint;
         private String name;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterGkeConfigV2NodePool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscaling = defaults.autoscaling;
@@ -151,35 +130,51 @@ public final class ClusterGkeConfigV2NodePool {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder autoscaling(@Nullable ClusterGkeConfigV2NodePoolAutoscaling autoscaling) {
             this.autoscaling = autoscaling;
             return this;
         }
+        @CustomType.Setter
         public Builder config(@Nullable ClusterGkeConfigV2NodePoolConfig config) {
             this.config = config;
             return this;
         }
+        @CustomType.Setter
         public Builder initialNodeCount(Integer initialNodeCount) {
             this.initialNodeCount = Objects.requireNonNull(initialNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder management(@Nullable ClusterGkeConfigV2NodePoolManagement management) {
             this.management = management;
             return this;
         }
+        @CustomType.Setter
         public Builder maxPodsConstraint(@Nullable Integer maxPodsConstraint) {
             this.maxPodsConstraint = maxPodsConstraint;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public ClusterGkeConfigV2NodePool build() {
-            return new ClusterGkeConfigV2NodePool(autoscaling, config, initialNodeCount, management, maxPodsConstraint, name, version);
+        }
+        public ClusterGkeConfigV2NodePool build() {
+            final var o = new ClusterGkeConfigV2NodePool();
+            o.autoscaling = autoscaling;
+            o.config = config;
+            o.initialNodeCount = initialNodeCount;
+            o.management = management;
+            o.maxPodsConstraint = maxPodsConstraint;
+            o.name = name;
+            o.version = version;
+            return o;
         }
     }
 }

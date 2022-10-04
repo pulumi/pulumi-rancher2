@@ -16,63 +16,44 @@ public final class ClusterGkeConfigV2IpAllocationPolicy {
      * @return The GKE cluster ip v4 allocation cidr block (string)
      * 
      */
-    private final @Nullable String clusterIpv4CidrBlock;
+    private @Nullable String clusterIpv4CidrBlock;
     /**
      * @return The GKE cluster ip v4 allocation secondary range name(string)
      * 
      */
-    private final @Nullable String clusterSecondaryRangeName;
+    private @Nullable String clusterSecondaryRangeName;
     /**
      * @return Create GKE subnetwork? Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean createSubnetwork;
+    private @Nullable Boolean createSubnetwork;
     /**
      * @return The GKE node ip v4 allocation cidr block (string)
      * 
      */
-    private final @Nullable String nodeIpv4CidrBlock;
+    private @Nullable String nodeIpv4CidrBlock;
     /**
      * @return The GKE services ip v4 allocation cidr block (string)
      * 
      */
-    private final @Nullable String servicesIpv4CidrBlock;
+    private @Nullable String servicesIpv4CidrBlock;
     /**
      * @return The GKE services ip v4 allocation secondary range name (string)
      * 
      */
-    private final @Nullable String servicesSecondaryRangeName;
+    private @Nullable String servicesSecondaryRangeName;
     /**
      * @return The GKE cluster subnetwork name (string)
      * 
      */
-    private final @Nullable String subnetworkName;
+    private @Nullable String subnetworkName;
     /**
      * @return Use GKE ip aliases? Default: `true` (bool)
      * 
      */
-    private final @Nullable Boolean useIpAliases;
+    private @Nullable Boolean useIpAliases;
 
-    @CustomType.Constructor
-    private ClusterGkeConfigV2IpAllocationPolicy(
-        @CustomType.Parameter("clusterIpv4CidrBlock") @Nullable String clusterIpv4CidrBlock,
-        @CustomType.Parameter("clusterSecondaryRangeName") @Nullable String clusterSecondaryRangeName,
-        @CustomType.Parameter("createSubnetwork") @Nullable Boolean createSubnetwork,
-        @CustomType.Parameter("nodeIpv4CidrBlock") @Nullable String nodeIpv4CidrBlock,
-        @CustomType.Parameter("servicesIpv4CidrBlock") @Nullable String servicesIpv4CidrBlock,
-        @CustomType.Parameter("servicesSecondaryRangeName") @Nullable String servicesSecondaryRangeName,
-        @CustomType.Parameter("subnetworkName") @Nullable String subnetworkName,
-        @CustomType.Parameter("useIpAliases") @Nullable Boolean useIpAliases) {
-        this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
-        this.clusterSecondaryRangeName = clusterSecondaryRangeName;
-        this.createSubnetwork = createSubnetwork;
-        this.nodeIpv4CidrBlock = nodeIpv4CidrBlock;
-        this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
-        this.servicesSecondaryRangeName = servicesSecondaryRangeName;
-        this.subnetworkName = subnetworkName;
-        this.useIpAliases = useIpAliases;
-    }
-
+    private ClusterGkeConfigV2IpAllocationPolicy() {}
     /**
      * @return The GKE cluster ip v4 allocation cidr block (string)
      * 
@@ -137,7 +118,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicy {
     public static Builder builder(ClusterGkeConfigV2IpAllocationPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterIpv4CidrBlock;
         private @Nullable String clusterSecondaryRangeName;
@@ -147,11 +128,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicy {
         private @Nullable String servicesSecondaryRangeName;
         private @Nullable String subnetworkName;
         private @Nullable Boolean useIpAliases;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterGkeConfigV2IpAllocationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
@@ -164,39 +141,57 @@ public final class ClusterGkeConfigV2IpAllocationPolicy {
     	      this.useIpAliases = defaults.useIpAliases;
         }
 
+        @CustomType.Setter
         public Builder clusterIpv4CidrBlock(@Nullable String clusterIpv4CidrBlock) {
             this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterSecondaryRangeName(@Nullable String clusterSecondaryRangeName) {
             this.clusterSecondaryRangeName = clusterSecondaryRangeName;
             return this;
         }
+        @CustomType.Setter
         public Builder createSubnetwork(@Nullable Boolean createSubnetwork) {
             this.createSubnetwork = createSubnetwork;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeIpv4CidrBlock(@Nullable String nodeIpv4CidrBlock) {
             this.nodeIpv4CidrBlock = nodeIpv4CidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder servicesIpv4CidrBlock(@Nullable String servicesIpv4CidrBlock) {
             this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder servicesSecondaryRangeName(@Nullable String servicesSecondaryRangeName) {
             this.servicesSecondaryRangeName = servicesSecondaryRangeName;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetworkName(@Nullable String subnetworkName) {
             this.subnetworkName = subnetworkName;
             return this;
         }
+        @CustomType.Setter
         public Builder useIpAliases(@Nullable Boolean useIpAliases) {
             this.useIpAliases = useIpAliases;
             return this;
-        }        public ClusterGkeConfigV2IpAllocationPolicy build() {
-            return new ClusterGkeConfigV2IpAllocationPolicy(clusterIpv4CidrBlock, clusterSecondaryRangeName, createSubnetwork, nodeIpv4CidrBlock, servicesIpv4CidrBlock, servicesSecondaryRangeName, subnetworkName, useIpAliases);
+        }
+        public ClusterGkeConfigV2IpAllocationPolicy build() {
+            final var o = new ClusterGkeConfigV2IpAllocationPolicy();
+            o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
+            o.clusterSecondaryRangeName = clusterSecondaryRangeName;
+            o.createSubnetwork = createSubnetwork;
+            o.nodeIpv4CidrBlock = nodeIpv4CidrBlock;
+            o.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
+            o.servicesSecondaryRangeName = servicesSecondaryRangeName;
+            o.subnetworkName = subnetworkName;
+            o.useIpAliases = useIpAliases;
+            return o;
         }
     }
 }

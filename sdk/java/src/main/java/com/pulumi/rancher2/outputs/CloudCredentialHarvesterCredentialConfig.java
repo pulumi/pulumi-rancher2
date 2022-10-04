@@ -15,28 +15,19 @@ public final class CloudCredentialHarvesterCredentialConfig {
      * @return Imported Harvester Cluster ID (string)
      * 
      */
-    private final @Nullable String clusterId;
+    private @Nullable String clusterId;
     /**
      * @return Harvester Cluster Type. Supported values : `&#34;imported&#34; | &#34;external&#34;` (string)
      * 
      */
-    private final String clusterType;
+    private String clusterType;
     /**
      * @return Harvester Cluster KubeConfig Content (string)
      * 
      */
-    private final String kubeconfigContent;
+    private String kubeconfigContent;
 
-    @CustomType.Constructor
-    private CloudCredentialHarvesterCredentialConfig(
-        @CustomType.Parameter("clusterId") @Nullable String clusterId,
-        @CustomType.Parameter("clusterType") String clusterType,
-        @CustomType.Parameter("kubeconfigContent") String kubeconfigContent) {
-        this.clusterId = clusterId;
-        this.clusterType = clusterType;
-        this.kubeconfigContent = kubeconfigContent;
-    }
-
+    private CloudCredentialHarvesterCredentialConfig() {}
     /**
      * @return Imported Harvester Cluster ID (string)
      * 
@@ -66,16 +57,12 @@ public final class CloudCredentialHarvesterCredentialConfig {
     public static Builder builder(CloudCredentialHarvesterCredentialConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterId;
         private String clusterType;
         private String kubeconfigContent;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudCredentialHarvesterCredentialConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -83,19 +70,27 @@ public final class CloudCredentialHarvesterCredentialConfig {
     	      this.kubeconfigContent = defaults.kubeconfigContent;
         }
 
+        @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
             this.clusterId = clusterId;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterType(String clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
+        @CustomType.Setter
         public Builder kubeconfigContent(String kubeconfigContent) {
             this.kubeconfigContent = Objects.requireNonNull(kubeconfigContent);
             return this;
-        }        public CloudCredentialHarvesterCredentialConfig build() {
-            return new CloudCredentialHarvesterCredentialConfig(clusterId, clusterType, kubeconfigContent);
+        }
+        public CloudCredentialHarvesterCredentialConfig build() {
+            final var o = new CloudCredentialHarvesterCredentialConfig();
+            o.clusterId = clusterId;
+            o.clusterType = clusterType;
+            o.kubeconfigContent = kubeconfigContent;
+            return o;
         }
     }
 }

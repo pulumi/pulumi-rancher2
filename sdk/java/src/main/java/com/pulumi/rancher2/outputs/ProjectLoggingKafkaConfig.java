@@ -16,49 +16,34 @@ public final class ProjectLoggingKafkaConfig {
      * @return Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
      * 
      */
-    private final @Nullable List<String> brokerEndpoints;
+    private @Nullable List<String> brokerEndpoints;
     /**
      * @return SSL certificate for the syslog service (string)
      * 
      */
-    private final @Nullable String certificate;
+    private @Nullable String certificate;
     /**
      * @return SSL client certificate for the syslog service (string)
      * 
      */
-    private final @Nullable String clientCert;
+    private @Nullable String clientCert;
     /**
      * @return SSL client key for the syslog service (string)
      * 
      */
-    private final @Nullable String clientKey;
+    private @Nullable String clientKey;
     /**
      * @return Topic to publish on the kafka service (string)
      * 
      */
-    private final String topic;
+    private String topic;
     /**
      * @return Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
      * 
      */
-    private final @Nullable String zookeeperEndpoint;
+    private @Nullable String zookeeperEndpoint;
 
-    @CustomType.Constructor
-    private ProjectLoggingKafkaConfig(
-        @CustomType.Parameter("brokerEndpoints") @Nullable List<String> brokerEndpoints,
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("clientCert") @Nullable String clientCert,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("topic") String topic,
-        @CustomType.Parameter("zookeeperEndpoint") @Nullable String zookeeperEndpoint) {
-        this.brokerEndpoints = brokerEndpoints;
-        this.certificate = certificate;
-        this.clientCert = clientCert;
-        this.clientKey = clientKey;
-        this.topic = topic;
-        this.zookeeperEndpoint = zookeeperEndpoint;
-    }
-
+    private ProjectLoggingKafkaConfig() {}
     /**
      * @return Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
      * 
@@ -109,7 +94,7 @@ public final class ProjectLoggingKafkaConfig {
     public static Builder builder(ProjectLoggingKafkaConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> brokerEndpoints;
         private @Nullable String certificate;
@@ -117,11 +102,7 @@ public final class ProjectLoggingKafkaConfig {
         private @Nullable String clientKey;
         private String topic;
         private @Nullable String zookeeperEndpoint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ProjectLoggingKafkaConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.brokerEndpoints = defaults.brokerEndpoints;
@@ -132,6 +113,7 @@ public final class ProjectLoggingKafkaConfig {
     	      this.zookeeperEndpoint = defaults.zookeeperEndpoint;
         }
 
+        @CustomType.Setter
         public Builder brokerEndpoints(@Nullable List<String> brokerEndpoints) {
             this.brokerEndpoints = brokerEndpoints;
             return this;
@@ -139,27 +121,40 @@ public final class ProjectLoggingKafkaConfig {
         public Builder brokerEndpoints(String... brokerEndpoints) {
             return brokerEndpoints(List.of(brokerEndpoints));
         }
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
             this.clientCert = clientCert;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder topic(String topic) {
             this.topic = Objects.requireNonNull(topic);
             return this;
         }
+        @CustomType.Setter
         public Builder zookeeperEndpoint(@Nullable String zookeeperEndpoint) {
             this.zookeeperEndpoint = zookeeperEndpoint;
             return this;
-        }        public ProjectLoggingKafkaConfig build() {
-            return new ProjectLoggingKafkaConfig(brokerEndpoints, certificate, clientCert, clientKey, topic, zookeeperEndpoint);
+        }
+        public ProjectLoggingKafkaConfig build() {
+            final var o = new ProjectLoggingKafkaConfig();
+            o.brokerEndpoints = brokerEndpoints;
+            o.certificate = certificate;
+            o.clientCert = clientCert;
+            o.clientKey = clientKey;
+            o.topic = topic;
+            o.zookeeperEndpoint = zookeeperEndpoint;
+            return o;
         }
     }
 }

@@ -19,81 +19,87 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
-// 			ContainerResourceLimit: &NamespaceContainerResourceLimitArgs{
-// 				LimitsCpu:      pulumi.String("20m"),
-// 				LimitsMemory:   pulumi.String("20Mi"),
-// 				RequestsCpu:    pulumi.String("1m"),
-// 				RequestsMemory: pulumi.String("1Mi"),
-// 			},
-// 			Description: pulumi.String("foo namespace"),
-// 			ProjectId:   pulumi.String("<PROJECT_ID>"),
-// 			ResourceQuota: &NamespaceResourceQuotaArgs{
-// 				Limit: &NamespaceResourceQuotaLimitArgs{
-// 					LimitsCpu:       pulumi.String("100m"),
-// 					LimitsMemory:    pulumi.String("100Mi"),
-// 					RequestsStorage: pulumi.String("1Gi"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
+//				ContainerResourceLimit: &NamespaceContainerResourceLimitArgs{
+//					LimitsCpu:      pulumi.String("20m"),
+//					LimitsMemory:   pulumi.String("20Mi"),
+//					RequestsCpu:    pulumi.String("1m"),
+//					RequestsMemory: pulumi.String("1Mi"),
+//				},
+//				Description: pulumi.String("foo namespace"),
+//				ProjectId:   pulumi.String("<PROJECT_ID>"),
+//				ResourceQuota: &NamespaceResourceQuotaArgs{
+//					Limit: &NamespaceResourceQuotaLimitArgs{
+//						LimitsCpu:       pulumi.String("100m"),
+//						LimitsMemory:    pulumi.String("100Mi"),
+//						RequestsStorage: pulumi.String("1Gi"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
-// 			Description: pulumi.String("Foo rancher2 custom cluster"),
-// 			RkeConfig: &ClusterRkeConfigArgs{
-// 				Network: &ClusterRkeConfigNetworkArgs{
-// 					Plugin: pulumi.String("canal"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
-// 			ProjectId:   foo_custom.DefaultProjectId,
-// 			Description: pulumi.String("foo namespace"),
-// 			ResourceQuota: &NamespaceResourceQuotaArgs{
-// 				Limit: &NamespaceResourceQuotaLimitArgs{
-// 					LimitsCpu:       pulumi.String("100m"),
-// 					LimitsMemory:    pulumi.String("100Mi"),
-// 					RequestsStorage: pulumi.String("1Gi"),
-// 				},
-// 			},
-// 			ContainerResourceLimit: &NamespaceContainerResourceLimitArgs{
-// 				LimitsCpu:      pulumi.String("20m"),
-// 				LimitsMemory:   pulumi.String("20Mi"),
-// 				RequestsCpu:    pulumi.String("1m"),
-// 				RequestsMemory: pulumi.String("1Mi"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
+//				Description: pulumi.String("Foo rancher2 custom cluster"),
+//				RkeConfig: &ClusterRkeConfigArgs{
+//					Network: &ClusterRkeConfigNetworkArgs{
+//						Plugin: pulumi.String("canal"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
+//				ProjectId:   foo_custom.DefaultProjectId,
+//				Description: pulumi.String("foo namespace"),
+//				ResourceQuota: &NamespaceResourceQuotaArgs{
+//					Limit: &NamespaceResourceQuotaLimitArgs{
+//						LimitsCpu:       pulumi.String("100m"),
+//						LimitsMemory:    pulumi.String("100Mi"),
+//						RequestsStorage: pulumi.String("1Gi"),
+//					},
+//				},
+//				ContainerResourceLimit: &NamespaceContainerResourceLimitArgs{
+//					LimitsCpu:      pulumi.String("20m"),
+//					LimitsMemory:   pulumi.String("20Mi"),
+//					RequestsCpu:    pulumi.String("1m"),
+//					RequestsMemory: pulumi.String("1Mi"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -101,10 +107,12 @@ import (
 // Namespaces can be imported using the namespace ID in the format `<project_id>.<namespace_id>`
 //
 // ```sh
-//  $ pulumi import rancher2:index/namespace:Namespace foo &lt;project_id&gt;.&lt;namespaces_id&gt;
+//
+//	$ pulumi import rancher2:index/namespace:Namespace foo &lt;project_id&gt;.&lt;namespaces_id&gt;
+//
 // ```
 //
-//  `<project_id>` is in the format `<cluster_id>:<id>`, but <id> part is optional:
+//	`<project_id>` is in the format `<cluster_id>:<id>`, but <id> part is optional:
 //
 // - If full project_id is provided, `<project_id>=<cluster_id>:<id>`, the namespace'll be assigned to corresponding cluster project once it's imported.
 //
@@ -268,7 +276,7 @@ func (i *Namespace) ToNamespaceOutputWithContext(ctx context.Context) NamespaceO
 // NamespaceArrayInput is an input type that accepts NamespaceArray and NamespaceArrayOutput values.
 // You can construct a concrete instance of `NamespaceArrayInput` via:
 //
-//          NamespaceArray{ NamespaceArgs{...} }
+//	NamespaceArray{ NamespaceArgs{...} }
 type NamespaceArrayInput interface {
 	pulumi.Input
 
@@ -293,7 +301,7 @@ func (i NamespaceArray) ToNamespaceArrayOutputWithContext(ctx context.Context) N
 // NamespaceMapInput is an input type that accepts NamespaceMap and NamespaceMapOutput values.
 // You can construct a concrete instance of `NamespaceMapInput` via:
 //
-//          NamespaceMap{ "key": NamespaceArgs{...} }
+//	NamespaceMap{ "key": NamespaceArgs{...} }
 type NamespaceMapInput interface {
 	pulumi.Input
 

@@ -23,107 +23,72 @@ public final class GetClusterLoggingResult {
      * @return (Computed) Annotations for Cluster Logging object (map)
      * 
      */
-    private final Map<String,Object> annotations;
-    private final String clusterId;
-    private final GetClusterLoggingCustomTargetConfig customTargetConfig;
+    private Map<String,Object> annotations;
+    private String clusterId;
+    private GetClusterLoggingCustomTargetConfig customTargetConfig;
     /**
      * @return (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
      * 
      */
-    private final GetClusterLoggingElasticsearchConfig elasticsearchConfig;
-    private final Boolean enableJsonParsing;
+    private GetClusterLoggingElasticsearchConfig elasticsearchConfig;
+    private Boolean enableJsonParsing;
     /**
      * @return (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
      * 
      */
-    private final GetClusterLoggingFluentdConfig fluentdConfig;
+    private GetClusterLoggingFluentdConfig fluentdConfig;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) The kafka config for Cluster Logging. For `kind = kafka` (list maxitems:1)
      * 
      */
-    private final GetClusterLoggingKafkaConfig kafkaConfig;
+    private GetClusterLoggingKafkaConfig kafkaConfig;
     /**
      * @return (Computed) The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
      * 
      */
-    private final String kind;
+    private String kind;
     /**
      * @return (Computed) Labels for Cluster Logging object (map)
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return (Computed) The name of the cluster logging config (string)
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return (Computed) The namespace id from cluster logging (string)
      * 
      */
-    private final String namespaceId;
+    private String namespaceId;
     /**
      * @return (Computed) How often buffered logs would be flushed. Default: `3` seconds (int)
      * 
      */
-    private final Integer outputFlushInterval;
+    private Integer outputFlushInterval;
     /**
      * @return (computed) The output tags for Cluster Logging (map)
      * 
      */
-    private final Map<String,Object> outputTags;
+    private Map<String,Object> outputTags;
     /**
      * @return (Computed) The splunk config for Cluster Logging. For `kind = splunk` (list maxitems:1)
      * 
      */
-    private final GetClusterLoggingSplunkConfig splunkConfig;
+    private GetClusterLoggingSplunkConfig splunkConfig;
     /**
      * @return (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
      * 
      */
-    private final GetClusterLoggingSyslogConfig syslogConfig;
+    private GetClusterLoggingSyslogConfig syslogConfig;
 
-    @CustomType.Constructor
-    private GetClusterLoggingResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("customTargetConfig") GetClusterLoggingCustomTargetConfig customTargetConfig,
-        @CustomType.Parameter("elasticsearchConfig") GetClusterLoggingElasticsearchConfig elasticsearchConfig,
-        @CustomType.Parameter("enableJsonParsing") Boolean enableJsonParsing,
-        @CustomType.Parameter("fluentdConfig") GetClusterLoggingFluentdConfig fluentdConfig,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("kafkaConfig") GetClusterLoggingKafkaConfig kafkaConfig,
-        @CustomType.Parameter("kind") String kind,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("namespaceId") String namespaceId,
-        @CustomType.Parameter("outputFlushInterval") Integer outputFlushInterval,
-        @CustomType.Parameter("outputTags") Map<String,Object> outputTags,
-        @CustomType.Parameter("splunkConfig") GetClusterLoggingSplunkConfig splunkConfig,
-        @CustomType.Parameter("syslogConfig") GetClusterLoggingSyslogConfig syslogConfig) {
-        this.annotations = annotations;
-        this.clusterId = clusterId;
-        this.customTargetConfig = customTargetConfig;
-        this.elasticsearchConfig = elasticsearchConfig;
-        this.enableJsonParsing = enableJsonParsing;
-        this.fluentdConfig = fluentdConfig;
-        this.id = id;
-        this.kafkaConfig = kafkaConfig;
-        this.kind = kind;
-        this.labels = labels;
-        this.name = name;
-        this.namespaceId = namespaceId;
-        this.outputFlushInterval = outputFlushInterval;
-        this.outputTags = outputTags;
-        this.splunkConfig = splunkConfig;
-        this.syslogConfig = syslogConfig;
-    }
-
+    private GetClusterLoggingResult() {}
     /**
      * @return (Computed) Annotations for Cluster Logging object (map)
      * 
@@ -232,7 +197,7 @@ public final class GetClusterLoggingResult {
     public static Builder builder(GetClusterLoggingResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String clusterId;
@@ -250,11 +215,7 @@ public final class GetClusterLoggingResult {
         private Map<String,Object> outputTags;
         private GetClusterLoggingSplunkConfig splunkConfig;
         private GetClusterLoggingSyslogConfig syslogConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterLoggingResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -275,71 +236,105 @@ public final class GetClusterLoggingResult {
     	      this.syslogConfig = defaults.syslogConfig;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder customTargetConfig(GetClusterLoggingCustomTargetConfig customTargetConfig) {
             this.customTargetConfig = Objects.requireNonNull(customTargetConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder elasticsearchConfig(GetClusterLoggingElasticsearchConfig elasticsearchConfig) {
             this.elasticsearchConfig = Objects.requireNonNull(elasticsearchConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder enableJsonParsing(Boolean enableJsonParsing) {
             this.enableJsonParsing = Objects.requireNonNull(enableJsonParsing);
             return this;
         }
+        @CustomType.Setter
         public Builder fluentdConfig(GetClusterLoggingFluentdConfig fluentdConfig) {
             this.fluentdConfig = Objects.requireNonNull(fluentdConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaConfig(GetClusterLoggingKafkaConfig kafkaConfig) {
             this.kafkaConfig = Objects.requireNonNull(kafkaConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder kind(String kind) {
             this.kind = Objects.requireNonNull(kind);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
             this.namespaceId = Objects.requireNonNull(namespaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFlushInterval(Integer outputFlushInterval) {
             this.outputFlushInterval = Objects.requireNonNull(outputFlushInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder outputTags(Map<String,Object> outputTags) {
             this.outputTags = Objects.requireNonNull(outputTags);
             return this;
         }
+        @CustomType.Setter
         public Builder splunkConfig(GetClusterLoggingSplunkConfig splunkConfig) {
             this.splunkConfig = Objects.requireNonNull(splunkConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder syslogConfig(GetClusterLoggingSyslogConfig syslogConfig) {
             this.syslogConfig = Objects.requireNonNull(syslogConfig);
             return this;
-        }        public GetClusterLoggingResult build() {
-            return new GetClusterLoggingResult(annotations, clusterId, customTargetConfig, elasticsearchConfig, enableJsonParsing, fluentdConfig, id, kafkaConfig, kind, labels, name, namespaceId, outputFlushInterval, outputTags, splunkConfig, syslogConfig);
+        }
+        public GetClusterLoggingResult build() {
+            final var o = new GetClusterLoggingResult();
+            o.annotations = annotations;
+            o.clusterId = clusterId;
+            o.customTargetConfig = customTargetConfig;
+            o.elasticsearchConfig = elasticsearchConfig;
+            o.enableJsonParsing = enableJsonParsing;
+            o.fluentdConfig = fluentdConfig;
+            o.id = id;
+            o.kafkaConfig = kafkaConfig;
+            o.kind = kind;
+            o.labels = labels;
+            o.name = name;
+            o.namespaceId = namespaceId;
+            o.outputFlushInterval = outputFlushInterval;
+            o.outputTags = outputTags;
+            o.splunkConfig = splunkConfig;
+            o.syslogConfig = syslogConfig;
+            return o;
         }
     }
 }

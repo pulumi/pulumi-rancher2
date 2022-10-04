@@ -21,49 +21,34 @@ public final class ClusterRkeConfigMonitoring {
      * @return RKE monitoring node selector (map)
      * 
      */
-    private final @Nullable Map<String,Object> nodeSelector;
+    private @Nullable Map<String,Object> nodeSelector;
     /**
      * @return RKE options for network (map)
      * 
      */
-    private final @Nullable Map<String,Object> options;
+    private @Nullable Map<String,Object> options;
     /**
      * @return RKE monitoring provider (string)
      * 
      */
-    private final @Nullable String provider;
+    private @Nullable String provider;
     /**
      * @return RKE monitoring replicas (int)
      * 
      */
-    private final @Nullable Integer replicas;
+    private @Nullable Integer replicas;
     /**
      * @return Network add-on tolerations (list)
      * 
      */
-    private final @Nullable List<ClusterRkeConfigMonitoringToleration> tolerations;
+    private @Nullable List<ClusterRkeConfigMonitoringToleration> tolerations;
     /**
      * @return RKE monitoring update strategy (list Maxitems: 1)
      * 
      */
-    private final @Nullable ClusterRkeConfigMonitoringUpdateStrategy updateStrategy;
+    private @Nullable ClusterRkeConfigMonitoringUpdateStrategy updateStrategy;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigMonitoring(
-        @CustomType.Parameter("nodeSelector") @Nullable Map<String,Object> nodeSelector,
-        @CustomType.Parameter("options") @Nullable Map<String,Object> options,
-        @CustomType.Parameter("provider") @Nullable String provider,
-        @CustomType.Parameter("replicas") @Nullable Integer replicas,
-        @CustomType.Parameter("tolerations") @Nullable List<ClusterRkeConfigMonitoringToleration> tolerations,
-        @CustomType.Parameter("updateStrategy") @Nullable ClusterRkeConfigMonitoringUpdateStrategy updateStrategy) {
-        this.nodeSelector = nodeSelector;
-        this.options = options;
-        this.provider = provider;
-        this.replicas = replicas;
-        this.tolerations = tolerations;
-        this.updateStrategy = updateStrategy;
-    }
-
+    private ClusterRkeConfigMonitoring() {}
     /**
      * @return RKE monitoring node selector (map)
      * 
@@ -114,7 +99,7 @@ public final class ClusterRkeConfigMonitoring {
     public static Builder builder(ClusterRkeConfigMonitoring defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,Object> nodeSelector;
         private @Nullable Map<String,Object> options;
@@ -122,11 +107,7 @@ public final class ClusterRkeConfigMonitoring {
         private @Nullable Integer replicas;
         private @Nullable List<ClusterRkeConfigMonitoringToleration> tolerations;
         private @Nullable ClusterRkeConfigMonitoringUpdateStrategy updateStrategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigMonitoring defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nodeSelector = defaults.nodeSelector;
@@ -137,22 +118,27 @@ public final class ClusterRkeConfigMonitoring {
     	      this.updateStrategy = defaults.updateStrategy;
         }
 
+        @CustomType.Setter
         public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
             this.nodeSelector = nodeSelector;
             return this;
         }
+        @CustomType.Setter
         public Builder options(@Nullable Map<String,Object> options) {
             this.options = options;
             return this;
         }
+        @CustomType.Setter
         public Builder provider(@Nullable String provider) {
             this.provider = provider;
             return this;
         }
+        @CustomType.Setter
         public Builder replicas(@Nullable Integer replicas) {
             this.replicas = replicas;
             return this;
         }
+        @CustomType.Setter
         public Builder tolerations(@Nullable List<ClusterRkeConfigMonitoringToleration> tolerations) {
             this.tolerations = tolerations;
             return this;
@@ -160,11 +146,20 @@ public final class ClusterRkeConfigMonitoring {
         public Builder tolerations(ClusterRkeConfigMonitoringToleration... tolerations) {
             return tolerations(List.of(tolerations));
         }
+        @CustomType.Setter
         public Builder updateStrategy(@Nullable ClusterRkeConfigMonitoringUpdateStrategy updateStrategy) {
             this.updateStrategy = updateStrategy;
             return this;
-        }        public ClusterRkeConfigMonitoring build() {
-            return new ClusterRkeConfigMonitoring(nodeSelector, options, provider, replicas, tolerations, updateStrategy);
+        }
+        public ClusterRkeConfigMonitoring build() {
+            final var o = new ClusterRkeConfigMonitoring();
+            o.nodeSelector = nodeSelector;
+            o.options = options;
+            o.provider = provider;
+            o.replicas = replicas;
+            o.tolerations = tolerations;
+            o.updateStrategy = updateStrategy;
+            return o;
         }
     }
 }

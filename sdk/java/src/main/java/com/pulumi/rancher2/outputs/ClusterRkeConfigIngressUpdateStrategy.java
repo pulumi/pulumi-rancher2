@@ -16,21 +16,14 @@ public final class ClusterRkeConfigIngressUpdateStrategy {
      * @return Monitoring deployment rolling update (list Maxitems: 1)
      * 
      */
-    private final @Nullable ClusterRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate;
+    private @Nullable ClusterRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate;
     /**
      * @return Monitoring deployment update strategy (string)
      * 
      */
-    private final @Nullable String strategy;
+    private @Nullable String strategy;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigIngressUpdateStrategy(
-        @CustomType.Parameter("rollingUpdate") @Nullable ClusterRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate,
-        @CustomType.Parameter("strategy") @Nullable String strategy) {
-        this.rollingUpdate = rollingUpdate;
-        this.strategy = strategy;
-    }
-
+    private ClusterRkeConfigIngressUpdateStrategy() {}
     /**
      * @return Monitoring deployment rolling update (list Maxitems: 1)
      * 
@@ -53,30 +46,32 @@ public final class ClusterRkeConfigIngressUpdateStrategy {
     public static Builder builder(ClusterRkeConfigIngressUpdateStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate;
         private @Nullable String strategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigIngressUpdateStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rollingUpdate = defaults.rollingUpdate;
     	      this.strategy = defaults.strategy;
         }
 
+        @CustomType.Setter
         public Builder rollingUpdate(@Nullable ClusterRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate) {
             this.rollingUpdate = rollingUpdate;
             return this;
         }
+        @CustomType.Setter
         public Builder strategy(@Nullable String strategy) {
             this.strategy = strategy;
             return this;
-        }        public ClusterRkeConfigIngressUpdateStrategy build() {
-            return new ClusterRkeConfigIngressUpdateStrategy(rollingUpdate, strategy);
+        }
+        public ClusterRkeConfigIngressUpdateStrategy build() {
+            final var o = new ClusterRkeConfigIngressUpdateStrategy();
+            o.rollingUpdate = rollingUpdate;
+            o.strategy = strategy;
+            return o;
         }
     }
 }

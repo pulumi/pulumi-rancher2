@@ -12,38 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
-    private final @Nullable Boolean deleteEmptyDirData;
-    private final @Nullable Boolean disableEviction;
-    private final @Nullable Boolean enabled;
-    private final @Nullable Boolean force;
-    private final Integer gracePeriod;
-    private final @Nullable Boolean ignoreDaemonSets;
-    private final @Nullable Boolean ignoreErrors;
-    private final Integer skipWaitForDeleteTimeoutSeconds;
-    private final Integer timeout;
+    private @Nullable Boolean deleteEmptyDirData;
+    private @Nullable Boolean disableEviction;
+    private @Nullable Boolean enabled;
+    private @Nullable Boolean force;
+    private Integer gracePeriod;
+    private @Nullable Boolean ignoreDaemonSets;
+    private @Nullable Boolean ignoreErrors;
+    private Integer skipWaitForDeleteTimeoutSeconds;
+    private Integer timeout;
 
-    @CustomType.Constructor
-    private GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(
-        @CustomType.Parameter("deleteEmptyDirData") @Nullable Boolean deleteEmptyDirData,
-        @CustomType.Parameter("disableEviction") @Nullable Boolean disableEviction,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("force") @Nullable Boolean force,
-        @CustomType.Parameter("gracePeriod") Integer gracePeriod,
-        @CustomType.Parameter("ignoreDaemonSets") @Nullable Boolean ignoreDaemonSets,
-        @CustomType.Parameter("ignoreErrors") @Nullable Boolean ignoreErrors,
-        @CustomType.Parameter("skipWaitForDeleteTimeoutSeconds") Integer skipWaitForDeleteTimeoutSeconds,
-        @CustomType.Parameter("timeout") Integer timeout) {
-        this.deleteEmptyDirData = deleteEmptyDirData;
-        this.disableEviction = disableEviction;
-        this.enabled = enabled;
-        this.force = force;
-        this.gracePeriod = gracePeriod;
-        this.ignoreDaemonSets = ignoreDaemonSets;
-        this.ignoreErrors = ignoreErrors;
-        this.skipWaitForDeleteTimeoutSeconds = skipWaitForDeleteTimeoutSeconds;
-        this.timeout = timeout;
-    }
-
+    private GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions() {}
     public Optional<Boolean> deleteEmptyDirData() {
         return Optional.ofNullable(this.deleteEmptyDirData);
     }
@@ -79,7 +58,7 @@ public final class GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
     public static Builder builder(GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean deleteEmptyDirData;
         private @Nullable Boolean disableEviction;
@@ -90,11 +69,7 @@ public final class GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
         private @Nullable Boolean ignoreErrors;
         private Integer skipWaitForDeleteTimeoutSeconds;
         private Integer timeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deleteEmptyDirData = defaults.deleteEmptyDirData;
@@ -108,43 +83,63 @@ public final class GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
         public Builder deleteEmptyDirData(@Nullable Boolean deleteEmptyDirData) {
             this.deleteEmptyDirData = deleteEmptyDirData;
             return this;
         }
+        @CustomType.Setter
         public Builder disableEviction(@Nullable Boolean disableEviction) {
             this.disableEviction = disableEviction;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder force(@Nullable Boolean force) {
             this.force = force;
             return this;
         }
+        @CustomType.Setter
         public Builder gracePeriod(Integer gracePeriod) {
             this.gracePeriod = Objects.requireNonNull(gracePeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreDaemonSets(@Nullable Boolean ignoreDaemonSets) {
             this.ignoreDaemonSets = ignoreDaemonSets;
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreErrors(@Nullable Boolean ignoreErrors) {
             this.ignoreErrors = ignoreErrors;
             return this;
         }
+        @CustomType.Setter
         public Builder skipWaitForDeleteTimeoutSeconds(Integer skipWaitForDeleteTimeoutSeconds) {
             this.skipWaitForDeleteTimeoutSeconds = Objects.requireNonNull(skipWaitForDeleteTimeoutSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(Integer timeout) {
             this.timeout = Objects.requireNonNull(timeout);
             return this;
-        }        public GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions build() {
-            return new GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(deleteEmptyDirData, disableEviction, enabled, force, gracePeriod, ignoreDaemonSets, ignoreErrors, skipWaitForDeleteTimeoutSeconds, timeout);
+        }
+        public GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions build() {
+            final var o = new GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions();
+            o.deleteEmptyDirData = deleteEmptyDirData;
+            o.disableEviction = disableEviction;
+            o.enabled = enabled;
+            o.force = force;
+            o.gracePeriod = gracePeriod;
+            o.ignoreDaemonSets = ignoreDaemonSets;
+            o.ignoreErrors = ignoreErrors;
+            o.skipWaitForDeleteTimeoutSeconds = skipWaitForDeleteTimeoutSeconds;
+            o.timeout = timeout;
+            return o;
         }
     }
 }

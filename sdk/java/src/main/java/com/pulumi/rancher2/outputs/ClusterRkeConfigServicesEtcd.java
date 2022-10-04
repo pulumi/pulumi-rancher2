@@ -21,112 +21,79 @@ public final class ClusterRkeConfigServicesEtcd {
      * @return Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigServicesEtcdBackupConfig backupConfig;
+    private @Nullable ClusterRkeConfigServicesEtcdBackupConfig backupConfig;
     /**
      * @return TLS CA certificate for etcd service (string)
      * 
      */
-    private final @Nullable String caCert;
+    private @Nullable String caCert;
     /**
      * @return TLS certificate for etcd service (string)
      * 
      */
-    private final @Nullable String cert;
+    private @Nullable String cert;
     /**
      * @return Creation option for etcd service (string)
      * 
      */
-    private final @Nullable String creation;
+    private @Nullable String creation;
     /**
      * @return External urls for etcd service (list)
      * 
      */
-    private final @Nullable List<String> externalUrls;
+    private @Nullable List<String> externalUrls;
     /**
      * @return Extra arguments for scheduler service (map)
      * 
      */
-    private final @Nullable Map<String,Object> extraArgs;
+    private @Nullable Map<String,Object> extraArgs;
     /**
      * @return Extra binds for scheduler service (list)
      * 
      */
-    private final @Nullable List<String> extraBinds;
+    private @Nullable List<String> extraBinds;
     /**
      * @return Extra environment for scheduler service (list)
      * 
      */
-    private final @Nullable List<String> extraEnvs;
+    private @Nullable List<String> extraEnvs;
     /**
      * @return Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
      * 
      */
-    private final @Nullable Integer gid;
+    private @Nullable Integer gid;
     /**
      * @return Docker image for scheduler service (string)
      * 
      */
-    private final @Nullable String image;
+    private @Nullable String image;
     /**
      * @return The GKE taint key (string)
      * 
      */
-    private final @Nullable String key;
+    private @Nullable String key;
     /**
      * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
     /**
      * @return Retention for etcd backup. Default `6` (int)
      * 
      */
-    private final @Nullable String retention;
+    private @Nullable String retention;
     /**
      * @return Snapshot option for etcd service (bool)
      * 
      */
-    private final @Nullable Boolean snapshot;
+    private @Nullable Boolean snapshot;
     /**
      * @return Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
      * 
      */
-    private final @Nullable Integer uid;
+    private @Nullable Integer uid;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigServicesEtcd(
-        @CustomType.Parameter("backupConfig") @Nullable ClusterRkeConfigServicesEtcdBackupConfig backupConfig,
-        @CustomType.Parameter("caCert") @Nullable String caCert,
-        @CustomType.Parameter("cert") @Nullable String cert,
-        @CustomType.Parameter("creation") @Nullable String creation,
-        @CustomType.Parameter("externalUrls") @Nullable List<String> externalUrls,
-        @CustomType.Parameter("extraArgs") @Nullable Map<String,Object> extraArgs,
-        @CustomType.Parameter("extraBinds") @Nullable List<String> extraBinds,
-        @CustomType.Parameter("extraEnvs") @Nullable List<String> extraEnvs,
-        @CustomType.Parameter("gid") @Nullable Integer gid,
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("retention") @Nullable String retention,
-        @CustomType.Parameter("snapshot") @Nullable Boolean snapshot,
-        @CustomType.Parameter("uid") @Nullable Integer uid) {
-        this.backupConfig = backupConfig;
-        this.caCert = caCert;
-        this.cert = cert;
-        this.creation = creation;
-        this.externalUrls = externalUrls;
-        this.extraArgs = extraArgs;
-        this.extraBinds = extraBinds;
-        this.extraEnvs = extraEnvs;
-        this.gid = gid;
-        this.image = image;
-        this.key = key;
-        this.path = path;
-        this.retention = retention;
-        this.snapshot = snapshot;
-        this.uid = uid;
-    }
-
+    private ClusterRkeConfigServicesEtcd() {}
     /**
      * @return Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
      * 
@@ -240,7 +207,7 @@ public final class ClusterRkeConfigServicesEtcd {
     public static Builder builder(ClusterRkeConfigServicesEtcd defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRkeConfigServicesEtcdBackupConfig backupConfig;
         private @Nullable String caCert;
@@ -257,11 +224,7 @@ public final class ClusterRkeConfigServicesEtcd {
         private @Nullable String retention;
         private @Nullable Boolean snapshot;
         private @Nullable Integer uid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigServicesEtcd defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupConfig = defaults.backupConfig;
@@ -281,22 +244,27 @@ public final class ClusterRkeConfigServicesEtcd {
     	      this.uid = defaults.uid;
         }
 
+        @CustomType.Setter
         public Builder backupConfig(@Nullable ClusterRkeConfigServicesEtcdBackupConfig backupConfig) {
             this.backupConfig = backupConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder caCert(@Nullable String caCert) {
             this.caCert = caCert;
             return this;
         }
+        @CustomType.Setter
         public Builder cert(@Nullable String cert) {
             this.cert = cert;
             return this;
         }
+        @CustomType.Setter
         public Builder creation(@Nullable String creation) {
             this.creation = creation;
             return this;
         }
+        @CustomType.Setter
         public Builder externalUrls(@Nullable List<String> externalUrls) {
             this.externalUrls = externalUrls;
             return this;
@@ -304,10 +272,12 @@ public final class ClusterRkeConfigServicesEtcd {
         public Builder externalUrls(String... externalUrls) {
             return externalUrls(List.of(externalUrls));
         }
+        @CustomType.Setter
         public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
             this.extraArgs = extraArgs;
             return this;
         }
+        @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
             this.extraBinds = extraBinds;
             return this;
@@ -315,6 +285,7 @@ public final class ClusterRkeConfigServicesEtcd {
         public Builder extraBinds(String... extraBinds) {
             return extraBinds(List.of(extraBinds));
         }
+        @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
             this.extraEnvs = extraEnvs;
             return this;
@@ -322,35 +293,59 @@ public final class ClusterRkeConfigServicesEtcd {
         public Builder extraEnvs(String... extraEnvs) {
             return extraEnvs(List.of(extraEnvs));
         }
+        @CustomType.Setter
         public Builder gid(@Nullable Integer gid) {
             this.gid = gid;
             return this;
         }
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder retention(@Nullable String retention) {
             this.retention = retention;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshot(@Nullable Boolean snapshot) {
             this.snapshot = snapshot;
             return this;
         }
+        @CustomType.Setter
         public Builder uid(@Nullable Integer uid) {
             this.uid = uid;
             return this;
-        }        public ClusterRkeConfigServicesEtcd build() {
-            return new ClusterRkeConfigServicesEtcd(backupConfig, caCert, cert, creation, externalUrls, extraArgs, extraBinds, extraEnvs, gid, image, key, path, retention, snapshot, uid);
+        }
+        public ClusterRkeConfigServicesEtcd build() {
+            final var o = new ClusterRkeConfigServicesEtcd();
+            o.backupConfig = backupConfig;
+            o.caCert = caCert;
+            o.cert = cert;
+            o.creation = creation;
+            o.externalUrls = externalUrls;
+            o.extraArgs = extraArgs;
+            o.extraBinds = extraBinds;
+            o.extraEnvs = extraEnvs;
+            o.gid = gid;
+            o.image = image;
+            o.key = key;
+            o.path = path;
+            o.retention = retention;
+            o.snapshot = snapshot;
+            o.uid = uid;
+            return o;
         }
     }
 }

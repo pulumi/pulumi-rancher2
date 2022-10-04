@@ -14,23 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterLoggingFluentdConfig {
-    private final @Nullable String certificate;
-    private final @Nullable Boolean compress;
-    private final @Nullable Boolean enableTls;
-    private final List<GetClusterLoggingFluentdConfigFluentServer> fluentServers;
+    private @Nullable String certificate;
+    private @Nullable Boolean compress;
+    private @Nullable Boolean enableTls;
+    private List<GetClusterLoggingFluentdConfigFluentServer> fluentServers;
 
-    @CustomType.Constructor
-    private GetClusterLoggingFluentdConfig(
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("compress") @Nullable Boolean compress,
-        @CustomType.Parameter("enableTls") @Nullable Boolean enableTls,
-        @CustomType.Parameter("fluentServers") List<GetClusterLoggingFluentdConfigFluentServer> fluentServers) {
-        this.certificate = certificate;
-        this.compress = compress;
-        this.enableTls = enableTls;
-        this.fluentServers = fluentServers;
-    }
-
+    private GetClusterLoggingFluentdConfig() {}
     public Optional<String> certificate() {
         return Optional.ofNullable(this.certificate);
     }
@@ -51,17 +40,13 @@ public final class GetClusterLoggingFluentdConfig {
     public static Builder builder(GetClusterLoggingFluentdConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificate;
         private @Nullable Boolean compress;
         private @Nullable Boolean enableTls;
         private List<GetClusterLoggingFluentdConfigFluentServer> fluentServers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterLoggingFluentdConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
@@ -70,26 +55,36 @@ public final class GetClusterLoggingFluentdConfig {
     	      this.fluentServers = defaults.fluentServers;
         }
 
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder compress(@Nullable Boolean compress) {
             this.compress = compress;
             return this;
         }
+        @CustomType.Setter
         public Builder enableTls(@Nullable Boolean enableTls) {
             this.enableTls = enableTls;
             return this;
         }
+        @CustomType.Setter
         public Builder fluentServers(List<GetClusterLoggingFluentdConfigFluentServer> fluentServers) {
             this.fluentServers = Objects.requireNonNull(fluentServers);
             return this;
         }
         public Builder fluentServers(GetClusterLoggingFluentdConfigFluentServer... fluentServers) {
             return fluentServers(List.of(fluentServers));
-        }        public GetClusterLoggingFluentdConfig build() {
-            return new GetClusterLoggingFluentdConfig(certificate, compress, enableTls, fluentServers);
+        }
+        public GetClusterLoggingFluentdConfig build() {
+            final var o = new GetClusterLoggingFluentdConfig();
+            o.certificate = certificate;
+            o.compress = compress;
+            o.enableTls = enableTls;
+            o.fluentServers = fluentServers;
+            return o;
         }
     }
 }

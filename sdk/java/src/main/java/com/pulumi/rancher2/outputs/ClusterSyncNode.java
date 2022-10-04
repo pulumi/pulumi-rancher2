@@ -18,119 +18,84 @@ public final class ClusterSyncNode {
      * @return Annotations of the node (map).
      * 
      */
-    private final @Nullable Map<String,Object> annotations;
+    private @Nullable Map<String,Object> annotations;
     /**
      * @return The total resources of a node (map).
      * 
      */
-    private final @Nullable Map<String,Object> capacity;
+    private @Nullable Map<String,Object> capacity;
     /**
      * @return The Cluster ID of the node (string).
      * 
      */
-    private final @Nullable String clusterId;
+    private @Nullable String clusterId;
     /**
      * @return The external IP address of the node (string).
      * 
      */
-    private final @Nullable String externalIpAddress;
+    private @Nullable String externalIpAddress;
     /**
      * @return The hostname of the node (string).
      * 
      */
-    private final @Nullable String hostname;
+    private @Nullable String hostname;
     /**
      * @return The ID of the node (string)
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return The private IP address of the node (string).
      * 
      */
-    private final @Nullable String ipAddress;
+    private @Nullable String ipAddress;
     /**
      * @return Labels of the node (map).
      * 
      */
-    private final @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,Object> labels;
     /**
      * @return The name of the node (string).
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The Node Pool ID of the node (string).
      * 
      */
-    private final @Nullable String nodePoolId;
+    private @Nullable String nodePoolId;
     /**
      * @return The Node Template ID of the node (string).
      * 
      */
-    private final @Nullable String nodeTemplateId;
+    private @Nullable String nodeTemplateId;
     /**
      * @return The Provider ID of the node (string).
      * 
      */
-    private final @Nullable String providerId;
+    private @Nullable String providerId;
     /**
      * @return The requested hostname (string).
      * 
      */
-    private final @Nullable String requestedHostname;
+    private @Nullable String requestedHostname;
     /**
      * @return Roles of the node. `controlplane`, `etcd` and `worker`. (list)
      * 
      */
-    private final @Nullable List<String> roles;
+    private @Nullable List<String> roles;
     /**
      * @return The user to connect to the node (string).
      * 
      */
-    private final @Nullable String sshUser;
+    private @Nullable String sshUser;
     /**
      * @return General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
      * 
      */
-    private final @Nullable Map<String,Object> systemInfo;
+    private @Nullable Map<String,Object> systemInfo;
 
-    @CustomType.Constructor
-    private ClusterSyncNode(
-        @CustomType.Parameter("annotations") @Nullable Map<String,Object> annotations,
-        @CustomType.Parameter("capacity") @Nullable Map<String,Object> capacity,
-        @CustomType.Parameter("clusterId") @Nullable String clusterId,
-        @CustomType.Parameter("externalIpAddress") @Nullable String externalIpAddress,
-        @CustomType.Parameter("hostname") @Nullable String hostname,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("labels") @Nullable Map<String,Object> labels,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nodePoolId") @Nullable String nodePoolId,
-        @CustomType.Parameter("nodeTemplateId") @Nullable String nodeTemplateId,
-        @CustomType.Parameter("providerId") @Nullable String providerId,
-        @CustomType.Parameter("requestedHostname") @Nullable String requestedHostname,
-        @CustomType.Parameter("roles") @Nullable List<String> roles,
-        @CustomType.Parameter("sshUser") @Nullable String sshUser,
-        @CustomType.Parameter("systemInfo") @Nullable Map<String,Object> systemInfo) {
-        this.annotations = annotations;
-        this.capacity = capacity;
-        this.clusterId = clusterId;
-        this.externalIpAddress = externalIpAddress;
-        this.hostname = hostname;
-        this.id = id;
-        this.ipAddress = ipAddress;
-        this.labels = labels;
-        this.name = name;
-        this.nodePoolId = nodePoolId;
-        this.nodeTemplateId = nodeTemplateId;
-        this.providerId = providerId;
-        this.requestedHostname = requestedHostname;
-        this.roles = roles;
-        this.sshUser = sshUser;
-        this.systemInfo = systemInfo;
-    }
-
+    private ClusterSyncNode() {}
     /**
      * @return Annotations of the node (map).
      * 
@@ -251,7 +216,7 @@ public final class ClusterSyncNode {
     public static Builder builder(ClusterSyncNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,Object> annotations;
         private @Nullable Map<String,Object> capacity;
@@ -269,11 +234,7 @@ public final class ClusterSyncNode {
         private @Nullable List<String> roles;
         private @Nullable String sshUser;
         private @Nullable Map<String,Object> systemInfo;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterSyncNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -294,58 +255,72 @@ public final class ClusterSyncNode {
     	      this.systemInfo = defaults.systemInfo;
         }
 
+        @CustomType.Setter
         public Builder annotations(@Nullable Map<String,Object> annotations) {
             this.annotations = annotations;
             return this;
         }
+        @CustomType.Setter
         public Builder capacity(@Nullable Map<String,Object> capacity) {
             this.capacity = capacity;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
             this.clusterId = clusterId;
             return this;
         }
+        @CustomType.Setter
         public Builder externalIpAddress(@Nullable String externalIpAddress) {
             this.externalIpAddress = externalIpAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
             this.hostname = hostname;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nodePoolId(@Nullable String nodePoolId) {
             this.nodePoolId = nodePoolId;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeTemplateId(@Nullable String nodeTemplateId) {
             this.nodeTemplateId = nodeTemplateId;
             return this;
         }
+        @CustomType.Setter
         public Builder providerId(@Nullable String providerId) {
             this.providerId = providerId;
             return this;
         }
+        @CustomType.Setter
         public Builder requestedHostname(@Nullable String requestedHostname) {
             this.requestedHostname = requestedHostname;
             return this;
         }
+        @CustomType.Setter
         public Builder roles(@Nullable List<String> roles) {
             this.roles = roles;
             return this;
@@ -353,15 +328,35 @@ public final class ClusterSyncNode {
         public Builder roles(String... roles) {
             return roles(List.of(roles));
         }
+        @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
             this.sshUser = sshUser;
             return this;
         }
+        @CustomType.Setter
         public Builder systemInfo(@Nullable Map<String,Object> systemInfo) {
             this.systemInfo = systemInfo;
             return this;
-        }        public ClusterSyncNode build() {
-            return new ClusterSyncNode(annotations, capacity, clusterId, externalIpAddress, hostname, id, ipAddress, labels, name, nodePoolId, nodeTemplateId, providerId, requestedHostname, roles, sshUser, systemInfo);
+        }
+        public ClusterSyncNode build() {
+            final var o = new ClusterSyncNode();
+            o.annotations = annotations;
+            o.capacity = capacity;
+            o.clusterId = clusterId;
+            o.externalIpAddress = externalIpAddress;
+            o.hostname = hostname;
+            o.id = id;
+            o.ipAddress = ipAddress;
+            o.labels = labels;
+            o.name = name;
+            o.nodePoolId = nodePoolId;
+            o.nodeTemplateId = nodeTemplateId;
+            o.providerId = providerId;
+            o.requestedHostname = requestedHostname;
+            o.roles = roles;
+            o.sshUser = sshUser;
+            o.systemInfo = systemInfo;
+            return o;
         }
     }
 }

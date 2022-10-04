@@ -11,41 +11,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal {
-    private final String authUrl;
-    private final @Nullable String caFile;
-    private final @Nullable String domainId;
-    private final @Nullable String domainName;
-    private final String password;
-    private final @Nullable String region;
-    private final @Nullable String tenantId;
-    private final @Nullable String tenantName;
-    private final @Nullable String trustId;
-    private final String username;
+    private String authUrl;
+    private @Nullable String caFile;
+    private @Nullable String domainId;
+    private @Nullable String domainName;
+    private String password;
+    private @Nullable String region;
+    private @Nullable String tenantId;
+    private @Nullable String tenantName;
+    private @Nullable String trustId;
+    private String username;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal(
-        @CustomType.Parameter("authUrl") String authUrl,
-        @CustomType.Parameter("caFile") @Nullable String caFile,
-        @CustomType.Parameter("domainId") @Nullable String domainId,
-        @CustomType.Parameter("domainName") @Nullable String domainName,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("tenantId") @Nullable String tenantId,
-        @CustomType.Parameter("tenantName") @Nullable String tenantName,
-        @CustomType.Parameter("trustId") @Nullable String trustId,
-        @CustomType.Parameter("username") String username) {
-        this.authUrl = authUrl;
-        this.caFile = caFile;
-        this.domainId = domainId;
-        this.domainName = domainName;
-        this.password = password;
-        this.region = region;
-        this.tenantId = tenantId;
-        this.tenantName = tenantName;
-        this.trustId = trustId;
-        this.username = username;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal() {}
     public String authUrl() {
         return this.authUrl;
     }
@@ -84,7 +61,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String authUrl;
         private @Nullable String caFile;
@@ -96,11 +73,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         private @Nullable String tenantName;
         private @Nullable String trustId;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authUrl = defaults.authUrl;
@@ -115,47 +88,69 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder authUrl(String authUrl) {
             this.authUrl = Objects.requireNonNull(authUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder caFile(@Nullable String caFile) {
             this.caFile = caFile;
             return this;
         }
+        @CustomType.Setter
         public Builder domainId(@Nullable String domainId) {
             this.domainId = domainId;
             return this;
         }
+        @CustomType.Setter
         public Builder domainName(@Nullable String domainName) {
             this.domainName = domainName;
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
             this.tenantId = tenantId;
             return this;
         }
+        @CustomType.Setter
         public Builder tenantName(@Nullable String tenantName) {
             this.tenantName = tenantName;
             return this;
         }
+        @CustomType.Setter
         public Builder trustId(@Nullable String trustId) {
             this.trustId = trustId;
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal(authUrl, caFile, domainId, domainName, password, region, tenantId, tenantName, trustId, username);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal();
+            o.authUrl = authUrl;
+            o.caFile = caFile;
+            o.domainId = domainId;
+            o.domainName = domainName;
+            o.password = password;
+            o.region = region;
+            o.tenantId = tenantId;
+            o.tenantName = tenantName;
+            o.trustId = trustId;
+            o.username = username;
+            return o;
         }
     }
 }

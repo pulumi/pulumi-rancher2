@@ -15,91 +15,64 @@ public final class NodeTemplateHarvesterConfig {
      * @return vSphere CPU number for docker VM. Default `2` (string)
      * 
      */
-    private final @Nullable String cpuCount;
+    private @Nullable String cpuCount;
     /**
      * @return Disk bus, Default `virtio` (string)
      * 
      */
-    private final @Nullable String diskBus;
+    private @Nullable String diskBus;
     /**
      * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
-    private final @Nullable String diskSize;
+    private @Nullable String diskSize;
     /**
      * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      */
-    private final String imageName;
+    private String imageName;
     /**
      * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
      * 
      */
-    private final @Nullable String memorySize;
+    private @Nullable String memorySize;
     /**
      * @return NetworkData content of cloud-init, base64 is supported (string)
      * 
      */
-    private final @Nullable String networkData;
+    private @Nullable String networkData;
     /**
      * @return Network model, Default `virtio` (string)
      * 
      */
-    private final @Nullable String networkModel;
+    private @Nullable String networkModel;
     /**
      * @return Opennebula network to connect the machine to. Conflicts with `network_id` (string)
      * 
      */
-    private final String networkName;
+    private String networkName;
     /**
      * @return If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
      * 
      */
-    private final @Nullable String sshPassword;
+    private @Nullable String sshPassword;
     /**
      * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
-    private final String sshUser;
+    private String sshUser;
     /**
      * @return UserData content of cloud-init, base64 is supported (string)
      * 
      */
-    private final @Nullable String userData;
+    private @Nullable String userData;
     /**
      * @return Virtual machine namespace e.g. `default` (string)
      * 
      */
-    private final String vmNamespace;
+    private String vmNamespace;
 
-    @CustomType.Constructor
-    private NodeTemplateHarvesterConfig(
-        @CustomType.Parameter("cpuCount") @Nullable String cpuCount,
-        @CustomType.Parameter("diskBus") @Nullable String diskBus,
-        @CustomType.Parameter("diskSize") @Nullable String diskSize,
-        @CustomType.Parameter("imageName") String imageName,
-        @CustomType.Parameter("memorySize") @Nullable String memorySize,
-        @CustomType.Parameter("networkData") @Nullable String networkData,
-        @CustomType.Parameter("networkModel") @Nullable String networkModel,
-        @CustomType.Parameter("networkName") String networkName,
-        @CustomType.Parameter("sshPassword") @Nullable String sshPassword,
-        @CustomType.Parameter("sshUser") String sshUser,
-        @CustomType.Parameter("userData") @Nullable String userData,
-        @CustomType.Parameter("vmNamespace") String vmNamespace) {
-        this.cpuCount = cpuCount;
-        this.diskBus = diskBus;
-        this.diskSize = diskSize;
-        this.imageName = imageName;
-        this.memorySize = memorySize;
-        this.networkData = networkData;
-        this.networkModel = networkModel;
-        this.networkName = networkName;
-        this.sshPassword = sshPassword;
-        this.sshUser = sshUser;
-        this.userData = userData;
-        this.vmNamespace = vmNamespace;
-    }
-
+    private NodeTemplateHarvesterConfig() {}
     /**
      * @return vSphere CPU number for docker VM. Default `2` (string)
      * 
@@ -192,7 +165,7 @@ public final class NodeTemplateHarvesterConfig {
     public static Builder builder(NodeTemplateHarvesterConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cpuCount;
         private @Nullable String diskBus;
@@ -206,11 +179,7 @@ public final class NodeTemplateHarvesterConfig {
         private String sshUser;
         private @Nullable String userData;
         private String vmNamespace;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeTemplateHarvesterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCount = defaults.cpuCount;
@@ -227,55 +196,81 @@ public final class NodeTemplateHarvesterConfig {
     	      this.vmNamespace = defaults.vmNamespace;
         }
 
+        @CustomType.Setter
         public Builder cpuCount(@Nullable String cpuCount) {
             this.cpuCount = cpuCount;
             return this;
         }
+        @CustomType.Setter
         public Builder diskBus(@Nullable String diskBus) {
             this.diskBus = diskBus;
             return this;
         }
+        @CustomType.Setter
         public Builder diskSize(@Nullable String diskSize) {
             this.diskSize = diskSize;
             return this;
         }
+        @CustomType.Setter
         public Builder imageName(String imageName) {
             this.imageName = Objects.requireNonNull(imageName);
             return this;
         }
+        @CustomType.Setter
         public Builder memorySize(@Nullable String memorySize) {
             this.memorySize = memorySize;
             return this;
         }
+        @CustomType.Setter
         public Builder networkData(@Nullable String networkData) {
             this.networkData = networkData;
             return this;
         }
+        @CustomType.Setter
         public Builder networkModel(@Nullable String networkModel) {
             this.networkModel = networkModel;
             return this;
         }
+        @CustomType.Setter
         public Builder networkName(String networkName) {
             this.networkName = Objects.requireNonNull(networkName);
             return this;
         }
+        @CustomType.Setter
         public Builder sshPassword(@Nullable String sshPassword) {
             this.sshPassword = sshPassword;
             return this;
         }
+        @CustomType.Setter
         public Builder sshUser(String sshUser) {
             this.sshUser = Objects.requireNonNull(sshUser);
             return this;
         }
+        @CustomType.Setter
         public Builder userData(@Nullable String userData) {
             this.userData = userData;
             return this;
         }
+        @CustomType.Setter
         public Builder vmNamespace(String vmNamespace) {
             this.vmNamespace = Objects.requireNonNull(vmNamespace);
             return this;
-        }        public NodeTemplateHarvesterConfig build() {
-            return new NodeTemplateHarvesterConfig(cpuCount, diskBus, diskSize, imageName, memorySize, networkData, networkModel, networkName, sshPassword, sshUser, userData, vmNamespace);
+        }
+        public NodeTemplateHarvesterConfig build() {
+            final var o = new NodeTemplateHarvesterConfig();
+            o.cpuCount = cpuCount;
+            o.diskBus = diskBus;
+            o.diskSize = diskSize;
+            o.imageName = imageName;
+            o.memorySize = memorySize;
+            o.networkData = networkData;
+            o.networkModel = networkModel;
+            o.networkName = networkName;
+            o.sshPassword = sshPassword;
+            o.sshUser = sshUser;
+            o.userData = userData;
+            o.vmNamespace = vmNamespace;
+            return o;
         }
     }
 }

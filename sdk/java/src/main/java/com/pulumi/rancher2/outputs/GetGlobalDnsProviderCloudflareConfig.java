@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGlobalDnsProviderCloudflareConfig {
-    private final String apiEmail;
-    private final String apiKey;
-    private final @Nullable Boolean proxySetting;
+    private String apiEmail;
+    private String apiKey;
+    private @Nullable Boolean proxySetting;
 
-    @CustomType.Constructor
-    private GetGlobalDnsProviderCloudflareConfig(
-        @CustomType.Parameter("apiEmail") String apiEmail,
-        @CustomType.Parameter("apiKey") String apiKey,
-        @CustomType.Parameter("proxySetting") @Nullable Boolean proxySetting) {
-        this.apiEmail = apiEmail;
-        this.apiKey = apiKey;
-        this.proxySetting = proxySetting;
-    }
-
+    private GetGlobalDnsProviderCloudflareConfig() {}
     public String apiEmail() {
         return this.apiEmail;
     }
@@ -43,16 +34,12 @@ public final class GetGlobalDnsProviderCloudflareConfig {
     public static Builder builder(GetGlobalDnsProviderCloudflareConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String apiEmail;
         private String apiKey;
         private @Nullable Boolean proxySetting;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGlobalDnsProviderCloudflareConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiEmail = defaults.apiEmail;
@@ -60,19 +47,27 @@ public final class GetGlobalDnsProviderCloudflareConfig {
     	      this.proxySetting = defaults.proxySetting;
         }
 
+        @CustomType.Setter
         public Builder apiEmail(String apiEmail) {
             this.apiEmail = Objects.requireNonNull(apiEmail);
             return this;
         }
+        @CustomType.Setter
         public Builder apiKey(String apiKey) {
             this.apiKey = Objects.requireNonNull(apiKey);
             return this;
         }
+        @CustomType.Setter
         public Builder proxySetting(@Nullable Boolean proxySetting) {
             this.proxySetting = proxySetting;
             return this;
-        }        public GetGlobalDnsProviderCloudflareConfig build() {
-            return new GetGlobalDnsProviderCloudflareConfig(apiEmail, apiKey, proxySetting);
+        }
+        public GetGlobalDnsProviderCloudflareConfig build() {
+            final var o = new GetGlobalDnsProviderCloudflareConfig();
+            o.apiEmail = apiEmail;
+            o.apiKey = apiKey;
+            o.proxySetting = proxySetting;
+            return o;
         }
     }
 }

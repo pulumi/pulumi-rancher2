@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterScheduledClusterScanScanConfig {
-    private final GetClusterScheduledClusterScanScanConfigCisScanConfig cisScanConfig;
+    private GetClusterScheduledClusterScanScanConfigCisScanConfig cisScanConfig;
 
-    @CustomType.Constructor
-    private GetClusterScheduledClusterScanScanConfig(@CustomType.Parameter("cisScanConfig") GetClusterScheduledClusterScanScanConfigCisScanConfig cisScanConfig) {
-        this.cisScanConfig = cisScanConfig;
-    }
-
+    private GetClusterScheduledClusterScanScanConfig() {}
     public GetClusterScheduledClusterScanScanConfigCisScanConfig cisScanConfig() {
         return this.cisScanConfig;
     }
@@ -27,24 +23,24 @@ public final class GetClusterScheduledClusterScanScanConfig {
     public static Builder builder(GetClusterScheduledClusterScanScanConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetClusterScheduledClusterScanScanConfigCisScanConfig cisScanConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterScheduledClusterScanScanConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cisScanConfig = defaults.cisScanConfig;
         }
 
+        @CustomType.Setter
         public Builder cisScanConfig(GetClusterScheduledClusterScanScanConfigCisScanConfig cisScanConfig) {
             this.cisScanConfig = Objects.requireNonNull(cisScanConfig);
             return this;
-        }        public GetClusterScheduledClusterScanScanConfig build() {
-            return new GetClusterScheduledClusterScanScanConfig(cisScanConfig);
+        }
+        public GetClusterScheduledClusterScanScanConfig build() {
+            final var o = new GetClusterScheduledClusterScanScanConfig();
+            o.cisScanConfig = cisScanConfig;
+            return o;
         }
     }
 }

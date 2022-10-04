@@ -33,233 +33,162 @@ public final class GetClusterResult {
      * @return (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
      * 
      */
-    private final List<String> agentEnvVars;
+    private List<String> agentEnvVars;
     /**
      * @return (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
-    private final GetClusterAksConfig aksConfig;
+    private GetClusterAksConfig aksConfig;
     /**
      * @return (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
-    private final GetClusterAksConfigV2 aksConfigV2;
+    private GetClusterAksConfigV2 aksConfigV2;
     /**
      * @return (Computed) Annotations for Node Pool object (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) K8s cluster ca cert (string)
      * 
      */
-    private final String caCert;
+    private String caCert;
     /**
      * @return (Computed) Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
      * 
      */
-    private final GetClusterClusterAuthEndpoint clusterAuthEndpoint;
+    private GetClusterClusterAuthEndpoint clusterAuthEndpoint;
     /**
      * @return (Computed) Cluster monitoring config (list maxitems:1)
      * 
      */
-    private final GetClusterClusterMonitoringInput clusterMonitoringInput;
+    private GetClusterClusterMonitoringInput clusterMonitoringInput;
     /**
      * @return (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
      * 
      */
-    private final GetClusterClusterRegistrationToken clusterRegistrationToken;
+    private GetClusterClusterRegistrationToken clusterRegistrationToken;
     /**
      * @return (Computed) Cluster template answers (list maxitems:1)
      * 
      */
-    private final GetClusterClusterTemplateAnswers clusterTemplateAnswers;
+    private GetClusterClusterTemplateAnswers clusterTemplateAnswers;
     /**
      * @return (Computed) Cluster template ID (string)
      * 
      */
-    private final String clusterTemplateId;
+    private String clusterTemplateId;
     /**
      * @return (Computed) Cluster template questions (list)
      * 
      */
-    private final List<GetClusterClusterTemplateQuestion> clusterTemplateQuestions;
+    private List<GetClusterClusterTemplateQuestion> clusterTemplateQuestions;
     /**
      * @return (Computed) Cluster template revision ID (string)
      * 
      */
-    private final String clusterTemplateRevisionId;
+    private String clusterTemplateRevisionId;
     /**
      * @return (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
      * 
      */
-    private final String defaultPodSecurityPolicyTemplateId;
+    private String defaultPodSecurityPolicyTemplateId;
     /**
      * @return (Computed) Default project ID for the cluster (string)
      * 
      */
-    private final String defaultProjectId;
+    private String defaultProjectId;
     /**
      * @return (Computed) The description for Cluster (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
      * 
      */
-    private final String driver;
+    private String driver;
     /**
      * @return (Computed) The Amazon eks configuration for `eks` Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
-    private final GetClusterEksConfig eksConfig;
+    private GetClusterEksConfig eksConfig;
     /**
      * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
      * 
      */
-    private final GetClusterEksConfigV2 eksConfigV2;
-    private final Boolean enableClusterAlerting;
+    private GetClusterEksConfigV2 eksConfigV2;
+    private Boolean enableClusterAlerting;
     /**
      * @return (Computed) Enable built-in cluster monitoring. Default `false` (bool)
      * 
      */
-    private final Boolean enableClusterMonitoring;
+    private Boolean enableClusterMonitoring;
     /**
      * @return (Computed) Enable project network isolation. Default `false` (bool)
      * 
      */
-    private final Boolean enableNetworkPolicy;
+    private Boolean enableNetworkPolicy;
     /**
      * @return (Computed) Fleet workspace name (string)
      * 
      */
-    private final String fleetWorkspaceName;
+    private String fleetWorkspaceName;
     /**
      * @return (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1) (list maxitems:1)
      * 
      */
-    private final GetClusterGkeConfig gkeConfig;
+    private GetClusterGkeConfig gkeConfig;
     /**
      * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
      * 
      */
-    private final GetClusterGkeConfigV2 gkeConfigV2;
+    private GetClusterGkeConfigV2 gkeConfigV2;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
      * 
      */
-    private final GetClusterK3sConfig k3sConfig;
+    private GetClusterK3sConfig k3sConfig;
     /**
      * @return (Computed) Kube Config generated for the cluster (string)
      * 
      */
-    private final String kubeConfig;
+    private String kubeConfig;
     /**
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
+    private Map<String,Object> labels;
+    private String name;
     /**
      * @return (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
-    private final GetClusterOkeConfig okeConfig;
+    private GetClusterOkeConfig okeConfig;
     /**
      * @return (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
-    private final GetClusterRke2Config rke2Config;
+    private GetClusterRke2Config rke2Config;
     /**
      * @return (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
      * 
      */
-    private final GetClusterRkeConfig rkeConfig;
-    private final List<GetClusterScheduledClusterScan> scheduledClusterScans;
+    private GetClusterRkeConfig rkeConfig;
+    private List<GetClusterScheduledClusterScan> scheduledClusterScans;
     /**
      * @return (Computed) System project ID for the cluster (string)
      * 
      */
-    private final String systemProjectId;
+    private String systemProjectId;
 
-    @CustomType.Constructor
-    private GetClusterResult(
-        @CustomType.Parameter("agentEnvVars") List<String> agentEnvVars,
-        @CustomType.Parameter("aksConfig") GetClusterAksConfig aksConfig,
-        @CustomType.Parameter("aksConfigV2") GetClusterAksConfigV2 aksConfigV2,
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("caCert") String caCert,
-        @CustomType.Parameter("clusterAuthEndpoint") GetClusterClusterAuthEndpoint clusterAuthEndpoint,
-        @CustomType.Parameter("clusterMonitoringInput") GetClusterClusterMonitoringInput clusterMonitoringInput,
-        @CustomType.Parameter("clusterRegistrationToken") GetClusterClusterRegistrationToken clusterRegistrationToken,
-        @CustomType.Parameter("clusterTemplateAnswers") GetClusterClusterTemplateAnswers clusterTemplateAnswers,
-        @CustomType.Parameter("clusterTemplateId") String clusterTemplateId,
-        @CustomType.Parameter("clusterTemplateQuestions") List<GetClusterClusterTemplateQuestion> clusterTemplateQuestions,
-        @CustomType.Parameter("clusterTemplateRevisionId") String clusterTemplateRevisionId,
-        @CustomType.Parameter("defaultPodSecurityPolicyTemplateId") String defaultPodSecurityPolicyTemplateId,
-        @CustomType.Parameter("defaultProjectId") String defaultProjectId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("driver") String driver,
-        @CustomType.Parameter("eksConfig") GetClusterEksConfig eksConfig,
-        @CustomType.Parameter("eksConfigV2") GetClusterEksConfigV2 eksConfigV2,
-        @CustomType.Parameter("enableClusterAlerting") Boolean enableClusterAlerting,
-        @CustomType.Parameter("enableClusterMonitoring") Boolean enableClusterMonitoring,
-        @CustomType.Parameter("enableNetworkPolicy") Boolean enableNetworkPolicy,
-        @CustomType.Parameter("fleetWorkspaceName") String fleetWorkspaceName,
-        @CustomType.Parameter("gkeConfig") GetClusterGkeConfig gkeConfig,
-        @CustomType.Parameter("gkeConfigV2") GetClusterGkeConfigV2 gkeConfigV2,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("k3sConfig") GetClusterK3sConfig k3sConfig,
-        @CustomType.Parameter("kubeConfig") String kubeConfig,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("okeConfig") GetClusterOkeConfig okeConfig,
-        @CustomType.Parameter("rke2Config") GetClusterRke2Config rke2Config,
-        @CustomType.Parameter("rkeConfig") GetClusterRkeConfig rkeConfig,
-        @CustomType.Parameter("scheduledClusterScans") List<GetClusterScheduledClusterScan> scheduledClusterScans,
-        @CustomType.Parameter("systemProjectId") String systemProjectId) {
-        this.agentEnvVars = agentEnvVars;
-        this.aksConfig = aksConfig;
-        this.aksConfigV2 = aksConfigV2;
-        this.annotations = annotations;
-        this.caCert = caCert;
-        this.clusterAuthEndpoint = clusterAuthEndpoint;
-        this.clusterMonitoringInput = clusterMonitoringInput;
-        this.clusterRegistrationToken = clusterRegistrationToken;
-        this.clusterTemplateAnswers = clusterTemplateAnswers;
-        this.clusterTemplateId = clusterTemplateId;
-        this.clusterTemplateQuestions = clusterTemplateQuestions;
-        this.clusterTemplateRevisionId = clusterTemplateRevisionId;
-        this.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
-        this.defaultProjectId = defaultProjectId;
-        this.description = description;
-        this.driver = driver;
-        this.eksConfig = eksConfig;
-        this.eksConfigV2 = eksConfigV2;
-        this.enableClusterAlerting = enableClusterAlerting;
-        this.enableClusterMonitoring = enableClusterMonitoring;
-        this.enableNetworkPolicy = enableNetworkPolicy;
-        this.fleetWorkspaceName = fleetWorkspaceName;
-        this.gkeConfig = gkeConfig;
-        this.gkeConfigV2 = gkeConfigV2;
-        this.id = id;
-        this.k3sConfig = k3sConfig;
-        this.kubeConfig = kubeConfig;
-        this.labels = labels;
-        this.name = name;
-        this.okeConfig = okeConfig;
-        this.rke2Config = rke2Config;
-        this.rkeConfig = rkeConfig;
-        this.scheduledClusterScans = scheduledClusterScans;
-        this.systemProjectId = systemProjectId;
-    }
-
+    private GetClusterResult() {}
     /**
      * @return (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
      * 
@@ -494,7 +423,7 @@ public final class GetClusterResult {
     public static Builder builder(GetClusterResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> agentEnvVars;
         private GetClusterAksConfig aksConfig;
@@ -530,11 +459,7 @@ public final class GetClusterResult {
         private GetClusterRkeConfig rkeConfig;
         private List<GetClusterScheduledClusterScan> scheduledClusterScans;
         private String systemProjectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agentEnvVars = defaults.agentEnvVars;
@@ -573,6 +498,7 @@ public final class GetClusterResult {
     	      this.systemProjectId = defaults.systemProjectId;
         }
 
+        @CustomType.Setter
         public Builder agentEnvVars(List<String> agentEnvVars) {
             this.agentEnvVars = Objects.requireNonNull(agentEnvVars);
             return this;
@@ -580,42 +506,52 @@ public final class GetClusterResult {
         public Builder agentEnvVars(String... agentEnvVars) {
             return agentEnvVars(List.of(agentEnvVars));
         }
+        @CustomType.Setter
         public Builder aksConfig(GetClusterAksConfig aksConfig) {
             this.aksConfig = Objects.requireNonNull(aksConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder aksConfigV2(GetClusterAksConfigV2 aksConfigV2) {
             this.aksConfigV2 = Objects.requireNonNull(aksConfigV2);
             return this;
         }
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder caCert(String caCert) {
             this.caCert = Objects.requireNonNull(caCert);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterAuthEndpoint(GetClusterClusterAuthEndpoint clusterAuthEndpoint) {
             this.clusterAuthEndpoint = Objects.requireNonNull(clusterAuthEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterMonitoringInput(GetClusterClusterMonitoringInput clusterMonitoringInput) {
             this.clusterMonitoringInput = Objects.requireNonNull(clusterMonitoringInput);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterRegistrationToken(GetClusterClusterRegistrationToken clusterRegistrationToken) {
             this.clusterRegistrationToken = Objects.requireNonNull(clusterRegistrationToken);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterTemplateAnswers(GetClusterClusterTemplateAnswers clusterTemplateAnswers) {
             this.clusterTemplateAnswers = Objects.requireNonNull(clusterTemplateAnswers);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterTemplateId(String clusterTemplateId) {
             this.clusterTemplateId = Objects.requireNonNull(clusterTemplateId);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterTemplateQuestions(List<GetClusterClusterTemplateQuestion> clusterTemplateQuestions) {
             this.clusterTemplateQuestions = Objects.requireNonNull(clusterTemplateQuestions);
             return this;
@@ -623,90 +559,112 @@ public final class GetClusterResult {
         public Builder clusterTemplateQuestions(GetClusterClusterTemplateQuestion... clusterTemplateQuestions) {
             return clusterTemplateQuestions(List.of(clusterTemplateQuestions));
         }
+        @CustomType.Setter
         public Builder clusterTemplateRevisionId(String clusterTemplateRevisionId) {
             this.clusterTemplateRevisionId = Objects.requireNonNull(clusterTemplateRevisionId);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultPodSecurityPolicyTemplateId(String defaultPodSecurityPolicyTemplateId) {
             this.defaultPodSecurityPolicyTemplateId = Objects.requireNonNull(defaultPodSecurityPolicyTemplateId);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultProjectId(String defaultProjectId) {
             this.defaultProjectId = Objects.requireNonNull(defaultProjectId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder driver(String driver) {
             this.driver = Objects.requireNonNull(driver);
             return this;
         }
+        @CustomType.Setter
         public Builder eksConfig(GetClusterEksConfig eksConfig) {
             this.eksConfig = Objects.requireNonNull(eksConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder eksConfigV2(GetClusterEksConfigV2 eksConfigV2) {
             this.eksConfigV2 = Objects.requireNonNull(eksConfigV2);
             return this;
         }
+        @CustomType.Setter
         public Builder enableClusterAlerting(Boolean enableClusterAlerting) {
             this.enableClusterAlerting = Objects.requireNonNull(enableClusterAlerting);
             return this;
         }
+        @CustomType.Setter
         public Builder enableClusterMonitoring(Boolean enableClusterMonitoring) {
             this.enableClusterMonitoring = Objects.requireNonNull(enableClusterMonitoring);
             return this;
         }
+        @CustomType.Setter
         public Builder enableNetworkPolicy(Boolean enableNetworkPolicy) {
             this.enableNetworkPolicy = Objects.requireNonNull(enableNetworkPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder fleetWorkspaceName(String fleetWorkspaceName) {
             this.fleetWorkspaceName = Objects.requireNonNull(fleetWorkspaceName);
             return this;
         }
+        @CustomType.Setter
         public Builder gkeConfig(GetClusterGkeConfig gkeConfig) {
             this.gkeConfig = Objects.requireNonNull(gkeConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder gkeConfigV2(GetClusterGkeConfigV2 gkeConfigV2) {
             this.gkeConfigV2 = Objects.requireNonNull(gkeConfigV2);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder k3sConfig(GetClusterK3sConfig k3sConfig) {
             this.k3sConfig = Objects.requireNonNull(k3sConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder kubeConfig(String kubeConfig) {
             this.kubeConfig = Objects.requireNonNull(kubeConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder okeConfig(GetClusterOkeConfig okeConfig) {
             this.okeConfig = Objects.requireNonNull(okeConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder rke2Config(GetClusterRke2Config rke2Config) {
             this.rke2Config = Objects.requireNonNull(rke2Config);
             return this;
         }
+        @CustomType.Setter
         public Builder rkeConfig(GetClusterRkeConfig rkeConfig) {
             this.rkeConfig = Objects.requireNonNull(rkeConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduledClusterScans(List<GetClusterScheduledClusterScan> scheduledClusterScans) {
             this.scheduledClusterScans = Objects.requireNonNull(scheduledClusterScans);
             return this;
@@ -714,11 +672,48 @@ public final class GetClusterResult {
         public Builder scheduledClusterScans(GetClusterScheduledClusterScan... scheduledClusterScans) {
             return scheduledClusterScans(List.of(scheduledClusterScans));
         }
+        @CustomType.Setter
         public Builder systemProjectId(String systemProjectId) {
             this.systemProjectId = Objects.requireNonNull(systemProjectId);
             return this;
-        }        public GetClusterResult build() {
-            return new GetClusterResult(agentEnvVars, aksConfig, aksConfigV2, annotations, caCert, clusterAuthEndpoint, clusterMonitoringInput, clusterRegistrationToken, clusterTemplateAnswers, clusterTemplateId, clusterTemplateQuestions, clusterTemplateRevisionId, defaultPodSecurityPolicyTemplateId, defaultProjectId, description, driver, eksConfig, eksConfigV2, enableClusterAlerting, enableClusterMonitoring, enableNetworkPolicy, fleetWorkspaceName, gkeConfig, gkeConfigV2, id, k3sConfig, kubeConfig, labels, name, okeConfig, rke2Config, rkeConfig, scheduledClusterScans, systemProjectId);
+        }
+        public GetClusterResult build() {
+            final var o = new GetClusterResult();
+            o.agentEnvVars = agentEnvVars;
+            o.aksConfig = aksConfig;
+            o.aksConfigV2 = aksConfigV2;
+            o.annotations = annotations;
+            o.caCert = caCert;
+            o.clusterAuthEndpoint = clusterAuthEndpoint;
+            o.clusterMonitoringInput = clusterMonitoringInput;
+            o.clusterRegistrationToken = clusterRegistrationToken;
+            o.clusterTemplateAnswers = clusterTemplateAnswers;
+            o.clusterTemplateId = clusterTemplateId;
+            o.clusterTemplateQuestions = clusterTemplateQuestions;
+            o.clusterTemplateRevisionId = clusterTemplateRevisionId;
+            o.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
+            o.defaultProjectId = defaultProjectId;
+            o.description = description;
+            o.driver = driver;
+            o.eksConfig = eksConfig;
+            o.eksConfigV2 = eksConfigV2;
+            o.enableClusterAlerting = enableClusterAlerting;
+            o.enableClusterMonitoring = enableClusterMonitoring;
+            o.enableNetworkPolicy = enableNetworkPolicy;
+            o.fleetWorkspaceName = fleetWorkspaceName;
+            o.gkeConfig = gkeConfig;
+            o.gkeConfigV2 = gkeConfigV2;
+            o.id = id;
+            o.k3sConfig = k3sConfig;
+            o.kubeConfig = kubeConfig;
+            o.labels = labels;
+            o.name = name;
+            o.okeConfig = okeConfig;
+            o.rke2Config = rke2Config;
+            o.rkeConfig = rkeConfig;
+            o.scheduledClusterScans = scheduledClusterScans;
+            o.systemProjectId = systemProjectId;
+            return o;
         }
     }
 }

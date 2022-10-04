@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigRegistries {
-    private final @Nullable List<GetClusterV2RkeConfigRegistriesConfig> configs;
-    private final @Nullable List<GetClusterV2RkeConfigRegistriesMirror> mirrors;
+    private @Nullable List<GetClusterV2RkeConfigRegistriesConfig> configs;
+    private @Nullable List<GetClusterV2RkeConfigRegistriesMirror> mirrors;
 
-    @CustomType.Constructor
-    private GetClusterV2RkeConfigRegistries(
-        @CustomType.Parameter("configs") @Nullable List<GetClusterV2RkeConfigRegistriesConfig> configs,
-        @CustomType.Parameter("mirrors") @Nullable List<GetClusterV2RkeConfigRegistriesMirror> mirrors) {
-        this.configs = configs;
-        this.mirrors = mirrors;
-    }
-
+    private GetClusterV2RkeConfigRegistries() {}
     public List<GetClusterV2RkeConfigRegistriesConfig> configs() {
         return this.configs == null ? List.of() : this.configs;
     }
@@ -37,21 +30,18 @@ public final class GetClusterV2RkeConfigRegistries {
     public static Builder builder(GetClusterV2RkeConfigRegistries defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetClusterV2RkeConfigRegistriesConfig> configs;
         private @Nullable List<GetClusterV2RkeConfigRegistriesMirror> mirrors;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2RkeConfigRegistries defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
     	      this.mirrors = defaults.mirrors;
         }
 
+        @CustomType.Setter
         public Builder configs(@Nullable List<GetClusterV2RkeConfigRegistriesConfig> configs) {
             this.configs = configs;
             return this;
@@ -59,14 +49,19 @@ public final class GetClusterV2RkeConfigRegistries {
         public Builder configs(GetClusterV2RkeConfigRegistriesConfig... configs) {
             return configs(List.of(configs));
         }
+        @CustomType.Setter
         public Builder mirrors(@Nullable List<GetClusterV2RkeConfigRegistriesMirror> mirrors) {
             this.mirrors = mirrors;
             return this;
         }
         public Builder mirrors(GetClusterV2RkeConfigRegistriesMirror... mirrors) {
             return mirrors(List.of(mirrors));
-        }        public GetClusterV2RkeConfigRegistries build() {
-            return new GetClusterV2RkeConfigRegistries(configs, mirrors);
+        }
+        public GetClusterV2RkeConfigRegistries build() {
+            final var o = new GetClusterV2RkeConfigRegistries();
+            o.configs = configs;
+            o.mirrors = mirrors;
+            return o;
         }
     }
 }

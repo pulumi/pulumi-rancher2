@@ -11,20 +11,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMultiClusterAppAnswer {
-    private final String clusterId;
-    private final String projectId;
-    private final Map<String,Object> values;
+    private String clusterId;
+    private String projectId;
+    private Map<String,Object> values;
 
-    @CustomType.Constructor
-    private GetMultiClusterAppAnswer(
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("values") Map<String,Object> values) {
-        this.clusterId = clusterId;
-        this.projectId = projectId;
-        this.values = values;
-    }
-
+    private GetMultiClusterAppAnswer() {}
     public String clusterId() {
         return this.clusterId;
     }
@@ -42,16 +33,12 @@ public final class GetMultiClusterAppAnswer {
     public static Builder builder(GetMultiClusterAppAnswer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterId;
         private String projectId;
         private Map<String,Object> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMultiClusterAppAnswer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -59,19 +46,27 @@ public final class GetMultiClusterAppAnswer {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder values(Map<String,Object> values) {
             this.values = Objects.requireNonNull(values);
             return this;
-        }        public GetMultiClusterAppAnswer build() {
-            return new GetMultiClusterAppAnswer(clusterId, projectId, values);
+        }
+        public GetMultiClusterAppAnswer build() {
+            final var o = new GetMultiClusterAppAnswer();
+            o.clusterId = clusterId;
+            o.projectId = projectId;
+            o.values = values;
+            return o;
         }
     }
 }

@@ -13,26 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigDnsLinearAutoscalerParams {
-    private final @Nullable Double coresPerReplica;
-    private final @Nullable Integer max;
-    private final @Nullable Integer min;
-    private final @Nullable Double nodesPerReplica;
-    private final @Nullable Boolean preventSinglePointFailure;
+    private @Nullable Double coresPerReplica;
+    private @Nullable Integer max;
+    private @Nullable Integer min;
+    private @Nullable Double nodesPerReplica;
+    private @Nullable Boolean preventSinglePointFailure;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigDnsLinearAutoscalerParams(
-        @CustomType.Parameter("coresPerReplica") @Nullable Double coresPerReplica,
-        @CustomType.Parameter("max") @Nullable Integer max,
-        @CustomType.Parameter("min") @Nullable Integer min,
-        @CustomType.Parameter("nodesPerReplica") @Nullable Double nodesPerReplica,
-        @CustomType.Parameter("preventSinglePointFailure") @Nullable Boolean preventSinglePointFailure) {
-        this.coresPerReplica = coresPerReplica;
-        this.max = max;
-        this.min = min;
-        this.nodesPerReplica = nodesPerReplica;
-        this.preventSinglePointFailure = preventSinglePointFailure;
-    }
-
+    private GetClusterRkeConfigDnsLinearAutoscalerParams() {}
     public Optional<Double> coresPerReplica() {
         return Optional.ofNullable(this.coresPerReplica);
     }
@@ -56,18 +43,14 @@ public final class GetClusterRkeConfigDnsLinearAutoscalerParams {
     public static Builder builder(GetClusterRkeConfigDnsLinearAutoscalerParams defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Double coresPerReplica;
         private @Nullable Integer max;
         private @Nullable Integer min;
         private @Nullable Double nodesPerReplica;
         private @Nullable Boolean preventSinglePointFailure;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigDnsLinearAutoscalerParams defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.coresPerReplica = defaults.coresPerReplica;
@@ -77,27 +60,39 @@ public final class GetClusterRkeConfigDnsLinearAutoscalerParams {
     	      this.preventSinglePointFailure = defaults.preventSinglePointFailure;
         }
 
+        @CustomType.Setter
         public Builder coresPerReplica(@Nullable Double coresPerReplica) {
             this.coresPerReplica = coresPerReplica;
             return this;
         }
+        @CustomType.Setter
         public Builder max(@Nullable Integer max) {
             this.max = max;
             return this;
         }
+        @CustomType.Setter
         public Builder min(@Nullable Integer min) {
             this.min = min;
             return this;
         }
+        @CustomType.Setter
         public Builder nodesPerReplica(@Nullable Double nodesPerReplica) {
             this.nodesPerReplica = nodesPerReplica;
             return this;
         }
+        @CustomType.Setter
         public Builder preventSinglePointFailure(@Nullable Boolean preventSinglePointFailure) {
             this.preventSinglePointFailure = preventSinglePointFailure;
             return this;
-        }        public GetClusterRkeConfigDnsLinearAutoscalerParams build() {
-            return new GetClusterRkeConfigDnsLinearAutoscalerParams(coresPerReplica, max, min, nodesPerReplica, preventSinglePointFailure);
+        }
+        public GetClusterRkeConfigDnsLinearAutoscalerParams build() {
+            final var o = new GetClusterRkeConfigDnsLinearAutoscalerParams();
+            o.coresPerReplica = coresPerReplica;
+            o.max = max;
+            o.min = min;
+            o.nodesPerReplica = nodesPerReplica;
+            o.preventSinglePointFailure = preventSinglePointFailure;
+            return o;
         }
     }
 }

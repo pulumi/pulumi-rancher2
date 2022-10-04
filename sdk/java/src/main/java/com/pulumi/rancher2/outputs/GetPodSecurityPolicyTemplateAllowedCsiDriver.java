@@ -13,13 +13,9 @@ public final class GetPodSecurityPolicyTemplateAllowedCsiDriver {
      * @return The name of the PodSecurityPolicyTemplate (string)
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private GetPodSecurityPolicyTemplateAllowedCsiDriver(@CustomType.Parameter("name") String name) {
-        this.name = name;
-    }
-
+    private GetPodSecurityPolicyTemplateAllowedCsiDriver() {}
     /**
      * @return The name of the PodSecurityPolicyTemplate (string)
      * 
@@ -35,24 +31,24 @@ public final class GetPodSecurityPolicyTemplateAllowedCsiDriver {
     public static Builder builder(GetPodSecurityPolicyTemplateAllowedCsiDriver defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPodSecurityPolicyTemplateAllowedCsiDriver defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetPodSecurityPolicyTemplateAllowedCsiDriver build() {
-            return new GetPodSecurityPolicyTemplateAllowedCsiDriver(name);
+        }
+        public GetPodSecurityPolicyTemplateAllowedCsiDriver build() {
+            final var o = new GetPodSecurityPolicyTemplateAllowedCsiDriver();
+            o.name = name;
+            return o;
         }
     }
 }

@@ -452,7 +452,7 @@ func (i *ActiveDirectory) ToActiveDirectoryOutputWithContext(ctx context.Context
 // ActiveDirectoryArrayInput is an input type that accepts ActiveDirectoryArray and ActiveDirectoryArrayOutput values.
 // You can construct a concrete instance of `ActiveDirectoryArrayInput` via:
 //
-//          ActiveDirectoryArray{ ActiveDirectoryArgs{...} }
+//	ActiveDirectoryArray{ ActiveDirectoryArgs{...} }
 type ActiveDirectoryArrayInput interface {
 	pulumi.Input
 
@@ -477,7 +477,7 @@ func (i ActiveDirectoryArray) ToActiveDirectoryArrayOutputWithContext(ctx contex
 // ActiveDirectoryMapInput is an input type that accepts ActiveDirectoryMap and ActiveDirectoryMapOutput values.
 // You can construct a concrete instance of `ActiveDirectoryMapInput` via:
 //
-//          ActiveDirectoryMap{ "key": ActiveDirectoryArgs{...} }
+//	ActiveDirectoryMap{ "key": ActiveDirectoryArgs{...} }
 type ActiveDirectoryMapInput interface {
 	pulumi.Input
 

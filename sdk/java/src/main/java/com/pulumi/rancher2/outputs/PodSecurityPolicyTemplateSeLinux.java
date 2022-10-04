@@ -16,21 +16,14 @@ public final class PodSecurityPolicyTemplateSeLinux {
      * @return (string)
      * 
      */
-    private final String rule;
+    private String rule;
     /**
      * @return (list maxitems:1)
      * 
      */
-    private final @Nullable PodSecurityPolicyTemplateSeLinuxSeLinuxOption seLinuxOption;
+    private @Nullable PodSecurityPolicyTemplateSeLinuxSeLinuxOption seLinuxOption;
 
-    @CustomType.Constructor
-    private PodSecurityPolicyTemplateSeLinux(
-        @CustomType.Parameter("rule") String rule,
-        @CustomType.Parameter("seLinuxOption") @Nullable PodSecurityPolicyTemplateSeLinuxSeLinuxOption seLinuxOption) {
-        this.rule = rule;
-        this.seLinuxOption = seLinuxOption;
-    }
-
+    private PodSecurityPolicyTemplateSeLinux() {}
     /**
      * @return (string)
      * 
@@ -53,30 +46,32 @@ public final class PodSecurityPolicyTemplateSeLinux {
     public static Builder builder(PodSecurityPolicyTemplateSeLinux defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String rule;
         private @Nullable PodSecurityPolicyTemplateSeLinuxSeLinuxOption seLinuxOption;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PodSecurityPolicyTemplateSeLinux defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rule = defaults.rule;
     	      this.seLinuxOption = defaults.seLinuxOption;
         }
 
+        @CustomType.Setter
         public Builder rule(String rule) {
             this.rule = Objects.requireNonNull(rule);
             return this;
         }
+        @CustomType.Setter
         public Builder seLinuxOption(@Nullable PodSecurityPolicyTemplateSeLinuxSeLinuxOption seLinuxOption) {
             this.seLinuxOption = seLinuxOption;
             return this;
-        }        public PodSecurityPolicyTemplateSeLinux build() {
-            return new PodSecurityPolicyTemplateSeLinux(rule, seLinuxOption);
+        }
+        public PodSecurityPolicyTemplateSeLinux build() {
+            final var o = new PodSecurityPolicyTemplateSeLinux();
+            o.rule = rule;
+            o.seLinuxOption = seLinuxOption;
+            return o;
         }
     }
 }

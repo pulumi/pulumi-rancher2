@@ -15,21 +15,14 @@ public final class NotifierMsteamsConfig {
      * @return Wechat proxy url (string)
      * 
      */
-    private final @Nullable String proxyUrl;
+    private @Nullable String proxyUrl;
     /**
      * @return Webhook url (string)
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private NotifierMsteamsConfig(
-        @CustomType.Parameter("proxyUrl") @Nullable String proxyUrl,
-        @CustomType.Parameter("url") String url) {
-        this.proxyUrl = proxyUrl;
-        this.url = url;
-    }
-
+    private NotifierMsteamsConfig() {}
     /**
      * @return Wechat proxy url (string)
      * 
@@ -52,30 +45,32 @@ public final class NotifierMsteamsConfig {
     public static Builder builder(NotifierMsteamsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String proxyUrl;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NotifierMsteamsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.proxyUrl = defaults.proxyUrl;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
             this.proxyUrl = proxyUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public NotifierMsteamsConfig build() {
-            return new NotifierMsteamsConfig(proxyUrl, url);
+        }
+        public NotifierMsteamsConfig build() {
+            final var o = new NotifierMsteamsConfig();
+            o.proxyUrl = proxyUrl;
+            o.url = url;
+            return o;
         }
     }
 }

@@ -13,13 +13,9 @@ public final class CloudCredentialGoogleCredentialConfig {
      * @return Google auth encoded json (string)
      * 
      */
-    private final String authEncodedJson;
+    private String authEncodedJson;
 
-    @CustomType.Constructor
-    private CloudCredentialGoogleCredentialConfig(@CustomType.Parameter("authEncodedJson") String authEncodedJson) {
-        this.authEncodedJson = authEncodedJson;
-    }
-
+    private CloudCredentialGoogleCredentialConfig() {}
     /**
      * @return Google auth encoded json (string)
      * 
@@ -35,24 +31,24 @@ public final class CloudCredentialGoogleCredentialConfig {
     public static Builder builder(CloudCredentialGoogleCredentialConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String authEncodedJson;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudCredentialGoogleCredentialConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authEncodedJson = defaults.authEncodedJson;
         }
 
+        @CustomType.Setter
         public Builder authEncodedJson(String authEncodedJson) {
             this.authEncodedJson = Objects.requireNonNull(authEncodedJson);
             return this;
-        }        public CloudCredentialGoogleCredentialConfig build() {
-            return new CloudCredentialGoogleCredentialConfig(authEncodedJson);
+        }
+        public CloudCredentialGoogleCredentialConfig build() {
+            final var o = new CloudCredentialGoogleCredentialConfig();
+            o.authEncodedJson = authEncodedJson;
+            return o;
         }
     }
 }

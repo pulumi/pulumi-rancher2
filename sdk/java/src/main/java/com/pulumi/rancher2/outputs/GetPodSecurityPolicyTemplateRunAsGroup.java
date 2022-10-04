@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPodSecurityPolicyTemplateRunAsGroup {
-    private final @Nullable List<GetPodSecurityPolicyTemplateRunAsGroupRange> ranges;
-    private final String rule;
+    private @Nullable List<GetPodSecurityPolicyTemplateRunAsGroupRange> ranges;
+    private String rule;
 
-    @CustomType.Constructor
-    private GetPodSecurityPolicyTemplateRunAsGroup(
-        @CustomType.Parameter("ranges") @Nullable List<GetPodSecurityPolicyTemplateRunAsGroupRange> ranges,
-        @CustomType.Parameter("rule") String rule) {
-        this.ranges = ranges;
-        this.rule = rule;
-    }
-
+    private GetPodSecurityPolicyTemplateRunAsGroup() {}
     public List<GetPodSecurityPolicyTemplateRunAsGroupRange> ranges() {
         return this.ranges == null ? List.of() : this.ranges;
     }
@@ -37,21 +30,18 @@ public final class GetPodSecurityPolicyTemplateRunAsGroup {
     public static Builder builder(GetPodSecurityPolicyTemplateRunAsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetPodSecurityPolicyTemplateRunAsGroupRange> ranges;
         private String rule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPodSecurityPolicyTemplateRunAsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ranges = defaults.ranges;
     	      this.rule = defaults.rule;
         }
 
+        @CustomType.Setter
         public Builder ranges(@Nullable List<GetPodSecurityPolicyTemplateRunAsGroupRange> ranges) {
             this.ranges = ranges;
             return this;
@@ -59,11 +49,16 @@ public final class GetPodSecurityPolicyTemplateRunAsGroup {
         public Builder ranges(GetPodSecurityPolicyTemplateRunAsGroupRange... ranges) {
             return ranges(List.of(ranges));
         }
+        @CustomType.Setter
         public Builder rule(String rule) {
             this.rule = Objects.requireNonNull(rule);
             return this;
-        }        public GetPodSecurityPolicyTemplateRunAsGroup build() {
-            return new GetPodSecurityPolicyTemplateRunAsGroup(ranges, rule);
+        }
+        public GetPodSecurityPolicyTemplateRunAsGroup build() {
+            final var o = new GetPodSecurityPolicyTemplateRunAsGroup();
+            o.ranges = ranges;
+            o.rule = rule;
+            return o;
         }
     }
 }

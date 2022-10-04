@@ -18,98 +18,69 @@ public final class ClusterAksConfigV2NodePool {
      * @return The AKS node pool availability zones (list)
      * 
      */
-    private final @Nullable List<String> availabilityZones;
+    private @Nullable List<String> availabilityZones;
     /**
      * @return The AKS node pool count. Default: `1` (int)
      * 
      */
-    private final @Nullable Integer count;
+    private @Nullable Integer count;
     /**
      * @return Is AKS node pool auto scaling enabled? Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean enableAutoScaling;
+    private @Nullable Boolean enableAutoScaling;
     /**
      * @return The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
      * 
      */
-    private final @Nullable Integer maxCount;
+    private @Nullable Integer maxCount;
     /**
      * @return The AKS node pool max pods. Default: `110` (int)
      * 
      */
-    private final @Nullable Integer maxPods;
+    private @Nullable Integer maxPods;
     /**
      * @return The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
      * 
      */
-    private final @Nullable Integer minCount;
+    private @Nullable Integer minCount;
     /**
      * @return The AKS node group mode. Default: `System` (string)
      * 
      */
-    private final @Nullable String mode;
+    private @Nullable String mode;
     /**
      * @return Name of cluster registration token (string)
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The AKS node pool orchestrator version (string)
      * 
      */
-    private final @Nullable String orchestratorVersion;
+    private @Nullable String orchestratorVersion;
     /**
      * @return The AKS node pool os disk size gb. Default: `128` (int)
      * 
      */
-    private final @Nullable Integer osDiskSizeGb;
+    private @Nullable Integer osDiskSizeGb;
     /**
      * @return The AKS node pool os disk type. Default: `Managed` (string)
      * 
      */
-    private final @Nullable String osDiskType;
+    private @Nullable String osDiskType;
     /**
      * @return The AKS node pool os type. Default: `Linux` (string)
      * 
      */
-    private final @Nullable String osType;
+    private @Nullable String osType;
     /**
      * @return The AKS node pool orchestrator version (string)
      * 
      */
-    private final @Nullable String vmSize;
+    private @Nullable String vmSize;
 
-    @CustomType.Constructor
-    private ClusterAksConfigV2NodePool(
-        @CustomType.Parameter("availabilityZones") @Nullable List<String> availabilityZones,
-        @CustomType.Parameter("count") @Nullable Integer count,
-        @CustomType.Parameter("enableAutoScaling") @Nullable Boolean enableAutoScaling,
-        @CustomType.Parameter("maxCount") @Nullable Integer maxCount,
-        @CustomType.Parameter("maxPods") @Nullable Integer maxPods,
-        @CustomType.Parameter("minCount") @Nullable Integer minCount,
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("orchestratorVersion") @Nullable String orchestratorVersion,
-        @CustomType.Parameter("osDiskSizeGb") @Nullable Integer osDiskSizeGb,
-        @CustomType.Parameter("osDiskType") @Nullable String osDiskType,
-        @CustomType.Parameter("osType") @Nullable String osType,
-        @CustomType.Parameter("vmSize") @Nullable String vmSize) {
-        this.availabilityZones = availabilityZones;
-        this.count = count;
-        this.enableAutoScaling = enableAutoScaling;
-        this.maxCount = maxCount;
-        this.maxPods = maxPods;
-        this.minCount = minCount;
-        this.mode = mode;
-        this.name = name;
-        this.orchestratorVersion = orchestratorVersion;
-        this.osDiskSizeGb = osDiskSizeGb;
-        this.osDiskType = osDiskType;
-        this.osType = osType;
-        this.vmSize = vmSize;
-    }
-
+    private ClusterAksConfigV2NodePool() {}
     /**
      * @return The AKS node pool availability zones (list)
      * 
@@ -209,7 +180,7 @@ public final class ClusterAksConfigV2NodePool {
     public static Builder builder(ClusterAksConfigV2NodePool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> availabilityZones;
         private @Nullable Integer count;
@@ -224,11 +195,7 @@ public final class ClusterAksConfigV2NodePool {
         private @Nullable String osDiskType;
         private @Nullable String osType;
         private @Nullable String vmSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAksConfigV2NodePool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZones = defaults.availabilityZones;
@@ -246,6 +213,7 @@ public final class ClusterAksConfigV2NodePool {
     	      this.vmSize = defaults.vmSize;
         }
 
+        @CustomType.Setter
         public Builder availabilityZones(@Nullable List<String> availabilityZones) {
             this.availabilityZones = availabilityZones;
             return this;
@@ -253,55 +221,82 @@ public final class ClusterAksConfigV2NodePool {
         public Builder availabilityZones(String... availabilityZones) {
             return availabilityZones(List.of(availabilityZones));
         }
+        @CustomType.Setter
         public Builder count(@Nullable Integer count) {
             this.count = count;
             return this;
         }
+        @CustomType.Setter
         public Builder enableAutoScaling(@Nullable Boolean enableAutoScaling) {
             this.enableAutoScaling = enableAutoScaling;
             return this;
         }
+        @CustomType.Setter
         public Builder maxCount(@Nullable Integer maxCount) {
             this.maxCount = maxCount;
             return this;
         }
+        @CustomType.Setter
         public Builder maxPods(@Nullable Integer maxPods) {
             this.maxPods = maxPods;
             return this;
         }
+        @CustomType.Setter
         public Builder minCount(@Nullable Integer minCount) {
             this.minCount = minCount;
             return this;
         }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder orchestratorVersion(@Nullable String orchestratorVersion) {
             this.orchestratorVersion = orchestratorVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder osDiskSizeGb(@Nullable Integer osDiskSizeGb) {
             this.osDiskSizeGb = osDiskSizeGb;
             return this;
         }
+        @CustomType.Setter
         public Builder osDiskType(@Nullable String osDiskType) {
             this.osDiskType = osDiskType;
             return this;
         }
+        @CustomType.Setter
         public Builder osType(@Nullable String osType) {
             this.osType = osType;
             return this;
         }
+        @CustomType.Setter
         public Builder vmSize(@Nullable String vmSize) {
             this.vmSize = vmSize;
             return this;
-        }        public ClusterAksConfigV2NodePool build() {
-            return new ClusterAksConfigV2NodePool(availabilityZones, count, enableAutoScaling, maxCount, maxPods, minCount, mode, name, orchestratorVersion, osDiskSizeGb, osDiskType, osType, vmSize);
+        }
+        public ClusterAksConfigV2NodePool build() {
+            final var o = new ClusterAksConfigV2NodePool();
+            o.availabilityZones = availabilityZones;
+            o.count = count;
+            o.enableAutoScaling = enableAutoScaling;
+            o.maxCount = maxCount;
+            o.maxPods = maxPods;
+            o.minCount = minCount;
+            o.mode = mode;
+            o.name = name;
+            o.orchestratorVersion = orchestratorVersion;
+            o.osDiskSizeGb = osDiskSizeGb;
+            o.osDiskType = osDiskType;
+            o.osType = osType;
+            o.vmSize = vmSize;
+            return o;
         }
     }
 }

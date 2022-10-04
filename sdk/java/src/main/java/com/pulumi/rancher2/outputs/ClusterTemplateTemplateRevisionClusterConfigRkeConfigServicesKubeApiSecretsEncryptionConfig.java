@@ -12,21 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
-    private final @Nullable String customConfig;
+    private @Nullable String customConfig;
     /**
      * @return Enable cluster template revision. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig(
-        @CustomType.Parameter("customConfig") @Nullable String customConfig,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.customConfig = customConfig;
-        this.enabled = enabled;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig() {}
     public Optional<String> customConfig() {
         return Optional.ofNullable(this.customConfig);
     }
@@ -45,30 +38,32 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String customConfig;
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customConfig = defaults.customConfig;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder customConfig(@Nullable String customConfig) {
             this.customConfig = customConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig(customConfig, enabled);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig();
+            o.customConfig = customConfig;
+            o.enabled = enabled;
+            return o;
         }
     }
 }

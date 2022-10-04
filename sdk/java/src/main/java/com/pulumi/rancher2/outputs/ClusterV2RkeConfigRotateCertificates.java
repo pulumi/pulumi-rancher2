@@ -16,21 +16,14 @@ public final class ClusterV2RkeConfigRotateCertificates {
      * @return ETCD snapshot desired generation (int)
      * 
      */
-    private final Integer generation;
+    private Integer generation;
     /**
      * @return Service certificates to rotate with this generation (string)
      * 
      */
-    private final @Nullable List<String> services;
+    private @Nullable List<String> services;
 
-    @CustomType.Constructor
-    private ClusterV2RkeConfigRotateCertificates(
-        @CustomType.Parameter("generation") Integer generation,
-        @CustomType.Parameter("services") @Nullable List<String> services) {
-        this.generation = generation;
-        this.services = services;
-    }
-
+    private ClusterV2RkeConfigRotateCertificates() {}
     /**
      * @return ETCD snapshot desired generation (int)
      * 
@@ -53,33 +46,35 @@ public final class ClusterV2RkeConfigRotateCertificates {
     public static Builder builder(ClusterV2RkeConfigRotateCertificates defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer generation;
         private @Nullable List<String> services;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterV2RkeConfigRotateCertificates defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.generation = defaults.generation;
     	      this.services = defaults.services;
         }
 
+        @CustomType.Setter
         public Builder generation(Integer generation) {
             this.generation = Objects.requireNonNull(generation);
             return this;
         }
+        @CustomType.Setter
         public Builder services(@Nullable List<String> services) {
             this.services = services;
             return this;
         }
         public Builder services(String... services) {
             return services(List.of(services));
-        }        public ClusterV2RkeConfigRotateCertificates build() {
-            return new ClusterV2RkeConfigRotateCertificates(generation, services);
+        }
+        public ClusterV2RkeConfigRotateCertificates build() {
+            final var o = new ClusterV2RkeConfigRotateCertificates();
+            o.generation = generation;
+            o.services = services;
+            return o;
         }
     }
 }

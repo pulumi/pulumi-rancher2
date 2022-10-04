@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider {
-    private final @Nullable String cloudProvider;
+    private @Nullable String cloudProvider;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider(@CustomType.Parameter("cloudProvider") @Nullable String cloudProvider) {
-        this.cloudProvider = cloudProvider;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider() {}
     public Optional<String> cloudProvider() {
         return Optional.ofNullable(this.cloudProvider);
     }
@@ -29,24 +25,24 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkC
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cloudProvider;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudProvider = defaults.cloudProvider;
         }
 
+        @CustomType.Setter
         public Builder cloudProvider(@Nullable String cloudProvider) {
             this.cloudProvider = cloudProvider;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider(cloudProvider);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider();
+            o.cloudProvider = cloudProvider;
+            return o;
         }
     }
 }

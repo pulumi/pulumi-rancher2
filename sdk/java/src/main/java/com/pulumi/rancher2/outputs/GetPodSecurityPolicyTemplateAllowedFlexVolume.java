@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPodSecurityPolicyTemplateAllowedFlexVolume {
-    private final String driver;
+    private String driver;
 
-    @CustomType.Constructor
-    private GetPodSecurityPolicyTemplateAllowedFlexVolume(@CustomType.Parameter("driver") String driver) {
-        this.driver = driver;
-    }
-
+    private GetPodSecurityPolicyTemplateAllowedFlexVolume() {}
     public String driver() {
         return this.driver;
     }
@@ -27,24 +23,24 @@ public final class GetPodSecurityPolicyTemplateAllowedFlexVolume {
     public static Builder builder(GetPodSecurityPolicyTemplateAllowedFlexVolume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String driver;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPodSecurityPolicyTemplateAllowedFlexVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.driver = defaults.driver;
         }
 
+        @CustomType.Setter
         public Builder driver(String driver) {
             this.driver = Objects.requireNonNull(driver);
             return this;
-        }        public GetPodSecurityPolicyTemplateAllowedFlexVolume build() {
-            return new GetPodSecurityPolicyTemplateAllowedFlexVolume(driver);
+        }
+        public GetPodSecurityPolicyTemplateAllowedFlexVolume build() {
+            final var o = new GetPodSecurityPolicyTemplateAllowedFlexVolume();
+            o.driver = driver;
+            return o;
         }
     }
 }

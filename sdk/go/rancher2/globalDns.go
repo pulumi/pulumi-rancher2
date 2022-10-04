@@ -19,81 +19,89 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, "fooGlobalDnsProvider", &rancher2.GlobalDnsProviderArgs{
-// 			RootDomain: pulumi.String("example.com"),
-// 			Route53Config: &GlobalDnsProviderRoute53ConfigArgs{
-// 				AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
-// 				SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
-// 				ZoneType:  pulumi.String("private"),
-// 				Region:    pulumi.String("us-east-1"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewGlobalDns(ctx, "fooGlobalDns", &rancher2.GlobalDnsArgs{
-// 			Fqdn:       pulumi.String("foo.example.com"),
-// 			ProviderId: fooGlobalDnsProvider.ID(),
-// 			ProjectIds: pulumi.StringArray{
-// 				pulumi.String("project1"),
-// 				pulumi.String("project2"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, "fooGlobalDnsProvider", &rancher2.GlobalDnsProviderArgs{
+//				RootDomain: pulumi.String("example.com"),
+//				Route53Config: &GlobalDnsProviderRoute53ConfigArgs{
+//					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
+//					SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
+//					ZoneType:  pulumi.String("private"),
+//					Region:    pulumi.String("us-east-1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewGlobalDns(ctx, "fooGlobalDns", &rancher2.GlobalDnsArgs{
+//				Fqdn:       pulumi.String("foo.example.com"),
+//				ProviderId: fooGlobalDnsProvider.ID(),
+//				ProjectIds: pulumi.StringArray{
+//					pulumi.String("project1"),
+//					pulumi.String("project2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, "fooGlobalDnsProvider", &rancher2.GlobalDnsProviderArgs{
-// 			RootDomain: pulumi.String("example.com"),
-// 			Route53Config: &GlobalDnsProviderRoute53ConfigArgs{
-// 				AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
-// 				SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
-// 				ZoneType:  pulumi.String("private"),
-// 				Region:    pulumi.String("us-east-1"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewGlobalDns(ctx, "fooGlobalDns", &rancher2.GlobalDnsArgs{
-// 			Fqdn:              pulumi.String("foo.example.com"),
-// 			ProviderId:        fooGlobalDnsProvider.ID(),
-// 			MultiClusterAppId: pulumi.String("<MCA_ID>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, "fooGlobalDnsProvider", &rancher2.GlobalDnsProviderArgs{
+//				RootDomain: pulumi.String("example.com"),
+//				Route53Config: &GlobalDnsProviderRoute53ConfigArgs{
+//					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
+//					SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
+//					ZoneType:  pulumi.String("private"),
+//					Region:    pulumi.String("us-east-1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewGlobalDns(ctx, "fooGlobalDns", &rancher2.GlobalDnsArgs{
+//				Fqdn:              pulumi.String("foo.example.com"),
+//				ProviderId:        fooGlobalDnsProvider.ID(),
+//				MultiClusterAppId: pulumi.String("<MCA_ID>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Global DNS Entry can be imported using the Rancher Global DNS ID
+// # Global DNS Entry can be imported using the Rancher Global DNS ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/globalDns:GlobalDns foo <global_dns_id>
+//
+//	$ pulumi import rancher2:index/globalDns:GlobalDns foo <global_dns_id>
+//
 // ```
 type GlobalDns struct {
 	pulumi.CustomResourceState
@@ -257,7 +265,7 @@ func (i *GlobalDns) ToGlobalDnsOutputWithContext(ctx context.Context) GlobalDnsO
 // GlobalDnsArrayInput is an input type that accepts GlobalDnsArray and GlobalDnsArrayOutput values.
 // You can construct a concrete instance of `GlobalDnsArrayInput` via:
 //
-//          GlobalDnsArray{ GlobalDnsArgs{...} }
+//	GlobalDnsArray{ GlobalDnsArgs{...} }
 type GlobalDnsArrayInput interface {
 	pulumi.Input
 
@@ -282,7 +290,7 @@ func (i GlobalDnsArray) ToGlobalDnsArrayOutputWithContext(ctx context.Context) G
 // GlobalDnsMapInput is an input type that accepts GlobalDnsMap and GlobalDnsMapOutput values.
 // You can construct a concrete instance of `GlobalDnsMapInput` via:
 //
-//          GlobalDnsMap{ "key": GlobalDnsArgs{...} }
+//	GlobalDnsMap{ "key": GlobalDnsArgs{...} }
 type GlobalDnsMapInput interface {
 	pulumi.Input
 

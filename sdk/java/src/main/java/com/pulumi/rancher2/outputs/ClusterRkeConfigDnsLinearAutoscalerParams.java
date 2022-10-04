@@ -17,42 +17,29 @@ public final class ClusterRkeConfigDnsLinearAutoscalerParams {
      * @return number of replicas per cluster cores (float64)
      * 
      */
-    private final @Nullable Double coresPerReplica;
+    private @Nullable Double coresPerReplica;
     /**
      * @return maximum number of replicas (int64)
      * 
      */
-    private final @Nullable Integer max;
+    private @Nullable Integer max;
     /**
      * @return minimum number of replicas (int64)
      * 
      */
-    private final @Nullable Integer min;
+    private @Nullable Integer min;
     /**
      * @return number of replica per cluster nodes (float64)
      * 
      */
-    private final @Nullable Double nodesPerReplica;
+    private @Nullable Double nodesPerReplica;
     /**
      * @return prevent single point of failure
      * 
      */
-    private final @Nullable Boolean preventSinglePointFailure;
+    private @Nullable Boolean preventSinglePointFailure;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigDnsLinearAutoscalerParams(
-        @CustomType.Parameter("coresPerReplica") @Nullable Double coresPerReplica,
-        @CustomType.Parameter("max") @Nullable Integer max,
-        @CustomType.Parameter("min") @Nullable Integer min,
-        @CustomType.Parameter("nodesPerReplica") @Nullable Double nodesPerReplica,
-        @CustomType.Parameter("preventSinglePointFailure") @Nullable Boolean preventSinglePointFailure) {
-        this.coresPerReplica = coresPerReplica;
-        this.max = max;
-        this.min = min;
-        this.nodesPerReplica = nodesPerReplica;
-        this.preventSinglePointFailure = preventSinglePointFailure;
-    }
-
+    private ClusterRkeConfigDnsLinearAutoscalerParams() {}
     /**
      * @return number of replicas per cluster cores (float64)
      * 
@@ -96,18 +83,14 @@ public final class ClusterRkeConfigDnsLinearAutoscalerParams {
     public static Builder builder(ClusterRkeConfigDnsLinearAutoscalerParams defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Double coresPerReplica;
         private @Nullable Integer max;
         private @Nullable Integer min;
         private @Nullable Double nodesPerReplica;
         private @Nullable Boolean preventSinglePointFailure;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigDnsLinearAutoscalerParams defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.coresPerReplica = defaults.coresPerReplica;
@@ -117,27 +100,39 @@ public final class ClusterRkeConfigDnsLinearAutoscalerParams {
     	      this.preventSinglePointFailure = defaults.preventSinglePointFailure;
         }
 
+        @CustomType.Setter
         public Builder coresPerReplica(@Nullable Double coresPerReplica) {
             this.coresPerReplica = coresPerReplica;
             return this;
         }
+        @CustomType.Setter
         public Builder max(@Nullable Integer max) {
             this.max = max;
             return this;
         }
+        @CustomType.Setter
         public Builder min(@Nullable Integer min) {
             this.min = min;
             return this;
         }
+        @CustomType.Setter
         public Builder nodesPerReplica(@Nullable Double nodesPerReplica) {
             this.nodesPerReplica = nodesPerReplica;
             return this;
         }
+        @CustomType.Setter
         public Builder preventSinglePointFailure(@Nullable Boolean preventSinglePointFailure) {
             this.preventSinglePointFailure = preventSinglePointFailure;
             return this;
-        }        public ClusterRkeConfigDnsLinearAutoscalerParams build() {
-            return new ClusterRkeConfigDnsLinearAutoscalerParams(coresPerReplica, max, min, nodesPerReplica, preventSinglePointFailure);
+        }
+        public ClusterRkeConfigDnsLinearAutoscalerParams build() {
+            final var o = new ClusterRkeConfigDnsLinearAutoscalerParams();
+            o.coresPerReplica = coresPerReplica;
+            o.max = max;
+            o.min = min;
+            o.nodesPerReplica = nodesPerReplica;
+            o.preventSinglePointFailure = preventSinglePointFailure;
+            return o;
         }
     }
 }

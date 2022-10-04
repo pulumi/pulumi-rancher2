@@ -15,56 +15,39 @@ public final class EtcdBackupBackupConfigS3BackupConfig {
      * @return Access key for S3 service (string)
      * 
      */
-    private final @Nullable String accessKey;
+    private @Nullable String accessKey;
     /**
      * @return Bucket name for S3 service (string)
      * 
      */
-    private final String bucketName;
+    private String bucketName;
     /**
      * @return Base64 encoded custom CA for S3 service. Use filebase64(&lt;FILE&gt;) for encoding file. Available from Rancher v2.2.5 (string)
      * 
      */
-    private final @Nullable String customCa;
+    private @Nullable String customCa;
     /**
      * @return Endpoint for S3 service (string)
      * 
      */
-    private final String endpoint;
+    private String endpoint;
     /**
      * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
      * 
      */
-    private final @Nullable String folder;
+    private @Nullable String folder;
     /**
      * @return Region for S3 service (string)
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return Secret key for S3 service (string)
      * 
      */
-    private final @Nullable String secretKey;
+    private @Nullable String secretKey;
 
-    @CustomType.Constructor
-    private EtcdBackupBackupConfigS3BackupConfig(
-        @CustomType.Parameter("accessKey") @Nullable String accessKey,
-        @CustomType.Parameter("bucketName") String bucketName,
-        @CustomType.Parameter("customCa") @Nullable String customCa,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("folder") @Nullable String folder,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("secretKey") @Nullable String secretKey) {
-        this.accessKey = accessKey;
-        this.bucketName = bucketName;
-        this.customCa = customCa;
-        this.endpoint = endpoint;
-        this.folder = folder;
-        this.region = region;
-        this.secretKey = secretKey;
-    }
-
+    private EtcdBackupBackupConfigS3BackupConfig() {}
     /**
      * @return Access key for S3 service (string)
      * 
@@ -122,7 +105,7 @@ public final class EtcdBackupBackupConfigS3BackupConfig {
     public static Builder builder(EtcdBackupBackupConfigS3BackupConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessKey;
         private String bucketName;
@@ -131,11 +114,7 @@ public final class EtcdBackupBackupConfigS3BackupConfig {
         private @Nullable String folder;
         private @Nullable String region;
         private @Nullable String secretKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EtcdBackupBackupConfigS3BackupConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -147,35 +126,51 @@ public final class EtcdBackupBackupConfigS3BackupConfig {
     	      this.secretKey = defaults.secretKey;
         }
 
+        @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
             this.accessKey = accessKey;
             return this;
         }
+        @CustomType.Setter
         public Builder bucketName(String bucketName) {
             this.bucketName = Objects.requireNonNull(bucketName);
             return this;
         }
+        @CustomType.Setter
         public Builder customCa(@Nullable String customCa) {
             this.customCa = customCa;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder folder(@Nullable String folder) {
             this.folder = folder;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(@Nullable String secretKey) {
             this.secretKey = secretKey;
             return this;
-        }        public EtcdBackupBackupConfigS3BackupConfig build() {
-            return new EtcdBackupBackupConfigS3BackupConfig(accessKey, bucketName, customCa, endpoint, folder, region, secretKey);
+        }
+        public EtcdBackupBackupConfigS3BackupConfig build() {
+            final var o = new EtcdBackupBackupConfigS3BackupConfig();
+            o.accessKey = accessKey;
+            o.bucketName = bucketName;
+            o.customCa = customCa;
+            o.endpoint = endpoint;
+            o.folder = folder;
+            o.region = region;
+            o.secretKey = secretKey;
+            return o;
         }
     }
 }

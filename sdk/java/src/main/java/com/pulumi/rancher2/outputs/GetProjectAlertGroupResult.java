@@ -18,69 +18,46 @@ public final class GetProjectAlertGroupResult {
      * @return (Computed) The project alert group annotations (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) The project alert group description (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return (Computed) The project alert group interval seconds. Default: `180` (int)
      * 
      */
-    private final Integer groupIntervalSeconds;
+    private Integer groupIntervalSeconds;
     /**
      * @return (Computed) The project alert group wait seconds. Default: `180` (int)
      * 
      */
-    private final Integer groupWaitSeconds;
+    private Integer groupWaitSeconds;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) The project alert group labels (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
-    private final String projectId;
+    private Map<String,Object> labels;
+    private String name;
+    private String projectId;
     /**
      * @return (Computed) The project alert group recipients (list)
      * 
      */
-    private final List<GetProjectAlertGroupRecipient> recipients;
+    private List<GetProjectAlertGroupRecipient> recipients;
     /**
      * @return (Computed) The project alert group wait seconds. Default: `3600` (int)
      * 
      */
-    private final Integer repeatIntervalSeconds;
+    private Integer repeatIntervalSeconds;
 
-    @CustomType.Constructor
-    private GetProjectAlertGroupResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("groupIntervalSeconds") Integer groupIntervalSeconds,
-        @CustomType.Parameter("groupWaitSeconds") Integer groupWaitSeconds,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("recipients") List<GetProjectAlertGroupRecipient> recipients,
-        @CustomType.Parameter("repeatIntervalSeconds") Integer repeatIntervalSeconds) {
-        this.annotations = annotations;
-        this.description = description;
-        this.groupIntervalSeconds = groupIntervalSeconds;
-        this.groupWaitSeconds = groupWaitSeconds;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.projectId = projectId;
-        this.recipients = recipients;
-        this.repeatIntervalSeconds = repeatIntervalSeconds;
-    }
-
+    private GetProjectAlertGroupResult() {}
     /**
      * @return (Computed) The project alert group annotations (map)
      * 
@@ -151,7 +128,7 @@ public final class GetProjectAlertGroupResult {
     public static Builder builder(GetProjectAlertGroupResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String description;
@@ -163,11 +140,7 @@ public final class GetProjectAlertGroupResult {
         private String projectId;
         private List<GetProjectAlertGroupRecipient> recipients;
         private Integer repeatIntervalSeconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectAlertGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -182,38 +155,47 @@ public final class GetProjectAlertGroupResult {
     	      this.repeatIntervalSeconds = defaults.repeatIntervalSeconds;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder groupIntervalSeconds(Integer groupIntervalSeconds) {
             this.groupIntervalSeconds = Objects.requireNonNull(groupIntervalSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder groupWaitSeconds(Integer groupWaitSeconds) {
             this.groupWaitSeconds = Objects.requireNonNull(groupWaitSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder recipients(List<GetProjectAlertGroupRecipient> recipients) {
             this.recipients = Objects.requireNonNull(recipients);
             return this;
@@ -221,11 +203,24 @@ public final class GetProjectAlertGroupResult {
         public Builder recipients(GetProjectAlertGroupRecipient... recipients) {
             return recipients(List.of(recipients));
         }
+        @CustomType.Setter
         public Builder repeatIntervalSeconds(Integer repeatIntervalSeconds) {
             this.repeatIntervalSeconds = Objects.requireNonNull(repeatIntervalSeconds);
             return this;
-        }        public GetProjectAlertGroupResult build() {
-            return new GetProjectAlertGroupResult(annotations, description, groupIntervalSeconds, groupWaitSeconds, id, labels, name, projectId, recipients, repeatIntervalSeconds);
+        }
+        public GetProjectAlertGroupResult build() {
+            final var o = new GetProjectAlertGroupResult();
+            o.annotations = annotations;
+            o.description = description;
+            o.groupIntervalSeconds = groupIntervalSeconds;
+            o.groupWaitSeconds = groupWaitSeconds;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.projectId = projectId;
+            o.recipients = recipients;
+            o.repeatIntervalSeconds = repeatIntervalSeconds;
+            return o;
         }
     }
 }

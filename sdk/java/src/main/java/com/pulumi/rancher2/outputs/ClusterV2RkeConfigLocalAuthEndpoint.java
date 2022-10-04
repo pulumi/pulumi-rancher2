@@ -16,28 +16,19 @@ public final class ClusterV2RkeConfigLocalAuthEndpoint {
      * @return CA certs for the authorized cluster endpoint (string)
      * 
      */
-    private final @Nullable String caCerts;
+    private @Nullable String caCerts;
     /**
      * @return Drain options enabled? Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return FQDN for the authorized cluster endpoint (string)
      * 
      */
-    private final @Nullable String fqdn;
+    private @Nullable String fqdn;
 
-    @CustomType.Constructor
-    private ClusterV2RkeConfigLocalAuthEndpoint(
-        @CustomType.Parameter("caCerts") @Nullable String caCerts,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("fqdn") @Nullable String fqdn) {
-        this.caCerts = caCerts;
-        this.enabled = enabled;
-        this.fqdn = fqdn;
-    }
-
+    private ClusterV2RkeConfigLocalAuthEndpoint() {}
     /**
      * @return CA certs for the authorized cluster endpoint (string)
      * 
@@ -67,16 +58,12 @@ public final class ClusterV2RkeConfigLocalAuthEndpoint {
     public static Builder builder(ClusterV2RkeConfigLocalAuthEndpoint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String caCerts;
         private @Nullable Boolean enabled;
         private @Nullable String fqdn;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterV2RkeConfigLocalAuthEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caCerts = defaults.caCerts;
@@ -84,19 +71,27 @@ public final class ClusterV2RkeConfigLocalAuthEndpoint {
     	      this.fqdn = defaults.fqdn;
         }
 
+        @CustomType.Setter
         public Builder caCerts(@Nullable String caCerts) {
             this.caCerts = caCerts;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder fqdn(@Nullable String fqdn) {
             this.fqdn = fqdn;
             return this;
-        }        public ClusterV2RkeConfigLocalAuthEndpoint build() {
-            return new ClusterV2RkeConfigLocalAuthEndpoint(caCerts, enabled, fqdn);
+        }
+        public ClusterV2RkeConfigLocalAuthEndpoint build() {
+            final var o = new ClusterV2RkeConfigLocalAuthEndpoint();
+            o.caCerts = caCerts;
+            o.enabled = enabled;
+            o.fqdn = fqdn;
+            return o;
         }
     }
 }

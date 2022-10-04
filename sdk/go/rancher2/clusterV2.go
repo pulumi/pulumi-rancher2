@@ -20,24 +20,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-// 			DefaultClusterRoleForProjectMembers: pulumi.String("user"),
-// 			EnableNetworkPolicy:                 pulumi.Bool(false),
-// 			FleetNamespace:                      pulumi.String("fleet-ns"),
-// 			KubernetesVersion:                   pulumi.String("v1.21.4+k3s1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				DefaultClusterRoleForProjectMembers: pulumi.String("user"),
+//				EnableNetworkPolicy:                 pulumi.Bool(false),
+//				FleetNamespace:                      pulumi.String("fleet-ns"),
+//				KubernetesVersion:                   pulumi.String("v1.21.4+k3s1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // **Note** Once created, get the node command from `rancher2_cluster_v2.foo.cluster_registration_token`
@@ -47,7 +50,9 @@ import (
 // Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
 //
 // ```sh
-//  $ pulumi import rancher2:index/clusterV2:ClusterV2 foo &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
+//
+//	$ pulumi import rancher2:index/clusterV2:ClusterV2 foo &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
+//
 // ```
 type ClusterV2 struct {
 	pulumi.CustomResourceState
@@ -272,7 +277,7 @@ func (i *ClusterV2) ToClusterV2OutputWithContext(ctx context.Context) ClusterV2O
 // ClusterV2ArrayInput is an input type that accepts ClusterV2Array and ClusterV2ArrayOutput values.
 // You can construct a concrete instance of `ClusterV2ArrayInput` via:
 //
-//          ClusterV2Array{ ClusterV2Args{...} }
+//	ClusterV2Array{ ClusterV2Args{...} }
 type ClusterV2ArrayInput interface {
 	pulumi.Input
 
@@ -297,7 +302,7 @@ func (i ClusterV2Array) ToClusterV2ArrayOutputWithContext(ctx context.Context) C
 // ClusterV2MapInput is an input type that accepts ClusterV2Map and ClusterV2MapOutput values.
 // You can construct a concrete instance of `ClusterV2MapInput` via:
 //
-//          ClusterV2Map{ "key": ClusterV2Args{...} }
+//	ClusterV2Map{ "key": ClusterV2Args{...} }
 type ClusterV2MapInput interface {
 	pulumi.Input
 

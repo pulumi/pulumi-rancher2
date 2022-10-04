@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization {
-    private final @Nullable String mode;
-    private final @Nullable Map<String,Object> options;
+    private @Nullable String mode;
+    private @Nullable Map<String,Object> options;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization(
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("options") @Nullable Map<String,Object> options) {
-        this.mode = mode;
-        this.options = options;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization() {}
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
@@ -38,30 +31,32 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthoriz
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String mode;
         private @Nullable Map<String,Object> options;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mode = defaults.mode;
     	      this.options = defaults.options;
         }
 
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder options(@Nullable Map<String,Object> options) {
             this.options = options;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization(mode, options);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization();
+            o.mode = mode;
+            o.options = options;
+            return o;
         }
     }
 }

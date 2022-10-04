@@ -15,33 +15,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider {
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider awsCloudProvider;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider azureCloudProvider;
-    private final @Nullable String customCloudProvider;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider awsCloudProvider;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider azureCloudProvider;
+    private @Nullable String customCloudProvider;
     /**
      * @return The cluster template revision name (string)
      * 
      */
-    private final @Nullable String name;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider;
+    private @Nullable String name;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider(
-        @CustomType.Parameter("awsCloudProvider") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider awsCloudProvider,
-        @CustomType.Parameter("azureCloudProvider") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider azureCloudProvider,
-        @CustomType.Parameter("customCloudProvider") @Nullable String customCloudProvider,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("openstackCloudProvider") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider,
-        @CustomType.Parameter("vsphereCloudProvider") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider) {
-        this.awsCloudProvider = awsCloudProvider;
-        this.azureCloudProvider = azureCloudProvider;
-        this.customCloudProvider = customCloudProvider;
-        this.name = name;
-        this.openstackCloudProvider = openstackCloudProvider;
-        this.vsphereCloudProvider = vsphereCloudProvider;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider() {}
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider> awsCloudProvider() {
         return Optional.ofNullable(this.awsCloudProvider);
     }
@@ -72,7 +57,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider awsCloudProvider;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider azureCloudProvider;
@@ -80,11 +65,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         private @Nullable String name;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsCloudProvider = defaults.awsCloudProvider;
@@ -95,31 +76,45 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     	      this.vsphereCloudProvider = defaults.vsphereCloudProvider;
         }
 
+        @CustomType.Setter
         public Builder awsCloudProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider awsCloudProvider) {
             this.awsCloudProvider = awsCloudProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder azureCloudProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider azureCloudProvider) {
             this.azureCloudProvider = azureCloudProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder customCloudProvider(@Nullable String customCloudProvider) {
             this.customCloudProvider = customCloudProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder openstackCloudProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider) {
             this.openstackCloudProvider = openstackCloudProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder vsphereCloudProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider) {
             this.vsphereCloudProvider = vsphereCloudProvider;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider(awsCloudProvider, azureCloudProvider, customCloudProvider, name, openstackCloudProvider, vsphereCloudProvider);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider();
+            o.awsCloudProvider = awsCloudProvider;
+            o.azureCloudProvider = azureCloudProvider;
+            o.customCloudProvider = customCloudProvider;
+            o.name = name;
+            o.openstackCloudProvider = openstackCloudProvider;
+            o.vsphereCloudProvider = vsphereCloudProvider;
+            return o;
         }
     }
 }

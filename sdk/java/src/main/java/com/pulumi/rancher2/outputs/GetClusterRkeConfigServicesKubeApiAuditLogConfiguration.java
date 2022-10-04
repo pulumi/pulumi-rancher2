@@ -12,29 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigServicesKubeApiAuditLogConfiguration {
-    private final @Nullable String format;
-    private final @Nullable Integer maxAge;
-    private final @Nullable Integer maxBackup;
-    private final @Nullable Integer maxSize;
-    private final @Nullable String path;
-    private final String policy;
+    private @Nullable String format;
+    private @Nullable Integer maxAge;
+    private @Nullable Integer maxBackup;
+    private @Nullable Integer maxSize;
+    private @Nullable String path;
+    private String policy;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigServicesKubeApiAuditLogConfiguration(
-        @CustomType.Parameter("format") @Nullable String format,
-        @CustomType.Parameter("maxAge") @Nullable Integer maxAge,
-        @CustomType.Parameter("maxBackup") @Nullable Integer maxBackup,
-        @CustomType.Parameter("maxSize") @Nullable Integer maxSize,
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("policy") String policy) {
-        this.format = format;
-        this.maxAge = maxAge;
-        this.maxBackup = maxBackup;
-        this.maxSize = maxSize;
-        this.path = path;
-        this.policy = policy;
-    }
-
+    private GetClusterRkeConfigServicesKubeApiAuditLogConfiguration() {}
     public Optional<String> format() {
         return Optional.ofNullable(this.format);
     }
@@ -61,7 +46,7 @@ public final class GetClusterRkeConfigServicesKubeApiAuditLogConfiguration {
     public static Builder builder(GetClusterRkeConfigServicesKubeApiAuditLogConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String format;
         private @Nullable Integer maxAge;
@@ -69,11 +54,7 @@ public final class GetClusterRkeConfigServicesKubeApiAuditLogConfiguration {
         private @Nullable Integer maxSize;
         private @Nullable String path;
         private String policy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigServicesKubeApiAuditLogConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.format = defaults.format;
@@ -84,31 +65,45 @@ public final class GetClusterRkeConfigServicesKubeApiAuditLogConfiguration {
     	      this.policy = defaults.policy;
         }
 
+        @CustomType.Setter
         public Builder format(@Nullable String format) {
             this.format = format;
             return this;
         }
+        @CustomType.Setter
         public Builder maxAge(@Nullable Integer maxAge) {
             this.maxAge = maxAge;
             return this;
         }
+        @CustomType.Setter
         public Builder maxBackup(@Nullable Integer maxBackup) {
             this.maxBackup = maxBackup;
             return this;
         }
+        @CustomType.Setter
         public Builder maxSize(@Nullable Integer maxSize) {
             this.maxSize = maxSize;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder policy(String policy) {
             this.policy = Objects.requireNonNull(policy);
             return this;
-        }        public GetClusterRkeConfigServicesKubeApiAuditLogConfiguration build() {
-            return new GetClusterRkeConfigServicesKubeApiAuditLogConfiguration(format, maxAge, maxBackup, maxSize, path, policy);
+        }
+        public GetClusterRkeConfigServicesKubeApiAuditLogConfiguration build() {
+            final var o = new GetClusterRkeConfigServicesKubeApiAuditLogConfiguration();
+            o.format = format;
+            o.maxAge = maxAge;
+            o.maxBackup = maxBackup;
+            o.maxSize = maxSize;
+            o.path = path;
+            o.policy = policy;
+            return o;
         }
     }
 }

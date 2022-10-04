@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider {
-    private final String iface;
+    private String iface;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider(@CustomType.Parameter("iface") String iface) {
-        this.iface = iface;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider() {}
     public String iface() {
         return this.iface;
     }
@@ -27,24 +23,24 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String iface;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iface = defaults.iface;
         }
 
+        @CustomType.Setter
         public Builder iface(String iface) {
             this.iface = Objects.requireNonNull(iface);
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider(iface);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider();
+            o.iface = iface;
+            return o;
         }
     }
 }

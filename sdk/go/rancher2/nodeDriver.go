@@ -19,38 +19,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewNodeDriver(ctx, "foo", &rancher2.NodeDriverArgs{
-// 			Active:      pulumi.Bool(true),
-// 			Builtin:     pulumi.Bool(false),
-// 			Checksum:    pulumi.String("0x0"),
-// 			Description: pulumi.String("Foo description"),
-// 			ExternalId:  pulumi.String("foo_external"),
-// 			UiUrl:       pulumi.String("local://ui"),
-// 			Url:         pulumi.String("local://"),
-// 			WhitelistDomains: pulumi.StringArray{
-// 				pulumi.String("*.foo.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewNodeDriver(ctx, "foo", &rancher2.NodeDriverArgs{
+//				Active:      pulumi.Bool(true),
+//				Builtin:     pulumi.Bool(false),
+//				Checksum:    pulumi.String("0x0"),
+//				Description: pulumi.String("Foo description"),
+//				ExternalId:  pulumi.String("foo_external"),
+//				UiUrl:       pulumi.String("local://ui"),
+//				Url:         pulumi.String("local://"),
+//				WhitelistDomains: pulumi.StringArray{
+//					pulumi.String("*.foo.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Node Driver can be imported using the Rancher Node Driver ID
+// # Node Driver can be imported using the Rancher Node Driver ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
+//
+//	$ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
+//
 // ```
 type NodeDriver struct {
 	pulumi.CustomResourceState
@@ -247,7 +252,7 @@ func (i *NodeDriver) ToNodeDriverOutputWithContext(ctx context.Context) NodeDriv
 // NodeDriverArrayInput is an input type that accepts NodeDriverArray and NodeDriverArrayOutput values.
 // You can construct a concrete instance of `NodeDriverArrayInput` via:
 //
-//          NodeDriverArray{ NodeDriverArgs{...} }
+//	NodeDriverArray{ NodeDriverArgs{...} }
 type NodeDriverArrayInput interface {
 	pulumi.Input
 
@@ -272,7 +277,7 @@ func (i NodeDriverArray) ToNodeDriverArrayOutputWithContext(ctx context.Context)
 // NodeDriverMapInput is an input type that accepts NodeDriverMap and NodeDriverMapOutput values.
 // You can construct a concrete instance of `NodeDriverMapInput` via:
 //
-//          NodeDriverMap{ "key": NodeDriverArgs{...} }
+//	NodeDriverMap{ "key": NodeDriverArgs{...} }
 type NodeDriverMapInput interface {
 	pulumi.Input
 

@@ -13,13 +13,9 @@ public final class GetClusterScanScanConfig {
      * @return Cluster Cis Scan config (List maxitems:1)
      * 
      */
-    private final GetClusterScanScanConfigCisScanConfig cisScanConfig;
+    private GetClusterScanScanConfigCisScanConfig cisScanConfig;
 
-    @CustomType.Constructor
-    private GetClusterScanScanConfig(@CustomType.Parameter("cisScanConfig") GetClusterScanScanConfigCisScanConfig cisScanConfig) {
-        this.cisScanConfig = cisScanConfig;
-    }
-
+    private GetClusterScanScanConfig() {}
     /**
      * @return Cluster Cis Scan config (List maxitems:1)
      * 
@@ -35,24 +31,24 @@ public final class GetClusterScanScanConfig {
     public static Builder builder(GetClusterScanScanConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetClusterScanScanConfigCisScanConfig cisScanConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterScanScanConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cisScanConfig = defaults.cisScanConfig;
         }
 
+        @CustomType.Setter
         public Builder cisScanConfig(GetClusterScanScanConfigCisScanConfig cisScanConfig) {
             this.cisScanConfig = Objects.requireNonNull(cisScanConfig);
             return this;
-        }        public GetClusterScanScanConfig build() {
-            return new GetClusterScanScanConfig(cisScanConfig);
+        }
+        public GetClusterScanScanConfig build() {
+            final var o = new GetClusterScanScanConfig();
+            o.cisScanConfig = cisScanConfig;
+            return o;
         }
     }
 }

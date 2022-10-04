@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigServicesKubeApiAuditLog {
-    private final GetClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration;
-    private final @Nullable Boolean enabled;
+    private GetClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigServicesKubeApiAuditLog(
-        @CustomType.Parameter("configuration") GetClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.configuration = configuration;
-        this.enabled = enabled;
-    }
-
+    private GetClusterRkeConfigServicesKubeApiAuditLog() {}
     public GetClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration() {
         return this.configuration;
     }
@@ -37,30 +30,32 @@ public final class GetClusterRkeConfigServicesKubeApiAuditLog {
     public static Builder builder(GetClusterRkeConfigServicesKubeApiAuditLog defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration;
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigServicesKubeApiAuditLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configuration = defaults.configuration;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder configuration(GetClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration) {
             this.configuration = Objects.requireNonNull(configuration);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public GetClusterRkeConfigServicesKubeApiAuditLog build() {
-            return new GetClusterRkeConfigServicesKubeApiAuditLog(configuration, enabled);
+        }
+        public GetClusterRkeConfigServicesKubeApiAuditLog build() {
+            final var o = new GetClusterRkeConfigServicesKubeApiAuditLog();
+            o.configuration = configuration;
+            o.enabled = enabled;
+            return o;
         }
     }
 }

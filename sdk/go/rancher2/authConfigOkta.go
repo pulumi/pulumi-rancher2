@@ -21,28 +21,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewAuthConfigOkta(ctx, "okta", &rancher2.AuthConfigOktaArgs{
-// 			DisplayNameField:   pulumi.String("<DISPLAY_NAME_FIELD>"),
-// 			GroupsField:        pulumi.String("<GROUPS_FIELD>"),
-// 			IdpMetadataContent: pulumi.String("<IDP_METADATA_CONTENT>"),
-// 			RancherApiHost:     pulumi.String("https://<RANCHER_API_HOST>"),
-// 			SpCert:             pulumi.String("<SP_CERT>"),
-// 			SpKey:              pulumi.String("<SP_KEY>"),
-// 			UidField:           pulumi.String("<UID_FIELD>"),
-// 			UserNameField:      pulumi.String("<USER_NAME_FIELD>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewAuthConfigOkta(ctx, "okta", &rancher2.AuthConfigOktaArgs{
+//				DisplayNameField:   pulumi.String("<DISPLAY_NAME_FIELD>"),
+//				GroupsField:        pulumi.String("<GROUPS_FIELD>"),
+//				IdpMetadataContent: pulumi.String("<IDP_METADATA_CONTENT>"),
+//				RancherApiHost:     pulumi.String("https://<RANCHER_API_HOST>"),
+//				SpCert:             pulumi.String("<SP_CERT>"),
+//				SpKey:              pulumi.String("<SP_KEY>"),
+//				UidField:           pulumi.String("<UID_FIELD>"),
+//				UserNameField:      pulumi.String("<USER_NAME_FIELD>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type AuthConfigOkta struct {
 	pulumi.CustomResourceState
@@ -286,7 +289,7 @@ func (i *AuthConfigOkta) ToAuthConfigOktaOutputWithContext(ctx context.Context) 
 // AuthConfigOktaArrayInput is an input type that accepts AuthConfigOktaArray and AuthConfigOktaArrayOutput values.
 // You can construct a concrete instance of `AuthConfigOktaArrayInput` via:
 //
-//          AuthConfigOktaArray{ AuthConfigOktaArgs{...} }
+//	AuthConfigOktaArray{ AuthConfigOktaArgs{...} }
 type AuthConfigOktaArrayInput interface {
 	pulumi.Input
 
@@ -311,7 +314,7 @@ func (i AuthConfigOktaArray) ToAuthConfigOktaArrayOutputWithContext(ctx context.
 // AuthConfigOktaMapInput is an input type that accepts AuthConfigOktaMap and AuthConfigOktaMapOutput values.
 // You can construct a concrete instance of `AuthConfigOktaMapInput` via:
 //
-//          AuthConfigOktaMap{ "key": AuthConfigOktaArgs{...} }
+//	AuthConfigOktaMap{ "key": AuthConfigOktaArgs{...} }
 type AuthConfigOktaMapInput interface {
 	pulumi.Input
 

@@ -20,172 +20,172 @@ public final class ClusterAksConfig {
      * @return The secret of an Azure Active Directory server application (string)
      * 
      */
-    private final @Nullable String aadServerAppSecret;
+    private @Nullable String aadServerAppSecret;
     /**
      * @return The ID of an Azure Active Directory tenant (string)
      * 
      */
-    private final @Nullable String aadTenantId;
+    private @Nullable String aadTenantId;
     /**
      * @return The ID of an Azure Active Directory client application of type \&#34;Native\&#34;. This application is for user login via kubectl (string)
      * 
      */
-    private final @Nullable String addClientAppId;
+    private @Nullable String addClientAppId;
     /**
      * @return The ID of an Azure Active Directory server application of type \&#34;Web app/API\&#34;. This application represents the managed cluster&#39;s apiserver (Server application) (string)
      * 
      */
-    private final @Nullable String addServerAppId;
+    private @Nullable String addServerAppId;
     /**
      * @return The administrator username to use for Linux hosts. Default `azureuser` (string)
      * 
      */
-    private final @Nullable String adminUsername;
+    private @Nullable String adminUsername;
     /**
      * @return DNS prefix to be used to create the FQDN for the agent pool (string)
      * 
      */
-    private final String agentDnsPrefix;
+    private String agentDnsPrefix;
     /**
      * @return GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the \&#34;agent vm size\&#34; specified. Default `0` (int)
      * 
      */
-    private final @Nullable Integer agentOsDiskSize;
+    private @Nullable Integer agentOsDiskSize;
     /**
      * @return Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
      * 
      */
-    private final @Nullable String agentPoolName;
+    private @Nullable String agentPoolName;
     /**
      * @return Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
      * 
      */
-    private final @Nullable String agentStorageProfile;
+    private @Nullable String agentStorageProfile;
     /**
      * @return Size of machine in the agent pool. Default `Standard_D1_v2` (string)
      * 
      */
-    private final @Nullable String agentVmSize;
+    private @Nullable String agentVmSize;
     /**
      * @return The AKS auth base url (string)
      * 
      */
-    private final @Nullable String authBaseUrl;
+    private @Nullable String authBaseUrl;
     /**
      * @return The AKS base url (string)
      * 
      */
-    private final @Nullable String baseUrl;
+    private @Nullable String baseUrl;
     /**
      * @return Azure client ID to use (string)
      * 
      */
-    private final String clientId;
+    private String clientId;
     /**
      * @return Azure client secret associated with the \&#34;client id\&#34; (string)
      * 
      */
-    private final String clientSecret;
+    private String clientSecret;
     /**
      * @return The AKS node pool count. Default: `1` (int)
      * 
      */
-    private final @Nullable Integer count;
+    private @Nullable Integer count;
     /**
      * @return An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `10.0.0.10` (string)
      * 
      */
-    private final @Nullable String dnsServiceIp;
+    private @Nullable String dnsServiceIp;
     /**
      * @return A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `172.17.0.1/16` (string)
      * 
      */
-    private final @Nullable String dockerBridgeCidr;
+    private @Nullable String dockerBridgeCidr;
     /**
      * @return Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean enableHttpApplicationRouting;
+    private @Nullable Boolean enableHttpApplicationRouting;
     /**
      * @return Turn on Azure Log Analytics monitoring. Uses the Log Analytics \&#34;Default\&#34; workspace if it exists, else creates one. if using an existing workspace, specifies \&#34;log analytics workspace resource id\&#34;. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enableMonitoring;
+    private @Nullable Boolean enableMonitoring;
     /**
      * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
-    private final String kubernetesVersion;
+    private String kubernetesVersion;
     /**
      * @return The AKS load balancer sku (string)
      * 
      */
-    private final @Nullable String loadBalancerSku;
+    private @Nullable String loadBalancerSku;
     /**
      * @return Azure Kubernetes cluster location. Default `eastus` (string)
      * 
      */
-    private final @Nullable String location;
+    private @Nullable String location;
     /**
      * @return The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39; (string)
      * 
      */
-    private final @Nullable String logAnalyticsWorkspace;
+    private @Nullable String logAnalyticsWorkspace;
     /**
      * @return The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group (string)
      * 
      */
-    private final @Nullable String logAnalyticsWorkspaceResourceGroup;
+    private @Nullable String logAnalyticsWorkspaceResourceGroup;
     /**
      * @return DNS prefix to use the Kubernetes cluster control pane (string)
      * 
      */
-    private final String masterDnsPrefix;
+    private String masterDnsPrefix;
     /**
      * @return The AKS node pool max pods. Default: `110` (int)
      * 
      */
-    private final @Nullable Integer maxPods;
+    private @Nullable Integer maxPods;
     /**
      * @return The AKS network plugin. Required if `imported=false` (string)
      * 
      */
-    private final @Nullable String networkPlugin;
+    private @Nullable String networkPlugin;
     /**
      * @return The AKS network policy (string)
      * 
      */
-    private final @Nullable String networkPolicy;
+    private @Nullable String networkPolicy;
     /**
      * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
      * 
      */
-    private final @Nullable String podCidr;
+    private @Nullable String podCidr;
     /**
      * @return The AKS resource group (string)
      * 
      */
-    private final String resourceGroup;
+    private String resourceGroup;
     /**
      * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
      * 
      */
-    private final @Nullable String serviceCidr;
+    private @Nullable String serviceCidr;
     /**
      * @return Contents of the SSH public key used to authenticate with Linux hosts (string)
      * 
      */
-    private final String sshPublicKeyContents;
+    private String sshPublicKeyContents;
     /**
      * @return The AKS subnet (string)
      * 
      */
-    private final String subnet;
+    private String subnet;
     /**
      * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
      * 
      */
-    private final String subscriptionId;
+    private String subscriptionId;
     /**
      * @return Use `tags` argument instead as []string
      * 
@@ -194,110 +194,29 @@ public final class ClusterAksConfig {
      * 
      */
     @Deprecated /* Use tags argument instead as []string */
-    private final @Nullable Map<String,Object> tag;
+    private @Nullable Map<String,Object> tag;
     /**
      * @return The GKE node config tags (List)
      * 
      */
-    private final @Nullable List<String> tags;
+    private @Nullable List<String> tags;
     /**
      * @return Azure tenant ID to use (string)
      * 
      */
-    private final String tenantId;
+    private String tenantId;
     /**
      * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
      * 
      */
-    private final String virtualNetwork;
+    private String virtualNetwork;
     /**
      * @return The AKS virtual network resource group (string)
      * 
      */
-    private final String virtualNetworkResourceGroup;
+    private String virtualNetworkResourceGroup;
 
-    @CustomType.Constructor
-    private ClusterAksConfig(
-        @CustomType.Parameter("aadServerAppSecret") @Nullable String aadServerAppSecret,
-        @CustomType.Parameter("aadTenantId") @Nullable String aadTenantId,
-        @CustomType.Parameter("addClientAppId") @Nullable String addClientAppId,
-        @CustomType.Parameter("addServerAppId") @Nullable String addServerAppId,
-        @CustomType.Parameter("adminUsername") @Nullable String adminUsername,
-        @CustomType.Parameter("agentDnsPrefix") String agentDnsPrefix,
-        @CustomType.Parameter("agentOsDiskSize") @Nullable Integer agentOsDiskSize,
-        @CustomType.Parameter("agentPoolName") @Nullable String agentPoolName,
-        @CustomType.Parameter("agentStorageProfile") @Nullable String agentStorageProfile,
-        @CustomType.Parameter("agentVmSize") @Nullable String agentVmSize,
-        @CustomType.Parameter("authBaseUrl") @Nullable String authBaseUrl,
-        @CustomType.Parameter("baseUrl") @Nullable String baseUrl,
-        @CustomType.Parameter("clientId") String clientId,
-        @CustomType.Parameter("clientSecret") String clientSecret,
-        @CustomType.Parameter("count") @Nullable Integer count,
-        @CustomType.Parameter("dnsServiceIp") @Nullable String dnsServiceIp,
-        @CustomType.Parameter("dockerBridgeCidr") @Nullable String dockerBridgeCidr,
-        @CustomType.Parameter("enableHttpApplicationRouting") @Nullable Boolean enableHttpApplicationRouting,
-        @CustomType.Parameter("enableMonitoring") @Nullable Boolean enableMonitoring,
-        @CustomType.Parameter("kubernetesVersion") String kubernetesVersion,
-        @CustomType.Parameter("loadBalancerSku") @Nullable String loadBalancerSku,
-        @CustomType.Parameter("location") @Nullable String location,
-        @CustomType.Parameter("logAnalyticsWorkspace") @Nullable String logAnalyticsWorkspace,
-        @CustomType.Parameter("logAnalyticsWorkspaceResourceGroup") @Nullable String logAnalyticsWorkspaceResourceGroup,
-        @CustomType.Parameter("masterDnsPrefix") String masterDnsPrefix,
-        @CustomType.Parameter("maxPods") @Nullable Integer maxPods,
-        @CustomType.Parameter("networkPlugin") @Nullable String networkPlugin,
-        @CustomType.Parameter("networkPolicy") @Nullable String networkPolicy,
-        @CustomType.Parameter("podCidr") @Nullable String podCidr,
-        @CustomType.Parameter("resourceGroup") String resourceGroup,
-        @CustomType.Parameter("serviceCidr") @Nullable String serviceCidr,
-        @CustomType.Parameter("sshPublicKeyContents") String sshPublicKeyContents,
-        @CustomType.Parameter("subnet") String subnet,
-        @CustomType.Parameter("subscriptionId") String subscriptionId,
-        @CustomType.Parameter("tag") @Nullable Map<String,Object> tag,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("tenantId") String tenantId,
-        @CustomType.Parameter("virtualNetwork") String virtualNetwork,
-        @CustomType.Parameter("virtualNetworkResourceGroup") String virtualNetworkResourceGroup) {
-        this.aadServerAppSecret = aadServerAppSecret;
-        this.aadTenantId = aadTenantId;
-        this.addClientAppId = addClientAppId;
-        this.addServerAppId = addServerAppId;
-        this.adminUsername = adminUsername;
-        this.agentDnsPrefix = agentDnsPrefix;
-        this.agentOsDiskSize = agentOsDiskSize;
-        this.agentPoolName = agentPoolName;
-        this.agentStorageProfile = agentStorageProfile;
-        this.agentVmSize = agentVmSize;
-        this.authBaseUrl = authBaseUrl;
-        this.baseUrl = baseUrl;
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-        this.count = count;
-        this.dnsServiceIp = dnsServiceIp;
-        this.dockerBridgeCidr = dockerBridgeCidr;
-        this.enableHttpApplicationRouting = enableHttpApplicationRouting;
-        this.enableMonitoring = enableMonitoring;
-        this.kubernetesVersion = kubernetesVersion;
-        this.loadBalancerSku = loadBalancerSku;
-        this.location = location;
-        this.logAnalyticsWorkspace = logAnalyticsWorkspace;
-        this.logAnalyticsWorkspaceResourceGroup = logAnalyticsWorkspaceResourceGroup;
-        this.masterDnsPrefix = masterDnsPrefix;
-        this.maxPods = maxPods;
-        this.networkPlugin = networkPlugin;
-        this.networkPolicy = networkPolicy;
-        this.podCidr = podCidr;
-        this.resourceGroup = resourceGroup;
-        this.serviceCidr = serviceCidr;
-        this.sshPublicKeyContents = sshPublicKeyContents;
-        this.subnet = subnet;
-        this.subscriptionId = subscriptionId;
-        this.tag = tag;
-        this.tags = tags;
-        this.tenantId = tenantId;
-        this.virtualNetwork = virtualNetwork;
-        this.virtualNetworkResourceGroup = virtualNetworkResourceGroup;
-    }
-
+    private ClusterAksConfig() {}
     /**
      * @return The secret of an Azure Active Directory server application (string)
      * 
@@ -583,7 +502,7 @@ public final class ClusterAksConfig {
     public static Builder builder(ClusterAksConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String aadServerAppSecret;
         private @Nullable String aadTenantId;
@@ -624,11 +543,7 @@ public final class ClusterAksConfig {
         private String tenantId;
         private String virtualNetwork;
         private String virtualNetworkResourceGroup;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAksConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aadServerAppSecret = defaults.aadServerAppSecret;
@@ -672,146 +587,182 @@ public final class ClusterAksConfig {
     	      this.virtualNetworkResourceGroup = defaults.virtualNetworkResourceGroup;
         }
 
+        @CustomType.Setter
         public Builder aadServerAppSecret(@Nullable String aadServerAppSecret) {
             this.aadServerAppSecret = aadServerAppSecret;
             return this;
         }
+        @CustomType.Setter
         public Builder aadTenantId(@Nullable String aadTenantId) {
             this.aadTenantId = aadTenantId;
             return this;
         }
+        @CustomType.Setter
         public Builder addClientAppId(@Nullable String addClientAppId) {
             this.addClientAppId = addClientAppId;
             return this;
         }
+        @CustomType.Setter
         public Builder addServerAppId(@Nullable String addServerAppId) {
             this.addServerAppId = addServerAppId;
             return this;
         }
+        @CustomType.Setter
         public Builder adminUsername(@Nullable String adminUsername) {
             this.adminUsername = adminUsername;
             return this;
         }
+        @CustomType.Setter
         public Builder agentDnsPrefix(String agentDnsPrefix) {
             this.agentDnsPrefix = Objects.requireNonNull(agentDnsPrefix);
             return this;
         }
+        @CustomType.Setter
         public Builder agentOsDiskSize(@Nullable Integer agentOsDiskSize) {
             this.agentOsDiskSize = agentOsDiskSize;
             return this;
         }
+        @CustomType.Setter
         public Builder agentPoolName(@Nullable String agentPoolName) {
             this.agentPoolName = agentPoolName;
             return this;
         }
+        @CustomType.Setter
         public Builder agentStorageProfile(@Nullable String agentStorageProfile) {
             this.agentStorageProfile = agentStorageProfile;
             return this;
         }
+        @CustomType.Setter
         public Builder agentVmSize(@Nullable String agentVmSize) {
             this.agentVmSize = agentVmSize;
             return this;
         }
+        @CustomType.Setter
         public Builder authBaseUrl(@Nullable String authBaseUrl) {
             this.authBaseUrl = authBaseUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder baseUrl(@Nullable String baseUrl) {
             this.baseUrl = baseUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder clientId(String clientId) {
             this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecret(String clientSecret) {
             this.clientSecret = Objects.requireNonNull(clientSecret);
             return this;
         }
+        @CustomType.Setter
         public Builder count(@Nullable Integer count) {
             this.count = count;
             return this;
         }
+        @CustomType.Setter
         public Builder dnsServiceIp(@Nullable String dnsServiceIp) {
             this.dnsServiceIp = dnsServiceIp;
             return this;
         }
+        @CustomType.Setter
         public Builder dockerBridgeCidr(@Nullable String dockerBridgeCidr) {
             this.dockerBridgeCidr = dockerBridgeCidr;
             return this;
         }
+        @CustomType.Setter
         public Builder enableHttpApplicationRouting(@Nullable Boolean enableHttpApplicationRouting) {
             this.enableHttpApplicationRouting = enableHttpApplicationRouting;
             return this;
         }
+        @CustomType.Setter
         public Builder enableMonitoring(@Nullable Boolean enableMonitoring) {
             this.enableMonitoring = enableMonitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
             this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerSku(@Nullable String loadBalancerSku) {
             this.loadBalancerSku = loadBalancerSku;
             return this;
         }
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
+        @CustomType.Setter
         public Builder logAnalyticsWorkspace(@Nullable String logAnalyticsWorkspace) {
             this.logAnalyticsWorkspace = logAnalyticsWorkspace;
             return this;
         }
+        @CustomType.Setter
         public Builder logAnalyticsWorkspaceResourceGroup(@Nullable String logAnalyticsWorkspaceResourceGroup) {
             this.logAnalyticsWorkspaceResourceGroup = logAnalyticsWorkspaceResourceGroup;
             return this;
         }
+        @CustomType.Setter
         public Builder masterDnsPrefix(String masterDnsPrefix) {
             this.masterDnsPrefix = Objects.requireNonNull(masterDnsPrefix);
             return this;
         }
+        @CustomType.Setter
         public Builder maxPods(@Nullable Integer maxPods) {
             this.maxPods = maxPods;
             return this;
         }
+        @CustomType.Setter
         public Builder networkPlugin(@Nullable String networkPlugin) {
             this.networkPlugin = networkPlugin;
             return this;
         }
+        @CustomType.Setter
         public Builder networkPolicy(@Nullable String networkPolicy) {
             this.networkPolicy = networkPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder podCidr(@Nullable String podCidr) {
             this.podCidr = podCidr;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroup(String resourceGroup) {
             this.resourceGroup = Objects.requireNonNull(resourceGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceCidr(@Nullable String serviceCidr) {
             this.serviceCidr = serviceCidr;
             return this;
         }
+        @CustomType.Setter
         public Builder sshPublicKeyContents(String sshPublicKeyContents) {
             this.sshPublicKeyContents = Objects.requireNonNull(sshPublicKeyContents);
             return this;
         }
+        @CustomType.Setter
         public Builder subnet(String subnet) {
             this.subnet = Objects.requireNonNull(subnet);
             return this;
         }
+        @CustomType.Setter
         public Builder subscriptionId(String subscriptionId) {
             this.subscriptionId = Objects.requireNonNull(subscriptionId);
             return this;
         }
+        @CustomType.Setter
         public Builder tag(@Nullable Map<String,Object> tag) {
             this.tag = tag;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -819,19 +770,63 @@ public final class ClusterAksConfig {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder tenantId(String tenantId) {
             this.tenantId = Objects.requireNonNull(tenantId);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualNetwork(String virtualNetwork) {
             this.virtualNetwork = Objects.requireNonNull(virtualNetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualNetworkResourceGroup(String virtualNetworkResourceGroup) {
             this.virtualNetworkResourceGroup = Objects.requireNonNull(virtualNetworkResourceGroup);
             return this;
-        }        public ClusterAksConfig build() {
-            return new ClusterAksConfig(aadServerAppSecret, aadTenantId, addClientAppId, addServerAppId, adminUsername, agentDnsPrefix, agentOsDiskSize, agentPoolName, agentStorageProfile, agentVmSize, authBaseUrl, baseUrl, clientId, clientSecret, count, dnsServiceIp, dockerBridgeCidr, enableHttpApplicationRouting, enableMonitoring, kubernetesVersion, loadBalancerSku, location, logAnalyticsWorkspace, logAnalyticsWorkspaceResourceGroup, masterDnsPrefix, maxPods, networkPlugin, networkPolicy, podCidr, resourceGroup, serviceCidr, sshPublicKeyContents, subnet, subscriptionId, tag, tags, tenantId, virtualNetwork, virtualNetworkResourceGroup);
+        }
+        public ClusterAksConfig build() {
+            final var o = new ClusterAksConfig();
+            o.aadServerAppSecret = aadServerAppSecret;
+            o.aadTenantId = aadTenantId;
+            o.addClientAppId = addClientAppId;
+            o.addServerAppId = addServerAppId;
+            o.adminUsername = adminUsername;
+            o.agentDnsPrefix = agentDnsPrefix;
+            o.agentOsDiskSize = agentOsDiskSize;
+            o.agentPoolName = agentPoolName;
+            o.agentStorageProfile = agentStorageProfile;
+            o.agentVmSize = agentVmSize;
+            o.authBaseUrl = authBaseUrl;
+            o.baseUrl = baseUrl;
+            o.clientId = clientId;
+            o.clientSecret = clientSecret;
+            o.count = count;
+            o.dnsServiceIp = dnsServiceIp;
+            o.dockerBridgeCidr = dockerBridgeCidr;
+            o.enableHttpApplicationRouting = enableHttpApplicationRouting;
+            o.enableMonitoring = enableMonitoring;
+            o.kubernetesVersion = kubernetesVersion;
+            o.loadBalancerSku = loadBalancerSku;
+            o.location = location;
+            o.logAnalyticsWorkspace = logAnalyticsWorkspace;
+            o.logAnalyticsWorkspaceResourceGroup = logAnalyticsWorkspaceResourceGroup;
+            o.masterDnsPrefix = masterDnsPrefix;
+            o.maxPods = maxPods;
+            o.networkPlugin = networkPlugin;
+            o.networkPolicy = networkPolicy;
+            o.podCidr = podCidr;
+            o.resourceGroup = resourceGroup;
+            o.serviceCidr = serviceCidr;
+            o.sshPublicKeyContents = sshPublicKeyContents;
+            o.subnet = subnet;
+            o.subscriptionId = subscriptionId;
+            o.tag = tag;
+            o.tags = tags;
+            o.tenantId = tenantId;
+            o.virtualNetwork = virtualNetwork;
+            o.virtualNetworkResourceGroup = virtualNetworkResourceGroup;
+            return o;
         }
     }
 }

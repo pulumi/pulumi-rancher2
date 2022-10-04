@@ -17,56 +17,39 @@ public final class NotifierSmtpConfig {
      * @return Wechat default recipient (string)
      * 
      */
-    private final String defaultRecipient;
+    private String defaultRecipient;
     /**
      * @return SMTP host (string)
      * 
      */
-    private final String host;
+    private String host;
     /**
      * @return SMTP password (string)
      * 
      */
-    private final @Nullable String password;
+    private @Nullable String password;
     /**
      * @return SMTP port (int)
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return SMTP sender (string)
      * 
      */
-    private final String sender;
+    private String sender;
     /**
      * @return SMTP tls. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean tls;
+    private @Nullable Boolean tls;
     /**
      * @return SMTP username (string)
      * 
      */
-    private final @Nullable String username;
+    private @Nullable String username;
 
-    @CustomType.Constructor
-    private NotifierSmtpConfig(
-        @CustomType.Parameter("defaultRecipient") String defaultRecipient,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("sender") String sender,
-        @CustomType.Parameter("tls") @Nullable Boolean tls,
-        @CustomType.Parameter("username") @Nullable String username) {
-        this.defaultRecipient = defaultRecipient;
-        this.host = host;
-        this.password = password;
-        this.port = port;
-        this.sender = sender;
-        this.tls = tls;
-        this.username = username;
-    }
-
+    private NotifierSmtpConfig() {}
     /**
      * @return Wechat default recipient (string)
      * 
@@ -124,7 +107,7 @@ public final class NotifierSmtpConfig {
     public static Builder builder(NotifierSmtpConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String defaultRecipient;
         private String host;
@@ -133,11 +116,7 @@ public final class NotifierSmtpConfig {
         private String sender;
         private @Nullable Boolean tls;
         private @Nullable String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NotifierSmtpConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultRecipient = defaults.defaultRecipient;
@@ -149,35 +128,51 @@ public final class NotifierSmtpConfig {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder defaultRecipient(String defaultRecipient) {
             this.defaultRecipient = Objects.requireNonNull(defaultRecipient);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder sender(String sender) {
             this.sender = Objects.requireNonNull(sender);
             return this;
         }
+        @CustomType.Setter
         public Builder tls(@Nullable Boolean tls) {
             this.tls = tls;
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
-        }        public NotifierSmtpConfig build() {
-            return new NotifierSmtpConfig(defaultRecipient, host, password, port, sender, tls, username);
+        }
+        public NotifierSmtpConfig build() {
+            final var o = new NotifierSmtpConfig();
+            o.defaultRecipient = defaultRecipient;
+            o.host = host;
+            o.password = password;
+            o.port = port;
+            o.sender = sender;
+            o.tls = tls;
+            o.username = username;
+            return o;
         }
     }
 }

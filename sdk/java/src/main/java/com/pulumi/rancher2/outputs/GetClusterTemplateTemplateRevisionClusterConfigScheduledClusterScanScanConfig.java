@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig {
-    private final GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig cisScanConfig;
+    private GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig cisScanConfig;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig(@CustomType.Parameter("cisScanConfig") GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig cisScanConfig) {
-        this.cisScanConfig = cisScanConfig;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig() {}
     public GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig cisScanConfig() {
         return this.cisScanConfig;
     }
@@ -27,24 +23,24 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigScheduledClust
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig cisScanConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cisScanConfig = defaults.cisScanConfig;
         }
 
+        @CustomType.Setter
         public Builder cisScanConfig(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig cisScanConfig) {
             this.cisScanConfig = Objects.requireNonNull(cisScanConfig);
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig(cisScanConfig);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig();
+            o.cisScanConfig = cisScanConfig;
+            return o;
         }
     }
 }

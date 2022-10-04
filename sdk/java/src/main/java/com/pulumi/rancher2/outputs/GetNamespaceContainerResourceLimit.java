@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNamespaceContainerResourceLimit {
-    private final @Nullable String limitsCpu;
-    private final @Nullable String limitsMemory;
-    private final @Nullable String requestsCpu;
-    private final @Nullable String requestsMemory;
+    private @Nullable String limitsCpu;
+    private @Nullable String limitsMemory;
+    private @Nullable String requestsCpu;
+    private @Nullable String requestsMemory;
 
-    @CustomType.Constructor
-    private GetNamespaceContainerResourceLimit(
-        @CustomType.Parameter("limitsCpu") @Nullable String limitsCpu,
-        @CustomType.Parameter("limitsMemory") @Nullable String limitsMemory,
-        @CustomType.Parameter("requestsCpu") @Nullable String requestsCpu,
-        @CustomType.Parameter("requestsMemory") @Nullable String requestsMemory) {
-        this.limitsCpu = limitsCpu;
-        this.limitsMemory = limitsMemory;
-        this.requestsCpu = requestsCpu;
-        this.requestsMemory = requestsMemory;
-    }
-
+    private GetNamespaceContainerResourceLimit() {}
     public Optional<String> limitsCpu() {
         return Optional.ofNullable(this.limitsCpu);
     }
@@ -48,17 +37,13 @@ public final class GetNamespaceContainerResourceLimit {
     public static Builder builder(GetNamespaceContainerResourceLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String limitsCpu;
         private @Nullable String limitsMemory;
         private @Nullable String requestsCpu;
         private @Nullable String requestsMemory;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNamespaceContainerResourceLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.limitsCpu = defaults.limitsCpu;
@@ -67,23 +52,33 @@ public final class GetNamespaceContainerResourceLimit {
     	      this.requestsMemory = defaults.requestsMemory;
         }
 
+        @CustomType.Setter
         public Builder limitsCpu(@Nullable String limitsCpu) {
             this.limitsCpu = limitsCpu;
             return this;
         }
+        @CustomType.Setter
         public Builder limitsMemory(@Nullable String limitsMemory) {
             this.limitsMemory = limitsMemory;
             return this;
         }
+        @CustomType.Setter
         public Builder requestsCpu(@Nullable String requestsCpu) {
             this.requestsCpu = requestsCpu;
             return this;
         }
+        @CustomType.Setter
         public Builder requestsMemory(@Nullable String requestsMemory) {
             this.requestsMemory = requestsMemory;
             return this;
-        }        public GetNamespaceContainerResourceLimit build() {
-            return new GetNamespaceContainerResourceLimit(limitsCpu, limitsMemory, requestsCpu, requestsMemory);
+        }
+        public GetNamespaceContainerResourceLimit build() {
+            final var o = new GetNamespaceContainerResourceLimit();
+            o.limitsCpu = limitsCpu;
+            o.limitsMemory = limitsMemory;
+            o.requestsCpu = requestsCpu;
+            o.requestsMemory = requestsMemory;
+            return o;
         }
     }
 }

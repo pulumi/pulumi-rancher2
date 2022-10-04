@@ -18,70 +18,49 @@ public final class NodeTemplateHetznerConfig {
      * @return Hetzner Cloud project API token (string)
      * 
      */
-    private final String apiToken;
+    private String apiToken;
     /**
      * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
-    private final @Nullable String image;
+    private @Nullable String image;
     /**
      * @return Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
      * 
      */
-    private final @Nullable String networks;
+    private @Nullable String networks;
     /**
      * @return Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
      * 
      */
-    private final @Nullable Map<String,Object> serverLabels;
+    private @Nullable Map<String,Object> serverLabels;
     /**
      * @return Hetzner Cloud datacenter. Default `nbg1` (string)
      * 
      */
-    private final @Nullable String serverLocation;
+    private @Nullable String serverLocation;
     /**
      * @return Hetzner Cloud server type. Default `cx11` (string)
      * 
      */
-    private final @Nullable String serverType;
+    private @Nullable String serverType;
     /**
      * @return Use private network. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean usePrivateNetwork;
+    private @Nullable Boolean usePrivateNetwork;
     /**
      * @return Path to file with cloud-init user-data (string)
      * 
      */
-    private final @Nullable String userdata;
+    private @Nullable String userdata;
     /**
      * @return Comma-separated list of volume IDs or names which should be attached to the server (string)
      * 
      */
-    private final @Nullable String volumes;
+    private @Nullable String volumes;
 
-    @CustomType.Constructor
-    private NodeTemplateHetznerConfig(
-        @CustomType.Parameter("apiToken") String apiToken,
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("networks") @Nullable String networks,
-        @CustomType.Parameter("serverLabels") @Nullable Map<String,Object> serverLabels,
-        @CustomType.Parameter("serverLocation") @Nullable String serverLocation,
-        @CustomType.Parameter("serverType") @Nullable String serverType,
-        @CustomType.Parameter("usePrivateNetwork") @Nullable Boolean usePrivateNetwork,
-        @CustomType.Parameter("userdata") @Nullable String userdata,
-        @CustomType.Parameter("volumes") @Nullable String volumes) {
-        this.apiToken = apiToken;
-        this.image = image;
-        this.networks = networks;
-        this.serverLabels = serverLabels;
-        this.serverLocation = serverLocation;
-        this.serverType = serverType;
-        this.usePrivateNetwork = usePrivateNetwork;
-        this.userdata = userdata;
-        this.volumes = volumes;
-    }
-
+    private NodeTemplateHetznerConfig() {}
     /**
      * @return Hetzner Cloud project API token (string)
      * 
@@ -153,7 +132,7 @@ public final class NodeTemplateHetznerConfig {
     public static Builder builder(NodeTemplateHetznerConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String apiToken;
         private @Nullable String image;
@@ -164,11 +143,7 @@ public final class NodeTemplateHetznerConfig {
         private @Nullable Boolean usePrivateNetwork;
         private @Nullable String userdata;
         private @Nullable String volumes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeTemplateHetznerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiToken = defaults.apiToken;
@@ -182,43 +157,63 @@ public final class NodeTemplateHetznerConfig {
     	      this.volumes = defaults.volumes;
         }
 
+        @CustomType.Setter
         public Builder apiToken(String apiToken) {
             this.apiToken = Objects.requireNonNull(apiToken);
             return this;
         }
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder networks(@Nullable String networks) {
             this.networks = networks;
             return this;
         }
+        @CustomType.Setter
         public Builder serverLabels(@Nullable Map<String,Object> serverLabels) {
             this.serverLabels = serverLabels;
             return this;
         }
+        @CustomType.Setter
         public Builder serverLocation(@Nullable String serverLocation) {
             this.serverLocation = serverLocation;
             return this;
         }
+        @CustomType.Setter
         public Builder serverType(@Nullable String serverType) {
             this.serverType = serverType;
             return this;
         }
+        @CustomType.Setter
         public Builder usePrivateNetwork(@Nullable Boolean usePrivateNetwork) {
             this.usePrivateNetwork = usePrivateNetwork;
             return this;
         }
+        @CustomType.Setter
         public Builder userdata(@Nullable String userdata) {
             this.userdata = userdata;
             return this;
         }
+        @CustomType.Setter
         public Builder volumes(@Nullable String volumes) {
             this.volumes = volumes;
             return this;
-        }        public NodeTemplateHetznerConfig build() {
-            return new NodeTemplateHetznerConfig(apiToken, image, networks, serverLabels, serverLocation, serverType, usePrivateNetwork, userdata, volumes);
+        }
+        public NodeTemplateHetznerConfig build() {
+            final var o = new NodeTemplateHetznerConfig();
+            o.apiToken = apiToken;
+            o.image = image;
+            o.networks = networks;
+            o.serverLabels = serverLabels;
+            o.serverLocation = serverLocation;
+            o.serverType = serverType;
+            o.usePrivateNetwork = usePrivateNetwork;
+            o.userdata = userdata;
+            o.volumes = volumes;
+            return o;
         }
     }
 }

@@ -21,97 +21,66 @@ public final class GetProjectAlertRuleResult {
      * @return (Computed) The project alert rule annotations (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) The project alert rule alert group ID (string)
      * 
      */
-    private final String groupId;
+    private String groupId;
     /**
      * @return (Computed) The project alert rule group interval seconds. Default: `180` (int)
      * 
      */
-    private final Integer groupIntervalSeconds;
+    private Integer groupIntervalSeconds;
     /**
      * @return (Computed) The project alert rule group wait seconds. Default: `180` (int)
      * 
      */
-    private final Integer groupWaitSeconds;
+    private Integer groupWaitSeconds;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) The project alert rule inherited. Default: `true` (bool)
      * 
      */
-    private final Boolean inherited;
+    private Boolean inherited;
     /**
      * @return (Computed) The project alert rule labels (map)
      * 
      */
-    private final @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,Object> labels;
     /**
      * @return (Computed) The project alert rule metric rule. ConflictsWith: `&#34;pod_rule&#34;, &#34;workload_rule&#34;`` (list Maxitems:1)
      * 
      */
-    private final GetProjectAlertRuleMetricRule metricRule;
-    private final String name;
+    private GetProjectAlertRuleMetricRule metricRule;
+    private String name;
     /**
      * @return (Computed) The project alert rule pod rule. ConflictsWith: `&#34;metric_rule&#34;, &#34;workload_rule&#34;`` (list Maxitems:1)
      * 
      */
-    private final GetProjectAlertRulePodRule podRule;
-    private final String projectId;
+    private GetProjectAlertRulePodRule podRule;
+    private String projectId;
     /**
      * @return (Computed) The project alert rule wait seconds. Default: `3600` (int)
      * 
      */
-    private final Integer repeatIntervalSeconds;
+    private Integer repeatIntervalSeconds;
     /**
      * @return (Computed) The project alert rule severity. Supported values : `&#34;critical&#34; | &#34;info&#34; | &#34;warning&#34;`. Default: `critical` (string)
      * 
      */
-    private final String severity;
+    private String severity;
     /**
      * @return (Computed) The project alert rule workload rule. ConflictsWith: `&#34;metric_rule&#34;, &#34;pod_rule&#34;`` (list Maxitems:1)
      * 
      */
-    private final GetProjectAlertRuleWorkloadRule workloadRule;
+    private GetProjectAlertRuleWorkloadRule workloadRule;
 
-    @CustomType.Constructor
-    private GetProjectAlertRuleResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("groupIntervalSeconds") Integer groupIntervalSeconds,
-        @CustomType.Parameter("groupWaitSeconds") Integer groupWaitSeconds,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("inherited") Boolean inherited,
-        @CustomType.Parameter("labels") @Nullable Map<String,Object> labels,
-        @CustomType.Parameter("metricRule") GetProjectAlertRuleMetricRule metricRule,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("podRule") GetProjectAlertRulePodRule podRule,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("repeatIntervalSeconds") Integer repeatIntervalSeconds,
-        @CustomType.Parameter("severity") String severity,
-        @CustomType.Parameter("workloadRule") GetProjectAlertRuleWorkloadRule workloadRule) {
-        this.annotations = annotations;
-        this.groupId = groupId;
-        this.groupIntervalSeconds = groupIntervalSeconds;
-        this.groupWaitSeconds = groupWaitSeconds;
-        this.id = id;
-        this.inherited = inherited;
-        this.labels = labels;
-        this.metricRule = metricRule;
-        this.name = name;
-        this.podRule = podRule;
-        this.projectId = projectId;
-        this.repeatIntervalSeconds = repeatIntervalSeconds;
-        this.severity = severity;
-        this.workloadRule = workloadRule;
-    }
-
+    private GetProjectAlertRuleResult() {}
     /**
      * @return (Computed) The project alert rule annotations (map)
      * 
@@ -210,7 +179,7 @@ public final class GetProjectAlertRuleResult {
     public static Builder builder(GetProjectAlertRuleResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String groupId;
@@ -226,11 +195,7 @@ public final class GetProjectAlertRuleResult {
         private Integer repeatIntervalSeconds;
         private String severity;
         private GetProjectAlertRuleWorkloadRule workloadRule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectAlertRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -249,63 +214,93 @@ public final class GetProjectAlertRuleResult {
     	      this.workloadRule = defaults.workloadRule;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupIntervalSeconds(Integer groupIntervalSeconds) {
             this.groupIntervalSeconds = Objects.requireNonNull(groupIntervalSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder groupWaitSeconds(Integer groupWaitSeconds) {
             this.groupWaitSeconds = Objects.requireNonNull(groupWaitSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder inherited(Boolean inherited) {
             this.inherited = Objects.requireNonNull(inherited);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder metricRule(GetProjectAlertRuleMetricRule metricRule) {
             this.metricRule = Objects.requireNonNull(metricRule);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder podRule(GetProjectAlertRulePodRule podRule) {
             this.podRule = Objects.requireNonNull(podRule);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder repeatIntervalSeconds(Integer repeatIntervalSeconds) {
             this.repeatIntervalSeconds = Objects.requireNonNull(repeatIntervalSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder severity(String severity) {
             this.severity = Objects.requireNonNull(severity);
             return this;
         }
+        @CustomType.Setter
         public Builder workloadRule(GetProjectAlertRuleWorkloadRule workloadRule) {
             this.workloadRule = Objects.requireNonNull(workloadRule);
             return this;
-        }        public GetProjectAlertRuleResult build() {
-            return new GetProjectAlertRuleResult(annotations, groupId, groupIntervalSeconds, groupWaitSeconds, id, inherited, labels, metricRule, name, podRule, projectId, repeatIntervalSeconds, severity, workloadRule);
+        }
+        public GetProjectAlertRuleResult build() {
+            final var o = new GetProjectAlertRuleResult();
+            o.annotations = annotations;
+            o.groupId = groupId;
+            o.groupIntervalSeconds = groupIntervalSeconds;
+            o.groupWaitSeconds = groupWaitSeconds;
+            o.id = id;
+            o.inherited = inherited;
+            o.labels = labels;
+            o.metricRule = metricRule;
+            o.name = name;
+            o.podRule = podRule;
+            o.projectId = projectId;
+            o.repeatIntervalSeconds = repeatIntervalSeconds;
+            o.severity = severity;
+            o.workloadRule = workloadRule;
+            return o;
         }
     }
 }

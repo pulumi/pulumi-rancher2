@@ -16,273 +16,194 @@ public final class NodeTemplateOpenstackConfig {
      * @return OpenStack active timeout Default `200` (string)
      * 
      */
-    private final @Nullable String activeTimeout;
+    private @Nullable String activeTimeout;
     /**
      * @return OpenStack application credential id. Conflicts with `application_credential_name` (string)
      * 
      */
-    private final @Nullable String applicationCredentialId;
+    private @Nullable String applicationCredentialId;
     /**
      * @return OpenStack application credential name. Conflicts with `application_credential_id` (string)
      * 
      */
-    private final @Nullable String applicationCredentialName;
+    private @Nullable String applicationCredentialName;
     /**
      * @return OpenStack application credential secret (string)
      * 
      */
-    private final @Nullable String applicationCredentialSecret;
+    private @Nullable String applicationCredentialSecret;
     /**
      * @return OpenStack authentication URL (string)
      * 
      */
-    private final String authUrl;
+    private String authUrl;
     /**
      * @return OpenStack availability zone (string)
      * 
      */
-    private final String availabilityZone;
+    private String availabilityZone;
     /**
      * @return Enable booting from volume. Default is `false` (bool)
      * 
      */
-    private final @Nullable Boolean bootFromVolume;
+    private @Nullable Boolean bootFromVolume;
     /**
      * @return CA certificate bundle to verify against (string)
      * 
      */
-    private final @Nullable String cacert;
+    private @Nullable String cacert;
     /**
      * @return Enables the OpenStack config drive for the instance. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean configDrive;
+    private @Nullable Boolean configDrive;
     /**
      * @return OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
      * 
      */
-    private final @Nullable String domainId;
+    private @Nullable String domainId;
     /**
      * @return OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
      * 
      */
-    private final @Nullable String domainName;
+    private @Nullable String domainName;
     /**
      * @return OpenStack endpoint type. adminURL, internalURL or publicURL (string)
      * 
      */
-    private final @Nullable String endpointType;
+    private @Nullable String endpointType;
     /**
      * @return OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
      * 
      */
-    private final @Nullable String flavorId;
+    private @Nullable String flavorId;
     /**
      * @return OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
      * 
      */
-    private final @Nullable String flavorName;
+    private @Nullable String flavorName;
     /**
      * @return OpenStack floating IP pool to get an IP from to assign to the instance (string)
      * 
      */
-    private final @Nullable String floatingIpPool;
+    private @Nullable String floatingIpPool;
     /**
      * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
      * 
      */
-    private final @Nullable String imageId;
+    private @Nullable String imageId;
     /**
      * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      */
-    private final @Nullable String imageName;
+    private @Nullable String imageName;
     /**
      * @return Disable TLS credential checking. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean insecure;
+    private @Nullable Boolean insecure;
     /**
      * @return OpenStack version of IP address assigned for the machine Default `4` (string)
      * 
      */
-    private final @Nullable String ipVersion;
+    private @Nullable String ipVersion;
     /**
      * @return OpenStack keypair to use to SSH to the instance (string)
      * 
      */
-    private final @Nullable String keypairName;
+    private @Nullable String keypairName;
     /**
      * @return OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
      * 
      */
-    private final @Nullable String netId;
+    private @Nullable String netId;
     /**
      * @return OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
      * 
      */
-    private final @Nullable String netName;
+    private @Nullable String netName;
     /**
      * @return Use the nova networking services instead of neutron (string)
      * 
      */
-    private final @Nullable Boolean novaNetwork;
+    private @Nullable Boolean novaNetwork;
     /**
      * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
-    private final @Nullable String password;
+    private @Nullable String password;
     /**
      * @return Private key content to use for SSH (string)
      * 
      */
-    private final @Nullable String privateKeyFile;
+    private @Nullable String privateKeyFile;
     /**
      * @return OpenStack region name (string)
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return OpenStack comma separated security groups for the machine (string)
      * 
      */
-    private final @Nullable String secGroups;
+    private @Nullable String secGroups;
     /**
      * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
-    private final @Nullable String sshPort;
+    private @Nullable String sshPort;
     /**
      * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
-    private final @Nullable String sshUser;
+    private @Nullable String sshUser;
     /**
      * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
      * 
      */
-    private final @Nullable String tenantId;
+    private @Nullable String tenantId;
     /**
      * @return OpenStack tenant name. Conflicts with `tenant_id` (string)
      * 
      */
-    private final @Nullable String tenantName;
+    private @Nullable String tenantName;
     /**
      * @return File containing an openstack userdata script (string)
      * 
      */
-    private final @Nullable String userDataFile;
+    private @Nullable String userDataFile;
     /**
      * @return vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
-    private final @Nullable String username;
+    private @Nullable String username;
     /**
      * @return OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
      * 
      */
-    private final @Nullable String volumeDevicePath;
+    private @Nullable String volumeDevicePath;
     /**
      * @return OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
      * 
      */
-    private final @Nullable String volumeId;
+    private @Nullable String volumeId;
     /**
      * @return OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
      * 
      */
-    private final @Nullable String volumeName;
+    private @Nullable String volumeName;
     /**
      * @return OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
      * 
      */
-    private final @Nullable String volumeSize;
+    private @Nullable String volumeSize;
     /**
      * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
-    private final @Nullable String volumeType;
+    private @Nullable String volumeType;
 
-    @CustomType.Constructor
-    private NodeTemplateOpenstackConfig(
-        @CustomType.Parameter("activeTimeout") @Nullable String activeTimeout,
-        @CustomType.Parameter("applicationCredentialId") @Nullable String applicationCredentialId,
-        @CustomType.Parameter("applicationCredentialName") @Nullable String applicationCredentialName,
-        @CustomType.Parameter("applicationCredentialSecret") @Nullable String applicationCredentialSecret,
-        @CustomType.Parameter("authUrl") String authUrl,
-        @CustomType.Parameter("availabilityZone") String availabilityZone,
-        @CustomType.Parameter("bootFromVolume") @Nullable Boolean bootFromVolume,
-        @CustomType.Parameter("cacert") @Nullable String cacert,
-        @CustomType.Parameter("configDrive") @Nullable Boolean configDrive,
-        @CustomType.Parameter("domainId") @Nullable String domainId,
-        @CustomType.Parameter("domainName") @Nullable String domainName,
-        @CustomType.Parameter("endpointType") @Nullable String endpointType,
-        @CustomType.Parameter("flavorId") @Nullable String flavorId,
-        @CustomType.Parameter("flavorName") @Nullable String flavorName,
-        @CustomType.Parameter("floatingIpPool") @Nullable String floatingIpPool,
-        @CustomType.Parameter("imageId") @Nullable String imageId,
-        @CustomType.Parameter("imageName") @Nullable String imageName,
-        @CustomType.Parameter("insecure") @Nullable Boolean insecure,
-        @CustomType.Parameter("ipVersion") @Nullable String ipVersion,
-        @CustomType.Parameter("keypairName") @Nullable String keypairName,
-        @CustomType.Parameter("netId") @Nullable String netId,
-        @CustomType.Parameter("netName") @Nullable String netName,
-        @CustomType.Parameter("novaNetwork") @Nullable Boolean novaNetwork,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("privateKeyFile") @Nullable String privateKeyFile,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("secGroups") @Nullable String secGroups,
-        @CustomType.Parameter("sshPort") @Nullable String sshPort,
-        @CustomType.Parameter("sshUser") @Nullable String sshUser,
-        @CustomType.Parameter("tenantId") @Nullable String tenantId,
-        @CustomType.Parameter("tenantName") @Nullable String tenantName,
-        @CustomType.Parameter("userDataFile") @Nullable String userDataFile,
-        @CustomType.Parameter("username") @Nullable String username,
-        @CustomType.Parameter("volumeDevicePath") @Nullable String volumeDevicePath,
-        @CustomType.Parameter("volumeId") @Nullable String volumeId,
-        @CustomType.Parameter("volumeName") @Nullable String volumeName,
-        @CustomType.Parameter("volumeSize") @Nullable String volumeSize,
-        @CustomType.Parameter("volumeType") @Nullable String volumeType) {
-        this.activeTimeout = activeTimeout;
-        this.applicationCredentialId = applicationCredentialId;
-        this.applicationCredentialName = applicationCredentialName;
-        this.applicationCredentialSecret = applicationCredentialSecret;
-        this.authUrl = authUrl;
-        this.availabilityZone = availabilityZone;
-        this.bootFromVolume = bootFromVolume;
-        this.cacert = cacert;
-        this.configDrive = configDrive;
-        this.domainId = domainId;
-        this.domainName = domainName;
-        this.endpointType = endpointType;
-        this.flavorId = flavorId;
-        this.flavorName = flavorName;
-        this.floatingIpPool = floatingIpPool;
-        this.imageId = imageId;
-        this.imageName = imageName;
-        this.insecure = insecure;
-        this.ipVersion = ipVersion;
-        this.keypairName = keypairName;
-        this.netId = netId;
-        this.netName = netName;
-        this.novaNetwork = novaNetwork;
-        this.password = password;
-        this.privateKeyFile = privateKeyFile;
-        this.region = region;
-        this.secGroups = secGroups;
-        this.sshPort = sshPort;
-        this.sshUser = sshUser;
-        this.tenantId = tenantId;
-        this.tenantName = tenantName;
-        this.userDataFile = userDataFile;
-        this.username = username;
-        this.volumeDevicePath = volumeDevicePath;
-        this.volumeId = volumeId;
-        this.volumeName = volumeName;
-        this.volumeSize = volumeSize;
-        this.volumeType = volumeType;
-    }
-
+    private NodeTemplateOpenstackConfig() {}
     /**
      * @return OpenStack active timeout Default `200` (string)
      * 
@@ -557,7 +478,7 @@ public final class NodeTemplateOpenstackConfig {
     public static Builder builder(NodeTemplateOpenstackConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String activeTimeout;
         private @Nullable String applicationCredentialId;
@@ -597,11 +518,7 @@ public final class NodeTemplateOpenstackConfig {
         private @Nullable String volumeName;
         private @Nullable String volumeSize;
         private @Nullable String volumeType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeTemplateOpenstackConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeTimeout = defaults.activeTimeout;
@@ -644,159 +561,237 @@ public final class NodeTemplateOpenstackConfig {
     	      this.volumeType = defaults.volumeType;
         }
 
+        @CustomType.Setter
         public Builder activeTimeout(@Nullable String activeTimeout) {
             this.activeTimeout = activeTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder applicationCredentialId(@Nullable String applicationCredentialId) {
             this.applicationCredentialId = applicationCredentialId;
             return this;
         }
+        @CustomType.Setter
         public Builder applicationCredentialName(@Nullable String applicationCredentialName) {
             this.applicationCredentialName = applicationCredentialName;
             return this;
         }
+        @CustomType.Setter
         public Builder applicationCredentialSecret(@Nullable String applicationCredentialSecret) {
             this.applicationCredentialSecret = applicationCredentialSecret;
             return this;
         }
+        @CustomType.Setter
         public Builder authUrl(String authUrl) {
             this.authUrl = Objects.requireNonNull(authUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
             this.availabilityZone = Objects.requireNonNull(availabilityZone);
             return this;
         }
+        @CustomType.Setter
         public Builder bootFromVolume(@Nullable Boolean bootFromVolume) {
             this.bootFromVolume = bootFromVolume;
             return this;
         }
+        @CustomType.Setter
         public Builder cacert(@Nullable String cacert) {
             this.cacert = cacert;
             return this;
         }
+        @CustomType.Setter
         public Builder configDrive(@Nullable Boolean configDrive) {
             this.configDrive = configDrive;
             return this;
         }
+        @CustomType.Setter
         public Builder domainId(@Nullable String domainId) {
             this.domainId = domainId;
             return this;
         }
+        @CustomType.Setter
         public Builder domainName(@Nullable String domainName) {
             this.domainName = domainName;
             return this;
         }
+        @CustomType.Setter
         public Builder endpointType(@Nullable String endpointType) {
             this.endpointType = endpointType;
             return this;
         }
+        @CustomType.Setter
         public Builder flavorId(@Nullable String flavorId) {
             this.flavorId = flavorId;
             return this;
         }
+        @CustomType.Setter
         public Builder flavorName(@Nullable String flavorName) {
             this.flavorName = flavorName;
             return this;
         }
+        @CustomType.Setter
         public Builder floatingIpPool(@Nullable String floatingIpPool) {
             this.floatingIpPool = floatingIpPool;
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(@Nullable String imageId) {
             this.imageId = imageId;
             return this;
         }
+        @CustomType.Setter
         public Builder imageName(@Nullable String imageName) {
             this.imageName = imageName;
             return this;
         }
+        @CustomType.Setter
         public Builder insecure(@Nullable Boolean insecure) {
             this.insecure = insecure;
             return this;
         }
+        @CustomType.Setter
         public Builder ipVersion(@Nullable String ipVersion) {
             this.ipVersion = ipVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder keypairName(@Nullable String keypairName) {
             this.keypairName = keypairName;
             return this;
         }
+        @CustomType.Setter
         public Builder netId(@Nullable String netId) {
             this.netId = netId;
             return this;
         }
+        @CustomType.Setter
         public Builder netName(@Nullable String netName) {
             this.netName = netName;
             return this;
         }
+        @CustomType.Setter
         public Builder novaNetwork(@Nullable Boolean novaNetwork) {
             this.novaNetwork = novaNetwork;
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder privateKeyFile(@Nullable String privateKeyFile) {
             this.privateKeyFile = privateKeyFile;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder secGroups(@Nullable String secGroups) {
             this.secGroups = secGroups;
             return this;
         }
+        @CustomType.Setter
         public Builder sshPort(@Nullable String sshPort) {
             this.sshPort = sshPort;
             return this;
         }
+        @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
             this.sshUser = sshUser;
             return this;
         }
+        @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
             this.tenantId = tenantId;
             return this;
         }
+        @CustomType.Setter
         public Builder tenantName(@Nullable String tenantName) {
             this.tenantName = tenantName;
             return this;
         }
+        @CustomType.Setter
         public Builder userDataFile(@Nullable String userDataFile) {
             this.userDataFile = userDataFile;
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeDevicePath(@Nullable String volumeDevicePath) {
             this.volumeDevicePath = volumeDevicePath;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeId(@Nullable String volumeId) {
             this.volumeId = volumeId;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeName(@Nullable String volumeName) {
             this.volumeName = volumeName;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeSize(@Nullable String volumeSize) {
             this.volumeSize = volumeSize;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeType(@Nullable String volumeType) {
             this.volumeType = volumeType;
             return this;
-        }        public NodeTemplateOpenstackConfig build() {
-            return new NodeTemplateOpenstackConfig(activeTimeout, applicationCredentialId, applicationCredentialName, applicationCredentialSecret, authUrl, availabilityZone, bootFromVolume, cacert, configDrive, domainId, domainName, endpointType, flavorId, flavorName, floatingIpPool, imageId, imageName, insecure, ipVersion, keypairName, netId, netName, novaNetwork, password, privateKeyFile, region, secGroups, sshPort, sshUser, tenantId, tenantName, userDataFile, username, volumeDevicePath, volumeId, volumeName, volumeSize, volumeType);
+        }
+        public NodeTemplateOpenstackConfig build() {
+            final var o = new NodeTemplateOpenstackConfig();
+            o.activeTimeout = activeTimeout;
+            o.applicationCredentialId = applicationCredentialId;
+            o.applicationCredentialName = applicationCredentialName;
+            o.applicationCredentialSecret = applicationCredentialSecret;
+            o.authUrl = authUrl;
+            o.availabilityZone = availabilityZone;
+            o.bootFromVolume = bootFromVolume;
+            o.cacert = cacert;
+            o.configDrive = configDrive;
+            o.domainId = domainId;
+            o.domainName = domainName;
+            o.endpointType = endpointType;
+            o.flavorId = flavorId;
+            o.flavorName = flavorName;
+            o.floatingIpPool = floatingIpPool;
+            o.imageId = imageId;
+            o.imageName = imageName;
+            o.insecure = insecure;
+            o.ipVersion = ipVersion;
+            o.keypairName = keypairName;
+            o.netId = netId;
+            o.netName = netName;
+            o.novaNetwork = novaNetwork;
+            o.password = password;
+            o.privateKeyFile = privateKeyFile;
+            o.region = region;
+            o.secGroups = secGroups;
+            o.sshPort = sshPort;
+            o.sshUser = sshUser;
+            o.tenantId = tenantId;
+            o.tenantName = tenantName;
+            o.userDataFile = userDataFile;
+            o.username = username;
+            o.volumeDevicePath = volumeDevicePath;
+            o.volumeId = volumeId;
+            o.volumeName = volumeName;
+            o.volumeSize = volumeSize;
+            o.volumeType = volumeType;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class ClusterScheduledClusterScanScanConfig {
      * @return Cluster Cis Scan config (List maxitems:1)
      * 
      */
-    private final @Nullable ClusterScheduledClusterScanScanConfigCisScanConfig cisScanConfig;
+    private @Nullable ClusterScheduledClusterScanScanConfigCisScanConfig cisScanConfig;
 
-    @CustomType.Constructor
-    private ClusterScheduledClusterScanScanConfig(@CustomType.Parameter("cisScanConfig") @Nullable ClusterScheduledClusterScanScanConfigCisScanConfig cisScanConfig) {
-        this.cisScanConfig = cisScanConfig;
-    }
-
+    private ClusterScheduledClusterScanScanConfig() {}
     /**
      * @return Cluster Cis Scan config (List maxitems:1)
      * 
@@ -37,24 +33,24 @@ public final class ClusterScheduledClusterScanScanConfig {
     public static Builder builder(ClusterScheduledClusterScanScanConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterScheduledClusterScanScanConfigCisScanConfig cisScanConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterScheduledClusterScanScanConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cisScanConfig = defaults.cisScanConfig;
         }
 
+        @CustomType.Setter
         public Builder cisScanConfig(@Nullable ClusterScheduledClusterScanScanConfigCisScanConfig cisScanConfig) {
             this.cisScanConfig = cisScanConfig;
             return this;
-        }        public ClusterScheduledClusterScanScanConfig build() {
-            return new ClusterScheduledClusterScanScanConfig(cisScanConfig);
+        }
+        public ClusterScheduledClusterScanScanConfig build() {
+            final var o = new ClusterScheduledClusterScanScanConfig();
+            o.cisScanConfig = cisScanConfig;
+            return o;
         }
     }
 }

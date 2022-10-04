@@ -18,7 +18,9 @@ import (
 // V2 catalogs can be imported using the Rancher cluster ID and Catalog V2 name.
 //
 // ```sh
-//  $ pulumi import rancher2:index/catalogV2:CatalogV2 foo &lt;CLUSTER_ID&gt;.&lt;CATALOG_V2_NAME&gt;
+//
+//	$ pulumi import rancher2:index/catalogV2:CatalogV2 foo &lt;CLUSTER_ID&gt;.&lt;CATALOG_V2_NAME&gt;
+//
 // ```
 type CatalogV2 struct {
 	pulumi.CustomResourceState
@@ -245,7 +247,7 @@ func (i *CatalogV2) ToCatalogV2OutputWithContext(ctx context.Context) CatalogV2O
 // CatalogV2ArrayInput is an input type that accepts CatalogV2Array and CatalogV2ArrayOutput values.
 // You can construct a concrete instance of `CatalogV2ArrayInput` via:
 //
-//          CatalogV2Array{ CatalogV2Args{...} }
+//	CatalogV2Array{ CatalogV2Args{...} }
 type CatalogV2ArrayInput interface {
 	pulumi.Input
 
@@ -270,7 +272,7 @@ func (i CatalogV2Array) ToCatalogV2ArrayOutputWithContext(ctx context.Context) C
 // CatalogV2MapInput is an input type that accepts CatalogV2Map and CatalogV2MapOutput values.
 // You can construct a concrete instance of `CatalogV2MapInput` via:
 //
-//          CatalogV2Map{ "key": CatalogV2Args{...} }
+//	CatalogV2Map{ "key": CatalogV2Args{...} }
 type CatalogV2MapInput interface {
 	pulumi.Input
 

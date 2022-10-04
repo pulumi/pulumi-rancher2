@@ -15,48 +15,31 @@ public final class GetGlobalRoleBindingResult {
      * @return (Computed) Annotations of the resource (map)
      * 
      */
-    private final Map<String,Object> annotations;
-    private final String globalRoleId;
+    private Map<String,Object> annotations;
+    private String globalRoleId;
     /**
      * @return (Computed) The group principal ID to assign global role binding. Rancher v2.4.0 or higher is required (string)
      * 
      */
-    private final String groupPrincipalId;
+    private String groupPrincipalId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels of the resource (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
+    private Map<String,Object> labels;
+    private String name;
     /**
      * @return (Computed) The user ID to assign global role binding (string)
      * 
      */
-    private final String userId;
+    private String userId;
 
-    @CustomType.Constructor
-    private GetGlobalRoleBindingResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("globalRoleId") String globalRoleId,
-        @CustomType.Parameter("groupPrincipalId") String groupPrincipalId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("userId") String userId) {
-        this.annotations = annotations;
-        this.globalRoleId = globalRoleId;
-        this.groupPrincipalId = groupPrincipalId;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.userId = userId;
-    }
-
+    private GetGlobalRoleBindingResult() {}
     /**
      * @return (Computed) Annotations of the resource (map)
      * 
@@ -106,7 +89,7 @@ public final class GetGlobalRoleBindingResult {
     public static Builder builder(GetGlobalRoleBindingResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String globalRoleId;
@@ -115,11 +98,7 @@ public final class GetGlobalRoleBindingResult {
         private Map<String,Object> labels;
         private String name;
         private String userId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGlobalRoleBindingResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -131,35 +110,51 @@ public final class GetGlobalRoleBindingResult {
     	      this.userId = defaults.userId;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder globalRoleId(String globalRoleId) {
             this.globalRoleId = Objects.requireNonNull(globalRoleId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupPrincipalId(String groupPrincipalId) {
             this.groupPrincipalId = Objects.requireNonNull(groupPrincipalId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
-        }        public GetGlobalRoleBindingResult build() {
-            return new GetGlobalRoleBindingResult(annotations, globalRoleId, groupPrincipalId, id, labels, name, userId);
+        }
+        public GetGlobalRoleBindingResult build() {
+            final var o = new GetGlobalRoleBindingResult();
+            o.annotations = annotations;
+            o.globalRoleId = globalRoleId;
+            o.groupPrincipalId = groupPrincipalId;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.userId = userId;
+            return o;
         }
     }
 }

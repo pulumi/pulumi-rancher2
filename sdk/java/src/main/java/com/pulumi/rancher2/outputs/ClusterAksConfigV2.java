@@ -20,210 +20,149 @@ public final class ClusterAksConfigV2 {
      * @return The AKS auth base url (string)
      * 
      */
-    private final @Nullable String authBaseUrl;
+    private @Nullable String authBaseUrl;
     /**
      * @return The AKS authorized ip ranges (list)
      * 
      */
-    private final @Nullable List<String> authorizedIpRanges;
+    private @Nullable List<String> authorizedIpRanges;
     /**
      * @return The AKS base url (string)
      * 
      */
-    private final @Nullable String baseUrl;
+    private @Nullable String baseUrl;
     /**
      * @return The EKS cloud_credential id (string)
      * 
      */
-    private final String cloudCredentialId;
+    private String cloudCredentialId;
     /**
      * @return The AKS dns prefix. Required if `imported=false` (string)
      * 
      */
-    private final @Nullable String dnsPrefix;
+    private @Nullable String dnsPrefix;
     /**
      * @return Enable AKS http application routing? (bool)
      * 
      */
-    private final @Nullable Boolean httpApplicationRouting;
+    private @Nullable Boolean httpApplicationRouting;
     /**
      * @return Is GKE cluster imported? Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean imported;
+    private @Nullable Boolean imported;
     /**
      * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
-    private final @Nullable String kubernetesVersion;
+    private @Nullable String kubernetesVersion;
     /**
      * @return The AKS linux admin username (string)
      * 
      */
-    private final @Nullable String linuxAdminUsername;
+    private @Nullable String linuxAdminUsername;
     /**
      * @return The AKS linux ssh public key (string)
      * 
      */
-    private final @Nullable String linuxSshPublicKey;
+    private @Nullable String linuxSshPublicKey;
     /**
      * @return The AKS load balancer sku (string)
      * 
      */
-    private final @Nullable String loadBalancerSku;
+    private @Nullable String loadBalancerSku;
     /**
      * @return The AKS log analytics workspace group (string)
      * 
      */
-    private final @Nullable String logAnalyticsWorkspaceGroup;
+    private @Nullable String logAnalyticsWorkspaceGroup;
     /**
      * @return The AKS log analytics workspace name (string)
      * 
      */
-    private final @Nullable String logAnalyticsWorkspaceName;
+    private @Nullable String logAnalyticsWorkspaceName;
     /**
      * @return Is AKS cluster monitoring enabled? (bool)
      * 
      */
-    private final @Nullable Boolean monitoring;
+    private @Nullable Boolean monitoring;
     /**
      * @return Name of cluster registration token (string)
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The AKS network dns service ip (string)
      * 
      */
-    private final @Nullable String networkDnsServiceIp;
+    private @Nullable String networkDnsServiceIp;
     /**
      * @return The AKS network docker bridge cidr (string)
      * 
      */
-    private final @Nullable String networkDockerBridgeCidr;
+    private @Nullable String networkDockerBridgeCidr;
     /**
      * @return The AKS network plugin. Required if `imported=false` (string)
      * 
      */
-    private final @Nullable String networkPlugin;
+    private @Nullable String networkPlugin;
     /**
      * @return The AKS network pod cidr (string)
      * 
      */
-    private final @Nullable String networkPodCidr;
+    private @Nullable String networkPodCidr;
     /**
      * @return The AKS network policy (string)
      * 
      */
-    private final @Nullable String networkPolicy;
+    private @Nullable String networkPolicy;
     /**
      * @return The AKS network service cidr (string)
      * 
      */
-    private final @Nullable String networkServiceCidr;
+    private @Nullable String networkServiceCidr;
     /**
      * @return The GKE cluster node pools. Required for create new cluster (List)
      * 
      */
-    private final @Nullable List<ClusterAksConfigV2NodePool> nodePools;
+    private @Nullable List<ClusterAksConfigV2NodePool> nodePools;
     /**
      * @return Is AKS cluster private? (bool)
      * 
      */
-    private final @Nullable Boolean privateCluster;
+    private @Nullable Boolean privateCluster;
     /**
      * @return The AKS resource group (string)
      * 
      */
-    private final String resourceGroup;
+    private String resourceGroup;
     /**
      * @return The AKS resource location (string)
      * 
      */
-    private final String resourceLocation;
+    private String resourceLocation;
     /**
      * @return The AKS subnet (string)
      * 
      */
-    private final @Nullable String subnet;
+    private @Nullable String subnet;
     /**
      * @return The GKE node config tags (List)
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
     /**
      * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
      * 
      */
-    private final @Nullable String virtualNetwork;
+    private @Nullable String virtualNetwork;
     /**
      * @return The AKS virtual network resource group (string)
      * 
      */
-    private final @Nullable String virtualNetworkResourceGroup;
+    private @Nullable String virtualNetworkResourceGroup;
 
-    @CustomType.Constructor
-    private ClusterAksConfigV2(
-        @CustomType.Parameter("authBaseUrl") @Nullable String authBaseUrl,
-        @CustomType.Parameter("authorizedIpRanges") @Nullable List<String> authorizedIpRanges,
-        @CustomType.Parameter("baseUrl") @Nullable String baseUrl,
-        @CustomType.Parameter("cloudCredentialId") String cloudCredentialId,
-        @CustomType.Parameter("dnsPrefix") @Nullable String dnsPrefix,
-        @CustomType.Parameter("httpApplicationRouting") @Nullable Boolean httpApplicationRouting,
-        @CustomType.Parameter("imported") @Nullable Boolean imported,
-        @CustomType.Parameter("kubernetesVersion") @Nullable String kubernetesVersion,
-        @CustomType.Parameter("linuxAdminUsername") @Nullable String linuxAdminUsername,
-        @CustomType.Parameter("linuxSshPublicKey") @Nullable String linuxSshPublicKey,
-        @CustomType.Parameter("loadBalancerSku") @Nullable String loadBalancerSku,
-        @CustomType.Parameter("logAnalyticsWorkspaceGroup") @Nullable String logAnalyticsWorkspaceGroup,
-        @CustomType.Parameter("logAnalyticsWorkspaceName") @Nullable String logAnalyticsWorkspaceName,
-        @CustomType.Parameter("monitoring") @Nullable Boolean monitoring,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("networkDnsServiceIp") @Nullable String networkDnsServiceIp,
-        @CustomType.Parameter("networkDockerBridgeCidr") @Nullable String networkDockerBridgeCidr,
-        @CustomType.Parameter("networkPlugin") @Nullable String networkPlugin,
-        @CustomType.Parameter("networkPodCidr") @Nullable String networkPodCidr,
-        @CustomType.Parameter("networkPolicy") @Nullable String networkPolicy,
-        @CustomType.Parameter("networkServiceCidr") @Nullable String networkServiceCidr,
-        @CustomType.Parameter("nodePools") @Nullable List<ClusterAksConfigV2NodePool> nodePools,
-        @CustomType.Parameter("privateCluster") @Nullable Boolean privateCluster,
-        @CustomType.Parameter("resourceGroup") String resourceGroup,
-        @CustomType.Parameter("resourceLocation") String resourceLocation,
-        @CustomType.Parameter("subnet") @Nullable String subnet,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("virtualNetwork") @Nullable String virtualNetwork,
-        @CustomType.Parameter("virtualNetworkResourceGroup") @Nullable String virtualNetworkResourceGroup) {
-        this.authBaseUrl = authBaseUrl;
-        this.authorizedIpRanges = authorizedIpRanges;
-        this.baseUrl = baseUrl;
-        this.cloudCredentialId = cloudCredentialId;
-        this.dnsPrefix = dnsPrefix;
-        this.httpApplicationRouting = httpApplicationRouting;
-        this.imported = imported;
-        this.kubernetesVersion = kubernetesVersion;
-        this.linuxAdminUsername = linuxAdminUsername;
-        this.linuxSshPublicKey = linuxSshPublicKey;
-        this.loadBalancerSku = loadBalancerSku;
-        this.logAnalyticsWorkspaceGroup = logAnalyticsWorkspaceGroup;
-        this.logAnalyticsWorkspaceName = logAnalyticsWorkspaceName;
-        this.monitoring = monitoring;
-        this.name = name;
-        this.networkDnsServiceIp = networkDnsServiceIp;
-        this.networkDockerBridgeCidr = networkDockerBridgeCidr;
-        this.networkPlugin = networkPlugin;
-        this.networkPodCidr = networkPodCidr;
-        this.networkPolicy = networkPolicy;
-        this.networkServiceCidr = networkServiceCidr;
-        this.nodePools = nodePools;
-        this.privateCluster = privateCluster;
-        this.resourceGroup = resourceGroup;
-        this.resourceLocation = resourceLocation;
-        this.subnet = subnet;
-        this.tags = tags;
-        this.virtualNetwork = virtualNetwork;
-        this.virtualNetworkResourceGroup = virtualNetworkResourceGroup;
-    }
-
+    private ClusterAksConfigV2() {}
     /**
      * @return The AKS auth base url (string)
      * 
@@ -435,7 +374,7 @@ public final class ClusterAksConfigV2 {
     public static Builder builder(ClusterAksConfigV2 defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authBaseUrl;
         private @Nullable List<String> authorizedIpRanges;
@@ -466,11 +405,7 @@ public final class ClusterAksConfigV2 {
         private @Nullable Map<String,Object> tags;
         private @Nullable String virtualNetwork;
         private @Nullable String virtualNetworkResourceGroup;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAksConfigV2 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authBaseUrl = defaults.authBaseUrl;
@@ -504,10 +439,12 @@ public final class ClusterAksConfigV2 {
     	      this.virtualNetworkResourceGroup = defaults.virtualNetworkResourceGroup;
         }
 
+        @CustomType.Setter
         public Builder authBaseUrl(@Nullable String authBaseUrl) {
             this.authBaseUrl = authBaseUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder authorizedIpRanges(@Nullable List<String> authorizedIpRanges) {
             this.authorizedIpRanges = authorizedIpRanges;
             return this;
@@ -515,82 +452,102 @@ public final class ClusterAksConfigV2 {
         public Builder authorizedIpRanges(String... authorizedIpRanges) {
             return authorizedIpRanges(List.of(authorizedIpRanges));
         }
+        @CustomType.Setter
         public Builder baseUrl(@Nullable String baseUrl) {
             this.baseUrl = baseUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudCredentialId(String cloudCredentialId) {
             this.cloudCredentialId = Objects.requireNonNull(cloudCredentialId);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsPrefix(@Nullable String dnsPrefix) {
             this.dnsPrefix = dnsPrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder httpApplicationRouting(@Nullable Boolean httpApplicationRouting) {
             this.httpApplicationRouting = httpApplicationRouting;
             return this;
         }
+        @CustomType.Setter
         public Builder imported(@Nullable Boolean imported) {
             this.imported = imported;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesVersion(@Nullable String kubernetesVersion) {
             this.kubernetesVersion = kubernetesVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder linuxAdminUsername(@Nullable String linuxAdminUsername) {
             this.linuxAdminUsername = linuxAdminUsername;
             return this;
         }
+        @CustomType.Setter
         public Builder linuxSshPublicKey(@Nullable String linuxSshPublicKey) {
             this.linuxSshPublicKey = linuxSshPublicKey;
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerSku(@Nullable String loadBalancerSku) {
             this.loadBalancerSku = loadBalancerSku;
             return this;
         }
+        @CustomType.Setter
         public Builder logAnalyticsWorkspaceGroup(@Nullable String logAnalyticsWorkspaceGroup) {
             this.logAnalyticsWorkspaceGroup = logAnalyticsWorkspaceGroup;
             return this;
         }
+        @CustomType.Setter
         public Builder logAnalyticsWorkspaceName(@Nullable String logAnalyticsWorkspaceName) {
             this.logAnalyticsWorkspaceName = logAnalyticsWorkspaceName;
             return this;
         }
+        @CustomType.Setter
         public Builder monitoring(@Nullable Boolean monitoring) {
             this.monitoring = monitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder networkDnsServiceIp(@Nullable String networkDnsServiceIp) {
             this.networkDnsServiceIp = networkDnsServiceIp;
             return this;
         }
+        @CustomType.Setter
         public Builder networkDockerBridgeCidr(@Nullable String networkDockerBridgeCidr) {
             this.networkDockerBridgeCidr = networkDockerBridgeCidr;
             return this;
         }
+        @CustomType.Setter
         public Builder networkPlugin(@Nullable String networkPlugin) {
             this.networkPlugin = networkPlugin;
             return this;
         }
+        @CustomType.Setter
         public Builder networkPodCidr(@Nullable String networkPodCidr) {
             this.networkPodCidr = networkPodCidr;
             return this;
         }
+        @CustomType.Setter
         public Builder networkPolicy(@Nullable String networkPolicy) {
             this.networkPolicy = networkPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder networkServiceCidr(@Nullable String networkServiceCidr) {
             this.networkServiceCidr = networkServiceCidr;
             return this;
         }
+        @CustomType.Setter
         public Builder nodePools(@Nullable List<ClusterAksConfigV2NodePool> nodePools) {
             this.nodePools = nodePools;
             return this;
@@ -598,35 +555,73 @@ public final class ClusterAksConfigV2 {
         public Builder nodePools(ClusterAksConfigV2NodePool... nodePools) {
             return nodePools(List.of(nodePools));
         }
+        @CustomType.Setter
         public Builder privateCluster(@Nullable Boolean privateCluster) {
             this.privateCluster = privateCluster;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroup(String resourceGroup) {
             this.resourceGroup = Objects.requireNonNull(resourceGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceLocation(String resourceLocation) {
             this.resourceLocation = Objects.requireNonNull(resourceLocation);
             return this;
         }
+        @CustomType.Setter
         public Builder subnet(@Nullable String subnet) {
             this.subnet = subnet;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder virtualNetwork(@Nullable String virtualNetwork) {
             this.virtualNetwork = virtualNetwork;
             return this;
         }
+        @CustomType.Setter
         public Builder virtualNetworkResourceGroup(@Nullable String virtualNetworkResourceGroup) {
             this.virtualNetworkResourceGroup = virtualNetworkResourceGroup;
             return this;
-        }        public ClusterAksConfigV2 build() {
-            return new ClusterAksConfigV2(authBaseUrl, authorizedIpRanges, baseUrl, cloudCredentialId, dnsPrefix, httpApplicationRouting, imported, kubernetesVersion, linuxAdminUsername, linuxSshPublicKey, loadBalancerSku, logAnalyticsWorkspaceGroup, logAnalyticsWorkspaceName, monitoring, name, networkDnsServiceIp, networkDockerBridgeCidr, networkPlugin, networkPodCidr, networkPolicy, networkServiceCidr, nodePools, privateCluster, resourceGroup, resourceLocation, subnet, tags, virtualNetwork, virtualNetworkResourceGroup);
+        }
+        public ClusterAksConfigV2 build() {
+            final var o = new ClusterAksConfigV2();
+            o.authBaseUrl = authBaseUrl;
+            o.authorizedIpRanges = authorizedIpRanges;
+            o.baseUrl = baseUrl;
+            o.cloudCredentialId = cloudCredentialId;
+            o.dnsPrefix = dnsPrefix;
+            o.httpApplicationRouting = httpApplicationRouting;
+            o.imported = imported;
+            o.kubernetesVersion = kubernetesVersion;
+            o.linuxAdminUsername = linuxAdminUsername;
+            o.linuxSshPublicKey = linuxSshPublicKey;
+            o.loadBalancerSku = loadBalancerSku;
+            o.logAnalyticsWorkspaceGroup = logAnalyticsWorkspaceGroup;
+            o.logAnalyticsWorkspaceName = logAnalyticsWorkspaceName;
+            o.monitoring = monitoring;
+            o.name = name;
+            o.networkDnsServiceIp = networkDnsServiceIp;
+            o.networkDockerBridgeCidr = networkDockerBridgeCidr;
+            o.networkPlugin = networkPlugin;
+            o.networkPodCidr = networkPodCidr;
+            o.networkPolicy = networkPolicy;
+            o.networkServiceCidr = networkServiceCidr;
+            o.nodePools = nodePools;
+            o.privateCluster = privateCluster;
+            o.resourceGroup = resourceGroup;
+            o.resourceLocation = resourceLocation;
+            o.subnet = subnet;
+            o.tags = tags;
+            o.virtualNetwork = virtualNetwork;
+            o.virtualNetworkResourceGroup = virtualNetworkResourceGroup;
+            return o;
         }
     }
 }

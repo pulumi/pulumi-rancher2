@@ -15,13 +15,9 @@ public final class ClusterAlertRuleSystemServiceRule {
      * @return System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
      * 
      */
-    private final @Nullable String condition;
+    private @Nullable String condition;
 
-    @CustomType.Constructor
-    private ClusterAlertRuleSystemServiceRule(@CustomType.Parameter("condition") @Nullable String condition) {
-        this.condition = condition;
-    }
-
+    private ClusterAlertRuleSystemServiceRule() {}
     /**
      * @return System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
      * 
@@ -37,24 +33,24 @@ public final class ClusterAlertRuleSystemServiceRule {
     public static Builder builder(ClusterAlertRuleSystemServiceRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String condition;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAlertRuleSystemServiceRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
         }
 
+        @CustomType.Setter
         public Builder condition(@Nullable String condition) {
             this.condition = condition;
             return this;
-        }        public ClusterAlertRuleSystemServiceRule build() {
-            return new ClusterAlertRuleSystemServiceRule(condition);
+        }
+        public ClusterAlertRuleSystemServiceRule build() {
+            final var o = new ClusterAlertRuleSystemServiceRule();
+            o.condition = condition;
+            return o;
         }
     }
 }

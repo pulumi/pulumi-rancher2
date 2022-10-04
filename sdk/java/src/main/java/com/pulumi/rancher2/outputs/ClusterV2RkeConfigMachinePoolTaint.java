@@ -15,28 +15,19 @@ public final class ClusterV2RkeConfigMachinePoolTaint {
      * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
      * 
      */
-    private final @Nullable String effect;
+    private @Nullable String effect;
     /**
      * @return Machine selector label match expressions key (string)
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return The taint value (string)
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private ClusterV2RkeConfigMachinePoolTaint(
-        @CustomType.Parameter("effect") @Nullable String effect,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.effect = effect;
-        this.key = key;
-        this.value = value;
-    }
-
+    private ClusterV2RkeConfigMachinePoolTaint() {}
     /**
      * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
      * 
@@ -66,16 +57,12 @@ public final class ClusterV2RkeConfigMachinePoolTaint {
     public static Builder builder(ClusterV2RkeConfigMachinePoolTaint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String effect;
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterV2RkeConfigMachinePoolTaint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -83,19 +70,27 @@ public final class ClusterV2RkeConfigMachinePoolTaint {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder effect(@Nullable String effect) {
             this.effect = effect;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public ClusterV2RkeConfigMachinePoolTaint build() {
-            return new ClusterV2RkeConfigMachinePoolTaint(effect, key, value);
+        }
+        public ClusterV2RkeConfigMachinePoolTaint build() {
+            final var o = new ClusterV2RkeConfigMachinePoolTaint();
+            o.effect = effect;
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

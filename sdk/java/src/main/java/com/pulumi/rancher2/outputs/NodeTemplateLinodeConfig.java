@@ -16,119 +16,84 @@ public final class NodeTemplateLinodeConfig {
      * @return Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
      * 
      */
-    private final @Nullable String authorizedUsers;
+    private @Nullable String authorizedUsers;
     /**
      * @return Create private IP for the instance. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean createPrivateIp;
+    private @Nullable Boolean createPrivateIp;
     /**
      * @return Docker Port. Default `2376` (string)
      * 
      */
-    private final @Nullable String dockerPort;
+    private @Nullable String dockerPort;
     /**
      * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
-    private final @Nullable String image;
+    private @Nullable String image;
     /**
      * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
      * 
      */
-    private final @Nullable String instanceType;
+    private @Nullable String instanceType;
     /**
      * @return Linode Instance Label. (string)
      * 
      */
-    private final @Nullable String label;
+    private @Nullable String label;
     /**
      * @return OpenStack region name (string)
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return Root Password (string)
      * 
      */
-    private final @Nullable String rootPass;
+    private @Nullable String rootPass;
     /**
      * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
-    private final @Nullable String sshPort;
+    private @Nullable String sshPort;
     /**
      * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
-    private final @Nullable String sshUser;
+    private @Nullable String sshUser;
     /**
      * @return Specifies the Linode StackScript to use to create the instance. (string)
      * 
      */
-    private final @Nullable String stackscript;
+    private @Nullable String stackscript;
     /**
      * @return A JSON string specifying data for the selected StackScript. (string)
      * 
      */
-    private final @Nullable String stackscriptData;
+    private @Nullable String stackscriptData;
     /**
      * @return Linode Instance Swap Size (MB). Default `512` (string)
      * 
      */
-    private final @Nullable String swapSize;
+    private @Nullable String swapSize;
     /**
      * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
-    private final @Nullable String tags;
+    private @Nullable String tags;
     /**
      * @return Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
-    private final @Nullable String token;
+    private @Nullable String token;
     /**
      * @return Prefix the User-Agent in Linode API calls with some &#39;product/version&#39; (string)
      * 
      */
-    private final @Nullable String uaPrefix;
+    private @Nullable String uaPrefix;
 
-    @CustomType.Constructor
-    private NodeTemplateLinodeConfig(
-        @CustomType.Parameter("authorizedUsers") @Nullable String authorizedUsers,
-        @CustomType.Parameter("createPrivateIp") @Nullable Boolean createPrivateIp,
-        @CustomType.Parameter("dockerPort") @Nullable String dockerPort,
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("instanceType") @Nullable String instanceType,
-        @CustomType.Parameter("label") @Nullable String label,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("rootPass") @Nullable String rootPass,
-        @CustomType.Parameter("sshPort") @Nullable String sshPort,
-        @CustomType.Parameter("sshUser") @Nullable String sshUser,
-        @CustomType.Parameter("stackscript") @Nullable String stackscript,
-        @CustomType.Parameter("stackscriptData") @Nullable String stackscriptData,
-        @CustomType.Parameter("swapSize") @Nullable String swapSize,
-        @CustomType.Parameter("tags") @Nullable String tags,
-        @CustomType.Parameter("token") @Nullable String token,
-        @CustomType.Parameter("uaPrefix") @Nullable String uaPrefix) {
-        this.authorizedUsers = authorizedUsers;
-        this.createPrivateIp = createPrivateIp;
-        this.dockerPort = dockerPort;
-        this.image = image;
-        this.instanceType = instanceType;
-        this.label = label;
-        this.region = region;
-        this.rootPass = rootPass;
-        this.sshPort = sshPort;
-        this.sshUser = sshUser;
-        this.stackscript = stackscript;
-        this.stackscriptData = stackscriptData;
-        this.swapSize = swapSize;
-        this.tags = tags;
-        this.token = token;
-        this.uaPrefix = uaPrefix;
-    }
-
+    private NodeTemplateLinodeConfig() {}
     /**
      * @return Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
      * 
@@ -249,7 +214,7 @@ public final class NodeTemplateLinodeConfig {
     public static Builder builder(NodeTemplateLinodeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authorizedUsers;
         private @Nullable Boolean createPrivateIp;
@@ -267,11 +232,7 @@ public final class NodeTemplateLinodeConfig {
         private @Nullable String tags;
         private @Nullable String token;
         private @Nullable String uaPrefix;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeTemplateLinodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authorizedUsers = defaults.authorizedUsers;
@@ -292,71 +253,105 @@ public final class NodeTemplateLinodeConfig {
     	      this.uaPrefix = defaults.uaPrefix;
         }
 
+        @CustomType.Setter
         public Builder authorizedUsers(@Nullable String authorizedUsers) {
             this.authorizedUsers = authorizedUsers;
             return this;
         }
+        @CustomType.Setter
         public Builder createPrivateIp(@Nullable Boolean createPrivateIp) {
             this.createPrivateIp = createPrivateIp;
             return this;
         }
+        @CustomType.Setter
         public Builder dockerPort(@Nullable String dockerPort) {
             this.dockerPort = dockerPort;
             return this;
         }
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
+        @CustomType.Setter
         public Builder label(@Nullable String label) {
             this.label = label;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder rootPass(@Nullable String rootPass) {
             this.rootPass = rootPass;
             return this;
         }
+        @CustomType.Setter
         public Builder sshPort(@Nullable String sshPort) {
             this.sshPort = sshPort;
             return this;
         }
+        @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
             this.sshUser = sshUser;
             return this;
         }
+        @CustomType.Setter
         public Builder stackscript(@Nullable String stackscript) {
             this.stackscript = stackscript;
             return this;
         }
+        @CustomType.Setter
         public Builder stackscriptData(@Nullable String stackscriptData) {
             this.stackscriptData = stackscriptData;
             return this;
         }
+        @CustomType.Setter
         public Builder swapSize(@Nullable String swapSize) {
             this.swapSize = swapSize;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable String tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder token(@Nullable String token) {
             this.token = token;
             return this;
         }
+        @CustomType.Setter
         public Builder uaPrefix(@Nullable String uaPrefix) {
             this.uaPrefix = uaPrefix;
             return this;
-        }        public NodeTemplateLinodeConfig build() {
-            return new NodeTemplateLinodeConfig(authorizedUsers, createPrivateIp, dockerPort, image, instanceType, label, region, rootPass, sshPort, sshUser, stackscript, stackscriptData, swapSize, tags, token, uaPrefix);
+        }
+        public NodeTemplateLinodeConfig build() {
+            final var o = new NodeTemplateLinodeConfig();
+            o.authorizedUsers = authorizedUsers;
+            o.createPrivateIp = createPrivateIp;
+            o.dockerPort = dockerPort;
+            o.image = image;
+            o.instanceType = instanceType;
+            o.label = label;
+            o.region = region;
+            o.rootPass = rootPass;
+            o.sshPort = sshPort;
+            o.sshUser = sshUser;
+            o.stackscript = stackscript;
+            o.stackscriptData = stackscriptData;
+            o.swapSize = swapSize;
+            o.tags = tags;
+            o.token = token;
+            o.uaPrefix = uaPrefix;
+            return o;
         }
     }
 }

@@ -24,23 +24,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewToken(ctx, "foo", &rancher2.TokenArgs{
-// 			ClusterId:   pulumi.String("<cluster-id>"),
-// 			Description: pulumi.String("foo token"),
-// 			Ttl:         pulumi.Int(1200),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewToken(ctx, "foo", &rancher2.TokenArgs{
+//				ClusterId:   pulumi.String("<cluster-id>"),
+//				Description: pulumi.String("foo token"),
+//				Ttl:         pulumi.Int(1200),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Token struct {
 	pulumi.CustomResourceState
@@ -220,7 +223,7 @@ func (i *Token) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 // TokenArrayInput is an input type that accepts TokenArray and TokenArrayOutput values.
 // You can construct a concrete instance of `TokenArrayInput` via:
 //
-//          TokenArray{ TokenArgs{...} }
+//	TokenArray{ TokenArgs{...} }
 type TokenArrayInput interface {
 	pulumi.Input
 
@@ -245,7 +248,7 @@ func (i TokenArray) ToTokenArrayOutputWithContext(ctx context.Context) TokenArra
 // TokenMapInput is an input type that accepts TokenMap and TokenMapOutput values.
 // You can construct a concrete instance of `TokenMapInput` via:
 //
-//          TokenMap{ "key": TokenArgs{...} }
+//	TokenMap{ "key": TokenArgs{...} }
 type TokenMapInput interface {
 	pulumi.Input
 

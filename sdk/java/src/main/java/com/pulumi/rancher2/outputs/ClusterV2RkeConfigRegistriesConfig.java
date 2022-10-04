@@ -16,42 +16,29 @@ public final class ClusterV2RkeConfigRegistriesConfig {
      * @return Registry auth config secret name (string)
      * 
      */
-    private final @Nullable String authConfigSecretName;
+    private @Nullable String authConfigSecretName;
     /**
      * @return Registry CA bundle (string)
      * 
      */
-    private final @Nullable String caBundle;
+    private @Nullable String caBundle;
     /**
      * @return Registry hostname (string)
      * 
      */
-    private final String hostname;
+    private String hostname;
     /**
      * @return Registry insecure connectivity (bool)
      * 
      */
-    private final @Nullable Boolean insecure;
+    private @Nullable Boolean insecure;
     /**
      * @return Registry TLS secret name. TLS is a pair of Cert/Key (string)
      * 
      */
-    private final @Nullable String tlsSecretName;
+    private @Nullable String tlsSecretName;
 
-    @CustomType.Constructor
-    private ClusterV2RkeConfigRegistriesConfig(
-        @CustomType.Parameter("authConfigSecretName") @Nullable String authConfigSecretName,
-        @CustomType.Parameter("caBundle") @Nullable String caBundle,
-        @CustomType.Parameter("hostname") String hostname,
-        @CustomType.Parameter("insecure") @Nullable Boolean insecure,
-        @CustomType.Parameter("tlsSecretName") @Nullable String tlsSecretName) {
-        this.authConfigSecretName = authConfigSecretName;
-        this.caBundle = caBundle;
-        this.hostname = hostname;
-        this.insecure = insecure;
-        this.tlsSecretName = tlsSecretName;
-    }
-
+    private ClusterV2RkeConfigRegistriesConfig() {}
     /**
      * @return Registry auth config secret name (string)
      * 
@@ -95,18 +82,14 @@ public final class ClusterV2RkeConfigRegistriesConfig {
     public static Builder builder(ClusterV2RkeConfigRegistriesConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authConfigSecretName;
         private @Nullable String caBundle;
         private String hostname;
         private @Nullable Boolean insecure;
         private @Nullable String tlsSecretName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterV2RkeConfigRegistriesConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authConfigSecretName = defaults.authConfigSecretName;
@@ -116,27 +99,39 @@ public final class ClusterV2RkeConfigRegistriesConfig {
     	      this.tlsSecretName = defaults.tlsSecretName;
         }
 
+        @CustomType.Setter
         public Builder authConfigSecretName(@Nullable String authConfigSecretName) {
             this.authConfigSecretName = authConfigSecretName;
             return this;
         }
+        @CustomType.Setter
         public Builder caBundle(@Nullable String caBundle) {
             this.caBundle = caBundle;
             return this;
         }
+        @CustomType.Setter
         public Builder hostname(String hostname) {
             this.hostname = Objects.requireNonNull(hostname);
             return this;
         }
+        @CustomType.Setter
         public Builder insecure(@Nullable Boolean insecure) {
             this.insecure = insecure;
             return this;
         }
+        @CustomType.Setter
         public Builder tlsSecretName(@Nullable String tlsSecretName) {
             this.tlsSecretName = tlsSecretName;
             return this;
-        }        public ClusterV2RkeConfigRegistriesConfig build() {
-            return new ClusterV2RkeConfigRegistriesConfig(authConfigSecretName, caBundle, hostname, insecure, tlsSecretName);
+        }
+        public ClusterV2RkeConfigRegistriesConfig build() {
+            final var o = new ClusterV2RkeConfigRegistriesConfig();
+            o.authConfigSecretName = authConfigSecretName;
+            o.caBundle = caBundle;
+            o.hostname = hostname;
+            o.insecure = insecure;
+            o.tlsSecretName = tlsSecretName;
+            return o;
         }
     }
 }

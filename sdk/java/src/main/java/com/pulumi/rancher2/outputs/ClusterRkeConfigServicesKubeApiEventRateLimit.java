@@ -16,21 +16,14 @@ public final class ClusterRkeConfigServicesKubeApiEventRateLimit {
      * @return Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
      * 
      */
-    private final @Nullable String configuration;
+    private @Nullable String configuration;
     /**
      * @return Enable scheduled cluster scan. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigServicesKubeApiEventRateLimit(
-        @CustomType.Parameter("configuration") @Nullable String configuration,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.configuration = configuration;
-        this.enabled = enabled;
-    }
-
+    private ClusterRkeConfigServicesKubeApiEventRateLimit() {}
     /**
      * @return Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
      * 
@@ -53,30 +46,32 @@ public final class ClusterRkeConfigServicesKubeApiEventRateLimit {
     public static Builder builder(ClusterRkeConfigServicesKubeApiEventRateLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String configuration;
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigServicesKubeApiEventRateLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configuration = defaults.configuration;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder configuration(@Nullable String configuration) {
             this.configuration = configuration;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public ClusterRkeConfigServicesKubeApiEventRateLimit build() {
-            return new ClusterRkeConfigServicesKubeApiEventRateLimit(configuration, enabled);
+        }
+        public ClusterRkeConfigServicesKubeApiEventRateLimit build() {
+            final var o = new ClusterRkeConfigServicesKubeApiEventRateLimit();
+            o.configuration = configuration;
+            o.enabled = enabled;
+            return o;
         }
     }
 }

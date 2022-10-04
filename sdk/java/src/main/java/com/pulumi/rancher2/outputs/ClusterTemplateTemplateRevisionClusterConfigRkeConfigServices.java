@@ -16,29 +16,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices {
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd etcd;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi kubeApi;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController kubeController;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet kubelet;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy kubeproxy;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler scheduler;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd etcd;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi kubeApi;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController kubeController;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet kubelet;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy kubeproxy;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler scheduler;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices(
-        @CustomType.Parameter("etcd") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd etcd,
-        @CustomType.Parameter("kubeApi") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi kubeApi,
-        @CustomType.Parameter("kubeController") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController kubeController,
-        @CustomType.Parameter("kubelet") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet kubelet,
-        @CustomType.Parameter("kubeproxy") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy kubeproxy,
-        @CustomType.Parameter("scheduler") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler scheduler) {
-        this.etcd = etcd;
-        this.kubeApi = kubeApi;
-        this.kubeController = kubeController;
-        this.kubelet = kubelet;
-        this.kubeproxy = kubeproxy;
-        this.scheduler = scheduler;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices() {}
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd> etcd() {
         return Optional.ofNullable(this.etcd);
     }
@@ -65,7 +50,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd etcd;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi kubeApi;
@@ -73,11 +58,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet kubelet;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy kubeproxy;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler scheduler;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.etcd = defaults.etcd;
@@ -88,31 +69,45 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     	      this.scheduler = defaults.scheduler;
         }
 
+        @CustomType.Setter
         public Builder etcd(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd etcd) {
             this.etcd = etcd;
             return this;
         }
+        @CustomType.Setter
         public Builder kubeApi(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi kubeApi) {
             this.kubeApi = kubeApi;
             return this;
         }
+        @CustomType.Setter
         public Builder kubeController(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController kubeController) {
             this.kubeController = kubeController;
             return this;
         }
+        @CustomType.Setter
         public Builder kubelet(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet kubelet) {
             this.kubelet = kubelet;
             return this;
         }
+        @CustomType.Setter
         public Builder kubeproxy(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy kubeproxy) {
             this.kubeproxy = kubeproxy;
             return this;
         }
+        @CustomType.Setter
         public Builder scheduler(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler scheduler) {
             this.scheduler = scheduler;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices(etcd, kubeApi, kubeController, kubelet, kubeproxy, scheduler);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices();
+            o.etcd = etcd;
+            o.kubeApi = kubeApi;
+            o.kubeController = kubeController;
+            o.kubelet = kubelet;
+            o.kubeproxy = kubeproxy;
+            o.scheduler = scheduler;
+            return o;
         }
     }
 }

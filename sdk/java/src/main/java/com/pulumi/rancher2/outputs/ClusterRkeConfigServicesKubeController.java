@@ -18,49 +18,34 @@ public final class ClusterRkeConfigServicesKubeController {
      * @return Cluster CIDR option for kube controller service (string)
      * 
      */
-    private final @Nullable String clusterCidr;
+    private @Nullable String clusterCidr;
     /**
      * @return Extra arguments for scheduler service (map)
      * 
      */
-    private final @Nullable Map<String,Object> extraArgs;
+    private @Nullable Map<String,Object> extraArgs;
     /**
      * @return Extra binds for scheduler service (list)
      * 
      */
-    private final @Nullable List<String> extraBinds;
+    private @Nullable List<String> extraBinds;
     /**
      * @return Extra environment for scheduler service (list)
      * 
      */
-    private final @Nullable List<String> extraEnvs;
+    private @Nullable List<String> extraEnvs;
     /**
      * @return Docker image for scheduler service (string)
      * 
      */
-    private final @Nullable String image;
+    private @Nullable String image;
     /**
      * @return Service Cluster ip Range option for kube controller service (string)
      * 
      */
-    private final @Nullable String serviceClusterIpRange;
+    private @Nullable String serviceClusterIpRange;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigServicesKubeController(
-        @CustomType.Parameter("clusterCidr") @Nullable String clusterCidr,
-        @CustomType.Parameter("extraArgs") @Nullable Map<String,Object> extraArgs,
-        @CustomType.Parameter("extraBinds") @Nullable List<String> extraBinds,
-        @CustomType.Parameter("extraEnvs") @Nullable List<String> extraEnvs,
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("serviceClusterIpRange") @Nullable String serviceClusterIpRange) {
-        this.clusterCidr = clusterCidr;
-        this.extraArgs = extraArgs;
-        this.extraBinds = extraBinds;
-        this.extraEnvs = extraEnvs;
-        this.image = image;
-        this.serviceClusterIpRange = serviceClusterIpRange;
-    }
-
+    private ClusterRkeConfigServicesKubeController() {}
     /**
      * @return Cluster CIDR option for kube controller service (string)
      * 
@@ -111,7 +96,7 @@ public final class ClusterRkeConfigServicesKubeController {
     public static Builder builder(ClusterRkeConfigServicesKubeController defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterCidr;
         private @Nullable Map<String,Object> extraArgs;
@@ -119,11 +104,7 @@ public final class ClusterRkeConfigServicesKubeController {
         private @Nullable List<String> extraEnvs;
         private @Nullable String image;
         private @Nullable String serviceClusterIpRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigServicesKubeController defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterCidr = defaults.clusterCidr;
@@ -134,14 +115,17 @@ public final class ClusterRkeConfigServicesKubeController {
     	      this.serviceClusterIpRange = defaults.serviceClusterIpRange;
         }
 
+        @CustomType.Setter
         public Builder clusterCidr(@Nullable String clusterCidr) {
             this.clusterCidr = clusterCidr;
             return this;
         }
+        @CustomType.Setter
         public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
             this.extraArgs = extraArgs;
             return this;
         }
+        @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
             this.extraBinds = extraBinds;
             return this;
@@ -149,6 +133,7 @@ public final class ClusterRkeConfigServicesKubeController {
         public Builder extraBinds(String... extraBinds) {
             return extraBinds(List.of(extraBinds));
         }
+        @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
             this.extraEnvs = extraEnvs;
             return this;
@@ -156,15 +141,25 @@ public final class ClusterRkeConfigServicesKubeController {
         public Builder extraEnvs(String... extraEnvs) {
             return extraEnvs(List.of(extraEnvs));
         }
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceClusterIpRange(@Nullable String serviceClusterIpRange) {
             this.serviceClusterIpRange = serviceClusterIpRange;
             return this;
-        }        public ClusterRkeConfigServicesKubeController build() {
-            return new ClusterRkeConfigServicesKubeController(clusterCidr, extraArgs, extraBinds, extraEnvs, image, serviceClusterIpRange);
+        }
+        public ClusterRkeConfigServicesKubeController build() {
+            final var o = new ClusterRkeConfigServicesKubeController();
+            o.clusterCidr = clusterCidr;
+            o.extraArgs = extraArgs;
+            o.extraBinds = extraBinds;
+            o.extraEnvs = extraEnvs;
+            o.image = image;
+            o.serviceClusterIpRange = serviceClusterIpRange;
+            return o;
         }
     }
 }

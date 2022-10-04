@@ -15,38 +15,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet {
-    private final String clusterDnsServer;
-    private final String clusterDomain;
-    private final Map<String,Object> extraArgs;
-    private final @Nullable List<String> extraBinds;
-    private final @Nullable List<String> extraEnvs;
-    private final Boolean failSwapOn;
-    private final @Nullable Boolean generateServingCertificate;
-    private final String image;
-    private final String infraContainerImage;
+    private String clusterDnsServer;
+    private String clusterDomain;
+    private Map<String,Object> extraArgs;
+    private @Nullable List<String> extraBinds;
+    private @Nullable List<String> extraEnvs;
+    private Boolean failSwapOn;
+    private @Nullable Boolean generateServingCertificate;
+    private String image;
+    private String infraContainerImage;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet(
-        @CustomType.Parameter("clusterDnsServer") String clusterDnsServer,
-        @CustomType.Parameter("clusterDomain") String clusterDomain,
-        @CustomType.Parameter("extraArgs") Map<String,Object> extraArgs,
-        @CustomType.Parameter("extraBinds") @Nullable List<String> extraBinds,
-        @CustomType.Parameter("extraEnvs") @Nullable List<String> extraEnvs,
-        @CustomType.Parameter("failSwapOn") Boolean failSwapOn,
-        @CustomType.Parameter("generateServingCertificate") @Nullable Boolean generateServingCertificate,
-        @CustomType.Parameter("image") String image,
-        @CustomType.Parameter("infraContainerImage") String infraContainerImage) {
-        this.clusterDnsServer = clusterDnsServer;
-        this.clusterDomain = clusterDomain;
-        this.extraArgs = extraArgs;
-        this.extraBinds = extraBinds;
-        this.extraEnvs = extraEnvs;
-        this.failSwapOn = failSwapOn;
-        this.generateServingCertificate = generateServingCertificate;
-        this.image = image;
-        this.infraContainerImage = infraContainerImage;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet() {}
     public String clusterDnsServer() {
         return this.clusterDnsServer;
     }
@@ -82,7 +61,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterDnsServer;
         private String clusterDomain;
@@ -93,11 +72,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
         private @Nullable Boolean generateServingCertificate;
         private String image;
         private String infraContainerImage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterDnsServer = defaults.clusterDnsServer;
@@ -111,18 +86,22 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
     	      this.infraContainerImage = defaults.infraContainerImage;
         }
 
+        @CustomType.Setter
         public Builder clusterDnsServer(String clusterDnsServer) {
             this.clusterDnsServer = Objects.requireNonNull(clusterDnsServer);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterDomain(String clusterDomain) {
             this.clusterDomain = Objects.requireNonNull(clusterDomain);
             return this;
         }
+        @CustomType.Setter
         public Builder extraArgs(Map<String,Object> extraArgs) {
             this.extraArgs = Objects.requireNonNull(extraArgs);
             return this;
         }
+        @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
             this.extraBinds = extraBinds;
             return this;
@@ -130,6 +109,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
         public Builder extraBinds(String... extraBinds) {
             return extraBinds(List.of(extraBinds));
         }
+        @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
             this.extraEnvs = extraEnvs;
             return this;
@@ -137,23 +117,38 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
         public Builder extraEnvs(String... extraEnvs) {
             return extraEnvs(List.of(extraEnvs));
         }
+        @CustomType.Setter
         public Builder failSwapOn(Boolean failSwapOn) {
             this.failSwapOn = Objects.requireNonNull(failSwapOn);
             return this;
         }
+        @CustomType.Setter
         public Builder generateServingCertificate(@Nullable Boolean generateServingCertificate) {
             this.generateServingCertificate = generateServingCertificate;
             return this;
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
         }
+        @CustomType.Setter
         public Builder infraContainerImage(String infraContainerImage) {
             this.infraContainerImage = Objects.requireNonNull(infraContainerImage);
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet(clusterDnsServer, clusterDomain, extraArgs, extraBinds, extraEnvs, failSwapOn, generateServingCertificate, image, infraContainerImage);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet();
+            o.clusterDnsServer = clusterDnsServer;
+            o.clusterDomain = clusterDomain;
+            o.extraArgs = extraArgs;
+            o.extraBinds = extraBinds;
+            o.extraEnvs = extraEnvs;
+            o.failSwapOn = failSwapOn;
+            o.generateServingCertificate = generateServingCertificate;
+            o.image = image;
+            o.infraContainerImage = infraContainerImage;
+            return o;
         }
     }
 }

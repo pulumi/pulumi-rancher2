@@ -19,31 +19,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewClusterRoleTemplateBinding(ctx, "foo", &rancher2.ClusterRoleTemplateBindingArgs{
-// 			ClusterId:      pulumi.String("<cluster_id>"),
-// 			RoleTemplateId: pulumi.String("<role_template_id>"),
-// 			UserId:         pulumi.String("<user_id>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterRoleTemplateBinding(ctx, "foo", &rancher2.ClusterRoleTemplateBindingArgs{
+//				ClusterId:      pulumi.String("<cluster_id>"),
+//				RoleTemplateId: pulumi.String("<role_template_id>"),
+//				UserId:         pulumi.String("<user_id>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Cluster Role Template Bindings can be imported using the Rancher cluster Role Template Binding ID
+// # Cluster Role Template Bindings can be imported using the Rancher cluster Role Template Binding ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&gt;
+//
+//	$ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&gt;
+//
 // ```
 type ClusterRoleTemplateBinding struct {
 	pulumi.CustomResourceState
@@ -217,7 +222,7 @@ func (i *ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingOutputWithConte
 // ClusterRoleTemplateBindingArrayInput is an input type that accepts ClusterRoleTemplateBindingArray and ClusterRoleTemplateBindingArrayOutput values.
 // You can construct a concrete instance of `ClusterRoleTemplateBindingArrayInput` via:
 //
-//          ClusterRoleTemplateBindingArray{ ClusterRoleTemplateBindingArgs{...} }
+//	ClusterRoleTemplateBindingArray{ ClusterRoleTemplateBindingArgs{...} }
 type ClusterRoleTemplateBindingArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +247,7 @@ func (i ClusterRoleTemplateBindingArray) ToClusterRoleTemplateBindingArrayOutput
 // ClusterRoleTemplateBindingMapInput is an input type that accepts ClusterRoleTemplateBindingMap and ClusterRoleTemplateBindingMapOutput values.
 // You can construct a concrete instance of `ClusterRoleTemplateBindingMapInput` via:
 //
-//          ClusterRoleTemplateBindingMap{ "key": ClusterRoleTemplateBindingArgs{...} }
+//	ClusterRoleTemplateBindingMap{ "key": ClusterRoleTemplateBindingArgs{...} }
 type ClusterRoleTemplateBindingMapInput interface {
 	pulumi.Input
 

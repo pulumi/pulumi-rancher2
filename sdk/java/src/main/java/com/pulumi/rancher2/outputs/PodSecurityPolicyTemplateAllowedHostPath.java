@@ -16,21 +16,14 @@ public final class PodSecurityPolicyTemplateAllowedHostPath {
      * @return (string)
      * 
      */
-    private final String pathPrefix;
+    private String pathPrefix;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable Boolean readOnly;
+    private @Nullable Boolean readOnly;
 
-    @CustomType.Constructor
-    private PodSecurityPolicyTemplateAllowedHostPath(
-        @CustomType.Parameter("pathPrefix") String pathPrefix,
-        @CustomType.Parameter("readOnly") @Nullable Boolean readOnly) {
-        this.pathPrefix = pathPrefix;
-        this.readOnly = readOnly;
-    }
-
+    private PodSecurityPolicyTemplateAllowedHostPath() {}
     /**
      * @return (string)
      * 
@@ -53,30 +46,32 @@ public final class PodSecurityPolicyTemplateAllowedHostPath {
     public static Builder builder(PodSecurityPolicyTemplateAllowedHostPath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String pathPrefix;
         private @Nullable Boolean readOnly;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PodSecurityPolicyTemplateAllowedHostPath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pathPrefix = defaults.pathPrefix;
     	      this.readOnly = defaults.readOnly;
         }
 
+        @CustomType.Setter
         public Builder pathPrefix(String pathPrefix) {
             this.pathPrefix = Objects.requireNonNull(pathPrefix);
             return this;
         }
+        @CustomType.Setter
         public Builder readOnly(@Nullable Boolean readOnly) {
             this.readOnly = readOnly;
             return this;
-        }        public PodSecurityPolicyTemplateAllowedHostPath build() {
-            return new PodSecurityPolicyTemplateAllowedHostPath(pathPrefix, readOnly);
+        }
+        public PodSecurityPolicyTemplateAllowedHostPath build() {
+            final var o = new PodSecurityPolicyTemplateAllowedHostPath();
+            o.pathPrefix = pathPrefix;
+            o.readOnly = readOnly;
+            return o;
         }
     }
 }

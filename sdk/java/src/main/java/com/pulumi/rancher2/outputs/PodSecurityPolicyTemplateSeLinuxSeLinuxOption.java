@@ -15,35 +15,24 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOption {
      * @return (string)
      * 
      */
-    private final @Nullable String level;
+    private @Nullable String level;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String role;
+    private @Nullable String role;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String user;
+    private @Nullable String user;
 
-    @CustomType.Constructor
-    private PodSecurityPolicyTemplateSeLinuxSeLinuxOption(
-        @CustomType.Parameter("level") @Nullable String level,
-        @CustomType.Parameter("role") @Nullable String role,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("user") @Nullable String user) {
-        this.level = level;
-        this.role = role;
-        this.type = type;
-        this.user = user;
-    }
-
+    private PodSecurityPolicyTemplateSeLinuxSeLinuxOption() {}
     /**
      * @return (string)
      * 
@@ -80,17 +69,13 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOption {
     public static Builder builder(PodSecurityPolicyTemplateSeLinuxSeLinuxOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String level;
         private @Nullable String role;
         private @Nullable String type;
         private @Nullable String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PodSecurityPolicyTemplateSeLinuxSeLinuxOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.level = defaults.level;
@@ -99,23 +84,33 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOption {
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder level(@Nullable String level) {
             this.level = level;
             return this;
         }
+        @CustomType.Setter
         public Builder role(@Nullable String role) {
             this.role = role;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder user(@Nullable String user) {
             this.user = user;
             return this;
-        }        public PodSecurityPolicyTemplateSeLinuxSeLinuxOption build() {
-            return new PodSecurityPolicyTemplateSeLinuxSeLinuxOption(level, role, type, user);
+        }
+        public PodSecurityPolicyTemplateSeLinuxSeLinuxOption build() {
+            final var o = new PodSecurityPolicyTemplateSeLinuxSeLinuxOption();
+            o.level = level;
+            o.role = role;
+            o.type = type;
+            o.user = user;
+            return o;
         }
     }
 }

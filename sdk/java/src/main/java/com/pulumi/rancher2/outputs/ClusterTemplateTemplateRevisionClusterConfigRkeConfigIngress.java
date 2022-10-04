@@ -18,44 +18,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
-    private final @Nullable Boolean defaultBackend;
-    private final @Nullable String dnsPolicy;
-    private final @Nullable Map<String,Object> extraArgs;
-    private final @Nullable Integer httpPort;
-    private final @Nullable Integer httpsPort;
-    private final @Nullable String networkMode;
-    private final @Nullable Map<String,Object> nodeSelector;
-    private final @Nullable Map<String,Object> options;
-    private final @Nullable String provider;
-    private final @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration> tolerations;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy updateStrategy;
+    private @Nullable Boolean defaultBackend;
+    private @Nullable String dnsPolicy;
+    private @Nullable Map<String,Object> extraArgs;
+    private @Nullable Integer httpPort;
+    private @Nullable Integer httpsPort;
+    private @Nullable String networkMode;
+    private @Nullable Map<String,Object> nodeSelector;
+    private @Nullable Map<String,Object> options;
+    private @Nullable String provider;
+    private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration> tolerations;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy updateStrategy;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress(
-        @CustomType.Parameter("defaultBackend") @Nullable Boolean defaultBackend,
-        @CustomType.Parameter("dnsPolicy") @Nullable String dnsPolicy,
-        @CustomType.Parameter("extraArgs") @Nullable Map<String,Object> extraArgs,
-        @CustomType.Parameter("httpPort") @Nullable Integer httpPort,
-        @CustomType.Parameter("httpsPort") @Nullable Integer httpsPort,
-        @CustomType.Parameter("networkMode") @Nullable String networkMode,
-        @CustomType.Parameter("nodeSelector") @Nullable Map<String,Object> nodeSelector,
-        @CustomType.Parameter("options") @Nullable Map<String,Object> options,
-        @CustomType.Parameter("provider") @Nullable String provider,
-        @CustomType.Parameter("tolerations") @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration> tolerations,
-        @CustomType.Parameter("updateStrategy") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy updateStrategy) {
-        this.defaultBackend = defaultBackend;
-        this.dnsPolicy = dnsPolicy;
-        this.extraArgs = extraArgs;
-        this.httpPort = httpPort;
-        this.httpsPort = httpsPort;
-        this.networkMode = networkMode;
-        this.nodeSelector = nodeSelector;
-        this.options = options;
-        this.provider = provider;
-        this.tolerations = tolerations;
-        this.updateStrategy = updateStrategy;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress() {}
     public Optional<Boolean> defaultBackend() {
         return Optional.ofNullable(this.defaultBackend);
     }
@@ -97,7 +72,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress 
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean defaultBackend;
         private @Nullable String dnsPolicy;
@@ -110,11 +85,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress 
         private @Nullable String provider;
         private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration> tolerations;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy updateStrategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultBackend = defaults.defaultBackend;
@@ -130,42 +101,52 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress 
     	      this.updateStrategy = defaults.updateStrategy;
         }
 
+        @CustomType.Setter
         public Builder defaultBackend(@Nullable Boolean defaultBackend) {
             this.defaultBackend = defaultBackend;
             return this;
         }
+        @CustomType.Setter
         public Builder dnsPolicy(@Nullable String dnsPolicy) {
             this.dnsPolicy = dnsPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
             this.extraArgs = extraArgs;
             return this;
         }
+        @CustomType.Setter
         public Builder httpPort(@Nullable Integer httpPort) {
             this.httpPort = httpPort;
             return this;
         }
+        @CustomType.Setter
         public Builder httpsPort(@Nullable Integer httpsPort) {
             this.httpsPort = httpsPort;
             return this;
         }
+        @CustomType.Setter
         public Builder networkMode(@Nullable String networkMode) {
             this.networkMode = networkMode;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
             this.nodeSelector = nodeSelector;
             return this;
         }
+        @CustomType.Setter
         public Builder options(@Nullable Map<String,Object> options) {
             this.options = options;
             return this;
         }
+        @CustomType.Setter
         public Builder provider(@Nullable String provider) {
             this.provider = provider;
             return this;
         }
+        @CustomType.Setter
         public Builder tolerations(@Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration> tolerations) {
             this.tolerations = tolerations;
             return this;
@@ -173,11 +154,25 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress 
         public Builder tolerations(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration... tolerations) {
             return tolerations(List.of(tolerations));
         }
+        @CustomType.Setter
         public Builder updateStrategy(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy updateStrategy) {
             this.updateStrategy = updateStrategy;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress(defaultBackend, dnsPolicy, extraArgs, httpPort, httpsPort, networkMode, nodeSelector, options, provider, tolerations, updateStrategy);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress();
+            o.defaultBackend = defaultBackend;
+            o.dnsPolicy = dnsPolicy;
+            o.extraArgs = extraArgs;
+            o.httpPort = httpPort;
+            o.httpsPort = httpsPort;
+            o.networkMode = networkMode;
+            o.nodeSelector = nodeSelector;
+            o.options = options;
+            o.provider = provider;
+            o.tolerations = tolerations;
+            o.updateStrategy = updateStrategy;
+            return o;
         }
     }
 }

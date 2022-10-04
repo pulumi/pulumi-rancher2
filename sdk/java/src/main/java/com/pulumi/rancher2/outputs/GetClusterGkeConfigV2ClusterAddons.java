@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterGkeConfigV2ClusterAddons {
-    private final Boolean horizontalPodAutoscaling;
-    private final Boolean httpLoadBalancing;
-    private final Boolean networkPolicyConfig;
+    private Boolean horizontalPodAutoscaling;
+    private Boolean httpLoadBalancing;
+    private Boolean networkPolicyConfig;
 
-    @CustomType.Constructor
-    private GetClusterGkeConfigV2ClusterAddons(
-        @CustomType.Parameter("horizontalPodAutoscaling") Boolean horizontalPodAutoscaling,
-        @CustomType.Parameter("httpLoadBalancing") Boolean httpLoadBalancing,
-        @CustomType.Parameter("networkPolicyConfig") Boolean networkPolicyConfig) {
-        this.horizontalPodAutoscaling = horizontalPodAutoscaling;
-        this.httpLoadBalancing = httpLoadBalancing;
-        this.networkPolicyConfig = networkPolicyConfig;
-    }
-
+    private GetClusterGkeConfigV2ClusterAddons() {}
     public Boolean horizontalPodAutoscaling() {
         return this.horizontalPodAutoscaling;
     }
@@ -40,16 +31,12 @@ public final class GetClusterGkeConfigV2ClusterAddons {
     public static Builder builder(GetClusterGkeConfigV2ClusterAddons defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean horizontalPodAutoscaling;
         private Boolean httpLoadBalancing;
         private Boolean networkPolicyConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterGkeConfigV2ClusterAddons defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.horizontalPodAutoscaling = defaults.horizontalPodAutoscaling;
@@ -57,19 +44,27 @@ public final class GetClusterGkeConfigV2ClusterAddons {
     	      this.networkPolicyConfig = defaults.networkPolicyConfig;
         }
 
+        @CustomType.Setter
         public Builder horizontalPodAutoscaling(Boolean horizontalPodAutoscaling) {
             this.horizontalPodAutoscaling = Objects.requireNonNull(horizontalPodAutoscaling);
             return this;
         }
+        @CustomType.Setter
         public Builder httpLoadBalancing(Boolean httpLoadBalancing) {
             this.httpLoadBalancing = Objects.requireNonNull(httpLoadBalancing);
             return this;
         }
+        @CustomType.Setter
         public Builder networkPolicyConfig(Boolean networkPolicyConfig) {
             this.networkPolicyConfig = Objects.requireNonNull(networkPolicyConfig);
             return this;
-        }        public GetClusterGkeConfigV2ClusterAddons build() {
-            return new GetClusterGkeConfigV2ClusterAddons(horizontalPodAutoscaling, httpLoadBalancing, networkPolicyConfig);
+        }
+        public GetClusterGkeConfigV2ClusterAddons build() {
+            final var o = new GetClusterGkeConfigV2ClusterAddons();
+            o.horizontalPodAutoscaling = horizontalPodAutoscaling;
+            o.httpLoadBalancing = httpLoadBalancing;
+            o.networkPolicyConfig = networkPolicyConfig;
+            return o;
         }
     }
 }

@@ -12,41 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectLoggingSyslogConfig {
-    private final @Nullable String certificate;
-    private final @Nullable String clientCert;
-    private final @Nullable String clientKey;
-    private final @Nullable Boolean enableTls;
-    private final String endpoint;
-    private final @Nullable String program;
-    private final @Nullable String protocol;
-    private final @Nullable String severity;
-    private final Boolean sslVerify;
-    private final @Nullable String token;
+    private @Nullable String certificate;
+    private @Nullable String clientCert;
+    private @Nullable String clientKey;
+    private @Nullable Boolean enableTls;
+    private String endpoint;
+    private @Nullable String program;
+    private @Nullable String protocol;
+    private @Nullable String severity;
+    private Boolean sslVerify;
+    private @Nullable String token;
 
-    @CustomType.Constructor
-    private GetProjectLoggingSyslogConfig(
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("clientCert") @Nullable String clientCert,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("enableTls") @Nullable Boolean enableTls,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("program") @Nullable String program,
-        @CustomType.Parameter("protocol") @Nullable String protocol,
-        @CustomType.Parameter("severity") @Nullable String severity,
-        @CustomType.Parameter("sslVerify") Boolean sslVerify,
-        @CustomType.Parameter("token") @Nullable String token) {
-        this.certificate = certificate;
-        this.clientCert = clientCert;
-        this.clientKey = clientKey;
-        this.enableTls = enableTls;
-        this.endpoint = endpoint;
-        this.program = program;
-        this.protocol = protocol;
-        this.severity = severity;
-        this.sslVerify = sslVerify;
-        this.token = token;
-    }
-
+    private GetProjectLoggingSyslogConfig() {}
     public Optional<String> certificate() {
         return Optional.ofNullable(this.certificate);
     }
@@ -85,7 +62,7 @@ public final class GetProjectLoggingSyslogConfig {
     public static Builder builder(GetProjectLoggingSyslogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificate;
         private @Nullable String clientCert;
@@ -97,11 +74,7 @@ public final class GetProjectLoggingSyslogConfig {
         private @Nullable String severity;
         private Boolean sslVerify;
         private @Nullable String token;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectLoggingSyslogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
@@ -116,47 +89,69 @@ public final class GetProjectLoggingSyslogConfig {
     	      this.token = defaults.token;
         }
 
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
             this.clientCert = clientCert;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder enableTls(@Nullable Boolean enableTls) {
             this.enableTls = enableTls;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder program(@Nullable String program) {
             this.program = program;
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
             this.protocol = protocol;
             return this;
         }
+        @CustomType.Setter
         public Builder severity(@Nullable String severity) {
             this.severity = severity;
             return this;
         }
+        @CustomType.Setter
         public Builder sslVerify(Boolean sslVerify) {
             this.sslVerify = Objects.requireNonNull(sslVerify);
             return this;
         }
+        @CustomType.Setter
         public Builder token(@Nullable String token) {
             this.token = token;
             return this;
-        }        public GetProjectLoggingSyslogConfig build() {
-            return new GetProjectLoggingSyslogConfig(certificate, clientCert, clientKey, enableTls, endpoint, program, protocol, severity, sslVerify, token);
+        }
+        public GetProjectLoggingSyslogConfig build() {
+            final var o = new GetProjectLoggingSyslogConfig();
+            o.certificate = certificate;
+            o.clientCert = clientCert;
+            o.clientKey = clientKey;
+            o.enableTls = enableTls;
+            o.endpoint = endpoint;
+            o.program = program;
+            o.protocol = protocol;
+            o.severity = severity;
+            o.sslVerify = sslVerify;
+            o.token = token;
+            return o;
         }
     }
 }

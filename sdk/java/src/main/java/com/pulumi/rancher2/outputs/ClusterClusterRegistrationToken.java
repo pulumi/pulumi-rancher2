@@ -17,98 +17,69 @@ public final class ClusterClusterRegistrationToken {
      * @return Annotations for cluster registration token object (map)
      * 
      */
-    private final @Nullable Map<String,Object> annotations;
+    private @Nullable Map<String,Object> annotations;
     /**
      * @return Cluster ID (string)
      * 
      */
-    private final @Nullable String clusterId;
+    private @Nullable String clusterId;
     /**
      * @return Command to execute in a imported k8s cluster (string)
      * 
      */
-    private final @Nullable String command;
+    private @Nullable String command;
     /**
      * @return The EKS node group launch template ID (string)
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return Insecure command to execute in a imported k8s cluster (string)
      * 
      */
-    private final @Nullable String insecureCommand;
+    private @Nullable String insecureCommand;
     /**
      * @return Insecure node command to execute in a imported k8s cluster (string)
      * 
      */
-    private final @Nullable String insecureNodeCommand;
+    private @Nullable String insecureNodeCommand;
     /**
      * @return Insecure windows command to execute in a imported k8s cluster (string)
      * 
      */
-    private final @Nullable String insecureWindowsNodeCommand;
+    private @Nullable String insecureWindowsNodeCommand;
     /**
      * @return Labels for cluster registration token object (map)
      * 
      */
-    private final @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,Object> labels;
     /**
      * @return K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
      * 
      */
-    private final @Nullable String manifestUrl;
+    private @Nullable String manifestUrl;
     /**
      * @return Name of cluster registration token (string)
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Node command to execute in linux nodes for custom k8s cluster (string)
      * 
      */
-    private final @Nullable String nodeCommand;
+    private @Nullable String nodeCommand;
     /**
      * @return Token for cluster registration token object (string)
      * 
      */
-    private final @Nullable String token;
+    private @Nullable String token;
     /**
      * @return Node command to execute in windows nodes for custom k8s cluster (string)
      * 
      */
-    private final @Nullable String windowsNodeCommand;
+    private @Nullable String windowsNodeCommand;
 
-    @CustomType.Constructor
-    private ClusterClusterRegistrationToken(
-        @CustomType.Parameter("annotations") @Nullable Map<String,Object> annotations,
-        @CustomType.Parameter("clusterId") @Nullable String clusterId,
-        @CustomType.Parameter("command") @Nullable String command,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("insecureCommand") @Nullable String insecureCommand,
-        @CustomType.Parameter("insecureNodeCommand") @Nullable String insecureNodeCommand,
-        @CustomType.Parameter("insecureWindowsNodeCommand") @Nullable String insecureWindowsNodeCommand,
-        @CustomType.Parameter("labels") @Nullable Map<String,Object> labels,
-        @CustomType.Parameter("manifestUrl") @Nullable String manifestUrl,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nodeCommand") @Nullable String nodeCommand,
-        @CustomType.Parameter("token") @Nullable String token,
-        @CustomType.Parameter("windowsNodeCommand") @Nullable String windowsNodeCommand) {
-        this.annotations = annotations;
-        this.clusterId = clusterId;
-        this.command = command;
-        this.id = id;
-        this.insecureCommand = insecureCommand;
-        this.insecureNodeCommand = insecureNodeCommand;
-        this.insecureWindowsNodeCommand = insecureWindowsNodeCommand;
-        this.labels = labels;
-        this.manifestUrl = manifestUrl;
-        this.name = name;
-        this.nodeCommand = nodeCommand;
-        this.token = token;
-        this.windowsNodeCommand = windowsNodeCommand;
-    }
-
+    private ClusterClusterRegistrationToken() {}
     /**
      * @return Annotations for cluster registration token object (map)
      * 
@@ -208,7 +179,7 @@ public final class ClusterClusterRegistrationToken {
     public static Builder builder(ClusterClusterRegistrationToken defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,Object> annotations;
         private @Nullable String clusterId;
@@ -223,11 +194,7 @@ public final class ClusterClusterRegistrationToken {
         private @Nullable String nodeCommand;
         private @Nullable String token;
         private @Nullable String windowsNodeCommand;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterRegistrationToken defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -245,59 +212,87 @@ public final class ClusterClusterRegistrationToken {
     	      this.windowsNodeCommand = defaults.windowsNodeCommand;
         }
 
+        @CustomType.Setter
         public Builder annotations(@Nullable Map<String,Object> annotations) {
             this.annotations = annotations;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
             this.clusterId = clusterId;
             return this;
         }
+        @CustomType.Setter
         public Builder command(@Nullable String command) {
             this.command = command;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder insecureCommand(@Nullable String insecureCommand) {
             this.insecureCommand = insecureCommand;
             return this;
         }
+        @CustomType.Setter
         public Builder insecureNodeCommand(@Nullable String insecureNodeCommand) {
             this.insecureNodeCommand = insecureNodeCommand;
             return this;
         }
+        @CustomType.Setter
         public Builder insecureWindowsNodeCommand(@Nullable String insecureWindowsNodeCommand) {
             this.insecureWindowsNodeCommand = insecureWindowsNodeCommand;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder manifestUrl(@Nullable String manifestUrl) {
             this.manifestUrl = manifestUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeCommand(@Nullable String nodeCommand) {
             this.nodeCommand = nodeCommand;
             return this;
         }
+        @CustomType.Setter
         public Builder token(@Nullable String token) {
             this.token = token;
             return this;
         }
+        @CustomType.Setter
         public Builder windowsNodeCommand(@Nullable String windowsNodeCommand) {
             this.windowsNodeCommand = windowsNodeCommand;
             return this;
-        }        public ClusterClusterRegistrationToken build() {
-            return new ClusterClusterRegistrationToken(annotations, clusterId, command, id, insecureCommand, insecureNodeCommand, insecureWindowsNodeCommand, labels, manifestUrl, name, nodeCommand, token, windowsNodeCommand);
+        }
+        public ClusterClusterRegistrationToken build() {
+            final var o = new ClusterClusterRegistrationToken();
+            o.annotations = annotations;
+            o.clusterId = clusterId;
+            o.command = command;
+            o.id = id;
+            o.insecureCommand = insecureCommand;
+            o.insecureNodeCommand = insecureNodeCommand;
+            o.insecureWindowsNodeCommand = insecureWindowsNodeCommand;
+            o.labels = labels;
+            o.manifestUrl = manifestUrl;
+            o.name = name;
+            o.nodeCommand = nodeCommand;
+            o.token = token;
+            o.windowsNodeCommand = windowsNodeCommand;
+            return o;
         }
     }
 }

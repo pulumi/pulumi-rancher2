@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRkeConfigNetworkCanalNetworkProvider {
-    private final String iface;
+    private String iface;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigNetworkCanalNetworkProvider(@CustomType.Parameter("iface") String iface) {
-        this.iface = iface;
-    }
-
+    private GetClusterRkeConfigNetworkCanalNetworkProvider() {}
     public String iface() {
         return this.iface;
     }
@@ -27,24 +23,24 @@ public final class GetClusterRkeConfigNetworkCanalNetworkProvider {
     public static Builder builder(GetClusterRkeConfigNetworkCanalNetworkProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String iface;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigNetworkCanalNetworkProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iface = defaults.iface;
         }
 
+        @CustomType.Setter
         public Builder iface(String iface) {
             this.iface = Objects.requireNonNull(iface);
             return this;
-        }        public GetClusterRkeConfigNetworkCanalNetworkProvider build() {
-            return new GetClusterRkeConfigNetworkCanalNetworkProvider(iface);
+        }
+        public GetClusterRkeConfigNetworkCanalNetworkProvider build() {
+            final var o = new GetClusterRkeConfigNetworkCanalNetworkProvider();
+            o.iface = iface;
+            return o;
         }
     }
 }

@@ -13,29 +13,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigServicesKubeController {
-    private final String clusterCidr;
-    private final Map<String,Object> extraArgs;
-    private final @Nullable List<String> extraBinds;
-    private final @Nullable List<String> extraEnvs;
-    private final String image;
-    private final String serviceClusterIpRange;
+    private String clusterCidr;
+    private Map<String,Object> extraArgs;
+    private @Nullable List<String> extraBinds;
+    private @Nullable List<String> extraEnvs;
+    private String image;
+    private String serviceClusterIpRange;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigServicesKubeController(
-        @CustomType.Parameter("clusterCidr") String clusterCidr,
-        @CustomType.Parameter("extraArgs") Map<String,Object> extraArgs,
-        @CustomType.Parameter("extraBinds") @Nullable List<String> extraBinds,
-        @CustomType.Parameter("extraEnvs") @Nullable List<String> extraEnvs,
-        @CustomType.Parameter("image") String image,
-        @CustomType.Parameter("serviceClusterIpRange") String serviceClusterIpRange) {
-        this.clusterCidr = clusterCidr;
-        this.extraArgs = extraArgs;
-        this.extraBinds = extraBinds;
-        this.extraEnvs = extraEnvs;
-        this.image = image;
-        this.serviceClusterIpRange = serviceClusterIpRange;
-    }
-
+    private GetClusterRkeConfigServicesKubeController() {}
     public String clusterCidr() {
         return this.clusterCidr;
     }
@@ -62,7 +47,7 @@ public final class GetClusterRkeConfigServicesKubeController {
     public static Builder builder(GetClusterRkeConfigServicesKubeController defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterCidr;
         private Map<String,Object> extraArgs;
@@ -70,11 +55,7 @@ public final class GetClusterRkeConfigServicesKubeController {
         private @Nullable List<String> extraEnvs;
         private String image;
         private String serviceClusterIpRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigServicesKubeController defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterCidr = defaults.clusterCidr;
@@ -85,14 +66,17 @@ public final class GetClusterRkeConfigServicesKubeController {
     	      this.serviceClusterIpRange = defaults.serviceClusterIpRange;
         }
 
+        @CustomType.Setter
         public Builder clusterCidr(String clusterCidr) {
             this.clusterCidr = Objects.requireNonNull(clusterCidr);
             return this;
         }
+        @CustomType.Setter
         public Builder extraArgs(Map<String,Object> extraArgs) {
             this.extraArgs = Objects.requireNonNull(extraArgs);
             return this;
         }
+        @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
             this.extraBinds = extraBinds;
             return this;
@@ -100,6 +84,7 @@ public final class GetClusterRkeConfigServicesKubeController {
         public Builder extraBinds(String... extraBinds) {
             return extraBinds(List.of(extraBinds));
         }
+        @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
             this.extraEnvs = extraEnvs;
             return this;
@@ -107,15 +92,25 @@ public final class GetClusterRkeConfigServicesKubeController {
         public Builder extraEnvs(String... extraEnvs) {
             return extraEnvs(List.of(extraEnvs));
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceClusterIpRange(String serviceClusterIpRange) {
             this.serviceClusterIpRange = Objects.requireNonNull(serviceClusterIpRange);
             return this;
-        }        public GetClusterRkeConfigServicesKubeController build() {
-            return new GetClusterRkeConfigServicesKubeController(clusterCidr, extraArgs, extraBinds, extraEnvs, image, serviceClusterIpRange);
+        }
+        public GetClusterRkeConfigServicesKubeController build() {
+            final var o = new GetClusterRkeConfigServicesKubeController();
+            o.clusterCidr = clusterCidr;
+            o.extraArgs = extraArgs;
+            o.extraBinds = extraBinds;
+            o.extraEnvs = extraEnvs;
+            o.image = image;
+            o.serviceClusterIpRange = serviceClusterIpRange;
+            return o;
         }
     }
 }

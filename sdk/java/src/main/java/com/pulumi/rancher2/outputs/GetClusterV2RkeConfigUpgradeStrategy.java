@@ -13,23 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigUpgradeStrategy {
-    private final @Nullable String controlPlaneConcurrency;
-    private final @Nullable GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions;
-    private final @Nullable String workerConcurrency;
-    private final @Nullable GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions;
+    private @Nullable String controlPlaneConcurrency;
+    private @Nullable GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions;
+    private @Nullable String workerConcurrency;
+    private @Nullable GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions;
 
-    @CustomType.Constructor
-    private GetClusterV2RkeConfigUpgradeStrategy(
-        @CustomType.Parameter("controlPlaneConcurrency") @Nullable String controlPlaneConcurrency,
-        @CustomType.Parameter("controlPlaneDrainOptions") @Nullable GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions,
-        @CustomType.Parameter("workerConcurrency") @Nullable String workerConcurrency,
-        @CustomType.Parameter("workerDrainOptions") @Nullable GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions) {
-        this.controlPlaneConcurrency = controlPlaneConcurrency;
-        this.controlPlaneDrainOptions = controlPlaneDrainOptions;
-        this.workerConcurrency = workerConcurrency;
-        this.workerDrainOptions = workerDrainOptions;
-    }
-
+    private GetClusterV2RkeConfigUpgradeStrategy() {}
     public Optional<String> controlPlaneConcurrency() {
         return Optional.ofNullable(this.controlPlaneConcurrency);
     }
@@ -50,17 +39,13 @@ public final class GetClusterV2RkeConfigUpgradeStrategy {
     public static Builder builder(GetClusterV2RkeConfigUpgradeStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String controlPlaneConcurrency;
         private @Nullable GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions;
         private @Nullable String workerConcurrency;
         private @Nullable GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2RkeConfigUpgradeStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.controlPlaneConcurrency = defaults.controlPlaneConcurrency;
@@ -69,23 +54,33 @@ public final class GetClusterV2RkeConfigUpgradeStrategy {
     	      this.workerDrainOptions = defaults.workerDrainOptions;
         }
 
+        @CustomType.Setter
         public Builder controlPlaneConcurrency(@Nullable String controlPlaneConcurrency) {
             this.controlPlaneConcurrency = controlPlaneConcurrency;
             return this;
         }
+        @CustomType.Setter
         public Builder controlPlaneDrainOptions(@Nullable GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions) {
             this.controlPlaneDrainOptions = controlPlaneDrainOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder workerConcurrency(@Nullable String workerConcurrency) {
             this.workerConcurrency = workerConcurrency;
             return this;
         }
+        @CustomType.Setter
         public Builder workerDrainOptions(@Nullable GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions) {
             this.workerDrainOptions = workerDrainOptions;
             return this;
-        }        public GetClusterV2RkeConfigUpgradeStrategy build() {
-            return new GetClusterV2RkeConfigUpgradeStrategy(controlPlaneConcurrency, controlPlaneDrainOptions, workerConcurrency, workerDrainOptions);
+        }
+        public GetClusterV2RkeConfigUpgradeStrategy build() {
+            final var o = new GetClusterV2RkeConfigUpgradeStrategy();
+            o.controlPlaneConcurrency = controlPlaneConcurrency;
+            o.controlPlaneDrainOptions = controlPlaneDrainOptions;
+            o.workerConcurrency = workerConcurrency;
+            o.workerDrainOptions = workerDrainOptions;
+            return o;
         }
     }
 }

@@ -11,58 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterV2ClusterRegistrationToken {
-    private final Map<String,Object> annotations;
-    private final String clusterId;
-    private final String command;
+    private Map<String,Object> annotations;
+    private String clusterId;
+    private String command;
     /**
      * @return (Computed) The ID of the resource (string)
      * 
      */
-    private final String id;
-    private final String insecureCommand;
-    private final String insecureNodeCommand;
-    private final String insecureWindowsNodeCommand;
-    private final Map<String,Object> labels;
-    private final String manifestUrl;
+    private String id;
+    private String insecureCommand;
+    private String insecureNodeCommand;
+    private String insecureWindowsNodeCommand;
+    private Map<String,Object> labels;
+    private String manifestUrl;
     /**
      * @return The name of the Cluster v2 (string)
      * 
      */
-    private final String name;
-    private final String nodeCommand;
-    private final String token;
-    private final String windowsNodeCommand;
+    private String name;
+    private String nodeCommand;
+    private String token;
+    private String windowsNodeCommand;
 
-    @CustomType.Constructor
-    private GetClusterV2ClusterRegistrationToken(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("command") String command,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("insecureCommand") String insecureCommand,
-        @CustomType.Parameter("insecureNodeCommand") String insecureNodeCommand,
-        @CustomType.Parameter("insecureWindowsNodeCommand") String insecureWindowsNodeCommand,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("manifestUrl") String manifestUrl,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodeCommand") String nodeCommand,
-        @CustomType.Parameter("token") String token,
-        @CustomType.Parameter("windowsNodeCommand") String windowsNodeCommand) {
-        this.annotations = annotations;
-        this.clusterId = clusterId;
-        this.command = command;
-        this.id = id;
-        this.insecureCommand = insecureCommand;
-        this.insecureNodeCommand = insecureNodeCommand;
-        this.insecureWindowsNodeCommand = insecureWindowsNodeCommand;
-        this.labels = labels;
-        this.manifestUrl = manifestUrl;
-        this.name = name;
-        this.nodeCommand = nodeCommand;
-        this.token = token;
-        this.windowsNodeCommand = windowsNodeCommand;
-    }
-
+    private GetClusterV2ClusterRegistrationToken() {}
     public Map<String,Object> annotations() {
         return this.annotations;
     }
@@ -118,7 +89,7 @@ public final class GetClusterV2ClusterRegistrationToken {
     public static Builder builder(GetClusterV2ClusterRegistrationToken defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String clusterId;
@@ -133,11 +104,7 @@ public final class GetClusterV2ClusterRegistrationToken {
         private String nodeCommand;
         private String token;
         private String windowsNodeCommand;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2ClusterRegistrationToken defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -155,59 +122,87 @@ public final class GetClusterV2ClusterRegistrationToken {
     	      this.windowsNodeCommand = defaults.windowsNodeCommand;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder command(String command) {
             this.command = Objects.requireNonNull(command);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder insecureCommand(String insecureCommand) {
             this.insecureCommand = Objects.requireNonNull(insecureCommand);
             return this;
         }
+        @CustomType.Setter
         public Builder insecureNodeCommand(String insecureNodeCommand) {
             this.insecureNodeCommand = Objects.requireNonNull(insecureNodeCommand);
             return this;
         }
+        @CustomType.Setter
         public Builder insecureWindowsNodeCommand(String insecureWindowsNodeCommand) {
             this.insecureWindowsNodeCommand = Objects.requireNonNull(insecureWindowsNodeCommand);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder manifestUrl(String manifestUrl) {
             this.manifestUrl = Objects.requireNonNull(manifestUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeCommand(String nodeCommand) {
             this.nodeCommand = Objects.requireNonNull(nodeCommand);
             return this;
         }
+        @CustomType.Setter
         public Builder token(String token) {
             this.token = Objects.requireNonNull(token);
             return this;
         }
+        @CustomType.Setter
         public Builder windowsNodeCommand(String windowsNodeCommand) {
             this.windowsNodeCommand = Objects.requireNonNull(windowsNodeCommand);
             return this;
-        }        public GetClusterV2ClusterRegistrationToken build() {
-            return new GetClusterV2ClusterRegistrationToken(annotations, clusterId, command, id, insecureCommand, insecureNodeCommand, insecureWindowsNodeCommand, labels, manifestUrl, name, nodeCommand, token, windowsNodeCommand);
+        }
+        public GetClusterV2ClusterRegistrationToken build() {
+            final var o = new GetClusterV2ClusterRegistrationToken();
+            o.annotations = annotations;
+            o.clusterId = clusterId;
+            o.command = command;
+            o.id = id;
+            o.insecureCommand = insecureCommand;
+            o.insecureNodeCommand = insecureNodeCommand;
+            o.insecureWindowsNodeCommand = insecureWindowsNodeCommand;
+            o.labels = labels;
+            o.manifestUrl = manifestUrl;
+            o.name = name;
+            o.nodeCommand = nodeCommand;
+            o.token = token;
+            o.windowsNodeCommand = windowsNodeCommand;
+            return o;
         }
     }
 }

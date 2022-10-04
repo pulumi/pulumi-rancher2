@@ -15,77 +15,54 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
      * @return (string)
      * 
      */
-    private final String authUrl;
+    private String authUrl;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String caFile;
+    private @Nullable String caFile;
     /**
      * @return Required if `domain_name` not provided. (string)
      * 
      */
-    private final @Nullable String domainId;
+    private @Nullable String domainId;
     /**
      * @return Required if `domain_id` not provided. (string)
      * 
      */
-    private final @Nullable String domainName;
+    private @Nullable String domainName;
     /**
      * @return Registry password (string)
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return Azure tenant ID to use (string)
      * 
      */
-    private final @Nullable String tenantId;
+    private @Nullable String tenantId;
     /**
      * @return Required if `tenant_id` not provided. (string)
      * 
      */
-    private final @Nullable String tenantName;
+    private @Nullable String tenantName;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String trustId;
+    private @Nullable String trustId;
     /**
      * @return (string)
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal(
-        @CustomType.Parameter("authUrl") String authUrl,
-        @CustomType.Parameter("caFile") @Nullable String caFile,
-        @CustomType.Parameter("domainId") @Nullable String domainId,
-        @CustomType.Parameter("domainName") @Nullable String domainName,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("tenantId") @Nullable String tenantId,
-        @CustomType.Parameter("tenantName") @Nullable String tenantName,
-        @CustomType.Parameter("trustId") @Nullable String trustId,
-        @CustomType.Parameter("username") String username) {
-        this.authUrl = authUrl;
-        this.caFile = caFile;
-        this.domainId = domainId;
-        this.domainName = domainName;
-        this.password = password;
-        this.region = region;
-        this.tenantId = tenantId;
-        this.tenantName = tenantName;
-        this.trustId = trustId;
-        this.username = username;
-    }
-
+    private ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal() {}
     /**
      * @return (string)
      * 
@@ -164,7 +141,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
     public static Builder builder(ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String authUrl;
         private @Nullable String caFile;
@@ -176,11 +153,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
         private @Nullable String tenantName;
         private @Nullable String trustId;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authUrl = defaults.authUrl;
@@ -195,47 +168,69 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder authUrl(String authUrl) {
             this.authUrl = Objects.requireNonNull(authUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder caFile(@Nullable String caFile) {
             this.caFile = caFile;
             return this;
         }
+        @CustomType.Setter
         public Builder domainId(@Nullable String domainId) {
             this.domainId = domainId;
             return this;
         }
+        @CustomType.Setter
         public Builder domainName(@Nullable String domainName) {
             this.domainName = domainName;
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
             this.tenantId = tenantId;
             return this;
         }
+        @CustomType.Setter
         public Builder tenantName(@Nullable String tenantName) {
             this.tenantName = tenantName;
             return this;
         }
+        @CustomType.Setter
         public Builder trustId(@Nullable String trustId) {
             this.trustId = trustId;
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal build() {
-            return new ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal(authUrl, caFile, domainId, domainName, password, region, tenantId, tenantName, trustId, username);
+        }
+        public ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal build() {
+            final var o = new ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal();
+            o.authUrl = authUrl;
+            o.caFile = caFile;
+            o.domainId = domainId;
+            o.domainName = domainName;
+            o.password = password;
+            o.region = region;
+            o.tenantId = tenantId;
+            o.tenantName = tenantName;
+            o.trustId = trustId;
+            o.username = username;
+            return o;
         }
     }
 }

@@ -16,102 +16,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterAksConfigV2 {
-    private final @Nullable String authBaseUrl;
-    private final @Nullable List<String> authorizedIpRanges;
-    private final @Nullable String baseUrl;
-    private final String cloudCredentialId;
-    private final @Nullable String dnsPrefix;
-    private final Boolean httpApplicationRouting;
-    private final @Nullable Boolean imported;
-    private final @Nullable String kubernetesVersion;
-    private final String linuxAdminUsername;
-    private final String linuxSshPublicKey;
-    private final String loadBalancerSku;
-    private final String logAnalyticsWorkspaceGroup;
-    private final String logAnalyticsWorkspaceName;
-    private final Boolean monitoring;
+    private @Nullable String authBaseUrl;
+    private @Nullable List<String> authorizedIpRanges;
+    private @Nullable String baseUrl;
+    private String cloudCredentialId;
+    private @Nullable String dnsPrefix;
+    private Boolean httpApplicationRouting;
+    private @Nullable Boolean imported;
+    private @Nullable String kubernetesVersion;
+    private String linuxAdminUsername;
+    private String linuxSshPublicKey;
+    private String loadBalancerSku;
+    private String logAnalyticsWorkspaceGroup;
+    private String logAnalyticsWorkspaceName;
+    private Boolean monitoring;
     /**
      * @return The name of the Cluster (string)
      * 
      */
-    private final String name;
-    private final String networkDnsServiceIp;
-    private final String networkDockerBridgeCidr;
-    private final @Nullable String networkPlugin;
-    private final String networkPodCidr;
-    private final String networkPolicy;
-    private final String networkServiceCidr;
-    private final @Nullable List<GetClusterAksConfigV2NodePool> nodePools;
-    private final Boolean privateCluster;
-    private final String resourceGroup;
-    private final String resourceLocation;
-    private final String subnet;
-    private final Map<String,Object> tags;
-    private final String virtualNetwork;
-    private final String virtualNetworkResourceGroup;
+    private String name;
+    private String networkDnsServiceIp;
+    private String networkDockerBridgeCidr;
+    private @Nullable String networkPlugin;
+    private String networkPodCidr;
+    private String networkPolicy;
+    private String networkServiceCidr;
+    private @Nullable List<GetClusterAksConfigV2NodePool> nodePools;
+    private Boolean privateCluster;
+    private String resourceGroup;
+    private String resourceLocation;
+    private String subnet;
+    private Map<String,Object> tags;
+    private String virtualNetwork;
+    private String virtualNetworkResourceGroup;
 
-    @CustomType.Constructor
-    private GetClusterAksConfigV2(
-        @CustomType.Parameter("authBaseUrl") @Nullable String authBaseUrl,
-        @CustomType.Parameter("authorizedIpRanges") @Nullable List<String> authorizedIpRanges,
-        @CustomType.Parameter("baseUrl") @Nullable String baseUrl,
-        @CustomType.Parameter("cloudCredentialId") String cloudCredentialId,
-        @CustomType.Parameter("dnsPrefix") @Nullable String dnsPrefix,
-        @CustomType.Parameter("httpApplicationRouting") Boolean httpApplicationRouting,
-        @CustomType.Parameter("imported") @Nullable Boolean imported,
-        @CustomType.Parameter("kubernetesVersion") @Nullable String kubernetesVersion,
-        @CustomType.Parameter("linuxAdminUsername") String linuxAdminUsername,
-        @CustomType.Parameter("linuxSshPublicKey") String linuxSshPublicKey,
-        @CustomType.Parameter("loadBalancerSku") String loadBalancerSku,
-        @CustomType.Parameter("logAnalyticsWorkspaceGroup") String logAnalyticsWorkspaceGroup,
-        @CustomType.Parameter("logAnalyticsWorkspaceName") String logAnalyticsWorkspaceName,
-        @CustomType.Parameter("monitoring") Boolean monitoring,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("networkDnsServiceIp") String networkDnsServiceIp,
-        @CustomType.Parameter("networkDockerBridgeCidr") String networkDockerBridgeCidr,
-        @CustomType.Parameter("networkPlugin") @Nullable String networkPlugin,
-        @CustomType.Parameter("networkPodCidr") String networkPodCidr,
-        @CustomType.Parameter("networkPolicy") String networkPolicy,
-        @CustomType.Parameter("networkServiceCidr") String networkServiceCidr,
-        @CustomType.Parameter("nodePools") @Nullable List<GetClusterAksConfigV2NodePool> nodePools,
-        @CustomType.Parameter("privateCluster") Boolean privateCluster,
-        @CustomType.Parameter("resourceGroup") String resourceGroup,
-        @CustomType.Parameter("resourceLocation") String resourceLocation,
-        @CustomType.Parameter("subnet") String subnet,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("virtualNetwork") String virtualNetwork,
-        @CustomType.Parameter("virtualNetworkResourceGroup") String virtualNetworkResourceGroup) {
-        this.authBaseUrl = authBaseUrl;
-        this.authorizedIpRanges = authorizedIpRanges;
-        this.baseUrl = baseUrl;
-        this.cloudCredentialId = cloudCredentialId;
-        this.dnsPrefix = dnsPrefix;
-        this.httpApplicationRouting = httpApplicationRouting;
-        this.imported = imported;
-        this.kubernetesVersion = kubernetesVersion;
-        this.linuxAdminUsername = linuxAdminUsername;
-        this.linuxSshPublicKey = linuxSshPublicKey;
-        this.loadBalancerSku = loadBalancerSku;
-        this.logAnalyticsWorkspaceGroup = logAnalyticsWorkspaceGroup;
-        this.logAnalyticsWorkspaceName = logAnalyticsWorkspaceName;
-        this.monitoring = monitoring;
-        this.name = name;
-        this.networkDnsServiceIp = networkDnsServiceIp;
-        this.networkDockerBridgeCidr = networkDockerBridgeCidr;
-        this.networkPlugin = networkPlugin;
-        this.networkPodCidr = networkPodCidr;
-        this.networkPolicy = networkPolicy;
-        this.networkServiceCidr = networkServiceCidr;
-        this.nodePools = nodePools;
-        this.privateCluster = privateCluster;
-        this.resourceGroup = resourceGroup;
-        this.resourceLocation = resourceLocation;
-        this.subnet = subnet;
-        this.tags = tags;
-        this.virtualNetwork = virtualNetwork;
-        this.virtualNetworkResourceGroup = virtualNetworkResourceGroup;
-    }
-
+    private GetClusterAksConfigV2() {}
     public Optional<String> authBaseUrl() {
         return Optional.ofNullable(this.authBaseUrl);
     }
@@ -211,7 +150,7 @@ public final class GetClusterAksConfigV2 {
     public static Builder builder(GetClusterAksConfigV2 defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authBaseUrl;
         private @Nullable List<String> authorizedIpRanges;
@@ -242,11 +181,7 @@ public final class GetClusterAksConfigV2 {
         private Map<String,Object> tags;
         private String virtualNetwork;
         private String virtualNetworkResourceGroup;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAksConfigV2 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authBaseUrl = defaults.authBaseUrl;
@@ -280,10 +215,12 @@ public final class GetClusterAksConfigV2 {
     	      this.virtualNetworkResourceGroup = defaults.virtualNetworkResourceGroup;
         }
 
+        @CustomType.Setter
         public Builder authBaseUrl(@Nullable String authBaseUrl) {
             this.authBaseUrl = authBaseUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder authorizedIpRanges(@Nullable List<String> authorizedIpRanges) {
             this.authorizedIpRanges = authorizedIpRanges;
             return this;
@@ -291,82 +228,102 @@ public final class GetClusterAksConfigV2 {
         public Builder authorizedIpRanges(String... authorizedIpRanges) {
             return authorizedIpRanges(List.of(authorizedIpRanges));
         }
+        @CustomType.Setter
         public Builder baseUrl(@Nullable String baseUrl) {
             this.baseUrl = baseUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudCredentialId(String cloudCredentialId) {
             this.cloudCredentialId = Objects.requireNonNull(cloudCredentialId);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsPrefix(@Nullable String dnsPrefix) {
             this.dnsPrefix = dnsPrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder httpApplicationRouting(Boolean httpApplicationRouting) {
             this.httpApplicationRouting = Objects.requireNonNull(httpApplicationRouting);
             return this;
         }
+        @CustomType.Setter
         public Builder imported(@Nullable Boolean imported) {
             this.imported = imported;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesVersion(@Nullable String kubernetesVersion) {
             this.kubernetesVersion = kubernetesVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder linuxAdminUsername(String linuxAdminUsername) {
             this.linuxAdminUsername = Objects.requireNonNull(linuxAdminUsername);
             return this;
         }
+        @CustomType.Setter
         public Builder linuxSshPublicKey(String linuxSshPublicKey) {
             this.linuxSshPublicKey = Objects.requireNonNull(linuxSshPublicKey);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerSku(String loadBalancerSku) {
             this.loadBalancerSku = Objects.requireNonNull(loadBalancerSku);
             return this;
         }
+        @CustomType.Setter
         public Builder logAnalyticsWorkspaceGroup(String logAnalyticsWorkspaceGroup) {
             this.logAnalyticsWorkspaceGroup = Objects.requireNonNull(logAnalyticsWorkspaceGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder logAnalyticsWorkspaceName(String logAnalyticsWorkspaceName) {
             this.logAnalyticsWorkspaceName = Objects.requireNonNull(logAnalyticsWorkspaceName);
             return this;
         }
+        @CustomType.Setter
         public Builder monitoring(Boolean monitoring) {
             this.monitoring = Objects.requireNonNull(monitoring);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder networkDnsServiceIp(String networkDnsServiceIp) {
             this.networkDnsServiceIp = Objects.requireNonNull(networkDnsServiceIp);
             return this;
         }
+        @CustomType.Setter
         public Builder networkDockerBridgeCidr(String networkDockerBridgeCidr) {
             this.networkDockerBridgeCidr = Objects.requireNonNull(networkDockerBridgeCidr);
             return this;
         }
+        @CustomType.Setter
         public Builder networkPlugin(@Nullable String networkPlugin) {
             this.networkPlugin = networkPlugin;
             return this;
         }
+        @CustomType.Setter
         public Builder networkPodCidr(String networkPodCidr) {
             this.networkPodCidr = Objects.requireNonNull(networkPodCidr);
             return this;
         }
+        @CustomType.Setter
         public Builder networkPolicy(String networkPolicy) {
             this.networkPolicy = Objects.requireNonNull(networkPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder networkServiceCidr(String networkServiceCidr) {
             this.networkServiceCidr = Objects.requireNonNull(networkServiceCidr);
             return this;
         }
+        @CustomType.Setter
         public Builder nodePools(@Nullable List<GetClusterAksConfigV2NodePool> nodePools) {
             this.nodePools = nodePools;
             return this;
@@ -374,35 +331,73 @@ public final class GetClusterAksConfigV2 {
         public Builder nodePools(GetClusterAksConfigV2NodePool... nodePools) {
             return nodePools(List.of(nodePools));
         }
+        @CustomType.Setter
         public Builder privateCluster(Boolean privateCluster) {
             this.privateCluster = Objects.requireNonNull(privateCluster);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroup(String resourceGroup) {
             this.resourceGroup = Objects.requireNonNull(resourceGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceLocation(String resourceLocation) {
             this.resourceLocation = Objects.requireNonNull(resourceLocation);
             return this;
         }
+        @CustomType.Setter
         public Builder subnet(String subnet) {
             this.subnet = Objects.requireNonNull(subnet);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualNetwork(String virtualNetwork) {
             this.virtualNetwork = Objects.requireNonNull(virtualNetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualNetworkResourceGroup(String virtualNetworkResourceGroup) {
             this.virtualNetworkResourceGroup = Objects.requireNonNull(virtualNetworkResourceGroup);
             return this;
-        }        public GetClusterAksConfigV2 build() {
-            return new GetClusterAksConfigV2(authBaseUrl, authorizedIpRanges, baseUrl, cloudCredentialId, dnsPrefix, httpApplicationRouting, imported, kubernetesVersion, linuxAdminUsername, linuxSshPublicKey, loadBalancerSku, logAnalyticsWorkspaceGroup, logAnalyticsWorkspaceName, monitoring, name, networkDnsServiceIp, networkDockerBridgeCidr, networkPlugin, networkPodCidr, networkPolicy, networkServiceCidr, nodePools, privateCluster, resourceGroup, resourceLocation, subnet, tags, virtualNetwork, virtualNetworkResourceGroup);
+        }
+        public GetClusterAksConfigV2 build() {
+            final var o = new GetClusterAksConfigV2();
+            o.authBaseUrl = authBaseUrl;
+            o.authorizedIpRanges = authorizedIpRanges;
+            o.baseUrl = baseUrl;
+            o.cloudCredentialId = cloudCredentialId;
+            o.dnsPrefix = dnsPrefix;
+            o.httpApplicationRouting = httpApplicationRouting;
+            o.imported = imported;
+            o.kubernetesVersion = kubernetesVersion;
+            o.linuxAdminUsername = linuxAdminUsername;
+            o.linuxSshPublicKey = linuxSshPublicKey;
+            o.loadBalancerSku = loadBalancerSku;
+            o.logAnalyticsWorkspaceGroup = logAnalyticsWorkspaceGroup;
+            o.logAnalyticsWorkspaceName = logAnalyticsWorkspaceName;
+            o.monitoring = monitoring;
+            o.name = name;
+            o.networkDnsServiceIp = networkDnsServiceIp;
+            o.networkDockerBridgeCidr = networkDockerBridgeCidr;
+            o.networkPlugin = networkPlugin;
+            o.networkPodCidr = networkPodCidr;
+            o.networkPolicy = networkPolicy;
+            o.networkServiceCidr = networkServiceCidr;
+            o.nodePools = nodePools;
+            o.privateCluster = privateCluster;
+            o.resourceGroup = resourceGroup;
+            o.resourceLocation = resourceLocation;
+            o.subnet = subnet;
+            o.tags = tags;
+            o.virtualNetwork = virtualNetwork;
+            o.virtualNetworkResourceGroup = virtualNetworkResourceGroup;
+            return o;
         }
     }
 }

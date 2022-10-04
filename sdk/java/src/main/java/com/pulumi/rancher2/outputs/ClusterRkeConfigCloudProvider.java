@@ -19,49 +19,34 @@ public final class ClusterRkeConfigCloudProvider {
      * @return RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider;
+    private @Nullable ClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider;
     /**
      * @return RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider;
+    private @Nullable ClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider;
     /**
      * @return RKE Custom Cloud Provider config for Cloud Provider (string)
      * 
      */
-    private final @Nullable String customCloudProvider;
+    private @Nullable String customCloudProvider;
     /**
      * @return Name of cluster registration token (string)
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider;
+    private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider;
     /**
      * @return RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider;
+    private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProvider(
-        @CustomType.Parameter("awsCloudProvider") @Nullable ClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider,
-        @CustomType.Parameter("azureCloudProvider") @Nullable ClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider,
-        @CustomType.Parameter("customCloudProvider") @Nullable String customCloudProvider,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("openstackCloudProvider") @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider,
-        @CustomType.Parameter("vsphereCloudProvider") @Nullable ClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider) {
-        this.awsCloudProvider = awsCloudProvider;
-        this.azureCloudProvider = azureCloudProvider;
-        this.customCloudProvider = customCloudProvider;
-        this.name = name;
-        this.openstackCloudProvider = openstackCloudProvider;
-        this.vsphereCloudProvider = vsphereCloudProvider;
-    }
-
+    private ClusterRkeConfigCloudProvider() {}
     /**
      * @return RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
      * 
@@ -112,7 +97,7 @@ public final class ClusterRkeConfigCloudProvider {
     public static Builder builder(ClusterRkeConfigCloudProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider;
         private @Nullable ClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider;
@@ -120,11 +105,7 @@ public final class ClusterRkeConfigCloudProvider {
         private @Nullable String name;
         private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider;
         private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsCloudProvider = defaults.awsCloudProvider;
@@ -135,31 +116,45 @@ public final class ClusterRkeConfigCloudProvider {
     	      this.vsphereCloudProvider = defaults.vsphereCloudProvider;
         }
 
+        @CustomType.Setter
         public Builder awsCloudProvider(@Nullable ClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider) {
             this.awsCloudProvider = awsCloudProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder azureCloudProvider(@Nullable ClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider) {
             this.azureCloudProvider = azureCloudProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder customCloudProvider(@Nullable String customCloudProvider) {
             this.customCloudProvider = customCloudProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder openstackCloudProvider(@Nullable ClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider) {
             this.openstackCloudProvider = openstackCloudProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder vsphereCloudProvider(@Nullable ClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider) {
             this.vsphereCloudProvider = vsphereCloudProvider;
             return this;
-        }        public ClusterRkeConfigCloudProvider build() {
-            return new ClusterRkeConfigCloudProvider(awsCloudProvider, azureCloudProvider, customCloudProvider, name, openstackCloudProvider, vsphereCloudProvider);
+        }
+        public ClusterRkeConfigCloudProvider build() {
+            final var o = new ClusterRkeConfigCloudProvider();
+            o.awsCloudProvider = awsCloudProvider;
+            o.azureCloudProvider = azureCloudProvider;
+            o.customCloudProvider = customCloudProvider;
+            o.name = name;
+            o.openstackCloudProvider = openstackCloudProvider;
+            o.vsphereCloudProvider = vsphereCloudProvider;
+            return o;
         }
     }
 }

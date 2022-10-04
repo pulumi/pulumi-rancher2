@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigMachinePoolTaint {
-    private final @Nullable String effect;
-    private final String key;
-    private final String value;
+    private @Nullable String effect;
+    private String key;
+    private String value;
 
-    @CustomType.Constructor
-    private GetClusterV2RkeConfigMachinePoolTaint(
-        @CustomType.Parameter("effect") @Nullable String effect,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.effect = effect;
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetClusterV2RkeConfigMachinePoolTaint() {}
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
@@ -42,16 +33,12 @@ public final class GetClusterV2RkeConfigMachinePoolTaint {
     public static Builder builder(GetClusterV2RkeConfigMachinePoolTaint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String effect;
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2RkeConfigMachinePoolTaint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -59,19 +46,27 @@ public final class GetClusterV2RkeConfigMachinePoolTaint {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder effect(@Nullable String effect) {
             this.effect = effect;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetClusterV2RkeConfigMachinePoolTaint build() {
-            return new GetClusterV2RkeConfigMachinePoolTaint(effect, key, value);
+        }
+        public GetClusterV2RkeConfigMachinePoolTaint build() {
+            final var o = new GetClusterV2RkeConfigMachinePoolTaint();
+            o.effect = effect;
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

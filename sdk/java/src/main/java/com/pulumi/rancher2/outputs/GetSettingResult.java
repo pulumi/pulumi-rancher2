@@ -13,24 +13,15 @@ public final class GetSettingResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
+    private String id;
+    private String name;
     /**
      * @return the settting&#39;s value.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetSettingResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.id = id;
-        this.name = name;
-        this.value = value;
-    }
-
+    private GetSettingResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -56,16 +47,12 @@ public final class GetSettingResult {
     public static Builder builder(GetSettingResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSettingResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -73,19 +60,27 @@ public final class GetSettingResult {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetSettingResult build() {
-            return new GetSettingResult(id, name, value);
+        }
+        public GetSettingResult build() {
+            final var o = new GetSettingResult();
+            o.id = id;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

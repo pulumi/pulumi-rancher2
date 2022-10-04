@@ -17,35 +17,24 @@ public final class ClusterRkeConfigUpgradeStrategy {
      * @return RKE drain nodes. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean drain;
+    private @Nullable Boolean drain;
     /**
      * @return RKE drain node input (list Maxitems: 1)
      * 
      */
-    private final @Nullable ClusterRkeConfigUpgradeStrategyDrainInput drainInput;
+    private @Nullable ClusterRkeConfigUpgradeStrategyDrainInput drainInput;
     /**
      * @return RKE max unavailable controlplane nodes. Default: `1` (string)
      * 
      */
-    private final @Nullable String maxUnavailableControlplane;
+    private @Nullable String maxUnavailableControlplane;
     /**
      * @return RKE max unavailable worker nodes. Default: `10%` (string)
      * 
      */
-    private final @Nullable String maxUnavailableWorker;
+    private @Nullable String maxUnavailableWorker;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigUpgradeStrategy(
-        @CustomType.Parameter("drain") @Nullable Boolean drain,
-        @CustomType.Parameter("drainInput") @Nullable ClusterRkeConfigUpgradeStrategyDrainInput drainInput,
-        @CustomType.Parameter("maxUnavailableControlplane") @Nullable String maxUnavailableControlplane,
-        @CustomType.Parameter("maxUnavailableWorker") @Nullable String maxUnavailableWorker) {
-        this.drain = drain;
-        this.drainInput = drainInput;
-        this.maxUnavailableControlplane = maxUnavailableControlplane;
-        this.maxUnavailableWorker = maxUnavailableWorker;
-    }
-
+    private ClusterRkeConfigUpgradeStrategy() {}
     /**
      * @return RKE drain nodes. Default: `false` (bool)
      * 
@@ -82,17 +71,13 @@ public final class ClusterRkeConfigUpgradeStrategy {
     public static Builder builder(ClusterRkeConfigUpgradeStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean drain;
         private @Nullable ClusterRkeConfigUpgradeStrategyDrainInput drainInput;
         private @Nullable String maxUnavailableControlplane;
         private @Nullable String maxUnavailableWorker;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigUpgradeStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.drain = defaults.drain;
@@ -101,23 +86,33 @@ public final class ClusterRkeConfigUpgradeStrategy {
     	      this.maxUnavailableWorker = defaults.maxUnavailableWorker;
         }
 
+        @CustomType.Setter
         public Builder drain(@Nullable Boolean drain) {
             this.drain = drain;
             return this;
         }
+        @CustomType.Setter
         public Builder drainInput(@Nullable ClusterRkeConfigUpgradeStrategyDrainInput drainInput) {
             this.drainInput = drainInput;
             return this;
         }
+        @CustomType.Setter
         public Builder maxUnavailableControlplane(@Nullable String maxUnavailableControlplane) {
             this.maxUnavailableControlplane = maxUnavailableControlplane;
             return this;
         }
+        @CustomType.Setter
         public Builder maxUnavailableWorker(@Nullable String maxUnavailableWorker) {
             this.maxUnavailableWorker = maxUnavailableWorker;
             return this;
-        }        public ClusterRkeConfigUpgradeStrategy build() {
-            return new ClusterRkeConfigUpgradeStrategy(drain, drainInput, maxUnavailableControlplane, maxUnavailableWorker);
+        }
+        public ClusterRkeConfigUpgradeStrategy build() {
+            final var o = new ClusterRkeConfigUpgradeStrategy();
+            o.drain = drain;
+            o.drainInput = drainInput;
+            o.maxUnavailableControlplane = maxUnavailableControlplane;
+            o.maxUnavailableWorker = maxUnavailableWorker;
+            return o;
         }
     }
 }

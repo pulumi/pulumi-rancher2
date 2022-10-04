@@ -12,33 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter {
-    private final String datacenters;
+    private String datacenters;
     /**
      * @return The cluster template revision name (string)
      * 
      */
-    private final String name;
-    private final String password;
-    private final @Nullable String port;
-    private final @Nullable Integer soapRoundtripCount;
-    private final String user;
+    private String name;
+    private String password;
+    private @Nullable String port;
+    private @Nullable Integer soapRoundtripCount;
+    private String user;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter(
-        @CustomType.Parameter("datacenters") String datacenters,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("port") @Nullable String port,
-        @CustomType.Parameter("soapRoundtripCount") @Nullable Integer soapRoundtripCount,
-        @CustomType.Parameter("user") String user) {
-        this.datacenters = datacenters;
-        this.name = name;
-        this.password = password;
-        this.port = port;
-        this.soapRoundtripCount = soapRoundtripCount;
-        this.user = user;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter() {}
     public String datacenters() {
         return this.datacenters;
     }
@@ -69,7 +54,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datacenters;
         private String name;
@@ -77,11 +62,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         private @Nullable String port;
         private @Nullable Integer soapRoundtripCount;
         private String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenters = defaults.datacenters;
@@ -92,31 +73,45 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder datacenters(String datacenters) {
             this.datacenters = Objects.requireNonNull(datacenters);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder soapRoundtripCount(@Nullable Integer soapRoundtripCount) {
             this.soapRoundtripCount = soapRoundtripCount;
             return this;
         }
+        @CustomType.Setter
         public Builder user(String user) {
             this.user = Objects.requireNonNull(user);
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter(datacenters, name, password, port, soapRoundtripCount, user);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter();
+            o.datacenters = datacenters;
+            o.name = name;
+            o.password = password;
+            o.port = port;
+            o.soapRoundtripCount = soapRoundtripCount;
+            o.user = user;
+            return o;
         }
     }
 }

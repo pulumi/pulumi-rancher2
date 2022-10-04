@@ -18,47 +18,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigServicesKubeApi {
-    private final @Nullable Map<String,Object> admissionConfiguration;
-    private final @Nullable Boolean alwaysPullImages;
-    private final @Nullable GetClusterRkeConfigServicesKubeApiAuditLog auditLog;
-    private final @Nullable GetClusterRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
-    private final Map<String,Object> extraArgs;
-    private final @Nullable List<String> extraBinds;
-    private final @Nullable List<String> extraEnvs;
-    private final String image;
-    private final @Nullable Boolean podSecurityPolicy;
-    private final @Nullable GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig;
-    private final String serviceClusterIpRange;
-    private final String serviceNodePortRange;
+    private @Nullable Map<String,Object> admissionConfiguration;
+    private @Nullable Boolean alwaysPullImages;
+    private @Nullable GetClusterRkeConfigServicesKubeApiAuditLog auditLog;
+    private @Nullable GetClusterRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
+    private Map<String,Object> extraArgs;
+    private @Nullable List<String> extraBinds;
+    private @Nullable List<String> extraEnvs;
+    private String image;
+    private @Nullable Boolean podSecurityPolicy;
+    private @Nullable GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig;
+    private String serviceClusterIpRange;
+    private String serviceNodePortRange;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigServicesKubeApi(
-        @CustomType.Parameter("admissionConfiguration") @Nullable Map<String,Object> admissionConfiguration,
-        @CustomType.Parameter("alwaysPullImages") @Nullable Boolean alwaysPullImages,
-        @CustomType.Parameter("auditLog") @Nullable GetClusterRkeConfigServicesKubeApiAuditLog auditLog,
-        @CustomType.Parameter("eventRateLimit") @Nullable GetClusterRkeConfigServicesKubeApiEventRateLimit eventRateLimit,
-        @CustomType.Parameter("extraArgs") Map<String,Object> extraArgs,
-        @CustomType.Parameter("extraBinds") @Nullable List<String> extraBinds,
-        @CustomType.Parameter("extraEnvs") @Nullable List<String> extraEnvs,
-        @CustomType.Parameter("image") String image,
-        @CustomType.Parameter("podSecurityPolicy") @Nullable Boolean podSecurityPolicy,
-        @CustomType.Parameter("secretsEncryptionConfig") @Nullable GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig,
-        @CustomType.Parameter("serviceClusterIpRange") String serviceClusterIpRange,
-        @CustomType.Parameter("serviceNodePortRange") String serviceNodePortRange) {
-        this.admissionConfiguration = admissionConfiguration;
-        this.alwaysPullImages = alwaysPullImages;
-        this.auditLog = auditLog;
-        this.eventRateLimit = eventRateLimit;
-        this.extraArgs = extraArgs;
-        this.extraBinds = extraBinds;
-        this.extraEnvs = extraEnvs;
-        this.image = image;
-        this.podSecurityPolicy = podSecurityPolicy;
-        this.secretsEncryptionConfig = secretsEncryptionConfig;
-        this.serviceClusterIpRange = serviceClusterIpRange;
-        this.serviceNodePortRange = serviceNodePortRange;
-    }
-
+    private GetClusterRkeConfigServicesKubeApi() {}
     public Map<String,Object> admissionConfiguration() {
         return this.admissionConfiguration == null ? Map.of() : this.admissionConfiguration;
     }
@@ -103,7 +76,7 @@ public final class GetClusterRkeConfigServicesKubeApi {
     public static Builder builder(GetClusterRkeConfigServicesKubeApi defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,Object> admissionConfiguration;
         private @Nullable Boolean alwaysPullImages;
@@ -117,11 +90,7 @@ public final class GetClusterRkeConfigServicesKubeApi {
         private @Nullable GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig;
         private String serviceClusterIpRange;
         private String serviceNodePortRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigServicesKubeApi defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.admissionConfiguration = defaults.admissionConfiguration;
@@ -138,26 +107,32 @@ public final class GetClusterRkeConfigServicesKubeApi {
     	      this.serviceNodePortRange = defaults.serviceNodePortRange;
         }
 
+        @CustomType.Setter
         public Builder admissionConfiguration(@Nullable Map<String,Object> admissionConfiguration) {
             this.admissionConfiguration = admissionConfiguration;
             return this;
         }
+        @CustomType.Setter
         public Builder alwaysPullImages(@Nullable Boolean alwaysPullImages) {
             this.alwaysPullImages = alwaysPullImages;
             return this;
         }
+        @CustomType.Setter
         public Builder auditLog(@Nullable GetClusterRkeConfigServicesKubeApiAuditLog auditLog) {
             this.auditLog = auditLog;
             return this;
         }
+        @CustomType.Setter
         public Builder eventRateLimit(@Nullable GetClusterRkeConfigServicesKubeApiEventRateLimit eventRateLimit) {
             this.eventRateLimit = eventRateLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder extraArgs(Map<String,Object> extraArgs) {
             this.extraArgs = Objects.requireNonNull(extraArgs);
             return this;
         }
+        @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
             this.extraBinds = extraBinds;
             return this;
@@ -165,6 +140,7 @@ public final class GetClusterRkeConfigServicesKubeApi {
         public Builder extraBinds(String... extraBinds) {
             return extraBinds(List.of(extraBinds));
         }
+        @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
             this.extraEnvs = extraEnvs;
             return this;
@@ -172,27 +148,46 @@ public final class GetClusterRkeConfigServicesKubeApi {
         public Builder extraEnvs(String... extraEnvs) {
             return extraEnvs(List.of(extraEnvs));
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
         }
+        @CustomType.Setter
         public Builder podSecurityPolicy(@Nullable Boolean podSecurityPolicy) {
             this.podSecurityPolicy = podSecurityPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder secretsEncryptionConfig(@Nullable GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig) {
             this.secretsEncryptionConfig = secretsEncryptionConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceClusterIpRange(String serviceClusterIpRange) {
             this.serviceClusterIpRange = Objects.requireNonNull(serviceClusterIpRange);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceNodePortRange(String serviceNodePortRange) {
             this.serviceNodePortRange = Objects.requireNonNull(serviceNodePortRange);
             return this;
-        }        public GetClusterRkeConfigServicesKubeApi build() {
-            return new GetClusterRkeConfigServicesKubeApi(admissionConfiguration, alwaysPullImages, auditLog, eventRateLimit, extraArgs, extraBinds, extraEnvs, image, podSecurityPolicy, secretsEncryptionConfig, serviceClusterIpRange, serviceNodePortRange);
+        }
+        public GetClusterRkeConfigServicesKubeApi build() {
+            final var o = new GetClusterRkeConfigServicesKubeApi();
+            o.admissionConfiguration = admissionConfiguration;
+            o.alwaysPullImages = alwaysPullImages;
+            o.auditLog = auditLog;
+            o.eventRateLimit = eventRateLimit;
+            o.extraArgs = extraArgs;
+            o.extraBinds = extraBinds;
+            o.extraEnvs = extraEnvs;
+            o.image = image;
+            o.podSecurityPolicy = podSecurityPolicy;
+            o.secretsEncryptionConfig = secretsEncryptionConfig;
+            o.serviceClusterIpRange = serviceClusterIpRange;
+            o.serviceNodePortRange = serviceNodePortRange;
+            return o;
         }
     }
 }

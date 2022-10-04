@@ -15,51 +15,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigNode {
-    private final String address;
-    private final String dockerSocket;
-    private final @Nullable String hostnameOverride;
-    private final @Nullable String internalAddress;
+    private String address;
+    private String dockerSocket;
+    private @Nullable String hostnameOverride;
+    private @Nullable String internalAddress;
     /**
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    private final @Nullable Map<String,Object> labels;
-    private final @Nullable String nodeId;
-    private final @Nullable String port;
-    private final List<String> roles;
-    private final @Nullable Boolean sshAgentAuth;
-    private final String sshKey;
-    private final String sshKeyPath;
-    private final String user;
+    private @Nullable Map<String,Object> labels;
+    private @Nullable String nodeId;
+    private @Nullable String port;
+    private List<String> roles;
+    private @Nullable Boolean sshAgentAuth;
+    private String sshKey;
+    private String sshKeyPath;
+    private String user;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigNode(
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("dockerSocket") String dockerSocket,
-        @CustomType.Parameter("hostnameOverride") @Nullable String hostnameOverride,
-        @CustomType.Parameter("internalAddress") @Nullable String internalAddress,
-        @CustomType.Parameter("labels") @Nullable Map<String,Object> labels,
-        @CustomType.Parameter("nodeId") @Nullable String nodeId,
-        @CustomType.Parameter("port") @Nullable String port,
-        @CustomType.Parameter("roles") List<String> roles,
-        @CustomType.Parameter("sshAgentAuth") @Nullable Boolean sshAgentAuth,
-        @CustomType.Parameter("sshKey") String sshKey,
-        @CustomType.Parameter("sshKeyPath") String sshKeyPath,
-        @CustomType.Parameter("user") String user) {
-        this.address = address;
-        this.dockerSocket = dockerSocket;
-        this.hostnameOverride = hostnameOverride;
-        this.internalAddress = internalAddress;
-        this.labels = labels;
-        this.nodeId = nodeId;
-        this.port = port;
-        this.roles = roles;
-        this.sshAgentAuth = sshAgentAuth;
-        this.sshKey = sshKey;
-        this.sshKeyPath = sshKeyPath;
-        this.user = user;
-    }
-
+    private GetClusterRkeConfigNode() {}
     public String address() {
         return this.address;
     }
@@ -108,7 +81,7 @@ public final class GetClusterRkeConfigNode {
     public static Builder builder(GetClusterRkeConfigNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
         private String dockerSocket;
@@ -122,11 +95,7 @@ public final class GetClusterRkeConfigNode {
         private String sshKey;
         private String sshKeyPath;
         private String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -143,34 +112,42 @@ public final class GetClusterRkeConfigNode {
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerSocket(String dockerSocket) {
             this.dockerSocket = Objects.requireNonNull(dockerSocket);
             return this;
         }
+        @CustomType.Setter
         public Builder hostnameOverride(@Nullable String hostnameOverride) {
             this.hostnameOverride = hostnameOverride;
             return this;
         }
+        @CustomType.Setter
         public Builder internalAddress(@Nullable String internalAddress) {
             this.internalAddress = internalAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder roles(List<String> roles) {
             this.roles = Objects.requireNonNull(roles);
             return this;
@@ -178,23 +155,41 @@ public final class GetClusterRkeConfigNode {
         public Builder roles(String... roles) {
             return roles(List.of(roles));
         }
+        @CustomType.Setter
         public Builder sshAgentAuth(@Nullable Boolean sshAgentAuth) {
             this.sshAgentAuth = sshAgentAuth;
             return this;
         }
+        @CustomType.Setter
         public Builder sshKey(String sshKey) {
             this.sshKey = Objects.requireNonNull(sshKey);
             return this;
         }
+        @CustomType.Setter
         public Builder sshKeyPath(String sshKeyPath) {
             this.sshKeyPath = Objects.requireNonNull(sshKeyPath);
             return this;
         }
+        @CustomType.Setter
         public Builder user(String user) {
             this.user = Objects.requireNonNull(user);
             return this;
-        }        public GetClusterRkeConfigNode build() {
-            return new GetClusterRkeConfigNode(address, dockerSocket, hostnameOverride, internalAddress, labels, nodeId, port, roles, sshAgentAuth, sshKey, sshKeyPath, user);
+        }
+        public GetClusterRkeConfigNode build() {
+            final var o = new GetClusterRkeConfigNode();
+            o.address = address;
+            o.dockerSocket = dockerSocket;
+            o.hostnameOverride = hostnameOverride;
+            o.internalAddress = internalAddress;
+            o.labels = labels;
+            o.nodeId = nodeId;
+            o.port = port;
+            o.roles = roles;
+            o.sshAgentAuth = sshAgentAuth;
+            o.sshKey = sshKey;
+            o.sshKeyPath = sshKeyPath;
+            o.user = user;
+            return o;
         }
     }
 }

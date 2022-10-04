@@ -20,42 +20,29 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProvider {
      * @return (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderDisk disk;
+    private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderDisk disk;
     /**
      * @return (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal global;
+    private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal global;
     /**
      * @return The GKE cluster network. Required for create new cluster (string)
      * 
      */
-    private final @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork network;
+    private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork network;
     /**
      * @return (List)
      * 
      */
-    private final List<ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter> virtualCenters;
+    private List<ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter> virtualCenters;
     /**
      * @return (list maxitems:1)
      * 
      */
-    private final ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace workspace;
+    private ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace workspace;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderVsphereCloudProvider(
-        @CustomType.Parameter("disk") @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderDisk disk,
-        @CustomType.Parameter("global") @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal global,
-        @CustomType.Parameter("network") @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork network,
-        @CustomType.Parameter("virtualCenters") List<ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter> virtualCenters,
-        @CustomType.Parameter("workspace") ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace workspace) {
-        this.disk = disk;
-        this.global = global;
-        this.network = network;
-        this.virtualCenters = virtualCenters;
-        this.workspace = workspace;
-    }
-
+    private ClusterRkeConfigCloudProviderVsphereCloudProvider() {}
     /**
      * @return (list maxitems:1)
      * 
@@ -99,18 +86,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProvider {
     public static Builder builder(ClusterRkeConfigCloudProviderVsphereCloudProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderDisk disk;
         private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal global;
         private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork network;
         private List<ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter> virtualCenters;
         private ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace workspace;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderVsphereCloudProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disk = defaults.disk;
@@ -120,18 +103,22 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProvider {
     	      this.workspace = defaults.workspace;
         }
 
+        @CustomType.Setter
         public Builder disk(@Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderDisk disk) {
             this.disk = disk;
             return this;
         }
+        @CustomType.Setter
         public Builder global(@Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal global) {
             this.global = global;
             return this;
         }
+        @CustomType.Setter
         public Builder network(@Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork network) {
             this.network = network;
             return this;
         }
+        @CustomType.Setter
         public Builder virtualCenters(List<ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter> virtualCenters) {
             this.virtualCenters = Objects.requireNonNull(virtualCenters);
             return this;
@@ -139,11 +126,19 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProvider {
         public Builder virtualCenters(ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter... virtualCenters) {
             return virtualCenters(List.of(virtualCenters));
         }
+        @CustomType.Setter
         public Builder workspace(ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace workspace) {
             this.workspace = Objects.requireNonNull(workspace);
             return this;
-        }        public ClusterRkeConfigCloudProviderVsphereCloudProvider build() {
-            return new ClusterRkeConfigCloudProviderVsphereCloudProvider(disk, global, network, virtualCenters, workspace);
+        }
+        public ClusterRkeConfigCloudProviderVsphereCloudProvider build() {
+            final var o = new ClusterRkeConfigCloudProviderVsphereCloudProvider();
+            o.disk = disk;
+            o.global = global;
+            o.network = network;
+            o.virtualCenters = virtualCenters;
+            o.workspace = workspace;
+            return o;
         }
     }
 }

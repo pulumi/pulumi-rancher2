@@ -12,21 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
-    private final @Nullable String configuration;
+    private @Nullable String configuration;
     /**
      * @return Enable cluster template revision. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit(
-        @CustomType.Parameter("configuration") @Nullable String configuration,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.configuration = configuration;
-        this.enabled = enabled;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit() {}
     public Optional<String> configuration() {
         return Optional.ofNullable(this.configuration);
     }
@@ -45,30 +38,32 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String configuration;
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configuration = defaults.configuration;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder configuration(@Nullable String configuration) {
             this.configuration = configuration;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit(configuration, enabled);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit();
+            o.configuration = configuration;
+            o.enabled = enabled;
+            return o;
         }
     }
 }

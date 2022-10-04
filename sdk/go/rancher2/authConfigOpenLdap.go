@@ -420,7 +420,7 @@ func (i *AuthConfigOpenLdap) ToAuthConfigOpenLdapOutputWithContext(ctx context.C
 // AuthConfigOpenLdapArrayInput is an input type that accepts AuthConfigOpenLdapArray and AuthConfigOpenLdapArrayOutput values.
 // You can construct a concrete instance of `AuthConfigOpenLdapArrayInput` via:
 //
-//          AuthConfigOpenLdapArray{ AuthConfigOpenLdapArgs{...} }
+//	AuthConfigOpenLdapArray{ AuthConfigOpenLdapArgs{...} }
 type AuthConfigOpenLdapArrayInput interface {
 	pulumi.Input
 
@@ -445,7 +445,7 @@ func (i AuthConfigOpenLdapArray) ToAuthConfigOpenLdapArrayOutputWithContext(ctx 
 // AuthConfigOpenLdapMapInput is an input type that accepts AuthConfigOpenLdapMap and AuthConfigOpenLdapMapOutput values.
 // You can construct a concrete instance of `AuthConfigOpenLdapMapInput` via:
 //
-//          AuthConfigOpenLdapMap{ "key": AuthConfigOpenLdapArgs{...} }
+//	AuthConfigOpenLdapMap{ "key": AuthConfigOpenLdapArgs{...} }
 type AuthConfigOpenLdapMapInput interface {
 	pulumi.Input
 

@@ -13,13 +13,9 @@ public final class CloudCredentialOpenstackCredentialConfig {
      * @return vSphere password (string)
      * 
      */
-    private final String password;
+    private String password;
 
-    @CustomType.Constructor
-    private CloudCredentialOpenstackCredentialConfig(@CustomType.Parameter("password") String password) {
-        this.password = password;
-    }
-
+    private CloudCredentialOpenstackCredentialConfig() {}
     /**
      * @return vSphere password (string)
      * 
@@ -35,24 +31,24 @@ public final class CloudCredentialOpenstackCredentialConfig {
     public static Builder builder(CloudCredentialOpenstackCredentialConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String password;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudCredentialOpenstackCredentialConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
         }
 
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
-        }        public CloudCredentialOpenstackCredentialConfig build() {
-            return new CloudCredentialOpenstackCredentialConfig(password);
+        }
+        public CloudCredentialOpenstackCredentialConfig build() {
+            final var o = new CloudCredentialOpenstackCredentialConfig();
+            o.password = password;
+            return o;
         }
     }
 }

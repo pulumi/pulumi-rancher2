@@ -11,29 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotifierWechatConfig {
-    private final String agent;
-    private final String corp;
-    private final String defaultRecipient;
-    private final @Nullable String proxyUrl;
-    private final @Nullable String recipientType;
-    private final String secret;
+    private String agent;
+    private String corp;
+    private String defaultRecipient;
+    private @Nullable String proxyUrl;
+    private @Nullable String recipientType;
+    private String secret;
 
-    @CustomType.Constructor
-    private GetNotifierWechatConfig(
-        @CustomType.Parameter("agent") String agent,
-        @CustomType.Parameter("corp") String corp,
-        @CustomType.Parameter("defaultRecipient") String defaultRecipient,
-        @CustomType.Parameter("proxyUrl") @Nullable String proxyUrl,
-        @CustomType.Parameter("recipientType") @Nullable String recipientType,
-        @CustomType.Parameter("secret") String secret) {
-        this.agent = agent;
-        this.corp = corp;
-        this.defaultRecipient = defaultRecipient;
-        this.proxyUrl = proxyUrl;
-        this.recipientType = recipientType;
-        this.secret = secret;
-    }
-
+    private GetNotifierWechatConfig() {}
     public String agent() {
         return this.agent;
     }
@@ -60,7 +45,7 @@ public final class GetNotifierWechatConfig {
     public static Builder builder(GetNotifierWechatConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String agent;
         private String corp;
@@ -68,11 +53,7 @@ public final class GetNotifierWechatConfig {
         private @Nullable String proxyUrl;
         private @Nullable String recipientType;
         private String secret;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNotifierWechatConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agent = defaults.agent;
@@ -83,31 +64,45 @@ public final class GetNotifierWechatConfig {
     	      this.secret = defaults.secret;
         }
 
+        @CustomType.Setter
         public Builder agent(String agent) {
             this.agent = Objects.requireNonNull(agent);
             return this;
         }
+        @CustomType.Setter
         public Builder corp(String corp) {
             this.corp = Objects.requireNonNull(corp);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultRecipient(String defaultRecipient) {
             this.defaultRecipient = Objects.requireNonNull(defaultRecipient);
             return this;
         }
+        @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
             this.proxyUrl = proxyUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder recipientType(@Nullable String recipientType) {
             this.recipientType = recipientType;
             return this;
         }
+        @CustomType.Setter
         public Builder secret(String secret) {
             this.secret = Objects.requireNonNull(secret);
             return this;
-        }        public GetNotifierWechatConfig build() {
-            return new GetNotifierWechatConfig(agent, corp, defaultRecipient, proxyUrl, recipientType, secret);
+        }
+        public GetNotifierWechatConfig build() {
+            final var o = new GetNotifierWechatConfig();
+            o.agent = agent;
+            o.corp = corp;
+            o.defaultRecipient = defaultRecipient;
+            o.proxyUrl = proxyUrl;
+            o.recipientType = recipientType;
+            o.secret = secret;
+            return o;
         }
     }
 }

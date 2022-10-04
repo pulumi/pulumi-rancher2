@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy {
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate;
-    private final @Nullable String strategy;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate;
+    private @Nullable String strategy;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy(
-        @CustomType.Parameter("rollingUpdate") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate,
-        @CustomType.Parameter("strategy") @Nullable String strategy) {
-        this.rollingUpdate = rollingUpdate;
-        this.strategy = strategy;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy() {}
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate> rollingUpdate() {
         return Optional.ofNullable(this.rollingUpdate);
     }
@@ -37,30 +30,32 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressU
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate;
         private @Nullable String strategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rollingUpdate = defaults.rollingUpdate;
     	      this.strategy = defaults.strategy;
         }
 
+        @CustomType.Setter
         public Builder rollingUpdate(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate) {
             this.rollingUpdate = rollingUpdate;
             return this;
         }
+        @CustomType.Setter
         public Builder strategy(@Nullable String strategy) {
             this.strategy = strategy;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy(rollingUpdate, strategy);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy();
+            o.rollingUpdate = rollingUpdate;
+            o.strategy = strategy;
+            return o;
         }
     }
 }

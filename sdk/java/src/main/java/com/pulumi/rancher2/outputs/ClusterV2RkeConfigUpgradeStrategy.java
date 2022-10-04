@@ -17,35 +17,24 @@ public final class ClusterV2RkeConfigUpgradeStrategy {
      * @return How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted (string)
      * 
      */
-    private final @Nullable String controlPlaneConcurrency;
+    private @Nullable String controlPlaneConcurrency;
     /**
      * @return Controlplane nodes drain options (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions;
+    private @Nullable ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions;
     /**
      * @return How many worker nodes should be upgrade at time. Percentages are also accepted (string)
      * 
      */
-    private final @Nullable String workerConcurrency;
+    private @Nullable String workerConcurrency;
     /**
      * @return Worker nodes drain options (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions;
+    private @Nullable ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions;
 
-    @CustomType.Constructor
-    private ClusterV2RkeConfigUpgradeStrategy(
-        @CustomType.Parameter("controlPlaneConcurrency") @Nullable String controlPlaneConcurrency,
-        @CustomType.Parameter("controlPlaneDrainOptions") @Nullable ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions,
-        @CustomType.Parameter("workerConcurrency") @Nullable String workerConcurrency,
-        @CustomType.Parameter("workerDrainOptions") @Nullable ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions) {
-        this.controlPlaneConcurrency = controlPlaneConcurrency;
-        this.controlPlaneDrainOptions = controlPlaneDrainOptions;
-        this.workerConcurrency = workerConcurrency;
-        this.workerDrainOptions = workerDrainOptions;
-    }
-
+    private ClusterV2RkeConfigUpgradeStrategy() {}
     /**
      * @return How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted (string)
      * 
@@ -82,17 +71,13 @@ public final class ClusterV2RkeConfigUpgradeStrategy {
     public static Builder builder(ClusterV2RkeConfigUpgradeStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String controlPlaneConcurrency;
         private @Nullable ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions;
         private @Nullable String workerConcurrency;
         private @Nullable ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterV2RkeConfigUpgradeStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.controlPlaneConcurrency = defaults.controlPlaneConcurrency;
@@ -101,23 +86,33 @@ public final class ClusterV2RkeConfigUpgradeStrategy {
     	      this.workerDrainOptions = defaults.workerDrainOptions;
         }
 
+        @CustomType.Setter
         public Builder controlPlaneConcurrency(@Nullable String controlPlaneConcurrency) {
             this.controlPlaneConcurrency = controlPlaneConcurrency;
             return this;
         }
+        @CustomType.Setter
         public Builder controlPlaneDrainOptions(@Nullable ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions) {
             this.controlPlaneDrainOptions = controlPlaneDrainOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder workerConcurrency(@Nullable String workerConcurrency) {
             this.workerConcurrency = workerConcurrency;
             return this;
         }
+        @CustomType.Setter
         public Builder workerDrainOptions(@Nullable ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions) {
             this.workerDrainOptions = workerDrainOptions;
             return this;
-        }        public ClusterV2RkeConfigUpgradeStrategy build() {
-            return new ClusterV2RkeConfigUpgradeStrategy(controlPlaneConcurrency, controlPlaneDrainOptions, workerConcurrency, workerDrainOptions);
+        }
+        public ClusterV2RkeConfigUpgradeStrategy build() {
+            final var o = new ClusterV2RkeConfigUpgradeStrategy();
+            o.controlPlaneConcurrency = controlPlaneConcurrency;
+            o.controlPlaneDrainOptions = controlPlaneDrainOptions;
+            o.workerConcurrency = workerConcurrency;
+            o.workerDrainOptions = workerDrainOptions;
+            return o;
         }
     }
 }

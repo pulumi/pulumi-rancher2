@@ -19,42 +19,29 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProvider {
      * @return (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage;
+    private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage;
     /**
      * @return (list maxitems:1)
      * 
      */
-    private final ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global;
+    private ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global;
     /**
      * @return (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer;
+    private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer;
     /**
      * @return (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata;
+    private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata;
     /**
      * @return (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route;
+    private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderOpenstackCloudProvider(
-        @CustomType.Parameter("blockStorage") @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage,
-        @CustomType.Parameter("global") ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global,
-        @CustomType.Parameter("loadBalancer") @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer,
-        @CustomType.Parameter("metadata") @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata,
-        @CustomType.Parameter("route") @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route) {
-        this.blockStorage = blockStorage;
-        this.global = global;
-        this.loadBalancer = loadBalancer;
-        this.metadata = metadata;
-        this.route = route;
-    }
-
+    private ClusterRkeConfigCloudProviderOpenstackCloudProvider() {}
     /**
      * @return (list maxitems:1)
      * 
@@ -98,18 +85,14 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProvider {
     public static Builder builder(ClusterRkeConfigCloudProviderOpenstackCloudProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage;
         private ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global;
         private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer;
         private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata;
         private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderOpenstackCloudProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.blockStorage = defaults.blockStorage;
@@ -119,27 +102,39 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProvider {
     	      this.route = defaults.route;
         }
 
+        @CustomType.Setter
         public Builder blockStorage(@Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage) {
             this.blockStorage = blockStorage;
             return this;
         }
+        @CustomType.Setter
         public Builder global(ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global) {
             this.global = Objects.requireNonNull(global);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancer(@Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer) {
             this.loadBalancer = loadBalancer;
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(@Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata) {
             this.metadata = metadata;
             return this;
         }
+        @CustomType.Setter
         public Builder route(@Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route) {
             this.route = route;
             return this;
-        }        public ClusterRkeConfigCloudProviderOpenstackCloudProvider build() {
-            return new ClusterRkeConfigCloudProviderOpenstackCloudProvider(blockStorage, global, loadBalancer, metadata, route);
+        }
+        public ClusterRkeConfigCloudProviderOpenstackCloudProvider build() {
+            final var o = new ClusterRkeConfigCloudProviderOpenstackCloudProvider();
+            o.blockStorage = blockStorage;
+            o.global = global;
+            o.loadBalancer = loadBalancer;
+            o.metadata = metadata;
+            o.route = route;
+            return o;
         }
     }
 }
