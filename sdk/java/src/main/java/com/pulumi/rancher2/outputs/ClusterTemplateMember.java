@@ -15,28 +15,19 @@ public final class ClusterTemplateMember {
      * @return Member access type. Valid values: `[&#34;read-only&#34; | &#34;owner&#34;]` (string)
      * 
      */
-    private final @Nullable String accessType;
+    private @Nullable String accessType;
     /**
      * @return Member group principal id (string)
      * 
      */
-    private final @Nullable String groupPrincipalId;
+    private @Nullable String groupPrincipalId;
     /**
      * @return Member user principal id (string)
      * 
      */
-    private final @Nullable String userPrincipalId;
+    private @Nullable String userPrincipalId;
 
-    @CustomType.Constructor
-    private ClusterTemplateMember(
-        @CustomType.Parameter("accessType") @Nullable String accessType,
-        @CustomType.Parameter("groupPrincipalId") @Nullable String groupPrincipalId,
-        @CustomType.Parameter("userPrincipalId") @Nullable String userPrincipalId) {
-        this.accessType = accessType;
-        this.groupPrincipalId = groupPrincipalId;
-        this.userPrincipalId = userPrincipalId;
-    }
-
+    private ClusterTemplateMember() {}
     /**
      * @return Member access type. Valid values: `[&#34;read-only&#34; | &#34;owner&#34;]` (string)
      * 
@@ -66,16 +57,12 @@ public final class ClusterTemplateMember {
     public static Builder builder(ClusterTemplateMember defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessType;
         private @Nullable String groupPrincipalId;
         private @Nullable String userPrincipalId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateMember defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessType = defaults.accessType;
@@ -83,19 +70,27 @@ public final class ClusterTemplateMember {
     	      this.userPrincipalId = defaults.userPrincipalId;
         }
 
+        @CustomType.Setter
         public Builder accessType(@Nullable String accessType) {
             this.accessType = accessType;
             return this;
         }
+        @CustomType.Setter
         public Builder groupPrincipalId(@Nullable String groupPrincipalId) {
             this.groupPrincipalId = groupPrincipalId;
             return this;
         }
+        @CustomType.Setter
         public Builder userPrincipalId(@Nullable String userPrincipalId) {
             this.userPrincipalId = userPrincipalId;
             return this;
-        }        public ClusterTemplateMember build() {
-            return new ClusterTemplateMember(accessType, groupPrincipalId, userPrincipalId);
+        }
+        public ClusterTemplateMember build() {
+            final var o = new ClusterTemplateMember();
+            o.accessType = accessType;
+            o.groupPrincipalId = groupPrincipalId;
+            o.userPrincipalId = userPrincipalId;
+            return o;
         }
     }
 }

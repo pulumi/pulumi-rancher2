@@ -19,73 +19,34 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigMachinePool {
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) Cluster V2 cloud credential secret name (string)
      * 
      */
-    private final String cloudCredentialSecretName;
-    private final @Nullable Boolean controlPlaneRole;
-    private final @Nullable Boolean drainBeforeDelete;
-    private final @Nullable Boolean etcdRole;
-    private final Map<String,Object> labels;
-    private final GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
-    private final @Nullable String maxUnhealthy;
+    private String cloudCredentialSecretName;
+    private @Nullable Boolean controlPlaneRole;
+    private @Nullable Boolean drainBeforeDelete;
+    private @Nullable Boolean etcdRole;
+    private Map<String,Object> labels;
+    private GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
+    private @Nullable String maxUnhealthy;
     /**
      * @return The name of the Cluster v2 (string)
      * 
      */
-    private final String name;
-    private final @Nullable Integer nodeDrainTimeout;
-    private final @Nullable Integer nodeStartupTimeoutSeconds;
-    private final @Nullable Boolean paused;
-    private final @Nullable Integer quantity;
-    private final @Nullable GetClusterV2RkeConfigMachinePoolRollingUpdate rollingUpdate;
-    private final @Nullable List<GetClusterV2RkeConfigMachinePoolTaint> taints;
-    private final @Nullable Integer unhealthyNodeTimeoutSeconds;
-    private final @Nullable String unhealthyRange;
-    private final @Nullable Boolean workerRole;
+    private String name;
+    private @Nullable Integer nodeDrainTimeout;
+    private @Nullable Integer nodeStartupTimeoutSeconds;
+    private @Nullable Boolean paused;
+    private @Nullable Integer quantity;
+    private @Nullable GetClusterV2RkeConfigMachinePoolRollingUpdate rollingUpdate;
+    private @Nullable List<GetClusterV2RkeConfigMachinePoolTaint> taints;
+    private @Nullable Integer unhealthyNodeTimeoutSeconds;
+    private @Nullable String unhealthyRange;
+    private @Nullable Boolean workerRole;
 
-    @CustomType.Constructor
-    private GetClusterV2RkeConfigMachinePool(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("cloudCredentialSecretName") String cloudCredentialSecretName,
-        @CustomType.Parameter("controlPlaneRole") @Nullable Boolean controlPlaneRole,
-        @CustomType.Parameter("drainBeforeDelete") @Nullable Boolean drainBeforeDelete,
-        @CustomType.Parameter("etcdRole") @Nullable Boolean etcdRole,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("machineConfig") GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig,
-        @CustomType.Parameter("maxUnhealthy") @Nullable String maxUnhealthy,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodeDrainTimeout") @Nullable Integer nodeDrainTimeout,
-        @CustomType.Parameter("nodeStartupTimeoutSeconds") @Nullable Integer nodeStartupTimeoutSeconds,
-        @CustomType.Parameter("paused") @Nullable Boolean paused,
-        @CustomType.Parameter("quantity") @Nullable Integer quantity,
-        @CustomType.Parameter("rollingUpdate") @Nullable GetClusterV2RkeConfigMachinePoolRollingUpdate rollingUpdate,
-        @CustomType.Parameter("taints") @Nullable List<GetClusterV2RkeConfigMachinePoolTaint> taints,
-        @CustomType.Parameter("unhealthyNodeTimeoutSeconds") @Nullable Integer unhealthyNodeTimeoutSeconds,
-        @CustomType.Parameter("unhealthyRange") @Nullable String unhealthyRange,
-        @CustomType.Parameter("workerRole") @Nullable Boolean workerRole) {
-        this.annotations = annotations;
-        this.cloudCredentialSecretName = cloudCredentialSecretName;
-        this.controlPlaneRole = controlPlaneRole;
-        this.drainBeforeDelete = drainBeforeDelete;
-        this.etcdRole = etcdRole;
-        this.labels = labels;
-        this.machineConfig = machineConfig;
-        this.maxUnhealthy = maxUnhealthy;
-        this.name = name;
-        this.nodeDrainTimeout = nodeDrainTimeout;
-        this.nodeStartupTimeoutSeconds = nodeStartupTimeoutSeconds;
-        this.paused = paused;
-        this.quantity = quantity;
-        this.rollingUpdate = rollingUpdate;
-        this.taints = taints;
-        this.unhealthyNodeTimeoutSeconds = unhealthyNodeTimeoutSeconds;
-        this.unhealthyRange = unhealthyRange;
-        this.workerRole = workerRole;
-    }
-
+    private GetClusterV2RkeConfigMachinePool() {}
     public Map<String,Object> annotations() {
         return this.annotations;
     }
@@ -156,7 +117,7 @@ public final class GetClusterV2RkeConfigMachinePool {
     public static Builder builder(GetClusterV2RkeConfigMachinePool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String cloudCredentialSecretName;
@@ -176,11 +137,7 @@ public final class GetClusterV2RkeConfigMachinePool {
         private @Nullable Integer unhealthyNodeTimeoutSeconds;
         private @Nullable String unhealthyRange;
         private @Nullable Boolean workerRole;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2RkeConfigMachinePool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -203,62 +160,77 @@ public final class GetClusterV2RkeConfigMachinePool {
     	      this.workerRole = defaults.workerRole;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder cloudCredentialSecretName(String cloudCredentialSecretName) {
             this.cloudCredentialSecretName = Objects.requireNonNull(cloudCredentialSecretName);
             return this;
         }
+        @CustomType.Setter
         public Builder controlPlaneRole(@Nullable Boolean controlPlaneRole) {
             this.controlPlaneRole = controlPlaneRole;
             return this;
         }
+        @CustomType.Setter
         public Builder drainBeforeDelete(@Nullable Boolean drainBeforeDelete) {
             this.drainBeforeDelete = drainBeforeDelete;
             return this;
         }
+        @CustomType.Setter
         public Builder etcdRole(@Nullable Boolean etcdRole) {
             this.etcdRole = etcdRole;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder machineConfig(GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig) {
             this.machineConfig = Objects.requireNonNull(machineConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder maxUnhealthy(@Nullable String maxUnhealthy) {
             this.maxUnhealthy = maxUnhealthy;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeDrainTimeout(@Nullable Integer nodeDrainTimeout) {
             this.nodeDrainTimeout = nodeDrainTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeStartupTimeoutSeconds(@Nullable Integer nodeStartupTimeoutSeconds) {
             this.nodeStartupTimeoutSeconds = nodeStartupTimeoutSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder paused(@Nullable Boolean paused) {
             this.paused = paused;
             return this;
         }
+        @CustomType.Setter
         public Builder quantity(@Nullable Integer quantity) {
             this.quantity = quantity;
             return this;
         }
+        @CustomType.Setter
         public Builder rollingUpdate(@Nullable GetClusterV2RkeConfigMachinePoolRollingUpdate rollingUpdate) {
             this.rollingUpdate = rollingUpdate;
             return this;
         }
+        @CustomType.Setter
         public Builder taints(@Nullable List<GetClusterV2RkeConfigMachinePoolTaint> taints) {
             this.taints = taints;
             return this;
@@ -266,19 +238,42 @@ public final class GetClusterV2RkeConfigMachinePool {
         public Builder taints(GetClusterV2RkeConfigMachinePoolTaint... taints) {
             return taints(List.of(taints));
         }
+        @CustomType.Setter
         public Builder unhealthyNodeTimeoutSeconds(@Nullable Integer unhealthyNodeTimeoutSeconds) {
             this.unhealthyNodeTimeoutSeconds = unhealthyNodeTimeoutSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder unhealthyRange(@Nullable String unhealthyRange) {
             this.unhealthyRange = unhealthyRange;
             return this;
         }
+        @CustomType.Setter
         public Builder workerRole(@Nullable Boolean workerRole) {
             this.workerRole = workerRole;
             return this;
-        }        public GetClusterV2RkeConfigMachinePool build() {
-            return new GetClusterV2RkeConfigMachinePool(annotations, cloudCredentialSecretName, controlPlaneRole, drainBeforeDelete, etcdRole, labels, machineConfig, maxUnhealthy, name, nodeDrainTimeout, nodeStartupTimeoutSeconds, paused, quantity, rollingUpdate, taints, unhealthyNodeTimeoutSeconds, unhealthyRange, workerRole);
+        }
+        public GetClusterV2RkeConfigMachinePool build() {
+            final var o = new GetClusterV2RkeConfigMachinePool();
+            o.annotations = annotations;
+            o.cloudCredentialSecretName = cloudCredentialSecretName;
+            o.controlPlaneRole = controlPlaneRole;
+            o.drainBeforeDelete = drainBeforeDelete;
+            o.etcdRole = etcdRole;
+            o.labels = labels;
+            o.machineConfig = machineConfig;
+            o.maxUnhealthy = maxUnhealthy;
+            o.name = name;
+            o.nodeDrainTimeout = nodeDrainTimeout;
+            o.nodeStartupTimeoutSeconds = nodeStartupTimeoutSeconds;
+            o.paused = paused;
+            o.quantity = quantity;
+            o.rollingUpdate = rollingUpdate;
+            o.taints = taints;
+            o.unhealthyNodeTimeoutSeconds = unhealthyNodeTimeoutSeconds;
+            o.unhealthyRange = unhealthyRange;
+            o.workerRole = workerRole;
+            return o;
         }
     }
 }

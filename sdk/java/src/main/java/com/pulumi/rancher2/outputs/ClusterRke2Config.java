@@ -16,21 +16,14 @@ public final class ClusterRke2Config {
      * @return K3S upgrade strategy (List maxitems: 1)
      * 
      */
-    private final @Nullable ClusterRke2ConfigUpgradeStrategy upgradeStrategy;
+    private @Nullable ClusterRke2ConfigUpgradeStrategy upgradeStrategy;
     /**
      * @return rancher-monitoring chart version (string)
      * 
      */
-    private final @Nullable String version;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private ClusterRke2Config(
-        @CustomType.Parameter("upgradeStrategy") @Nullable ClusterRke2ConfigUpgradeStrategy upgradeStrategy,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.upgradeStrategy = upgradeStrategy;
-        this.version = version;
-    }
-
+    private ClusterRke2Config() {}
     /**
      * @return K3S upgrade strategy (List maxitems: 1)
      * 
@@ -53,30 +46,32 @@ public final class ClusterRke2Config {
     public static Builder builder(ClusterRke2Config defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRke2ConfigUpgradeStrategy upgradeStrategy;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRke2Config defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.upgradeStrategy = defaults.upgradeStrategy;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder upgradeStrategy(@Nullable ClusterRke2ConfigUpgradeStrategy upgradeStrategy) {
             this.upgradeStrategy = upgradeStrategy;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public ClusterRke2Config build() {
-            return new ClusterRke2Config(upgradeStrategy, version);
+        }
+        public ClusterRke2Config build() {
+            final var o = new ClusterRke2Config();
+            o.upgradeStrategy = upgradeStrategy;
+            o.version = version;
+            return o;
         }
     }
 }

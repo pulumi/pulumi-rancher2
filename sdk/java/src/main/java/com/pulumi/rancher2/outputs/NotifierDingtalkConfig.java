@@ -15,28 +15,19 @@ public final class NotifierDingtalkConfig {
      * @return Wechat proxy url (string)
      * 
      */
-    private final @Nullable String proxyUrl;
+    private @Nullable String proxyUrl;
     /**
      * @return Wechat agent ID (string)
      * 
      */
-    private final @Nullable String secret;
+    private @Nullable String secret;
     /**
      * @return Webhook url (string)
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private NotifierDingtalkConfig(
-        @CustomType.Parameter("proxyUrl") @Nullable String proxyUrl,
-        @CustomType.Parameter("secret") @Nullable String secret,
-        @CustomType.Parameter("url") String url) {
-        this.proxyUrl = proxyUrl;
-        this.secret = secret;
-        this.url = url;
-    }
-
+    private NotifierDingtalkConfig() {}
     /**
      * @return Wechat proxy url (string)
      * 
@@ -66,16 +57,12 @@ public final class NotifierDingtalkConfig {
     public static Builder builder(NotifierDingtalkConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String proxyUrl;
         private @Nullable String secret;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NotifierDingtalkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.proxyUrl = defaults.proxyUrl;
@@ -83,19 +70,27 @@ public final class NotifierDingtalkConfig {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
             this.proxyUrl = proxyUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder secret(@Nullable String secret) {
             this.secret = secret;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public NotifierDingtalkConfig build() {
-            return new NotifierDingtalkConfig(proxyUrl, secret, url);
+        }
+        public NotifierDingtalkConfig build() {
+            final var o = new NotifierDingtalkConfig();
+            o.proxyUrl = proxyUrl;
+            o.secret = secret;
+            o.url = url;
+            return o;
         }
     }
 }

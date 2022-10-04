@@ -17,203 +17,144 @@ public final class NodeTemplateAzureConfig {
      * @return Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
      * 
      */
-    private final @Nullable String availabilitySet;
+    private @Nullable String availabilitySet;
     /**
      * @return Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
-    private final @Nullable String clientId;
+    private @Nullable String clientId;
     /**
      * @return Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
-    private final @Nullable String clientSecret;
+    private @Nullable String clientSecret;
     /**
      * @return Path to file with custom-data (string)
      * 
      */
-    private final @Nullable String customData;
+    private @Nullable String customData;
     /**
      * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
-    private final @Nullable String diskSize;
+    private @Nullable String diskSize;
     /**
      * @return A unique DNS label for the public IP adddress (string)
      * 
      */
-    private final @Nullable String dns;
+    private @Nullable String dns;
     /**
      * @return Docker Port. Default `2376` (string)
      * 
      */
-    private final @Nullable String dockerPort;
+    private @Nullable String dockerPort;
     /**
      * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
      * 
      */
-    private final @Nullable String environment;
+    private @Nullable String environment;
     /**
      * @return Fault domain count to use for availability set. Default `3` (string)
      * 
      */
-    private final @Nullable String faultDomainCount;
+    private @Nullable String faultDomainCount;
     /**
      * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
-    private final @Nullable String image;
+    private @Nullable String image;
     /**
      * @return Azure region to create the virtual machine. Default `westus` (string)
      * 
      */
-    private final @Nullable String location;
+    private @Nullable String location;
     /**
      * @return Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean managedDisks;
+    private @Nullable Boolean managedDisks;
     /**
      * @return Do not create a public IP address for the machine. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean noPublicIp;
+    private @Nullable Boolean noPublicIp;
     /**
      * @return Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
      * 
      */
-    private final @Nullable String nsg;
+    private @Nullable String nsg;
     /**
      * @return Make the specified port number accessible from the Internet. (list)
      * 
      */
-    private final @Nullable List<String> openPorts;
+    private @Nullable List<String> openPorts;
     /**
      * @return Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. Just for Rancher v2.6.3 and above. (string)
      * 
      */
-    private final @Nullable String plan;
+    private @Nullable String plan;
     /**
      * @return Specify a static private IP address for the machine. (string)
      * 
      */
-    private final @Nullable String privateIpAddress;
+    private @Nullable String privateIpAddress;
     /**
      * @return Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
      * 
      */
-    private final @Nullable String resourceGroup;
+    private @Nullable String resourceGroup;
     /**
      * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
      * 
      */
-    private final @Nullable String size;
+    private @Nullable String size;
     /**
      * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
-    private final @Nullable String sshUser;
+    private @Nullable String sshUser;
     /**
      * @return Assign a static public IP address to the machine. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean staticPublicIp;
+    private @Nullable Boolean staticPublicIp;
     /**
      * @return Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
      * 
      */
-    private final @Nullable String storageType;
+    private @Nullable String storageType;
     /**
      * @return Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
      * 
      */
-    private final @Nullable String subnet;
+    private @Nullable String subnet;
     /**
      * @return Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
      * 
      */
-    private final @Nullable String subnetPrefix;
+    private @Nullable String subnetPrefix;
     /**
      * @return Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
-    private final @Nullable String subscriptionId;
+    private @Nullable String subscriptionId;
     /**
      * @return Update domain count to use for availability set. Default `5` (string)
      * 
      */
-    private final @Nullable String updateDomainCount;
+    private @Nullable String updateDomainCount;
     /**
      * @return Use private IP address of the machine to connect. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean usePrivateIp;
+    private @Nullable Boolean usePrivateIp;
     /**
      * @return Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
      * 
      */
-    private final @Nullable String vnet;
+    private @Nullable String vnet;
 
-    @CustomType.Constructor
-    private NodeTemplateAzureConfig(
-        @CustomType.Parameter("availabilitySet") @Nullable String availabilitySet,
-        @CustomType.Parameter("clientId") @Nullable String clientId,
-        @CustomType.Parameter("clientSecret") @Nullable String clientSecret,
-        @CustomType.Parameter("customData") @Nullable String customData,
-        @CustomType.Parameter("diskSize") @Nullable String diskSize,
-        @CustomType.Parameter("dns") @Nullable String dns,
-        @CustomType.Parameter("dockerPort") @Nullable String dockerPort,
-        @CustomType.Parameter("environment") @Nullable String environment,
-        @CustomType.Parameter("faultDomainCount") @Nullable String faultDomainCount,
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("location") @Nullable String location,
-        @CustomType.Parameter("managedDisks") @Nullable Boolean managedDisks,
-        @CustomType.Parameter("noPublicIp") @Nullable Boolean noPublicIp,
-        @CustomType.Parameter("nsg") @Nullable String nsg,
-        @CustomType.Parameter("openPorts") @Nullable List<String> openPorts,
-        @CustomType.Parameter("plan") @Nullable String plan,
-        @CustomType.Parameter("privateIpAddress") @Nullable String privateIpAddress,
-        @CustomType.Parameter("resourceGroup") @Nullable String resourceGroup,
-        @CustomType.Parameter("size") @Nullable String size,
-        @CustomType.Parameter("sshUser") @Nullable String sshUser,
-        @CustomType.Parameter("staticPublicIp") @Nullable Boolean staticPublicIp,
-        @CustomType.Parameter("storageType") @Nullable String storageType,
-        @CustomType.Parameter("subnet") @Nullable String subnet,
-        @CustomType.Parameter("subnetPrefix") @Nullable String subnetPrefix,
-        @CustomType.Parameter("subscriptionId") @Nullable String subscriptionId,
-        @CustomType.Parameter("updateDomainCount") @Nullable String updateDomainCount,
-        @CustomType.Parameter("usePrivateIp") @Nullable Boolean usePrivateIp,
-        @CustomType.Parameter("vnet") @Nullable String vnet) {
-        this.availabilitySet = availabilitySet;
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-        this.customData = customData;
-        this.diskSize = diskSize;
-        this.dns = dns;
-        this.dockerPort = dockerPort;
-        this.environment = environment;
-        this.faultDomainCount = faultDomainCount;
-        this.image = image;
-        this.location = location;
-        this.managedDisks = managedDisks;
-        this.noPublicIp = noPublicIp;
-        this.nsg = nsg;
-        this.openPorts = openPorts;
-        this.plan = plan;
-        this.privateIpAddress = privateIpAddress;
-        this.resourceGroup = resourceGroup;
-        this.size = size;
-        this.sshUser = sshUser;
-        this.staticPublicIp = staticPublicIp;
-        this.storageType = storageType;
-        this.subnet = subnet;
-        this.subnetPrefix = subnetPrefix;
-        this.subscriptionId = subscriptionId;
-        this.updateDomainCount = updateDomainCount;
-        this.usePrivateIp = usePrivateIp;
-        this.vnet = vnet;
-    }
-
+    private NodeTemplateAzureConfig() {}
     /**
      * @return Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
      * 
@@ -418,7 +359,7 @@ public final class NodeTemplateAzureConfig {
     public static Builder builder(NodeTemplateAzureConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String availabilitySet;
         private @Nullable String clientId;
@@ -448,11 +389,7 @@ public final class NodeTemplateAzureConfig {
         private @Nullable String updateDomainCount;
         private @Nullable Boolean usePrivateIp;
         private @Nullable String vnet;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeTemplateAzureConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilitySet = defaults.availabilitySet;
@@ -485,62 +422,77 @@ public final class NodeTemplateAzureConfig {
     	      this.vnet = defaults.vnet;
         }
 
+        @CustomType.Setter
         public Builder availabilitySet(@Nullable String availabilitySet) {
             this.availabilitySet = availabilitySet;
             return this;
         }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
             this.clientSecret = clientSecret;
             return this;
         }
+        @CustomType.Setter
         public Builder customData(@Nullable String customData) {
             this.customData = customData;
             return this;
         }
+        @CustomType.Setter
         public Builder diskSize(@Nullable String diskSize) {
             this.diskSize = diskSize;
             return this;
         }
+        @CustomType.Setter
         public Builder dns(@Nullable String dns) {
             this.dns = dns;
             return this;
         }
+        @CustomType.Setter
         public Builder dockerPort(@Nullable String dockerPort) {
             this.dockerPort = dockerPort;
             return this;
         }
+        @CustomType.Setter
         public Builder environment(@Nullable String environment) {
             this.environment = environment;
             return this;
         }
+        @CustomType.Setter
         public Builder faultDomainCount(@Nullable String faultDomainCount) {
             this.faultDomainCount = faultDomainCount;
             return this;
         }
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
+        @CustomType.Setter
         public Builder managedDisks(@Nullable Boolean managedDisks) {
             this.managedDisks = managedDisks;
             return this;
         }
+        @CustomType.Setter
         public Builder noPublicIp(@Nullable Boolean noPublicIp) {
             this.noPublicIp = noPublicIp;
             return this;
         }
+        @CustomType.Setter
         public Builder nsg(@Nullable String nsg) {
             this.nsg = nsg;
             return this;
         }
+        @CustomType.Setter
         public Builder openPorts(@Nullable List<String> openPorts) {
             this.openPorts = openPorts;
             return this;
@@ -548,59 +500,102 @@ public final class NodeTemplateAzureConfig {
         public Builder openPorts(String... openPorts) {
             return openPorts(List.of(openPorts));
         }
+        @CustomType.Setter
         public Builder plan(@Nullable String plan) {
             this.plan = plan;
             return this;
         }
+        @CustomType.Setter
         public Builder privateIpAddress(@Nullable String privateIpAddress) {
             this.privateIpAddress = privateIpAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroup(@Nullable String resourceGroup) {
             this.resourceGroup = resourceGroup;
             return this;
         }
+        @CustomType.Setter
         public Builder size(@Nullable String size) {
             this.size = size;
             return this;
         }
+        @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
             this.sshUser = sshUser;
             return this;
         }
+        @CustomType.Setter
         public Builder staticPublicIp(@Nullable Boolean staticPublicIp) {
             this.staticPublicIp = staticPublicIp;
             return this;
         }
+        @CustomType.Setter
         public Builder storageType(@Nullable String storageType) {
             this.storageType = storageType;
             return this;
         }
+        @CustomType.Setter
         public Builder subnet(@Nullable String subnet) {
             this.subnet = subnet;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetPrefix(@Nullable String subnetPrefix) {
             this.subnetPrefix = subnetPrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder subscriptionId(@Nullable String subscriptionId) {
             this.subscriptionId = subscriptionId;
             return this;
         }
+        @CustomType.Setter
         public Builder updateDomainCount(@Nullable String updateDomainCount) {
             this.updateDomainCount = updateDomainCount;
             return this;
         }
+        @CustomType.Setter
         public Builder usePrivateIp(@Nullable Boolean usePrivateIp) {
             this.usePrivateIp = usePrivateIp;
             return this;
         }
+        @CustomType.Setter
         public Builder vnet(@Nullable String vnet) {
             this.vnet = vnet;
             return this;
-        }        public NodeTemplateAzureConfig build() {
-            return new NodeTemplateAzureConfig(availabilitySet, clientId, clientSecret, customData, diskSize, dns, dockerPort, environment, faultDomainCount, image, location, managedDisks, noPublicIp, nsg, openPorts, plan, privateIpAddress, resourceGroup, size, sshUser, staticPublicIp, storageType, subnet, subnetPrefix, subscriptionId, updateDomainCount, usePrivateIp, vnet);
+        }
+        public NodeTemplateAzureConfig build() {
+            final var o = new NodeTemplateAzureConfig();
+            o.availabilitySet = availabilitySet;
+            o.clientId = clientId;
+            o.clientSecret = clientSecret;
+            o.customData = customData;
+            o.diskSize = diskSize;
+            o.dns = dns;
+            o.dockerPort = dockerPort;
+            o.environment = environment;
+            o.faultDomainCount = faultDomainCount;
+            o.image = image;
+            o.location = location;
+            o.managedDisks = managedDisks;
+            o.noPublicIp = noPublicIp;
+            o.nsg = nsg;
+            o.openPorts = openPorts;
+            o.plan = plan;
+            o.privateIpAddress = privateIpAddress;
+            o.resourceGroup = resourceGroup;
+            o.size = size;
+            o.sshUser = sshUser;
+            o.staticPublicIp = staticPublicIp;
+            o.storageType = storageType;
+            o.subnet = subnet;
+            o.subnetPrefix = subnetPrefix;
+            o.subscriptionId = subscriptionId;
+            o.updateDomainCount = updateDomainCount;
+            o.usePrivateIp = usePrivateIp;
+            o.vnet = vnet;
+            return o;
         }
     }
 }

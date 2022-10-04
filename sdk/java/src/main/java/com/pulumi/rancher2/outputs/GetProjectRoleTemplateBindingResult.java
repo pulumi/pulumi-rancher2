@@ -15,65 +15,42 @@ public final class GetProjectRoleTemplateBindingResult {
      * @return (Computed) Annotations of the resource (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) The group ID to assign project role template binding (string)
      * 
      */
-    private final String groupId;
+    private String groupId;
     /**
      * @return (Computed) The group_principal ID to assign project role template binding (string)
      * 
      */
-    private final String groupPrincipalId;
+    private String groupPrincipalId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels of the resource (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
-    private final String projectId;
-    private final String roleTemplateId;
+    private Map<String,Object> labels;
+    private String name;
+    private String projectId;
+    private String roleTemplateId;
     /**
      * @return (Computed) The user ID to assign project role template binding (string)
      * 
      */
-    private final String userId;
+    private String userId;
     /**
      * @return (Computed) The user_principal ID to assign project role template binding (string)
      * 
      */
-    private final String userPrincipalId;
+    private String userPrincipalId;
 
-    @CustomType.Constructor
-    private GetProjectRoleTemplateBindingResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("groupPrincipalId") String groupPrincipalId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("roleTemplateId") String roleTemplateId,
-        @CustomType.Parameter("userId") String userId,
-        @CustomType.Parameter("userPrincipalId") String userPrincipalId) {
-        this.annotations = annotations;
-        this.groupId = groupId;
-        this.groupPrincipalId = groupPrincipalId;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.projectId = projectId;
-        this.roleTemplateId = roleTemplateId;
-        this.userId = userId;
-        this.userPrincipalId = userPrincipalId;
-    }
-
+    private GetProjectRoleTemplateBindingResult() {}
     /**
      * @return (Computed) Annotations of the resource (map)
      * 
@@ -140,7 +117,7 @@ public final class GetProjectRoleTemplateBindingResult {
     public static Builder builder(GetProjectRoleTemplateBindingResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String groupId;
@@ -152,11 +129,7 @@ public final class GetProjectRoleTemplateBindingResult {
         private String roleTemplateId;
         private String userId;
         private String userPrincipalId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectRoleTemplateBindingResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -171,47 +144,69 @@ public final class GetProjectRoleTemplateBindingResult {
     	      this.userPrincipalId = defaults.userPrincipalId;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupPrincipalId(String groupPrincipalId) {
             this.groupPrincipalId = Objects.requireNonNull(groupPrincipalId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder roleTemplateId(String roleTemplateId) {
             this.roleTemplateId = Objects.requireNonNull(roleTemplateId);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
         }
+        @CustomType.Setter
         public Builder userPrincipalId(String userPrincipalId) {
             this.userPrincipalId = Objects.requireNonNull(userPrincipalId);
             return this;
-        }        public GetProjectRoleTemplateBindingResult build() {
-            return new GetProjectRoleTemplateBindingResult(annotations, groupId, groupPrincipalId, id, labels, name, projectId, roleTemplateId, userId, userPrincipalId);
+        }
+        public GetProjectRoleTemplateBindingResult build() {
+            final var o = new GetProjectRoleTemplateBindingResult();
+            o.annotations = annotations;
+            o.groupId = groupId;
+            o.groupPrincipalId = groupPrincipalId;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.projectId = projectId;
+            o.roleTemplateId = roleTemplateId;
+            o.userId = userId;
+            o.userPrincipalId = userPrincipalId;
+            return o;
         }
     }
 }

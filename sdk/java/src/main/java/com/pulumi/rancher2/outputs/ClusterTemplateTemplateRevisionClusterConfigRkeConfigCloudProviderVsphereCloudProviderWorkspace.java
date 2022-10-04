@@ -11,26 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace {
-    private final String datacenter;
-    private final @Nullable String defaultDatastore;
-    private final String folder;
-    private final @Nullable String resourcepoolPath;
-    private final String server;
+    private String datacenter;
+    private @Nullable String defaultDatastore;
+    private String folder;
+    private @Nullable String resourcepoolPath;
+    private String server;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace(
-        @CustomType.Parameter("datacenter") String datacenter,
-        @CustomType.Parameter("defaultDatastore") @Nullable String defaultDatastore,
-        @CustomType.Parameter("folder") String folder,
-        @CustomType.Parameter("resourcepoolPath") @Nullable String resourcepoolPath,
-        @CustomType.Parameter("server") String server) {
-        this.datacenter = datacenter;
-        this.defaultDatastore = defaultDatastore;
-        this.folder = folder;
-        this.resourcepoolPath = resourcepoolPath;
-        this.server = server;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace() {}
     public String datacenter() {
         return this.datacenter;
     }
@@ -54,18 +41,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datacenter;
         private @Nullable String defaultDatastore;
         private String folder;
         private @Nullable String resourcepoolPath;
         private String server;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenter = defaults.datacenter;
@@ -75,27 +58,39 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     	      this.server = defaults.server;
         }
 
+        @CustomType.Setter
         public Builder datacenter(String datacenter) {
             this.datacenter = Objects.requireNonNull(datacenter);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultDatastore(@Nullable String defaultDatastore) {
             this.defaultDatastore = defaultDatastore;
             return this;
         }
+        @CustomType.Setter
         public Builder folder(String folder) {
             this.folder = Objects.requireNonNull(folder);
             return this;
         }
+        @CustomType.Setter
         public Builder resourcepoolPath(@Nullable String resourcepoolPath) {
             this.resourcepoolPath = resourcepoolPath;
             return this;
         }
+        @CustomType.Setter
         public Builder server(String server) {
             this.server = Objects.requireNonNull(server);
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace(datacenter, defaultDatastore, folder, resourcepoolPath, server);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace();
+            o.datacenter = datacenter;
+            o.defaultDatastore = defaultDatastore;
+            o.folder = folder;
+            o.resourcepoolPath = resourcepoolPath;
+            o.server = server;
+            return o;
         }
     }
 }

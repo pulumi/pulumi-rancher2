@@ -24,63 +24,44 @@ public final class ClusterRkeConfigNetwork {
      * @return Calico provider config for RKE network (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider;
+    private @Nullable ClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider;
     /**
      * @return Canal provider config for RKE network (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
+    private @Nullable ClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
     /**
      * @return Flannel provider config for RKE network (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
+    private @Nullable ClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
     /**
      * @return Network provider MTU. Default `0` (int)
      * 
      */
-    private final @Nullable Integer mtu;
+    private @Nullable Integer mtu;
     /**
      * @return RKE options for network (map)
      * 
      */
-    private final @Nullable Map<String,Object> options;
+    private @Nullable Map<String,Object> options;
     /**
      * @return Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
      * 
      */
-    private final @Nullable String plugin;
+    private @Nullable String plugin;
     /**
      * @return Network add-on tolerations (list)
      * 
      */
-    private final @Nullable List<ClusterRkeConfigNetworkToleration> tolerations;
+    private @Nullable List<ClusterRkeConfigNetworkToleration> tolerations;
     /**
      * @return Weave provider config for RKE network (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
+    private @Nullable ClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigNetwork(
-        @CustomType.Parameter("calicoNetworkProvider") @Nullable ClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider,
-        @CustomType.Parameter("canalNetworkProvider") @Nullable ClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider,
-        @CustomType.Parameter("flannelNetworkProvider") @Nullable ClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider,
-        @CustomType.Parameter("mtu") @Nullable Integer mtu,
-        @CustomType.Parameter("options") @Nullable Map<String,Object> options,
-        @CustomType.Parameter("plugin") @Nullable String plugin,
-        @CustomType.Parameter("tolerations") @Nullable List<ClusterRkeConfigNetworkToleration> tolerations,
-        @CustomType.Parameter("weaveNetworkProvider") @Nullable ClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider) {
-        this.calicoNetworkProvider = calicoNetworkProvider;
-        this.canalNetworkProvider = canalNetworkProvider;
-        this.flannelNetworkProvider = flannelNetworkProvider;
-        this.mtu = mtu;
-        this.options = options;
-        this.plugin = plugin;
-        this.tolerations = tolerations;
-        this.weaveNetworkProvider = weaveNetworkProvider;
-    }
-
+    private ClusterRkeConfigNetwork() {}
     /**
      * @return Calico provider config for RKE network (list maxitems:1)
      * 
@@ -145,7 +126,7 @@ public final class ClusterRkeConfigNetwork {
     public static Builder builder(ClusterRkeConfigNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider;
         private @Nullable ClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
@@ -155,11 +136,7 @@ public final class ClusterRkeConfigNetwork {
         private @Nullable String plugin;
         private @Nullable List<ClusterRkeConfigNetworkToleration> tolerations;
         private @Nullable ClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.calicoNetworkProvider = defaults.calicoNetworkProvider;
@@ -172,30 +149,37 @@ public final class ClusterRkeConfigNetwork {
     	      this.weaveNetworkProvider = defaults.weaveNetworkProvider;
         }
 
+        @CustomType.Setter
         public Builder calicoNetworkProvider(@Nullable ClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider) {
             this.calicoNetworkProvider = calicoNetworkProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder canalNetworkProvider(@Nullable ClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider) {
             this.canalNetworkProvider = canalNetworkProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder flannelNetworkProvider(@Nullable ClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider) {
             this.flannelNetworkProvider = flannelNetworkProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder mtu(@Nullable Integer mtu) {
             this.mtu = mtu;
             return this;
         }
+        @CustomType.Setter
         public Builder options(@Nullable Map<String,Object> options) {
             this.options = options;
             return this;
         }
+        @CustomType.Setter
         public Builder plugin(@Nullable String plugin) {
             this.plugin = plugin;
             return this;
         }
+        @CustomType.Setter
         public Builder tolerations(@Nullable List<ClusterRkeConfigNetworkToleration> tolerations) {
             this.tolerations = tolerations;
             return this;
@@ -203,11 +187,22 @@ public final class ClusterRkeConfigNetwork {
         public Builder tolerations(ClusterRkeConfigNetworkToleration... tolerations) {
             return tolerations(List.of(tolerations));
         }
+        @CustomType.Setter
         public Builder weaveNetworkProvider(@Nullable ClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider) {
             this.weaveNetworkProvider = weaveNetworkProvider;
             return this;
-        }        public ClusterRkeConfigNetwork build() {
-            return new ClusterRkeConfigNetwork(calicoNetworkProvider, canalNetworkProvider, flannelNetworkProvider, mtu, options, plugin, tolerations, weaveNetworkProvider);
+        }
+        public ClusterRkeConfigNetwork build() {
+            final var o = new ClusterRkeConfigNetwork();
+            o.calicoNetworkProvider = calicoNetworkProvider;
+            o.canalNetworkProvider = canalNetworkProvider;
+            o.flannelNetworkProvider = flannelNetworkProvider;
+            o.mtu = mtu;
+            o.options = options;
+            o.plugin = plugin;
+            o.tolerations = tolerations;
+            o.weaveNetworkProvider = weaveNetworkProvider;
+            return o;
         }
     }
 }

@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
-    private final @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate rollingUpdate;
-    private final @Nullable String strategy;
+    private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate rollingUpdate;
+    private @Nullable String strategy;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy(
-        @CustomType.Parameter("rollingUpdate") @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate rollingUpdate,
-        @CustomType.Parameter("strategy") @Nullable String strategy) {
-        this.rollingUpdate = rollingUpdate;
-        this.strategy = strategy;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy() {}
     public Optional<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate> rollingUpdate() {
         return Optional.ofNullable(this.rollingUpdate);
     }
@@ -37,30 +30,32 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUp
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate rollingUpdate;
         private @Nullable String strategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rollingUpdate = defaults.rollingUpdate;
     	      this.strategy = defaults.strategy;
         }
 
+        @CustomType.Setter
         public Builder rollingUpdate(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate rollingUpdate) {
             this.rollingUpdate = rollingUpdate;
             return this;
         }
+        @CustomType.Setter
         public Builder strategy(@Nullable String strategy) {
             this.strategy = strategy;
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy(rollingUpdate, strategy);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy();
+            o.rollingUpdate = rollingUpdate;
+            o.strategy = strategy;
+            return o;
         }
     }
 }

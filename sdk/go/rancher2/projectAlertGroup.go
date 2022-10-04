@@ -19,32 +19,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewProjectAlertGroup(ctx, "foo", &rancher2.ProjectAlertGroupArgs{
-// 			Description:           pulumi.String("Terraform project alert group"),
-// 			GroupIntervalSeconds:  pulumi.Int(300),
-// 			ProjectId:             pulumi.String("<project_id>"),
-// 			RepeatIntervalSeconds: pulumi.Int(3600),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewProjectAlertGroup(ctx, "foo", &rancher2.ProjectAlertGroupArgs{
+//				Description:           pulumi.String("Terraform project alert group"),
+//				GroupIntervalSeconds:  pulumi.Int(300),
+//				ProjectId:             pulumi.String("<project_id>"),
+//				RepeatIntervalSeconds: pulumi.Int(3600),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Project Alert Group can be imported using the Rancher project alert group ID
+// # Project Alert Group can be imported using the Rancher project alert group ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/projectAlertGroup:ProjectAlertGroup foo &lt;project_alert_group_id&gt;
+//
+//	$ pulumi import rancher2:index/projectAlertGroup:ProjectAlertGroup foo &lt;project_alert_group_id&gt;
+//
 // ```
 type ProjectAlertGroup struct {
 	pulumi.CustomResourceState
@@ -215,7 +220,7 @@ func (i *ProjectAlertGroup) ToProjectAlertGroupOutputWithContext(ctx context.Con
 // ProjectAlertGroupArrayInput is an input type that accepts ProjectAlertGroupArray and ProjectAlertGroupArrayOutput values.
 // You can construct a concrete instance of `ProjectAlertGroupArrayInput` via:
 //
-//          ProjectAlertGroupArray{ ProjectAlertGroupArgs{...} }
+//	ProjectAlertGroupArray{ ProjectAlertGroupArgs{...} }
 type ProjectAlertGroupArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +245,7 @@ func (i ProjectAlertGroupArray) ToProjectAlertGroupArrayOutputWithContext(ctx co
 // ProjectAlertGroupMapInput is an input type that accepts ProjectAlertGroupMap and ProjectAlertGroupMapOutput values.
 // You can construct a concrete instance of `ProjectAlertGroupMapInput` via:
 //
-//          ProjectAlertGroupMap{ "key": ProjectAlertGroupArgs{...} }
+//	ProjectAlertGroupMap{ "key": ProjectAlertGroupArgs{...} }
 type ProjectAlertGroupMapInput interface {
 	pulumi.Input
 

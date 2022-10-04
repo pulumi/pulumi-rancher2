@@ -11,29 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGlobalDnsProviderRoute53Config {
-    private final String accessKey;
-    private final @Nullable String credentialsPath;
-    private final @Nullable String region;
-    private final @Nullable String roleArn;
-    private final String secretKey;
-    private final @Nullable String zoneType;
+    private String accessKey;
+    private @Nullable String credentialsPath;
+    private @Nullable String region;
+    private @Nullable String roleArn;
+    private String secretKey;
+    private @Nullable String zoneType;
 
-    @CustomType.Constructor
-    private GetGlobalDnsProviderRoute53Config(
-        @CustomType.Parameter("accessKey") String accessKey,
-        @CustomType.Parameter("credentialsPath") @Nullable String credentialsPath,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("roleArn") @Nullable String roleArn,
-        @CustomType.Parameter("secretKey") String secretKey,
-        @CustomType.Parameter("zoneType") @Nullable String zoneType) {
-        this.accessKey = accessKey;
-        this.credentialsPath = credentialsPath;
-        this.region = region;
-        this.roleArn = roleArn;
-        this.secretKey = secretKey;
-        this.zoneType = zoneType;
-    }
-
+    private GetGlobalDnsProviderRoute53Config() {}
     public String accessKey() {
         return this.accessKey;
     }
@@ -60,7 +45,7 @@ public final class GetGlobalDnsProviderRoute53Config {
     public static Builder builder(GetGlobalDnsProviderRoute53Config defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessKey;
         private @Nullable String credentialsPath;
@@ -68,11 +53,7 @@ public final class GetGlobalDnsProviderRoute53Config {
         private @Nullable String roleArn;
         private String secretKey;
         private @Nullable String zoneType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGlobalDnsProviderRoute53Config defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -83,31 +64,45 @@ public final class GetGlobalDnsProviderRoute53Config {
     	      this.zoneType = defaults.zoneType;
         }
 
+        @CustomType.Setter
         public Builder accessKey(String accessKey) {
             this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
+        @CustomType.Setter
         public Builder credentialsPath(@Nullable String credentialsPath) {
             this.credentialsPath = credentialsPath;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
             this.roleArn = roleArn;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(String secretKey) {
             this.secretKey = Objects.requireNonNull(secretKey);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneType(@Nullable String zoneType) {
             this.zoneType = zoneType;
             return this;
-        }        public GetGlobalDnsProviderRoute53Config build() {
-            return new GetGlobalDnsProviderRoute53Config(accessKey, credentialsPath, region, roleArn, secretKey, zoneType);
+        }
+        public GetGlobalDnsProviderRoute53Config build() {
+            final var o = new GetGlobalDnsProviderRoute53Config();
+            o.accessKey = accessKey;
+            o.credentialsPath = credentialsPath;
+            o.region = region;
+            o.roleArn = roleArn;
+            o.secretKey = secretKey;
+            o.zoneType = zoneType;
+            return o;
         }
     }
 }

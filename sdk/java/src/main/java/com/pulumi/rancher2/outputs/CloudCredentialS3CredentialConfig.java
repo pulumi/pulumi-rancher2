@@ -16,63 +16,44 @@ public final class CloudCredentialS3CredentialConfig {
      * @return AWS access key (string)
      * 
      */
-    private final String accessKey;
+    private String accessKey;
     /**
      * @return AWS default bucket (string)
      * 
      */
-    private final @Nullable String defaultBucket;
+    private @Nullable String defaultBucket;
     /**
      * @return AWS default endpoint (string)
      * 
      */
-    private final @Nullable String defaultEndpoint;
+    private @Nullable String defaultEndpoint;
     /**
      * @return AWS default endpoint CA (string)
      * 
      */
-    private final @Nullable String defaultEndpointCa;
+    private @Nullable String defaultEndpointCa;
     /**
      * @return AWS default folder (string)
      * 
      */
-    private final @Nullable String defaultFolder;
+    private @Nullable String defaultFolder;
     /**
      * @return AWS default region (string)
      * 
      */
-    private final @Nullable String defaultRegion;
+    private @Nullable String defaultRegion;
     /**
      * @return AWS default skip ssl verify. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean defaultSkipSslVerify;
+    private @Nullable Boolean defaultSkipSslVerify;
     /**
      * @return AWS secret key (string)
      * 
      */
-    private final String secretKey;
+    private String secretKey;
 
-    @CustomType.Constructor
-    private CloudCredentialS3CredentialConfig(
-        @CustomType.Parameter("accessKey") String accessKey,
-        @CustomType.Parameter("defaultBucket") @Nullable String defaultBucket,
-        @CustomType.Parameter("defaultEndpoint") @Nullable String defaultEndpoint,
-        @CustomType.Parameter("defaultEndpointCa") @Nullable String defaultEndpointCa,
-        @CustomType.Parameter("defaultFolder") @Nullable String defaultFolder,
-        @CustomType.Parameter("defaultRegion") @Nullable String defaultRegion,
-        @CustomType.Parameter("defaultSkipSslVerify") @Nullable Boolean defaultSkipSslVerify,
-        @CustomType.Parameter("secretKey") String secretKey) {
-        this.accessKey = accessKey;
-        this.defaultBucket = defaultBucket;
-        this.defaultEndpoint = defaultEndpoint;
-        this.defaultEndpointCa = defaultEndpointCa;
-        this.defaultFolder = defaultFolder;
-        this.defaultRegion = defaultRegion;
-        this.defaultSkipSslVerify = defaultSkipSslVerify;
-        this.secretKey = secretKey;
-    }
-
+    private CloudCredentialS3CredentialConfig() {}
     /**
      * @return AWS access key (string)
      * 
@@ -137,7 +118,7 @@ public final class CloudCredentialS3CredentialConfig {
     public static Builder builder(CloudCredentialS3CredentialConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessKey;
         private @Nullable String defaultBucket;
@@ -147,11 +128,7 @@ public final class CloudCredentialS3CredentialConfig {
         private @Nullable String defaultRegion;
         private @Nullable Boolean defaultSkipSslVerify;
         private String secretKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudCredentialS3CredentialConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -164,39 +141,57 @@ public final class CloudCredentialS3CredentialConfig {
     	      this.secretKey = defaults.secretKey;
         }
 
+        @CustomType.Setter
         public Builder accessKey(String accessKey) {
             this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultBucket(@Nullable String defaultBucket) {
             this.defaultBucket = defaultBucket;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultEndpoint(@Nullable String defaultEndpoint) {
             this.defaultEndpoint = defaultEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultEndpointCa(@Nullable String defaultEndpointCa) {
             this.defaultEndpointCa = defaultEndpointCa;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultFolder(@Nullable String defaultFolder) {
             this.defaultFolder = defaultFolder;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultRegion(@Nullable String defaultRegion) {
             this.defaultRegion = defaultRegion;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultSkipSslVerify(@Nullable Boolean defaultSkipSslVerify) {
             this.defaultSkipSslVerify = defaultSkipSslVerify;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(String secretKey) {
             this.secretKey = Objects.requireNonNull(secretKey);
             return this;
-        }        public CloudCredentialS3CredentialConfig build() {
-            return new CloudCredentialS3CredentialConfig(accessKey, defaultBucket, defaultEndpoint, defaultEndpointCa, defaultFolder, defaultRegion, defaultSkipSslVerify, secretKey);
+        }
+        public CloudCredentialS3CredentialConfig build() {
+            final var o = new CloudCredentialS3CredentialConfig();
+            o.accessKey = accessKey;
+            o.defaultBucket = defaultBucket;
+            o.defaultEndpoint = defaultEndpoint;
+            o.defaultEndpointCa = defaultEndpointCa;
+            o.defaultFolder = defaultFolder;
+            o.defaultRegion = defaultRegion;
+            o.defaultSkipSslVerify = defaultSkipSslVerify;
+            o.secretKey = secretKey;
+            return o;
         }
     }
 }

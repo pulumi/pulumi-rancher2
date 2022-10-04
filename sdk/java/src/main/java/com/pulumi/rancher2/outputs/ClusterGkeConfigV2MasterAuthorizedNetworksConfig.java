@@ -17,21 +17,14 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
      * @return The GKE master authorized network config cidr blocks (List)
      * 
      */
-    private final List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+    private List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
     /**
      * @return Enable scheduled cluster scan. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private ClusterGkeConfigV2MasterAuthorizedNetworksConfig(
-        @CustomType.Parameter("cidrBlocks") List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.cidrBlocks = cidrBlocks;
-        this.enabled = enabled;
-    }
-
+    private ClusterGkeConfigV2MasterAuthorizedNetworksConfig() {}
     /**
      * @return The GKE master authorized network config cidr blocks (List)
      * 
@@ -54,21 +47,18 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
     public static Builder builder(ClusterGkeConfigV2MasterAuthorizedNetworksConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterGkeConfigV2MasterAuthorizedNetworksConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlocks = defaults.cidrBlocks;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder cidrBlocks(List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks) {
             this.cidrBlocks = Objects.requireNonNull(cidrBlocks);
             return this;
@@ -76,11 +66,16 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
         public Builder cidrBlocks(ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock... cidrBlocks) {
             return cidrBlocks(List.of(cidrBlocks));
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public ClusterGkeConfigV2MasterAuthorizedNetworksConfig build() {
-            return new ClusterGkeConfigV2MasterAuthorizedNetworksConfig(cidrBlocks, enabled);
+        }
+        public ClusterGkeConfigV2MasterAuthorizedNetworksConfig build() {
+            final var o = new ClusterGkeConfigV2MasterAuthorizedNetworksConfig();
+            o.cidrBlocks = cidrBlocks;
+            o.enabled = enabled;
+            return o;
         }
     }
 }

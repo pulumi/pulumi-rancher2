@@ -18,69 +18,46 @@ public final class GetClusterAlertGroupResult {
      * @return (Computed) The cluster alert group annotations (map)
      * 
      */
-    private final Map<String,Object> annotations;
-    private final String clusterId;
+    private Map<String,Object> annotations;
+    private String clusterId;
     /**
      * @return (Computed) The cluster alert group description (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return (Computed) The cluster alert group interval seconds. Default: `180` (int)
      * 
      */
-    private final Integer groupIntervalSeconds;
+    private Integer groupIntervalSeconds;
     /**
      * @return (Computed) The cluster alert group wait seconds. Default: `180` (int)
      * 
      */
-    private final Integer groupWaitSeconds;
+    private Integer groupWaitSeconds;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) The cluster alert group labels (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
+    private Map<String,Object> labels;
+    private String name;
     /**
      * @return (Computed) The cluster alert group recipients (list)
      * 
      */
-    private final List<GetClusterAlertGroupRecipient> recipients;
+    private List<GetClusterAlertGroupRecipient> recipients;
     /**
      * @return (Computed) The cluster alert group wait seconds. Default: `3600` (int)
      * 
      */
-    private final Integer repeatIntervalSeconds;
+    private Integer repeatIntervalSeconds;
 
-    @CustomType.Constructor
-    private GetClusterAlertGroupResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("groupIntervalSeconds") Integer groupIntervalSeconds,
-        @CustomType.Parameter("groupWaitSeconds") Integer groupWaitSeconds,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("recipients") List<GetClusterAlertGroupRecipient> recipients,
-        @CustomType.Parameter("repeatIntervalSeconds") Integer repeatIntervalSeconds) {
-        this.annotations = annotations;
-        this.clusterId = clusterId;
-        this.description = description;
-        this.groupIntervalSeconds = groupIntervalSeconds;
-        this.groupWaitSeconds = groupWaitSeconds;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.recipients = recipients;
-        this.repeatIntervalSeconds = repeatIntervalSeconds;
-    }
-
+    private GetClusterAlertGroupResult() {}
     /**
      * @return (Computed) The cluster alert group annotations (map)
      * 
@@ -151,7 +128,7 @@ public final class GetClusterAlertGroupResult {
     public static Builder builder(GetClusterAlertGroupResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String clusterId;
@@ -163,11 +140,7 @@ public final class GetClusterAlertGroupResult {
         private String name;
         private List<GetClusterAlertGroupRecipient> recipients;
         private Integer repeatIntervalSeconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAlertGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -182,38 +155,47 @@ public final class GetClusterAlertGroupResult {
     	      this.repeatIntervalSeconds = defaults.repeatIntervalSeconds;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder groupIntervalSeconds(Integer groupIntervalSeconds) {
             this.groupIntervalSeconds = Objects.requireNonNull(groupIntervalSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder groupWaitSeconds(Integer groupWaitSeconds) {
             this.groupWaitSeconds = Objects.requireNonNull(groupWaitSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder recipients(List<GetClusterAlertGroupRecipient> recipients) {
             this.recipients = Objects.requireNonNull(recipients);
             return this;
@@ -221,11 +203,24 @@ public final class GetClusterAlertGroupResult {
         public Builder recipients(GetClusterAlertGroupRecipient... recipients) {
             return recipients(List.of(recipients));
         }
+        @CustomType.Setter
         public Builder repeatIntervalSeconds(Integer repeatIntervalSeconds) {
             this.repeatIntervalSeconds = Objects.requireNonNull(repeatIntervalSeconds);
             return this;
-        }        public GetClusterAlertGroupResult build() {
-            return new GetClusterAlertGroupResult(annotations, clusterId, description, groupIntervalSeconds, groupWaitSeconds, id, labels, name, recipients, repeatIntervalSeconds);
+        }
+        public GetClusterAlertGroupResult build() {
+            final var o = new GetClusterAlertGroupResult();
+            o.annotations = annotations;
+            o.clusterId = clusterId;
+            o.description = description;
+            o.groupIntervalSeconds = groupIntervalSeconds;
+            o.groupWaitSeconds = groupWaitSeconds;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.recipients = recipients;
+            o.repeatIntervalSeconds = repeatIntervalSeconds;
+            return o;
         }
     }
 }

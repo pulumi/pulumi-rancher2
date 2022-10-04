@@ -14,54 +14,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGlobalDnsProviderResult {
-    private final GetGlobalDnsProviderAlidnsConfig alidnsConfig;
+    private GetGlobalDnsProviderAlidnsConfig alidnsConfig;
     /**
      * @return (Computed) Annotations of the resource (map)
      * 
      */
-    private final Map<String,Object> annotations;
-    private final GetGlobalDnsProviderCloudflareConfig cloudflareConfig;
-    private final String dnsProvider;
+    private Map<String,Object> annotations;
+    private GetGlobalDnsProviderCloudflareConfig cloudflareConfig;
+    private String dnsProvider;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels of the resource (map)
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return (Computed) The name of the global DNS provider (string)
      * 
      */
-    private final String name;
-    private final String rootDomain;
-    private final GetGlobalDnsProviderRoute53Config route53Config;
+    private String name;
+    private String rootDomain;
+    private GetGlobalDnsProviderRoute53Config route53Config;
 
-    @CustomType.Constructor
-    private GetGlobalDnsProviderResult(
-        @CustomType.Parameter("alidnsConfig") GetGlobalDnsProviderAlidnsConfig alidnsConfig,
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("cloudflareConfig") GetGlobalDnsProviderCloudflareConfig cloudflareConfig,
-        @CustomType.Parameter("dnsProvider") String dnsProvider,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("rootDomain") String rootDomain,
-        @CustomType.Parameter("route53Config") GetGlobalDnsProviderRoute53Config route53Config) {
-        this.alidnsConfig = alidnsConfig;
-        this.annotations = annotations;
-        this.cloudflareConfig = cloudflareConfig;
-        this.dnsProvider = dnsProvider;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.rootDomain = rootDomain;
-        this.route53Config = route53Config;
-    }
-
+    private GetGlobalDnsProviderResult() {}
     public GetGlobalDnsProviderAlidnsConfig alidnsConfig() {
         return this.alidnsConfig;
     }
@@ -113,7 +92,7 @@ public final class GetGlobalDnsProviderResult {
     public static Builder builder(GetGlobalDnsProviderResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetGlobalDnsProviderAlidnsConfig alidnsConfig;
         private Map<String,Object> annotations;
@@ -124,11 +103,7 @@ public final class GetGlobalDnsProviderResult {
         private String name;
         private String rootDomain;
         private GetGlobalDnsProviderRoute53Config route53Config;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGlobalDnsProviderResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alidnsConfig = defaults.alidnsConfig;
@@ -142,43 +117,63 @@ public final class GetGlobalDnsProviderResult {
     	      this.route53Config = defaults.route53Config;
         }
 
+        @CustomType.Setter
         public Builder alidnsConfig(GetGlobalDnsProviderAlidnsConfig alidnsConfig) {
             this.alidnsConfig = Objects.requireNonNull(alidnsConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder cloudflareConfig(GetGlobalDnsProviderCloudflareConfig cloudflareConfig) {
             this.cloudflareConfig = Objects.requireNonNull(cloudflareConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsProvider(String dnsProvider) {
             this.dnsProvider = Objects.requireNonNull(dnsProvider);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder rootDomain(String rootDomain) {
             this.rootDomain = Objects.requireNonNull(rootDomain);
             return this;
         }
+        @CustomType.Setter
         public Builder route53Config(GetGlobalDnsProviderRoute53Config route53Config) {
             this.route53Config = Objects.requireNonNull(route53Config);
             return this;
-        }        public GetGlobalDnsProviderResult build() {
-            return new GetGlobalDnsProviderResult(alidnsConfig, annotations, cloudflareConfig, dnsProvider, id, labels, name, rootDomain, route53Config);
+        }
+        public GetGlobalDnsProviderResult build() {
+            final var o = new GetGlobalDnsProviderResult();
+            o.alidnsConfig = alidnsConfig;
+            o.annotations = annotations;
+            o.cloudflareConfig = cloudflareConfig;
+            o.dnsProvider = dnsProvider;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.rootDomain = rootDomain;
+            o.route53Config = route53Config;
+            return o;
         }
     }
 }

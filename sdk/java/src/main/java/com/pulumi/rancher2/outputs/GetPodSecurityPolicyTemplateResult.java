@@ -25,102 +25,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPodSecurityPolicyTemplateResult {
-    private final Boolean allowPrivilegeEscalation;
-    private final @Nullable List<String> allowedCapabilities;
-    private final @Nullable List<GetPodSecurityPolicyTemplateAllowedCsiDriver> allowedCsiDrivers;
-    private final @Nullable List<GetPodSecurityPolicyTemplateAllowedFlexVolume> allowedFlexVolumes;
-    private final @Nullable List<GetPodSecurityPolicyTemplateAllowedHostPath> allowedHostPaths;
-    private final @Nullable List<String> allowedProcMountTypes;
-    private final @Nullable List<String> allowedUnsafeSysctls;
-    private final Map<String,Object> annotations;
-    private final @Nullable List<String> defaultAddCapabilities;
-    private final @Nullable Boolean defaultAllowPrivilegeEscalation;
-    private final String description;
-    private final @Nullable List<String> forbiddenSysctls;
-    private final GetPodSecurityPolicyTemplateFsGroup fsGroup;
-    private final Boolean hostIpc;
-    private final Boolean hostNetwork;
-    private final Boolean hostPid;
-    private final List<GetPodSecurityPolicyTemplateHostPort> hostPorts;
+    private Boolean allowPrivilegeEscalation;
+    private @Nullable List<String> allowedCapabilities;
+    private @Nullable List<GetPodSecurityPolicyTemplateAllowedCsiDriver> allowedCsiDrivers;
+    private @Nullable List<GetPodSecurityPolicyTemplateAllowedFlexVolume> allowedFlexVolumes;
+    private @Nullable List<GetPodSecurityPolicyTemplateAllowedHostPath> allowedHostPaths;
+    private @Nullable List<String> allowedProcMountTypes;
+    private @Nullable List<String> allowedUnsafeSysctls;
+    private Map<String,Object> annotations;
+    private @Nullable List<String> defaultAddCapabilities;
+    private @Nullable Boolean defaultAllowPrivilegeEscalation;
+    private String description;
+    private @Nullable List<String> forbiddenSysctls;
+    private GetPodSecurityPolicyTemplateFsGroup fsGroup;
+    private Boolean hostIpc;
+    private Boolean hostNetwork;
+    private Boolean hostPid;
+    private List<GetPodSecurityPolicyTemplateHostPort> hostPorts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Map<String,Object> labels;
-    private final String name;
-    private final Boolean privileged;
-    private final Boolean readOnlyRootFilesystem;
-    private final @Nullable List<String> requiredDropCapabilities;
-    private final @Nullable GetPodSecurityPolicyTemplateRunAsGroup runAsGroup;
-    private final GetPodSecurityPolicyTemplateRunAsUser runAsUser;
-    private final @Nullable GetPodSecurityPolicyTemplateRuntimeClass runtimeClass;
-    private final GetPodSecurityPolicyTemplateSeLinux seLinux;
-    private final GetPodSecurityPolicyTemplateSupplementalGroup supplementalGroup;
-    private final List<String> volumes;
+    private String id;
+    private Map<String,Object> labels;
+    private String name;
+    private Boolean privileged;
+    private Boolean readOnlyRootFilesystem;
+    private @Nullable List<String> requiredDropCapabilities;
+    private @Nullable GetPodSecurityPolicyTemplateRunAsGroup runAsGroup;
+    private GetPodSecurityPolicyTemplateRunAsUser runAsUser;
+    private @Nullable GetPodSecurityPolicyTemplateRuntimeClass runtimeClass;
+    private GetPodSecurityPolicyTemplateSeLinux seLinux;
+    private GetPodSecurityPolicyTemplateSupplementalGroup supplementalGroup;
+    private List<String> volumes;
 
-    @CustomType.Constructor
-    private GetPodSecurityPolicyTemplateResult(
-        @CustomType.Parameter("allowPrivilegeEscalation") Boolean allowPrivilegeEscalation,
-        @CustomType.Parameter("allowedCapabilities") @Nullable List<String> allowedCapabilities,
-        @CustomType.Parameter("allowedCsiDrivers") @Nullable List<GetPodSecurityPolicyTemplateAllowedCsiDriver> allowedCsiDrivers,
-        @CustomType.Parameter("allowedFlexVolumes") @Nullable List<GetPodSecurityPolicyTemplateAllowedFlexVolume> allowedFlexVolumes,
-        @CustomType.Parameter("allowedHostPaths") @Nullable List<GetPodSecurityPolicyTemplateAllowedHostPath> allowedHostPaths,
-        @CustomType.Parameter("allowedProcMountTypes") @Nullable List<String> allowedProcMountTypes,
-        @CustomType.Parameter("allowedUnsafeSysctls") @Nullable List<String> allowedUnsafeSysctls,
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("defaultAddCapabilities") @Nullable List<String> defaultAddCapabilities,
-        @CustomType.Parameter("defaultAllowPrivilegeEscalation") @Nullable Boolean defaultAllowPrivilegeEscalation,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("forbiddenSysctls") @Nullable List<String> forbiddenSysctls,
-        @CustomType.Parameter("fsGroup") GetPodSecurityPolicyTemplateFsGroup fsGroup,
-        @CustomType.Parameter("hostIpc") Boolean hostIpc,
-        @CustomType.Parameter("hostNetwork") Boolean hostNetwork,
-        @CustomType.Parameter("hostPid") Boolean hostPid,
-        @CustomType.Parameter("hostPorts") List<GetPodSecurityPolicyTemplateHostPort> hostPorts,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("privileged") Boolean privileged,
-        @CustomType.Parameter("readOnlyRootFilesystem") Boolean readOnlyRootFilesystem,
-        @CustomType.Parameter("requiredDropCapabilities") @Nullable List<String> requiredDropCapabilities,
-        @CustomType.Parameter("runAsGroup") @Nullable GetPodSecurityPolicyTemplateRunAsGroup runAsGroup,
-        @CustomType.Parameter("runAsUser") GetPodSecurityPolicyTemplateRunAsUser runAsUser,
-        @CustomType.Parameter("runtimeClass") @Nullable GetPodSecurityPolicyTemplateRuntimeClass runtimeClass,
-        @CustomType.Parameter("seLinux") GetPodSecurityPolicyTemplateSeLinux seLinux,
-        @CustomType.Parameter("supplementalGroup") GetPodSecurityPolicyTemplateSupplementalGroup supplementalGroup,
-        @CustomType.Parameter("volumes") List<String> volumes) {
-        this.allowPrivilegeEscalation = allowPrivilegeEscalation;
-        this.allowedCapabilities = allowedCapabilities;
-        this.allowedCsiDrivers = allowedCsiDrivers;
-        this.allowedFlexVolumes = allowedFlexVolumes;
-        this.allowedHostPaths = allowedHostPaths;
-        this.allowedProcMountTypes = allowedProcMountTypes;
-        this.allowedUnsafeSysctls = allowedUnsafeSysctls;
-        this.annotations = annotations;
-        this.defaultAddCapabilities = defaultAddCapabilities;
-        this.defaultAllowPrivilegeEscalation = defaultAllowPrivilegeEscalation;
-        this.description = description;
-        this.forbiddenSysctls = forbiddenSysctls;
-        this.fsGroup = fsGroup;
-        this.hostIpc = hostIpc;
-        this.hostNetwork = hostNetwork;
-        this.hostPid = hostPid;
-        this.hostPorts = hostPorts;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.privileged = privileged;
-        this.readOnlyRootFilesystem = readOnlyRootFilesystem;
-        this.requiredDropCapabilities = requiredDropCapabilities;
-        this.runAsGroup = runAsGroup;
-        this.runAsUser = runAsUser;
-        this.runtimeClass = runtimeClass;
-        this.seLinux = seLinux;
-        this.supplementalGroup = supplementalGroup;
-        this.volumes = volumes;
-    }
-
+    private GetPodSecurityPolicyTemplateResult() {}
     public Boolean allowPrivilegeEscalation() {
         return this.allowPrivilegeEscalation;
     }
@@ -220,7 +159,7 @@ public final class GetPodSecurityPolicyTemplateResult {
     public static Builder builder(GetPodSecurityPolicyTemplateResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean allowPrivilegeEscalation;
         private @Nullable List<String> allowedCapabilities;
@@ -251,11 +190,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         private GetPodSecurityPolicyTemplateSeLinux seLinux;
         private GetPodSecurityPolicyTemplateSupplementalGroup supplementalGroup;
         private List<String> volumes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPodSecurityPolicyTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowPrivilegeEscalation = defaults.allowPrivilegeEscalation;
@@ -289,10 +224,12 @@ public final class GetPodSecurityPolicyTemplateResult {
     	      this.volumes = defaults.volumes;
         }
 
+        @CustomType.Setter
         public Builder allowPrivilegeEscalation(Boolean allowPrivilegeEscalation) {
             this.allowPrivilegeEscalation = Objects.requireNonNull(allowPrivilegeEscalation);
             return this;
         }
+        @CustomType.Setter
         public Builder allowedCapabilities(@Nullable List<String> allowedCapabilities) {
             this.allowedCapabilities = allowedCapabilities;
             return this;
@@ -300,6 +237,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         public Builder allowedCapabilities(String... allowedCapabilities) {
             return allowedCapabilities(List.of(allowedCapabilities));
         }
+        @CustomType.Setter
         public Builder allowedCsiDrivers(@Nullable List<GetPodSecurityPolicyTemplateAllowedCsiDriver> allowedCsiDrivers) {
             this.allowedCsiDrivers = allowedCsiDrivers;
             return this;
@@ -307,6 +245,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         public Builder allowedCsiDrivers(GetPodSecurityPolicyTemplateAllowedCsiDriver... allowedCsiDrivers) {
             return allowedCsiDrivers(List.of(allowedCsiDrivers));
         }
+        @CustomType.Setter
         public Builder allowedFlexVolumes(@Nullable List<GetPodSecurityPolicyTemplateAllowedFlexVolume> allowedFlexVolumes) {
             this.allowedFlexVolumes = allowedFlexVolumes;
             return this;
@@ -314,6 +253,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         public Builder allowedFlexVolumes(GetPodSecurityPolicyTemplateAllowedFlexVolume... allowedFlexVolumes) {
             return allowedFlexVolumes(List.of(allowedFlexVolumes));
         }
+        @CustomType.Setter
         public Builder allowedHostPaths(@Nullable List<GetPodSecurityPolicyTemplateAllowedHostPath> allowedHostPaths) {
             this.allowedHostPaths = allowedHostPaths;
             return this;
@@ -321,6 +261,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         public Builder allowedHostPaths(GetPodSecurityPolicyTemplateAllowedHostPath... allowedHostPaths) {
             return allowedHostPaths(List.of(allowedHostPaths));
         }
+        @CustomType.Setter
         public Builder allowedProcMountTypes(@Nullable List<String> allowedProcMountTypes) {
             this.allowedProcMountTypes = allowedProcMountTypes;
             return this;
@@ -328,6 +269,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         public Builder allowedProcMountTypes(String... allowedProcMountTypes) {
             return allowedProcMountTypes(List.of(allowedProcMountTypes));
         }
+        @CustomType.Setter
         public Builder allowedUnsafeSysctls(@Nullable List<String> allowedUnsafeSysctls) {
             this.allowedUnsafeSysctls = allowedUnsafeSysctls;
             return this;
@@ -335,10 +277,12 @@ public final class GetPodSecurityPolicyTemplateResult {
         public Builder allowedUnsafeSysctls(String... allowedUnsafeSysctls) {
             return allowedUnsafeSysctls(List.of(allowedUnsafeSysctls));
         }
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultAddCapabilities(@Nullable List<String> defaultAddCapabilities) {
             this.defaultAddCapabilities = defaultAddCapabilities;
             return this;
@@ -346,14 +290,17 @@ public final class GetPodSecurityPolicyTemplateResult {
         public Builder defaultAddCapabilities(String... defaultAddCapabilities) {
             return defaultAddCapabilities(List.of(defaultAddCapabilities));
         }
+        @CustomType.Setter
         public Builder defaultAllowPrivilegeEscalation(@Nullable Boolean defaultAllowPrivilegeEscalation) {
             this.defaultAllowPrivilegeEscalation = defaultAllowPrivilegeEscalation;
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder forbiddenSysctls(@Nullable List<String> forbiddenSysctls) {
             this.forbiddenSysctls = forbiddenSysctls;
             return this;
@@ -361,22 +308,27 @@ public final class GetPodSecurityPolicyTemplateResult {
         public Builder forbiddenSysctls(String... forbiddenSysctls) {
             return forbiddenSysctls(List.of(forbiddenSysctls));
         }
+        @CustomType.Setter
         public Builder fsGroup(GetPodSecurityPolicyTemplateFsGroup fsGroup) {
             this.fsGroup = Objects.requireNonNull(fsGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder hostIpc(Boolean hostIpc) {
             this.hostIpc = Objects.requireNonNull(hostIpc);
             return this;
         }
+        @CustomType.Setter
         public Builder hostNetwork(Boolean hostNetwork) {
             this.hostNetwork = Objects.requireNonNull(hostNetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder hostPid(Boolean hostPid) {
             this.hostPid = Objects.requireNonNull(hostPid);
             return this;
         }
+        @CustomType.Setter
         public Builder hostPorts(List<GetPodSecurityPolicyTemplateHostPort> hostPorts) {
             this.hostPorts = Objects.requireNonNull(hostPorts);
             return this;
@@ -384,26 +336,32 @@ public final class GetPodSecurityPolicyTemplateResult {
         public Builder hostPorts(GetPodSecurityPolicyTemplateHostPort... hostPorts) {
             return hostPorts(List.of(hostPorts));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder privileged(Boolean privileged) {
             this.privileged = Objects.requireNonNull(privileged);
             return this;
         }
+        @CustomType.Setter
         public Builder readOnlyRootFilesystem(Boolean readOnlyRootFilesystem) {
             this.readOnlyRootFilesystem = Objects.requireNonNull(readOnlyRootFilesystem);
             return this;
         }
+        @CustomType.Setter
         public Builder requiredDropCapabilities(@Nullable List<String> requiredDropCapabilities) {
             this.requiredDropCapabilities = requiredDropCapabilities;
             return this;
@@ -411,34 +369,71 @@ public final class GetPodSecurityPolicyTemplateResult {
         public Builder requiredDropCapabilities(String... requiredDropCapabilities) {
             return requiredDropCapabilities(List.of(requiredDropCapabilities));
         }
+        @CustomType.Setter
         public Builder runAsGroup(@Nullable GetPodSecurityPolicyTemplateRunAsGroup runAsGroup) {
             this.runAsGroup = runAsGroup;
             return this;
         }
+        @CustomType.Setter
         public Builder runAsUser(GetPodSecurityPolicyTemplateRunAsUser runAsUser) {
             this.runAsUser = Objects.requireNonNull(runAsUser);
             return this;
         }
+        @CustomType.Setter
         public Builder runtimeClass(@Nullable GetPodSecurityPolicyTemplateRuntimeClass runtimeClass) {
             this.runtimeClass = runtimeClass;
             return this;
         }
+        @CustomType.Setter
         public Builder seLinux(GetPodSecurityPolicyTemplateSeLinux seLinux) {
             this.seLinux = Objects.requireNonNull(seLinux);
             return this;
         }
+        @CustomType.Setter
         public Builder supplementalGroup(GetPodSecurityPolicyTemplateSupplementalGroup supplementalGroup) {
             this.supplementalGroup = Objects.requireNonNull(supplementalGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder volumes(List<String> volumes) {
             this.volumes = Objects.requireNonNull(volumes);
             return this;
         }
         public Builder volumes(String... volumes) {
             return volumes(List.of(volumes));
-        }        public GetPodSecurityPolicyTemplateResult build() {
-            return new GetPodSecurityPolicyTemplateResult(allowPrivilegeEscalation, allowedCapabilities, allowedCsiDrivers, allowedFlexVolumes, allowedHostPaths, allowedProcMountTypes, allowedUnsafeSysctls, annotations, defaultAddCapabilities, defaultAllowPrivilegeEscalation, description, forbiddenSysctls, fsGroup, hostIpc, hostNetwork, hostPid, hostPorts, id, labels, name, privileged, readOnlyRootFilesystem, requiredDropCapabilities, runAsGroup, runAsUser, runtimeClass, seLinux, supplementalGroup, volumes);
+        }
+        public GetPodSecurityPolicyTemplateResult build() {
+            final var o = new GetPodSecurityPolicyTemplateResult();
+            o.allowPrivilegeEscalation = allowPrivilegeEscalation;
+            o.allowedCapabilities = allowedCapabilities;
+            o.allowedCsiDrivers = allowedCsiDrivers;
+            o.allowedFlexVolumes = allowedFlexVolumes;
+            o.allowedHostPaths = allowedHostPaths;
+            o.allowedProcMountTypes = allowedProcMountTypes;
+            o.allowedUnsafeSysctls = allowedUnsafeSysctls;
+            o.annotations = annotations;
+            o.defaultAddCapabilities = defaultAddCapabilities;
+            o.defaultAllowPrivilegeEscalation = defaultAllowPrivilegeEscalation;
+            o.description = description;
+            o.forbiddenSysctls = forbiddenSysctls;
+            o.fsGroup = fsGroup;
+            o.hostIpc = hostIpc;
+            o.hostNetwork = hostNetwork;
+            o.hostPid = hostPid;
+            o.hostPorts = hostPorts;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.privileged = privileged;
+            o.readOnlyRootFilesystem = readOnlyRootFilesystem;
+            o.requiredDropCapabilities = requiredDropCapabilities;
+            o.runAsGroup = runAsGroup;
+            o.runAsUser = runAsUser;
+            o.runtimeClass = runtimeClass;
+            o.seLinux = seLinux;
+            o.supplementalGroup = supplementalGroup;
+            o.volumes = volumes;
+            return o;
         }
     }
 }

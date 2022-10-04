@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput {
-    private final @Nullable Boolean deleteLocalData;
-    private final @Nullable Boolean force;
-    private final @Nullable Integer gracePeriod;
-    private final @Nullable Boolean ignoreDaemonSets;
-    private final @Nullable Integer timeout;
+    private @Nullable Boolean deleteLocalData;
+    private @Nullable Boolean force;
+    private @Nullable Integer gracePeriod;
+    private @Nullable Boolean ignoreDaemonSets;
+    private @Nullable Integer timeout;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput(
-        @CustomType.Parameter("deleteLocalData") @Nullable Boolean deleteLocalData,
-        @CustomType.Parameter("force") @Nullable Boolean force,
-        @CustomType.Parameter("gracePeriod") @Nullable Integer gracePeriod,
-        @CustomType.Parameter("ignoreDaemonSets") @Nullable Boolean ignoreDaemonSets,
-        @CustomType.Parameter("timeout") @Nullable Integer timeout) {
-        this.deleteLocalData = deleteLocalData;
-        this.force = force;
-        this.gracePeriod = gracePeriod;
-        this.ignoreDaemonSets = ignoreDaemonSets;
-        this.timeout = timeout;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput() {}
     public Optional<Boolean> deleteLocalData() {
         return Optional.ofNullable(this.deleteLocalData);
     }
@@ -55,18 +42,14 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgra
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean deleteLocalData;
         private @Nullable Boolean force;
         private @Nullable Integer gracePeriod;
         private @Nullable Boolean ignoreDaemonSets;
         private @Nullable Integer timeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deleteLocalData = defaults.deleteLocalData;
@@ -76,27 +59,39 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgra
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
         public Builder deleteLocalData(@Nullable Boolean deleteLocalData) {
             this.deleteLocalData = deleteLocalData;
             return this;
         }
+        @CustomType.Setter
         public Builder force(@Nullable Boolean force) {
             this.force = force;
             return this;
         }
+        @CustomType.Setter
         public Builder gracePeriod(@Nullable Integer gracePeriod) {
             this.gracePeriod = gracePeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreDaemonSets(@Nullable Boolean ignoreDaemonSets) {
             this.ignoreDaemonSets = ignoreDaemonSets;
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
             this.timeout = timeout;
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput(deleteLocalData, force, gracePeriod, ignoreDaemonSets, timeout);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput();
+            o.deleteLocalData = deleteLocalData;
+            o.force = force;
+            o.gracePeriod = gracePeriod;
+            o.ignoreDaemonSets = ignoreDaemonSets;
+            o.timeout = timeout;
+            return o;
         }
     }
 }

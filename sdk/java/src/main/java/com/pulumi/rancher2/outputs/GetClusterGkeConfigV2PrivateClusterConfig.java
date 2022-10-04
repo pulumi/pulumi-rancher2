@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterGkeConfigV2PrivateClusterConfig {
-    private final @Nullable Boolean enablePrivateEndpoint;
-    private final @Nullable Boolean enablePrivateNodes;
-    private final String masterIpv4CidrBlock;
+    private @Nullable Boolean enablePrivateEndpoint;
+    private @Nullable Boolean enablePrivateNodes;
+    private String masterIpv4CidrBlock;
 
-    @CustomType.Constructor
-    private GetClusterGkeConfigV2PrivateClusterConfig(
-        @CustomType.Parameter("enablePrivateEndpoint") @Nullable Boolean enablePrivateEndpoint,
-        @CustomType.Parameter("enablePrivateNodes") @Nullable Boolean enablePrivateNodes,
-        @CustomType.Parameter("masterIpv4CidrBlock") String masterIpv4CidrBlock) {
-        this.enablePrivateEndpoint = enablePrivateEndpoint;
-        this.enablePrivateNodes = enablePrivateNodes;
-        this.masterIpv4CidrBlock = masterIpv4CidrBlock;
-    }
-
+    private GetClusterGkeConfigV2PrivateClusterConfig() {}
     public Optional<Boolean> enablePrivateEndpoint() {
         return Optional.ofNullable(this.enablePrivateEndpoint);
     }
@@ -43,16 +34,12 @@ public final class GetClusterGkeConfigV2PrivateClusterConfig {
     public static Builder builder(GetClusterGkeConfigV2PrivateClusterConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enablePrivateEndpoint;
         private @Nullable Boolean enablePrivateNodes;
         private String masterIpv4CidrBlock;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterGkeConfigV2PrivateClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enablePrivateEndpoint = defaults.enablePrivateEndpoint;
@@ -60,19 +47,27 @@ public final class GetClusterGkeConfigV2PrivateClusterConfig {
     	      this.masterIpv4CidrBlock = defaults.masterIpv4CidrBlock;
         }
 
+        @CustomType.Setter
         public Builder enablePrivateEndpoint(@Nullable Boolean enablePrivateEndpoint) {
             this.enablePrivateEndpoint = enablePrivateEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder enablePrivateNodes(@Nullable Boolean enablePrivateNodes) {
             this.enablePrivateNodes = enablePrivateNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder masterIpv4CidrBlock(String masterIpv4CidrBlock) {
             this.masterIpv4CidrBlock = Objects.requireNonNull(masterIpv4CidrBlock);
             return this;
-        }        public GetClusterGkeConfigV2PrivateClusterConfig build() {
-            return new GetClusterGkeConfigV2PrivateClusterConfig(enablePrivateEndpoint, enablePrivateNodes, masterIpv4CidrBlock);
+        }
+        public GetClusterGkeConfigV2PrivateClusterConfig build() {
+            final var o = new GetClusterGkeConfigV2PrivateClusterConfig();
+            o.enablePrivateEndpoint = enablePrivateEndpoint;
+            o.enablePrivateNodes = enablePrivateNodes;
+            o.masterIpv4CidrBlock = masterIpv4CidrBlock;
+            return o;
         }
     }
 }

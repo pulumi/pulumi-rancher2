@@ -15,21 +15,14 @@ public final class ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
      * @return Monitoring deployment rolling update max surge. Default: `1` (int)
      * 
      */
-    private final @Nullable Integer maxSurge;
+    private @Nullable Integer maxSurge;
     /**
      * @return Monitoring deployment rolling update max unavailable. Default: `1` (int)
      * 
      */
-    private final @Nullable Integer maxUnavailable;
+    private @Nullable Integer maxUnavailable;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigDnsUpdateStrategyRollingUpdate(
-        @CustomType.Parameter("maxSurge") @Nullable Integer maxSurge,
-        @CustomType.Parameter("maxUnavailable") @Nullable Integer maxUnavailable) {
-        this.maxSurge = maxSurge;
-        this.maxUnavailable = maxUnavailable;
-    }
-
+    private ClusterRkeConfigDnsUpdateStrategyRollingUpdate() {}
     /**
      * @return Monitoring deployment rolling update max surge. Default: `1` (int)
      * 
@@ -52,30 +45,32 @@ public final class ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
     public static Builder builder(ClusterRkeConfigDnsUpdateStrategyRollingUpdate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxSurge;
         private @Nullable Integer maxUnavailable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigDnsUpdateStrategyRollingUpdate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxSurge = defaults.maxSurge;
     	      this.maxUnavailable = defaults.maxUnavailable;
         }
 
+        @CustomType.Setter
         public Builder maxSurge(@Nullable Integer maxSurge) {
             this.maxSurge = maxSurge;
             return this;
         }
+        @CustomType.Setter
         public Builder maxUnavailable(@Nullable Integer maxUnavailable) {
             this.maxUnavailable = maxUnavailable;
             return this;
-        }        public ClusterRkeConfigDnsUpdateStrategyRollingUpdate build() {
-            return new ClusterRkeConfigDnsUpdateStrategyRollingUpdate(maxSurge, maxUnavailable);
+        }
+        public ClusterRkeConfigDnsUpdateStrategyRollingUpdate build() {
+            final var o = new ClusterRkeConfigDnsUpdateStrategyRollingUpdate();
+            o.maxSurge = maxSurge;
+            o.maxUnavailable = maxUnavailable;
+            return o;
         }
     }
 }

@@ -16,21 +16,14 @@ public final class PodSecurityPolicyTemplateRunAsUser {
      * @return (list)
      * 
      */
-    private final @Nullable List<PodSecurityPolicyTemplateRunAsUserRange> ranges;
+    private @Nullable List<PodSecurityPolicyTemplateRunAsUserRange> ranges;
     /**
      * @return (string)
      * 
      */
-    private final String rule;
+    private String rule;
 
-    @CustomType.Constructor
-    private PodSecurityPolicyTemplateRunAsUser(
-        @CustomType.Parameter("ranges") @Nullable List<PodSecurityPolicyTemplateRunAsUserRange> ranges,
-        @CustomType.Parameter("rule") String rule) {
-        this.ranges = ranges;
-        this.rule = rule;
-    }
-
+    private PodSecurityPolicyTemplateRunAsUser() {}
     /**
      * @return (list)
      * 
@@ -53,21 +46,18 @@ public final class PodSecurityPolicyTemplateRunAsUser {
     public static Builder builder(PodSecurityPolicyTemplateRunAsUser defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<PodSecurityPolicyTemplateRunAsUserRange> ranges;
         private String rule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PodSecurityPolicyTemplateRunAsUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ranges = defaults.ranges;
     	      this.rule = defaults.rule;
         }
 
+        @CustomType.Setter
         public Builder ranges(@Nullable List<PodSecurityPolicyTemplateRunAsUserRange> ranges) {
             this.ranges = ranges;
             return this;
@@ -75,11 +65,16 @@ public final class PodSecurityPolicyTemplateRunAsUser {
         public Builder ranges(PodSecurityPolicyTemplateRunAsUserRange... ranges) {
             return ranges(List.of(ranges));
         }
+        @CustomType.Setter
         public Builder rule(String rule) {
             this.rule = Objects.requireNonNull(rule);
             return this;
-        }        public PodSecurityPolicyTemplateRunAsUser build() {
-            return new PodSecurityPolicyTemplateRunAsUser(ranges, rule);
+        }
+        public PodSecurityPolicyTemplateRunAsUser build() {
+            final var o = new PodSecurityPolicyTemplateRunAsUser();
+            o.ranges = ranges;
+            o.rule = rule;
+            return o;
         }
     }
 }

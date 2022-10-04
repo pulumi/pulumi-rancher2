@@ -16,21 +16,14 @@ public final class ClusterRkeConfigServicesKubeApiAuditLog {
      * @return Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
      * 
      */
-    private final @Nullable ClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration;
+    private @Nullable ClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration;
     /**
      * @return Enable scheduled cluster scan. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigServicesKubeApiAuditLog(
-        @CustomType.Parameter("configuration") @Nullable ClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.configuration = configuration;
-        this.enabled = enabled;
-    }
-
+    private ClusterRkeConfigServicesKubeApiAuditLog() {}
     /**
      * @return Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
      * 
@@ -53,30 +46,32 @@ public final class ClusterRkeConfigServicesKubeApiAuditLog {
     public static Builder builder(ClusterRkeConfigServicesKubeApiAuditLog defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration;
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigServicesKubeApiAuditLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configuration = defaults.configuration;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder configuration(@Nullable ClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration) {
             this.configuration = configuration;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public ClusterRkeConfigServicesKubeApiAuditLog build() {
-            return new ClusterRkeConfigServicesKubeApiAuditLog(configuration, enabled);
+        }
+        public ClusterRkeConfigServicesKubeApiAuditLog build() {
+            final var o = new ClusterRkeConfigServicesKubeApiAuditLog();
+            o.configuration = configuration;
+            o.enabled = enabled;
+            return o;
         }
     }
 }

@@ -16,140 +16,99 @@ public final class NodeTemplateOpennebulaConfig {
      * @return Size of the Volatile disk in MB - only for b2d (string)
      * 
      */
-    private final @Nullable String b2dSize;
+    private @Nullable String b2dSize;
     /**
      * @return CPU value for the VM (string)
      * 
      */
-    private final @Nullable String cpu;
+    private @Nullable String cpu;
     /**
      * @return Dev prefix to use for the images. E.g.: &#39;vd&#39;, &#39;sd&#39;, &#39;hd&#39; (string)
      * 
      */
-    private final @Nullable String devPrefix;
+    private @Nullable String devPrefix;
     /**
      * @return VNC is enabled by default. Disable it with this flag (bool)
      * 
      */
-    private final @Nullable Boolean disableVnc;
+    private @Nullable Boolean disableVnc;
     /**
      * @return Size of the disk for the VM in MB (string)
      * 
      */
-    private final @Nullable String diskResize;
+    private @Nullable String diskResize;
     /**
      * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
      * 
      */
-    private final @Nullable String imageId;
+    private @Nullable String imageId;
     /**
      * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      */
-    private final @Nullable String imageName;
+    private @Nullable String imageName;
     /**
      * @return Owner of the image to use as the VM OS (string)
      * 
      */
-    private final @Nullable String imageOwner;
+    private @Nullable String imageOwner;
     /**
      * @return Size of the memory for the VM in MB (string)
      * 
      */
-    private final @Nullable String memory;
+    private @Nullable String memory;
     /**
      * @return Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
      * 
      */
-    private final @Nullable String networkId;
+    private @Nullable String networkId;
     /**
      * @return Opennebula network to connect the machine to. Conflicts with `network_id` (string)
      * 
      */
-    private final @Nullable String networkName;
+    private @Nullable String networkName;
     /**
      * @return Opennebula user ID of the Network to connect the machine to (string)
      * 
      */
-    private final @Nullable String networkOwner;
+    private @Nullable String networkOwner;
     /**
      * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
-    private final @Nullable String sshUser;
+    private @Nullable String sshUser;
     /**
      * @return Opennebula template ID to use. Conflicts with `template_name` (string)
      * 
      */
-    private final @Nullable String templateId;
+    private @Nullable String templateId;
     /**
      * @return Name of the Opennbula template to use. Conflicts with `template_id` (string)
      * 
      */
-    private final @Nullable String templateName;
+    private @Nullable String templateName;
     /**
      * @return Set the user for the XML-RPC API authentication (string)
      * 
      */
-    private final String user;
+    private String user;
     /**
      * @return VCPUs for the VM (string)
      * 
      */
-    private final @Nullable String vcpu;
+    private @Nullable String vcpu;
     /**
      * @return Set the url for the Opennebula XML-RPC API (string)
      * 
      */
-    private final String xmlRpcUrl;
+    private String xmlRpcUrl;
 
-    @CustomType.Constructor
-    private NodeTemplateOpennebulaConfig(
-        @CustomType.Parameter("b2dSize") @Nullable String b2dSize,
-        @CustomType.Parameter("cpu") @Nullable String cpu,
-        @CustomType.Parameter("devPrefix") @Nullable String devPrefix,
-        @CustomType.Parameter("disableVnc") @Nullable Boolean disableVnc,
-        @CustomType.Parameter("diskResize") @Nullable String diskResize,
-        @CustomType.Parameter("imageId") @Nullable String imageId,
-        @CustomType.Parameter("imageName") @Nullable String imageName,
-        @CustomType.Parameter("imageOwner") @Nullable String imageOwner,
-        @CustomType.Parameter("memory") @Nullable String memory,
-        @CustomType.Parameter("networkId") @Nullable String networkId,
-        @CustomType.Parameter("networkName") @Nullable String networkName,
-        @CustomType.Parameter("networkOwner") @Nullable String networkOwner,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("sshUser") @Nullable String sshUser,
-        @CustomType.Parameter("templateId") @Nullable String templateId,
-        @CustomType.Parameter("templateName") @Nullable String templateName,
-        @CustomType.Parameter("user") String user,
-        @CustomType.Parameter("vcpu") @Nullable String vcpu,
-        @CustomType.Parameter("xmlRpcUrl") String xmlRpcUrl) {
-        this.b2dSize = b2dSize;
-        this.cpu = cpu;
-        this.devPrefix = devPrefix;
-        this.disableVnc = disableVnc;
-        this.diskResize = diskResize;
-        this.imageId = imageId;
-        this.imageName = imageName;
-        this.imageOwner = imageOwner;
-        this.memory = memory;
-        this.networkId = networkId;
-        this.networkName = networkName;
-        this.networkOwner = networkOwner;
-        this.password = password;
-        this.sshUser = sshUser;
-        this.templateId = templateId;
-        this.templateName = templateName;
-        this.user = user;
-        this.vcpu = vcpu;
-        this.xmlRpcUrl = xmlRpcUrl;
-    }
-
+    private NodeTemplateOpennebulaConfig() {}
     /**
      * @return Size of the Volatile disk in MB - only for b2d (string)
      * 
@@ -291,7 +250,7 @@ public final class NodeTemplateOpennebulaConfig {
     public static Builder builder(NodeTemplateOpennebulaConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String b2dSize;
         private @Nullable String cpu;
@@ -312,11 +271,7 @@ public final class NodeTemplateOpennebulaConfig {
         private String user;
         private @Nullable String vcpu;
         private String xmlRpcUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeTemplateOpennebulaConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.b2dSize = defaults.b2dSize;
@@ -340,83 +295,123 @@ public final class NodeTemplateOpennebulaConfig {
     	      this.xmlRpcUrl = defaults.xmlRpcUrl;
         }
 
+        @CustomType.Setter
         public Builder b2dSize(@Nullable String b2dSize) {
             this.b2dSize = b2dSize;
             return this;
         }
+        @CustomType.Setter
         public Builder cpu(@Nullable String cpu) {
             this.cpu = cpu;
             return this;
         }
+        @CustomType.Setter
         public Builder devPrefix(@Nullable String devPrefix) {
             this.devPrefix = devPrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder disableVnc(@Nullable Boolean disableVnc) {
             this.disableVnc = disableVnc;
             return this;
         }
+        @CustomType.Setter
         public Builder diskResize(@Nullable String diskResize) {
             this.diskResize = diskResize;
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(@Nullable String imageId) {
             this.imageId = imageId;
             return this;
         }
+        @CustomType.Setter
         public Builder imageName(@Nullable String imageName) {
             this.imageName = imageName;
             return this;
         }
+        @CustomType.Setter
         public Builder imageOwner(@Nullable String imageOwner) {
             this.imageOwner = imageOwner;
             return this;
         }
+        @CustomType.Setter
         public Builder memory(@Nullable String memory) {
             this.memory = memory;
             return this;
         }
+        @CustomType.Setter
         public Builder networkId(@Nullable String networkId) {
             this.networkId = networkId;
             return this;
         }
+        @CustomType.Setter
         public Builder networkName(@Nullable String networkName) {
             this.networkName = networkName;
             return this;
         }
+        @CustomType.Setter
         public Builder networkOwner(@Nullable String networkOwner) {
             this.networkOwner = networkOwner;
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
             this.sshUser = sshUser;
             return this;
         }
+        @CustomType.Setter
         public Builder templateId(@Nullable String templateId) {
             this.templateId = templateId;
             return this;
         }
+        @CustomType.Setter
         public Builder templateName(@Nullable String templateName) {
             this.templateName = templateName;
             return this;
         }
+        @CustomType.Setter
         public Builder user(String user) {
             this.user = Objects.requireNonNull(user);
             return this;
         }
+        @CustomType.Setter
         public Builder vcpu(@Nullable String vcpu) {
             this.vcpu = vcpu;
             return this;
         }
+        @CustomType.Setter
         public Builder xmlRpcUrl(String xmlRpcUrl) {
             this.xmlRpcUrl = Objects.requireNonNull(xmlRpcUrl);
             return this;
-        }        public NodeTemplateOpennebulaConfig build() {
-            return new NodeTemplateOpennebulaConfig(b2dSize, cpu, devPrefix, disableVnc, diskResize, imageId, imageName, imageOwner, memory, networkId, networkName, networkOwner, password, sshUser, templateId, templateName, user, vcpu, xmlRpcUrl);
+        }
+        public NodeTemplateOpennebulaConfig build() {
+            final var o = new NodeTemplateOpennebulaConfig();
+            o.b2dSize = b2dSize;
+            o.cpu = cpu;
+            o.devPrefix = devPrefix;
+            o.disableVnc = disableVnc;
+            o.diskResize = diskResize;
+            o.imageId = imageId;
+            o.imageName = imageName;
+            o.imageOwner = imageOwner;
+            o.memory = memory;
+            o.networkId = networkId;
+            o.networkName = networkName;
+            o.networkOwner = networkOwner;
+            o.password = password;
+            o.sshUser = sshUser;
+            o.templateId = templateId;
+            o.templateName = templateName;
+            o.user = user;
+            o.vcpu = vcpu;
+            o.xmlRpcUrl = xmlRpcUrl;
+            return o;
         }
     }
 }

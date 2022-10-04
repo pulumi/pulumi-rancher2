@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPodSecurityPolicyTemplateAllowedHostPath {
-    private final String pathPrefix;
-    private final @Nullable Boolean readOnly;
+    private String pathPrefix;
+    private @Nullable Boolean readOnly;
 
-    @CustomType.Constructor
-    private GetPodSecurityPolicyTemplateAllowedHostPath(
-        @CustomType.Parameter("pathPrefix") String pathPrefix,
-        @CustomType.Parameter("readOnly") @Nullable Boolean readOnly) {
-        this.pathPrefix = pathPrefix;
-        this.readOnly = readOnly;
-    }
-
+    private GetPodSecurityPolicyTemplateAllowedHostPath() {}
     public String pathPrefix() {
         return this.pathPrefix;
     }
@@ -37,30 +30,32 @@ public final class GetPodSecurityPolicyTemplateAllowedHostPath {
     public static Builder builder(GetPodSecurityPolicyTemplateAllowedHostPath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String pathPrefix;
         private @Nullable Boolean readOnly;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPodSecurityPolicyTemplateAllowedHostPath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pathPrefix = defaults.pathPrefix;
     	      this.readOnly = defaults.readOnly;
         }
 
+        @CustomType.Setter
         public Builder pathPrefix(String pathPrefix) {
             this.pathPrefix = Objects.requireNonNull(pathPrefix);
             return this;
         }
+        @CustomType.Setter
         public Builder readOnly(@Nullable Boolean readOnly) {
             this.readOnly = readOnly;
             return this;
-        }        public GetPodSecurityPolicyTemplateAllowedHostPath build() {
-            return new GetPodSecurityPolicyTemplateAllowedHostPath(pathPrefix, readOnly);
+        }
+        public GetPodSecurityPolicyTemplateAllowedHostPath build() {
+            final var o = new GetPodSecurityPolicyTemplateAllowedHostPath();
+            o.pathPrefix = pathPrefix;
+            o.readOnly = readOnly;
+            return o;
         }
     }
 }

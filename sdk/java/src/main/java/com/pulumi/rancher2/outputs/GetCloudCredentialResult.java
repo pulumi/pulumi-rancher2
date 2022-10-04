@@ -15,31 +15,20 @@ public final class GetCloudCredentialResult {
      * @return (Computed) Annotations for the Cloud Credential (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for the Cloud Credential (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
+    private Map<String,Object> labels;
+    private String name;
 
-    @CustomType.Constructor
-    private GetCloudCredentialResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name) {
-        this.annotations = annotations;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-    }
-
+    private GetCloudCredentialResult() {}
     /**
      * @return (Computed) Annotations for the Cloud Credential (map)
      * 
@@ -72,17 +61,13 @@ public final class GetCloudCredentialResult {
     public static Builder builder(GetCloudCredentialResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String id;
         private Map<String,Object> labels;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCloudCredentialResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -91,23 +76,33 @@ public final class GetCloudCredentialResult {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetCloudCredentialResult build() {
-            return new GetCloudCredentialResult(annotations, id, labels, name);
+        }
+        public GetCloudCredentialResult build() {
+            final var o = new GetCloudCredentialResult();
+            o.annotations = annotations;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            return o;
         }
     }
 }

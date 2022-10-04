@@ -15,13 +15,9 @@ public final class ClusterRkeConfigNetworkFlannelNetworkProvider {
      * @return Iface config Flannel network provider (string)
      * 
      */
-    private final @Nullable String iface;
+    private @Nullable String iface;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigNetworkFlannelNetworkProvider(@CustomType.Parameter("iface") @Nullable String iface) {
-        this.iface = iface;
-    }
-
+    private ClusterRkeConfigNetworkFlannelNetworkProvider() {}
     /**
      * @return Iface config Flannel network provider (string)
      * 
@@ -37,24 +33,24 @@ public final class ClusterRkeConfigNetworkFlannelNetworkProvider {
     public static Builder builder(ClusterRkeConfigNetworkFlannelNetworkProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String iface;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigNetworkFlannelNetworkProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iface = defaults.iface;
         }
 
+        @CustomType.Setter
         public Builder iface(@Nullable String iface) {
             this.iface = iface;
             return this;
-        }        public ClusterRkeConfigNetworkFlannelNetworkProvider build() {
-            return new ClusterRkeConfigNetworkFlannelNetworkProvider(iface);
+        }
+        public ClusterRkeConfigNetworkFlannelNetworkProvider build() {
+            final var o = new ClusterRkeConfigNetworkFlannelNetworkProvider();
+            o.iface = iface;
+            return o;
         }
     }
 }

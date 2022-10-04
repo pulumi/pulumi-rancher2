@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider {
-    private final String password;
+    private String password;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider(@CustomType.Parameter("password") String password) {
-        this.password = password;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider() {}
     public String password() {
         return this.password;
     }
@@ -27,24 +23,24 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkW
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String password;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
         }
 
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider(password);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider();
+            o.password = password;
+            return o;
         }
     }
 }

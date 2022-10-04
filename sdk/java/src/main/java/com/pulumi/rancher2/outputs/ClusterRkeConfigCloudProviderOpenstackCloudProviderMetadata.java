@@ -16,21 +16,14 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata {
      * @return (int)
      * 
      */
-    private final @Nullable Integer requestTimeout;
+    private @Nullable Integer requestTimeout;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String searchOrder;
+    private @Nullable String searchOrder;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata(
-        @CustomType.Parameter("requestTimeout") @Nullable Integer requestTimeout,
-        @CustomType.Parameter("searchOrder") @Nullable String searchOrder) {
-        this.requestTimeout = requestTimeout;
-        this.searchOrder = searchOrder;
-    }
-
+    private ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata() {}
     /**
      * @return (int)
      * 
@@ -53,30 +46,32 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata {
     public static Builder builder(ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer requestTimeout;
         private @Nullable String searchOrder;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.requestTimeout = defaults.requestTimeout;
     	      this.searchOrder = defaults.searchOrder;
         }
 
+        @CustomType.Setter
         public Builder requestTimeout(@Nullable Integer requestTimeout) {
             this.requestTimeout = requestTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder searchOrder(@Nullable String searchOrder) {
             this.searchOrder = searchOrder;
             return this;
-        }        public ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata build() {
-            return new ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata(requestTimeout, searchOrder);
+        }
+        public ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata build() {
+            final var o = new ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata();
+            o.requestTimeout = requestTimeout;
+            o.searchOrder = searchOrder;
+            return o;
         }
     }
 }

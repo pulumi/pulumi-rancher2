@@ -20,378 +20,269 @@ public final class ClusterGkeConfig {
      * @return The IP address range of the container pods (string)
      * 
      */
-    private final String clusterIpv4Cidr;
+    private String clusterIpv4Cidr;
     /**
      * @return The contents of the GC credential file (string)
      * 
      */
-    private final String credential;
+    private String credential;
     /**
      * @return An optional description of this cluster (string)
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The GKE node config disk size Gb (int)
      * 
      */
-    private final @Nullable Integer diskSizeGb;
+    private @Nullable Integer diskSizeGb;
     /**
      * @return The GKE node config disk type (string)
      * 
      */
-    private final String diskType;
+    private String diskType;
     /**
      * @return To enable Kubernetes alpha feature. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enableAlphaFeature;
+    private @Nullable Boolean enableAlphaFeature;
     /**
      * @return Specifies whether the node auto-repair is enabled for the node pool. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean enableAutoRepair;
+    private @Nullable Boolean enableAutoRepair;
     /**
      * @return Specifies whether node auto-upgrade is enabled for the node pool. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean enableAutoUpgrade;
+    private @Nullable Boolean enableAutoUpgrade;
     /**
      * @return Enable horizontal pod autoscaling for the cluster. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enableHorizontalPodAutoscaling;
+    private @Nullable Boolean enableHorizontalPodAutoscaling;
     /**
      * @return Enable HTTP load balancing on GKE cluster. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enableHttpLoadBalancing;
+    private @Nullable Boolean enableHttpLoadBalancing;
     /**
      * @return Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean enableKubernetesDashboard;
+    private @Nullable Boolean enableKubernetesDashboard;
     /**
      * @return Whether to enable legacy abac on the cluster. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean enableLegacyAbac;
+    private @Nullable Boolean enableLegacyAbac;
     /**
      * @return Enable master authorized network. Set to `true` if `master_authorized_network_cidr_blocks` is set. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean enableMasterAuthorizedNetwork;
+    private @Nullable Boolean enableMasterAuthorizedNetwork;
     /**
      * @return Enable network policy config for the cluster. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enableNetworkPolicyConfig;
+    private @Nullable Boolean enableNetworkPolicyConfig;
     /**
      * @return Enable nodepool autoscaling. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean enableNodepoolAutoscaling;
+    private @Nullable Boolean enableNodepoolAutoscaling;
     /**
      * @return Enable GKE cluster private endpoint. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean enablePrivateEndpoint;
+    private @Nullable Boolean enablePrivateEndpoint;
     /**
      * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean enablePrivateNodes;
+    private @Nullable Boolean enablePrivateNodes;
     /**
      * @return Enable stackdriver monitoring. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enableStackdriverLogging;
+    private @Nullable Boolean enableStackdriverLogging;
     /**
      * @return Enable stackdriver monitoring on GKE cluster (bool)
      * 
      */
-    private final @Nullable Boolean enableStackdriverMonitoring;
+    private @Nullable Boolean enableStackdriverMonitoring;
     /**
      * @return The GKE node config image type (string)
      * 
      */
-    private final String imageType;
+    private String imageType;
     /**
      * @return The IP address range for the cluster pod IPs (string)
      * 
      */
-    private final String ipPolicyClusterIpv4CidrBlock;
+    private String ipPolicyClusterIpv4CidrBlock;
     /**
      * @return The name of the secondary range to be used for the cluster CIDR block (string)
      * 
      */
-    private final String ipPolicyClusterSecondaryRangeName;
+    private String ipPolicyClusterSecondaryRangeName;
     /**
      * @return Whether a new subnetwork will be created automatically for the cluster. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean ipPolicyCreateSubnetwork;
+    private @Nullable Boolean ipPolicyCreateSubnetwork;
     /**
      * @return The IP address range of the instance IPs in this cluster (string)
      * 
      */
-    private final String ipPolicyNodeIpv4CidrBlock;
+    private String ipPolicyNodeIpv4CidrBlock;
     /**
      * @return The IP address range of the services IPs in this cluster (string)
      * 
      */
-    private final String ipPolicyServicesIpv4CidrBlock;
+    private String ipPolicyServicesIpv4CidrBlock;
     /**
      * @return The name of the secondary range to be used for the services CIDR block (string)
      * 
      */
-    private final String ipPolicyServicesSecondaryRangeName;
+    private String ipPolicyServicesSecondaryRangeName;
     /**
      * @return A custom subnetwork name to be used if createSubnetwork is true (string)
      * 
      */
-    private final String ipPolicySubnetworkName;
+    private String ipPolicySubnetworkName;
     /**
      * @return Issue a client certificate. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean issueClientCertificate;
+    private @Nullable Boolean issueClientCertificate;
     /**
      * @return Enable the Kubernetes dashboard. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean kubernetesDashboard;
+    private @Nullable Boolean kubernetesDashboard;
     /**
      * @return Labels for cluster registration token object (map)
      * 
      */
-    private final @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,Object> labels;
     /**
      * @return The GKE node config local ssd count (int)
      * 
      */
-    private final @Nullable Integer localSsdCount;
+    private @Nullable Integer localSsdCount;
     /**
      * @return The GKE cluster locations (List)
      * 
      */
-    private final List<String> locations;
+    private List<String> locations;
     /**
      * @return The GKE node config machine type (string)
      * 
      */
-    private final String machineType;
+    private String machineType;
     /**
      * @return The GKE cluster maintenance window (string)
      * 
      */
-    private final String maintenanceWindow;
+    private String maintenanceWindow;
     /**
      * @return Define up to 10 external networks that could access Kubernetes master through HTTPS (list)
      * 
      */
-    private final @Nullable List<String> masterAuthorizedNetworkCidrBlocks;
+    private @Nullable List<String> masterAuthorizedNetworkCidrBlocks;
     /**
      * @return The GKE cluster private master ip v4 cidr block (string)
      * 
      */
-    private final String masterIpv4CidrBlock;
+    private String masterIpv4CidrBlock;
     /**
      * @return Master version for GKE cluster (string)
      * 
      */
-    private final String masterVersion;
+    private String masterVersion;
     /**
      * @return The GKE node pool config max node count (int)
      * 
      */
-    private final @Nullable Integer maxNodeCount;
+    private @Nullable Integer maxNodeCount;
     /**
      * @return The GKE node pool config min node count (int)
      * 
      */
-    private final @Nullable Integer minNodeCount;
+    private @Nullable Integer minNodeCount;
     /**
      * @return The GKE cluster network. Required for create new cluster (string)
      * 
      */
-    private final String network;
+    private String network;
     /**
      * @return Node count for GKE cluster. Default `3` (int)
      * 
      */
-    private final @Nullable Integer nodeCount;
+    private @Nullable Integer nodeCount;
     /**
      * @return The ID of the cluster node pool (string)
      * 
      */
-    private final String nodePool;
+    private String nodePool;
     /**
      * @return Node version for GKE cluster (string)
      * 
      */
-    private final String nodeVersion;
+    private String nodeVersion;
     /**
      * @return The GKE node config oauth scopes (List)
      * 
      */
-    private final List<String> oauthScopes;
+    private List<String> oauthScopes;
     /**
      * @return Enable GKE node config preemptible. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean preemptible;
+    private @Nullable Boolean preemptible;
     /**
      * @return Project ID to apply answer (string)
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return The map of Kubernetes labels to be applied to each cluster (map)
      * 
      */
-    private final @Nullable Map<String,Object> resourceLabels;
+    private @Nullable Map<String,Object> resourceLabels;
     /**
      * @return The Google Cloud Platform Service Account to be used by the node VMs (string)
      * 
      */
-    private final String serviceAccount;
+    private String serviceAccount;
     /**
      * @return Subnetwork for GKE cluster (string)
      * 
      */
-    private final String subNetwork;
+    private String subNetwork;
     /**
      * @return The GKE node config taints (List)
      * 
      */
-    private final @Nullable List<String> taints;
+    private @Nullable List<String> taints;
     /**
      * @return Use GKE ip aliases? Default: `true` (bool)
      * 
      */
-    private final @Nullable Boolean useIpAliases;
+    private @Nullable Boolean useIpAliases;
     /**
      * @return The GKE cluster zone. Required if `region` not set (string)
      * 
      */
-    private final @Nullable String zone;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private ClusterGkeConfig(
-        @CustomType.Parameter("clusterIpv4Cidr") String clusterIpv4Cidr,
-        @CustomType.Parameter("credential") String credential,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("diskSizeGb") @Nullable Integer diskSizeGb,
-        @CustomType.Parameter("diskType") String diskType,
-        @CustomType.Parameter("enableAlphaFeature") @Nullable Boolean enableAlphaFeature,
-        @CustomType.Parameter("enableAutoRepair") @Nullable Boolean enableAutoRepair,
-        @CustomType.Parameter("enableAutoUpgrade") @Nullable Boolean enableAutoUpgrade,
-        @CustomType.Parameter("enableHorizontalPodAutoscaling") @Nullable Boolean enableHorizontalPodAutoscaling,
-        @CustomType.Parameter("enableHttpLoadBalancing") @Nullable Boolean enableHttpLoadBalancing,
-        @CustomType.Parameter("enableKubernetesDashboard") @Nullable Boolean enableKubernetesDashboard,
-        @CustomType.Parameter("enableLegacyAbac") @Nullable Boolean enableLegacyAbac,
-        @CustomType.Parameter("enableMasterAuthorizedNetwork") @Nullable Boolean enableMasterAuthorizedNetwork,
-        @CustomType.Parameter("enableNetworkPolicyConfig") @Nullable Boolean enableNetworkPolicyConfig,
-        @CustomType.Parameter("enableNodepoolAutoscaling") @Nullable Boolean enableNodepoolAutoscaling,
-        @CustomType.Parameter("enablePrivateEndpoint") @Nullable Boolean enablePrivateEndpoint,
-        @CustomType.Parameter("enablePrivateNodes") @Nullable Boolean enablePrivateNodes,
-        @CustomType.Parameter("enableStackdriverLogging") @Nullable Boolean enableStackdriverLogging,
-        @CustomType.Parameter("enableStackdriverMonitoring") @Nullable Boolean enableStackdriverMonitoring,
-        @CustomType.Parameter("imageType") String imageType,
-        @CustomType.Parameter("ipPolicyClusterIpv4CidrBlock") String ipPolicyClusterIpv4CidrBlock,
-        @CustomType.Parameter("ipPolicyClusterSecondaryRangeName") String ipPolicyClusterSecondaryRangeName,
-        @CustomType.Parameter("ipPolicyCreateSubnetwork") @Nullable Boolean ipPolicyCreateSubnetwork,
-        @CustomType.Parameter("ipPolicyNodeIpv4CidrBlock") String ipPolicyNodeIpv4CidrBlock,
-        @CustomType.Parameter("ipPolicyServicesIpv4CidrBlock") String ipPolicyServicesIpv4CidrBlock,
-        @CustomType.Parameter("ipPolicyServicesSecondaryRangeName") String ipPolicyServicesSecondaryRangeName,
-        @CustomType.Parameter("ipPolicySubnetworkName") String ipPolicySubnetworkName,
-        @CustomType.Parameter("issueClientCertificate") @Nullable Boolean issueClientCertificate,
-        @CustomType.Parameter("kubernetesDashboard") @Nullable Boolean kubernetesDashboard,
-        @CustomType.Parameter("labels") @Nullable Map<String,Object> labels,
-        @CustomType.Parameter("localSsdCount") @Nullable Integer localSsdCount,
-        @CustomType.Parameter("locations") List<String> locations,
-        @CustomType.Parameter("machineType") String machineType,
-        @CustomType.Parameter("maintenanceWindow") String maintenanceWindow,
-        @CustomType.Parameter("masterAuthorizedNetworkCidrBlocks") @Nullable List<String> masterAuthorizedNetworkCidrBlocks,
-        @CustomType.Parameter("masterIpv4CidrBlock") String masterIpv4CidrBlock,
-        @CustomType.Parameter("masterVersion") String masterVersion,
-        @CustomType.Parameter("maxNodeCount") @Nullable Integer maxNodeCount,
-        @CustomType.Parameter("minNodeCount") @Nullable Integer minNodeCount,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("nodeCount") @Nullable Integer nodeCount,
-        @CustomType.Parameter("nodePool") String nodePool,
-        @CustomType.Parameter("nodeVersion") String nodeVersion,
-        @CustomType.Parameter("oauthScopes") List<String> oauthScopes,
-        @CustomType.Parameter("preemptible") @Nullable Boolean preemptible,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("resourceLabels") @Nullable Map<String,Object> resourceLabels,
-        @CustomType.Parameter("serviceAccount") String serviceAccount,
-        @CustomType.Parameter("subNetwork") String subNetwork,
-        @CustomType.Parameter("taints") @Nullable List<String> taints,
-        @CustomType.Parameter("useIpAliases") @Nullable Boolean useIpAliases,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.clusterIpv4Cidr = clusterIpv4Cidr;
-        this.credential = credential;
-        this.description = description;
-        this.diskSizeGb = diskSizeGb;
-        this.diskType = diskType;
-        this.enableAlphaFeature = enableAlphaFeature;
-        this.enableAutoRepair = enableAutoRepair;
-        this.enableAutoUpgrade = enableAutoUpgrade;
-        this.enableHorizontalPodAutoscaling = enableHorizontalPodAutoscaling;
-        this.enableHttpLoadBalancing = enableHttpLoadBalancing;
-        this.enableKubernetesDashboard = enableKubernetesDashboard;
-        this.enableLegacyAbac = enableLegacyAbac;
-        this.enableMasterAuthorizedNetwork = enableMasterAuthorizedNetwork;
-        this.enableNetworkPolicyConfig = enableNetworkPolicyConfig;
-        this.enableNodepoolAutoscaling = enableNodepoolAutoscaling;
-        this.enablePrivateEndpoint = enablePrivateEndpoint;
-        this.enablePrivateNodes = enablePrivateNodes;
-        this.enableStackdriverLogging = enableStackdriverLogging;
-        this.enableStackdriverMonitoring = enableStackdriverMonitoring;
-        this.imageType = imageType;
-        this.ipPolicyClusterIpv4CidrBlock = ipPolicyClusterIpv4CidrBlock;
-        this.ipPolicyClusterSecondaryRangeName = ipPolicyClusterSecondaryRangeName;
-        this.ipPolicyCreateSubnetwork = ipPolicyCreateSubnetwork;
-        this.ipPolicyNodeIpv4CidrBlock = ipPolicyNodeIpv4CidrBlock;
-        this.ipPolicyServicesIpv4CidrBlock = ipPolicyServicesIpv4CidrBlock;
-        this.ipPolicyServicesSecondaryRangeName = ipPolicyServicesSecondaryRangeName;
-        this.ipPolicySubnetworkName = ipPolicySubnetworkName;
-        this.issueClientCertificate = issueClientCertificate;
-        this.kubernetesDashboard = kubernetesDashboard;
-        this.labels = labels;
-        this.localSsdCount = localSsdCount;
-        this.locations = locations;
-        this.machineType = machineType;
-        this.maintenanceWindow = maintenanceWindow;
-        this.masterAuthorizedNetworkCidrBlocks = masterAuthorizedNetworkCidrBlocks;
-        this.masterIpv4CidrBlock = masterIpv4CidrBlock;
-        this.masterVersion = masterVersion;
-        this.maxNodeCount = maxNodeCount;
-        this.minNodeCount = minNodeCount;
-        this.network = network;
-        this.nodeCount = nodeCount;
-        this.nodePool = nodePool;
-        this.nodeVersion = nodeVersion;
-        this.oauthScopes = oauthScopes;
-        this.preemptible = preemptible;
-        this.projectId = projectId;
-        this.region = region;
-        this.resourceLabels = resourceLabels;
-        this.serviceAccount = serviceAccount;
-        this.subNetwork = subNetwork;
-        this.taints = taints;
-        this.useIpAliases = useIpAliases;
-        this.zone = zone;
-    }
-
+    private ClusterGkeConfig() {}
     /**
      * @return The IP address range of the container pods (string)
      * 
@@ -771,7 +662,7 @@ public final class ClusterGkeConfig {
     public static Builder builder(ClusterGkeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterIpv4Cidr;
         private String credential;
@@ -826,11 +717,7 @@ public final class ClusterGkeConfig {
         private @Nullable List<String> taints;
         private @Nullable Boolean useIpAliases;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterGkeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterIpv4Cidr = defaults.clusterIpv4Cidr;
@@ -888,130 +775,162 @@ public final class ClusterGkeConfig {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder clusterIpv4Cidr(String clusterIpv4Cidr) {
             this.clusterIpv4Cidr = Objects.requireNonNull(clusterIpv4Cidr);
             return this;
         }
+        @CustomType.Setter
         public Builder credential(String credential) {
             this.credential = Objects.requireNonNull(credential);
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
             this.diskSizeGb = diskSizeGb;
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
         }
+        @CustomType.Setter
         public Builder enableAlphaFeature(@Nullable Boolean enableAlphaFeature) {
             this.enableAlphaFeature = enableAlphaFeature;
             return this;
         }
+        @CustomType.Setter
         public Builder enableAutoRepair(@Nullable Boolean enableAutoRepair) {
             this.enableAutoRepair = enableAutoRepair;
             return this;
         }
+        @CustomType.Setter
         public Builder enableAutoUpgrade(@Nullable Boolean enableAutoUpgrade) {
             this.enableAutoUpgrade = enableAutoUpgrade;
             return this;
         }
+        @CustomType.Setter
         public Builder enableHorizontalPodAutoscaling(@Nullable Boolean enableHorizontalPodAutoscaling) {
             this.enableHorizontalPodAutoscaling = enableHorizontalPodAutoscaling;
             return this;
         }
+        @CustomType.Setter
         public Builder enableHttpLoadBalancing(@Nullable Boolean enableHttpLoadBalancing) {
             this.enableHttpLoadBalancing = enableHttpLoadBalancing;
             return this;
         }
+        @CustomType.Setter
         public Builder enableKubernetesDashboard(@Nullable Boolean enableKubernetesDashboard) {
             this.enableKubernetesDashboard = enableKubernetesDashboard;
             return this;
         }
+        @CustomType.Setter
         public Builder enableLegacyAbac(@Nullable Boolean enableLegacyAbac) {
             this.enableLegacyAbac = enableLegacyAbac;
             return this;
         }
+        @CustomType.Setter
         public Builder enableMasterAuthorizedNetwork(@Nullable Boolean enableMasterAuthorizedNetwork) {
             this.enableMasterAuthorizedNetwork = enableMasterAuthorizedNetwork;
             return this;
         }
+        @CustomType.Setter
         public Builder enableNetworkPolicyConfig(@Nullable Boolean enableNetworkPolicyConfig) {
             this.enableNetworkPolicyConfig = enableNetworkPolicyConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder enableNodepoolAutoscaling(@Nullable Boolean enableNodepoolAutoscaling) {
             this.enableNodepoolAutoscaling = enableNodepoolAutoscaling;
             return this;
         }
+        @CustomType.Setter
         public Builder enablePrivateEndpoint(@Nullable Boolean enablePrivateEndpoint) {
             this.enablePrivateEndpoint = enablePrivateEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder enablePrivateNodes(@Nullable Boolean enablePrivateNodes) {
             this.enablePrivateNodes = enablePrivateNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder enableStackdriverLogging(@Nullable Boolean enableStackdriverLogging) {
             this.enableStackdriverLogging = enableStackdriverLogging;
             return this;
         }
+        @CustomType.Setter
         public Builder enableStackdriverMonitoring(@Nullable Boolean enableStackdriverMonitoring) {
             this.enableStackdriverMonitoring = enableStackdriverMonitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder imageType(String imageType) {
             this.imageType = Objects.requireNonNull(imageType);
             return this;
         }
+        @CustomType.Setter
         public Builder ipPolicyClusterIpv4CidrBlock(String ipPolicyClusterIpv4CidrBlock) {
             this.ipPolicyClusterIpv4CidrBlock = Objects.requireNonNull(ipPolicyClusterIpv4CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder ipPolicyClusterSecondaryRangeName(String ipPolicyClusterSecondaryRangeName) {
             this.ipPolicyClusterSecondaryRangeName = Objects.requireNonNull(ipPolicyClusterSecondaryRangeName);
             return this;
         }
+        @CustomType.Setter
         public Builder ipPolicyCreateSubnetwork(@Nullable Boolean ipPolicyCreateSubnetwork) {
             this.ipPolicyCreateSubnetwork = ipPolicyCreateSubnetwork;
             return this;
         }
+        @CustomType.Setter
         public Builder ipPolicyNodeIpv4CidrBlock(String ipPolicyNodeIpv4CidrBlock) {
             this.ipPolicyNodeIpv4CidrBlock = Objects.requireNonNull(ipPolicyNodeIpv4CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder ipPolicyServicesIpv4CidrBlock(String ipPolicyServicesIpv4CidrBlock) {
             this.ipPolicyServicesIpv4CidrBlock = Objects.requireNonNull(ipPolicyServicesIpv4CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder ipPolicyServicesSecondaryRangeName(String ipPolicyServicesSecondaryRangeName) {
             this.ipPolicyServicesSecondaryRangeName = Objects.requireNonNull(ipPolicyServicesSecondaryRangeName);
             return this;
         }
+        @CustomType.Setter
         public Builder ipPolicySubnetworkName(String ipPolicySubnetworkName) {
             this.ipPolicySubnetworkName = Objects.requireNonNull(ipPolicySubnetworkName);
             return this;
         }
+        @CustomType.Setter
         public Builder issueClientCertificate(@Nullable Boolean issueClientCertificate) {
             this.issueClientCertificate = issueClientCertificate;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesDashboard(@Nullable Boolean kubernetesDashboard) {
             this.kubernetesDashboard = kubernetesDashboard;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
             this.localSsdCount = localSsdCount;
             return this;
         }
+        @CustomType.Setter
         public Builder locations(List<String> locations) {
             this.locations = Objects.requireNonNull(locations);
             return this;
@@ -1019,14 +938,17 @@ public final class ClusterGkeConfig {
         public Builder locations(String... locations) {
             return locations(List.of(locations));
         }
+        @CustomType.Setter
         public Builder machineType(String machineType) {
             this.machineType = Objects.requireNonNull(machineType);
             return this;
         }
+        @CustomType.Setter
         public Builder maintenanceWindow(String maintenanceWindow) {
             this.maintenanceWindow = Objects.requireNonNull(maintenanceWindow);
             return this;
         }
+        @CustomType.Setter
         public Builder masterAuthorizedNetworkCidrBlocks(@Nullable List<String> masterAuthorizedNetworkCidrBlocks) {
             this.masterAuthorizedNetworkCidrBlocks = masterAuthorizedNetworkCidrBlocks;
             return this;
@@ -1034,38 +956,47 @@ public final class ClusterGkeConfig {
         public Builder masterAuthorizedNetworkCidrBlocks(String... masterAuthorizedNetworkCidrBlocks) {
             return masterAuthorizedNetworkCidrBlocks(List.of(masterAuthorizedNetworkCidrBlocks));
         }
+        @CustomType.Setter
         public Builder masterIpv4CidrBlock(String masterIpv4CidrBlock) {
             this.masterIpv4CidrBlock = Objects.requireNonNull(masterIpv4CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder masterVersion(String masterVersion) {
             this.masterVersion = Objects.requireNonNull(masterVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder maxNodeCount(@Nullable Integer maxNodeCount) {
             this.maxNodeCount = maxNodeCount;
             return this;
         }
+        @CustomType.Setter
         public Builder minNodeCount(@Nullable Integer minNodeCount) {
             this.minNodeCount = minNodeCount;
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeCount(@Nullable Integer nodeCount) {
             this.nodeCount = nodeCount;
             return this;
         }
+        @CustomType.Setter
         public Builder nodePool(String nodePool) {
             this.nodePool = Objects.requireNonNull(nodePool);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeVersion(String nodeVersion) {
             this.nodeVersion = Objects.requireNonNull(nodeVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder oauthScopes(List<String> oauthScopes) {
             this.oauthScopes = Objects.requireNonNull(oauthScopes);
             return this;
@@ -1073,30 +1004,37 @@ public final class ClusterGkeConfig {
         public Builder oauthScopes(String... oauthScopes) {
             return oauthScopes(List.of(oauthScopes));
         }
+        @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
             this.preemptible = preemptible;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceLabels(@Nullable Map<String,Object> resourceLabels) {
             this.resourceLabels = resourceLabels;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
             this.serviceAccount = Objects.requireNonNull(serviceAccount);
             return this;
         }
+        @CustomType.Setter
         public Builder subNetwork(String subNetwork) {
             this.subNetwork = Objects.requireNonNull(subNetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder taints(@Nullable List<String> taints) {
             this.taints = taints;
             return this;
@@ -1104,15 +1042,72 @@ public final class ClusterGkeConfig {
         public Builder taints(String... taints) {
             return taints(List.of(taints));
         }
+        @CustomType.Setter
         public Builder useIpAliases(@Nullable Boolean useIpAliases) {
             this.useIpAliases = useIpAliases;
             return this;
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public ClusterGkeConfig build() {
-            return new ClusterGkeConfig(clusterIpv4Cidr, credential, description, diskSizeGb, diskType, enableAlphaFeature, enableAutoRepair, enableAutoUpgrade, enableHorizontalPodAutoscaling, enableHttpLoadBalancing, enableKubernetesDashboard, enableLegacyAbac, enableMasterAuthorizedNetwork, enableNetworkPolicyConfig, enableNodepoolAutoscaling, enablePrivateEndpoint, enablePrivateNodes, enableStackdriverLogging, enableStackdriverMonitoring, imageType, ipPolicyClusterIpv4CidrBlock, ipPolicyClusterSecondaryRangeName, ipPolicyCreateSubnetwork, ipPolicyNodeIpv4CidrBlock, ipPolicyServicesIpv4CidrBlock, ipPolicyServicesSecondaryRangeName, ipPolicySubnetworkName, issueClientCertificate, kubernetesDashboard, labels, localSsdCount, locations, machineType, maintenanceWindow, masterAuthorizedNetworkCidrBlocks, masterIpv4CidrBlock, masterVersion, maxNodeCount, minNodeCount, network, nodeCount, nodePool, nodeVersion, oauthScopes, preemptible, projectId, region, resourceLabels, serviceAccount, subNetwork, taints, useIpAliases, zone);
+        }
+        public ClusterGkeConfig build() {
+            final var o = new ClusterGkeConfig();
+            o.clusterIpv4Cidr = clusterIpv4Cidr;
+            o.credential = credential;
+            o.description = description;
+            o.diskSizeGb = diskSizeGb;
+            o.diskType = diskType;
+            o.enableAlphaFeature = enableAlphaFeature;
+            o.enableAutoRepair = enableAutoRepair;
+            o.enableAutoUpgrade = enableAutoUpgrade;
+            o.enableHorizontalPodAutoscaling = enableHorizontalPodAutoscaling;
+            o.enableHttpLoadBalancing = enableHttpLoadBalancing;
+            o.enableKubernetesDashboard = enableKubernetesDashboard;
+            o.enableLegacyAbac = enableLegacyAbac;
+            o.enableMasterAuthorizedNetwork = enableMasterAuthorizedNetwork;
+            o.enableNetworkPolicyConfig = enableNetworkPolicyConfig;
+            o.enableNodepoolAutoscaling = enableNodepoolAutoscaling;
+            o.enablePrivateEndpoint = enablePrivateEndpoint;
+            o.enablePrivateNodes = enablePrivateNodes;
+            o.enableStackdriverLogging = enableStackdriverLogging;
+            o.enableStackdriverMonitoring = enableStackdriverMonitoring;
+            o.imageType = imageType;
+            o.ipPolicyClusterIpv4CidrBlock = ipPolicyClusterIpv4CidrBlock;
+            o.ipPolicyClusterSecondaryRangeName = ipPolicyClusterSecondaryRangeName;
+            o.ipPolicyCreateSubnetwork = ipPolicyCreateSubnetwork;
+            o.ipPolicyNodeIpv4CidrBlock = ipPolicyNodeIpv4CidrBlock;
+            o.ipPolicyServicesIpv4CidrBlock = ipPolicyServicesIpv4CidrBlock;
+            o.ipPolicyServicesSecondaryRangeName = ipPolicyServicesSecondaryRangeName;
+            o.ipPolicySubnetworkName = ipPolicySubnetworkName;
+            o.issueClientCertificate = issueClientCertificate;
+            o.kubernetesDashboard = kubernetesDashboard;
+            o.labels = labels;
+            o.localSsdCount = localSsdCount;
+            o.locations = locations;
+            o.machineType = machineType;
+            o.maintenanceWindow = maintenanceWindow;
+            o.masterAuthorizedNetworkCidrBlocks = masterAuthorizedNetworkCidrBlocks;
+            o.masterIpv4CidrBlock = masterIpv4CidrBlock;
+            o.masterVersion = masterVersion;
+            o.maxNodeCount = maxNodeCount;
+            o.minNodeCount = minNodeCount;
+            o.network = network;
+            o.nodeCount = nodeCount;
+            o.nodePool = nodePool;
+            o.nodeVersion = nodeVersion;
+            o.oauthScopes = oauthScopes;
+            o.preemptible = preemptible;
+            o.projectId = projectId;
+            o.region = region;
+            o.resourceLabels = resourceLabels;
+            o.serviceAccount = serviceAccount;
+            o.subNetwork = subNetwork;
+            o.taints = taints;
+            o.useIpAliases = useIpAliases;
+            o.zone = zone;
+            return o;
         }
     }
 }

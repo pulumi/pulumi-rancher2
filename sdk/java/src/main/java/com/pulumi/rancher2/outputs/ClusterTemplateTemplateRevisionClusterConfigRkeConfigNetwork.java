@@ -20,35 +20,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
-    private final @Nullable Integer mtu;
-    private final @Nullable Map<String,Object> options;
-    private final @Nullable String plugin;
-    private final @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> tolerations;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
+    private @Nullable Integer mtu;
+    private @Nullable Map<String,Object> options;
+    private @Nullable String plugin;
+    private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> tolerations;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork(
-        @CustomType.Parameter("calicoNetworkProvider") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider,
-        @CustomType.Parameter("canalNetworkProvider") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider,
-        @CustomType.Parameter("flannelNetworkProvider") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider,
-        @CustomType.Parameter("mtu") @Nullable Integer mtu,
-        @CustomType.Parameter("options") @Nullable Map<String,Object> options,
-        @CustomType.Parameter("plugin") @Nullable String plugin,
-        @CustomType.Parameter("tolerations") @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> tolerations,
-        @CustomType.Parameter("weaveNetworkProvider") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider) {
-        this.calicoNetworkProvider = calicoNetworkProvider;
-        this.canalNetworkProvider = canalNetworkProvider;
-        this.flannelNetworkProvider = flannelNetworkProvider;
-        this.mtu = mtu;
-        this.options = options;
-        this.plugin = plugin;
-        this.tolerations = tolerations;
-        this.weaveNetworkProvider = weaveNetworkProvider;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork() {}
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider> calicoNetworkProvider() {
         return Optional.ofNullable(this.calicoNetworkProvider);
     }
@@ -81,7 +62,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork 
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
@@ -91,11 +72,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork 
         private @Nullable String plugin;
         private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> tolerations;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.calicoNetworkProvider = defaults.calicoNetworkProvider;
@@ -108,30 +85,37 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork 
     	      this.weaveNetworkProvider = defaults.weaveNetworkProvider;
         }
 
+        @CustomType.Setter
         public Builder calicoNetworkProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider) {
             this.calicoNetworkProvider = calicoNetworkProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder canalNetworkProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider) {
             this.canalNetworkProvider = canalNetworkProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder flannelNetworkProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider) {
             this.flannelNetworkProvider = flannelNetworkProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder mtu(@Nullable Integer mtu) {
             this.mtu = mtu;
             return this;
         }
+        @CustomType.Setter
         public Builder options(@Nullable Map<String,Object> options) {
             this.options = options;
             return this;
         }
+        @CustomType.Setter
         public Builder plugin(@Nullable String plugin) {
             this.plugin = plugin;
             return this;
         }
+        @CustomType.Setter
         public Builder tolerations(@Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> tolerations) {
             this.tolerations = tolerations;
             return this;
@@ -139,11 +123,22 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork 
         public Builder tolerations(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration... tolerations) {
             return tolerations(List.of(tolerations));
         }
+        @CustomType.Setter
         public Builder weaveNetworkProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider) {
             this.weaveNetworkProvider = weaveNetworkProvider;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork(calicoNetworkProvider, canalNetworkProvider, flannelNetworkProvider, mtu, options, plugin, tolerations, weaveNetworkProvider);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork();
+            o.calicoNetworkProvider = calicoNetworkProvider;
+            o.canalNetworkProvider = canalNetworkProvider;
+            o.flannelNetworkProvider = flannelNetworkProvider;
+            o.mtu = mtu;
+            o.options = options;
+            o.plugin = plugin;
+            o.tolerations = tolerations;
+            o.weaveNetworkProvider = weaveNetworkProvider;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork {
      * @return (string)
      * 
      */
-    private final @Nullable String publicNetwork;
+    private @Nullable String publicNetwork;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork(@CustomType.Parameter("publicNetwork") @Nullable String publicNetwork) {
-        this.publicNetwork = publicNetwork;
-    }
-
+    private ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork() {}
     /**
      * @return (string)
      * 
@@ -37,24 +33,24 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork {
     public static Builder builder(ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String publicNetwork;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.publicNetwork = defaults.publicNetwork;
         }
 
+        @CustomType.Setter
         public Builder publicNetwork(@Nullable String publicNetwork) {
             this.publicNetwork = publicNetwork;
             return this;
-        }        public ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork build() {
-            return new ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork(publicNetwork);
+        }
+        public ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork build() {
+            final var o = new ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork();
+            o.publicNetwork = publicNetwork;
+            return o;
         }
     }
 }

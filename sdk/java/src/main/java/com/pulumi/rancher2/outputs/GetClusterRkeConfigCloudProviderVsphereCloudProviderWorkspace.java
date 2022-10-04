@@ -9,26 +9,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
-    private final String datacenter;
-    private final String defaultDatastore;
-    private final String folder;
-    private final String resourcepoolPath;
-    private final String server;
+    private String datacenter;
+    private String defaultDatastore;
+    private String folder;
+    private String resourcepoolPath;
+    private String server;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace(
-        @CustomType.Parameter("datacenter") String datacenter,
-        @CustomType.Parameter("defaultDatastore") String defaultDatastore,
-        @CustomType.Parameter("folder") String folder,
-        @CustomType.Parameter("resourcepoolPath") String resourcepoolPath,
-        @CustomType.Parameter("server") String server) {
-        this.datacenter = datacenter;
-        this.defaultDatastore = defaultDatastore;
-        this.folder = folder;
-        this.resourcepoolPath = resourcepoolPath;
-        this.server = server;
-    }
-
+    private GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace() {}
     public String datacenter() {
         return this.datacenter;
     }
@@ -52,18 +39,14 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace
     public static Builder builder(GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datacenter;
         private String defaultDatastore;
         private String folder;
         private String resourcepoolPath;
         private String server;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenter = defaults.datacenter;
@@ -73,27 +56,39 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace
     	      this.server = defaults.server;
         }
 
+        @CustomType.Setter
         public Builder datacenter(String datacenter) {
             this.datacenter = Objects.requireNonNull(datacenter);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultDatastore(String defaultDatastore) {
             this.defaultDatastore = Objects.requireNonNull(defaultDatastore);
             return this;
         }
+        @CustomType.Setter
         public Builder folder(String folder) {
             this.folder = Objects.requireNonNull(folder);
             return this;
         }
+        @CustomType.Setter
         public Builder resourcepoolPath(String resourcepoolPath) {
             this.resourcepoolPath = Objects.requireNonNull(resourcepoolPath);
             return this;
         }
+        @CustomType.Setter
         public Builder server(String server) {
             this.server = Objects.requireNonNull(server);
             return this;
-        }        public GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace build() {
-            return new GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace(datacenter, defaultDatastore, folder, resourcepoolPath, server);
+        }
+        public GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace build() {
+            final var o = new GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace();
+            o.datacenter = datacenter;
+            o.defaultDatastore = defaultDatastore;
+            o.folder = folder;
+            o.resourcepoolPath = resourcepoolPath;
+            o.server = server;
+            return o;
         }
     }
 }

@@ -12,23 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectAlertGroupRecipient {
-    private final @Nullable Boolean defaultRecipient;
-    private final String notifierId;
-    private final String notifierType;
-    private final String recipient;
+    private @Nullable Boolean defaultRecipient;
+    private String notifierId;
+    private String notifierType;
+    private String recipient;
 
-    @CustomType.Constructor
-    private GetProjectAlertGroupRecipient(
-        @CustomType.Parameter("defaultRecipient") @Nullable Boolean defaultRecipient,
-        @CustomType.Parameter("notifierId") String notifierId,
-        @CustomType.Parameter("notifierType") String notifierType,
-        @CustomType.Parameter("recipient") String recipient) {
-        this.defaultRecipient = defaultRecipient;
-        this.notifierId = notifierId;
-        this.notifierType = notifierType;
-        this.recipient = recipient;
-    }
-
+    private GetProjectAlertGroupRecipient() {}
     public Optional<Boolean> defaultRecipient() {
         return Optional.ofNullable(this.defaultRecipient);
     }
@@ -49,17 +38,13 @@ public final class GetProjectAlertGroupRecipient {
     public static Builder builder(GetProjectAlertGroupRecipient defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean defaultRecipient;
         private String notifierId;
         private String notifierType;
         private String recipient;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectAlertGroupRecipient defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultRecipient = defaults.defaultRecipient;
@@ -68,23 +53,33 @@ public final class GetProjectAlertGroupRecipient {
     	      this.recipient = defaults.recipient;
         }
 
+        @CustomType.Setter
         public Builder defaultRecipient(@Nullable Boolean defaultRecipient) {
             this.defaultRecipient = defaultRecipient;
             return this;
         }
+        @CustomType.Setter
         public Builder notifierId(String notifierId) {
             this.notifierId = Objects.requireNonNull(notifierId);
             return this;
         }
+        @CustomType.Setter
         public Builder notifierType(String notifierType) {
             this.notifierType = Objects.requireNonNull(notifierType);
             return this;
         }
+        @CustomType.Setter
         public Builder recipient(String recipient) {
             this.recipient = Objects.requireNonNull(recipient);
             return this;
-        }        public GetProjectAlertGroupRecipient build() {
-            return new GetProjectAlertGroupRecipient(defaultRecipient, notifierId, notifierType, recipient);
+        }
+        public GetProjectAlertGroupRecipient build() {
+            final var o = new GetProjectAlertGroupRecipient();
+            o.defaultRecipient = defaultRecipient;
+            o.notifierId = notifierId;
+            o.notifierType = notifierType;
+            o.recipient = recipient;
+            return o;
         }
     }
 }

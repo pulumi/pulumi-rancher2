@@ -18,35 +18,24 @@ public final class ClusterLoggingFluentdConfig {
      * @return SSL certificate for the syslog service (string)
      * 
      */
-    private final @Nullable String certificate;
+    private @Nullable String certificate;
     /**
      * @return Compress data for the fluentd service (bool)
      * 
      */
-    private final @Nullable Boolean compress;
+    private @Nullable Boolean compress;
     /**
      * @return Enable TLS for the syslog service. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean enableTls;
+    private @Nullable Boolean enableTls;
     /**
      * @return Servers for the fluentd service (list)
      * 
      */
-    private final List<ClusterLoggingFluentdConfigFluentServer> fluentServers;
+    private List<ClusterLoggingFluentdConfigFluentServer> fluentServers;
 
-    @CustomType.Constructor
-    private ClusterLoggingFluentdConfig(
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("compress") @Nullable Boolean compress,
-        @CustomType.Parameter("enableTls") @Nullable Boolean enableTls,
-        @CustomType.Parameter("fluentServers") List<ClusterLoggingFluentdConfigFluentServer> fluentServers) {
-        this.certificate = certificate;
-        this.compress = compress;
-        this.enableTls = enableTls;
-        this.fluentServers = fluentServers;
-    }
-
+    private ClusterLoggingFluentdConfig() {}
     /**
      * @return SSL certificate for the syslog service (string)
      * 
@@ -83,17 +72,13 @@ public final class ClusterLoggingFluentdConfig {
     public static Builder builder(ClusterLoggingFluentdConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificate;
         private @Nullable Boolean compress;
         private @Nullable Boolean enableTls;
         private List<ClusterLoggingFluentdConfigFluentServer> fluentServers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterLoggingFluentdConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
@@ -102,26 +87,36 @@ public final class ClusterLoggingFluentdConfig {
     	      this.fluentServers = defaults.fluentServers;
         }
 
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder compress(@Nullable Boolean compress) {
             this.compress = compress;
             return this;
         }
+        @CustomType.Setter
         public Builder enableTls(@Nullable Boolean enableTls) {
             this.enableTls = enableTls;
             return this;
         }
+        @CustomType.Setter
         public Builder fluentServers(List<ClusterLoggingFluentdConfigFluentServer> fluentServers) {
             this.fluentServers = Objects.requireNonNull(fluentServers);
             return this;
         }
         public Builder fluentServers(ClusterLoggingFluentdConfigFluentServer... fluentServers) {
             return fluentServers(List.of(fluentServers));
-        }        public ClusterLoggingFluentdConfig build() {
-            return new ClusterLoggingFluentdConfig(certificate, compress, enableTls, fluentServers);
+        }
+        public ClusterLoggingFluentdConfig build() {
+            final var o = new ClusterLoggingFluentdConfig();
+            o.certificate = certificate;
+            o.compress = compress;
+            o.enableTls = enableTls;
+            o.fluentServers = fluentServers;
+            return o;
         }
     }
 }

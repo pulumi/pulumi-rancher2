@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupGlobalRoleBinding(ctx, &GetGlobalRoleBindingArgs{
-// 			GlobalRoleId: pulumi.StringRef("foo_id"),
-// 			Name:         "foo",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.LookupGlobalRoleBinding(ctx, &GetGlobalRoleBindingArgs{
+//				GlobalRoleId: pulumi.StringRef("foo_id"),
+//				Name:         "foo",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupGlobalRoleBinding(ctx *pulumi.Context, args *LookupGlobalRoleBindingArgs, opts ...pulumi.InvokeOption) (*LookupGlobalRoleBindingResult, error) {
 	var rv LookupGlobalRoleBindingResult

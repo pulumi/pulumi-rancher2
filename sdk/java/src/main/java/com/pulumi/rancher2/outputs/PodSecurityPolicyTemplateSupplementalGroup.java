@@ -17,21 +17,14 @@ public final class PodSecurityPolicyTemplateSupplementalGroup {
      * @return (list)
      * 
      */
-    private final @Nullable List<PodSecurityPolicyTemplateSupplementalGroupRange> ranges;
+    private @Nullable List<PodSecurityPolicyTemplateSupplementalGroupRange> ranges;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String rule;
+    private @Nullable String rule;
 
-    @CustomType.Constructor
-    private PodSecurityPolicyTemplateSupplementalGroup(
-        @CustomType.Parameter("ranges") @Nullable List<PodSecurityPolicyTemplateSupplementalGroupRange> ranges,
-        @CustomType.Parameter("rule") @Nullable String rule) {
-        this.ranges = ranges;
-        this.rule = rule;
-    }
-
+    private PodSecurityPolicyTemplateSupplementalGroup() {}
     /**
      * @return (list)
      * 
@@ -54,21 +47,18 @@ public final class PodSecurityPolicyTemplateSupplementalGroup {
     public static Builder builder(PodSecurityPolicyTemplateSupplementalGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<PodSecurityPolicyTemplateSupplementalGroupRange> ranges;
         private @Nullable String rule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PodSecurityPolicyTemplateSupplementalGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ranges = defaults.ranges;
     	      this.rule = defaults.rule;
         }
 
+        @CustomType.Setter
         public Builder ranges(@Nullable List<PodSecurityPolicyTemplateSupplementalGroupRange> ranges) {
             this.ranges = ranges;
             return this;
@@ -76,11 +66,16 @@ public final class PodSecurityPolicyTemplateSupplementalGroup {
         public Builder ranges(PodSecurityPolicyTemplateSupplementalGroupRange... ranges) {
             return ranges(List.of(ranges));
         }
+        @CustomType.Setter
         public Builder rule(@Nullable String rule) {
             this.rule = rule;
             return this;
-        }        public PodSecurityPolicyTemplateSupplementalGroup build() {
-            return new PodSecurityPolicyTemplateSupplementalGroup(ranges, rule);
+        }
+        public PodSecurityPolicyTemplateSupplementalGroup build() {
+            final var o = new PodSecurityPolicyTemplateSupplementalGroup();
+            o.ranges = ranges;
+            o.rule = rule;
+            return o;
         }
     }
 }

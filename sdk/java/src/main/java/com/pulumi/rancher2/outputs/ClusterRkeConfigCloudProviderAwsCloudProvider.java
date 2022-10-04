@@ -17,21 +17,14 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProvider {
      * @return (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigCloudProviderAwsCloudProviderGlobal global;
+    private @Nullable ClusterRkeConfigCloudProviderAwsCloudProviderGlobal global;
     /**
      * @return (list)
      * 
      */
-    private final @Nullable List<ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides;
+    private @Nullable List<ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderAwsCloudProvider(
-        @CustomType.Parameter("global") @Nullable ClusterRkeConfigCloudProviderAwsCloudProviderGlobal global,
-        @CustomType.Parameter("serviceOverrides") @Nullable List<ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides) {
-        this.global = global;
-        this.serviceOverrides = serviceOverrides;
-    }
-
+    private ClusterRkeConfigCloudProviderAwsCloudProvider() {}
     /**
      * @return (list maxitems:1)
      * 
@@ -54,33 +47,35 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProvider {
     public static Builder builder(ClusterRkeConfigCloudProviderAwsCloudProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRkeConfigCloudProviderAwsCloudProviderGlobal global;
         private @Nullable List<ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderAwsCloudProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.global = defaults.global;
     	      this.serviceOverrides = defaults.serviceOverrides;
         }
 
+        @CustomType.Setter
         public Builder global(@Nullable ClusterRkeConfigCloudProviderAwsCloudProviderGlobal global) {
             this.global = global;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceOverrides(@Nullable List<ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides) {
             this.serviceOverrides = serviceOverrides;
             return this;
         }
         public Builder serviceOverrides(ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride... serviceOverrides) {
             return serviceOverrides(List.of(serviceOverrides));
-        }        public ClusterRkeConfigCloudProviderAwsCloudProvider build() {
-            return new ClusterRkeConfigCloudProviderAwsCloudProvider(global, serviceOverrides);
+        }
+        public ClusterRkeConfigCloudProviderAwsCloudProvider build() {
+            final var o = new ClusterRkeConfigCloudProviderAwsCloudProvider();
+            o.global = global;
+            o.serviceOverrides = serviceOverrides;
+            return o;
         }
     }
 }

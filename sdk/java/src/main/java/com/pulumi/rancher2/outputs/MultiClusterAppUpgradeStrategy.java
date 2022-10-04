@@ -15,13 +15,9 @@ public final class MultiClusterAppUpgradeStrategy {
      * @return Upgrade strategy rolling update (list MaxItems:1)
      * 
      */
-    private final @Nullable MultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate;
+    private @Nullable MultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate;
 
-    @CustomType.Constructor
-    private MultiClusterAppUpgradeStrategy(@CustomType.Parameter("rollingUpdate") @Nullable MultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate) {
-        this.rollingUpdate = rollingUpdate;
-    }
-
+    private MultiClusterAppUpgradeStrategy() {}
     /**
      * @return Upgrade strategy rolling update (list MaxItems:1)
      * 
@@ -37,24 +33,24 @@ public final class MultiClusterAppUpgradeStrategy {
     public static Builder builder(MultiClusterAppUpgradeStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable MultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MultiClusterAppUpgradeStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rollingUpdate = defaults.rollingUpdate;
         }
 
+        @CustomType.Setter
         public Builder rollingUpdate(@Nullable MultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate) {
             this.rollingUpdate = rollingUpdate;
             return this;
-        }        public MultiClusterAppUpgradeStrategy build() {
-            return new MultiClusterAppUpgradeStrategy(rollingUpdate);
+        }
+        public MultiClusterAppUpgradeStrategy build() {
+            final var o = new MultiClusterAppUpgradeStrategy();
+            o.rollingUpdate = rollingUpdate;
+            return o;
         }
     }
 }

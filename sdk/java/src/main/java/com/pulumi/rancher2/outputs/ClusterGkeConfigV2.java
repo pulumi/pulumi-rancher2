@@ -24,168 +24,119 @@ public final class ClusterGkeConfigV2 {
      * @return The GKE cluster addons (List maxitems:1)
      * 
      */
-    private final @Nullable ClusterGkeConfigV2ClusterAddons clusterAddons;
+    private @Nullable ClusterGkeConfigV2ClusterAddons clusterAddons;
     /**
      * @return The GKE cluster ip v4 allocation cidr block (string)
      * 
      */
-    private final @Nullable String clusterIpv4CidrBlock;
+    private @Nullable String clusterIpv4CidrBlock;
     /**
      * @return An optional description of this cluster (string)
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Enable Kubernetes alpha. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean enableKubernetesAlpha;
+    private @Nullable Boolean enableKubernetesAlpha;
     /**
      * @return Google credential secret (string)
      * 
      */
-    private final String googleCredentialSecret;
+    private String googleCredentialSecret;
     /**
      * @return Is GKE cluster imported? Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean imported;
+    private @Nullable Boolean imported;
     /**
      * @return The GKE ip allocation policy (List maxitems:1)
      * 
      */
-    private final @Nullable ClusterGkeConfigV2IpAllocationPolicy ipAllocationPolicy;
+    private @Nullable ClusterGkeConfigV2IpAllocationPolicy ipAllocationPolicy;
     /**
      * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
-    private final @Nullable String kubernetesVersion;
+    private @Nullable String kubernetesVersion;
     /**
      * @return Labels for cluster registration token object (map)
      * 
      */
-    private final @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,Object> labels;
     /**
      * @return The GKE cluster locations (List)
      * 
      */
-    private final @Nullable List<String> locations;
+    private @Nullable List<String> locations;
     /**
      * @return The GKE cluster logging service (string)
      * 
      */
-    private final @Nullable String loggingService;
+    private @Nullable String loggingService;
     /**
      * @return The GKE cluster maintenance window (string)
      * 
      */
-    private final @Nullable String maintenanceWindow;
+    private @Nullable String maintenanceWindow;
     /**
      * @return The GKE cluster master authorized networks config (List maxitems:1)
      * 
      */
-    private final @Nullable ClusterGkeConfigV2MasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig;
+    private @Nullable ClusterGkeConfigV2MasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig;
     /**
      * @return The GKE cluster monitoring service (string)
      * 
      */
-    private final @Nullable String monitoringService;
+    private @Nullable String monitoringService;
     /**
      * @return Name of cluster registration token (string)
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The GKE cluster network. Required for create new cluster (string)
      * 
      */
-    private final @Nullable String network;
+    private @Nullable String network;
     /**
      * @return Is GKE cluster network policy enabled? Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean networkPolicyEnabled;
+    private @Nullable Boolean networkPolicyEnabled;
     /**
      * @return The GKE cluster node pools. Required for create new cluster (List)
      * 
      */
-    private final @Nullable List<ClusterGkeConfigV2NodePool> nodePools;
+    private @Nullable List<ClusterGkeConfigV2NodePool> nodePools;
     /**
      * @return The GKE private cluster config (List maxitems:1)
      * 
      */
-    private final @Nullable ClusterGkeConfigV2PrivateClusterConfig privateClusterConfig;
+    private @Nullable ClusterGkeConfigV2PrivateClusterConfig privateClusterConfig;
     /**
      * @return Project ID to apply answer (string)
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return The GKE cluster subnetwork. Required for create new cluster (string)
      * 
      */
-    private final @Nullable String subnetwork;
+    private @Nullable String subnetwork;
     /**
      * @return The GKE cluster zone. Required if `region` not set (string)
      * 
      */
-    private final @Nullable String zone;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private ClusterGkeConfigV2(
-        @CustomType.Parameter("clusterAddons") @Nullable ClusterGkeConfigV2ClusterAddons clusterAddons,
-        @CustomType.Parameter("clusterIpv4CidrBlock") @Nullable String clusterIpv4CidrBlock,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("enableKubernetesAlpha") @Nullable Boolean enableKubernetesAlpha,
-        @CustomType.Parameter("googleCredentialSecret") String googleCredentialSecret,
-        @CustomType.Parameter("imported") @Nullable Boolean imported,
-        @CustomType.Parameter("ipAllocationPolicy") @Nullable ClusterGkeConfigV2IpAllocationPolicy ipAllocationPolicy,
-        @CustomType.Parameter("kubernetesVersion") @Nullable String kubernetesVersion,
-        @CustomType.Parameter("labels") @Nullable Map<String,Object> labels,
-        @CustomType.Parameter("locations") @Nullable List<String> locations,
-        @CustomType.Parameter("loggingService") @Nullable String loggingService,
-        @CustomType.Parameter("maintenanceWindow") @Nullable String maintenanceWindow,
-        @CustomType.Parameter("masterAuthorizedNetworksConfig") @Nullable ClusterGkeConfigV2MasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig,
-        @CustomType.Parameter("monitoringService") @Nullable String monitoringService,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("network") @Nullable String network,
-        @CustomType.Parameter("networkPolicyEnabled") @Nullable Boolean networkPolicyEnabled,
-        @CustomType.Parameter("nodePools") @Nullable List<ClusterGkeConfigV2NodePool> nodePools,
-        @CustomType.Parameter("privateClusterConfig") @Nullable ClusterGkeConfigV2PrivateClusterConfig privateClusterConfig,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("subnetwork") @Nullable String subnetwork,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.clusterAddons = clusterAddons;
-        this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
-        this.description = description;
-        this.enableKubernetesAlpha = enableKubernetesAlpha;
-        this.googleCredentialSecret = googleCredentialSecret;
-        this.imported = imported;
-        this.ipAllocationPolicy = ipAllocationPolicy;
-        this.kubernetesVersion = kubernetesVersion;
-        this.labels = labels;
-        this.locations = locations;
-        this.loggingService = loggingService;
-        this.maintenanceWindow = maintenanceWindow;
-        this.masterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
-        this.monitoringService = monitoringService;
-        this.name = name;
-        this.network = network;
-        this.networkPolicyEnabled = networkPolicyEnabled;
-        this.nodePools = nodePools;
-        this.privateClusterConfig = privateClusterConfig;
-        this.projectId = projectId;
-        this.region = region;
-        this.subnetwork = subnetwork;
-        this.zone = zone;
-    }
-
+    private ClusterGkeConfigV2() {}
     /**
      * @return The GKE cluster addons (List maxitems:1)
      * 
@@ -355,7 +306,7 @@ public final class ClusterGkeConfigV2 {
     public static Builder builder(ClusterGkeConfigV2 defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterGkeConfigV2ClusterAddons clusterAddons;
         private @Nullable String clusterIpv4CidrBlock;
@@ -380,11 +331,7 @@ public final class ClusterGkeConfigV2 {
         private @Nullable String region;
         private @Nullable String subnetwork;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterGkeConfigV2 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterAddons = defaults.clusterAddons;
@@ -412,42 +359,52 @@ public final class ClusterGkeConfigV2 {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder clusterAddons(@Nullable ClusterGkeConfigV2ClusterAddons clusterAddons) {
             this.clusterAddons = clusterAddons;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterIpv4CidrBlock(@Nullable String clusterIpv4CidrBlock) {
             this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder enableKubernetesAlpha(@Nullable Boolean enableKubernetesAlpha) {
             this.enableKubernetesAlpha = enableKubernetesAlpha;
             return this;
         }
+        @CustomType.Setter
         public Builder googleCredentialSecret(String googleCredentialSecret) {
             this.googleCredentialSecret = Objects.requireNonNull(googleCredentialSecret);
             return this;
         }
+        @CustomType.Setter
         public Builder imported(@Nullable Boolean imported) {
             this.imported = imported;
             return this;
         }
+        @CustomType.Setter
         public Builder ipAllocationPolicy(@Nullable ClusterGkeConfigV2IpAllocationPolicy ipAllocationPolicy) {
             this.ipAllocationPolicy = ipAllocationPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesVersion(@Nullable String kubernetesVersion) {
             this.kubernetesVersion = kubernetesVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder locations(@Nullable List<String> locations) {
             this.locations = locations;
             return this;
@@ -455,34 +412,42 @@ public final class ClusterGkeConfigV2 {
         public Builder locations(String... locations) {
             return locations(List.of(locations));
         }
+        @CustomType.Setter
         public Builder loggingService(@Nullable String loggingService) {
             this.loggingService = loggingService;
             return this;
         }
+        @CustomType.Setter
         public Builder maintenanceWindow(@Nullable String maintenanceWindow) {
             this.maintenanceWindow = maintenanceWindow;
             return this;
         }
+        @CustomType.Setter
         public Builder masterAuthorizedNetworksConfig(@Nullable ClusterGkeConfigV2MasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig) {
             this.masterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder monitoringService(@Nullable String monitoringService) {
             this.monitoringService = monitoringService;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder network(@Nullable String network) {
             this.network = network;
             return this;
         }
+        @CustomType.Setter
         public Builder networkPolicyEnabled(@Nullable Boolean networkPolicyEnabled) {
             this.networkPolicyEnabled = networkPolicyEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder nodePools(@Nullable List<ClusterGkeConfigV2NodePool> nodePools) {
             this.nodePools = nodePools;
             return this;
@@ -490,27 +455,57 @@ public final class ClusterGkeConfigV2 {
         public Builder nodePools(ClusterGkeConfigV2NodePool... nodePools) {
             return nodePools(List.of(nodePools));
         }
+        @CustomType.Setter
         public Builder privateClusterConfig(@Nullable ClusterGkeConfigV2PrivateClusterConfig privateClusterConfig) {
             this.privateClusterConfig = privateClusterConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
             this.subnetwork = subnetwork;
             return this;
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public ClusterGkeConfigV2 build() {
-            return new ClusterGkeConfigV2(clusterAddons, clusterIpv4CidrBlock, description, enableKubernetesAlpha, googleCredentialSecret, imported, ipAllocationPolicy, kubernetesVersion, labels, locations, loggingService, maintenanceWindow, masterAuthorizedNetworksConfig, monitoringService, name, network, networkPolicyEnabled, nodePools, privateClusterConfig, projectId, region, subnetwork, zone);
+        }
+        public ClusterGkeConfigV2 build() {
+            final var o = new ClusterGkeConfigV2();
+            o.clusterAddons = clusterAddons;
+            o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
+            o.description = description;
+            o.enableKubernetesAlpha = enableKubernetesAlpha;
+            o.googleCredentialSecret = googleCredentialSecret;
+            o.imported = imported;
+            o.ipAllocationPolicy = ipAllocationPolicy;
+            o.kubernetesVersion = kubernetesVersion;
+            o.labels = labels;
+            o.locations = locations;
+            o.loggingService = loggingService;
+            o.maintenanceWindow = maintenanceWindow;
+            o.masterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
+            o.monitoringService = monitoringService;
+            o.name = name;
+            o.network = network;
+            o.networkPolicyEnabled = networkPolicyEnabled;
+            o.nodePools = nodePools;
+            o.privateClusterConfig = privateClusterConfig;
+            o.projectId = projectId;
+            o.region = region;
+            o.subnetwork = subnetwork;
+            o.zone = zone;
+            return o;
         }
     }
 }

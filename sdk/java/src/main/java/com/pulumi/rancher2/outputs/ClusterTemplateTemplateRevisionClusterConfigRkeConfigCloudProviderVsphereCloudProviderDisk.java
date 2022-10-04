@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk {
-    private final @Nullable String scsiControllerType;
+    private @Nullable String scsiControllerType;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk(@CustomType.Parameter("scsiControllerType") @Nullable String scsiControllerType) {
-        this.scsiControllerType = scsiControllerType;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk() {}
     public Optional<String> scsiControllerType() {
         return Optional.ofNullable(this.scsiControllerType);
     }
@@ -29,24 +25,24 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String scsiControllerType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.scsiControllerType = defaults.scsiControllerType;
         }
 
+        @CustomType.Setter
         public Builder scsiControllerType(@Nullable String scsiControllerType) {
             this.scsiControllerType = scsiControllerType;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk(scsiControllerType);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk();
+            o.scsiControllerType = scsiControllerType;
+            return o;
         }
     }
 }

@@ -15,47 +15,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfig {
-    private final GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint;
-    private final String defaultClusterRoleForProjectMembers;
-    private final String defaultPodSecurityPolicyTemplateId;
-    private final String desiredAgentImage;
-    private final String desiredAuthImage;
-    private final String dockerRootDir;
-    private final @Nullable Boolean enableClusterAlerting;
-    private final @Nullable Boolean enableClusterMonitoring;
-    private final @Nullable Boolean enableNetworkPolicy;
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig;
-    private final @Nullable GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan scheduledClusterScan;
-    private final @Nullable Boolean windowsPreferedCluster;
+    private GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint;
+    private String defaultClusterRoleForProjectMembers;
+    private String defaultPodSecurityPolicyTemplateId;
+    private String desiredAgentImage;
+    private String desiredAuthImage;
+    private String dockerRootDir;
+    private @Nullable Boolean enableClusterAlerting;
+    private @Nullable Boolean enableClusterMonitoring;
+    private @Nullable Boolean enableNetworkPolicy;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig;
+    private @Nullable GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan scheduledClusterScan;
+    private @Nullable Boolean windowsPreferedCluster;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfig(
-        @CustomType.Parameter("clusterAuthEndpoint") GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint,
-        @CustomType.Parameter("defaultClusterRoleForProjectMembers") String defaultClusterRoleForProjectMembers,
-        @CustomType.Parameter("defaultPodSecurityPolicyTemplateId") String defaultPodSecurityPolicyTemplateId,
-        @CustomType.Parameter("desiredAgentImage") String desiredAgentImage,
-        @CustomType.Parameter("desiredAuthImage") String desiredAuthImage,
-        @CustomType.Parameter("dockerRootDir") String dockerRootDir,
-        @CustomType.Parameter("enableClusterAlerting") @Nullable Boolean enableClusterAlerting,
-        @CustomType.Parameter("enableClusterMonitoring") @Nullable Boolean enableClusterMonitoring,
-        @CustomType.Parameter("enableNetworkPolicy") @Nullable Boolean enableNetworkPolicy,
-        @CustomType.Parameter("rkeConfig") GetClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig,
-        @CustomType.Parameter("scheduledClusterScan") @Nullable GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan scheduledClusterScan,
-        @CustomType.Parameter("windowsPreferedCluster") @Nullable Boolean windowsPreferedCluster) {
-        this.clusterAuthEndpoint = clusterAuthEndpoint;
-        this.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
-        this.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
-        this.desiredAgentImage = desiredAgentImage;
-        this.desiredAuthImage = desiredAuthImage;
-        this.dockerRootDir = dockerRootDir;
-        this.enableClusterAlerting = enableClusterAlerting;
-        this.enableClusterMonitoring = enableClusterMonitoring;
-        this.enableNetworkPolicy = enableNetworkPolicy;
-        this.rkeConfig = rkeConfig;
-        this.scheduledClusterScan = scheduledClusterScan;
-        this.windowsPreferedCluster = windowsPreferedCluster;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfig() {}
     public GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint() {
         return this.clusterAuthEndpoint;
     }
@@ -100,7 +73,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint;
         private String defaultClusterRoleForProjectMembers;
@@ -114,11 +87,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig;
         private @Nullable GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan scheduledClusterScan;
         private @Nullable Boolean windowsPreferedCluster;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterAuthEndpoint = defaults.clusterAuthEndpoint;
@@ -135,55 +104,81 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
     	      this.windowsPreferedCluster = defaults.windowsPreferedCluster;
         }
 
+        @CustomType.Setter
         public Builder clusterAuthEndpoint(GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint) {
             this.clusterAuthEndpoint = Objects.requireNonNull(clusterAuthEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultClusterRoleForProjectMembers(String defaultClusterRoleForProjectMembers) {
             this.defaultClusterRoleForProjectMembers = Objects.requireNonNull(defaultClusterRoleForProjectMembers);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultPodSecurityPolicyTemplateId(String defaultPodSecurityPolicyTemplateId) {
             this.defaultPodSecurityPolicyTemplateId = Objects.requireNonNull(defaultPodSecurityPolicyTemplateId);
             return this;
         }
+        @CustomType.Setter
         public Builder desiredAgentImage(String desiredAgentImage) {
             this.desiredAgentImage = Objects.requireNonNull(desiredAgentImage);
             return this;
         }
+        @CustomType.Setter
         public Builder desiredAuthImage(String desiredAuthImage) {
             this.desiredAuthImage = Objects.requireNonNull(desiredAuthImage);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerRootDir(String dockerRootDir) {
             this.dockerRootDir = Objects.requireNonNull(dockerRootDir);
             return this;
         }
+        @CustomType.Setter
         public Builder enableClusterAlerting(@Nullable Boolean enableClusterAlerting) {
             this.enableClusterAlerting = enableClusterAlerting;
             return this;
         }
+        @CustomType.Setter
         public Builder enableClusterMonitoring(@Nullable Boolean enableClusterMonitoring) {
             this.enableClusterMonitoring = enableClusterMonitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder enableNetworkPolicy(@Nullable Boolean enableNetworkPolicy) {
             this.enableNetworkPolicy = enableNetworkPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder rkeConfig(GetClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig) {
             this.rkeConfig = Objects.requireNonNull(rkeConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduledClusterScan(@Nullable GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan scheduledClusterScan) {
             this.scheduledClusterScan = scheduledClusterScan;
             return this;
         }
+        @CustomType.Setter
         public Builder windowsPreferedCluster(@Nullable Boolean windowsPreferedCluster) {
             this.windowsPreferedCluster = windowsPreferedCluster;
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfig build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfig(clusterAuthEndpoint, defaultClusterRoleForProjectMembers, defaultPodSecurityPolicyTemplateId, desiredAgentImage, desiredAuthImage, dockerRootDir, enableClusterAlerting, enableClusterMonitoring, enableNetworkPolicy, rkeConfig, scheduledClusterScan, windowsPreferedCluster);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfig build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfig();
+            o.clusterAuthEndpoint = clusterAuthEndpoint;
+            o.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
+            o.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
+            o.desiredAgentImage = desiredAgentImage;
+            o.desiredAuthImage = desiredAuthImage;
+            o.dockerRootDir = dockerRootDir;
+            o.enableClusterAlerting = enableClusterAlerting;
+            o.enableClusterMonitoring = enableClusterMonitoring;
+            o.enableNetworkPolicy = enableNetworkPolicy;
+            o.rkeConfig = rkeConfig;
+            o.scheduledClusterScan = scheduledClusterScan;
+            o.windowsPreferedCluster = windowsPreferedCluster;
+            return o;
         }
     }
 }

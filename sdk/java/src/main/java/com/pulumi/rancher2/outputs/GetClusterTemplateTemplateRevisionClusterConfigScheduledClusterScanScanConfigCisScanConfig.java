@@ -13,26 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig {
-    private final @Nullable Boolean debugMaster;
-    private final @Nullable Boolean debugWorker;
-    private final @Nullable String overrideBenchmarkVersion;
-    private final @Nullable List<String> overrideSkips;
-    private final @Nullable String profile;
+    private @Nullable Boolean debugMaster;
+    private @Nullable Boolean debugWorker;
+    private @Nullable String overrideBenchmarkVersion;
+    private @Nullable List<String> overrideSkips;
+    private @Nullable String profile;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig(
-        @CustomType.Parameter("debugMaster") @Nullable Boolean debugMaster,
-        @CustomType.Parameter("debugWorker") @Nullable Boolean debugWorker,
-        @CustomType.Parameter("overrideBenchmarkVersion") @Nullable String overrideBenchmarkVersion,
-        @CustomType.Parameter("overrideSkips") @Nullable List<String> overrideSkips,
-        @CustomType.Parameter("profile") @Nullable String profile) {
-        this.debugMaster = debugMaster;
-        this.debugWorker = debugWorker;
-        this.overrideBenchmarkVersion = overrideBenchmarkVersion;
-        this.overrideSkips = overrideSkips;
-        this.profile = profile;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig() {}
     public Optional<Boolean> debugMaster() {
         return Optional.ofNullable(this.debugMaster);
     }
@@ -56,18 +43,14 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigScheduledClust
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean debugMaster;
         private @Nullable Boolean debugWorker;
         private @Nullable String overrideBenchmarkVersion;
         private @Nullable List<String> overrideSkips;
         private @Nullable String profile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.debugMaster = defaults.debugMaster;
@@ -77,18 +60,22 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigScheduledClust
     	      this.profile = defaults.profile;
         }
 
+        @CustomType.Setter
         public Builder debugMaster(@Nullable Boolean debugMaster) {
             this.debugMaster = debugMaster;
             return this;
         }
+        @CustomType.Setter
         public Builder debugWorker(@Nullable Boolean debugWorker) {
             this.debugWorker = debugWorker;
             return this;
         }
+        @CustomType.Setter
         public Builder overrideBenchmarkVersion(@Nullable String overrideBenchmarkVersion) {
             this.overrideBenchmarkVersion = overrideBenchmarkVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder overrideSkips(@Nullable List<String> overrideSkips) {
             this.overrideSkips = overrideSkips;
             return this;
@@ -96,11 +83,19 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigScheduledClust
         public Builder overrideSkips(String... overrideSkips) {
             return overrideSkips(List.of(overrideSkips));
         }
+        @CustomType.Setter
         public Builder profile(@Nullable String profile) {
             this.profile = profile;
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig(debugMaster, debugWorker, overrideBenchmarkVersion, overrideSkips, profile);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig();
+            o.debugMaster = debugMaster;
+            o.debugWorker = debugWorker;
+            o.overrideBenchmarkVersion = overrideBenchmarkVersion;
+            o.overrideSkips = overrideSkips;
+            o.profile = profile;
+            return o;
         }
     }
 }

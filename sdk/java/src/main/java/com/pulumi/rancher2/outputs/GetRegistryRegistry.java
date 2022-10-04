@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegistryRegistry {
-    private final String address;
-    private final @Nullable String password;
-    private final @Nullable String username;
+    private String address;
+    private @Nullable String password;
+    private @Nullable String username;
 
-    @CustomType.Constructor
-    private GetRegistryRegistry(
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("username") @Nullable String username) {
-        this.address = address;
-        this.password = password;
-        this.username = username;
-    }
-
+    private GetRegistryRegistry() {}
     public String address() {
         return this.address;
     }
@@ -42,16 +33,12 @@ public final class GetRegistryRegistry {
     public static Builder builder(GetRegistryRegistry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
         private @Nullable String password;
         private @Nullable String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegistryRegistry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -59,19 +46,27 @@ public final class GetRegistryRegistry {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
-        }        public GetRegistryRegistry build() {
-            return new GetRegistryRegistry(address, password, username);
+        }
+        public GetRegistryRegistry build() {
+            final var o = new GetRegistryRegistry();
+            o.address = address;
+            o.password = password;
+            o.username = username;
+            return o;
         }
     }
 }

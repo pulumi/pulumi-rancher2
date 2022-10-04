@@ -23,21 +23,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewSetting(ctx, "foo", &rancher2.SettingArgs{
-// 			Value: pulumi.String("<VALUE>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewSetting(ctx, "foo", &rancher2.SettingArgs{
+//				Value: pulumi.String("<VALUE>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -45,7 +48,9 @@ import (
 // Setting can be imported using the Rancher setting ID.
 //
 // ```sh
-//  $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
+//
+//	$ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
+//
 // ```
 type Setting struct {
 	pulumi.CustomResourceState
@@ -166,7 +171,7 @@ func (i *Setting) ToSettingOutputWithContext(ctx context.Context) SettingOutput 
 // SettingArrayInput is an input type that accepts SettingArray and SettingArrayOutput values.
 // You can construct a concrete instance of `SettingArrayInput` via:
 //
-//          SettingArray{ SettingArgs{...} }
+//	SettingArray{ SettingArgs{...} }
 type SettingArrayInput interface {
 	pulumi.Input
 
@@ -191,7 +196,7 @@ func (i SettingArray) ToSettingArrayOutputWithContext(ctx context.Context) Setti
 // SettingMapInput is an input type that accepts SettingMap and SettingMapOutput values.
 // You can construct a concrete instance of `SettingMapInput` via:
 //
-//          SettingMap{ "key": SettingArgs{...} }
+//	SettingMap{ "key": SettingArgs{...} }
 type SettingMapInput interface {
 	pulumi.Input
 

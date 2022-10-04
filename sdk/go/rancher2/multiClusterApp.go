@@ -17,85 +17,91 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewMultiClusterApp(ctx, "foo", &rancher2.MultiClusterAppArgs{
-// 			Answers: MultiClusterAppAnswerArray{
-// 				&MultiClusterAppAnswerArgs{
-// 					Values: pulumi.AnyMap{
-// 						"ingressHost": pulumi.Any("test.xip.io"),
-// 					},
-// 				},
-// 			},
-// 			CatalogName: pulumi.String("<catalog_name>"),
-// 			Roles: pulumi.StringArray{
-// 				pulumi.String("project-member"),
-// 			},
-// 			Targets: MultiClusterAppTargetArray{
-// 				&MultiClusterAppTargetArgs{
-// 					ProjectId: pulumi.String("<project_id>"),
-// 				},
-// 			},
-// 			TemplateName:    pulumi.String("<template_name>"),
-// 			TemplateVersion: pulumi.String("<template_version>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewMultiClusterApp(ctx, "foo", &rancher2.MultiClusterAppArgs{
+//				Answers: MultiClusterAppAnswerArray{
+//					&MultiClusterAppAnswerArgs{
+//						Values: pulumi.AnyMap{
+//							"ingressHost": pulumi.Any("test.xip.io"),
+//						},
+//					},
+//				},
+//				CatalogName: pulumi.String("<catalog_name>"),
+//				Roles: pulumi.StringArray{
+//					pulumi.String("project-member"),
+//				},
+//				Targets: MultiClusterAppTargetArray{
+//					&MultiClusterAppTargetArgs{
+//						ProjectId: pulumi.String("<project_id>"),
+//					},
+//				},
+//				TemplateName:    pulumi.String("<template_name>"),
+//				TemplateVersion: pulumi.String("<template_version>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewMultiClusterApp(ctx, "foo", &rancher2.MultiClusterAppArgs{
-// 			Answers: MultiClusterAppAnswerArray{
-// 				&MultiClusterAppAnswerArgs{
-// 					Values: pulumi.AnyMap{
-// 						"ingressHost": pulumi.Any("test.xip.io"),
-// 					},
-// 				},
-// 				&MultiClusterAppAnswerArgs{
-// 					ProjectId: pulumi.String("<project_id2>"),
-// 					Values: pulumi.AnyMap{
-// 						"ingressHost": pulumi.Any("test2.xip.io"),
-// 					},
-// 				},
-// 			},
-// 			CatalogName: pulumi.String("<catalog_name>"),
-// 			Roles: pulumi.StringArray{
-// 				pulumi.String("project-member"),
-// 			},
-// 			Targets: MultiClusterAppTargetArray{
-// 				&MultiClusterAppTargetArgs{
-// 					ProjectId: pulumi.String("<project_id1>"),
-// 				},
-// 				&MultiClusterAppTargetArgs{
-// 					ProjectId: pulumi.String("<project_id2>"),
-// 				},
-// 			},
-// 			TemplateName:    pulumi.String("<template_name>"),
-// 			TemplateVersion: pulumi.String("<template_version>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewMultiClusterApp(ctx, "foo", &rancher2.MultiClusterAppArgs{
+//				Answers: MultiClusterAppAnswerArray{
+//					&MultiClusterAppAnswerArgs{
+//						Values: pulumi.AnyMap{
+//							"ingressHost": pulumi.Any("test.xip.io"),
+//						},
+//					},
+//					&MultiClusterAppAnswerArgs{
+//						ProjectId: pulumi.String("<project_id2>"),
+//						Values: pulumi.AnyMap{
+//							"ingressHost": pulumi.Any("test2.xip.io"),
+//						},
+//					},
+//				},
+//				CatalogName: pulumi.String("<catalog_name>"),
+//				Roles: pulumi.StringArray{
+//					pulumi.String("project-member"),
+//				},
+//				Targets: MultiClusterAppTargetArray{
+//					&MultiClusterAppTargetArgs{
+//						ProjectId: pulumi.String("<project_id1>"),
+//					},
+//					&MultiClusterAppTargetArgs{
+//						ProjectId: pulumi.String("<project_id2>"),
+//					},
+//				},
+//				TemplateName:    pulumi.String("<template_name>"),
+//				TemplateVersion: pulumi.String("<template_version>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -103,7 +109,9 @@ import (
 // Multi cluster app can be imported using the multi cluster app ID in the format `<multi_cluster_app_name>`
 //
 // ```sh
-//  $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &lt;MULTI_CLUSTER_APP_ID&gt;
+//
+//	$ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &lt;MULTI_CLUSTER_APP_ID&gt;
+//
 // ```
 type MultiClusterApp struct {
 	pulumi.CustomResourceState
@@ -339,7 +347,7 @@ func (i *MultiClusterApp) ToMultiClusterAppOutputWithContext(ctx context.Context
 // MultiClusterAppArrayInput is an input type that accepts MultiClusterAppArray and MultiClusterAppArrayOutput values.
 // You can construct a concrete instance of `MultiClusterAppArrayInput` via:
 //
-//          MultiClusterAppArray{ MultiClusterAppArgs{...} }
+//	MultiClusterAppArray{ MultiClusterAppArgs{...} }
 type MultiClusterAppArrayInput interface {
 	pulumi.Input
 
@@ -364,7 +372,7 @@ func (i MultiClusterAppArray) ToMultiClusterAppArrayOutputWithContext(ctx contex
 // MultiClusterAppMapInput is an input type that accepts MultiClusterAppMap and MultiClusterAppMapOutput values.
 // You can construct a concrete instance of `MultiClusterAppMapInput` via:
 //
-//          MultiClusterAppMap{ "key": MultiClusterAppArgs{...} }
+//	MultiClusterAppMap{ "key": MultiClusterAppArgs{...} }
 type MultiClusterAppMapInput interface {
 	pulumi.Input
 

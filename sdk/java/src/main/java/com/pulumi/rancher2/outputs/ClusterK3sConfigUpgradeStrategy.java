@@ -16,35 +16,24 @@ public final class ClusterK3sConfigUpgradeStrategy {
      * @return Drain server nodes. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean drainServerNodes;
+    private @Nullable Boolean drainServerNodes;
     /**
      * @return Drain worker nodes. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean drainWorkerNodes;
+    private @Nullable Boolean drainWorkerNodes;
     /**
      * @return Server concurrency. Default: `1` (int)
      * 
      */
-    private final @Nullable Integer serverConcurrency;
+    private @Nullable Integer serverConcurrency;
     /**
      * @return Worker concurrency. Default: `1` (int)
      * 
      */
-    private final @Nullable Integer workerConcurrency;
+    private @Nullable Integer workerConcurrency;
 
-    @CustomType.Constructor
-    private ClusterK3sConfigUpgradeStrategy(
-        @CustomType.Parameter("drainServerNodes") @Nullable Boolean drainServerNodes,
-        @CustomType.Parameter("drainWorkerNodes") @Nullable Boolean drainWorkerNodes,
-        @CustomType.Parameter("serverConcurrency") @Nullable Integer serverConcurrency,
-        @CustomType.Parameter("workerConcurrency") @Nullable Integer workerConcurrency) {
-        this.drainServerNodes = drainServerNodes;
-        this.drainWorkerNodes = drainWorkerNodes;
-        this.serverConcurrency = serverConcurrency;
-        this.workerConcurrency = workerConcurrency;
-    }
-
+    private ClusterK3sConfigUpgradeStrategy() {}
     /**
      * @return Drain server nodes. Default: `false` (bool)
      * 
@@ -81,17 +70,13 @@ public final class ClusterK3sConfigUpgradeStrategy {
     public static Builder builder(ClusterK3sConfigUpgradeStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean drainServerNodes;
         private @Nullable Boolean drainWorkerNodes;
         private @Nullable Integer serverConcurrency;
         private @Nullable Integer workerConcurrency;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterK3sConfigUpgradeStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.drainServerNodes = defaults.drainServerNodes;
@@ -100,23 +85,33 @@ public final class ClusterK3sConfigUpgradeStrategy {
     	      this.workerConcurrency = defaults.workerConcurrency;
         }
 
+        @CustomType.Setter
         public Builder drainServerNodes(@Nullable Boolean drainServerNodes) {
             this.drainServerNodes = drainServerNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder drainWorkerNodes(@Nullable Boolean drainWorkerNodes) {
             this.drainWorkerNodes = drainWorkerNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder serverConcurrency(@Nullable Integer serverConcurrency) {
             this.serverConcurrency = serverConcurrency;
             return this;
         }
+        @CustomType.Setter
         public Builder workerConcurrency(@Nullable Integer workerConcurrency) {
             this.workerConcurrency = workerConcurrency;
             return this;
-        }        public ClusterK3sConfigUpgradeStrategy build() {
-            return new ClusterK3sConfigUpgradeStrategy(drainServerNodes, drainWorkerNodes, serverConcurrency, workerConcurrency);
+        }
+        public ClusterK3sConfigUpgradeStrategy build() {
+            final var o = new ClusterK3sConfigUpgradeStrategy();
+            o.drainServerNodes = drainServerNodes;
+            o.drainWorkerNodes = drainWorkerNodes;
+            o.serverConcurrency = serverConcurrency;
+            o.workerConcurrency = workerConcurrency;
+            return o;
         }
     }
 }

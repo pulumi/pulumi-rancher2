@@ -456,7 +456,7 @@ func (i *AuthConfigActiveDirectory) ToAuthConfigActiveDirectoryOutputWithContext
 // AuthConfigActiveDirectoryArrayInput is an input type that accepts AuthConfigActiveDirectoryArray and AuthConfigActiveDirectoryArrayOutput values.
 // You can construct a concrete instance of `AuthConfigActiveDirectoryArrayInput` via:
 //
-//          AuthConfigActiveDirectoryArray{ AuthConfigActiveDirectoryArgs{...} }
+//	AuthConfigActiveDirectoryArray{ AuthConfigActiveDirectoryArgs{...} }
 type AuthConfigActiveDirectoryArrayInput interface {
 	pulumi.Input
 
@@ -481,7 +481,7 @@ func (i AuthConfigActiveDirectoryArray) ToAuthConfigActiveDirectoryArrayOutputWi
 // AuthConfigActiveDirectoryMapInput is an input type that accepts AuthConfigActiveDirectoryMap and AuthConfigActiveDirectoryMapOutput values.
 // You can construct a concrete instance of `AuthConfigActiveDirectoryMapInput` via:
 //
-//          AuthConfigActiveDirectoryMap{ "key": AuthConfigActiveDirectoryArgs{...} }
+//	AuthConfigActiveDirectoryMap{ "key": AuthConfigActiveDirectoryArgs{...} }
 type AuthConfigActiveDirectoryMapInput interface {
 	pulumi.Input
 

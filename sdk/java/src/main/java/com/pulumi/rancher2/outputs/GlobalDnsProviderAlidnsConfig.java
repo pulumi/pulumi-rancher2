@@ -13,21 +13,14 @@ public final class GlobalDnsProviderAlidnsConfig {
      * @return The AWS Access key (string)
      * 
      */
-    private final String accessKey;
+    private String accessKey;
     /**
      * @return The AWS Secret key (string)
      * 
      */
-    private final String secretKey;
+    private String secretKey;
 
-    @CustomType.Constructor
-    private GlobalDnsProviderAlidnsConfig(
-        @CustomType.Parameter("accessKey") String accessKey,
-        @CustomType.Parameter("secretKey") String secretKey) {
-        this.accessKey = accessKey;
-        this.secretKey = secretKey;
-    }
-
+    private GlobalDnsProviderAlidnsConfig() {}
     /**
      * @return The AWS Access key (string)
      * 
@@ -50,30 +43,32 @@ public final class GlobalDnsProviderAlidnsConfig {
     public static Builder builder(GlobalDnsProviderAlidnsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessKey;
         private String secretKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GlobalDnsProviderAlidnsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
     	      this.secretKey = defaults.secretKey;
         }
 
+        @CustomType.Setter
         public Builder accessKey(String accessKey) {
             this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(String secretKey) {
             this.secretKey = Objects.requireNonNull(secretKey);
             return this;
-        }        public GlobalDnsProviderAlidnsConfig build() {
-            return new GlobalDnsProviderAlidnsConfig(accessKey, secretKey);
+        }
+        public GlobalDnsProviderAlidnsConfig build() {
+            final var o = new GlobalDnsProviderAlidnsConfig();
+            o.accessKey = accessKey;
+            o.secretKey = secretKey;
+            return o;
         }
     }
 }

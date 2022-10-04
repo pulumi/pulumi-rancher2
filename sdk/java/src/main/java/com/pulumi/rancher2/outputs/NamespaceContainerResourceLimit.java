@@ -15,35 +15,24 @@ public final class NamespaceContainerResourceLimit {
      * @return Limit for limits cpu in namespace (string)
      * 
      */
-    private final @Nullable String limitsCpu;
+    private @Nullable String limitsCpu;
     /**
      * @return Limit for limits memory in namespace (string)
      * 
      */
-    private final @Nullable String limitsMemory;
+    private @Nullable String limitsMemory;
     /**
      * @return Limit for requests cpu in namespace (string)
      * 
      */
-    private final @Nullable String requestsCpu;
+    private @Nullable String requestsCpu;
     /**
      * @return Limit for requests memory in namespace (string)
      * 
      */
-    private final @Nullable String requestsMemory;
+    private @Nullable String requestsMemory;
 
-    @CustomType.Constructor
-    private NamespaceContainerResourceLimit(
-        @CustomType.Parameter("limitsCpu") @Nullable String limitsCpu,
-        @CustomType.Parameter("limitsMemory") @Nullable String limitsMemory,
-        @CustomType.Parameter("requestsCpu") @Nullable String requestsCpu,
-        @CustomType.Parameter("requestsMemory") @Nullable String requestsMemory) {
-        this.limitsCpu = limitsCpu;
-        this.limitsMemory = limitsMemory;
-        this.requestsCpu = requestsCpu;
-        this.requestsMemory = requestsMemory;
-    }
-
+    private NamespaceContainerResourceLimit() {}
     /**
      * @return Limit for limits cpu in namespace (string)
      * 
@@ -80,17 +69,13 @@ public final class NamespaceContainerResourceLimit {
     public static Builder builder(NamespaceContainerResourceLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String limitsCpu;
         private @Nullable String limitsMemory;
         private @Nullable String requestsCpu;
         private @Nullable String requestsMemory;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NamespaceContainerResourceLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.limitsCpu = defaults.limitsCpu;
@@ -99,23 +84,33 @@ public final class NamespaceContainerResourceLimit {
     	      this.requestsMemory = defaults.requestsMemory;
         }
 
+        @CustomType.Setter
         public Builder limitsCpu(@Nullable String limitsCpu) {
             this.limitsCpu = limitsCpu;
             return this;
         }
+        @CustomType.Setter
         public Builder limitsMemory(@Nullable String limitsMemory) {
             this.limitsMemory = limitsMemory;
             return this;
         }
+        @CustomType.Setter
         public Builder requestsCpu(@Nullable String requestsCpu) {
             this.requestsCpu = requestsCpu;
             return this;
         }
+        @CustomType.Setter
         public Builder requestsMemory(@Nullable String requestsMemory) {
             this.requestsMemory = requestsMemory;
             return this;
-        }        public NamespaceContainerResourceLimit build() {
-            return new NamespaceContainerResourceLimit(limitsCpu, limitsMemory, requestsCpu, requestsMemory);
+        }
+        public NamespaceContainerResourceLimit build() {
+            final var o = new NamespaceContainerResourceLimit();
+            o.limitsCpu = limitsCpu;
+            o.limitsMemory = limitsMemory;
+            o.requestsCpu = requestsCpu;
+            o.requestsMemory = requestsMemory;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderDisk {
      * @return (string)
      * 
      */
-    private final @Nullable String scsiControllerType;
+    private @Nullable String scsiControllerType;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderVsphereCloudProviderDisk(@CustomType.Parameter("scsiControllerType") @Nullable String scsiControllerType) {
-        this.scsiControllerType = scsiControllerType;
-    }
-
+    private ClusterRkeConfigCloudProviderVsphereCloudProviderDisk() {}
     /**
      * @return (string)
      * 
@@ -37,24 +33,24 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderDisk {
     public static Builder builder(ClusterRkeConfigCloudProviderVsphereCloudProviderDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String scsiControllerType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderVsphereCloudProviderDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.scsiControllerType = defaults.scsiControllerType;
         }
 
+        @CustomType.Setter
         public Builder scsiControllerType(@Nullable String scsiControllerType) {
             this.scsiControllerType = scsiControllerType;
             return this;
-        }        public ClusterRkeConfigCloudProviderVsphereCloudProviderDisk build() {
-            return new ClusterRkeConfigCloudProviderVsphereCloudProviderDisk(scsiControllerType);
+        }
+        public ClusterRkeConfigCloudProviderVsphereCloudProviderDisk build() {
+            final var o = new ClusterRkeConfigCloudProviderVsphereCloudProviderDisk();
+            o.scsiControllerType = scsiControllerType;
+            return o;
         }
     }
 }

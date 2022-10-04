@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterV2RkeConfigEtcdSnapshotCreate {
-    private final Integer generation;
+    private Integer generation;
 
-    @CustomType.Constructor
-    private GetClusterV2RkeConfigEtcdSnapshotCreate(@CustomType.Parameter("generation") Integer generation) {
-        this.generation = generation;
-    }
-
+    private GetClusterV2RkeConfigEtcdSnapshotCreate() {}
     public Integer generation() {
         return this.generation;
     }
@@ -27,24 +23,24 @@ public final class GetClusterV2RkeConfigEtcdSnapshotCreate {
     public static Builder builder(GetClusterV2RkeConfigEtcdSnapshotCreate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer generation;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2RkeConfigEtcdSnapshotCreate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.generation = defaults.generation;
         }
 
+        @CustomType.Setter
         public Builder generation(Integer generation) {
             this.generation = Objects.requireNonNull(generation);
             return this;
-        }        public GetClusterV2RkeConfigEtcdSnapshotCreate build() {
-            return new GetClusterV2RkeConfigEtcdSnapshotCreate(generation);
+        }
+        public GetClusterV2RkeConfigEtcdSnapshotCreate build() {
+            final var o = new GetClusterV2RkeConfigEtcdSnapshotCreate();
+            o.generation = generation;
+            return o;
         }
     }
 }

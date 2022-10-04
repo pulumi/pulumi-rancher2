@@ -17,21 +17,14 @@ public final class ProjectProjectMonitoringInput {
      * @return Key/value answers for monitor input (map)
      * 
      */
-    private final @Nullable Map<String,Object> answers;
+    private @Nullable Map<String,Object> answers;
     /**
      * @return rancher-monitoring chart version (string)
      * 
      */
-    private final @Nullable String version;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private ProjectProjectMonitoringInput(
-        @CustomType.Parameter("answers") @Nullable Map<String,Object> answers,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.answers = answers;
-        this.version = version;
-    }
-
+    private ProjectProjectMonitoringInput() {}
     /**
      * @return Key/value answers for monitor input (map)
      * 
@@ -54,30 +47,32 @@ public final class ProjectProjectMonitoringInput {
     public static Builder builder(ProjectProjectMonitoringInput defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,Object> answers;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ProjectProjectMonitoringInput defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.answers = defaults.answers;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder answers(@Nullable Map<String,Object> answers) {
             this.answers = answers;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public ProjectProjectMonitoringInput build() {
-            return new ProjectProjectMonitoringInput(answers, version);
+        }
+        public ProjectProjectMonitoringInput build() {
+            final var o = new ProjectProjectMonitoringInput();
+            o.answers = answers;
+            o.version = version;
+            return o;
         }
     }
 }

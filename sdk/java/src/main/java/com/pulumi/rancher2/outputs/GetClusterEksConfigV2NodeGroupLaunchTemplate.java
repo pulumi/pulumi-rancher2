@@ -16,24 +16,15 @@ public final class GetClusterEksConfigV2NodeGroupLaunchTemplate {
      * @return (Computed) The ID of the resource (string)
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the Cluster (string)
      * 
      */
-    private final String name;
-    private final @Nullable Integer version;
+    private String name;
+    private @Nullable Integer version;
 
-    @CustomType.Constructor
-    private GetClusterEksConfigV2NodeGroupLaunchTemplate(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("version") @Nullable Integer version) {
-        this.id = id;
-        this.name = name;
-        this.version = version;
-    }
-
+    private GetClusterEksConfigV2NodeGroupLaunchTemplate() {}
     /**
      * @return (Computed) The ID of the resource (string)
      * 
@@ -59,16 +50,12 @@ public final class GetClusterEksConfigV2NodeGroupLaunchTemplate {
     public static Builder builder(GetClusterEksConfigV2NodeGroupLaunchTemplate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String name;
         private @Nullable Integer version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterEksConfigV2NodeGroupLaunchTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -76,19 +63,27 @@ public final class GetClusterEksConfigV2NodeGroupLaunchTemplate {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable Integer version) {
             this.version = version;
             return this;
-        }        public GetClusterEksConfigV2NodeGroupLaunchTemplate build() {
-            return new GetClusterEksConfigV2NodeGroupLaunchTemplate(id, name, version);
+        }
+        public GetClusterEksConfigV2NodeGroupLaunchTemplate build() {
+            final var o = new GetClusterEksConfigV2NodeGroupLaunchTemplate();
+            o.id = id;
+            o.name = name;
+            o.version = version;
+            return o;
         }
     }
 }

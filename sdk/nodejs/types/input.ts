@@ -4767,16 +4767,16 @@ export interface EtcdBackupBackupConfigS3BackupConfig {
     secretKey?: pulumi.Input<string>;
 }
 
-export interface GetNotifierDingtalkConfig {
-    proxyUrl?: string;
-    secret?: string;
-    url: string;
-}
-
 export interface GetNotifierDingtalkConfigArgs {
     proxyUrl?: pulumi.Input<string>;
     secret?: pulumi.Input<string>;
     url: pulumi.Input<string>;
+}
+
+export interface GetNotifierDingtalkConfig {
+    proxyUrl?: string;
+    secret?: string;
+    url: string;
 }
 
 export interface GetNotifierMsteamsConfig {
@@ -4821,14 +4821,14 @@ export interface GetPodSecurityPolicyTemplateAllowedHostPathArgs {
     readOnly?: pulumi.Input<boolean>;
 }
 
-export interface GetPodSecurityPolicyTemplateFsGroupArgs {
-    ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateFsGroupRangeArgs>[]>;
-    rule?: pulumi.Input<string>;
-}
-
 export interface GetPodSecurityPolicyTemplateFsGroup {
     ranges?: inputs.GetPodSecurityPolicyTemplateFsGroupRange[];
     rule?: string;
+}
+
+export interface GetPodSecurityPolicyTemplateFsGroupArgs {
+    ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateFsGroupRangeArgs>[]>;
+    rule?: pulumi.Input<string>;
 }
 
 export interface GetPodSecurityPolicyTemplateFsGroupRange {
@@ -4841,14 +4841,14 @@ export interface GetPodSecurityPolicyTemplateFsGroupRangeArgs {
     min: pulumi.Input<number>;
 }
 
-export interface GetPodSecurityPolicyTemplateHostPortArgs {
-    max: pulumi.Input<number>;
-    min: pulumi.Input<number>;
-}
-
 export interface GetPodSecurityPolicyTemplateHostPort {
     max: number;
     min: number;
+}
+
+export interface GetPodSecurityPolicyTemplateHostPortArgs {
+    max: pulumi.Input<number>;
+    min: pulumi.Input<number>;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsGroup {
@@ -4861,24 +4861,24 @@ export interface GetPodSecurityPolicyTemplateRunAsGroupArgs {
     rule: pulumi.Input<string>;
 }
 
-export interface GetPodSecurityPolicyTemplateRunAsGroupRangeArgs {
-    max: pulumi.Input<number>;
-    min: pulumi.Input<number>;
-}
-
 export interface GetPodSecurityPolicyTemplateRunAsGroupRange {
     max: number;
     min: number;
 }
 
-export interface GetPodSecurityPolicyTemplateRunAsUserArgs {
-    ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateRunAsUserRangeArgs>[]>;
-    rule: pulumi.Input<string>;
+export interface GetPodSecurityPolicyTemplateRunAsGroupRangeArgs {
+    max: pulumi.Input<number>;
+    min: pulumi.Input<number>;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsUser {
     ranges?: inputs.GetPodSecurityPolicyTemplateRunAsUserRange[];
     rule: string;
+}
+
+export interface GetPodSecurityPolicyTemplateRunAsUserArgs {
+    ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateRunAsUserRangeArgs>[]>;
+    rule: pulumi.Input<string>;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsUserRange {
@@ -4901,14 +4901,14 @@ export interface GetPodSecurityPolicyTemplateRuntimeClassArgs {
     defaultRuntimeClassName?: pulumi.Input<string>;
 }
 
-export interface GetPodSecurityPolicyTemplateSeLinux {
-    rule: string;
-    seLinuxOption?: inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption;
-}
-
 export interface GetPodSecurityPolicyTemplateSeLinuxArgs {
     rule: pulumi.Input<string>;
     seLinuxOption?: pulumi.Input<inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs>;
+}
+
+export interface GetPodSecurityPolicyTemplateSeLinux {
+    rule: string;
+    seLinuxOption?: inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption;
 }
 
 export interface GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
@@ -7546,3 +7546,4 @@ export interface RoleTemplateRule {
      */
     verbs?: pulumi.Input<pulumi.Input<string>[]>;
 }
+

@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute {
-    private final String routerId;
+    private String routerId;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute(@CustomType.Parameter("routerId") String routerId) {
-        this.routerId = routerId;
-    }
-
+    private GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute() {}
     public String routerId() {
         return this.routerId;
     }
@@ -27,24 +23,24 @@ public final class GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute {
     public static Builder builder(GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String routerId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.routerId = defaults.routerId;
         }
 
+        @CustomType.Setter
         public Builder routerId(String routerId) {
             this.routerId = Objects.requireNonNull(routerId);
             return this;
-        }        public GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute build() {
-            return new GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute(routerId);
+        }
+        public GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute build() {
+            final var o = new GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute();
+            o.routerId = routerId;
+            return o;
         }
     }
 }

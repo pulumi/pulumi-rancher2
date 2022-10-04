@@ -15,21 +15,14 @@ public final class ClusterGkeConfigV2NodePoolManagement {
      * @return Enable GKE node pool config management auto repair. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean autoRepair;
+    private @Nullable Boolean autoRepair;
     /**
      * @return Enable GKE node pool config management auto upgrade. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean autoUpgrade;
+    private @Nullable Boolean autoUpgrade;
 
-    @CustomType.Constructor
-    private ClusterGkeConfigV2NodePoolManagement(
-        @CustomType.Parameter("autoRepair") @Nullable Boolean autoRepair,
-        @CustomType.Parameter("autoUpgrade") @Nullable Boolean autoUpgrade) {
-        this.autoRepair = autoRepair;
-        this.autoUpgrade = autoUpgrade;
-    }
-
+    private ClusterGkeConfigV2NodePoolManagement() {}
     /**
      * @return Enable GKE node pool config management auto repair. Default: `false` (bool)
      * 
@@ -52,30 +45,32 @@ public final class ClusterGkeConfigV2NodePoolManagement {
     public static Builder builder(ClusterGkeConfigV2NodePoolManagement defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean autoRepair;
         private @Nullable Boolean autoUpgrade;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterGkeConfigV2NodePoolManagement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoRepair = defaults.autoRepair;
     	      this.autoUpgrade = defaults.autoUpgrade;
         }
 
+        @CustomType.Setter
         public Builder autoRepair(@Nullable Boolean autoRepair) {
             this.autoRepair = autoRepair;
             return this;
         }
+        @CustomType.Setter
         public Builder autoUpgrade(@Nullable Boolean autoUpgrade) {
             this.autoUpgrade = autoUpgrade;
             return this;
-        }        public ClusterGkeConfigV2NodePoolManagement build() {
-            return new ClusterGkeConfigV2NodePoolManagement(autoRepair, autoUpgrade);
+        }
+        public ClusterGkeConfigV2NodePoolManagement build() {
+            final var o = new ClusterGkeConfigV2NodePoolManagement();
+            o.autoRepair = autoRepair;
+            o.autoUpgrade = autoUpgrade;
+            return o;
         }
     }
 }

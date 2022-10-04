@@ -15,49 +15,34 @@ public final class NotifierWechatConfig {
      * @return Wechat agent ID (string)
      * 
      */
-    private final String agent;
+    private String agent;
     /**
      * @return Wechat corporation ID (string)
      * 
      */
-    private final String corp;
+    private String corp;
     /**
      * @return Wechat default recipient (string)
      * 
      */
-    private final String defaultRecipient;
+    private String defaultRecipient;
     /**
      * @return Wechat proxy url (string)
      * 
      */
-    private final @Nullable String proxyUrl;
+    private @Nullable String proxyUrl;
     /**
      * @return Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
      * 
      */
-    private final @Nullable String recipientType;
+    private @Nullable String recipientType;
     /**
      * @return Wechat agent ID (string)
      * 
      */
-    private final String secret;
+    private String secret;
 
-    @CustomType.Constructor
-    private NotifierWechatConfig(
-        @CustomType.Parameter("agent") String agent,
-        @CustomType.Parameter("corp") String corp,
-        @CustomType.Parameter("defaultRecipient") String defaultRecipient,
-        @CustomType.Parameter("proxyUrl") @Nullable String proxyUrl,
-        @CustomType.Parameter("recipientType") @Nullable String recipientType,
-        @CustomType.Parameter("secret") String secret) {
-        this.agent = agent;
-        this.corp = corp;
-        this.defaultRecipient = defaultRecipient;
-        this.proxyUrl = proxyUrl;
-        this.recipientType = recipientType;
-        this.secret = secret;
-    }
-
+    private NotifierWechatConfig() {}
     /**
      * @return Wechat agent ID (string)
      * 
@@ -108,7 +93,7 @@ public final class NotifierWechatConfig {
     public static Builder builder(NotifierWechatConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String agent;
         private String corp;
@@ -116,11 +101,7 @@ public final class NotifierWechatConfig {
         private @Nullable String proxyUrl;
         private @Nullable String recipientType;
         private String secret;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NotifierWechatConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agent = defaults.agent;
@@ -131,31 +112,45 @@ public final class NotifierWechatConfig {
     	      this.secret = defaults.secret;
         }
 
+        @CustomType.Setter
         public Builder agent(String agent) {
             this.agent = Objects.requireNonNull(agent);
             return this;
         }
+        @CustomType.Setter
         public Builder corp(String corp) {
             this.corp = Objects.requireNonNull(corp);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultRecipient(String defaultRecipient) {
             this.defaultRecipient = Objects.requireNonNull(defaultRecipient);
             return this;
         }
+        @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
             this.proxyUrl = proxyUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder recipientType(@Nullable String recipientType) {
             this.recipientType = recipientType;
             return this;
         }
+        @CustomType.Setter
         public Builder secret(String secret) {
             this.secret = Objects.requireNonNull(secret);
             return this;
-        }        public NotifierWechatConfig build() {
-            return new NotifierWechatConfig(agent, corp, defaultRecipient, proxyUrl, recipientType, secret);
+        }
+        public NotifierWechatConfig build() {
+            final var o = new NotifierWechatConfig();
+            o.agent = agent;
+            o.corp = corp;
+            o.defaultRecipient = defaultRecipient;
+            o.proxyUrl = proxyUrl;
+            o.recipientType = recipientType;
+            o.secret = secret;
+            return o;
         }
     }
 }

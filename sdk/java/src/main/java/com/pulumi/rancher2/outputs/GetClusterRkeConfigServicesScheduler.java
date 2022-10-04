@@ -13,23 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigServicesScheduler {
-    private final Map<String,Object> extraArgs;
-    private final @Nullable List<String> extraBinds;
-    private final @Nullable List<String> extraEnvs;
-    private final String image;
+    private Map<String,Object> extraArgs;
+    private @Nullable List<String> extraBinds;
+    private @Nullable List<String> extraEnvs;
+    private String image;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigServicesScheduler(
-        @CustomType.Parameter("extraArgs") Map<String,Object> extraArgs,
-        @CustomType.Parameter("extraBinds") @Nullable List<String> extraBinds,
-        @CustomType.Parameter("extraEnvs") @Nullable List<String> extraEnvs,
-        @CustomType.Parameter("image") String image) {
-        this.extraArgs = extraArgs;
-        this.extraBinds = extraBinds;
-        this.extraEnvs = extraEnvs;
-        this.image = image;
-    }
-
+    private GetClusterRkeConfigServicesScheduler() {}
     public Map<String,Object> extraArgs() {
         return this.extraArgs;
     }
@@ -50,17 +39,13 @@ public final class GetClusterRkeConfigServicesScheduler {
     public static Builder builder(GetClusterRkeConfigServicesScheduler defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> extraArgs;
         private @Nullable List<String> extraBinds;
         private @Nullable List<String> extraEnvs;
         private String image;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigServicesScheduler defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.extraArgs = defaults.extraArgs;
@@ -69,10 +54,12 @@ public final class GetClusterRkeConfigServicesScheduler {
     	      this.image = defaults.image;
         }
 
+        @CustomType.Setter
         public Builder extraArgs(Map<String,Object> extraArgs) {
             this.extraArgs = Objects.requireNonNull(extraArgs);
             return this;
         }
+        @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
             this.extraBinds = extraBinds;
             return this;
@@ -80,6 +67,7 @@ public final class GetClusterRkeConfigServicesScheduler {
         public Builder extraBinds(String... extraBinds) {
             return extraBinds(List.of(extraBinds));
         }
+        @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
             this.extraEnvs = extraEnvs;
             return this;
@@ -87,11 +75,18 @@ public final class GetClusterRkeConfigServicesScheduler {
         public Builder extraEnvs(String... extraEnvs) {
             return extraEnvs(List.of(extraEnvs));
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
-        }        public GetClusterRkeConfigServicesScheduler build() {
-            return new GetClusterRkeConfigServicesScheduler(extraArgs, extraBinds, extraEnvs, image);
+        }
+        public GetClusterRkeConfigServicesScheduler build() {
+            final var o = new GetClusterRkeConfigServicesScheduler();
+            o.extraArgs = extraArgs;
+            o.extraBinds = extraBinds;
+            o.extraEnvs = extraEnvs;
+            o.image = image;
+            return o;
         }
     }
 }

@@ -15,42 +15,29 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
      * @return (string)
      * 
      */
-    private final String datacenter;
+    private String datacenter;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String defaultDatastore;
+    private @Nullable String defaultDatastore;
     /**
      * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
      * 
      */
-    private final String folder;
+    private String folder;
     /**
      * @return (string)
      * 
      */
-    private final @Nullable String resourcepoolPath;
+    private @Nullable String resourcepoolPath;
     /**
      * @return (string)
      * 
      */
-    private final String server;
+    private String server;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace(
-        @CustomType.Parameter("datacenter") String datacenter,
-        @CustomType.Parameter("defaultDatastore") @Nullable String defaultDatastore,
-        @CustomType.Parameter("folder") String folder,
-        @CustomType.Parameter("resourcepoolPath") @Nullable String resourcepoolPath,
-        @CustomType.Parameter("server") String server) {
-        this.datacenter = datacenter;
-        this.defaultDatastore = defaultDatastore;
-        this.folder = folder;
-        this.resourcepoolPath = resourcepoolPath;
-        this.server = server;
-    }
-
+    private ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace() {}
     /**
      * @return (string)
      * 
@@ -94,18 +81,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
     public static Builder builder(ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datacenter;
         private @Nullable String defaultDatastore;
         private String folder;
         private @Nullable String resourcepoolPath;
         private String server;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenter = defaults.datacenter;
@@ -115,27 +98,39 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
     	      this.server = defaults.server;
         }
 
+        @CustomType.Setter
         public Builder datacenter(String datacenter) {
             this.datacenter = Objects.requireNonNull(datacenter);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultDatastore(@Nullable String defaultDatastore) {
             this.defaultDatastore = defaultDatastore;
             return this;
         }
+        @CustomType.Setter
         public Builder folder(String folder) {
             this.folder = Objects.requireNonNull(folder);
             return this;
         }
+        @CustomType.Setter
         public Builder resourcepoolPath(@Nullable String resourcepoolPath) {
             this.resourcepoolPath = resourcepoolPath;
             return this;
         }
+        @CustomType.Setter
         public Builder server(String server) {
             this.server = Objects.requireNonNull(server);
             return this;
-        }        public ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace build() {
-            return new ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace(datacenter, defaultDatastore, folder, resourcepoolPath, server);
+        }
+        public ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace build() {
+            final var o = new ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace();
+            o.datacenter = datacenter;
+            o.defaultDatastore = defaultDatastore;
+            o.folder = folder;
+            o.resourcepoolPath = resourcepoolPath;
+            o.server = server;
+            return o;
         }
     }
 }

@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider {
-    private final @Nullable String iface;
+    private @Nullable String iface;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider(@CustomType.Parameter("iface") @Nullable String iface) {
-        this.iface = iface;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider() {}
     public Optional<String> iface() {
         return Optional.ofNullable(this.iface);
     }
@@ -29,24 +25,24 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkF
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String iface;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iface = defaults.iface;
         }
 
+        @CustomType.Setter
         public Builder iface(@Nullable String iface) {
             this.iface = iface;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider(iface);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider();
+            o.iface = iface;
+            return o;
         }
     }
 }

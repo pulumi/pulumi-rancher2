@@ -15,42 +15,29 @@ public final class RoleTempalteRule {
      * @return Policy rule api groups (list)
      * 
      */
-    private final @Nullable List<String> apiGroups;
+    private @Nullable List<String> apiGroups;
     /**
      * @return Policy rule non resource urls (list)
      * 
      */
-    private final @Nullable List<String> nonResourceUrls;
+    private @Nullable List<String> nonResourceUrls;
     /**
      * @return Policy rule resource names (list)
      * 
      */
-    private final @Nullable List<String> resourceNames;
+    private @Nullable List<String> resourceNames;
     /**
      * @return Policy rule resources (list)
      * 
      */
-    private final @Nullable List<String> resources;
+    private @Nullable List<String> resources;
     /**
      * @return Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
      * 
      */
-    private final @Nullable List<String> verbs;
+    private @Nullable List<String> verbs;
 
-    @CustomType.Constructor
-    private RoleTempalteRule(
-        @CustomType.Parameter("apiGroups") @Nullable List<String> apiGroups,
-        @CustomType.Parameter("nonResourceUrls") @Nullable List<String> nonResourceUrls,
-        @CustomType.Parameter("resourceNames") @Nullable List<String> resourceNames,
-        @CustomType.Parameter("resources") @Nullable List<String> resources,
-        @CustomType.Parameter("verbs") @Nullable List<String> verbs) {
-        this.apiGroups = apiGroups;
-        this.nonResourceUrls = nonResourceUrls;
-        this.resourceNames = resourceNames;
-        this.resources = resources;
-        this.verbs = verbs;
-    }
-
+    private RoleTempalteRule() {}
     /**
      * @return Policy rule api groups (list)
      * 
@@ -94,18 +81,14 @@ public final class RoleTempalteRule {
     public static Builder builder(RoleTempalteRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> apiGroups;
         private @Nullable List<String> nonResourceUrls;
         private @Nullable List<String> resourceNames;
         private @Nullable List<String> resources;
         private @Nullable List<String> verbs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RoleTempalteRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiGroups = defaults.apiGroups;
@@ -115,6 +98,7 @@ public final class RoleTempalteRule {
     	      this.verbs = defaults.verbs;
         }
 
+        @CustomType.Setter
         public Builder apiGroups(@Nullable List<String> apiGroups) {
             this.apiGroups = apiGroups;
             return this;
@@ -122,6 +106,7 @@ public final class RoleTempalteRule {
         public Builder apiGroups(String... apiGroups) {
             return apiGroups(List.of(apiGroups));
         }
+        @CustomType.Setter
         public Builder nonResourceUrls(@Nullable List<String> nonResourceUrls) {
             this.nonResourceUrls = nonResourceUrls;
             return this;
@@ -129,6 +114,7 @@ public final class RoleTempalteRule {
         public Builder nonResourceUrls(String... nonResourceUrls) {
             return nonResourceUrls(List.of(nonResourceUrls));
         }
+        @CustomType.Setter
         public Builder resourceNames(@Nullable List<String> resourceNames) {
             this.resourceNames = resourceNames;
             return this;
@@ -136,6 +122,7 @@ public final class RoleTempalteRule {
         public Builder resourceNames(String... resourceNames) {
             return resourceNames(List.of(resourceNames));
         }
+        @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
             this.resources = resources;
             return this;
@@ -143,14 +130,22 @@ public final class RoleTempalteRule {
         public Builder resources(String... resources) {
             return resources(List.of(resources));
         }
+        @CustomType.Setter
         public Builder verbs(@Nullable List<String> verbs) {
             this.verbs = verbs;
             return this;
         }
         public Builder verbs(String... verbs) {
             return verbs(List.of(verbs));
-        }        public RoleTempalteRule build() {
-            return new RoleTempalteRule(apiGroups, nonResourceUrls, resourceNames, resources, verbs);
+        }
+        public RoleTempalteRule build() {
+            final var o = new RoleTempalteRule();
+            o.apiGroups = apiGroups;
+            o.nonResourceUrls = nonResourceUrls;
+            o.resourceNames = resourceNames;
+            o.resources = resources;
+            o.verbs = verbs;
+            return o;
         }
     }
 }

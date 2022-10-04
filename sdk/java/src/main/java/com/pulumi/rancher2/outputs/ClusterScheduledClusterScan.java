@@ -17,28 +17,19 @@ public final class ClusterScheduledClusterScan {
      * @return Enable scheduled cluster scan. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return Cluster scan config (List maxitems:1)
      * 
      */
-    private final ClusterScheduledClusterScanScanConfig scanConfig;
+    private ClusterScheduledClusterScanScanConfig scanConfig;
     /**
      * @return Cluster scan schedule config (list maxitems:1)
      * 
      */
-    private final ClusterScheduledClusterScanScheduleConfig scheduleConfig;
+    private ClusterScheduledClusterScanScheduleConfig scheduleConfig;
 
-    @CustomType.Constructor
-    private ClusterScheduledClusterScan(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("scanConfig") ClusterScheduledClusterScanScanConfig scanConfig,
-        @CustomType.Parameter("scheduleConfig") ClusterScheduledClusterScanScheduleConfig scheduleConfig) {
-        this.enabled = enabled;
-        this.scanConfig = scanConfig;
-        this.scheduleConfig = scheduleConfig;
-    }
-
+    private ClusterScheduledClusterScan() {}
     /**
      * @return Enable scheduled cluster scan. Default: `false` (bool)
      * 
@@ -68,16 +59,12 @@ public final class ClusterScheduledClusterScan {
     public static Builder builder(ClusterScheduledClusterScan defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private ClusterScheduledClusterScanScanConfig scanConfig;
         private ClusterScheduledClusterScanScheduleConfig scheduleConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterScheduledClusterScan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -85,19 +72,27 @@ public final class ClusterScheduledClusterScan {
     	      this.scheduleConfig = defaults.scheduleConfig;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder scanConfig(ClusterScheduledClusterScanScanConfig scanConfig) {
             this.scanConfig = Objects.requireNonNull(scanConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduleConfig(ClusterScheduledClusterScanScheduleConfig scheduleConfig) {
             this.scheduleConfig = Objects.requireNonNull(scheduleConfig);
             return this;
-        }        public ClusterScheduledClusterScan build() {
-            return new ClusterScheduledClusterScan(enabled, scanConfig, scheduleConfig);
+        }
+        public ClusterScheduledClusterScan build() {
+            final var o = new ClusterScheduledClusterScan();
+            o.enabled = enabled;
+            o.scanConfig = scanConfig;
+            o.scheduleConfig = scheduleConfig;
+            return o;
         }
     }
 }

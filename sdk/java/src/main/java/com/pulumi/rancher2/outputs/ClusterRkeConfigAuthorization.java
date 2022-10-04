@@ -17,21 +17,14 @@ public final class ClusterRkeConfigAuthorization {
      * @return The AKS node group mode. Default: `System` (string)
      * 
      */
-    private final @Nullable String mode;
+    private @Nullable String mode;
     /**
      * @return RKE options for network (map)
      * 
      */
-    private final @Nullable Map<String,Object> options;
+    private @Nullable Map<String,Object> options;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigAuthorization(
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("options") @Nullable Map<String,Object> options) {
-        this.mode = mode;
-        this.options = options;
-    }
-
+    private ClusterRkeConfigAuthorization() {}
     /**
      * @return The AKS node group mode. Default: `System` (string)
      * 
@@ -54,30 +47,32 @@ public final class ClusterRkeConfigAuthorization {
     public static Builder builder(ClusterRkeConfigAuthorization defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String mode;
         private @Nullable Map<String,Object> options;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mode = defaults.mode;
     	      this.options = defaults.options;
         }
 
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder options(@Nullable Map<String,Object> options) {
             this.options = options;
             return this;
-        }        public ClusterRkeConfigAuthorization build() {
-            return new ClusterRkeConfigAuthorization(mode, options);
+        }
+        public ClusterRkeConfigAuthorization build() {
+            final var o = new ClusterRkeConfigAuthorization();
+            o.mode = mode;
+            o.options = options;
+            return o;
         }
     }
 }

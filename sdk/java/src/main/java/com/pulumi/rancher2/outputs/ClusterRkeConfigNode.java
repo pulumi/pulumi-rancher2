@@ -19,91 +19,64 @@ public final class ClusterRkeConfigNode {
      * @return Address ip for node (string)
      * 
      */
-    private final String address;
+    private String address;
     /**
      * @return Docker socket for node (string)
      * 
      */
-    private final @Nullable String dockerSocket;
+    private @Nullable String dockerSocket;
     /**
      * @return Hostname override for node (string)
      * 
      */
-    private final @Nullable String hostnameOverride;
+    private @Nullable String hostnameOverride;
     /**
      * @return Internal ip for node (string)
      * 
      */
-    private final @Nullable String internalAddress;
+    private @Nullable String internalAddress;
     /**
      * @return Labels for cluster registration token object (map)
      * 
      */
-    private final @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,Object> labels;
     /**
      * @return Id for the node (string)
      * 
      */
-    private final @Nullable String nodeId;
+    private @Nullable String nodeId;
     /**
      * @return Port for node. Default `22` (string)
      * 
      */
-    private final @Nullable String port;
+    private @Nullable String port;
     /**
      * @return Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
      * 
      */
-    private final List<String> roles;
+    private List<String> roles;
     /**
      * @return Use ssh agent auth. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean sshAgentAuth;
+    private @Nullable Boolean sshAgentAuth;
     /**
      * @return Node SSH private key (string)
      * 
      */
-    private final @Nullable String sshKey;
+    private @Nullable String sshKey;
     /**
      * @return Node SSH private key path (string)
      * 
      */
-    private final @Nullable String sshKeyPath;
+    private @Nullable String sshKeyPath;
     /**
      * @return Registry user (string)
      * 
      */
-    private final String user;
+    private String user;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigNode(
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("dockerSocket") @Nullable String dockerSocket,
-        @CustomType.Parameter("hostnameOverride") @Nullable String hostnameOverride,
-        @CustomType.Parameter("internalAddress") @Nullable String internalAddress,
-        @CustomType.Parameter("labels") @Nullable Map<String,Object> labels,
-        @CustomType.Parameter("nodeId") @Nullable String nodeId,
-        @CustomType.Parameter("port") @Nullable String port,
-        @CustomType.Parameter("roles") List<String> roles,
-        @CustomType.Parameter("sshAgentAuth") @Nullable Boolean sshAgentAuth,
-        @CustomType.Parameter("sshKey") @Nullable String sshKey,
-        @CustomType.Parameter("sshKeyPath") @Nullable String sshKeyPath,
-        @CustomType.Parameter("user") String user) {
-        this.address = address;
-        this.dockerSocket = dockerSocket;
-        this.hostnameOverride = hostnameOverride;
-        this.internalAddress = internalAddress;
-        this.labels = labels;
-        this.nodeId = nodeId;
-        this.port = port;
-        this.roles = roles;
-        this.sshAgentAuth = sshAgentAuth;
-        this.sshKey = sshKey;
-        this.sshKeyPath = sshKeyPath;
-        this.user = user;
-    }
-
+    private ClusterRkeConfigNode() {}
     /**
      * @return Address ip for node (string)
      * 
@@ -196,7 +169,7 @@ public final class ClusterRkeConfigNode {
     public static Builder builder(ClusterRkeConfigNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
         private @Nullable String dockerSocket;
@@ -210,11 +183,7 @@ public final class ClusterRkeConfigNode {
         private @Nullable String sshKey;
         private @Nullable String sshKeyPath;
         private String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -231,34 +200,42 @@ public final class ClusterRkeConfigNode {
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerSocket(@Nullable String dockerSocket) {
             this.dockerSocket = dockerSocket;
             return this;
         }
+        @CustomType.Setter
         public Builder hostnameOverride(@Nullable String hostnameOverride) {
             this.hostnameOverride = hostnameOverride;
             return this;
         }
+        @CustomType.Setter
         public Builder internalAddress(@Nullable String internalAddress) {
             this.internalAddress = internalAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder roles(List<String> roles) {
             this.roles = Objects.requireNonNull(roles);
             return this;
@@ -266,23 +243,41 @@ public final class ClusterRkeConfigNode {
         public Builder roles(String... roles) {
             return roles(List.of(roles));
         }
+        @CustomType.Setter
         public Builder sshAgentAuth(@Nullable Boolean sshAgentAuth) {
             this.sshAgentAuth = sshAgentAuth;
             return this;
         }
+        @CustomType.Setter
         public Builder sshKey(@Nullable String sshKey) {
             this.sshKey = sshKey;
             return this;
         }
+        @CustomType.Setter
         public Builder sshKeyPath(@Nullable String sshKeyPath) {
             this.sshKeyPath = sshKeyPath;
             return this;
         }
+        @CustomType.Setter
         public Builder user(String user) {
             this.user = Objects.requireNonNull(user);
             return this;
-        }        public ClusterRkeConfigNode build() {
-            return new ClusterRkeConfigNode(address, dockerSocket, hostnameOverride, internalAddress, labels, nodeId, port, roles, sshAgentAuth, sshKey, sshKeyPath, user);
+        }
+        public ClusterRkeConfigNode build() {
+            final var o = new ClusterRkeConfigNode();
+            o.address = address;
+            o.dockerSocket = dockerSocket;
+            o.hostnameOverride = hostnameOverride;
+            o.internalAddress = internalAddress;
+            o.labels = labels;
+            o.nodeId = nodeId;
+            o.port = port;
+            o.roles = roles;
+            o.sshAgentAuth = sshAgentAuth;
+            o.sshKey = sshKey;
+            o.sshKeyPath = sshKeyPath;
+            o.user = user;
+            return o;
         }
     }
 }

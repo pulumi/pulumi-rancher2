@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage {
-    private final String bsVersion;
-    private final Boolean ignoreVolumeAz;
-    private final Boolean trustDevicePath;
+    private String bsVersion;
+    private Boolean ignoreVolumeAz;
+    private Boolean trustDevicePath;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage(
-        @CustomType.Parameter("bsVersion") String bsVersion,
-        @CustomType.Parameter("ignoreVolumeAz") Boolean ignoreVolumeAz,
-        @CustomType.Parameter("trustDevicePath") Boolean trustDevicePath) {
-        this.bsVersion = bsVersion;
-        this.ignoreVolumeAz = ignoreVolumeAz;
-        this.trustDevicePath = trustDevicePath;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage() {}
     public String bsVersion() {
         return this.bsVersion;
     }
@@ -41,16 +32,12 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bsVersion;
         private Boolean ignoreVolumeAz;
         private Boolean trustDevicePath;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bsVersion = defaults.bsVersion;
@@ -58,19 +45,27 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
     	      this.trustDevicePath = defaults.trustDevicePath;
         }
 
+        @CustomType.Setter
         public Builder bsVersion(String bsVersion) {
             this.bsVersion = Objects.requireNonNull(bsVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreVolumeAz(Boolean ignoreVolumeAz) {
             this.ignoreVolumeAz = Objects.requireNonNull(ignoreVolumeAz);
             return this;
         }
+        @CustomType.Setter
         public Builder trustDevicePath(Boolean trustDevicePath) {
             this.trustDevicePath = Objects.requireNonNull(trustDevicePath);
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage(bsVersion, ignoreVolumeAz, trustDevicePath);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage();
+            o.bsVersion = bsVersion;
+            o.ignoreVolumeAz = ignoreVolumeAz;
+            o.trustDevicePath = trustDevicePath;
+            return o;
         }
     }
 }

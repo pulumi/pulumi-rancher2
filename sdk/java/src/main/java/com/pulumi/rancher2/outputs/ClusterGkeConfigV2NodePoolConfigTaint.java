@@ -13,28 +13,19 @@ public final class ClusterGkeConfigV2NodePoolConfigTaint {
      * @return The GKE taint effect (string)
      * 
      */
-    private final String effect;
+    private String effect;
     /**
      * @return The GKE taint key (string)
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return The GKE taint value (string)
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private ClusterGkeConfigV2NodePoolConfigTaint(
-        @CustomType.Parameter("effect") String effect,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.effect = effect;
-        this.key = key;
-        this.value = value;
-    }
-
+    private ClusterGkeConfigV2NodePoolConfigTaint() {}
     /**
      * @return The GKE taint effect (string)
      * 
@@ -64,16 +55,12 @@ public final class ClusterGkeConfigV2NodePoolConfigTaint {
     public static Builder builder(ClusterGkeConfigV2NodePoolConfigTaint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String effect;
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterGkeConfigV2NodePoolConfigTaint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -81,19 +68,27 @@ public final class ClusterGkeConfigV2NodePoolConfigTaint {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder effect(String effect) {
             this.effect = Objects.requireNonNull(effect);
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public ClusterGkeConfigV2NodePoolConfigTaint build() {
-            return new ClusterGkeConfigV2NodePoolConfigTaint(effect, key, value);
+        }
+        public ClusterGkeConfigV2NodePoolConfigTaint build() {
+            final var o = new ClusterGkeConfigV2NodePoolConfigTaint();
+            o.effect = effect;
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

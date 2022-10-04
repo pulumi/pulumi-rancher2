@@ -15,21 +15,14 @@ public final class MultiClusterAppUpgradeStrategyRollingUpdate {
      * @return Rolling update batch size. Default `1` (int)
      * 
      */
-    private final @Nullable Integer batchSize;
+    private @Nullable Integer batchSize;
     /**
      * @return Rolling update interval. Default `1` (int)
      * 
      */
-    private final @Nullable Integer interval;
+    private @Nullable Integer interval;
 
-    @CustomType.Constructor
-    private MultiClusterAppUpgradeStrategyRollingUpdate(
-        @CustomType.Parameter("batchSize") @Nullable Integer batchSize,
-        @CustomType.Parameter("interval") @Nullable Integer interval) {
-        this.batchSize = batchSize;
-        this.interval = interval;
-    }
-
+    private MultiClusterAppUpgradeStrategyRollingUpdate() {}
     /**
      * @return Rolling update batch size. Default `1` (int)
      * 
@@ -52,30 +45,32 @@ public final class MultiClusterAppUpgradeStrategyRollingUpdate {
     public static Builder builder(MultiClusterAppUpgradeStrategyRollingUpdate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer batchSize;
         private @Nullable Integer interval;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MultiClusterAppUpgradeStrategyRollingUpdate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.batchSize = defaults.batchSize;
     	      this.interval = defaults.interval;
         }
 
+        @CustomType.Setter
         public Builder batchSize(@Nullable Integer batchSize) {
             this.batchSize = batchSize;
             return this;
         }
+        @CustomType.Setter
         public Builder interval(@Nullable Integer interval) {
             this.interval = interval;
             return this;
-        }        public MultiClusterAppUpgradeStrategyRollingUpdate build() {
-            return new MultiClusterAppUpgradeStrategyRollingUpdate(batchSize, interval);
+        }
+        public MultiClusterAppUpgradeStrategyRollingUpdate build() {
+            final var o = new MultiClusterAppUpgradeStrategyRollingUpdate();
+            o.batchSize = batchSize;
+            o.interval = interval;
+            return o;
         }
     }
 }

@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPodSecurityPolicyTemplateRuntimeClass {
-    private final List<String> allowedRuntimeClassNames;
-    private final @Nullable String defaultRuntimeClassName;
+    private List<String> allowedRuntimeClassNames;
+    private @Nullable String defaultRuntimeClassName;
 
-    @CustomType.Constructor
-    private GetPodSecurityPolicyTemplateRuntimeClass(
-        @CustomType.Parameter("allowedRuntimeClassNames") List<String> allowedRuntimeClassNames,
-        @CustomType.Parameter("defaultRuntimeClassName") @Nullable String defaultRuntimeClassName) {
-        this.allowedRuntimeClassNames = allowedRuntimeClassNames;
-        this.defaultRuntimeClassName = defaultRuntimeClassName;
-    }
-
+    private GetPodSecurityPolicyTemplateRuntimeClass() {}
     public List<String> allowedRuntimeClassNames() {
         return this.allowedRuntimeClassNames;
     }
@@ -37,21 +30,18 @@ public final class GetPodSecurityPolicyTemplateRuntimeClass {
     public static Builder builder(GetPodSecurityPolicyTemplateRuntimeClass defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedRuntimeClassNames;
         private @Nullable String defaultRuntimeClassName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPodSecurityPolicyTemplateRuntimeClass defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedRuntimeClassNames = defaults.allowedRuntimeClassNames;
     	      this.defaultRuntimeClassName = defaults.defaultRuntimeClassName;
         }
 
+        @CustomType.Setter
         public Builder allowedRuntimeClassNames(List<String> allowedRuntimeClassNames) {
             this.allowedRuntimeClassNames = Objects.requireNonNull(allowedRuntimeClassNames);
             return this;
@@ -59,11 +49,16 @@ public final class GetPodSecurityPolicyTemplateRuntimeClass {
         public Builder allowedRuntimeClassNames(String... allowedRuntimeClassNames) {
             return allowedRuntimeClassNames(List.of(allowedRuntimeClassNames));
         }
+        @CustomType.Setter
         public Builder defaultRuntimeClassName(@Nullable String defaultRuntimeClassName) {
             this.defaultRuntimeClassName = defaultRuntimeClassName;
             return this;
-        }        public GetPodSecurityPolicyTemplateRuntimeClass build() {
-            return new GetPodSecurityPolicyTemplateRuntimeClass(allowedRuntimeClassNames, defaultRuntimeClassName);
+        }
+        public GetPodSecurityPolicyTemplateRuntimeClass build() {
+            final var o = new GetPodSecurityPolicyTemplateRuntimeClass();
+            o.allowedRuntimeClassNames = allowedRuntimeClassNames;
+            o.defaultRuntimeClassName = defaultRuntimeClassName;
+            return o;
         }
     }
 }

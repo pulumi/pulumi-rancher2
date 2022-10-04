@@ -18,38 +18,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams;
-    private final @Nullable Map<String,Object> nodeSelector;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal nodelocal;
-    private final @Nullable Map<String,Object> options;
-    private final @Nullable String provider;
-    private final @Nullable List<String> reverseCidrs;
-    private final @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration> tolerations;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy updateStrategy;
-    private final @Nullable List<String> upstreamNameservers;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams;
+    private @Nullable Map<String,Object> nodeSelector;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal nodelocal;
+    private @Nullable Map<String,Object> options;
+    private @Nullable String provider;
+    private @Nullable List<String> reverseCidrs;
+    private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration> tolerations;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy updateStrategy;
+    private @Nullable List<String> upstreamNameservers;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns(
-        @CustomType.Parameter("linearAutoscalerParams") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams,
-        @CustomType.Parameter("nodeSelector") @Nullable Map<String,Object> nodeSelector,
-        @CustomType.Parameter("nodelocal") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal nodelocal,
-        @CustomType.Parameter("options") @Nullable Map<String,Object> options,
-        @CustomType.Parameter("provider") @Nullable String provider,
-        @CustomType.Parameter("reverseCidrs") @Nullable List<String> reverseCidrs,
-        @CustomType.Parameter("tolerations") @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration> tolerations,
-        @CustomType.Parameter("updateStrategy") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy updateStrategy,
-        @CustomType.Parameter("upstreamNameservers") @Nullable List<String> upstreamNameservers) {
-        this.linearAutoscalerParams = linearAutoscalerParams;
-        this.nodeSelector = nodeSelector;
-        this.nodelocal = nodelocal;
-        this.options = options;
-        this.provider = provider;
-        this.reverseCidrs = reverseCidrs;
-        this.tolerations = tolerations;
-        this.updateStrategy = updateStrategy;
-        this.upstreamNameservers = upstreamNameservers;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns() {}
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams> linearAutoscalerParams() {
         return Optional.ofNullable(this.linearAutoscalerParams);
     }
@@ -85,7 +64,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams;
         private @Nullable Map<String,Object> nodeSelector;
@@ -96,11 +75,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
         private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration> tolerations;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy updateStrategy;
         private @Nullable List<String> upstreamNameservers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.linearAutoscalerParams = defaults.linearAutoscalerParams;
@@ -114,26 +89,32 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
     	      this.upstreamNameservers = defaults.upstreamNameservers;
         }
 
+        @CustomType.Setter
         public Builder linearAutoscalerParams(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams) {
             this.linearAutoscalerParams = linearAutoscalerParams;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
             this.nodeSelector = nodeSelector;
             return this;
         }
+        @CustomType.Setter
         public Builder nodelocal(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal nodelocal) {
             this.nodelocal = nodelocal;
             return this;
         }
+        @CustomType.Setter
         public Builder options(@Nullable Map<String,Object> options) {
             this.options = options;
             return this;
         }
+        @CustomType.Setter
         public Builder provider(@Nullable String provider) {
             this.provider = provider;
             return this;
         }
+        @CustomType.Setter
         public Builder reverseCidrs(@Nullable List<String> reverseCidrs) {
             this.reverseCidrs = reverseCidrs;
             return this;
@@ -141,6 +122,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
         public Builder reverseCidrs(String... reverseCidrs) {
             return reverseCidrs(List.of(reverseCidrs));
         }
+        @CustomType.Setter
         public Builder tolerations(@Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration> tolerations) {
             this.tolerations = tolerations;
             return this;
@@ -148,18 +130,31 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
         public Builder tolerations(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration... tolerations) {
             return tolerations(List.of(tolerations));
         }
+        @CustomType.Setter
         public Builder updateStrategy(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy updateStrategy) {
             this.updateStrategy = updateStrategy;
             return this;
         }
+        @CustomType.Setter
         public Builder upstreamNameservers(@Nullable List<String> upstreamNameservers) {
             this.upstreamNameservers = upstreamNameservers;
             return this;
         }
         public Builder upstreamNameservers(String... upstreamNameservers) {
             return upstreamNameservers(List.of(upstreamNameservers));
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns(linearAutoscalerParams, nodeSelector, nodelocal, options, provider, reverseCidrs, tolerations, updateStrategy, upstreamNameservers);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns();
+            o.linearAutoscalerParams = linearAutoscalerParams;
+            o.nodeSelector = nodeSelector;
+            o.nodelocal = nodelocal;
+            o.options = options;
+            o.provider = provider;
+            o.reverseCidrs = reverseCidrs;
+            o.tolerations = tolerations;
+            o.updateStrategy = updateStrategy;
+            o.upstreamNameservers = upstreamNameservers;
+            return o;
         }
     }
 }

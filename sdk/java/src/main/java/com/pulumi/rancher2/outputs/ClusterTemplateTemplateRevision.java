@@ -21,70 +21,49 @@ public final class ClusterTemplateTemplateRevision {
      * @return Annotations for the cluster template revision (map)
      * 
      */
-    private final @Nullable Map<String,Object> annotations;
+    private @Nullable Map<String,Object> annotations;
     /**
      * @return Cluster configuration (list maxitem: 1)
      * 
      */
-    private final ClusterTemplateTemplateRevisionClusterConfig clusterConfig;
+    private ClusterTemplateTemplateRevisionClusterConfig clusterConfig;
     /**
      * @return Cluster template ID (string)
      * 
      */
-    private final @Nullable String clusterTemplateId;
+    private @Nullable String clusterTemplateId;
     /**
      * @return Default variable value (string)
      * 
      */
-    private final @Nullable Boolean default_;
+    private @Nullable Boolean default_;
     /**
      * @return Enable cluster template revision. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The cluster template revision ID (string)
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return Labels for the cluster template revision (map)
      * 
      */
-    private final @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,Object> labels;
     /**
      * @return The cluster template revision name (string)
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Cluster template questions (list)
      * 
      */
-    private final @Nullable List<ClusterTemplateTemplateRevisionQuestion> questions;
+    private @Nullable List<ClusterTemplateTemplateRevisionQuestion> questions;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevision(
-        @CustomType.Parameter("annotations") @Nullable Map<String,Object> annotations,
-        @CustomType.Parameter("clusterConfig") ClusterTemplateTemplateRevisionClusterConfig clusterConfig,
-        @CustomType.Parameter("clusterTemplateId") @Nullable String clusterTemplateId,
-        @CustomType.Parameter("default") @Nullable Boolean default_,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("labels") @Nullable Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("questions") @Nullable List<ClusterTemplateTemplateRevisionQuestion> questions) {
-        this.annotations = annotations;
-        this.clusterConfig = clusterConfig;
-        this.clusterTemplateId = clusterTemplateId;
-        this.default_ = default_;
-        this.enabled = enabled;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.questions = questions;
-    }
-
+    private ClusterTemplateTemplateRevision() {}
     /**
      * @return Annotations for the cluster template revision (map)
      * 
@@ -156,7 +135,7 @@ public final class ClusterTemplateTemplateRevision {
     public static Builder builder(ClusterTemplateTemplateRevision defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,Object> annotations;
         private ClusterTemplateTemplateRevisionClusterConfig clusterConfig;
@@ -167,11 +146,7 @@ public final class ClusterTemplateTemplateRevision {
         private @Nullable Map<String,Object> labels;
         private String name;
         private @Nullable List<ClusterTemplateTemplateRevisionQuestion> questions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevision defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -185,46 +160,66 @@ public final class ClusterTemplateTemplateRevision {
     	      this.questions = defaults.questions;
         }
 
+        @CustomType.Setter
         public Builder annotations(@Nullable Map<String,Object> annotations) {
             this.annotations = annotations;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterConfig(ClusterTemplateTemplateRevisionClusterConfig clusterConfig) {
             this.clusterConfig = Objects.requireNonNull(clusterConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterTemplateId(@Nullable String clusterTemplateId) {
             this.clusterTemplateId = clusterTemplateId;
             return this;
         }
+        @CustomType.Setter("default")
         public Builder default_(@Nullable Boolean default_) {
             this.default_ = default_;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder questions(@Nullable List<ClusterTemplateTemplateRevisionQuestion> questions) {
             this.questions = questions;
             return this;
         }
         public Builder questions(ClusterTemplateTemplateRevisionQuestion... questions) {
             return questions(List.of(questions));
-        }        public ClusterTemplateTemplateRevision build() {
-            return new ClusterTemplateTemplateRevision(annotations, clusterConfig, clusterTemplateId, default_, enabled, id, labels, name, questions);
+        }
+        public ClusterTemplateTemplateRevision build() {
+            final var o = new ClusterTemplateTemplateRevision();
+            o.annotations = annotations;
+            o.clusterConfig = clusterConfig;
+            o.clusterTemplateId = clusterTemplateId;
+            o.default_ = default_;
+            o.enabled = enabled;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.questions = questions;
+            return o;
         }
     }
 }

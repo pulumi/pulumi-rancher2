@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMultiClusterAppUpgradeStrategy {
-    private final @Nullable GetMultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate;
+    private @Nullable GetMultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate;
 
-    @CustomType.Constructor
-    private GetMultiClusterAppUpgradeStrategy(@CustomType.Parameter("rollingUpdate") @Nullable GetMultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate) {
-        this.rollingUpdate = rollingUpdate;
-    }
-
+    private GetMultiClusterAppUpgradeStrategy() {}
     public Optional<GetMultiClusterAppUpgradeStrategyRollingUpdate> rollingUpdate() {
         return Optional.ofNullable(this.rollingUpdate);
     }
@@ -29,24 +25,24 @@ public final class GetMultiClusterAppUpgradeStrategy {
     public static Builder builder(GetMultiClusterAppUpgradeStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GetMultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMultiClusterAppUpgradeStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rollingUpdate = defaults.rollingUpdate;
         }
 
+        @CustomType.Setter
         public Builder rollingUpdate(@Nullable GetMultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate) {
             this.rollingUpdate = rollingUpdate;
             return this;
-        }        public GetMultiClusterAppUpgradeStrategy build() {
-            return new GetMultiClusterAppUpgradeStrategy(rollingUpdate);
+        }
+        public GetMultiClusterAppUpgradeStrategy build() {
+            final var o = new GetMultiClusterAppUpgradeStrategy();
+            o.rollingUpdate = rollingUpdate;
+            return o;
         }
     }
 }

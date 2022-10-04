@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRkeConfigNetworkWeaveNetworkProvider {
-    private final String password;
+    private String password;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigNetworkWeaveNetworkProvider(@CustomType.Parameter("password") String password) {
-        this.password = password;
-    }
-
+    private GetClusterRkeConfigNetworkWeaveNetworkProvider() {}
     public String password() {
         return this.password;
     }
@@ -27,24 +23,24 @@ public final class GetClusterRkeConfigNetworkWeaveNetworkProvider {
     public static Builder builder(GetClusterRkeConfigNetworkWeaveNetworkProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String password;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigNetworkWeaveNetworkProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
         }
 
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
-        }        public GetClusterRkeConfigNetworkWeaveNetworkProvider build() {
-            return new GetClusterRkeConfigNetworkWeaveNetworkProvider(password);
+        }
+        public GetClusterRkeConfigNetworkWeaveNetworkProvider build() {
+            final var o = new GetClusterRkeConfigNetworkWeaveNetworkProvider();
+            o.password = password;
+            return o;
         }
     }
 }

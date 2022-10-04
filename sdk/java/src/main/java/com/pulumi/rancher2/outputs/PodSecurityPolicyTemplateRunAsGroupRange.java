@@ -13,21 +13,14 @@ public final class PodSecurityPolicyTemplateRunAsGroupRange {
      * @return (int)
      * 
      */
-    private final Integer max;
+    private Integer max;
     /**
      * @return (int)
      * 
      */
-    private final Integer min;
+    private Integer min;
 
-    @CustomType.Constructor
-    private PodSecurityPolicyTemplateRunAsGroupRange(
-        @CustomType.Parameter("max") Integer max,
-        @CustomType.Parameter("min") Integer min) {
-        this.max = max;
-        this.min = min;
-    }
-
+    private PodSecurityPolicyTemplateRunAsGroupRange() {}
     /**
      * @return (int)
      * 
@@ -50,30 +43,32 @@ public final class PodSecurityPolicyTemplateRunAsGroupRange {
     public static Builder builder(PodSecurityPolicyTemplateRunAsGroupRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer max;
         private Integer min;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PodSecurityPolicyTemplateRunAsGroupRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.max = defaults.max;
     	      this.min = defaults.min;
         }
 
+        @CustomType.Setter
         public Builder max(Integer max) {
             this.max = Objects.requireNonNull(max);
             return this;
         }
+        @CustomType.Setter
         public Builder min(Integer min) {
             this.min = Objects.requireNonNull(min);
             return this;
-        }        public PodSecurityPolicyTemplateRunAsGroupRange build() {
-            return new PodSecurityPolicyTemplateRunAsGroupRange(max, min);
+        }
+        public PodSecurityPolicyTemplateRunAsGroupRange build() {
+            final var o = new PodSecurityPolicyTemplateRunAsGroupRange();
+            o.max = max;
+            o.min = min;
+            return o;
         }
     }
 }

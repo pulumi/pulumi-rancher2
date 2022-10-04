@@ -13,36 +13,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterGkeConfigV2NodePool {
-    private final GetClusterGkeConfigV2NodePoolAutoscaling autoscaling;
-    private final GetClusterGkeConfigV2NodePoolConfig config;
-    private final Integer initialNodeCount;
-    private final GetClusterGkeConfigV2NodePoolManagement management;
-    private final Integer maxPodsConstraint;
+    private GetClusterGkeConfigV2NodePoolAutoscaling autoscaling;
+    private GetClusterGkeConfigV2NodePoolConfig config;
+    private Integer initialNodeCount;
+    private GetClusterGkeConfigV2NodePoolManagement management;
+    private Integer maxPodsConstraint;
     /**
      * @return The name of the Cluster (string)
      * 
      */
-    private final String name;
-    private final String version;
+    private String name;
+    private String version;
 
-    @CustomType.Constructor
-    private GetClusterGkeConfigV2NodePool(
-        @CustomType.Parameter("autoscaling") GetClusterGkeConfigV2NodePoolAutoscaling autoscaling,
-        @CustomType.Parameter("config") GetClusterGkeConfigV2NodePoolConfig config,
-        @CustomType.Parameter("initialNodeCount") Integer initialNodeCount,
-        @CustomType.Parameter("management") GetClusterGkeConfigV2NodePoolManagement management,
-        @CustomType.Parameter("maxPodsConstraint") Integer maxPodsConstraint,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("version") String version) {
-        this.autoscaling = autoscaling;
-        this.config = config;
-        this.initialNodeCount = initialNodeCount;
-        this.management = management;
-        this.maxPodsConstraint = maxPodsConstraint;
-        this.name = name;
-        this.version = version;
-    }
-
+    private GetClusterGkeConfigV2NodePool() {}
     public GetClusterGkeConfigV2NodePoolAutoscaling autoscaling() {
         return this.autoscaling;
     }
@@ -76,7 +59,7 @@ public final class GetClusterGkeConfigV2NodePool {
     public static Builder builder(GetClusterGkeConfigV2NodePool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetClusterGkeConfigV2NodePoolAutoscaling autoscaling;
         private GetClusterGkeConfigV2NodePoolConfig config;
@@ -85,11 +68,7 @@ public final class GetClusterGkeConfigV2NodePool {
         private Integer maxPodsConstraint;
         private String name;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterGkeConfigV2NodePool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscaling = defaults.autoscaling;
@@ -101,35 +80,51 @@ public final class GetClusterGkeConfigV2NodePool {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder autoscaling(GetClusterGkeConfigV2NodePoolAutoscaling autoscaling) {
             this.autoscaling = Objects.requireNonNull(autoscaling);
             return this;
         }
+        @CustomType.Setter
         public Builder config(GetClusterGkeConfigV2NodePoolConfig config) {
             this.config = Objects.requireNonNull(config);
             return this;
         }
+        @CustomType.Setter
         public Builder initialNodeCount(Integer initialNodeCount) {
             this.initialNodeCount = Objects.requireNonNull(initialNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder management(GetClusterGkeConfigV2NodePoolManagement management) {
             this.management = Objects.requireNonNull(management);
             return this;
         }
+        @CustomType.Setter
         public Builder maxPodsConstraint(Integer maxPodsConstraint) {
             this.maxPodsConstraint = Objects.requireNonNull(maxPodsConstraint);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetClusterGkeConfigV2NodePool build() {
-            return new GetClusterGkeConfigV2NodePool(autoscaling, config, initialNodeCount, management, maxPodsConstraint, name, version);
+        }
+        public GetClusterGkeConfigV2NodePool build() {
+            final var o = new GetClusterGkeConfigV2NodePool();
+            o.autoscaling = autoscaling;
+            o.config = config;
+            o.initialNodeCount = initialNodeCount;
+            o.management = management;
+            o.maxPodsConstraint = maxPodsConstraint;
+            o.name = name;
+            o.version = version;
+            return o;
         }
     }
 }

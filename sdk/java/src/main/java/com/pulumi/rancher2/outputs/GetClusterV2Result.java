@@ -22,103 +22,68 @@ public final class GetClusterV2Result {
      * @return (Computed) Optional Agent Env Vars for Rancher agent (list)
      * 
      */
-    private final List<GetClusterV2AgentEnvVar> agentEnvVars;
-    private final Map<String,Object> annotations;
+    private List<GetClusterV2AgentEnvVar> agentEnvVars;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) Cluster V2 cloud credential secret name (string)
      * 
      */
-    private final String cloudCredentialSecretName;
+    private String cloudCredentialSecretName;
     /**
      * @return (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
      * 
      */
-    private final GetClusterV2ClusterRegistrationToken clusterRegistrationToken;
+    private GetClusterV2ClusterRegistrationToken clusterRegistrationToken;
     /**
      * @return (Computed) Cluster v1 id for cluster v2 (string)
      * 
      */
-    private final String clusterV1Id;
+    private String clusterV1Id;
     /**
      * @return (Computed) Cluster V2 default cluster role for project members (string)
      * 
      */
-    private final String defaultClusterRoleForProjectMembers;
+    private String defaultClusterRoleForProjectMembers;
     /**
      * @return (Computed) Cluster V2 default pod security policy template name (string)
      * 
      */
-    private final String defaultPodSecurityPolicyTemplateName;
+    private String defaultPodSecurityPolicyTemplateName;
     /**
      * @return (Computed) Enable k8s network policy at Cluster V2 (bool)
      * 
      */
-    private final Boolean enableNetworkPolicy;
-    private final @Nullable String fleetNamespace;
+    private Boolean enableNetworkPolicy;
+    private @Nullable String fleetNamespace;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
      * 
      */
-    private final String kubeConfig;
+    private String kubeConfig;
     /**
      * @return (Computed) The kubernetes version of the Cluster v2 (list maxitems:1)
      * 
      */
-    private final String kubernetesVersion;
-    private final Map<String,Object> labels;
-    private final String name;
+    private String kubernetesVersion;
+    private Map<String,Object> labels;
+    private String name;
     /**
      * @return (Computed) Cluster v2 k8s resource version (string)
      * 
      */
-    private final String resourceVersion;
+    private String resourceVersion;
     /**
      * @return (Computed) The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
      * 
      */
-    private final GetClusterV2RkeConfig rkeConfig;
+    private GetClusterV2RkeConfig rkeConfig;
 
-    @CustomType.Constructor
-    private GetClusterV2Result(
-        @CustomType.Parameter("agentEnvVars") List<GetClusterV2AgentEnvVar> agentEnvVars,
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("cloudCredentialSecretName") String cloudCredentialSecretName,
-        @CustomType.Parameter("clusterRegistrationToken") GetClusterV2ClusterRegistrationToken clusterRegistrationToken,
-        @CustomType.Parameter("clusterV1Id") String clusterV1Id,
-        @CustomType.Parameter("defaultClusterRoleForProjectMembers") String defaultClusterRoleForProjectMembers,
-        @CustomType.Parameter("defaultPodSecurityPolicyTemplateName") String defaultPodSecurityPolicyTemplateName,
-        @CustomType.Parameter("enableNetworkPolicy") Boolean enableNetworkPolicy,
-        @CustomType.Parameter("fleetNamespace") @Nullable String fleetNamespace,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("kubeConfig") String kubeConfig,
-        @CustomType.Parameter("kubernetesVersion") String kubernetesVersion,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("resourceVersion") String resourceVersion,
-        @CustomType.Parameter("rkeConfig") GetClusterV2RkeConfig rkeConfig) {
-        this.agentEnvVars = agentEnvVars;
-        this.annotations = annotations;
-        this.cloudCredentialSecretName = cloudCredentialSecretName;
-        this.clusterRegistrationToken = clusterRegistrationToken;
-        this.clusterV1Id = clusterV1Id;
-        this.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
-        this.defaultPodSecurityPolicyTemplateName = defaultPodSecurityPolicyTemplateName;
-        this.enableNetworkPolicy = enableNetworkPolicy;
-        this.fleetNamespace = fleetNamespace;
-        this.id = id;
-        this.kubeConfig = kubeConfig;
-        this.kubernetesVersion = kubernetesVersion;
-        this.labels = labels;
-        this.name = name;
-        this.resourceVersion = resourceVersion;
-        this.rkeConfig = rkeConfig;
-    }
-
+    private GetClusterV2Result() {}
     /**
      * @return (Computed) Optional Agent Env Vars for Rancher agent (list)
      * 
@@ -223,7 +188,7 @@ public final class GetClusterV2Result {
     public static Builder builder(GetClusterV2Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetClusterV2AgentEnvVar> agentEnvVars;
         private Map<String,Object> annotations;
@@ -241,11 +206,7 @@ public final class GetClusterV2Result {
         private String name;
         private String resourceVersion;
         private GetClusterV2RkeConfig rkeConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agentEnvVars = defaults.agentEnvVars;
@@ -266,6 +227,7 @@ public final class GetClusterV2Result {
     	      this.rkeConfig = defaults.rkeConfig;
         }
 
+        @CustomType.Setter
         public Builder agentEnvVars(List<GetClusterV2AgentEnvVar> agentEnvVars) {
             this.agentEnvVars = Objects.requireNonNull(agentEnvVars);
             return this;
@@ -273,67 +235,100 @@ public final class GetClusterV2Result {
         public Builder agentEnvVars(GetClusterV2AgentEnvVar... agentEnvVars) {
             return agentEnvVars(List.of(agentEnvVars));
         }
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder cloudCredentialSecretName(String cloudCredentialSecretName) {
             this.cloudCredentialSecretName = Objects.requireNonNull(cloudCredentialSecretName);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterRegistrationToken(GetClusterV2ClusterRegistrationToken clusterRegistrationToken) {
             this.clusterRegistrationToken = Objects.requireNonNull(clusterRegistrationToken);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterV1Id(String clusterV1Id) {
             this.clusterV1Id = Objects.requireNonNull(clusterV1Id);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultClusterRoleForProjectMembers(String defaultClusterRoleForProjectMembers) {
             this.defaultClusterRoleForProjectMembers = Objects.requireNonNull(defaultClusterRoleForProjectMembers);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultPodSecurityPolicyTemplateName(String defaultPodSecurityPolicyTemplateName) {
             this.defaultPodSecurityPolicyTemplateName = Objects.requireNonNull(defaultPodSecurityPolicyTemplateName);
             return this;
         }
+        @CustomType.Setter
         public Builder enableNetworkPolicy(Boolean enableNetworkPolicy) {
             this.enableNetworkPolicy = Objects.requireNonNull(enableNetworkPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder fleetNamespace(@Nullable String fleetNamespace) {
             this.fleetNamespace = fleetNamespace;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder kubeConfig(String kubeConfig) {
             this.kubeConfig = Objects.requireNonNull(kubeConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
             this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceVersion(String resourceVersion) {
             this.resourceVersion = Objects.requireNonNull(resourceVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder rkeConfig(GetClusterV2RkeConfig rkeConfig) {
             this.rkeConfig = Objects.requireNonNull(rkeConfig);
             return this;
-        }        public GetClusterV2Result build() {
-            return new GetClusterV2Result(agentEnvVars, annotations, cloudCredentialSecretName, clusterRegistrationToken, clusterV1Id, defaultClusterRoleForProjectMembers, defaultPodSecurityPolicyTemplateName, enableNetworkPolicy, fleetNamespace, id, kubeConfig, kubernetesVersion, labels, name, resourceVersion, rkeConfig);
+        }
+        public GetClusterV2Result build() {
+            final var o = new GetClusterV2Result();
+            o.agentEnvVars = agentEnvVars;
+            o.annotations = annotations;
+            o.cloudCredentialSecretName = cloudCredentialSecretName;
+            o.clusterRegistrationToken = clusterRegistrationToken;
+            o.clusterV1Id = clusterV1Id;
+            o.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
+            o.defaultPodSecurityPolicyTemplateName = defaultPodSecurityPolicyTemplateName;
+            o.enableNetworkPolicy = enableNetworkPolicy;
+            o.fleetNamespace = fleetNamespace;
+            o.id = id;
+            o.kubeConfig = kubeConfig;
+            o.kubernetesVersion = kubernetesVersion;
+            o.labels = labels;
+            o.name = name;
+            o.resourceVersion = resourceVersion;
+            o.rkeConfig = rkeConfig;
+            return o;
         }
     }
 }

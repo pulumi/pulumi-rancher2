@@ -17,29 +17,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
      * @return Enable cluster template revision. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
-    private final @Nullable Integer intervalHours;
-    private final @Nullable Integer retention;
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig s3BackupConfig;
-    private final @Nullable Boolean safeTimestamp;
-    private final @Nullable Integer timeout;
+    private @Nullable Boolean enabled;
+    private @Nullable Integer intervalHours;
+    private @Nullable Integer retention;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig s3BackupConfig;
+    private @Nullable Boolean safeTimestamp;
+    private @Nullable Integer timeout;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("intervalHours") @Nullable Integer intervalHours,
-        @CustomType.Parameter("retention") @Nullable Integer retention,
-        @CustomType.Parameter("s3BackupConfig") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig s3BackupConfig,
-        @CustomType.Parameter("safeTimestamp") @Nullable Boolean safeTimestamp,
-        @CustomType.Parameter("timeout") @Nullable Integer timeout) {
-        this.enabled = enabled;
-        this.intervalHours = intervalHours;
-        this.retention = retention;
-        this.s3BackupConfig = s3BackupConfig;
-        this.safeTimestamp = safeTimestamp;
-        this.timeout = timeout;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig() {}
     /**
      * @return Enable cluster template revision. Default `true` (bool)
      * 
@@ -70,7 +55,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable Integer intervalHours;
@@ -78,11 +63,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig s3BackupConfig;
         private @Nullable Boolean safeTimestamp;
         private @Nullable Integer timeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -93,31 +74,45 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder intervalHours(@Nullable Integer intervalHours) {
             this.intervalHours = intervalHours;
             return this;
         }
+        @CustomType.Setter
         public Builder retention(@Nullable Integer retention) {
             this.retention = retention;
             return this;
         }
+        @CustomType.Setter
         public Builder s3BackupConfig(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig s3BackupConfig) {
             this.s3BackupConfig = s3BackupConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder safeTimestamp(@Nullable Boolean safeTimestamp) {
             this.safeTimestamp = safeTimestamp;
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
             this.timeout = timeout;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig(enabled, intervalHours, retention, s3BackupConfig, safeTimestamp, timeout);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig();
+            o.enabled = enabled;
+            o.intervalHours = intervalHours;
+            o.retention = retention;
+            o.s3BackupConfig = s3BackupConfig;
+            o.safeTimestamp = safeTimestamp;
+            o.timeout = timeout;
+            return o;
         }
     }
 }

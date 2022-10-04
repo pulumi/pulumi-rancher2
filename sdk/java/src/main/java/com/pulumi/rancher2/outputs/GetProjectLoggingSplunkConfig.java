@@ -12,38 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectLoggingSplunkConfig {
-    private final @Nullable String certificate;
-    private final @Nullable String clientCert;
-    private final @Nullable String clientKey;
-    private final @Nullable String clientKeyPass;
-    private final String endpoint;
-    private final @Nullable String index;
-    private final @Nullable String source;
-    private final Boolean sslVerify;
-    private final String token;
+    private @Nullable String certificate;
+    private @Nullable String clientCert;
+    private @Nullable String clientKey;
+    private @Nullable String clientKeyPass;
+    private String endpoint;
+    private @Nullable String index;
+    private @Nullable String source;
+    private Boolean sslVerify;
+    private String token;
 
-    @CustomType.Constructor
-    private GetProjectLoggingSplunkConfig(
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("clientCert") @Nullable String clientCert,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("clientKeyPass") @Nullable String clientKeyPass,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("index") @Nullable String index,
-        @CustomType.Parameter("source") @Nullable String source,
-        @CustomType.Parameter("sslVerify") Boolean sslVerify,
-        @CustomType.Parameter("token") String token) {
-        this.certificate = certificate;
-        this.clientCert = clientCert;
-        this.clientKey = clientKey;
-        this.clientKeyPass = clientKeyPass;
-        this.endpoint = endpoint;
-        this.index = index;
-        this.source = source;
-        this.sslVerify = sslVerify;
-        this.token = token;
-    }
-
+    private GetProjectLoggingSplunkConfig() {}
     public Optional<String> certificate() {
         return Optional.ofNullable(this.certificate);
     }
@@ -79,7 +58,7 @@ public final class GetProjectLoggingSplunkConfig {
     public static Builder builder(GetProjectLoggingSplunkConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificate;
         private @Nullable String clientCert;
@@ -90,11 +69,7 @@ public final class GetProjectLoggingSplunkConfig {
         private @Nullable String source;
         private Boolean sslVerify;
         private String token;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectLoggingSplunkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
@@ -108,43 +83,63 @@ public final class GetProjectLoggingSplunkConfig {
     	      this.token = defaults.token;
         }
 
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
             this.clientCert = clientCert;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKeyPass(@Nullable String clientKeyPass) {
             this.clientKeyPass = clientKeyPass;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder index(@Nullable String index) {
             this.index = index;
             return this;
         }
+        @CustomType.Setter
         public Builder source(@Nullable String source) {
             this.source = source;
             return this;
         }
+        @CustomType.Setter
         public Builder sslVerify(Boolean sslVerify) {
             this.sslVerify = Objects.requireNonNull(sslVerify);
             return this;
         }
+        @CustomType.Setter
         public Builder token(String token) {
             this.token = Objects.requireNonNull(token);
             return this;
-        }        public GetProjectLoggingSplunkConfig build() {
-            return new GetProjectLoggingSplunkConfig(certificate, clientCert, clientKey, clientKeyPass, endpoint, index, source, sslVerify, token);
+        }
+        public GetProjectLoggingSplunkConfig build() {
+            final var o = new GetProjectLoggingSplunkConfig();
+            o.certificate = certificate;
+            o.clientCert = clientCert;
+            o.clientKey = clientKey;
+            o.clientKeyPass = clientKeyPass;
+            o.endpoint = endpoint;
+            o.index = index;
+            o.source = source;
+            o.sslVerify = sslVerify;
+            o.token = token;
+            return o;
         }
     }
 }

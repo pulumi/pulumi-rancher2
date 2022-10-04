@@ -12,44 +12,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectLoggingElasticsearchConfig {
-    private final @Nullable String authPassword;
-    private final @Nullable String authUsername;
-    private final @Nullable String certificate;
-    private final @Nullable String clientCert;
-    private final @Nullable String clientKey;
-    private final @Nullable String clientKeyPass;
-    private final @Nullable String dateFormat;
-    private final String endpoint;
-    private final @Nullable String indexPrefix;
-    private final Boolean sslVerify;
-    private final @Nullable String sslVersion;
+    private @Nullable String authPassword;
+    private @Nullable String authUsername;
+    private @Nullable String certificate;
+    private @Nullable String clientCert;
+    private @Nullable String clientKey;
+    private @Nullable String clientKeyPass;
+    private @Nullable String dateFormat;
+    private String endpoint;
+    private @Nullable String indexPrefix;
+    private Boolean sslVerify;
+    private @Nullable String sslVersion;
 
-    @CustomType.Constructor
-    private GetProjectLoggingElasticsearchConfig(
-        @CustomType.Parameter("authPassword") @Nullable String authPassword,
-        @CustomType.Parameter("authUsername") @Nullable String authUsername,
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("clientCert") @Nullable String clientCert,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("clientKeyPass") @Nullable String clientKeyPass,
-        @CustomType.Parameter("dateFormat") @Nullable String dateFormat,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("indexPrefix") @Nullable String indexPrefix,
-        @CustomType.Parameter("sslVerify") Boolean sslVerify,
-        @CustomType.Parameter("sslVersion") @Nullable String sslVersion) {
-        this.authPassword = authPassword;
-        this.authUsername = authUsername;
-        this.certificate = certificate;
-        this.clientCert = clientCert;
-        this.clientKey = clientKey;
-        this.clientKeyPass = clientKeyPass;
-        this.dateFormat = dateFormat;
-        this.endpoint = endpoint;
-        this.indexPrefix = indexPrefix;
-        this.sslVerify = sslVerify;
-        this.sslVersion = sslVersion;
-    }
-
+    private GetProjectLoggingElasticsearchConfig() {}
     public Optional<String> authPassword() {
         return Optional.ofNullable(this.authPassword);
     }
@@ -91,7 +66,7 @@ public final class GetProjectLoggingElasticsearchConfig {
     public static Builder builder(GetProjectLoggingElasticsearchConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authPassword;
         private @Nullable String authUsername;
@@ -104,11 +79,7 @@ public final class GetProjectLoggingElasticsearchConfig {
         private @Nullable String indexPrefix;
         private Boolean sslVerify;
         private @Nullable String sslVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectLoggingElasticsearchConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authPassword = defaults.authPassword;
@@ -124,51 +95,75 @@ public final class GetProjectLoggingElasticsearchConfig {
     	      this.sslVersion = defaults.sslVersion;
         }
 
+        @CustomType.Setter
         public Builder authPassword(@Nullable String authPassword) {
             this.authPassword = authPassword;
             return this;
         }
+        @CustomType.Setter
         public Builder authUsername(@Nullable String authUsername) {
             this.authUsername = authUsername;
             return this;
         }
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
             this.clientCert = clientCert;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKeyPass(@Nullable String clientKeyPass) {
             this.clientKeyPass = clientKeyPass;
             return this;
         }
+        @CustomType.Setter
         public Builder dateFormat(@Nullable String dateFormat) {
             this.dateFormat = dateFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder indexPrefix(@Nullable String indexPrefix) {
             this.indexPrefix = indexPrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder sslVerify(Boolean sslVerify) {
             this.sslVerify = Objects.requireNonNull(sslVerify);
             return this;
         }
+        @CustomType.Setter
         public Builder sslVersion(@Nullable String sslVersion) {
             this.sslVersion = sslVersion;
             return this;
-        }        public GetProjectLoggingElasticsearchConfig build() {
-            return new GetProjectLoggingElasticsearchConfig(authPassword, authUsername, certificate, clientCert, clientKey, clientKeyPass, dateFormat, endpoint, indexPrefix, sslVerify, sslVersion);
+        }
+        public GetProjectLoggingElasticsearchConfig build() {
+            final var o = new GetProjectLoggingElasticsearchConfig();
+            o.authPassword = authPassword;
+            o.authUsername = authUsername;
+            o.certificate = certificate;
+            o.clientCert = clientCert;
+            o.clientKey = clientKey;
+            o.clientKeyPass = clientKeyPass;
+            o.dateFormat = dateFormat;
+            o.endpoint = endpoint;
+            o.indexPrefix = indexPrefix;
+            o.sslVerify = sslVerify;
+            o.sslVersion = sslVersion;
+            return o;
         }
     }
 }

@@ -18,7 +18,9 @@ import (
 // V2 secrets can be imported using the Rancher cluster ID, Secret V2 namespace and name.
 //
 // ```sh
-//  $ pulumi import rancher2:index/secretV2:SecretV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
+//
+//	$ pulumi import rancher2:index/secretV2:SecretV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
+//
 // ```
 type SecretV2 struct {
 	pulumi.CustomResourceState
@@ -188,7 +190,7 @@ func (i *SecretV2) ToSecretV2OutputWithContext(ctx context.Context) SecretV2Outp
 // SecretV2ArrayInput is an input type that accepts SecretV2Array and SecretV2ArrayOutput values.
 // You can construct a concrete instance of `SecretV2ArrayInput` via:
 //
-//          SecretV2Array{ SecretV2Args{...} }
+//	SecretV2Array{ SecretV2Args{...} }
 type SecretV2ArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +215,7 @@ func (i SecretV2Array) ToSecretV2ArrayOutputWithContext(ctx context.Context) Sec
 // SecretV2MapInput is an input type that accepts SecretV2Map and SecretV2MapOutput values.
 // You can construct a concrete instance of `SecretV2MapInput` via:
 //
-//          SecretV2Map{ "key": SecretV2Args{...} }
+//	SecretV2Map{ "key": SecretV2Args{...} }
 type SecretV2MapInput interface {
 	pulumi.Input
 

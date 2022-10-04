@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupEtcdBackup(ctx, &GetEtcdBackupArgs{
-// 			ClusterId: "<CLUSTER_ID>",
-// 			Name:      "foo",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.LookupEtcdBackup(ctx, &GetEtcdBackupArgs{
+//				ClusterId: "<CLUSTER_ID>",
+//				Name:      "foo",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupEtcdBackup(ctx *pulumi.Context, args *LookupEtcdBackupArgs, opts ...pulumi.InvokeOption) (*LookupEtcdBackupResult, error) {
 	var rv LookupEtcdBackupResult

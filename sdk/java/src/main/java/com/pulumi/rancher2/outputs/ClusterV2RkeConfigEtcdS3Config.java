@@ -16,56 +16,39 @@ public final class ClusterV2RkeConfigEtcdS3Config {
      * @return Bucket name for S3 service (string)
      * 
      */
-    private final String bucket;
+    private String bucket;
     /**
      * @return ETCD snapshot S3 cloud credential name (string)
      * 
      */
-    private final @Nullable String cloudCredentialName;
+    private @Nullable String cloudCredentialName;
     /**
      * @return ETCD snapshot S3 endpoint (string)
      * 
      */
-    private final String endpoint;
+    private String endpoint;
     /**
      * @return ETCD snapshot S3 endpoint CA (string)
      * 
      */
-    private final @Nullable String endpointCa;
+    private @Nullable String endpointCa;
     /**
      * @return ETCD snapshot S3 folder (string)
      * 
      */
-    private final @Nullable String folder;
+    private @Nullable String folder;
     /**
      * @return ETCD snapshot S3 region (string)
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return Disable ETCD skip ssl verify. Default: `false` (bool)
      * 
      */
-    private final @Nullable Boolean skipSslVerify;
+    private @Nullable Boolean skipSslVerify;
 
-    @CustomType.Constructor
-    private ClusterV2RkeConfigEtcdS3Config(
-        @CustomType.Parameter("bucket") String bucket,
-        @CustomType.Parameter("cloudCredentialName") @Nullable String cloudCredentialName,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("endpointCa") @Nullable String endpointCa,
-        @CustomType.Parameter("folder") @Nullable String folder,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("skipSslVerify") @Nullable Boolean skipSslVerify) {
-        this.bucket = bucket;
-        this.cloudCredentialName = cloudCredentialName;
-        this.endpoint = endpoint;
-        this.endpointCa = endpointCa;
-        this.folder = folder;
-        this.region = region;
-        this.skipSslVerify = skipSslVerify;
-    }
-
+    private ClusterV2RkeConfigEtcdS3Config() {}
     /**
      * @return Bucket name for S3 service (string)
      * 
@@ -123,7 +106,7 @@ public final class ClusterV2RkeConfigEtcdS3Config {
     public static Builder builder(ClusterV2RkeConfigEtcdS3Config defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucket;
         private @Nullable String cloudCredentialName;
@@ -132,11 +115,7 @@ public final class ClusterV2RkeConfigEtcdS3Config {
         private @Nullable String folder;
         private @Nullable String region;
         private @Nullable Boolean skipSslVerify;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterV2RkeConfigEtcdS3Config defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -148,35 +127,51 @@ public final class ClusterV2RkeConfigEtcdS3Config {
     	      this.skipSslVerify = defaults.skipSslVerify;
         }
 
+        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
+        @CustomType.Setter
         public Builder cloudCredentialName(@Nullable String cloudCredentialName) {
             this.cloudCredentialName = cloudCredentialName;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointCa(@Nullable String endpointCa) {
             this.endpointCa = endpointCa;
             return this;
         }
+        @CustomType.Setter
         public Builder folder(@Nullable String folder) {
             this.folder = folder;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder skipSslVerify(@Nullable Boolean skipSslVerify) {
             this.skipSslVerify = skipSslVerify;
             return this;
-        }        public ClusterV2RkeConfigEtcdS3Config build() {
-            return new ClusterV2RkeConfigEtcdS3Config(bucket, cloudCredentialName, endpoint, endpointCa, folder, region, skipSslVerify);
+        }
+        public ClusterV2RkeConfigEtcdS3Config build() {
+            final var o = new ClusterV2RkeConfigEtcdS3Config();
+            o.bucket = bucket;
+            o.cloudCredentialName = cloudCredentialName;
+            o.endpoint = endpoint;
+            o.endpointCa = endpointCa;
+            o.folder = folder;
+            o.region = region;
+            o.skipSslVerify = skipSslVerify;
+            return o;
         }
     }
 }

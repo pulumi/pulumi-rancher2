@@ -16,35 +16,24 @@ public final class ProjectAlertRulePodRule {
      * @return Pod rule condition. Supported values : `&#34;notrunning&#34; | &#34;notscheduled&#34; | &#34;restarts&#34;`. Default: `notrunning` (string)
      * 
      */
-    private final @Nullable String condition;
+    private @Nullable String condition;
     /**
      * @return Pod ID (string)
      * 
      */
-    private final String podId;
+    private String podId;
     /**
      * @return Pod rule restart interval seconds. Default: `300` (int)
      * 
      */
-    private final @Nullable Integer restartIntervalSeconds;
+    private @Nullable Integer restartIntervalSeconds;
     /**
      * @return Pod rule restart times. Default: `3`  (int)
      * 
      */
-    private final @Nullable Integer restartTimes;
+    private @Nullable Integer restartTimes;
 
-    @CustomType.Constructor
-    private ProjectAlertRulePodRule(
-        @CustomType.Parameter("condition") @Nullable String condition,
-        @CustomType.Parameter("podId") String podId,
-        @CustomType.Parameter("restartIntervalSeconds") @Nullable Integer restartIntervalSeconds,
-        @CustomType.Parameter("restartTimes") @Nullable Integer restartTimes) {
-        this.condition = condition;
-        this.podId = podId;
-        this.restartIntervalSeconds = restartIntervalSeconds;
-        this.restartTimes = restartTimes;
-    }
-
+    private ProjectAlertRulePodRule() {}
     /**
      * @return Pod rule condition. Supported values : `&#34;notrunning&#34; | &#34;notscheduled&#34; | &#34;restarts&#34;`. Default: `notrunning` (string)
      * 
@@ -81,17 +70,13 @@ public final class ProjectAlertRulePodRule {
     public static Builder builder(ProjectAlertRulePodRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String condition;
         private String podId;
         private @Nullable Integer restartIntervalSeconds;
         private @Nullable Integer restartTimes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ProjectAlertRulePodRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
@@ -100,23 +85,33 @@ public final class ProjectAlertRulePodRule {
     	      this.restartTimes = defaults.restartTimes;
         }
 
+        @CustomType.Setter
         public Builder condition(@Nullable String condition) {
             this.condition = condition;
             return this;
         }
+        @CustomType.Setter
         public Builder podId(String podId) {
             this.podId = Objects.requireNonNull(podId);
             return this;
         }
+        @CustomType.Setter
         public Builder restartIntervalSeconds(@Nullable Integer restartIntervalSeconds) {
             this.restartIntervalSeconds = restartIntervalSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder restartTimes(@Nullable Integer restartTimes) {
             this.restartTimes = restartTimes;
             return this;
-        }        public ProjectAlertRulePodRule build() {
-            return new ProjectAlertRulePodRule(condition, podId, restartIntervalSeconds, restartTimes);
+        }
+        public ProjectAlertRulePodRule build() {
+            final var o = new ProjectAlertRulePodRule();
+            o.condition = condition;
+            o.podId = podId;
+            o.restartIntervalSeconds = restartIntervalSeconds;
+            o.restartTimes = restartTimes;
+            return o;
         }
     }
 }

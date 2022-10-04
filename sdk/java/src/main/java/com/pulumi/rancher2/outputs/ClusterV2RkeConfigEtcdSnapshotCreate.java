@@ -13,13 +13,9 @@ public final class ClusterV2RkeConfigEtcdSnapshotCreate {
      * @return ETCD snapshot desired generation (int)
      * 
      */
-    private final Integer generation;
+    private Integer generation;
 
-    @CustomType.Constructor
-    private ClusterV2RkeConfigEtcdSnapshotCreate(@CustomType.Parameter("generation") Integer generation) {
-        this.generation = generation;
-    }
-
+    private ClusterV2RkeConfigEtcdSnapshotCreate() {}
     /**
      * @return ETCD snapshot desired generation (int)
      * 
@@ -35,24 +31,24 @@ public final class ClusterV2RkeConfigEtcdSnapshotCreate {
     public static Builder builder(ClusterV2RkeConfigEtcdSnapshotCreate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer generation;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterV2RkeConfigEtcdSnapshotCreate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.generation = defaults.generation;
         }
 
+        @CustomType.Setter
         public Builder generation(Integer generation) {
             this.generation = Objects.requireNonNull(generation);
             return this;
-        }        public ClusterV2RkeConfigEtcdSnapshotCreate build() {
-            return new ClusterV2RkeConfigEtcdSnapshotCreate(generation);
+        }
+        public ClusterV2RkeConfigEtcdSnapshotCreate build() {
+            final var o = new ClusterV2RkeConfigEtcdSnapshotCreate();
+            o.generation = generation;
+            return o;
         }
     }
 }

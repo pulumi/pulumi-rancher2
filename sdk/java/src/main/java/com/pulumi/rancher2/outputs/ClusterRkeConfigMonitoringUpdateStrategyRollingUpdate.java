@@ -15,21 +15,14 @@ public final class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
      * @return Monitoring deployment rolling update max surge. Default: `1` (int)
      * 
      */
-    private final @Nullable Integer maxSurge;
+    private @Nullable Integer maxSurge;
     /**
      * @return Monitoring deployment rolling update max unavailable. Default: `1` (int)
      * 
      */
-    private final @Nullable Integer maxUnavailable;
+    private @Nullable Integer maxUnavailable;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate(
-        @CustomType.Parameter("maxSurge") @Nullable Integer maxSurge,
-        @CustomType.Parameter("maxUnavailable") @Nullable Integer maxUnavailable) {
-        this.maxSurge = maxSurge;
-        this.maxUnavailable = maxUnavailable;
-    }
-
+    private ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate() {}
     /**
      * @return Monitoring deployment rolling update max surge. Default: `1` (int)
      * 
@@ -52,30 +45,32 @@ public final class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
     public static Builder builder(ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxSurge;
         private @Nullable Integer maxUnavailable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxSurge = defaults.maxSurge;
     	      this.maxUnavailable = defaults.maxUnavailable;
         }
 
+        @CustomType.Setter
         public Builder maxSurge(@Nullable Integer maxSurge) {
             this.maxSurge = maxSurge;
             return this;
         }
+        @CustomType.Setter
         public Builder maxUnavailable(@Nullable Integer maxUnavailable) {
             this.maxUnavailable = maxUnavailable;
             return this;
-        }        public ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate build() {
-            return new ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate(maxSurge, maxUnavailable);
+        }
+        public ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate build() {
+            final var o = new ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate();
+            o.maxSurge = maxSurge;
+            o.maxUnavailable = maxUnavailable;
+            return o;
         }
     }
 }

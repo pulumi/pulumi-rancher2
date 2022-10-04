@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateMember {
-    private final @Nullable String accessType;
-    private final @Nullable String groupPrincipalId;
-    private final @Nullable String userPrincipalId;
+    private @Nullable String accessType;
+    private @Nullable String groupPrincipalId;
+    private @Nullable String userPrincipalId;
 
-    @CustomType.Constructor
-    private GetClusterTemplateMember(
-        @CustomType.Parameter("accessType") @Nullable String accessType,
-        @CustomType.Parameter("groupPrincipalId") @Nullable String groupPrincipalId,
-        @CustomType.Parameter("userPrincipalId") @Nullable String userPrincipalId) {
-        this.accessType = accessType;
-        this.groupPrincipalId = groupPrincipalId;
-        this.userPrincipalId = userPrincipalId;
-    }
-
+    private GetClusterTemplateMember() {}
     public Optional<String> accessType() {
         return Optional.ofNullable(this.accessType);
     }
@@ -42,16 +33,12 @@ public final class GetClusterTemplateMember {
     public static Builder builder(GetClusterTemplateMember defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessType;
         private @Nullable String groupPrincipalId;
         private @Nullable String userPrincipalId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateMember defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessType = defaults.accessType;
@@ -59,19 +46,27 @@ public final class GetClusterTemplateMember {
     	      this.userPrincipalId = defaults.userPrincipalId;
         }
 
+        @CustomType.Setter
         public Builder accessType(@Nullable String accessType) {
             this.accessType = accessType;
             return this;
         }
+        @CustomType.Setter
         public Builder groupPrincipalId(@Nullable String groupPrincipalId) {
             this.groupPrincipalId = groupPrincipalId;
             return this;
         }
+        @CustomType.Setter
         public Builder userPrincipalId(@Nullable String userPrincipalId) {
             this.userPrincipalId = userPrincipalId;
             return this;
-        }        public GetClusterTemplateMember build() {
-            return new GetClusterTemplateMember(accessType, groupPrincipalId, userPrincipalId);
+        }
+        public GetClusterTemplateMember build() {
+            final var o = new GetClusterTemplateMember();
+            o.accessType = accessType;
+            o.groupPrincipalId = groupPrincipalId;
+            o.userPrincipalId = userPrincipalId;
+            return o;
         }
     }
 }

@@ -17,76 +17,82 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewApp(ctx, "foo", &rancher2.AppArgs{
-// 			Answers: pulumi.AnyMap{
-// 				"foo": pulumi.Any("bar"),
-// 				"ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": pulumi.Any(true),
-// 				"ingress_host": pulumi.Any("test.xip.io"),
-// 			},
-// 			CatalogName:     pulumi.String("<catalog_name>"),
-// 			Description:     pulumi.String("Foo app"),
-// 			ProjectId:       pulumi.String("<project_id>"),
-// 			TargetNamespace: pulumi.String("<namespace_name>"),
-// 			TemplateName:    pulumi.String("<template_name>"),
-// 			TemplateVersion: pulumi.String("<template_version>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewApp(ctx, "foo", &rancher2.AppArgs{
+//				Answers: pulumi.AnyMap{
+//					"foo": pulumi.Any("bar"),
+//					"ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": pulumi.Any(true),
+//					"ingress_host": pulumi.Any("test.xip.io"),
+//				},
+//				CatalogName:     pulumi.String("<catalog_name>"),
+//				Description:     pulumi.String("Foo app"),
+//				ProjectId:       pulumi.String("<project_id>"),
+//				TargetNamespace: pulumi.String("<namespace_name>"),
+//				TemplateName:    pulumi.String("<template_name>"),
+//				TemplateVersion: pulumi.String("<template_version>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooNamespace, err := rancher2.NewNamespace(ctx, "fooNamespace", &rancher2.NamespaceArgs{
-// 			Description: pulumi.String("Foo namespace"),
-// 			ProjectId:   pulumi.String("<project_id>"),
-// 			ResourceQuota: &NamespaceResourceQuotaArgs{
-// 				Limit: &NamespaceResourceQuotaLimitArgs{
-// 					LimitsCpu:       pulumi.String("100m"),
-// 					LimitsMemory:    pulumi.String("100Mi"),
-// 					RequestsStorage: pulumi.String("1Gi"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewApp(ctx, "fooApp", &rancher2.AppArgs{
-// 			CatalogName:     pulumi.String("<catalog_name>"),
-// 			Description:     pulumi.String("Foo app"),
-// 			ProjectId:       pulumi.String("<project_id>"),
-// 			TemplateName:    pulumi.String("<template_name>"),
-// 			TemplateVersion: pulumi.String("<template_version>"),
-// 			TargetNamespace: fooNamespace.ID(),
-// 			Answers: pulumi.AnyMap{
-// 				"ingress_host": pulumi.Any("test.xip.io"),
-// 				"foo":          pulumi.Any("bar"),
-// 				"ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": pulumi.Any(true),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooNamespace, err := rancher2.NewNamespace(ctx, "fooNamespace", &rancher2.NamespaceArgs{
+//				Description: pulumi.String("Foo namespace"),
+//				ProjectId:   pulumi.String("<project_id>"),
+//				ResourceQuota: &NamespaceResourceQuotaArgs{
+//					Limit: &NamespaceResourceQuotaLimitArgs{
+//						LimitsCpu:       pulumi.String("100m"),
+//						LimitsMemory:    pulumi.String("100Mi"),
+//						RequestsStorage: pulumi.String("1Gi"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewApp(ctx, "fooApp", &rancher2.AppArgs{
+//				CatalogName:     pulumi.String("<catalog_name>"),
+//				Description:     pulumi.String("Foo app"),
+//				ProjectId:       pulumi.String("<project_id>"),
+//				TemplateName:    pulumi.String("<template_name>"),
+//				TemplateVersion: pulumi.String("<template_version>"),
+//				TargetNamespace: fooNamespace.ID(),
+//				Answers: pulumi.AnyMap{
+//					"ingress_host": pulumi.Any("test.xip.io"),
+//					"foo":          pulumi.Any("bar"),
+//					"ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": pulumi.Any(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -94,7 +100,9 @@ import (
 // Apps can be imported using the app ID in the format `<project_id>:<app_name>`
 //
 // ```sh
-//  $ pulumi import rancher2:index/app:App foo &lt;PROJECT_ID_ID&gt;:&lt;APP_NAME&gt;
+//
+//	$ pulumi import rancher2:index/app:App foo &lt;PROJECT_ID_ID&gt;:&lt;APP_NAME&gt;
+//
 // ```
 type App struct {
 	pulumi.CustomResourceState
@@ -340,7 +348,7 @@ func (i *App) ToAppOutputWithContext(ctx context.Context) AppOutput {
 // AppArrayInput is an input type that accepts AppArray and AppArrayOutput values.
 // You can construct a concrete instance of `AppArrayInput` via:
 //
-//          AppArray{ AppArgs{...} }
+//	AppArray{ AppArgs{...} }
 type AppArrayInput interface {
 	pulumi.Input
 
@@ -365,7 +373,7 @@ func (i AppArray) ToAppArrayOutputWithContext(ctx context.Context) AppArrayOutpu
 // AppMapInput is an input type that accepts AppMap and AppMapOutput values.
 // You can construct a concrete instance of `AppMapInput` via:
 //
-//          AppMap{ "key": AppArgs{...} }
+//	AppMap{ "key": AppArgs{...} }
 type AppMapInput interface {
 	pulumi.Input
 

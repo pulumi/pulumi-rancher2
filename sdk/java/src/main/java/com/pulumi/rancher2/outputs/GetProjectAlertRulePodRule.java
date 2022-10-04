@@ -12,23 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectAlertRulePodRule {
-    private final @Nullable String condition;
-    private final String podId;
-    private final @Nullable Integer restartIntervalSeconds;
-    private final @Nullable Integer restartTimes;
+    private @Nullable String condition;
+    private String podId;
+    private @Nullable Integer restartIntervalSeconds;
+    private @Nullable Integer restartTimes;
 
-    @CustomType.Constructor
-    private GetProjectAlertRulePodRule(
-        @CustomType.Parameter("condition") @Nullable String condition,
-        @CustomType.Parameter("podId") String podId,
-        @CustomType.Parameter("restartIntervalSeconds") @Nullable Integer restartIntervalSeconds,
-        @CustomType.Parameter("restartTimes") @Nullable Integer restartTimes) {
-        this.condition = condition;
-        this.podId = podId;
-        this.restartIntervalSeconds = restartIntervalSeconds;
-        this.restartTimes = restartTimes;
-    }
-
+    private GetProjectAlertRulePodRule() {}
     public Optional<String> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -49,17 +38,13 @@ public final class GetProjectAlertRulePodRule {
     public static Builder builder(GetProjectAlertRulePodRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String condition;
         private String podId;
         private @Nullable Integer restartIntervalSeconds;
         private @Nullable Integer restartTimes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectAlertRulePodRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
@@ -68,23 +53,33 @@ public final class GetProjectAlertRulePodRule {
     	      this.restartTimes = defaults.restartTimes;
         }
 
+        @CustomType.Setter
         public Builder condition(@Nullable String condition) {
             this.condition = condition;
             return this;
         }
+        @CustomType.Setter
         public Builder podId(String podId) {
             this.podId = Objects.requireNonNull(podId);
             return this;
         }
+        @CustomType.Setter
         public Builder restartIntervalSeconds(@Nullable Integer restartIntervalSeconds) {
             this.restartIntervalSeconds = restartIntervalSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder restartTimes(@Nullable Integer restartTimes) {
             this.restartTimes = restartTimes;
             return this;
-        }        public GetProjectAlertRulePodRule build() {
-            return new GetProjectAlertRulePodRule(condition, podId, restartIntervalSeconds, restartTimes);
+        }
+        public GetProjectAlertRulePodRule build() {
+            final var o = new GetProjectAlertRulePodRule();
+            o.condition = condition;
+            o.podId = podId;
+            o.restartIntervalSeconds = restartIntervalSeconds;
+            o.restartTimes = restartTimes;
+            return o;
         }
     }
 }

@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigRotateCertificates {
-    private final Integer generation;
-    private final @Nullable List<String> services;
+    private Integer generation;
+    private @Nullable List<String> services;
 
-    @CustomType.Constructor
-    private GetClusterV2RkeConfigRotateCertificates(
-        @CustomType.Parameter("generation") Integer generation,
-        @CustomType.Parameter("services") @Nullable List<String> services) {
-        this.generation = generation;
-        this.services = services;
-    }
-
+    private GetClusterV2RkeConfigRotateCertificates() {}
     public Integer generation() {
         return this.generation;
     }
@@ -37,33 +30,35 @@ public final class GetClusterV2RkeConfigRotateCertificates {
     public static Builder builder(GetClusterV2RkeConfigRotateCertificates defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer generation;
         private @Nullable List<String> services;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2RkeConfigRotateCertificates defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.generation = defaults.generation;
     	      this.services = defaults.services;
         }
 
+        @CustomType.Setter
         public Builder generation(Integer generation) {
             this.generation = Objects.requireNonNull(generation);
             return this;
         }
+        @CustomType.Setter
         public Builder services(@Nullable List<String> services) {
             this.services = services;
             return this;
         }
         public Builder services(String... services) {
             return services(List.of(services));
-        }        public GetClusterV2RkeConfigRotateCertificates build() {
-            return new GetClusterV2RkeConfigRotateCertificates(generation, services);
+        }
+        public GetClusterV2RkeConfigRotateCertificates build() {
+            final var o = new GetClusterV2RkeConfigRotateCertificates();
+            o.generation = generation;
+            o.services = services;
+            return o;
         }
     }
 }

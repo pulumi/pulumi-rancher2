@@ -13,32 +13,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotifierSmtpConfig {
-    private final String defaultRecipient;
-    private final String host;
-    private final @Nullable String password;
-    private final Integer port;
-    private final String sender;
-    private final @Nullable Boolean tls;
-    private final @Nullable String username;
+    private String defaultRecipient;
+    private String host;
+    private @Nullable String password;
+    private Integer port;
+    private String sender;
+    private @Nullable Boolean tls;
+    private @Nullable String username;
 
-    @CustomType.Constructor
-    private GetNotifierSmtpConfig(
-        @CustomType.Parameter("defaultRecipient") String defaultRecipient,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("sender") String sender,
-        @CustomType.Parameter("tls") @Nullable Boolean tls,
-        @CustomType.Parameter("username") @Nullable String username) {
-        this.defaultRecipient = defaultRecipient;
-        this.host = host;
-        this.password = password;
-        this.port = port;
-        this.sender = sender;
-        this.tls = tls;
-        this.username = username;
-    }
-
+    private GetNotifierSmtpConfig() {}
     public String defaultRecipient() {
         return this.defaultRecipient;
     }
@@ -68,7 +51,7 @@ public final class GetNotifierSmtpConfig {
     public static Builder builder(GetNotifierSmtpConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String defaultRecipient;
         private String host;
@@ -77,11 +60,7 @@ public final class GetNotifierSmtpConfig {
         private String sender;
         private @Nullable Boolean tls;
         private @Nullable String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNotifierSmtpConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultRecipient = defaults.defaultRecipient;
@@ -93,35 +72,51 @@ public final class GetNotifierSmtpConfig {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder defaultRecipient(String defaultRecipient) {
             this.defaultRecipient = Objects.requireNonNull(defaultRecipient);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder sender(String sender) {
             this.sender = Objects.requireNonNull(sender);
             return this;
         }
+        @CustomType.Setter
         public Builder tls(@Nullable Boolean tls) {
             this.tls = tls;
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
-        }        public GetNotifierSmtpConfig build() {
-            return new GetNotifierSmtpConfig(defaultRecipient, host, password, port, sender, tls, username);
+        }
+        public GetNotifierSmtpConfig build() {
+            final var o = new GetNotifierSmtpConfig();
+            o.defaultRecipient = defaultRecipient;
+            o.host = host;
+            o.password = password;
+            o.port = port;
+            o.sender = sender;
+            o.tls = tls;
+            o.username = username;
+            return o;
         }
     }
 }

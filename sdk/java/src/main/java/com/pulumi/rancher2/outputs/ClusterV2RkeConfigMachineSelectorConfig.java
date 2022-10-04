@@ -18,21 +18,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfig {
      * @return Machine selector config (map)
      * 
      */
-    private final @Nullable Map<String,Object> config;
+    private @Nullable Map<String,Object> config;
     /**
      * @return Machine selector label (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector machineLabelSelector;
+    private @Nullable ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector machineLabelSelector;
 
-    @CustomType.Constructor
-    private ClusterV2RkeConfigMachineSelectorConfig(
-        @CustomType.Parameter("config") @Nullable Map<String,Object> config,
-        @CustomType.Parameter("machineLabelSelector") @Nullable ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector machineLabelSelector) {
-        this.config = config;
-        this.machineLabelSelector = machineLabelSelector;
-    }
-
+    private ClusterV2RkeConfigMachineSelectorConfig() {}
     /**
      * @return Machine selector config (map)
      * 
@@ -55,30 +48,32 @@ public final class ClusterV2RkeConfigMachineSelectorConfig {
     public static Builder builder(ClusterV2RkeConfigMachineSelectorConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,Object> config;
         private @Nullable ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector machineLabelSelector;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterV2RkeConfigMachineSelectorConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
     	      this.machineLabelSelector = defaults.machineLabelSelector;
         }
 
+        @CustomType.Setter
         public Builder config(@Nullable Map<String,Object> config) {
             this.config = config;
             return this;
         }
+        @CustomType.Setter
         public Builder machineLabelSelector(@Nullable ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector machineLabelSelector) {
             this.machineLabelSelector = machineLabelSelector;
             return this;
-        }        public ClusterV2RkeConfigMachineSelectorConfig build() {
-            return new ClusterV2RkeConfigMachineSelectorConfig(config, machineLabelSelector);
+        }
+        public ClusterV2RkeConfigMachineSelectorConfig build() {
+            final var o = new ClusterV2RkeConfigMachineSelectorConfig();
+            o.config = config;
+            o.machineLabelSelector = machineLabelSelector;
+            return o;
         }
     }
 }

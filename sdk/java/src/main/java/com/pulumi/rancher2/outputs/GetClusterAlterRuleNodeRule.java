@@ -14,26 +14,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterAlterRuleNodeRule {
-    private final @Nullable String condition;
-    private final @Nullable Integer cpuThreshold;
-    private final @Nullable Integer memThreshold;
-    private final @Nullable String nodeId;
-    private final @Nullable Map<String,Object> selector;
+    private @Nullable String condition;
+    private @Nullable Integer cpuThreshold;
+    private @Nullable Integer memThreshold;
+    private @Nullable String nodeId;
+    private @Nullable Map<String,Object> selector;
 
-    @CustomType.Constructor
-    private GetClusterAlterRuleNodeRule(
-        @CustomType.Parameter("condition") @Nullable String condition,
-        @CustomType.Parameter("cpuThreshold") @Nullable Integer cpuThreshold,
-        @CustomType.Parameter("memThreshold") @Nullable Integer memThreshold,
-        @CustomType.Parameter("nodeId") @Nullable String nodeId,
-        @CustomType.Parameter("selector") @Nullable Map<String,Object> selector) {
-        this.condition = condition;
-        this.cpuThreshold = cpuThreshold;
-        this.memThreshold = memThreshold;
-        this.nodeId = nodeId;
-        this.selector = selector;
-    }
-
+    private GetClusterAlterRuleNodeRule() {}
     public Optional<String> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -57,18 +44,14 @@ public final class GetClusterAlterRuleNodeRule {
     public static Builder builder(GetClusterAlterRuleNodeRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String condition;
         private @Nullable Integer cpuThreshold;
         private @Nullable Integer memThreshold;
         private @Nullable String nodeId;
         private @Nullable Map<String,Object> selector;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAlterRuleNodeRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
@@ -78,27 +61,39 @@ public final class GetClusterAlterRuleNodeRule {
     	      this.selector = defaults.selector;
         }
 
+        @CustomType.Setter
         public Builder condition(@Nullable String condition) {
             this.condition = condition;
             return this;
         }
+        @CustomType.Setter
         public Builder cpuThreshold(@Nullable Integer cpuThreshold) {
             this.cpuThreshold = cpuThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder memThreshold(@Nullable Integer memThreshold) {
             this.memThreshold = memThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
+        @CustomType.Setter
         public Builder selector(@Nullable Map<String,Object> selector) {
             this.selector = selector;
             return this;
-        }        public GetClusterAlterRuleNodeRule build() {
-            return new GetClusterAlterRuleNodeRule(condition, cpuThreshold, memThreshold, nodeId, selector);
+        }
+        public GetClusterAlterRuleNodeRule build() {
+            final var o = new GetClusterAlterRuleNodeRule();
+            o.condition = condition;
+            o.cpuThreshold = cpuThreshold;
+            o.memThreshold = memThreshold;
+            o.nodeId = nodeId;
+            o.selector = selector;
+            return o;
         }
     }
 }

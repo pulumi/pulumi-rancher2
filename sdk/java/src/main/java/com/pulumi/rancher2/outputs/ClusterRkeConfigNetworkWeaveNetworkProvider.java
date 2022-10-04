@@ -13,13 +13,9 @@ public final class ClusterRkeConfigNetworkWeaveNetworkProvider {
      * @return Registry password (string)
      * 
      */
-    private final String password;
+    private String password;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigNetworkWeaveNetworkProvider(@CustomType.Parameter("password") String password) {
-        this.password = password;
-    }
-
+    private ClusterRkeConfigNetworkWeaveNetworkProvider() {}
     /**
      * @return Registry password (string)
      * 
@@ -35,24 +31,24 @@ public final class ClusterRkeConfigNetworkWeaveNetworkProvider {
     public static Builder builder(ClusterRkeConfigNetworkWeaveNetworkProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String password;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigNetworkWeaveNetworkProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
         }
 
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
-        }        public ClusterRkeConfigNetworkWeaveNetworkProvider build() {
-            return new ClusterRkeConfigNetworkWeaveNetworkProvider(password);
+        }
+        public ClusterRkeConfigNetworkWeaveNetworkProvider build() {
+            final var o = new ClusterRkeConfigNetworkWeaveNetworkProvider();
+            o.password = password;
+            return o;
         }
     }
 }

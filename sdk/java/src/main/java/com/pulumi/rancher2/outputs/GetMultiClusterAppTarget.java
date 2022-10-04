@@ -9,23 +9,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMultiClusterAppTarget {
-    private final String appId;
-    private final String healthState;
-    private final String projectId;
-    private final String state;
+    private String appId;
+    private String healthState;
+    private String projectId;
+    private String state;
 
-    @CustomType.Constructor
-    private GetMultiClusterAppTarget(
-        @CustomType.Parameter("appId") String appId,
-        @CustomType.Parameter("healthState") String healthState,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("state") String state) {
-        this.appId = appId;
-        this.healthState = healthState;
-        this.projectId = projectId;
-        this.state = state;
-    }
-
+    private GetMultiClusterAppTarget() {}
     public String appId() {
         return this.appId;
     }
@@ -46,17 +35,13 @@ public final class GetMultiClusterAppTarget {
     public static Builder builder(GetMultiClusterAppTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String appId;
         private String healthState;
         private String projectId;
         private String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMultiClusterAppTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appId = defaults.appId;
@@ -65,23 +50,33 @@ public final class GetMultiClusterAppTarget {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder appId(String appId) {
             this.appId = Objects.requireNonNull(appId);
             return this;
         }
+        @CustomType.Setter
         public Builder healthState(String healthState) {
             this.healthState = Objects.requireNonNull(healthState);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
-        }        public GetMultiClusterAppTarget build() {
-            return new GetMultiClusterAppTarget(appId, healthState, projectId, state);
+        }
+        public GetMultiClusterAppTarget build() {
+            final var o = new GetMultiClusterAppTarget();
+            o.appId = appId;
+            o.healthState = healthState;
+            o.projectId = projectId;
+            o.state = state;
+            return o;
         }
     }
 }

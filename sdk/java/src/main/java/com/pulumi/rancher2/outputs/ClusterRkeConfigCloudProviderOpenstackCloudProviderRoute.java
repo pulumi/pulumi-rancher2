@@ -15,13 +15,9 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute {
      * @return (string)
      * 
      */
-    private final @Nullable String routerId;
+    private @Nullable String routerId;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute(@CustomType.Parameter("routerId") @Nullable String routerId) {
-        this.routerId = routerId;
-    }
-
+    private ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute() {}
     /**
      * @return (string)
      * 
@@ -37,24 +33,24 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute {
     public static Builder builder(ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String routerId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.routerId = defaults.routerId;
         }
 
+        @CustomType.Setter
         public Builder routerId(@Nullable String routerId) {
             this.routerId = routerId;
             return this;
-        }        public ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute build() {
-            return new ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute(routerId);
+        }
+        public ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute build() {
+            final var o = new ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute();
+            o.routerId = routerId;
+            return o;
         }
     }
 }

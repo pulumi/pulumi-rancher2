@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider {
-    private final String password;
+    private String password;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider(@CustomType.Parameter("password") String password) {
-        this.password = password;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider() {}
     public String password() {
         return this.password;
     }
@@ -27,24 +23,24 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String password;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
         }
 
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider(password);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider();
+            o.password = password;
+            return o;
         }
     }
 }

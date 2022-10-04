@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotifierWebhookConfig {
-    private final @Nullable String proxyUrl;
-    private final String url;
+    private @Nullable String proxyUrl;
+    private String url;
 
-    @CustomType.Constructor
-    private GetNotifierWebhookConfig(
-        @CustomType.Parameter("proxyUrl") @Nullable String proxyUrl,
-        @CustomType.Parameter("url") String url) {
-        this.proxyUrl = proxyUrl;
-        this.url = url;
-    }
-
+    private GetNotifierWebhookConfig() {}
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
@@ -36,30 +29,32 @@ public final class GetNotifierWebhookConfig {
     public static Builder builder(GetNotifierWebhookConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String proxyUrl;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNotifierWebhookConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.proxyUrl = defaults.proxyUrl;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
             this.proxyUrl = proxyUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GetNotifierWebhookConfig build() {
-            return new GetNotifierWebhookConfig(proxyUrl, url);
+        }
+        public GetNotifierWebhookConfig build() {
+            final var o = new GetNotifierWebhookConfig();
+            o.proxyUrl = proxyUrl;
+            o.url = url;
+            return o;
         }
     }
 }

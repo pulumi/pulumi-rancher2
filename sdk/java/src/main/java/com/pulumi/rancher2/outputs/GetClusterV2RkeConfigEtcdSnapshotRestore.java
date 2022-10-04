@@ -12,24 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigEtcdSnapshotRestore {
-    private final Integer generation;
+    private Integer generation;
     /**
      * @return The name of the Cluster v2 (string)
      * 
      */
-    private final String name;
-    private final @Nullable String restoreRkeConfig;
+    private String name;
+    private @Nullable String restoreRkeConfig;
 
-    @CustomType.Constructor
-    private GetClusterV2RkeConfigEtcdSnapshotRestore(
-        @CustomType.Parameter("generation") Integer generation,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("restoreRkeConfig") @Nullable String restoreRkeConfig) {
-        this.generation = generation;
-        this.name = name;
-        this.restoreRkeConfig = restoreRkeConfig;
-    }
-
+    private GetClusterV2RkeConfigEtcdSnapshotRestore() {}
     public Integer generation() {
         return this.generation;
     }
@@ -51,16 +42,12 @@ public final class GetClusterV2RkeConfigEtcdSnapshotRestore {
     public static Builder builder(GetClusterV2RkeConfigEtcdSnapshotRestore defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer generation;
         private String name;
         private @Nullable String restoreRkeConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2RkeConfigEtcdSnapshotRestore defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.generation = defaults.generation;
@@ -68,19 +55,27 @@ public final class GetClusterV2RkeConfigEtcdSnapshotRestore {
     	      this.restoreRkeConfig = defaults.restoreRkeConfig;
         }
 
+        @CustomType.Setter
         public Builder generation(Integer generation) {
             this.generation = Objects.requireNonNull(generation);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder restoreRkeConfig(@Nullable String restoreRkeConfig) {
             this.restoreRkeConfig = restoreRkeConfig;
             return this;
-        }        public GetClusterV2RkeConfigEtcdSnapshotRestore build() {
-            return new GetClusterV2RkeConfigEtcdSnapshotRestore(generation, name, restoreRkeConfig);
+        }
+        public GetClusterV2RkeConfigEtcdSnapshotRestore build() {
+            final var o = new GetClusterV2RkeConfigEtcdSnapshotRestore();
+            o.generation = generation;
+            o.name = name;
+            o.restoreRkeConfig = restoreRkeConfig;
+            return o;
         }
     }
 }

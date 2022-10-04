@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication {
-    private final List<String> sans;
-    private final String strategy;
+    private List<String> sans;
+    private String strategy;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication(
-        @CustomType.Parameter("sans") List<String> sans,
-        @CustomType.Parameter("strategy") String strategy) {
-        this.sans = sans;
-        this.strategy = strategy;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication() {}
     public List<String> sans() {
         return this.sans;
     }
@@ -35,21 +28,18 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthe
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> sans;
         private String strategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sans = defaults.sans;
     	      this.strategy = defaults.strategy;
         }
 
+        @CustomType.Setter
         public Builder sans(List<String> sans) {
             this.sans = Objects.requireNonNull(sans);
             return this;
@@ -57,11 +47,16 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthe
         public Builder sans(String... sans) {
             return sans(List.of(sans));
         }
+        @CustomType.Setter
         public Builder strategy(String strategy) {
             this.strategy = Objects.requireNonNull(strategy);
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication(sans, strategy);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication();
+            o.sans = sans;
+            o.strategy = strategy;
+            return o;
         }
     }
 }

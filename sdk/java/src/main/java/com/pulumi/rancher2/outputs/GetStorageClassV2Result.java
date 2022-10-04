@@ -17,83 +17,56 @@ public final class GetStorageClassV2Result {
      * @return (Computed) Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
      * 
      */
-    private final Boolean allowVolumeExpansion;
+    private Boolean allowVolumeExpansion;
     /**
      * @return (Computed) Annotations for the storageClass v2 (map)
      * 
      */
-    private final Map<String,Object> annotations;
-    private final String clusterId;
+    private Map<String,Object> annotations;
+    private String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) The provisioner of the storageClass v2 (string)
      * 
      */
-    private final String k8sProvisioner;
+    private String k8sProvisioner;
     /**
      * @return (Computed) Labels for the storageClass v2 (map)
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return (Computed) The mount options for storageClass v2 (list)
      * 
      */
-    private final List<String> mountOptions;
-    private final String name;
+    private List<String> mountOptions;
+    private String name;
     /**
      * @return (Computed) The parameters for storageClass v2 (string)
      * 
      */
-    private final Map<String,Object> parameters;
+    private Map<String,Object> parameters;
     /**
      * @return (Computed) The reclaim policy for storageClass v2 (string)
      * 
      */
-    private final String reclaimPolicy;
+    private String reclaimPolicy;
     /**
      * @return (Computed) The k8s resource version (string)
      * 
      */
-    private final String resourceVersion;
+    private String resourceVersion;
     /**
      * @return (Computed) The volume binding mode for storageClass v2 (string)
      * 
      */
-    private final String volumeBindingMode;
+    private String volumeBindingMode;
 
-    @CustomType.Constructor
-    private GetStorageClassV2Result(
-        @CustomType.Parameter("allowVolumeExpansion") Boolean allowVolumeExpansion,
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("k8sProvisioner") String k8sProvisioner,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("mountOptions") List<String> mountOptions,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("parameters") Map<String,Object> parameters,
-        @CustomType.Parameter("reclaimPolicy") String reclaimPolicy,
-        @CustomType.Parameter("resourceVersion") String resourceVersion,
-        @CustomType.Parameter("volumeBindingMode") String volumeBindingMode) {
-        this.allowVolumeExpansion = allowVolumeExpansion;
-        this.annotations = annotations;
-        this.clusterId = clusterId;
-        this.id = id;
-        this.k8sProvisioner = k8sProvisioner;
-        this.labels = labels;
-        this.mountOptions = mountOptions;
-        this.name = name;
-        this.parameters = parameters;
-        this.reclaimPolicy = reclaimPolicy;
-        this.resourceVersion = resourceVersion;
-        this.volumeBindingMode = volumeBindingMode;
-    }
-
+    private GetStorageClassV2Result() {}
     /**
      * @return (Computed) Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
      * 
@@ -178,7 +151,7 @@ public final class GetStorageClassV2Result {
     public static Builder builder(GetStorageClassV2Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean allowVolumeExpansion;
         private Map<String,Object> annotations;
@@ -192,11 +165,7 @@ public final class GetStorageClassV2Result {
         private String reclaimPolicy;
         private String resourceVersion;
         private String volumeBindingMode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetStorageClassV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowVolumeExpansion = defaults.allowVolumeExpansion;
@@ -213,30 +182,37 @@ public final class GetStorageClassV2Result {
     	      this.volumeBindingMode = defaults.volumeBindingMode;
         }
 
+        @CustomType.Setter
         public Builder allowVolumeExpansion(Boolean allowVolumeExpansion) {
             this.allowVolumeExpansion = Objects.requireNonNull(allowVolumeExpansion);
             return this;
         }
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder k8sProvisioner(String k8sProvisioner) {
             this.k8sProvisioner = Objects.requireNonNull(k8sProvisioner);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder mountOptions(List<String> mountOptions) {
             this.mountOptions = Objects.requireNonNull(mountOptions);
             return this;
@@ -244,27 +220,46 @@ public final class GetStorageClassV2Result {
         public Builder mountOptions(String... mountOptions) {
             return mountOptions(List.of(mountOptions));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder parameters(Map<String,Object> parameters) {
             this.parameters = Objects.requireNonNull(parameters);
             return this;
         }
+        @CustomType.Setter
         public Builder reclaimPolicy(String reclaimPolicy) {
             this.reclaimPolicy = Objects.requireNonNull(reclaimPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceVersion(String resourceVersion) {
             this.resourceVersion = Objects.requireNonNull(resourceVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeBindingMode(String volumeBindingMode) {
             this.volumeBindingMode = Objects.requireNonNull(volumeBindingMode);
             return this;
-        }        public GetStorageClassV2Result build() {
-            return new GetStorageClassV2Result(allowVolumeExpansion, annotations, clusterId, id, k8sProvisioner, labels, mountOptions, name, parameters, reclaimPolicy, resourceVersion, volumeBindingMode);
+        }
+        public GetStorageClassV2Result build() {
+            final var o = new GetStorageClassV2Result();
+            o.allowVolumeExpansion = allowVolumeExpansion;
+            o.annotations = annotations;
+            o.clusterId = clusterId;
+            o.id = id;
+            o.k8sProvisioner = k8sProvisioner;
+            o.labels = labels;
+            o.mountOptions = mountOptions;
+            o.name = name;
+            o.parameters = parameters;
+            o.reclaimPolicy = reclaimPolicy;
+            o.resourceVersion = resourceVersion;
+            o.volumeBindingMode = volumeBindingMode;
+            return o;
         }
     }
 }

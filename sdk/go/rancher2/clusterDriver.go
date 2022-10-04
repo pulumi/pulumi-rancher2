@@ -15,10 +15,12 @@ import (
 //
 // ## Import
 //
-// Cluster Driver can be imported using the Rancher Cluster Driver ID
+// # Cluster Driver can be imported using the Rancher Cluster Driver ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
+//
+//	$ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
+//
 // ```
 type ClusterDriver struct {
 	pulumi.CustomResourceState
@@ -205,7 +207,7 @@ func (i *ClusterDriver) ToClusterDriverOutputWithContext(ctx context.Context) Cl
 // ClusterDriverArrayInput is an input type that accepts ClusterDriverArray and ClusterDriverArrayOutput values.
 // You can construct a concrete instance of `ClusterDriverArrayInput` via:
 //
-//          ClusterDriverArray{ ClusterDriverArgs{...} }
+//	ClusterDriverArray{ ClusterDriverArgs{...} }
 type ClusterDriverArrayInput interface {
 	pulumi.Input
 
@@ -230,7 +232,7 @@ func (i ClusterDriverArray) ToClusterDriverArrayOutputWithContext(ctx context.Co
 // ClusterDriverMapInput is an input type that accepts ClusterDriverMap and ClusterDriverMapOutput values.
 // You can construct a concrete instance of `ClusterDriverMapInput` via:
 //
-//          ClusterDriverMap{ "key": ClusterDriverArgs{...} }
+//	ClusterDriverMap{ "key": ClusterDriverArgs{...} }
 type ClusterDriverMapInput interface {
 	pulumi.Input
 

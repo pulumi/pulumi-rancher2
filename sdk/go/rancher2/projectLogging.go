@@ -19,36 +19,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewProjectLogging(ctx, "foo", &rancher2.ProjectLoggingArgs{
-// 			Kind:      pulumi.String("syslog"),
-// 			ProjectId: pulumi.String("<project_id>"),
-// 			SyslogConfig: &ProjectLoggingSyslogConfigArgs{
-// 				Endpoint:  pulumi.String("<syslog_endpoint>"),
-// 				Protocol:  pulumi.String("udp"),
-// 				Severity:  pulumi.String("notice"),
-// 				SslVerify: pulumi.Bool(false),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewProjectLogging(ctx, "foo", &rancher2.ProjectLoggingArgs{
+//				Kind:      pulumi.String("syslog"),
+//				ProjectId: pulumi.String("<project_id>"),
+//				SyslogConfig: &ProjectLoggingSyslogConfigArgs{
+//					Endpoint:  pulumi.String("<syslog_endpoint>"),
+//					Protocol:  pulumi.String("udp"),
+//					Severity:  pulumi.String("notice"),
+//					SslVerify: pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Project Logging can be imported using the Rancher Project Logging ID
+// # Project Logging can be imported using the Rancher Project Logging ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/projectLogging:ProjectLogging foo &lt;project_logging_id&gt;
+//
+//	$ pulumi import rancher2:index/projectLogging:ProjectLogging foo &lt;project_logging_id&gt;
+//
 // ```
 type ProjectLogging struct {
 	pulumi.CustomResourceState
@@ -282,7 +287,7 @@ func (i *ProjectLogging) ToProjectLoggingOutputWithContext(ctx context.Context) 
 // ProjectLoggingArrayInput is an input type that accepts ProjectLoggingArray and ProjectLoggingArrayOutput values.
 // You can construct a concrete instance of `ProjectLoggingArrayInput` via:
 //
-//          ProjectLoggingArray{ ProjectLoggingArgs{...} }
+//	ProjectLoggingArray{ ProjectLoggingArgs{...} }
 type ProjectLoggingArrayInput interface {
 	pulumi.Input
 
@@ -307,7 +312,7 @@ func (i ProjectLoggingArray) ToProjectLoggingArrayOutputWithContext(ctx context.
 // ProjectLoggingMapInput is an input type that accepts ProjectLoggingMap and ProjectLoggingMapOutput values.
 // You can construct a concrete instance of `ProjectLoggingMapInput` via:
 //
-//          ProjectLoggingMap{ "key": ProjectLoggingArgs{...} }
+//	ProjectLoggingMap{ "key": ProjectLoggingArgs{...} }
 type ProjectLoggingMapInput interface {
 	pulumi.Input
 

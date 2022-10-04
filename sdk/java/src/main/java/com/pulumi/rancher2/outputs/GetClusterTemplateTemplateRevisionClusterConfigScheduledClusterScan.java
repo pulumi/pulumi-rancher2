@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan {
-    private final @Nullable Boolean enabled;
-    private final GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig scanConfig;
-    private final GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig scheduleConfig;
+    private @Nullable Boolean enabled;
+    private GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig scanConfig;
+    private GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig scheduleConfig;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("scanConfig") GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig scanConfig,
-        @CustomType.Parameter("scheduleConfig") GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig scheduleConfig) {
-        this.enabled = enabled;
-        this.scanConfig = scanConfig;
-        this.scheduleConfig = scheduleConfig;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan() {}
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -44,16 +35,12 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigScheduledClust
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig scanConfig;
         private GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig scheduleConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -61,19 +48,27 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigScheduledClust
     	      this.scheduleConfig = defaults.scheduleConfig;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder scanConfig(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig scanConfig) {
             this.scanConfig = Objects.requireNonNull(scanConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduleConfig(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig scheduleConfig) {
             this.scheduleConfig = Objects.requireNonNull(scheduleConfig);
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan(enabled, scanConfig, scheduleConfig);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan();
+            o.enabled = enabled;
+            o.scanConfig = scanConfig;
+            o.scheduleConfig = scheduleConfig;
+            return o;
         }
     }
 }

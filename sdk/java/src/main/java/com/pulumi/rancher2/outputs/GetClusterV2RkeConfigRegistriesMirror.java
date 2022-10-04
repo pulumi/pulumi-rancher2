@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigRegistriesMirror {
-    private final @Nullable List<String> endpoints;
-    private final String hostname;
-    private final @Nullable Map<String,Object> rewrites;
+    private @Nullable List<String> endpoints;
+    private String hostname;
+    private @Nullable Map<String,Object> rewrites;
 
-    @CustomType.Constructor
-    private GetClusterV2RkeConfigRegistriesMirror(
-        @CustomType.Parameter("endpoints") @Nullable List<String> endpoints,
-        @CustomType.Parameter("hostname") String hostname,
-        @CustomType.Parameter("rewrites") @Nullable Map<String,Object> rewrites) {
-        this.endpoints = endpoints;
-        this.hostname = hostname;
-        this.rewrites = rewrites;
-    }
-
+    private GetClusterV2RkeConfigRegistriesMirror() {}
     public List<String> endpoints() {
         return this.endpoints == null ? List.of() : this.endpoints;
     }
@@ -44,16 +35,12 @@ public final class GetClusterV2RkeConfigRegistriesMirror {
     public static Builder builder(GetClusterV2RkeConfigRegistriesMirror defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> endpoints;
         private String hostname;
         private @Nullable Map<String,Object> rewrites;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2RkeConfigRegistriesMirror defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpoints = defaults.endpoints;
@@ -61,6 +48,7 @@ public final class GetClusterV2RkeConfigRegistriesMirror {
     	      this.rewrites = defaults.rewrites;
         }
 
+        @CustomType.Setter
         public Builder endpoints(@Nullable List<String> endpoints) {
             this.endpoints = endpoints;
             return this;
@@ -68,15 +56,22 @@ public final class GetClusterV2RkeConfigRegistriesMirror {
         public Builder endpoints(String... endpoints) {
             return endpoints(List.of(endpoints));
         }
+        @CustomType.Setter
         public Builder hostname(String hostname) {
             this.hostname = Objects.requireNonNull(hostname);
             return this;
         }
+        @CustomType.Setter
         public Builder rewrites(@Nullable Map<String,Object> rewrites) {
             this.rewrites = rewrites;
             return this;
-        }        public GetClusterV2RkeConfigRegistriesMirror build() {
-            return new GetClusterV2RkeConfigRegistriesMirror(endpoints, hostname, rewrites);
+        }
+        public GetClusterV2RkeConfigRegistriesMirror build() {
+            final var o = new GetClusterV2RkeConfigRegistriesMirror();
+            o.endpoints = endpoints;
+            o.hostname = hostname;
+            o.rewrites = rewrites;
+            return o;
         }
     }
 }

@@ -13,26 +13,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRkeConfigCloudProviderOpenstackCloudProvider {
-    private final GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage;
-    private final GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global;
-    private final GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer;
-    private final GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata;
-    private final GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route;
+    private GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage;
+    private GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global;
+    private GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer;
+    private GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata;
+    private GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigCloudProviderOpenstackCloudProvider(
-        @CustomType.Parameter("blockStorage") GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage,
-        @CustomType.Parameter("global") GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global,
-        @CustomType.Parameter("loadBalancer") GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer,
-        @CustomType.Parameter("metadata") GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata,
-        @CustomType.Parameter("route") GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route) {
-        this.blockStorage = blockStorage;
-        this.global = global;
-        this.loadBalancer = loadBalancer;
-        this.metadata = metadata;
-        this.route = route;
-    }
-
+    private GetClusterRkeConfigCloudProviderOpenstackCloudProvider() {}
     public GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage() {
         return this.blockStorage;
     }
@@ -56,18 +43,14 @@ public final class GetClusterRkeConfigCloudProviderOpenstackCloudProvider {
     public static Builder builder(GetClusterRkeConfigCloudProviderOpenstackCloudProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage;
         private GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global;
         private GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer;
         private GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata;
         private GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigCloudProviderOpenstackCloudProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.blockStorage = defaults.blockStorage;
@@ -77,27 +60,39 @@ public final class GetClusterRkeConfigCloudProviderOpenstackCloudProvider {
     	      this.route = defaults.route;
         }
 
+        @CustomType.Setter
         public Builder blockStorage(GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage) {
             this.blockStorage = Objects.requireNonNull(blockStorage);
             return this;
         }
+        @CustomType.Setter
         public Builder global(GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global) {
             this.global = Objects.requireNonNull(global);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancer(GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer) {
             this.loadBalancer = Objects.requireNonNull(loadBalancer);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder route(GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route) {
             this.route = Objects.requireNonNull(route);
             return this;
-        }        public GetClusterRkeConfigCloudProviderOpenstackCloudProvider build() {
-            return new GetClusterRkeConfigCloudProviderOpenstackCloudProvider(blockStorage, global, loadBalancer, metadata, route);
+        }
+        public GetClusterRkeConfigCloudProviderOpenstackCloudProvider build() {
+            final var o = new GetClusterRkeConfigCloudProviderOpenstackCloudProvider();
+            o.blockStorage = blockStorage;
+            o.global = global;
+            o.loadBalancer = loadBalancer;
+            o.metadata = metadata;
+            o.route = route;
+            return o;
         }
     }
 }

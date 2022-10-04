@@ -22,104 +22,71 @@ public final class GetClusterAlterRuleResult {
      * @return (Computed) The cluster alert rule annotations (map)
      * 
      */
-    private final Map<String,Object> annotations;
-    private final String clusterId;
+    private Map<String,Object> annotations;
+    private String clusterId;
     /**
      * @return (Computed) The cluster alert rule event rule. ConflictsWith: `&#34;metric_rule&#34;, &#34;node_rule&#34;, &#34;system_service_rule&#34;` (list Maxitems:1)
      * 
      */
-    private final GetClusterAlterRuleEventRule eventRule;
+    private GetClusterAlterRuleEventRule eventRule;
     /**
      * @return (Computed) The cluster alert rule alert group ID (string)
      * 
      */
-    private final String groupId;
+    private String groupId;
     /**
      * @return (Computed) The cluster alert rule group interval seconds. Default: `180` (int)
      * 
      */
-    private final Integer groupIntervalSeconds;
+    private Integer groupIntervalSeconds;
     /**
      * @return (Computed) The cluster alert rule group wait seconds. Default: `180` (int)
      * 
      */
-    private final Integer groupWaitSeconds;
+    private Integer groupWaitSeconds;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) The cluster alert rule inherited. Default: `true` (bool)
      * 
      */
-    private final Boolean inherited;
+    private Boolean inherited;
     /**
      * @return (Computed) The cluster alert rule labels (map)
      * 
      */
-    private final @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,Object> labels;
     /**
      * @return (Computed) The cluster alert rule metric rule. ConflictsWith: `&#34;event_rule&#34;, &#34;node_rule&#34;, &#34;system_service_rule&#34;`` (list Maxitems:1)
      * 
      */
-    private final GetClusterAlterRuleMetricRule metricRule;
-    private final String name;
+    private GetClusterAlterRuleMetricRule metricRule;
+    private String name;
     /**
      * @return (Computed) The cluster alert rule node rule. ConflictsWith: `&#34;event_rule&#34;, &#34;metric_rule&#34;, &#34;system_service_rule&#34;`` (list Maxitems:1)
      * 
      */
-    private final GetClusterAlterRuleNodeRule nodeRule;
+    private GetClusterAlterRuleNodeRule nodeRule;
     /**
      * @return (Optional) The cluster alert rule wait seconds. Default: `3600` (int)
      * 
      */
-    private final Integer repeatIntervalSeconds;
+    private Integer repeatIntervalSeconds;
     /**
      * @return (Computed) The cluster alert rule severity. Supported values : `&#34;critical&#34; | &#34;info&#34; | &#34;warning&#34;`. Default: `critical` (string)
      * 
      */
-    private final String severity;
+    private String severity;
     /**
      * @return (Computed) The cluster alert rule system service rule. ConflictsWith: `&#34;event_rule&#34;, &#34;metric_rule&#34;, &#34;node_rule&#34;`` (list Maxitems:1)
      * 
      */
-    private final GetClusterAlterRuleSystemServiceRule systemServiceRule;
+    private GetClusterAlterRuleSystemServiceRule systemServiceRule;
 
-    @CustomType.Constructor
-    private GetClusterAlterRuleResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("eventRule") GetClusterAlterRuleEventRule eventRule,
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("groupIntervalSeconds") Integer groupIntervalSeconds,
-        @CustomType.Parameter("groupWaitSeconds") Integer groupWaitSeconds,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("inherited") Boolean inherited,
-        @CustomType.Parameter("labels") @Nullable Map<String,Object> labels,
-        @CustomType.Parameter("metricRule") GetClusterAlterRuleMetricRule metricRule,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodeRule") GetClusterAlterRuleNodeRule nodeRule,
-        @CustomType.Parameter("repeatIntervalSeconds") Integer repeatIntervalSeconds,
-        @CustomType.Parameter("severity") String severity,
-        @CustomType.Parameter("systemServiceRule") GetClusterAlterRuleSystemServiceRule systemServiceRule) {
-        this.annotations = annotations;
-        this.clusterId = clusterId;
-        this.eventRule = eventRule;
-        this.groupId = groupId;
-        this.groupIntervalSeconds = groupIntervalSeconds;
-        this.groupWaitSeconds = groupWaitSeconds;
-        this.id = id;
-        this.inherited = inherited;
-        this.labels = labels;
-        this.metricRule = metricRule;
-        this.name = name;
-        this.nodeRule = nodeRule;
-        this.repeatIntervalSeconds = repeatIntervalSeconds;
-        this.severity = severity;
-        this.systemServiceRule = systemServiceRule;
-    }
-
+    private GetClusterAlterRuleResult() {}
     /**
      * @return (Computed) The cluster alert rule annotations (map)
      * 
@@ -225,7 +192,7 @@ public final class GetClusterAlterRuleResult {
     public static Builder builder(GetClusterAlterRuleResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String clusterId;
@@ -242,11 +209,7 @@ public final class GetClusterAlterRuleResult {
         private Integer repeatIntervalSeconds;
         private String severity;
         private GetClusterAlterRuleSystemServiceRule systemServiceRule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAlterRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -266,67 +229,99 @@ public final class GetClusterAlterRuleResult {
     	      this.systemServiceRule = defaults.systemServiceRule;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder eventRule(GetClusterAlterRuleEventRule eventRule) {
             this.eventRule = Objects.requireNonNull(eventRule);
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupIntervalSeconds(Integer groupIntervalSeconds) {
             this.groupIntervalSeconds = Objects.requireNonNull(groupIntervalSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder groupWaitSeconds(Integer groupWaitSeconds) {
             this.groupWaitSeconds = Objects.requireNonNull(groupWaitSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder inherited(Boolean inherited) {
             this.inherited = Objects.requireNonNull(inherited);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder metricRule(GetClusterAlterRuleMetricRule metricRule) {
             this.metricRule = Objects.requireNonNull(metricRule);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeRule(GetClusterAlterRuleNodeRule nodeRule) {
             this.nodeRule = Objects.requireNonNull(nodeRule);
             return this;
         }
+        @CustomType.Setter
         public Builder repeatIntervalSeconds(Integer repeatIntervalSeconds) {
             this.repeatIntervalSeconds = Objects.requireNonNull(repeatIntervalSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder severity(String severity) {
             this.severity = Objects.requireNonNull(severity);
             return this;
         }
+        @CustomType.Setter
         public Builder systemServiceRule(GetClusterAlterRuleSystemServiceRule systemServiceRule) {
             this.systemServiceRule = Objects.requireNonNull(systemServiceRule);
             return this;
-        }        public GetClusterAlterRuleResult build() {
-            return new GetClusterAlterRuleResult(annotations, clusterId, eventRule, groupId, groupIntervalSeconds, groupWaitSeconds, id, inherited, labels, metricRule, name, nodeRule, repeatIntervalSeconds, severity, systemServiceRule);
+        }
+        public GetClusterAlterRuleResult build() {
+            final var o = new GetClusterAlterRuleResult();
+            o.annotations = annotations;
+            o.clusterId = clusterId;
+            o.eventRule = eventRule;
+            o.groupId = groupId;
+            o.groupIntervalSeconds = groupIntervalSeconds;
+            o.groupWaitSeconds = groupWaitSeconds;
+            o.id = id;
+            o.inherited = inherited;
+            o.labels = labels;
+            o.metricRule = metricRule;
+            o.name = name;
+            o.nodeRule = nodeRule;
+            o.repeatIntervalSeconds = repeatIntervalSeconds;
+            o.severity = severity;
+            o.systemServiceRule = systemServiceRule;
+            return o;
         }
     }
 }

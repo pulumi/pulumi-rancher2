@@ -18,7 +18,9 @@ import (
 // V2 storage classs can be imported using the Rancher cluster ID and StorageClass V2 name.
 //
 // ```sh
-//  $ pulumi import rancher2:index/storageClassV2:StorageClassV2 foo &lt;CLUSTER_ID&gt;.&lt;STORAGE_CLASS_V2_NAME&gt;
+//
+//	$ pulumi import rancher2:index/storageClassV2:StorageClassV2 foo &lt;CLUSTER_ID&gt;.&lt;STORAGE_CLASS_V2_NAME&gt;
+//
 // ```
 type StorageClassV2 struct {
 	pulumi.CustomResourceState
@@ -208,7 +210,7 @@ func (i *StorageClassV2) ToStorageClassV2OutputWithContext(ctx context.Context) 
 // StorageClassV2ArrayInput is an input type that accepts StorageClassV2Array and StorageClassV2ArrayOutput values.
 // You can construct a concrete instance of `StorageClassV2ArrayInput` via:
 //
-//          StorageClassV2Array{ StorageClassV2Args{...} }
+//	StorageClassV2Array{ StorageClassV2Args{...} }
 type StorageClassV2ArrayInput interface {
 	pulumi.Input
 
@@ -233,7 +235,7 @@ func (i StorageClassV2Array) ToStorageClassV2ArrayOutputWithContext(ctx context.
 // StorageClassV2MapInput is an input type that accepts StorageClassV2Map and StorageClassV2MapOutput values.
 // You can construct a concrete instance of `StorageClassV2MapInput` via:
 //
-//          StorageClassV2Map{ "key": StorageClassV2Args{...} }
+//	StorageClassV2Map{ "key": StorageClassV2Args{...} }
 type StorageClassV2MapInput interface {
 	pulumi.Input
 

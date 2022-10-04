@@ -19,66 +19,71 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooProject, err := rancher2.NewProject(ctx, "fooProject", &rancher2.ProjectArgs{
-// 			ClusterId:   pulumi.String("<cluster_id>"),
-// 			Description: pulumi.String("Terraform project "),
-// 			ResourceQuota: &ProjectResourceQuotaArgs{
-// 				ProjectLimit: &ProjectResourceQuotaProjectLimitArgs{
-// 					LimitsCpu:       pulumi.String("2000m"),
-// 					LimitsMemory:    pulumi.String("2000Mi"),
-// 					RequestsStorage: pulumi.String("2Gi"),
-// 				},
-// 				NamespaceDefaultLimit: &ProjectResourceQuotaNamespaceDefaultLimitArgs{
-// 					LimitsCpu:       pulumi.String("500m"),
-// 					LimitsMemory:    pulumi.String("500Mi"),
-// 					RequestsStorage: pulumi.String("1Gi"),
-// 				},
-// 			},
-// 			ContainerResourceLimit: &ProjectContainerResourceLimitArgs{
-// 				LimitsCpu:      pulumi.String("20m"),
-// 				LimitsMemory:   pulumi.String("20Mi"),
-// 				RequestsCpu:    pulumi.String("1m"),
-// 				RequestsMemory: pulumi.String("1Mi"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooProjectAlertGroup, err := rancher2.NewProjectAlertGroup(ctx, "fooProjectAlertGroup", &rancher2.ProjectAlertGroupArgs{
-// 			Description:           pulumi.String("Terraform project alert group"),
-// 			ProjectId:             fooProject.ID(),
-// 			GroupIntervalSeconds:  pulumi.Int(300),
-// 			RepeatIntervalSeconds: pulumi.Int(3600),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewProjectAlertRule(ctx, "fooProjectAlertRule", &rancher2.ProjectAlertRuleArgs{
-// 			ProjectId:             fooProjectAlertGroup.ProjectId,
-// 			GroupId:               fooProjectAlertGroup.ID(),
-// 			GroupIntervalSeconds:  pulumi.Int(600),
-// 			RepeatIntervalSeconds: pulumi.Int(6000),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooProject, err := rancher2.NewProject(ctx, "fooProject", &rancher2.ProjectArgs{
+//				ClusterId:   pulumi.String("<cluster_id>"),
+//				Description: pulumi.String("Terraform project "),
+//				ResourceQuota: &ProjectResourceQuotaArgs{
+//					ProjectLimit: &ProjectResourceQuotaProjectLimitArgs{
+//						LimitsCpu:       pulumi.String("2000m"),
+//						LimitsMemory:    pulumi.String("2000Mi"),
+//						RequestsStorage: pulumi.String("2Gi"),
+//					},
+//					NamespaceDefaultLimit: &ProjectResourceQuotaNamespaceDefaultLimitArgs{
+//						LimitsCpu:       pulumi.String("500m"),
+//						LimitsMemory:    pulumi.String("500Mi"),
+//						RequestsStorage: pulumi.String("1Gi"),
+//					},
+//				},
+//				ContainerResourceLimit: &ProjectContainerResourceLimitArgs{
+//					LimitsCpu:      pulumi.String("20m"),
+//					LimitsMemory:   pulumi.String("20Mi"),
+//					RequestsCpu:    pulumi.String("1m"),
+//					RequestsMemory: pulumi.String("1Mi"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooProjectAlertGroup, err := rancher2.NewProjectAlertGroup(ctx, "fooProjectAlertGroup", &rancher2.ProjectAlertGroupArgs{
+//				Description:           pulumi.String("Terraform project alert group"),
+//				ProjectId:             fooProject.ID(),
+//				GroupIntervalSeconds:  pulumi.Int(300),
+//				RepeatIntervalSeconds: pulumi.Int(3600),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewProjectAlertRule(ctx, "fooProjectAlertRule", &rancher2.ProjectAlertRuleArgs{
+//				ProjectId:             fooProjectAlertGroup.ProjectId,
+//				GroupId:               fooProjectAlertGroup.ID(),
+//				GroupIntervalSeconds:  pulumi.Int(600),
+//				RepeatIntervalSeconds: pulumi.Int(6000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Project Alert Rule can be imported using the Rancher project alert rule ID
+// # Project Alert Rule can be imported using the Rancher project alert rule ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/projectAlertRule:ProjectAlertRule foo &lt;project_alert_rule_id&gt;
+//
+//	$ pulumi import rancher2:index/projectAlertRule:ProjectAlertRule foo &lt;project_alert_rule_id&gt;
+//
 // ```
 type ProjectAlertRule struct {
 	pulumi.CustomResourceState
@@ -292,7 +297,7 @@ func (i *ProjectAlertRule) ToProjectAlertRuleOutputWithContext(ctx context.Conte
 // ProjectAlertRuleArrayInput is an input type that accepts ProjectAlertRuleArray and ProjectAlertRuleArrayOutput values.
 // You can construct a concrete instance of `ProjectAlertRuleArrayInput` via:
 //
-//          ProjectAlertRuleArray{ ProjectAlertRuleArgs{...} }
+//	ProjectAlertRuleArray{ ProjectAlertRuleArgs{...} }
 type ProjectAlertRuleArrayInput interface {
 	pulumi.Input
 
@@ -317,7 +322,7 @@ func (i ProjectAlertRuleArray) ToProjectAlertRuleArrayOutputWithContext(ctx cont
 // ProjectAlertRuleMapInput is an input type that accepts ProjectAlertRuleMap and ProjectAlertRuleMapOutput values.
 // You can construct a concrete instance of `ProjectAlertRuleMapInput` via:
 //
-//          ProjectAlertRuleMap{ "key": ProjectAlertRuleArgs{...} }
+//	ProjectAlertRuleMap{ "key": ProjectAlertRuleArgs{...} }
 type ProjectAlertRuleMapInput interface {
 	pulumi.Input
 

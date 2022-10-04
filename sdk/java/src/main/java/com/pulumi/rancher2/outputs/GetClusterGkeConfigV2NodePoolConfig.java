@@ -17,45 +17,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterGkeConfigV2NodePoolConfig {
-    private final @Nullable Integer diskSizeGb;
-    private final @Nullable String diskType;
-    private final @Nullable String imageType;
+    private @Nullable Integer diskSizeGb;
+    private @Nullable String diskType;
+    private @Nullable String imageType;
     /**
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final @Nullable Integer localSsdCount;
-    private final @Nullable String machineType;
-    private final List<String> oauthScopes;
-    private final @Nullable Boolean preemptible;
-    private final List<String> tags;
-    private final @Nullable List<GetClusterGkeConfigV2NodePoolConfigTaint> taints;
+    private Map<String,Object> labels;
+    private @Nullable Integer localSsdCount;
+    private @Nullable String machineType;
+    private List<String> oauthScopes;
+    private @Nullable Boolean preemptible;
+    private List<String> tags;
+    private @Nullable List<GetClusterGkeConfigV2NodePoolConfigTaint> taints;
 
-    @CustomType.Constructor
-    private GetClusterGkeConfigV2NodePoolConfig(
-        @CustomType.Parameter("diskSizeGb") @Nullable Integer diskSizeGb,
-        @CustomType.Parameter("diskType") @Nullable String diskType,
-        @CustomType.Parameter("imageType") @Nullable String imageType,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("localSsdCount") @Nullable Integer localSsdCount,
-        @CustomType.Parameter("machineType") @Nullable String machineType,
-        @CustomType.Parameter("oauthScopes") List<String> oauthScopes,
-        @CustomType.Parameter("preemptible") @Nullable Boolean preemptible,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("taints") @Nullable List<GetClusterGkeConfigV2NodePoolConfigTaint> taints) {
-        this.diskSizeGb = diskSizeGb;
-        this.diskType = diskType;
-        this.imageType = imageType;
-        this.labels = labels;
-        this.localSsdCount = localSsdCount;
-        this.machineType = machineType;
-        this.oauthScopes = oauthScopes;
-        this.preemptible = preemptible;
-        this.tags = tags;
-        this.taints = taints;
-    }
-
+    private GetClusterGkeConfigV2NodePoolConfig() {}
     public Optional<Integer> diskSizeGb() {
         return Optional.ofNullable(this.diskSizeGb);
     }
@@ -98,7 +75,7 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
     public static Builder builder(GetClusterGkeConfigV2NodePoolConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
@@ -110,11 +87,7 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
         private @Nullable Boolean preemptible;
         private List<String> tags;
         private @Nullable List<GetClusterGkeConfigV2NodePoolConfigTaint> taints;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterGkeConfigV2NodePoolConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskSizeGb = defaults.diskSizeGb;
@@ -129,30 +102,37 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
     	      this.taints = defaults.taints;
         }
 
+        @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
             this.diskSizeGb = diskSizeGb;
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
             this.diskType = diskType;
             return this;
         }
+        @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
             this.imageType = imageType;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
             this.localSsdCount = localSsdCount;
             return this;
         }
+        @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
             this.machineType = machineType;
             return this;
         }
+        @CustomType.Setter
         public Builder oauthScopes(List<String> oauthScopes) {
             this.oauthScopes = Objects.requireNonNull(oauthScopes);
             return this;
@@ -160,10 +140,12 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
         public Builder oauthScopes(String... oauthScopes) {
             return oauthScopes(List.of(oauthScopes));
         }
+        @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
             this.preemptible = preemptible;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -171,14 +153,27 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder taints(@Nullable List<GetClusterGkeConfigV2NodePoolConfigTaint> taints) {
             this.taints = taints;
             return this;
         }
         public Builder taints(GetClusterGkeConfigV2NodePoolConfigTaint... taints) {
             return taints(List.of(taints));
-        }        public GetClusterGkeConfigV2NodePoolConfig build() {
-            return new GetClusterGkeConfigV2NodePoolConfig(diskSizeGb, diskType, imageType, labels, localSsdCount, machineType, oauthScopes, preemptible, tags, taints);
+        }
+        public GetClusterGkeConfigV2NodePoolConfig build() {
+            final var o = new GetClusterGkeConfigV2NodePoolConfig();
+            o.diskSizeGb = diskSizeGb;
+            o.diskType = diskType;
+            o.imageType = imageType;
+            o.labels = labels;
+            o.localSsdCount = localSsdCount;
+            o.machineType = machineType;
+            o.oauthScopes = oauthScopes;
+            o.preemptible = preemptible;
+            o.tags = tags;
+            o.taints = taints;
+            return o;
         }
     }
 }

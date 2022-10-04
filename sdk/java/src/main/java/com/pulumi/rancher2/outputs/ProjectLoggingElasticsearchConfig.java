@@ -16,84 +16,59 @@ public final class ProjectLoggingElasticsearchConfig {
      * @return User password for the elascticsearch service (string)
      * 
      */
-    private final @Nullable String authPassword;
+    private @Nullable String authPassword;
     /**
      * @return Username for the elascticsearch service (string)
      * 
      */
-    private final @Nullable String authUsername;
+    private @Nullable String authUsername;
     /**
      * @return SSL certificate for the syslog service (string)
      * 
      */
-    private final @Nullable String certificate;
+    private @Nullable String certificate;
     /**
      * @return SSL client certificate for the syslog service (string)
      * 
      */
-    private final @Nullable String clientCert;
+    private @Nullable String clientCert;
     /**
      * @return SSL client key for the syslog service (string)
      * 
      */
-    private final @Nullable String clientKey;
+    private @Nullable String clientKey;
     /**
      * @return SSL client key password for the splunk service (string)
      * 
      */
-    private final @Nullable String clientKeyPass;
+    private @Nullable String clientKeyPass;
     /**
      * @return Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
      * 
      */
-    private final @Nullable String dateFormat;
+    private @Nullable String dateFormat;
     /**
      * @return Endpoint of the syslog service (string)
      * 
      */
-    private final String endpoint;
+    private String endpoint;
     /**
      * @return Index prefix for the elascticsearch logs. Default: `local` (string)
      * 
      */
-    private final @Nullable String indexPrefix;
+    private @Nullable String indexPrefix;
     /**
      * @return SSL verify for the syslog service (bool)
      * 
      */
-    private final @Nullable Boolean sslVerify;
+    private @Nullable Boolean sslVerify;
     /**
      * @return SSL version for the elascticsearch service (string)
      * 
      */
-    private final @Nullable String sslVersion;
+    private @Nullable String sslVersion;
 
-    @CustomType.Constructor
-    private ProjectLoggingElasticsearchConfig(
-        @CustomType.Parameter("authPassword") @Nullable String authPassword,
-        @CustomType.Parameter("authUsername") @Nullable String authUsername,
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("clientCert") @Nullable String clientCert,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("clientKeyPass") @Nullable String clientKeyPass,
-        @CustomType.Parameter("dateFormat") @Nullable String dateFormat,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("indexPrefix") @Nullable String indexPrefix,
-        @CustomType.Parameter("sslVerify") @Nullable Boolean sslVerify,
-        @CustomType.Parameter("sslVersion") @Nullable String sslVersion) {
-        this.authPassword = authPassword;
-        this.authUsername = authUsername;
-        this.certificate = certificate;
-        this.clientCert = clientCert;
-        this.clientKey = clientKey;
-        this.clientKeyPass = clientKeyPass;
-        this.dateFormat = dateFormat;
-        this.endpoint = endpoint;
-        this.indexPrefix = indexPrefix;
-        this.sslVerify = sslVerify;
-        this.sslVersion = sslVersion;
-    }
-
+    private ProjectLoggingElasticsearchConfig() {}
     /**
      * @return User password for the elascticsearch service (string)
      * 
@@ -179,7 +154,7 @@ public final class ProjectLoggingElasticsearchConfig {
     public static Builder builder(ProjectLoggingElasticsearchConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authPassword;
         private @Nullable String authUsername;
@@ -192,11 +167,7 @@ public final class ProjectLoggingElasticsearchConfig {
         private @Nullable String indexPrefix;
         private @Nullable Boolean sslVerify;
         private @Nullable String sslVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ProjectLoggingElasticsearchConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authPassword = defaults.authPassword;
@@ -212,51 +183,75 @@ public final class ProjectLoggingElasticsearchConfig {
     	      this.sslVersion = defaults.sslVersion;
         }
 
+        @CustomType.Setter
         public Builder authPassword(@Nullable String authPassword) {
             this.authPassword = authPassword;
             return this;
         }
+        @CustomType.Setter
         public Builder authUsername(@Nullable String authUsername) {
             this.authUsername = authUsername;
             return this;
         }
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
             this.clientCert = clientCert;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKeyPass(@Nullable String clientKeyPass) {
             this.clientKeyPass = clientKeyPass;
             return this;
         }
+        @CustomType.Setter
         public Builder dateFormat(@Nullable String dateFormat) {
             this.dateFormat = dateFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder indexPrefix(@Nullable String indexPrefix) {
             this.indexPrefix = indexPrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder sslVerify(@Nullable Boolean sslVerify) {
             this.sslVerify = sslVerify;
             return this;
         }
+        @CustomType.Setter
         public Builder sslVersion(@Nullable String sslVersion) {
             this.sslVersion = sslVersion;
             return this;
-        }        public ProjectLoggingElasticsearchConfig build() {
-            return new ProjectLoggingElasticsearchConfig(authPassword, authUsername, certificate, clientCert, clientKey, clientKeyPass, dateFormat, endpoint, indexPrefix, sslVerify, sslVersion);
+        }
+        public ProjectLoggingElasticsearchConfig build() {
+            final var o = new ProjectLoggingElasticsearchConfig();
+            o.authPassword = authPassword;
+            o.authUsername = authUsername;
+            o.certificate = certificate;
+            o.clientCert = clientCert;
+            o.clientKey = clientKey;
+            o.clientKeyPass = clientKeyPass;
+            o.dateFormat = dateFormat;
+            o.endpoint = endpoint;
+            o.indexPrefix = indexPrefix;
+            o.sslVerify = sslVerify;
+            o.sslVersion = sslVersion;
+            return o;
         }
     }
 }

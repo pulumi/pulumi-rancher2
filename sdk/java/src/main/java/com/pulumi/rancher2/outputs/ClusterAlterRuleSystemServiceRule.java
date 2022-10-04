@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterAlterRuleSystemServiceRule {
-    private final @Nullable String condition;
+    private @Nullable String condition;
 
-    @CustomType.Constructor
-    private ClusterAlterRuleSystemServiceRule(@CustomType.Parameter("condition") @Nullable String condition) {
-        this.condition = condition;
-    }
-
+    private ClusterAlterRuleSystemServiceRule() {}
     public Optional<String> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -29,24 +25,24 @@ public final class ClusterAlterRuleSystemServiceRule {
     public static Builder builder(ClusterAlterRuleSystemServiceRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String condition;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAlterRuleSystemServiceRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
         }
 
+        @CustomType.Setter
         public Builder condition(@Nullable String condition) {
             this.condition = condition;
             return this;
-        }        public ClusterAlterRuleSystemServiceRule build() {
-            return new ClusterAlterRuleSystemServiceRule(condition);
+        }
+        public ClusterAlterRuleSystemServiceRule build() {
+            final var o = new ClusterAlterRuleSystemServiceRule();
+            o.condition = condition;
+            return o;
         }
     }
 }

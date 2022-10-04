@@ -18,28 +18,19 @@ public final class ProjectAlertRuleWorkloadRule {
      * @return Workload rule available percentage. Default: `70` (int)
      * 
      */
-    private final @Nullable Integer availablePercentage;
+    private @Nullable Integer availablePercentage;
     /**
      * @return Workload rule selector (map)
      * 
      */
-    private final @Nullable Map<String,Object> selector;
+    private @Nullable Map<String,Object> selector;
     /**
      * @return Workload ID (string)
      * 
      */
-    private final @Nullable String workloadId;
+    private @Nullable String workloadId;
 
-    @CustomType.Constructor
-    private ProjectAlertRuleWorkloadRule(
-        @CustomType.Parameter("availablePercentage") @Nullable Integer availablePercentage,
-        @CustomType.Parameter("selector") @Nullable Map<String,Object> selector,
-        @CustomType.Parameter("workloadId") @Nullable String workloadId) {
-        this.availablePercentage = availablePercentage;
-        this.selector = selector;
-        this.workloadId = workloadId;
-    }
-
+    private ProjectAlertRuleWorkloadRule() {}
     /**
      * @return Workload rule available percentage. Default: `70` (int)
      * 
@@ -69,16 +60,12 @@ public final class ProjectAlertRuleWorkloadRule {
     public static Builder builder(ProjectAlertRuleWorkloadRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer availablePercentage;
         private @Nullable Map<String,Object> selector;
         private @Nullable String workloadId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ProjectAlertRuleWorkloadRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availablePercentage = defaults.availablePercentage;
@@ -86,19 +73,27 @@ public final class ProjectAlertRuleWorkloadRule {
     	      this.workloadId = defaults.workloadId;
         }
 
+        @CustomType.Setter
         public Builder availablePercentage(@Nullable Integer availablePercentage) {
             this.availablePercentage = availablePercentage;
             return this;
         }
+        @CustomType.Setter
         public Builder selector(@Nullable Map<String,Object> selector) {
             this.selector = selector;
             return this;
         }
+        @CustomType.Setter
         public Builder workloadId(@Nullable String workloadId) {
             this.workloadId = workloadId;
             return this;
-        }        public ProjectAlertRuleWorkloadRule build() {
-            return new ProjectAlertRuleWorkloadRule(availablePercentage, selector, workloadId);
+        }
+        public ProjectAlertRuleWorkloadRule build() {
+            final var o = new ProjectAlertRuleWorkloadRule();
+            o.availablePercentage = availablePercentage;
+            o.selector = selector;
+            o.workloadId = workloadId;
+            return o;
         }
     }
 }

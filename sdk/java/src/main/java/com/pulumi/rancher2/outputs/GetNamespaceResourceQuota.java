@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNamespaceResourceQuota {
-    private final GetNamespaceResourceQuotaLimit limit;
+    private GetNamespaceResourceQuotaLimit limit;
 
-    @CustomType.Constructor
-    private GetNamespaceResourceQuota(@CustomType.Parameter("limit") GetNamespaceResourceQuotaLimit limit) {
-        this.limit = limit;
-    }
-
+    private GetNamespaceResourceQuota() {}
     public GetNamespaceResourceQuotaLimit limit() {
         return this.limit;
     }
@@ -27,24 +23,24 @@ public final class GetNamespaceResourceQuota {
     public static Builder builder(GetNamespaceResourceQuota defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetNamespaceResourceQuotaLimit limit;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNamespaceResourceQuota defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.limit = defaults.limit;
         }
 
+        @CustomType.Setter
         public Builder limit(GetNamespaceResourceQuotaLimit limit) {
             this.limit = Objects.requireNonNull(limit);
             return this;
-        }        public GetNamespaceResourceQuota build() {
-            return new GetNamespaceResourceQuota(limit);
+        }
+        public GetNamespaceResourceQuota build() {
+            final var o = new GetNamespaceResourceQuota();
+            o.limit = limit;
+            return o;
         }
     }
 }

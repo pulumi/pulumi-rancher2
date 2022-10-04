@@ -19,32 +19,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewClusterAlertGroup(ctx, "foo", &rancher2.ClusterAlertGroupArgs{
-// 			ClusterId:             pulumi.String("<cluster_id>"),
-// 			Description:           pulumi.String("Terraform cluster alert group"),
-// 			GroupIntervalSeconds:  pulumi.Int(300),
-// 			RepeatIntervalSeconds: pulumi.Int(3600),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterAlertGroup(ctx, "foo", &rancher2.ClusterAlertGroupArgs{
+//				ClusterId:             pulumi.String("<cluster_id>"),
+//				Description:           pulumi.String("Terraform cluster alert group"),
+//				GroupIntervalSeconds:  pulumi.Int(300),
+//				RepeatIntervalSeconds: pulumi.Int(3600),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Cluster Alert Group can be imported using the Rancher cluster alert group ID
+// # Cluster Alert Group can be imported using the Rancher cluster alert group ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/clusterAlterRule:ClusterAlterRule foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
+//
+//	$ pulumi import rancher2:index/clusterAlterRule:ClusterAlterRule foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
+//
 // ```
 //
 // Deprecated: rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule
@@ -270,7 +275,7 @@ func (i *ClusterAlterRule) ToClusterAlterRuleOutputWithContext(ctx context.Conte
 // ClusterAlterRuleArrayInput is an input type that accepts ClusterAlterRuleArray and ClusterAlterRuleArrayOutput values.
 // You can construct a concrete instance of `ClusterAlterRuleArrayInput` via:
 //
-//          ClusterAlterRuleArray{ ClusterAlterRuleArgs{...} }
+//	ClusterAlterRuleArray{ ClusterAlterRuleArgs{...} }
 type ClusterAlterRuleArrayInput interface {
 	pulumi.Input
 
@@ -295,7 +300,7 @@ func (i ClusterAlterRuleArray) ToClusterAlterRuleArrayOutputWithContext(ctx cont
 // ClusterAlterRuleMapInput is an input type that accepts ClusterAlterRuleMap and ClusterAlterRuleMapOutput values.
 // You can construct a concrete instance of `ClusterAlterRuleMapInput` via:
 //
-//          ClusterAlterRuleMap{ "key": ClusterAlterRuleArgs{...} }
+//	ClusterAlterRuleMap{ "key": ClusterAlterRuleArgs{...} }
 type ClusterAlterRuleMapInput interface {
 	pulumi.Input
 

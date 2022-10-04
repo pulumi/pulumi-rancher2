@@ -15,21 +15,14 @@ public final class NotifierPagerdutyConfig {
      * @return Wechat proxy url (string)
      * 
      */
-    private final @Nullable String proxyUrl;
+    private @Nullable String proxyUrl;
     /**
      * @return Pagerduty service key (string)
      * 
      */
-    private final String serviceKey;
+    private String serviceKey;
 
-    @CustomType.Constructor
-    private NotifierPagerdutyConfig(
-        @CustomType.Parameter("proxyUrl") @Nullable String proxyUrl,
-        @CustomType.Parameter("serviceKey") String serviceKey) {
-        this.proxyUrl = proxyUrl;
-        this.serviceKey = serviceKey;
-    }
-
+    private NotifierPagerdutyConfig() {}
     /**
      * @return Wechat proxy url (string)
      * 
@@ -52,30 +45,32 @@ public final class NotifierPagerdutyConfig {
     public static Builder builder(NotifierPagerdutyConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String proxyUrl;
         private String serviceKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NotifierPagerdutyConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.proxyUrl = defaults.proxyUrl;
     	      this.serviceKey = defaults.serviceKey;
         }
 
+        @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
             this.proxyUrl = proxyUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceKey(String serviceKey) {
             this.serviceKey = Objects.requireNonNull(serviceKey);
             return this;
-        }        public NotifierPagerdutyConfig build() {
-            return new NotifierPagerdutyConfig(proxyUrl, serviceKey);
+        }
+        public NotifierPagerdutyConfig build() {
+            final var o = new NotifierPagerdutyConfig();
+            o.proxyUrl = proxyUrl;
+            o.serviceKey = serviceKey;
+            return o;
         }
     }
 }

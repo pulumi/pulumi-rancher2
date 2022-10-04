@@ -9,29 +9,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride {
-    private final String region;
-    private final String service;
-    private final String signingMethod;
-    private final String signingName;
-    private final String signingRegion;
-    private final String url;
+    private String region;
+    private String service;
+    private String signingMethod;
+    private String signingName;
+    private String signingRegion;
+    private String url;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride(
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("service") String service,
-        @CustomType.Parameter("signingMethod") String signingMethod,
-        @CustomType.Parameter("signingName") String signingName,
-        @CustomType.Parameter("signingRegion") String signingRegion,
-        @CustomType.Parameter("url") String url) {
-        this.region = region;
-        this.service = service;
-        this.signingMethod = signingMethod;
-        this.signingName = signingName;
-        this.signingRegion = signingRegion;
-        this.url = url;
-    }
-
+    private GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride() {}
     public String region() {
         return this.region;
     }
@@ -58,7 +43,7 @@ public final class GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverri
     public static Builder builder(GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String region;
         private String service;
@@ -66,11 +51,7 @@ public final class GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverri
         private String signingName;
         private String signingRegion;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.region = defaults.region;
@@ -81,31 +62,45 @@ public final class GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverri
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
         }
+        @CustomType.Setter
         public Builder signingMethod(String signingMethod) {
             this.signingMethod = Objects.requireNonNull(signingMethod);
             return this;
         }
+        @CustomType.Setter
         public Builder signingName(String signingName) {
             this.signingName = Objects.requireNonNull(signingName);
             return this;
         }
+        @CustomType.Setter
         public Builder signingRegion(String signingRegion) {
             this.signingRegion = Objects.requireNonNull(signingRegion);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride build() {
-            return new GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride(region, service, signingMethod, signingName, signingRegion, url);
+        }
+        public GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride build() {
+            final var o = new GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride();
+            o.region = region;
+            o.service = service;
+            o.signingMethod = signingMethod;
+            o.signingName = signingName;
+            o.signingRegion = signingRegion;
+            o.url = url;
+            return o;
         }
     }
 }

@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig {
-    private final String cronSchedule;
-    private final @Nullable Integer retention;
+    private String cronSchedule;
+    private @Nullable Integer retention;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig(
-        @CustomType.Parameter("cronSchedule") String cronSchedule,
-        @CustomType.Parameter("retention") @Nullable Integer retention) {
-        this.cronSchedule = cronSchedule;
-        this.retention = retention;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig() {}
     public String cronSchedule() {
         return this.cronSchedule;
     }
@@ -37,30 +30,32 @@ public final class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterS
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cronSchedule;
         private @Nullable Integer retention;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cronSchedule = defaults.cronSchedule;
     	      this.retention = defaults.retention;
         }
 
+        @CustomType.Setter
         public Builder cronSchedule(String cronSchedule) {
             this.cronSchedule = Objects.requireNonNull(cronSchedule);
             return this;
         }
+        @CustomType.Setter
         public Builder retention(@Nullable Integer retention) {
             this.retention = retention;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig(cronSchedule, retention);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig();
+            o.cronSchedule = cronSchedule;
+            o.retention = retention;
+            return o;
         }
     }
 }

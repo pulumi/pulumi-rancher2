@@ -17,83 +17,56 @@ public final class GetNodeDriverResult {
      * @return (Computed) Specify if the node driver state (bool)
      * 
      */
-    private final Boolean active;
+    private Boolean active;
     /**
      * @return (Computed) Annotations of the resource (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) Specify wheter the node driver is an internal cluster driver or not (bool)
      * 
      */
-    private final Boolean builtin;
+    private Boolean builtin;
     /**
      * @return (Computed) Verify that the downloaded driver matches the expected checksum (string)
      * 
      */
-    private final String checksum;
+    private String checksum;
     /**
      * @return (Computed) Description of the node driver (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return (Computed) External ID (string)
      * 
      */
-    private final String externalId;
+    private String externalId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels of the resource (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
+    private Map<String,Object> labels;
+    private String name;
     /**
      * @return (Computed) The URL to load for customized Add Node screen for this driver (string)
      * 
      */
-    private final String uiUrl;
-    private final String url;
+    private String uiUrl;
+    private String url;
     /**
      * @return (Computed) Domains to whitelist for the ui (list)
      * 
      */
-    private final List<String> whitelistDomains;
+    private List<String> whitelistDomains;
 
-    @CustomType.Constructor
-    private GetNodeDriverResult(
-        @CustomType.Parameter("active") Boolean active,
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("builtin") Boolean builtin,
-        @CustomType.Parameter("checksum") String checksum,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("externalId") String externalId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("uiUrl") String uiUrl,
-        @CustomType.Parameter("url") String url,
-        @CustomType.Parameter("whitelistDomains") List<String> whitelistDomains) {
-        this.active = active;
-        this.annotations = annotations;
-        this.builtin = builtin;
-        this.checksum = checksum;
-        this.description = description;
-        this.externalId = externalId;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.uiUrl = uiUrl;
-        this.url = url;
-        this.whitelistDomains = whitelistDomains;
-    }
-
+    private GetNodeDriverResult() {}
     /**
      * @return (Computed) Specify if the node driver state (bool)
      * 
@@ -178,7 +151,7 @@ public final class GetNodeDriverResult {
     public static Builder builder(GetNodeDriverResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean active;
         private Map<String,Object> annotations;
@@ -192,11 +165,7 @@ public final class GetNodeDriverResult {
         private String uiUrl;
         private String url;
         private List<String> whitelistDomains;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodeDriverResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.active = defaults.active;
@@ -213,58 +182,84 @@ public final class GetNodeDriverResult {
     	      this.whitelistDomains = defaults.whitelistDomains;
         }
 
+        @CustomType.Setter
         public Builder active(Boolean active) {
             this.active = Objects.requireNonNull(active);
             return this;
         }
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder builtin(Boolean builtin) {
             this.builtin = Objects.requireNonNull(builtin);
             return this;
         }
+        @CustomType.Setter
         public Builder checksum(String checksum) {
             this.checksum = Objects.requireNonNull(checksum);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder externalId(String externalId) {
             this.externalId = Objects.requireNonNull(externalId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder uiUrl(String uiUrl) {
             this.uiUrl = Objects.requireNonNull(uiUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
         }
+        @CustomType.Setter
         public Builder whitelistDomains(List<String> whitelistDomains) {
             this.whitelistDomains = Objects.requireNonNull(whitelistDomains);
             return this;
         }
         public Builder whitelistDomains(String... whitelistDomains) {
             return whitelistDomains(List.of(whitelistDomains));
-        }        public GetNodeDriverResult build() {
-            return new GetNodeDriverResult(active, annotations, builtin, checksum, description, externalId, id, labels, name, uiUrl, url, whitelistDomains);
+        }
+        public GetNodeDriverResult build() {
+            final var o = new GetNodeDriverResult();
+            o.active = active;
+            o.annotations = annotations;
+            o.builtin = builtin;
+            o.checksum = checksum;
+            o.description = description;
+            o.externalId = externalId;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.uiUrl = uiUrl;
+            o.url = url;
+            o.whitelistDomains = whitelistDomains;
+            return o;
         }
     }
 }

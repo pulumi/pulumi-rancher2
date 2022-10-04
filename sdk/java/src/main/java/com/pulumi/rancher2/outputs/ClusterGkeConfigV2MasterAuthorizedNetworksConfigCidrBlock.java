@@ -15,21 +15,14 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock {
      * @return The GKE master authorized network config cidr block (string)
      * 
      */
-    private final String cidrBlock;
+    private String cidrBlock;
     /**
      * @return The GKE master authorized network config cidr block dispaly name (string)
      * 
      */
-    private final @Nullable String displayName;
+    private @Nullable String displayName;
 
-    @CustomType.Constructor
-    private ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock(
-        @CustomType.Parameter("cidrBlock") String cidrBlock,
-        @CustomType.Parameter("displayName") @Nullable String displayName) {
-        this.cidrBlock = cidrBlock;
-        this.displayName = displayName;
-    }
-
+    private ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock() {}
     /**
      * @return The GKE master authorized network config cidr block (string)
      * 
@@ -52,30 +45,32 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock {
     public static Builder builder(ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cidrBlock;
         private @Nullable String displayName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlock = defaults.cidrBlock;
     	      this.displayName = defaults.displayName;
         }
 
+        @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
             this.cidrBlock = Objects.requireNonNull(cidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
-        }        public ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock build() {
-            return new ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock(cidrBlock, displayName);
+        }
+        public ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock build() {
+            final var o = new ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock();
+            o.cidrBlock = cidrBlock;
+            o.displayName = displayName;
+            return o;
         }
     }
 }

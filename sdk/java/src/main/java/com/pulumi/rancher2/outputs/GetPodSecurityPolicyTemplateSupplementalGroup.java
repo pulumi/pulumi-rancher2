@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPodSecurityPolicyTemplateSupplementalGroup {
-    private final List<GetPodSecurityPolicyTemplateSupplementalGroupRange> ranges;
-    private final @Nullable String rule;
+    private List<GetPodSecurityPolicyTemplateSupplementalGroupRange> ranges;
+    private @Nullable String rule;
 
-    @CustomType.Constructor
-    private GetPodSecurityPolicyTemplateSupplementalGroup(
-        @CustomType.Parameter("ranges") List<GetPodSecurityPolicyTemplateSupplementalGroupRange> ranges,
-        @CustomType.Parameter("rule") @Nullable String rule) {
-        this.ranges = ranges;
-        this.rule = rule;
-    }
-
+    private GetPodSecurityPolicyTemplateSupplementalGroup() {}
     public List<GetPodSecurityPolicyTemplateSupplementalGroupRange> ranges() {
         return this.ranges;
     }
@@ -38,21 +31,18 @@ public final class GetPodSecurityPolicyTemplateSupplementalGroup {
     public static Builder builder(GetPodSecurityPolicyTemplateSupplementalGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetPodSecurityPolicyTemplateSupplementalGroupRange> ranges;
         private @Nullable String rule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPodSecurityPolicyTemplateSupplementalGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ranges = defaults.ranges;
     	      this.rule = defaults.rule;
         }
 
+        @CustomType.Setter
         public Builder ranges(List<GetPodSecurityPolicyTemplateSupplementalGroupRange> ranges) {
             this.ranges = Objects.requireNonNull(ranges);
             return this;
@@ -60,11 +50,16 @@ public final class GetPodSecurityPolicyTemplateSupplementalGroup {
         public Builder ranges(GetPodSecurityPolicyTemplateSupplementalGroupRange... ranges) {
             return ranges(List.of(ranges));
         }
+        @CustomType.Setter
         public Builder rule(@Nullable String rule) {
             this.rule = rule;
             return this;
-        }        public GetPodSecurityPolicyTemplateSupplementalGroup build() {
-            return new GetPodSecurityPolicyTemplateSupplementalGroup(ranges, rule);
+        }
+        public GetPodSecurityPolicyTemplateSupplementalGroup build() {
+            final var o = new GetPodSecurityPolicyTemplateSupplementalGroup();
+            o.ranges = ranges;
+            o.rule = rule;
+            return o;
         }
     }
 }

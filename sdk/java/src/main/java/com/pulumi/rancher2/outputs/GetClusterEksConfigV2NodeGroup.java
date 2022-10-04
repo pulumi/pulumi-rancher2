@@ -17,73 +17,34 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterEksConfigV2NodeGroup {
-    private final @Nullable Integer desiredSize;
-    private final @Nullable Integer diskSize;
-    private final @Nullable String ec2SshKey;
-    private final @Nullable Boolean gpu;
-    private final @Nullable String imageId;
-    private final @Nullable String instanceType;
+    private @Nullable Integer desiredSize;
+    private @Nullable Integer diskSize;
+    private @Nullable String ec2SshKey;
+    private @Nullable Boolean gpu;
+    private @Nullable String imageId;
+    private @Nullable String instanceType;
     /**
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    private final @Nullable Map<String,Object> labels;
-    private final @Nullable List<GetClusterEksConfigV2NodeGroupLaunchTemplate> launchTemplates;
-    private final @Nullable Integer maxSize;
-    private final @Nullable Integer minSize;
+    private @Nullable Map<String,Object> labels;
+    private @Nullable List<GetClusterEksConfigV2NodeGroupLaunchTemplate> launchTemplates;
+    private @Nullable Integer maxSize;
+    private @Nullable Integer minSize;
     /**
      * @return The name of the Cluster (string)
      * 
      */
-    private final String name;
-    private final @Nullable Boolean requestSpotInstances;
-    private final @Nullable Map<String,Object> resourceTags;
-    private final @Nullable List<String> spotInstanceTypes;
-    private final List<String> subnets;
-    private final @Nullable Map<String,Object> tags;
-    private final String userData;
-    private final String version;
+    private String name;
+    private @Nullable Boolean requestSpotInstances;
+    private @Nullable Map<String,Object> resourceTags;
+    private @Nullable List<String> spotInstanceTypes;
+    private List<String> subnets;
+    private @Nullable Map<String,Object> tags;
+    private String userData;
+    private String version;
 
-    @CustomType.Constructor
-    private GetClusterEksConfigV2NodeGroup(
-        @CustomType.Parameter("desiredSize") @Nullable Integer desiredSize,
-        @CustomType.Parameter("diskSize") @Nullable Integer diskSize,
-        @CustomType.Parameter("ec2SshKey") @Nullable String ec2SshKey,
-        @CustomType.Parameter("gpu") @Nullable Boolean gpu,
-        @CustomType.Parameter("imageId") @Nullable String imageId,
-        @CustomType.Parameter("instanceType") @Nullable String instanceType,
-        @CustomType.Parameter("labels") @Nullable Map<String,Object> labels,
-        @CustomType.Parameter("launchTemplates") @Nullable List<GetClusterEksConfigV2NodeGroupLaunchTemplate> launchTemplates,
-        @CustomType.Parameter("maxSize") @Nullable Integer maxSize,
-        @CustomType.Parameter("minSize") @Nullable Integer minSize,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("requestSpotInstances") @Nullable Boolean requestSpotInstances,
-        @CustomType.Parameter("resourceTags") @Nullable Map<String,Object> resourceTags,
-        @CustomType.Parameter("spotInstanceTypes") @Nullable List<String> spotInstanceTypes,
-        @CustomType.Parameter("subnets") List<String> subnets,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("userData") String userData,
-        @CustomType.Parameter("version") String version) {
-        this.desiredSize = desiredSize;
-        this.diskSize = diskSize;
-        this.ec2SshKey = ec2SshKey;
-        this.gpu = gpu;
-        this.imageId = imageId;
-        this.instanceType = instanceType;
-        this.labels = labels;
-        this.launchTemplates = launchTemplates;
-        this.maxSize = maxSize;
-        this.minSize = minSize;
-        this.name = name;
-        this.requestSpotInstances = requestSpotInstances;
-        this.resourceTags = resourceTags;
-        this.spotInstanceTypes = spotInstanceTypes;
-        this.subnets = subnets;
-        this.tags = tags;
-        this.userData = userData;
-        this.version = version;
-    }
-
+    private GetClusterEksConfigV2NodeGroup() {}
     public Optional<Integer> desiredSize() {
         return Optional.ofNullable(this.desiredSize);
     }
@@ -154,7 +115,7 @@ public final class GetClusterEksConfigV2NodeGroup {
     public static Builder builder(GetClusterEksConfigV2NodeGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer desiredSize;
         private @Nullable Integer diskSize;
@@ -174,11 +135,7 @@ public final class GetClusterEksConfigV2NodeGroup {
         private @Nullable Map<String,Object> tags;
         private String userData;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterEksConfigV2NodeGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.desiredSize = defaults.desiredSize;
@@ -201,34 +158,42 @@ public final class GetClusterEksConfigV2NodeGroup {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder desiredSize(@Nullable Integer desiredSize) {
             this.desiredSize = desiredSize;
             return this;
         }
+        @CustomType.Setter
         public Builder diskSize(@Nullable Integer diskSize) {
             this.diskSize = diskSize;
             return this;
         }
+        @CustomType.Setter
         public Builder ec2SshKey(@Nullable String ec2SshKey) {
             this.ec2SshKey = ec2SshKey;
             return this;
         }
+        @CustomType.Setter
         public Builder gpu(@Nullable Boolean gpu) {
             this.gpu = gpu;
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(@Nullable String imageId) {
             this.imageId = imageId;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder launchTemplates(@Nullable List<GetClusterEksConfigV2NodeGroupLaunchTemplate> launchTemplates) {
             this.launchTemplates = launchTemplates;
             return this;
@@ -236,26 +201,32 @@ public final class GetClusterEksConfigV2NodeGroup {
         public Builder launchTemplates(GetClusterEksConfigV2NodeGroupLaunchTemplate... launchTemplates) {
             return launchTemplates(List.of(launchTemplates));
         }
+        @CustomType.Setter
         public Builder maxSize(@Nullable Integer maxSize) {
             this.maxSize = maxSize;
             return this;
         }
+        @CustomType.Setter
         public Builder minSize(@Nullable Integer minSize) {
             this.minSize = minSize;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder requestSpotInstances(@Nullable Boolean requestSpotInstances) {
             this.requestSpotInstances = requestSpotInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceTags(@Nullable Map<String,Object> resourceTags) {
             this.resourceTags = resourceTags;
             return this;
         }
+        @CustomType.Setter
         public Builder spotInstanceTypes(@Nullable List<String> spotInstanceTypes) {
             this.spotInstanceTypes = spotInstanceTypes;
             return this;
@@ -263,6 +234,7 @@ public final class GetClusterEksConfigV2NodeGroup {
         public Builder spotInstanceTypes(String... spotInstanceTypes) {
             return spotInstanceTypes(List.of(spotInstanceTypes));
         }
+        @CustomType.Setter
         public Builder subnets(List<String> subnets) {
             this.subnets = Objects.requireNonNull(subnets);
             return this;
@@ -270,19 +242,42 @@ public final class GetClusterEksConfigV2NodeGroup {
         public Builder subnets(String... subnets) {
             return subnets(List.of(subnets));
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder userData(String userData) {
             this.userData = Objects.requireNonNull(userData);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetClusterEksConfigV2NodeGroup build() {
-            return new GetClusterEksConfigV2NodeGroup(desiredSize, diskSize, ec2SshKey, gpu, imageId, instanceType, labels, launchTemplates, maxSize, minSize, name, requestSpotInstances, resourceTags, spotInstanceTypes, subnets, tags, userData, version);
+        }
+        public GetClusterEksConfigV2NodeGroup build() {
+            final var o = new GetClusterEksConfigV2NodeGroup();
+            o.desiredSize = desiredSize;
+            o.diskSize = diskSize;
+            o.ec2SshKey = ec2SshKey;
+            o.gpu = gpu;
+            o.imageId = imageId;
+            o.instanceType = instanceType;
+            o.labels = labels;
+            o.launchTemplates = launchTemplates;
+            o.maxSize = maxSize;
+            o.minSize = minSize;
+            o.name = name;
+            o.requestSpotInstances = requestSpotInstances;
+            o.resourceTags = resourceTags;
+            o.spotInstanceTypes = spotInstanceTypes;
+            o.subnets = subnets;
+            o.tags = tags;
+            o.userData = userData;
+            o.version = version;
+            return o;
         }
     }
 }

@@ -16,21 +16,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewFeature(ctx, "fleet", &rancher2.FeatureArgs{
-// 			Value: pulumi.Bool("<VALUE>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewFeature(ctx, "fleet", &rancher2.FeatureArgs{
+//				Value: pulumi.Bool("<VALUE>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Feature struct {
 	pulumi.CustomResourceState
@@ -148,7 +151,7 @@ func (i *Feature) ToFeatureOutputWithContext(ctx context.Context) FeatureOutput 
 // FeatureArrayInput is an input type that accepts FeatureArray and FeatureArrayOutput values.
 // You can construct a concrete instance of `FeatureArrayInput` via:
 //
-//          FeatureArray{ FeatureArgs{...} }
+//	FeatureArray{ FeatureArgs{...} }
 type FeatureArrayInput interface {
 	pulumi.Input
 
@@ -173,7 +176,7 @@ func (i FeatureArray) ToFeatureArrayOutputWithContext(ctx context.Context) Featu
 // FeatureMapInput is an input type that accepts FeatureMap and FeatureMapOutput values.
 // You can construct a concrete instance of `FeatureMapInput` via:
 //
-//          FeatureMap{ "key": FeatureArgs{...} }
+//	FeatureMap{ "key": FeatureArgs{...} }
 type FeatureMapInput interface {
 	pulumi.Input
 

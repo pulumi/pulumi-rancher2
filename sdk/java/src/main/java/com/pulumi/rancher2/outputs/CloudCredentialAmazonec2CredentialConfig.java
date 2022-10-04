@@ -15,28 +15,19 @@ public final class CloudCredentialAmazonec2CredentialConfig {
      * @return AWS access key (string)
      * 
      */
-    private final String accessKey;
+    private String accessKey;
     /**
      * @return AWS default region (string)
      * 
      */
-    private final @Nullable String defaultRegion;
+    private @Nullable String defaultRegion;
     /**
      * @return AWS secret key (string)
      * 
      */
-    private final String secretKey;
+    private String secretKey;
 
-    @CustomType.Constructor
-    private CloudCredentialAmazonec2CredentialConfig(
-        @CustomType.Parameter("accessKey") String accessKey,
-        @CustomType.Parameter("defaultRegion") @Nullable String defaultRegion,
-        @CustomType.Parameter("secretKey") String secretKey) {
-        this.accessKey = accessKey;
-        this.defaultRegion = defaultRegion;
-        this.secretKey = secretKey;
-    }
-
+    private CloudCredentialAmazonec2CredentialConfig() {}
     /**
      * @return AWS access key (string)
      * 
@@ -66,16 +57,12 @@ public final class CloudCredentialAmazonec2CredentialConfig {
     public static Builder builder(CloudCredentialAmazonec2CredentialConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessKey;
         private @Nullable String defaultRegion;
         private String secretKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudCredentialAmazonec2CredentialConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -83,19 +70,27 @@ public final class CloudCredentialAmazonec2CredentialConfig {
     	      this.secretKey = defaults.secretKey;
         }
 
+        @CustomType.Setter
         public Builder accessKey(String accessKey) {
             this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultRegion(@Nullable String defaultRegion) {
             this.defaultRegion = defaultRegion;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(String secretKey) {
             this.secretKey = Objects.requireNonNull(secretKey);
             return this;
-        }        public CloudCredentialAmazonec2CredentialConfig build() {
-            return new CloudCredentialAmazonec2CredentialConfig(accessKey, defaultRegion, secretKey);
+        }
+        public CloudCredentialAmazonec2CredentialConfig build() {
+            final var o = new CloudCredentialAmazonec2CredentialConfig();
+            o.accessKey = accessKey;
+            o.defaultRegion = defaultRegion;
+            o.secretKey = secretKey;
+            return o;
         }
     }
 }

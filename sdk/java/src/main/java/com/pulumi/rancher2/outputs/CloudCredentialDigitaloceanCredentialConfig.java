@@ -13,13 +13,9 @@ public final class CloudCredentialDigitaloceanCredentialConfig {
      * @return DigitalOcean access token (string)
      * 
      */
-    private final String accessToken;
+    private String accessToken;
 
-    @CustomType.Constructor
-    private CloudCredentialDigitaloceanCredentialConfig(@CustomType.Parameter("accessToken") String accessToken) {
-        this.accessToken = accessToken;
-    }
-
+    private CloudCredentialDigitaloceanCredentialConfig() {}
     /**
      * @return DigitalOcean access token (string)
      * 
@@ -35,24 +31,24 @@ public final class CloudCredentialDigitaloceanCredentialConfig {
     public static Builder builder(CloudCredentialDigitaloceanCredentialConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessToken;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudCredentialDigitaloceanCredentialConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessToken = defaults.accessToken;
         }
 
+        @CustomType.Setter
         public Builder accessToken(String accessToken) {
             this.accessToken = Objects.requireNonNull(accessToken);
             return this;
-        }        public CloudCredentialDigitaloceanCredentialConfig build() {
-            return new CloudCredentialDigitaloceanCredentialConfig(accessToken);
+        }
+        public CloudCredentialDigitaloceanCredentialConfig build() {
+            final var o = new CloudCredentialDigitaloceanCredentialConfig();
+            o.accessToken = accessToken;
+            return o;
         }
     }
 }

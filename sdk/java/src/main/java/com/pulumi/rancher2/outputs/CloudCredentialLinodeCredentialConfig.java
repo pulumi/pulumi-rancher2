@@ -13,13 +13,9 @@ public final class CloudCredentialLinodeCredentialConfig {
      * @return Linode API token (string)
      * 
      */
-    private final String token;
+    private String token;
 
-    @CustomType.Constructor
-    private CloudCredentialLinodeCredentialConfig(@CustomType.Parameter("token") String token) {
-        this.token = token;
-    }
-
+    private CloudCredentialLinodeCredentialConfig() {}
     /**
      * @return Linode API token (string)
      * 
@@ -35,24 +31,24 @@ public final class CloudCredentialLinodeCredentialConfig {
     public static Builder builder(CloudCredentialLinodeCredentialConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String token;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudCredentialLinodeCredentialConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.token = defaults.token;
         }
 
+        @CustomType.Setter
         public Builder token(String token) {
             this.token = Objects.requireNonNull(token);
             return this;
-        }        public CloudCredentialLinodeCredentialConfig build() {
-            return new CloudCredentialLinodeCredentialConfig(token);
+        }
+        public CloudCredentialLinodeCredentialConfig build() {
+            final var o = new CloudCredentialLinodeCredentialConfig();
+            o.token = token;
+            return o;
         }
     }
 }

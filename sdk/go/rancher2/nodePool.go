@@ -15,10 +15,12 @@ import (
 //
 // ## Import
 //
-// Node Pool can be imported using the Rancher Node Pool ID
+// # Node Pool can be imported using the Rancher Node Pool ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/nodePool:NodePool foo &lt;node_pool_id&gt;
+//
+//	$ pulumi import rancher2:index/nodePool:NodePool foo &lt;node_pool_id&gt;
+//
 // ```
 type NodePool struct {
 	pulumi.CustomResourceState
@@ -235,7 +237,7 @@ func (i *NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutp
 // NodePoolArrayInput is an input type that accepts NodePoolArray and NodePoolArrayOutput values.
 // You can construct a concrete instance of `NodePoolArrayInput` via:
 //
-//          NodePoolArray{ NodePoolArgs{...} }
+//	NodePoolArray{ NodePoolArgs{...} }
 type NodePoolArrayInput interface {
 	pulumi.Input
 
@@ -260,7 +262,7 @@ func (i NodePoolArray) ToNodePoolArrayOutputWithContext(ctx context.Context) Nod
 // NodePoolMapInput is an input type that accepts NodePoolMap and NodePoolMapOutput values.
 // You can construct a concrete instance of `NodePoolMapInput` via:
 //
-//          NodePoolMap{ "key": NodePoolArgs{...} }
+//	NodePoolMap{ "key": NodePoolArgs{...} }
 type NodePoolMapInput interface {
 	pulumi.Input
 

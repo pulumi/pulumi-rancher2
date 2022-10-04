@@ -19,35 +19,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewCatalog(ctx, "foo-global", &rancher2.CatalogArgs{
-// 			Url: pulumi.String("https://<CATALOG_URL>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewCatalog(ctx, "foo-cluster", &rancher2.CatalogArgs{
-// 			Scope: pulumi.String("cluster"),
-// 			Url:   pulumi.String("https://<CATALOG_URL>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewCatalog(ctx, "foo-project", &rancher2.CatalogArgs{
-// 			Scope: pulumi.String("project"),
-// 			Url:   pulumi.String("https://<CATALOG_URL>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewCatalog(ctx, "foo-global", &rancher2.CatalogArgs{
+//				Url: pulumi.String("https://<CATALOG_URL>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewCatalog(ctx, "foo-cluster", &rancher2.CatalogArgs{
+//				Scope: pulumi.String("cluster"),
+//				Url:   pulumi.String("https://<CATALOG_URL>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewCatalog(ctx, "foo-project", &rancher2.CatalogArgs{
+//				Scope: pulumi.String("project"),
+//				Url:   pulumi.String("https://<CATALOG_URL>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // Catalogs can be imported using the Rancher Catalog ID and its scope.
 //
 // ```sh
-//  $ pulumi import rancher2:index/catalog:Catalog foo &lt;SCOPE&gt;.&lt;CATALOG_ID_ID&gt;
+//
+//	$ pulumi import rancher2:index/catalog:Catalog foo &lt;SCOPE&gt;.&lt;CATALOG_ID_ID&gt;
+//
 // ```
 type Catalog struct {
 	pulumi.CustomResourceState
@@ -276,7 +281,7 @@ func (i *Catalog) ToCatalogOutputWithContext(ctx context.Context) CatalogOutput 
 // CatalogArrayInput is an input type that accepts CatalogArray and CatalogArrayOutput values.
 // You can construct a concrete instance of `CatalogArrayInput` via:
 //
-//          CatalogArray{ CatalogArgs{...} }
+//	CatalogArray{ CatalogArgs{...} }
 type CatalogArrayInput interface {
 	pulumi.Input
 
@@ -301,7 +306,7 @@ func (i CatalogArray) ToCatalogArrayOutputWithContext(ctx context.Context) Catal
 // CatalogMapInput is an input type that accepts CatalogMap and CatalogMapOutput values.
 // You can construct a concrete instance of `CatalogMapInput` via:
 //
-//          CatalogMap{ "key": CatalogArgs{...} }
+//	CatalogMap{ "key": CatalogArgs{...} }
 type CatalogMapInput interface {
 	pulumi.Input
 

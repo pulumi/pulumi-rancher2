@@ -16,49 +16,34 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
      * @return Audit log format. Default: &#39;json&#39; (string)
      * 
      */
-    private final @Nullable String format;
+    private @Nullable String format;
     /**
      * @return Audit log max age. Default: `30` (int)
      * 
      */
-    private final @Nullable Integer maxAge;
+    private @Nullable Integer maxAge;
     /**
      * @return Audit log max backup. Default: `10` (int)
      * 
      */
-    private final @Nullable Integer maxBackup;
+    private @Nullable Integer maxBackup;
     /**
      * @return The EKS node group maximum size. Default `2` (int)
      * 
      */
-    private final @Nullable Integer maxSize;
+    private @Nullable Integer maxSize;
     /**
      * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
     /**
      * @return Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
      * 
      */
-    private final @Nullable String policy;
+    private @Nullable String policy;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigServicesKubeApiAuditLogConfiguration(
-        @CustomType.Parameter("format") @Nullable String format,
-        @CustomType.Parameter("maxAge") @Nullable Integer maxAge,
-        @CustomType.Parameter("maxBackup") @Nullable Integer maxBackup,
-        @CustomType.Parameter("maxSize") @Nullable Integer maxSize,
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("policy") @Nullable String policy) {
-        this.format = format;
-        this.maxAge = maxAge;
-        this.maxBackup = maxBackup;
-        this.maxSize = maxSize;
-        this.path = path;
-        this.policy = policy;
-    }
-
+    private ClusterRkeConfigServicesKubeApiAuditLogConfiguration() {}
     /**
      * @return Audit log format. Default: &#39;json&#39; (string)
      * 
@@ -109,7 +94,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
     public static Builder builder(ClusterRkeConfigServicesKubeApiAuditLogConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String format;
         private @Nullable Integer maxAge;
@@ -117,11 +102,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
         private @Nullable Integer maxSize;
         private @Nullable String path;
         private @Nullable String policy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigServicesKubeApiAuditLogConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.format = defaults.format;
@@ -132,31 +113,45 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
     	      this.policy = defaults.policy;
         }
 
+        @CustomType.Setter
         public Builder format(@Nullable String format) {
             this.format = format;
             return this;
         }
+        @CustomType.Setter
         public Builder maxAge(@Nullable Integer maxAge) {
             this.maxAge = maxAge;
             return this;
         }
+        @CustomType.Setter
         public Builder maxBackup(@Nullable Integer maxBackup) {
             this.maxBackup = maxBackup;
             return this;
         }
+        @CustomType.Setter
         public Builder maxSize(@Nullable Integer maxSize) {
             this.maxSize = maxSize;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder policy(@Nullable String policy) {
             this.policy = policy;
             return this;
-        }        public ClusterRkeConfigServicesKubeApiAuditLogConfiguration build() {
-            return new ClusterRkeConfigServicesKubeApiAuditLogConfiguration(format, maxAge, maxBackup, maxSize, path, policy);
+        }
+        public ClusterRkeConfigServicesKubeApiAuditLogConfiguration build() {
+            final var o = new ClusterRkeConfigServicesKubeApiAuditLogConfiguration();
+            o.format = format;
+            o.maxAge = maxAge;
+            o.maxBackup = maxBackup;
+            o.maxSize = maxSize;
+            o.path = path;
+            o.policy = policy;
+            return o;
         }
     }
 }

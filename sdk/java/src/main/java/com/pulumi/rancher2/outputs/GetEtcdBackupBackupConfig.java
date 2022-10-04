@@ -13,29 +13,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEtcdBackupBackupConfig {
-    private final @Nullable Boolean enabled;
-    private final @Nullable Integer intervalHours;
-    private final @Nullable Integer retention;
-    private final @Nullable GetEtcdBackupBackupConfigS3BackupConfig s3BackupConfig;
-    private final @Nullable Boolean safeTimestamp;
-    private final Integer timeout;
+    private @Nullable Boolean enabled;
+    private @Nullable Integer intervalHours;
+    private @Nullable Integer retention;
+    private @Nullable GetEtcdBackupBackupConfigS3BackupConfig s3BackupConfig;
+    private @Nullable Boolean safeTimestamp;
+    private Integer timeout;
 
-    @CustomType.Constructor
-    private GetEtcdBackupBackupConfig(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("intervalHours") @Nullable Integer intervalHours,
-        @CustomType.Parameter("retention") @Nullable Integer retention,
-        @CustomType.Parameter("s3BackupConfig") @Nullable GetEtcdBackupBackupConfigS3BackupConfig s3BackupConfig,
-        @CustomType.Parameter("safeTimestamp") @Nullable Boolean safeTimestamp,
-        @CustomType.Parameter("timeout") Integer timeout) {
-        this.enabled = enabled;
-        this.intervalHours = intervalHours;
-        this.retention = retention;
-        this.s3BackupConfig = s3BackupConfig;
-        this.safeTimestamp = safeTimestamp;
-        this.timeout = timeout;
-    }
-
+    private GetEtcdBackupBackupConfig() {}
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -62,7 +47,7 @@ public final class GetEtcdBackupBackupConfig {
     public static Builder builder(GetEtcdBackupBackupConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable Integer intervalHours;
@@ -70,11 +55,7 @@ public final class GetEtcdBackupBackupConfig {
         private @Nullable GetEtcdBackupBackupConfigS3BackupConfig s3BackupConfig;
         private @Nullable Boolean safeTimestamp;
         private Integer timeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEtcdBackupBackupConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -85,31 +66,45 @@ public final class GetEtcdBackupBackupConfig {
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder intervalHours(@Nullable Integer intervalHours) {
             this.intervalHours = intervalHours;
             return this;
         }
+        @CustomType.Setter
         public Builder retention(@Nullable Integer retention) {
             this.retention = retention;
             return this;
         }
+        @CustomType.Setter
         public Builder s3BackupConfig(@Nullable GetEtcdBackupBackupConfigS3BackupConfig s3BackupConfig) {
             this.s3BackupConfig = s3BackupConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder safeTimestamp(@Nullable Boolean safeTimestamp) {
             this.safeTimestamp = safeTimestamp;
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(Integer timeout) {
             this.timeout = Objects.requireNonNull(timeout);
             return this;
-        }        public GetEtcdBackupBackupConfig build() {
-            return new GetEtcdBackupBackupConfig(enabled, intervalHours, retention, s3BackupConfig, safeTimestamp, timeout);
+        }
+        public GetEtcdBackupBackupConfig build() {
+            final var o = new GetEtcdBackupBackupConfig();
+            o.enabled = enabled;
+            o.intervalHours = intervalHours;
+            o.retention = retention;
+            o.s3BackupConfig = s3BackupConfig;
+            o.safeTimestamp = safeTimestamp;
+            o.timeout = timeout;
+            return o;
         }
     }
 }

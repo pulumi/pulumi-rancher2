@@ -16,35 +16,24 @@ public final class ClusterTemplateTemplateRevisionQuestion {
      * @return Default variable value (string)
      * 
      */
-    private final String default_;
+    private String default_;
     /**
      * @return Required variable. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean required;
+    private @Nullable Boolean required;
     /**
      * @return Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
     /**
      * @return Variable name (string)
      * 
      */
-    private final String variable;
+    private String variable;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionQuestion(
-        @CustomType.Parameter("default") String default_,
-        @CustomType.Parameter("required") @Nullable Boolean required,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("variable") String variable) {
-        this.default_ = default_;
-        this.required = required;
-        this.type = type;
-        this.variable = variable;
-    }
-
+    private ClusterTemplateTemplateRevisionQuestion() {}
     /**
      * @return Default variable value (string)
      * 
@@ -81,17 +70,13 @@ public final class ClusterTemplateTemplateRevisionQuestion {
     public static Builder builder(ClusterTemplateTemplateRevisionQuestion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String default_;
         private @Nullable Boolean required;
         private @Nullable String type;
         private String variable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionQuestion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
@@ -100,23 +85,33 @@ public final class ClusterTemplateTemplateRevisionQuestion {
     	      this.variable = defaults.variable;
         }
 
+        @CustomType.Setter("default")
         public Builder default_(String default_) {
             this.default_ = Objects.requireNonNull(default_);
             return this;
         }
+        @CustomType.Setter
         public Builder required(@Nullable Boolean required) {
             this.required = required;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder variable(String variable) {
             this.variable = Objects.requireNonNull(variable);
             return this;
-        }        public ClusterTemplateTemplateRevisionQuestion build() {
-            return new ClusterTemplateTemplateRevisionQuestion(default_, required, type, variable);
+        }
+        public ClusterTemplateTemplateRevisionQuestion build() {
+            final var o = new ClusterTemplateTemplateRevisionQuestion();
+            o.default_ = default_;
+            o.required = required;
+            o.type = type;
+            o.variable = variable;
+            return o;
         }
     }
 }

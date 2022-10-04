@@ -15,28 +15,19 @@ public final class NotifierSlackConfig {
      * @return Wechat default recipient (string)
      * 
      */
-    private final String defaultRecipient;
+    private String defaultRecipient;
     /**
      * @return Wechat proxy url (string)
      * 
      */
-    private final @Nullable String proxyUrl;
+    private @Nullable String proxyUrl;
     /**
      * @return Webhook url (string)
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private NotifierSlackConfig(
-        @CustomType.Parameter("defaultRecipient") String defaultRecipient,
-        @CustomType.Parameter("proxyUrl") @Nullable String proxyUrl,
-        @CustomType.Parameter("url") String url) {
-        this.defaultRecipient = defaultRecipient;
-        this.proxyUrl = proxyUrl;
-        this.url = url;
-    }
-
+    private NotifierSlackConfig() {}
     /**
      * @return Wechat default recipient (string)
      * 
@@ -66,16 +57,12 @@ public final class NotifierSlackConfig {
     public static Builder builder(NotifierSlackConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String defaultRecipient;
         private @Nullable String proxyUrl;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NotifierSlackConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultRecipient = defaults.defaultRecipient;
@@ -83,19 +70,27 @@ public final class NotifierSlackConfig {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder defaultRecipient(String defaultRecipient) {
             this.defaultRecipient = Objects.requireNonNull(defaultRecipient);
             return this;
         }
+        @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
             this.proxyUrl = proxyUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public NotifierSlackConfig build() {
-            return new NotifierSlackConfig(defaultRecipient, proxyUrl, url);
+        }
+        public NotifierSlackConfig build() {
+            final var o = new NotifierSlackConfig();
+            o.defaultRecipient = defaultRecipient;
+            o.proxyUrl = proxyUrl;
+            o.url = url;
+            return o;
         }
     }
 }

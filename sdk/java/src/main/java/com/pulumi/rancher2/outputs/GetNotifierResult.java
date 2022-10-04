@@ -24,90 +24,61 @@ public final class GetNotifierResult {
      * @return (Computed) Annotations for notifier object (map)
      * 
      */
-    private final Map<String,Object> annotations;
-    private final String clusterId;
+    private Map<String,Object> annotations;
+    private String clusterId;
     /**
      * @return (Computed) The notifier description (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return (Computed) Dingtalk config for notifier (list maxitems:1)
      * 
      */
-    private final @Nullable GetNotifierDingtalkConfig dingtalkConfig;
+    private @Nullable GetNotifierDingtalkConfig dingtalkConfig;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for notifier object (map)
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return (Computed) MSTeams config for notifier (list maxitems:1)
      * 
      */
-    private final @Nullable GetNotifierMsteamsConfig msteamsConfig;
-    private final String name;
+    private @Nullable GetNotifierMsteamsConfig msteamsConfig;
+    private String name;
     /**
      * @return (Computed) Pagerduty config for notifier (list maxitems:1)
      * 
      */
-    private final GetNotifierPagerdutyConfig pagerdutyConfig;
+    private GetNotifierPagerdutyConfig pagerdutyConfig;
     /**
      * @return (Computed) Slack config for notifier (list maxitems:1)
      * 
      */
-    private final GetNotifierSlackConfig slackConfig;
+    private GetNotifierSlackConfig slackConfig;
     /**
      * @return (Computed) SMTP config for notifier (list maxitems:1)
      * 
      */
-    private final GetNotifierSmtpConfig smtpConfig;
+    private GetNotifierSmtpConfig smtpConfig;
     /**
      * @return (Computed) Webhook config for notifier (list maxitems:1)
      * 
      */
-    private final GetNotifierWebhookConfig webhookConfig;
+    private GetNotifierWebhookConfig webhookConfig;
     /**
      * @return (Computed) Wechat config for notifier (list maxitems:1)
      * 
      */
-    private final GetNotifierWechatConfig wechatConfig;
+    private GetNotifierWechatConfig wechatConfig;
 
-    @CustomType.Constructor
-    private GetNotifierResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("dingtalkConfig") @Nullable GetNotifierDingtalkConfig dingtalkConfig,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("msteamsConfig") @Nullable GetNotifierMsteamsConfig msteamsConfig,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("pagerdutyConfig") GetNotifierPagerdutyConfig pagerdutyConfig,
-        @CustomType.Parameter("slackConfig") GetNotifierSlackConfig slackConfig,
-        @CustomType.Parameter("smtpConfig") GetNotifierSmtpConfig smtpConfig,
-        @CustomType.Parameter("webhookConfig") GetNotifierWebhookConfig webhookConfig,
-        @CustomType.Parameter("wechatConfig") GetNotifierWechatConfig wechatConfig) {
-        this.annotations = annotations;
-        this.clusterId = clusterId;
-        this.description = description;
-        this.dingtalkConfig = dingtalkConfig;
-        this.id = id;
-        this.labels = labels;
-        this.msteamsConfig = msteamsConfig;
-        this.name = name;
-        this.pagerdutyConfig = pagerdutyConfig;
-        this.slackConfig = slackConfig;
-        this.smtpConfig = smtpConfig;
-        this.webhookConfig = webhookConfig;
-        this.wechatConfig = wechatConfig;
-    }
-
+    private GetNotifierResult() {}
     /**
      * @return (Computed) Annotations for notifier object (map)
      * 
@@ -199,7 +170,7 @@ public final class GetNotifierResult {
     public static Builder builder(GetNotifierResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String clusterId;
@@ -214,11 +185,7 @@ public final class GetNotifierResult {
         private GetNotifierSmtpConfig smtpConfig;
         private GetNotifierWebhookConfig webhookConfig;
         private GetNotifierWechatConfig wechatConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNotifierResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -236,59 +203,87 @@ public final class GetNotifierResult {
     	      this.wechatConfig = defaults.wechatConfig;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder dingtalkConfig(@Nullable GetNotifierDingtalkConfig dingtalkConfig) {
             this.dingtalkConfig = dingtalkConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder msteamsConfig(@Nullable GetNotifierMsteamsConfig msteamsConfig) {
             this.msteamsConfig = msteamsConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder pagerdutyConfig(GetNotifierPagerdutyConfig pagerdutyConfig) {
             this.pagerdutyConfig = Objects.requireNonNull(pagerdutyConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder slackConfig(GetNotifierSlackConfig slackConfig) {
             this.slackConfig = Objects.requireNonNull(slackConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder smtpConfig(GetNotifierSmtpConfig smtpConfig) {
             this.smtpConfig = Objects.requireNonNull(smtpConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder webhookConfig(GetNotifierWebhookConfig webhookConfig) {
             this.webhookConfig = Objects.requireNonNull(webhookConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder wechatConfig(GetNotifierWechatConfig wechatConfig) {
             this.wechatConfig = Objects.requireNonNull(wechatConfig);
             return this;
-        }        public GetNotifierResult build() {
-            return new GetNotifierResult(annotations, clusterId, description, dingtalkConfig, id, labels, msteamsConfig, name, pagerdutyConfig, slackConfig, smtpConfig, webhookConfig, wechatConfig);
+        }
+        public GetNotifierResult build() {
+            final var o = new GetNotifierResult();
+            o.annotations = annotations;
+            o.clusterId = clusterId;
+            o.description = description;
+            o.dingtalkConfig = dingtalkConfig;
+            o.id = id;
+            o.labels = labels;
+            o.msteamsConfig = msteamsConfig;
+            o.name = name;
+            o.pagerdutyConfig = pagerdutyConfig;
+            o.slackConfig = slackConfig;
+            o.smtpConfig = smtpConfig;
+            o.webhookConfig = webhookConfig;
+            o.wechatConfig = wechatConfig;
+            return o;
         }
     }
 }

@@ -18,35 +18,24 @@ public final class ClusterRkeConfigServicesKubeproxy {
      * @return Extra arguments for scheduler service (map)
      * 
      */
-    private final @Nullable Map<String,Object> extraArgs;
+    private @Nullable Map<String,Object> extraArgs;
     /**
      * @return Extra binds for scheduler service (list)
      * 
      */
-    private final @Nullable List<String> extraBinds;
+    private @Nullable List<String> extraBinds;
     /**
      * @return Extra environment for scheduler service (list)
      * 
      */
-    private final @Nullable List<String> extraEnvs;
+    private @Nullable List<String> extraEnvs;
     /**
      * @return Docker image for scheduler service (string)
      * 
      */
-    private final @Nullable String image;
+    private @Nullable String image;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigServicesKubeproxy(
-        @CustomType.Parameter("extraArgs") @Nullable Map<String,Object> extraArgs,
-        @CustomType.Parameter("extraBinds") @Nullable List<String> extraBinds,
-        @CustomType.Parameter("extraEnvs") @Nullable List<String> extraEnvs,
-        @CustomType.Parameter("image") @Nullable String image) {
-        this.extraArgs = extraArgs;
-        this.extraBinds = extraBinds;
-        this.extraEnvs = extraEnvs;
-        this.image = image;
-    }
-
+    private ClusterRkeConfigServicesKubeproxy() {}
     /**
      * @return Extra arguments for scheduler service (map)
      * 
@@ -83,17 +72,13 @@ public final class ClusterRkeConfigServicesKubeproxy {
     public static Builder builder(ClusterRkeConfigServicesKubeproxy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,Object> extraArgs;
         private @Nullable List<String> extraBinds;
         private @Nullable List<String> extraEnvs;
         private @Nullable String image;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigServicesKubeproxy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.extraArgs = defaults.extraArgs;
@@ -102,10 +87,12 @@ public final class ClusterRkeConfigServicesKubeproxy {
     	      this.image = defaults.image;
         }
 
+        @CustomType.Setter
         public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
             this.extraArgs = extraArgs;
             return this;
         }
+        @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
             this.extraBinds = extraBinds;
             return this;
@@ -113,6 +100,7 @@ public final class ClusterRkeConfigServicesKubeproxy {
         public Builder extraBinds(String... extraBinds) {
             return extraBinds(List.of(extraBinds));
         }
+        @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
             this.extraEnvs = extraEnvs;
             return this;
@@ -120,11 +108,18 @@ public final class ClusterRkeConfigServicesKubeproxy {
         public Builder extraEnvs(String... extraEnvs) {
             return extraEnvs(List.of(extraEnvs));
         }
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
-        }        public ClusterRkeConfigServicesKubeproxy build() {
-            return new ClusterRkeConfigServicesKubeproxy(extraArgs, extraBinds, extraEnvs, image);
+        }
+        public ClusterRkeConfigServicesKubeproxy build() {
+            final var o = new ClusterRkeConfigServicesKubeproxy();
+            o.extraArgs = extraArgs;
+            o.extraBinds = extraBinds;
+            o.extraEnvs = extraEnvs;
+            o.image = image;
+            return o;
         }
     }
 }

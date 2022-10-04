@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
-    private final @Nullable String ipAddress;
-    private final @Nullable Map<String,Object> nodeSelector;
+    private @Nullable String ipAddress;
+    private @Nullable Map<String,Object> nodeSelector;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal(
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("nodeSelector") @Nullable Map<String,Object> nodeSelector) {
-        this.ipAddress = ipAddress;
-        this.nodeSelector = nodeSelector;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal() {}
     public Optional<String> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
@@ -38,30 +31,32 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNo
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipAddress;
         private @Nullable Map<String,Object> nodeSelector;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipAddress = defaults.ipAddress;
     	      this.nodeSelector = defaults.nodeSelector;
         }
 
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
             this.nodeSelector = nodeSelector;
             return this;
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal(ipAddress, nodeSelector);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal();
+            o.ipAddress = ipAddress;
+            o.nodeSelector = nodeSelector;
+            return o;
         }
     }
 }

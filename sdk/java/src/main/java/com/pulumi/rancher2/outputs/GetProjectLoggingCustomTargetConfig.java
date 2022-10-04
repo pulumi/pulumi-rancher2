@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectLoggingCustomTargetConfig {
-    private final @Nullable String certificate;
-    private final @Nullable String clientCert;
-    private final @Nullable String clientKey;
-    private final String content;
+    private @Nullable String certificate;
+    private @Nullable String clientCert;
+    private @Nullable String clientKey;
+    private String content;
 
-    @CustomType.Constructor
-    private GetProjectLoggingCustomTargetConfig(
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("clientCert") @Nullable String clientCert,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("content") String content) {
-        this.certificate = certificate;
-        this.clientCert = clientCert;
-        this.clientKey = clientKey;
-        this.content = content;
-    }
-
+    private GetProjectLoggingCustomTargetConfig() {}
     public Optional<String> certificate() {
         return Optional.ofNullable(this.certificate);
     }
@@ -48,17 +37,13 @@ public final class GetProjectLoggingCustomTargetConfig {
     public static Builder builder(GetProjectLoggingCustomTargetConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificate;
         private @Nullable String clientCert;
         private @Nullable String clientKey;
         private String content;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectLoggingCustomTargetConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
@@ -67,23 +52,33 @@ public final class GetProjectLoggingCustomTargetConfig {
     	      this.content = defaults.content;
         }
 
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
             this.clientCert = clientCert;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
-        }        public GetProjectLoggingCustomTargetConfig build() {
-            return new GetProjectLoggingCustomTargetConfig(certificate, clientCert, clientKey, content);
+        }
+        public GetProjectLoggingCustomTargetConfig build() {
+            final var o = new GetProjectLoggingCustomTargetConfig();
+            o.certificate = certificate;
+            o.clientCert = clientCert;
+            o.clientKey = clientKey;
+            o.content = content;
+            return o;
         }
     }
 }

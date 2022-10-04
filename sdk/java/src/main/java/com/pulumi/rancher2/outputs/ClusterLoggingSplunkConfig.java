@@ -16,70 +16,49 @@ public final class ClusterLoggingSplunkConfig {
      * @return SSL certificate for the syslog service (string)
      * 
      */
-    private final @Nullable String certificate;
+    private @Nullable String certificate;
     /**
      * @return SSL client certificate for the syslog service (string)
      * 
      */
-    private final @Nullable String clientCert;
+    private @Nullable String clientCert;
     /**
      * @return SSL client key for the syslog service (string)
      * 
      */
-    private final @Nullable String clientKey;
+    private @Nullable String clientKey;
     /**
      * @return SSL client key password for the splunk service (string)
      * 
      */
-    private final @Nullable String clientKeyPass;
+    private @Nullable String clientKeyPass;
     /**
      * @return Endpoint of the syslog service (string)
      * 
      */
-    private final String endpoint;
+    private String endpoint;
     /**
      * @return Index prefix for the splunk logs (string)
      * 
      */
-    private final @Nullable String index;
+    private @Nullable String index;
     /**
      * @return Date format for the splunk logs (string)
      * 
      */
-    private final @Nullable String source;
+    private @Nullable String source;
     /**
      * @return SSL verify for the syslog service (bool)
      * 
      */
-    private final @Nullable Boolean sslVerify;
+    private @Nullable Boolean sslVerify;
     /**
      * @return Token for the syslog service (string)
      * 
      */
-    private final String token;
+    private String token;
 
-    @CustomType.Constructor
-    private ClusterLoggingSplunkConfig(
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("clientCert") @Nullable String clientCert,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("clientKeyPass") @Nullable String clientKeyPass,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("index") @Nullable String index,
-        @CustomType.Parameter("source") @Nullable String source,
-        @CustomType.Parameter("sslVerify") @Nullable Boolean sslVerify,
-        @CustomType.Parameter("token") String token) {
-        this.certificate = certificate;
-        this.clientCert = clientCert;
-        this.clientKey = clientKey;
-        this.clientKeyPass = clientKeyPass;
-        this.endpoint = endpoint;
-        this.index = index;
-        this.source = source;
-        this.sslVerify = sslVerify;
-        this.token = token;
-    }
-
+    private ClusterLoggingSplunkConfig() {}
     /**
      * @return SSL certificate for the syslog service (string)
      * 
@@ -151,7 +130,7 @@ public final class ClusterLoggingSplunkConfig {
     public static Builder builder(ClusterLoggingSplunkConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificate;
         private @Nullable String clientCert;
@@ -162,11 +141,7 @@ public final class ClusterLoggingSplunkConfig {
         private @Nullable String source;
         private @Nullable Boolean sslVerify;
         private String token;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterLoggingSplunkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
@@ -180,43 +155,63 @@ public final class ClusterLoggingSplunkConfig {
     	      this.token = defaults.token;
         }
 
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
             this.clientCert = clientCert;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKeyPass(@Nullable String clientKeyPass) {
             this.clientKeyPass = clientKeyPass;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder index(@Nullable String index) {
             this.index = index;
             return this;
         }
+        @CustomType.Setter
         public Builder source(@Nullable String source) {
             this.source = source;
             return this;
         }
+        @CustomType.Setter
         public Builder sslVerify(@Nullable Boolean sslVerify) {
             this.sslVerify = sslVerify;
             return this;
         }
+        @CustomType.Setter
         public Builder token(String token) {
             this.token = Objects.requireNonNull(token);
             return this;
-        }        public ClusterLoggingSplunkConfig build() {
-            return new ClusterLoggingSplunkConfig(certificate, clientCert, clientKey, clientKeyPass, endpoint, index, source, sslVerify, token);
+        }
+        public ClusterLoggingSplunkConfig build() {
+            final var o = new ClusterLoggingSplunkConfig();
+            o.certificate = certificate;
+            o.clientCert = clientCert;
+            o.clientKey = clientKey;
+            o.clientKeyPass = clientKeyPass;
+            o.endpoint = endpoint;
+            o.index = index;
+            o.source = source;
+            o.sslVerify = sslVerify;
+            o.token = token;
+            return o;
         }
     }
 }

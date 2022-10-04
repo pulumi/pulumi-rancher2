@@ -16,42 +16,29 @@ public final class ProjectAlertRuleMetricRule {
      * @return Metric rule comparison. Supported values : `&#34;equal&#34; | &#34;greater-or-equal&#34; | &#34;greater-than&#34; | &#34;less-or-equal&#34; | &#34;less-than&#34; | &#34;not-equal&#34; | &#34;has-value&#34;`. Default: `equal`  (string)
      * 
      */
-    private final @Nullable String comparison;
+    private @Nullable String comparison;
     /**
      * @return Metric rule description (string)
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Metric rule duration (string)
      * 
      */
-    private final String duration;
+    private String duration;
     /**
      * @return Metric rule expression (string)
      * 
      */
-    private final String expression;
+    private String expression;
     /**
      * @return Metric rule threshold value (float64)
      * 
      */
-    private final Double thresholdValue;
+    private Double thresholdValue;
 
-    @CustomType.Constructor
-    private ProjectAlertRuleMetricRule(
-        @CustomType.Parameter("comparison") @Nullable String comparison,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("duration") String duration,
-        @CustomType.Parameter("expression") String expression,
-        @CustomType.Parameter("thresholdValue") Double thresholdValue) {
-        this.comparison = comparison;
-        this.description = description;
-        this.duration = duration;
-        this.expression = expression;
-        this.thresholdValue = thresholdValue;
-    }
-
+    private ProjectAlertRuleMetricRule() {}
     /**
      * @return Metric rule comparison. Supported values : `&#34;equal&#34; | &#34;greater-or-equal&#34; | &#34;greater-than&#34; | &#34;less-or-equal&#34; | &#34;less-than&#34; | &#34;not-equal&#34; | &#34;has-value&#34;`. Default: `equal`  (string)
      * 
@@ -95,18 +82,14 @@ public final class ProjectAlertRuleMetricRule {
     public static Builder builder(ProjectAlertRuleMetricRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String comparison;
         private @Nullable String description;
         private String duration;
         private String expression;
         private Double thresholdValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ProjectAlertRuleMetricRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comparison = defaults.comparison;
@@ -116,27 +99,39 @@ public final class ProjectAlertRuleMetricRule {
     	      this.thresholdValue = defaults.thresholdValue;
         }
 
+        @CustomType.Setter
         public Builder comparison(@Nullable String comparison) {
             this.comparison = comparison;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder duration(String duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
         }
+        @CustomType.Setter
         public Builder thresholdValue(Double thresholdValue) {
             this.thresholdValue = Objects.requireNonNull(thresholdValue);
             return this;
-        }        public ProjectAlertRuleMetricRule build() {
-            return new ProjectAlertRuleMetricRule(comparison, description, duration, expression, thresholdValue);
+        }
+        public ProjectAlertRuleMetricRule build() {
+            final var o = new ProjectAlertRuleMetricRule();
+            o.comparison = comparison;
+            o.description = description;
+            o.duration = duration;
+            o.expression = expression;
+            o.thresholdValue = thresholdValue;
+            return o;
         }
     }
 }

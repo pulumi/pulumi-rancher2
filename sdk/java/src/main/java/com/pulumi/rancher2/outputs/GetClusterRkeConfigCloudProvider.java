@@ -15,33 +15,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigCloudProvider {
-    private final @Nullable GetClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider;
-    private final @Nullable GetClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider;
-    private final String customCloudProvider;
+    private @Nullable GetClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider;
+    private @Nullable GetClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider;
+    private String customCloudProvider;
     /**
      * @return The name of the Cluster (string)
      * 
      */
-    private final @Nullable String name;
-    private final @Nullable GetClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider;
-    private final @Nullable GetClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider;
+    private @Nullable String name;
+    private @Nullable GetClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider;
+    private @Nullable GetClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigCloudProvider(
-        @CustomType.Parameter("awsCloudProvider") @Nullable GetClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider,
-        @CustomType.Parameter("azureCloudProvider") @Nullable GetClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider,
-        @CustomType.Parameter("customCloudProvider") String customCloudProvider,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("openstackCloudProvider") @Nullable GetClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider,
-        @CustomType.Parameter("vsphereCloudProvider") @Nullable GetClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider) {
-        this.awsCloudProvider = awsCloudProvider;
-        this.azureCloudProvider = azureCloudProvider;
-        this.customCloudProvider = customCloudProvider;
-        this.name = name;
-        this.openstackCloudProvider = openstackCloudProvider;
-        this.vsphereCloudProvider = vsphereCloudProvider;
-    }
-
+    private GetClusterRkeConfigCloudProvider() {}
     public Optional<GetClusterRkeConfigCloudProviderAwsCloudProvider> awsCloudProvider() {
         return Optional.ofNullable(this.awsCloudProvider);
     }
@@ -72,7 +57,7 @@ public final class GetClusterRkeConfigCloudProvider {
     public static Builder builder(GetClusterRkeConfigCloudProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GetClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider;
         private @Nullable GetClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider;
@@ -80,11 +65,7 @@ public final class GetClusterRkeConfigCloudProvider {
         private @Nullable String name;
         private @Nullable GetClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider;
         private @Nullable GetClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigCloudProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsCloudProvider = defaults.awsCloudProvider;
@@ -95,31 +76,45 @@ public final class GetClusterRkeConfigCloudProvider {
     	      this.vsphereCloudProvider = defaults.vsphereCloudProvider;
         }
 
+        @CustomType.Setter
         public Builder awsCloudProvider(@Nullable GetClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider) {
             this.awsCloudProvider = awsCloudProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder azureCloudProvider(@Nullable GetClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider) {
             this.azureCloudProvider = azureCloudProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder customCloudProvider(String customCloudProvider) {
             this.customCloudProvider = Objects.requireNonNull(customCloudProvider);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder openstackCloudProvider(@Nullable GetClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider) {
             this.openstackCloudProvider = openstackCloudProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder vsphereCloudProvider(@Nullable GetClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider) {
             this.vsphereCloudProvider = vsphereCloudProvider;
             return this;
-        }        public GetClusterRkeConfigCloudProvider build() {
-            return new GetClusterRkeConfigCloudProvider(awsCloudProvider, azureCloudProvider, customCloudProvider, name, openstackCloudProvider, vsphereCloudProvider);
+        }
+        public GetClusterRkeConfigCloudProvider build() {
+            final var o = new GetClusterRkeConfigCloudProvider();
+            o.awsCloudProvider = awsCloudProvider;
+            o.azureCloudProvider = azureCloudProvider;
+            o.customCloudProvider = customCloudProvider;
+            o.name = name;
+            o.openstackCloudProvider = openstackCloudProvider;
+            o.vsphereCloudProvider = vsphereCloudProvider;
+            return o;
         }
     }
 }

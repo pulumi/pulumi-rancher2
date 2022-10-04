@@ -18,136 +18,95 @@ public final class ClusterEksConfig {
      * @return The AWS Client ID to use (string)
      * 
      */
-    private final String accessKey;
+    private String accessKey;
     /**
      * @return AMI ID to use for the worker nodes instead of the default (string)
      * 
      */
-    private final @Nullable String ami;
+    private @Nullable String ami;
     /**
      * @return Associate public ip EKS worker nodes. Default `true` (bool)
      * 
      */
-    private final @Nullable Boolean associateWorkerNodePublicIp;
+    private @Nullable Boolean associateWorkerNodePublicIp;
     /**
      * @return The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
      * 
      */
-    private final @Nullable Integer desiredNodes;
-    private final @Nullable Boolean ebsEncryption;
+    private @Nullable Integer desiredNodes;
+    private @Nullable Boolean ebsEncryption;
     /**
      * @return The EKS node group instance type. Default: `t3.medium` (string)
      * 
      */
-    private final @Nullable String instanceType;
+    private @Nullable String instanceType;
     /**
      * @return Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
      * 
      */
-    private final @Nullable String keyPairName;
+    private @Nullable String keyPairName;
     /**
      * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
-    private final String kubernetesVersion;
+    private String kubernetesVersion;
     /**
      * @return The maximum number of worker nodes. Default `3` (int)
      * 
      */
-    private final @Nullable Integer maximumNodes;
+    private @Nullable Integer maximumNodes;
     /**
      * @return The minimum number of worker nodes. Default `1` (int)
      * 
      */
-    private final @Nullable Integer minimumNodes;
+    private @Nullable Integer minimumNodes;
     /**
      * @return The volume size for each node. Default `20` (int)
      * 
      */
-    private final @Nullable Integer nodeVolumeSize;
+    private @Nullable Integer nodeVolumeSize;
     /**
      * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return The AWS Client Secret associated with the Client ID (string)
      * 
      */
-    private final String secretKey;
+    private String secretKey;
     /**
      * @return List of security groups to use for the cluster (list)
      * 
      */
-    private final @Nullable List<String> securityGroups;
+    private @Nullable List<String> securityGroups;
     /**
      * @return The AWS service role to use (string)
      * 
      */
-    private final @Nullable String serviceRole;
+    private @Nullable String serviceRole;
     /**
      * @return A session token to use with the client key and secret if applicable (string)
      * 
      */
-    private final @Nullable String sessionToken;
+    private @Nullable String sessionToken;
     /**
      * @return The EKS node group subnets (list string)
      * 
      */
-    private final @Nullable List<String> subnets;
+    private @Nullable List<String> subnets;
     /**
      * @return The EKS node group user data (string)
      * 
      */
-    private final @Nullable String userData;
+    private @Nullable String userData;
     /**
      * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
      * 
      */
-    private final @Nullable String virtualNetwork;
+    private @Nullable String virtualNetwork;
 
-    @CustomType.Constructor
-    private ClusterEksConfig(
-        @CustomType.Parameter("accessKey") String accessKey,
-        @CustomType.Parameter("ami") @Nullable String ami,
-        @CustomType.Parameter("associateWorkerNodePublicIp") @Nullable Boolean associateWorkerNodePublicIp,
-        @CustomType.Parameter("desiredNodes") @Nullable Integer desiredNodes,
-        @CustomType.Parameter("ebsEncryption") @Nullable Boolean ebsEncryption,
-        @CustomType.Parameter("instanceType") @Nullable String instanceType,
-        @CustomType.Parameter("keyPairName") @Nullable String keyPairName,
-        @CustomType.Parameter("kubernetesVersion") String kubernetesVersion,
-        @CustomType.Parameter("maximumNodes") @Nullable Integer maximumNodes,
-        @CustomType.Parameter("minimumNodes") @Nullable Integer minimumNodes,
-        @CustomType.Parameter("nodeVolumeSize") @Nullable Integer nodeVolumeSize,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("secretKey") String secretKey,
-        @CustomType.Parameter("securityGroups") @Nullable List<String> securityGroups,
-        @CustomType.Parameter("serviceRole") @Nullable String serviceRole,
-        @CustomType.Parameter("sessionToken") @Nullable String sessionToken,
-        @CustomType.Parameter("subnets") @Nullable List<String> subnets,
-        @CustomType.Parameter("userData") @Nullable String userData,
-        @CustomType.Parameter("virtualNetwork") @Nullable String virtualNetwork) {
-        this.accessKey = accessKey;
-        this.ami = ami;
-        this.associateWorkerNodePublicIp = associateWorkerNodePublicIp;
-        this.desiredNodes = desiredNodes;
-        this.ebsEncryption = ebsEncryption;
-        this.instanceType = instanceType;
-        this.keyPairName = keyPairName;
-        this.kubernetesVersion = kubernetesVersion;
-        this.maximumNodes = maximumNodes;
-        this.minimumNodes = minimumNodes;
-        this.nodeVolumeSize = nodeVolumeSize;
-        this.region = region;
-        this.secretKey = secretKey;
-        this.securityGroups = securityGroups;
-        this.serviceRole = serviceRole;
-        this.sessionToken = sessionToken;
-        this.subnets = subnets;
-        this.userData = userData;
-        this.virtualNetwork = virtualNetwork;
-    }
-
+    private ClusterEksConfig() {}
     /**
      * @return The AWS Client ID to use (string)
      * 
@@ -285,7 +244,7 @@ public final class ClusterEksConfig {
     public static Builder builder(ClusterEksConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessKey;
         private @Nullable String ami;
@@ -306,11 +265,7 @@ public final class ClusterEksConfig {
         private @Nullable List<String> subnets;
         private @Nullable String userData;
         private @Nullable String virtualNetwork;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterEksConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -334,58 +289,72 @@ public final class ClusterEksConfig {
     	      this.virtualNetwork = defaults.virtualNetwork;
         }
 
+        @CustomType.Setter
         public Builder accessKey(String accessKey) {
             this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
+        @CustomType.Setter
         public Builder ami(@Nullable String ami) {
             this.ami = ami;
             return this;
         }
+        @CustomType.Setter
         public Builder associateWorkerNodePublicIp(@Nullable Boolean associateWorkerNodePublicIp) {
             this.associateWorkerNodePublicIp = associateWorkerNodePublicIp;
             return this;
         }
+        @CustomType.Setter
         public Builder desiredNodes(@Nullable Integer desiredNodes) {
             this.desiredNodes = desiredNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder ebsEncryption(@Nullable Boolean ebsEncryption) {
             this.ebsEncryption = ebsEncryption;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
+        @CustomType.Setter
         public Builder keyPairName(@Nullable String keyPairName) {
             this.keyPairName = keyPairName;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
             this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder maximumNodes(@Nullable Integer maximumNodes) {
             this.maximumNodes = maximumNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder minimumNodes(@Nullable Integer minimumNodes) {
             this.minimumNodes = minimumNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeVolumeSize(@Nullable Integer nodeVolumeSize) {
             this.nodeVolumeSize = nodeVolumeSize;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(String secretKey) {
             this.secretKey = Objects.requireNonNull(secretKey);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroups(@Nullable List<String> securityGroups) {
             this.securityGroups = securityGroups;
             return this;
@@ -393,14 +362,17 @@ public final class ClusterEksConfig {
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
         }
+        @CustomType.Setter
         public Builder serviceRole(@Nullable String serviceRole) {
             this.serviceRole = serviceRole;
             return this;
         }
+        @CustomType.Setter
         public Builder sessionToken(@Nullable String sessionToken) {
             this.sessionToken = sessionToken;
             return this;
         }
+        @CustomType.Setter
         public Builder subnets(@Nullable List<String> subnets) {
             this.subnets = subnets;
             return this;
@@ -408,15 +380,38 @@ public final class ClusterEksConfig {
         public Builder subnets(String... subnets) {
             return subnets(List.of(subnets));
         }
+        @CustomType.Setter
         public Builder userData(@Nullable String userData) {
             this.userData = userData;
             return this;
         }
+        @CustomType.Setter
         public Builder virtualNetwork(@Nullable String virtualNetwork) {
             this.virtualNetwork = virtualNetwork;
             return this;
-        }        public ClusterEksConfig build() {
-            return new ClusterEksConfig(accessKey, ami, associateWorkerNodePublicIp, desiredNodes, ebsEncryption, instanceType, keyPairName, kubernetesVersion, maximumNodes, minimumNodes, nodeVolumeSize, region, secretKey, securityGroups, serviceRole, sessionToken, subnets, userData, virtualNetwork);
+        }
+        public ClusterEksConfig build() {
+            final var o = new ClusterEksConfig();
+            o.accessKey = accessKey;
+            o.ami = ami;
+            o.associateWorkerNodePublicIp = associateWorkerNodePublicIp;
+            o.desiredNodes = desiredNodes;
+            o.ebsEncryption = ebsEncryption;
+            o.instanceType = instanceType;
+            o.keyPairName = keyPairName;
+            o.kubernetesVersion = kubernetesVersion;
+            o.maximumNodes = maximumNodes;
+            o.minimumNodes = minimumNodes;
+            o.nodeVolumeSize = nodeVolumeSize;
+            o.region = region;
+            o.secretKey = secretKey;
+            o.securityGroups = securityGroups;
+            o.serviceRole = serviceRole;
+            o.sessionToken = sessionToken;
+            o.subnets = subnets;
+            o.userData = userData;
+            o.virtualNetwork = virtualNetwork;
+            return o;
         }
     }
 }

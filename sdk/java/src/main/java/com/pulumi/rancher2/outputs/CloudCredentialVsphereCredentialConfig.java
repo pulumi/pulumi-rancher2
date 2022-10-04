@@ -15,35 +15,24 @@ public final class CloudCredentialVsphereCredentialConfig {
      * @return vSphere password (string)
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return vSphere username (string)
      * 
      */
-    private final String username;
+    private String username;
     /**
      * @return vSphere IP/hostname for vCenter (string)
      * 
      */
-    private final String vcenter;
+    private String vcenter;
     /**
      * @return vSphere Port for vCenter. Default `443` (string)
      * 
      */
-    private final @Nullable String vcenterPort;
+    private @Nullable String vcenterPort;
 
-    @CustomType.Constructor
-    private CloudCredentialVsphereCredentialConfig(
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("username") String username,
-        @CustomType.Parameter("vcenter") String vcenter,
-        @CustomType.Parameter("vcenterPort") @Nullable String vcenterPort) {
-        this.password = password;
-        this.username = username;
-        this.vcenter = vcenter;
-        this.vcenterPort = vcenterPort;
-    }
-
+    private CloudCredentialVsphereCredentialConfig() {}
     /**
      * @return vSphere password (string)
      * 
@@ -80,17 +69,13 @@ public final class CloudCredentialVsphereCredentialConfig {
     public static Builder builder(CloudCredentialVsphereCredentialConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String password;
         private String username;
         private String vcenter;
         private @Nullable String vcenterPort;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudCredentialVsphereCredentialConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
@@ -99,23 +84,33 @@ public final class CloudCredentialVsphereCredentialConfig {
     	      this.vcenterPort = defaults.vcenterPort;
         }
 
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
         }
+        @CustomType.Setter
         public Builder vcenter(String vcenter) {
             this.vcenter = Objects.requireNonNull(vcenter);
             return this;
         }
+        @CustomType.Setter
         public Builder vcenterPort(@Nullable String vcenterPort) {
             this.vcenterPort = vcenterPort;
             return this;
-        }        public CloudCredentialVsphereCredentialConfig build() {
-            return new CloudCredentialVsphereCredentialConfig(password, username, vcenter, vcenterPort);
+        }
+        public CloudCredentialVsphereCredentialConfig build() {
+            final var o = new CloudCredentialVsphereCredentialConfig();
+            o.password = password;
+            o.username = username;
+            o.vcenter = vcenter;
+            o.vcenterPort = vcenterPort;
+            return o;
         }
     }
 }

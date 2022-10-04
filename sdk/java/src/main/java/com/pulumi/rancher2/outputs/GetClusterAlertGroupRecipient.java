@@ -12,23 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterAlertGroupRecipient {
-    private final @Nullable Boolean defaultRecipient;
-    private final String notifierId;
-    private final String notifierType;
-    private final String recipient;
+    private @Nullable Boolean defaultRecipient;
+    private String notifierId;
+    private String notifierType;
+    private String recipient;
 
-    @CustomType.Constructor
-    private GetClusterAlertGroupRecipient(
-        @CustomType.Parameter("defaultRecipient") @Nullable Boolean defaultRecipient,
-        @CustomType.Parameter("notifierId") String notifierId,
-        @CustomType.Parameter("notifierType") String notifierType,
-        @CustomType.Parameter("recipient") String recipient) {
-        this.defaultRecipient = defaultRecipient;
-        this.notifierId = notifierId;
-        this.notifierType = notifierType;
-        this.recipient = recipient;
-    }
-
+    private GetClusterAlertGroupRecipient() {}
     public Optional<Boolean> defaultRecipient() {
         return Optional.ofNullable(this.defaultRecipient);
     }
@@ -49,17 +38,13 @@ public final class GetClusterAlertGroupRecipient {
     public static Builder builder(GetClusterAlertGroupRecipient defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean defaultRecipient;
         private String notifierId;
         private String notifierType;
         private String recipient;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAlertGroupRecipient defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultRecipient = defaults.defaultRecipient;
@@ -68,23 +53,33 @@ public final class GetClusterAlertGroupRecipient {
     	      this.recipient = defaults.recipient;
         }
 
+        @CustomType.Setter
         public Builder defaultRecipient(@Nullable Boolean defaultRecipient) {
             this.defaultRecipient = defaultRecipient;
             return this;
         }
+        @CustomType.Setter
         public Builder notifierId(String notifierId) {
             this.notifierId = Objects.requireNonNull(notifierId);
             return this;
         }
+        @CustomType.Setter
         public Builder notifierType(String notifierType) {
             this.notifierType = Objects.requireNonNull(notifierType);
             return this;
         }
+        @CustomType.Setter
         public Builder recipient(String recipient) {
             this.recipient = Objects.requireNonNull(recipient);
             return this;
-        }        public GetClusterAlertGroupRecipient build() {
-            return new GetClusterAlertGroupRecipient(defaultRecipient, notifierId, notifierType, recipient);
+        }
+        public GetClusterAlertGroupRecipient build() {
+            final var o = new GetClusterAlertGroupRecipient();
+            o.defaultRecipient = defaultRecipient;
+            o.notifierId = notifierId;
+            o.notifierType = notifierType;
+            o.recipient = recipient;
+            return o;
         }
     }
 }

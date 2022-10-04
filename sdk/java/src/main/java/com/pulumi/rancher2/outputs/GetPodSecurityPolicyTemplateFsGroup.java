@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPodSecurityPolicyTemplateFsGroup {
-    private final List<GetPodSecurityPolicyTemplateFsGroupRange> ranges;
-    private final @Nullable String rule;
+    private List<GetPodSecurityPolicyTemplateFsGroupRange> ranges;
+    private @Nullable String rule;
 
-    @CustomType.Constructor
-    private GetPodSecurityPolicyTemplateFsGroup(
-        @CustomType.Parameter("ranges") List<GetPodSecurityPolicyTemplateFsGroupRange> ranges,
-        @CustomType.Parameter("rule") @Nullable String rule) {
-        this.ranges = ranges;
-        this.rule = rule;
-    }
-
+    private GetPodSecurityPolicyTemplateFsGroup() {}
     public List<GetPodSecurityPolicyTemplateFsGroupRange> ranges() {
         return this.ranges;
     }
@@ -38,21 +31,18 @@ public final class GetPodSecurityPolicyTemplateFsGroup {
     public static Builder builder(GetPodSecurityPolicyTemplateFsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetPodSecurityPolicyTemplateFsGroupRange> ranges;
         private @Nullable String rule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPodSecurityPolicyTemplateFsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ranges = defaults.ranges;
     	      this.rule = defaults.rule;
         }
 
+        @CustomType.Setter
         public Builder ranges(List<GetPodSecurityPolicyTemplateFsGroupRange> ranges) {
             this.ranges = Objects.requireNonNull(ranges);
             return this;
@@ -60,11 +50,16 @@ public final class GetPodSecurityPolicyTemplateFsGroup {
         public Builder ranges(GetPodSecurityPolicyTemplateFsGroupRange... ranges) {
             return ranges(List.of(ranges));
         }
+        @CustomType.Setter
         public Builder rule(@Nullable String rule) {
             this.rule = rule;
             return this;
-        }        public GetPodSecurityPolicyTemplateFsGroup build() {
-            return new GetPodSecurityPolicyTemplateFsGroup(ranges, rule);
+        }
+        public GetPodSecurityPolicyTemplateFsGroup build() {
+            final var o = new GetPodSecurityPolicyTemplateFsGroup();
+            o.ranges = ranges;
+            o.rule = rule;
+            return o;
         }
     }
 }

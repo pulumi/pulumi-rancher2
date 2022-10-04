@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterScheduledClusterScanScheduleConfig {
-    private final String cronSchedule;
-    private final Integer retention;
+    private String cronSchedule;
+    private Integer retention;
 
-    @CustomType.Constructor
-    private GetClusterScheduledClusterScanScheduleConfig(
-        @CustomType.Parameter("cronSchedule") String cronSchedule,
-        @CustomType.Parameter("retention") Integer retention) {
-        this.cronSchedule = cronSchedule;
-        this.retention = retention;
-    }
-
+    private GetClusterScheduledClusterScanScheduleConfig() {}
     public String cronSchedule() {
         return this.cronSchedule;
     }
@@ -35,30 +28,32 @@ public final class GetClusterScheduledClusterScanScheduleConfig {
     public static Builder builder(GetClusterScheduledClusterScanScheduleConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cronSchedule;
         private Integer retention;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterScheduledClusterScanScheduleConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cronSchedule = defaults.cronSchedule;
     	      this.retention = defaults.retention;
         }
 
+        @CustomType.Setter
         public Builder cronSchedule(String cronSchedule) {
             this.cronSchedule = Objects.requireNonNull(cronSchedule);
             return this;
         }
+        @CustomType.Setter
         public Builder retention(Integer retention) {
             this.retention = Objects.requireNonNull(retention);
             return this;
-        }        public GetClusterScheduledClusterScanScheduleConfig build() {
-            return new GetClusterScheduledClusterScanScheduleConfig(cronSchedule, retention);
+        }
+        public GetClusterScheduledClusterScanScheduleConfig build() {
+            final var o = new GetClusterScheduledClusterScanScheduleConfig();
+            o.cronSchedule = cronSchedule;
+            o.retention = retention;
+            return o;
         }
     }
 }

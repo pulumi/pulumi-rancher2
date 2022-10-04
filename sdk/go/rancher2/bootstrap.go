@@ -16,75 +16,84 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
-// 			Password:  pulumi.String("blahblah"),
-// 			Telemetry: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
+//				Password:  pulumi.String("blahblah"),
+//				Telemetry: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
-// 			InitialPassword: pulumi.String("<INSTALL_PASSWORD>"),
-// 			Password:        pulumi.String("blahblah"),
-// 			Telemetry:       pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
+//				InitialPassword: pulumi.String("<INSTALL_PASSWORD>"),
+//				Password:        pulumi.String("blahblah"),
+//				Telemetry:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2/providers"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2/providers"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := providers.Newrancher2(ctx, "bootstrap", &providers.rancher2Args{
-// 			ApiUrl:    "https://rancher.my-domain.com",
-// 			Bootstrap: true,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
-// 			Password:  pulumi.String("blahblah"),
-// 			Telemetry: pulumi.Bool(true),
-// 		}, pulumi.Provider("rancher2.bootstrap"))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := providers.Newrancher2(ctx, "bootstrap", &providers.rancher2Args{
+//				ApiUrl:    "https://rancher.my-domain.com",
+//				Bootstrap: true,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
+//				Password:  pulumi.String("blahblah"),
+//				Telemetry: pulumi.Bool(true),
+//			}, pulumi.Provider("rancher2.bootstrap"))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Bootstrap struct {
 	pulumi.CustomResourceState
@@ -264,7 +273,7 @@ func (i *Bootstrap) ToBootstrapOutputWithContext(ctx context.Context) BootstrapO
 // BootstrapArrayInput is an input type that accepts BootstrapArray and BootstrapArrayOutput values.
 // You can construct a concrete instance of `BootstrapArrayInput` via:
 //
-//          BootstrapArray{ BootstrapArgs{...} }
+//	BootstrapArray{ BootstrapArgs{...} }
 type BootstrapArrayInput interface {
 	pulumi.Input
 
@@ -289,7 +298,7 @@ func (i BootstrapArray) ToBootstrapArrayOutputWithContext(ctx context.Context) B
 // BootstrapMapInput is an input type that accepts BootstrapMap and BootstrapMapOutput values.
 // You can construct a concrete instance of `BootstrapMapInput` via:
 //
-//          BootstrapMap{ "key": BootstrapArgs{...} }
+//	BootstrapMap{ "key": BootstrapArgs{...} }
 type BootstrapMapInput interface {
 	pulumi.Input
 

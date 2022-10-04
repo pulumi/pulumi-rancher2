@@ -10,33 +10,18 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter {
-    private final String datacenters;
+    private String datacenters;
     /**
      * @return The name of the Cluster (string)
      * 
      */
-    private final String name;
-    private final String password;
-    private final String port;
-    private final Integer soapRoundtripCount;
-    private final String user;
+    private String name;
+    private String password;
+    private String port;
+    private Integer soapRoundtripCount;
+    private String user;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter(
-        @CustomType.Parameter("datacenters") String datacenters,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("port") String port,
-        @CustomType.Parameter("soapRoundtripCount") Integer soapRoundtripCount,
-        @CustomType.Parameter("user") String user) {
-        this.datacenters = datacenters;
-        this.name = name;
-        this.password = password;
-        this.port = port;
-        this.soapRoundtripCount = soapRoundtripCount;
-        this.user = user;
-    }
-
+    private GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter() {}
     public String datacenters() {
         return this.datacenters;
     }
@@ -67,7 +52,7 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCe
     public static Builder builder(GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datacenters;
         private String name;
@@ -75,11 +60,7 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCe
         private String port;
         private Integer soapRoundtripCount;
         private String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenters = defaults.datacenters;
@@ -90,31 +71,45 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCe
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder datacenters(String datacenters) {
             this.datacenters = Objects.requireNonNull(datacenters);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder port(String port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder soapRoundtripCount(Integer soapRoundtripCount) {
             this.soapRoundtripCount = Objects.requireNonNull(soapRoundtripCount);
             return this;
         }
+        @CustomType.Setter
         public Builder user(String user) {
             this.user = Objects.requireNonNull(user);
             return this;
-        }        public GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter build() {
-            return new GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter(datacenters, name, password, port, soapRoundtripCount, user);
+        }
+        public GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter build() {
+            final var o = new GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter();
+            o.datacenters = datacenters;
+            o.name = name;
+            o.password = password;
+            o.port = port;
+            o.soapRoundtripCount = soapRoundtripCount;
+            o.user = user;
+            return o;
         }
     }
 }

@@ -19,41 +19,46 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooClusterAlertGroup, err := rancher2.NewClusterAlertGroup(ctx, "fooClusterAlertGroup", &rancher2.ClusterAlertGroupArgs{
-// 			ClusterId:             pulumi.String("<cluster_id>"),
-// 			Description:           pulumi.String("Terraform cluster alert group"),
-// 			GroupIntervalSeconds:  pulumi.Int(300),
-// 			RepeatIntervalSeconds: pulumi.Int(3600),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewClusterAlertRule(ctx, "fooClusterAlertRule", &rancher2.ClusterAlertRuleArgs{
-// 			ClusterId:             fooClusterAlertGroup.ClusterId,
-// 			GroupId:               fooClusterAlertGroup.ID(),
-// 			GroupIntervalSeconds:  pulumi.Int(600),
-// 			RepeatIntervalSeconds: pulumi.Int(6000),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooClusterAlertGroup, err := rancher2.NewClusterAlertGroup(ctx, "fooClusterAlertGroup", &rancher2.ClusterAlertGroupArgs{
+//				ClusterId:             pulumi.String("<cluster_id>"),
+//				Description:           pulumi.String("Terraform cluster alert group"),
+//				GroupIntervalSeconds:  pulumi.Int(300),
+//				RepeatIntervalSeconds: pulumi.Int(3600),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewClusterAlertRule(ctx, "fooClusterAlertRule", &rancher2.ClusterAlertRuleArgs{
+//				ClusterId:             fooClusterAlertGroup.ClusterId,
+//				GroupId:               fooClusterAlertGroup.ID(),
+//				GroupIntervalSeconds:  pulumi.Int(600),
+//				RepeatIntervalSeconds: pulumi.Int(6000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Cluster Alert Rule can be imported using the Rancher cluster alert rule ID
+// # Cluster Alert Rule can be imported using the Rancher cluster alert rule ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/clusterAlertRule:ClusterAlertRule foo &lt;CLUSTER_ALERT_RULE_ID&gt;
+//
+//	$ pulumi import rancher2:index/clusterAlertRule:ClusterAlertRule foo &lt;CLUSTER_ALERT_RULE_ID&gt;
+//
 // ```
 type ClusterAlertRule struct {
 	pulumi.CustomResourceState
@@ -283,7 +288,7 @@ func (i *ClusterAlertRule) ToClusterAlertRuleOutputWithContext(ctx context.Conte
 // ClusterAlertRuleArrayInput is an input type that accepts ClusterAlertRuleArray and ClusterAlertRuleArrayOutput values.
 // You can construct a concrete instance of `ClusterAlertRuleArrayInput` via:
 //
-//          ClusterAlertRuleArray{ ClusterAlertRuleArgs{...} }
+//	ClusterAlertRuleArray{ ClusterAlertRuleArgs{...} }
 type ClusterAlertRuleArrayInput interface {
 	pulumi.Input
 
@@ -308,7 +313,7 @@ func (i ClusterAlertRuleArray) ToClusterAlertRuleArrayOutputWithContext(ctx cont
 // ClusterAlertRuleMapInput is an input type that accepts ClusterAlertRuleMap and ClusterAlertRuleMapOutput values.
 // You can construct a concrete instance of `ClusterAlertRuleMapInput` via:
 //
-//          ClusterAlertRuleMap{ "key": ClusterAlertRuleArgs{...} }
+//	ClusterAlertRuleMap{ "key": ClusterAlertRuleArgs{...} }
 type ClusterAlertRuleMapInput interface {
 	pulumi.Input
 

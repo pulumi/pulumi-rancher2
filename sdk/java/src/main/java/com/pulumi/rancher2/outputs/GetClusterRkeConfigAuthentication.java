@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRkeConfigAuthentication {
-    private final List<String> sans;
-    private final String strategy;
+    private List<String> sans;
+    private String strategy;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigAuthentication(
-        @CustomType.Parameter("sans") List<String> sans,
-        @CustomType.Parameter("strategy") String strategy) {
-        this.sans = sans;
-        this.strategy = strategy;
-    }
-
+    private GetClusterRkeConfigAuthentication() {}
     public List<String> sans() {
         return this.sans;
     }
@@ -35,21 +28,18 @@ public final class GetClusterRkeConfigAuthentication {
     public static Builder builder(GetClusterRkeConfigAuthentication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> sans;
         private String strategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sans = defaults.sans;
     	      this.strategy = defaults.strategy;
         }
 
+        @CustomType.Setter
         public Builder sans(List<String> sans) {
             this.sans = Objects.requireNonNull(sans);
             return this;
@@ -57,11 +47,16 @@ public final class GetClusterRkeConfigAuthentication {
         public Builder sans(String... sans) {
             return sans(List.of(sans));
         }
+        @CustomType.Setter
         public Builder strategy(String strategy) {
             this.strategy = Objects.requireNonNull(strategy);
             return this;
-        }        public GetClusterRkeConfigAuthentication build() {
-            return new GetClusterRkeConfigAuthentication(sans, strategy);
+        }
+        public GetClusterRkeConfigAuthentication build() {
+            final var o = new GetClusterRkeConfigAuthentication();
+            o.sans = sans;
+            o.strategy = strategy;
+            return o;
         }
     }
 }

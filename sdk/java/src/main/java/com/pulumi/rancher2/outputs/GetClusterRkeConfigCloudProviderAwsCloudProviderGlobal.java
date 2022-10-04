@@ -12,41 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
-    private final @Nullable Boolean disableSecurityGroupIngress;
-    private final @Nullable Boolean disableStrictZoneCheck;
-    private final String elbSecurityGroup;
-    private final String kubernetesClusterId;
-    private final String kubernetesClusterTag;
-    private final String roleArn;
-    private final String routeTableId;
-    private final String subnetId;
-    private final String vpc;
-    private final String zone;
+    private @Nullable Boolean disableSecurityGroupIngress;
+    private @Nullable Boolean disableStrictZoneCheck;
+    private String elbSecurityGroup;
+    private String kubernetesClusterId;
+    private String kubernetesClusterTag;
+    private String roleArn;
+    private String routeTableId;
+    private String subnetId;
+    private String vpc;
+    private String zone;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal(
-        @CustomType.Parameter("disableSecurityGroupIngress") @Nullable Boolean disableSecurityGroupIngress,
-        @CustomType.Parameter("disableStrictZoneCheck") @Nullable Boolean disableStrictZoneCheck,
-        @CustomType.Parameter("elbSecurityGroup") String elbSecurityGroup,
-        @CustomType.Parameter("kubernetesClusterId") String kubernetesClusterId,
-        @CustomType.Parameter("kubernetesClusterTag") String kubernetesClusterTag,
-        @CustomType.Parameter("roleArn") String roleArn,
-        @CustomType.Parameter("routeTableId") String routeTableId,
-        @CustomType.Parameter("subnetId") String subnetId,
-        @CustomType.Parameter("vpc") String vpc,
-        @CustomType.Parameter("zone") String zone) {
-        this.disableSecurityGroupIngress = disableSecurityGroupIngress;
-        this.disableStrictZoneCheck = disableStrictZoneCheck;
-        this.elbSecurityGroup = elbSecurityGroup;
-        this.kubernetesClusterId = kubernetesClusterId;
-        this.kubernetesClusterTag = kubernetesClusterTag;
-        this.roleArn = roleArn;
-        this.routeTableId = routeTableId;
-        this.subnetId = subnetId;
-        this.vpc = vpc;
-        this.zone = zone;
-    }
-
+    private GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal() {}
     public Optional<Boolean> disableSecurityGroupIngress() {
         return Optional.ofNullable(this.disableSecurityGroupIngress);
     }
@@ -85,7 +62,7 @@ public final class GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
     public static Builder builder(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disableSecurityGroupIngress;
         private @Nullable Boolean disableStrictZoneCheck;
@@ -97,11 +74,7 @@ public final class GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
         private String subnetId;
         private String vpc;
         private String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disableSecurityGroupIngress = defaults.disableSecurityGroupIngress;
@@ -116,47 +89,69 @@ public final class GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder disableSecurityGroupIngress(@Nullable Boolean disableSecurityGroupIngress) {
             this.disableSecurityGroupIngress = disableSecurityGroupIngress;
             return this;
         }
+        @CustomType.Setter
         public Builder disableStrictZoneCheck(@Nullable Boolean disableStrictZoneCheck) {
             this.disableStrictZoneCheck = disableStrictZoneCheck;
             return this;
         }
+        @CustomType.Setter
         public Builder elbSecurityGroup(String elbSecurityGroup) {
             this.elbSecurityGroup = Objects.requireNonNull(elbSecurityGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesClusterId(String kubernetesClusterId) {
             this.kubernetesClusterId = Objects.requireNonNull(kubernetesClusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesClusterTag(String kubernetesClusterTag) {
             this.kubernetesClusterTag = Objects.requireNonNull(kubernetesClusterTag);
             return this;
         }
+        @CustomType.Setter
         public Builder roleArn(String roleArn) {
             this.roleArn = Objects.requireNonNull(roleArn);
             return this;
         }
+        @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
             this.routeTableId = Objects.requireNonNull(routeTableId);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetId(String subnetId) {
             this.subnetId = Objects.requireNonNull(subnetId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpc(String vpc) {
             this.vpc = Objects.requireNonNull(vpc);
             return this;
         }
+        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
-        }        public GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal build() {
-            return new GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal(disableSecurityGroupIngress, disableStrictZoneCheck, elbSecurityGroup, kubernetesClusterId, kubernetesClusterTag, roleArn, routeTableId, subnetId, vpc, zone);
+        }
+        public GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal build() {
+            final var o = new GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal();
+            o.disableSecurityGroupIngress = disableSecurityGroupIngress;
+            o.disableStrictZoneCheck = disableStrictZoneCheck;
+            o.elbSecurityGroup = elbSecurityGroup;
+            o.kubernetesClusterId = kubernetesClusterId;
+            o.kubernetesClusterTag = kubernetesClusterTag;
+            o.roleArn = roleArn;
+            o.routeTableId = routeTableId;
+            o.subnetId = subnetId;
+            o.vpc = vpc;
+            o.zone = zone;
+            return o;
         }
     }
 }

@@ -20,49 +20,34 @@ public final class ClusterRkeConfigServices {
      * @return Etcd options for RKE services (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigServicesEtcd etcd;
+    private @Nullable ClusterRkeConfigServicesEtcd etcd;
     /**
      * @return Kube API options for RKE services (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigServicesKubeApi kubeApi;
+    private @Nullable ClusterRkeConfigServicesKubeApi kubeApi;
     /**
      * @return Kube Controller options for RKE services (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigServicesKubeController kubeController;
+    private @Nullable ClusterRkeConfigServicesKubeController kubeController;
     /**
      * @return Kubelet options for RKE services (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigServicesKubelet kubelet;
+    private @Nullable ClusterRkeConfigServicesKubelet kubelet;
     /**
      * @return Kubeproxy options for RKE services (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigServicesKubeproxy kubeproxy;
+    private @Nullable ClusterRkeConfigServicesKubeproxy kubeproxy;
     /**
      * @return Scheduler options for RKE services (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigServicesScheduler scheduler;
+    private @Nullable ClusterRkeConfigServicesScheduler scheduler;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigServices(
-        @CustomType.Parameter("etcd") @Nullable ClusterRkeConfigServicesEtcd etcd,
-        @CustomType.Parameter("kubeApi") @Nullable ClusterRkeConfigServicesKubeApi kubeApi,
-        @CustomType.Parameter("kubeController") @Nullable ClusterRkeConfigServicesKubeController kubeController,
-        @CustomType.Parameter("kubelet") @Nullable ClusterRkeConfigServicesKubelet kubelet,
-        @CustomType.Parameter("kubeproxy") @Nullable ClusterRkeConfigServicesKubeproxy kubeproxy,
-        @CustomType.Parameter("scheduler") @Nullable ClusterRkeConfigServicesScheduler scheduler) {
-        this.etcd = etcd;
-        this.kubeApi = kubeApi;
-        this.kubeController = kubeController;
-        this.kubelet = kubelet;
-        this.kubeproxy = kubeproxy;
-        this.scheduler = scheduler;
-    }
-
+    private ClusterRkeConfigServices() {}
     /**
      * @return Etcd options for RKE services (list maxitems:1)
      * 
@@ -113,7 +98,7 @@ public final class ClusterRkeConfigServices {
     public static Builder builder(ClusterRkeConfigServices defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRkeConfigServicesEtcd etcd;
         private @Nullable ClusterRkeConfigServicesKubeApi kubeApi;
@@ -121,11 +106,7 @@ public final class ClusterRkeConfigServices {
         private @Nullable ClusterRkeConfigServicesKubelet kubelet;
         private @Nullable ClusterRkeConfigServicesKubeproxy kubeproxy;
         private @Nullable ClusterRkeConfigServicesScheduler scheduler;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigServices defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.etcd = defaults.etcd;
@@ -136,31 +117,45 @@ public final class ClusterRkeConfigServices {
     	      this.scheduler = defaults.scheduler;
         }
 
+        @CustomType.Setter
         public Builder etcd(@Nullable ClusterRkeConfigServicesEtcd etcd) {
             this.etcd = etcd;
             return this;
         }
+        @CustomType.Setter
         public Builder kubeApi(@Nullable ClusterRkeConfigServicesKubeApi kubeApi) {
             this.kubeApi = kubeApi;
             return this;
         }
+        @CustomType.Setter
         public Builder kubeController(@Nullable ClusterRkeConfigServicesKubeController kubeController) {
             this.kubeController = kubeController;
             return this;
         }
+        @CustomType.Setter
         public Builder kubelet(@Nullable ClusterRkeConfigServicesKubelet kubelet) {
             this.kubelet = kubelet;
             return this;
         }
+        @CustomType.Setter
         public Builder kubeproxy(@Nullable ClusterRkeConfigServicesKubeproxy kubeproxy) {
             this.kubeproxy = kubeproxy;
             return this;
         }
+        @CustomType.Setter
         public Builder scheduler(@Nullable ClusterRkeConfigServicesScheduler scheduler) {
             this.scheduler = scheduler;
             return this;
-        }        public ClusterRkeConfigServices build() {
-            return new ClusterRkeConfigServices(etcd, kubeApi, kubeController, kubelet, kubeproxy, scheduler);
+        }
+        public ClusterRkeConfigServices build() {
+            final var o = new ClusterRkeConfigServices();
+            o.etcd = etcd;
+            o.kubeApi = kubeApi;
+            o.kubeController = kubeController;
+            o.kubelet = kubelet;
+            o.kubeproxy = kubeproxy;
+            o.scheduler = scheduler;
+            return o;
         }
     }
 }

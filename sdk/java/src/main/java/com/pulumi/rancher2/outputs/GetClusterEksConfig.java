@@ -14,68 +14,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterEksConfig {
-    private final String accessKey;
-    private final @Nullable String ami;
-    private final @Nullable Boolean associateWorkerNodePublicIp;
-    private final @Nullable Integer desiredNodes;
-    private final @Nullable Boolean ebsEncryption;
-    private final @Nullable String instanceType;
-    private final @Nullable String keyPairName;
-    private final String kubernetesVersion;
-    private final @Nullable Integer maximumNodes;
-    private final @Nullable Integer minimumNodes;
-    private final @Nullable Integer nodeVolumeSize;
-    private final @Nullable String region;
-    private final String secretKey;
-    private final @Nullable List<String> securityGroups;
-    private final @Nullable String serviceRole;
-    private final @Nullable String sessionToken;
-    private final @Nullable List<String> subnets;
-    private final String userData;
-    private final @Nullable String virtualNetwork;
+    private String accessKey;
+    private @Nullable String ami;
+    private @Nullable Boolean associateWorkerNodePublicIp;
+    private @Nullable Integer desiredNodes;
+    private @Nullable Boolean ebsEncryption;
+    private @Nullable String instanceType;
+    private @Nullable String keyPairName;
+    private String kubernetesVersion;
+    private @Nullable Integer maximumNodes;
+    private @Nullable Integer minimumNodes;
+    private @Nullable Integer nodeVolumeSize;
+    private @Nullable String region;
+    private String secretKey;
+    private @Nullable List<String> securityGroups;
+    private @Nullable String serviceRole;
+    private @Nullable String sessionToken;
+    private @Nullable List<String> subnets;
+    private String userData;
+    private @Nullable String virtualNetwork;
 
-    @CustomType.Constructor
-    private GetClusterEksConfig(
-        @CustomType.Parameter("accessKey") String accessKey,
-        @CustomType.Parameter("ami") @Nullable String ami,
-        @CustomType.Parameter("associateWorkerNodePublicIp") @Nullable Boolean associateWorkerNodePublicIp,
-        @CustomType.Parameter("desiredNodes") @Nullable Integer desiredNodes,
-        @CustomType.Parameter("ebsEncryption") @Nullable Boolean ebsEncryption,
-        @CustomType.Parameter("instanceType") @Nullable String instanceType,
-        @CustomType.Parameter("keyPairName") @Nullable String keyPairName,
-        @CustomType.Parameter("kubernetesVersion") String kubernetesVersion,
-        @CustomType.Parameter("maximumNodes") @Nullable Integer maximumNodes,
-        @CustomType.Parameter("minimumNodes") @Nullable Integer minimumNodes,
-        @CustomType.Parameter("nodeVolumeSize") @Nullable Integer nodeVolumeSize,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("secretKey") String secretKey,
-        @CustomType.Parameter("securityGroups") @Nullable List<String> securityGroups,
-        @CustomType.Parameter("serviceRole") @Nullable String serviceRole,
-        @CustomType.Parameter("sessionToken") @Nullable String sessionToken,
-        @CustomType.Parameter("subnets") @Nullable List<String> subnets,
-        @CustomType.Parameter("userData") String userData,
-        @CustomType.Parameter("virtualNetwork") @Nullable String virtualNetwork) {
-        this.accessKey = accessKey;
-        this.ami = ami;
-        this.associateWorkerNodePublicIp = associateWorkerNodePublicIp;
-        this.desiredNodes = desiredNodes;
-        this.ebsEncryption = ebsEncryption;
-        this.instanceType = instanceType;
-        this.keyPairName = keyPairName;
-        this.kubernetesVersion = kubernetesVersion;
-        this.maximumNodes = maximumNodes;
-        this.minimumNodes = minimumNodes;
-        this.nodeVolumeSize = nodeVolumeSize;
-        this.region = region;
-        this.secretKey = secretKey;
-        this.securityGroups = securityGroups;
-        this.serviceRole = serviceRole;
-        this.sessionToken = sessionToken;
-        this.subnets = subnets;
-        this.userData = userData;
-        this.virtualNetwork = virtualNetwork;
-    }
-
+    private GetClusterEksConfig() {}
     public String accessKey() {
         return this.accessKey;
     }
@@ -141,7 +100,7 @@ public final class GetClusterEksConfig {
     public static Builder builder(GetClusterEksConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessKey;
         private @Nullable String ami;
@@ -162,11 +121,7 @@ public final class GetClusterEksConfig {
         private @Nullable List<String> subnets;
         private String userData;
         private @Nullable String virtualNetwork;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterEksConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -190,58 +145,72 @@ public final class GetClusterEksConfig {
     	      this.virtualNetwork = defaults.virtualNetwork;
         }
 
+        @CustomType.Setter
         public Builder accessKey(String accessKey) {
             this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
+        @CustomType.Setter
         public Builder ami(@Nullable String ami) {
             this.ami = ami;
             return this;
         }
+        @CustomType.Setter
         public Builder associateWorkerNodePublicIp(@Nullable Boolean associateWorkerNodePublicIp) {
             this.associateWorkerNodePublicIp = associateWorkerNodePublicIp;
             return this;
         }
+        @CustomType.Setter
         public Builder desiredNodes(@Nullable Integer desiredNodes) {
             this.desiredNodes = desiredNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder ebsEncryption(@Nullable Boolean ebsEncryption) {
             this.ebsEncryption = ebsEncryption;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
+        @CustomType.Setter
         public Builder keyPairName(@Nullable String keyPairName) {
             this.keyPairName = keyPairName;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
             this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder maximumNodes(@Nullable Integer maximumNodes) {
             this.maximumNodes = maximumNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder minimumNodes(@Nullable Integer minimumNodes) {
             this.minimumNodes = minimumNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeVolumeSize(@Nullable Integer nodeVolumeSize) {
             this.nodeVolumeSize = nodeVolumeSize;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(String secretKey) {
             this.secretKey = Objects.requireNonNull(secretKey);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroups(@Nullable List<String> securityGroups) {
             this.securityGroups = securityGroups;
             return this;
@@ -249,14 +218,17 @@ public final class GetClusterEksConfig {
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
         }
+        @CustomType.Setter
         public Builder serviceRole(@Nullable String serviceRole) {
             this.serviceRole = serviceRole;
             return this;
         }
+        @CustomType.Setter
         public Builder sessionToken(@Nullable String sessionToken) {
             this.sessionToken = sessionToken;
             return this;
         }
+        @CustomType.Setter
         public Builder subnets(@Nullable List<String> subnets) {
             this.subnets = subnets;
             return this;
@@ -264,15 +236,38 @@ public final class GetClusterEksConfig {
         public Builder subnets(String... subnets) {
             return subnets(List.of(subnets));
         }
+        @CustomType.Setter
         public Builder userData(String userData) {
             this.userData = Objects.requireNonNull(userData);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualNetwork(@Nullable String virtualNetwork) {
             this.virtualNetwork = virtualNetwork;
             return this;
-        }        public GetClusterEksConfig build() {
-            return new GetClusterEksConfig(accessKey, ami, associateWorkerNodePublicIp, desiredNodes, ebsEncryption, instanceType, keyPairName, kubernetesVersion, maximumNodes, minimumNodes, nodeVolumeSize, region, secretKey, securityGroups, serviceRole, sessionToken, subnets, userData, virtualNetwork);
+        }
+        public GetClusterEksConfig build() {
+            final var o = new GetClusterEksConfig();
+            o.accessKey = accessKey;
+            o.ami = ami;
+            o.associateWorkerNodePublicIp = associateWorkerNodePublicIp;
+            o.desiredNodes = desiredNodes;
+            o.ebsEncryption = ebsEncryption;
+            o.instanceType = instanceType;
+            o.keyPairName = keyPairName;
+            o.kubernetesVersion = kubernetesVersion;
+            o.maximumNodes = maximumNodes;
+            o.minimumNodes = minimumNodes;
+            o.nodeVolumeSize = nodeVolumeSize;
+            o.region = region;
+            o.secretKey = secretKey;
+            o.securityGroups = securityGroups;
+            o.serviceRole = serviceRole;
+            o.sessionToken = sessionToken;
+            o.subnets = subnets;
+            o.userData = userData;
+            o.virtualNetwork = virtualNetwork;
+            return o;
         }
     }
 }

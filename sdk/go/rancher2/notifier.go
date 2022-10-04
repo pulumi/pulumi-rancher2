@@ -19,35 +19,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewNotifier(ctx, "foo", &rancher2.NotifierArgs{
-// 			ClusterId:   pulumi.String("<cluster_id>"),
-// 			Description: pulumi.String("Terraform notifier acceptance test"),
-// 			PagerdutyConfig: &NotifierPagerdutyConfigArgs{
-// 				ProxyUrl:   pulumi.String("http://proxy.test.io"),
-// 				ServiceKey: pulumi.String("XXXXXXXX"),
-// 			},
-// 			SendResolved: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewNotifier(ctx, "foo", &rancher2.NotifierArgs{
+//				ClusterId:   pulumi.String("<cluster_id>"),
+//				Description: pulumi.String("Terraform notifier acceptance test"),
+//				PagerdutyConfig: &NotifierPagerdutyConfigArgs{
+//					ProxyUrl:   pulumi.String("http://proxy.test.io"),
+//					ServiceKey: pulumi.String("XXXXXXXX"),
+//				},
+//				SendResolved: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Notifiers can be imported using the Rancher nNtifier ID
+// # Notifiers can be imported using the Rancher nNtifier ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
+//
+//	$ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
+//
 // ```
 type Notifier struct {
 	pulumi.CustomResourceState
@@ -258,7 +263,7 @@ func (i *Notifier) ToNotifierOutputWithContext(ctx context.Context) NotifierOutp
 // NotifierArrayInput is an input type that accepts NotifierArray and NotifierArrayOutput values.
 // You can construct a concrete instance of `NotifierArrayInput` via:
 //
-//          NotifierArray{ NotifierArgs{...} }
+//	NotifierArray{ NotifierArgs{...} }
 type NotifierArrayInput interface {
 	pulumi.Input
 
@@ -283,7 +288,7 @@ func (i NotifierArray) ToNotifierArrayOutputWithContext(ctx context.Context) Not
 // NotifierMapInput is an input type that accepts NotifierMap and NotifierMapOutput values.
 // You can construct a concrete instance of `NotifierMapInput` via:
 //
-//          NotifierMap{ "key": NotifierArgs{...} }
+//	NotifierMap{ "key": NotifierArgs{...} }
 type NotifierMapInput interface {
 	pulumi.Input
 

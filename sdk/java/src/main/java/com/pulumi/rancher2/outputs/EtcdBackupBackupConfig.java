@@ -17,41 +17,26 @@ public final class EtcdBackupBackupConfig {
      * @return Enable etcd backup (bool)
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return Interval hours for etcd backup. Default `12` (int)
      * 
      */
-    private final @Nullable Integer intervalHours;
+    private @Nullable Integer intervalHours;
     /**
      * @return Retention for etcd backup. Default `6` (int)
      * 
      */
-    private final @Nullable Integer retention;
+    private @Nullable Integer retention;
     /**
      * @return S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
      * 
      */
-    private final @Nullable EtcdBackupBackupConfigS3BackupConfig s3BackupConfig;
-    private final @Nullable Boolean safeTimestamp;
-    private final @Nullable Integer timeout;
+    private @Nullable EtcdBackupBackupConfigS3BackupConfig s3BackupConfig;
+    private @Nullable Boolean safeTimestamp;
+    private @Nullable Integer timeout;
 
-    @CustomType.Constructor
-    private EtcdBackupBackupConfig(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("intervalHours") @Nullable Integer intervalHours,
-        @CustomType.Parameter("retention") @Nullable Integer retention,
-        @CustomType.Parameter("s3BackupConfig") @Nullable EtcdBackupBackupConfigS3BackupConfig s3BackupConfig,
-        @CustomType.Parameter("safeTimestamp") @Nullable Boolean safeTimestamp,
-        @CustomType.Parameter("timeout") @Nullable Integer timeout) {
-        this.enabled = enabled;
-        this.intervalHours = intervalHours;
-        this.retention = retention;
-        this.s3BackupConfig = s3BackupConfig;
-        this.safeTimestamp = safeTimestamp;
-        this.timeout = timeout;
-    }
-
+    private EtcdBackupBackupConfig() {}
     /**
      * @return Enable etcd backup (bool)
      * 
@@ -94,7 +79,7 @@ public final class EtcdBackupBackupConfig {
     public static Builder builder(EtcdBackupBackupConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable Integer intervalHours;
@@ -102,11 +87,7 @@ public final class EtcdBackupBackupConfig {
         private @Nullable EtcdBackupBackupConfigS3BackupConfig s3BackupConfig;
         private @Nullable Boolean safeTimestamp;
         private @Nullable Integer timeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EtcdBackupBackupConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -117,31 +98,45 @@ public final class EtcdBackupBackupConfig {
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder intervalHours(@Nullable Integer intervalHours) {
             this.intervalHours = intervalHours;
             return this;
         }
+        @CustomType.Setter
         public Builder retention(@Nullable Integer retention) {
             this.retention = retention;
             return this;
         }
+        @CustomType.Setter
         public Builder s3BackupConfig(@Nullable EtcdBackupBackupConfigS3BackupConfig s3BackupConfig) {
             this.s3BackupConfig = s3BackupConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder safeTimestamp(@Nullable Boolean safeTimestamp) {
             this.safeTimestamp = safeTimestamp;
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
             this.timeout = timeout;
             return this;
-        }        public EtcdBackupBackupConfig build() {
-            return new EtcdBackupBackupConfig(enabled, intervalHours, retention, s3BackupConfig, safeTimestamp, timeout);
+        }
+        public EtcdBackupBackupConfig build() {
+            final var o = new EtcdBackupBackupConfig();
+            o.enabled = enabled;
+            o.intervalHours = intervalHours;
+            o.retention = retention;
+            o.s3BackupConfig = s3BackupConfig;
+            o.safeTimestamp = safeTimestamp;
+            o.timeout = timeout;
+            return o;
         }
     }
 }

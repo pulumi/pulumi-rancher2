@@ -21,22 +21,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewAuthConfigGithub(ctx, "github", &rancher2.AuthConfigGithubArgs{
-// 			ClientId:     pulumi.String("<GITHUB_CLIENT_ID>"),
-// 			ClientSecret: pulumi.String("<GITHUB_CLIENT_SECRET>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewAuthConfigGithub(ctx, "github", &rancher2.AuthConfigGithubArgs{
+//				ClientId:     pulumi.String("<GITHUB_CLIENT_ID>"),
+//				ClientSecret: pulumi.String("<GITHUB_CLIENT_SECRET>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type AuthConfigGithub struct {
 	pulumi.CustomResourceState
@@ -222,7 +225,7 @@ func (i *AuthConfigGithub) ToAuthConfigGithubOutputWithContext(ctx context.Conte
 // AuthConfigGithubArrayInput is an input type that accepts AuthConfigGithubArray and AuthConfigGithubArrayOutput values.
 // You can construct a concrete instance of `AuthConfigGithubArrayInput` via:
 //
-//          AuthConfigGithubArray{ AuthConfigGithubArgs{...} }
+//	AuthConfigGithubArray{ AuthConfigGithubArgs{...} }
 type AuthConfigGithubArrayInput interface {
 	pulumi.Input
 
@@ -247,7 +250,7 @@ func (i AuthConfigGithubArray) ToAuthConfigGithubArrayOutputWithContext(ctx cont
 // AuthConfigGithubMapInput is an input type that accepts AuthConfigGithubMap and AuthConfigGithubMapOutput values.
 // You can construct a concrete instance of `AuthConfigGithubMapInput` via:
 //
-//          AuthConfigGithubMap{ "key": AuthConfigGithubArgs{...} }
+//	AuthConfigGithubMap{ "key": AuthConfigGithubArgs{...} }
 type AuthConfigGithubMapInput interface {
 	pulumi.Input
 

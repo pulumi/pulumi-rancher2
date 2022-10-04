@@ -17,51 +17,32 @@ public final class GetCertificateResult {
      * @return (Computed) Annotations for certificate object (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) Base64 encoded certs (string)
      * 
      */
-    private final String certs;
+    private String certs;
     /**
      * @return (Computed) A certificate description (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for certificate object (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
-    private final @Nullable String namespaceId;
-    private final String projectId;
+    private Map<String,Object> labels;
+    private String name;
+    private @Nullable String namespaceId;
+    private String projectId;
 
-    @CustomType.Constructor
-    private GetCertificateResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("certs") String certs,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("namespaceId") @Nullable String namespaceId,
-        @CustomType.Parameter("projectId") String projectId) {
-        this.annotations = annotations;
-        this.certs = certs;
-        this.description = description;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.namespaceId = namespaceId;
-        this.projectId = projectId;
-    }
-
+    private GetCertificateResult() {}
     /**
      * @return (Computed) Annotations for certificate object (map)
      * 
@@ -114,7 +95,7 @@ public final class GetCertificateResult {
     public static Builder builder(GetCertificateResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String certs;
@@ -124,11 +105,7 @@ public final class GetCertificateResult {
         private String name;
         private @Nullable String namespaceId;
         private String projectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCertificateResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -141,39 +118,57 @@ public final class GetCertificateResult {
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder certs(String certs) {
             this.certs = Objects.requireNonNull(certs);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceId(@Nullable String namespaceId) {
             this.namespaceId = namespaceId;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
-        }        public GetCertificateResult build() {
-            return new GetCertificateResult(annotations, certs, description, id, labels, name, namespaceId, projectId);
+        }
+        public GetCertificateResult build() {
+            final var o = new GetCertificateResult();
+            o.annotations = annotations;
+            o.certs = certs;
+            o.description = description;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.namespaceId = namespaceId;
+            o.projectId = projectId;
+            return o;
         }
     }
 }

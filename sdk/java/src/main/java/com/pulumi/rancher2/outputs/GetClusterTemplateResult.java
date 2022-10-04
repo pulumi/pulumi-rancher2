@@ -18,55 +18,36 @@ public final class GetClusterTemplateResult {
      * @return (Computed) Annotations for the cluster template (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) Default cluster template revision ID (string)
      * 
      */
-    private final String defaultRevisionId;
-    private final String description;
+    private String defaultRevisionId;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for the cluster template (map)
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return (Computed) Cluster template members (list)
      * 
      */
-    private final List<GetClusterTemplateMember> members;
-    private final String name;
+    private List<GetClusterTemplateMember> members;
+    private String name;
     /**
      * @return (Computed) Cluster template revisions (list)
      * 
      */
-    private final List<GetClusterTemplateTemplateRevision> templateRevisions;
+    private List<GetClusterTemplateTemplateRevision> templateRevisions;
 
-    @CustomType.Constructor
-    private GetClusterTemplateResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("defaultRevisionId") String defaultRevisionId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("members") List<GetClusterTemplateMember> members,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("templateRevisions") List<GetClusterTemplateTemplateRevision> templateRevisions) {
-        this.annotations = annotations;
-        this.defaultRevisionId = defaultRevisionId;
-        this.description = description;
-        this.id = id;
-        this.labels = labels;
-        this.members = members;
-        this.name = name;
-        this.templateRevisions = templateRevisions;
-    }
-
+    private GetClusterTemplateResult() {}
     /**
      * @return (Computed) Annotations for the cluster template (map)
      * 
@@ -123,7 +104,7 @@ public final class GetClusterTemplateResult {
     public static Builder builder(GetClusterTemplateResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String defaultRevisionId;
@@ -133,11 +114,7 @@ public final class GetClusterTemplateResult {
         private List<GetClusterTemplateMember> members;
         private String name;
         private List<GetClusterTemplateTemplateRevision> templateRevisions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -150,26 +127,32 @@ public final class GetClusterTemplateResult {
     	      this.templateRevisions = defaults.templateRevisions;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultRevisionId(String defaultRevisionId) {
             this.defaultRevisionId = Objects.requireNonNull(defaultRevisionId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder members(List<GetClusterTemplateMember> members) {
             this.members = Objects.requireNonNull(members);
             return this;
@@ -177,18 +160,30 @@ public final class GetClusterTemplateResult {
         public Builder members(GetClusterTemplateMember... members) {
             return members(List.of(members));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder templateRevisions(List<GetClusterTemplateTemplateRevision> templateRevisions) {
             this.templateRevisions = Objects.requireNonNull(templateRevisions);
             return this;
         }
         public Builder templateRevisions(GetClusterTemplateTemplateRevision... templateRevisions) {
             return templateRevisions(List.of(templateRevisions));
-        }        public GetClusterTemplateResult build() {
-            return new GetClusterTemplateResult(annotations, defaultRevisionId, description, id, labels, members, name, templateRevisions);
+        }
+        public GetClusterTemplateResult build() {
+            final var o = new GetClusterTemplateResult();
+            o.annotations = annotations;
+            o.defaultRevisionId = defaultRevisionId;
+            o.description = description;
+            o.id = id;
+            o.labels = labels;
+            o.members = members;
+            o.name = name;
+            o.templateRevisions = templateRevisions;
+            return o;
         }
     }
 }

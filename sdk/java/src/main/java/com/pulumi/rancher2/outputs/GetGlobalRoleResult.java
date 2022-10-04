@@ -18,59 +18,40 @@ public final class GetGlobalRoleResult {
      * @return (Computed) Annotations for global role object (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) Builtin global role (bool)
      * 
      */
-    private final Boolean builtin;
+    private Boolean builtin;
     /**
      * @return (Computed) Global role description (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for global role object (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
+    private Map<String,Object> labels;
+    private String name;
     /**
      * @return (Computed) Whether or not this role should be added to new users (bool)
      * 
      */
-    private final Boolean newUserDefault;
+    private Boolean newUserDefault;
     /**
      * @return (Computed) Global role policy rules (list)
      * 
      */
-    private final List<GetGlobalRoleRule> rules;
+    private List<GetGlobalRoleRule> rules;
 
-    @CustomType.Constructor
-    private GetGlobalRoleResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("builtin") Boolean builtin,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("newUserDefault") Boolean newUserDefault,
-        @CustomType.Parameter("rules") List<GetGlobalRoleRule> rules) {
-        this.annotations = annotations;
-        this.builtin = builtin;
-        this.description = description;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.newUserDefault = newUserDefault;
-        this.rules = rules;
-    }
-
+    private GetGlobalRoleResult() {}
     /**
      * @return (Computed) Annotations for global role object (map)
      * 
@@ -131,7 +112,7 @@ public final class GetGlobalRoleResult {
     public static Builder builder(GetGlobalRoleResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private Boolean builtin;
@@ -141,11 +122,7 @@ public final class GetGlobalRoleResult {
         private String name;
         private Boolean newUserDefault;
         private List<GetGlobalRoleRule> rules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGlobalRoleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -158,42 +135,60 @@ public final class GetGlobalRoleResult {
     	      this.rules = defaults.rules;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder builtin(Boolean builtin) {
             this.builtin = Objects.requireNonNull(builtin);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder newUserDefault(Boolean newUserDefault) {
             this.newUserDefault = Objects.requireNonNull(newUserDefault);
             return this;
         }
+        @CustomType.Setter
         public Builder rules(List<GetGlobalRoleRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
         }
         public Builder rules(GetGlobalRoleRule... rules) {
             return rules(List.of(rules));
-        }        public GetGlobalRoleResult build() {
-            return new GetGlobalRoleResult(annotations, builtin, description, id, labels, name, newUserDefault, rules);
+        }
+        public GetGlobalRoleResult build() {
+            final var o = new GetGlobalRoleResult();
+            o.annotations = annotations;
+            o.builtin = builtin;
+            o.description = description;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.newUserDefault = newUserDefault;
+            o.rules = rules;
+            return o;
         }
     }
 }

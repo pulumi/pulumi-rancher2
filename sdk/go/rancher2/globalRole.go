@@ -18,43 +18,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewGlobalRole(ctx, "foo", &rancher2.GlobalRoleArgs{
-// 			Description:    pulumi.String("Terraform global role acceptance test"),
-// 			NewUserDefault: pulumi.Bool(true),
-// 			Rules: GlobalRoleRuleArray{
-// 				&GlobalRoleRuleArgs{
-// 					ApiGroups: pulumi.StringArray{
-// 						pulumi.String("*"),
-// 					},
-// 					Resources: pulumi.StringArray{
-// 						pulumi.String("secrets"),
-// 					},
-// 					Verbs: pulumi.StringArray{
-// 						pulumi.String("create"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewGlobalRole(ctx, "foo", &rancher2.GlobalRoleArgs{
+//				Description:    pulumi.String("Terraform global role acceptance test"),
+//				NewUserDefault: pulumi.Bool(true),
+//				Rules: GlobalRoleRuleArray{
+//					&GlobalRoleRuleArgs{
+//						ApiGroups: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						Resources: pulumi.StringArray{
+//							pulumi.String("secrets"),
+//						},
+//						Verbs: pulumi.StringArray{
+//							pulumi.String("create"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Global Role can be imported using the Rancher Global Role ID
+// # Global Role can be imported using the Rancher Global Role ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/globalRole:GlobalRole foo &lt;global_role_id&gt;
+//
+//	$ pulumi import rancher2:index/globalRole:GlobalRole foo &lt;global_role_id&gt;
+//
 // ```
 type GlobalRole struct {
 	pulumi.CustomResourceState
@@ -198,7 +203,7 @@ func (i *GlobalRole) ToGlobalRoleOutputWithContext(ctx context.Context) GlobalRo
 // GlobalRoleArrayInput is an input type that accepts GlobalRoleArray and GlobalRoleArrayOutput values.
 // You can construct a concrete instance of `GlobalRoleArrayInput` via:
 //
-//          GlobalRoleArray{ GlobalRoleArgs{...} }
+//	GlobalRoleArray{ GlobalRoleArgs{...} }
 type GlobalRoleArrayInput interface {
 	pulumi.Input
 
@@ -223,7 +228,7 @@ func (i GlobalRoleArray) ToGlobalRoleArrayOutputWithContext(ctx context.Context)
 // GlobalRoleMapInput is an input type that accepts GlobalRoleMap and GlobalRoleMapOutput values.
 // You can construct a concrete instance of `GlobalRoleMapInput` via:
 //
-//          GlobalRoleMap{ "key": GlobalRoleArgs{...} }
+//	GlobalRoleMap{ "key": GlobalRoleArgs{...} }
 type GlobalRoleMapInput interface {
 	pulumi.Input
 

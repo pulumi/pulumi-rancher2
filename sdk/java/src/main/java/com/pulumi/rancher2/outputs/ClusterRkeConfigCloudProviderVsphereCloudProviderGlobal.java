@@ -17,49 +17,34 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
      * @return (string)
      * 
      */
-    private final @Nullable String datacenters;
+    private @Nullable String datacenters;
     /**
      * @return (bool)
      * 
      */
-    private final @Nullable Boolean insecureFlag;
+    private @Nullable Boolean insecureFlag;
     /**
      * @return Registry password (string)
      * 
      */
-    private final @Nullable String password;
+    private @Nullable String password;
     /**
      * @return Port for node. Default `22` (string)
      * 
      */
-    private final @Nullable String port;
+    private @Nullable String port;
     /**
      * @return (int)
      * 
      */
-    private final @Nullable Integer soapRoundtripCount;
+    private @Nullable Integer soapRoundtripCount;
     /**
      * @return Registry user (string)
      * 
      */
-    private final @Nullable String user;
+    private @Nullable String user;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal(
-        @CustomType.Parameter("datacenters") @Nullable String datacenters,
-        @CustomType.Parameter("insecureFlag") @Nullable Boolean insecureFlag,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("port") @Nullable String port,
-        @CustomType.Parameter("soapRoundtripCount") @Nullable Integer soapRoundtripCount,
-        @CustomType.Parameter("user") @Nullable String user) {
-        this.datacenters = datacenters;
-        this.insecureFlag = insecureFlag;
-        this.password = password;
-        this.port = port;
-        this.soapRoundtripCount = soapRoundtripCount;
-        this.user = user;
-    }
-
+    private ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal() {}
     /**
      * @return (string)
      * 
@@ -110,7 +95,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
     public static Builder builder(ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String datacenters;
         private @Nullable Boolean insecureFlag;
@@ -118,11 +103,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
         private @Nullable String port;
         private @Nullable Integer soapRoundtripCount;
         private @Nullable String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenters = defaults.datacenters;
@@ -133,31 +114,45 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder datacenters(@Nullable String datacenters) {
             this.datacenters = datacenters;
             return this;
         }
+        @CustomType.Setter
         public Builder insecureFlag(@Nullable Boolean insecureFlag) {
             this.insecureFlag = insecureFlag;
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder soapRoundtripCount(@Nullable Integer soapRoundtripCount) {
             this.soapRoundtripCount = soapRoundtripCount;
             return this;
         }
+        @CustomType.Setter
         public Builder user(@Nullable String user) {
             this.user = user;
             return this;
-        }        public ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal build() {
-            return new ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal(datacenters, insecureFlag, password, port, soapRoundtripCount, user);
+        }
+        public ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal build() {
+            final var o = new ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal();
+            o.datacenters = datacenters;
+            o.insecureFlag = insecureFlag;
+            o.password = password;
+            o.port = port;
+            o.soapRoundtripCount = soapRoundtripCount;
+            o.user = user;
+            return o;
         }
     }
 }

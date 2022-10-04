@@ -19,37 +19,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewGlobalRoleBinding(ctx, "foo", &rancher2.GlobalRoleBindingArgs{
-// 			GlobalRoleId: pulumi.String("admin"),
-// 			UserId:       pulumi.String("user-XXXXX"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewGlobalRoleBinding(ctx, "foo2", &rancher2.GlobalRoleBindingArgs{
-// 			GlobalRoleId:     pulumi.String("admin"),
-// 			GroupPrincipalId: pulumi.String("local://g-XXXXX"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewGlobalRoleBinding(ctx, "foo", &rancher2.GlobalRoleBindingArgs{
+//				GlobalRoleId: pulumi.String("admin"),
+//				UserId:       pulumi.String("user-XXXXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewGlobalRoleBinding(ctx, "foo2", &rancher2.GlobalRoleBindingArgs{
+//				GlobalRoleId:     pulumi.String("admin"),
+//				GroupPrincipalId: pulumi.String("local://g-XXXXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Global Role Bindings can be imported using the Rancher Global Role Binding ID
+// # Global Role Bindings can be imported using the Rancher Global Role Binding ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo &lt;GLOBAL_ROLE_BINDING_ID&gt;
+//
+//	$ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo &lt;GLOBAL_ROLE_BINDING_ID&gt;
+//
 // ```
 type GlobalRoleBinding struct {
 	pulumi.CustomResourceState
@@ -190,7 +195,7 @@ func (i *GlobalRoleBinding) ToGlobalRoleBindingOutputWithContext(ctx context.Con
 // GlobalRoleBindingArrayInput is an input type that accepts GlobalRoleBindingArray and GlobalRoleBindingArrayOutput values.
 // You can construct a concrete instance of `GlobalRoleBindingArrayInput` via:
 //
-//          GlobalRoleBindingArray{ GlobalRoleBindingArgs{...} }
+//	GlobalRoleBindingArray{ GlobalRoleBindingArgs{...} }
 type GlobalRoleBindingArrayInput interface {
 	pulumi.Input
 
@@ -215,7 +220,7 @@ func (i GlobalRoleBindingArray) ToGlobalRoleBindingArrayOutputWithContext(ctx co
 // GlobalRoleBindingMapInput is an input type that accepts GlobalRoleBindingMap and GlobalRoleBindingMapOutput values.
 // You can construct a concrete instance of `GlobalRoleBindingMapInput` via:
 //
-//          GlobalRoleBindingMap{ "key": GlobalRoleBindingArgs{...} }
+//	GlobalRoleBindingMap{ "key": GlobalRoleBindingArgs{...} }
 type GlobalRoleBindingMapInput interface {
 	pulumi.Input
 

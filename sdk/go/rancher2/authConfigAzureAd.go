@@ -21,27 +21,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewAuthConfigAzureAd(ctx, "azuread", &rancher2.AuthConfigAzureAdArgs{
-// 			ApplicationId:     pulumi.String("<AZUREAD_APP_ID>"),
-// 			ApplicationSecret: pulumi.String("<AZUREAD_APP_SECRET>"),
-// 			AuthEndpoint:      pulumi.String("<AZUREAD_AUTH_ENDPOINT>"),
-// 			GraphEndpoint:     pulumi.String("<AZUREAD_GRAPH_ENDPOINT>"),
-// 			RancherUrl:        pulumi.String("<RANCHER_URL>"),
-// 			TenantId:          pulumi.String("<AZUREAD_TENANT_ID>"),
-// 			TokenEndpoint:     pulumi.String("<AZUREAD_TOKEN_ENDPOINT>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewAuthConfigAzureAd(ctx, "azuread", &rancher2.AuthConfigAzureAdArgs{
+//				ApplicationId:     pulumi.String("<AZUREAD_APP_ID>"),
+//				ApplicationSecret: pulumi.String("<AZUREAD_APP_SECRET>"),
+//				AuthEndpoint:      pulumi.String("<AZUREAD_AUTH_ENDPOINT>"),
+//				GraphEndpoint:     pulumi.String("<AZUREAD_GRAPH_ENDPOINT>"),
+//				RancherUrl:        pulumi.String("<RANCHER_URL>"),
+//				TenantId:          pulumi.String("<AZUREAD_TENANT_ID>"),
+//				TokenEndpoint:     pulumi.String("<AZUREAD_TOKEN_ENDPOINT>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type AuthConfigAzureAd struct {
 	pulumi.CustomResourceState
@@ -282,7 +285,7 @@ func (i *AuthConfigAzureAd) ToAuthConfigAzureAdOutputWithContext(ctx context.Con
 // AuthConfigAzureAdArrayInput is an input type that accepts AuthConfigAzureAdArray and AuthConfigAzureAdArrayOutput values.
 // You can construct a concrete instance of `AuthConfigAzureAdArrayInput` via:
 //
-//          AuthConfigAzureAdArray{ AuthConfigAzureAdArgs{...} }
+//	AuthConfigAzureAdArray{ AuthConfigAzureAdArgs{...} }
 type AuthConfigAzureAdArrayInput interface {
 	pulumi.Input
 
@@ -307,7 +310,7 @@ func (i AuthConfigAzureAdArray) ToAuthConfigAzureAdArrayOutputWithContext(ctx co
 // AuthConfigAzureAdMapInput is an input type that accepts AuthConfigAzureAdMap and AuthConfigAzureAdMapOutput values.
 // You can construct a concrete instance of `AuthConfigAzureAdMapInput` via:
 //
-//          AuthConfigAzureAdMap{ "key": AuthConfigAzureAdArgs{...} }
+//	AuthConfigAzureAdMap{ "key": AuthConfigAzureAdArgs{...} }
 type AuthConfigAzureAdMapInput interface {
 	pulumi.Input
 

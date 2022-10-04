@@ -13,13 +13,9 @@ public final class NamespaceResourceQuota {
      * @return Resource quota limit for namespace (list maxitems:1)
      * 
      */
-    private final NamespaceResourceQuotaLimit limit;
+    private NamespaceResourceQuotaLimit limit;
 
-    @CustomType.Constructor
-    private NamespaceResourceQuota(@CustomType.Parameter("limit") NamespaceResourceQuotaLimit limit) {
-        this.limit = limit;
-    }
-
+    private NamespaceResourceQuota() {}
     /**
      * @return Resource quota limit for namespace (list maxitems:1)
      * 
@@ -35,24 +31,24 @@ public final class NamespaceResourceQuota {
     public static Builder builder(NamespaceResourceQuota defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private NamespaceResourceQuotaLimit limit;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NamespaceResourceQuota defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.limit = defaults.limit;
         }
 
+        @CustomType.Setter
         public Builder limit(NamespaceResourceQuotaLimit limit) {
             this.limit = Objects.requireNonNull(limit);
             return this;
-        }        public NamespaceResourceQuota build() {
-            return new NamespaceResourceQuota(limit);
+        }
+        public NamespaceResourceQuota build() {
+            final var o = new NamespaceResourceQuota();
+            o.limit = limit;
+            return o;
         }
     }
 }

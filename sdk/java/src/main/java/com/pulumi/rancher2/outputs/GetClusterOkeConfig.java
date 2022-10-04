@@ -13,111 +13,44 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterOkeConfig {
-    private final String compartmentId;
-    private final @Nullable Integer customBootVolumeSize;
+    private String compartmentId;
+    private @Nullable Integer customBootVolumeSize;
     /**
      * @return (Computed) The description for Cluster (string)
      * 
      */
-    private final @Nullable String description;
-    private final @Nullable Boolean enableKubernetesDashboard;
-    private final @Nullable Boolean enablePrivateControlPlane;
-    private final @Nullable Boolean enablePrivateNodes;
-    private final String fingerprint;
-    private final @Nullable Integer flexOcpus;
-    private final @Nullable String kmsKeyId;
-    private final String kubernetesVersion;
-    private final @Nullable Integer limitNodeCount;
-    private final @Nullable String loadBalancerSubnetName1;
-    private final @Nullable String loadBalancerSubnetName2;
-    private final String nodeImage;
-    private final @Nullable String nodePoolDnsDomainName;
-    private final @Nullable String nodePoolSubnetName;
-    private final @Nullable String nodePublicKeyContents;
-    private final String nodeShape;
-    private final @Nullable String podCidr;
-    private final String privateKeyContents;
-    private final @Nullable String privateKeyPassphrase;
-    private final @Nullable Integer quantityOfNodeSubnets;
-    private final @Nullable Integer quantityPerSubnet;
-    private final String region;
-    private final @Nullable String serviceCidr;
-    private final @Nullable String serviceDnsDomainName;
-    private final @Nullable Boolean skipVcnDelete;
-    private final String tenancyId;
-    private final String userOcid;
-    private final @Nullable String vcnCompartmentId;
-    private final @Nullable String vcnName;
-    private final @Nullable String workerNodeIngressCidr;
+    private @Nullable String description;
+    private @Nullable Boolean enableKubernetesDashboard;
+    private @Nullable Boolean enablePrivateControlPlane;
+    private @Nullable Boolean enablePrivateNodes;
+    private String fingerprint;
+    private @Nullable Integer flexOcpus;
+    private @Nullable String kmsKeyId;
+    private String kubernetesVersion;
+    private @Nullable Integer limitNodeCount;
+    private @Nullable String loadBalancerSubnetName1;
+    private @Nullable String loadBalancerSubnetName2;
+    private String nodeImage;
+    private @Nullable String nodePoolDnsDomainName;
+    private @Nullable String nodePoolSubnetName;
+    private @Nullable String nodePublicKeyContents;
+    private String nodeShape;
+    private @Nullable String podCidr;
+    private String privateKeyContents;
+    private @Nullable String privateKeyPassphrase;
+    private @Nullable Integer quantityOfNodeSubnets;
+    private @Nullable Integer quantityPerSubnet;
+    private String region;
+    private @Nullable String serviceCidr;
+    private @Nullable String serviceDnsDomainName;
+    private @Nullable Boolean skipVcnDelete;
+    private String tenancyId;
+    private String userOcid;
+    private @Nullable String vcnCompartmentId;
+    private @Nullable String vcnName;
+    private @Nullable String workerNodeIngressCidr;
 
-    @CustomType.Constructor
-    private GetClusterOkeConfig(
-        @CustomType.Parameter("compartmentId") String compartmentId,
-        @CustomType.Parameter("customBootVolumeSize") @Nullable Integer customBootVolumeSize,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("enableKubernetesDashboard") @Nullable Boolean enableKubernetesDashboard,
-        @CustomType.Parameter("enablePrivateControlPlane") @Nullable Boolean enablePrivateControlPlane,
-        @CustomType.Parameter("enablePrivateNodes") @Nullable Boolean enablePrivateNodes,
-        @CustomType.Parameter("fingerprint") String fingerprint,
-        @CustomType.Parameter("flexOcpus") @Nullable Integer flexOcpus,
-        @CustomType.Parameter("kmsKeyId") @Nullable String kmsKeyId,
-        @CustomType.Parameter("kubernetesVersion") String kubernetesVersion,
-        @CustomType.Parameter("limitNodeCount") @Nullable Integer limitNodeCount,
-        @CustomType.Parameter("loadBalancerSubnetName1") @Nullable String loadBalancerSubnetName1,
-        @CustomType.Parameter("loadBalancerSubnetName2") @Nullable String loadBalancerSubnetName2,
-        @CustomType.Parameter("nodeImage") String nodeImage,
-        @CustomType.Parameter("nodePoolDnsDomainName") @Nullable String nodePoolDnsDomainName,
-        @CustomType.Parameter("nodePoolSubnetName") @Nullable String nodePoolSubnetName,
-        @CustomType.Parameter("nodePublicKeyContents") @Nullable String nodePublicKeyContents,
-        @CustomType.Parameter("nodeShape") String nodeShape,
-        @CustomType.Parameter("podCidr") @Nullable String podCidr,
-        @CustomType.Parameter("privateKeyContents") String privateKeyContents,
-        @CustomType.Parameter("privateKeyPassphrase") @Nullable String privateKeyPassphrase,
-        @CustomType.Parameter("quantityOfNodeSubnets") @Nullable Integer quantityOfNodeSubnets,
-        @CustomType.Parameter("quantityPerSubnet") @Nullable Integer quantityPerSubnet,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("serviceCidr") @Nullable String serviceCidr,
-        @CustomType.Parameter("serviceDnsDomainName") @Nullable String serviceDnsDomainName,
-        @CustomType.Parameter("skipVcnDelete") @Nullable Boolean skipVcnDelete,
-        @CustomType.Parameter("tenancyId") String tenancyId,
-        @CustomType.Parameter("userOcid") String userOcid,
-        @CustomType.Parameter("vcnCompartmentId") @Nullable String vcnCompartmentId,
-        @CustomType.Parameter("vcnName") @Nullable String vcnName,
-        @CustomType.Parameter("workerNodeIngressCidr") @Nullable String workerNodeIngressCidr) {
-        this.compartmentId = compartmentId;
-        this.customBootVolumeSize = customBootVolumeSize;
-        this.description = description;
-        this.enableKubernetesDashboard = enableKubernetesDashboard;
-        this.enablePrivateControlPlane = enablePrivateControlPlane;
-        this.enablePrivateNodes = enablePrivateNodes;
-        this.fingerprint = fingerprint;
-        this.flexOcpus = flexOcpus;
-        this.kmsKeyId = kmsKeyId;
-        this.kubernetesVersion = kubernetesVersion;
-        this.limitNodeCount = limitNodeCount;
-        this.loadBalancerSubnetName1 = loadBalancerSubnetName1;
-        this.loadBalancerSubnetName2 = loadBalancerSubnetName2;
-        this.nodeImage = nodeImage;
-        this.nodePoolDnsDomainName = nodePoolDnsDomainName;
-        this.nodePoolSubnetName = nodePoolSubnetName;
-        this.nodePublicKeyContents = nodePublicKeyContents;
-        this.nodeShape = nodeShape;
-        this.podCidr = podCidr;
-        this.privateKeyContents = privateKeyContents;
-        this.privateKeyPassphrase = privateKeyPassphrase;
-        this.quantityOfNodeSubnets = quantityOfNodeSubnets;
-        this.quantityPerSubnet = quantityPerSubnet;
-        this.region = region;
-        this.serviceCidr = serviceCidr;
-        this.serviceDnsDomainName = serviceDnsDomainName;
-        this.skipVcnDelete = skipVcnDelete;
-        this.tenancyId = tenancyId;
-        this.userOcid = userOcid;
-        this.vcnCompartmentId = vcnCompartmentId;
-        this.vcnName = vcnName;
-        this.workerNodeIngressCidr = workerNodeIngressCidr;
-    }
-
+    private GetClusterOkeConfig() {}
     public String compartmentId() {
         return this.compartmentId;
     }
@@ -226,7 +159,7 @@ public final class GetClusterOkeConfig {
     public static Builder builder(GetClusterOkeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String compartmentId;
         private @Nullable Integer customBootVolumeSize;
@@ -260,11 +193,7 @@ public final class GetClusterOkeConfig {
         private @Nullable String vcnCompartmentId;
         private @Nullable String vcnName;
         private @Nullable String workerNodeIngressCidr;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterOkeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.compartmentId = defaults.compartmentId;
@@ -301,135 +230,201 @@ public final class GetClusterOkeConfig {
     	      this.workerNodeIngressCidr = defaults.workerNodeIngressCidr;
         }
 
+        @CustomType.Setter
         public Builder compartmentId(String compartmentId) {
             this.compartmentId = Objects.requireNonNull(compartmentId);
             return this;
         }
+        @CustomType.Setter
         public Builder customBootVolumeSize(@Nullable Integer customBootVolumeSize) {
             this.customBootVolumeSize = customBootVolumeSize;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder enableKubernetesDashboard(@Nullable Boolean enableKubernetesDashboard) {
             this.enableKubernetesDashboard = enableKubernetesDashboard;
             return this;
         }
+        @CustomType.Setter
         public Builder enablePrivateControlPlane(@Nullable Boolean enablePrivateControlPlane) {
             this.enablePrivateControlPlane = enablePrivateControlPlane;
             return this;
         }
+        @CustomType.Setter
         public Builder enablePrivateNodes(@Nullable Boolean enablePrivateNodes) {
             this.enablePrivateNodes = enablePrivateNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
             this.fingerprint = Objects.requireNonNull(fingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder flexOcpus(@Nullable Integer flexOcpus) {
             this.flexOcpus = flexOcpus;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
             this.kmsKeyId = kmsKeyId;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
             this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder limitNodeCount(@Nullable Integer limitNodeCount) {
             this.limitNodeCount = limitNodeCount;
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerSubnetName1(@Nullable String loadBalancerSubnetName1) {
             this.loadBalancerSubnetName1 = loadBalancerSubnetName1;
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerSubnetName2(@Nullable String loadBalancerSubnetName2) {
             this.loadBalancerSubnetName2 = loadBalancerSubnetName2;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeImage(String nodeImage) {
             this.nodeImage = Objects.requireNonNull(nodeImage);
             return this;
         }
+        @CustomType.Setter
         public Builder nodePoolDnsDomainName(@Nullable String nodePoolDnsDomainName) {
             this.nodePoolDnsDomainName = nodePoolDnsDomainName;
             return this;
         }
+        @CustomType.Setter
         public Builder nodePoolSubnetName(@Nullable String nodePoolSubnetName) {
             this.nodePoolSubnetName = nodePoolSubnetName;
             return this;
         }
+        @CustomType.Setter
         public Builder nodePublicKeyContents(@Nullable String nodePublicKeyContents) {
             this.nodePublicKeyContents = nodePublicKeyContents;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeShape(String nodeShape) {
             this.nodeShape = Objects.requireNonNull(nodeShape);
             return this;
         }
+        @CustomType.Setter
         public Builder podCidr(@Nullable String podCidr) {
             this.podCidr = podCidr;
             return this;
         }
+        @CustomType.Setter
         public Builder privateKeyContents(String privateKeyContents) {
             this.privateKeyContents = Objects.requireNonNull(privateKeyContents);
             return this;
         }
+        @CustomType.Setter
         public Builder privateKeyPassphrase(@Nullable String privateKeyPassphrase) {
             this.privateKeyPassphrase = privateKeyPassphrase;
             return this;
         }
+        @CustomType.Setter
         public Builder quantityOfNodeSubnets(@Nullable Integer quantityOfNodeSubnets) {
             this.quantityOfNodeSubnets = quantityOfNodeSubnets;
             return this;
         }
+        @CustomType.Setter
         public Builder quantityPerSubnet(@Nullable Integer quantityPerSubnet) {
             this.quantityPerSubnet = quantityPerSubnet;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceCidr(@Nullable String serviceCidr) {
             this.serviceCidr = serviceCidr;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceDnsDomainName(@Nullable String serviceDnsDomainName) {
             this.serviceDnsDomainName = serviceDnsDomainName;
             return this;
         }
+        @CustomType.Setter
         public Builder skipVcnDelete(@Nullable Boolean skipVcnDelete) {
             this.skipVcnDelete = skipVcnDelete;
             return this;
         }
+        @CustomType.Setter
         public Builder tenancyId(String tenancyId) {
             this.tenancyId = Objects.requireNonNull(tenancyId);
             return this;
         }
+        @CustomType.Setter
         public Builder userOcid(String userOcid) {
             this.userOcid = Objects.requireNonNull(userOcid);
             return this;
         }
+        @CustomType.Setter
         public Builder vcnCompartmentId(@Nullable String vcnCompartmentId) {
             this.vcnCompartmentId = vcnCompartmentId;
             return this;
         }
+        @CustomType.Setter
         public Builder vcnName(@Nullable String vcnName) {
             this.vcnName = vcnName;
             return this;
         }
+        @CustomType.Setter
         public Builder workerNodeIngressCidr(@Nullable String workerNodeIngressCidr) {
             this.workerNodeIngressCidr = workerNodeIngressCidr;
             return this;
-        }        public GetClusterOkeConfig build() {
-            return new GetClusterOkeConfig(compartmentId, customBootVolumeSize, description, enableKubernetesDashboard, enablePrivateControlPlane, enablePrivateNodes, fingerprint, flexOcpus, kmsKeyId, kubernetesVersion, limitNodeCount, loadBalancerSubnetName1, loadBalancerSubnetName2, nodeImage, nodePoolDnsDomainName, nodePoolSubnetName, nodePublicKeyContents, nodeShape, podCidr, privateKeyContents, privateKeyPassphrase, quantityOfNodeSubnets, quantityPerSubnet, region, serviceCidr, serviceDnsDomainName, skipVcnDelete, tenancyId, userOcid, vcnCompartmentId, vcnName, workerNodeIngressCidr);
+        }
+        public GetClusterOkeConfig build() {
+            final var o = new GetClusterOkeConfig();
+            o.compartmentId = compartmentId;
+            o.customBootVolumeSize = customBootVolumeSize;
+            o.description = description;
+            o.enableKubernetesDashboard = enableKubernetesDashboard;
+            o.enablePrivateControlPlane = enablePrivateControlPlane;
+            o.enablePrivateNodes = enablePrivateNodes;
+            o.fingerprint = fingerprint;
+            o.flexOcpus = flexOcpus;
+            o.kmsKeyId = kmsKeyId;
+            o.kubernetesVersion = kubernetesVersion;
+            o.limitNodeCount = limitNodeCount;
+            o.loadBalancerSubnetName1 = loadBalancerSubnetName1;
+            o.loadBalancerSubnetName2 = loadBalancerSubnetName2;
+            o.nodeImage = nodeImage;
+            o.nodePoolDnsDomainName = nodePoolDnsDomainName;
+            o.nodePoolSubnetName = nodePoolSubnetName;
+            o.nodePublicKeyContents = nodePublicKeyContents;
+            o.nodeShape = nodeShape;
+            o.podCidr = podCidr;
+            o.privateKeyContents = privateKeyContents;
+            o.privateKeyPassphrase = privateKeyPassphrase;
+            o.quantityOfNodeSubnets = quantityOfNodeSubnets;
+            o.quantityPerSubnet = quantityPerSubnet;
+            o.region = region;
+            o.serviceCidr = serviceCidr;
+            o.serviceDnsDomainName = serviceDnsDomainName;
+            o.skipVcnDelete = skipVcnDelete;
+            o.tenancyId = tenancyId;
+            o.userOcid = userOcid;
+            o.vcnCompartmentId = vcnCompartmentId;
+            o.vcnName = vcnName;
+            o.workerNodeIngressCidr = workerNodeIngressCidr;
+            return o;
         }
     }
 }

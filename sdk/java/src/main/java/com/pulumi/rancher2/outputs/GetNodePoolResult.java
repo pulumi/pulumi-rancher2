@@ -19,86 +19,57 @@ public final class GetNodePoolResult {
      * @return (Computed) Annotations for Node Pool object (map)
      * 
      */
-    private final Map<String,Object> annotations;
-    private final String clusterId;
+    private Map<String,Object> annotations;
+    private String clusterId;
     /**
      * @return (Computed) RKE control plane role for created nodes (bool)
      * 
      */
-    private final Boolean controlPlane;
+    private Boolean controlPlane;
     /**
      * @return (Computed) Delete not ready node after secs. Default `0` (int)
      * 
      */
-    private final Integer deleteNotReadyAfterSecs;
+    private Integer deleteNotReadyAfterSecs;
     /**
      * @return (Computed) RKE etcd role for created nodes (bool)
      * 
      */
-    private final Boolean etcd;
+    private Boolean etcd;
     /**
      * @return (Computed) The prefix for created nodes of the Node Pool (string)
      * 
      */
-    private final String hostnamePrefix;
+    private String hostnamePrefix;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
+    private Map<String,Object> labels;
+    private String name;
     /**
      * @return (Computed) Node taints (List)
      * 
      */
-    private final List<GetNodePoolNodeTaint> nodeTaints;
-    private final String nodeTemplateId;
+    private List<GetNodePoolNodeTaint> nodeTaints;
+    private String nodeTemplateId;
     /**
      * @return (Computed) The number of nodes to create on Node Pool (int)
      * 
      */
-    private final Integer quantity;
+    private Integer quantity;
     /**
      * @return (Computed) RKE role role for created nodes (bool)
      * 
      */
-    private final Boolean worker;
+    private Boolean worker;
 
-    @CustomType.Constructor
-    private GetNodePoolResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("controlPlane") Boolean controlPlane,
-        @CustomType.Parameter("deleteNotReadyAfterSecs") Integer deleteNotReadyAfterSecs,
-        @CustomType.Parameter("etcd") Boolean etcd,
-        @CustomType.Parameter("hostnamePrefix") String hostnamePrefix,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodeTaints") List<GetNodePoolNodeTaint> nodeTaints,
-        @CustomType.Parameter("nodeTemplateId") String nodeTemplateId,
-        @CustomType.Parameter("quantity") Integer quantity,
-        @CustomType.Parameter("worker") Boolean worker) {
-        this.annotations = annotations;
-        this.clusterId = clusterId;
-        this.controlPlane = controlPlane;
-        this.deleteNotReadyAfterSecs = deleteNotReadyAfterSecs;
-        this.etcd = etcd;
-        this.hostnamePrefix = hostnamePrefix;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.nodeTaints = nodeTaints;
-        this.nodeTemplateId = nodeTemplateId;
-        this.quantity = quantity;
-        this.worker = worker;
-    }
-
+    private GetNodePoolResult() {}
     /**
      * @return (Computed) Annotations for Node Pool object (map)
      * 
@@ -186,7 +157,7 @@ public final class GetNodePoolResult {
     public static Builder builder(GetNodePoolResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String clusterId;
@@ -201,11 +172,7 @@ public final class GetNodePoolResult {
         private String nodeTemplateId;
         private Integer quantity;
         private Boolean worker;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodePoolResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -223,42 +190,52 @@ public final class GetNodePoolResult {
     	      this.worker = defaults.worker;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder controlPlane(Boolean controlPlane) {
             this.controlPlane = Objects.requireNonNull(controlPlane);
             return this;
         }
+        @CustomType.Setter
         public Builder deleteNotReadyAfterSecs(Integer deleteNotReadyAfterSecs) {
             this.deleteNotReadyAfterSecs = Objects.requireNonNull(deleteNotReadyAfterSecs);
             return this;
         }
+        @CustomType.Setter
         public Builder etcd(Boolean etcd) {
             this.etcd = Objects.requireNonNull(etcd);
             return this;
         }
+        @CustomType.Setter
         public Builder hostnamePrefix(String hostnamePrefix) {
             this.hostnamePrefix = Objects.requireNonNull(hostnamePrefix);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeTaints(List<GetNodePoolNodeTaint> nodeTaints) {
             this.nodeTaints = Objects.requireNonNull(nodeTaints);
             return this;
@@ -266,19 +243,37 @@ public final class GetNodePoolResult {
         public Builder nodeTaints(GetNodePoolNodeTaint... nodeTaints) {
             return nodeTaints(List.of(nodeTaints));
         }
+        @CustomType.Setter
         public Builder nodeTemplateId(String nodeTemplateId) {
             this.nodeTemplateId = Objects.requireNonNull(nodeTemplateId);
             return this;
         }
+        @CustomType.Setter
         public Builder quantity(Integer quantity) {
             this.quantity = Objects.requireNonNull(quantity);
             return this;
         }
+        @CustomType.Setter
         public Builder worker(Boolean worker) {
             this.worker = Objects.requireNonNull(worker);
             return this;
-        }        public GetNodePoolResult build() {
-            return new GetNodePoolResult(annotations, clusterId, controlPlane, deleteNotReadyAfterSecs, etcd, hostnamePrefix, id, labels, name, nodeTaints, nodeTemplateId, quantity, worker);
+        }
+        public GetNodePoolResult build() {
+            final var o = new GetNodePoolResult();
+            o.annotations = annotations;
+            o.clusterId = clusterId;
+            o.controlPlane = controlPlane;
+            o.deleteNotReadyAfterSecs = deleteNotReadyAfterSecs;
+            o.etcd = etcd;
+            o.hostnamePrefix = hostnamePrefix;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.nodeTaints = nodeTaints;
+            o.nodeTemplateId = nodeTemplateId;
+            o.quantity = quantity;
+            o.worker = worker;
+            return o;
         }
     }
 }

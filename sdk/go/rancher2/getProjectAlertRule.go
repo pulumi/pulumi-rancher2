@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupProjectAlertRule(ctx, &GetProjectAlertRuleArgs{
-// 			Name:      "<project_alert_rule_name>",
-// 			ProjectId: "<project_id>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.LookupProjectAlertRule(ctx, &GetProjectAlertRuleArgs{
+//				Name:      "<project_alert_rule_name>",
+//				ProjectId: "<project_id>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupProjectAlertRule(ctx *pulumi.Context, args *LookupProjectAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupProjectAlertRuleResult, error) {
 	var rv LookupProjectAlertRuleResult
@@ -161,7 +164,7 @@ func (o LookupProjectAlertRuleResultOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupProjectAlertRuleResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
 }
 
-// (Computed) The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
+// (Computed) The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"“ (list Maxitems:1)
 func (o LookupProjectAlertRuleResultOutput) MetricRule() GetProjectAlertRuleMetricRuleOutput {
 	return o.ApplyT(func(v LookupProjectAlertRuleResult) GetProjectAlertRuleMetricRule { return v.MetricRule }).(GetProjectAlertRuleMetricRuleOutput)
 }
@@ -170,7 +173,7 @@ func (o LookupProjectAlertRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Computed) The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"`` (list Maxitems:1)
+// (Computed) The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"“ (list Maxitems:1)
 func (o LookupProjectAlertRuleResultOutput) PodRule() GetProjectAlertRulePodRuleOutput {
 	return o.ApplyT(func(v LookupProjectAlertRuleResult) GetProjectAlertRulePodRule { return v.PodRule }).(GetProjectAlertRulePodRuleOutput)
 }
@@ -189,7 +192,7 @@ func (o LookupProjectAlertRuleResultOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectAlertRuleResult) string { return v.Severity }).(pulumi.StringOutput)
 }
 
-// (Computed) The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
+// (Computed) The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"“ (list Maxitems:1)
 func (o LookupProjectAlertRuleResultOutput) WorkloadRule() GetProjectAlertRuleWorkloadRuleOutput {
 	return o.ApplyT(func(v LookupProjectAlertRuleResult) GetProjectAlertRuleWorkloadRule { return v.WorkloadRule }).(GetProjectAlertRuleWorkloadRuleOutput)
 }

@@ -14,29 +14,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController {
-    private final @Nullable String clusterCidr;
-    private final @Nullable Map<String,Object> extraArgs;
-    private final @Nullable List<String> extraBinds;
-    private final @Nullable List<String> extraEnvs;
-    private final @Nullable String image;
-    private final @Nullable String serviceClusterIpRange;
+    private @Nullable String clusterCidr;
+    private @Nullable Map<String,Object> extraArgs;
+    private @Nullable List<String> extraBinds;
+    private @Nullable List<String> extraEnvs;
+    private @Nullable String image;
+    private @Nullable String serviceClusterIpRange;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController(
-        @CustomType.Parameter("clusterCidr") @Nullable String clusterCidr,
-        @CustomType.Parameter("extraArgs") @Nullable Map<String,Object> extraArgs,
-        @CustomType.Parameter("extraBinds") @Nullable List<String> extraBinds,
-        @CustomType.Parameter("extraEnvs") @Nullable List<String> extraEnvs,
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("serviceClusterIpRange") @Nullable String serviceClusterIpRange) {
-        this.clusterCidr = clusterCidr;
-        this.extraArgs = extraArgs;
-        this.extraBinds = extraBinds;
-        this.extraEnvs = extraEnvs;
-        this.image = image;
-        this.serviceClusterIpRange = serviceClusterIpRange;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController() {}
     public Optional<String> clusterCidr() {
         return Optional.ofNullable(this.clusterCidr);
     }
@@ -63,7 +48,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterCidr;
         private @Nullable Map<String,Object> extraArgs;
@@ -71,11 +56,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         private @Nullable List<String> extraEnvs;
         private @Nullable String image;
         private @Nullable String serviceClusterIpRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterCidr = defaults.clusterCidr;
@@ -86,14 +67,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     	      this.serviceClusterIpRange = defaults.serviceClusterIpRange;
         }
 
+        @CustomType.Setter
         public Builder clusterCidr(@Nullable String clusterCidr) {
             this.clusterCidr = clusterCidr;
             return this;
         }
+        @CustomType.Setter
         public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
             this.extraArgs = extraArgs;
             return this;
         }
+        @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
             this.extraBinds = extraBinds;
             return this;
@@ -101,6 +85,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         public Builder extraBinds(String... extraBinds) {
             return extraBinds(List.of(extraBinds));
         }
+        @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
             this.extraEnvs = extraEnvs;
             return this;
@@ -108,15 +93,25 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         public Builder extraEnvs(String... extraEnvs) {
             return extraEnvs(List.of(extraEnvs));
         }
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceClusterIpRange(@Nullable String serviceClusterIpRange) {
             this.serviceClusterIpRange = serviceClusterIpRange;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController(clusterCidr, extraArgs, extraBinds, extraEnvs, image, serviceClusterIpRange);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController();
+            o.clusterCidr = clusterCidr;
+            o.extraArgs = extraArgs;
+            o.extraBinds = extraBinds;
+            o.extraEnvs = extraEnvs;
+            o.image = image;
+            o.serviceClusterIpRange = serviceClusterIpRange;
+            return o;
         }
     }
 }

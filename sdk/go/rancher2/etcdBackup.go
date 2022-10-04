@@ -17,43 +17,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewEtcdBackup(ctx, "foo", &rancher2.EtcdBackupArgs{
-// 			BackupConfig: &EtcdBackupBackupConfigArgs{
-// 				Enabled:       pulumi.Bool(true),
-// 				IntervalHours: pulumi.Int(20),
-// 				Retention:     pulumi.Int(10),
-// 				S3BackupConfig: &EtcdBackupBackupConfigS3BackupConfigArgs{
-// 					AccessKey:  pulumi.String("access_key"),
-// 					BucketName: pulumi.String("bucket_name"),
-// 					Endpoint:   pulumi.String("endpoint"),
-// 					Folder:     pulumi.String("/folder"),
-// 					Region:     pulumi.String("region"),
-// 					SecretKey:  pulumi.String("secret_key"),
-// 				},
-// 			},
-// 			ClusterId: pulumi.String("<CLUSTER_ID>"),
-// 			Filename:  pulumi.String("<FILENAME>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewEtcdBackup(ctx, "foo", &rancher2.EtcdBackupArgs{
+//				BackupConfig: &EtcdBackupBackupConfigArgs{
+//					Enabled:       pulumi.Bool(true),
+//					IntervalHours: pulumi.Int(20),
+//					Retention:     pulumi.Int(10),
+//					S3BackupConfig: &EtcdBackupBackupConfigS3BackupConfigArgs{
+//						AccessKey:  pulumi.String("access_key"),
+//						BucketName: pulumi.String("bucket_name"),
+//						Endpoint:   pulumi.String("endpoint"),
+//						Folder:     pulumi.String("/folder"),
+//						Region:     pulumi.String("region"),
+//						SecretKey:  pulumi.String("secret_key"),
+//					},
+//				},
+//				ClusterId: pulumi.String("<CLUSTER_ID>"),
+//				Filename:  pulumi.String("<FILENAME>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Etcd Backup can be imported using the Rancher etcd backup ID
+// # Etcd Backup can be imported using the Rancher etcd backup ID
 //
 // ```sh
-//  $ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &lt;ETCD_BACKUP_ID&gt;
+//
+//	$ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &lt;ETCD_BACKUP_ID&gt;
+//
 // ```
 type EtcdBackup struct {
 	pulumi.CustomResourceState
@@ -214,7 +219,7 @@ func (i *EtcdBackup) ToEtcdBackupOutputWithContext(ctx context.Context) EtcdBack
 // EtcdBackupArrayInput is an input type that accepts EtcdBackupArray and EtcdBackupArrayOutput values.
 // You can construct a concrete instance of `EtcdBackupArrayInput` via:
 //
-//          EtcdBackupArray{ EtcdBackupArgs{...} }
+//	EtcdBackupArray{ EtcdBackupArgs{...} }
 type EtcdBackupArrayInput interface {
 	pulumi.Input
 
@@ -239,7 +244,7 @@ func (i EtcdBackupArray) ToEtcdBackupArrayOutputWithContext(ctx context.Context)
 // EtcdBackupMapInput is an input type that accepts EtcdBackupMap and EtcdBackupMapOutput values.
 // You can construct a concrete instance of `EtcdBackupMapInput` via:
 //
-//          EtcdBackupMap{ "key": EtcdBackupArgs{...} }
+//	EtcdBackupMap{ "key": EtcdBackupArgs{...} }
 type EtcdBackupMapInput interface {
 	pulumi.Input
 

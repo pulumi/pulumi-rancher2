@@ -16,77 +16,54 @@ public final class ProjectLoggingSyslogConfig {
      * @return SSL certificate for the syslog service (string)
      * 
      */
-    private final @Nullable String certificate;
+    private @Nullable String certificate;
     /**
      * @return SSL client certificate for the syslog service (string)
      * 
      */
-    private final @Nullable String clientCert;
+    private @Nullable String clientCert;
     /**
      * @return SSL client key for the syslog service (string)
      * 
      */
-    private final @Nullable String clientKey;
+    private @Nullable String clientKey;
     /**
      * @return Enable TLS for the fluentd service (bool)
      * 
      */
-    private final @Nullable Boolean enableTls;
+    private @Nullable Boolean enableTls;
     /**
      * @return Endpoint of the syslog service (string)
      * 
      */
-    private final String endpoint;
+    private String endpoint;
     /**
      * @return Program for the syslog service (string)
      * 
      */
-    private final @Nullable String program;
+    private @Nullable String program;
     /**
      * @return Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
      * 
      */
-    private final @Nullable String protocol;
+    private @Nullable String protocol;
     /**
      * @return Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
      * 
      */
-    private final @Nullable String severity;
+    private @Nullable String severity;
     /**
      * @return SSL verify for the syslog service (bool)
      * 
      */
-    private final @Nullable Boolean sslVerify;
+    private @Nullable Boolean sslVerify;
     /**
      * @return Token for the syslog service (string)
      * 
      */
-    private final @Nullable String token;
+    private @Nullable String token;
 
-    @CustomType.Constructor
-    private ProjectLoggingSyslogConfig(
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("clientCert") @Nullable String clientCert,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("enableTls") @Nullable Boolean enableTls,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("program") @Nullable String program,
-        @CustomType.Parameter("protocol") @Nullable String protocol,
-        @CustomType.Parameter("severity") @Nullable String severity,
-        @CustomType.Parameter("sslVerify") @Nullable Boolean sslVerify,
-        @CustomType.Parameter("token") @Nullable String token) {
-        this.certificate = certificate;
-        this.clientCert = clientCert;
-        this.clientKey = clientKey;
-        this.enableTls = enableTls;
-        this.endpoint = endpoint;
-        this.program = program;
-        this.protocol = protocol;
-        this.severity = severity;
-        this.sslVerify = sslVerify;
-        this.token = token;
-    }
-
+    private ProjectLoggingSyslogConfig() {}
     /**
      * @return SSL certificate for the syslog service (string)
      * 
@@ -165,7 +142,7 @@ public final class ProjectLoggingSyslogConfig {
     public static Builder builder(ProjectLoggingSyslogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificate;
         private @Nullable String clientCert;
@@ -177,11 +154,7 @@ public final class ProjectLoggingSyslogConfig {
         private @Nullable String severity;
         private @Nullable Boolean sslVerify;
         private @Nullable String token;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ProjectLoggingSyslogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
@@ -196,47 +169,69 @@ public final class ProjectLoggingSyslogConfig {
     	      this.token = defaults.token;
         }
 
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
             this.clientCert = clientCert;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder enableTls(@Nullable Boolean enableTls) {
             this.enableTls = enableTls;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder program(@Nullable String program) {
             this.program = program;
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
             this.protocol = protocol;
             return this;
         }
+        @CustomType.Setter
         public Builder severity(@Nullable String severity) {
             this.severity = severity;
             return this;
         }
+        @CustomType.Setter
         public Builder sslVerify(@Nullable Boolean sslVerify) {
             this.sslVerify = sslVerify;
             return this;
         }
+        @CustomType.Setter
         public Builder token(@Nullable String token) {
             this.token = token;
             return this;
-        }        public ProjectLoggingSyslogConfig build() {
-            return new ProjectLoggingSyslogConfig(certificate, clientCert, clientKey, enableTls, endpoint, program, protocol, severity, sslVerify, token);
+        }
+        public ProjectLoggingSyslogConfig build() {
+            final var o = new ProjectLoggingSyslogConfig();
+            o.certificate = certificate;
+            o.clientCert = clientCert;
+            o.clientKey = clientKey;
+            o.enableTls = enableTls;
+            o.endpoint = endpoint;
+            o.program = program;
+            o.protocol = protocol;
+            o.severity = severity;
+            o.sslVerify = sslVerify;
+            o.token = token;
+            return o;
         }
     }
 }

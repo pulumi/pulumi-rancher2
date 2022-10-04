@@ -12,29 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterLoggingKafkaConfig {
-    private final @Nullable List<String> brokerEndpoints;
-    private final @Nullable String certificate;
-    private final @Nullable String clientCert;
-    private final @Nullable String clientKey;
-    private final String topic;
-    private final @Nullable String zookeeperEndpoint;
+    private @Nullable List<String> brokerEndpoints;
+    private @Nullable String certificate;
+    private @Nullable String clientCert;
+    private @Nullable String clientKey;
+    private String topic;
+    private @Nullable String zookeeperEndpoint;
 
-    @CustomType.Constructor
-    private GetClusterLoggingKafkaConfig(
-        @CustomType.Parameter("brokerEndpoints") @Nullable List<String> brokerEndpoints,
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("clientCert") @Nullable String clientCert,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("topic") String topic,
-        @CustomType.Parameter("zookeeperEndpoint") @Nullable String zookeeperEndpoint) {
-        this.brokerEndpoints = brokerEndpoints;
-        this.certificate = certificate;
-        this.clientCert = clientCert;
-        this.clientKey = clientKey;
-        this.topic = topic;
-        this.zookeeperEndpoint = zookeeperEndpoint;
-    }
-
+    private GetClusterLoggingKafkaConfig() {}
     public List<String> brokerEndpoints() {
         return this.brokerEndpoints == null ? List.of() : this.brokerEndpoints;
     }
@@ -61,7 +46,7 @@ public final class GetClusterLoggingKafkaConfig {
     public static Builder builder(GetClusterLoggingKafkaConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> brokerEndpoints;
         private @Nullable String certificate;
@@ -69,11 +54,7 @@ public final class GetClusterLoggingKafkaConfig {
         private @Nullable String clientKey;
         private String topic;
         private @Nullable String zookeeperEndpoint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterLoggingKafkaConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.brokerEndpoints = defaults.brokerEndpoints;
@@ -84,6 +65,7 @@ public final class GetClusterLoggingKafkaConfig {
     	      this.zookeeperEndpoint = defaults.zookeeperEndpoint;
         }
 
+        @CustomType.Setter
         public Builder brokerEndpoints(@Nullable List<String> brokerEndpoints) {
             this.brokerEndpoints = brokerEndpoints;
             return this;
@@ -91,27 +73,40 @@ public final class GetClusterLoggingKafkaConfig {
         public Builder brokerEndpoints(String... brokerEndpoints) {
             return brokerEndpoints(List.of(brokerEndpoints));
         }
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
             this.clientCert = clientCert;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder topic(String topic) {
             this.topic = Objects.requireNonNull(topic);
             return this;
         }
+        @CustomType.Setter
         public Builder zookeeperEndpoint(@Nullable String zookeeperEndpoint) {
             this.zookeeperEndpoint = zookeeperEndpoint;
             return this;
-        }        public GetClusterLoggingKafkaConfig build() {
-            return new GetClusterLoggingKafkaConfig(brokerEndpoints, certificate, clientCert, clientKey, topic, zookeeperEndpoint);
+        }
+        public GetClusterLoggingKafkaConfig build() {
+            final var o = new GetClusterLoggingKafkaConfig();
+            o.brokerEndpoints = brokerEndpoints;
+            o.certificate = certificate;
+            o.clientCert = clientCert;
+            o.clientKey = clientKey;
+            o.topic = topic;
+            o.zookeeperEndpoint = zookeeperEndpoint;
+            return o;
         }
     }
 }

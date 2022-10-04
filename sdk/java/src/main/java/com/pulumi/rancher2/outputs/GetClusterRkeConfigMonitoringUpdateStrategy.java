@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigMonitoringUpdateStrategy {
-    private final @Nullable GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate rollingUpdate;
-    private final @Nullable String strategy;
+    private @Nullable GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate rollingUpdate;
+    private @Nullable String strategy;
 
-    @CustomType.Constructor
-    private GetClusterRkeConfigMonitoringUpdateStrategy(
-        @CustomType.Parameter("rollingUpdate") @Nullable GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate rollingUpdate,
-        @CustomType.Parameter("strategy") @Nullable String strategy) {
-        this.rollingUpdate = rollingUpdate;
-        this.strategy = strategy;
-    }
-
+    private GetClusterRkeConfigMonitoringUpdateStrategy() {}
     public Optional<GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate> rollingUpdate() {
         return Optional.ofNullable(this.rollingUpdate);
     }
@@ -37,30 +30,32 @@ public final class GetClusterRkeConfigMonitoringUpdateStrategy {
     public static Builder builder(GetClusterRkeConfigMonitoringUpdateStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate rollingUpdate;
         private @Nullable String strategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterRkeConfigMonitoringUpdateStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rollingUpdate = defaults.rollingUpdate;
     	      this.strategy = defaults.strategy;
         }
 
+        @CustomType.Setter
         public Builder rollingUpdate(@Nullable GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate rollingUpdate) {
             this.rollingUpdate = rollingUpdate;
             return this;
         }
+        @CustomType.Setter
         public Builder strategy(@Nullable String strategy) {
             this.strategy = strategy;
             return this;
-        }        public GetClusterRkeConfigMonitoringUpdateStrategy build() {
-            return new GetClusterRkeConfigMonitoringUpdateStrategy(rollingUpdate, strategy);
+        }
+        public GetClusterRkeConfigMonitoringUpdateStrategy build() {
+            final var o = new GetClusterRkeConfigMonitoringUpdateStrategy();
+            o.rollingUpdate = rollingUpdate;
+            o.strategy = strategy;
+            return o;
         }
     }
 }

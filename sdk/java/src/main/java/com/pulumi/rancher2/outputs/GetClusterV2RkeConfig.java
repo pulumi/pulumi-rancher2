@@ -21,53 +21,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfig {
-    private final @Nullable String additionalManifest;
-    private final @Nullable String chartValues;
-    private final GetClusterV2RkeConfigEtcd etcd;
-    private final @Nullable GetClusterV2RkeConfigEtcdSnapshotCreate etcdSnapshotCreate;
-    private final @Nullable GetClusterV2RkeConfigEtcdSnapshotRestore etcdSnapshotRestore;
+    private @Nullable String additionalManifest;
+    private @Nullable String chartValues;
+    private GetClusterV2RkeConfigEtcd etcd;
+    private @Nullable GetClusterV2RkeConfigEtcdSnapshotCreate etcdSnapshotCreate;
+    private @Nullable GetClusterV2RkeConfigEtcdSnapshotRestore etcdSnapshotRestore;
     /**
      * @deprecated
      * Use rancher2_cluster_v2.local_auth_endpoint instead
      * 
      */
     @Deprecated /* Use rancher2_cluster_v2.local_auth_endpoint instead */
-    private final @Nullable GetClusterV2RkeConfigLocalAuthEndpoint localAuthEndpoint;
-    private final @Nullable String machineGlobalConfig;
-    private final List<GetClusterV2RkeConfigMachinePool> machinePools;
-    private final List<GetClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs;
-    private final @Nullable GetClusterV2RkeConfigRegistries registries;
-    private final @Nullable GetClusterV2RkeConfigRotateCertificates rotateCertificates;
-    private final @Nullable GetClusterV2RkeConfigUpgradeStrategy upgradeStrategy;
+    private @Nullable GetClusterV2RkeConfigLocalAuthEndpoint localAuthEndpoint;
+    private @Nullable String machineGlobalConfig;
+    private List<GetClusterV2RkeConfigMachinePool> machinePools;
+    private List<GetClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs;
+    private @Nullable GetClusterV2RkeConfigRegistries registries;
+    private @Nullable GetClusterV2RkeConfigRotateCertificates rotateCertificates;
+    private @Nullable GetClusterV2RkeConfigUpgradeStrategy upgradeStrategy;
 
-    @CustomType.Constructor
-    private GetClusterV2RkeConfig(
-        @CustomType.Parameter("additionalManifest") @Nullable String additionalManifest,
-        @CustomType.Parameter("chartValues") @Nullable String chartValues,
-        @CustomType.Parameter("etcd") GetClusterV2RkeConfigEtcd etcd,
-        @CustomType.Parameter("etcdSnapshotCreate") @Nullable GetClusterV2RkeConfigEtcdSnapshotCreate etcdSnapshotCreate,
-        @CustomType.Parameter("etcdSnapshotRestore") @Nullable GetClusterV2RkeConfigEtcdSnapshotRestore etcdSnapshotRestore,
-        @CustomType.Parameter("localAuthEndpoint") @Nullable GetClusterV2RkeConfigLocalAuthEndpoint localAuthEndpoint,
-        @CustomType.Parameter("machineGlobalConfig") @Nullable String machineGlobalConfig,
-        @CustomType.Parameter("machinePools") List<GetClusterV2RkeConfigMachinePool> machinePools,
-        @CustomType.Parameter("machineSelectorConfigs") List<GetClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs,
-        @CustomType.Parameter("registries") @Nullable GetClusterV2RkeConfigRegistries registries,
-        @CustomType.Parameter("rotateCertificates") @Nullable GetClusterV2RkeConfigRotateCertificates rotateCertificates,
-        @CustomType.Parameter("upgradeStrategy") @Nullable GetClusterV2RkeConfigUpgradeStrategy upgradeStrategy) {
-        this.additionalManifest = additionalManifest;
-        this.chartValues = chartValues;
-        this.etcd = etcd;
-        this.etcdSnapshotCreate = etcdSnapshotCreate;
-        this.etcdSnapshotRestore = etcdSnapshotRestore;
-        this.localAuthEndpoint = localAuthEndpoint;
-        this.machineGlobalConfig = machineGlobalConfig;
-        this.machinePools = machinePools;
-        this.machineSelectorConfigs = machineSelectorConfigs;
-        this.registries = registries;
-        this.rotateCertificates = rotateCertificates;
-        this.upgradeStrategy = upgradeStrategy;
-    }
-
+    private GetClusterV2RkeConfig() {}
     public Optional<String> additionalManifest() {
         return Optional.ofNullable(this.additionalManifest);
     }
@@ -118,7 +91,7 @@ public final class GetClusterV2RkeConfig {
     public static Builder builder(GetClusterV2RkeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String additionalManifest;
         private @Nullable String chartValues;
@@ -132,11 +105,7 @@ public final class GetClusterV2RkeConfig {
         private @Nullable GetClusterV2RkeConfigRegistries registries;
         private @Nullable GetClusterV2RkeConfigRotateCertificates rotateCertificates;
         private @Nullable GetClusterV2RkeConfigUpgradeStrategy upgradeStrategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterV2RkeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalManifest = defaults.additionalManifest;
@@ -153,34 +122,42 @@ public final class GetClusterV2RkeConfig {
     	      this.upgradeStrategy = defaults.upgradeStrategy;
         }
 
+        @CustomType.Setter
         public Builder additionalManifest(@Nullable String additionalManifest) {
             this.additionalManifest = additionalManifest;
             return this;
         }
+        @CustomType.Setter
         public Builder chartValues(@Nullable String chartValues) {
             this.chartValues = chartValues;
             return this;
         }
+        @CustomType.Setter
         public Builder etcd(GetClusterV2RkeConfigEtcd etcd) {
             this.etcd = Objects.requireNonNull(etcd);
             return this;
         }
+        @CustomType.Setter
         public Builder etcdSnapshotCreate(@Nullable GetClusterV2RkeConfigEtcdSnapshotCreate etcdSnapshotCreate) {
             this.etcdSnapshotCreate = etcdSnapshotCreate;
             return this;
         }
+        @CustomType.Setter
         public Builder etcdSnapshotRestore(@Nullable GetClusterV2RkeConfigEtcdSnapshotRestore etcdSnapshotRestore) {
             this.etcdSnapshotRestore = etcdSnapshotRestore;
             return this;
         }
+        @CustomType.Setter
         public Builder localAuthEndpoint(@Nullable GetClusterV2RkeConfigLocalAuthEndpoint localAuthEndpoint) {
             this.localAuthEndpoint = localAuthEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder machineGlobalConfig(@Nullable String machineGlobalConfig) {
             this.machineGlobalConfig = machineGlobalConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder machinePools(List<GetClusterV2RkeConfigMachinePool> machinePools) {
             this.machinePools = Objects.requireNonNull(machinePools);
             return this;
@@ -188,6 +165,7 @@ public final class GetClusterV2RkeConfig {
         public Builder machinePools(GetClusterV2RkeConfigMachinePool... machinePools) {
             return machinePools(List.of(machinePools));
         }
+        @CustomType.Setter
         public Builder machineSelectorConfigs(List<GetClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs) {
             this.machineSelectorConfigs = Objects.requireNonNull(machineSelectorConfigs);
             return this;
@@ -195,19 +173,36 @@ public final class GetClusterV2RkeConfig {
         public Builder machineSelectorConfigs(GetClusterV2RkeConfigMachineSelectorConfig... machineSelectorConfigs) {
             return machineSelectorConfigs(List.of(machineSelectorConfigs));
         }
+        @CustomType.Setter
         public Builder registries(@Nullable GetClusterV2RkeConfigRegistries registries) {
             this.registries = registries;
             return this;
         }
+        @CustomType.Setter
         public Builder rotateCertificates(@Nullable GetClusterV2RkeConfigRotateCertificates rotateCertificates) {
             this.rotateCertificates = rotateCertificates;
             return this;
         }
+        @CustomType.Setter
         public Builder upgradeStrategy(@Nullable GetClusterV2RkeConfigUpgradeStrategy upgradeStrategy) {
             this.upgradeStrategy = upgradeStrategy;
             return this;
-        }        public GetClusterV2RkeConfig build() {
-            return new GetClusterV2RkeConfig(additionalManifest, chartValues, etcd, etcdSnapshotCreate, etcdSnapshotRestore, localAuthEndpoint, machineGlobalConfig, machinePools, machineSelectorConfigs, registries, rotateCertificates, upgradeStrategy);
+        }
+        public GetClusterV2RkeConfig build() {
+            final var o = new GetClusterV2RkeConfig();
+            o.additionalManifest = additionalManifest;
+            o.chartValues = chartValues;
+            o.etcd = etcd;
+            o.etcdSnapshotCreate = etcdSnapshotCreate;
+            o.etcdSnapshotRestore = etcdSnapshotRestore;
+            o.localAuthEndpoint = localAuthEndpoint;
+            o.machineGlobalConfig = machineGlobalConfig;
+            o.machinePools = machinePools;
+            o.machineSelectorConfigs = machineSelectorConfigs;
+            o.registries = registries;
+            o.rotateCertificates = rotateCertificates;
+            o.upgradeStrategy = upgradeStrategy;
+            return o;
         }
     }
 }

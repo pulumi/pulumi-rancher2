@@ -11,50 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectResourceQuotaProjectLimit {
-    private final @Nullable String configMaps;
-    private final @Nullable String limitsCpu;
-    private final @Nullable String limitsMemory;
-    private final @Nullable String persistentVolumeClaims;
-    private final @Nullable String pods;
-    private final @Nullable String replicationControllers;
-    private final @Nullable String requestsCpu;
-    private final @Nullable String requestsMemory;
-    private final @Nullable String requestsStorage;
-    private final @Nullable String secrets;
-    private final @Nullable String services;
-    private final @Nullable String servicesLoadBalancers;
-    private final @Nullable String servicesNodePorts;
+    private @Nullable String configMaps;
+    private @Nullable String limitsCpu;
+    private @Nullable String limitsMemory;
+    private @Nullable String persistentVolumeClaims;
+    private @Nullable String pods;
+    private @Nullable String replicationControllers;
+    private @Nullable String requestsCpu;
+    private @Nullable String requestsMemory;
+    private @Nullable String requestsStorage;
+    private @Nullable String secrets;
+    private @Nullable String services;
+    private @Nullable String servicesLoadBalancers;
+    private @Nullable String servicesNodePorts;
 
-    @CustomType.Constructor
-    private GetProjectResourceQuotaProjectLimit(
-        @CustomType.Parameter("configMaps") @Nullable String configMaps,
-        @CustomType.Parameter("limitsCpu") @Nullable String limitsCpu,
-        @CustomType.Parameter("limitsMemory") @Nullable String limitsMemory,
-        @CustomType.Parameter("persistentVolumeClaims") @Nullable String persistentVolumeClaims,
-        @CustomType.Parameter("pods") @Nullable String pods,
-        @CustomType.Parameter("replicationControllers") @Nullable String replicationControllers,
-        @CustomType.Parameter("requestsCpu") @Nullable String requestsCpu,
-        @CustomType.Parameter("requestsMemory") @Nullable String requestsMemory,
-        @CustomType.Parameter("requestsStorage") @Nullable String requestsStorage,
-        @CustomType.Parameter("secrets") @Nullable String secrets,
-        @CustomType.Parameter("services") @Nullable String services,
-        @CustomType.Parameter("servicesLoadBalancers") @Nullable String servicesLoadBalancers,
-        @CustomType.Parameter("servicesNodePorts") @Nullable String servicesNodePorts) {
-        this.configMaps = configMaps;
-        this.limitsCpu = limitsCpu;
-        this.limitsMemory = limitsMemory;
-        this.persistentVolumeClaims = persistentVolumeClaims;
-        this.pods = pods;
-        this.replicationControllers = replicationControllers;
-        this.requestsCpu = requestsCpu;
-        this.requestsMemory = requestsMemory;
-        this.requestsStorage = requestsStorage;
-        this.secrets = secrets;
-        this.services = services;
-        this.servicesLoadBalancers = servicesLoadBalancers;
-        this.servicesNodePorts = servicesNodePorts;
-    }
-
+    private GetProjectResourceQuotaProjectLimit() {}
     public Optional<String> configMaps() {
         return Optional.ofNullable(this.configMaps);
     }
@@ -102,7 +73,7 @@ public final class GetProjectResourceQuotaProjectLimit {
     public static Builder builder(GetProjectResourceQuotaProjectLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String configMaps;
         private @Nullable String limitsCpu;
@@ -117,11 +88,7 @@ public final class GetProjectResourceQuotaProjectLimit {
         private @Nullable String services;
         private @Nullable String servicesLoadBalancers;
         private @Nullable String servicesNodePorts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectResourceQuotaProjectLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configMaps = defaults.configMaps;
@@ -139,59 +106,87 @@ public final class GetProjectResourceQuotaProjectLimit {
     	      this.servicesNodePorts = defaults.servicesNodePorts;
         }
 
+        @CustomType.Setter
         public Builder configMaps(@Nullable String configMaps) {
             this.configMaps = configMaps;
             return this;
         }
+        @CustomType.Setter
         public Builder limitsCpu(@Nullable String limitsCpu) {
             this.limitsCpu = limitsCpu;
             return this;
         }
+        @CustomType.Setter
         public Builder limitsMemory(@Nullable String limitsMemory) {
             this.limitsMemory = limitsMemory;
             return this;
         }
+        @CustomType.Setter
         public Builder persistentVolumeClaims(@Nullable String persistentVolumeClaims) {
             this.persistentVolumeClaims = persistentVolumeClaims;
             return this;
         }
+        @CustomType.Setter
         public Builder pods(@Nullable String pods) {
             this.pods = pods;
             return this;
         }
+        @CustomType.Setter
         public Builder replicationControllers(@Nullable String replicationControllers) {
             this.replicationControllers = replicationControllers;
             return this;
         }
+        @CustomType.Setter
         public Builder requestsCpu(@Nullable String requestsCpu) {
             this.requestsCpu = requestsCpu;
             return this;
         }
+        @CustomType.Setter
         public Builder requestsMemory(@Nullable String requestsMemory) {
             this.requestsMemory = requestsMemory;
             return this;
         }
+        @CustomType.Setter
         public Builder requestsStorage(@Nullable String requestsStorage) {
             this.requestsStorage = requestsStorage;
             return this;
         }
+        @CustomType.Setter
         public Builder secrets(@Nullable String secrets) {
             this.secrets = secrets;
             return this;
         }
+        @CustomType.Setter
         public Builder services(@Nullable String services) {
             this.services = services;
             return this;
         }
+        @CustomType.Setter
         public Builder servicesLoadBalancers(@Nullable String servicesLoadBalancers) {
             this.servicesLoadBalancers = servicesLoadBalancers;
             return this;
         }
+        @CustomType.Setter
         public Builder servicesNodePorts(@Nullable String servicesNodePorts) {
             this.servicesNodePorts = servicesNodePorts;
             return this;
-        }        public GetProjectResourceQuotaProjectLimit build() {
-            return new GetProjectResourceQuotaProjectLimit(configMaps, limitsCpu, limitsMemory, persistentVolumeClaims, pods, replicationControllers, requestsCpu, requestsMemory, requestsStorage, secrets, services, servicesLoadBalancers, servicesNodePorts);
+        }
+        public GetProjectResourceQuotaProjectLimit build() {
+            final var o = new GetProjectResourceQuotaProjectLimit();
+            o.configMaps = configMaps;
+            o.limitsCpu = limitsCpu;
+            o.limitsMemory = limitsMemory;
+            o.persistentVolumeClaims = persistentVolumeClaims;
+            o.pods = pods;
+            o.replicationControllers = replicationControllers;
+            o.requestsCpu = requestsCpu;
+            o.requestsMemory = requestsMemory;
+            o.requestsStorage = requestsStorage;
+            o.secrets = secrets;
+            o.services = services;
+            o.servicesLoadBalancers = servicesLoadBalancers;
+            o.servicesNodePorts = servicesNodePorts;
+            return o;
         }
     }
 }

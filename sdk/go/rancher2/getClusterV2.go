@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupClusterV2(ctx, &GetClusterV2Args{
-// 			FleetNamespace: pulumi.StringRef("fleet-ns"),
-// 			Name:           "foo",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.LookupClusterV2(ctx, &GetClusterV2Args{
+//				FleetNamespace: pulumi.StringRef("fleet-ns"),
+//				Name:           "foo",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupClusterV2(ctx *pulumi.Context, args *LookupClusterV2Args, opts ...pulumi.InvokeOption) (*LookupClusterV2Result, error) {
 	var rv LookupClusterV2Result

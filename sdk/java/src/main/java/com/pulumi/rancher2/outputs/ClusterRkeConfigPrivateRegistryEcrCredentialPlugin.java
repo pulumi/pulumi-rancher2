@@ -15,28 +15,19 @@ public final class ClusterRkeConfigPrivateRegistryEcrCredentialPlugin {
      * @return AWS access key ID (string)
      * 
      */
-    private final @Nullable String awsAccessKeyId;
+    private @Nullable String awsAccessKeyId;
     /**
      * @return AWS secret access key (string)
      * 
      */
-    private final @Nullable String awsSecretAccessKey;
+    private @Nullable String awsSecretAccessKey;
     /**
      * @return AWS session token (string)
      * 
      */
-    private final @Nullable String awsSessionToken;
+    private @Nullable String awsSessionToken;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigPrivateRegistryEcrCredentialPlugin(
-        @CustomType.Parameter("awsAccessKeyId") @Nullable String awsAccessKeyId,
-        @CustomType.Parameter("awsSecretAccessKey") @Nullable String awsSecretAccessKey,
-        @CustomType.Parameter("awsSessionToken") @Nullable String awsSessionToken) {
-        this.awsAccessKeyId = awsAccessKeyId;
-        this.awsSecretAccessKey = awsSecretAccessKey;
-        this.awsSessionToken = awsSessionToken;
-    }
-
+    private ClusterRkeConfigPrivateRegistryEcrCredentialPlugin() {}
     /**
      * @return AWS access key ID (string)
      * 
@@ -66,16 +57,12 @@ public final class ClusterRkeConfigPrivateRegistryEcrCredentialPlugin {
     public static Builder builder(ClusterRkeConfigPrivateRegistryEcrCredentialPlugin defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String awsAccessKeyId;
         private @Nullable String awsSecretAccessKey;
         private @Nullable String awsSessionToken;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigPrivateRegistryEcrCredentialPlugin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsAccessKeyId = defaults.awsAccessKeyId;
@@ -83,19 +70,27 @@ public final class ClusterRkeConfigPrivateRegistryEcrCredentialPlugin {
     	      this.awsSessionToken = defaults.awsSessionToken;
         }
 
+        @CustomType.Setter
         public Builder awsAccessKeyId(@Nullable String awsAccessKeyId) {
             this.awsAccessKeyId = awsAccessKeyId;
             return this;
         }
+        @CustomType.Setter
         public Builder awsSecretAccessKey(@Nullable String awsSecretAccessKey) {
             this.awsSecretAccessKey = awsSecretAccessKey;
             return this;
         }
+        @CustomType.Setter
         public Builder awsSessionToken(@Nullable String awsSessionToken) {
             this.awsSessionToken = awsSessionToken;
             return this;
-        }        public ClusterRkeConfigPrivateRegistryEcrCredentialPlugin build() {
-            return new ClusterRkeConfigPrivateRegistryEcrCredentialPlugin(awsAccessKeyId, awsSecretAccessKey, awsSessionToken);
+        }
+        public ClusterRkeConfigPrivateRegistryEcrCredentialPlugin build() {
+            final var o = new ClusterRkeConfigPrivateRegistryEcrCredentialPlugin();
+            o.awsAccessKeyId = awsAccessKeyId;
+            o.awsSecretAccessKey = awsSecretAccessKey;
+            o.awsSessionToken = awsSessionToken;
+            return o;
         }
     }
 }

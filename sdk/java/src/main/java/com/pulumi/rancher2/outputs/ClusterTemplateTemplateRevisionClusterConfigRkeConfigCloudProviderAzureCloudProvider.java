@@ -13,98 +13,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider {
-    private final @Nullable String aadClientCertPassword;
-    private final @Nullable String aadClientCertPath;
-    private final String aadClientId;
-    private final String aadClientSecret;
-    private final @Nullable String cloud;
-    private final @Nullable Boolean cloudProviderBackoff;
-    private final @Nullable Integer cloudProviderBackoffDuration;
-    private final @Nullable Integer cloudProviderBackoffExponent;
-    private final @Nullable Integer cloudProviderBackoffJitter;
-    private final @Nullable Integer cloudProviderBackoffRetries;
-    private final @Nullable Boolean cloudProviderRateLimit;
-    private final @Nullable Integer cloudProviderRateLimitBucket;
-    private final @Nullable Integer cloudProviderRateLimitQps;
-    private final @Nullable String loadBalancerSku;
-    private final @Nullable String location;
-    private final @Nullable Integer maximumLoadBalancerRuleCount;
-    private final @Nullable String primaryAvailabilitySetName;
-    private final @Nullable String primaryScaleSetName;
-    private final @Nullable String resourceGroup;
-    private final @Nullable String routeTableName;
-    private final @Nullable String securityGroupName;
-    private final @Nullable String subnetName;
-    private final String subscriptionId;
-    private final String tenantId;
-    private final @Nullable Boolean useInstanceMetadata;
-    private final @Nullable Boolean useManagedIdentityExtension;
-    private final @Nullable String vmType;
-    private final @Nullable String vnetName;
-    private final @Nullable String vnetResourceGroup;
+    private @Nullable String aadClientCertPassword;
+    private @Nullable String aadClientCertPath;
+    private String aadClientId;
+    private String aadClientSecret;
+    private @Nullable String cloud;
+    private @Nullable Boolean cloudProviderBackoff;
+    private @Nullable Integer cloudProviderBackoffDuration;
+    private @Nullable Integer cloudProviderBackoffExponent;
+    private @Nullable Integer cloudProviderBackoffJitter;
+    private @Nullable Integer cloudProviderBackoffRetries;
+    private @Nullable Boolean cloudProviderRateLimit;
+    private @Nullable Integer cloudProviderRateLimitBucket;
+    private @Nullable Integer cloudProviderRateLimitQps;
+    private @Nullable String loadBalancerSku;
+    private @Nullable String location;
+    private @Nullable Integer maximumLoadBalancerRuleCount;
+    private @Nullable String primaryAvailabilitySetName;
+    private @Nullable String primaryScaleSetName;
+    private @Nullable String resourceGroup;
+    private @Nullable String routeTableName;
+    private @Nullable String securityGroupName;
+    private @Nullable String subnetName;
+    private String subscriptionId;
+    private String tenantId;
+    private @Nullable Boolean useInstanceMetadata;
+    private @Nullable Boolean useManagedIdentityExtension;
+    private @Nullable String vmType;
+    private @Nullable String vnetName;
+    private @Nullable String vnetResourceGroup;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider(
-        @CustomType.Parameter("aadClientCertPassword") @Nullable String aadClientCertPassword,
-        @CustomType.Parameter("aadClientCertPath") @Nullable String aadClientCertPath,
-        @CustomType.Parameter("aadClientId") String aadClientId,
-        @CustomType.Parameter("aadClientSecret") String aadClientSecret,
-        @CustomType.Parameter("cloud") @Nullable String cloud,
-        @CustomType.Parameter("cloudProviderBackoff") @Nullable Boolean cloudProviderBackoff,
-        @CustomType.Parameter("cloudProviderBackoffDuration") @Nullable Integer cloudProviderBackoffDuration,
-        @CustomType.Parameter("cloudProviderBackoffExponent") @Nullable Integer cloudProviderBackoffExponent,
-        @CustomType.Parameter("cloudProviderBackoffJitter") @Nullable Integer cloudProviderBackoffJitter,
-        @CustomType.Parameter("cloudProviderBackoffRetries") @Nullable Integer cloudProviderBackoffRetries,
-        @CustomType.Parameter("cloudProviderRateLimit") @Nullable Boolean cloudProviderRateLimit,
-        @CustomType.Parameter("cloudProviderRateLimitBucket") @Nullable Integer cloudProviderRateLimitBucket,
-        @CustomType.Parameter("cloudProviderRateLimitQps") @Nullable Integer cloudProviderRateLimitQps,
-        @CustomType.Parameter("loadBalancerSku") @Nullable String loadBalancerSku,
-        @CustomType.Parameter("location") @Nullable String location,
-        @CustomType.Parameter("maximumLoadBalancerRuleCount") @Nullable Integer maximumLoadBalancerRuleCount,
-        @CustomType.Parameter("primaryAvailabilitySetName") @Nullable String primaryAvailabilitySetName,
-        @CustomType.Parameter("primaryScaleSetName") @Nullable String primaryScaleSetName,
-        @CustomType.Parameter("resourceGroup") @Nullable String resourceGroup,
-        @CustomType.Parameter("routeTableName") @Nullable String routeTableName,
-        @CustomType.Parameter("securityGroupName") @Nullable String securityGroupName,
-        @CustomType.Parameter("subnetName") @Nullable String subnetName,
-        @CustomType.Parameter("subscriptionId") String subscriptionId,
-        @CustomType.Parameter("tenantId") String tenantId,
-        @CustomType.Parameter("useInstanceMetadata") @Nullable Boolean useInstanceMetadata,
-        @CustomType.Parameter("useManagedIdentityExtension") @Nullable Boolean useManagedIdentityExtension,
-        @CustomType.Parameter("vmType") @Nullable String vmType,
-        @CustomType.Parameter("vnetName") @Nullable String vnetName,
-        @CustomType.Parameter("vnetResourceGroup") @Nullable String vnetResourceGroup) {
-        this.aadClientCertPassword = aadClientCertPassword;
-        this.aadClientCertPath = aadClientCertPath;
-        this.aadClientId = aadClientId;
-        this.aadClientSecret = aadClientSecret;
-        this.cloud = cloud;
-        this.cloudProviderBackoff = cloudProviderBackoff;
-        this.cloudProviderBackoffDuration = cloudProviderBackoffDuration;
-        this.cloudProviderBackoffExponent = cloudProviderBackoffExponent;
-        this.cloudProviderBackoffJitter = cloudProviderBackoffJitter;
-        this.cloudProviderBackoffRetries = cloudProviderBackoffRetries;
-        this.cloudProviderRateLimit = cloudProviderRateLimit;
-        this.cloudProviderRateLimitBucket = cloudProviderRateLimitBucket;
-        this.cloudProviderRateLimitQps = cloudProviderRateLimitQps;
-        this.loadBalancerSku = loadBalancerSku;
-        this.location = location;
-        this.maximumLoadBalancerRuleCount = maximumLoadBalancerRuleCount;
-        this.primaryAvailabilitySetName = primaryAvailabilitySetName;
-        this.primaryScaleSetName = primaryScaleSetName;
-        this.resourceGroup = resourceGroup;
-        this.routeTableName = routeTableName;
-        this.securityGroupName = securityGroupName;
-        this.subnetName = subnetName;
-        this.subscriptionId = subscriptionId;
-        this.tenantId = tenantId;
-        this.useInstanceMetadata = useInstanceMetadata;
-        this.useManagedIdentityExtension = useManagedIdentityExtension;
-        this.vmType = vmType;
-        this.vnetName = vnetName;
-        this.vnetResourceGroup = vnetResourceGroup;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider() {}
     public Optional<String> aadClientCertPassword() {
         return Optional.ofNullable(this.aadClientCertPassword);
     }
@@ -200,7 +139,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String aadClientCertPassword;
         private @Nullable String aadClientCertPath;
@@ -231,11 +170,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         private @Nullable String vmType;
         private @Nullable String vnetName;
         private @Nullable String vnetResourceGroup;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aadClientCertPassword = defaults.aadClientCertPassword;
@@ -269,123 +204,183 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     	      this.vnetResourceGroup = defaults.vnetResourceGroup;
         }
 
+        @CustomType.Setter
         public Builder aadClientCertPassword(@Nullable String aadClientCertPassword) {
             this.aadClientCertPassword = aadClientCertPassword;
             return this;
         }
+        @CustomType.Setter
         public Builder aadClientCertPath(@Nullable String aadClientCertPath) {
             this.aadClientCertPath = aadClientCertPath;
             return this;
         }
+        @CustomType.Setter
         public Builder aadClientId(String aadClientId) {
             this.aadClientId = Objects.requireNonNull(aadClientId);
             return this;
         }
+        @CustomType.Setter
         public Builder aadClientSecret(String aadClientSecret) {
             this.aadClientSecret = Objects.requireNonNull(aadClientSecret);
             return this;
         }
+        @CustomType.Setter
         public Builder cloud(@Nullable String cloud) {
             this.cloud = cloud;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudProviderBackoff(@Nullable Boolean cloudProviderBackoff) {
             this.cloudProviderBackoff = cloudProviderBackoff;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudProviderBackoffDuration(@Nullable Integer cloudProviderBackoffDuration) {
             this.cloudProviderBackoffDuration = cloudProviderBackoffDuration;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudProviderBackoffExponent(@Nullable Integer cloudProviderBackoffExponent) {
             this.cloudProviderBackoffExponent = cloudProviderBackoffExponent;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudProviderBackoffJitter(@Nullable Integer cloudProviderBackoffJitter) {
             this.cloudProviderBackoffJitter = cloudProviderBackoffJitter;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudProviderBackoffRetries(@Nullable Integer cloudProviderBackoffRetries) {
             this.cloudProviderBackoffRetries = cloudProviderBackoffRetries;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudProviderRateLimit(@Nullable Boolean cloudProviderRateLimit) {
             this.cloudProviderRateLimit = cloudProviderRateLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudProviderRateLimitBucket(@Nullable Integer cloudProviderRateLimitBucket) {
             this.cloudProviderRateLimitBucket = cloudProviderRateLimitBucket;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudProviderRateLimitQps(@Nullable Integer cloudProviderRateLimitQps) {
             this.cloudProviderRateLimitQps = cloudProviderRateLimitQps;
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerSku(@Nullable String loadBalancerSku) {
             this.loadBalancerSku = loadBalancerSku;
             return this;
         }
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
+        @CustomType.Setter
         public Builder maximumLoadBalancerRuleCount(@Nullable Integer maximumLoadBalancerRuleCount) {
             this.maximumLoadBalancerRuleCount = maximumLoadBalancerRuleCount;
             return this;
         }
+        @CustomType.Setter
         public Builder primaryAvailabilitySetName(@Nullable String primaryAvailabilitySetName) {
             this.primaryAvailabilitySetName = primaryAvailabilitySetName;
             return this;
         }
+        @CustomType.Setter
         public Builder primaryScaleSetName(@Nullable String primaryScaleSetName) {
             this.primaryScaleSetName = primaryScaleSetName;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroup(@Nullable String resourceGroup) {
             this.resourceGroup = resourceGroup;
             return this;
         }
+        @CustomType.Setter
         public Builder routeTableName(@Nullable String routeTableName) {
             this.routeTableName = routeTableName;
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupName(@Nullable String securityGroupName) {
             this.securityGroupName = securityGroupName;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetName(@Nullable String subnetName) {
             this.subnetName = subnetName;
             return this;
         }
+        @CustomType.Setter
         public Builder subscriptionId(String subscriptionId) {
             this.subscriptionId = Objects.requireNonNull(subscriptionId);
             return this;
         }
+        @CustomType.Setter
         public Builder tenantId(String tenantId) {
             this.tenantId = Objects.requireNonNull(tenantId);
             return this;
         }
+        @CustomType.Setter
         public Builder useInstanceMetadata(@Nullable Boolean useInstanceMetadata) {
             this.useInstanceMetadata = useInstanceMetadata;
             return this;
         }
+        @CustomType.Setter
         public Builder useManagedIdentityExtension(@Nullable Boolean useManagedIdentityExtension) {
             this.useManagedIdentityExtension = useManagedIdentityExtension;
             return this;
         }
+        @CustomType.Setter
         public Builder vmType(@Nullable String vmType) {
             this.vmType = vmType;
             return this;
         }
+        @CustomType.Setter
         public Builder vnetName(@Nullable String vnetName) {
             this.vnetName = vnetName;
             return this;
         }
+        @CustomType.Setter
         public Builder vnetResourceGroup(@Nullable String vnetResourceGroup) {
             this.vnetResourceGroup = vnetResourceGroup;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider(aadClientCertPassword, aadClientCertPath, aadClientId, aadClientSecret, cloud, cloudProviderBackoff, cloudProviderBackoffDuration, cloudProviderBackoffExponent, cloudProviderBackoffJitter, cloudProviderBackoffRetries, cloudProviderRateLimit, cloudProviderRateLimitBucket, cloudProviderRateLimitQps, loadBalancerSku, location, maximumLoadBalancerRuleCount, primaryAvailabilitySetName, primaryScaleSetName, resourceGroup, routeTableName, securityGroupName, subnetName, subscriptionId, tenantId, useInstanceMetadata, useManagedIdentityExtension, vmType, vnetName, vnetResourceGroup);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider();
+            o.aadClientCertPassword = aadClientCertPassword;
+            o.aadClientCertPath = aadClientCertPath;
+            o.aadClientId = aadClientId;
+            o.aadClientSecret = aadClientSecret;
+            o.cloud = cloud;
+            o.cloudProviderBackoff = cloudProviderBackoff;
+            o.cloudProviderBackoffDuration = cloudProviderBackoffDuration;
+            o.cloudProviderBackoffExponent = cloudProviderBackoffExponent;
+            o.cloudProviderBackoffJitter = cloudProviderBackoffJitter;
+            o.cloudProviderBackoffRetries = cloudProviderBackoffRetries;
+            o.cloudProviderRateLimit = cloudProviderRateLimit;
+            o.cloudProviderRateLimitBucket = cloudProviderRateLimitBucket;
+            o.cloudProviderRateLimitQps = cloudProviderRateLimitQps;
+            o.loadBalancerSku = loadBalancerSku;
+            o.location = location;
+            o.maximumLoadBalancerRuleCount = maximumLoadBalancerRuleCount;
+            o.primaryAvailabilitySetName = primaryAvailabilitySetName;
+            o.primaryScaleSetName = primaryScaleSetName;
+            o.resourceGroup = resourceGroup;
+            o.routeTableName = routeTableName;
+            o.securityGroupName = securityGroupName;
+            o.subnetName = subnetName;
+            o.subscriptionId = subscriptionId;
+            o.tenantId = tenantId;
+            o.useInstanceMetadata = useInstanceMetadata;
+            o.useManagedIdentityExtension = useManagedIdentityExtension;
+            o.vmType = vmType;
+            o.vnetName = vnetName;
+            o.vnetResourceGroup = vnetResourceGroup;
+            return o;
         }
     }
 }

@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider {
-    private final GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal global;
-    private final @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides;
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal global;
+    private @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides;
 
-    @CustomType.Constructor
-    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider(
-        @CustomType.Parameter("global") GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal global,
-        @CustomType.Parameter("serviceOverrides") @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides) {
-        this.global = global;
-        this.serviceOverrides = serviceOverrides;
-    }
-
+    private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider() {}
     public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal global() {
         return this.global;
     }
@@ -37,33 +30,35 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
     public static Builder builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal global;
         private @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.global = defaults.global;
     	      this.serviceOverrides = defaults.serviceOverrides;
         }
 
+        @CustomType.Setter
         public Builder global(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal global) {
             this.global = Objects.requireNonNull(global);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceOverrides(@Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides) {
             this.serviceOverrides = serviceOverrides;
             return this;
         }
         public Builder serviceOverrides(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride... serviceOverrides) {
             return serviceOverrides(List.of(serviceOverrides));
-        }        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider build() {
-            return new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider(global, serviceOverrides);
+        }
+        public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider build() {
+            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider();
+            o.global = global;
+            o.serviceOverrides = serviceOverrides;
+            return o;
         }
     }
 }

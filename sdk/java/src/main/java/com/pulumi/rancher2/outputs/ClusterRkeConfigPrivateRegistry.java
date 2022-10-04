@@ -17,42 +17,29 @@ public final class ClusterRkeConfigPrivateRegistry {
      * @return ECR credential plugin config (list maxitems:1)
      * 
      */
-    private final @Nullable ClusterRkeConfigPrivateRegistryEcrCredentialPlugin ecrCredentialPlugin;
+    private @Nullable ClusterRkeConfigPrivateRegistryEcrCredentialPlugin ecrCredentialPlugin;
     /**
      * @return Set as default registry. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean isDefault;
+    private @Nullable Boolean isDefault;
     /**
      * @return Registry password (string)
      * 
      */
-    private final @Nullable String password;
+    private @Nullable String password;
     /**
      * @return Registry URL (string)
      * 
      */
-    private final String url;
+    private String url;
     /**
      * @return Registry user (string)
      * 
      */
-    private final @Nullable String user;
+    private @Nullable String user;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigPrivateRegistry(
-        @CustomType.Parameter("ecrCredentialPlugin") @Nullable ClusterRkeConfigPrivateRegistryEcrCredentialPlugin ecrCredentialPlugin,
-        @CustomType.Parameter("isDefault") @Nullable Boolean isDefault,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("url") String url,
-        @CustomType.Parameter("user") @Nullable String user) {
-        this.ecrCredentialPlugin = ecrCredentialPlugin;
-        this.isDefault = isDefault;
-        this.password = password;
-        this.url = url;
-        this.user = user;
-    }
-
+    private ClusterRkeConfigPrivateRegistry() {}
     /**
      * @return ECR credential plugin config (list maxitems:1)
      * 
@@ -96,18 +83,14 @@ public final class ClusterRkeConfigPrivateRegistry {
     public static Builder builder(ClusterRkeConfigPrivateRegistry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRkeConfigPrivateRegistryEcrCredentialPlugin ecrCredentialPlugin;
         private @Nullable Boolean isDefault;
         private @Nullable String password;
         private String url;
         private @Nullable String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigPrivateRegistry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ecrCredentialPlugin = defaults.ecrCredentialPlugin;
@@ -117,27 +100,39 @@ public final class ClusterRkeConfigPrivateRegistry {
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder ecrCredentialPlugin(@Nullable ClusterRkeConfigPrivateRegistryEcrCredentialPlugin ecrCredentialPlugin) {
             this.ecrCredentialPlugin = ecrCredentialPlugin;
             return this;
         }
+        @CustomType.Setter
         public Builder isDefault(@Nullable Boolean isDefault) {
             this.isDefault = isDefault;
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
         }
+        @CustomType.Setter
         public Builder user(@Nullable String user) {
             this.user = user;
             return this;
-        }        public ClusterRkeConfigPrivateRegistry build() {
-            return new ClusterRkeConfigPrivateRegistry(ecrCredentialPlugin, isDefault, password, url, user);
+        }
+        public ClusterRkeConfigPrivateRegistry build() {
+            final var o = new ClusterRkeConfigPrivateRegistry();
+            o.ecrCredentialPlugin = ecrCredentialPlugin;
+            o.isDefault = isDefault;
+            o.password = password;
+            o.url = url;
+            o.user = user;
+            return o;
         }
     }
 }

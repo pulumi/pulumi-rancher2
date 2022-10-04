@@ -13,21 +13,14 @@ public final class PodSecurityPolicyTemplateHostPort {
      * @return (int)
      * 
      */
-    private final Integer max;
+    private Integer max;
     /**
      * @return (int)
      * 
      */
-    private final Integer min;
+    private Integer min;
 
-    @CustomType.Constructor
-    private PodSecurityPolicyTemplateHostPort(
-        @CustomType.Parameter("max") Integer max,
-        @CustomType.Parameter("min") Integer min) {
-        this.max = max;
-        this.min = min;
-    }
-
+    private PodSecurityPolicyTemplateHostPort() {}
     /**
      * @return (int)
      * 
@@ -50,30 +43,32 @@ public final class PodSecurityPolicyTemplateHostPort {
     public static Builder builder(PodSecurityPolicyTemplateHostPort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer max;
         private Integer min;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PodSecurityPolicyTemplateHostPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.max = defaults.max;
     	      this.min = defaults.min;
         }
 
+        @CustomType.Setter
         public Builder max(Integer max) {
             this.max = Objects.requireNonNull(max);
             return this;
         }
+        @CustomType.Setter
         public Builder min(Integer min) {
             this.min = Objects.requireNonNull(min);
             return this;
-        }        public PodSecurityPolicyTemplateHostPort build() {
-            return new PodSecurityPolicyTemplateHostPort(max, min);
+        }
+        public PodSecurityPolicyTemplateHostPort build() {
+            final var o = new PodSecurityPolicyTemplateHostPort();
+            o.max = max;
+            o.min = min;
+            return o;
         }
     }
 }

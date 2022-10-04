@@ -16,21 +16,14 @@ public final class ClusterRkeConfigAuthentication {
      * @return RKE sans for authentication ([]string)
      * 
      */
-    private final @Nullable List<String> sans;
+    private @Nullable List<String> sans;
     /**
      * @return Monitoring deployment update strategy (string)
      * 
      */
-    private final @Nullable String strategy;
+    private @Nullable String strategy;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigAuthentication(
-        @CustomType.Parameter("sans") @Nullable List<String> sans,
-        @CustomType.Parameter("strategy") @Nullable String strategy) {
-        this.sans = sans;
-        this.strategy = strategy;
-    }
-
+    private ClusterRkeConfigAuthentication() {}
     /**
      * @return RKE sans for authentication ([]string)
      * 
@@ -53,21 +46,18 @@ public final class ClusterRkeConfigAuthentication {
     public static Builder builder(ClusterRkeConfigAuthentication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> sans;
         private @Nullable String strategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sans = defaults.sans;
     	      this.strategy = defaults.strategy;
         }
 
+        @CustomType.Setter
         public Builder sans(@Nullable List<String> sans) {
             this.sans = sans;
             return this;
@@ -75,11 +65,16 @@ public final class ClusterRkeConfigAuthentication {
         public Builder sans(String... sans) {
             return sans(List.of(sans));
         }
+        @CustomType.Setter
         public Builder strategy(@Nullable String strategy) {
             this.strategy = strategy;
             return this;
-        }        public ClusterRkeConfigAuthentication build() {
-            return new ClusterRkeConfigAuthentication(sans, strategy);
+        }
+        public ClusterRkeConfigAuthentication build() {
+            final var o = new ClusterRkeConfigAuthentication();
+            o.sans = sans;
+            o.strategy = strategy;
+            return o;
         }
     }
 }

@@ -19,51 +19,32 @@ public final class GetRegistryResult {
      * @return (Computed) Annotations for Registry object (map)
      * 
      */
-    private final Map<String,Object> annotations;
+    private Map<String,Object> annotations;
     /**
      * @return (Computed) A registry description (string)
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Computed) Labels for Registry object (map)
      * 
      */
-    private final Map<String,Object> labels;
-    private final String name;
-    private final @Nullable String namespaceId;
-    private final String projectId;
+    private Map<String,Object> labels;
+    private String name;
+    private @Nullable String namespaceId;
+    private String projectId;
     /**
      * @return (Computed) Registries data for registry (list)
      * 
      */
-    private final List<GetRegistryRegistry> registries;
+    private List<GetRegistryRegistry> registries;
 
-    @CustomType.Constructor
-    private GetRegistryResult(
-        @CustomType.Parameter("annotations") Map<String,Object> annotations,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("namespaceId") @Nullable String namespaceId,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("registries") List<GetRegistryRegistry> registries) {
-        this.annotations = annotations;
-        this.description = description;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.namespaceId = namespaceId;
-        this.projectId = projectId;
-        this.registries = registries;
-    }
-
+    private GetRegistryResult() {}
     /**
      * @return (Computed) Annotations for Registry object (map)
      * 
@@ -116,7 +97,7 @@ public final class GetRegistryResult {
     public static Builder builder(GetRegistryResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
         private String description;
@@ -126,11 +107,7 @@ public final class GetRegistryResult {
         private @Nullable String namespaceId;
         private String projectId;
         private List<GetRegistryRegistry> registries;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegistryResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -143,42 +120,60 @@ public final class GetRegistryResult {
     	      this.registries = defaults.registries;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceId(@Nullable String namespaceId) {
             this.namespaceId = namespaceId;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder registries(List<GetRegistryRegistry> registries) {
             this.registries = Objects.requireNonNull(registries);
             return this;
         }
         public Builder registries(GetRegistryRegistry... registries) {
             return registries(List.of(registries));
-        }        public GetRegistryResult build() {
-            return new GetRegistryResult(annotations, description, id, labels, name, namespaceId, projectId, registries);
+        }
+        public GetRegistryResult build() {
+            final var o = new GetRegistryResult();
+            o.annotations = annotations;
+            o.description = description;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.namespaceId = namespaceId;
+            o.projectId = projectId;
+            o.registries = registries;
+            return o;
         }
     }
 }

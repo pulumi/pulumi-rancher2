@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterAlterRuleMetricRule {
-    private final @Nullable String comparison;
-    private final @Nullable String description;
-    private final String duration;
-    private final String expression;
-    private final Double thresholdValue;
+    private @Nullable String comparison;
+    private @Nullable String description;
+    private String duration;
+    private String expression;
+    private Double thresholdValue;
 
-    @CustomType.Constructor
-    private GetClusterAlterRuleMetricRule(
-        @CustomType.Parameter("comparison") @Nullable String comparison,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("duration") String duration,
-        @CustomType.Parameter("expression") String expression,
-        @CustomType.Parameter("thresholdValue") Double thresholdValue) {
-        this.comparison = comparison;
-        this.description = description;
-        this.duration = duration;
-        this.expression = expression;
-        this.thresholdValue = thresholdValue;
-    }
-
+    private GetClusterAlterRuleMetricRule() {}
     public Optional<String> comparison() {
         return Optional.ofNullable(this.comparison);
     }
@@ -55,18 +42,14 @@ public final class GetClusterAlterRuleMetricRule {
     public static Builder builder(GetClusterAlterRuleMetricRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String comparison;
         private @Nullable String description;
         private String duration;
         private String expression;
         private Double thresholdValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAlterRuleMetricRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comparison = defaults.comparison;
@@ -76,27 +59,39 @@ public final class GetClusterAlterRuleMetricRule {
     	      this.thresholdValue = defaults.thresholdValue;
         }
 
+        @CustomType.Setter
         public Builder comparison(@Nullable String comparison) {
             this.comparison = comparison;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder duration(String duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
         }
+        @CustomType.Setter
         public Builder thresholdValue(Double thresholdValue) {
             this.thresholdValue = Objects.requireNonNull(thresholdValue);
             return this;
-        }        public GetClusterAlterRuleMetricRule build() {
-            return new GetClusterAlterRuleMetricRule(comparison, description, duration, expression, thresholdValue);
+        }
+        public GetClusterAlterRuleMetricRule build() {
+            final var o = new GetClusterAlterRuleMetricRule();
+            o.comparison = comparison;
+            o.description = description;
+            o.duration = duration;
+            o.expression = expression;
+            o.thresholdValue = thresholdValue;
+            return o;
         }
     }
 }

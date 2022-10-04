@@ -15,21 +15,14 @@ public final class ClusterAlertRuleEventRule {
      * @return Event type. Supported values : `&#34;Warning&#34; | &#34;Normal&#34;`. Default: `Warning` (string)
      * 
      */
-    private final @Nullable String eventType;
+    private @Nullable String eventType;
     /**
      * @return Resource kind. Supported values : `&#34;DaemonSet&#34; | &#34;Deployment&#34; | &#34;Node&#34; | &#34;Pod&#34; | &#34;StatefulSet&#34;` (string)
      * 
      */
-    private final String resourceKind;
+    private String resourceKind;
 
-    @CustomType.Constructor
-    private ClusterAlertRuleEventRule(
-        @CustomType.Parameter("eventType") @Nullable String eventType,
-        @CustomType.Parameter("resourceKind") String resourceKind) {
-        this.eventType = eventType;
-        this.resourceKind = resourceKind;
-    }
-
+    private ClusterAlertRuleEventRule() {}
     /**
      * @return Event type. Supported values : `&#34;Warning&#34; | &#34;Normal&#34;`. Default: `Warning` (string)
      * 
@@ -52,30 +45,32 @@ public final class ClusterAlertRuleEventRule {
     public static Builder builder(ClusterAlertRuleEventRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String eventType;
         private String resourceKind;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAlertRuleEventRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eventType = defaults.eventType;
     	      this.resourceKind = defaults.resourceKind;
         }
 
+        @CustomType.Setter
         public Builder eventType(@Nullable String eventType) {
             this.eventType = eventType;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceKind(String resourceKind) {
             this.resourceKind = Objects.requireNonNull(resourceKind);
             return this;
-        }        public ClusterAlertRuleEventRule build() {
-            return new ClusterAlertRuleEventRule(eventType, resourceKind);
+        }
+        public ClusterAlertRuleEventRule build() {
+            final var o = new ClusterAlertRuleEventRule();
+            o.eventType = eventType;
+            o.resourceKind = resourceKind;
+            return o;
         }
     }
 }

@@ -13,26 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry {
-    private final @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin ecrCredentialPlugin;
-    private final @Nullable Boolean isDefault;
-    private final @Nullable String password;
-    private final String url;
-    private final @Nullable String user;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin ecrCredentialPlugin;
+    private @Nullable Boolean isDefault;
+    private @Nullable String password;
+    private String url;
+    private @Nullable String user;
 
-    @CustomType.Constructor
-    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry(
-        @CustomType.Parameter("ecrCredentialPlugin") @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin ecrCredentialPlugin,
-        @CustomType.Parameter("isDefault") @Nullable Boolean isDefault,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("url") String url,
-        @CustomType.Parameter("user") @Nullable String user) {
-        this.ecrCredentialPlugin = ecrCredentialPlugin;
-        this.isDefault = isDefault;
-        this.password = password;
-        this.url = url;
-        this.user = user;
-    }
-
+    private ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry() {}
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin> ecrCredentialPlugin() {
         return Optional.ofNullable(this.ecrCredentialPlugin);
     }
@@ -56,18 +43,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateR
     public static Builder builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin ecrCredentialPlugin;
         private @Nullable Boolean isDefault;
         private @Nullable String password;
         private String url;
         private @Nullable String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ecrCredentialPlugin = defaults.ecrCredentialPlugin;
@@ -77,27 +60,39 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateR
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder ecrCredentialPlugin(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin ecrCredentialPlugin) {
             this.ecrCredentialPlugin = ecrCredentialPlugin;
             return this;
         }
+        @CustomType.Setter
         public Builder isDefault(@Nullable Boolean isDefault) {
             this.isDefault = isDefault;
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
         }
+        @CustomType.Setter
         public Builder user(@Nullable String user) {
             this.user = user;
             return this;
-        }        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry build() {
-            return new ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry(ecrCredentialPlugin, isDefault, password, url, user);
+        }
+        public ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry build() {
+            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry();
+            o.ecrCredentialPlugin = ecrCredentialPlugin;
+            o.isDefault = isDefault;
+            o.password = password;
+            o.url = url;
+            o.user = user;
+            return o;
         }
     }
 }

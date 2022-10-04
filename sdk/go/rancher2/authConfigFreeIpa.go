@@ -420,7 +420,7 @@ func (i *AuthConfigFreeIpa) ToAuthConfigFreeIpaOutputWithContext(ctx context.Con
 // AuthConfigFreeIpaArrayInput is an input type that accepts AuthConfigFreeIpaArray and AuthConfigFreeIpaArrayOutput values.
 // You can construct a concrete instance of `AuthConfigFreeIpaArrayInput` via:
 //
-//          AuthConfigFreeIpaArray{ AuthConfigFreeIpaArgs{...} }
+//	AuthConfigFreeIpaArray{ AuthConfigFreeIpaArgs{...} }
 type AuthConfigFreeIpaArrayInput interface {
 	pulumi.Input
 
@@ -445,7 +445,7 @@ func (i AuthConfigFreeIpaArray) ToAuthConfigFreeIpaArrayOutputWithContext(ctx co
 // AuthConfigFreeIpaMapInput is an input type that accepts AuthConfigFreeIpaMap and AuthConfigFreeIpaMapOutput values.
 // You can construct a concrete instance of `AuthConfigFreeIpaMapInput` via:
 //
-//          AuthConfigFreeIpaMap{ "key": AuthConfigFreeIpaArgs{...} }
+//	AuthConfigFreeIpaMap{ "key": AuthConfigFreeIpaArgs{...} }
 type AuthConfigFreeIpaMapInput interface {
 	pulumi.Input
 

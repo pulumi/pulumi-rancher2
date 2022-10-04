@@ -16,49 +16,34 @@ public final class ClusterRkeConfigBastionHost {
      * @return Address ip for node (string)
      * 
      */
-    private final String address;
+    private String address;
     /**
      * @return Port for node. Default `22` (string)
      * 
      */
-    private final @Nullable String port;
+    private @Nullable String port;
     /**
      * @return Use ssh agent auth. Default `false` (bool)
      * 
      */
-    private final @Nullable Boolean sshAgentAuth;
+    private @Nullable Boolean sshAgentAuth;
     /**
      * @return Node SSH private key (string)
      * 
      */
-    private final @Nullable String sshKey;
+    private @Nullable String sshKey;
     /**
      * @return Node SSH private key path (string)
      * 
      */
-    private final @Nullable String sshKeyPath;
+    private @Nullable String sshKeyPath;
     /**
      * @return Registry user (string)
      * 
      */
-    private final String user;
+    private String user;
 
-    @CustomType.Constructor
-    private ClusterRkeConfigBastionHost(
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("port") @Nullable String port,
-        @CustomType.Parameter("sshAgentAuth") @Nullable Boolean sshAgentAuth,
-        @CustomType.Parameter("sshKey") @Nullable String sshKey,
-        @CustomType.Parameter("sshKeyPath") @Nullable String sshKeyPath,
-        @CustomType.Parameter("user") String user) {
-        this.address = address;
-        this.port = port;
-        this.sshAgentAuth = sshAgentAuth;
-        this.sshKey = sshKey;
-        this.sshKeyPath = sshKeyPath;
-        this.user = user;
-    }
-
+    private ClusterRkeConfigBastionHost() {}
     /**
      * @return Address ip for node (string)
      * 
@@ -109,7 +94,7 @@ public final class ClusterRkeConfigBastionHost {
     public static Builder builder(ClusterRkeConfigBastionHost defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
         private @Nullable String port;
@@ -117,11 +102,7 @@ public final class ClusterRkeConfigBastionHost {
         private @Nullable String sshKey;
         private @Nullable String sshKeyPath;
         private String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterRkeConfigBastionHost defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -132,31 +113,45 @@ public final class ClusterRkeConfigBastionHost {
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder sshAgentAuth(@Nullable Boolean sshAgentAuth) {
             this.sshAgentAuth = sshAgentAuth;
             return this;
         }
+        @CustomType.Setter
         public Builder sshKey(@Nullable String sshKey) {
             this.sshKey = sshKey;
             return this;
         }
+        @CustomType.Setter
         public Builder sshKeyPath(@Nullable String sshKeyPath) {
             this.sshKeyPath = sshKeyPath;
             return this;
         }
+        @CustomType.Setter
         public Builder user(String user) {
             this.user = Objects.requireNonNull(user);
             return this;
-        }        public ClusterRkeConfigBastionHost build() {
-            return new ClusterRkeConfigBastionHost(address, port, sshAgentAuth, sshKey, sshKeyPath, user);
+        }
+        public ClusterRkeConfigBastionHost build() {
+            final var o = new ClusterRkeConfigBastionHost();
+            o.address = address;
+            o.port = port;
+            o.sshAgentAuth = sshAgentAuth;
+            o.sshKey = sshKey;
+            o.sshKeyPath = sshKeyPath;
+            o.user = user;
+            return o;
         }
     }
 }
