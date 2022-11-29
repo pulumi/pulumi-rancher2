@@ -337,6 +337,46 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 	return o
 }
 
+// Annotations for Node Pool object (map)
+func (o NamespaceOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Default containers resource limits on namespace (List maxitem:1)
+func (o NamespaceOutput) ContainerResourceLimit() NamespaceContainerResourceLimitPtrOutput {
+	return o.ApplyT(func(v *Namespace) NamespaceContainerResourceLimitPtrOutput { return v.ContainerResourceLimit }).(NamespaceContainerResourceLimitPtrOutput)
+}
+
+// A namespace description (string)
+func (o NamespaceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Labels for Node Pool object (map)
+func (o NamespaceOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the namespace (string)
+func (o NamespaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
+func (o NamespaceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+func (o NamespaceOutput) ResourceQuota() NamespaceResourceQuotaOutput {
+	return o.ApplyT(func(v *Namespace) NamespaceResourceQuotaOutput { return v.ResourceQuota }).(NamespaceResourceQuotaOutput)
+}
+
+// Wait for cluster becomes active. Default `false` (bool)
+func (o NamespaceOutput) WaitForCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.BoolPtrOutput { return v.WaitForCluster }).(pulumi.BoolPtrOutput)
+}
+
 type NamespaceArrayOutput struct{ *pulumi.OutputState }
 
 func (NamespaceArrayOutput) ElementType() reflect.Type {

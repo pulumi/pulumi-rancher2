@@ -24,6 +24,35 @@ import javax.annotation.Nullable;
  * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.AuthConfigGithub;
+ * import com.pulumi.rancher2.AuthConfigGithubArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var github = new AuthConfigGithub(&#34;github&#34;, AuthConfigGithubArgs.builder()        
+ *             .clientId(&#34;&lt;GITHUB_CLIENT_ID&gt;&#34;)
+ *             .clientSecret(&#34;&lt;GITHUB_CLIENT_SECRET&gt;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="rancher2:index/authConfigGithub:AuthConfigGithub")
@@ -215,6 +244,10 @@ public class AuthConfigGithub extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "clientId",
+                "clientSecret"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

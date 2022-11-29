@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ProjectResourceQuotaNamespaceDefaultLimitGetArgs : Pulumi.ResourceArgs
+    public sealed class ProjectResourceQuotaNamespaceDefaultLimitGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Limit for config maps in project (string)
@@ -90,5 +90,6 @@ namespace Pulumi.Rancher2.Inputs
         public ProjectResourceQuotaNamespaceDefaultLimitGetArgs()
         {
         }
+        public static new ProjectResourceQuotaNamespaceDefaultLimitGetArgs Empty => new ProjectResourceQuotaNamespaceDefaultLimitGetArgs();
     }
 }

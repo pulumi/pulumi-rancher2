@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2NodePoolArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2NodePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GKE node pool config autoscaling (List maxitems:1)
@@ -57,5 +57,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2NodePoolArgs()
         {
         }
+        public static new ClusterGkeConfigV2NodePoolArgs Empty => new ClusterGkeConfigV2NodePoolArgs();
     }
 }

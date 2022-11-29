@@ -19,11 +19,41 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Rancher v2 Auth Config AzureAD resource. This can be used to configure and enable Auth Config AzureAD for Rancher v2 RKE clusters and retrieve their information.
- * 
- * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
- * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.AuthConfigAzureAd;
+ * import com.pulumi.rancher2.AuthConfigAzureAdArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var azuread = new AuthConfigAzureAd(&#34;azuread&#34;, AuthConfigAzureAdArgs.builder()        
+ *             .applicationId(&#34;&lt;AZUREAD_APP_ID&gt;&#34;)
+ *             .applicationSecret(&#34;&lt;AZUREAD_APP_SECRET&gt;&#34;)
+ *             .authEndpoint(&#34;&lt;AZUREAD_AUTH_ENDPOINT&gt;&#34;)
+ *             .graphEndpoint(&#34;&lt;AZUREAD_GRAPH_ENDPOINT&gt;&#34;)
+ *             .rancherUrl(&#34;&lt;RANCHER_URL&gt;&#34;)
+ *             .tenantId(&#34;&lt;AZUREAD_TENANT_ID&gt;&#34;)
+ *             .tokenEndpoint(&#34;&lt;AZUREAD_TOKEN_ENDPOINT&gt;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="rancher2:index/authConfigAzureAd:AuthConfigAzureAd")
@@ -271,6 +301,10 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "applicationId",
+                "applicationSecret"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

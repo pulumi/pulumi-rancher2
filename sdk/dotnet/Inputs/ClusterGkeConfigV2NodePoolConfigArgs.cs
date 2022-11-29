@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2NodePoolConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2NodePoolConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GKE node config disk size Gb (int)
@@ -99,5 +99,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2NodePoolConfigArgs()
         {
         }
+        public static new ClusterGkeConfigV2NodePoolConfigArgs Empty => new ClusterGkeConfigV2NodePoolConfigArgs();
     }
 }

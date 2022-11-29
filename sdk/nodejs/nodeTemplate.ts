@@ -2,13 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
  *
- * amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.
+ * amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, outscale, hetzner and vsphere drivers are supported for node templates.
  *
  * **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
  *
@@ -251,6 +252,10 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly openstackConfig!: pulumi.Output<outputs.NodeTemplateOpenstackConfig | undefined>;
     /**
+     * Outscale config for the Node Template (list maxitems:1)
+     */
+    public readonly outscaleConfig!: pulumi.Output<outputs.NodeTemplateOutscaleConfig | undefined>;
+    /**
      * Engine storage driver for the node template (bool)
      */
     public readonly useInternalIpAddress!: pulumi.Output<boolean | undefined>;
@@ -297,14 +302,15 @@ export class NodeTemplate extends pulumi.CustomResource {
             resourceInputs["nodeTaints"] = state ? state.nodeTaints : undefined;
             resourceInputs["opennebulaConfig"] = state ? state.opennebulaConfig : undefined;
             resourceInputs["openstackConfig"] = state ? state.openstackConfig : undefined;
+            resourceInputs["outscaleConfig"] = state ? state.outscaleConfig : undefined;
             resourceInputs["useInternalIpAddress"] = state ? state.useInternalIpAddress : undefined;
             resourceInputs["vsphereConfig"] = state ? state.vsphereConfig : undefined;
         } else {
             const args = argsOrState as NodeTemplateArgs | undefined;
             resourceInputs["amazonec2Config"] = args ? args.amazonec2Config : undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["authCertificateAuthority"] = args ? args.authCertificateAuthority : undefined;
-            resourceInputs["authKey"] = args ? args.authKey : undefined;
+            resourceInputs["authCertificateAuthority"] = args?.authCertificateAuthority ? pulumi.secret(args.authCertificateAuthority) : undefined;
+            resourceInputs["authKey"] = args?.authKey ? pulumi.secret(args.authKey) : undefined;
             resourceInputs["azureConfig"] = args ? args.azureConfig : undefined;
             resourceInputs["cloudCredentialId"] = args ? args.cloudCredentialId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -325,11 +331,14 @@ export class NodeTemplate extends pulumi.CustomResource {
             resourceInputs["nodeTaints"] = args ? args.nodeTaints : undefined;
             resourceInputs["opennebulaConfig"] = args ? args.opennebulaConfig : undefined;
             resourceInputs["openstackConfig"] = args ? args.openstackConfig : undefined;
+            resourceInputs["outscaleConfig"] = args ? args.outscaleConfig : undefined;
             resourceInputs["useInternalIpAddress"] = args ? args.useInternalIpAddress : undefined;
             resourceInputs["vsphereConfig"] = args ? args.vsphereConfig : undefined;
             resourceInputs["driver"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["authCertificateAuthority", "authKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(NodeTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -438,6 +447,10 @@ export interface NodeTemplateState {
      * Openstack config for the Node Template (list maxitems:1)
      */
     openstackConfig?: pulumi.Input<inputs.NodeTemplateOpenstackConfig>;
+    /**
+     * Outscale config for the Node Template (list maxitems:1)
+     */
+    outscaleConfig?: pulumi.Input<inputs.NodeTemplateOutscaleConfig>;
     /**
      * Engine storage driver for the node template (bool)
      */
@@ -548,6 +561,10 @@ export interface NodeTemplateArgs {
      * Openstack config for the Node Template (list maxitems:1)
      */
     openstackConfig?: pulumi.Input<inputs.NodeTemplateOpenstackConfig>;
+    /**
+     * Outscale config for the Node Template (list maxitems:1)
+     */
+    outscaleConfig?: pulumi.Input<inputs.NodeTemplateOutscaleConfig>;
     /**
      * Engine storage driver for the node template (bool)
      */

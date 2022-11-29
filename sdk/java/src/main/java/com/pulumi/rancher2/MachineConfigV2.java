@@ -24,13 +24,69 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Rancher v2 Machine config v2 resource. This can be used to create Machine Config v2 for Rancher v2 and retrieve their information. This resource is supported as tech preview from Rancher v2.6.0 and above.
+ * Provides a Rancher v2 Machine config v2 resource. This can be used to create Machine Config v2 for Rancher v2 and retrieve their information. This resource is available from Rancher v2.6.0 and above.
  * 
  * `amazonec2`, `azure`, `digitalocean`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
  * 
  * **Note** This resource is used by
  * 
  * ## Example Usage
+ * ### Using the Harvester Node Driver
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Rancher2Functions;
+ * import com.pulumi.rancher2.inputs.GetClusterV2Args;
+ * import com.pulumi.rancher2.CloudCredential;
+ * import com.pulumi.rancher2.CloudCredentialArgs;
+ * import com.pulumi.rancher2.inputs.CloudCredentialHarvesterCredentialConfigArgs;
+ * import com.pulumi.rancher2.MachineConfigV2;
+ * import com.pulumi.rancher2.MachineConfigV2Args;
+ * import com.pulumi.rancher2.inputs.MachineConfigV2HarvesterConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var foo-harvesterClusterV2 = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
+ *             .name(&#34;foo-harvester&#34;)
+ *             .build());
+ * 
+ *         var foo_harvesterCloudCredential = new CloudCredential(&#34;foo-harvesterCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
+ *                 .clusterId(foo_harvesterClusterV2.clusterV1Id())
+ *                 .clusterType(&#34;imported&#34;)
+ *                 .kubeconfigContent(foo_harvesterClusterV2.kubeConfig())
+ *                 .build())
+ *             .build());
+ * 
+ *         var foo_harvester_v2 = new MachineConfigV2(&#34;foo-harvester-v2&#34;, MachineConfigV2Args.builder()        
+ *             .generateName(&#34;foo-harvester-v2&#34;)
+ *             .harvesterConfig(MachineConfigV2HarvesterConfigArgs.builder()
+ *                 .vmNamespace(&#34;default&#34;)
+ *                 .cpuCount(&#34;2&#34;)
+ *                 .memorySize(&#34;4&#34;)
+ *                 .diskSize(&#34;40&#34;)
+ *                 .networkName(&#34;harvester-public/vlan1&#34;)
+ *                 .imageName(&#34;harvester-public/image-57hzg&#34;)
+ *                 .sshUser(&#34;ubuntu&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="rancher2:index/machineConfigV2:MachineConfigV2")

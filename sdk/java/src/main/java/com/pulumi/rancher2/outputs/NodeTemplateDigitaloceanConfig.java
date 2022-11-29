@@ -43,7 +43,7 @@ public final class NodeTemplateDigitaloceanConfig {
      */
     private @Nullable Boolean privateNetworking;
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     private @Nullable String region;
@@ -127,7 +127,7 @@ public final class NodeTemplateDigitaloceanConfig {
         return Optional.ofNullable(this.privateNetworking);
     }
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public Optional<String> region() {

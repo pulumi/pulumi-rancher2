@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class MachineConfigV2DigitaloceanConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class MachineConfigV2DigitaloceanConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessToken")]
+        private Input<string>? _accessToken;
+
         /// <summary>
         /// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
-        [Input("accessToken")]
-        public Input<string>? AccessToken { get; set; }
+        public Input<string>? AccessToken
+        {
+            get => _accessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enable backups for droplet. Default `false` (bool)
@@ -60,17 +70,37 @@ namespace Pulumi.Rancher2.Inputs
         [Input("size")]
         public Input<string>? Size { get; set; }
 
+        [Input("sshKeyContents")]
+        private Input<string>? _sshKeyContents;
+
         /// <summary>
         /// SSH private key contents (string)
         /// </summary>
-        [Input("sshKeyContents")]
-        public Input<string>? SshKeyContents { get; set; }
+        public Input<string>? SshKeyContents
+        {
+            get => _sshKeyContents;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshKeyContents = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("sshKeyFingerprint")]
+        private Input<string>? _sshKeyFingerprint;
 
         /// <summary>
         /// SSH key fingerprint (string)
         /// </summary>
-        [Input("sshKeyFingerprint")]
-        public Input<string>? SshKeyFingerprint { get; set; }
+        public Input<string>? SshKeyFingerprint
+        {
+            get => _sshKeyFingerprint;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshKeyFingerprint = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// If using a non-B2D image you can specify the ssh port. Default `22` (string)
@@ -99,5 +129,6 @@ namespace Pulumi.Rancher2.Inputs
         public MachineConfigV2DigitaloceanConfigGetArgs()
         {
         }
+        public static new MachineConfigV2DigitaloceanConfigGetArgs Empty => new MachineConfigV2DigitaloceanConfigGetArgs();
     }
 }

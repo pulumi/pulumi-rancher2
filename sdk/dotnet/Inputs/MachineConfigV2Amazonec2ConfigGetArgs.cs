@@ -10,10 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class MachineConfigV2Amazonec2ConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class MachineConfigV2Amazonec2ConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        private Input<string>? _accessKey;
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AWS machine image (string)
@@ -136,7 +145,16 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? RootSize { get; set; }
 
         [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        private Input<string>? _secretKey;
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Skip adding default rules to security groups (bool)
@@ -156,11 +174,21 @@ namespace Pulumi.Rancher2.Inputs
             set => _securityGroups = value;
         }
 
+        [Input("sessionToken")]
+        private Input<string>? _sessionToken;
+
         /// <summary>
         /// AWS Session Token (string)
         /// </summary>
-        [Input("sessionToken")]
-        public Input<string>? SessionToken { get; set; }
+        public Input<string>? SessionToken
+        {
+            get => _sessionToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sessionToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AWS spot instance bid price (in dollar). Default `0.50` (string)
@@ -168,11 +196,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("spotPrice")]
         public Input<string>? SpotPrice { get; set; }
 
+        [Input("sshKeyContents")]
+        private Input<string>? _sshKeyContents;
+
         /// <summary>
         /// SSH private key contents (string)
         /// </summary>
-        [Input("sshKeyContents")]
-        public Input<string>? SshKeyContents { get; set; }
+        public Input<string>? SshKeyContents
+        {
+            get => _sshKeyContents;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshKeyContents = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
@@ -231,5 +269,6 @@ namespace Pulumi.Rancher2.Inputs
         public MachineConfigV2Amazonec2ConfigGetArgs()
         {
         }
+        public static new MachineConfigV2Amazonec2ConfigGetArgs Empty => new MachineConfigV2Amazonec2ConfigGetArgs();
     }
 }

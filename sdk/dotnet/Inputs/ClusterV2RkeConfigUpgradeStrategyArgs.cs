@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigUpgradeStrategyArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigUpgradeStrategyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted (string)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigUpgradeStrategyArgs()
         {
         }
+        public static new ClusterV2RkeConfigUpgradeStrategyArgs Empty => new ClusterV2RkeConfigUpgradeStrategyArgs();
     }
 }

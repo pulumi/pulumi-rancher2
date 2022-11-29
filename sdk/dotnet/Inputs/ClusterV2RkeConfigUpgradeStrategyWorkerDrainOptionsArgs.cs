@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Drain options delete empty dir data. Default `false` (bool)
@@ -69,5 +69,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs()
         {
         }
+        public static new ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs Empty => new ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs();
     }
 }

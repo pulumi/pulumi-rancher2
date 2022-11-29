@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigMachinePoolMachineConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigMachinePoolMachineConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Machine config kind (string)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigMachinePoolMachineConfigGetArgs()
         {
         }
+        public static new ClusterV2RkeConfigMachinePoolMachineConfigGetArgs Empty => new ClusterV2RkeConfigMachinePoolMachineConfigGetArgs();
     }
 }

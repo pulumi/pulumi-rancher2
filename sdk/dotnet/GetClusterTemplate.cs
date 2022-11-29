@@ -21,26 +21,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetClusterTemplate.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterTemplate.InvokeAsync(new Rancher2.GetClusterTemplateArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterTemplateResult> InvokeAsync(GetClusterTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 cluster template.
@@ -52,30 +50,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetClusterTemplate.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterTemplate.InvokeAsync(new Rancher2.GetClusterTemplateArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterTemplateResult> Invoke(GetClusterTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClusterTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterTemplateArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotations")]
         private Dictionary<string, object>? _annotations;
@@ -113,9 +109,10 @@ namespace Pulumi.Rancher2
         public GetClusterTemplateArgs()
         {
         }
+        public static new GetClusterTemplateArgs Empty => new GetClusterTemplateArgs();
     }
 
-    public sealed class GetClusterTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -153,6 +150,7 @@ namespace Pulumi.Rancher2
         public GetClusterTemplateInvokeArgs()
         {
         }
+        public static new GetClusterTemplateInvokeArgs Empty => new GetClusterTemplateInvokeArgs();
     }
 
 

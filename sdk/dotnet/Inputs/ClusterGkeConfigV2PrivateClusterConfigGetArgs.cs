@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2PrivateClusterConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2PrivateClusterConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable GKE cluster private endpoint. Default: `false` (bool)
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2PrivateClusterConfigGetArgs()
         {
         }
+        public static new ClusterGkeConfigV2PrivateClusterConfigGetArgs Empty => new ClusterGkeConfigV2PrivateClusterConfigGetArgs();
     }
 }

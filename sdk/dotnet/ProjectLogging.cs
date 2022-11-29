@@ -15,29 +15,27 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Project Logging
+    ///     var foo = new Rancher2.ProjectLogging("foo", new()
     ///     {
-    ///         // Create a new rancher2 Project Logging
-    ///         var foo = new Rancher2.ProjectLogging("foo", new Rancher2.ProjectLoggingArgs
+    ///         Kind = "syslog",
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         SyslogConfig = new Rancher2.Inputs.ProjectLoggingSyslogConfigArgs
     ///         {
-    ///             Kind = "syslog",
-    ///             ProjectId = "&lt;project_id&gt;",
-    ///             SyslogConfig = new Rancher2.Inputs.ProjectLoggingSyslogConfigArgs
-    ///             {
-    ///                 Endpoint = "&lt;syslog_endpoint&gt;",
-    ///                 Protocol = "udp",
-    ///                 Severity = "notice",
-    ///                 SslVerify = false,
-    ///             },
-    ///         });
-    ///     }
+    ///             Endpoint = "&lt;syslog_endpoint&gt;",
+    ///             Protocol = "udp",
+    ///             Severity = "notice",
+    ///             SslVerify = false,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/projectLogging:ProjectLogging")]
-    public partial class ProjectLogging : Pulumi.CustomResource
+    public partial class ProjectLogging : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for Project Logging object (map)
@@ -185,7 +183,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ProjectLoggingArgs : Pulumi.ResourceArgs
+    public sealed class ProjectLoggingArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -298,9 +296,10 @@ namespace Pulumi.Rancher2
         public ProjectLoggingArgs()
         {
         }
+        public static new ProjectLoggingArgs Empty => new ProjectLoggingArgs();
     }
 
-    public sealed class ProjectLoggingState : Pulumi.ResourceArgs
+    public sealed class ProjectLoggingState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -413,5 +412,6 @@ namespace Pulumi.Rancher2
         public ProjectLoggingState()
         {
         }
+        public static new ProjectLoggingState Empty => new ProjectLoggingState();
     }
 }

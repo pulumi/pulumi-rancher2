@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ProjectContainerResourceLimitArgs : Pulumi.ResourceArgs
+    public sealed class ProjectContainerResourceLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Limit for limits cpu in project (string)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public ProjectContainerResourceLimitArgs()
         {
         }
+        public static new ProjectContainerResourceLimitArgs Empty => new ProjectContainerResourceLimitArgs();
     }
 }

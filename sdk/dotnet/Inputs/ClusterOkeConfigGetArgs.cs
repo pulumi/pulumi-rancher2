@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterOkeConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterOkeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The OCID of the compartment in which to create resources OKE cluster and related resources (string)
@@ -60,11 +60,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("flexOcpus")]
         public Input<int>? FlexOcpus { get; set; }
 
+        [Input("kmsKeyId")]
+        private Input<string>? _kmsKeyId;
+
         /// <summary>
         /// The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. Just for Rancher v2.5.9 or above (string)
         /// </summary>
-        [Input("kmsKeyId")]
-        public Input<string>? KmsKeyId { get; set; }
+        public Input<string>? KmsKeyId
+        {
+            get => _kmsKeyId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _kmsKeyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
@@ -126,17 +136,37 @@ namespace Pulumi.Rancher2.Inputs
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
 
+        [Input("privateKeyContents", required: true)]
+        private Input<string>? _privateKeyContents;
+
         /// <summary>
         /// The private API key file contents for the specified user, in PEM format (string)
         /// </summary>
-        [Input("privateKeyContents", required: true)]
-        public Input<string> PrivateKeyContents { get; set; } = null!;
+        public Input<string>? PrivateKeyContents
+        {
+            get => _privateKeyContents;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyContents = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("privateKeyPassphrase")]
+        private Input<string>? _privateKeyPassphrase;
 
         /// <summary>
         /// The passphrase (if any) of the private key for the OKE cluster (string)
         /// </summary>
-        [Input("privateKeyPassphrase")]
-        public Input<string>? PrivateKeyPassphrase { get; set; }
+        public Input<string>? PrivateKeyPassphrase
+        {
+            get => _privateKeyPassphrase;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyPassphrase = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Number of node subnets. Default `1` (int)
@@ -207,5 +237,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterOkeConfigGetArgs()
         {
         }
+        public static new ClusterOkeConfigGetArgs Empty => new ClusterOkeConfigGetArgs();
     }
 }

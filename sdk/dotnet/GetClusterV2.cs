@@ -19,27 +19,25 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetClusterV2.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterV2.InvokeAsync(new Rancher2.GetClusterV2Args
-        ///         {
-        ///             FleetNamespace = "fleet-ns",
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         FleetNamespace = "fleet-ns",
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterV2Result> InvokeAsync(GetClusterV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterV2Result>("rancher2:index/getClusterV2:getClusterV2", args ?? new GetClusterV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterV2Result>("rancher2:index/getClusterV2:getClusterV2", args ?? new GetClusterV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 cluster.
@@ -49,31 +47,29 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetClusterV2.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterV2.InvokeAsync(new Rancher2.GetClusterV2Args
-        ///         {
-        ///             FleetNamespace = "fleet-ns",
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         FleetNamespace = "fleet-ns",
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterV2Result> Invoke(GetClusterV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterV2Result>("rancher2:index/getClusterV2:getClusterV2", args ?? new GetClusterV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterV2Result>("rancher2:index/getClusterV2:getClusterV2", args ?? new GetClusterV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClusterV2Args : Pulumi.InvokeArgs
+    public sealed class GetClusterV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
@@ -90,9 +86,10 @@ namespace Pulumi.Rancher2
         public GetClusterV2Args()
         {
         }
+        public static new GetClusterV2Args Empty => new GetClusterV2Args();
     }
 
-    public sealed class GetClusterV2InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
@@ -109,6 +106,7 @@ namespace Pulumi.Rancher2
         public GetClusterV2InvokeArgs()
         {
         }
+        public static new GetClusterV2InvokeArgs Empty => new GetClusterV2InvokeArgs();
     }
 
 

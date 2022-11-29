@@ -21,27 +21,25 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Token scoped
+    ///     var foo = new Rancher2.Token("foo", new()
     ///     {
-    ///         // Create a new rancher2 Token scoped
-    ///         var foo = new Rancher2.Token("foo", new Rancher2.TokenArgs
-    ///         {
-    ///             ClusterId = "&lt;cluster-id&gt;",
-    ///             Description = "foo token",
-    ///             Ttl = 1200,
-    ///         });
-    ///     }
+    ///         ClusterId = "&lt;cluster-id&gt;",
+    ///         Description = "foo token",
+    ///         Ttl = 1200,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/token:Token")]
-    public partial class Token : Pulumi.CustomResource
+    public partial class Token : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) Token access key part (string)
@@ -144,6 +142,11 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secretKey",
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -165,7 +168,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class TokenArgs : Pulumi.ResourceArgs
+    public sealed class TokenArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -218,9 +221,10 @@ namespace Pulumi.Rancher2
         public TokenArgs()
         {
         }
+        public static new TokenArgs Empty => new TokenArgs();
     }
 
-    public sealed class TokenState : Pulumi.ResourceArgs
+    public sealed class TokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) Token access key part (string)
@@ -288,17 +292,37 @@ namespace Pulumi.Rancher2
         [Input("renew")]
         public Input<bool>? Renew { get; set; }
 
+        [Input("secretKey")]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// (Computed/Sensitive) Token secret key part (string)
         /// </summary>
-        [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("token")]
+        private Input<string>? _token;
 
         /// <summary>
         /// (Computed/Sensitive) Token value (string)
         /// </summary>
-        [Input("token")]
-        public Input<string>? TokenName { get; set; }
+        public Input<string>? TokenName
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Token time to live in seconds. Default `0` (int)
@@ -315,5 +339,6 @@ namespace Pulumi.Rancher2
         public TokenState()
         {
         }
+        public static new TokenState Empty => new TokenState();
     }
 }

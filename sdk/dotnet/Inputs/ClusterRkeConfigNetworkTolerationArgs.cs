@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigNetworkTolerationArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigNetworkTolerationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GKE taint effect (string)
@@ -45,5 +45,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigNetworkTolerationArgs()
         {
         }
+        public static new ClusterRkeConfigNetworkTolerationArgs Empty => new ClusterRkeConfigNetworkTolerationArgs();
     }
 }

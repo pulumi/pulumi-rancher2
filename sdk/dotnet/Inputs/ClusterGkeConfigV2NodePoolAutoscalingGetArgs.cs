@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2NodePoolAutoscalingGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2NodePoolAutoscalingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable scheduled cluster scan. Default: `false` (bool)
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2NodePoolAutoscalingGetArgs()
         {
         }
+        public static new ClusterGkeConfigV2NodePoolAutoscalingGetArgs Empty => new ClusterGkeConfigV2NodePoolAutoscalingGetArgs();
     }
 }

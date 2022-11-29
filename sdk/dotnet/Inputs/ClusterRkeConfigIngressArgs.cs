@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigIngressArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigIngressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable ingress default backend. Default: `true` (bool)
@@ -105,5 +105,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigIngressArgs()
         {
         }
+        public static new ClusterRkeConfigIngressArgs Empty => new ClusterRkeConfigIngressArgs();
     }
 }

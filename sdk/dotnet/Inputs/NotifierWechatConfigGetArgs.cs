@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NotifierWechatConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NotifierWechatConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Wechat agent ID (string)
@@ -42,14 +42,25 @@ namespace Pulumi.Rancher2.Inputs
         [Input("recipientType")]
         public Input<string>? RecipientType { get; set; }
 
+        [Input("secret", required: true)]
+        private Input<string>? _secret;
+
         /// <summary>
         /// Wechat agent ID (string)
         /// </summary>
-        [Input("secret", required: true)]
-        public Input<string> Secret { get; set; } = null!;
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public NotifierWechatConfigGetArgs()
         {
         }
+        public static new NotifierWechatConfigGetArgs Empty => new NotifierWechatConfigGetArgs();
     }
 }

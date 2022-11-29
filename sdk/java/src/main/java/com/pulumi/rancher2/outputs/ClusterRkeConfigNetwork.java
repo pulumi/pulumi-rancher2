@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.rancher2.outputs.ClusterRkeConfigNetworkAciNetworkProvider;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigNetworkCalicoNetworkProvider;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigNetworkCanalNetworkProvider;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigNetworkFlannelNetworkProvider;
@@ -20,6 +21,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigNetwork {
+    /**
+     * @return ACI provider config for RKE network (list maxitems:63)
+     * 
+     */
+    private @Nullable ClusterRkeConfigNetworkAciNetworkProvider aciNetworkProvider;
     /**
      * @return Calico provider config for RKE network (list maxitems:1)
      * 
@@ -62,6 +68,13 @@ public final class ClusterRkeConfigNetwork {
     private @Nullable ClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
 
     private ClusterRkeConfigNetwork() {}
+    /**
+     * @return ACI provider config for RKE network (list maxitems:63)
+     * 
+     */
+    public Optional<ClusterRkeConfigNetworkAciNetworkProvider> aciNetworkProvider() {
+        return Optional.ofNullable(this.aciNetworkProvider);
+    }
     /**
      * @return Calico provider config for RKE network (list maxitems:1)
      * 
@@ -128,6 +141,7 @@ public final class ClusterRkeConfigNetwork {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ClusterRkeConfigNetworkAciNetworkProvider aciNetworkProvider;
         private @Nullable ClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider;
         private @Nullable ClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
         private @Nullable ClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
@@ -139,6 +153,7 @@ public final class ClusterRkeConfigNetwork {
         public Builder() {}
         public Builder(ClusterRkeConfigNetwork defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aciNetworkProvider = defaults.aciNetworkProvider;
     	      this.calicoNetworkProvider = defaults.calicoNetworkProvider;
     	      this.canalNetworkProvider = defaults.canalNetworkProvider;
     	      this.flannelNetworkProvider = defaults.flannelNetworkProvider;
@@ -149,6 +164,11 @@ public final class ClusterRkeConfigNetwork {
     	      this.weaveNetworkProvider = defaults.weaveNetworkProvider;
         }
 
+        @CustomType.Setter
+        public Builder aciNetworkProvider(@Nullable ClusterRkeConfigNetworkAciNetworkProvider aciNetworkProvider) {
+            this.aciNetworkProvider = aciNetworkProvider;
+            return this;
+        }
         @CustomType.Setter
         public Builder calicoNetworkProvider(@Nullable ClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider) {
             this.calicoNetworkProvider = calicoNetworkProvider;
@@ -194,6 +214,7 @@ public final class ClusterRkeConfigNetwork {
         }
         public ClusterRkeConfigNetwork build() {
             final var o = new ClusterRkeConfigNetwork();
+            o.aciNetworkProvider = aciNetworkProvider;
             o.calicoNetworkProvider = calicoNetworkProvider;
             o.canalNetworkProvider = canalNetworkProvider;
             o.flannelNetworkProvider = flannelNetworkProvider;

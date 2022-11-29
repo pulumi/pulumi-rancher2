@@ -5,10 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Rancher v2 Auth Config AzureAD resource. This can be used to configure and enable Auth Config AzureAD for Rancher v2 RKE clusters and retrieve their information.
- *
- * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -170,8 +166,8 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
             resourceInputs["accessMode"] = args ? args.accessMode : undefined;
             resourceInputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["applicationSecret"] = args ? args.applicationSecret : undefined;
+            resourceInputs["applicationId"] = args?.applicationId ? pulumi.secret(args.applicationId) : undefined;
+            resourceInputs["applicationSecret"] = args?.applicationSecret ? pulumi.secret(args.applicationSecret) : undefined;
             resourceInputs["authEndpoint"] = args ? args.authEndpoint : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["endpoint"] = args ? args.endpoint : undefined;
@@ -184,6 +180,8 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["applicationId", "applicationSecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AuthConfigAzureAd.__pulumiType, name, resourceInputs, opts);
     }
 }

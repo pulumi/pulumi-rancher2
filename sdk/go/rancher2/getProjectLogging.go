@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupProjectLogging(ctx, &GetProjectLoggingArgs{
+//			_, err = rancher2.LookupProjectLogging(ctx, &GetProjectLoggingArgs{
 //				ProjectId: "<project_id>",
 //			}, nil)
 //			if err != nil {

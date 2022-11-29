@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -415,7 +416,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * ### Creating AKS cluster from Rancher v2, using `aksConfigV2`. For Rancher v2.6.0 or above (Tech preview)
+ * ### Creating AKS cluster from Rancher v2, using `aksConfigV2`. For Rancher v2.6.0 or above.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -741,6 +742,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["systemProjectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["caCert", "kubeConfig"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -17,185 +17,179 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Cluster Template
+    ///     var foo = new Rancher2.ClusterTemplate("foo", new()
     ///     {
-    ///         // Create a new rancher2 Cluster Template
-    ///         var foo = new Rancher2.ClusterTemplate("foo", new Rancher2.ClusterTemplateArgs
+    ///         Description = "Terraform cluster template foo",
+    ///         Members = new[]
     ///         {
-    ///             Description = "Terraform cluster template foo",
-    ///             Members = 
+    ///             new Rancher2.Inputs.ClusterTemplateMemberArgs
     ///             {
-    ///                 new Rancher2.Inputs.ClusterTemplateMemberArgs
-    ///                 {
-    ///                     AccessType = "owner",
-    ///                     UserPrincipalId = "local://user-XXXXX",
-    ///                 },
+    ///                 AccessType = "owner",
+    ///                 UserPrincipalId = "local://user-XXXXX",
     ///             },
-    ///             TemplateRevisions = 
+    ///         },
+    ///         TemplateRevisions = new[]
+    ///         {
+    ///             new Rancher2.Inputs.ClusterTemplateTemplateRevisionArgs
     ///             {
-    ///                 new Rancher2.Inputs.ClusterTemplateTemplateRevisionArgs
+    ///                 ClusterConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigArgs
     ///                 {
-    ///                     ClusterConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigArgs
+    ///                     RkeConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs
     ///                     {
-    ///                         RkeConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs
+    ///                         Network = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs
     ///                         {
-    ///                             Network = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs
+    ///                             Plugin = "canal",
+    ///                         },
+    ///                         Services = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs
+    ///                         {
+    ///                             Etcd = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs
     ///                             {
-    ///                                 Plugin = "canal",
-    ///                             },
-    ///                             Services = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs
-    ///                             {
-    ///                                 Etcd = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs
-    ///                                 {
-    ///                                     Creation = "6h",
-    ///                                     Retention = "24h",
-    ///                                 },
+    ///                                 Creation = "6h",
+    ///                                 Retention = "24h",
     ///                             },
     ///                         },
     ///                     },
-    ///                     Default = true,
-    ///                     Name = "V1",
     ///                 },
+    ///                 Default = true,
+    ///                 Name = "V1",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x or above.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Cluster Template
+    ///     var foo = new Rancher2.ClusterTemplate("foo", new()
     ///     {
-    ///         // Create a new rancher2 Cluster Template
-    ///         var foo = new Rancher2.ClusterTemplate("foo", new Rancher2.ClusterTemplateArgs
+    ///         Description = "Terraform cluster template foo",
+    ///         Members = new[]
     ///         {
-    ///             Description = "Terraform cluster template foo",
-    ///             Members = 
+    ///             new Rancher2.Inputs.ClusterTemplateMemberArgs
     ///             {
-    ///                 new Rancher2.Inputs.ClusterTemplateMemberArgs
-    ///                 {
-    ///                     AccessType = "owner",
-    ///                     UserPrincipalId = "local://user-XXXXX",
-    ///                 },
+    ///                 AccessType = "owner",
+    ///                 UserPrincipalId = "local://user-XXXXX",
     ///             },
-    ///             TemplateRevisions = 
+    ///         },
+    ///         TemplateRevisions = new[]
+    ///         {
+    ///             new Rancher2.Inputs.ClusterTemplateTemplateRevisionArgs
     ///             {
-    ///                 new Rancher2.Inputs.ClusterTemplateTemplateRevisionArgs
+    ///                 ClusterConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigArgs
     ///                 {
-    ///                     ClusterConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigArgs
+    ///                     RkeConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs
     ///                     {
-    ///                         RkeConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs
+    ///                         Network = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs
     ///                         {
-    ///                             Network = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs
+    ///                             Plugin = "canal",
+    ///                         },
+    ///                         Services = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs
+    ///                         {
+    ///                             Etcd = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs
     ///                             {
-    ///                                 Plugin = "canal",
-    ///                             },
-    ///                             Services = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs
-    ///                             {
-    ///                                 Etcd = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs
-    ///                                 {
-    ///                                     Creation = "6h",
-    ///                                     Retention = "24h",
-    ///                                 },
-    ///                             },
-    ///                             UpgradeStrategy = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs
-    ///                             {
-    ///                                 Drain = true,
-    ///                                 MaxUnavailableWorker = "20%",
+    ///                                 Creation = "6h",
+    ///                                 Retention = "24h",
     ///                             },
     ///                         },
+    ///                         UpgradeStrategy = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs
+    ///                         {
+    ///                             Drain = true,
+    ///                             MaxUnavailableWorker = "20%",
+    ///                         },
     ///                     },
-    ///                     Default = true,
-    ///                     Name = "V1",
     ///                 },
+    ///                 Default = true,
+    ///                 Name = "V1",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Creating Rancher v2 RKE cluster template with scheduled cluster scan. For Rancher v2.4.x or above.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Cluster Template
+    ///     var foo = new Rancher2.ClusterTemplate("foo", new()
     ///     {
-    ///         // Create a new rancher2 Cluster Template
-    ///         var foo = new Rancher2.ClusterTemplate("foo", new Rancher2.ClusterTemplateArgs
+    ///         Description = "Terraform cluster template foo",
+    ///         Members = new[]
     ///         {
-    ///             Description = "Terraform cluster template foo",
-    ///             Members = 
+    ///             new Rancher2.Inputs.ClusterTemplateMemberArgs
     ///             {
-    ///                 new Rancher2.Inputs.ClusterTemplateMemberArgs
-    ///                 {
-    ///                     AccessType = "owner",
-    ///                     UserPrincipalId = "local://user-XXXXX",
-    ///                 },
+    ///                 AccessType = "owner",
+    ///                 UserPrincipalId = "local://user-XXXXX",
     ///             },
-    ///             TemplateRevisions = 
+    ///         },
+    ///         TemplateRevisions = new[]
+    ///         {
+    ///             new Rancher2.Inputs.ClusterTemplateTemplateRevisionArgs
     ///             {
-    ///                 new Rancher2.Inputs.ClusterTemplateTemplateRevisionArgs
+    ///                 ClusterConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigArgs
     ///                 {
-    ///                     ClusterConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigArgs
+    ///                     RkeConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs
     ///                     {
-    ///                         RkeConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs
+    ///                         Network = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs
     ///                         {
-    ///                             Network = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs
-    ///                             {
-    ///                                 Plugin = "canal",
-    ///                             },
-    ///                             Services = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs
-    ///                             {
-    ///                                 Etcd = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs
-    ///                                 {
-    ///                                     Creation = "6h",
-    ///                                     Retention = "24h",
-    ///                                 },
-    ///                             },
+    ///                             Plugin = "canal",
     ///                         },
-    ///                         ScheduledClusterScan = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs
+    ///                         Services = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs
     ///                         {
-    ///                             Enabled = true,
-    ///                             ScanConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs
+    ///                             Etcd = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs
     ///                             {
-    ///                                 CisScanConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs
-    ///                                 {
-    ///                                     DebugMaster = true,
-    ///                                     DebugWorker = true,
-    ///                                 },
-    ///                             },
-    ///                             ScheduleConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs
-    ///                             {
-    ///                                 CronSchedule = "30 * * * *",
-    ///                                 Retention = 5,
+    ///                                 Creation = "6h",
+    ///                                 Retention = "24h",
     ///                             },
     ///                         },
     ///                     },
-    ///                     Default = true,
-    ///                     Name = "V1",
+    ///                     ScheduledClusterScan = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs
+    ///                     {
+    ///                         Enabled = true,
+    ///                         ScanConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs
+    ///                         {
+    ///                             CisScanConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs
+    ///                             {
+    ///                                 DebugMaster = true,
+    ///                                 DebugWorker = true,
+    ///                             },
+    ///                         },
+    ///                         ScheduleConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs
+    ///                         {
+    ///                             CronSchedule = "30 * * * *",
+    ///                             Retention = 5,
+    ///                         },
+    ///                     },
     ///                 },
+    ///                 Default = true,
+    ///                 Name = "V1",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -207,7 +201,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterTemplate:ClusterTemplate")]
-    public partial class ClusterTemplate : Pulumi.CustomResource
+    public partial class ClusterTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for the cluster template revision (map)
@@ -295,7 +289,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ClusterTemplateArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -360,9 +354,10 @@ namespace Pulumi.Rancher2
         public ClusterTemplateArgs()
         {
         }
+        public static new ClusterTemplateArgs Empty => new ClusterTemplateArgs();
     }
 
-    public sealed class ClusterTemplateState : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -433,5 +428,6 @@ namespace Pulumi.Rancher2
         public ClusterTemplateState()
         {
         }
+        public static new ClusterTemplateState Empty => new ClusterTemplateState();
     }
 }

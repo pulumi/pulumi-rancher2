@@ -17,32 +17,30 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Auth Config ADFS
+    ///     var adfs = new Rancher2.AuthConfigAdfs("adfs", new()
     ///     {
-    ///         // Create a new rancher2 Auth Config ADFS
-    ///         var adfs = new Rancher2.AuthConfigAdfs("adfs", new Rancher2.AuthConfigAdfsArgs
-    ///         {
-    ///             DisplayNameField = "&lt;DISPLAY_NAME_FIELD&gt;",
-    ///             GroupsField = "&lt;GROUPS_FIELD&gt;",
-    ///             IdpMetadataContent = "&lt;IDP_METADATA_CONTENT&gt;",
-    ///             RancherApiHost = "https://&lt;RANCHER_API_HOST&gt;",
-    ///             SpCert = "&lt;SP_CERT&gt;",
-    ///             SpKey = "&lt;SP_KEY&gt;",
-    ///             UidField = "&lt;UID_FIELD&gt;",
-    ///             UserNameField = "&lt;USER_NAME_FIELD&gt;",
-    ///         });
-    ///     }
+    ///         DisplayNameField = "&lt;DISPLAY_NAME_FIELD&gt;",
+    ///         GroupsField = "&lt;GROUPS_FIELD&gt;",
+    ///         IdpMetadataContent = "&lt;IDP_METADATA_CONTENT&gt;",
+    ///         RancherApiHost = "https://&lt;RANCHER_API_HOST&gt;",
+    ///         SpCert = "&lt;SP_CERT&gt;",
+    ///         SpKey = "&lt;SP_KEY&gt;",
+    ///         UidField = "&lt;UID_FIELD&gt;",
+    ///         UserNameField = "&lt;USER_NAME_FIELD&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/authConfigAdfs:AuthConfigAdfs")]
-    public partial class AuthConfigAdfs : Pulumi.CustomResource
+    public partial class AuthConfigAdfs : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -157,6 +155,12 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "idpMetadataContent",
+                    "spCert",
+                    "spKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -178,7 +182,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class AuthConfigAdfsArgs : Pulumi.ResourceArgs
+    public sealed class AuthConfigAdfsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -228,11 +232,21 @@ namespace Pulumi.Rancher2
         [Input("groupsField", required: true)]
         public Input<string> GroupsField { get; set; } = null!;
 
+        [Input("idpMetadataContent", required: true)]
+        private Input<string>? _idpMetadataContent;
+
         /// <summary>
         /// ADFS IDP metadata content (string)
         /// </summary>
-        [Input("idpMetadataContent", required: true)]
-        public Input<string> IdpMetadataContent { get; set; } = null!;
+        public Input<string>? IdpMetadataContent
+        {
+            get => _idpMetadataContent;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _idpMetadataContent = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("labels")]
         private InputMap<object>? _labels;
@@ -252,17 +266,37 @@ namespace Pulumi.Rancher2
         [Input("rancherApiHost", required: true)]
         public Input<string> RancherApiHost { get; set; } = null!;
 
+        [Input("spCert", required: true)]
+        private Input<string>? _spCert;
+
         /// <summary>
         /// ADFS SP cert (string)
         /// </summary>
-        [Input("spCert", required: true)]
-        public Input<string> SpCert { get; set; } = null!;
+        public Input<string>? SpCert
+        {
+            get => _spCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _spCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("spKey", required: true)]
+        private Input<string>? _spKey;
 
         /// <summary>
         /// ADFS SP key (string)
         /// </summary>
-        [Input("spKey", required: true)]
-        public Input<string> SpKey { get; set; } = null!;
+        public Input<string>? SpKey
+        {
+            get => _spKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _spKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// ADFS UID field (string)
@@ -279,9 +313,10 @@ namespace Pulumi.Rancher2
         public AuthConfigAdfsArgs()
         {
         }
+        public static new AuthConfigAdfsArgs Empty => new AuthConfigAdfsArgs();
     }
 
-    public sealed class AuthConfigAdfsState : Pulumi.ResourceArgs
+    public sealed class AuthConfigAdfsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -331,11 +366,21 @@ namespace Pulumi.Rancher2
         [Input("groupsField")]
         public Input<string>? GroupsField { get; set; }
 
+        [Input("idpMetadataContent")]
+        private Input<string>? _idpMetadataContent;
+
         /// <summary>
         /// ADFS IDP metadata content (string)
         /// </summary>
-        [Input("idpMetadataContent")]
-        public Input<string>? IdpMetadataContent { get; set; }
+        public Input<string>? IdpMetadataContent
+        {
+            get => _idpMetadataContent;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _idpMetadataContent = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("labels")]
         private InputMap<object>? _labels;
@@ -361,17 +406,37 @@ namespace Pulumi.Rancher2
         [Input("rancherApiHost")]
         public Input<string>? RancherApiHost { get; set; }
 
+        [Input("spCert")]
+        private Input<string>? _spCert;
+
         /// <summary>
         /// ADFS SP cert (string)
         /// </summary>
-        [Input("spCert")]
-        public Input<string>? SpCert { get; set; }
+        public Input<string>? SpCert
+        {
+            get => _spCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _spCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("spKey")]
+        private Input<string>? _spKey;
 
         /// <summary>
         /// ADFS SP key (string)
         /// </summary>
-        [Input("spKey")]
-        public Input<string>? SpKey { get; set; }
+        public Input<string>? SpKey
+        {
+            get => _spKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _spKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// (Computed) The type of the resource (string)
@@ -394,5 +459,6 @@ namespace Pulumi.Rancher2
         public AuthConfigAdfsState()
         {
         }
+        public static new AuthConfigAdfsState Empty => new AuthConfigAdfsState();
     }
 }

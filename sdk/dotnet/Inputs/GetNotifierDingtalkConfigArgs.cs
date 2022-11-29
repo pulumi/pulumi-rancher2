@@ -10,13 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetNotifierDingtalkConfigInputArgs : Pulumi.ResourceArgs
+    public sealed class GetNotifierDingtalkConfigInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
 
         [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        private Input<string>? _secret;
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -24,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public GetNotifierDingtalkConfigInputArgs()
         {
         }
+        public static new GetNotifierDingtalkConfigInputArgs Empty => new GetNotifierDingtalkConfigInputArgs();
     }
 }

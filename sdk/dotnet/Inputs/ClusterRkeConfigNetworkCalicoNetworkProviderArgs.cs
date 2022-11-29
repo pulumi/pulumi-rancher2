@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigNetworkCalicoNetworkProviderArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigNetworkCalicoNetworkProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// RKE options for Calico network provider (string)
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigNetworkCalicoNetworkProviderArgs()
         {
         }
+        public static new ClusterRkeConfigNetworkCalicoNetworkProviderArgs Empty => new ClusterRkeConfigNetworkCalicoNetworkProviderArgs();
     }
 }

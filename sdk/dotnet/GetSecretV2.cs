@@ -15,17 +15,17 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Task<GetSecretV2Result> InvokeAsync(GetSecretV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretV2Result>("rancher2:index/getSecretV2:getSecretV2", args ?? new GetSecretV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretV2Result>("rancher2:index/getSecretV2:getSecretV2", args ?? new GetSecretV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Output<GetSecretV2Result> Invoke(GetSecretV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretV2Result>("rancher2:index/getSecretV2:getSecretV2", args ?? new GetSecretV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretV2Result>("rancher2:index/getSecretV2:getSecretV2", args ?? new GetSecretV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSecretV2Args : Pulumi.InvokeArgs
+    public sealed class GetSecretV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id of the secret V2 (string)
@@ -48,9 +48,10 @@ namespace Pulumi.Rancher2
         public GetSecretV2Args()
         {
         }
+        public static new GetSecretV2Args Empty => new GetSecretV2Args();
     }
 
-    public sealed class GetSecretV2InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id of the secret V2 (string)
@@ -73,6 +74,7 @@ namespace Pulumi.Rancher2
         public GetSecretV2InvokeArgs()
         {
         }
+        public static new GetSecretV2InvokeArgs Empty => new GetSecretV2InvokeArgs();
     }
 
 

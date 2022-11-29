@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2AgentEnvVarGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2AgentEnvVarGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of cluster registration token (string)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2AgentEnvVarGetArgs()
         {
         }
+        public static new ClusterV2AgentEnvVarGetArgs Empty => new ClusterV2AgentEnvVarGetArgs();
     }
 }

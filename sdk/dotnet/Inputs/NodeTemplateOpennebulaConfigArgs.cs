@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NodeTemplateOpennebulaConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateOpennebulaConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Size of the Volatile disk in MB - only for b2d (string)
@@ -84,11 +84,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("networkOwner")]
         public Input<string>? NetworkOwner { get; set; }
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
@@ -129,5 +139,6 @@ namespace Pulumi.Rancher2.Inputs
         public NodeTemplateOpennebulaConfigArgs()
         {
         }
+        public static new NodeTemplateOpennebulaConfigArgs Empty => new NodeTemplateOpennebulaConfigArgs();
     }
 }

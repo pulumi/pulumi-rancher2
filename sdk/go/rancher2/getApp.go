@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupApp(ctx, &GetAppArgs{
+//			_, err = rancher2.LookupApp(ctx, &GetAppArgs{
 //				Name:            "foo",
 //				ProjectId:       "<project_id>",
 //				TargetNamespace: pulumi.StringRef("<namespace_name>"),

@@ -10,8 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigNetworkGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigNetworkGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ACI provider config for RKE network (list maxitems:63)
+        /// </summary>
+        [Input("aciNetworkProvider")]
+        public Input<Inputs.ClusterRkeConfigNetworkAciNetworkProviderGetArgs>? AciNetworkProvider { get; set; }
+
         /// <summary>
         /// Calico provider config for RKE network (list maxitems:1)
         /// </summary>
@@ -75,5 +81,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigNetworkGetArgs()
         {
         }
+        public static new ClusterRkeConfigNetworkGetArgs Empty => new ClusterRkeConfigNetworkGetArgs();
     }
 }

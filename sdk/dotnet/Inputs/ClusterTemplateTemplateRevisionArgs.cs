@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -87,5 +87,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionArgs Empty => new ClusterTemplateTemplateRevisionArgs();
     }
 }

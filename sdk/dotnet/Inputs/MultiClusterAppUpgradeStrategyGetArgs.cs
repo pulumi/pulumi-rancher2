@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class MultiClusterAppUpgradeStrategyGetArgs : Pulumi.ResourceArgs
+    public sealed class MultiClusterAppUpgradeStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Upgrade strategy rolling update (list MaxItems:1)
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public MultiClusterAppUpgradeStrategyGetArgs()
         {
         }
+        public static new MultiClusterAppUpgradeStrategyGetArgs Empty => new MultiClusterAppUpgradeStrategyGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesEtcdGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesEtcdGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
@@ -24,11 +24,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("caCert")]
         public Input<string>? CaCert { get; set; }
 
+        [Input("cert")]
+        private Input<string>? _cert;
+
         /// <summary>
         /// TLS certificate for etcd service (string)
         /// </summary>
-        [Input("cert")]
-        public Input<string>? Cert { get; set; }
+        public Input<string>? Cert
+        {
+            get => _cert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _cert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Creation option for etcd service (string)
@@ -96,11 +106,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("image")]
         public Input<string>? Image { get; set; }
 
+        [Input("key")]
+        private Input<string>? _key;
+
         /// <summary>
         /// The GKE taint key (string)
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
@@ -129,5 +149,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesEtcdGetArgs()
         {
         }
+        public static new ClusterRkeConfigServicesEtcdGetArgs Empty => new ClusterRkeConfigServicesEtcdGetArgs();
     }
 }

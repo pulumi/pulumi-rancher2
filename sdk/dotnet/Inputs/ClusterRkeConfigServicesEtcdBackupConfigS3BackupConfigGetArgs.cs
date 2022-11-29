@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessKey")]
+        private Input<string>? _accessKey;
+
         /// <summary>
         /// The AWS Client ID to use (string)
         /// </summary>
-        [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Bucket name for S3 service (string)
@@ -48,14 +58,25 @@ namespace Pulumi.Rancher2.Inputs
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("secretKey")]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// The AWS Client Secret associated with the Client ID (string)
         /// </summary>
-        [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigGetArgs()
         {
         }
+        public static new ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigGetArgs Empty => new ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigGetArgs();
     }
 }

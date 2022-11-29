@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateSupplementalGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateSupplementalGroupArgs : global::Pulumi.InvokeArgs
     {
         [Input("ranges", required: true)]
         private List<Inputs.GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs>? _ranges;
@@ -26,5 +26,6 @@ namespace Pulumi.Rancher2.Inputs
         public GetPodSecurityPolicyTemplateSupplementalGroupArgs()
         {
         }
+        public static new GetPodSecurityPolicyTemplateSupplementalGroupArgs Empty => new GetPodSecurityPolicyTemplateSupplementalGroupArgs();
     }
 }

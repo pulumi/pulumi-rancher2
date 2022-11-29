@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class MultiClusterAppAnswerGetArgs : Pulumi.ResourceArgs
+    public sealed class MultiClusterAppAnswerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cluster ID for answer (string)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public MultiClusterAppAnswerGetArgs()
         {
         }
+        public static new MultiClusterAppAnswerGetArgs Empty => new MultiClusterAppAnswerGetArgs();
     }
 }

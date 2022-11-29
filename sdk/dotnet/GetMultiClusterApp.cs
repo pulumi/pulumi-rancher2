@@ -19,26 +19,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetMultiClusterApp.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetMultiClusterApp.InvokeAsync(new Rancher2.GetMultiClusterAppArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMultiClusterAppResult> InvokeAsync(GetMultiClusterAppArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMultiClusterAppResult>("rancher2:index/getMultiClusterApp:getMultiClusterApp", args ?? new GetMultiClusterAppArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMultiClusterAppResult>("rancher2:index/getMultiClusterApp:getMultiClusterApp", args ?? new GetMultiClusterAppArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 multi cluster app.
@@ -48,30 +46,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetMultiClusterApp.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetMultiClusterApp.InvokeAsync(new Rancher2.GetMultiClusterAppArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMultiClusterAppResult> Invoke(GetMultiClusterAppInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMultiClusterAppResult>("rancher2:index/getMultiClusterApp:getMultiClusterApp", args ?? new GetMultiClusterAppInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMultiClusterAppResult>("rancher2:index/getMultiClusterApp:getMultiClusterApp", args ?? new GetMultiClusterAppInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetMultiClusterAppArgs : Pulumi.InvokeArgs
+    public sealed class GetMultiClusterAppArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The multi cluster app name (string)
@@ -82,9 +78,10 @@ namespace Pulumi.Rancher2
         public GetMultiClusterAppArgs()
         {
         }
+        public static new GetMultiClusterAppArgs Empty => new GetMultiClusterAppArgs();
     }
 
-    public sealed class GetMultiClusterAppInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMultiClusterAppInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The multi cluster app name (string)
@@ -95,6 +92,7 @@ namespace Pulumi.Rancher2
         public GetMultiClusterAppInvokeArgs()
         {
         }
+        public static new GetMultiClusterAppInvokeArgs Empty => new GetMultiClusterAppInvokeArgs();
     }
 
 

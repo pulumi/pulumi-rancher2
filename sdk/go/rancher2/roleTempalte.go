@@ -368,6 +368,71 @@ func (o RoleTempalteOutput) ToRoleTempalteOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Administrative role template. Default `false` (bool)
+func (o RoleTempalteOutput) Administrative() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RoleTempalte) pulumi.BoolPtrOutput { return v.Administrative }).(pulumi.BoolPtrOutput)
+}
+
+// Annotations for role template object (map)
+func (o RoleTempalteOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *RoleTempalte) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) Builtin role template (string)
+func (o RoleTempalteOutput) Builtin() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RoleTempalte) pulumi.BoolOutput { return v.Builtin }).(pulumi.BoolOutput)
+}
+
+// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+func (o RoleTempalteOutput) Context() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleTempalte) pulumi.StringPtrOutput { return v.Context }).(pulumi.StringPtrOutput)
+}
+
+// Default role template for new created cluster or project. Default `false` (bool)
+func (o RoleTempalteOutput) DefaultRole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RoleTempalte) pulumi.BoolPtrOutput { return v.DefaultRole }).(pulumi.BoolPtrOutput)
+}
+
+// Role template description (string)
+func (o RoleTempalteOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleTempalte) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// External role template. Default `false` (bool)
+func (o RoleTempalteOutput) External() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RoleTempalte) pulumi.BoolPtrOutput { return v.External }).(pulumi.BoolPtrOutput)
+}
+
+// Hidden role template. Default `false` (bool)
+func (o RoleTempalteOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RoleTempalte) pulumi.BoolPtrOutput { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+// Labels for role template object (map)
+func (o RoleTempalteOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *RoleTempalte) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Locked role template. Default `false` (bool)
+func (o RoleTempalteOutput) Locked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RoleTempalte) pulumi.BoolPtrOutput { return v.Locked }).(pulumi.BoolPtrOutput)
+}
+
+// Role template name (string)
+func (o RoleTempalteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleTempalte) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Inherit role template IDs (list)
+func (o RoleTempalteOutput) RoleTemplateIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoleTempalte) pulumi.StringArrayOutput { return v.RoleTemplateIds }).(pulumi.StringArrayOutput)
+}
+
+// Role template policy rules (list)
+func (o RoleTempalteOutput) Rules() RoleTempalteRuleArrayOutput {
+	return o.ApplyT(func(v *RoleTempalte) RoleTempalteRuleArrayOutput { return v.Rules }).(RoleTempalteRuleArrayOutput)
+}
+
 type RoleTempalteArrayOutput struct{ *pulumi.OutputState }
 
 func (RoleTempalteArrayOutput) ElementType() reflect.Type {

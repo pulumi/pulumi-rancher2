@@ -74,6 +74,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> OpenPorts;
         /// <summary>
+        /// Only use a private IP address. Default `false` (bool)
+        /// </summary>
+        public readonly bool? PrivateAddressOnly;
+        /// <summary>
         /// Specify a static private IP address for the machine. (string)
         /// </summary>
         public readonly string? PrivateIpAddress;
@@ -158,6 +162,8 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableArray<string> openPorts,
 
+            bool? privateAddressOnly,
+
             string? privateIpAddress,
 
             string? resourceGroup,
@@ -199,6 +205,7 @@ namespace Pulumi.Rancher2.Outputs
             NoPublicIp = noPublicIp;
             Nsg = nsg;
             OpenPorts = openPorts;
+            PrivateAddressOnly = privateAddressOnly;
             PrivateIpAddress = privateIpAddress;
             ResourceGroup = resourceGroup;
             Size = size;

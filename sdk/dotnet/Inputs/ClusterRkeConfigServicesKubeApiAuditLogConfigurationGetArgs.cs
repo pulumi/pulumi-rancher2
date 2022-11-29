@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesKubeApiAuditLogConfigurationGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesKubeApiAuditLogConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Audit log format. Default: 'json' (string)
@@ -51,5 +51,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesKubeApiAuditLogConfigurationGetArgs()
         {
         }
+        public static new ClusterRkeConfigServicesKubeApiAuditLogConfigurationGetArgs Empty => new ClusterRkeConfigServicesKubeApiAuditLogConfigurationGetArgs();
     }
 }

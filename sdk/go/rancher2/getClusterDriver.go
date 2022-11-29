@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupClusterDriver(ctx, &GetClusterDriverArgs{
+//			_, err = rancher2.LookupClusterDriver(ctx, &GetClusterDriverArgs{
 //				Name: "foo",
 //			}, nil)
 //			if err != nil {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesKubeControllerArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesKubeControllerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cluster CIDR option for kube controller service (string)
@@ -69,5 +69,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesKubeControllerArgs()
         {
         }
+        public static new ClusterRkeConfigServicesKubeControllerArgs Empty => new ClusterRkeConfigServicesKubeControllerArgs();
     }
 }

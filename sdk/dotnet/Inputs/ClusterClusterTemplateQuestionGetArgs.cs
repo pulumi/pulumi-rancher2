@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterClusterTemplateQuestionGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterTemplateQuestionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Default variable value (string)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterClusterTemplateQuestionGetArgs()
         {
         }
+        public static new ClusterClusterTemplateQuestionGetArgs Empty => new ClusterClusterTemplateQuestionGetArgs();
     }
 }

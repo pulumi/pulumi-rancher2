@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterAksConfigV2Args : Pulumi.ResourceArgs
+    public sealed class ClusterAksConfigV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The AKS auth base url (string)
@@ -207,5 +207,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterAksConfigV2Args()
         {
         }
+        public static new ClusterAksConfigV2Args Empty => new ClusterAksConfigV2Args();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterAksConfigV2NodePoolArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAksConfigV2NodePoolArgs : global::Pulumi.ResourceArgs
     {
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
@@ -99,5 +99,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterAksConfigV2NodePoolArgs()
         {
         }
+        public static new ClusterAksConfigV2NodePoolArgs Empty => new ClusterAksConfigV2NodePoolArgs();
     }
 }

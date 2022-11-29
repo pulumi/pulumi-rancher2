@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NotifierWebhookConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NotifierWebhookConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Wechat proxy url (string)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public NotifierWebhookConfigGetArgs()
         {
         }
+        public static new NotifierWebhookConfigGetArgs Empty => new NotifierWebhookConfigGetArgs();
     }
 }

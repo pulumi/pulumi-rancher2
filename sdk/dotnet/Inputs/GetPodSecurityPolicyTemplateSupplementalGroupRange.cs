@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs : global::Pulumi.InvokeArgs
     {
         [Input("max", required: true)]
         public int Max { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs()
         {
         }
+        public static new GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs Empty => new GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs();
     }
 }

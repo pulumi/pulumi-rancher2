@@ -21,7 +21,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/catalogV2:CatalogV2")]
-    public partial class CatalogV2 : Pulumi.CustomResource
+    public partial class CatalogV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for the catalog v2 (map)
@@ -157,7 +157,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class CatalogV2Args : Pulumi.ResourceArgs
+    public sealed class CatalogV2Args : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -258,9 +258,10 @@ namespace Pulumi.Rancher2
         public CatalogV2Args()
         {
         }
+        public static new CatalogV2Args Empty => new CatalogV2Args();
     }
 
-    public sealed class CatalogV2State : Pulumi.ResourceArgs
+    public sealed class CatalogV2State : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -367,5 +368,6 @@ namespace Pulumi.Rancher2
         public CatalogV2State()
         {
         }
+        public static new CatalogV2State Empty => new CatalogV2State();
     }
 }

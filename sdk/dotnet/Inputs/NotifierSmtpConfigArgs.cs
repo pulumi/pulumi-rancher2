@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NotifierSmtpConfigArgs : Pulumi.ResourceArgs
+    public sealed class NotifierSmtpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Wechat default recipient (string)
@@ -24,11 +24,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// SMTP password (string)
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// SMTP port (int)
@@ -57,5 +67,6 @@ namespace Pulumi.Rancher2.Inputs
         public NotifierSmtpConfigArgs()
         {
         }
+        public static new NotifierSmtpConfigArgs Empty => new NotifierSmtpConfigArgs();
     }
 }

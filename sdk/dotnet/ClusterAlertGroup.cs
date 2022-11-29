@@ -15,24 +15,22 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Rancher2 Cluster Alert Group
+    ///     var foo = new Rancher2.ClusterAlertGroup("foo", new()
     ///     {
-    ///         // Create a new Rancher2 Cluster Alert Group
-    ///         var foo = new Rancher2.ClusterAlertGroup("foo", new Rancher2.ClusterAlertGroupArgs
-    ///         {
-    ///             ClusterId = "&lt;cluster_id&gt;",
-    ///             Description = "Terraform cluster alert group",
-    ///             GroupIntervalSeconds = 300,
-    ///             RepeatIntervalSeconds = 3600,
-    ///         });
-    ///     }
+    ///         ClusterId = "&lt;cluster_id&gt;",
+    ///         Description = "Terraform cluster alert group",
+    ///         GroupIntervalSeconds = 300,
+    ///         RepeatIntervalSeconds = 3600,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterAlertGroup:ClusterAlertGroup")]
-    public partial class ClusterAlertGroup : Pulumi.CustomResource
+    public partial class ClusterAlertGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The cluster alert group annotations (map)
@@ -125,7 +123,7 @@ namespace Pulumi.Rancher2
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "rancher2:index/clusterAlterGroup:ClusterAlterGroup"},
+                    new global::Pulumi.Alias { Type = "rancher2:index/clusterAlterGroup:ClusterAlterGroup"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -148,7 +146,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ClusterAlertGroupArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAlertGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -225,9 +223,10 @@ namespace Pulumi.Rancher2
         public ClusterAlertGroupArgs()
         {
         }
+        public static new ClusterAlertGroupArgs Empty => new ClusterAlertGroupArgs();
     }
 
-    public sealed class ClusterAlertGroupState : Pulumi.ResourceArgs
+    public sealed class ClusterAlertGroupState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -304,5 +303,6 @@ namespace Pulumi.Rancher2
         public ClusterAlertGroupState()
         {
         }
+        public static new ClusterAlertGroupState Empty => new ClusterAlertGroupState();
     }
 }

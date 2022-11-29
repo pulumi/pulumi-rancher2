@@ -21,7 +21,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/nodePool:NodePool")]
-    public partial class NodePool : Pulumi.CustomResource
+    public partial class NodePool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for Node Pool object (map)
@@ -145,7 +145,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class NodePoolArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -246,9 +246,10 @@ namespace Pulumi.Rancher2
         public NodePoolArgs()
         {
         }
+        public static new NodePoolArgs Empty => new NodePoolArgs();
     }
 
-    public sealed class NodePoolState : Pulumi.ResourceArgs
+    public sealed class NodePoolState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -349,5 +350,6 @@ namespace Pulumi.Rancher2
         public NodePoolState()
         {
         }
+        public static new NodePoolState Empty => new NodePoolState();
     }
 }

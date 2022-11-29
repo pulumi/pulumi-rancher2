@@ -105,6 +105,17 @@ func NewCatalog(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrOutput)
+	}
+	if args.Username != nil {
+		args.Username = pulumi.ToSecret(args.Username).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+		"username",
+	})
+	opts = append(opts, secrets)
 	var resource Catalog
 	err := ctx.RegisterResource("rancher2:index/catalog:Catalog", name, args, &resource, opts...)
 	if err != nil {
@@ -340,6 +351,76 @@ func (o CatalogOutput) ToCatalogOutput() CatalogOutput {
 
 func (o CatalogOutput) ToCatalogOutputWithContext(ctx context.Context) CatalogOutput {
 	return o
+}
+
+// Annotations for the catalog (map)
+func (o CatalogOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The branch of the catalog repo to use. Default `master` (string)
+func (o CatalogOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
+func (o CatalogOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// A catalog description (string)
+func (o CatalogOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The kind of the catalog. Just helm by the moment (string)
+func (o CatalogOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Labels for the catalog (map)
+func (o CatalogOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the catalog (string)
+func (o CatalogOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to access the catalog if needed (string)
+func (o CatalogOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The project id of the catalog. Mandatory if `scope = project` (string)
+func (o CatalogOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+func (o CatalogOutput) Refresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.BoolPtrOutput { return v.Refresh }).(pulumi.BoolPtrOutput)
+}
+
+// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+func (o CatalogOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The url of the catalog repo (string)
+func (o CatalogOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// The username to access the catalog if needed (string)
+func (o CatalogOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
+func (o CatalogOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
 type CatalogArrayOutput struct{ *pulumi.OutputState }

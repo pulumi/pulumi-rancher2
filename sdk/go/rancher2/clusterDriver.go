@@ -268,6 +268,56 @@ func (o ClusterDriverOutput) ToClusterDriverOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Specify the cluster driver state (bool)
+func (o ClusterDriverOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ClusterDriver) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Actual url of the cluster driver (string)
+func (o ClusterDriverOutput) ActualUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterDriver) pulumi.StringPtrOutput { return v.ActualUrl }).(pulumi.StringPtrOutput)
+}
+
+// Annotations of the resource (map)
+func (o ClusterDriverOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterDriver) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Specify whether the cluster driver is an internal cluster driver or not (bool)
+func (o ClusterDriverOutput) Builtin() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ClusterDriver) pulumi.BoolOutput { return v.Builtin }).(pulumi.BoolOutput)
+}
+
+// Verify that the downloaded driver matches the expected checksum (string)
+func (o ClusterDriverOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterDriver) pulumi.StringPtrOutput { return v.Checksum }).(pulumi.StringPtrOutput)
+}
+
+// Labels of the resource (map)
+func (o ClusterDriverOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterDriver) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Name of the cluster driver (string)
+func (o ClusterDriverOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterDriver) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URL to load for customized Add Clusters screen for this driver (string)
+func (o ClusterDriverOutput) UiUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterDriver) pulumi.StringPtrOutput { return v.UiUrl }).(pulumi.StringPtrOutput)
+}
+
+// The URL to download the machine driver binary for 64-bit Linux (string)
+func (o ClusterDriverOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterDriver) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// Domains to whitelist for the ui (list)
+func (o ClusterDriverOutput) WhitelistDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterDriver) pulumi.StringArrayOutput { return v.WhitelistDomains }).(pulumi.StringArrayOutput)
+}
+
 type ClusterDriverArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterDriverArrayOutput) ElementType() reflect.Type {

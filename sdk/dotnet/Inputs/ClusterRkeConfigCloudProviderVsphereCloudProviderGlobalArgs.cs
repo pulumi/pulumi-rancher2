@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (string)
@@ -24,11 +24,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("insecureFlag")]
         public Input<bool>? InsecureFlag { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Registry password (string)
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Port for node. Default `22` (string)
@@ -42,14 +52,25 @@ namespace Pulumi.Rancher2.Inputs
         [Input("soapRoundtripCount")]
         public Input<int>? SoapRoundtripCount { get; set; }
 
+        [Input("user")]
+        private Input<string>? _user;
+
         /// <summary>
         /// Registry user (string)
         /// </summary>
-        [Input("user")]
-        public Input<string>? User { get; set; }
+        public Input<string>? User
+        {
+            get => _user;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _user = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs()
         {
         }
+        public static new ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs Empty => new ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs();
     }
 }

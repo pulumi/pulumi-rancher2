@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NodeTemplateAmazonec2ConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateAmazonec2ConfigArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
-        /// </summary>
         [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        private Input<string>? _accessKey;
+
+        /// <summary>
+        /// Outscale Access Key (string)
+        /// </summary>
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AWS machine image (string)
@@ -49,6 +59,18 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
+        /// Enables or disables the HTTP metadata endpoint on your instances (string)
+        /// </summary>
+        [Input("httpEndpoint")]
+        public Input<string>? HttpEndpoint { get; set; }
+
+        /// <summary>
+        /// The state of token usage for your instance metadata requests (string)
+        /// </summary>
+        [Input("httpTokens")]
+        public Input<string>? HttpTokens { get; set; }
+
+        /// <summary>
         /// AWS IAM Instance Profile (string)
         /// </summary>
         [Input("iamInstanceProfile")]
@@ -61,7 +83,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? InsecureTransport { get; set; }
 
         /// <summary>
-        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// Outscale VM type. Default `tinav2.c1r2p3` (string)
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -103,7 +125,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? PrivateAddressOnly { get; set; }
 
         /// <summary>
-        /// OpenStack region name (string)
+        /// AWS region. Default `eu-west-2` (string)
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -126,11 +148,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("rootSize")]
         public Input<string>? RootSize { get; set; }
 
-        /// <summary>
-        /// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
-        /// </summary>
         [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        private Input<string>? _secretKey;
+
+        /// <summary>
+        /// Outscale Secret Key (string)
+        /// </summary>
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Skip adding default rules to security groups (bool)
@@ -150,11 +182,21 @@ namespace Pulumi.Rancher2.Inputs
             set => _securityGroups = value;
         }
 
+        [Input("sessionToken")]
+        private Input<string>? _sessionToken;
+
         /// <summary>
         /// AWS Session Token (string)
         /// </summary>
-        [Input("sessionToken")]
-        public Input<string>? SessionToken { get; set; }
+        public Input<string>? SessionToken
+        {
+            get => _sessionToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sessionToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AWS spot instance bid price (in dollar). Default `0.50` (string)
@@ -162,9 +204,6 @@ namespace Pulumi.Rancher2.Inputs
         [Input("spotPrice")]
         public Input<string>? SpotPrice { get; set; }
 
-        /// <summary>
-        /// SSH Key for Instance (string)
-        /// </summary>
         [Input("sshKeypath")]
         public Input<string>? SshKeypath { get; set; }
 
@@ -225,5 +264,6 @@ namespace Pulumi.Rancher2.Inputs
         public NodeTemplateAmazonec2ConfigArgs()
         {
         }
+        public static new NodeTemplateAmazonec2ConfigArgs Empty => new NodeTemplateAmazonec2ConfigArgs();
     }
 }

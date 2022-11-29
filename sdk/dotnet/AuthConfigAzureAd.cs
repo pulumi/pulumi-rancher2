@@ -10,38 +10,32 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2
 {
     /// <summary>
-    /// Provides a Rancher v2 Auth Config AzureAD resource. This can be used to configure and enable Auth Config AzureAD for Rancher v2 RKE clusters and retrieve their information.
-    /// 
-    /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Auth Config AzureAD
+    ///     var azuread = new Rancher2.AuthConfigAzureAd("azuread", new()
     ///     {
-    ///         // Create a new rancher2 Auth Config AzureAD
-    ///         var azuread = new Rancher2.AuthConfigAzureAd("azuread", new Rancher2.AuthConfigAzureAdArgs
-    ///         {
-    ///             ApplicationId = "&lt;AZUREAD_APP_ID&gt;",
-    ///             ApplicationSecret = "&lt;AZUREAD_APP_SECRET&gt;",
-    ///             AuthEndpoint = "&lt;AZUREAD_AUTH_ENDPOINT&gt;",
-    ///             GraphEndpoint = "&lt;AZUREAD_GRAPH_ENDPOINT&gt;",
-    ///             RancherUrl = "&lt;RANCHER_URL&gt;",
-    ///             TenantId = "&lt;AZUREAD_TENANT_ID&gt;",
-    ///             TokenEndpoint = "&lt;AZUREAD_TOKEN_ENDPOINT&gt;",
-    ///         });
-    ///     }
+    ///         ApplicationId = "&lt;AZUREAD_APP_ID&gt;",
+    ///         ApplicationSecret = "&lt;AZUREAD_APP_SECRET&gt;",
+    ///         AuthEndpoint = "&lt;AZUREAD_AUTH_ENDPOINT&gt;",
+    ///         GraphEndpoint = "&lt;AZUREAD_GRAPH_ENDPOINT&gt;",
+    ///         RancherUrl = "&lt;RANCHER_URL&gt;",
+    ///         TenantId = "&lt;AZUREAD_TENANT_ID&gt;",
+    ///         TokenEndpoint = "&lt;AZUREAD_TOKEN_ENDPOINT&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/authConfigAzureAd:AuthConfigAzureAd")]
-    public partial class AuthConfigAzureAd : Pulumi.CustomResource
+    public partial class AuthConfigAzureAd : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -156,6 +150,11 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "applicationId",
+                    "applicationSecret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -177,7 +176,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class AuthConfigAzureAdArgs : Pulumi.ResourceArgs
+    public sealed class AuthConfigAzureAdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -209,17 +208,37 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        [Input("applicationId", required: true)]
+        private Input<string>? _applicationId;
+
         /// <summary>
         /// AzureAD auth application ID (string)
         /// </summary>
-        [Input("applicationId", required: true)]
-        public Input<string> ApplicationId { get; set; } = null!;
+        public Input<string>? ApplicationId
+        {
+            get => _applicationId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _applicationId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("applicationSecret", required: true)]
+        private Input<string>? _applicationSecret;
 
         /// <summary>
         /// AzureAD auth application secret (string)
         /// </summary>
-        [Input("applicationSecret", required: true)]
-        public Input<string> ApplicationSecret { get; set; } = null!;
+        public Input<string>? ApplicationSecret
+        {
+            get => _applicationSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _applicationSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AzureAD auth endpoint (string)
@@ -278,9 +297,10 @@ namespace Pulumi.Rancher2
         public AuthConfigAzureAdArgs()
         {
         }
+        public static new AuthConfigAzureAdArgs Empty => new AuthConfigAzureAdArgs();
     }
 
-    public sealed class AuthConfigAzureAdState : Pulumi.ResourceArgs
+    public sealed class AuthConfigAzureAdState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -312,17 +332,37 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        [Input("applicationId")]
+        private Input<string>? _applicationId;
+
         /// <summary>
         /// AzureAD auth application ID (string)
         /// </summary>
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
+        public Input<string>? ApplicationId
+        {
+            get => _applicationId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _applicationId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("applicationSecret")]
+        private Input<string>? _applicationSecret;
 
         /// <summary>
         /// AzureAD auth application secret (string)
         /// </summary>
-        [Input("applicationSecret")]
-        public Input<string>? ApplicationSecret { get; set; }
+        public Input<string>? ApplicationSecret
+        {
+            get => _applicationSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _applicationSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AzureAD auth endpoint (string)
@@ -393,5 +433,6 @@ namespace Pulumi.Rancher2
         public AuthConfigAzureAdState()
         {
         }
+        public static new AuthConfigAzureAdState Empty => new AuthConfigAzureAdState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NodeTemplateHarvesterConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateHarvesterConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// vSphere CPU number for docker VM. Default `2` (string)
@@ -60,11 +60,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("networkName", required: true)]
         public Input<string> NetworkName { get; set; } = null!;
 
+        [Input("sshPassword")]
+        private Input<string>? _sshPassword;
+
         /// <summary>
         /// If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
         /// </summary>
-        [Input("sshPassword")]
-        public Input<string>? SshPassword { get; set; }
+        public Input<string>? SshPassword
+        {
+            get => _sshPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
@@ -87,5 +97,6 @@ namespace Pulumi.Rancher2.Inputs
         public NodeTemplateHarvesterConfigGetArgs()
         {
         }
+        public static new NodeTemplateHarvesterConfigGetArgs Empty => new NodeTemplateHarvesterConfigGetArgs();
     }
 }

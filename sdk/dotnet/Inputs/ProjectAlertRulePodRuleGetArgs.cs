@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ProjectAlertRulePodRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class ProjectAlertRulePodRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Pod rule condition. Supported values : `"notrunning" | "notscheduled" | "restarts"`. Default: `notrunning` (string)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public ProjectAlertRulePodRuleGetArgs()
         {
         }
+        public static new ProjectAlertRulePodRuleGetArgs Empty => new ProjectAlertRulePodRuleGetArgs();
     }
 }

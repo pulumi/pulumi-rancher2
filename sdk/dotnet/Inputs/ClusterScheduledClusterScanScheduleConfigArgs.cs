@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterScheduledClusterScanScheduleConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterScheduledClusterScanScheduleConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Crontab schedule. It should contains 5 fields `"&lt;min&gt; &lt;hour&gt; &lt;month_day&gt; &lt;month&gt; &lt;week_day&gt;"` (string)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterScheduledClusterScanScheduleConfigArgs()
         {
         }
+        public static new ClusterScheduledClusterScanScheduleConfigArgs Empty => new ClusterScheduledClusterScanScheduleConfigArgs();
     }
 }

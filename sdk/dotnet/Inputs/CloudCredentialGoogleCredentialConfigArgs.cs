@@ -10,16 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class CloudCredentialGoogleCredentialConfigArgs : Pulumi.ResourceArgs
+    public sealed class CloudCredentialGoogleCredentialConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("authEncodedJson", required: true)]
+        private Input<string>? _authEncodedJson;
+
         /// <summary>
         /// Google auth encoded json (string)
         /// </summary>
-        [Input("authEncodedJson", required: true)]
-        public Input<string> AuthEncodedJson { get; set; } = null!;
+        public Input<string>? AuthEncodedJson
+        {
+            get => _authEncodedJson;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authEncodedJson = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public CloudCredentialGoogleCredentialConfigArgs()
         {
         }
+        public static new CloudCredentialGoogleCredentialConfigArgs Empty => new CloudCredentialGoogleCredentialConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigDnsArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigDnsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// LinearAutoScalerParams dns config (list Maxitem: 1)
@@ -99,5 +99,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigDnsArgs()
         {
         }
+        public static new ClusterRkeConfigDnsArgs Empty => new ClusterRkeConfigDnsArgs();
     }
 }

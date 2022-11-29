@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs : global::Pulumi.ResourceArgs
     {
         [Input("ecrCredentialPlugin")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgs>? EcrCredentialPlugin { get; set; }
@@ -19,16 +19,35 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? IsDefault { get; set; }
 
         [Input("password")]
-        public Input<string>? Password { get; set; }
+        private Input<string>? _password;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
         [Input("user")]
-        public Input<string>? User { get; set; }
+        private Input<string>? _user;
+        public Input<string>? User
+        {
+            get => _user;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _user = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs();
     }
 }

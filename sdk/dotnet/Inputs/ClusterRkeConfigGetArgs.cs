@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Duration in seconds of addon job (int)
@@ -171,5 +171,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigGetArgs()
         {
         }
+        public static new ClusterRkeConfigGetArgs Empty => new ClusterRkeConfigGetArgs();
     }
 }

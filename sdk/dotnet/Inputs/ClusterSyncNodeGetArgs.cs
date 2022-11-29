@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterSyncNodeGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterSyncNodeGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -120,11 +120,21 @@ namespace Pulumi.Rancher2.Inputs
             set => _roles = value;
         }
 
+        [Input("sshUser")]
+        private Input<string>? _sshUser;
+
         /// <summary>
         /// The user to connect to the node (string).
         /// </summary>
-        [Input("sshUser")]
-        public Input<string>? SshUser { get; set; }
+        public Input<string>? SshUser
+        {
+            get => _sshUser;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshUser = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("systemInfo")]
         private InputMap<object>? _systemInfo;
@@ -141,5 +151,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterSyncNodeGetArgs()
         {
         }
+        public static new ClusterSyncNodeGetArgs Empty => new ClusterSyncNodeGetArgs();
     }
 }

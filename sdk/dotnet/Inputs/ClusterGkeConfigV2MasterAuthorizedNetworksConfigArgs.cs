@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("cidrBlocks", required: true)]
         private InputList<Inputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs>? _cidrBlocks;
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs()
         {
         }
+        public static new ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs Empty => new ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs();
     }
 }

@@ -554,6 +554,12 @@ public class AuthConfigActiveDirectory extends com.pulumi.resources.CustomResour
             .aliases(List.of(
                 Output.of(Alias.builder().type("rancher2:index/activeDirectory:ActiveDirectory").build())
             ))
+            .additionalSecretOutputs(List.of(
+                "certificate",
+                "serviceAccountPassword",
+                "serviceAccountUsername",
+                "testPassword"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

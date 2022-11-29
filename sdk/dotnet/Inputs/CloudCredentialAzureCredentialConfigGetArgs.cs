@@ -10,19 +10,39 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class CloudCredentialAzureCredentialConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class CloudCredentialAzureCredentialConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("clientId", required: true)]
+        private Input<string>? _clientId;
+
         /// <summary>
         /// Azure Service Principal Account ID (string)
         /// </summary>
-        [Input("clientId", required: true)]
-        public Input<string> ClientId { get; set; } = null!;
+        public Input<string>? ClientId
+        {
+            get => _clientId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientSecret", required: true)]
+        private Input<string>? _clientSecret;
 
         /// <summary>
         /// Azure Service Principal Account password (string)
         /// </summary>
-        [Input("clientSecret", required: true)]
-        public Input<string> ClientSecret { get; set; } = null!;
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
@@ -30,11 +50,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
+        [Input("subscriptionId", required: true)]
+        private Input<string>? _subscriptionId;
+
         /// <summary>
         /// Azure Subscription ID (string)
         /// </summary>
-        [Input("subscriptionId", required: true)]
-        public Input<string> SubscriptionId { get; set; } = null!;
+        public Input<string>? SubscriptionId
+        {
+            get => _subscriptionId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _subscriptionId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Azure Tenant ID (string)
@@ -45,5 +75,6 @@ namespace Pulumi.Rancher2.Inputs
         public CloudCredentialAzureCredentialConfigGetArgs()
         {
         }
+        public static new CloudCredentialAzureCredentialConfigGetArgs Empty => new CloudCredentialAzureCredentialConfigGetArgs();
     }
 }

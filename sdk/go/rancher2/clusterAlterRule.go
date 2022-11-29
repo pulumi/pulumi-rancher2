@@ -336,6 +336,76 @@ func (o ClusterAlterRuleOutput) ToClusterAlterRuleOutputWithContext(ctx context.
 	return o
 }
 
+// The cluster alert group annotations (map)
+func (o ClusterAlterRuleOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The cluster id where create cluster alert group (string)
+func (o ClusterAlterRuleOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Alert event rule
+func (o ClusterAlterRuleOutput) EventRule() ClusterAlterRuleEventRulePtrOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) ClusterAlterRuleEventRulePtrOutput { return v.EventRule }).(ClusterAlterRuleEventRulePtrOutput)
+}
+
+// Alert rule group ID
+func (o ClusterAlterRuleOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The cluster alert group interval seconds. Default: `180` (int)
+func (o ClusterAlterRuleOutput) GroupIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) pulumi.IntPtrOutput { return v.GroupIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The cluster alert group wait seconds. Default: `180` (int)
+func (o ClusterAlterRuleOutput) GroupWaitSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) pulumi.IntPtrOutput { return v.GroupWaitSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Alert rule inherited
+func (o ClusterAlterRuleOutput) Inherited() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) pulumi.BoolPtrOutput { return v.Inherited }).(pulumi.BoolPtrOutput)
+}
+
+// The cluster alert group labels (map)
+func (o ClusterAlterRuleOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Alert metric rule
+func (o ClusterAlterRuleOutput) MetricRule() ClusterAlterRuleMetricRulePtrOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) ClusterAlterRuleMetricRulePtrOutput { return v.MetricRule }).(ClusterAlterRuleMetricRulePtrOutput)
+}
+
+// The cluster alert group name (string)
+func (o ClusterAlterRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Alert node rule
+func (o ClusterAlterRuleOutput) NodeRule() ClusterAlterRuleNodeRulePtrOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) ClusterAlterRuleNodeRulePtrOutput { return v.NodeRule }).(ClusterAlterRuleNodeRulePtrOutput)
+}
+
+// The cluster alert group wait seconds. Default: `3600` (int)
+func (o ClusterAlterRuleOutput) RepeatIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) pulumi.IntPtrOutput { return v.RepeatIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Alert rule severity
+func (o ClusterAlterRuleOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) pulumi.StringPtrOutput { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Alert system service rule
+func (o ClusterAlterRuleOutput) SystemServiceRule() ClusterAlterRuleSystemServiceRulePtrOutput {
+	return o.ApplyT(func(v *ClusterAlterRule) ClusterAlterRuleSystemServiceRulePtrOutput { return v.SystemServiceRule }).(ClusterAlterRuleSystemServiceRulePtrOutput)
+}
+
 type ClusterAlterRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlterRuleArrayOutput) ElementType() reflect.Type {

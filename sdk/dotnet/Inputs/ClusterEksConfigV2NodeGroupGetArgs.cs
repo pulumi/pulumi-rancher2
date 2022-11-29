@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterEksConfigV2NodeGroupGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterEksConfigV2NodeGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The EKS node group desired size. Default: `2` (int)
@@ -159,5 +159,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterEksConfigV2NodeGroupGetArgs()
         {
         }
+        public static new ClusterEksConfigV2NodeGroupGetArgs Empty => new ClusterEksConfigV2NodeGroupGetArgs();
     }
 }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.rancher2.outputs.GetClusterRkeConfigNetworkAciNetworkProvider;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigNetworkCalicoNetworkProvider;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigNetworkCanalNetworkProvider;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigNetworkFlannelNetworkProvider;
@@ -20,6 +21,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigNetwork {
+    private @Nullable GetClusterRkeConfigNetworkAciNetworkProvider aciNetworkProvider;
     private @Nullable GetClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider;
     private @Nullable GetClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
     private @Nullable GetClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
@@ -30,6 +32,9 @@ public final class GetClusterRkeConfigNetwork {
     private @Nullable GetClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
 
     private GetClusterRkeConfigNetwork() {}
+    public Optional<GetClusterRkeConfigNetworkAciNetworkProvider> aciNetworkProvider() {
+        return Optional.ofNullable(this.aciNetworkProvider);
+    }
     public Optional<GetClusterRkeConfigNetworkCalicoNetworkProvider> calicoNetworkProvider() {
         return Optional.ofNullable(this.calicoNetworkProvider);
     }
@@ -64,6 +69,7 @@ public final class GetClusterRkeConfigNetwork {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetClusterRkeConfigNetworkAciNetworkProvider aciNetworkProvider;
         private @Nullable GetClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider;
         private @Nullable GetClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
         private @Nullable GetClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
@@ -75,6 +81,7 @@ public final class GetClusterRkeConfigNetwork {
         public Builder() {}
         public Builder(GetClusterRkeConfigNetwork defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aciNetworkProvider = defaults.aciNetworkProvider;
     	      this.calicoNetworkProvider = defaults.calicoNetworkProvider;
     	      this.canalNetworkProvider = defaults.canalNetworkProvider;
     	      this.flannelNetworkProvider = defaults.flannelNetworkProvider;
@@ -85,6 +92,11 @@ public final class GetClusterRkeConfigNetwork {
     	      this.weaveNetworkProvider = defaults.weaveNetworkProvider;
         }
 
+        @CustomType.Setter
+        public Builder aciNetworkProvider(@Nullable GetClusterRkeConfigNetworkAciNetworkProvider aciNetworkProvider) {
+            this.aciNetworkProvider = aciNetworkProvider;
+            return this;
+        }
         @CustomType.Setter
         public Builder calicoNetworkProvider(@Nullable GetClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider) {
             this.calicoNetworkProvider = calicoNetworkProvider;
@@ -130,6 +142,7 @@ public final class GetClusterRkeConfigNetwork {
         }
         public GetClusterRkeConfigNetwork build() {
             final var o = new GetClusterRkeConfigNetwork();
+            o.aciNetworkProvider = aciNetworkProvider;
             o.calicoNetworkProvider = calicoNetworkProvider;
             o.canalNetworkProvider = canalNetworkProvider;
             o.flannelNetworkProvider = flannelNetworkProvider;

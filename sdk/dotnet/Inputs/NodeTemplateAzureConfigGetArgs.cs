@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NodeTemplateAzureConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateAzureConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
@@ -18,17 +18,37 @@ namespace Pulumi.Rancher2.Inputs
         [Input("availabilitySet")]
         public Input<string>? AvailabilitySet { get; set; }
 
+        [Input("clientId")]
+        private Input<string>? _clientId;
+
         /// <summary>
         /// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
+        public Input<string>? ClientId
+        {
+            get => _clientId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
 
         /// <summary>
         /// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Path to file with custom-data (string)
@@ -162,11 +182,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("subnetPrefix")]
         public Input<string>? SubnetPrefix { get; set; }
 
+        [Input("subscriptionId")]
+        private Input<string>? _subscriptionId;
+
         /// <summary>
         /// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
-        [Input("subscriptionId")]
-        public Input<string>? SubscriptionId { get; set; }
+        public Input<string>? SubscriptionId
+        {
+            get => _subscriptionId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _subscriptionId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Update domain count to use for availability set. Default `5` (string)
@@ -189,5 +219,6 @@ namespace Pulumi.Rancher2.Inputs
         public NodeTemplateAzureConfigGetArgs()
         {
         }
+        public static new NodeTemplateAzureConfigGetArgs Empty => new NodeTemplateAzureConfigGetArgs();
     }
 }

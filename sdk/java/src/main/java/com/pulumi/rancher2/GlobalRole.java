@@ -23,6 +23,41 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Global Role resource. This can be used to create Global Role for Rancher v2 and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.GlobalRole;
+ * import com.pulumi.rancher2.GlobalRoleArgs;
+ * import com.pulumi.rancher2.inputs.GlobalRoleRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new GlobalRole(&#34;foo&#34;, GlobalRoleArgs.builder()        
+ *             .description(&#34;Terraform global role acceptance test&#34;)
+ *             .newUserDefault(true)
+ *             .rules(GlobalRoleRuleArgs.builder()
+ *                 .apiGroups(&#34;*&#34;)
+ *                 .resources(&#34;secrets&#34;)
+ *                 .verbs(&#34;create&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

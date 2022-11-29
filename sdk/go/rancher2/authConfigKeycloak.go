@@ -115,6 +115,21 @@ func NewAuthConfigKeycloak(ctx *pulumi.Context,
 	if args.UserNameField == nil {
 		return nil, errors.New("invalid value for required argument 'UserNameField'")
 	}
+	if args.IdpMetadataContent != nil {
+		args.IdpMetadataContent = pulumi.ToSecret(args.IdpMetadataContent).(pulumi.StringOutput)
+	}
+	if args.SpCert != nil {
+		args.SpCert = pulumi.ToSecret(args.SpCert).(pulumi.StringOutput)
+	}
+	if args.SpKey != nil {
+		args.SpKey = pulumi.ToSecret(args.SpKey).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"idpMetadataContent",
+		"spCert",
+		"spKey",
+	})
+	opts = append(opts, secrets)
 	var resource AuthConfigKeycloak
 	err := ctx.RegisterResource("rancher2:index/authConfigKeycloak:AuthConfigKeycloak", name, args, &resource, opts...)
 	if err != nil {
@@ -358,6 +373,86 @@ func (o AuthConfigKeycloakOutput) ToAuthConfigKeycloakOutput() AuthConfigKeycloa
 
 func (o AuthConfigKeycloakOutput) ToAuthConfigKeycloakOutputWithContext(ctx context.Context) AuthConfigKeycloakOutput {
 	return o
+}
+
+// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+func (o AuthConfigKeycloakOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringPtrOutput { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
+func (o AuthConfigKeycloakOutput) AllowedPrincipalIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringArrayOutput { return v.AllowedPrincipalIds }).(pulumi.StringArrayOutput)
+}
+
+// Annotations of the resource (map)
+func (o AuthConfigKeycloakOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// KeyCloak display name field (string)
+func (o AuthConfigKeycloakOutput) DisplayNameField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringOutput { return v.DisplayNameField }).(pulumi.StringOutput)
+}
+
+// Enable auth config provider. Default `true` (bool)
+func (o AuthConfigKeycloakOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// KeyCloak Client ID field (string)
+func (o AuthConfigKeycloakOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringOutput { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// KeyCloak group field (string)
+func (o AuthConfigKeycloakOutput) GroupsField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringOutput { return v.GroupsField }).(pulumi.StringOutput)
+}
+
+// KeyCloak IDP metadata content (string)
+func (o AuthConfigKeycloakOutput) IdpMetadataContent() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringOutput { return v.IdpMetadataContent }).(pulumi.StringOutput)
+}
+
+// Labels of the resource (map)
+func (o AuthConfigKeycloakOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The name of the resource (string)
+func (o AuthConfigKeycloakOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
+func (o AuthConfigKeycloakOutput) RancherApiHost() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringOutput { return v.RancherApiHost }).(pulumi.StringOutput)
+}
+
+// KeyCloak SP cert (string)
+func (o AuthConfigKeycloakOutput) SpCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringOutput { return v.SpCert }).(pulumi.StringOutput)
+}
+
+// KeyCloak SP key (string)
+func (o AuthConfigKeycloakOutput) SpKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringOutput { return v.SpKey }).(pulumi.StringOutput)
+}
+
+// (Computed) The type of the resource (string)
+func (o AuthConfigKeycloakOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// KeyCloak UID field (string)
+func (o AuthConfigKeycloakOutput) UidField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringOutput { return v.UidField }).(pulumi.StringOutput)
+}
+
+// KeyCloak user name field (string)
+func (o AuthConfigKeycloakOutput) UserNameField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigKeycloak) pulumi.StringOutput { return v.UserNameField }).(pulumi.StringOutput)
 }
 
 type AuthConfigKeycloakArrayOutput struct{ *pulumi.OutputState }

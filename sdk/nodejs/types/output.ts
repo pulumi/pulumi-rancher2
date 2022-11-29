@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface CloudCredentialAmazonec2CredentialConfig {
     /**
@@ -2802,6 +2803,10 @@ export interface ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
 
 export interface ClusterRkeConfigNetwork {
     /**
+     * ACI provider config for RKE network (list maxitems:63)
+     */
+    aciNetworkProvider?: outputs.ClusterRkeConfigNetworkAciNetworkProvider;
+    /**
      * Calico provider config for RKE network (list maxitems:1)
      */
     calicoNetworkProvider?: outputs.ClusterRkeConfigNetworkCalicoNetworkProvider;
@@ -2833,6 +2838,305 @@ export interface ClusterRkeConfigNetwork {
      * Weave provider config for RKE network (list maxitems:1)
      */
     weaveNetworkProvider?: outputs.ClusterRkeConfigNetworkWeaveNetworkProvider;
+}
+
+export interface ClusterRkeConfigNetworkAciNetworkProvider {
+    /**
+     * Attachable entity profile (string)
+     */
+    aep: string;
+    /**
+     * List of APIC hosts to connect for APIC API (list)
+     */
+    apicHosts: string[];
+    /**
+     * APIC refresh ticker adjust amount (string)
+     */
+    apicRefreshTickerAdjust?: string;
+    /**
+     * APIC refresh time in seconds (string)
+     */
+    apicRefreshTime?: string;
+    /**
+     * APIC subscription delay amount (string)
+     */
+    apicSubscriptionDelay?: string;
+    /**
+     * APIC user certificate (string)
+     */
+    apicUserCrt: string;
+    /**
+     * APIC user key (string)
+     */
+    apicUserKey: string;
+    /**
+     * APIC user name (string)
+     */
+    apicUserName: string;
+    /**
+     * cAPIC cloud (string)
+     */
+    capic?: string;
+    /**
+     * Log level for ACI controller (string)
+     */
+    controllerLogLevel?: string;
+    /**
+     * Whether to disable periodic SNAT global info sync (string)
+     */
+    disablePeriodicSnatGlobalInfoSync?: string;
+    /**
+     * Whether to disable waiting for network (string)
+     */
+    disableWaitForNetwork?: string;
+    /**
+     * Whether to enable drop log (string)
+     */
+    dropLogEnable?: string;
+    /**
+     * The duration to wait for network (string)
+     */
+    durationWaitForNetwork?: string;
+    /**
+     * Whether to enable endpoint slices (string)
+     */
+    enableEndpointSlice?: string;
+    /**
+     * Encap type: vxlan or vlan (string)
+     */
+    encapType: string;
+    /**
+     * EP registry (string)
+     */
+    epRegistry?: string;
+    /**
+     * Subnet to use for dynamic external IPs (string)
+     */
+    externDynamic: string;
+    /**
+     * Subnet to use for static external IPs (string)
+     */
+    externStatic: string;
+    /**
+     * GBH pod subnet (string)
+     */
+    gbpPodSubnet?: string;
+    /**
+     * Log level for ACI host agent (string)
+     */
+    hostAgentLogLevel?: string;
+    /**
+     * Image pull policy (string)
+     */
+    imagePullPolicy?: string;
+    /**
+     * Image pull policy (string)
+     */
+    imagePullSecret?: string;
+    /**
+     * The VLAN used by ACI infra (string)
+     */
+    infraVlan?: string;
+    /**
+     * Whether to install Istio (string)
+     */
+    installIstio?: string;
+    /**
+     * Istio profile name (string)
+     */
+    istioProfile?: string;
+    /**
+     * List of Kafka broker hosts (list)
+     */
+    kafkaBrokers?: string[];
+    /**
+     * Kafka client certificate (string)
+     */
+    kafkaClientCrt?: string;
+    /**
+     * Kafka client key (string)
+     */
+    kafkaClientKey?: string;
+    /**
+     * The VLAN used by the physdom for nodes (string)
+     */
+    kubeApiVlan: string;
+    /**
+     * L3out (string)
+     */
+    l3out: string;
+    /**
+     * L3out external networks (list)
+     */
+    l3outExternalNetworks: string[];
+    /**
+     * Max nodes in service graph (string)
+     */
+    maxNodesSvcGraph?: string;
+    /**
+     * End of mcast range (string)
+     */
+    mcastRangeEnd: string;
+    /**
+     * Start of mcast range (string)
+     */
+    mcastRangeStart: string;
+    /**
+     * MTU head room amount (string)
+     */
+    mtuHeadRoom?: string;
+    /**
+     * Whether to disable Multus (string)
+     */
+    multusDisable?: string;
+    /**
+     * Whether to use priority class (string)
+     */
+    noPriorityClass?: string;
+    /**
+     * Whether to enable node pod interface (string)
+     */
+    nodePodIfEnable?: string;
+    /**
+     * Subnet to use for nodes (string)
+     */
+    nodeSubnet: string;
+    /**
+     * Subnet to use for service graph (string)
+     */
+    nodeSvcSubnet: string;
+    /**
+     * Whether to use client SSL for Opflex (string)
+     */
+    opflexClientSsl?: string;
+    /**
+     * Opflex device delete timeout (string)
+     */
+    opflexDeviceDeleteTimeout?: string;
+    /**
+     * Log level for ACI opflex (string)
+     */
+    opflexLogLevel?: string;
+    /**
+     * Opflex mode (string)
+     */
+    opflexMode?: string;
+    /**
+     * Opflex server port (string)
+     */
+    opflexServerPort?: string;
+    /**
+     * Overlay VRF name (string)
+     */
+    overlayVrfName?: string;
+    /**
+     * OVS memory limit (string)
+     */
+    ovsMemoryLimit?: string;
+    /**
+     * Policy-based routing tracking non snat (string)
+     */
+    pbrTrackingNonSnat?: string;
+    /**
+     * Pod subnet chunk size (string)
+     */
+    podSubnetChunkSize?: string;
+    /**
+     * Whether to run GBP container (string)
+     */
+    runGbpContainer?: string;
+    /**
+     * Whether to run Opflex server container (string)
+     */
+    runOpflexServerContainer?: string;
+    /**
+     * Service monitor interval (string)
+     */
+    serviceMonitorInterval?: string;
+    /**
+     * The VLAN used by LoadBalancer services (string)
+     */
+    serviceVlan: string;
+    /**
+     * Snat contract scope (string)
+     */
+    snatContractScope?: string;
+    /**
+     * Snat namespace (string)
+     */
+    snatNamespace?: string;
+    /**
+     * End of snat port range (string)
+     */
+    snatPortRangeEnd?: string;
+    /**
+     * End of snat port range (string)
+     */
+    snatPortRangeStart?: string;
+    /**
+     * Snat ports per node (string)
+     */
+    snatPortsPerNode?: string;
+    /**
+     * Whether to enable SR-IOV (string)
+     */
+    sriovEnable?: string;
+    /**
+     * Subnet domain name (string)
+     */
+    subnetDomainName?: string;
+    /**
+     * ACI system ID (string)
+     */
+    systemId: string;
+    /**
+     * ACI tenant (string)
+     */
+    tenant?: string;
+    /**
+     * Token for cluster registration token object (string)
+     */
+    token: string;
+    /**
+     * Whether to use ACI anywhere CRD (string)
+     */
+    useAciAnywhereCrd?: string;
+    /**
+     * Whether to use ACI CNI priority class (string)
+     */
+    useAciCniPriorityClass?: string;
+    /**
+     * Whether to use cluster role (string)
+     */
+    useClusterRole?: string;
+    /**
+     * Whether to use host netns volume (string)
+     */
+    useHostNetnsVolume?: string;
+    /**
+     * Whether use Opflex server volume (string)
+     */
+    useOpflexServerVolume?: string;
+    /**
+     * Whether ACI containers should run as privileged (string)
+     */
+    usePrivilegedContainer?: string;
+    /**
+     * VMM controller configuration (string)
+     */
+    vmmController?: string;
+    /**
+     * VMM domain configuration (string)
+     */
+    vmmDomain?: string;
+    /**
+     * VRF name (string)
+     */
+    vrfName: string;
+    /**
+     * VRF tenant (string)
+     */
+    vrfTenant: string;
 }
 
 export interface ClusterRkeConfigNetworkCalicoNetworkProvider {
@@ -3930,6 +4234,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
+    aciNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider;
     calicoNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider;
     canalNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider;
     flannelNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider;
@@ -3938,6 +4243,83 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
     plugin: string;
     tolerations?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration[];
     weaveNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider {
+    aep: string;
+    apicHosts: string[];
+    apicRefreshTickerAdjust?: string;
+    apicRefreshTime?: string;
+    apicSubscriptionDelay?: string;
+    apicUserCrt: string;
+    apicUserKey: string;
+    apicUserName: string;
+    capic?: string;
+    controllerLogLevel?: string;
+    disablePeriodicSnatGlobalInfoSync?: string;
+    disableWaitForNetwork?: string;
+    dropLogEnable?: string;
+    durationWaitForNetwork?: string;
+    enableEndpointSlice?: string;
+    encapType: string;
+    epRegistry?: string;
+    externDynamic: string;
+    externStatic: string;
+    gbpPodSubnet?: string;
+    hostAgentLogLevel?: string;
+    imagePullPolicy?: string;
+    imagePullSecret?: string;
+    infraVlan?: string;
+    installIstio?: string;
+    istioProfile?: string;
+    kafkaBrokers?: string[];
+    kafkaClientCrt?: string;
+    kafkaClientKey?: string;
+    kubeApiVlan: string;
+    l3out: string;
+    l3outExternalNetworks: string[];
+    maxNodesSvcGraph?: string;
+    mcastRangeEnd: string;
+    mcastRangeStart: string;
+    mtuHeadRoom?: string;
+    multusDisable?: string;
+    noPriorityClass?: string;
+    nodePodIfEnable?: string;
+    nodeSubnet: string;
+    nodeSvcSubnet: string;
+    opflexClientSsl?: string;
+    opflexDeviceDeleteTimeout?: string;
+    opflexLogLevel?: string;
+    opflexMode?: string;
+    opflexServerPort?: string;
+    overlayVrfName?: string;
+    ovsMemoryLimit?: string;
+    pbrTrackingNonSnat?: string;
+    podSubnetChunkSize?: string;
+    runGbpContainer?: string;
+    runOpflexServerContainer?: string;
+    serviceMonitorInterval?: string;
+    serviceVlan: string;
+    snatContractScope?: string;
+    snatNamespace?: string;
+    snatPortRangeEnd?: string;
+    snatPortRangeStart?: string;
+    snatPortsPerNode?: string;
+    sriovEnable?: string;
+    subnetDomainName?: string;
+    systemId: string;
+    tenant?: string;
+    token: string;
+    useAciAnywhereCrd?: string;
+    useAciCniPriorityClass?: string;
+    useClusterRole?: string;
+    useHostNetnsVolume?: string;
+    useOpflexServerVolume?: string;
+    usePrivilegedContainer?: string;
+    vmmController?: string;
+    vmmDomain?: string;
+    vrfName: string;
+    vrfTenant: string;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider {
@@ -4438,6 +4820,10 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool node config (list)
      */
     machineConfig: outputs.ClusterV2RkeConfigMachinePoolMachineConfig;
+    /**
+     * Labels for Machine pool nodes (map)
+     */
+    machineLabels: {[key: string]: any};
     /**
      * Max unhealthy nodes for automated replacement to be allowed (string)
      */
@@ -5656,6 +6042,7 @@ export interface GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
 }
 
 export interface GetClusterRkeConfigNetwork {
+    aciNetworkProvider?: outputs.GetClusterRkeConfigNetworkAciNetworkProvider;
     calicoNetworkProvider?: outputs.GetClusterRkeConfigNetworkCalicoNetworkProvider;
     canalNetworkProvider?: outputs.GetClusterRkeConfigNetworkCanalNetworkProvider;
     flannelNetworkProvider?: outputs.GetClusterRkeConfigNetworkFlannelNetworkProvider;
@@ -5664,6 +6051,83 @@ export interface GetClusterRkeConfigNetwork {
     plugin: string;
     tolerations?: outputs.GetClusterRkeConfigNetworkToleration[];
     weaveNetworkProvider?: outputs.GetClusterRkeConfigNetworkWeaveNetworkProvider;
+}
+
+export interface GetClusterRkeConfigNetworkAciNetworkProvider {
+    aep: string;
+    apicHosts: string[];
+    apicRefreshTickerAdjust?: string;
+    apicRefreshTime?: string;
+    apicSubscriptionDelay?: string;
+    apicUserCrt: string;
+    apicUserKey: string;
+    apicUserName: string;
+    capic?: string;
+    controllerLogLevel?: string;
+    disablePeriodicSnatGlobalInfoSync?: string;
+    disableWaitForNetwork?: string;
+    dropLogEnable?: string;
+    durationWaitForNetwork?: string;
+    enableEndpointSlice?: string;
+    encapType: string;
+    epRegistry?: string;
+    externDynamic: string;
+    externStatic: string;
+    gbpPodSubnet?: string;
+    hostAgentLogLevel?: string;
+    imagePullPolicy?: string;
+    imagePullSecret?: string;
+    infraVlan?: string;
+    installIstio?: string;
+    istioProfile?: string;
+    kafkaBrokers?: string[];
+    kafkaClientCrt?: string;
+    kafkaClientKey?: string;
+    kubeApiVlan: string;
+    l3out: string;
+    l3outExternalNetworks: string[];
+    maxNodesSvcGraph?: string;
+    mcastRangeEnd: string;
+    mcastRangeStart: string;
+    mtuHeadRoom?: string;
+    multusDisable?: string;
+    noPriorityClass?: string;
+    nodePodIfEnable?: string;
+    nodeSubnet: string;
+    nodeSvcSubnet: string;
+    opflexClientSsl?: string;
+    opflexDeviceDeleteTimeout?: string;
+    opflexLogLevel?: string;
+    opflexMode?: string;
+    opflexServerPort?: string;
+    overlayVrfName?: string;
+    ovsMemoryLimit?: string;
+    pbrTrackingNonSnat?: string;
+    podSubnetChunkSize?: string;
+    runGbpContainer?: string;
+    runOpflexServerContainer?: string;
+    serviceMonitorInterval?: string;
+    serviceVlan: string;
+    snatContractScope?: string;
+    snatNamespace?: string;
+    snatPortRangeEnd?: string;
+    snatPortRangeStart?: string;
+    snatPortsPerNode?: string;
+    sriovEnable?: string;
+    subnetDomainName?: string;
+    systemId: string;
+    tenant?: string;
+    token: string;
+    useAciAnywhereCrd?: string;
+    useAciCniPriorityClass?: string;
+    useClusterRole?: string;
+    useHostNetnsVolume?: string;
+    useOpflexServerVolume?: string;
+    usePrivilegedContainer?: string;
+    vmmController?: string;
+    vmmDomain?: string;
+    vrfName: string;
+    vrfTenant: string;
 }
 
 export interface GetClusterRkeConfigNetworkCalicoNetworkProvider {
@@ -6277,6 +6741,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitor
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
+    aciNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider;
     calicoNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider;
     canalNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider;
     flannelNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider;
@@ -6285,6 +6750,83 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork
     plugin: string;
     tolerations?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration[];
     weaveNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider {
+    aep: string;
+    apicHosts: string[];
+    apicRefreshTickerAdjust?: string;
+    apicRefreshTime?: string;
+    apicSubscriptionDelay?: string;
+    apicUserCrt: string;
+    apicUserKey: string;
+    apicUserName: string;
+    capic?: string;
+    controllerLogLevel?: string;
+    disablePeriodicSnatGlobalInfoSync?: string;
+    disableWaitForNetwork?: string;
+    dropLogEnable?: string;
+    durationWaitForNetwork?: string;
+    enableEndpointSlice?: string;
+    encapType: string;
+    epRegistry?: string;
+    externDynamic: string;
+    externStatic: string;
+    gbpPodSubnet?: string;
+    hostAgentLogLevel?: string;
+    imagePullPolicy?: string;
+    imagePullSecret?: string;
+    infraVlan?: string;
+    installIstio?: string;
+    istioProfile?: string;
+    kafkaBrokers?: string[];
+    kafkaClientCrt?: string;
+    kafkaClientKey?: string;
+    kubeApiVlan: string;
+    l3out: string;
+    l3outExternalNetworks: string[];
+    maxNodesSvcGraph?: string;
+    mcastRangeEnd: string;
+    mcastRangeStart: string;
+    mtuHeadRoom?: string;
+    multusDisable?: string;
+    noPriorityClass?: string;
+    nodePodIfEnable?: string;
+    nodeSubnet: string;
+    nodeSvcSubnet: string;
+    opflexClientSsl?: string;
+    opflexDeviceDeleteTimeout?: string;
+    opflexLogLevel?: string;
+    opflexMode?: string;
+    opflexServerPort?: string;
+    overlayVrfName?: string;
+    ovsMemoryLimit?: string;
+    pbrTrackingNonSnat?: string;
+    podSubnetChunkSize?: string;
+    runGbpContainer?: string;
+    runOpflexServerContainer?: string;
+    serviceMonitorInterval?: string;
+    serviceVlan: string;
+    snatContractScope?: string;
+    snatNamespace?: string;
+    snatPortRangeEnd?: string;
+    snatPortRangeStart?: string;
+    snatPortsPerNode?: string;
+    sriovEnable?: string;
+    subnetDomainName?: string;
+    systemId: string;
+    tenant?: string;
+    token: string;
+    useAciAnywhereCrd?: string;
+    useAciCniPriorityClass?: string;
+    useClusterRole?: string;
+    useHostNetnsVolume?: string;
+    useOpflexServerVolume?: string;
+    usePrivilegedContainer?: string;
+    vmmController?: string;
+    vmmDomain?: string;
+    vrfName: string;
+    vrfTenant: string;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider {
@@ -6603,6 +7145,7 @@ export interface GetClusterV2RkeConfigMachinePool {
     etcdRole?: boolean;
     labels: {[key: string]: any};
     machineConfig: outputs.GetClusterV2RkeConfigMachinePoolMachineConfig;
+    machineLabels: {[key: string]: any};
     maxUnhealthy?: string;
     /**
      * The name of the Cluster v2 (string)
@@ -7390,6 +7933,10 @@ export interface MachineConfigV2AzureConfig {
      */
     openPorts?: string[];
     /**
+     * Only use a private IP address. Default `false` (bool)
+     */
+    privateAddressOnly?: boolean;
+    /**
      * Specify a static private IP address for the machine. (string)
      */
     privateIpAddress?: string;
@@ -8086,7 +8633,7 @@ export interface NodePoolNodeTaint {
 
 export interface NodeTemplateAmazonec2Config {
     /**
-     * AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Outscale Access Key (string)
      */
     accessKey?: string;
     /**
@@ -8110,6 +8657,14 @@ export interface NodeTemplateAmazonec2Config {
      */
     endpoint?: string;
     /**
+     * Enables or disables the HTTP metadata endpoint on your instances (string)
+     */
+    httpEndpoint?: string;
+    /**
+     * The state of token usage for your instance metadata requests (string)
+     */
+    httpTokens?: string;
+    /**
      * AWS IAM Instance Profile (string)
      */
     iamInstanceProfile?: string;
@@ -8118,7 +8673,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     insecureTransport?: boolean;
     /**
-     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * Outscale VM type. Default `tinav2.c1r2p3` (string)
      */
     instanceType?: string;
     /**
@@ -8142,7 +8697,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     privateAddressOnly?: boolean;
     /**
-     * OpenStack region name (string)
+     * AWS region. Default `eu-west-2` (string)
      */
     region: string;
     /**
@@ -8158,7 +8713,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     rootSize?: string;
     /**
-     * AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Outscale Secret Key (string)
      */
     secretKey?: string;
     /**
@@ -8177,9 +8732,6 @@ export interface NodeTemplateAmazonec2Config {
      * AWS spot instance bid price (in dollar). Default `0.50` (string)
      */
     spotPrice?: string;
-    /**
-     * SSH Key for Instance (string)
-     */
     sshKeypath?: string;
     /**
      * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
@@ -8360,7 +8912,7 @@ export interface NodeTemplateDigitaloceanConfig {
      */
     privateNetworking?: boolean;
     /**
-     * OpenStack region name (string)
+     * AWS region. Default `eu-west-2` (string)
      */
     region?: string;
     /**
@@ -8501,7 +9053,7 @@ export interface NodeTemplateLinodeConfig {
      */
     image?: string;
     /**
-     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * Outscale VM type. Default `tinav2.c1r2p3` (string)
      */
     instanceType?: string;
     /**
@@ -8509,7 +9061,7 @@ export interface NodeTemplateLinodeConfig {
      */
     label?: string;
     /**
-     * OpenStack region name (string)
+     * AWS region. Default `eu-west-2` (string)
      */
     region?: string;
     /**
@@ -8750,7 +9302,7 @@ export interface NodeTemplateOpenstackConfig {
      */
     privateKeyFile?: string;
     /**
-     * OpenStack region name (string)
+     * AWS region. Default `eu-west-2` (string)
      */
     region: string;
     /**
@@ -8801,6 +9353,53 @@ export interface NodeTemplateOpenstackConfig {
      * OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
      */
     volumeType?: string;
+}
+
+export interface NodeTemplateOutscaleConfig {
+    /**
+     * Outscale Access Key (string)
+     */
+    accessKey: string;
+    /**
+     * Extra tags for all created resources (e.g. key1=value1,key2=value2) (list)
+     */
+    extraTagsAlls?: string[];
+    /**
+     * Extra tags only for instances (e.g. key1=value1,key2=value2) (list)
+     */
+    extraTagsInstances?: string[];
+    /**
+     * Outscale VM type. Default `tinav2.c1r2p3` (string)
+     */
+    instanceType?: string;
+    /**
+     * AWS region. Default `eu-west-2` (string)
+     */
+    region?: string;
+    /**
+     * Iops for io1 Root Disk. From 1 to 13000.
+     */
+    rootDiskIops?: number;
+    /**
+     * Size of the Root Disk (in GB). From 1 to 14901.
+     */
+    rootDiskSize?: number;
+    /**
+     * Type of the Root Disk. Possible values are :'standard', 'gp2' or 'io1'.
+     */
+    rootDiskType?: string;
+    /**
+     * Outscale Secret Key (string)
+     */
+    secretKey: string;
+    /**
+     * Ids of user defined Security Groups to add to the machine. (list)
+     */
+    securityGroupIds?: string[];
+    /**
+     * Outscale Machine Image to use as bootstrap for the VM. Default `ami-2cf1fa3e` (string)
+     */
+    sourceOmi?: string;
 }
 
 export interface NodeTemplateVsphereConfig {
@@ -9716,3 +10315,4 @@ export interface RoleTemplateRule {
      */
     verbs?: string[];
 }
+

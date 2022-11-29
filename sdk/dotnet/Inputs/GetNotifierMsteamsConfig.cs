@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetNotifierMsteamsConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetNotifierMsteamsConfigArgs : global::Pulumi.InvokeArgs
     {
         [Input("proxyUrl")]
         public string? ProxyUrl { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public GetNotifierMsteamsConfigArgs()
         {
         }
+        public static new GetNotifierMsteamsConfigArgs Empty => new GetNotifierMsteamsConfigArgs();
     }
 }

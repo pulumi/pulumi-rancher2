@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigIngressUpdateStrategyArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigIngressUpdateStrategyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Monitoring deployment rolling update (list Maxitems: 1)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigIngressUpdateStrategyArgs()
         {
         }
+        public static new ClusterRkeConfigIngressUpdateStrategyArgs Empty => new ClusterRkeConfigIngressUpdateStrategyArgs();
     }
 }

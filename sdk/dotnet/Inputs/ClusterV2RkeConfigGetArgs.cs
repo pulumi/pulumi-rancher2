@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cluster V2 additional manifest (string)
@@ -99,5 +99,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigGetArgs()
         {
         }
+        public static new ClusterV2RkeConfigGetArgs Empty => new ClusterV2RkeConfigGetArgs();
     }
 }

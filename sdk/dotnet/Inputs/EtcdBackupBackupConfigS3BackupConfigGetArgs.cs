@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class EtcdBackupBackupConfigS3BackupConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class EtcdBackupBackupConfigS3BackupConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessKey")]
+        private Input<string>? _accessKey;
+
         /// <summary>
         /// Access key for S3 service (string)
         /// </summary>
-        [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Bucket name for S3 service (string)
@@ -48,14 +58,25 @@ namespace Pulumi.Rancher2.Inputs
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("secretKey")]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// Secret key for S3 service (string)
         /// </summary>
-        [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public EtcdBackupBackupConfigS3BackupConfigGetArgs()
         {
         }
+        public static new EtcdBackupBackupConfigS3BackupConfigGetArgs Empty => new EtcdBackupBackupConfigS3BackupConfigGetArgs();
     }
 }

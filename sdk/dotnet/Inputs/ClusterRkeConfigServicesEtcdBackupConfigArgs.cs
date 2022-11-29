@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesEtcdBackupConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesEtcdBackupConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable scheduled cluster scan. Default: `false` (bool)
@@ -51,5 +51,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesEtcdBackupConfigArgs()
         {
         }
+        public static new ClusterRkeConfigServicesEtcdBackupConfigArgs Empty => new ClusterRkeConfigServicesEtcdBackupConfigArgs();
     }
 }

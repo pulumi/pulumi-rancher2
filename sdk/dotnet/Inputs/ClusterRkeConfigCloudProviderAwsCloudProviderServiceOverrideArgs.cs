@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
@@ -51,5 +51,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs()
         {
         }
+        public static new ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs Empty => new ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs();
     }
 }

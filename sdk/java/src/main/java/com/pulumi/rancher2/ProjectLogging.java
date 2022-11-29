@@ -28,6 +28,42 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Project Logging resource. This can be used to create Project Logging for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.ProjectLogging;
+ * import com.pulumi.rancher2.ProjectLoggingArgs;
+ * import com.pulumi.rancher2.inputs.ProjectLoggingSyslogConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new ProjectLogging(&#34;foo&#34;, ProjectLoggingArgs.builder()        
+ *             .kind(&#34;syslog&#34;)
+ *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *             .syslogConfig(ProjectLoggingSyslogConfigArgs.builder()
+ *                 .endpoint(&#34;&lt;syslog_endpoint&gt;&#34;)
+ *                 .protocol(&#34;udp&#34;)
+ *                 .severity(&#34;notice&#34;)
+ *                 .sslVerify(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

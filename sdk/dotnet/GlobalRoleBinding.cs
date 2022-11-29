@@ -15,28 +15,27 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Global Role Binding using user_id
+    ///     var foo = new Rancher2.GlobalRoleBinding("foo", new()
     ///     {
-    ///         // Create a new rancher2 Global Role Binding using user_id
-    ///         var foo = new Rancher2.GlobalRoleBinding("foo", new Rancher2.GlobalRoleBindingArgs
-    ///         {
-    ///             GlobalRoleId = "admin",
-    ///             UserId = "user-XXXXX",
-    ///         });
-    ///         // Create a new rancher2 Global Role Binding using group_principal_id
-    ///         var foo2 = new Rancher2.GlobalRoleBinding("foo2", new Rancher2.GlobalRoleBindingArgs
-    ///         {
-    ///             GlobalRoleId = "admin",
-    ///             GroupPrincipalId = "local://g-XXXXX",
-    ///         });
-    ///     }
+    ///         GlobalRoleId = "admin",
+    ///         UserId = "user-XXXXX",
+    ///     });
     /// 
-    /// }
+    ///     // Create a new rancher2 Global Role Binding using group_principal_id
+    ///     var foo2 = new Rancher2.GlobalRoleBinding("foo2", new()
+    ///     {
+    ///         GlobalRoleId = "admin",
+    ///         GroupPrincipalId = "local://g-XXXXX",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +47,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/globalRoleBinding:GlobalRoleBinding")]
-    public partial class GlobalRoleBinding : Pulumi.CustomResource
+    public partial class GlobalRoleBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for global role binding (map)
@@ -130,7 +129,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class GlobalRoleBindingArgs : Pulumi.ResourceArgs
+    public sealed class GlobalRoleBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -183,9 +182,10 @@ namespace Pulumi.Rancher2
         public GlobalRoleBindingArgs()
         {
         }
+        public static new GlobalRoleBindingArgs Empty => new GlobalRoleBindingArgs();
     }
 
-    public sealed class GlobalRoleBindingState : Pulumi.ResourceArgs
+    public sealed class GlobalRoleBindingState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -238,5 +238,6 @@ namespace Pulumi.Rancher2
         public GlobalRoleBindingState()
         {
         }
+        public static new GlobalRoleBindingState Empty => new GlobalRoleBindingState();
     }
 }

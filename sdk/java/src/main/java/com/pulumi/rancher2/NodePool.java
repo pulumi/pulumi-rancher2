@@ -23,6 +23,84 @@ import javax.annotation.Nullable;
 /**
  * Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
  * 
+ * ## Example Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.CloudCredential;
+ * import com.pulumi.rancher2.CloudCredentialArgs;
+ * import com.pulumi.rancher2.inputs.CloudCredentialAmazonec2CredentialConfigArgs;
+ * import com.pulumi.rancher2.NodeTemplate;
+ * import com.pulumi.rancher2.NodeTemplateArgs;
+ * import com.pulumi.rancher2.inputs.NodeTemplateAmazonec2ConfigArgs;
+ * import com.pulumi.rancher2.NodePool;
+ * import com.pulumi.rancher2.NodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
+ *             .description(&#34;Foo rancher2 custom cluster&#34;)
+ *             .kind(&#34;rke&#34;)
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .network(ClusterRkeConfigNetworkArgs.builder()
+ *                     .plugin(&#34;canal&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *             .description(&#34;Terraform cloudCredential acceptance test&#34;)
+ *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
+ *                 .accessKey(&#34;XXXXXXXXXXXXXXXXXXXX&#34;)
+ *                 .secretKey(&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
+ *             .description(&#34;foo test&#34;)
+ *             .cloudCredentialId(fooCloudCredential.id())
+ *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
+ *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
+ *                 .region(&#34;&lt;REGION&gt;&#34;)
+ *                 .securityGroups(&#34;&lt;AWS_SECURITY_GROUP&gt;&#34;)
+ *                 .subnetId(&#34;&lt;SUBNET_ID&gt;&#34;)
+ *                 .vpcId(&#34;&lt;VPC_ID&gt;&#34;)
+ *                 .zone(&#34;&lt;ZONE&gt;&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooNodePool = new NodePool(&#34;fooNodePool&#34;, NodePoolArgs.builder()        
+ *             .clusterId(foo_custom.id())
+ *             .hostnamePrefix(&#34;foo-cluster-0&#34;)
+ *             .nodeTemplateId(fooNodeTemplate.id())
+ *             .quantity(1)
+ *             .controlPlane(true)
+ *             .etcd(true)
+ *             .worker(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Node Pool can be imported using the Rancher Node Pool ID

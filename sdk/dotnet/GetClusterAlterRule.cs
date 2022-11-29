@@ -19,27 +19,25 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetClusterAlterRule.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterAlterRule.InvokeAsync(new Rancher2.GetClusterAlterRuleArgs
-        ///         {
-        ///             ClusterId = "&lt;cluster_id&gt;",
-        ///             Name = "&lt;cluster_alert_rule_name&gt;",
-        ///         }));
-        ///     }
+        ///         ClusterId = "&lt;cluster_id&gt;",
+        ///         Name = "&lt;cluster_alert_rule_name&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterAlterRuleResult> InvokeAsync(GetClusterAlterRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? new GetClusterAlterRuleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? new GetClusterAlterRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 cluster alert rule.
@@ -49,31 +47,29 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetClusterAlterRule.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterAlterRule.InvokeAsync(new Rancher2.GetClusterAlterRuleArgs
-        ///         {
-        ///             ClusterId = "&lt;cluster_id&gt;",
-        ///             Name = "&lt;cluster_alert_rule_name&gt;",
-        ///         }));
-        ///     }
+        ///         ClusterId = "&lt;cluster_id&gt;",
+        ///         Name = "&lt;cluster_alert_rule_name&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterAlterRuleResult> Invoke(GetClusterAlterRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? new GetClusterAlterRuleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? new GetClusterAlterRuleInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClusterAlterRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterAlterRuleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id where create cluster alert rule (string)
@@ -102,9 +98,10 @@ namespace Pulumi.Rancher2
         public GetClusterAlterRuleArgs()
         {
         }
+        public static new GetClusterAlterRuleArgs Empty => new GetClusterAlterRuleArgs();
     }
 
-    public sealed class GetClusterAlterRuleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterAlterRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id where create cluster alert rule (string)
@@ -133,6 +130,7 @@ namespace Pulumi.Rancher2
         public GetClusterAlterRuleInvokeArgs()
         {
         }
+        public static new GetClusterAlterRuleInvokeArgs Empty => new GetClusterAlterRuleInvokeArgs();
     }
 
 

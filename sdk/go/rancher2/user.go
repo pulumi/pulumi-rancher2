@@ -90,6 +90,13 @@ func NewUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource User
 	err := ctx.RegisterResource("rancher2:index/user:User", name, args, &resource, opts...)
 	if err != nil {
@@ -261,6 +268,40 @@ func (o UserOutput) ToUserOutput() UserOutput {
 
 func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
+}
+
+// Annotations for global role binding (map)
+func (o UserOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *User) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+func (o UserOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Labels for global role binding (map)
+func (o UserOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *User) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The user full name (string)
+func (o UserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The user password (string)
+func (o UserOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// (Computed) The user principal IDs (list)
+func (o UserOutput) PrincipalIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.PrincipalIds }).(pulumi.StringArrayOutput)
+}
+
+// The user username (string)
+func (o UserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
 type UserArrayOutput struct{ *pulumi.OutputState }

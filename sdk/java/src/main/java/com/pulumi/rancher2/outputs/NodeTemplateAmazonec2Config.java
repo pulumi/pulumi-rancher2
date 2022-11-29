@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodeTemplateAmazonec2Config {
     /**
-     * @return AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Access Key (string)
      * 
      */
     private @Nullable String accessKey;
@@ -44,6 +44,16 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable String endpoint;
     /**
+     * @return Enables or disables the HTTP metadata endpoint on your instances (string)
+     * 
+     */
+    private @Nullable String httpEndpoint;
+    /**
+     * @return The state of token usage for your instance metadata requests (string)
+     * 
+     */
+    private @Nullable String httpTokens;
+    /**
      * @return AWS IAM Instance Profile (string)
      * 
      */
@@ -54,7 +64,7 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable Boolean insecureTransport;
     /**
-     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     private @Nullable String instanceType;
@@ -84,7 +94,7 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable Boolean privateAddressOnly;
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     private String region;
@@ -104,7 +114,7 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable String rootSize;
     /**
-     * @return AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Secret Key (string)
      * 
      */
     private @Nullable String secretKey;
@@ -128,10 +138,6 @@ public final class NodeTemplateAmazonec2Config {
      * 
      */
     private @Nullable String spotPrice;
-    /**
-     * @return SSH Key for Instance (string)
-     * 
-     */
     private @Nullable String sshKeypath;
     /**
      * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
@@ -181,7 +187,7 @@ public final class NodeTemplateAmazonec2Config {
 
     private NodeTemplateAmazonec2Config() {}
     /**
-     * @return AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Access Key (string)
      * 
      */
     public Optional<String> accessKey() {
@@ -223,6 +229,20 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.endpoint);
     }
     /**
+     * @return Enables or disables the HTTP metadata endpoint on your instances (string)
+     * 
+     */
+    public Optional<String> httpEndpoint() {
+        return Optional.ofNullable(this.httpEndpoint);
+    }
+    /**
+     * @return The state of token usage for your instance metadata requests (string)
+     * 
+     */
+    public Optional<String> httpTokens() {
+        return Optional.ofNullable(this.httpTokens);
+    }
+    /**
      * @return AWS IAM Instance Profile (string)
      * 
      */
@@ -237,7 +257,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.insecureTransport);
     }
     /**
-     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     public Optional<String> instanceType() {
@@ -279,7 +299,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.privateAddressOnly);
     }
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public String region() {
@@ -307,7 +327,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.rootSize);
     }
     /**
-     * @return AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Secret Key (string)
      * 
      */
     public Optional<String> secretKey() {
@@ -341,10 +361,6 @@ public final class NodeTemplateAmazonec2Config {
     public Optional<String> spotPrice() {
         return Optional.ofNullable(this.spotPrice);
     }
-    /**
-     * @return SSH Key for Instance (string)
-     * 
-     */
     public Optional<String> sshKeypath() {
         return Optional.ofNullable(this.sshKeypath);
     }
@@ -427,6 +443,8 @@ public final class NodeTemplateAmazonec2Config {
         private @Nullable String deviceName;
         private @Nullable Boolean encryptEbsVolume;
         private @Nullable String endpoint;
+        private @Nullable String httpEndpoint;
+        private @Nullable String httpTokens;
         private @Nullable String iamInstanceProfile;
         private @Nullable Boolean insecureTransport;
         private @Nullable String instanceType;
@@ -463,6 +481,8 @@ public final class NodeTemplateAmazonec2Config {
     	      this.deviceName = defaults.deviceName;
     	      this.encryptEbsVolume = defaults.encryptEbsVolume;
     	      this.endpoint = defaults.endpoint;
+    	      this.httpEndpoint = defaults.httpEndpoint;
+    	      this.httpTokens = defaults.httpTokens;
     	      this.iamInstanceProfile = defaults.iamInstanceProfile;
     	      this.insecureTransport = defaults.insecureTransport;
     	      this.instanceType = defaults.instanceType;
@@ -520,6 +540,16 @@ public final class NodeTemplateAmazonec2Config {
         @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
             this.endpoint = endpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder httpEndpoint(@Nullable String httpEndpoint) {
+            this.httpEndpoint = httpEndpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder httpTokens(@Nullable String httpTokens) {
+            this.httpTokens = httpTokens;
             return this;
         }
         @CustomType.Setter
@@ -671,6 +701,8 @@ public final class NodeTemplateAmazonec2Config {
             o.deviceName = deviceName;
             o.encryptEbsVolume = encryptEbsVolume;
             o.endpoint = endpoint;
+            o.httpEndpoint = httpEndpoint;
+            o.httpTokens = httpTokens;
             o.iamInstanceProfile = iamInstanceProfile;
             o.insecureTransport = insecureTransport;
             o.instanceType = instanceType;

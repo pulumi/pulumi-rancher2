@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterLoggingKafkaConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterLoggingKafkaConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("brokerEndpoints")]
         private InputList<string>? _brokerEndpoints;
@@ -24,23 +24,53 @@ namespace Pulumi.Rancher2.Inputs
             set => _brokerEndpoints = value;
         }
 
+        [Input("certificate")]
+        private Input<string>? _certificate;
+
         /// <summary>
         /// SSL certificate for the syslog service (string)
         /// </summary>
-        [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientCert")]
+        private Input<string>? _clientCert;
 
         /// <summary>
         /// SSL client certificate for the syslog service (string)
         /// </summary>
-        [Input("clientCert")]
-        public Input<string>? ClientCert { get; set; }
+        public Input<string>? ClientCert
+        {
+            get => _clientCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientKey")]
+        private Input<string>? _clientKey;
 
         /// <summary>
         /// SSL client key for the syslog service (string)
         /// </summary>
-        [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Topic to publish on the kafka service (string)
@@ -57,5 +87,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterLoggingKafkaConfigGetArgs()
         {
         }
+        public static new ClusterLoggingKafkaConfigGetArgs Empty => new ClusterLoggingKafkaConfigGetArgs();
     }
 }

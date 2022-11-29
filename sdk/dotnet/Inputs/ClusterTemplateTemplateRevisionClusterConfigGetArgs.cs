@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Local cluster auth endpoint (list maxitems: 1)
@@ -87,5 +87,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable cluster template revision. Default `true` (bool)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs();
     }
 }

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupCatalog(ctx, &GetCatalogArgs{
+//			_, err = rancher2.LookupCatalog(ctx, &GetCatalogArgs{
 //				Name: "catalog",
 //			}, nil)
 //			if err != nil {

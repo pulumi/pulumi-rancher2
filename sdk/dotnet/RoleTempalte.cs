@@ -17,79 +17,75 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 cluster Role Template
+    ///     var foo = new Rancher2.RoleTemplate("foo", new()
     ///     {
-    ///         // Create a new rancher2 cluster Role Template
-    ///         var foo = new Rancher2.RoleTemplate("foo", new Rancher2.RoleTemplateArgs
+    ///         Context = "cluster",
+    ///         DefaultRole = true,
+    ///         Description = "Terraform role template acceptance test",
+    ///         Rules = new[]
     ///         {
-    ///             Context = "cluster",
-    ///             DefaultRole = true,
-    ///             Description = "Terraform role template acceptance test",
-    ///             Rules = 
+    ///             new Rancher2.Inputs.RoleTemplateRuleArgs
     ///             {
-    ///                 new Rancher2.Inputs.RoleTemplateRuleArgs
+    ///                 ApiGroups = new[]
     ///                 {
-    ///                     ApiGroups = 
-    ///                     {
-    ///                         "*",
-    ///                     },
-    ///                     Resources = 
-    ///                     {
-    ///                         "secrets",
-    ///                     },
-    ///                     Verbs = 
-    ///                     {
-    ///                         "create",
-    ///                     },
+    ///                     "*",
+    ///                 },
+    ///                 Resources = new[]
+    ///                 {
+    ///                     "secrets",
+    ///                 },
+    ///                 Verbs = new[]
+    ///                 {
+    ///                     "create",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 project Role Template
+    ///     var foo = new Rancher2.RoleTemplate("foo", new()
     ///     {
-    ///         // Create a new rancher2 project Role Template
-    ///         var foo = new Rancher2.RoleTemplate("foo", new Rancher2.RoleTemplateArgs
+    ///         Context = "project",
+    ///         DefaultRole = true,
+    ///         Description = "Terraform role template acceptance test",
+    ///         Rules = new[]
     ///         {
-    ///             Context = "project",
-    ///             DefaultRole = true,
-    ///             Description = "Terraform role template acceptance test",
-    ///             Rules = 
+    ///             new Rancher2.Inputs.RoleTemplateRuleArgs
     ///             {
-    ///                 new Rancher2.Inputs.RoleTemplateRuleArgs
+    ///                 ApiGroups = new[]
     ///                 {
-    ///                     ApiGroups = 
-    ///                     {
-    ///                         "*",
-    ///                     },
-    ///                     Resources = 
-    ///                     {
-    ///                         "secrets",
-    ///                     },
-    ///                     Verbs = 
-    ///                     {
-    ///                         "create",
-    ///                     },
+    ///                     "*",
+    ///                 },
+    ///                 Resources = new[]
+    ///                 {
+    ///                     "secrets",
+    ///                 },
+    ///                 Verbs = new[]
+    ///                 {
+    ///                     "create",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -102,7 +98,7 @@ namespace Pulumi.Rancher2
     /// </summary>
     [Obsolete(@"rancher2.RoleTempalte has been deprecated in favor of rancher2.RoleTemplate")]
     [Rancher2ResourceType("rancher2:index/roleTempalte:RoleTempalte")]
-    public partial class RoleTempalte : Pulumi.CustomResource
+    public partial class RoleTempalte : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Administrative role template. Default `false` (bool)
@@ -226,7 +222,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class RoleTempalteArgs : Pulumi.ResourceArgs
+    public sealed class RoleTempalteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Administrative role template. Default `false` (bool)
@@ -327,9 +323,10 @@ namespace Pulumi.Rancher2
         public RoleTempalteArgs()
         {
         }
+        public static new RoleTempalteArgs Empty => new RoleTempalteArgs();
     }
 
-    public sealed class RoleTempalteState : Pulumi.ResourceArgs
+    public sealed class RoleTempalteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Administrative role template. Default `false` (bool)
@@ -436,5 +433,6 @@ namespace Pulumi.Rancher2
         public RoleTempalteState()
         {
         }
+        public static new RoleTempalteState Empty => new RoleTempalteState();
     }
 }

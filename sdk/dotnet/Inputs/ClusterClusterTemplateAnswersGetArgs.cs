@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterClusterTemplateAnswersGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterTemplateAnswersGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cluster ID (string)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterClusterTemplateAnswersGetArgs()
         {
         }
+        public static new ClusterClusterTemplateAnswersGetArgs Empty => new ClusterClusterTemplateAnswersGetArgs();
     }
 }

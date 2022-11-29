@@ -114,7 +114,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? PrivateKeyFile;
         /// <summary>
-        /// OpenStack region name (string)
+        /// AWS region. Default `eu-west-2` (string)
         /// </summary>
         public readonly string Region;
         /// <summary>

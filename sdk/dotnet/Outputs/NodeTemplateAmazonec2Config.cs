@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NodeTemplateAmazonec2Config
     {
         /// <summary>
-        /// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Outscale Access Key (string)
         /// </summary>
         public readonly string? AccessKey;
         /// <summary>
@@ -38,6 +38,14 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Endpoint;
         /// <summary>
+        /// Enables or disables the HTTP metadata endpoint on your instances (string)
+        /// </summary>
+        public readonly string? HttpEndpoint;
+        /// <summary>
+        /// The state of token usage for your instance metadata requests (string)
+        /// </summary>
+        public readonly string? HttpTokens;
+        /// <summary>
         /// AWS IAM Instance Profile (string)
         /// </summary>
         public readonly string? IamInstanceProfile;
@@ -46,7 +54,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? InsecureTransport;
         /// <summary>
-        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// Outscale VM type. Default `tinav2.c1r2p3` (string)
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
@@ -70,7 +78,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? PrivateAddressOnly;
         /// <summary>
-        /// OpenStack region name (string)
+        /// AWS region. Default `eu-west-2` (string)
         /// </summary>
         public readonly string Region;
         /// <summary>
@@ -86,7 +94,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? RootSize;
         /// <summary>
-        /// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Outscale Secret Key (string)
         /// </summary>
         public readonly string? SecretKey;
         /// <summary>
@@ -105,9 +113,6 @@ namespace Pulumi.Rancher2.Outputs
         /// AWS spot instance bid price (in dollar). Default `0.50` (string)
         /// </summary>
         public readonly string? SpotPrice;
-        /// <summary>
-        /// SSH Key for Instance (string)
-        /// </summary>
         public readonly string? SshKeypath;
         /// <summary>
         /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
@@ -159,6 +164,10 @@ namespace Pulumi.Rancher2.Outputs
             bool? encryptEbsVolume,
 
             string? endpoint,
+
+            string? httpEndpoint,
+
+            string? httpTokens,
 
             string? iamInstanceProfile,
 
@@ -220,6 +229,8 @@ namespace Pulumi.Rancher2.Outputs
             DeviceName = deviceName;
             EncryptEbsVolume = encryptEbsVolume;
             Endpoint = endpoint;
+            HttpEndpoint = httpEndpoint;
+            HttpTokens = httpTokens;
             IamInstanceProfile = iamInstanceProfile;
             InsecureTransport = insecureTransport;
             InstanceType = instanceType;

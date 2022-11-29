@@ -25,6 +25,200 @@ import javax.annotation.Nullable;
  * Cluster Templates are available from Rancher v2.3.x and above.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.ClusterTemplate;
+ * import com.pulumi.rancher2.ClusterTemplateArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateMemberArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new ClusterTemplate(&#34;foo&#34;, ClusterTemplateArgs.builder()        
+ *             .description(&#34;Terraform cluster template foo&#34;)
+ *             .members(ClusterTemplateMemberArgs.builder()
+ *                 .accessType(&#34;owner&#34;)
+ *                 .userPrincipalId(&#34;local://user-XXXXX&#34;)
+ *                 .build())
+ *             .templateRevisions(ClusterTemplateTemplateRevisionArgs.builder()
+ *                 .clusterConfig(ClusterTemplateTemplateRevisionClusterConfigArgs.builder()
+ *                     .rkeConfig(ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs.builder()
+ *                         .network(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs.builder()
+ *                             .plugin(&#34;canal&#34;)
+ *                             .build())
+ *                         .services(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs.builder()
+ *                             .etcd(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs.builder()
+ *                                 .creation(&#34;6h&#34;)
+ *                                 .retention(&#34;24h&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .default_(true)
+ *                 .name(&#34;V1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x or above.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.ClusterTemplate;
+ * import com.pulumi.rancher2.ClusterTemplateArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateMemberArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new ClusterTemplate(&#34;foo&#34;, ClusterTemplateArgs.builder()        
+ *             .description(&#34;Terraform cluster template foo&#34;)
+ *             .members(ClusterTemplateMemberArgs.builder()
+ *                 .accessType(&#34;owner&#34;)
+ *                 .userPrincipalId(&#34;local://user-XXXXX&#34;)
+ *                 .build())
+ *             .templateRevisions(ClusterTemplateTemplateRevisionArgs.builder()
+ *                 .clusterConfig(ClusterTemplateTemplateRevisionClusterConfigArgs.builder()
+ *                     .rkeConfig(ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs.builder()
+ *                         .network(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs.builder()
+ *                             .plugin(&#34;canal&#34;)
+ *                             .build())
+ *                         .services(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs.builder()
+ *                             .etcd(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs.builder()
+ *                                 .creation(&#34;6h&#34;)
+ *                                 .retention(&#34;24h&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .upgradeStrategy(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs.builder()
+ *                             .drain(true)
+ *                             .maxUnavailableWorker(&#34;20%&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .default_(true)
+ *                 .name(&#34;V1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Creating Rancher v2 RKE cluster template with scheduled cluster scan. For Rancher v2.4.x or above.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.ClusterTemplate;
+ * import com.pulumi.rancher2.ClusterTemplateArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateMemberArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new ClusterTemplate(&#34;foo&#34;, ClusterTemplateArgs.builder()        
+ *             .description(&#34;Terraform cluster template foo&#34;)
+ *             .members(ClusterTemplateMemberArgs.builder()
+ *                 .accessType(&#34;owner&#34;)
+ *                 .userPrincipalId(&#34;local://user-XXXXX&#34;)
+ *                 .build())
+ *             .templateRevisions(ClusterTemplateTemplateRevisionArgs.builder()
+ *                 .clusterConfig(ClusterTemplateTemplateRevisionClusterConfigArgs.builder()
+ *                     .rkeConfig(ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs.builder()
+ *                         .network(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs.builder()
+ *                             .plugin(&#34;canal&#34;)
+ *                             .build())
+ *                         .services(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs.builder()
+ *                             .etcd(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs.builder()
+ *                                 .creation(&#34;6h&#34;)
+ *                                 .retention(&#34;24h&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .scheduledClusterScan(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs.builder()
+ *                         .enabled(true)
+ *                         .scanConfig(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs.builder()
+ *                             .cisScanConfig(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs.builder()
+ *                                 .debugMaster(true)
+ *                                 .debugWorker(true)
+ *                                 .build())
+ *                             .build())
+ *                         .scheduleConfig(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs.builder()
+ *                             .cronSchedule(&#34;30 * * * *&#34;)
+ *                             .retention(5)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .default_(true)
+ *                 .name(&#34;V1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -104,7 +104,7 @@ import (
 //								},
 //								UpgradeStrategy: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs{
 //									Drain:                pulumi.Bool(true),
-//									MaxUnavailableWorker: pulumi.String(fmt.Sprintf("%v%v", "20", "%")),
+//									MaxUnavailableWorker: pulumi.String(fmt.Sprintf("20%v", "%")),
 //								},
 //							},
 //						},
@@ -396,6 +396,41 @@ func (o ClusterTemplateOutput) ToClusterTemplateOutput() ClusterTemplateOutput {
 
 func (o ClusterTemplateOutput) ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput {
 	return o
+}
+
+// Annotations for the cluster template revision (map)
+func (o ClusterTemplateOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) Default cluster template revision ID (string)
+func (o ClusterTemplateOutput) DefaultRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.DefaultRevisionId }).(pulumi.StringOutput)
+}
+
+// Cluster template description
+func (o ClusterTemplateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Labels for the cluster template revision (map)
+func (o ClusterTemplateOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Cluster template members (list)
+func (o ClusterTemplateOutput) Members() ClusterTemplateMemberArrayOutput {
+	return o.ApplyT(func(v *ClusterTemplate) ClusterTemplateMemberArrayOutput { return v.Members }).(ClusterTemplateMemberArrayOutput)
+}
+
+// The cluster template revision name (string)
+func (o ClusterTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Cluster template revisions (list)
+func (o ClusterTemplateOutput) TemplateRevisions() ClusterTemplateTemplateRevisionArrayOutput {
+	return o.ApplyT(func(v *ClusterTemplate) ClusterTemplateTemplateRevisionArrayOutput { return v.TemplateRevisions }).(ClusterTemplateTemplateRevisionArrayOutput)
 }
 
 type ClusterTemplateArrayOutput struct{ *pulumi.OutputState }

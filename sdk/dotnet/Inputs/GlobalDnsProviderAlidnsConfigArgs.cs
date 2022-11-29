@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GlobalDnsProviderAlidnsConfigArgs : Pulumi.ResourceArgs
+    public sealed class GlobalDnsProviderAlidnsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The AWS Access key (string)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public GlobalDnsProviderAlidnsConfigArgs()
         {
         }
+        public static new GlobalDnsProviderAlidnsConfigArgs Empty => new GlobalDnsProviderAlidnsConfigArgs();
     }
 }

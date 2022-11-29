@@ -19,21 +19,19 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Setting
+    ///     var foo = new Rancher2.Setting("foo", new()
     ///     {
-    ///         // Create a new rancher2 Setting
-    ///         var foo = new Rancher2.Setting("foo", new Rancher2.SettingArgs
-    ///         {
-    ///             Value = "&lt;VALUE&gt;",
-    ///         });
-    ///     }
+    ///         Value = "&lt;VALUE&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +43,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/setting:Setting")]
-    public partial class Setting : Pulumi.CustomResource
+    public partial class Setting : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for setting object (map)
@@ -115,7 +113,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class SettingArgs : Pulumi.ResourceArgs
+    public sealed class SettingArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -156,9 +154,10 @@ namespace Pulumi.Rancher2
         public SettingArgs()
         {
         }
+        public static new SettingArgs Empty => new SettingArgs();
     }
 
-    public sealed class SettingState : Pulumi.ResourceArgs
+    public sealed class SettingState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -199,5 +198,6 @@ namespace Pulumi.Rancher2
         public SettingState()
         {
         }
+        public static new SettingState Empty => new SettingState();
     }
 }

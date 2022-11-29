@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NamespaceContainerResourceLimitGetArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceContainerResourceLimitGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Limit for limits cpu in namespace (string)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public NamespaceContainerResourceLimitGetArgs()
         {
         }
+        public static new NamespaceContainerResourceLimitGetArgs Empty => new NamespaceContainerResourceLimitGetArgs();
     }
 }

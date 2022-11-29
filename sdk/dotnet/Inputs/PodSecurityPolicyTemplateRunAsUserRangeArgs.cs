@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class PodSecurityPolicyTemplateRunAsUserRangeArgs : Pulumi.ResourceArgs
+    public sealed class PodSecurityPolicyTemplateRunAsUserRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (int)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public PodSecurityPolicyTemplateRunAsUserRangeArgs()
         {
         }
+        public static new PodSecurityPolicyTemplateRunAsUserRangeArgs Empty => new PodSecurityPolicyTemplateRunAsUserRangeArgs();
     }
 }

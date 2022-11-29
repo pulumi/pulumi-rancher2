@@ -112,7 +112,7 @@ export class SecretV2 extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["data"] = args ? args.data : undefined;
+            resourceInputs["data"] = args?.data ? pulumi.secret(args.data) : undefined;
             resourceInputs["immutable"] = args ? args.immutable : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -121,6 +121,8 @@ export class SecretV2 extends pulumi.CustomResource {
             resourceInputs["resourceVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["data"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SecretV2.__pulumiType, name, resourceInputs, opts);
     }
 }

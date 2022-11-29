@@ -15,17 +15,17 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
         /// </summary>
         public static Task<GetClusterScanResult> InvokeAsync(GetClusterScanArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? new GetClusterScanArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? new GetClusterScanArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
         /// </summary>
         public static Output<GetClusterScanResult> Invoke(GetClusterScanInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? new GetClusterScanInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? new GetClusterScanInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClusterScanArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterScanArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Cluster ID for CIS Scan (string)
@@ -42,9 +42,10 @@ namespace Pulumi.Rancher2
         public GetClusterScanArgs()
         {
         }
+        public static new GetClusterScanArgs Empty => new GetClusterScanArgs();
     }
 
-    public sealed class GetClusterScanInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterScanInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Cluster ID for CIS Scan (string)
@@ -61,6 +62,7 @@ namespace Pulumi.Rancher2
         public GetClusterScanInvokeArgs()
         {
         }
+        public static new GetClusterScanInvokeArgs Empty => new GetClusterScanInvokeArgs();
     }
 
 

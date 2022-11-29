@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2IpAllocationPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2IpAllocationPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GKE cluster ip v4 allocation cidr block (string)
@@ -63,5 +63,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2IpAllocationPolicyGetArgs()
         {
         }
+        public static new ClusterGkeConfigV2IpAllocationPolicyGetArgs Empty => new ClusterGkeConfigV2IpAllocationPolicyGetArgs();
     }
 }

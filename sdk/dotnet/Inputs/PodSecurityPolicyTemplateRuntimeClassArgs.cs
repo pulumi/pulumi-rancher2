@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class PodSecurityPolicyTemplateRuntimeClassArgs : Pulumi.ResourceArgs
+    public sealed class PodSecurityPolicyTemplateRuntimeClassArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedRuntimeClassNames", required: true)]
         private InputList<string>? _allowedRuntimeClassNames;
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public PodSecurityPolicyTemplateRuntimeClassArgs()
         {
         }
+        public static new PodSecurityPolicyTemplateRuntimeClassArgs Empty => new PodSecurityPolicyTemplateRuntimeClassArgs();
     }
 }

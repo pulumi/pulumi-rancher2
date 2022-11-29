@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GlobalRoleRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class GlobalRoleRuleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiGroups")]
         private InputList<string>? _apiGroups;
@@ -75,5 +75,6 @@ namespace Pulumi.Rancher2.Inputs
         public GlobalRoleRuleGetArgs()
         {
         }
+        public static new GlobalRoleRuleGetArgs Empty => new GlobalRoleRuleGetArgs();
     }
 }

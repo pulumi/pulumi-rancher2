@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterAlertRuleNodeRuleArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAlertRuleNodeRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
@@ -51,5 +51,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterAlertRuleNodeRuleArgs()
         {
         }
+        public static new ClusterAlertRuleNodeRuleArgs Empty => new ClusterAlertRuleNodeRuleArgs();
     }
 }

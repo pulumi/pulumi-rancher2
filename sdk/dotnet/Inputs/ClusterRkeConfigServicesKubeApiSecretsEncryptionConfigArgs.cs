@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs()
         {
         }
+        public static new ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs Empty => new ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs();
     }
 }

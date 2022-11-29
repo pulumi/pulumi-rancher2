@@ -138,7 +138,7 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable String privateKeyFile;
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     private String region;
@@ -380,7 +380,7 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.privateKeyFile);
     }
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public String region() {

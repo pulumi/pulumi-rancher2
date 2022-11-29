@@ -358,6 +358,71 @@ func (o ProjectAlertRuleOutput) ToProjectAlertRuleOutputWithContext(ctx context.
 	return o
 }
 
+// The project alert rule annotations (map)
+func (o ProjectAlertRuleOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The project alert rule alert group ID (string)
+func (o ProjectAlertRuleOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The project alert rule group interval seconds. Default: `180` (int)
+func (o ProjectAlertRuleOutput) GroupIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) pulumi.IntPtrOutput { return v.GroupIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The project alert rule group wait seconds. Default: `180` (int)
+func (o ProjectAlertRuleOutput) GroupWaitSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) pulumi.IntPtrOutput { return v.GroupWaitSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The project alert rule inherited. Default: `true` (bool)
+func (o ProjectAlertRuleOutput) Inherited() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) pulumi.BoolPtrOutput { return v.Inherited }).(pulumi.BoolPtrOutput)
+}
+
+// The project alert rule labels (map)
+func (o ProjectAlertRuleOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"“ (list Maxitems:1)
+func (o ProjectAlertRuleOutput) MetricRule() ProjectAlertRuleMetricRulePtrOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) ProjectAlertRuleMetricRulePtrOutput { return v.MetricRule }).(ProjectAlertRuleMetricRulePtrOutput)
+}
+
+// The project alert rule name (string)
+func (o ProjectAlertRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"“ (list Maxitems:1)
+func (o ProjectAlertRuleOutput) PodRule() ProjectAlertRulePodRulePtrOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) ProjectAlertRulePodRulePtrOutput { return v.PodRule }).(ProjectAlertRulePodRulePtrOutput)
+}
+
+// The project id where create project alert rule (string)
+func (o ProjectAlertRuleOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The project alert rule wait seconds. Default: `3600` (int)
+func (o ProjectAlertRuleOutput) RepeatIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) pulumi.IntPtrOutput { return v.RepeatIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
+func (o ProjectAlertRuleOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) pulumi.StringPtrOutput { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"“ (list Maxitems:1)
+func (o ProjectAlertRuleOutput) WorkloadRule() ProjectAlertRuleWorkloadRulePtrOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) ProjectAlertRuleWorkloadRulePtrOutput { return v.WorkloadRule }).(ProjectAlertRuleWorkloadRulePtrOutput)
+}
+
 type ProjectAlertRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectAlertRuleArrayOutput) ElementType() reflect.Type {

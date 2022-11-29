@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2Args : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GKE cluster addons (List maxitems:1)
@@ -36,11 +36,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("enableKubernetesAlpha")]
         public Input<bool>? EnableKubernetesAlpha { get; set; }
 
+        [Input("googleCredentialSecret", required: true)]
+        private Input<string>? _googleCredentialSecret;
+
         /// <summary>
         /// Google credential secret (string)
         /// </summary>
-        [Input("googleCredentialSecret", required: true)]
-        public Input<string> GoogleCredentialSecret { get; set; } = null!;
+        public Input<string>? GoogleCredentialSecret
+        {
+            get => _googleCredentialSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _googleCredentialSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Is GKE cluster imported? Default: `false` (bool)
@@ -171,5 +181,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2Args()
         {
         }
+        public static new ClusterGkeConfigV2Args Empty => new ClusterGkeConfigV2Args();
     }
 }

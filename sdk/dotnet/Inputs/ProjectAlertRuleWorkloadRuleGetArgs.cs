@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ProjectAlertRuleWorkloadRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class ProjectAlertRuleWorkloadRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Workload rule available percentage. Default: `70` (int)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public ProjectAlertRuleWorkloadRuleGetArgs()
         {
         }
+        public static new ProjectAlertRuleWorkloadRuleGetArgs Empty => new ProjectAlertRuleWorkloadRuleGetArgs();
     }
 }

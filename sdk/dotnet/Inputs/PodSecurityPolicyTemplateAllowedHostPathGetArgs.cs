@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class PodSecurityPolicyTemplateAllowedHostPathGetArgs : Pulumi.ResourceArgs
+    public sealed class PodSecurityPolicyTemplateAllowedHostPathGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (string)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public PodSecurityPolicyTemplateAllowedHostPathGetArgs()
         {
         }
+        public static new PodSecurityPolicyTemplateAllowedHostPathGetArgs Empty => new PodSecurityPolicyTemplateAllowedHostPathGetArgs();
     }
 }

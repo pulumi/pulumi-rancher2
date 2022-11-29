@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NamespaceResourceQuotaGetArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceResourceQuotaGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource quota limit for namespace (list maxitems:1)
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public NamespaceResourceQuotaGetArgs()
         {
         }
+        public static new NamespaceResourceQuotaGetArgs Empty => new NamespaceResourceQuotaGetArgs();
     }
 }

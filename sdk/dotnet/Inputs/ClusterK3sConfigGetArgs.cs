@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterK3sConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterK3sConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// K3S upgrade strategy (List maxitems: 1)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterK3sConfigGetArgs()
         {
         }
+        public static new ClusterK3sConfigGetArgs Empty => new ClusterK3sConfigGetArgs();
     }
 }

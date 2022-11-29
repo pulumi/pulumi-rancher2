@@ -15,27 +15,25 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Rancher2 App V2 using
+    ///     var foo = new Rancher2.AppV2("foo", new()
     ///     {
-    ///         // Create a new Rancher2 App V2 using
-    ///         var foo = new Rancher2.AppV2("foo", new Rancher2.AppV2Args
-    ///         {
-    ///             ClusterId = "&lt;CLUSTER_ID&gt;",
-    ///             Namespace = "cattle-monitoring-system",
-    ///             RepoName = "rancher-charts",
-    ///             ChartName = "rancher-monitoring",
-    ///             ChartVersion = "9.4.200",
-    ///             Values = File.ReadAllText("values.yaml"),
-    ///         });
-    ///     }
+    ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+    ///         Namespace = "cattle-monitoring-system",
+    ///         RepoName = "rancher-charts",
+    ///         ChartName = "rancher-monitoring",
+    ///         ChartVersion = "9.4.200",
+    ///         Values = File.ReadAllText("values.yaml"),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/appV2:AppV2")]
-    public partial class AppV2 : Pulumi.CustomResource
+    public partial class AppV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for the app v2 (map)
@@ -195,7 +193,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class AppV2Args : Pulumi.ResourceArgs
+    public sealed class AppV2Args : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -302,9 +300,10 @@ namespace Pulumi.Rancher2
         public AppV2Args()
         {
         }
+        public static new AppV2Args Empty => new AppV2Args();
     }
 
-    public sealed class AppV2State : Pulumi.ResourceArgs
+    public sealed class AppV2State : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -423,5 +422,6 @@ namespace Pulumi.Rancher2
         public AppV2State()
         {
         }
+        public static new AppV2State Empty => new AppV2State();
     }
 }

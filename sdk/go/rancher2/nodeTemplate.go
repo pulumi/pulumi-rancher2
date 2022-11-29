@@ -12,7 +12,7 @@ import (
 
 // Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
 //
-// amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.
+// amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, outscale, hetzner and vsphere drivers are supported for node templates.
 //
 // **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
 //
@@ -255,6 +255,8 @@ type NodeTemplate struct {
 	OpennebulaConfig NodeTemplateOpennebulaConfigPtrOutput `pulumi:"opennebulaConfig"`
 	// Openstack config for the Node Template (list maxitems:1)
 	OpenstackConfig NodeTemplateOpenstackConfigPtrOutput `pulumi:"openstackConfig"`
+	// Outscale config for the Node Template (list maxitems:1)
+	OutscaleConfig NodeTemplateOutscaleConfigPtrOutput `pulumi:"outscaleConfig"`
 	// Engine storage driver for the node template (bool)
 	UseInternalIpAddress pulumi.BoolPtrOutput `pulumi:"useInternalIpAddress"`
 	// vSphere config for the Node Template (list maxitems:1)
@@ -268,6 +270,17 @@ func NewNodeTemplate(ctx *pulumi.Context,
 		args = &NodeTemplateArgs{}
 	}
 
+	if args.AuthCertificateAuthority != nil {
+		args.AuthCertificateAuthority = pulumi.ToSecret(args.AuthCertificateAuthority).(pulumi.StringPtrOutput)
+	}
+	if args.AuthKey != nil {
+		args.AuthKey = pulumi.ToSecret(args.AuthKey).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"authCertificateAuthority",
+		"authKey",
+	})
+	opts = append(opts, secrets)
 	var resource NodeTemplate
 	err := ctx.RegisterResource("rancher2:index/nodeTemplate:NodeTemplate", name, args, &resource, opts...)
 	if err != nil {
@@ -340,6 +353,8 @@ type nodeTemplateState struct {
 	OpennebulaConfig *NodeTemplateOpennebulaConfig `pulumi:"opennebulaConfig"`
 	// Openstack config for the Node Template (list maxitems:1)
 	OpenstackConfig *NodeTemplateOpenstackConfig `pulumi:"openstackConfig"`
+	// Outscale config for the Node Template (list maxitems:1)
+	OutscaleConfig *NodeTemplateOutscaleConfig `pulumi:"outscaleConfig"`
 	// Engine storage driver for the node template (bool)
 	UseInternalIpAddress *bool `pulumi:"useInternalIpAddress"`
 	// vSphere config for the Node Template (list maxitems:1)
@@ -397,6 +412,8 @@ type NodeTemplateState struct {
 	OpennebulaConfig NodeTemplateOpennebulaConfigPtrInput
 	// Openstack config for the Node Template (list maxitems:1)
 	OpenstackConfig NodeTemplateOpenstackConfigPtrInput
+	// Outscale config for the Node Template (list maxitems:1)
+	OutscaleConfig NodeTemplateOutscaleConfigPtrInput
 	// Engine storage driver for the node template (bool)
 	UseInternalIpAddress pulumi.BoolPtrInput
 	// vSphere config for the Node Template (list maxitems:1)
@@ -456,6 +473,8 @@ type nodeTemplateArgs struct {
 	OpennebulaConfig *NodeTemplateOpennebulaConfig `pulumi:"opennebulaConfig"`
 	// Openstack config for the Node Template (list maxitems:1)
 	OpenstackConfig *NodeTemplateOpenstackConfig `pulumi:"openstackConfig"`
+	// Outscale config for the Node Template (list maxitems:1)
+	OutscaleConfig *NodeTemplateOutscaleConfig `pulumi:"outscaleConfig"`
 	// Engine storage driver for the node template (bool)
 	UseInternalIpAddress *bool `pulumi:"useInternalIpAddress"`
 	// vSphere config for the Node Template (list maxitems:1)
@@ -512,6 +531,8 @@ type NodeTemplateArgs struct {
 	OpennebulaConfig NodeTemplateOpennebulaConfigPtrInput
 	// Openstack config for the Node Template (list maxitems:1)
 	OpenstackConfig NodeTemplateOpenstackConfigPtrInput
+	// Outscale config for the Node Template (list maxitems:1)
+	OutscaleConfig NodeTemplateOutscaleConfigPtrInput
 	// Engine storage driver for the node template (bool)
 	UseInternalIpAddress pulumi.BoolPtrInput
 	// vSphere config for the Node Template (list maxitems:1)
@@ -603,6 +624,146 @@ func (o NodeTemplateOutput) ToNodeTemplateOutput() NodeTemplateOutput {
 
 func (o NodeTemplateOutput) ToNodeTemplateOutputWithContext(ctx context.Context) NodeTemplateOutput {
 	return o
+}
+
+// AWS config for the Node Template (list maxitems:1)
+func (o NodeTemplateOutput) Amazonec2Config() NodeTemplateAmazonec2ConfigPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateAmazonec2ConfigPtrOutput { return v.Amazonec2Config }).(NodeTemplateAmazonec2ConfigPtrOutput)
+}
+
+// Annotations for Node Template object (map)
+func (o NodeTemplateOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Auth certificate authority for the Node Template (string)
+func (o NodeTemplateOutput) AuthCertificateAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringPtrOutput { return v.AuthCertificateAuthority }).(pulumi.StringPtrOutput)
+}
+
+// Auth key for the Node Template (string)
+func (o NodeTemplateOutput) AuthKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringPtrOutput { return v.AuthKey }).(pulumi.StringPtrOutput)
+}
+
+// Azure config for the Node Template (list maxitems:1)
+func (o NodeTemplateOutput) AzureConfig() NodeTemplateAzureConfigPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateAzureConfigPtrOutput { return v.AzureConfig }).(NodeTemplateAzureConfigPtrOutput)
+}
+
+// Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
+func (o NodeTemplateOutput) CloudCredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringPtrOutput { return v.CloudCredentialId }).(pulumi.StringPtrOutput)
+}
+
+// Description for the Node Template (string)
+func (o NodeTemplateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Digitalocean config for the Node Template (list maxitems:1)
+func (o NodeTemplateOutput) DigitaloceanConfig() NodeTemplateDigitaloceanConfigPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateDigitaloceanConfigPtrOutput { return v.DigitaloceanConfig }).(NodeTemplateDigitaloceanConfigPtrOutput)
+}
+
+// (Computed) The driver of the node template (string)
+func (o NodeTemplateOutput) Driver() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.Driver }).(pulumi.StringOutput)
+}
+
+// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+func (o NodeTemplateOutput) DriverId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.DriverId }).(pulumi.StringOutput)
+}
+
+// Engine environment for the node template (string)
+func (o NodeTemplateOutput) EngineEnv() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.MapOutput { return v.EngineEnv }).(pulumi.MapOutput)
+}
+
+// Insecure registry for the node template (list)
+func (o NodeTemplateOutput) EngineInsecureRegistries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringArrayOutput { return v.EngineInsecureRegistries }).(pulumi.StringArrayOutput)
+}
+
+// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+func (o NodeTemplateOutput) EngineInstallUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.EngineInstallUrl }).(pulumi.StringOutput)
+}
+
+// Engine label for the node template (string)
+func (o NodeTemplateOutput) EngineLabel() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.MapOutput { return v.EngineLabel }).(pulumi.MapOutput)
+}
+
+// Engine options for the node template (map)
+func (o NodeTemplateOutput) EngineOpt() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.MapOutput { return v.EngineOpt }).(pulumi.MapOutput)
+}
+
+// Engine registry mirror for the node template (list)
+func (o NodeTemplateOutput) EngineRegistryMirrors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringArrayOutput { return v.EngineRegistryMirrors }).(pulumi.StringArrayOutput)
+}
+
+// Engine storage driver for the node template (string)
+func (o NodeTemplateOutput) EngineStorageDriver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringPtrOutput { return v.EngineStorageDriver }).(pulumi.StringPtrOutput)
+}
+
+// Harvester config for the Node Template (list maxitems:1)
+func (o NodeTemplateOutput) HarvesterConfig() NodeTemplateHarvesterConfigPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateHarvesterConfigPtrOutput { return v.HarvesterConfig }).(NodeTemplateHarvesterConfigPtrOutput)
+}
+
+// Hetzner config for the Node Template (list maxitems:1)
+func (o NodeTemplateOutput) HetznerConfig() NodeTemplateHetznerConfigPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateHetznerConfigPtrOutput { return v.HetznerConfig }).(NodeTemplateHetznerConfigPtrOutput)
+}
+
+// Labels for Node Template object (map)
+func (o NodeTemplateOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Linode config for the Node Template (list maxitems:1)
+func (o NodeTemplateOutput) LinodeConfig() NodeTemplateLinodeConfigPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateLinodeConfigPtrOutput { return v.LinodeConfig }).(NodeTemplateLinodeConfigPtrOutput)
+}
+
+// The name of the Node Template (string)
+func (o NodeTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Node taints. For Rancher v2.3.3 or above (List)
+func (o NodeTemplateOutput) NodeTaints() NodeTemplateNodeTaintArrayOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateNodeTaintArrayOutput { return v.NodeTaints }).(NodeTemplateNodeTaintArrayOutput)
+}
+
+// Opennebula config for the Node Template (list maxitems:1)
+func (o NodeTemplateOutput) OpennebulaConfig() NodeTemplateOpennebulaConfigPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateOpennebulaConfigPtrOutput { return v.OpennebulaConfig }).(NodeTemplateOpennebulaConfigPtrOutput)
+}
+
+// Openstack config for the Node Template (list maxitems:1)
+func (o NodeTemplateOutput) OpenstackConfig() NodeTemplateOpenstackConfigPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateOpenstackConfigPtrOutput { return v.OpenstackConfig }).(NodeTemplateOpenstackConfigPtrOutput)
+}
+
+// Outscale config for the Node Template (list maxitems:1)
+func (o NodeTemplateOutput) OutscaleConfig() NodeTemplateOutscaleConfigPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateOutscaleConfigPtrOutput { return v.OutscaleConfig }).(NodeTemplateOutscaleConfigPtrOutput)
+}
+
+// Engine storage driver for the node template (bool)
+func (o NodeTemplateOutput) UseInternalIpAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.BoolPtrOutput { return v.UseInternalIpAddress }).(pulumi.BoolPtrOutput)
+}
+
+// vSphere config for the Node Template (list maxitems:1)
+func (o NodeTemplateOutput) VsphereConfig() NodeTemplateVsphereConfigPtrOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateVsphereConfigPtrOutput { return v.VsphereConfig }).(NodeTemplateVsphereConfigPtrOutput)
 }
 
 type NodeTemplateArrayOutput struct{ *pulumi.OutputState }

@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [Rancher2ResourceType("pulumi:providers:rancher2")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// API Key used to authenticate with the rancher server
@@ -72,6 +72,12 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accessKey",
+                    "secretKey",
+                    "tokenKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -80,13 +86,23 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessKey")]
+        private Input<string>? _accessKey;
+
         /// <summary>
         /// API Key used to authenticate with the rancher server
         /// </summary>
-        [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The URL to the rancher API
@@ -118,11 +134,21 @@ namespace Pulumi.Rancher2
         [Input("retries", json: true)]
         public Input<int>? Retries { get; set; }
 
+        [Input("secretKey")]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// API secret used to authenticate with the rancher server
         /// </summary>
-        [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
@@ -130,16 +156,27 @@ namespace Pulumi.Rancher2
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
 
+        [Input("tokenKey")]
+        private Input<string>? _tokenKey;
+
         /// <summary>
         /// API token used to authenticate with the rancher server
         /// </summary>
-        [Input("tokenKey")]
-        public Input<string>? TokenKey { get; set; }
+        public Input<string>? TokenKey
+        {
+            get => _tokenKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tokenKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ProviderArgs()
         {
             Bootstrap = Utilities.GetEnvBoolean("RANCHER_BOOTSTRAP") ?? false;
             Insecure = Utilities.GetEnvBoolean("RANCHER_INSECURE") ?? false;
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

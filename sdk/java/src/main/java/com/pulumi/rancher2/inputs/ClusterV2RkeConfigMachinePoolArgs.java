@@ -129,6 +129,21 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
+     * Labels for Machine pool nodes (map)
+     * 
+     */
+    @Import(name="machineLabels")
+    private @Nullable Output<Map<String,Object>> machineLabels;
+
+    /**
+     * @return Labels for Machine pool nodes (map)
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> machineLabels() {
+        return Optional.ofNullable(this.machineLabels);
+    }
+
+    /**
      * Max unhealthy nodes for automated replacement to be allowed (string)
      * 
      */
@@ -303,6 +318,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         this.etcdRole = $.etcdRole;
         this.labels = $.labels;
         this.machineConfig = $.machineConfig;
+        this.machineLabels = $.machineLabels;
         this.maxUnhealthy = $.maxUnhealthy;
         this.name = $.name;
         this.nodeDrainTimeout = $.nodeDrainTimeout;
@@ -479,6 +495,27 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
          */
         public Builder machineConfig(ClusterV2RkeConfigMachinePoolMachineConfigArgs machineConfig) {
             return machineConfig(Output.of(machineConfig));
+        }
+
+        /**
+         * @param machineLabels Labels for Machine pool nodes (map)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder machineLabels(@Nullable Output<Map<String,Object>> machineLabels) {
+            $.machineLabels = machineLabels;
+            return this;
+        }
+
+        /**
+         * @param machineLabels Labels for Machine pool nodes (map)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder machineLabels(Map<String,Object> machineLabels) {
+            return machineLabels(Output.of(machineLabels));
         }
 
         /**

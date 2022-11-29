@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NodeTemplateHetznerConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateHetznerConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("apiToken", required: true)]
+        private Input<string>? _apiToken;
+
         /// <summary>
         /// Hetzner Cloud project API token (string)
         /// </summary>
-        [Input("apiToken", required: true)]
-        public Input<string> ApiToken { get; set; } = null!;
+        public Input<string>? ApiToken
+        {
+            get => _apiToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
@@ -75,5 +85,6 @@ namespace Pulumi.Rancher2.Inputs
         public NodeTemplateHetznerConfigArgs()
         {
         }
+        public static new NodeTemplateHetznerConfigArgs Empty => new NodeTemplateHetznerConfigArgs();
     }
 }

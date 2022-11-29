@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesSchedulerGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesSchedulerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("extraArgs")]
         private InputMap<object>? _extraArgs;
@@ -57,5 +57,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesSchedulerGetArgs()
         {
         }
+        public static new ClusterRkeConfigServicesSchedulerGetArgs Empty => new ClusterRkeConfigServicesSchedulerGetArgs();
     }
 }

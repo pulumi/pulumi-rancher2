@@ -13,25 +13,23 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Feature
+    ///     var fleet = new Rancher2.Feature("fleet", new()
     ///     {
-    ///         // Create a new rancher2 Feature
-    ///         var fleet = new Rancher2.Feature("fleet", new Rancher2.FeatureArgs
-    ///         {
-    ///             Value = "&lt;VALUE&gt;",
-    ///         });
-    ///     }
+    ///         Value = "&lt;VALUE&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/feature:Feature")]
-    public partial class Feature : Pulumi.CustomResource
+    public partial class Feature : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for feature object (map)
@@ -101,7 +99,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class FeatureArgs : Pulumi.ResourceArgs
+    public sealed class FeatureArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -142,9 +140,10 @@ namespace Pulumi.Rancher2
         public FeatureArgs()
         {
         }
+        public static new FeatureArgs Empty => new FeatureArgs();
     }
 
-    public sealed class FeatureState : Pulumi.ResourceArgs
+    public sealed class FeatureState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -185,5 +184,6 @@ namespace Pulumi.Rancher2
         public FeatureState()
         {
         }
+        public static new FeatureState Empty => new FeatureState();
     }
 }

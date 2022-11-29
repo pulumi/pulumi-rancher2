@@ -13,11 +13,110 @@ import com.pulumi.rancher2.inputs.BootstrapState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Bootstrap;
+ * import com.pulumi.rancher2.BootstrapArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var admin = new Bootstrap(&#34;admin&#34;, BootstrapArgs.builder()        
+ *             .password(&#34;blahblah&#34;)
+ *             .telemetry(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Bootstrap;
+ * import com.pulumi.rancher2.BootstrapArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var admin = new Bootstrap(&#34;admin&#34;, BootstrapArgs.builder()        
+ *             .initialPassword(&#34;&lt;INSTALL_PASSWORD&gt;&#34;)
+ *             .password(&#34;blahblah&#34;)
+ *             .telemetry(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Provider;
+ * import com.pulumi.rancher2.ProviderArgs;
+ * import com.pulumi.rancher2.Bootstrap;
+ * import com.pulumi.rancher2.BootstrapArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bootstrap = new Provider(&#34;bootstrap&#34;, ProviderArgs.builder()        
+ *             .apiUrl(&#34;https://rancher.my-domain.com&#34;)
+ *             .bootstrap(true)
+ *             .build());
+ * 
+ *         var admin = new Bootstrap(&#34;admin&#34;, BootstrapArgs.builder()        
+ *             .password(&#34;blahblah&#34;)
+ *             .telemetry(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(&#34;rancher2.bootstrap&#34;)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="rancher2:index/bootstrap:Bootstrap")
@@ -237,6 +336,13 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "currentPassword",
+                "initialPassword",
+                "password",
+                "tempToken",
+                "token"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

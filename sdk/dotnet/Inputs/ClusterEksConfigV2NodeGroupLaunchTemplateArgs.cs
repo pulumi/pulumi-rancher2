@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterEksConfigV2NodeGroupLaunchTemplateArgs : Pulumi.ResourceArgs
+    public sealed class ClusterEksConfigV2NodeGroupLaunchTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The EKS node group launch template ID (string)
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterEksConfigV2NodeGroupLaunchTemplateArgs()
         {
         }
+        public static new ClusterEksConfigV2NodeGroupLaunchTemplateArgs Empty => new ClusterEksConfigV2NodeGroupLaunchTemplateArgs();
     }
 }

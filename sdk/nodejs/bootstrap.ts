@@ -155,8 +155,8 @@ export class Bootstrap extends pulumi.CustomResource {
             resourceInputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as BootstrapArgs | undefined;
-            resourceInputs["initialPassword"] = args ? args.initialPassword : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["initialPassword"] = args?.initialPassword ? pulumi.secret(args.initialPassword) : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["telemetry"] = args ? args.telemetry : undefined;
             resourceInputs["tokenTtl"] = args ? args.tokenTtl : undefined;
             resourceInputs["tokenUpdate"] = args ? args.tokenUpdate : undefined;
@@ -170,6 +170,8 @@ export class Bootstrap extends pulumi.CustomResource {
             resourceInputs["user"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["currentPassword", "initialPassword", "password", "tempToken", "token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Bootstrap.__pulumiType, name, resourceInputs, opts);
     }
 }

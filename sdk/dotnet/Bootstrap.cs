@@ -13,74 +13,69 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2_bootstrap
+    ///     var admin = new Rancher2.Bootstrap("admin", new()
     ///     {
-    ///         // Create a new rancher2_bootstrap
-    ///         var admin = new Rancher2.Bootstrap("admin", new Rancher2.BootstrapArgs
-    ///         {
-    ///             Password = "blahblah",
-    ///             Telemetry = true,
-    ///         });
-    ///     }
+    ///         Password = "blahblah",
+    ///         Telemetry = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2_bootstrap for Rancher v2.6.0 and above
+    ///     var admin = new Rancher2.Bootstrap("admin", new()
     ///     {
-    ///         // Create a new rancher2_bootstrap for Rancher v2.6.0 and above
-    ///         var admin = new Rancher2.Bootstrap("admin", new Rancher2.BootstrapArgs
-    ///         {
-    ///             InitialPassword = "&lt;INSTALL_PASSWORD&gt;",
-    ///             Password = "blahblah",
-    ///             Telemetry = true,
-    ///         });
-    ///     }
+    ///         InitialPassword = "&lt;INSTALL_PASSWORD&gt;",
+    ///         Password = "blahblah",
+    ///         Telemetry = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Provider bootstrap config with alias
+    ///     var bootstrap = new Rancher2.Provider("bootstrap", new()
     ///     {
-    ///         // Provider bootstrap config with alias
-    ///         var bootstrap = new Rancher2.Provider("bootstrap", new Rancher2.ProviderArgs
-    ///         {
-    ///             ApiUrl = "https://rancher.my-domain.com",
-    ///             Bootstrap = true,
-    ///         });
-    ///         // Create a new rancher2_bootstrap using bootstrap provider config
-    ///         var admin = new Rancher2.Bootstrap("admin", new Rancher2.BootstrapArgs
-    ///         {
-    ///             Password = "blahblah",
-    ///             Telemetry = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = "rancher2.bootstrap",
-    ///         });
-    ///     }
+    ///         ApiUrl = "https://rancher.my-domain.com",
+    ///         Bootstrap = true,
+    ///     });
     /// 
-    /// }
+    ///     // Create a new rancher2_bootstrap using bootstrap provider config
+    ///     var admin = new Rancher2.Bootstrap("admin", new()
+    ///     {
+    ///         Password = "blahblah",
+    ///         Telemetry = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = "rancher2.bootstrap",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/bootstrap:Bootstrap")]
-    public partial class Bootstrap : Pulumi.CustomResource
+    public partial class Bootstrap : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed/Sensitive) Current password for Admin user (string)
@@ -183,6 +178,14 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "currentPassword",
+                    "initialPassword",
+                    "password",
+                    "tempToken",
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -204,19 +207,39 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class BootstrapArgs : Pulumi.ResourceArgs
+    public sealed class BootstrapArgs : global::Pulumi.ResourceArgs
     {
+        [Input("initialPassword")]
+        private Input<string>? _initialPassword;
+
         /// <summary>
         /// Initial password for Admin user. Default: `admin` (string)
         /// </summary>
-        [Input("initialPassword")]
-        public Input<string>? InitialPassword { get; set; }
+        public Input<string>? InitialPassword
+        {
+            get => _initialPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _initialPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("password")]
+        private Input<string>? _password;
 
         /// <summary>
         /// Password for Admin user or random generated if empty (string)
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Send telemetry anonymous data. Default: `false` (bool)
@@ -245,27 +268,58 @@ namespace Pulumi.Rancher2
         public BootstrapArgs()
         {
         }
+        public static new BootstrapArgs Empty => new BootstrapArgs();
     }
 
-    public sealed class BootstrapState : Pulumi.ResourceArgs
+    public sealed class BootstrapState : global::Pulumi.ResourceArgs
     {
+        [Input("currentPassword")]
+        private Input<string>? _currentPassword;
+
         /// <summary>
         /// (Computed/Sensitive) Current password for Admin user (string)
         /// </summary>
-        [Input("currentPassword")]
-        public Input<string>? CurrentPassword { get; set; }
+        public Input<string>? CurrentPassword
+        {
+            get => _currentPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _currentPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("initialPassword")]
+        private Input<string>? _initialPassword;
 
         /// <summary>
         /// Initial password for Admin user. Default: `admin` (string)
         /// </summary>
-        [Input("initialPassword")]
-        public Input<string>? InitialPassword { get; set; }
+        public Input<string>? InitialPassword
+        {
+            get => _initialPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _initialPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("password")]
+        private Input<string>? _password;
 
         /// <summary>
         /// Password for Admin user or random generated if empty (string)
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Send telemetry anonymous data. Default: `false` (bool)
@@ -273,11 +327,21 @@ namespace Pulumi.Rancher2
         [Input("telemetry")]
         public Input<bool>? Telemetry { get; set; }
 
+        [Input("tempToken")]
+        private Input<string>? _tempToken;
+
         /// <summary>
         /// (Computed) Generated API temporary token as helper. Should be empty (string)
         /// </summary>
-        [Input("tempToken")]
-        public Input<string>? TempToken { get; set; }
+        public Input<string>? TempToken
+        {
+            get => _tempToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tempToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// (Computed) Generated API temporary token id as helper. Should be empty (string)
@@ -285,11 +349,21 @@ namespace Pulumi.Rancher2
         [Input("tempTokenId")]
         public Input<string>? TempTokenId { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// (Computed) Generated API token for Admin User (string)
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// (Computed) Generated API token id for Admin User (string)
@@ -330,5 +404,6 @@ namespace Pulumi.Rancher2
         public BootstrapState()
         {
         }
+        public static new BootstrapState Empty => new BootstrapState();
     }
 }

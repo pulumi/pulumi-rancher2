@@ -89,6 +89,11 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable List<String> openPorts;
     /**
+     * @return Only use a private IP address. Default `false` (bool)
+     * 
+     */
+    private @Nullable Boolean privateAddressOnly;
+    /**
      * @return Specify a static private IP address for the machine. (string)
      * 
      */
@@ -261,6 +266,13 @@ public final class MachineConfigV2AzureConfig {
         return this.openPorts == null ? List.of() : this.openPorts;
     }
     /**
+     * @return Only use a private IP address. Default `false` (bool)
+     * 
+     */
+    public Optional<Boolean> privateAddressOnly() {
+        return Optional.ofNullable(this.privateAddressOnly);
+    }
+    /**
      * @return Specify a static private IP address for the machine. (string)
      * 
      */
@@ -376,6 +388,7 @@ public final class MachineConfigV2AzureConfig {
         private @Nullable Boolean noPublicIp;
         private @Nullable String nsg;
         private @Nullable List<String> openPorts;
+        private @Nullable Boolean privateAddressOnly;
         private @Nullable String privateIpAddress;
         private @Nullable String resourceGroup;
         private @Nullable String size;
@@ -407,6 +420,7 @@ public final class MachineConfigV2AzureConfig {
     	      this.noPublicIp = defaults.noPublicIp;
     	      this.nsg = defaults.nsg;
     	      this.openPorts = defaults.openPorts;
+    	      this.privateAddressOnly = defaults.privateAddressOnly;
     	      this.privateIpAddress = defaults.privateIpAddress;
     	      this.resourceGroup = defaults.resourceGroup;
     	      this.size = defaults.size;
@@ -501,6 +515,11 @@ public final class MachineConfigV2AzureConfig {
             return openPorts(List.of(openPorts));
         }
         @CustomType.Setter
+        public Builder privateAddressOnly(@Nullable Boolean privateAddressOnly) {
+            this.privateAddressOnly = privateAddressOnly;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privateIpAddress(@Nullable String privateIpAddress) {
             this.privateIpAddress = privateIpAddress;
             return this;
@@ -582,6 +601,7 @@ public final class MachineConfigV2AzureConfig {
             o.noPublicIp = noPublicIp;
             o.nsg = nsg;
             o.openPorts = openPorts;
+            o.privateAddressOnly = privateAddressOnly;
             o.privateIpAddress = privateIpAddress;
             o.resourceGroup = resourceGroup;
             o.size = size;

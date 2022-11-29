@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NotifierSlackConfigArgs : Pulumi.ResourceArgs
+    public sealed class NotifierSlackConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Wechat default recipient (string)
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public NotifierSlackConfigArgs()
         {
         }
+        public static new NotifierSlackConfigArgs Empty => new NotifierSlackConfigArgs();
     }
 }

@@ -243,6 +243,21 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Only use a private IP address. Default `false` (bool)
+     * 
+     */
+    @Import(name="privateAddressOnly")
+    private @Nullable Output<Boolean> privateAddressOnly;
+
+    /**
+     * @return Only use a private IP address. Default `false` (bool)
+     * 
+     */
+    public Optional<Output<Boolean>> privateAddressOnly() {
+        return Optional.ofNullable(this.privateAddressOnly);
+    }
+
+    /**
      * Specify a static private IP address for the machine. (string)
      * 
      */
@@ -455,6 +470,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         this.noPublicIp = $.noPublicIp;
         this.nsg = $.nsg;
         this.openPorts = $.openPorts;
+        this.privateAddressOnly = $.privateAddressOnly;
         this.privateIpAddress = $.privateIpAddress;
         this.resourceGroup = $.resourceGroup;
         this.size = $.size;
@@ -811,6 +827,27 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
          */
         public Builder openPorts(String... openPorts) {
             return openPorts(List.of(openPorts));
+        }
+
+        /**
+         * @param privateAddressOnly Only use a private IP address. Default `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAddressOnly(@Nullable Output<Boolean> privateAddressOnly) {
+            $.privateAddressOnly = privateAddressOnly;
+            return this;
+        }
+
+        /**
+         * @param privateAddressOnly Only use a private IP address. Default `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAddressOnly(Boolean privateAddressOnly) {
+            return privateAddressOnly(Output.of(privateAddressOnly));
         }
 
         /**

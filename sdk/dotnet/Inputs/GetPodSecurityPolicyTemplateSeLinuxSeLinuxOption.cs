@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs : global::Pulumi.InvokeArgs
     {
         [Input("level")]
         public string? Level { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs()
         {
         }
+        public static new GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs Empty => new GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs();
     }
 }

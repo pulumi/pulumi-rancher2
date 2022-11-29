@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NodeTemplateVsphereConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateVsphereConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
@@ -132,11 +132,21 @@ namespace Pulumi.Rancher2.Inputs
             set => _networks = value;
         }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// vSphere resource pool for docker VM (string)
@@ -144,11 +154,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("pool")]
         public Input<string>? Pool { get; set; }
 
+        [Input("sshPassword")]
+        private Input<string>? _sshPassword;
+
         /// <summary>
         /// If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
         /// </summary>
-        [Input("sshPassword")]
-        public Input<string>? SshPassword { get; set; }
+        public Input<string>? SshPassword
+        {
+            get => _sshPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
@@ -231,5 +251,6 @@ namespace Pulumi.Rancher2.Inputs
         public NodeTemplateVsphereConfigArgs()
         {
         }
+        public static new NodeTemplateVsphereConfigArgs Empty => new NodeTemplateVsphereConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigNodeGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigNodeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Address ip for node (string)
@@ -78,11 +78,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("sshAgentAuth")]
         public Input<bool>? SshAgentAuth { get; set; }
 
+        [Input("sshKey")]
+        private Input<string>? _sshKey;
+
         /// <summary>
         /// Node SSH private key (string)
         /// </summary>
-        [Input("sshKey")]
-        public Input<string>? SshKey { get; set; }
+        public Input<string>? SshKey
+        {
+            get => _sshKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Node SSH private key path (string)
@@ -90,14 +100,25 @@ namespace Pulumi.Rancher2.Inputs
         [Input("sshKeyPath")]
         public Input<string>? SshKeyPath { get; set; }
 
+        [Input("user", required: true)]
+        private Input<string>? _user;
+
         /// <summary>
         /// Registry user (string)
         /// </summary>
-        [Input("user", required: true)]
-        public Input<string> User { get; set; } = null!;
+        public Input<string>? User
+        {
+            get => _user;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _user = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ClusterRkeConfigNodeGetArgs()
         {
         }
+        public static new ClusterRkeConfigNodeGetArgs Empty => new ClusterRkeConfigNodeGetArgs();
     }
 }

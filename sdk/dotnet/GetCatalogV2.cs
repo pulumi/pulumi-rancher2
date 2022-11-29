@@ -15,17 +15,17 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Task<GetCatalogV2Result> InvokeAsync(GetCatalogV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogV2Result>("rancher2:index/getCatalogV2:getCatalogV2", args ?? new GetCatalogV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCatalogV2Result>("rancher2:index/getCatalogV2:getCatalogV2", args ?? new GetCatalogV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Output<GetCatalogV2Result> Invoke(GetCatalogV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCatalogV2Result>("rancher2:index/getCatalogV2:getCatalogV2", args ?? new GetCatalogV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCatalogV2Result>("rancher2:index/getCatalogV2:getCatalogV2", args ?? new GetCatalogV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCatalogV2Args : Pulumi.InvokeArgs
+    public sealed class GetCatalogV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id of the catalog V2 (string)
@@ -42,9 +42,10 @@ namespace Pulumi.Rancher2
         public GetCatalogV2Args()
         {
         }
+        public static new GetCatalogV2Args Empty => new GetCatalogV2Args();
     }
 
-    public sealed class GetCatalogV2InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id of the catalog V2 (string)
@@ -61,6 +62,7 @@ namespace Pulumi.Rancher2
         public GetCatalogV2InvokeArgs()
         {
         }
+        public static new GetCatalogV2InvokeArgs Empty => new GetCatalogV2InvokeArgs();
     }
 
 

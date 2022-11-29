@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigRegistriesConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigRegistriesConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Registry auth config secret name (string)
@@ -45,5 +45,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigRegistriesConfigArgs()
         {
         }
+        public static new ClusterV2RkeConfigRegistriesConfigArgs Empty => new ClusterV2RkeConfigRegistriesConfigArgs();
     }
 }

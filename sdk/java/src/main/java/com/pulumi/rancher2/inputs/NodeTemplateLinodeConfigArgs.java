@@ -77,14 +77,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -107,14 +107,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * OpenStack region name (string)
+     * AWS region. Default `eu-west-2` (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -380,7 +380,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param instanceType Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param instanceType Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 

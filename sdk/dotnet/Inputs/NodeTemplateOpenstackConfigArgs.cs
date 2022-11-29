@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NodeTemplateOpenstackConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateOpenstackConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// OpenStack active timeout Default `200` (string)
@@ -30,11 +30,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("applicationCredentialName")]
         public Input<string>? ApplicationCredentialName { get; set; }
 
+        [Input("applicationCredentialSecret")]
+        private Input<string>? _applicationCredentialSecret;
+
         /// <summary>
         /// OpenStack application credential secret (string)
         /// </summary>
-        [Input("applicationCredentialSecret")]
-        public Input<string>? ApplicationCredentialSecret { get; set; }
+        public Input<string>? ApplicationCredentialSecret
+        {
+            get => _applicationCredentialSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _applicationCredentialSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// OpenStack authentication URL (string)
@@ -150,20 +160,40 @@ namespace Pulumi.Rancher2.Inputs
         [Input("novaNetwork")]
         public Input<bool>? NovaNetwork { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("privateKeyFile")]
+        private Input<string>? _privateKeyFile;
 
         /// <summary>
         /// Private key content to use for SSH (string)
         /// </summary>
-        [Input("privateKeyFile")]
-        public Input<string>? PrivateKeyFile { get; set; }
+        public Input<string>? PrivateKeyFile
+        {
+            get => _privateKeyFile;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyFile = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// OpenStack region name (string)
+        /// AWS region. Default `eu-west-2` (string)
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -243,5 +273,6 @@ namespace Pulumi.Rancher2.Inputs
         public NodeTemplateOpenstackConfigArgs()
         {
         }
+        public static new NodeTemplateOpenstackConfigArgs Empty => new NodeTemplateOpenstackConfigArgs();
     }
 }

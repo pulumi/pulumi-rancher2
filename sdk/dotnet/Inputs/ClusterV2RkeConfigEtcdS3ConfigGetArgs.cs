@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigEtcdS3ConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigEtcdS3ConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bucket name for S3 service (string)
@@ -57,5 +57,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigEtcdS3ConfigGetArgs()
         {
         }
+        public static new ClusterV2RkeConfigEtcdS3ConfigGetArgs Empty => new ClusterV2RkeConfigEtcdS3ConfigGetArgs();
     }
 }

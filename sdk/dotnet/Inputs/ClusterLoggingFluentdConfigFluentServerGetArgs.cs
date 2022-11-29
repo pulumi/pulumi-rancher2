@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterLoggingFluentdConfigFluentServerGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterLoggingFluentdConfigFluentServerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Endpoint of the syslog service (string)
@@ -24,17 +24,37 @@ namespace Pulumi.Rancher2.Inputs
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// User password of the fluentd service (string)
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("sharedKey")]
+        private Input<string>? _sharedKey;
 
         /// <summary>
         /// Shared key of the fluentd service (string)
         /// </summary>
-        [Input("sharedKey")]
-        public Input<string>? SharedKey { get; set; }
+        public Input<string>? SharedKey
+        {
+            get => _sharedKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sharedKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Standby server of the fluentd service (bool)
@@ -42,11 +62,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("standby")]
         public Input<bool>? Standby { get; set; }
 
+        [Input("username")]
+        private Input<string>? _username;
+
         /// <summary>
         /// Username of the fluentd service (string)
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Weight of the fluentd server (int)
@@ -57,5 +87,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterLoggingFluentdConfigFluentServerGetArgs()
         {
         }
+        public static new ClusterLoggingFluentdConfigFluentServerGetArgs Empty => new ClusterLoggingFluentdConfigFluentServerGetArgs();
     }
 }

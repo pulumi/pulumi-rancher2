@@ -107,14 +107,14 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack region name (string)
+     * AWS region. Default `eu-west-2` (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -390,7 +390,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 

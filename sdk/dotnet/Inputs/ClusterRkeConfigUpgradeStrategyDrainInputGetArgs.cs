@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigUpgradeStrategyDrainInputGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigUpgradeStrategyDrainInputGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Delete RKE node local data. Default: `false` (bool)
@@ -45,5 +45,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigUpgradeStrategyDrainInputGetArgs()
         {
         }
+        public static new ClusterRkeConfigUpgradeStrategyDrainInputGetArgs Empty => new ClusterRkeConfigUpgradeStrategyDrainInputGetArgs();
     }
 }

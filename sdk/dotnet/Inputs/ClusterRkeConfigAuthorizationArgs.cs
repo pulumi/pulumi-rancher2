@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigAuthorizationArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigAuthorizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The AKS node group mode. Default: `System` (string)
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigAuthorizationArgs()
         {
         }
+        public static new ClusterRkeConfigAuthorizationArgs Empty => new ClusterRkeConfigAuthorizationArgs();
     }
 }

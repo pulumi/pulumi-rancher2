@@ -19,26 +19,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetPodSecurityPolicyTemplate.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetPodSecurityPolicyTemplate.InvokeAsync(new Rancher2.GetPodSecurityPolicyTemplateArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPodSecurityPolicyTemplateResult> InvokeAsync(GetPodSecurityPolicyTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
@@ -48,30 +46,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetPodSecurityPolicyTemplate.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetPodSecurityPolicyTemplate.InvokeAsync(new Rancher2.GetPodSecurityPolicyTemplateArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPodSecurityPolicyTemplateResult> Invoke(GetPodSecurityPolicyTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPodSecurityPolicyTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// = (Optional)
@@ -319,9 +315,10 @@ namespace Pulumi.Rancher2
         public GetPodSecurityPolicyTemplateArgs()
         {
         }
+        public static new GetPodSecurityPolicyTemplateArgs Empty => new GetPodSecurityPolicyTemplateArgs();
     }
 
-    public sealed class GetPodSecurityPolicyTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// = (Optional)
@@ -569,6 +566,7 @@ namespace Pulumi.Rancher2
         public GetPodSecurityPolicyTemplateInvokeArgs()
         {
         }
+        public static new GetPodSecurityPolicyTemplateInvokeArgs Empty => new GetPodSecurityPolicyTemplateInvokeArgs();
     }
 
 

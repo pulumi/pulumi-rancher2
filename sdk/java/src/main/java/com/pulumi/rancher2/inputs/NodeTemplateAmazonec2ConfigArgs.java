@@ -18,14 +18,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     public static final NodeTemplateAmazonec2ConfigArgs Empty = new NodeTemplateAmazonec2ConfigArgs();
 
     /**
-     * AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Outscale Access Key (string)
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Access Key (string)
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -108,6 +108,36 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * Enables or disables the HTTP metadata endpoint on your instances (string)
+     * 
+     */
+    @Import(name="httpEndpoint")
+    private @Nullable Output<String> httpEndpoint;
+
+    /**
+     * @return Enables or disables the HTTP metadata endpoint on your instances (string)
+     * 
+     */
+    public Optional<Output<String>> httpEndpoint() {
+        return Optional.ofNullable(this.httpEndpoint);
+    }
+
+    /**
+     * The state of token usage for your instance metadata requests (string)
+     * 
+     */
+    @Import(name="httpTokens")
+    private @Nullable Output<String> httpTokens;
+
+    /**
+     * @return The state of token usage for your instance metadata requests (string)
+     * 
+     */
+    public Optional<Output<String>> httpTokens() {
+        return Optional.ofNullable(this.httpTokens);
+    }
+
+    /**
      * AWS IAM Instance Profile (string)
      * 
      */
@@ -138,14 +168,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -228,14 +258,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * OpenStack region name (string)
+     * AWS region. Default `eu-west-2` (string)
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public Output<String> region() {
@@ -288,14 +318,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Outscale Secret Key (string)
      * 
      */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
     /**
-     * @return AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Secret Key (string)
      * 
      */
     public Optional<Output<String>> secretKey() {
@@ -362,17 +392,9 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.spotPrice);
     }
 
-    /**
-     * SSH Key for Instance (string)
-     * 
-     */
     @Import(name="sshKeypath")
     private @Nullable Output<String> sshKeypath;
 
-    /**
-     * @return SSH Key for Instance (string)
-     * 
-     */
     public Optional<Output<String>> sshKeypath() {
         return Optional.ofNullable(this.sshKeypath);
     }
@@ -521,6 +543,8 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         this.deviceName = $.deviceName;
         this.encryptEbsVolume = $.encryptEbsVolume;
         this.endpoint = $.endpoint;
+        this.httpEndpoint = $.httpEndpoint;
+        this.httpTokens = $.httpTokens;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.insecureTransport = $.insecureTransport;
         this.instanceType = $.instanceType;
@@ -569,7 +593,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accessKey AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param accessKey Outscale Access Key (string)
          * 
          * @return builder
          * 
@@ -580,7 +604,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accessKey AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param accessKey Outscale Access Key (string)
          * 
          * @return builder
          * 
@@ -695,6 +719,48 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param httpEndpoint Enables or disables the HTTP metadata endpoint on your instances (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpEndpoint(@Nullable Output<String> httpEndpoint) {
+            $.httpEndpoint = httpEndpoint;
+            return this;
+        }
+
+        /**
+         * @param httpEndpoint Enables or disables the HTTP metadata endpoint on your instances (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpEndpoint(String httpEndpoint) {
+            return httpEndpoint(Output.of(httpEndpoint));
+        }
+
+        /**
+         * @param httpTokens The state of token usage for your instance metadata requests (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpTokens(@Nullable Output<String> httpTokens) {
+            $.httpTokens = httpTokens;
+            return this;
+        }
+
+        /**
+         * @param httpTokens The state of token usage for your instance metadata requests (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpTokens(String httpTokens) {
+            return httpTokens(Output.of(httpTokens));
+        }
+
+        /**
          * @param iamInstanceProfile AWS IAM Instance Profile (string)
          * 
          * @return builder
@@ -737,7 +803,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
          * 
          * @return builder
          * 
@@ -748,7 +814,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
          * 
          * @return builder
          * 
@@ -873,7 +939,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -884,7 +950,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -957,7 +1023,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param secretKey AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param secretKey Outscale Secret Key (string)
          * 
          * @return builder
          * 
@@ -968,7 +1034,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param secretKey AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param secretKey Outscale Secret Key (string)
          * 
          * @return builder
          * 
@@ -1071,23 +1137,11 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
             return spotPrice(Output.of(spotPrice));
         }
 
-        /**
-         * @param sshKeypath SSH Key for Instance (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sshKeypath(@Nullable Output<String> sshKeypath) {
             $.sshKeypath = sshKeypath;
             return this;
         }
 
-        /**
-         * @param sshKeypath SSH Key for Instance (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sshKeypath(String sshKeypath) {
             return sshKeypath(Output.of(sshKeypath));
         }

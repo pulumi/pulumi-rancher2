@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address range of the container pods (string)
@@ -18,11 +18,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("clusterIpv4Cidr", required: true)]
         public Input<string> ClusterIpv4Cidr { get; set; } = null!;
 
+        [Input("credential", required: true)]
+        private Input<string>? _credential;
+
         /// <summary>
         /// The contents of the GC credential file (string)
         /// </summary>
-        [Input("credential", required: true)]
-        public Input<string> Credential { get; set; } = null!;
+        public Input<string>? Credential
+        {
+            get => _credential;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _credential = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// An optional description of this cluster (string)
@@ -369,5 +379,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigGetArgs()
         {
         }
+        public static new ClusterGkeConfigGetArgs Empty => new ClusterGkeConfigGetArgs();
     }
 }

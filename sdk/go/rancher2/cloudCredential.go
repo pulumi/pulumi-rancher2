@@ -362,6 +362,90 @@ func (o CloudCredentialOutput) ToCloudCredentialOutputWithContext(ctx context.Co
 	return o
 }
 
+// AWS config for the Cloud Credential (list maxitems:1)
+func (o CloudCredentialOutput) Amazonec2CredentialConfig() CloudCredentialAmazonec2CredentialConfigPtrOutput {
+	return o.ApplyT(func(v *CloudCredential) CloudCredentialAmazonec2CredentialConfigPtrOutput {
+		return v.Amazonec2CredentialConfig
+	}).(CloudCredentialAmazonec2CredentialConfigPtrOutput)
+}
+
+// Annotations for Cloud Credential object (map)
+func (o CloudCredentialOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *CloudCredential) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Azure config for the Cloud Credential (list maxitems:1)
+func (o CloudCredentialOutput) AzureCredentialConfig() CloudCredentialAzureCredentialConfigPtrOutput {
+	return o.ApplyT(func(v *CloudCredential) CloudCredentialAzureCredentialConfigPtrOutput { return v.AzureCredentialConfig }).(CloudCredentialAzureCredentialConfigPtrOutput)
+}
+
+// Description for the Cloud Credential (string)
+func (o CloudCredentialOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudCredential) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// DigitalOcean config for the Cloud Credential (list maxitems:1)
+func (o CloudCredentialOutput) DigitaloceanCredentialConfig() CloudCredentialDigitaloceanCredentialConfigPtrOutput {
+	return o.ApplyT(func(v *CloudCredential) CloudCredentialDigitaloceanCredentialConfigPtrOutput {
+		return v.DigitaloceanCredentialConfig
+	}).(CloudCredentialDigitaloceanCredentialConfigPtrOutput)
+}
+
+// (Computed) The driver of the Cloud Credential (string)
+func (o CloudCredentialOutput) Driver() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudCredential) pulumi.StringOutput { return v.Driver }).(pulumi.StringOutput)
+}
+
+// Google config for the Cloud Credential (list maxitems:1)
+func (o CloudCredentialOutput) GoogleCredentialConfig() CloudCredentialGoogleCredentialConfigPtrOutput {
+	return o.ApplyT(func(v *CloudCredential) CloudCredentialGoogleCredentialConfigPtrOutput {
+		return v.GoogleCredentialConfig
+	}).(CloudCredentialGoogleCredentialConfigPtrOutput)
+}
+
+// Harvester config for the Cloud Credential (list maxitems:1)
+func (o CloudCredentialOutput) HarvesterCredentialConfig() CloudCredentialHarvesterCredentialConfigPtrOutput {
+	return o.ApplyT(func(v *CloudCredential) CloudCredentialHarvesterCredentialConfigPtrOutput {
+		return v.HarvesterCredentialConfig
+	}).(CloudCredentialHarvesterCredentialConfigPtrOutput)
+}
+
+// Labels for Cloud Credential object (map)
+func (o CloudCredentialOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *CloudCredential) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Linode config for the Cloud Credential (list maxitems:1)
+func (o CloudCredentialOutput) LinodeCredentialConfig() CloudCredentialLinodeCredentialConfigPtrOutput {
+	return o.ApplyT(func(v *CloudCredential) CloudCredentialLinodeCredentialConfigPtrOutput {
+		return v.LinodeCredentialConfig
+	}).(CloudCredentialLinodeCredentialConfigPtrOutput)
+}
+
+// The name of the Cloud Credential (string)
+func (o CloudCredentialOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudCredential) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// OpenStack config for the Cloud Credential (list maxitems:1)
+func (o CloudCredentialOutput) OpenstackCredentialConfig() CloudCredentialOpenstackCredentialConfigPtrOutput {
+	return o.ApplyT(func(v *CloudCredential) CloudCredentialOpenstackCredentialConfigPtrOutput {
+		return v.OpenstackCredentialConfig
+	}).(CloudCredentialOpenstackCredentialConfigPtrOutput)
+}
+
+// S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+func (o CloudCredentialOutput) S3CredentialConfig() CloudCredentialS3CredentialConfigPtrOutput {
+	return o.ApplyT(func(v *CloudCredential) CloudCredentialS3CredentialConfigPtrOutput { return v.S3CredentialConfig }).(CloudCredentialS3CredentialConfigPtrOutput)
+}
+
+// vSphere config for the Cloud Credential (list maxitems:1)
+func (o CloudCredentialOutput) VsphereCredentialConfig() CloudCredentialVsphereCredentialConfigPtrOutput {
+	return o.ApplyT(func(v *CloudCredential) CloudCredentialVsphereCredentialConfigPtrOutput {
+		return v.VsphereCredentialConfig
+	}).(CloudCredentialVsphereCredentialConfigPtrOutput)
+}
+
 type CloudCredentialArrayOutput struct{ *pulumi.OutputState }
 
 func (CloudCredentialArrayOutput) ElementType() reflect.Type {

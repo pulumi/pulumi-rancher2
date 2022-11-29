@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (string)
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs()
         {
         }
+        public static new ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs Empty => new ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs();
     }
 }

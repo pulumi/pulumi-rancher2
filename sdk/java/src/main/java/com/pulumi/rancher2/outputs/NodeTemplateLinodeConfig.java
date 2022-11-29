@@ -33,7 +33,7 @@ public final class NodeTemplateLinodeConfig {
      */
     private @Nullable String image;
     /**
-     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     private @Nullable String instanceType;
@@ -43,7 +43,7 @@ public final class NodeTemplateLinodeConfig {
      */
     private @Nullable String label;
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     private @Nullable String region;
@@ -123,7 +123,7 @@ public final class NodeTemplateLinodeConfig {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     public Optional<String> instanceType() {
@@ -137,7 +137,7 @@ public final class NodeTemplateLinodeConfig {
         return Optional.ofNullable(this.label);
     }
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public Optional<String> region() {

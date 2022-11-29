@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigDnsLinearAutoscalerParamsArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigDnsLinearAutoscalerParamsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// number of replicas per cluster cores (float64)
@@ -45,5 +45,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigDnsLinearAutoscalerParamsArgs()
         {
         }
+        public static new ClusterRkeConfigDnsLinearAutoscalerParamsArgs Empty => new ClusterRkeConfigDnsLinearAutoscalerParamsArgs();
     }
 }

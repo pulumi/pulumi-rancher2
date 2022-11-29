@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterClusterMonitoringInputArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterMonitoringInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("answers")]
         private InputMap<object>? _answers;
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterClusterMonitoringInputArgs()
         {
         }
+        public static new ClusterClusterMonitoringInputArgs Empty => new ClusterClusterMonitoringInputArgs();
     }
 }

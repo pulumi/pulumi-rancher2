@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cloudProvider")]
         public Input<string>? CloudProvider { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderGetArgs();
     }
 }

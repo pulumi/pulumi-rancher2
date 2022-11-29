@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface CloudCredentialAmazonec2CredentialConfig {
     /**
@@ -2802,6 +2803,10 @@ export interface ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
 
 export interface ClusterRkeConfigNetwork {
     /**
+     * ACI provider config for RKE network (list maxitems:63)
+     */
+    aciNetworkProvider?: pulumi.Input<inputs.ClusterRkeConfigNetworkAciNetworkProvider>;
+    /**
      * Calico provider config for RKE network (list maxitems:1)
      */
     calicoNetworkProvider?: pulumi.Input<inputs.ClusterRkeConfigNetworkCalicoNetworkProvider>;
@@ -2833,6 +2838,305 @@ export interface ClusterRkeConfigNetwork {
      * Weave provider config for RKE network (list maxitems:1)
      */
     weaveNetworkProvider?: pulumi.Input<inputs.ClusterRkeConfigNetworkWeaveNetworkProvider>;
+}
+
+export interface ClusterRkeConfigNetworkAciNetworkProvider {
+    /**
+     * Attachable entity profile (string)
+     */
+    aep: pulumi.Input<string>;
+    /**
+     * List of APIC hosts to connect for APIC API (list)
+     */
+    apicHosts: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * APIC refresh ticker adjust amount (string)
+     */
+    apicRefreshTickerAdjust?: pulumi.Input<string>;
+    /**
+     * APIC refresh time in seconds (string)
+     */
+    apicRefreshTime?: pulumi.Input<string>;
+    /**
+     * APIC subscription delay amount (string)
+     */
+    apicSubscriptionDelay?: pulumi.Input<string>;
+    /**
+     * APIC user certificate (string)
+     */
+    apicUserCrt: pulumi.Input<string>;
+    /**
+     * APIC user key (string)
+     */
+    apicUserKey: pulumi.Input<string>;
+    /**
+     * APIC user name (string)
+     */
+    apicUserName: pulumi.Input<string>;
+    /**
+     * cAPIC cloud (string)
+     */
+    capic?: pulumi.Input<string>;
+    /**
+     * Log level for ACI controller (string)
+     */
+    controllerLogLevel?: pulumi.Input<string>;
+    /**
+     * Whether to disable periodic SNAT global info sync (string)
+     */
+    disablePeriodicSnatGlobalInfoSync?: pulumi.Input<string>;
+    /**
+     * Whether to disable waiting for network (string)
+     */
+    disableWaitForNetwork?: pulumi.Input<string>;
+    /**
+     * Whether to enable drop log (string)
+     */
+    dropLogEnable?: pulumi.Input<string>;
+    /**
+     * The duration to wait for network (string)
+     */
+    durationWaitForNetwork?: pulumi.Input<string>;
+    /**
+     * Whether to enable endpoint slices (string)
+     */
+    enableEndpointSlice?: pulumi.Input<string>;
+    /**
+     * Encap type: vxlan or vlan (string)
+     */
+    encapType: pulumi.Input<string>;
+    /**
+     * EP registry (string)
+     */
+    epRegistry?: pulumi.Input<string>;
+    /**
+     * Subnet to use for dynamic external IPs (string)
+     */
+    externDynamic: pulumi.Input<string>;
+    /**
+     * Subnet to use for static external IPs (string)
+     */
+    externStatic: pulumi.Input<string>;
+    /**
+     * GBH pod subnet (string)
+     */
+    gbpPodSubnet?: pulumi.Input<string>;
+    /**
+     * Log level for ACI host agent (string)
+     */
+    hostAgentLogLevel?: pulumi.Input<string>;
+    /**
+     * Image pull policy (string)
+     */
+    imagePullPolicy?: pulumi.Input<string>;
+    /**
+     * Image pull policy (string)
+     */
+    imagePullSecret?: pulumi.Input<string>;
+    /**
+     * The VLAN used by ACI infra (string)
+     */
+    infraVlan?: pulumi.Input<string>;
+    /**
+     * Whether to install Istio (string)
+     */
+    installIstio?: pulumi.Input<string>;
+    /**
+     * Istio profile name (string)
+     */
+    istioProfile?: pulumi.Input<string>;
+    /**
+     * List of Kafka broker hosts (list)
+     */
+    kafkaBrokers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Kafka client certificate (string)
+     */
+    kafkaClientCrt?: pulumi.Input<string>;
+    /**
+     * Kafka client key (string)
+     */
+    kafkaClientKey?: pulumi.Input<string>;
+    /**
+     * The VLAN used by the physdom for nodes (string)
+     */
+    kubeApiVlan: pulumi.Input<string>;
+    /**
+     * L3out (string)
+     */
+    l3out: pulumi.Input<string>;
+    /**
+     * L3out external networks (list)
+     */
+    l3outExternalNetworks: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Max nodes in service graph (string)
+     */
+    maxNodesSvcGraph?: pulumi.Input<string>;
+    /**
+     * End of mcast range (string)
+     */
+    mcastRangeEnd: pulumi.Input<string>;
+    /**
+     * Start of mcast range (string)
+     */
+    mcastRangeStart: pulumi.Input<string>;
+    /**
+     * MTU head room amount (string)
+     */
+    mtuHeadRoom?: pulumi.Input<string>;
+    /**
+     * Whether to disable Multus (string)
+     */
+    multusDisable?: pulumi.Input<string>;
+    /**
+     * Whether to use priority class (string)
+     */
+    noPriorityClass?: pulumi.Input<string>;
+    /**
+     * Whether to enable node pod interface (string)
+     */
+    nodePodIfEnable?: pulumi.Input<string>;
+    /**
+     * Subnet to use for nodes (string)
+     */
+    nodeSubnet: pulumi.Input<string>;
+    /**
+     * Subnet to use for service graph (string)
+     */
+    nodeSvcSubnet: pulumi.Input<string>;
+    /**
+     * Whether to use client SSL for Opflex (string)
+     */
+    opflexClientSsl?: pulumi.Input<string>;
+    /**
+     * Opflex device delete timeout (string)
+     */
+    opflexDeviceDeleteTimeout?: pulumi.Input<string>;
+    /**
+     * Log level for ACI opflex (string)
+     */
+    opflexLogLevel?: pulumi.Input<string>;
+    /**
+     * Opflex mode (string)
+     */
+    opflexMode?: pulumi.Input<string>;
+    /**
+     * Opflex server port (string)
+     */
+    opflexServerPort?: pulumi.Input<string>;
+    /**
+     * Overlay VRF name (string)
+     */
+    overlayVrfName?: pulumi.Input<string>;
+    /**
+     * OVS memory limit (string)
+     */
+    ovsMemoryLimit?: pulumi.Input<string>;
+    /**
+     * Policy-based routing tracking non snat (string)
+     */
+    pbrTrackingNonSnat?: pulumi.Input<string>;
+    /**
+     * Pod subnet chunk size (string)
+     */
+    podSubnetChunkSize?: pulumi.Input<string>;
+    /**
+     * Whether to run GBP container (string)
+     */
+    runGbpContainer?: pulumi.Input<string>;
+    /**
+     * Whether to run Opflex server container (string)
+     */
+    runOpflexServerContainer?: pulumi.Input<string>;
+    /**
+     * Service monitor interval (string)
+     */
+    serviceMonitorInterval?: pulumi.Input<string>;
+    /**
+     * The VLAN used by LoadBalancer services (string)
+     */
+    serviceVlan: pulumi.Input<string>;
+    /**
+     * Snat contract scope (string)
+     */
+    snatContractScope?: pulumi.Input<string>;
+    /**
+     * Snat namespace (string)
+     */
+    snatNamespace?: pulumi.Input<string>;
+    /**
+     * End of snat port range (string)
+     */
+    snatPortRangeEnd?: pulumi.Input<string>;
+    /**
+     * End of snat port range (string)
+     */
+    snatPortRangeStart?: pulumi.Input<string>;
+    /**
+     * Snat ports per node (string)
+     */
+    snatPortsPerNode?: pulumi.Input<string>;
+    /**
+     * Whether to enable SR-IOV (string)
+     */
+    sriovEnable?: pulumi.Input<string>;
+    /**
+     * Subnet domain name (string)
+     */
+    subnetDomainName?: pulumi.Input<string>;
+    /**
+     * ACI system ID (string)
+     */
+    systemId: pulumi.Input<string>;
+    /**
+     * ACI tenant (string)
+     */
+    tenant?: pulumi.Input<string>;
+    /**
+     * Token for cluster registration token object (string)
+     */
+    token: pulumi.Input<string>;
+    /**
+     * Whether to use ACI anywhere CRD (string)
+     */
+    useAciAnywhereCrd?: pulumi.Input<string>;
+    /**
+     * Whether to use ACI CNI priority class (string)
+     */
+    useAciCniPriorityClass?: pulumi.Input<string>;
+    /**
+     * Whether to use cluster role (string)
+     */
+    useClusterRole?: pulumi.Input<string>;
+    /**
+     * Whether to use host netns volume (string)
+     */
+    useHostNetnsVolume?: pulumi.Input<string>;
+    /**
+     * Whether use Opflex server volume (string)
+     */
+    useOpflexServerVolume?: pulumi.Input<string>;
+    /**
+     * Whether ACI containers should run as privileged (string)
+     */
+    usePrivilegedContainer?: pulumi.Input<string>;
+    /**
+     * VMM controller configuration (string)
+     */
+    vmmController?: pulumi.Input<string>;
+    /**
+     * VMM domain configuration (string)
+     */
+    vmmDomain?: pulumi.Input<string>;
+    /**
+     * VRF name (string)
+     */
+    vrfName: pulumi.Input<string>;
+    /**
+     * VRF tenant (string)
+     */
+    vrfTenant: pulumi.Input<string>;
 }
 
 export interface ClusterRkeConfigNetworkCalicoNetworkProvider {
@@ -3930,6 +4234,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
+    aciNetworkProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider>;
     calicoNetworkProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider>;
     canalNetworkProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider>;
     flannelNetworkProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider>;
@@ -3938,6 +4243,83 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
     plugin?: pulumi.Input<string>;
     tolerations?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration>[]>;
     weaveNetworkProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider {
+    aep: pulumi.Input<string>;
+    apicHosts: pulumi.Input<pulumi.Input<string>[]>;
+    apicRefreshTickerAdjust?: pulumi.Input<string>;
+    apicRefreshTime?: pulumi.Input<string>;
+    apicSubscriptionDelay?: pulumi.Input<string>;
+    apicUserCrt: pulumi.Input<string>;
+    apicUserKey: pulumi.Input<string>;
+    apicUserName: pulumi.Input<string>;
+    capic?: pulumi.Input<string>;
+    controllerLogLevel?: pulumi.Input<string>;
+    disablePeriodicSnatGlobalInfoSync?: pulumi.Input<string>;
+    disableWaitForNetwork?: pulumi.Input<string>;
+    dropLogEnable?: pulumi.Input<string>;
+    durationWaitForNetwork?: pulumi.Input<string>;
+    enableEndpointSlice?: pulumi.Input<string>;
+    encapType: pulumi.Input<string>;
+    epRegistry?: pulumi.Input<string>;
+    externDynamic: pulumi.Input<string>;
+    externStatic: pulumi.Input<string>;
+    gbpPodSubnet?: pulumi.Input<string>;
+    hostAgentLogLevel?: pulumi.Input<string>;
+    imagePullPolicy?: pulumi.Input<string>;
+    imagePullSecret?: pulumi.Input<string>;
+    infraVlan?: pulumi.Input<string>;
+    installIstio?: pulumi.Input<string>;
+    istioProfile?: pulumi.Input<string>;
+    kafkaBrokers?: pulumi.Input<pulumi.Input<string>[]>;
+    kafkaClientCrt?: pulumi.Input<string>;
+    kafkaClientKey?: pulumi.Input<string>;
+    kubeApiVlan: pulumi.Input<string>;
+    l3out: pulumi.Input<string>;
+    l3outExternalNetworks: pulumi.Input<pulumi.Input<string>[]>;
+    maxNodesSvcGraph?: pulumi.Input<string>;
+    mcastRangeEnd: pulumi.Input<string>;
+    mcastRangeStart: pulumi.Input<string>;
+    mtuHeadRoom?: pulumi.Input<string>;
+    multusDisable?: pulumi.Input<string>;
+    noPriorityClass?: pulumi.Input<string>;
+    nodePodIfEnable?: pulumi.Input<string>;
+    nodeSubnet: pulumi.Input<string>;
+    nodeSvcSubnet: pulumi.Input<string>;
+    opflexClientSsl?: pulumi.Input<string>;
+    opflexDeviceDeleteTimeout?: pulumi.Input<string>;
+    opflexLogLevel?: pulumi.Input<string>;
+    opflexMode?: pulumi.Input<string>;
+    opflexServerPort?: pulumi.Input<string>;
+    overlayVrfName?: pulumi.Input<string>;
+    ovsMemoryLimit?: pulumi.Input<string>;
+    pbrTrackingNonSnat?: pulumi.Input<string>;
+    podSubnetChunkSize?: pulumi.Input<string>;
+    runGbpContainer?: pulumi.Input<string>;
+    runOpflexServerContainer?: pulumi.Input<string>;
+    serviceMonitorInterval?: pulumi.Input<string>;
+    serviceVlan: pulumi.Input<string>;
+    snatContractScope?: pulumi.Input<string>;
+    snatNamespace?: pulumi.Input<string>;
+    snatPortRangeEnd?: pulumi.Input<string>;
+    snatPortRangeStart?: pulumi.Input<string>;
+    snatPortsPerNode?: pulumi.Input<string>;
+    sriovEnable?: pulumi.Input<string>;
+    subnetDomainName?: pulumi.Input<string>;
+    systemId: pulumi.Input<string>;
+    tenant?: pulumi.Input<string>;
+    token: pulumi.Input<string>;
+    useAciAnywhereCrd?: pulumi.Input<string>;
+    useAciCniPriorityClass?: pulumi.Input<string>;
+    useClusterRole?: pulumi.Input<string>;
+    useHostNetnsVolume?: pulumi.Input<string>;
+    useOpflexServerVolume?: pulumi.Input<string>;
+    usePrivilegedContainer?: pulumi.Input<string>;
+    vmmController?: pulumi.Input<string>;
+    vmmDomain?: pulumi.Input<string>;
+    vrfName: pulumi.Input<string>;
+    vrfTenant: pulumi.Input<string>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider {
@@ -4439,6 +4821,10 @@ export interface ClusterV2RkeConfigMachinePool {
      */
     machineConfig: pulumi.Input<inputs.ClusterV2RkeConfigMachinePoolMachineConfig>;
     /**
+     * Labels for Machine pool nodes (map)
+     */
+    machineLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Max unhealthy nodes for automated replacement to be allowed (string)
      */
     maxUnhealthy?: pulumi.Input<string>;
@@ -4767,16 +5153,16 @@ export interface EtcdBackupBackupConfigS3BackupConfig {
     secretKey?: pulumi.Input<string>;
 }
 
-export interface GetNotifierDingtalkConfigArgs {
-    proxyUrl?: pulumi.Input<string>;
-    secret?: pulumi.Input<string>;
-    url: pulumi.Input<string>;
-}
-
 export interface GetNotifierDingtalkConfig {
     proxyUrl?: string;
     secret?: string;
     url: string;
+}
+
+export interface GetNotifierDingtalkConfigArgs {
+    proxyUrl?: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
+    url: pulumi.Input<string>;
 }
 
 export interface GetNotifierMsteamsConfig {
@@ -4803,12 +5189,12 @@ export interface GetPodSecurityPolicyTemplateAllowedCsiDriverArgs {
     name: pulumi.Input<string>;
 }
 
-export interface GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs {
-    driver: pulumi.Input<string>;
-}
-
 export interface GetPodSecurityPolicyTemplateAllowedFlexVolume {
     driver: string;
+}
+
+export interface GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs {
+    driver: pulumi.Input<string>;
 }
 
 export interface GetPodSecurityPolicyTemplateAllowedHostPath {
@@ -4901,14 +5287,14 @@ export interface GetPodSecurityPolicyTemplateRuntimeClassArgs {
     defaultRuntimeClassName?: pulumi.Input<string>;
 }
 
-export interface GetPodSecurityPolicyTemplateSeLinuxArgs {
-    rule: pulumi.Input<string>;
-    seLinuxOption?: pulumi.Input<inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs>;
-}
-
 export interface GetPodSecurityPolicyTemplateSeLinux {
     rule: string;
     seLinuxOption?: inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption;
+}
+
+export interface GetPodSecurityPolicyTemplateSeLinuxArgs {
+    rule: pulumi.Input<string>;
+    seLinuxOption?: pulumi.Input<inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs>;
 }
 
 export interface GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
@@ -5219,6 +5605,10 @@ export interface MachineConfigV2AzureConfig {
      * Make the specified port number accessible from the Internet. (list)
      */
     openPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Only use a private IP address. Default `false` (bool)
+     */
+    privateAddressOnly?: pulumi.Input<boolean>;
     /**
      * Specify a static private IP address for the machine. (string)
      */
@@ -5916,7 +6306,7 @@ export interface NodePoolNodeTaint {
 
 export interface NodeTemplateAmazonec2Config {
     /**
-     * AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Outscale Access Key (string)
      */
     accessKey?: pulumi.Input<string>;
     /**
@@ -5940,6 +6330,14 @@ export interface NodeTemplateAmazonec2Config {
      */
     endpoint?: pulumi.Input<string>;
     /**
+     * Enables or disables the HTTP metadata endpoint on your instances (string)
+     */
+    httpEndpoint?: pulumi.Input<string>;
+    /**
+     * The state of token usage for your instance metadata requests (string)
+     */
+    httpTokens?: pulumi.Input<string>;
+    /**
      * AWS IAM Instance Profile (string)
      */
     iamInstanceProfile?: pulumi.Input<string>;
@@ -5948,7 +6346,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     insecureTransport?: pulumi.Input<boolean>;
     /**
-     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * Outscale VM type. Default `tinav2.c1r2p3` (string)
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -5972,7 +6370,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     privateAddressOnly?: pulumi.Input<boolean>;
     /**
-     * OpenStack region name (string)
+     * AWS region. Default `eu-west-2` (string)
      */
     region: pulumi.Input<string>;
     /**
@@ -5988,7 +6386,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     rootSize?: pulumi.Input<string>;
     /**
-     * AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Outscale Secret Key (string)
      */
     secretKey?: pulumi.Input<string>;
     /**
@@ -6007,9 +6405,6 @@ export interface NodeTemplateAmazonec2Config {
      * AWS spot instance bid price (in dollar). Default `0.50` (string)
      */
     spotPrice?: pulumi.Input<string>;
-    /**
-     * SSH Key for Instance (string)
-     */
     sshKeypath?: pulumi.Input<string>;
     /**
      * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
@@ -6190,7 +6585,7 @@ export interface NodeTemplateDigitaloceanConfig {
      */
     privateNetworking?: pulumi.Input<boolean>;
     /**
-     * OpenStack region name (string)
+     * AWS region. Default `eu-west-2` (string)
      */
     region?: pulumi.Input<string>;
     /**
@@ -6331,7 +6726,7 @@ export interface NodeTemplateLinodeConfig {
      */
     image?: pulumi.Input<string>;
     /**
-     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * Outscale VM type. Default `tinav2.c1r2p3` (string)
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -6339,7 +6734,7 @@ export interface NodeTemplateLinodeConfig {
      */
     label?: pulumi.Input<string>;
     /**
-     * OpenStack region name (string)
+     * AWS region. Default `eu-west-2` (string)
      */
     region?: pulumi.Input<string>;
     /**
@@ -6580,7 +6975,7 @@ export interface NodeTemplateOpenstackConfig {
      */
     privateKeyFile?: pulumi.Input<string>;
     /**
-     * OpenStack region name (string)
+     * AWS region. Default `eu-west-2` (string)
      */
     region: pulumi.Input<string>;
     /**
@@ -6631,6 +7026,53 @@ export interface NodeTemplateOpenstackConfig {
      * OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
      */
     volumeType?: pulumi.Input<string>;
+}
+
+export interface NodeTemplateOutscaleConfig {
+    /**
+     * Outscale Access Key (string)
+     */
+    accessKey: pulumi.Input<string>;
+    /**
+     * Extra tags for all created resources (e.g. key1=value1,key2=value2) (list)
+     */
+    extraTagsAlls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Extra tags only for instances (e.g. key1=value1,key2=value2) (list)
+     */
+    extraTagsInstances?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Outscale VM type. Default `tinav2.c1r2p3` (string)
+     */
+    instanceType?: pulumi.Input<string>;
+    /**
+     * AWS region. Default `eu-west-2` (string)
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Iops for io1 Root Disk. From 1 to 13000.
+     */
+    rootDiskIops?: pulumi.Input<number>;
+    /**
+     * Size of the Root Disk (in GB). From 1 to 14901.
+     */
+    rootDiskSize?: pulumi.Input<number>;
+    /**
+     * Type of the Root Disk. Possible values are :'standard', 'gp2' or 'io1'.
+     */
+    rootDiskType?: pulumi.Input<string>;
+    /**
+     * Outscale Secret Key (string)
+     */
+    secretKey: pulumi.Input<string>;
+    /**
+     * Ids of user defined Security Groups to add to the machine. (list)
+     */
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Outscale Machine Image to use as bootstrap for the VM. Default `ami-2cf1fa3e` (string)
+     */
+    sourceOmi?: pulumi.Input<string>;
 }
 
 export interface NodeTemplateVsphereConfig {
@@ -7546,4 +7988,3 @@ export interface RoleTemplateRule {
      */
     verbs?: pulumi.Input<pulumi.Input<string>[]>;
 }
-

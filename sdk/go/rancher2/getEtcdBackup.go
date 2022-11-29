@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupEtcdBackup(ctx, &GetEtcdBackupArgs{
+//			_, err = rancher2.LookupEtcdBackup(ctx, &GetEtcdBackupArgs{
 //				ClusterId: "<CLUSTER_ID>",
 //				Name:      "foo",
 //			}, nil)

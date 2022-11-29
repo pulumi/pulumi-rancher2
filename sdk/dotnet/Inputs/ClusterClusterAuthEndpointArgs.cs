@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterClusterAuthEndpointArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterAuthEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// CA certs for the authorized cluster endpoint (string)
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterClusterAuthEndpointArgs()
         {
         }
+        public static new ClusterClusterAuthEndpointArgs Empty => new ClusterClusterAuthEndpointArgs();
     }
 }

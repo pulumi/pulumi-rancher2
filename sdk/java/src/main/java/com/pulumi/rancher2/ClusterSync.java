@@ -20,6 +20,106 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.NodeTemplate;
+ * import com.pulumi.rancher2.NodeTemplateArgs;
+ * import com.pulumi.rancher2.inputs.NodeTemplateAmazonec2ConfigArgs;
+ * import com.pulumi.rancher2.NodePool;
+ * import com.pulumi.rancher2.NodePoolArgs;
+ * import com.pulumi.rancher2.ClusterSync;
+ * import com.pulumi.rancher2.ClusterSyncArgs;
+ * import com.pulumi.rancher2.Project;
+ * import com.pulumi.rancher2.ProjectArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaProjectLimitArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs;
+ * import com.pulumi.rancher2.inputs.ProjectContainerResourceLimitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo_customCluster = new Cluster(&#34;foo-customCluster&#34;, ClusterArgs.builder()        
+ *             .description(&#34;Foo rancher2 custom cluster&#34;)
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .network(ClusterRkeConfigNetworkArgs.builder()
+ *                     .plugin(&#34;canal&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
+ *             .description(&#34;foo test&#34;)
+ *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
+ *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
+ *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
+ *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
+ *                 .region(&#34;&lt;REGION&gt;&#34;)
+ *                 .securityGroups(&#34;&lt;AWS_SECURITY_GROUP&gt;&#34;)
+ *                 .subnetId(&#34;&lt;SUBNET_ID&gt;&#34;)
+ *                 .vpcId(&#34;&lt;VPC_ID&gt;&#34;)
+ *                 .zone(&#34;&lt;ZONE&gt;&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooNodePool = new NodePool(&#34;fooNodePool&#34;, NodePoolArgs.builder()        
+ *             .clusterId(foo_customCluster.id())
+ *             .hostnamePrefix(&#34;foo-cluster-0&#34;)
+ *             .nodeTemplateId(fooNodeTemplate.id())
+ *             .quantity(3)
+ *             .controlPlane(true)
+ *             .etcd(true)
+ *             .worker(true)
+ *             .build());
+ * 
+ *         var foo_customClusterSync = new ClusterSync(&#34;foo-customClusterSync&#34;, ClusterSyncArgs.builder()        
+ *             .clusterId(foo_customCluster.id())
+ *             .nodePoolIds(fooNodePool.id())
+ *             .build());
+ * 
+ *         var fooProject = new Project(&#34;fooProject&#34;, ProjectArgs.builder()        
+ *             .clusterId(foo_customClusterSync.id())
+ *             .description(&#34;Terraform namespace acceptance test&#34;)
+ *             .resourceQuota(ProjectResourceQuotaArgs.builder()
+ *                 .projectLimit(ProjectResourceQuotaProjectLimitArgs.builder()
+ *                     .limitsCpu(&#34;2000m&#34;)
+ *                     .limitsMemory(&#34;2000Mi&#34;)
+ *                     .requestsStorage(&#34;2Gi&#34;)
+ *                     .build())
+ *                 .namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs.builder()
+ *                     .limitsCpu(&#34;500m&#34;)
+ *                     .limitsMemory(&#34;500Mi&#34;)
+ *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .build())
+ *                 .build())
+ *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()
+ *                 .limitsCpu(&#34;20m&#34;)
+ *                 .limitsMemory(&#34;20Mi&#34;)
+ *                 .requestsCpu(&#34;1m&#34;)
+ *                 .requestsMemory(&#34;1Mi&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="rancher2:index/clusterSync:ClusterSync")
@@ -203,6 +303,9 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "kubeConfig"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

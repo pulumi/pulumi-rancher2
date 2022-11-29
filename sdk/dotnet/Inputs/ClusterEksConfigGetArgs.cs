@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterEksConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterEksConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessKey", required: true)]
+        private Input<string>? _accessKey;
+
         /// <summary>
         /// The AWS Client ID to use (string)
         /// </summary>
-        [Input("accessKey", required: true)]
-        public Input<string> AccessKey { get; set; } = null!;
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AMI ID to use for the worker nodes instead of the default (string)
@@ -81,11 +91,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("secretKey", required: true)]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// The AWS Client Secret associated with the Client ID (string)
         /// </summary>
-        [Input("secretKey", required: true)]
-        public Input<string> SecretKey { get; set; } = null!;
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
@@ -105,11 +125,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("serviceRole")]
         public Input<string>? ServiceRole { get; set; }
 
+        [Input("sessionToken")]
+        private Input<string>? _sessionToken;
+
         /// <summary>
         /// A session token to use with the client key and secret if applicable (string)
         /// </summary>
-        [Input("sessionToken")]
-        public Input<string>? SessionToken { get; set; }
+        public Input<string>? SessionToken
+        {
+            get => _sessionToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sessionToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("subnets")]
         private InputList<string>? _subnets;
@@ -138,5 +168,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterEksConfigGetArgs()
         {
         }
+        public static new ClusterEksConfigGetArgs Empty => new ClusterEksConfigGetArgs();
     }
 }

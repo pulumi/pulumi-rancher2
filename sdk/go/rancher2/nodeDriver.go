@@ -313,6 +313,61 @@ func (o NodeDriverOutput) ToNodeDriverOutputWithContext(ctx context.Context) Nod
 	return o
 }
 
+// Specify if the node driver state (bool)
+func (o NodeDriverOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Annotations of the resource (map)
+func (o NodeDriverOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Specify wheter the node driver is an internal node driver or not (bool)
+func (o NodeDriverOutput) Builtin() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.BoolOutput { return v.Builtin }).(pulumi.BoolOutput)
+}
+
+// Verify that the downloaded driver matches the expected checksum (string)
+func (o NodeDriverOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.StringPtrOutput { return v.Checksum }).(pulumi.StringPtrOutput)
+}
+
+// Description of the node driver (string)
+func (o NodeDriverOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// External ID (string)
+func (o NodeDriverOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.StringPtrOutput { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
+// Labels of the resource (map)
+func (o NodeDriverOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Name of the node driver (string)
+func (o NodeDriverOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URL to load for customized Add Nodes screen for this driver (string)
+func (o NodeDriverOutput) UiUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.StringPtrOutput { return v.UiUrl }).(pulumi.StringPtrOutput)
+}
+
+// The URL to download the machine driver binary for 64-bit Linux (string)
+func (o NodeDriverOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// Domains to whitelist for the ui (list)
+func (o NodeDriverOutput) WhitelistDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.StringArrayOutput { return v.WhitelistDomains }).(pulumi.StringArrayOutput)
+}
+
 type NodeDriverArrayOutput struct{ *pulumi.OutputState }
 
 func (NodeDriverArrayOutput) ElementType() reflect.Type {

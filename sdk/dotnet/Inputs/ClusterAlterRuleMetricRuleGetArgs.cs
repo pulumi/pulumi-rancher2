@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterAlterRuleMetricRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAlterRuleMetricRuleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("comparison")]
         public Input<string>? Comparison { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterAlterRuleMetricRuleGetArgs()
         {
         }
+        public static new ClusterAlterRuleMetricRuleGetArgs Empty => new ClusterAlterRuleMetricRuleGetArgs();
     }
 }

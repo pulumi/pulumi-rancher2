@@ -408,6 +408,81 @@ func (o MultiClusterAppOutput) ToMultiClusterAppOutputWithContext(ctx context.Co
 	return o
 }
 
+// Annotations for multi cluster app object (map)
+func (o MultiClusterAppOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The multi cluster app answers (list)
+func (o MultiClusterAppOutput) Answers() MultiClusterAppAnswerArrayOutput {
+	return o.ApplyT(func(v *MultiClusterApp) MultiClusterAppAnswerArrayOutput { return v.Answers }).(MultiClusterAppAnswerArrayOutput)
+}
+
+// The multi cluster app catalog name (string)
+func (o MultiClusterAppOutput) CatalogName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.StringOutput { return v.CatalogName }).(pulumi.StringOutput)
+}
+
+// Labels for multi cluster app object (map)
+func (o MultiClusterAppOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The multi cluster app answers (list)
+func (o MultiClusterAppOutput) Members() MultiClusterAppMemberArrayOutput {
+	return o.ApplyT(func(v *MultiClusterApp) MultiClusterAppMemberArrayOutput { return v.Members }).(MultiClusterAppMemberArrayOutput)
+}
+
+// The multi cluster app name (string)
+func (o MultiClusterAppOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The multi cluster app revision history limit. Default `10` (int)
+func (o MultiClusterAppOutput) RevisionHistoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.IntPtrOutput { return v.RevisionHistoryLimit }).(pulumi.IntPtrOutput)
+}
+
+// Current revision id for the multi cluster app (string)
+func (o MultiClusterAppOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.StringOutput { return v.RevisionId }).(pulumi.StringOutput)
+}
+
+// The multi cluster app roles (list)
+func (o MultiClusterAppOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// The multi cluster app target projects (list)
+func (o MultiClusterAppOutput) Targets() MultiClusterAppTargetArrayOutput {
+	return o.ApplyT(func(v *MultiClusterApp) MultiClusterAppTargetArrayOutput { return v.Targets }).(MultiClusterAppTargetArrayOutput)
+}
+
+// The multi cluster app template name (string)
+func (o MultiClusterAppOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.StringOutput { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// The multi cluster app template version. Default: `latest` (string)
+func (o MultiClusterAppOutput) TemplateVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.StringOutput { return v.TemplateVersion }).(pulumi.StringOutput)
+}
+
+// (Computed) The multi cluster app template version ID (string)
+func (o MultiClusterAppOutput) TemplateVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.StringOutput { return v.TemplateVersionId }).(pulumi.StringOutput)
+}
+
+// The multi cluster app upgrade strategy (list MaxItems:1)
+func (o MultiClusterAppOutput) UpgradeStrategy() MultiClusterAppUpgradeStrategyOutput {
+	return o.ApplyT(func(v *MultiClusterApp) MultiClusterAppUpgradeStrategyOutput { return v.UpgradeStrategy }).(MultiClusterAppUpgradeStrategyOutput)
+}
+
+// Wait until the multi cluster app is active. Default `true` (bool)
+func (o MultiClusterAppOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.BoolPtrOutput { return v.Wait }).(pulumi.BoolPtrOutput)
+}
+
 type MultiClusterAppArrayOutput struct{ *pulumi.OutputState }
 
 func (MultiClusterAppArrayOutput) ElementType() reflect.Type {

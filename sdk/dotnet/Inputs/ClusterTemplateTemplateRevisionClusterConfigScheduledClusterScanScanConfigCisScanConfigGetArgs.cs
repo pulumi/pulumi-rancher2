@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("debugMaster")]
         public Input<bool>? DebugMaster { get; set; }
@@ -35,5 +35,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigGetArgs();
     }
 }

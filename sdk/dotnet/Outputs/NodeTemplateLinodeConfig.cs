@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// Outscale VM type. Default `tinav2.c1r2p3` (string)
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Label;
         /// <summary>
-        /// OpenStack region name (string)
+        /// AWS region. Default `eu-west-2` (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>

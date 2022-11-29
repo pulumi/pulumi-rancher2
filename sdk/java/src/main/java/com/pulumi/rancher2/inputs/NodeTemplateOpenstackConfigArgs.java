@@ -392,14 +392,14 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * OpenStack region name (string)
+     * AWS region. Default `eu-west-2` (string)
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public Output<String> region() {
@@ -1173,7 +1173,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -1184,7 +1184,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 

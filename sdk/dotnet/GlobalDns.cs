@@ -15,71 +15,69 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Global DNS Provider
+    ///     var fooGlobalDnsProvider = new Rancher2.GlobalDnsProvider("fooGlobalDnsProvider", new()
     ///     {
-    ///         // Create a new rancher2 Global DNS Provider
-    ///         var fooGlobalDnsProvider = new Rancher2.GlobalDnsProvider("fooGlobalDnsProvider", new Rancher2.GlobalDnsProviderArgs
+    ///         RootDomain = "example.com",
+    ///         Route53Config = new Rancher2.Inputs.GlobalDnsProviderRoute53ConfigArgs
     ///         {
-    ///             RootDomain = "example.com",
-    ///             Route53Config = new Rancher2.Inputs.GlobalDnsProviderRoute53ConfigArgs
-    ///             {
-    ///                 AccessKey = "YYYYYYYYYYYYYYYYYYYY",
-    ///                 SecretKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    ///                 ZoneType = "private",
-    ///                 Region = "us-east-1",
-    ///             },
-    ///         });
-    ///         // Create a new rancher2 Global DNS using project IDs
-    ///         var fooGlobalDns = new Rancher2.GlobalDns("fooGlobalDns", new Rancher2.GlobalDnsArgs
-    ///         {
-    ///             Fqdn = "foo.example.com",
-    ///             ProviderId = fooGlobalDnsProvider.Id,
-    ///             ProjectIds = 
-    ///             {
-    ///                 "project1",
-    ///                 "project2",
-    ///             },
-    ///         });
-    ///     }
+    ///             AccessKey = "YYYYYYYYYYYYYYYYYYYY",
+    ///             SecretKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    ///             ZoneType = "private",
+    ///             Region = "us-east-1",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     // Create a new rancher2 Global DNS using project IDs
+    ///     var fooGlobalDns = new Rancher2.GlobalDns("fooGlobalDns", new()
+    ///     {
+    ///         Fqdn = "foo.example.com",
+    ///         ProviderId = fooGlobalDnsProvider.Id,
+    ///         ProjectIds = new[]
+    ///         {
+    ///             "project1",
+    ///             "project2",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Global DNS Provider
+    ///     var fooGlobalDnsProvider = new Rancher2.GlobalDnsProvider("fooGlobalDnsProvider", new()
     ///     {
-    ///         // Create a new rancher2 Global DNS Provider
-    ///         var fooGlobalDnsProvider = new Rancher2.GlobalDnsProvider("fooGlobalDnsProvider", new Rancher2.GlobalDnsProviderArgs
+    ///         RootDomain = "example.com",
+    ///         Route53Config = new Rancher2.Inputs.GlobalDnsProviderRoute53ConfigArgs
     ///         {
-    ///             RootDomain = "example.com",
-    ///             Route53Config = new Rancher2.Inputs.GlobalDnsProviderRoute53ConfigArgs
-    ///             {
-    ///                 AccessKey = "YYYYYYYYYYYYYYYYYYYY",
-    ///                 SecretKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    ///                 ZoneType = "private",
-    ///                 Region = "us-east-1",
-    ///             },
-    ///         });
-    ///         // Create a new rancher2 Global DNS using MultiClusterApp ID
-    ///         var fooGlobalDns = new Rancher2.GlobalDns("fooGlobalDns", new Rancher2.GlobalDnsArgs
-    ///         {
-    ///             Fqdn = "foo.example.com",
-    ///             ProviderId = fooGlobalDnsProvider.Id,
-    ///             MultiClusterAppId = "&lt;MCA_ID&gt;",
-    ///         });
-    ///     }
+    ///             AccessKey = "YYYYYYYYYYYYYYYYYYYY",
+    ///             SecretKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    ///             ZoneType = "private",
+    ///             Region = "us-east-1",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     // Create a new rancher2 Global DNS using MultiClusterApp ID
+    ///     var fooGlobalDns = new Rancher2.GlobalDns("fooGlobalDns", new()
+    ///     {
+    ///         Fqdn = "foo.example.com",
+    ///         ProviderId = fooGlobalDnsProvider.Id,
+    ///         MultiClusterAppId = "&lt;MCA_ID&gt;",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -91,7 +89,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/globalDns:GlobalDns")]
-    public partial class GlobalDns : Pulumi.CustomResource
+    public partial class GlobalDns : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for Global DNS (map)
@@ -185,7 +183,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class GlobalDnsArgs : Pulumi.ResourceArgs
+    public sealed class GlobalDnsArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -256,9 +254,10 @@ namespace Pulumi.Rancher2
         public GlobalDnsArgs()
         {
         }
+        public static new GlobalDnsArgs Empty => new GlobalDnsArgs();
     }
 
-    public sealed class GlobalDnsState : Pulumi.ResourceArgs
+    public sealed class GlobalDnsState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -329,5 +328,6 @@ namespace Pulumi.Rancher2
         public GlobalDnsState()
         {
         }
+        public static new GlobalDnsState Empty => new GlobalDnsState();
     }
 }

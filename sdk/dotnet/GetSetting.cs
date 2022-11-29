@@ -19,26 +19,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var server_image = Rancher2.GetSetting.Invoke(new()
         ///     {
-        ///         var server_image = Output.Create(Rancher2.GetSetting.InvokeAsync(new Rancher2.GetSettingArgs
-        ///         {
-        ///             Name = "server-image",
-        ///         }));
-        ///     }
+        ///         Name = "server-image",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSettingResult> InvokeAsync(GetSettingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSettingResult>("rancher2:index/getSetting:getSetting", args ?? new GetSettingArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSettingResult>("rancher2:index/getSetting:getSetting", args ?? new GetSettingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 setting.
@@ -48,30 +46,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var server_image = Rancher2.GetSetting.Invoke(new()
         ///     {
-        ///         var server_image = Output.Create(Rancher2.GetSetting.InvokeAsync(new Rancher2.GetSettingArgs
-        ///         {
-        ///             Name = "server-image",
-        ///         }));
-        ///     }
+        ///         Name = "server-image",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSettingResult> Invoke(GetSettingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSettingResult>("rancher2:index/getSetting:getSetting", args ?? new GetSettingInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSettingResult>("rancher2:index/getSetting:getSetting", args ?? new GetSettingInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSettingArgs : Pulumi.InvokeArgs
+    public sealed class GetSettingArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The setting name.
@@ -82,9 +78,10 @@ namespace Pulumi.Rancher2
         public GetSettingArgs()
         {
         }
+        public static new GetSettingArgs Empty => new GetSettingArgs();
     }
 
-    public sealed class GetSettingInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSettingInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The setting name.
@@ -95,6 +92,7 @@ namespace Pulumi.Rancher2
         public GetSettingInvokeArgs()
         {
         }
+        public static new GetSettingInvokeArgs Empty => new GetSettingInvokeArgs();
     }
 
 

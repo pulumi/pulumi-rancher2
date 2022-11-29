@@ -64,17 +64,19 @@ export class Provider extends pulumi.ProviderResource {
             if ((!args || args.apiUrl === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiUrl'");
             }
-            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
+            resourceInputs["accessKey"] = args?.accessKey ? pulumi.secret(args.accessKey) : undefined;
             resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
             resourceInputs["bootstrap"] = pulumi.output((args ? args.bootstrap : undefined) ?? (utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false)).apply(JSON.stringify);
             resourceInputs["caCerts"] = args ? args.caCerts : undefined;
             resourceInputs["insecure"] = pulumi.output((args ? args.insecure : undefined) ?? (utilities.getEnvBoolean("RANCHER_INSECURE") || false)).apply(JSON.stringify);
             resourceInputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
-            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["secretKey"] = args?.secretKey ? pulumi.secret(args.secretKey) : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["tokenKey"] = args ? args.tokenKey : undefined;
+            resourceInputs["tokenKey"] = args?.tokenKey ? pulumi.secret(args.tokenKey) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accessKey", "secretKey", "tokenKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

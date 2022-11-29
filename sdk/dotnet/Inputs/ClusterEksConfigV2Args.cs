@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterEksConfigV2Args : Pulumi.ResourceArgs
+    public sealed class ClusterEksConfigV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The EKS cloud_credential id (string)
@@ -147,5 +147,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterEksConfigV2Args()
         {
         }
+        public static new ClusterEksConfigV2Args Empty => new ClusterEksConfigV2Args();
     }
 }

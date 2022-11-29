@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigMachinePoolTaintArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigMachinePoolTaintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The taint effect. Default: `\"NoExecute\"` (string)
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigMachinePoolTaintArgs()
         {
         }
+        public static new ClusterV2RkeConfigMachinePoolTaintArgs Empty => new ClusterV2RkeConfigMachinePoolTaintArgs();
     }
 }

@@ -312,6 +312,43 @@ func (o GlobalDnsProviderOutput) ToGlobalDnsProviderOutputWithContext(ctx contex
 	return o
 }
 
+func (o GlobalDnsProviderOutput) AlidnsConfig() GlobalDnsProviderAlidnsConfigPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) GlobalDnsProviderAlidnsConfigPtrOutput { return v.AlidnsConfig }).(GlobalDnsProviderAlidnsConfigPtrOutput)
+}
+
+// Annotations for Global DNS Provider (map)
+func (o GlobalDnsProviderOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+func (o GlobalDnsProviderOutput) CloudflareConfig() GlobalDnsProviderCloudflareConfigPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) GlobalDnsProviderCloudflareConfigPtrOutput { return v.CloudflareConfig }).(GlobalDnsProviderCloudflareConfigPtrOutput)
+}
+
+// (Computed) The Global DNS Provider `alidns, cloudflare, route53` (string)
+func (o GlobalDnsProviderOutput) DnsProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.StringOutput { return v.DnsProvider }).(pulumi.StringOutput)
+}
+
+// Labels for Global DNS Provider (map)
+func (o GlobalDnsProviderOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the Global DNS Provider (string)
+func (o GlobalDnsProviderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The user ID to assign Global DNS Provider (string)
+func (o GlobalDnsProviderOutput) RootDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.StringOutput { return v.RootDomain }).(pulumi.StringOutput)
+}
+
+func (o GlobalDnsProviderOutput) Route53Config() GlobalDnsProviderRoute53ConfigPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) GlobalDnsProviderRoute53ConfigPtrOutput { return v.Route53Config }).(GlobalDnsProviderRoute53ConfigPtrOutput)
+}
+
 type GlobalDnsProviderArrayOutput struct{ *pulumi.OutputState }
 
 func (GlobalDnsProviderArrayOutput) ElementType() reflect.Type {

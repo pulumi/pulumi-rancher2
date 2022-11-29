@@ -32,6 +32,132 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.PodSecurityPolicyTemplate;
+ * import com.pulumi.rancher2.PodSecurityPolicyTemplateArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityPolicyTemplateAllowedCsiDriverArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityPolicyTemplateAllowedFlexVolumeArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityPolicyTemplateAllowedHostPathArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityPolicyTemplateFsGroupArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityPolicyTemplateHostPortArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityPolicyTemplateRunAsGroupArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityPolicyTemplateRunAsUserArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityPolicyTemplateRuntimeClassArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityPolicyTemplateSeLinuxArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityPolicyTemplateSupplementalGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new PodSecurityPolicyTemplate(&#34;foo&#34;, PodSecurityPolicyTemplateArgs.builder()        
+ *             .allowPrivilegeEscalation(false)
+ *             .allowedCsiDrivers(            
+ *                 PodSecurityPolicyTemplateAllowedCsiDriverArgs.builder()
+ *                     .name(&#34;something&#34;)
+ *                     .build(),
+ *                 PodSecurityPolicyTemplateAllowedCsiDriverArgs.builder()
+ *                     .name(&#34;something-else&#34;)
+ *                     .build())
+ *             .allowedFlexVolumes(            
+ *                 PodSecurityPolicyTemplateAllowedFlexVolumeArgs.builder()
+ *                     .driver(&#34;something&#34;)
+ *                     .build(),
+ *                 PodSecurityPolicyTemplateAllowedFlexVolumeArgs.builder()
+ *                     .driver(&#34;something-else&#34;)
+ *                     .build())
+ *             .allowedHostPaths(            
+ *                 PodSecurityPolicyTemplateAllowedHostPathArgs.builder()
+ *                     .pathPrefix(&#34;/&#34;)
+ *                     .readOnly(true)
+ *                     .build(),
+ *                 PodSecurityPolicyTemplateAllowedHostPathArgs.builder()
+ *                     .pathPrefix(&#34;//&#34;)
+ *                     .readOnly(false)
+ *                     .build())
+ *             .allowedProcMountTypes(&#34;Default&#34;)
+ *             .defaultAllowPrivilegeEscalation(false)
+ *             .description(&#34;Terraform PodSecurityPolicyTemplate acceptance test - update&#34;)
+ *             .fsGroup(PodSecurityPolicyTemplateFsGroupArgs.builder()
+ *                 .ranges(                
+ *                     PodSecurityPolicyTemplateFsGroupRangeArgs.builder()
+ *                         .max(100)
+ *                         .min(0)
+ *                         .build(),
+ *                     PodSecurityPolicyTemplateFsGroupRangeArgs.builder()
+ *                         .max(100)
+ *                         .min(0)
+ *                         .build())
+ *                 .rule(&#34;MustRunAs&#34;)
+ *                 .build())
+ *             .hostIpc(false)
+ *             .hostNetwork(false)
+ *             .hostPid(false)
+ *             .hostPorts(            
+ *                 PodSecurityPolicyTemplateHostPortArgs.builder()
+ *                     .max(65535)
+ *                     .min(0)
+ *                     .build(),
+ *                 PodSecurityPolicyTemplateHostPortArgs.builder()
+ *                     .max(8080)
+ *                     .min(1024)
+ *                     .build())
+ *             .privileged(false)
+ *             .readOnlyRootFilesystem(false)
+ *             .requiredDropCapabilities(&#34;something&#34;)
+ *             .runAsGroup(PodSecurityPolicyTemplateRunAsGroupArgs.builder()
+ *                 .ranges(                
+ *                     PodSecurityPolicyTemplateRunAsGroupRangeArgs.builder()
+ *                         .max(100)
+ *                         .min(1)
+ *                         .build(),
+ *                     PodSecurityPolicyTemplateRunAsGroupRangeArgs.builder()
+ *                         .max(1024)
+ *                         .min(2)
+ *                         .build())
+ *                 .rule(&#34;MustRunAs&#34;)
+ *                 .build())
+ *             .runAsUser(PodSecurityPolicyTemplateRunAsUserArgs.builder()
+ *                 .ranges(                
+ *                     PodSecurityPolicyTemplateRunAsUserRangeArgs.builder()
+ *                         .max(100)
+ *                         .min(1)
+ *                         .build(),
+ *                     PodSecurityPolicyTemplateRunAsUserRangeArgs.builder()
+ *                         .max(1024)
+ *                         .min(2)
+ *                         .build())
+ *                 .rule(&#34;MustRunAs&#34;)
+ *                 .build())
+ *             .runtimeClass(PodSecurityPolicyTemplateRuntimeClassArgs.builder()
+ *                 .allowedRuntimeClassNames(&#34;something&#34;)
+ *                 .defaultRuntimeClassName(&#34;something&#34;)
+ *                 .build())
+ *             .seLinux(PodSecurityPolicyTemplateSeLinuxArgs.builder()
+ *                 .rule(&#34;RunAsAny&#34;)
+ *                 .build())
+ *             .supplementalGroup(PodSecurityPolicyTemplateSupplementalGroupArgs.builder()
+ *                 .rule(&#34;RunAsAny&#34;)
+ *                 .build())
+ *             .volumes(&#34;azureFile&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -15,33 +15,33 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Rancher2 Global Catalog
+    ///     var foo_global = new Rancher2.Catalog("foo-global", new()
     ///     {
-    ///         // Create a new Rancher2 Global Catalog
-    ///         var foo_global = new Rancher2.Catalog("foo-global", new Rancher2.CatalogArgs
-    ///         {
-    ///             Url = "https://&lt;CATALOG_URL&gt;",
-    ///         });
-    ///         // Create a new Rancher2 Cluster Catalog
-    ///         var foo_cluster = new Rancher2.Catalog("foo-cluster", new Rancher2.CatalogArgs
-    ///         {
-    ///             Scope = "cluster",
-    ///             Url = "https://&lt;CATALOG_URL&gt;",
-    ///         });
-    ///         // Create a new Rancher2 Project Catalog
-    ///         var foo_project = new Rancher2.Catalog("foo-project", new Rancher2.CatalogArgs
-    ///         {
-    ///             Scope = "project",
-    ///             Url = "https://&lt;CATALOG_URL&gt;",
-    ///         });
-    ///     }
+    ///         Url = "https://&lt;CATALOG_URL&gt;",
+    ///     });
     /// 
-    /// }
+    ///     // Create a new Rancher2 Cluster Catalog
+    ///     var foo_cluster = new Rancher2.Catalog("foo-cluster", new()
+    ///     {
+    ///         Scope = "cluster",
+    ///         Url = "https://&lt;CATALOG_URL&gt;",
+    ///     });
+    /// 
+    ///     // Create a new Rancher2 Project Catalog
+    ///     var foo_project = new Rancher2.Catalog("foo-project", new()
+    ///     {
+    ///         Scope = "project",
+    ///         Url = "https://&lt;CATALOG_URL&gt;",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +53,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/catalog:Catalog")]
-    public partial class Catalog : Pulumi.CustomResource
+    public partial class Catalog : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for the catalog (map)
@@ -162,6 +162,11 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                    "username",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -183,7 +188,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class CatalogArgs : Pulumi.ResourceArgs
+    public sealed class CatalogArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -239,11 +244,21 @@ namespace Pulumi.Rancher2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password to access the catalog if needed (string)
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The project id of the catalog. Mandatory if `scope = project` (string)
@@ -269,11 +284,21 @@ namespace Pulumi.Rancher2
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
+        [Input("username")]
+        private Input<string>? _username;
+
         /// <summary>
         /// The username to access the catalog if needed (string)
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
@@ -284,9 +309,10 @@ namespace Pulumi.Rancher2
         public CatalogArgs()
         {
         }
+        public static new CatalogArgs Empty => new CatalogArgs();
     }
 
-    public sealed class CatalogState : Pulumi.ResourceArgs
+    public sealed class CatalogState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -342,11 +368,21 @@ namespace Pulumi.Rancher2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password to access the catalog if needed (string)
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The project id of the catalog. Mandatory if `scope = project` (string)
@@ -372,11 +408,21 @@ namespace Pulumi.Rancher2
         [Input("url")]
         public Input<string>? Url { get; set; }
 
+        [Input("username")]
+        private Input<string>? _username;
+
         /// <summary>
         /// The username to access the catalog if needed (string)
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
@@ -387,5 +433,6 @@ namespace Pulumi.Rancher2
         public CatalogState()
         {
         }
+        public static new CatalogState Empty => new CatalogState();
     }
 }

@@ -53,6 +53,13 @@ func NewCertificate(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
+	if args.Key != nil {
+		args.Key = pulumi.ToSecret(args.Key).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"key",
+	})
+	opts = append(opts, secrets)
 	var resource Certificate
 	err := ctx.RegisterResource("rancher2:index/certificate:Certificate", name, args, &resource, opts...)
 	if err != nil {
@@ -240,6 +247,46 @@ func (o CertificateOutput) ToCertificateOutput() CertificateOutput {
 
 func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
 	return o
+}
+
+// Annotations for certificate object (map)
+func (o CertificateOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Base64 encoded public certs (string)
+func (o CertificateOutput) Certs() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Certs }).(pulumi.StringOutput)
+}
+
+// A certificate description (string)
+func (o CertificateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded private key (string)
+func (o CertificateOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// Labels for certificate object (map)
+func (o CertificateOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the certificate (string)
+func (o CertificateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace id where the namespaced certificate should be created (string)
+func (o CertificateOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.NamespaceId }).(pulumi.StringPtrOutput)
+}
+
+// The project id where the certificate should be created  (string)
+func (o CertificateOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 type CertificateArrayOutput struct{ *pulumi.OutputState }

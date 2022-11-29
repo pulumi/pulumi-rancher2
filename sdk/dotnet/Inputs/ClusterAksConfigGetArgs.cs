@@ -10,31 +10,71 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterAksConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAksConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("aadServerAppSecret")]
+        private Input<string>? _aadServerAppSecret;
+
         /// <summary>
         /// The secret of an Azure Active Directory server application (string)
         /// </summary>
-        [Input("aadServerAppSecret")]
-        public Input<string>? AadServerAppSecret { get; set; }
+        public Input<string>? AadServerAppSecret
+        {
+            get => _aadServerAppSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _aadServerAppSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("aadTenantId")]
+        private Input<string>? _aadTenantId;
 
         /// <summary>
         /// The ID of an Azure Active Directory tenant (string)
         /// </summary>
-        [Input("aadTenantId")]
-        public Input<string>? AadTenantId { get; set; }
+        public Input<string>? AadTenantId
+        {
+            get => _aadTenantId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _aadTenantId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("addClientAppId")]
+        private Input<string>? _addClientAppId;
 
         /// <summary>
         /// The ID of an Azure Active Directory client application of type \"Native\". This application is for user login via kubectl (string)
         /// </summary>
-        [Input("addClientAppId")]
-        public Input<string>? AddClientAppId { get; set; }
+        public Input<string>? AddClientAppId
+        {
+            get => _addClientAppId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _addClientAppId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("addServerAppId")]
+        private Input<string>? _addServerAppId;
 
         /// <summary>
         /// The ID of an Azure Active Directory server application of type \"Web app/API\". This application represents the managed cluster's apiserver (Server application) (string)
         /// </summary>
-        [Input("addServerAppId")]
-        public Input<string>? AddServerAppId { get; set; }
+        public Input<string>? AddServerAppId
+        {
+            get => _addServerAppId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _addServerAppId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The administrator username to use for Linux hosts. Default `azureuser` (string)
@@ -84,17 +124,37 @@ namespace Pulumi.Rancher2.Inputs
         [Input("baseUrl")]
         public Input<string>? BaseUrl { get; set; }
 
+        [Input("clientId", required: true)]
+        private Input<string>? _clientId;
+
         /// <summary>
         /// Azure client ID to use (string)
         /// </summary>
-        [Input("clientId", required: true)]
-        public Input<string> ClientId { get; set; } = null!;
+        public Input<string>? ClientId
+        {
+            get => _clientId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientSecret", required: true)]
+        private Input<string>? _clientSecret;
 
         /// <summary>
         /// Azure client secret associated with the \"client id\" (string)
         /// </summary>
-        [Input("clientSecret", required: true)]
-        public Input<string> ClientSecret { get; set; } = null!;
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The AKS node pool count. Default: `1` (int)
@@ -262,5 +322,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterAksConfigGetArgs()
         {
         }
+        public static new ClusterAksConfigGetArgs Empty => new ClusterAksConfigGetArgs();
     }
 }

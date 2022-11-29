@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupMultiClusterApp(ctx, &GetMultiClusterAppArgs{
+//			_, err = rancher2.LookupMultiClusterApp(ctx, &GetMultiClusterAppArgs{
 //				Name: "foo",
 //			}, nil)
 //			if err != nil {

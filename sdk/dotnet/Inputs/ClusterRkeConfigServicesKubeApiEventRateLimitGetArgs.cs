@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesKubeApiEventRateLimitGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesKubeApiEventRateLimitGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesKubeApiEventRateLimitGetArgs()
         {
         }
+        public static new ClusterRkeConfigServicesKubeApiEventRateLimitGetArgs Empty => new ClusterRkeConfigServicesKubeApiEventRateLimitGetArgs();
     }
 }

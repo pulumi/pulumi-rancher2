@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigBastionHostGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigBastionHostGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Address ip for node (string)
@@ -30,11 +30,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("sshAgentAuth")]
         public Input<bool>? SshAgentAuth { get; set; }
 
+        [Input("sshKey")]
+        private Input<string>? _sshKey;
+
         /// <summary>
         /// Node SSH private key (string)
         /// </summary>
-        [Input("sshKey")]
-        public Input<string>? SshKey { get; set; }
+        public Input<string>? SshKey
+        {
+            get => _sshKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Node SSH private key path (string)
@@ -51,5 +61,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigBastionHostGetArgs()
         {
         }
+        public static new ClusterRkeConfigBastionHostGetArgs Empty => new ClusterRkeConfigBastionHostGetArgs();
     }
 }

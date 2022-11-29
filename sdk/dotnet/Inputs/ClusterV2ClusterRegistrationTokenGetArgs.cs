@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2ClusterRegistrationTokenGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2ClusterRegistrationTokenGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -90,11 +90,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("nodeCommand")]
         public Input<string>? NodeCommand { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// Token for cluster registration token object (string)
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Node command to execute in windows nodes for custom k8s cluster (string)
@@ -105,5 +115,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2ClusterRegistrationTokenGetArgs()
         {
         }
+        public static new ClusterV2ClusterRegistrationTokenGetArgs Empty => new ClusterV2ClusterRegistrationTokenGetArgs();
     }
 }

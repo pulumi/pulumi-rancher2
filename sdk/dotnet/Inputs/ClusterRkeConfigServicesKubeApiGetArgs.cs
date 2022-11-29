@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesKubeApiGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesKubeApiGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("admissionConfiguration")]
         private InputMap<object>? _admissionConfiguration;
@@ -111,5 +111,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesKubeApiGetArgs()
         {
         }
+        public static new ClusterRkeConfigServicesKubeApiGetArgs Empty => new ClusterRkeConfigServicesKubeApiGetArgs();
     }
 }

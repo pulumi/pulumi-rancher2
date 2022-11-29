@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupClusterTemplate(ctx, &GetClusterTemplateArgs{
+//			_, err = rancher2.LookupClusterTemplate(ctx, &GetClusterTemplateArgs{
 //				Name: "foo",
 //			}, nil)
 //			if err != nil {

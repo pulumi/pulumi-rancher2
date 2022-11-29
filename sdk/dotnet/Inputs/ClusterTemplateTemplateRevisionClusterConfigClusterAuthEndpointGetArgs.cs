@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("caCerts")]
         public Input<string>? CaCerts { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointGetArgs();
     }
 }

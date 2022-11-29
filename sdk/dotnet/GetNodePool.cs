@@ -19,27 +19,25 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetNodePool.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetNodePool.InvokeAsync(new Rancher2.GetNodePoolArgs
-        ///         {
-        ///             ClusterId = rancher2_cluster.Foo_custom.Id,
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         ClusterId = rancher2_cluster.Foo_custom.Id,
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodePoolResult> InvokeAsync(GetNodePoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Node Pool resource.
@@ -49,31 +47,29 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetNodePool.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetNodePool.InvokeAsync(new Rancher2.GetNodePoolArgs
-        ///         {
-        ///             ClusterId = rancher2_cluster.Foo_custom.Id,
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         ClusterId = rancher2_cluster.Foo_custom.Id,
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNodePoolResult> Invoke(GetNodePoolInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNodePoolArgs : Pulumi.InvokeArgs
+    public sealed class GetNodePoolArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The RKE cluster id to use Node Pool (string)
@@ -96,9 +92,10 @@ namespace Pulumi.Rancher2
         public GetNodePoolArgs()
         {
         }
+        public static new GetNodePoolArgs Empty => new GetNodePoolArgs();
     }
 
-    public sealed class GetNodePoolInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodePoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The RKE cluster id to use Node Pool (string)
@@ -121,6 +118,7 @@ namespace Pulumi.Rancher2
         public GetNodePoolInvokeArgs()
         {
         }
+        public static new GetNodePoolInvokeArgs Empty => new GetNodePoolInvokeArgs();
     }
 
 
