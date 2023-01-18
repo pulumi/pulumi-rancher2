@@ -41,12 +41,12 @@ public final class ClusterGkeConfigV2NodePool {
      */
     private @Nullable Integer maxPodsConstraint;
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     private String name;
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return RKE2 kubernetes version (string)
      * 
      */
     private String version;
@@ -88,14 +88,14 @@ public final class ClusterGkeConfigV2NodePool {
         return Optional.ofNullable(this.maxPodsConstraint);
     }
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return RKE2 kubernetes version (string)
      * 
      */
     public String version() {

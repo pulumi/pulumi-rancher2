@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class EtcdBackupBackupConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class EtcdBackupBackupConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable etcd backup (bool)
@@ -45,5 +45,6 @@ namespace Pulumi.Rancher2.Inputs
         public EtcdBackupBackupConfigGetArgs()
         {
         }
+        public static new EtcdBackupBackupConfigGetArgs Empty => new EtcdBackupBackupConfigGetArgs();
     }
 }

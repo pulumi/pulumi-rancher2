@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterV2RkeConfigEtcdSnapshotCreate {
     /**
-     * @return ETCD snapshot desired generation (int)
+     * @return Desired certificate rotation generation (int)
      * 
      */
     private Integer generation;
 
     private ClusterV2RkeConfigEtcdSnapshotCreate() {}
     /**
-     * @return ETCD snapshot desired generation (int)
+     * @return Desired certificate rotation generation (int)
      * 
      */
     public Integer generation() {

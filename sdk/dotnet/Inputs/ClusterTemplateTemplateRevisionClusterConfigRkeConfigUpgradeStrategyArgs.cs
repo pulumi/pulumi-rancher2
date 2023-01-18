@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs : global::Pulumi.ResourceArgs
     {
         [Input("drain")]
         public Input<bool>? Drain { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs();
     }
 }

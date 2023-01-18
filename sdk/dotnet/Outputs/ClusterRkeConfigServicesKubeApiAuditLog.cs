@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigServicesKubeApiAuditLog
     {
         /// <summary>
-        /// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+        /// Audit log configuration. (list maxitems: 1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration? Configuration;
         /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// Enable etcd backup (bool)
         /// </summary>
         public readonly bool? Enabled;
 

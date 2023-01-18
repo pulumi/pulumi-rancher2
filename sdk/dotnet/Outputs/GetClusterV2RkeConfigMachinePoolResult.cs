@@ -23,6 +23,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly bool? EtcdRole;
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly Outputs.GetClusterV2RkeConfigMachinePoolMachineConfigResult MachineConfig;
+        public readonly ImmutableDictionary<string, object> MachineLabels;
         public readonly string? MaxUnhealthy;
         /// <summary>
         /// The name of the Cluster v2 (string)
@@ -54,6 +55,8 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.GetClusterV2RkeConfigMachinePoolMachineConfigResult machineConfig,
 
+            ImmutableDictionary<string, object> machineLabels,
+
             string? maxUnhealthy,
 
             string name,
@@ -83,6 +86,7 @@ namespace Pulumi.Rancher2.Outputs
             EtcdRole = etcdRole;
             Labels = labels;
             MachineConfig = machineConfig;
+            MachineLabels = machineLabels;
             MaxUnhealthy = maxUnhealthy;
             Name = name;
             NodeDrainTimeout = nodeDrainTimeout;

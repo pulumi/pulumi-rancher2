@@ -19,26 +19,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var library = Rancher2.GetCatalog.Invoke(new()
         ///     {
-        ///         var library = Output.Create(Rancher2.GetCatalog.InvokeAsync(new Rancher2.GetCatalogArgs
-        ///         {
-        ///             Name = "catalog",
-        ///         }));
-        ///     }
+        ///         Name = "catalog",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCatalogResult> InvokeAsync(GetCatalogArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? new GetCatalogArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? new GetCatalogArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 catalog.
@@ -48,30 +46,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var library = Rancher2.GetCatalog.Invoke(new()
         ///     {
-        ///         var library = Output.Create(Rancher2.GetCatalog.InvokeAsync(new Rancher2.GetCatalogArgs
-        ///         {
-        ///             Name = "catalog",
-        ///         }));
-        ///     }
+        ///         Name = "catalog",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCatalogResult> Invoke(GetCatalogInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? new GetCatalogInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? new GetCatalogInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCatalogArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The catalog name.
@@ -88,9 +84,10 @@ namespace Pulumi.Rancher2
         public GetCatalogArgs()
         {
         }
+        public static new GetCatalogArgs Empty => new GetCatalogArgs();
     }
 
-    public sealed class GetCatalogInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The catalog name.
@@ -107,6 +104,7 @@ namespace Pulumi.Rancher2
         public GetCatalogInvokeArgs()
         {
         }
+        public static new GetCatalogInvokeArgs Empty => new GetCatalogInvokeArgs();
     }
 
 

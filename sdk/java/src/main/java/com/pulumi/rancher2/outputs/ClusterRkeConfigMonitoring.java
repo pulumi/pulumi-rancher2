@@ -18,17 +18,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigMonitoring {
     /**
-     * @return RKE monitoring node selector (map)
+     * @return DNS add-on node selector (map)
      * 
      */
     private @Nullable Map<String,Object> nodeSelector;
     /**
-     * @return RKE options for network (map)
+     * @return RKE options for authorization (map)
      * 
      */
     private @Nullable Map<String,Object> options;
     /**
-     * @return RKE monitoring provider (string)
+     * @return DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
      * 
      */
     private @Nullable String provider;
@@ -38,33 +38,33 @@ public final class ClusterRkeConfigMonitoring {
      */
     private @Nullable Integer replicas;
     /**
-     * @return Network add-on tolerations (list)
+     * @return DNS add-on tolerations (list)
      * 
      */
     private @Nullable List<ClusterRkeConfigMonitoringToleration> tolerations;
     /**
-     * @return RKE monitoring update strategy (list Maxitems: 1)
+     * @return DNS update strategy (list Maxitems: 1)
      * 
      */
     private @Nullable ClusterRkeConfigMonitoringUpdateStrategy updateStrategy;
 
     private ClusterRkeConfigMonitoring() {}
     /**
-     * @return RKE monitoring node selector (map)
+     * @return DNS add-on node selector (map)
      * 
      */
     public Map<String,Object> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
     /**
-     * @return RKE options for network (map)
+     * @return RKE options for authorization (map)
      * 
      */
     public Map<String,Object> options() {
         return this.options == null ? Map.of() : this.options;
     }
     /**
-     * @return RKE monitoring provider (string)
+     * @return DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
      * 
      */
     public Optional<String> provider() {
@@ -78,14 +78,14 @@ public final class ClusterRkeConfigMonitoring {
         return Optional.ofNullable(this.replicas);
     }
     /**
-     * @return Network add-on tolerations (list)
+     * @return DNS add-on tolerations (list)
      * 
      */
     public List<ClusterRkeConfigMonitoringToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
     /**
-     * @return RKE monitoring update strategy (list Maxitems: 1)
+     * @return DNS update strategy (list Maxitems: 1)
      * 
      */
     public Optional<ClusterRkeConfigMonitoringUpdateStrategy> updateStrategy() {

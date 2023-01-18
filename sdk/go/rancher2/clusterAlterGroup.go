@@ -283,6 +283,51 @@ func (o ClusterAlterGroupOutput) ToClusterAlterGroupOutputWithContext(ctx contex
 	return o
 }
 
+// The cluster alert group annotations (map)
+func (o ClusterAlterGroupOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterAlterGroup) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The cluster id where create cluster alert group (string)
+func (o ClusterAlterGroupOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterAlterGroup) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The cluster alert group description (string)
+func (o ClusterAlterGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAlterGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The cluster alert group interval seconds. Default: `180` (int)
+func (o ClusterAlterGroupOutput) GroupIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAlterGroup) pulumi.IntPtrOutput { return v.GroupIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The cluster alert group wait seconds. Default: `180` (int)
+func (o ClusterAlterGroupOutput) GroupWaitSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAlterGroup) pulumi.IntPtrOutput { return v.GroupWaitSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The cluster alert group labels (map)
+func (o ClusterAlterGroupOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterAlterGroup) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The cluster alert group name (string)
+func (o ClusterAlterGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterAlterGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The cluster alert group recipients (list)
+func (o ClusterAlterGroupOutput) Recipients() ClusterAlterGroupRecipientArrayOutput {
+	return o.ApplyT(func(v *ClusterAlterGroup) ClusterAlterGroupRecipientArrayOutput { return v.Recipients }).(ClusterAlterGroupRecipientArrayOutput)
+}
+
+// The cluster alert group wait seconds. Default: `3600` (int)
+func (o ClusterAlterGroupOutput) RepeatIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAlterGroup) pulumi.IntPtrOutput { return v.RepeatIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
 type ClusterAlterGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlterGroupArrayOutput) ElementType() reflect.Type {

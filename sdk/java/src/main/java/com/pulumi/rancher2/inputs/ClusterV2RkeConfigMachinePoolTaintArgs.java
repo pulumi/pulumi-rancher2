@@ -31,14 +31,14 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
     }
 
     /**
-     * Machine selector label match expressions key (string)
+     * The taint key (string)
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Machine selector label match expressions key (string)
+     * @return The taint key (string)
      * 
      */
     public Output<String> key() {
@@ -46,14 +46,14 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
     }
 
     /**
-     * The taint value (string)
+     * Rancher agent env var value (string)
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The taint value (string)
+     * @return Rancher agent env var value (string)
      * 
      */
     public Output<String> value() {
@@ -108,7 +108,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param key Machine selector label match expressions key (string)
+         * @param key The taint key (string)
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param key Machine selector label match expressions key (string)
+         * @param key The taint key (string)
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param value The taint value (string)
+         * @param value Rancher agent env var value (string)
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param value The taint value (string)
+         * @param value Rancher agent env var value (string)
          * 
          * @return builder
          * 

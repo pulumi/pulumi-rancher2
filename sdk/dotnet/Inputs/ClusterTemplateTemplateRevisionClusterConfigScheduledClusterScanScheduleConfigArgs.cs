@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("cronSchedule", required: true)]
         public Input<string> CronSchedule { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs();
     }
 }

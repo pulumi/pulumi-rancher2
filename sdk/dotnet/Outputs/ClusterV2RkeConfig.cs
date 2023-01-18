@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigEtcdSnapshotRestore? EtcdSnapshotRestore;
         /// <summary>
-        /// Use rancher2_cluster_v2.local_auth_endpoint instead
+        /// Cluster V2 local auth endpoint (list maxitems:1)
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigLocalAuthEndpoint? LocalAuthEndpoint;
         /// <summary>

@@ -19,28 +19,26 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var rancher2 = Rancher2.GetApp.Invoke(new()
         ///     {
-        ///         var rancher2 = Output.Create(Rancher2.GetApp.InvokeAsync(new Rancher2.GetAppArgs
-        ///         {
-        ///             Name = "foo",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///             TargetNamespace = "&lt;namespace_name&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///         TargetNamespace = "&lt;namespace_name&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("rancher2:index/getApp:getApp", args ?? new GetAppArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("rancher2:index/getApp:getApp", args ?? new GetAppArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 app.
@@ -50,32 +48,30 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var rancher2 = Rancher2.GetApp.Invoke(new()
         ///     {
-        ///         var rancher2 = Output.Create(Rancher2.GetApp.InvokeAsync(new Rancher2.GetAppArgs
-        ///         {
-        ///             Name = "foo",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///             TargetNamespace = "&lt;namespace_name&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///         TargetNamespace = "&lt;namespace_name&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAppResult>("rancher2:index/getApp:getApp", args ?? new GetAppInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppResult>("rancher2:index/getApp:getApp", args ?? new GetAppInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAppArgs : Pulumi.InvokeArgs
+    public sealed class GetAppArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotations")]
         private Dictionary<string, object>? _annotations;
@@ -110,9 +106,10 @@ namespace Pulumi.Rancher2
         public GetAppArgs()
         {
         }
+        public static new GetAppArgs Empty => new GetAppArgs();
     }
 
-    public sealed class GetAppInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAppInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -147,6 +144,7 @@ namespace Pulumi.Rancher2
         public GetAppInvokeArgs()
         {
         }
+        public static new GetAppInvokeArgs Empty => new GetAppInvokeArgs();
     }
 
 

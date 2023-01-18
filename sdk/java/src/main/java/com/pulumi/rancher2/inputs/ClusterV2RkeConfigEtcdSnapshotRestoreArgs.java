@@ -17,14 +17,14 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
     public static final ClusterV2RkeConfigEtcdSnapshotRestoreArgs Empty = new ClusterV2RkeConfigEtcdSnapshotRestoreArgs();
 
     /**
-     * ETCD snapshot desired generation (int)
+     * Desired certificate rotation generation (int)
      * 
      */
     @Import(name="generation", required=true)
     private Output<Integer> generation;
 
     /**
-     * @return ETCD snapshot desired generation (int)
+     * @return Desired certificate rotation generation (int)
      * 
      */
     public Output<Integer> generation() {
@@ -32,14 +32,14 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
     }
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster v2 (string)
      * 
      */
     public Output<String> name() {
@@ -88,7 +88,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
         }
 
         /**
-         * @param generation ETCD snapshot desired generation (int)
+         * @param generation Desired certificate rotation generation (int)
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
         }
 
         /**
-         * @param generation ETCD snapshot desired generation (int)
+         * @param generation Desired certificate rotation generation (int)
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster v2 (string)
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster v2 (string)
          * 
          * @return builder
          * 

@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkAciNetworkProviderArgs;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkCalicoNetworkProviderArgs;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkCanalNetworkProviderArgs;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkFlannelNetworkProviderArgs;
@@ -23,6 +24,21 @@ import javax.annotation.Nullable;
 public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterRkeConfigNetworkArgs Empty = new ClusterRkeConfigNetworkArgs();
+
+    /**
+     * ACI provider config for RKE network (list maxitems:63)
+     * 
+     */
+    @Import(name="aciNetworkProvider")
+    private @Nullable Output<ClusterRkeConfigNetworkAciNetworkProviderArgs> aciNetworkProvider;
+
+    /**
+     * @return ACI provider config for RKE network (list maxitems:63)
+     * 
+     */
+    public Optional<Output<ClusterRkeConfigNetworkAciNetworkProviderArgs>> aciNetworkProvider() {
+        return Optional.ofNullable(this.aciNetworkProvider);
+    }
 
     /**
      * Calico provider config for RKE network (list maxitems:1)
@@ -85,14 +101,14 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * RKE options for network (map)
+     * RKE options for authorization (map)
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,Object>> options;
 
     /**
-     * @return RKE options for network (map)
+     * @return RKE options for authorization (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> options() {
@@ -115,14 +131,14 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Network add-on tolerations (list)
+     * DNS add-on tolerations (list)
      * 
      */
     @Import(name="tolerations")
     private @Nullable Output<List<ClusterRkeConfigNetworkTolerationArgs>> tolerations;
 
     /**
-     * @return Network add-on tolerations (list)
+     * @return DNS add-on tolerations (list)
      * 
      */
     public Optional<Output<List<ClusterRkeConfigNetworkTolerationArgs>>> tolerations() {
@@ -147,6 +163,7 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
     private ClusterRkeConfigNetworkArgs() {}
 
     private ClusterRkeConfigNetworkArgs(ClusterRkeConfigNetworkArgs $) {
+        this.aciNetworkProvider = $.aciNetworkProvider;
         this.calicoNetworkProvider = $.calicoNetworkProvider;
         this.canalNetworkProvider = $.canalNetworkProvider;
         this.flannelNetworkProvider = $.flannelNetworkProvider;
@@ -173,6 +190,27 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
 
         public Builder(ClusterRkeConfigNetworkArgs defaults) {
             $ = new ClusterRkeConfigNetworkArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aciNetworkProvider ACI provider config for RKE network (list maxitems:63)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aciNetworkProvider(@Nullable Output<ClusterRkeConfigNetworkAciNetworkProviderArgs> aciNetworkProvider) {
+            $.aciNetworkProvider = aciNetworkProvider;
+            return this;
+        }
+
+        /**
+         * @param aciNetworkProvider ACI provider config for RKE network (list maxitems:63)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aciNetworkProvider(ClusterRkeConfigNetworkAciNetworkProviderArgs aciNetworkProvider) {
+            return aciNetworkProvider(Output.of(aciNetworkProvider));
         }
 
         /**
@@ -260,7 +298,7 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options RKE options for network (map)
+         * @param options RKE options for authorization (map)
          * 
          * @return builder
          * 
@@ -271,7 +309,7 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options RKE options for network (map)
+         * @param options RKE options for authorization (map)
          * 
          * @return builder
          * 
@@ -302,7 +340,7 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tolerations Network add-on tolerations (list)
+         * @param tolerations DNS add-on tolerations (list)
          * 
          * @return builder
          * 
@@ -313,7 +351,7 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tolerations Network add-on tolerations (list)
+         * @param tolerations DNS add-on tolerations (list)
          * 
          * @return builder
          * 
@@ -323,7 +361,7 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tolerations Network add-on tolerations (list)
+         * @param tolerations DNS add-on tolerations (list)
          * 
          * @return builder
          * 

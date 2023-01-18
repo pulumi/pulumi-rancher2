@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
-//				ContainerResourceLimit: &NamespaceContainerResourceLimitArgs{
+//				ContainerResourceLimit: &rancher2.NamespaceContainerResourceLimitArgs{
 //					LimitsCpu:      pulumi.String("20m"),
 //					LimitsMemory:   pulumi.String("20Mi"),
 //					RequestsCpu:    pulumi.String("1m"),
@@ -36,8 +36,8 @@ import (
 //				},
 //				Description: pulumi.String("foo namespace"),
 //				ProjectId:   pulumi.String("<PROJECT_ID>"),
-//				ResourceQuota: &NamespaceResourceQuotaArgs{
-//					Limit: &NamespaceResourceQuotaLimitArgs{
+//				ResourceQuota: &rancher2.NamespaceResourceQuotaArgs{
+//					Limit: &rancher2.NamespaceResourceQuotaLimitArgs{
 //						LimitsCpu:       pulumi.String("100m"),
 //						LimitsMemory:    pulumi.String("100Mi"),
 //						RequestsStorage: pulumi.String("1Gi"),
@@ -67,8 +67,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
-//				RkeConfig: &ClusterRkeConfigArgs{
-//					Network: &ClusterRkeConfigNetworkArgs{
+//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
+//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
 //						Plugin: pulumi.String("canal"),
 //					},
 //				},
@@ -79,14 +79,14 @@ import (
 //			_, err = rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
 //				ProjectId:   foo_custom.DefaultProjectId,
 //				Description: pulumi.String("foo namespace"),
-//				ResourceQuota: &NamespaceResourceQuotaArgs{
-//					Limit: &NamespaceResourceQuotaLimitArgs{
+//				ResourceQuota: &rancher2.NamespaceResourceQuotaArgs{
+//					Limit: &rancher2.NamespaceResourceQuotaLimitArgs{
 //						LimitsCpu:       pulumi.String("100m"),
 //						LimitsMemory:    pulumi.String("100Mi"),
 //						RequestsStorage: pulumi.String("1Gi"),
 //					},
 //				},
-//				ContainerResourceLimit: &NamespaceContainerResourceLimitArgs{
+//				ContainerResourceLimit: &rancher2.NamespaceContainerResourceLimitArgs{
 //					LimitsCpu:      pulumi.String("20m"),
 //					LimitsMemory:   pulumi.String("20Mi"),
 //					RequestsCpu:    pulumi.String("1m"),
@@ -335,6 +335,46 @@ func (o NamespaceOutput) ToNamespaceOutput() NamespaceOutput {
 
 func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput {
 	return o
+}
+
+// Annotations for Node Pool object (map)
+func (o NamespaceOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Default containers resource limits on namespace (List maxitem:1)
+func (o NamespaceOutput) ContainerResourceLimit() NamespaceContainerResourceLimitPtrOutput {
+	return o.ApplyT(func(v *Namespace) NamespaceContainerResourceLimitPtrOutput { return v.ContainerResourceLimit }).(NamespaceContainerResourceLimitPtrOutput)
+}
+
+// A namespace description (string)
+func (o NamespaceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Labels for Node Pool object (map)
+func (o NamespaceOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the namespace (string)
+func (o NamespaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
+func (o NamespaceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+func (o NamespaceOutput) ResourceQuota() NamespaceResourceQuotaOutput {
+	return o.ApplyT(func(v *Namespace) NamespaceResourceQuotaOutput { return v.ResourceQuota }).(NamespaceResourceQuotaOutput)
+}
+
+// Wait for cluster becomes active. Default `false` (bool)
+func (o NamespaceOutput) WaitForCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.BoolPtrOutput { return v.WaitForCluster }).(pulumi.BoolPtrOutput)
 }
 
 type NamespaceArrayOutput struct{ *pulumi.OutputState }

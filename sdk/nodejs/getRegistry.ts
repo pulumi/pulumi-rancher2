@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -18,31 +19,26 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * // Retrieve a rancher2 Project Registry
- * const foo = pulumi.output(rancher2.getRegistry({
+ * const foo = rancher2.getRegistry({
  *     name: "<name>",
  *     projectId: "<project_id>",
- * }));
+ * });
  * ```
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * // Retrieve a rancher2 Namespaced Registry
- * const foo = pulumi.output(rancher2.getRegistry({
+ * const foo = rancher2.getRegistry({
  *     name: "<name>",
  *     namespaceId: "<namespace_id>",
  *     projectId: "<project_id>",
- * }));
+ * });
  * ```
  */
 export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getRegistry:getRegistry", {
         "name": args.name,
         "namespaceId": args.namespaceId,
@@ -96,9 +92,38 @@ export interface GetRegistryResult {
      */
     readonly registries: outputs.GetRegistryRegistry[];
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 docker registry.
+ *
+ * Depending of the availability, there are 2 types of Rancher v2 docker registries:
+ * - Project registry: Available to all namespaces in the `projectId`
+ * - Namespaced registry: Available to just `namespaceId` in the `projectId`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getRegistry({
+ *     name: "<name>",
+ *     projectId: "<project_id>",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getRegistry({
+ *     name: "<name>",
+ *     namespaceId: "<namespace_id>",
+ *     projectId: "<project_id>",
+ * });
+ * ```
+ */
 export function getRegistryOutput(args: GetRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryResult> {
-    return pulumi.output(args).apply(a => getRegistry(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegistry(a, opts))
 }
 
 /**

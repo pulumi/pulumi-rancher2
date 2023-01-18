@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class RegistryRegistryGetArgs : Pulumi.ResourceArgs
+    public sealed class RegistryRegistryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Address for registry.
@@ -18,11 +18,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password for the registry (string)
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Username for the registry (string)
@@ -33,5 +43,6 @@ namespace Pulumi.Rancher2.Inputs
         public RegistryRegistryGetArgs()
         {
         }
+        public static new RegistryRegistryGetArgs Empty => new RegistryRegistryGetArgs();
     }
 }

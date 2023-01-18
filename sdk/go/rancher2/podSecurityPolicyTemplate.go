@@ -28,28 +28,28 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewPodSecurityPolicyTemplate(ctx, "foo", &rancher2.PodSecurityPolicyTemplateArgs{
 //				AllowPrivilegeEscalation: pulumi.Bool(false),
-//				AllowedCsiDrivers: PodSecurityPolicyTemplateAllowedCsiDriverArray{
-//					&PodSecurityPolicyTemplateAllowedCsiDriverArgs{
+//				AllowedCsiDrivers: rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArray{
+//					&rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs{
 //						Name: pulumi.String("something"),
 //					},
-//					&PodSecurityPolicyTemplateAllowedCsiDriverArgs{
+//					&rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs{
 //						Name: pulumi.String("something-else"),
 //					},
 //				},
-//				AllowedFlexVolumes: PodSecurityPolicyTemplateAllowedFlexVolumeArray{
-//					&PodSecurityPolicyTemplateAllowedFlexVolumeArgs{
+//				AllowedFlexVolumes: rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArray{
+//					&rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs{
 //						Driver: pulumi.String("something"),
 //					},
-//					&PodSecurityPolicyTemplateAllowedFlexVolumeArgs{
+//					&rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs{
 //						Driver: pulumi.String("something-else"),
 //					},
 //				},
-//				AllowedHostPaths: PodSecurityPolicyTemplateAllowedHostPathArray{
-//					&PodSecurityPolicyTemplateAllowedHostPathArgs{
+//				AllowedHostPaths: rancher2.PodSecurityPolicyTemplateAllowedHostPathArray{
+//					&rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs{
 //						PathPrefix: pulumi.String("/"),
 //						ReadOnly:   pulumi.Bool(true),
 //					},
-//					&PodSecurityPolicyTemplateAllowedHostPathArgs{
+//					&rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs{
 //						PathPrefix: pulumi.String("//"),
 //						ReadOnly:   pulumi.Bool(false),
 //					},
@@ -59,13 +59,13 @@ import (
 //				},
 //				DefaultAllowPrivilegeEscalation: pulumi.Bool(false),
 //				Description:                     pulumi.String("Terraform PodSecurityPolicyTemplate acceptance test - update"),
-//				FsGroup: &PodSecurityPolicyTemplateFsGroupArgs{
-//					Ranges: PodSecurityPolicyTemplateFsGroupRangeArray{
-//						&PodSecurityPolicyTemplateFsGroupRangeArgs{
+//				FsGroup: &rancher2.PodSecurityPolicyTemplateFsGroupArgs{
+//					Ranges: rancher2.PodSecurityPolicyTemplateFsGroupRangeArray{
+//						&rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs{
 //							Max: pulumi.Int(100),
 //							Min: pulumi.Int(0),
 //						},
-//						&PodSecurityPolicyTemplateFsGroupRangeArgs{
+//						&rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs{
 //							Max: pulumi.Int(100),
 //							Min: pulumi.Int(0),
 //						},
@@ -75,12 +75,12 @@ import (
 //				HostIpc:     pulumi.Bool(false),
 //				HostNetwork: pulumi.Bool(false),
 //				HostPid:     pulumi.Bool(false),
-//				HostPorts: PodSecurityPolicyTemplateHostPortArray{
-//					&PodSecurityPolicyTemplateHostPortArgs{
+//				HostPorts: rancher2.PodSecurityPolicyTemplateHostPortArray{
+//					&rancher2.PodSecurityPolicyTemplateHostPortArgs{
 //						Max: pulumi.Int(65535),
 //						Min: pulumi.Int(0),
 //					},
-//					&PodSecurityPolicyTemplateHostPortArgs{
+//					&rancher2.PodSecurityPolicyTemplateHostPortArgs{
 //						Max: pulumi.Int(8080),
 //						Min: pulumi.Int(1024),
 //					},
@@ -90,42 +90,42 @@ import (
 //				RequiredDropCapabilities: pulumi.StringArray{
 //					pulumi.String("something"),
 //				},
-//				RunAsGroup: &PodSecurityPolicyTemplateRunAsGroupArgs{
-//					Ranges: PodSecurityPolicyTemplateRunAsGroupRangeArray{
-//						&PodSecurityPolicyTemplateRunAsGroupRangeArgs{
+//				RunAsGroup: &rancher2.PodSecurityPolicyTemplateRunAsGroupArgs{
+//					Ranges: rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArray{
+//						&rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs{
 //							Max: pulumi.Int(100),
 //							Min: pulumi.Int(1),
 //						},
-//						&PodSecurityPolicyTemplateRunAsGroupRangeArgs{
+//						&rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs{
 //							Max: pulumi.Int(1024),
 //							Min: pulumi.Int(2),
 //						},
 //					},
 //					Rule: pulumi.String("MustRunAs"),
 //				},
-//				RunAsUser: &PodSecurityPolicyTemplateRunAsUserArgs{
-//					Ranges: PodSecurityPolicyTemplateRunAsUserRangeArray{
-//						&PodSecurityPolicyTemplateRunAsUserRangeArgs{
+//				RunAsUser: &rancher2.PodSecurityPolicyTemplateRunAsUserArgs{
+//					Ranges: rancher2.PodSecurityPolicyTemplateRunAsUserRangeArray{
+//						&rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs{
 //							Max: pulumi.Int(100),
 //							Min: pulumi.Int(1),
 //						},
-//						&PodSecurityPolicyTemplateRunAsUserRangeArgs{
+//						&rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs{
 //							Max: pulumi.Int(1024),
 //							Min: pulumi.Int(2),
 //						},
 //					},
 //					Rule: pulumi.String("MustRunAs"),
 //				},
-//				RuntimeClass: &PodSecurityPolicyTemplateRuntimeClassArgs{
+//				RuntimeClass: &rancher2.PodSecurityPolicyTemplateRuntimeClassArgs{
 //					AllowedRuntimeClassNames: pulumi.StringArray{
 //						pulumi.String("something"),
 //					},
 //					DefaultRuntimeClassName: pulumi.String("something"),
 //				},
-//				SeLinux: &PodSecurityPolicyTemplateSeLinuxArgs{
+//				SeLinux: &rancher2.PodSecurityPolicyTemplateSeLinuxArgs{
 //					Rule: pulumi.String("RunAsAny"),
 //				},
-//				SupplementalGroup: &PodSecurityPolicyTemplateSupplementalGroupArgs{
+//				SupplementalGroup: &rancher2.PodSecurityPolicyTemplateSupplementalGroupArgs{
 //					Rule: pulumi.String("RunAsAny"),
 //				},
 //				Volumes: pulumi.StringArray{
@@ -565,6 +565,156 @@ func (o PodSecurityPolicyTemplateOutput) ToPodSecurityPolicyTemplateOutput() Pod
 
 func (o PodSecurityPolicyTemplateOutput) ToPodSecurityPolicyTemplateOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateOutput {
 	return o
+}
+
+// = (Optional)
+func (o PodSecurityPolicyTemplateOutput) AllowPrivilegeEscalation() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.BoolOutput { return v.AllowPrivilegeEscalation }).(pulumi.BoolOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateOutput) AllowedCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.StringArrayOutput { return v.AllowedCapabilities }).(pulumi.StringArrayOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateOutput) AllowedCsiDrivers() PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+		return v.AllowedCsiDrivers
+	}).(PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateOutput) AllowedFlexVolumes() PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+		return v.AllowedFlexVolumes
+	}).(PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateOutput) AllowedHostPaths() PodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) PodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+		return v.AllowedHostPaths
+	}).(PodSecurityPolicyTemplateAllowedHostPathArrayOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateOutput) AllowedProcMountTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.StringArrayOutput { return v.AllowedProcMountTypes }).(pulumi.StringArrayOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.StringArrayOutput { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
+}
+
+// Annotations for PodSecurityPolicyTemplate object (map)
+func (o PodSecurityPolicyTemplateOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateOutput) DefaultAddCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.StringArrayOutput { return v.DefaultAddCapabilities }).(pulumi.StringArrayOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateOutput) DefaultAllowPrivilegeEscalation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.BoolPtrOutput { return v.DefaultAllowPrivilegeEscalation }).(pulumi.BoolPtrOutput)
+}
+
+// The PodSecurityPolicyTemplate description (string)
+func (o PodSecurityPolicyTemplateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateOutput) ForbiddenSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.StringArrayOutput { return v.ForbiddenSysctls }).(pulumi.StringArrayOutput)
+}
+
+// (list maxitems:1)
+func (o PodSecurityPolicyTemplateOutput) FsGroup() PodSecurityPolicyTemplateFsGroupOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) PodSecurityPolicyTemplateFsGroupOutput { return v.FsGroup }).(PodSecurityPolicyTemplateFsGroupOutput)
+}
+
+// (bool)
+func (o PodSecurityPolicyTemplateOutput) HostIpc() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.BoolOutput { return v.HostIpc }).(pulumi.BoolOutput)
+}
+
+// hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
+func (o PodSecurityPolicyTemplateOutput) HostNetwork() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.BoolOutput { return v.HostNetwork }).(pulumi.BoolOutput)
+}
+
+// (bool)
+func (o PodSecurityPolicyTemplateOutput) HostPid() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.BoolOutput { return v.HostPid }).(pulumi.BoolOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateOutput) HostPorts() PodSecurityPolicyTemplateHostPortArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) PodSecurityPolicyTemplateHostPortArrayOutput { return v.HostPorts }).(PodSecurityPolicyTemplateHostPortArrayOutput)
+}
+
+// Labels for PodSecurityPolicyTemplate object (map)
+func (o PodSecurityPolicyTemplateOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the PodSecurityPolicyTemplate (string)
+func (o PodSecurityPolicyTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// (bool)
+func (o PodSecurityPolicyTemplateOutput) Privileged() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.BoolOutput { return v.Privileged }).(pulumi.BoolOutput)
+}
+
+// (bool)
+func (o PodSecurityPolicyTemplateOutput) ReadOnlyRootFilesystem() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.BoolOutput { return v.ReadOnlyRootFilesystem }).(pulumi.BoolOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateOutput) RequiredDropCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.StringArrayOutput { return v.RequiredDropCapabilities }).(pulumi.StringArrayOutput)
+}
+
+// (list maxitems:1)
+func (o PodSecurityPolicyTemplateOutput) RunAsGroup() PodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) PodSecurityPolicyTemplateRunAsGroupPtrOutput { return v.RunAsGroup }).(PodSecurityPolicyTemplateRunAsGroupPtrOutput)
+}
+
+// (list maxitems:1)
+func (o PodSecurityPolicyTemplateOutput) RunAsUser() PodSecurityPolicyTemplateRunAsUserOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) PodSecurityPolicyTemplateRunAsUserOutput { return v.RunAsUser }).(PodSecurityPolicyTemplateRunAsUserOutput)
+}
+
+// (list maxitems:1)
+func (o PodSecurityPolicyTemplateOutput) RuntimeClass() PodSecurityPolicyTemplateRuntimeClassPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) PodSecurityPolicyTemplateRuntimeClassPtrOutput {
+		return v.RuntimeClass
+	}).(PodSecurityPolicyTemplateRuntimeClassPtrOutput)
+}
+
+// (list maxitems:1)
+func (o PodSecurityPolicyTemplateOutput) SeLinux() PodSecurityPolicyTemplateSeLinuxOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) PodSecurityPolicyTemplateSeLinuxOutput { return v.SeLinux }).(PodSecurityPolicyTemplateSeLinuxOutput)
+}
+
+// (list maxitems:1)
+func (o PodSecurityPolicyTemplateOutput) SupplementalGroup() PodSecurityPolicyTemplateSupplementalGroupOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) PodSecurityPolicyTemplateSupplementalGroupOutput {
+		return v.SupplementalGroup
+	}).(PodSecurityPolicyTemplateSupplementalGroupOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateOutput) Volumes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.StringArrayOutput { return v.Volumes }).(pulumi.StringArrayOutput)
 }
 
 type PodSecurityPolicyTemplateArrayOutput struct{ *pulumi.OutputState }

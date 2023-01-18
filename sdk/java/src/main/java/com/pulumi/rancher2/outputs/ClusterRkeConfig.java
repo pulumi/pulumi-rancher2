@@ -57,7 +57,7 @@ public final class ClusterRkeConfig {
      */
     private @Nullable ClusterRkeConfigBastionHost bastionHost;
     /**
-     * @return RKE options for Calico network provider (string)
+     * @return RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
      * 
      */
     private @Nullable ClusterRkeConfigCloudProvider cloudProvider;
@@ -82,17 +82,17 @@ public final class ClusterRkeConfig {
      */
     private @Nullable ClusterRkeConfigIngress ingress;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
      * 
      */
     private @Nullable String kubernetesVersion;
     /**
-     * @return Is AKS cluster monitoring enabled? (bool)
+     * @return Kubernetes cluster monitoring (list maxitems:1)
      * 
      */
     private @Nullable ClusterRkeConfigMonitoring monitoring;
     /**
-     * @return The GKE cluster network. Required for create new cluster (string)
+     * @return Kubernetes cluster networking (list maxitems:1)
      * 
      */
     private @Nullable ClusterRkeConfigNetwork network;
@@ -117,7 +117,7 @@ public final class ClusterRkeConfig {
      */
     private @Nullable ClusterRkeConfigServices services;
     /**
-     * @return Use ssh agent auth. Default `false` (bool)
+     * @return Use ssh agent auth. Default `false`
      * 
      */
     private @Nullable Boolean sshAgentAuth;
@@ -127,12 +127,12 @@ public final class ClusterRkeConfig {
      */
     private @Nullable String sshCertPath;
     /**
-     * @return Node SSH private key path (string)
+     * @return Cluster level SSH private key path (string)
      * 
      */
     private @Nullable String sshKeyPath;
     /**
-     * @return K3S upgrade strategy (List maxitems: 1)
+     * @return RKE upgrade strategy (list maxitems:1)
      * 
      */
     private @Nullable ClusterRkeConfigUpgradeStrategy upgradeStrategy;
@@ -186,7 +186,7 @@ public final class ClusterRkeConfig {
         return Optional.ofNullable(this.bastionHost);
     }
     /**
-     * @return RKE options for Calico network provider (string)
+     * @return RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
      * 
      */
     public Optional<ClusterRkeConfigCloudProvider> cloudProvider() {
@@ -221,21 +221,21 @@ public final class ClusterRkeConfig {
         return Optional.ofNullable(this.ingress);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
      * 
      */
     public Optional<String> kubernetesVersion() {
         return Optional.ofNullable(this.kubernetesVersion);
     }
     /**
-     * @return Is AKS cluster monitoring enabled? (bool)
+     * @return Kubernetes cluster monitoring (list maxitems:1)
      * 
      */
     public Optional<ClusterRkeConfigMonitoring> monitoring() {
         return Optional.ofNullable(this.monitoring);
     }
     /**
-     * @return The GKE cluster network. Required for create new cluster (string)
+     * @return Kubernetes cluster networking (list maxitems:1)
      * 
      */
     public Optional<ClusterRkeConfigNetwork> network() {
@@ -270,7 +270,7 @@ public final class ClusterRkeConfig {
         return Optional.ofNullable(this.services);
     }
     /**
-     * @return Use ssh agent auth. Default `false` (bool)
+     * @return Use ssh agent auth. Default `false`
      * 
      */
     public Optional<Boolean> sshAgentAuth() {
@@ -284,14 +284,14 @@ public final class ClusterRkeConfig {
         return Optional.ofNullable(this.sshCertPath);
     }
     /**
-     * @return Node SSH private key path (string)
+     * @return Cluster level SSH private key path (string)
      * 
      */
     public Optional<String> sshKeyPath() {
         return Optional.ofNullable(this.sshKeyPath);
     }
     /**
-     * @return K3S upgrade strategy (List maxitems: 1)
+     * @return RKE upgrade strategy (list maxitems:1)
      * 
      */
     public Optional<ClusterRkeConfigUpgradeStrategy> upgradeStrategy() {

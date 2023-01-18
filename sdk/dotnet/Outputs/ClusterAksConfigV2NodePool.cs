@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AvailabilityZones;
         /// <summary>
-        /// The AKS node pool count. Default: `1` (int)
+        /// Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
         /// </summary>
         public readonly int? Count;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? MaxCount;
         /// <summary>
-        /// The AKS node pool max pods. Default: `110` (int)
+        /// Maximum number of pods that can run on a node. Default `110` (int)
         /// </summary>
         public readonly int? MaxPods;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? MinCount;
         /// <summary>
-        /// The AKS node group mode. Default: `System` (string)
+        /// RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         public readonly string Name;
         /// <summary>

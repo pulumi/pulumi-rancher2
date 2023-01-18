@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupRegistry(ctx, &GetRegistryArgs{
+//			_, err := rancher2.LookupRegistry(ctx, &rancher2.LookupRegistryArgs{
 //				Name:      "<name>",
 //				ProjectId: "<project_id>",
 //			}, nil)
@@ -55,7 +55,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupRegistry(ctx, &GetRegistryArgs{
+//			_, err := rancher2.LookupRegistry(ctx, &rancher2.LookupRegistryArgs{
 //				Name:        "<name>",
 //				NamespaceId: pulumi.StringRef("<namespace_id>"),
 //				ProjectId:   "<project_id>",

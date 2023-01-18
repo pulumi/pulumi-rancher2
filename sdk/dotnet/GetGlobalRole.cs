@@ -19,26 +19,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetGlobalRole.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetGlobalRole.InvokeAsync(new Rancher2.GetGlobalRoleArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGlobalRoleResult> InvokeAsync(GetGlobalRoleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalRoleResult>("rancher2:index/getGlobalRole:getGlobalRole", args ?? new GetGlobalRoleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalRoleResult>("rancher2:index/getGlobalRole:getGlobalRole", args ?? new GetGlobalRoleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 global role resource.
@@ -48,30 +46,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetGlobalRole.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetGlobalRole.InvokeAsync(new Rancher2.GetGlobalRoleArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGlobalRoleResult> Invoke(GetGlobalRoleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlobalRoleResult>("rancher2:index/getGlobalRole:getGlobalRole", args ?? new GetGlobalRoleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlobalRoleResult>("rancher2:index/getGlobalRole:getGlobalRole", args ?? new GetGlobalRoleInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGlobalRoleArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalRoleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Global Role (string)
@@ -82,9 +78,10 @@ namespace Pulumi.Rancher2
         public GetGlobalRoleArgs()
         {
         }
+        public static new GetGlobalRoleArgs Empty => new GetGlobalRoleArgs();
     }
 
-    public sealed class GetGlobalRoleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Global Role (string)
@@ -95,6 +92,7 @@ namespace Pulumi.Rancher2
         public GetGlobalRoleInvokeArgs()
         {
         }
+        public static new GetGlobalRoleInvokeArgs Empty => new GetGlobalRoleInvokeArgs();
     }
 
 

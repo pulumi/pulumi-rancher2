@@ -283,6 +283,51 @@ func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingOutputWith
 	return o
 }
 
+// Annotations for cluster role template binding (map)
+func (o ClusterRoleTemplateBindingOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterRoleTemplateBinding) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The cluster id where bind cluster role template binding (string)
+func (o ClusterRoleTemplateBindingOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterRoleTemplateBinding) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The group ID to assign cluster role template binding (string)
+func (o ClusterRoleTemplateBindingOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterRoleTemplateBinding) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The groupPrincipal ID to assign cluster role template binding (string)
+func (o ClusterRoleTemplateBindingOutput) GroupPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterRoleTemplateBinding) pulumi.StringOutput { return v.GroupPrincipalId }).(pulumi.StringOutput)
+}
+
+// Labels for cluster role template binding (map)
+func (o ClusterRoleTemplateBindingOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterRoleTemplateBinding) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the cluster role template binding (string)
+func (o ClusterRoleTemplateBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterRoleTemplateBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The role template id from create cluster role template binding (string)
+func (o ClusterRoleTemplateBindingOutput) RoleTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterRoleTemplateBinding) pulumi.StringOutput { return v.RoleTemplateId }).(pulumi.StringOutput)
+}
+
+// The user ID to assign cluster role template binding (string)
+func (o ClusterRoleTemplateBindingOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterRoleTemplateBinding) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The userPrincipal ID to assign cluster role template binding (string)
+func (o ClusterRoleTemplateBindingOutput) UserPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterRoleTemplateBinding) pulumi.StringOutput { return v.UserPrincipalId }).(pulumi.StringOutput)
+}
+
 type ClusterRoleTemplateBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterRoleTemplateBindingArrayOutput) ElementType() reflect.Type {

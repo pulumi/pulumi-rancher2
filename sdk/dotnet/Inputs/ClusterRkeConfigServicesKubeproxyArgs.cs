@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesKubeproxyArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesKubeproxyArgs : global::Pulumi.ResourceArgs
     {
         [Input("extraArgs")]
         private InputMap<object>? _extraArgs;
 
         /// <summary>
-        /// Extra arguments for scheduler service (map)
+        /// Extra arguments for RKE Ingress (map)
         /// </summary>
         public InputMap<object> ExtraArgs
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _extraBinds;
 
         /// <summary>
-        /// Extra binds for scheduler service (list)
+        /// Extra binds for etcd service (list)
         /// </summary>
         public InputList<string> ExtraBinds
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _extraEnvs;
 
         /// <summary>
-        /// Extra environment for scheduler service (list)
+        /// Extra environment for etcd service (list)
         /// </summary>
         public InputList<string> ExtraEnvs
         {
@@ -49,7 +49,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Docker image for scheduler service (string)
+        /// Docker image for etcd service (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -57,5 +57,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesKubeproxyArgs()
         {
         }
+        public static new ClusterRkeConfigServicesKubeproxyArgs Empty => new ClusterRkeConfigServicesKubeproxyArgs();
     }
 }

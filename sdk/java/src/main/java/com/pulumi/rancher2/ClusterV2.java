@@ -23,9 +23,43 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is supported as tech preview from Rancher v2.6.0 and above.
+ * Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is available from Rancher v2.6.0 and above.
  * 
  * ## Example Usage
+ * ### Creating Rancher v2 custom cluster v2
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.ClusterV2;
+ * import com.pulumi.rancher2.ClusterV2Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new ClusterV2(&#34;foo&#34;, ClusterV2Args.builder()        
+ *             .defaultClusterRoleForProjectMembers(&#34;user&#34;)
+ *             .enableNetworkPolicy(false)
+ *             .fleetNamespace(&#34;fleet-ns&#34;)
+ *             .kubernetesVersion(&#34;v1.21.4+k3s1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * **Note** Once created, get the node command from `rancher2_cluster_v2.foo.cluster_registration_token`
  * 
  * ## Import
  * 
@@ -53,14 +87,14 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.agentEnvVars);
     }
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster V2 (map)
      * 
      */
     @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> annotations;
 
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster V2 (map)
      * 
      */
     public Output<Map<String,Object>> annotations() {
@@ -193,42 +227,42 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return this.kubernetesVersion;
     }
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster V2 (map)
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster V2 (map)
      * 
      */
     public Output<Map<String,Object>> labels() {
         return this.labels;
     }
     /**
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * Cluster V2 local auth endpoint (list maxitems:1)
      * 
      */
     @Export(name="localAuthEndpoint", type=ClusterV2LocalAuthEndpoint.class, parameters={})
     private Output</* @Nullable */ ClusterV2LocalAuthEndpoint> localAuthEndpoint;
 
     /**
-     * @return Use rancher2_cluster_v2.local_auth_endpoint instead
+     * @return Cluster V2 local auth endpoint (list maxitems:1)
      * 
      */
     public Output<Optional<ClusterV2LocalAuthEndpoint>> localAuthEndpoint() {
         return Codegen.optional(this.localAuthEndpoint);
     }
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster v2 (string)
      * 
      */
     public Output<String> name() {
@@ -295,6 +329,10 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "clusterRegistrationToken",
+                "kubeConfig"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

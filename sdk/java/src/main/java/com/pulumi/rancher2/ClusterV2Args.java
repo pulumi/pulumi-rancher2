@@ -38,14 +38,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster V2 (map)
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,Object>> annotations;
 
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster V2 (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> annotations() {
@@ -143,14 +143,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster V2 (map)
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster V2 (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -158,14 +158,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * Cluster V2 local auth endpoint (list maxitems:1)
      * 
      */
     @Import(name="localAuthEndpoint")
     private @Nullable Output<ClusterV2LocalAuthEndpointArgs> localAuthEndpoint;
 
     /**
-     * @return Use rancher2_cluster_v2.local_auth_endpoint instead
+     * @return Cluster V2 local auth endpoint (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterV2LocalAuthEndpointArgs>> localAuthEndpoint() {
@@ -173,14 +173,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster v2 (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -269,7 +269,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations for cluster registration token object (map)
+         * @param annotations Annotations for the Cluster V2 (map)
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations for cluster registration token object (map)
+         * @param annotations Annotations for the Cluster V2 (map)
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster V2 (map)
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster V2 (map)
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localAuthEndpoint Use rancher2_cluster_v2.local_auth_endpoint instead
+         * @param localAuthEndpoint Cluster V2 local auth endpoint (list maxitems:1)
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localAuthEndpoint Use rancher2_cluster_v2.local_auth_endpoint instead
+         * @param localAuthEndpoint Cluster V2 local auth endpoint (list maxitems:1)
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster v2 (string)
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster v2 (string)
          * 
          * @return builder
          * 

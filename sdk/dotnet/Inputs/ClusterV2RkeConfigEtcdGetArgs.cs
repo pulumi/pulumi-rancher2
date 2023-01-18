@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigEtcdGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigEtcdGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Disable ETCD snapshots. Default: `false` (bool)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigEtcdGetArgs()
         {
         }
+        public static new ClusterV2RkeConfigEtcdGetArgs Empty => new ClusterV2RkeConfigEtcdGetArgs();
     }
 }

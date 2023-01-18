@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,18 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getClusterV2({
+ * const foo = rancher2.getClusterV2({
  *     fleetNamespace: "fleet-ns",
  *     name: "foo",
- * }));
+ * });
  * ```
  */
 export function getClusterV2(args: GetClusterV2Args, opts?: pulumi.InvokeOptions): Promise<GetClusterV2Result> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getClusterV2:getClusterV2", {
         "fleetNamespace": args.fleetNamespace,
         "name": args.name,
@@ -103,9 +101,23 @@ export interface GetClusterV2Result {
      */
     readonly rkeConfig: outputs.GetClusterV2RkeConfig;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterV2({
+ *     fleetNamespace: "fleet-ns",
+ *     name: "foo",
+ * });
+ * ```
+ */
 export function getClusterV2Output(args: GetClusterV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterV2Result> {
-    return pulumi.output(args).apply(a => getClusterV2(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusterV2(a, opts))
 }
 
 /**

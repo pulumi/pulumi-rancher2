@@ -31,14 +31,14 @@ public final class NamespaceResourceQuotaLimitArgs extends com.pulumi.resources.
     }
 
     /**
-     * Limit for limits cpu in namespace (string)
+     * CPU limit for containers (string)
      * 
      */
     @Import(name="limitsCpu")
     private @Nullable Output<String> limitsCpu;
 
     /**
-     * @return Limit for limits cpu in namespace (string)
+     * @return CPU limit for containers (string)
      * 
      */
     public Optional<Output<String>> limitsCpu() {
@@ -46,14 +46,14 @@ public final class NamespaceResourceQuotaLimitArgs extends com.pulumi.resources.
     }
 
     /**
-     * Limit for limits memory in namespace (string)
+     * Memory limit for containers (string)
      * 
      */
     @Import(name="limitsMemory")
     private @Nullable Output<String> limitsMemory;
 
     /**
-     * @return Limit for limits memory in namespace (string)
+     * @return Memory limit for containers (string)
      * 
      */
     public Optional<Output<String>> limitsMemory() {
@@ -106,14 +106,14 @@ public final class NamespaceResourceQuotaLimitArgs extends com.pulumi.resources.
     }
 
     /**
-     * Limit for requests cpu in namespace (string)
+     * CPU reservation for containers (string)
      * 
      */
     @Import(name="requestsCpu")
     private @Nullable Output<String> requestsCpu;
 
     /**
-     * @return Limit for requests cpu in namespace (string)
+     * @return CPU reservation for containers (string)
      * 
      */
     public Optional<Output<String>> requestsCpu() {
@@ -121,14 +121,14 @@ public final class NamespaceResourceQuotaLimitArgs extends com.pulumi.resources.
     }
 
     /**
-     * Limit for requests memory in namespace (string)
+     * Memory reservation for containers (string)
      * 
      */
     @Import(name="requestsMemory")
     private @Nullable Output<String> requestsMemory;
 
     /**
-     * @return Limit for requests memory in namespace (string)
+     * @return Memory reservation for containers (string)
      * 
      */
     public Optional<Output<String>> requestsMemory() {
@@ -260,7 +260,7 @@ public final class NamespaceResourceQuotaLimitArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param limitsCpu Limit for limits cpu in namespace (string)
+         * @param limitsCpu CPU limit for containers (string)
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class NamespaceResourceQuotaLimitArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param limitsCpu Limit for limits cpu in namespace (string)
+         * @param limitsCpu CPU limit for containers (string)
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class NamespaceResourceQuotaLimitArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param limitsMemory Limit for limits memory in namespace (string)
+         * @param limitsMemory Memory limit for containers (string)
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class NamespaceResourceQuotaLimitArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param limitsMemory Limit for limits memory in namespace (string)
+         * @param limitsMemory Memory limit for containers (string)
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class NamespaceResourceQuotaLimitArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param requestsCpu Limit for requests cpu in namespace (string)
+         * @param requestsCpu CPU reservation for containers (string)
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class NamespaceResourceQuotaLimitArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param requestsCpu Limit for requests cpu in namespace (string)
+         * @param requestsCpu CPU reservation for containers (string)
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class NamespaceResourceQuotaLimitArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param requestsMemory Limit for requests memory in namespace (string)
+         * @param requestsMemory Memory reservation for containers (string)
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class NamespaceResourceQuotaLimitArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param requestsMemory Limit for requests memory in namespace (string)
+         * @param requestsMemory Memory reservation for containers (string)
          * 
          * @return builder
          * 

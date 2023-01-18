@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterEksConfig
     {
         /// <summary>
-        /// The AWS Client ID to use (string)
+        /// Access key for S3 service (string)
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly int? DesiredNodes;
         public readonly bool? EbsEncryption;
         /// <summary>
-        /// The EKS node group instance type. Default: `t3.medium` (string)
+        /// The type of machine to use for worker nodes. Default `t2.medium` (string)
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
@@ -39,7 +39,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? KeyPairName;
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
         /// </summary>
         public readonly string KubernetesVersion;
         /// <summary>
@@ -55,19 +55,19 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? NodeVolumeSize;
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// The AWS Client Secret associated with the Client ID (string)
+        /// Secret key for S3 service (string)
         /// </summary>
         public readonly string SecretKey;
         /// <summary>
-        /// List of security groups to use for the cluster (list)
+        /// List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroups;
         /// <summary>
-        /// The AWS service role to use (string)
+        /// The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
         /// </summary>
         public readonly string? ServiceRole;
         /// <summary>
@@ -75,15 +75,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SessionToken;
         /// <summary>
-        /// The EKS node group subnets (list string)
+        /// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
-        /// The EKS node group user data (string)
+        /// Pass user-data to the nodes to perform automated configuration tasks (string)
         /// </summary>
         public readonly string? UserData;
         /// <summary>
-        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        /// The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
         /// </summary>
         public readonly string? VirtualNetwork;
 

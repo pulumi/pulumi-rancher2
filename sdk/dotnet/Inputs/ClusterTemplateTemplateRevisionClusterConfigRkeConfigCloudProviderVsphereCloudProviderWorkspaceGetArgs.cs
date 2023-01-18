@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("datacenter", required: true)]
         public Input<string> Datacenter { get; set; } = null!;
@@ -30,5 +30,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceGetArgs();
     }
 }

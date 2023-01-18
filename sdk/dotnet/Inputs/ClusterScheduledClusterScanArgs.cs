@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterScheduledClusterScanArgs : Pulumi.ResourceArgs
+    public sealed class ClusterScheduledClusterScanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// Enable etcd backup (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterScheduledClusterScanArgs()
         {
         }
+        public static new ClusterScheduledClusterScanArgs Empty => new ClusterScheduledClusterScanArgs();
     }
 }

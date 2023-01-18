@@ -21,7 +21,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/configMapV2:ConfigMapV2")]
-    public partial class ConfigMapV2 : Pulumi.CustomResource
+    public partial class ConfigMapV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for the configMap v2 (map)
@@ -115,7 +115,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ConfigMapV2Args : Pulumi.ResourceArgs
+    public sealed class ConfigMapV2Args : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -180,9 +180,10 @@ namespace Pulumi.Rancher2
         public ConfigMapV2Args()
         {
         }
+        public static new ConfigMapV2Args Empty => new ConfigMapV2Args();
     }
 
-    public sealed class ConfigMapV2State : Pulumi.ResourceArgs
+    public sealed class ConfigMapV2State : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -253,5 +254,6 @@ namespace Pulumi.Rancher2
         public ConfigMapV2State()
         {
         }
+        public static new ConfigMapV2State Empty => new ConfigMapV2State();
     }
 }

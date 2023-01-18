@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -266,6 +267,7 @@ import * as utilities from "./utilities";
  *   resources:
  *   - resources:
  *     - pods
+ *
  * `,
  *                     },
  *                     enabled: true,
@@ -274,7 +276,7 @@ import * as utilities from "./utilities";
  *         },
  *         upgradeStrategy: {
  *             drain: true,
- *             maxUnavailableWorker: "20%",
+ *             maxUnavailableWorker: `20%`,
  *         },
  *     },
  * });
@@ -415,7 +417,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * ### Creating AKS cluster from Rancher v2, using `aksConfigV2`. For Rancher v2.6.0 or above (Tech preview)
+ * ### Creating AKS cluster from Rancher v2, using `aksConfigV2`. For Rancher v2.6.0 or above.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -500,7 +502,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly aksConfigV2!: pulumi.Output<outputs.ClusterAksConfigV2 | undefined>;
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -544,7 +546,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly defaultProjectId!: pulumi.Output<string>;
     /**
-     * An optional description of this cluster (string)
+     * The description for Cluster (string)
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -614,11 +616,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly kubeConfig!: pulumi.Output<string>;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -741,6 +743,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["systemProjectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["caCert", "kubeConfig"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -762,7 +766,7 @@ export interface ClusterState {
      */
     aksConfigV2?: pulumi.Input<inputs.ClusterAksConfigV2>;
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster (map)
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -806,7 +810,7 @@ export interface ClusterState {
      */
     defaultProjectId?: pulumi.Input<string>;
     /**
-     * An optional description of this cluster (string)
+     * The description for Cluster (string)
      */
     description?: pulumi.Input<string>;
     /**
@@ -876,11 +880,11 @@ export interface ClusterState {
      */
     kubeConfig?: pulumi.Input<string>;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name?: pulumi.Input<string>;
     /**
@@ -926,7 +930,7 @@ export interface ClusterArgs {
      */
     aksConfigV2?: pulumi.Input<inputs.ClusterAksConfigV2>;
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster (map)
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -958,7 +962,7 @@ export interface ClusterArgs {
      */
     defaultPodSecurityPolicyTemplateId?: pulumi.Input<string>;
     /**
-     * An optional description of this cluster (string)
+     * The description for Cluster (string)
      */
     description?: pulumi.Input<string>;
     /**
@@ -1014,11 +1018,11 @@ export interface ClusterArgs {
      */
     k3sConfig?: pulumi.Input<inputs.ClusterK3sConfig>;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name?: pulumi.Input<string>;
     /**

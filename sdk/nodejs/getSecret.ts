@@ -17,31 +17,26 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * // Retrieve a rancher2 Project Secret
- * const foo = pulumi.output(rancher2.getSecret({
+ * const foo = rancher2.getSecret({
  *     name: "<name>",
  *     projectId: "<project_id>",
- * }));
+ * });
  * ```
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * // Retrieve a rancher2 Namespaced Secret
- * const foo = pulumi.output(rancher2.getSecret({
+ * const foo = rancher2.getSecret({
  *     name: "<name>",
  *     namespaceId: "<namespace_id>",
  *     projectId: "<project_id>",
- * }));
+ * });
  * ```
  */
 export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getSecret:getSecret", {
         "name": args.name,
         "namespaceId": args.namespaceId,
@@ -95,9 +90,38 @@ export interface GetSecretResult {
     readonly namespaceId?: string;
     readonly projectId: string;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 secret.
+ *
+ * Depending of the availability, there are 2 types of Rancher v2 secrets:
+ * - Project secret: Available to all namespaces in the `projectId`
+ * - Namespaced secret: Available to just `namespaceId` in the `projectId`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getSecret({
+ *     name: "<name>",
+ *     projectId: "<project_id>",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getSecret({
+ *     name: "<name>",
+ *     namespaceId: "<namespace_id>",
+ *     projectId: "<project_id>",
+ * });
+ * ```
+ */
 export function getSecretOutput(args: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
-    return pulumi.output(args).apply(a => getSecret(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecret(a, opts))
 }
 
 /**

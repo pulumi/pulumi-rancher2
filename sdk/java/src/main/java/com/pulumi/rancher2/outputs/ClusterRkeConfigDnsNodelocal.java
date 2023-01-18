@@ -19,7 +19,7 @@ public final class ClusterRkeConfigDnsNodelocal {
      */
     private @Nullable String ipAddress;
     /**
-     * @return RKE monitoring node selector (map)
+     * @return DNS add-on node selector (map)
      * 
      */
     private @Nullable Map<String,Object> nodeSelector;
@@ -33,7 +33,7 @@ public final class ClusterRkeConfigDnsNodelocal {
         return Optional.ofNullable(this.ipAddress);
     }
     /**
-     * @return RKE monitoring node selector (map)
+     * @return DNS add-on node selector (map)
      * 
      */
     public Map<String,Object> nodeSelector() {

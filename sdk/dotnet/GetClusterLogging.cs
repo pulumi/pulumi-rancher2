@@ -19,26 +19,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetClusterLogging.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterLogging.InvokeAsync(new Rancher2.GetClusterLoggingArgs
-        ///         {
-        ///             ClusterId = "&lt;cluster_id&gt;",
-        ///         }));
-        ///     }
+        ///         ClusterId = "&lt;cluster_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterLoggingResult> InvokeAsync(GetClusterLoggingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterLoggingResult>("rancher2:index/getClusterLogging:getClusterLogging", args ?? new GetClusterLoggingArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterLoggingResult>("rancher2:index/getClusterLogging:getClusterLogging", args ?? new GetClusterLoggingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Cluster Logging.
@@ -48,30 +46,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetClusterLogging.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterLogging.InvokeAsync(new Rancher2.GetClusterLoggingArgs
-        ///         {
-        ///             ClusterId = "&lt;cluster_id&gt;",
-        ///         }));
-        ///     }
+        ///         ClusterId = "&lt;cluster_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterLoggingResult> Invoke(GetClusterLoggingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterLoggingResult>("rancher2:index/getClusterLogging:getClusterLogging", args ?? new GetClusterLoggingInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterLoggingResult>("rancher2:index/getClusterLogging:getClusterLogging", args ?? new GetClusterLoggingInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClusterLoggingArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterLoggingArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id to configure logging (string)
@@ -82,9 +78,10 @@ namespace Pulumi.Rancher2
         public GetClusterLoggingArgs()
         {
         }
+        public static new GetClusterLoggingArgs Empty => new GetClusterLoggingArgs();
     }
 
-    public sealed class GetClusterLoggingInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterLoggingInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id to configure logging (string)
@@ -95,6 +92,7 @@ namespace Pulumi.Rancher2
         public GetClusterLoggingInvokeArgs()
         {
         }
+        public static new GetClusterLoggingInvokeArgs Empty => new GetClusterLoggingInvokeArgs();
     }
 
 

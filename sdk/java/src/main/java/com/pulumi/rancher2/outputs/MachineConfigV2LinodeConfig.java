@@ -23,17 +23,17 @@ public final class MachineConfigV2LinodeConfig {
      */
     private @Nullable Boolean createPrivateIp;
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Port number for Docker engine. Default `2376` (string)
      * 
      */
     private @Nullable String dockerPort;
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     private @Nullable String image;
     /**
-     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * @return AWS instance type. Default `t3a.medium` (string)
      * 
      */
     private @Nullable String instanceType;
@@ -43,7 +43,7 @@ public final class MachineConfigV2LinodeConfig {
      */
     private @Nullable String label;
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. (string)
      * 
      */
     private @Nullable String region;
@@ -53,12 +53,12 @@ public final class MachineConfigV2LinodeConfig {
      */
     private @Nullable String rootPass;
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * @return SSH port. Default `22` (string)
      * 
      */
     private @Nullable String sshPort;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     private @Nullable String sshUser;
@@ -78,7 +78,7 @@ public final class MachineConfigV2LinodeConfig {
      */
     private @Nullable String swapSize;
     /**
-     * @return vSphere tags id e.g. `urn:xxx` (list)
+     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
      * 
      */
     private @Nullable String tags;
@@ -109,21 +109,21 @@ public final class MachineConfigV2LinodeConfig {
         return Optional.ofNullable(this.createPrivateIp);
     }
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Port number for Docker engine. Default `2376` (string)
      * 
      */
     public Optional<String> dockerPort() {
         return Optional.ofNullable(this.dockerPort);
     }
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * @return AWS instance type. Default `t3a.medium` (string)
      * 
      */
     public Optional<String> instanceType() {
@@ -137,7 +137,7 @@ public final class MachineConfigV2LinodeConfig {
         return Optional.ofNullable(this.label);
     }
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. (string)
      * 
      */
     public Optional<String> region() {
@@ -151,14 +151,14 @@ public final class MachineConfigV2LinodeConfig {
         return Optional.ofNullable(this.rootPass);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * @return SSH port. Default `22` (string)
      * 
      */
     public Optional<String> sshPort() {
         return Optional.ofNullable(this.sshPort);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     public Optional<String> sshUser() {
@@ -186,7 +186,7 @@ public final class MachineConfigV2LinodeConfig {
         return Optional.ofNullable(this.swapSize);
     }
     /**
-     * @return vSphere tags id e.g. `urn:xxx` (list)
+     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
      * 
      */
     public Optional<String> tags() {

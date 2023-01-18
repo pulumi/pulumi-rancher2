@@ -19,14 +19,14 @@ public final class ClusterLoggingFluentdConfigArgs extends com.pulumi.resources.
     public static final ClusterLoggingFluentdConfigArgs Empty = new ClusterLoggingFluentdConfigArgs();
 
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -49,14 +49,14 @@ public final class ClusterLoggingFluentdConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Enable TLS for the syslog service. Default `false` (bool)
+     * Enable TLS for the fluentd service (bool)
      * 
      */
     @Import(name="enableTls")
     private @Nullable Output<Boolean> enableTls;
 
     /**
-     * @return Enable TLS for the syslog service. Default `false` (bool)
+     * @return Enable TLS for the fluentd service (bool)
      * 
      */
     public Optional<Output<Boolean>> enableTls() {
@@ -106,7 +106,7 @@ public final class ClusterLoggingFluentdConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param certificate SSL certificate for the syslog service (string)
+         * @param certificate SSL CA certificate for the custom target service (string)
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ClusterLoggingFluentdConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param certificate SSL certificate for the syslog service (string)
+         * @param certificate SSL CA certificate for the custom target service (string)
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class ClusterLoggingFluentdConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enableTls Enable TLS for the syslog service. Default `false` (bool)
+         * @param enableTls Enable TLS for the fluentd service (bool)
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class ClusterLoggingFluentdConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enableTls Enable TLS for the syslog service. Default `false` (bool)
+         * @param enableTls Enable TLS for the fluentd service (bool)
          * 
          * @return builder
          * 

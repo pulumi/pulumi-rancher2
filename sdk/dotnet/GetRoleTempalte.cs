@@ -20,26 +20,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetRoleTemplate.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetRoleTemplate.InvokeAsync(new Rancher2.GetRoleTemplateArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRoleTempalteResult> InvokeAsync(GetRoleTempalteArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleTempalteResult>("rancher2:index/getRoleTempalte:getRoleTempalte", args ?? new GetRoleTempalteArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoleTempalteResult>("rancher2:index/getRoleTempalte:getRoleTempalte", args ?? new GetRoleTempalteArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 role template resource.
@@ -49,30 +47,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetRoleTemplate.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetRoleTemplate.InvokeAsync(new Rancher2.GetRoleTemplateArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRoleTempalteResult> Invoke(GetRoleTempalteInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRoleTempalteResult>("rancher2:index/getRoleTempalte:getRoleTempalte", args ?? new GetRoleTempalteInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRoleTempalteResult>("rancher2:index/getRoleTempalte:getRoleTempalte", args ?? new GetRoleTempalteInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRoleTempalteArgs : Pulumi.InvokeArgs
+    public sealed class GetRoleTempalteArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Role template context. `cluster` and `project` values are supported (string)
@@ -89,9 +85,10 @@ namespace Pulumi.Rancher2
         public GetRoleTempalteArgs()
         {
         }
+        public static new GetRoleTempalteArgs Empty => new GetRoleTempalteArgs();
     }
 
-    public sealed class GetRoleTempalteInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRoleTempalteInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Role template context. `cluster` and `project` values are supported (string)
@@ -108,6 +105,7 @@ namespace Pulumi.Rancher2
         public GetRoleTempalteInvokeArgs()
         {
         }
+        public static new GetRoleTempalteInvokeArgs Empty => new GetRoleTempalteInvokeArgs();
     }
 
 

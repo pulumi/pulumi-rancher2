@@ -19,26 +19,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetNodeDriver.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetNodeDriver.InvokeAsync(new Rancher2.GetNodeDriverArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodeDriverResult> InvokeAsync(GetNodeDriverArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? new GetNodeDriverArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? new GetNodeDriverArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
@@ -48,30 +46,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetNodeDriver.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetNodeDriver.InvokeAsync(new Rancher2.GetNodeDriverArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNodeDriverResult> Invoke(GetNodeDriverInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? new GetNodeDriverInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? new GetNodeDriverInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNodeDriverArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeDriverArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of the node driver (string)
@@ -88,9 +84,10 @@ namespace Pulumi.Rancher2
         public GetNodeDriverArgs()
         {
         }
+        public static new GetNodeDriverArgs Empty => new GetNodeDriverArgs();
     }
 
-    public sealed class GetNodeDriverInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeDriverInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of the node driver (string)
@@ -107,6 +104,7 @@ namespace Pulumi.Rancher2
         public GetNodeDriverInvokeArgs()
         {
         }
+        public static new GetNodeDriverInvokeArgs Empty => new GetNodeDriverInvokeArgs();
     }
 
 

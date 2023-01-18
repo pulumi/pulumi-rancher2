@@ -20,14 +20,14 @@ public final class ClusterSyncState extends com.pulumi.resources.ResourceArgs {
     public static final ClusterSyncState Empty = new ClusterSyncState();
 
     /**
-     * The Cluster ID of the node (string).
+     * The cluster ID that is syncing (string)
      * 
      */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return The Cluster ID of the node (string).
+     * @return The cluster ID that is syncing (string)
      * 
      */
     public Optional<Output<String>> clusterId() {
@@ -211,7 +211,7 @@ public final class ClusterSyncState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId The Cluster ID of the node (string).
+         * @param clusterId The cluster ID that is syncing (string)
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class ClusterSyncState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId The Cluster ID of the node (string).
+         * @param clusterId The cluster ID that is syncing (string)
          * 
          * @return builder
          * 

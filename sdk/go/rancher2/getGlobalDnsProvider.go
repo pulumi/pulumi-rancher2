@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupGlobalDnsProvider(ctx, &GetGlobalDnsProviderArgs{
+//			_, err := rancher2.LookupGlobalDnsProvider(ctx, &rancher2.LookupGlobalDnsProviderArgs{
 //				Name: "foo",
 //			}, nil)
 //			if err != nil {

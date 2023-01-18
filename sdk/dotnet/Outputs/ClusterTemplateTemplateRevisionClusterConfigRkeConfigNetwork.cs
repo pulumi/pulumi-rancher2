@@ -13,6 +13,7 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork
     {
+        public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider? AciNetworkProvider;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider? CalicoNetworkProvider;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider? CanalNetworkProvider;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider? FlannelNetworkProvider;
@@ -24,6 +25,8 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork(
+            Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider? aciNetworkProvider,
+
             Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider? calicoNetworkProvider,
 
             Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider? canalNetworkProvider,
@@ -40,6 +43,7 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider? weaveNetworkProvider)
         {
+            AciNetworkProvider = aciNetworkProvider;
             CalicoNetworkProvider = calicoNetworkProvider;
             CanalNetworkProvider = canalNetworkProvider;
             FlannelNetworkProvider = flannelNetworkProvider;

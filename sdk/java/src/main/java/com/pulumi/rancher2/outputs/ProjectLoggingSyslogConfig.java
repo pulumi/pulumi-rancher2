@@ -13,17 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectLoggingSyslogConfig {
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     private @Nullable String certificate;
     /**
-     * @return SSL client certificate for the syslog service (string)
+     * @return SSL client certificate for the custom target service (string)
      * 
      */
     private @Nullable String clientCert;
     /**
-     * @return SSL client key for the syslog service (string)
+     * @return SSL client key for the custom target service (string)
      * 
      */
     private @Nullable String clientKey;
@@ -33,7 +33,7 @@ public final class ProjectLoggingSyslogConfig {
      */
     private @Nullable Boolean enableTls;
     /**
-     * @return Endpoint of the syslog service (string)
+     * @return Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      * 
      */
     private String endpoint;
@@ -53,33 +53,33 @@ public final class ProjectLoggingSyslogConfig {
      */
     private @Nullable String severity;
     /**
-     * @return SSL verify for the syslog service (bool)
+     * @return SSL verify for the elascticsearch service (bool)
      * 
      */
     private @Nullable Boolean sslVerify;
     /**
-     * @return Token for the syslog service (string)
+     * @return Token for the splunk service (string)
      * 
      */
     private @Nullable String token;
 
     private ProjectLoggingSyslogConfig() {}
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     public Optional<String> certificate() {
         return Optional.ofNullable(this.certificate);
     }
     /**
-     * @return SSL client certificate for the syslog service (string)
+     * @return SSL client certificate for the custom target service (string)
      * 
      */
     public Optional<String> clientCert() {
         return Optional.ofNullable(this.clientCert);
     }
     /**
-     * @return SSL client key for the syslog service (string)
+     * @return SSL client key for the custom target service (string)
      * 
      */
     public Optional<String> clientKey() {
@@ -93,7 +93,7 @@ public final class ProjectLoggingSyslogConfig {
         return Optional.ofNullable(this.enableTls);
     }
     /**
-     * @return Endpoint of the syslog service (string)
+     * @return Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      * 
      */
     public String endpoint() {
@@ -121,14 +121,14 @@ public final class ProjectLoggingSyslogConfig {
         return Optional.ofNullable(this.severity);
     }
     /**
-     * @return SSL verify for the syslog service (bool)
+     * @return SSL verify for the elascticsearch service (bool)
      * 
      */
     public Optional<Boolean> sslVerify() {
         return Optional.ofNullable(this.sslVerify);
     }
     /**
-     * @return Token for the syslog service (string)
+     * @return Token for the splunk service (string)
      * 
      */
     public Optional<String> token() {

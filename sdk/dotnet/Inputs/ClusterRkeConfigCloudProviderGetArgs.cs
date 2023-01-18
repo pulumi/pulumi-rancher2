@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigCloudProviderGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigCloudProviderGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? CustomCloudProvider { get; set; }
 
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -51,5 +51,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigCloudProviderGetArgs()
         {
         }
+        public static new ClusterRkeConfigCloudProviderGetArgs Empty => new ClusterRkeConfigCloudProviderGetArgs();
     }
 }

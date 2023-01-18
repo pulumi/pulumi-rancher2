@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (string)
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageGetArgs()
         {
         }
+        public static new ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageGetArgs Empty => new ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageGetArgs();
     }
 }

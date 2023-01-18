@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GlobalDnsProviderRoute53ConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class GlobalDnsProviderRoute53ConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AWS Access key (string)
+        /// The AliDNS Access key (string)
         /// </summary>
         [Input("accessKey", required: true)]
         public Input<string> AccessKey { get; set; } = null!;
@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// The AWS Secret key (string)
+        /// The AliDNS Secret key (string)
         /// </summary>
         [Input("secretKey", required: true)]
         public Input<string> SecretKey { get; set; } = null!;
@@ -51,5 +51,6 @@ namespace Pulumi.Rancher2.Inputs
         public GlobalDnsProviderRoute53ConfigGetArgs()
         {
         }
+        public static new GlobalDnsProviderRoute53ConfigGetArgs Empty => new GlobalDnsProviderRoute53ConfigGetArgs();
     }
 }

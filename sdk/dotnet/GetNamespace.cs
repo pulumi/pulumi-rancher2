@@ -19,27 +19,25 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetNamespace.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetNamespace.InvokeAsync(new Rancher2.GetNamespaceArgs
-        ///         {
-        ///             Name = "foo",
-        ///             ProjectId = rancher2_cluster.Foo_custom.Default_project_id,
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///         ProjectId = rancher2_cluster.Foo_custom.Default_project_id,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNamespaceResult> InvokeAsync(GetNamespaceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceResult>("rancher2:index/getNamespace:getNamespace", args ?? new GetNamespaceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceResult>("rancher2:index/getNamespace:getNamespace", args ?? new GetNamespaceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 namespace.
@@ -49,31 +47,29 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetNamespace.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetNamespace.InvokeAsync(new Rancher2.GetNamespaceArgs
-        ///         {
-        ///             Name = "foo",
-        ///             ProjectId = rancher2_cluster.Foo_custom.Default_project_id,
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///         ProjectId = rancher2_cluster.Foo_custom.Default_project_id,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNamespaceResult> Invoke(GetNamespaceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNamespaceResult>("rancher2:index/getNamespace:getNamespace", args ?? new GetNamespaceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNamespaceResult>("rancher2:index/getNamespace:getNamespace", args ?? new GetNamespaceInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNamespaceArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespaceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the namespace (string)
@@ -90,9 +86,10 @@ namespace Pulumi.Rancher2
         public GetNamespaceArgs()
         {
         }
+        public static new GetNamespaceArgs Empty => new GetNamespaceArgs();
     }
 
-    public sealed class GetNamespaceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespaceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the namespace (string)
@@ -109,6 +106,7 @@ namespace Pulumi.Rancher2
         public GetNamespaceInvokeArgs()
         {
         }
+        public static new GetNamespaceInvokeArgs Empty => new GetNamespaceInvokeArgs();
     }
 
 

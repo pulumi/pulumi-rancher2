@@ -8,11 +8,8 @@ import * as utilities from "./utilities";
  * Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
  */
 export function getSecretV2(args: GetSecretV2Args, opts?: pulumi.InvokeOptions): Promise<GetSecretV2Result> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getSecretV2:getSecretV2", {
         "clusterId": args.clusterId,
         "name": args.name,
@@ -74,9 +71,11 @@ export interface GetSecretV2Result {
      */
     readonly type: string;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
+ */
 export function getSecretV2Output(args: GetSecretV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretV2Result> {
-    return pulumi.output(args).apply(a => getSecretV2(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecretV2(a, opts))
 }
 
 /**

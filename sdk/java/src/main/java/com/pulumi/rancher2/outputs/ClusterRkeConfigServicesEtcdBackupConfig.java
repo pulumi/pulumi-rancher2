@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigServicesEtcdBackupConfig {
     /**
-     * @return Enable scheduled cluster scan. Default: `false` (bool)
+     * @return Enable etcd backup (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -24,7 +24,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfig {
      */
     private @Nullable Integer intervalHours;
     /**
-     * @return Retention for etcd backup. Default `6` (int)
+     * @return Cluster scan retention (int)
      * 
      */
     private @Nullable Integer retention;
@@ -39,14 +39,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfig {
      */
     private @Nullable Boolean safeTimestamp;
     /**
-     * @return RKE node drain timeout. Default: `60` (int)
+     * @return Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
      * 
      */
     private @Nullable Integer timeout;
 
     private ClusterRkeConfigServicesEtcdBackupConfig() {}
     /**
-     * @return Enable scheduled cluster scan. Default: `false` (bool)
+     * @return Enable etcd backup (bool)
      * 
      */
     public Optional<Boolean> enabled() {
@@ -60,7 +60,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfig {
         return Optional.ofNullable(this.intervalHours);
     }
     /**
-     * @return Retention for etcd backup. Default `6` (int)
+     * @return Cluster scan retention (int)
      * 
      */
     public Optional<Integer> retention() {
@@ -81,7 +81,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfig {
         return Optional.ofNullable(this.safeTimestamp);
     }
     /**
-     * @return RKE node drain timeout. Default: `60` (int)
+     * @return Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
      * 
      */
     public Optional<Integer> timeout() {

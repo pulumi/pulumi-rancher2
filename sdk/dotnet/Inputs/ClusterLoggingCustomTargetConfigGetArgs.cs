@@ -10,25 +10,55 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterLoggingCustomTargetConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterLoggingCustomTargetConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// SSL certificate for the syslog service (string)
-        /// </summary>
         [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        private Input<string>? _certificate;
 
         /// <summary>
-        /// SSL client certificate for the syslog service (string)
+        /// SSL CA certificate for the custom target service (string)
         /// </summary>
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("clientCert")]
-        public Input<string>? ClientCert { get; set; }
+        private Input<string>? _clientCert;
 
         /// <summary>
-        /// SSL client key for the syslog service (string)
+        /// SSL client certificate for the custom target service (string)
         /// </summary>
+        public Input<string>? ClientCert
+        {
+            get => _clientCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
+        private Input<string>? _clientKey;
+
+        /// <summary>
+        /// SSL client key for the custom target service (string)
+        /// </summary>
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Custom target config content (string)
@@ -39,5 +69,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterLoggingCustomTargetConfigGetArgs()
         {
         }
+        public static new ClusterLoggingCustomTargetConfigGetArgs Empty => new ClusterLoggingCustomTargetConfigGetArgs();
     }
 }

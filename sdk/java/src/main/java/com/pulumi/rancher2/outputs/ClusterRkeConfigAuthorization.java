@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigAuthorization {
     /**
-     * @return The AKS node group mode. Default: `System` (string)
+     * @return RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
      * 
      */
     private @Nullable String mode;
     /**
-     * @return RKE options for network (map)
+     * @return RKE options for authorization (map)
      * 
      */
     private @Nullable Map<String,Object> options;
 
     private ClusterRkeConfigAuthorization() {}
     /**
-     * @return The AKS node group mode. Default: `System` (string)
+     * @return RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
      * 
      */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return RKE options for network (map)
+     * @return RKE options for authorization (map)
      * 
      */
     public Map<String,Object> options() {

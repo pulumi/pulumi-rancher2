@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterScheduledClusterScan
     {
         /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// Enable etcd backup (bool)
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

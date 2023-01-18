@@ -19,6 +19,40 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.GlobalRoleBinding;
+ * import com.pulumi.rancher2.GlobalRoleBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new GlobalRoleBinding(&#34;foo&#34;, GlobalRoleBindingArgs.builder()        
+ *             .globalRoleId(&#34;admin&#34;)
+ *             .userId(&#34;user-XXXXX&#34;)
+ *             .build());
+ * 
+ *         var foo2 = new GlobalRoleBinding(&#34;foo2&#34;, GlobalRoleBindingArgs.builder()        
+ *             .globalRoleId(&#34;admin&#34;)
+ *             .groupPrincipalId(&#34;local://g-XXXXX&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

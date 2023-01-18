@@ -18,14 +18,14 @@ public final class NotifierSmtpConfigArgs extends com.pulumi.resources.ResourceA
     public static final NotifierSmtpConfigArgs Empty = new NotifierSmtpConfigArgs();
 
     /**
-     * Wechat default recipient (string)
+     * SMTP default recipient (string)
      * 
      */
     @Import(name="defaultRecipient", required=true)
     private Output<String> defaultRecipient;
 
     /**
-     * @return Wechat default recipient (string)
+     * @return SMTP default recipient (string)
      * 
      */
     public Output<String> defaultRecipient() {
@@ -153,7 +153,7 @@ public final class NotifierSmtpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param defaultRecipient Wechat default recipient (string)
+         * @param defaultRecipient SMTP default recipient (string)
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class NotifierSmtpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param defaultRecipient Wechat default recipient (string)
+         * @param defaultRecipient SMTP default recipient (string)
          * 
          * @return builder
          * 

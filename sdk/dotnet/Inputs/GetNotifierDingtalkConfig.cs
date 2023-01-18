@@ -10,13 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetNotifierDingtalkConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetNotifierDingtalkConfigArgs : global::Pulumi.InvokeArgs
     {
         [Input("proxyUrl")]
         public string? ProxyUrl { get; set; }
 
         [Input("secret")]
-        public string? Secret { get; set; }
+        private string? _secret;
+        public string? Secret
+        {
+            get => _secret;
+            set => _secret = value;
+        }
 
         [Input("url", required: true)]
         public string Url { get; set; } = null!;
@@ -24,5 +29,6 @@ namespace Pulumi.Rancher2.Inputs
         public GetNotifierDingtalkConfigArgs()
         {
         }
+        public static new GetNotifierDingtalkConfigArgs Empty => new GetNotifierDingtalkConfigArgs();
     }
 }

@@ -14,6 +14,10 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigNetwork
     {
         /// <summary>
+        /// ACI provider config for RKE network (list maxitems:63)
+        /// </summary>
+        public readonly Outputs.ClusterRkeConfigNetworkAciNetworkProvider? AciNetworkProvider;
+        /// <summary>
         /// Calico provider config for RKE network (list maxitems:1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigNetworkCalicoNetworkProvider? CalicoNetworkProvider;
@@ -30,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? Mtu;
         /// <summary>
-        /// RKE options for network (map)
+        /// RKE options for authorization (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Options;
         /// <summary>
@@ -38,7 +42,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Plugin;
         /// <summary>
-        /// Network add-on tolerations (list)
+        /// DNS add-on tolerations (list)
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterRkeConfigNetworkToleration> Tolerations;
         /// <summary>
@@ -48,6 +52,8 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private ClusterRkeConfigNetwork(
+            Outputs.ClusterRkeConfigNetworkAciNetworkProvider? aciNetworkProvider,
+
             Outputs.ClusterRkeConfigNetworkCalicoNetworkProvider? calicoNetworkProvider,
 
             Outputs.ClusterRkeConfigNetworkCanalNetworkProvider? canalNetworkProvider,
@@ -64,6 +70,7 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.ClusterRkeConfigNetworkWeaveNetworkProvider? weaveNetworkProvider)
         {
+            AciNetworkProvider = aciNetworkProvider;
             CalicoNetworkProvider = calicoNetworkProvider;
             CanalNetworkProvider = canalNetworkProvider;
             FlannelNetworkProvider = flannelNetworkProvider;

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupUser(ctx, &GetUserArgs{
+//			_, err := rancher2.LookupUser(ctx, &rancher2.LookupUserArgs{
 //				Username: pulumi.StringRef("foo"),
 //			}, nil)
 //			if err != nil {

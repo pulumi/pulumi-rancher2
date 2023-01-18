@@ -18,9 +18,7 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 Setting
- * const foo = new rancher2.Setting("foo", {
- *     value: "<VALUE>",
- * });
+ * const foo = new rancher2.Setting("foo", {value: "<VALUE>"});
  * ```
  *
  * ## Import

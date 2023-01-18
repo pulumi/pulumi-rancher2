@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,17 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getRoleTemplate({
+ * const foo = rancher2.getRoleTemplate({
  *     name: "foo",
- * }));
+ * });
  * ```
  */
 export function getRoleTemplate(args: GetRoleTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getRoleTemplate:getRoleTemplate", {
         "context": args.context,
         "name": args.name,
@@ -100,9 +98,22 @@ export interface GetRoleTemplateResult {
      */
     readonly rules: outputs.GetRoleTemplateRule[];
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 role template resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getRoleTemplate({
+ *     name: "foo",
+ * });
+ * ```
+ */
 export function getRoleTemplateOutput(args: GetRoleTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleTemplateResult> {
-    return pulumi.output(args).apply(a => getRoleTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getRoleTemplate(a, opts))
 }
 
 /**

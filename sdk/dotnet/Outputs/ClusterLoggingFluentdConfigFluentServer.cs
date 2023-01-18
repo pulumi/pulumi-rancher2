@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterLoggingFluentdConfigFluentServer
     {
         /// <summary>
-        /// Endpoint of the syslog service (string)
+        /// Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
         /// </summary>
         public readonly string Endpoint;
         /// <summary>

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NamespaceResourceQuotaLimitArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceResourceQuotaLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Limit for config maps in namespace (string)
@@ -19,13 +19,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ConfigMaps { get; set; }
 
         /// <summary>
-        /// Limit for limits cpu in namespace (string)
+        /// CPU limit for containers (string)
         /// </summary>
         [Input("limitsCpu")]
         public Input<string>? LimitsCpu { get; set; }
 
         /// <summary>
-        /// Limit for limits memory in namespace (string)
+        /// Memory limit for containers (string)
         /// </summary>
         [Input("limitsMemory")]
         public Input<string>? LimitsMemory { get; set; }
@@ -49,13 +49,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ReplicationControllers { get; set; }
 
         /// <summary>
-        /// Limit for requests cpu in namespace (string)
+        /// CPU reservation for containers (string)
         /// </summary>
         [Input("requestsCpu")]
         public Input<string>? RequestsCpu { get; set; }
 
         /// <summary>
-        /// Limit for requests memory in namespace (string)
+        /// Memory reservation for containers (string)
         /// </summary>
         [Input("requestsMemory")]
         public Input<string>? RequestsMemory { get; set; }
@@ -90,5 +90,6 @@ namespace Pulumi.Rancher2.Inputs
         public NamespaceResourceQuotaLimitArgs()
         {
         }
+        public static new NamespaceResourceQuotaLimitArgs Empty => new NamespaceResourceQuotaLimitArgs();
     }
 }

@@ -23,6 +23,108 @@ import javax.annotation.Nullable;
  * Provides a Rancher V2 Global DNS Provider resource. This can be used to create Global DNS Providers for Rancher V2. Supported Global DNS Providers: `alidns, cloudflare, route53`
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.GlobalDnsProvider;
+ * import com.pulumi.rancher2.GlobalDnsProviderArgs;
+ * import com.pulumi.rancher2.inputs.GlobalDnsProviderAlidnsConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
+ *             .alidnsConfig(GlobalDnsProviderAlidnsConfigArgs.builder()
+ *                 .accessKey(&#34;YYYYYYYYYYYYYYYYYYYY&#34;)
+ *                 .secretKey(&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;)
+ *                 .build())
+ *             .rootDomain(&#34;example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.GlobalDnsProvider;
+ * import com.pulumi.rancher2.GlobalDnsProviderArgs;
+ * import com.pulumi.rancher2.inputs.GlobalDnsProviderCloudflareConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
+ *             .cloudflareConfig(GlobalDnsProviderCloudflareConfigArgs.builder()
+ *                 .apiEmail(&#34;test@test.local&#34;)
+ *                 .apiKey(&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;)
+ *                 .proxySetting(true)
+ *                 .build())
+ *             .rootDomain(&#34;example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.GlobalDnsProvider;
+ * import com.pulumi.rancher2.GlobalDnsProviderArgs;
+ * import com.pulumi.rancher2.inputs.GlobalDnsProviderRoute53ConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
+ *             .rootDomain(&#34;example.com&#34;)
+ *             .route53Config(GlobalDnsProviderRoute53ConfigArgs.builder()
+ *                 .accessKey(&#34;YYYYYYYYYYYYYYYYYYYY&#34;)
+ *                 .region(&#34;us-east-1&#34;)
+ *                 .secretKey(&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;)
+ *                 .zoneType(&#34;private&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

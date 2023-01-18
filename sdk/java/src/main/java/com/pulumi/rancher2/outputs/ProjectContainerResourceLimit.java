@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectContainerResourceLimit {
     /**
-     * @return Limit for limits cpu in project (string)
+     * @return CPU limit for containers (string)
      * 
      */
     private @Nullable String limitsCpu;
     /**
-     * @return Limit for limits memory in project (string)
+     * @return Memory limit for containers (string)
      * 
      */
     private @Nullable String limitsMemory;
     /**
-     * @return Limit for requests cpu in project (string)
+     * @return CPU reservation for containers (string)
      * 
      */
     private @Nullable String requestsCpu;
     /**
-     * @return Limit for requests memory in project (string)
+     * @return Memory reservation for containers (string)
      * 
      */
     private @Nullable String requestsMemory;
 
     private ProjectContainerResourceLimit() {}
     /**
-     * @return Limit for limits cpu in project (string)
+     * @return CPU limit for containers (string)
      * 
      */
     public Optional<String> limitsCpu() {
         return Optional.ofNullable(this.limitsCpu);
     }
     /**
-     * @return Limit for limits memory in project (string)
+     * @return Memory limit for containers (string)
      * 
      */
     public Optional<String> limitsMemory() {
         return Optional.ofNullable(this.limitsMemory);
     }
     /**
-     * @return Limit for requests cpu in project (string)
+     * @return CPU reservation for containers (string)
      * 
      */
     public Optional<String> requestsCpu() {
         return Optional.ofNullable(this.requestsCpu);
     }
     /**
-     * @return Limit for requests memory in project (string)
+     * @return Memory reservation for containers (string)
      * 
      */
     public Optional<String> requestsMemory() {

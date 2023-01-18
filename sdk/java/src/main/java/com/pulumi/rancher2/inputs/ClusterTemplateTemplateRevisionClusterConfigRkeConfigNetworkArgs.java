@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs;
@@ -23,6 +24,13 @@ import javax.annotation.Nullable;
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs();
+
+    @Import(name="aciNetworkProvider")
+    private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs> aciNetworkProvider;
+
+    public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs>> aciNetworkProvider() {
+        return Optional.ofNullable(this.aciNetworkProvider);
+    }
 
     @Import(name="calicoNetworkProvider")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs> calicoNetworkProvider;
@@ -83,6 +91,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkA
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs() {}
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs $) {
+        this.aciNetworkProvider = $.aciNetworkProvider;
         this.calicoNetworkProvider = $.calicoNetworkProvider;
         this.canalNetworkProvider = $.canalNetworkProvider;
         this.flannelNetworkProvider = $.flannelNetworkProvider;
@@ -109,6 +118,15 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkA
 
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs defaults) {
             $ = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder aciNetworkProvider(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs> aciNetworkProvider) {
+            $.aciNetworkProvider = aciNetworkProvider;
+            return this;
+        }
+
+        public Builder aciNetworkProvider(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs aciNetworkProvider) {
+            return aciNetworkProvider(Output.of(aciNetworkProvider));
         }
 
         public Builder calicoNetworkProvider(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs> calicoNetworkProvider) {

@@ -15,85 +15,82 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Namespace
+    ///     var foo = new Rancher2.Namespace("foo", new()
     ///     {
-    ///         // Create a new rancher2 Namespace
-    ///         var foo = new Rancher2.Namespace("foo", new Rancher2.NamespaceArgs
+    ///         ContainerResourceLimit = new Rancher2.Inputs.NamespaceContainerResourceLimitArgs
     ///         {
-    ///             ContainerResourceLimit = new Rancher2.Inputs.NamespaceContainerResourceLimitArgs
+    ///             LimitsCpu = "20m",
+    ///             LimitsMemory = "20Mi",
+    ///             RequestsCpu = "1m",
+    ///             RequestsMemory = "1Mi",
+    ///         },
+    ///         Description = "foo namespace",
+    ///         ProjectId = "&lt;PROJECT_ID&gt;",
+    ///         ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
+    ///         {
+    ///             Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
     ///             {
-    ///                 LimitsCpu = "20m",
-    ///                 LimitsMemory = "20Mi",
-    ///                 RequestsCpu = "1m",
-    ///                 RequestsMemory = "1Mi",
+    ///                 LimitsCpu = "100m",
+    ///                 LimitsMemory = "100Mi",
+    ///                 RequestsStorage = "1Gi",
     ///             },
-    ///             Description = "foo namespace",
-    ///             ProjectId = "&lt;PROJECT_ID&gt;",
-    ///             ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
-    ///             {
-    ///                 Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
-    ///                 {
-    ///                     LimitsCpu = "100m",
-    ///                     LimitsMemory = "100Mi",
-    ///                     RequestsStorage = "1Gi",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Cluster 
+    ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
     ///     {
-    ///         // Create a new rancher2 Cluster 
-    ///         var foo_custom = new Rancher2.Cluster("foo-custom", new Rancher2.ClusterArgs
+    ///         Description = "Foo rancher2 custom cluster",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
     ///         {
-    ///             Description = "Foo rancher2 custom cluster",
-    ///             RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
     ///             {
-    ///                 Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
-    ///                 {
-    ///                     Plugin = "canal",
-    ///                 },
+    ///                 Plugin = "canal",
     ///             },
-    ///         });
-    ///         // Create a new rancher2 Namespace assigned to default cluster project
-    ///         var foo = new Rancher2.Namespace("foo", new Rancher2.NamespaceArgs
-    ///         {
-    ///             ProjectId = foo_custom.DefaultProjectId,
-    ///             Description = "foo namespace",
-    ///             ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
-    ///             {
-    ///                 Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
-    ///                 {
-    ///                     LimitsCpu = "100m",
-    ///                     LimitsMemory = "100Mi",
-    ///                     RequestsStorage = "1Gi",
-    ///                 },
-    ///             },
-    ///             ContainerResourceLimit = new Rancher2.Inputs.NamespaceContainerResourceLimitArgs
-    ///             {
-    ///                 LimitsCpu = "20m",
-    ///                 LimitsMemory = "20Mi",
-    ///                 RequestsCpu = "1m",
-    ///                 RequestsMemory = "1Mi",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     // Create a new rancher2 Namespace assigned to default cluster project
+    ///     var foo = new Rancher2.Namespace("foo", new()
+    ///     {
+    ///         ProjectId = foo_custom.DefaultProjectId,
+    ///         Description = "foo namespace",
+    ///         ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
+    ///         {
+    ///             Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
+    ///             {
+    ///                 LimitsCpu = "100m",
+    ///                 LimitsMemory = "100Mi",
+    ///                 RequestsStorage = "1Gi",
+    ///             },
+    ///         },
+    ///         ContainerResourceLimit = new Rancher2.Inputs.NamespaceContainerResourceLimitArgs
+    ///         {
+    ///             LimitsCpu = "20m",
+    ///             LimitsMemory = "20Mi",
+    ///             RequestsCpu = "1m",
+    ///             RequestsMemory = "1Mi",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -111,7 +108,7 @@ namespace Pulumi.Rancher2
     /// - If `&lt;id&gt;` part is omitted `&lt;project_id&gt;=&lt;cluster_id&gt;`, the namespace'll not be assigned to any project. To move it into a project, `&lt;project_id&gt;=&lt;cluster_id&gt;:&lt;id&gt;` needs to be updated in tf file. Namespace movement is only supported inside same `cluster_id`.
     /// </summary>
     [Rancher2ResourceType("rancher2:index/namespace:Namespace")]
-    public partial class Namespace : Pulumi.CustomResource
+    public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for Node Pool object (map)
@@ -205,7 +202,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class NamespaceArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -270,9 +267,10 @@ namespace Pulumi.Rancher2
         public NamespaceArgs()
         {
         }
+        public static new NamespaceArgs Empty => new NamespaceArgs();
     }
 
-    public sealed class NamespaceState : Pulumi.ResourceArgs
+    public sealed class NamespaceState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -337,5 +335,6 @@ namespace Pulumi.Rancher2
         public NamespaceState()
         {
         }
+        public static new NamespaceState Empty => new NamespaceState();
     }
 }

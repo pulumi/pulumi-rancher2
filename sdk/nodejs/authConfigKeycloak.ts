@@ -183,17 +183,19 @@ export class AuthConfigKeycloak extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["entityId"] = args ? args.entityId : undefined;
             resourceInputs["groupsField"] = args ? args.groupsField : undefined;
-            resourceInputs["idpMetadataContent"] = args ? args.idpMetadataContent : undefined;
+            resourceInputs["idpMetadataContent"] = args?.idpMetadataContent ? pulumi.secret(args.idpMetadataContent) : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["rancherApiHost"] = args ? args.rancherApiHost : undefined;
-            resourceInputs["spCert"] = args ? args.spCert : undefined;
-            resourceInputs["spKey"] = args ? args.spKey : undefined;
+            resourceInputs["spCert"] = args?.spCert ? pulumi.secret(args.spCert) : undefined;
+            resourceInputs["spKey"] = args?.spKey ? pulumi.secret(args.spKey) : undefined;
             resourceInputs["uidField"] = args ? args.uidField : undefined;
             resourceInputs["userNameField"] = args ? args.userNameField : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["idpMetadataContent", "spCert", "spKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AuthConfigKeycloak.__pulumiType, name, resourceInputs, opts);
     }
 }

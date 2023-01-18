@@ -17,26 +17,24 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Auth Config Github
+    ///     var github = new Rancher2.AuthConfigGithub("github", new()
     ///     {
-    ///         // Create a new rancher2 Auth Config Github
-    ///         var github = new Rancher2.AuthConfigGithub("github", new Rancher2.AuthConfigGithubArgs
-    ///         {
-    ///             ClientId = "&lt;GITHUB_CLIENT_ID&gt;",
-    ///             ClientSecret = "&lt;GITHUB_CLIENT_SECRET&gt;",
-    ///         });
-    ///     }
+    ///         ClientId = "&lt;GITHUB_CLIENT_ID&gt;",
+    ///         ClientSecret = "&lt;GITHUB_CLIENT_SECRET&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/authConfigGithub:AuthConfigGithub")]
-    public partial class AuthConfigGithub : Pulumi.CustomResource
+    public partial class AuthConfigGithub : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -127,6 +125,11 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "clientId",
+                    "clientSecret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -148,7 +151,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class AuthConfigGithubArgs : Pulumi.ResourceArgs
+    public sealed class AuthConfigGithubArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -180,17 +183,37 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        [Input("clientId", required: true)]
+        private Input<string>? _clientId;
+
         /// <summary>
         /// Github auth Client ID (string)
         /// </summary>
-        [Input("clientId", required: true)]
-        public Input<string> ClientId { get; set; } = null!;
+        public Input<string>? ClientId
+        {
+            get => _clientId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientSecret", required: true)]
+        private Input<string>? _clientSecret;
 
         /// <summary>
         /// Github auth Client secret (string)
         /// </summary>
-        [Input("clientSecret", required: true)]
-        public Input<string> ClientSecret { get; set; } = null!;
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enable auth config provider. Default `true` (bool)
@@ -225,9 +248,10 @@ namespace Pulumi.Rancher2
         public AuthConfigGithubArgs()
         {
         }
+        public static new AuthConfigGithubArgs Empty => new AuthConfigGithubArgs();
     }
 
-    public sealed class AuthConfigGithubState : Pulumi.ResourceArgs
+    public sealed class AuthConfigGithubState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -259,17 +283,37 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        [Input("clientId")]
+        private Input<string>? _clientId;
+
         /// <summary>
         /// Github auth Client ID (string)
         /// </summary>
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
+        public Input<string>? ClientId
+        {
+            get => _clientId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
 
         /// <summary>
         /// Github auth Client secret (string)
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enable auth config provider. Default `true` (bool)
@@ -316,5 +360,6 @@ namespace Pulumi.Rancher2
         public AuthConfigGithubState()
         {
         }
+        public static new AuthConfigGithubState Empty => new AuthConfigGithubState();
     }
 }

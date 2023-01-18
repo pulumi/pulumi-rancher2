@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2NodePoolConfigTaintArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2NodePoolConfigTaintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The GKE taint effect (string)
+        /// The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         /// </summary>
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;
 
         /// <summary>
-        /// The GKE taint key (string)
+        /// The toleration key (string)
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The GKE taint value (string)
+        /// Rancher agent env var value (string)
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2NodePoolConfigTaintArgs()
         {
         }
+        public static new ClusterGkeConfigV2NodePoolConfigTaintArgs Empty => new ClusterGkeConfigV2NodePoolConfigTaintArgs();
     }
 }

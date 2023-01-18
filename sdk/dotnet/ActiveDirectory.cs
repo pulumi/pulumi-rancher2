@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2
     /// </summary>
     [Obsolete(@"rancher2.ActiveDirectory has been deprecated in favor of rancher2.AuthConfigActiveDirectory")]
     [Rancher2ResourceType("rancher2:index/activeDirectory:ActiveDirectory")]
-    public partial class ActiveDirectory : Pulumi.CustomResource
+    public partial class ActiveDirectory : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -251,6 +251,13 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "certificate",
+                    "serviceAccountPassword",
+                    "serviceAccountUsername",
+                    "testPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -272,7 +279,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ActiveDirectoryArgs : Pulumi.ResourceArgs
+    public sealed class ActiveDirectoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -304,11 +311,21 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        [Input("certificate")]
+        private Input<string>? _certificate;
+
         /// <summary>
         /// CA certificate for TLS if selfsigned (string)
         /// </summary>
-        [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// ActiveDirectory connection timeout. Default `5000` (int)
@@ -412,17 +429,37 @@ namespace Pulumi.Rancher2
             set => _servers = value;
         }
 
+        [Input("serviceAccountPassword", required: true)]
+        private Input<string>? _serviceAccountPassword;
+
         /// <summary>
         /// Service account password for access ActiveDirectory service (string)
         /// </summary>
-        [Input("serviceAccountPassword", required: true)]
-        public Input<string> ServiceAccountPassword { get; set; } = null!;
+        public Input<string>? ServiceAccountPassword
+        {
+            get => _serviceAccountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serviceAccountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("serviceAccountUsername", required: true)]
+        private Input<string>? _serviceAccountUsername;
 
         /// <summary>
         /// Service account DN for access ActiveDirectory service (string)
         /// </summary>
-        [Input("serviceAccountUsername", required: true)]
-        public Input<string> ServiceAccountUsername { get; set; } = null!;
+        public Input<string>? ServiceAccountUsername
+        {
+            get => _serviceAccountUsername;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serviceAccountUsername = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enable start TLS connection (bool)
@@ -430,11 +467,21 @@ namespace Pulumi.Rancher2
         [Input("startTls")]
         public Input<bool>? StartTls { get; set; }
 
+        [Input("testPassword", required: true)]
+        private Input<string>? _testPassword;
+
         /// <summary>
         /// Password for test access to ActiveDirectory service (string)
         /// </summary>
-        [Input("testPassword", required: true)]
-        public Input<string> TestPassword { get; set; } = null!;
+        public Input<string>? TestPassword
+        {
+            get => _testPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _testPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Username for test access to ActiveDirectory service (string)
@@ -499,9 +546,10 @@ namespace Pulumi.Rancher2
         public ActiveDirectoryArgs()
         {
         }
+        public static new ActiveDirectoryArgs Empty => new ActiveDirectoryArgs();
     }
 
-    public sealed class ActiveDirectoryState : Pulumi.ResourceArgs
+    public sealed class ActiveDirectoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -533,11 +581,21 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        [Input("certificate")]
+        private Input<string>? _certificate;
+
         /// <summary>
         /// CA certificate for TLS if selfsigned (string)
         /// </summary>
-        [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// ActiveDirectory connection timeout. Default `5000` (int)
@@ -647,17 +705,37 @@ namespace Pulumi.Rancher2
             set => _servers = value;
         }
 
+        [Input("serviceAccountPassword")]
+        private Input<string>? _serviceAccountPassword;
+
         /// <summary>
         /// Service account password for access ActiveDirectory service (string)
         /// </summary>
-        [Input("serviceAccountPassword")]
-        public Input<string>? ServiceAccountPassword { get; set; }
+        public Input<string>? ServiceAccountPassword
+        {
+            get => _serviceAccountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serviceAccountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("serviceAccountUsername")]
+        private Input<string>? _serviceAccountUsername;
 
         /// <summary>
         /// Service account DN for access ActiveDirectory service (string)
         /// </summary>
-        [Input("serviceAccountUsername")]
-        public Input<string>? ServiceAccountUsername { get; set; }
+        public Input<string>? ServiceAccountUsername
+        {
+            get => _serviceAccountUsername;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serviceAccountUsername = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enable start TLS connection (bool)
@@ -665,11 +743,21 @@ namespace Pulumi.Rancher2
         [Input("startTls")]
         public Input<bool>? StartTls { get; set; }
 
+        [Input("testPassword")]
+        private Input<string>? _testPassword;
+
         /// <summary>
         /// Password for test access to ActiveDirectory service (string)
         /// </summary>
-        [Input("testPassword")]
-        public Input<string>? TestPassword { get; set; }
+        public Input<string>? TestPassword
+        {
+            get => _testPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _testPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Username for test access to ActiveDirectory service (string)
@@ -740,5 +828,6 @@ namespace Pulumi.Rancher2
         public ActiveDirectoryState()
         {
         }
+        public static new ActiveDirectoryState Empty => new ActiveDirectoryState();
     }
 }

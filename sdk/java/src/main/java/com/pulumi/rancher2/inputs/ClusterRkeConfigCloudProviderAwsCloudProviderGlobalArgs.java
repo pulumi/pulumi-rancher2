@@ -152,14 +152,14 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs exten
     }
 
     /**
-     * The GKE cluster zone. Required if `region` not set (string)
+     * (string)
      * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
-     * @return The GKE cluster zone. Required if `region` not set (string)
+     * @return (string)
      * 
      */
     public Optional<Output<String>> zone() {
@@ -389,7 +389,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs exten
         }
 
         /**
-         * @param zone The GKE cluster zone. Required if `region` not set (string)
+         * @param zone (string)
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs exten
         }
 
         /**
-         * @param zone The GKE cluster zone. Required if `region` not set (string)
+         * @param zone (string)
          * 
          * @return builder
          * 

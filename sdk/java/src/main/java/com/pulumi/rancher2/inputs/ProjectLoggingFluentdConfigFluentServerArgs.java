@@ -18,14 +18,14 @@ public final class ProjectLoggingFluentdConfigFluentServerArgs extends com.pulum
     public static final ProjectLoggingFluentdConfigFluentServerArgs Empty = new ProjectLoggingFluentdConfigFluentServerArgs();
 
     /**
-     * Endpoint of the syslog service (string)
+     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      * 
      */
     @Import(name="endpoint", required=true)
     private Output<String> endpoint;
 
     /**
-     * @return Endpoint of the syslog service (string)
+     * @return Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      * 
      */
     public Output<String> endpoint() {
@@ -153,7 +153,7 @@ public final class ProjectLoggingFluentdConfigFluentServerArgs extends com.pulum
         }
 
         /**
-         * @param endpoint Endpoint of the syslog service (string)
+         * @param endpoint Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class ProjectLoggingFluentdConfigFluentServerArgs extends com.pulum
         }
 
         /**
-         * @param endpoint Endpoint of the syslog service (string)
+         * @param endpoint Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
          * 
          * @return builder
          * 

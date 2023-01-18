@@ -19,14 +19,14 @@ public final class ProjectLoggingFluentdConfigArgs extends com.pulumi.resources.
     public static final ProjectLoggingFluentdConfigArgs Empty = new ProjectLoggingFluentdConfigArgs();
 
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -106,7 +106,7 @@ public final class ProjectLoggingFluentdConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param certificate SSL certificate for the syslog service (string)
+         * @param certificate SSL CA certificate for the custom target service (string)
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ProjectLoggingFluentdConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param certificate SSL certificate for the syslog service (string)
+         * @param certificate SSL CA certificate for the custom target service (string)
          * 
          * @return builder
          * 

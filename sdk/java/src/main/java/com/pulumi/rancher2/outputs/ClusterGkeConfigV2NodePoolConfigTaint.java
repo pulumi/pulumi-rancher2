@@ -10,38 +10,38 @@ import java.util.Objects;
 @CustomType
 public final class ClusterGkeConfigV2NodePoolConfigTaint {
     /**
-     * @return The GKE taint effect (string)
+     * @return The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      * 
      */
     private String effect;
     /**
-     * @return The GKE taint key (string)
+     * @return The toleration key (string)
      * 
      */
     private String key;
     /**
-     * @return The GKE taint value (string)
+     * @return Rancher agent env var value (string)
      * 
      */
     private String value;
 
     private ClusterGkeConfigV2NodePoolConfigTaint() {}
     /**
-     * @return The GKE taint effect (string)
+     * @return The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      * 
      */
     public String effect() {
         return this.effect;
     }
     /**
-     * @return The GKE taint key (string)
+     * @return The toleration key (string)
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return The GKE taint value (string)
+     * @return Rancher agent env var value (string)
      * 
      */
     public String value() {

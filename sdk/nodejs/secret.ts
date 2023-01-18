@@ -107,7 +107,7 @@ export class Secret extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectId'");
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["data"] = args ? args.data : undefined;
+            resourceInputs["data"] = args?.data ? pulumi.secret(args.data) : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -115,6 +115,8 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["projectId"] = args ? args.projectId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["data"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Secret.__pulumiType, name, resourceInputs, opts);
     }
 }

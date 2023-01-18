@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class CloudCredentialAmazonec2CredentialConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class CloudCredentialAmazonec2CredentialConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessKey", required: true)]
+        private Input<string>? _accessKey;
+
         /// <summary>
         /// AWS access key (string)
         /// </summary>
-        [Input("accessKey", required: true)]
-        public Input<string> AccessKey { get; set; } = null!;
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AWS default region (string)
@@ -24,14 +34,25 @@ namespace Pulumi.Rancher2.Inputs
         [Input("defaultRegion")]
         public Input<string>? DefaultRegion { get; set; }
 
+        [Input("secretKey", required: true)]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// AWS secret key (string)
         /// </summary>
-        [Input("secretKey", required: true)]
-        public Input<string> SecretKey { get; set; } = null!;
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public CloudCredentialAmazonec2CredentialConfigGetArgs()
         {
         }
+        public static new CloudCredentialAmazonec2CredentialConfigGetArgs Empty => new CloudCredentialAmazonec2CredentialConfigGetArgs();
     }
 }

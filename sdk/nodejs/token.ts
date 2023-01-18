@@ -151,6 +151,8 @@ export class Token extends pulumi.CustomResource {
             resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secretKey", "token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Token.__pulumiType, name, resourceInputs, opts);
     }
 }

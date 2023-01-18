@@ -21,14 +21,14 @@ public final class ClusterTemplateState extends com.pulumi.resources.ResourceArg
     public static final ClusterTemplateState Empty = new ClusterTemplateState();
 
     /**
-     * Annotations for the cluster template revision (map)
+     * Annotations for the cluster template (map)
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,Object>> annotations;
 
     /**
-     * @return Annotations for the cluster template revision (map)
+     * @return Annotations for the cluster template (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> annotations() {
@@ -66,14 +66,14 @@ public final class ClusterTemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Labels for the cluster template revision (map)
+     * Labels for the cluster template (map)
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for the cluster template revision (map)
+     * @return Labels for the cluster template (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -96,14 +96,14 @@ public final class ClusterTemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The cluster template revision name (string)
+     * The cluster template name (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The cluster template revision name (string)
+     * @return The cluster template name (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -156,7 +156,7 @@ public final class ClusterTemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param annotations Annotations for the cluster template revision (map)
+         * @param annotations Annotations for the cluster template (map)
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ClusterTemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param annotations Annotations for the cluster template revision (map)
+         * @param annotations Annotations for the cluster template (map)
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class ClusterTemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Labels for the cluster template revision (map)
+         * @param labels Labels for the cluster template (map)
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class ClusterTemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Labels for the cluster template revision (map)
+         * @param labels Labels for the cluster template (map)
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ClusterTemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The cluster template revision name (string)
+         * @param name The cluster template name (string)
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class ClusterTemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The cluster template revision name (string)
+         * @param name The cluster template name (string)
          * 
          * @return builder
          * 

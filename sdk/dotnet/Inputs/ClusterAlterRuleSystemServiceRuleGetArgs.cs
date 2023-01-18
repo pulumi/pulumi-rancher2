@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterAlterRuleSystemServiceRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAlterRuleSystemServiceRuleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<string>? Condition { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterAlterRuleSystemServiceRuleGetArgs()
         {
         }
+        public static new ClusterAlterRuleSystemServiceRuleGetArgs Empty => new ClusterAlterRuleSystemServiceRuleGetArgs();
     }
 }

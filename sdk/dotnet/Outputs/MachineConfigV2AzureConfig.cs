@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? CustomData;
         /// <summary>
-        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
         /// </summary>
         public readonly string? DiskSize;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Dns;
         /// <summary>
-        /// Docker Port. Default `2376` (string)
+        /// Port number for Docker engine. Default `2376` (string)
         /// </summary>
         public readonly string? DockerPort;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? FaultDomainCount;
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
         /// </summary>
         public readonly string? Image;
         /// <summary>
@@ -74,6 +74,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> OpenPorts;
         /// <summary>
+        /// Only use a private IP address. Default `false` (bool)
+        /// </summary>
+        public readonly bool? PrivateAddressOnly;
+        /// <summary>
         /// Specify a static private IP address for the machine. (string)
         /// </summary>
         public readonly string? PrivateIpAddress;
@@ -82,11 +86,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ResourceGroup;
         /// <summary>
-        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// Size for Azure Virtual Machine. Default `Standard_A2` (string)
         /// </summary>
         public readonly string? Size;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        /// Set the name of the ssh user (string)
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
@@ -106,11 +110,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SubnetPrefix;
         /// <summary>
-        /// Azure Subscription ID (string)
+        /// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public readonly string? SubscriptionId;
         /// <summary>
-        /// OpenStack tenant id. Conflicts with `tenant_name` (string)
+        /// Azure Tenant ID (string)
         /// </summary>
         public readonly string? TenantId;
         /// <summary>
@@ -158,6 +162,8 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableArray<string> openPorts,
 
+            bool? privateAddressOnly,
+
             string? privateIpAddress,
 
             string? resourceGroup,
@@ -199,6 +205,7 @@ namespace Pulumi.Rancher2.Outputs
             NoPublicIp = noPublicIp;
             Nsg = nsg;
             OpenPorts = openPorts;
+            PrivateAddressOnly = privateAddressOnly;
             PrivateIpAddress = privateIpAddress;
             ResourceGroup = resourceGroup;
             Size = size;

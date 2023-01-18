@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2LocalAuthEndpointArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2LocalAuthEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// CA certs for the authorized cluster endpoint (string)
@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? CaCerts { get; set; }
 
         /// <summary>
-        /// Drain options enabled? Default `true` (bool)
+        /// Enable the authorized cluster endpoint. Default `false` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2LocalAuthEndpointArgs()
         {
         }
+        public static new ClusterV2LocalAuthEndpointArgs Empty => new ClusterV2LocalAuthEndpointArgs();
     }
 }

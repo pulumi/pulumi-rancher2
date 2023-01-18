@@ -135,6 +135,36 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 app.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rancher2 = Rancher2Functions.getApp(GetAppArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .targetNamespace(&#34;&lt;namespace_name&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAppResult> getApp(GetAppArgs args) {
@@ -144,6 +174,36 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 app.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rancher2 = Rancher2Functions.getApp(GetAppArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .targetNamespace(&#34;&lt;namespace_name&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAppResult> getAppPlain(GetAppPlainArgs args) {
@@ -153,6 +213,36 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 app.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rancher2 = Rancher2Functions.getApp(GetAppArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .targetNamespace(&#34;&lt;namespace_name&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAppResult> getApp(GetAppArgs args, InvokeOptions options) {
@@ -162,6 +252,36 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 app.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rancher2 = Rancher2Functions.getApp(GetAppArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .targetNamespace(&#34;&lt;namespace_name&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAppResult> getAppPlain(GetAppPlainArgs args, InvokeOptions options) {
@@ -171,6 +291,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 catalog.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = Rancher2Functions.getCatalog(GetCatalogArgs.builder()
+     *             .name(&#34;catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetCatalogResult> getCatalog(GetCatalogArgs args) {
@@ -180,6 +328,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 catalog.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = Rancher2Functions.getCatalog(GetCatalogArgs.builder()
+     *             .name(&#34;catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCatalogResult> getCatalogPlain(GetCatalogPlainArgs args) {
@@ -189,6 +365,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 catalog.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = Rancher2Functions.getCatalog(GetCatalogArgs.builder()
+     *             .name(&#34;catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetCatalogResult> getCatalog(GetCatalogArgs args, InvokeOptions options) {
@@ -198,6 +402,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 catalog.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var library = Rancher2Functions.getCatalog(GetCatalogArgs.builder()
+     *             .name(&#34;catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCatalogResult> getCatalogPlain(GetCatalogPlainArgs args, InvokeOptions options) {
@@ -239,6 +471,65 @@ public final class Rancher2Functions {
      * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args) {
@@ -252,6 +543,65 @@ public final class Rancher2Functions {
      * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args) {
@@ -265,6 +615,65 @@ public final class Rancher2Functions {
      * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args, InvokeOptions options) {
@@ -278,6 +687,65 @@ public final class Rancher2Functions {
      * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args, InvokeOptions options) {
@@ -287,6 +755,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cloud Credential.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCloudCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = Rancher2Functions.getCloudCredential(GetCloudCredentialArgs.builder()
+     *             .name(&#34;test&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetCloudCredentialResult> getCloudCredential(GetCloudCredentialArgs args) {
@@ -296,6 +792,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cloud Credential.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCloudCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = Rancher2Functions.getCloudCredential(GetCloudCredentialArgs.builder()
+     *             .name(&#34;test&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCloudCredentialResult> getCloudCredentialPlain(GetCloudCredentialPlainArgs args) {
@@ -305,6 +829,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cloud Credential.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCloudCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = Rancher2Functions.getCloudCredential(GetCloudCredentialArgs.builder()
+     *             .name(&#34;test&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetCloudCredentialResult> getCloudCredential(GetCloudCredentialArgs args, InvokeOptions options) {
@@ -314,6 +866,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cloud Credential.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetCloudCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = Rancher2Functions.getCloudCredential(GetCloudCredentialArgs.builder()
+     *             .name(&#34;test&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCloudCredentialResult> getCloudCredentialPlain(GetCloudCredentialPlainArgs args, InvokeOptions options) {
@@ -323,6 +903,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo-custom = Rancher2Functions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;foo-custom&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args) {
@@ -332,6 +940,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo-custom = Rancher2Functions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;foo-custom&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args) {
@@ -341,6 +977,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo-custom = Rancher2Functions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;foo-custom&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args, InvokeOptions options) {
@@ -350,6 +1014,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo-custom = Rancher2Functions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;foo-custom&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args, InvokeOptions options) {
@@ -359,6 +1051,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert group.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterAlertGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterAlertGroup(GetClusterAlertGroupArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name(&#34;&lt;cluster_alert_group_name&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterAlertGroupResult> getClusterAlertGroup(GetClusterAlertGroupArgs args) {
@@ -368,6 +1089,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert group.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterAlertGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterAlertGroup(GetClusterAlertGroupArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name(&#34;&lt;cluster_alert_group_name&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterAlertGroupResult> getClusterAlertGroupPlain(GetClusterAlertGroupPlainArgs args) {
@@ -377,6 +1127,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert group.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterAlertGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterAlertGroup(GetClusterAlertGroupArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name(&#34;&lt;cluster_alert_group_name&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterAlertGroupResult> getClusterAlertGroup(GetClusterAlertGroupArgs args, InvokeOptions options) {
@@ -386,6 +1165,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert group.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterAlertGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterAlertGroup(GetClusterAlertGroupArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name(&#34;&lt;cluster_alert_group_name&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterAlertGroupResult> getClusterAlertGroupPlain(GetClusterAlertGroupPlainArgs args, InvokeOptions options) {
@@ -395,6 +1203,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterAlterRuleResult> getClusterAlterRule(GetClusterAlterRuleArgs args) {
@@ -404,6 +1241,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterAlterRuleResult> getClusterAlterRulePlain(GetClusterAlterRulePlainArgs args) {
@@ -413,6 +1279,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterAlterRuleResult> getClusterAlterRule(GetClusterAlterRuleArgs args, InvokeOptions options) {
@@ -422,6 +1317,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterAlterRuleResult> getClusterAlterRulePlain(GetClusterAlterRulePlainArgs args, InvokeOptions options) {
@@ -431,6 +1355,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterDriverArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterDriver(GetClusterDriverArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterDriverResult> getClusterDriver(GetClusterDriverArgs args) {
@@ -440,6 +1392,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterDriverArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterDriver(GetClusterDriverArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterDriverResult> getClusterDriverPlain(GetClusterDriverPlainArgs args) {
@@ -449,6 +1429,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterDriverArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterDriver(GetClusterDriverArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterDriverResult> getClusterDriver(GetClusterDriverArgs args, InvokeOptions options) {
@@ -458,6 +1466,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterDriverArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterDriver(GetClusterDriverArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterDriverResult> getClusterDriverPlain(GetClusterDriverPlainArgs args, InvokeOptions options) {
@@ -467,6 +1503,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cluster Logging.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterLoggingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterLogging(GetClusterLoggingArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterLoggingResult> getClusterLogging(GetClusterLoggingArgs args) {
@@ -476,6 +1540,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cluster Logging.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterLoggingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterLogging(GetClusterLoggingArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterLoggingResult> getClusterLoggingPlain(GetClusterLoggingPlainArgs args) {
@@ -485,6 +1577,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cluster Logging.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterLoggingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterLogging(GetClusterLoggingArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterLoggingResult> getClusterLogging(GetClusterLoggingArgs args, InvokeOptions options) {
@@ -494,6 +1614,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cluster Logging.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterLoggingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterLogging(GetClusterLoggingArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterLoggingResult> getClusterLoggingPlain(GetClusterLoggingPlainArgs args, InvokeOptions options) {
@@ -503,6 +1651,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster role template binding.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterRoleTemplateBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs.builder()
+     *             .clusterId(&#34;foo_id&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterRoleTemplateBindingResult> getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs args) {
@@ -512,6 +1689,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster role template binding.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterRoleTemplateBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs.builder()
+     *             .clusterId(&#34;foo_id&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterRoleTemplateBindingResult> getClusterRoleTemplateBindingPlain(GetClusterRoleTemplateBindingPlainArgs args) {
@@ -521,6 +1727,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster role template binding.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterRoleTemplateBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs.builder()
+     *             .clusterId(&#34;foo_id&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterRoleTemplateBindingResult> getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs args, InvokeOptions options) {
@@ -530,6 +1765,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster role template binding.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterRoleTemplateBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs.builder()
+     *             .clusterId(&#34;foo_id&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterRoleTemplateBindingResult> getClusterRoleTemplateBindingPlain(GetClusterRoleTemplateBindingPlainArgs args, InvokeOptions options) {
@@ -569,6 +1833,34 @@ public final class Rancher2Functions {
      * Cluster Templates are available from Rancher v2.3.x and above.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterTemplate(GetClusterTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterTemplateResult> getClusterTemplate(GetClusterTemplateArgs args) {
@@ -580,6 +1872,34 @@ public final class Rancher2Functions {
      * Cluster Templates are available from Rancher v2.3.x and above.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterTemplate(GetClusterTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterTemplateResult> getClusterTemplatePlain(GetClusterTemplatePlainArgs args) {
@@ -591,6 +1911,34 @@ public final class Rancher2Functions {
      * Cluster Templates are available from Rancher v2.3.x and above.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterTemplate(GetClusterTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterTemplateResult> getClusterTemplate(GetClusterTemplateArgs args, InvokeOptions options) {
@@ -602,6 +1950,34 @@ public final class Rancher2Functions {
      * Cluster Templates are available from Rancher v2.3.x and above.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterTemplate(GetClusterTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterTemplateResult> getClusterTemplatePlain(GetClusterTemplatePlainArgs args, InvokeOptions options) {
@@ -611,6 +1987,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
+     *             .fleetNamespace(&#34;fleet-ns&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterV2Result> getClusterV2(GetClusterV2Args args) {
@@ -620,6 +2025,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
+     *             .fleetNamespace(&#34;fleet-ns&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterV2Result> getClusterV2Plain(GetClusterV2PlainArgs args) {
@@ -629,6 +2063,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
+     *             .fleetNamespace(&#34;fleet-ns&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClusterV2Result> getClusterV2(GetClusterV2Args args, InvokeOptions options) {
@@ -638,6 +2101,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetClusterV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
+     *             .fleetNamespace(&#34;fleet-ns&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClusterV2Result> getClusterV2Plain(GetClusterV2PlainArgs args, InvokeOptions options) {
@@ -675,6 +2167,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 etcd backup.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetEtcdBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getEtcdBackup(GetEtcdBackupArgs.builder()
+     *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetEtcdBackupResult> getEtcdBackup(GetEtcdBackupArgs args) {
@@ -684,6 +2205,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 etcd backup.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetEtcdBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getEtcdBackup(GetEtcdBackupArgs.builder()
+     *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEtcdBackupResult> getEtcdBackupPlain(GetEtcdBackupPlainArgs args) {
@@ -693,6 +2243,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 etcd backup.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetEtcdBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getEtcdBackup(GetEtcdBackupArgs.builder()
+     *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetEtcdBackupResult> getEtcdBackup(GetEtcdBackupArgs args, InvokeOptions options) {
@@ -702,6 +2281,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 etcd backup.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetEtcdBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getEtcdBackup(GetEtcdBackupArgs.builder()
+     *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEtcdBackupResult> getEtcdBackupPlain(GetEtcdBackupPlainArgs args, InvokeOptions options) {
@@ -711,6 +2319,34 @@ public final class Rancher2Functions {
      * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetGlobalDnsProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getGlobalDnsProvider(GetGlobalDnsProviderArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGlobalDnsProviderResult> getGlobalDnsProvider(GetGlobalDnsProviderArgs args) {
@@ -720,6 +2356,34 @@ public final class Rancher2Functions {
      * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetGlobalDnsProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getGlobalDnsProvider(GetGlobalDnsProviderArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGlobalDnsProviderResult> getGlobalDnsProviderPlain(GetGlobalDnsProviderPlainArgs args) {
@@ -729,6 +2393,34 @@ public final class Rancher2Functions {
      * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetGlobalDnsProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getGlobalDnsProvider(GetGlobalDnsProviderArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGlobalDnsProviderResult> getGlobalDnsProvider(GetGlobalDnsProviderArgs args, InvokeOptions options) {
@@ -738,6 +2430,34 @@ public final class Rancher2Functions {
      * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetGlobalDnsProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getGlobalDnsProvider(GetGlobalDnsProviderArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGlobalDnsProviderResult> getGlobalDnsProviderPlain(GetGlobalDnsProviderPlainArgs args, InvokeOptions options) {
@@ -747,6 +2467,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetGlobalRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getGlobalRole(GetGlobalRoleArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGlobalRoleResult> getGlobalRole(GetGlobalRoleArgs args) {
@@ -756,6 +2504,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetGlobalRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getGlobalRole(GetGlobalRoleArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGlobalRoleResult> getGlobalRolePlain(GetGlobalRolePlainArgs args) {
@@ -765,6 +2541,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetGlobalRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getGlobalRole(GetGlobalRoleArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGlobalRoleResult> getGlobalRole(GetGlobalRoleArgs args, InvokeOptions options) {
@@ -774,6 +2578,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetGlobalRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getGlobalRole(GetGlobalRoleArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGlobalRoleResult> getGlobalRolePlain(GetGlobalRolePlainArgs args, InvokeOptions options) {
@@ -783,6 +2615,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role binding.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetGlobalRoleBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getGlobalRoleBinding(GetGlobalRoleBindingArgs.builder()
+     *             .globalRoleId(&#34;foo_id&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGlobalRoleBindingResult> getGlobalRoleBinding(GetGlobalRoleBindingArgs args) {
@@ -792,6 +2653,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role binding.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetGlobalRoleBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getGlobalRoleBinding(GetGlobalRoleBindingArgs.builder()
+     *             .globalRoleId(&#34;foo_id&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGlobalRoleBindingResult> getGlobalRoleBindingPlain(GetGlobalRoleBindingPlainArgs args) {
@@ -801,6 +2691,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role binding.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetGlobalRoleBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getGlobalRoleBinding(GetGlobalRoleBindingArgs.builder()
+     *             .globalRoleId(&#34;foo_id&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGlobalRoleBindingResult> getGlobalRoleBinding(GetGlobalRoleBindingArgs args, InvokeOptions options) {
@@ -810,6 +2729,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role binding.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetGlobalRoleBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getGlobalRoleBinding(GetGlobalRoleBindingArgs.builder()
+     *             .globalRoleId(&#34;foo_id&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGlobalRoleBindingResult> getGlobalRoleBindingPlain(GetGlobalRoleBindingPlainArgs args, InvokeOptions options) {
@@ -819,6 +2767,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 multi cluster app.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetMultiClusterAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getMultiClusterApp(GetMultiClusterAppArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetMultiClusterAppResult> getMultiClusterApp(GetMultiClusterAppArgs args) {
@@ -828,6 +2804,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 multi cluster app.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetMultiClusterAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getMultiClusterApp(GetMultiClusterAppArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMultiClusterAppResult> getMultiClusterAppPlain(GetMultiClusterAppPlainArgs args) {
@@ -837,6 +2841,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 multi cluster app.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetMultiClusterAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getMultiClusterApp(GetMultiClusterAppArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetMultiClusterAppResult> getMultiClusterApp(GetMultiClusterAppArgs args, InvokeOptions options) {
@@ -846,6 +2878,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 multi cluster app.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetMultiClusterAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getMultiClusterApp(GetMultiClusterAppArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMultiClusterAppResult> getMultiClusterAppPlain(GetMultiClusterAppPlainArgs args, InvokeOptions options) {
@@ -855,6 +2915,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 namespace.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNamespaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .projectId(rancher2_cluster.foo-custom().default_project_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNamespaceResult> getNamespace(GetNamespaceArgs args) {
@@ -864,6 +2953,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 namespace.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNamespaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .projectId(rancher2_cluster.foo-custom().default_project_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespaceResult> getNamespacePlain(GetNamespacePlainArgs args) {
@@ -873,6 +2991,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 namespace.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNamespaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .projectId(rancher2_cluster.foo-custom().default_project_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNamespaceResult> getNamespace(GetNamespaceArgs args, InvokeOptions options) {
@@ -882,6 +3029,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 namespace.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNamespaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .projectId(rancher2_cluster.foo-custom().default_project_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespaceResult> getNamespacePlain(GetNamespacePlainArgs args, InvokeOptions options) {
@@ -891,6 +3067,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNodeDriverArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNodeDriver(GetNodeDriverArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNodeDriverResult> getNodeDriver(GetNodeDriverArgs args) {
@@ -900,6 +3104,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNodeDriverArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNodeDriver(GetNodeDriverArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNodeDriverResult> getNodeDriverPlain(GetNodeDriverPlainArgs args) {
@@ -909,6 +3141,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNodeDriverArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNodeDriver(GetNodeDriverArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNodeDriverResult> getNodeDriver(GetNodeDriverArgs args, InvokeOptions options) {
@@ -918,6 +3178,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNodeDriverArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNodeDriver(GetNodeDriverArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNodeDriverResult> getNodeDriverPlain(GetNodeDriverPlainArgs args, InvokeOptions options) {
@@ -927,6 +3215,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Pool resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNodePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNodePool(GetNodePoolArgs.builder()
+     *             .clusterId(rancher2_cluster.foo-custom().id())
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNodePoolResult> getNodePool(GetNodePoolArgs args) {
@@ -936,6 +3253,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Pool resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNodePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNodePool(GetNodePoolArgs.builder()
+     *             .clusterId(rancher2_cluster.foo-custom().id())
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNodePoolResult> getNodePoolPlain(GetNodePoolPlainArgs args) {
@@ -945,6 +3291,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Pool resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNodePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNodePool(GetNodePoolArgs.builder()
+     *             .clusterId(rancher2_cluster.foo-custom().id())
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNodePoolResult> getNodePool(GetNodePoolArgs args, InvokeOptions options) {
@@ -954,6 +3329,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Pool resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNodePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNodePool(GetNodePoolArgs.builder()
+     *             .clusterId(rancher2_cluster.foo-custom().id())
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNodePoolResult> getNodePoolPlain(GetNodePoolPlainArgs args, InvokeOptions options) {
@@ -963,6 +3367,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Template resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNodeTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNodeTemplate(GetNodeTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNodeTemplateResult> getNodeTemplate(GetNodeTemplateArgs args) {
@@ -972,6 +3404,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Template resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNodeTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNodeTemplate(GetNodeTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNodeTemplateResult> getNodeTemplatePlain(GetNodeTemplatePlainArgs args) {
@@ -981,6 +3441,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Template resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNodeTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNodeTemplate(GetNodeTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNodeTemplateResult> getNodeTemplate(GetNodeTemplateArgs args, InvokeOptions options) {
@@ -990,6 +3478,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Template resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNodeTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNodeTemplate(GetNodeTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNodeTemplateResult> getNodeTemplatePlain(GetNodeTemplatePlainArgs args, InvokeOptions options) {
@@ -999,6 +3515,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 notifier.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNotifierArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNotifier(GetNotifierArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNotifierResult> getNotifier(GetNotifierArgs args) {
@@ -1008,6 +3553,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 notifier.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNotifierArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNotifier(GetNotifierArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNotifierResult> getNotifierPlain(GetNotifierPlainArgs args) {
@@ -1017,6 +3591,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 notifier.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNotifierArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNotifier(GetNotifierArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNotifierResult> getNotifier(GetNotifierArgs args, InvokeOptions options) {
@@ -1026,6 +3629,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 notifier.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetNotifierArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getNotifier(GetNotifierArgs.builder()
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNotifierResult> getNotifierPlain(GetNotifierPlainArgs args, InvokeOptions options) {
@@ -1035,6 +3667,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPodSecurityPolicyTemplateResult> getPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs args) {
@@ -1044,6 +3704,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPodSecurityPolicyTemplateResult> getPodSecurityPolicyTemplatePlain(GetPodSecurityPolicyTemplatePlainArgs args) {
@@ -1053,6 +3741,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPodSecurityPolicyTemplateResult> getPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs args, InvokeOptions options) {
@@ -1062,6 +3778,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPodSecurityPolicyTemplateResult> getPodSecurityPolicyTemplatePlain(GetPodSecurityPolicyTemplatePlainArgs args, InvokeOptions options) {
@@ -1071,6 +3815,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Principal resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPrincipal(GetPrincipalArgs.builder()
+     *             .name(&#34;user@example.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPrincipalResult> getPrincipal(GetPrincipalArgs args) {
@@ -1080,6 +3852,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Principal resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPrincipal(GetPrincipalArgs.builder()
+     *             .name(&#34;user@example.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPrincipalResult> getPrincipalPlain(GetPrincipalPlainArgs args) {
@@ -1089,6 +3889,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Principal resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPrincipal(GetPrincipalArgs.builder()
+     *             .name(&#34;user@example.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPrincipalResult> getPrincipal(GetPrincipalArgs args, InvokeOptions options) {
@@ -1098,6 +3926,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Principal resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPrincipal(GetPrincipalArgs.builder()
+     *             .name(&#34;user@example.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPrincipalResult> getPrincipalPlain(GetPrincipalPlainArgs args, InvokeOptions options) {
@@ -1119,6 +3975,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert group.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectAlertGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectAlertGroup(GetProjectAlertGroupArgs.builder()
+     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProjectAlertGroupResult> getProjectAlertGroup(GetProjectAlertGroupArgs args) {
@@ -1128,6 +4013,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert group.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectAlertGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectAlertGroup(GetProjectAlertGroupArgs.builder()
+     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectAlertGroupResult> getProjectAlertGroupPlain(GetProjectAlertGroupPlainArgs args) {
@@ -1137,6 +4051,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert group.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectAlertGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectAlertGroup(GetProjectAlertGroupArgs.builder()
+     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProjectAlertGroupResult> getProjectAlertGroup(GetProjectAlertGroupArgs args, InvokeOptions options) {
@@ -1146,6 +4089,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert group.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectAlertGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectAlertGroup(GetProjectAlertGroupArgs.builder()
+     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectAlertGroupResult> getProjectAlertGroupPlain(GetProjectAlertGroupPlainArgs args, InvokeOptions options) {
@@ -1155,6 +4127,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert rule.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectAlertRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectAlertRule(GetProjectAlertRuleArgs.builder()
+     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProjectAlertRuleResult> getProjectAlertRule(GetProjectAlertRuleArgs args) {
@@ -1164,6 +4165,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert rule.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectAlertRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectAlertRule(GetProjectAlertRuleArgs.builder()
+     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectAlertRuleResult> getProjectAlertRulePlain(GetProjectAlertRulePlainArgs args) {
@@ -1173,6 +4203,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert rule.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectAlertRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectAlertRule(GetProjectAlertRuleArgs.builder()
+     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProjectAlertRuleResult> getProjectAlertRule(GetProjectAlertRuleArgs args, InvokeOptions options) {
@@ -1182,6 +4241,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert rule.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectAlertRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectAlertRule(GetProjectAlertRuleArgs.builder()
+     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectAlertRuleResult> getProjectAlertRulePlain(GetProjectAlertRulePlainArgs args, InvokeOptions options) {
@@ -1191,6 +4279,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Project Logging.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectLoggingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectLogging(GetProjectLoggingArgs.builder()
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProjectLoggingResult> getProjectLogging(GetProjectLoggingArgs args) {
@@ -1200,6 +4316,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Project Logging.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectLoggingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectLogging(GetProjectLoggingArgs.builder()
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectLoggingResult> getProjectLoggingPlain(GetProjectLoggingPlainArgs args) {
@@ -1209,6 +4353,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Project Logging.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectLoggingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectLogging(GetProjectLoggingArgs.builder()
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProjectLoggingResult> getProjectLogging(GetProjectLoggingArgs args, InvokeOptions options) {
@@ -1218,6 +4390,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Project Logging.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectLoggingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectLogging(GetProjectLoggingArgs.builder()
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectLoggingResult> getProjectLoggingPlain(GetProjectLoggingPlainArgs args, InvokeOptions options) {
@@ -1227,6 +4427,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project role template binding.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .projectId(&#34;foo_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProjectRoleTemplateBindingResult> getProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs args) {
@@ -1236,6 +4465,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project role template binding.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .projectId(&#34;foo_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectRoleTemplateBindingResult> getProjectRoleTemplateBindingPlain(GetProjectRoleTemplateBindingPlainArgs args) {
@@ -1245,6 +4503,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project role template binding.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .projectId(&#34;foo_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProjectRoleTemplateBindingResult> getProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs args, InvokeOptions options) {
@@ -1254,6 +4541,35 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project role template binding.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .projectId(&#34;foo_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectRoleTemplateBindingResult> getProjectRoleTemplateBindingPlain(GetProjectRoleTemplateBindingPlainArgs args, InvokeOptions options) {
@@ -1267,6 +4583,65 @@ public final class Rancher2Functions {
      * - Namespaced registry: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegistryResult> getRegistry(GetRegistryArgs args) {
@@ -1280,6 +4655,65 @@ public final class Rancher2Functions {
      * - Namespaced registry: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegistryResult> getRegistryPlain(GetRegistryPlainArgs args) {
@@ -1293,6 +4727,65 @@ public final class Rancher2Functions {
      * - Namespaced registry: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegistryResult> getRegistry(GetRegistryArgs args, InvokeOptions options) {
@@ -1306,6 +4799,65 @@ public final class Rancher2Functions {
      * - Namespaced registry: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegistryResult> getRegistryPlain(GetRegistryPlainArgs args, InvokeOptions options) {
@@ -1315,6 +4867,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 role template resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
@@ -1328,6 +4908,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 role template resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
@@ -1341,6 +4949,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 role template resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
@@ -1354,6 +4990,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 role template resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
@@ -1367,6 +5031,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 role template resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRoleTemplateResult> getRoleTemplate(GetRoleTemplateArgs args) {
@@ -1376,6 +5068,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 role template resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRoleTemplateResult> getRoleTemplatePlain(GetRoleTemplatePlainArgs args) {
@@ -1385,6 +5105,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 role template resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRoleTemplateResult> getRoleTemplate(GetRoleTemplateArgs args, InvokeOptions options) {
@@ -1394,6 +5142,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 role template resource.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
+     *             .name(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRoleTemplateResult> getRoleTemplatePlain(GetRoleTemplatePlainArgs args, InvokeOptions options) {
@@ -1407,6 +5183,65 @@ public final class Rancher2Functions {
      * - Namespaced secret: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSecretResult> getSecret(GetSecretArgs args) {
@@ -1420,6 +5255,65 @@ public final class Rancher2Functions {
      * - Namespaced secret: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSecretResult> getSecretPlain(GetSecretPlainArgs args) {
@@ -1433,6 +5327,65 @@ public final class Rancher2Functions {
      * - Namespaced secret: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSecretResult> getSecret(GetSecretArgs args, InvokeOptions options) {
@@ -1446,6 +5399,65 @@ public final class Rancher2Functions {
      * - Namespaced secret: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
+     *             .name(&#34;&lt;name&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSecretResult> getSecretPlain(GetSecretPlainArgs args, InvokeOptions options) {
@@ -1483,6 +5495,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 setting.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetSettingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var server-image = Rancher2Functions.getSetting(GetSettingArgs.builder()
+     *             .name(&#34;server-image&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSettingResult> getSetting(GetSettingArgs args) {
@@ -1492,6 +5532,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 setting.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetSettingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var server-image = Rancher2Functions.getSetting(GetSettingArgs.builder()
+     *             .name(&#34;server-image&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSettingResult> getSettingPlain(GetSettingPlainArgs args) {
@@ -1501,6 +5569,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 setting.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetSettingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var server-image = Rancher2Functions.getSetting(GetSettingArgs.builder()
+     *             .name(&#34;server-image&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSettingResult> getSetting(GetSettingArgs args, InvokeOptions options) {
@@ -1510,6 +5606,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 setting.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetSettingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var server-image = Rancher2Functions.getSetting(GetSettingArgs.builder()
+     *             .name(&#34;server-image&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSettingResult> getSettingPlain(GetSettingPlainArgs args, InvokeOptions options) {
@@ -1547,6 +5671,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 user
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getUser(GetUserArgs.builder()
+     *             .username(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUserResult> getUser() {
@@ -1556,6 +5708,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 user
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getUser(GetUserArgs.builder()
+     *             .username(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain() {
@@ -1565,6 +5745,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 user
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getUser(GetUserArgs.builder()
+     *             .username(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
@@ -1574,6 +5782,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 user
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getUser(GetUserArgs.builder()
+     *             .username(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -1583,6 +5819,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 user
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getUser(GetUserArgs.builder()
+     *             .username(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
@@ -1592,6 +5856,34 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 user
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getUser(GetUserArgs.builder()
+     *             .username(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {

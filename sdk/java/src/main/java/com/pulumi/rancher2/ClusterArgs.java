@@ -81,14 +81,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster (map)
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,Object>> annotations;
 
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> annotations() {
@@ -201,14 +201,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional description of this cluster (string)
+     * The description for Cluster (string)
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An optional description of this cluster (string)
+     * @return The description for Cluster (string)
      * 
      */
     public Optional<Output<String>> description() {
@@ -411,14 +411,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -426,14 +426,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -644,7 +644,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations for cluster registration token object (map)
+         * @param annotations Annotations for the Cluster (map)
          * 
          * @return builder
          * 
@@ -655,7 +655,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations for cluster registration token object (map)
+         * @param annotations Annotations for the Cluster (map)
          * 
          * @return builder
          * 
@@ -822,7 +822,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description of this cluster (string)
+         * @param description The description for Cluster (string)
          * 
          * @return builder
          * 
@@ -833,7 +833,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description of this cluster (string)
+         * @param description The description for Cluster (string)
          * 
          * @return builder
          * 
@@ -1116,7 +1116,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster (map)
          * 
          * @return builder
          * 
@@ -1127,7 +1127,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster (map)
          * 
          * @return builder
          * 
@@ -1137,7 +1137,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -1148,7 +1148,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 

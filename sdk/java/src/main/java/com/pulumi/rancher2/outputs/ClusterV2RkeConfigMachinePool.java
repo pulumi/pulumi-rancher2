@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachinePool {
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster V2 (map)
      * 
      */
     private @Nullable Map<String,Object> annotations;
@@ -45,7 +45,7 @@ public final class ClusterV2RkeConfigMachinePool {
      */
     private @Nullable Boolean etcdRole;
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster V2 (map)
      * 
      */
     private @Nullable Map<String,Object> labels;
@@ -55,12 +55,17 @@ public final class ClusterV2RkeConfigMachinePool {
      */
     private ClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
     /**
+     * @return Labels for Machine pool nodes (map)
+     * 
+     */
+    private @Nullable Map<String,Object> machineLabels;
+    /**
      * @return Max unhealthy nodes for automated replacement to be allowed (string)
      * 
      */
     private @Nullable String maxUnhealthy;
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster v2 (string)
      * 
      */
     private String name;
@@ -112,7 +117,7 @@ public final class ClusterV2RkeConfigMachinePool {
 
     private ClusterV2RkeConfigMachinePool() {}
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster V2 (map)
      * 
      */
     public Map<String,Object> annotations() {
@@ -147,7 +152,7 @@ public final class ClusterV2RkeConfigMachinePool {
         return Optional.ofNullable(this.etcdRole);
     }
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster V2 (map)
      * 
      */
     public Map<String,Object> labels() {
@@ -161,6 +166,13 @@ public final class ClusterV2RkeConfigMachinePool {
         return this.machineConfig;
     }
     /**
+     * @return Labels for Machine pool nodes (map)
+     * 
+     */
+    public Map<String,Object> machineLabels() {
+        return this.machineLabels == null ? Map.of() : this.machineLabels;
+    }
+    /**
      * @return Max unhealthy nodes for automated replacement to be allowed (string)
      * 
      */
@@ -168,7 +180,7 @@ public final class ClusterV2RkeConfigMachinePool {
         return Optional.ofNullable(this.maxUnhealthy);
     }
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster v2 (string)
      * 
      */
     public String name() {
@@ -254,6 +266,7 @@ public final class ClusterV2RkeConfigMachinePool {
         private @Nullable Boolean etcdRole;
         private @Nullable Map<String,Object> labels;
         private ClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
+        private @Nullable Map<String,Object> machineLabels;
         private @Nullable String maxUnhealthy;
         private String name;
         private @Nullable Integer nodeDrainTimeout;
@@ -275,6 +288,7 @@ public final class ClusterV2RkeConfigMachinePool {
     	      this.etcdRole = defaults.etcdRole;
     	      this.labels = defaults.labels;
     	      this.machineConfig = defaults.machineConfig;
+    	      this.machineLabels = defaults.machineLabels;
     	      this.maxUnhealthy = defaults.maxUnhealthy;
     	      this.name = defaults.name;
     	      this.nodeDrainTimeout = defaults.nodeDrainTimeout;
@@ -321,6 +335,11 @@ public final class ClusterV2RkeConfigMachinePool {
         @CustomType.Setter
         public Builder machineConfig(ClusterV2RkeConfigMachinePoolMachineConfig machineConfig) {
             this.machineConfig = Objects.requireNonNull(machineConfig);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder machineLabels(@Nullable Map<String,Object> machineLabels) {
+            this.machineLabels = machineLabels;
             return this;
         }
         @CustomType.Setter
@@ -390,6 +409,7 @@ public final class ClusterV2RkeConfigMachinePool {
             o.etcdRole = etcdRole;
             o.labels = labels;
             o.machineConfig = machineConfig;
+            o.machineLabels = machineLabels;
             o.maxUnhealthy = maxUnhealthy;
             o.name = name;
             o.nodeDrainTimeout = nodeDrainTimeout;

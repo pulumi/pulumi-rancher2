@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterTemplateAnswers {
     /**
-     * @return Cluster ID (string)
+     * @return Cluster ID to apply answer (string)
      * 
      */
     private @Nullable String clusterId;
     /**
-     * @return Project ID to apply answer (string)
+     * @return Project ID for GKE cluster (string)
      * 
      */
     private @Nullable String projectId;
@@ -31,14 +31,14 @@ public final class ClusterClusterTemplateAnswers {
 
     private ClusterClusterTemplateAnswers() {}
     /**
-     * @return Cluster ID (string)
+     * @return Cluster ID to apply answer (string)
      * 
      */
     public Optional<String> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
     /**
-     * @return Project ID to apply answer (string)
+     * @return Project ID for GKE cluster (string)
      * 
      */
     public Optional<String> projectId() {

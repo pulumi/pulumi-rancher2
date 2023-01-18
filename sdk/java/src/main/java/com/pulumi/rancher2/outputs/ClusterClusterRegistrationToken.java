@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterRegistrationToken {
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster (map)
      * 
      */
     private @Nullable Map<String,Object> annotations;
     /**
-     * @return Cluster ID (string)
+     * @return Cluster ID to apply answer (string)
      * 
      */
     private @Nullable String clusterId;
@@ -49,7 +49,7 @@ public final class ClusterClusterRegistrationToken {
      */
     private @Nullable String insecureWindowsNodeCommand;
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster (map)
      * 
      */
     private @Nullable Map<String,Object> labels;
@@ -59,7 +59,7 @@ public final class ClusterClusterRegistrationToken {
      */
     private @Nullable String manifestUrl;
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     private @Nullable String name;
@@ -69,7 +69,7 @@ public final class ClusterClusterRegistrationToken {
      */
     private @Nullable String nodeCommand;
     /**
-     * @return Token for cluster registration token object (string)
+     * @return ACI token (string)
      * 
      */
     private @Nullable String token;
@@ -81,14 +81,14 @@ public final class ClusterClusterRegistrationToken {
 
     private ClusterClusterRegistrationToken() {}
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster (map)
      * 
      */
     public Map<String,Object> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
     /**
-     * @return Cluster ID (string)
+     * @return Cluster ID to apply answer (string)
      * 
      */
     public Optional<String> clusterId() {
@@ -130,7 +130,7 @@ public final class ClusterClusterRegistrationToken {
         return Optional.ofNullable(this.insecureWindowsNodeCommand);
     }
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster (map)
      * 
      */
     public Map<String,Object> labels() {
@@ -144,7 +144,7 @@ public final class ClusterClusterRegistrationToken {
         return Optional.ofNullable(this.manifestUrl);
     }
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Optional<String> name() {
@@ -158,7 +158,7 @@ public final class ClusterClusterRegistrationToken {
         return Optional.ofNullable(this.nodeCommand);
     }
     /**
-     * @return Token for cluster registration token object (string)
+     * @return ACI token (string)
      * 
      */
     public Optional<String> token() {

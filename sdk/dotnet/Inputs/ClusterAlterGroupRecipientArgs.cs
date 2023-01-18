@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterAlterGroupRecipientArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAlterGroupRecipientArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterAlterGroupRecipientArgs()
         {
         }
+        public static new ClusterAlterGroupRecipientArgs Empty => new ClusterAlterGroupRecipientArgs();
     }
 }

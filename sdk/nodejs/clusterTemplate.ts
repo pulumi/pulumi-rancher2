@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -37,7 +38,7 @@ import * as utilities from "./utilities";
  *                 },
  *             },
  *         },
- *         default: true,
+ *         "default": true,
  *         name: "V1",
  *     }],
  * });
@@ -70,11 +71,11 @@ import * as utilities from "./utilities";
  *                 },
  *                 upgradeStrategy: {
  *                     drain: true,
- *                     maxUnavailableWorker: "20%",
+ *                     maxUnavailableWorker: `20%`,
  *                 },
  *             },
  *         },
- *         default: true,
+ *         "default": true,
  *         name: "V1",
  *     }],
  * });
@@ -120,7 +121,7 @@ import * as utilities from "./utilities";
  *                 },
  *             },
  *         },
- *         default: true,
+ *         "default": true,
  *         name: "V1",
  *     }],
  * });
@@ -163,7 +164,7 @@ export class ClusterTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations for the cluster template revision (map)
+     * Annotations for the cluster template (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -175,7 +176,7 @@ export class ClusterTemplate extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Labels for the cluster template revision (map)
+     * Labels for the cluster template (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -183,7 +184,7 @@ export class ClusterTemplate extends pulumi.CustomResource {
      */
     public readonly members!: pulumi.Output<outputs.ClusterTemplateMember[] | undefined>;
     /**
-     * The cluster template revision name (string)
+     * The cluster template name (string)
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -231,7 +232,7 @@ export class ClusterTemplate extends pulumi.CustomResource {
  */
 export interface ClusterTemplateState {
     /**
-     * Annotations for the cluster template revision (map)
+     * Annotations for the cluster template (map)
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -243,7 +244,7 @@ export interface ClusterTemplateState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Labels for the cluster template revision (map)
+     * Labels for the cluster template (map)
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -251,7 +252,7 @@ export interface ClusterTemplateState {
      */
     members?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateMember>[]>;
     /**
-     * The cluster template revision name (string)
+     * The cluster template name (string)
      */
     name?: pulumi.Input<string>;
     /**
@@ -265,7 +266,7 @@ export interface ClusterTemplateState {
  */
 export interface ClusterTemplateArgs {
     /**
-     * Annotations for the cluster template revision (map)
+     * Annotations for the cluster template (map)
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -273,7 +274,7 @@ export interface ClusterTemplateArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Labels for the cluster template revision (map)
+     * Labels for the cluster template (map)
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -281,7 +282,7 @@ export interface ClusterTemplateArgs {
      */
     members?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateMember>[]>;
     /**
-     * The cluster template revision name (string)
+     * The cluster template name (string)
      */
     name?: pulumi.Input<string>;
     /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigEtcdS3ConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigEtcdS3ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bucket name for S3 service (string)
@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// ETCD snapshot S3 cloud credential name (string)
+        /// Machine pool cloud credential secret name (string)
         /// </summary>
         [Input("cloudCredentialName")]
         public Input<string>? CloudCredentialName { get; set; }
@@ -57,5 +57,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigEtcdS3ConfigArgs()
         {
         }
+        public static new ClusterV2RkeConfigEtcdS3ConfigArgs Empty => new ClusterV2RkeConfigEtcdS3ConfigArgs();
     }
 }

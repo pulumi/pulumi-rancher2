@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NotifierWechatConfigArgs : Pulumi.ResourceArgs
+    public sealed class NotifierWechatConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Wechat agent ID (string)
@@ -25,13 +25,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Corp { get; set; } = null!;
 
         /// <summary>
-        /// Wechat default recipient (string)
+        /// Slack default recipient (string)
         /// </summary>
         [Input("defaultRecipient", required: true)]
         public Input<string> DefaultRecipient { get; set; } = null!;
 
         /// <summary>
-        /// Wechat proxy url (string)
+        /// Dingtalk proxy url (string)
         /// </summary>
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
@@ -42,14 +42,25 @@ namespace Pulumi.Rancher2.Inputs
         [Input("recipientType")]
         public Input<string>? RecipientType { get; set; }
 
-        /// <summary>
-        /// Wechat agent ID (string)
-        /// </summary>
         [Input("secret", required: true)]
-        public Input<string> Secret { get; set; } = null!;
+        private Input<string>? _secret;
+
+        /// <summary>
+        /// Secret for url sign enable (string)
+        /// </summary>
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public NotifierWechatConfigArgs()
         {
         }
+        public static new NotifierWechatConfigArgs Empty => new NotifierWechatConfigArgs();
     }
 }

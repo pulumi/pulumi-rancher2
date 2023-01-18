@@ -25,6 +25,78 @@ import javax.annotation.Nullable;
  * `cluster` and `project` scopes are supported for role templates.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.RoleTemplate;
+ * import com.pulumi.rancher2.RoleTemplateArgs;
+ * import com.pulumi.rancher2.inputs.RoleTemplateRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new RoleTemplate(&#34;foo&#34;, RoleTemplateArgs.builder()        
+ *             .context(&#34;cluster&#34;)
+ *             .defaultRole(true)
+ *             .description(&#34;Terraform role template acceptance test&#34;)
+ *             .rules(RoleTemplateRuleArgs.builder()
+ *                 .apiGroups(&#34;*&#34;)
+ *                 .resources(&#34;secrets&#34;)
+ *                 .verbs(&#34;create&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.RoleTemplate;
+ * import com.pulumi.rancher2.RoleTemplateArgs;
+ * import com.pulumi.rancher2.inputs.RoleTemplateRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new RoleTemplate(&#34;foo&#34;, RoleTemplateArgs.builder()        
+ *             .context(&#34;project&#34;)
+ *             .defaultRole(true)
+ *             .description(&#34;Terraform role template acceptance test&#34;)
+ *             .rules(RoleTemplateRuleArgs.builder()
+ *                 .apiGroups(&#34;*&#34;)
+ *                 .resources(&#34;secrets&#34;)
+ *                 .verbs(&#34;create&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

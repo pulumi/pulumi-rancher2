@@ -15,7 +15,7 @@ namespace Pulumi.Rancher2
     /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
     /// </summary>
     [Rancher2ResourceType("rancher2:index/authConfigOpenLdap:AuthConfigOpenLdap")]
-    public partial class AuthConfigOpenLdap : Pulumi.CustomResource
+    public partial class AuthConfigOpenLdap : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -232,6 +232,13 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "certificate",
+                    "serviceAccountDistinguishedName",
+                    "serviceAccountPassword",
+                    "testPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -253,7 +260,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class AuthConfigOpenLdapArgs : Pulumi.ResourceArgs
+    public sealed class AuthConfigOpenLdapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -285,11 +292,21 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        [Input("certificate")]
+        private Input<string>? _certificate;
+
         /// <summary>
         /// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(&lt;FILE&gt;) for encoding file (string)
         /// </summary>
-        [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// OpenLdap connection timeout. Default `5000` (int)
@@ -381,23 +398,53 @@ namespace Pulumi.Rancher2
             set => _servers = value;
         }
 
+        [Input("serviceAccountDistinguishedName", required: true)]
+        private Input<string>? _serviceAccountDistinguishedName;
+
         /// <summary>
         /// Service account DN for access OpenLdap service (string)
         /// </summary>
-        [Input("serviceAccountDistinguishedName", required: true)]
-        public Input<string> ServiceAccountDistinguishedName { get; set; } = null!;
+        public Input<string>? ServiceAccountDistinguishedName
+        {
+            get => _serviceAccountDistinguishedName;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serviceAccountDistinguishedName = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("serviceAccountPassword", required: true)]
+        private Input<string>? _serviceAccountPassword;
 
         /// <summary>
         /// Service account password for access OpenLdap service (string)
         /// </summary>
-        [Input("serviceAccountPassword", required: true)]
-        public Input<string> ServiceAccountPassword { get; set; } = null!;
+        public Input<string>? ServiceAccountPassword
+        {
+            get => _serviceAccountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serviceAccountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("testPassword", required: true)]
+        private Input<string>? _testPassword;
 
         /// <summary>
         /// Password for test access to OpenLdap service (string)
         /// </summary>
-        [Input("testPassword", required: true)]
-        public Input<string> TestPassword { get; set; } = null!;
+        public Input<string>? TestPassword
+        {
+            get => _testPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _testPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Username for test access to OpenLdap service (string)
@@ -462,9 +509,10 @@ namespace Pulumi.Rancher2
         public AuthConfigOpenLdapArgs()
         {
         }
+        public static new AuthConfigOpenLdapArgs Empty => new AuthConfigOpenLdapArgs();
     }
 
-    public sealed class AuthConfigOpenLdapState : Pulumi.ResourceArgs
+    public sealed class AuthConfigOpenLdapState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -496,11 +544,21 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        [Input("certificate")]
+        private Input<string>? _certificate;
+
         /// <summary>
         /// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(&lt;FILE&gt;) for encoding file (string)
         /// </summary>
-        [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// OpenLdap connection timeout. Default `5000` (int)
@@ -598,23 +656,53 @@ namespace Pulumi.Rancher2
             set => _servers = value;
         }
 
+        [Input("serviceAccountDistinguishedName")]
+        private Input<string>? _serviceAccountDistinguishedName;
+
         /// <summary>
         /// Service account DN for access OpenLdap service (string)
         /// </summary>
-        [Input("serviceAccountDistinguishedName")]
-        public Input<string>? ServiceAccountDistinguishedName { get; set; }
+        public Input<string>? ServiceAccountDistinguishedName
+        {
+            get => _serviceAccountDistinguishedName;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serviceAccountDistinguishedName = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("serviceAccountPassword")]
+        private Input<string>? _serviceAccountPassword;
 
         /// <summary>
         /// Service account password for access OpenLdap service (string)
         /// </summary>
-        [Input("serviceAccountPassword")]
-        public Input<string>? ServiceAccountPassword { get; set; }
+        public Input<string>? ServiceAccountPassword
+        {
+            get => _serviceAccountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serviceAccountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("testPassword")]
+        private Input<string>? _testPassword;
 
         /// <summary>
         /// Password for test access to OpenLdap service (string)
         /// </summary>
-        [Input("testPassword")]
-        public Input<string>? TestPassword { get; set; }
+        public Input<string>? TestPassword
+        {
+            get => _testPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _testPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Username for test access to OpenLdap service (string)
@@ -685,5 +773,6 @@ namespace Pulumi.Rancher2
         public AuthConfigOpenLdapState()
         {
         }
+        public static new AuthConfigOpenLdapState Empty => new AuthConfigOpenLdapState();
     }
 }

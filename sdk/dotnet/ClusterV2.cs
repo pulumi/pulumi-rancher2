@@ -10,30 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2
 {
     /// <summary>
-    /// Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is supported as tech preview from Rancher v2.6.0 and above.
+    /// Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is available from Rancher v2.6.0 and above.
     /// 
     /// ## Example Usage
     /// ### Creating Rancher v2 custom cluster v2
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher v2 K3S custom Cluster v2
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         // Create a new rancher v2 K3S custom Cluster v2
-    ///         var foo = new Rancher2.ClusterV2("foo", new Rancher2.ClusterV2Args
-    ///         {
-    ///             DefaultClusterRoleForProjectMembers = "user",
-    ///             EnableNetworkPolicy = false,
-    ///             FleetNamespace = "fleet-ns",
-    ///             KubernetesVersion = "v1.21.4+k3s1",
-    ///         });
-    ///     }
+    ///         DefaultClusterRoleForProjectMembers = "user",
+    ///         EnableNetworkPolicy = false,
+    ///         FleetNamespace = "fleet-ns",
+    ///         KubernetesVersion = "v1.21.4+k3s1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// **Note** Once created, get the node command from `rancher2_cluster_v2.foo.cluster_registration_token`
@@ -47,7 +45,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterV2:ClusterV2")]
-    public partial class ClusterV2 : Pulumi.CustomResource
+    public partial class ClusterV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional Agent Env Vars for Rancher agent (list)
@@ -56,7 +54,7 @@ namespace Pulumi.Rancher2
         public Output<ImmutableArray<Outputs.ClusterV2AgentEnvVar>> AgentEnvVars { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations for cluster registration token object (map)
+        /// Annotations for the Cluster V2 (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
@@ -116,19 +114,19 @@ namespace Pulumi.Rancher2
         public Output<string> KubernetesVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels for the Cluster V2 (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Use rancher2_cluster_v2.local_auth_endpoint instead
+        /// Cluster V2 local auth endpoint (list maxitems:1)
         /// </summary>
         [Output("localAuthEndpoint")]
         public Output<Outputs.ClusterV2LocalAuthEndpoint?> LocalAuthEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster v2 (string)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -168,6 +166,11 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "clusterRegistrationToken",
+                    "kubeConfig",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -189,7 +192,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ClusterV2Args : Pulumi.ResourceArgs
+    public sealed class ClusterV2Args : global::Pulumi.ResourceArgs
     {
         [Input("agentEnvVars")]
         private InputList<Inputs.ClusterV2AgentEnvVarArgs>? _agentEnvVars;
@@ -207,7 +210,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for cluster registration token object (map)
+        /// Annotations for the Cluster V2 (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -255,7 +258,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels for the Cluster V2 (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -264,13 +267,13 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Use rancher2_cluster_v2.local_auth_endpoint instead
+        /// Cluster V2 local auth endpoint (list maxitems:1)
         /// </summary>
         [Input("localAuthEndpoint")]
         public Input<Inputs.ClusterV2LocalAuthEndpointArgs>? LocalAuthEndpoint { get; set; }
 
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster v2 (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -284,9 +287,10 @@ namespace Pulumi.Rancher2
         public ClusterV2Args()
         {
         }
+        public static new ClusterV2Args Empty => new ClusterV2Args();
     }
 
-    public sealed class ClusterV2State : Pulumi.ResourceArgs
+    public sealed class ClusterV2State : global::Pulumi.ResourceArgs
     {
         [Input("agentEnvVars")]
         private InputList<Inputs.ClusterV2AgentEnvVarGetArgs>? _agentEnvVars;
@@ -304,7 +308,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for cluster registration token object (map)
+        /// Annotations for the Cluster V2 (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -318,11 +322,21 @@ namespace Pulumi.Rancher2
         [Input("cloudCredentialSecretName")]
         public Input<string>? CloudCredentialSecretName { get; set; }
 
+        [Input("clusterRegistrationToken")]
+        private Input<Inputs.ClusterV2ClusterRegistrationTokenGetArgs>? _clusterRegistrationToken;
+
         /// <summary>
         /// (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
         /// </summary>
-        [Input("clusterRegistrationToken")]
-        public Input<Inputs.ClusterV2ClusterRegistrationTokenGetArgs>? ClusterRegistrationToken { get; set; }
+        public Input<Inputs.ClusterV2ClusterRegistrationTokenGetArgs>? ClusterRegistrationToken
+        {
+            get => _clusterRegistrationToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clusterRegistrationToken = Output.Tuple<Input<Inputs.ClusterV2ClusterRegistrationTokenGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// (Computed) Cluster v1 id for cluster v2. (e.g to be used with `rancher2_sync`) (string)
@@ -354,11 +368,21 @@ namespace Pulumi.Rancher2
         [Input("fleetNamespace")]
         public Input<string>? FleetNamespace { get; set; }
 
+        [Input("kubeConfig")]
+        private Input<string>? _kubeConfig;
+
         /// <summary>
         /// (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         /// </summary>
-        [Input("kubeConfig")]
-        public Input<string>? KubeConfig { get; set; }
+        public Input<string>? KubeConfig
+        {
+            get => _kubeConfig;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _kubeConfig = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The kubernetes version of the Cluster v2 (list maxitems:1)
@@ -370,7 +394,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels for the Cluster V2 (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -379,13 +403,13 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Use rancher2_cluster_v2.local_auth_endpoint instead
+        /// Cluster V2 local auth endpoint (list maxitems:1)
         /// </summary>
         [Input("localAuthEndpoint")]
         public Input<Inputs.ClusterV2LocalAuthEndpointGetArgs>? LocalAuthEndpoint { get; set; }
 
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster v2 (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -405,5 +429,6 @@ namespace Pulumi.Rancher2
         public ClusterV2State()
         {
         }
+        public static new ClusterV2State Empty => new ClusterV2State();
     }
 }

@@ -41,6 +41,695 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enable_cluster_monitoring = false`, `cloud_provider {}`, `name = &#34;&#34;`
+ * ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
+ * 
+ * **Note** Cluster monitoring version `0.2.0` or above, can&#39;t be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterClusterMonitoringInputArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
+ *             .clusterMonitoringInput(ClusterClusterMonitoringInputArgs.builder()
+ *                 .answers(Map.ofEntries(
+ *                     Map.entry(&#34;exporter-kubelets.https&#34;, true),
+ *                     Map.entry(&#34;exporter-node.enabled&#34;, true),
+ *                     Map.entry(&#34;exporter-node.ports.metrics.port&#34;, 9796),
+ *                     Map.entry(&#34;exporter-node.resources.limits.cpu&#34;, &#34;200m&#34;),
+ *                     Map.entry(&#34;exporter-node.resources.limits.memory&#34;, &#34;200Mi&#34;),
+ *                     Map.entry(&#34;grafana.persistence.enabled&#34;, false),
+ *                     Map.entry(&#34;grafana.persistence.size&#34;, &#34;10Gi&#34;),
+ *                     Map.entry(&#34;grafana.persistence.storageClass&#34;, &#34;default&#34;),
+ *                     Map.entry(&#34;operator.resources.limits.memory&#34;, &#34;500Mi&#34;),
+ *                     Map.entry(&#34;prometheus.persistence.enabled&#34;, &#34;false&#34;),
+ *                     Map.entry(&#34;prometheus.persistence.size&#34;, &#34;50Gi&#34;),
+ *                     Map.entry(&#34;prometheus.persistence.storageClass&#34;, &#34;default&#34;),
+ *                     Map.entry(&#34;prometheus.persistent.useReleaseName&#34;, &#34;true&#34;),
+ *                     Map.entry(&#34;prometheus.resources.core.limits.cpu&#34;, &#34;1000m&#34;),
+ *                     Map.entry(&#34;prometheus.resources.core.limits.memory&#34;, &#34;1500Mi&#34;),
+ *                     Map.entry(&#34;prometheus.resources.core.requests.cpu&#34;, &#34;750m&#34;),
+ *                     Map.entry(&#34;prometheus.resources.core.requests.memory&#34;, &#34;750Mi&#34;),
+ *                     Map.entry(&#34;prometheus.retention&#34;, &#34;12h&#34;)
+ *                 ))
+ *                 .version(&#34;0.1.0&#34;)
+ *                 .build())
+ *             .description(&#34;Foo rancher2 custom cluster&#34;)
+ *             .enableClusterMonitoring(true)
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .network(ClusterRkeConfigNetworkArgs.builder()
+ *                     .plugin(&#34;canal&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.inputs.ClusterClusterMonitoringInputArgs;
+ * import com.pulumi.rancher2.ClusterSync;
+ * import com.pulumi.rancher2.ClusterSyncArgs;
+ * import com.pulumi.rancher2.Namespace;
+ * import com.pulumi.rancher2.NamespaceArgs;
+ * import com.pulumi.rancher2.App;
+ * import com.pulumi.rancher2.AppArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo_customCluster = new Cluster(&#34;foo-customCluster&#34;, ClusterArgs.builder()        
+ *             .description(&#34;Foo rancher2 custom cluster&#34;)
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .network(ClusterRkeConfigNetworkArgs.builder()
+ *                     .plugin(&#34;canal&#34;)
+ *                     .build())
+ *                 .build())
+ *             .enableClusterMonitoring(true)
+ *             .clusterMonitoringInput(ClusterClusterMonitoringInputArgs.builder()
+ *                 .answers(Map.ofEntries(
+ *                     Map.entry(&#34;exporter-kubelets.https&#34;, true),
+ *                     Map.entry(&#34;exporter-node.enabled&#34;, true),
+ *                     Map.entry(&#34;exporter-node.ports.metrics.port&#34;, 9796),
+ *                     Map.entry(&#34;exporter-node.resources.limits.cpu&#34;, &#34;200m&#34;),
+ *                     Map.entry(&#34;exporter-node.resources.limits.memory&#34;, &#34;200Mi&#34;),
+ *                     Map.entry(&#34;grafana.persistence.enabled&#34;, false),
+ *                     Map.entry(&#34;grafana.persistence.size&#34;, &#34;10Gi&#34;),
+ *                     Map.entry(&#34;grafana.persistence.storageClass&#34;, &#34;default&#34;),
+ *                     Map.entry(&#34;operator.resources.limits.memory&#34;, &#34;500Mi&#34;),
+ *                     Map.entry(&#34;prometheus.persistence.enabled&#34;, &#34;false&#34;),
+ *                     Map.entry(&#34;prometheus.persistence.size&#34;, &#34;50Gi&#34;),
+ *                     Map.entry(&#34;prometheus.persistence.storageClass&#34;, &#34;default&#34;),
+ *                     Map.entry(&#34;prometheus.persistent.useReleaseName&#34;, &#34;true&#34;),
+ *                     Map.entry(&#34;prometheus.resources.core.limits.cpu&#34;, &#34;1000m&#34;),
+ *                     Map.entry(&#34;prometheus.resources.core.limits.memory&#34;, &#34;1500Mi&#34;),
+ *                     Map.entry(&#34;prometheus.resources.core.requests.cpu&#34;, &#34;750m&#34;),
+ *                     Map.entry(&#34;prometheus.resources.core.requests.memory&#34;, &#34;750Mi&#34;),
+ *                     Map.entry(&#34;prometheus.retention&#34;, &#34;12h&#34;)
+ *                 ))
+ *                 .version(&#34;0.1.0&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var foo_customClusterSync = new ClusterSync(&#34;foo-customClusterSync&#34;, ClusterSyncArgs.builder()        
+ *             .clusterId(foo_customCluster.id())
+ *             .waitMonitoring(foo_customCluster.enableClusterMonitoring())
+ *             .build());
+ * 
+ *         var foo_istio = new Namespace(&#34;foo-istio&#34;, NamespaceArgs.builder()        
+ *             .projectId(foo_customClusterSync.systemProjectId())
+ *             .description(&#34;istio namespace&#34;)
+ *             .build());
+ * 
+ *         var istio = new App(&#34;istio&#34;, AppArgs.builder()        
+ *             .catalogName(&#34;system-library&#34;)
+ *             .description(&#34;Terraform app acceptance test&#34;)
+ *             .projectId(foo_istio.projectId())
+ *             .templateName(&#34;rancher-istio&#34;)
+ *             .templateVersion(&#34;0.1.1&#34;)
+ *             .targetNamespace(foo_istio.id())
+ *             .answers(Map.ofEntries(
+ *                 Map.entry(&#34;certmanager.enabled&#34;, false),
+ *                 Map.entry(&#34;enableCRDs&#34;, true),
+ *                 Map.entry(&#34;galley.enabled&#34;, true),
+ *                 Map.entry(&#34;gateways.enabled&#34;, false),
+ *                 Map.entry(&#34;gateways.istio-ingressgateway.resources.limits.cpu&#34;, &#34;2000m&#34;),
+ *                 Map.entry(&#34;gateways.istio-ingressgateway.resources.limits.memory&#34;, &#34;1024Mi&#34;),
+ *                 Map.entry(&#34;gateways.istio-ingressgateway.resources.requests.cpu&#34;, &#34;100m&#34;),
+ *                 Map.entry(&#34;gateways.istio-ingressgateway.resources.requests.memory&#34;, &#34;128Mi&#34;),
+ *                 Map.entry(&#34;gateways.istio-ingressgateway.type&#34;, &#34;NodePort&#34;),
+ *                 Map.entry(&#34;global.monitoring.type&#34;, &#34;cluster-monitoring&#34;),
+ *                 Map.entry(&#34;global.rancher.clusterId&#34;, foo_customClusterSync.clusterId()),
+ *                 Map.entry(&#34;istio_cni.enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;istiocoredns.enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;kiali.enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;mixer.enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;mixer.policy.enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;mixer.policy.resources.limits.cpu&#34;, &#34;4800m&#34;),
+ *                 Map.entry(&#34;mixer.policy.resources.limits.memory&#34;, &#34;4096Mi&#34;),
+ *                 Map.entry(&#34;mixer.policy.resources.requests.cpu&#34;, &#34;1000m&#34;),
+ *                 Map.entry(&#34;mixer.policy.resources.requests.memory&#34;, &#34;1024Mi&#34;),
+ *                 Map.entry(&#34;mixer.telemetry.resources.limits.cpu&#34;, &#34;4800m&#34;),
+ *                 Map.entry(&#34;mixer.telemetry.resources.limits.memory&#34;, &#34;4096Mi&#34;),
+ *                 Map.entry(&#34;mixer.telemetry.resources.requests.cpu&#34;, &#34;1000m&#34;),
+ *                 Map.entry(&#34;mixer.telemetry.resources.requests.memory&#34;, &#34;1024Mi&#34;),
+ *                 Map.entry(&#34;mtls.enabled&#34;, false),
+ *                 Map.entry(&#34;nodeagent.enabled&#34;, false),
+ *                 Map.entry(&#34;pilot.enabled&#34;, true),
+ *                 Map.entry(&#34;pilot.resources.limits.cpu&#34;, &#34;1000m&#34;),
+ *                 Map.entry(&#34;pilot.resources.limits.memory&#34;, &#34;4096Mi&#34;),
+ *                 Map.entry(&#34;pilot.resources.requests.cpu&#34;, &#34;500m&#34;),
+ *                 Map.entry(&#34;pilot.resources.requests.memory&#34;, &#34;2048Mi&#34;),
+ *                 Map.entry(&#34;pilot.traceSampling&#34;, &#34;1&#34;),
+ *                 Map.entry(&#34;security.enabled&#34;, true),
+ *                 Map.entry(&#34;sidecarInjectorWebhook.enabled&#34;, true),
+ *                 Map.entry(&#34;tracing.enabled&#34;, true),
+ *                 Map.entry(&#34;tracing.jaeger.resources.limits.cpu&#34;, &#34;500m&#34;),
+ *                 Map.entry(&#34;tracing.jaeger.resources.limits.memory&#34;, &#34;1024Mi&#34;),
+ *                 Map.entry(&#34;tracing.jaeger.resources.requests.cpu&#34;, &#34;100m&#34;),
+ *                 Map.entry(&#34;tracing.jaeger.resources.requests.memory&#34;, &#34;100Mi&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.NodeTemplate;
+ * import com.pulumi.rancher2.NodeTemplateArgs;
+ * import com.pulumi.rancher2.inputs.NodeTemplateAmazonec2ConfigArgs;
+ * import com.pulumi.rancher2.NodePool;
+ * import com.pulumi.rancher2.NodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
+ *             .description(&#34;Foo rancher2 custom cluster&#34;)
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .network(ClusterRkeConfigNetworkArgs.builder()
+ *                     .plugin(&#34;canal&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
+ *             .description(&#34;foo test&#34;)
+ *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
+ *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
+ *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
+ *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
+ *                 .region(&#34;&lt;REGION&gt;&#34;)
+ *                 .securityGroups(&#34;&lt;AWS_SECURITY_GROUP&gt;&#34;)
+ *                 .subnetId(&#34;&lt;SUBNET_ID&gt;&#34;)
+ *                 .vpcId(&#34;&lt;VPC_ID&gt;&#34;)
+ *                 .zone(&#34;&lt;ZONE&gt;&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooNodePool = new NodePool(&#34;fooNodePool&#34;, NodePoolArgs.builder()        
+ *             .clusterId(foo_custom.id())
+ *             .hostnamePrefix(&#34;foo-cluster-0&#34;)
+ *             .nodeTemplateId(fooNodeTemplate.id())
+ *             .quantity(3)
+ *             .controlPlane(true)
+ *             .etcd(true)
+ *             .worker(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x or above.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.ClusterTemplate;
+ * import com.pulumi.rancher2.ClusterTemplateArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateMemberArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs;
+ * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooClusterTemplate = new ClusterTemplate(&#34;fooClusterTemplate&#34;, ClusterTemplateArgs.builder()        
+ *             .members(ClusterTemplateMemberArgs.builder()
+ *                 .accessType(&#34;owner&#34;)
+ *                 .userPrincipalId(&#34;local://user-XXXXX&#34;)
+ *                 .build())
+ *             .templateRevisions(ClusterTemplateTemplateRevisionArgs.builder()
+ *                 .name(&#34;V1&#34;)
+ *                 .clusterConfig(ClusterTemplateTemplateRevisionClusterConfigArgs.builder()
+ *                     .rkeConfig(ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs.builder()
+ *                         .network(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs.builder()
+ *                             .plugin(&#34;canal&#34;)
+ *                             .build())
+ *                         .services(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs.builder()
+ *                             .etcd(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs.builder()
+ *                                 .creation(&#34;6h&#34;)
+ *                                 .retention(&#34;24h&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .default_(true)
+ *                 .build())
+ *             .description(&#34;Test cluster template v2&#34;)
+ *             .build());
+ * 
+ *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
+ *             .clusterTemplateId(fooClusterTemplate.id())
+ *             .clusterTemplateRevisionId(fooClusterTemplate.templateRevisions().applyValue(templateRevisions -&gt; templateRevisions[0].id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x or above.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesEtcdArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiAuditLogArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigUpgradeStrategyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+ *             .description(&#34;Terraform custom cluster&#34;)
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .network(ClusterRkeConfigNetworkArgs.builder()
+ *                     .plugin(&#34;canal&#34;)
+ *                     .build())
+ *                 .services(ClusterRkeConfigServicesArgs.builder()
+ *                     .etcd(ClusterRkeConfigServicesEtcdArgs.builder()
+ *                         .creation(&#34;6h&#34;)
+ *                         .retention(&#34;24h&#34;)
+ *                         .build())
+ *                     .kubeApi(ClusterRkeConfigServicesKubeApiArgs.builder()
+ *                         .auditLog(ClusterRkeConfigServicesKubeApiAuditLogArgs.builder()
+ *                             .configuration(ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs.builder()
+ *                                 .format(&#34;json&#34;)
+ *                                 .maxAge(5)
+ *                                 .maxBackup(5)
+ *                                 .maxSize(100)
+ *                                 .path(&#34;-&#34;)
+ *                                 .policy(&#34;&#34;&#34;
+ * apiVersion: audit.k8s.io/v1
+ * kind: Policy
+ * metadata:
+ *   creationTimestamp: null
+ * omitStages:
+ * - RequestReceived
+ * rules:
+ * - level: RequestResponse
+ *   resources:
+ *   - resources:
+ *     - pods
+ * 
+ *                                 &#34;&#34;&#34;)
+ *                                 .build())
+ *                             .enabled(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .upgradeStrategy(ClusterRkeConfigUpgradeStrategyArgs.builder()
+ *                     .drain(true)
+ *                     .maxUnavailableWorker(&#34;20%&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Creating Rancher v2 RKE cluster with scheduled cluster scan. For Rancher v2.4.x or above.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesEtcdArgs;
+ * import com.pulumi.rancher2.inputs.ClusterScheduledClusterScanArgs;
+ * import com.pulumi.rancher2.inputs.ClusterScheduledClusterScanScanConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterScheduledClusterScanScanConfigCisScanConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterScheduledClusterScanScheduleConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+ *             .description(&#34;Terraform custom cluster&#34;)
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .network(ClusterRkeConfigNetworkArgs.builder()
+ *                     .plugin(&#34;canal&#34;)
+ *                     .build())
+ *                 .services(ClusterRkeConfigServicesArgs.builder()
+ *                     .etcd(ClusterRkeConfigServicesEtcdArgs.builder()
+ *                         .creation(&#34;6h&#34;)
+ *                         .retention(&#34;24h&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .scheduledClusterScan(ClusterScheduledClusterScanArgs.builder()
+ *                 .enabled(true)
+ *                 .scanConfig(ClusterScheduledClusterScanScanConfigArgs.builder()
+ *                     .cisScanConfig(ClusterScheduledClusterScanScanConfigCisScanConfigArgs.builder()
+ *                         .debugMaster(true)
+ *                         .debugWorker(true)
+ *                         .build())
+ *                     .build())
+ *                 .scheduleConfig(ClusterScheduledClusterScanScheduleConfigArgs.builder()
+ *                     .cronSchedule(&#34;30 * * * *&#34;)
+ *                     .retention(5)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.CloudCredential;
+ * import com.pulumi.rancher2.CloudCredentialArgs;
+ * import com.pulumi.rancher2.inputs.CloudCredentialAmazonec2CredentialConfigArgs;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterEksConfigV2Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *             .description(&#34;foo test&#34;)
+ *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
+ *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
+ *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
+ *             .description(&#34;Terraform EKS cluster&#34;)
+ *             .eksConfigV2(ClusterEksConfigV2Args.builder()
+ *                 .cloudCredentialId(fooCloudCredential.id())
+ *                 .name(&#34;&lt;CLUSTER_NAME&gt;&#34;)
+ *                 .region(&#34;&lt;EKS_REGION&gt;&#34;)
+ *                 .imported(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.CloudCredential;
+ * import com.pulumi.rancher2.CloudCredentialArgs;
+ * import com.pulumi.rancher2.inputs.CloudCredentialAmazonec2CredentialConfigArgs;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterEksConfigV2Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *             .description(&#34;foo test&#34;)
+ *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
+ *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
+ *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
+ *             .description(&#34;Terraform EKS cluster&#34;)
+ *             .eksConfigV2(ClusterEksConfigV2Args.builder()
+ *                 .cloudCredentialId(fooCloudCredential.id())
+ *                 .region(&#34;&lt;EKS_REGION&gt;&#34;)
+ *                 .kubernetesVersion(&#34;1.17&#34;)
+ *                 .loggingTypes(                
+ *                     &#34;audit&#34;,
+ *                     &#34;api&#34;)
+ *                 .nodeGroups(                
+ *                     ClusterEksConfigV2NodeGroupArgs.builder()
+ *                         .name(&#34;node_group1&#34;)
+ *                         .instanceType(&#34;t3.medium&#34;)
+ *                         .desiredSize(3)
+ *                         .maxSize(5)
+ *                         .build(),
+ *                     ClusterEksConfigV2NodeGroupArgs.builder()
+ *                         .name(&#34;node_group2&#34;)
+ *                         .instanceType(&#34;m5.xlarge&#34;)
+ *                         .desiredSize(2)
+ *                         .maxSize(3)
+ *                         .build())
+ *                 .privateAccess(true)
+ *                 .publicAccess(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 or above.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.CloudCredential;
+ * import com.pulumi.rancher2.CloudCredentialArgs;
+ * import com.pulumi.rancher2.inputs.CloudCredentialAmazonec2CredentialConfigArgs;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterEksConfigV2Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *             .description(&#34;foo test&#34;)
+ *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
+ *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
+ *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
+ *             .description(&#34;Terraform EKS cluster&#34;)
+ *             .eksConfigV2(ClusterEksConfigV2Args.builder()
+ *                 .cloudCredentialId(fooCloudCredential.id())
+ *                 .region(&#34;&lt;EKS_REGION&gt;&#34;)
+ *                 .kubernetesVersion(&#34;1.17&#34;)
+ *                 .loggingTypes(                
+ *                     &#34;audit&#34;,
+ *                     &#34;api&#34;)
+ *                 .nodeGroups(ClusterEksConfigV2NodeGroupArgs.builder()
+ *                     .desiredSize(3)
+ *                     .maxSize(5)
+ *                     .name(&#34;node_group1&#34;)
+ *                     .launchTemplates(ClusterEksConfigV2NodeGroupLaunchTemplateArgs.builder()
+ *                         .id(&#34;&lt;EC2_LAUNCH_TEMPLATE_ID&gt;&#34;)
+ *                         .version(1)
+ *                         .build())
+ *                     .build())
+ *                 .privateAccess(true)
+ *                 .publicAccess(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 or above.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.CloudCredential;
+ * import com.pulumi.rancher2.CloudCredentialArgs;
+ * import com.pulumi.rancher2.inputs.CloudCredentialAzureCredentialConfigArgs;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterAksConfigV2Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo_aks = new CloudCredential(&#34;foo-aks&#34;, CloudCredentialArgs.builder()        
+ *             .azureCredentialConfig(CloudCredentialAzureCredentialConfigArgs.builder()
+ *                 .clientId(&#34;&lt;CLIENT_ID&gt;&#34;)
+ *                 .clientSecret(&#34;&lt;CLIENT_SECRET&gt;&#34;)
+ *                 .subscriptionId(&#34;&lt;SUBSCRIPTION_ID&gt;&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+ *             .description(&#34;Terraform AKS cluster&#34;)
+ *             .aksConfigV2(ClusterAksConfigV2Args.builder()
+ *                 .cloudCredentialId(foo_aks.id())
+ *                 .resourceGroup(&#34;&lt;RESOURCE_GROUP&gt;&#34;)
+ *                 .resourceLocation(&#34;&lt;RESOURCE_LOCATION&gt;&#34;)
+ *                 .dnsPrefix(&#34;&lt;DNS_PREFIX&gt;&#34;)
+ *                 .kubernetesVersion(&#34;1.21.2&#34;)
+ *                 .networkPlugin(&#34;&lt;NETWORK_PLUGIN&gt;&#34;)
+ *                 .nodePools(ClusterAksConfigV2NodePoolArgs.builder()
+ *                     .availabilityZones(                    
+ *                         &#34;1&#34;,
+ *                         &#34;2&#34;,
+ *                         &#34;3&#34;)
+ *                     .name(&#34;&lt;NODEPOOL_NAME&gt;&#34;)
+ *                     .count(1)
+ *                     .orchestratorVersion(&#34;1.21.2&#34;)
+ *                     .osDiskSizeGb(128)
+ *                     .vmSize(&#34;Standard_DS2_v2&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -96,14 +785,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aksConfigV2);
     }
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster (map)
      * 
      */
     @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> annotations;
 
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster (map)
      * 
      */
     public Output<Map<String,Object>> annotations() {
@@ -250,14 +939,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.defaultProjectId;
     }
     /**
-     * An optional description of this cluster (string)
+     * The description for Cluster (string)
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return An optional description of this cluster (string)
+     * @return The description for Cluster (string)
      * 
      */
     public Output<Optional<String>> description() {
@@ -492,28 +1181,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.kubeConfig;
     }
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster (map)
      * 
      */
     public Output<Map<String,Object>> labels() {
         return this.labels;
     }
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Output<String> name() {
@@ -636,6 +1325,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "caCert",
+                "kubeConfig"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

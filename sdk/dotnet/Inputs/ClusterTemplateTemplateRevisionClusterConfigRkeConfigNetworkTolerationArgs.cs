@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs : global::Pulumi.ResourceArgs
     {
         [Input("effect")]
         public Input<string>? Effect { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs();
     }
 }

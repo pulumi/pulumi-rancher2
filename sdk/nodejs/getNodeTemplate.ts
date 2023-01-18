@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,17 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getNodeTemplate({
+ * const foo = rancher2.getNodeTemplate({
  *     name: "foo",
- * }));
+ * });
  * ```
  */
 export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getNodeTemplate:getNodeTemplate", {
         "name": args.name,
         "useInternalIpAddress": args.useInternalIpAddress,
@@ -111,9 +109,22 @@ export interface GetNodeTemplateResult {
      */
     readonly useInternalIpAddress?: boolean;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 Node Template resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getNodeTemplate({
+ *     name: "foo",
+ * });
+ * ```
+ */
 export function getNodeTemplateOutput(args: GetNodeTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTemplateResult> {
-    return pulumi.output(args).apply(a => getNodeTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getNodeTemplate(a, opts))
 }
 
 /**

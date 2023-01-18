@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterTemplateTemplateRevision
     {
         /// <summary>
-        /// Annotations for the cluster template revision (map)
+        /// Annotations for the cluster template (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Annotations;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ClusterTemplateId;
         /// <summary>
-        /// Default variable value (string)
+        /// Default cluster template revision. Default `false` (bool)
         /// </summary>
         public readonly bool? Default;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Labels for the cluster template revision (map)
+        /// Labels for the cluster template (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
-        /// The cluster template revision name (string)
+        /// The cluster template name (string)
         /// </summary>
         public readonly string Name;
         /// <summary>

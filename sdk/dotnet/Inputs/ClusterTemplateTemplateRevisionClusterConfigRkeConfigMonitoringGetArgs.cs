@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
@@ -48,5 +48,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringGetArgs();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,17 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getGlobalRole({
+ * const foo = rancher2.getGlobalRole({
  *     name: "foo",
- * }));
+ * });
  * ```
  */
 export function getGlobalRole(args: GetGlobalRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalRoleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getGlobalRole:getGlobalRole", {
         "name": args.name,
     }, opts);
@@ -74,9 +72,22 @@ export interface GetGlobalRoleResult {
      */
     readonly rules: outputs.GetGlobalRoleRule[];
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 global role resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getGlobalRole({
+ *     name: "foo",
+ * });
+ * ```
+ */
 export function getGlobalRoleOutput(args: GetGlobalRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalRoleResult> {
-    return pulumi.output(args).apply(a => getGlobalRole(a, opts))
+    return pulumi.output(args).apply((a: any) => getGlobalRole(a, opts))
 }
 
 /**

@@ -16,14 +16,14 @@ public final class ClusterLoggingCustomTargetConfigArgs extends com.pulumi.resou
     public static final ClusterLoggingCustomTargetConfigArgs Empty = new ClusterLoggingCustomTargetConfigArgs();
 
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -31,14 +31,14 @@ public final class ClusterLoggingCustomTargetConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * SSL client certificate for the syslog service (string)
+     * SSL client certificate for the custom target service (string)
      * 
      */
     @Import(name="clientCert")
     private @Nullable Output<String> clientCert;
 
     /**
-     * @return SSL client certificate for the syslog service (string)
+     * @return SSL client certificate for the custom target service (string)
      * 
      */
     public Optional<Output<String>> clientCert() {
@@ -46,14 +46,14 @@ public final class ClusterLoggingCustomTargetConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * SSL client key for the syslog service (string)
+     * SSL client key for the custom target service (string)
      * 
      */
     @Import(name="clientKey")
     private @Nullable Output<String> clientKey;
 
     /**
-     * @return SSL client key for the syslog service (string)
+     * @return SSL client key for the custom target service (string)
      * 
      */
     public Optional<Output<String>> clientKey() {
@@ -103,7 +103,7 @@ public final class ClusterLoggingCustomTargetConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param certificate SSL certificate for the syslog service (string)
+         * @param certificate SSL CA certificate for the custom target service (string)
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ClusterLoggingCustomTargetConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param certificate SSL certificate for the syslog service (string)
+         * @param certificate SSL CA certificate for the custom target service (string)
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ClusterLoggingCustomTargetConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clientCert SSL client certificate for the syslog service (string)
+         * @param clientCert SSL client certificate for the custom target service (string)
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ClusterLoggingCustomTargetConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clientCert SSL client certificate for the syslog service (string)
+         * @param clientCert SSL client certificate for the custom target service (string)
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ClusterLoggingCustomTargetConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clientKey SSL client key for the syslog service (string)
+         * @param clientKey SSL client key for the custom target service (string)
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ClusterLoggingCustomTargetConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clientKey SSL client key for the syslog service (string)
+         * @param clientKey SSL client key for the custom target service (string)
          * 
          * @return builder
          * 

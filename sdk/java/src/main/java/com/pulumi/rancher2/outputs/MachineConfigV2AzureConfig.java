@@ -34,7 +34,7 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable String customData;
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     private @Nullable String diskSize;
@@ -44,7 +44,7 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable String dns;
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Port number for Docker engine. Default `2376` (string)
      * 
      */
     private @Nullable String dockerPort;
@@ -59,7 +59,7 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable String faultDomainCount;
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     private @Nullable String image;
@@ -89,6 +89,11 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable List<String> openPorts;
     /**
+     * @return Only use a private IP address. Default `false` (bool)
+     * 
+     */
+    private @Nullable Boolean privateAddressOnly;
+    /**
      * @return Specify a static private IP address for the machine. (string)
      * 
      */
@@ -99,12 +104,12 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable String resourceGroup;
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
      * 
      */
     private @Nullable String size;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     private @Nullable String sshUser;
@@ -129,12 +134,12 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable String subnetPrefix;
     /**
-     * @return Azure Subscription ID (string)
+     * @return Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     private @Nullable String subscriptionId;
     /**
-     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * @return Azure Tenant ID (string)
      * 
      */
     private @Nullable String tenantId;
@@ -184,7 +189,7 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.customData);
     }
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     public Optional<String> diskSize() {
@@ -198,7 +203,7 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.dns);
     }
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Port number for Docker engine. Default `2376` (string)
      * 
      */
     public Optional<String> dockerPort() {
@@ -219,7 +224,7 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.faultDomainCount);
     }
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     public Optional<String> image() {
@@ -261,6 +266,13 @@ public final class MachineConfigV2AzureConfig {
         return this.openPorts == null ? List.of() : this.openPorts;
     }
     /**
+     * @return Only use a private IP address. Default `false` (bool)
+     * 
+     */
+    public Optional<Boolean> privateAddressOnly() {
+        return Optional.ofNullable(this.privateAddressOnly);
+    }
+    /**
      * @return Specify a static private IP address for the machine. (string)
      * 
      */
@@ -275,14 +287,14 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.resourceGroup);
     }
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
      * 
      */
     public Optional<String> size() {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     public Optional<String> sshUser() {
@@ -317,14 +329,14 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.subnetPrefix);
     }
     /**
-     * @return Azure Subscription ID (string)
+     * @return Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     public Optional<String> subscriptionId() {
         return Optional.ofNullable(this.subscriptionId);
     }
     /**
-     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * @return Azure Tenant ID (string)
      * 
      */
     public Optional<String> tenantId() {
@@ -376,6 +388,7 @@ public final class MachineConfigV2AzureConfig {
         private @Nullable Boolean noPublicIp;
         private @Nullable String nsg;
         private @Nullable List<String> openPorts;
+        private @Nullable Boolean privateAddressOnly;
         private @Nullable String privateIpAddress;
         private @Nullable String resourceGroup;
         private @Nullable String size;
@@ -407,6 +420,7 @@ public final class MachineConfigV2AzureConfig {
     	      this.noPublicIp = defaults.noPublicIp;
     	      this.nsg = defaults.nsg;
     	      this.openPorts = defaults.openPorts;
+    	      this.privateAddressOnly = defaults.privateAddressOnly;
     	      this.privateIpAddress = defaults.privateIpAddress;
     	      this.resourceGroup = defaults.resourceGroup;
     	      this.size = defaults.size;
@@ -501,6 +515,11 @@ public final class MachineConfigV2AzureConfig {
             return openPorts(List.of(openPorts));
         }
         @CustomType.Setter
+        public Builder privateAddressOnly(@Nullable Boolean privateAddressOnly) {
+            this.privateAddressOnly = privateAddressOnly;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privateIpAddress(@Nullable String privateIpAddress) {
             this.privateIpAddress = privateIpAddress;
             return this;
@@ -582,6 +601,7 @@ public final class MachineConfigV2AzureConfig {
             o.noPublicIp = noPublicIp;
             o.nsg = nsg;
             o.openPorts = openPorts;
+            o.privateAddressOnly = privateAddressOnly;
             o.privateIpAddress = privateIpAddress;
             o.resourceGroup = resourceGroup;
             o.size = size;

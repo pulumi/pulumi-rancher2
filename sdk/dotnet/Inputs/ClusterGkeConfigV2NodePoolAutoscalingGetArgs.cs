@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2NodePoolAutoscalingGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2NodePoolAutoscalingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// Enable etcd backup (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The GKE node pool config max node count (int)
+        /// Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
         /// </summary>
         [Input("maxNodeCount")]
         public Input<int>? MaxNodeCount { get; set; }
 
         /// <summary>
-        /// The GKE node pool config min node count (int)
+        /// Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
         /// </summary>
         [Input("minNodeCount")]
         public Input<int>? MinNodeCount { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2NodePoolAutoscalingGetArgs()
         {
         }
+        public static new ClusterGkeConfigV2NodePoolAutoscalingGetArgs Empty => new ClusterGkeConfigV2NodePoolAutoscalingGetArgs();
     }
 }

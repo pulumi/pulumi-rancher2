@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Duration in seconds of addon job (int)
@@ -55,7 +55,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigBastionHostArgs>? BastionHost { get; set; }
 
         /// <summary>
-        /// RKE options for Calico network provider (string)
+        /// RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
         /// </summary>
         [Input("cloudProvider")]
         public Input<Inputs.ClusterRkeConfigCloudProviderArgs>? CloudProvider { get; set; }
@@ -85,19 +85,19 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigIngressArgs>? Ingress { get; set; }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
         /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
 
         /// <summary>
-        /// Is AKS cluster monitoring enabled? (bool)
+        /// Kubernetes cluster monitoring (list maxitems:1)
         /// </summary>
         [Input("monitoring")]
         public Input<Inputs.ClusterRkeConfigMonitoringArgs>? Monitoring { get; set; }
 
         /// <summary>
-        /// The GKE cluster network. Required for create new cluster (string)
+        /// Kubernetes cluster networking (list maxitems:1)
         /// </summary>
         [Input("network")]
         public Input<Inputs.ClusterRkeConfigNetworkArgs>? Network { get; set; }
@@ -139,7 +139,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigServicesArgs>? Services { get; set; }
 
         /// <summary>
-        /// Use ssh agent auth. Default `false` (bool)
+        /// Use ssh agent auth. Default `false`
         /// </summary>
         [Input("sshAgentAuth")]
         public Input<bool>? SshAgentAuth { get; set; }
@@ -151,13 +151,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? SshCertPath { get; set; }
 
         /// <summary>
-        /// Node SSH private key path (string)
+        /// Cluster level SSH private key path (string)
         /// </summary>
         [Input("sshKeyPath")]
         public Input<string>? SshKeyPath { get; set; }
 
         /// <summary>
-        /// K3S upgrade strategy (List maxitems: 1)
+        /// RKE upgrade strategy (list maxitems:1)
         /// </summary>
         [Input("upgradeStrategy")]
         public Input<Inputs.ClusterRkeConfigUpgradeStrategyArgs>? UpgradeStrategy { get; set; }
@@ -171,5 +171,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigArgs()
         {
         }
+        public static new ClusterRkeConfigArgs Empty => new ClusterRkeConfigArgs();
     }
 }

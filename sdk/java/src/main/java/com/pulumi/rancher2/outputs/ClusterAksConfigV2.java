@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterAksConfigV2 {
     /**
-     * @return The AKS auth base url (string)
+     * @return Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
      * 
      */
     private @Nullable String authBaseUrl;
@@ -27,12 +27,12 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable List<String> authorizedIpRanges;
     /**
-     * @return The AKS base url (string)
+     * @return Different resource management API url to use. Default `https://management.azure.com/` (string)
      * 
      */
     private @Nullable String baseUrl;
     /**
-     * @return The EKS cloud_credential id (string)
+     * @return The AKS Cloud Credential ID to use (string)
      * 
      */
     private String cloudCredentialId;
@@ -47,12 +47,12 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable Boolean httpApplicationRouting;
     /**
-     * @return Is GKE cluster imported? Default: `false` (bool)
+     * @return Is AKS cluster imported? Defaul: `false` (bool)
      * 
      */
     private @Nullable Boolean imported;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
      * 
      */
     private @Nullable String kubernetesVersion;
@@ -67,7 +67,7 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable String linuxSshPublicKey;
     /**
-     * @return The AKS load balancer sku (string)
+     * @return Allowed values: `basic` (default) `standard` (string)
      * 
      */
     private @Nullable String loadBalancerSku;
@@ -82,12 +82,12 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable String logAnalyticsWorkspaceName;
     /**
-     * @return Is AKS cluster monitoring enabled? (bool)
+     * @return Kubernetes cluster monitoring (list maxitems:1)
      * 
      */
     private @Nullable Boolean monitoring;
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     private @Nullable String name;
@@ -102,7 +102,7 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable String networkDockerBridgeCidr;
     /**
-     * @return The AKS network plugin. Required if `imported=false` (string)
+     * @return Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
      * 
      */
     private @Nullable String networkPlugin;
@@ -112,7 +112,7 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable String networkPodCidr;
     /**
-     * @return The AKS network policy (string)
+     * @return Network policy used for building Kubernetes network. Chooses from `calico` (string)
      * 
      */
     private @Nullable String networkPolicy;
@@ -122,7 +122,7 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable String networkServiceCidr;
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The AKS nnode pools. Required if `imported=false` (list)
      * 
      */
     private @Nullable List<ClusterAksConfigV2NodePool> nodePools;
@@ -132,7 +132,7 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable Boolean privateCluster;
     /**
-     * @return The AKS resource group (string)
+     * @return (string)
      * 
      */
     private String resourceGroup;
@@ -142,29 +142,29 @@ public final class ClusterAksConfigV2 {
      */
     private String resourceLocation;
     /**
-     * @return The AKS subnet (string)
+     * @return The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
      * 
      */
     private @Nullable String subnet;
     /**
-     * @return The GKE node config tags (List)
+     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
      * 
      */
     private @Nullable Map<String,Object> tags;
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
      * 
      */
     private @Nullable String virtualNetwork;
     /**
-     * @return The AKS virtual network resource group (string)
+     * @return The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
      * 
      */
     private @Nullable String virtualNetworkResourceGroup;
 
     private ClusterAksConfigV2() {}
     /**
-     * @return The AKS auth base url (string)
+     * @return Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
      * 
      */
     public Optional<String> authBaseUrl() {
@@ -178,14 +178,14 @@ public final class ClusterAksConfigV2 {
         return this.authorizedIpRanges == null ? List.of() : this.authorizedIpRanges;
     }
     /**
-     * @return The AKS base url (string)
+     * @return Different resource management API url to use. Default `https://management.azure.com/` (string)
      * 
      */
     public Optional<String> baseUrl() {
         return Optional.ofNullable(this.baseUrl);
     }
     /**
-     * @return The EKS cloud_credential id (string)
+     * @return The AKS Cloud Credential ID to use (string)
      * 
      */
     public String cloudCredentialId() {
@@ -206,14 +206,14 @@ public final class ClusterAksConfigV2 {
         return Optional.ofNullable(this.httpApplicationRouting);
     }
     /**
-     * @return Is GKE cluster imported? Default: `false` (bool)
+     * @return Is AKS cluster imported? Defaul: `false` (bool)
      * 
      */
     public Optional<Boolean> imported() {
         return Optional.ofNullable(this.imported);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
      * 
      */
     public Optional<String> kubernetesVersion() {
@@ -234,7 +234,7 @@ public final class ClusterAksConfigV2 {
         return Optional.ofNullable(this.linuxSshPublicKey);
     }
     /**
-     * @return The AKS load balancer sku (string)
+     * @return Allowed values: `basic` (default) `standard` (string)
      * 
      */
     public Optional<String> loadBalancerSku() {
@@ -255,14 +255,14 @@ public final class ClusterAksConfigV2 {
         return Optional.ofNullable(this.logAnalyticsWorkspaceName);
     }
     /**
-     * @return Is AKS cluster monitoring enabled? (bool)
+     * @return Kubernetes cluster monitoring (list maxitems:1)
      * 
      */
     public Optional<Boolean> monitoring() {
         return Optional.ofNullable(this.monitoring);
     }
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Optional<String> name() {
@@ -283,7 +283,7 @@ public final class ClusterAksConfigV2 {
         return Optional.ofNullable(this.networkDockerBridgeCidr);
     }
     /**
-     * @return The AKS network plugin. Required if `imported=false` (string)
+     * @return Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
      * 
      */
     public Optional<String> networkPlugin() {
@@ -297,7 +297,7 @@ public final class ClusterAksConfigV2 {
         return Optional.ofNullable(this.networkPodCidr);
     }
     /**
-     * @return The AKS network policy (string)
+     * @return Network policy used for building Kubernetes network. Chooses from `calico` (string)
      * 
      */
     public Optional<String> networkPolicy() {
@@ -311,7 +311,7 @@ public final class ClusterAksConfigV2 {
         return Optional.ofNullable(this.networkServiceCidr);
     }
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The AKS nnode pools. Required if `imported=false` (list)
      * 
      */
     public List<ClusterAksConfigV2NodePool> nodePools() {
@@ -325,7 +325,7 @@ public final class ClusterAksConfigV2 {
         return Optional.ofNullable(this.privateCluster);
     }
     /**
-     * @return The AKS resource group (string)
+     * @return (string)
      * 
      */
     public String resourceGroup() {
@@ -339,28 +339,28 @@ public final class ClusterAksConfigV2 {
         return this.resourceLocation;
     }
     /**
-     * @return The AKS subnet (string)
+     * @return The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
      * 
      */
     public Optional<String> subnet() {
         return Optional.ofNullable(this.subnet);
     }
     /**
-     * @return The GKE node config tags (List)
+     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
      * 
      */
     public Map<String,Object> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
      * 
      */
     public Optional<String> virtualNetwork() {
         return Optional.ofNullable(this.virtualNetwork);
     }
     /**
-     * @return The AKS virtual network resource group (string)
+     * @return The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
      * 
      */
     public Optional<String> virtualNetworkResourceGroup() {

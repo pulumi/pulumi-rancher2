@@ -10,34 +10,74 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ProjectLoggingSplunkConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ProjectLoggingSplunkConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// SSL certificate for the syslog service (string)
-        /// </summary>
         [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        private Input<string>? _certificate;
 
         /// <summary>
-        /// SSL client certificate for the syslog service (string)
+        /// SSL CA certificate for the custom target service (string)
         /// </summary>
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("clientCert")]
-        public Input<string>? ClientCert { get; set; }
+        private Input<string>? _clientCert;
 
         /// <summary>
-        /// SSL client key for the syslog service (string)
+        /// SSL client certificate for the custom target service (string)
         /// </summary>
+        public Input<string>? ClientCert
+        {
+            get => _clientCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
+        private Input<string>? _clientKey;
 
         /// <summary>
-        /// SSL client key password for the splunk service (string)
+        /// SSL client key for the custom target service (string)
         /// </summary>
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("clientKeyPass")]
-        public Input<string>? ClientKeyPass { get; set; }
+        private Input<string>? _clientKeyPass;
 
         /// <summary>
-        /// Endpoint of the syslog service (string)
+        /// SSL client key password for the elascticsearch service (string)
+        /// </summary>
+        public Input<string>? ClientKeyPass
+        {
+            get => _clientKeyPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKeyPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
         /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
@@ -55,19 +95,30 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Source { get; set; }
 
         /// <summary>
-        /// SSL verify for the syslog service (bool)
+        /// SSL verify for the elascticsearch service (bool)
         /// </summary>
         [Input("sslVerify")]
         public Input<bool>? SslVerify { get; set; }
 
-        /// <summary>
-        /// Token for the syslog service (string)
-        /// </summary>
         [Input("token", required: true)]
-        public Input<string> Token { get; set; } = null!;
+        private Input<string>? _token;
+
+        /// <summary>
+        /// Token for the splunk service (string)
+        /// </summary>
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ProjectLoggingSplunkConfigGetArgs()
         {
         }
+        public static new ProjectLoggingSplunkConfigGetArgs Empty => new ProjectLoggingSplunkConfigGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ProjectAlertGroupRecipientArgs : Pulumi.ResourceArgs
+    public sealed class ProjectAlertGroupRecipientArgs : global::Pulumi.ResourceArgs
     {
         [Input("defaultRecipient")]
         public Input<bool>? DefaultRecipient { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Rancher2.Inputs
         public ProjectAlertGroupRecipientArgs()
         {
         }
+        public static new ProjectAlertGroupRecipientArgs Empty => new ProjectAlertGroupRecipientArgs();
     }
 }

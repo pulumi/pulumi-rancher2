@@ -23,46 +23,42 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetSecret.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetSecret.InvokeAsync(new Rancher2.GetSecretArgs
-        ///         {
-        ///             Name = "&lt;name&gt;",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetSecret.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetSecret.InvokeAsync(new Rancher2.GetSecretArgs
-        ///         {
-        ///             Name = "&lt;name&gt;",
-        ///             NamespaceId = "&lt;namespace_id&gt;",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;name&gt;",
+        ///         NamespaceId = "&lt;namespace_id&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretResult> InvokeAsync(GetSecretArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("rancher2:index/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("rancher2:index/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 secret.
@@ -76,50 +72,46 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetSecret.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetSecret.InvokeAsync(new Rancher2.GetSecretArgs
-        ///         {
-        ///             Name = "&lt;name&gt;",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetSecret.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetSecret.InvokeAsync(new Rancher2.GetSecretArgs
-        ///         {
-        ///             Name = "&lt;name&gt;",
-        ///             NamespaceId = "&lt;namespace_id&gt;",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;name&gt;",
+        ///         NamespaceId = "&lt;namespace_id&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSecretResult> Invoke(GetSecretInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretResult>("rancher2:index/getSecret:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretResult>("rancher2:index/getSecret:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSecretArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the secret (string)
@@ -142,9 +134,10 @@ namespace Pulumi.Rancher2
         public GetSecretArgs()
         {
         }
+        public static new GetSecretArgs Empty => new GetSecretArgs();
     }
 
-    public sealed class GetSecretInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the secret (string)
@@ -167,6 +160,7 @@ namespace Pulumi.Rancher2
         public GetSecretInvokeArgs()
         {
         }
+        public static new GetSecretInvokeArgs Empty => new GetSecretInvokeArgs();
     }
 
 

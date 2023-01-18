@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigEtcdSnapshotCreateGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigEtcdSnapshotCreateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ETCD snapshot desired generation (int)
+        /// Desired certificate rotation generation (int)
         /// </summary>
         [Input("generation", required: true)]
         public Input<int> Generation { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigEtcdSnapshotCreateGetArgs()
         {
         }
+        public static new ClusterV2RkeConfigEtcdSnapshotCreateGetArgs Empty => new ClusterV2RkeConfigEtcdSnapshotCreateGetArgs();
     }
 }

@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class MachineConfigV2DigitaloceanConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class MachineConfigV2DigitaloceanConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessToken")]
+        private Input<string>? _accessToken;
+
         /// <summary>
         /// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
-        [Input("accessToken")]
-        public Input<string>? AccessToken { get; set; }
+        public Input<string>? AccessToken
+        {
+            get => _accessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enable backups for droplet. Default `false` (bool)
@@ -25,7 +35,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? Backups { get; set; }
 
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -37,7 +47,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? Ipv6 { get; set; }
 
         /// <summary>
-        /// Enable monitoring for droplet. Default `false` (bool)
+        /// Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
@@ -49,49 +59,69 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? PrivateNetworking { get; set; }
 
         /// <summary>
-        /// OpenStack region name (string)
+        /// AWS region. (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// Size for Azure Virtual Machine. Default `Standard_A2` (string)
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
 
-        /// <summary>
-        /// SSH private key contents (string)
-        /// </summary>
         [Input("sshKeyContents")]
-        public Input<string>? SshKeyContents { get; set; }
+        private Input<string>? _sshKeyContents;
+
+        /// <summary>
+        /// SSH Key for Instance (string)
+        /// </summary>
+        public Input<string>? SshKeyContents
+        {
+            get => _sshKeyContents;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshKeyContents = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("sshKeyFingerprint")]
+        private Input<string>? _sshKeyFingerprint;
 
         /// <summary>
         /// SSH key fingerprint (string)
         /// </summary>
-        [Input("sshKeyFingerprint")]
-        public Input<string>? SshKeyFingerprint { get; set; }
+        public Input<string>? SshKeyFingerprint
+        {
+            get => _sshKeyFingerprint;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshKeyFingerprint = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        /// SSH port. Default `22` (string)
         /// </summary>
         [Input("sshPort")]
         public Input<string>? SshPort { get; set; }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        /// Set the name of the ssh user (string)
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
 
         /// <summary>
-        /// vSphere tags id e.g. `urn:xxx` (list)
+        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
         /// </summary>
         [Input("tags")]
         public Input<string>? Tags { get; set; }
 
         /// <summary>
-        /// Path to file with cloud-init user-data (string)
+        /// Path to file with cloud-init user data (string)
         /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }
@@ -99,5 +129,6 @@ namespace Pulumi.Rancher2.Inputs
         public MachineConfigV2DigitaloceanConfigGetArgs()
         {
         }
+        public static new MachineConfigV2DigitaloceanConfigGetArgs Empty => new MachineConfigV2DigitaloceanConfigGetArgs();
     }
 }

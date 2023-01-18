@@ -16,14 +16,14 @@ public final class ClusterRkeConfigNetworkCanalNetworkProviderArgs extends com.p
     public static final ClusterRkeConfigNetworkCanalNetworkProviderArgs Empty = new ClusterRkeConfigNetworkCanalNetworkProviderArgs();
 
     /**
-     * Iface config Flannel network provider (string)
+     * Iface config Canal network provider (string)
      * 
      */
     @Import(name="iface")
     private @Nullable Output<String> iface;
 
     /**
-     * @return Iface config Flannel network provider (string)
+     * @return Iface config Canal network provider (string)
      * 
      */
     public Optional<Output<String>> iface() {
@@ -55,7 +55,7 @@ public final class ClusterRkeConfigNetworkCanalNetworkProviderArgs extends com.p
         }
 
         /**
-         * @param iface Iface config Flannel network provider (string)
+         * @param iface Iface config Canal network provider (string)
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClusterRkeConfigNetworkCanalNetworkProviderArgs extends com.p
         }
 
         /**
-         * @param iface Iface config Flannel network provider (string)
+         * @param iface Iface config Canal network provider (string)
          * 
          * @return builder
          * 

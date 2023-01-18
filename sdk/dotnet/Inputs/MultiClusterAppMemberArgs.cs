@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class MultiClusterAppMemberArgs : Pulumi.ResourceArgs
+    public sealed class MultiClusterAppMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Member access type. Valid values: `["member" | "owner" | "read-only"]` (string)
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public MultiClusterAppMemberArgs()
         {
         }
+        public static new MultiClusterAppMemberArgs Empty => new MultiClusterAppMemberArgs();
     }
 }

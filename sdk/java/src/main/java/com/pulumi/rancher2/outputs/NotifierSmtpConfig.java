@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotifierSmtpConfig {
     /**
-     * @return Wechat default recipient (string)
+     * @return SMTP default recipient (string)
      * 
      */
     private String defaultRecipient;
@@ -51,7 +51,7 @@ public final class NotifierSmtpConfig {
 
     private NotifierSmtpConfig() {}
     /**
-     * @return Wechat default recipient (string)
+     * @return SMTP default recipient (string)
      * 
      */
     public String defaultRecipient() {

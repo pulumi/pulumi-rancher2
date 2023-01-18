@@ -13,97 +13,93 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Multi Cluster App
+    ///     var foo = new Rancher2.MultiClusterApp("foo", new()
     ///     {
-    ///         // Create a new rancher2 Multi Cluster App
-    ///         var foo = new Rancher2.MultiClusterApp("foo", new Rancher2.MultiClusterAppArgs
+    ///         Answers = new[]
     ///         {
-    ///             Answers = 
+    ///             new Rancher2.Inputs.MultiClusterAppAnswerArgs
     ///             {
-    ///                 new Rancher2.Inputs.MultiClusterAppAnswerArgs
+    ///                 Values = 
     ///                 {
-    ///                     Values = 
-    ///                     {
-    ///                         { "ingressHost", "test.xip.io" },
-    ///                     },
+    ///                     { "ingressHost", "test.xip.io" },
     ///                 },
     ///             },
-    ///             CatalogName = "&lt;catalog_name&gt;",
-    ///             Roles = 
+    ///         },
+    ///         CatalogName = "&lt;catalog_name&gt;",
+    ///         Roles = new[]
+    ///         {
+    ///             "project-member",
+    ///         },
+    ///         Targets = new[]
+    ///         {
+    ///             new Rancher2.Inputs.MultiClusterAppTargetArgs
     ///             {
-    ///                 "project-member",
+    ///                 ProjectId = "&lt;project_id&gt;",
     ///             },
-    ///             Targets = 
-    ///             {
-    ///                 new Rancher2.Inputs.MultiClusterAppTargetArgs
-    ///                 {
-    ///                     ProjectId = "&lt;project_id&gt;",
-    ///                 },
-    ///             },
-    ///             TemplateName = "&lt;template_name&gt;",
-    ///             TemplateVersion = "&lt;template_version&gt;",
-    ///         });
-    ///     }
+    ///         },
+    ///         TemplateName = "&lt;template_name&gt;",
+    ///         TemplateVersion = "&lt;template_version&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Multi Cluster App overriding answers
+    ///     var foo = new Rancher2.MultiClusterApp("foo", new()
     ///     {
-    ///         // Create a new rancher2 Multi Cluster App overriding answers
-    ///         var foo = new Rancher2.MultiClusterApp("foo", new Rancher2.MultiClusterAppArgs
+    ///         Answers = new[]
     ///         {
-    ///             Answers = 
+    ///             new Rancher2.Inputs.MultiClusterAppAnswerArgs
     ///             {
-    ///                 new Rancher2.Inputs.MultiClusterAppAnswerArgs
+    ///                 Values = 
     ///                 {
-    ///                     Values = 
-    ///                     {
-    ///                         { "ingressHost", "test.xip.io" },
-    ///                     },
-    ///                 },
-    ///                 new Rancher2.Inputs.MultiClusterAppAnswerArgs
-    ///                 {
-    ///                     ProjectId = "&lt;project_id2&gt;",
-    ///                     Values = 
-    ///                     {
-    ///                         { "ingressHost", "test2.xip.io" },
-    ///                     },
+    ///                     { "ingressHost", "test.xip.io" },
     ///                 },
     ///             },
-    ///             CatalogName = "&lt;catalog_name&gt;",
-    ///             Roles = 
+    ///             new Rancher2.Inputs.MultiClusterAppAnswerArgs
     ///             {
-    ///                 "project-member",
-    ///             },
-    ///             Targets = 
-    ///             {
-    ///                 new Rancher2.Inputs.MultiClusterAppTargetArgs
+    ///                 ProjectId = "&lt;project_id2&gt;",
+    ///                 Values = 
     ///                 {
-    ///                     ProjectId = "&lt;project_id1&gt;",
-    ///                 },
-    ///                 new Rancher2.Inputs.MultiClusterAppTargetArgs
-    ///                 {
-    ///                     ProjectId = "&lt;project_id2&gt;",
+    ///                     { "ingressHost", "test2.xip.io" },
     ///                 },
     ///             },
-    ///             TemplateName = "&lt;template_name&gt;",
-    ///             TemplateVersion = "&lt;template_version&gt;",
-    ///         });
-    ///     }
+    ///         },
+    ///         CatalogName = "&lt;catalog_name&gt;",
+    ///         Roles = new[]
+    ///         {
+    ///             "project-member",
+    ///         },
+    ///         Targets = new[]
+    ///         {
+    ///             new Rancher2.Inputs.MultiClusterAppTargetArgs
+    ///             {
+    ///                 ProjectId = "&lt;project_id1&gt;",
+    ///             },
+    ///             new Rancher2.Inputs.MultiClusterAppTargetArgs
+    ///             {
+    ///                 ProjectId = "&lt;project_id2&gt;",
+    ///             },
+    ///         },
+    ///         TemplateName = "&lt;template_name&gt;",
+    ///         TemplateVersion = "&lt;template_version&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -115,7 +111,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/multiClusterApp:MultiClusterApp")]
-    public partial class MultiClusterApp : Pulumi.CustomResource
+    public partial class MultiClusterApp : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for multi cluster app object (map)
@@ -251,7 +247,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class MultiClusterAppArgs : Pulumi.ResourceArgs
+    public sealed class MultiClusterAppArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -376,9 +372,10 @@ namespace Pulumi.Rancher2
         public MultiClusterAppArgs()
         {
         }
+        public static new MultiClusterAppArgs Empty => new MultiClusterAppArgs();
     }
 
-    public sealed class MultiClusterAppState : Pulumi.ResourceArgs
+    public sealed class MultiClusterAppState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -509,5 +506,6 @@ namespace Pulumi.Rancher2
         public MultiClusterAppState()
         {
         }
+        public static new MultiClusterAppState Empty => new MultiClusterAppState();
     }
 }

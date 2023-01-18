@@ -113,6 +113,21 @@ func NewAuthConfigPing(ctx *pulumi.Context,
 	if args.UserNameField == nil {
 		return nil, errors.New("invalid value for required argument 'UserNameField'")
 	}
+	if args.IdpMetadataContent != nil {
+		args.IdpMetadataContent = pulumi.ToSecret(args.IdpMetadataContent).(pulumi.StringInput)
+	}
+	if args.SpCert != nil {
+		args.SpCert = pulumi.ToSecret(args.SpCert).(pulumi.StringInput)
+	}
+	if args.SpKey != nil {
+		args.SpKey = pulumi.ToSecret(args.SpKey).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"idpMetadataContent",
+		"spCert",
+		"spKey",
+	})
+	opts = append(opts, secrets)
 	var resource AuthConfigPing
 	err := ctx.RegisterResource("rancher2:index/authConfigPing:AuthConfigPing", name, args, &resource, opts...)
 	if err != nil {
@@ -348,6 +363,81 @@ func (o AuthConfigPingOutput) ToAuthConfigPingOutput() AuthConfigPingOutput {
 
 func (o AuthConfigPingOutput) ToAuthConfigPingOutputWithContext(ctx context.Context) AuthConfigPingOutput {
 	return o
+}
+
+// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+func (o AuthConfigPingOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringPtrOutput { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
+func (o AuthConfigPingOutput) AllowedPrincipalIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringArrayOutput { return v.AllowedPrincipalIds }).(pulumi.StringArrayOutput)
+}
+
+// Annotations of the resource (map)
+func (o AuthConfigPingOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Ping display name field (string)
+func (o AuthConfigPingOutput) DisplayNameField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringOutput { return v.DisplayNameField }).(pulumi.StringOutput)
+}
+
+// Enable auth config provider. Default `true` (bool)
+func (o AuthConfigPingOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Ping group field (string)
+func (o AuthConfigPingOutput) GroupsField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringOutput { return v.GroupsField }).(pulumi.StringOutput)
+}
+
+// Ping IDP metadata content (string)
+func (o AuthConfigPingOutput) IdpMetadataContent() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringOutput { return v.IdpMetadataContent }).(pulumi.StringOutput)
+}
+
+// Labels of the resource (map)
+func (o AuthConfigPingOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The name of the resource (string)
+func (o AuthConfigPingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
+func (o AuthConfigPingOutput) RancherApiHost() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringOutput { return v.RancherApiHost }).(pulumi.StringOutput)
+}
+
+// Ping SP cert (string)
+func (o AuthConfigPingOutput) SpCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringOutput { return v.SpCert }).(pulumi.StringOutput)
+}
+
+// Ping SP key (string)
+func (o AuthConfigPingOutput) SpKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringOutput { return v.SpKey }).(pulumi.StringOutput)
+}
+
+// (Computed) The type of the resource (string)
+func (o AuthConfigPingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Ping UID field (string)
+func (o AuthConfigPingOutput) UidField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringOutput { return v.UidField }).(pulumi.StringOutput)
+}
+
+// Ping user name field (string)
+func (o AuthConfigPingOutput) UserNameField() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringOutput { return v.UserNameField }).(pulumi.StringOutput)
 }
 
 type AuthConfigPingArrayOutput struct{ *pulumi.OutputState }

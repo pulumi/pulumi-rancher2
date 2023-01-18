@@ -25,6 +25,93 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.MultiClusterApp;
+ * import com.pulumi.rancher2.MultiClusterAppArgs;
+ * import com.pulumi.rancher2.inputs.MultiClusterAppAnswerArgs;
+ * import com.pulumi.rancher2.inputs.MultiClusterAppTargetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new MultiClusterApp(&#34;foo&#34;, MultiClusterAppArgs.builder()        
+ *             .answers(MultiClusterAppAnswerArgs.builder()
+ *                 .values(Map.of(&#34;ingressHost&#34;, &#34;test.xip.io&#34;))
+ *                 .build())
+ *             .catalogName(&#34;&lt;catalog_name&gt;&#34;)
+ *             .roles(&#34;project-member&#34;)
+ *             .targets(MultiClusterAppTargetArgs.builder()
+ *                 .projectId(&#34;&lt;project_id&gt;&#34;)
+ *                 .build())
+ *             .templateName(&#34;&lt;template_name&gt;&#34;)
+ *             .templateVersion(&#34;&lt;template_version&gt;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.MultiClusterApp;
+ * import com.pulumi.rancher2.MultiClusterAppArgs;
+ * import com.pulumi.rancher2.inputs.MultiClusterAppAnswerArgs;
+ * import com.pulumi.rancher2.inputs.MultiClusterAppTargetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new MultiClusterApp(&#34;foo&#34;, MultiClusterAppArgs.builder()        
+ *             .answers(            
+ *                 MultiClusterAppAnswerArgs.builder()
+ *                     .values(Map.of(&#34;ingressHost&#34;, &#34;test.xip.io&#34;))
+ *                     .build(),
+ *                 MultiClusterAppAnswerArgs.builder()
+ *                     .projectId(&#34;&lt;project_id2&gt;&#34;)
+ *                     .values(Map.of(&#34;ingressHost&#34;, &#34;test2.xip.io&#34;))
+ *                     .build())
+ *             .catalogName(&#34;&lt;catalog_name&gt;&#34;)
+ *             .roles(&#34;project-member&#34;)
+ *             .targets(            
+ *                 MultiClusterAppTargetArgs.builder()
+ *                     .projectId(&#34;&lt;project_id1&gt;&#34;)
+ *                     .build(),
+ *                 MultiClusterAppTargetArgs.builder()
+ *                     .projectId(&#34;&lt;project_id2&gt;&#34;)
+ *                     .build())
+ *             .templateName(&#34;&lt;template_name&gt;&#34;)
+ *             .templateVersion(&#34;&lt;template_version&gt;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

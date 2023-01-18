@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ProjectAlertRuleMetricRuleArgs : Pulumi.ResourceArgs
+    public sealed class ProjectAlertRuleMetricRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
@@ -45,5 +45,6 @@ namespace Pulumi.Rancher2.Inputs
         public ProjectAlertRuleMetricRuleArgs()
         {
         }
+        public static new ProjectAlertRuleMetricRuleArgs Empty => new ProjectAlertRuleMetricRuleArgs();
     }
 }

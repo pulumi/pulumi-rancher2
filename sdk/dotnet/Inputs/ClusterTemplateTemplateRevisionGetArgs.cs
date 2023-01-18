@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for the cluster template revision (map)
+        /// Annotations for the cluster template (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ClusterTemplateId { get; set; }
 
         /// <summary>
-        /// Default variable value (string)
+        /// Default cluster template revision. Default `false` (bool)
         /// </summary>
         [Input("default")]
         public Input<bool>? Default { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for the cluster template revision (map)
+        /// Labels for the cluster template (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -67,7 +67,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The cluster template revision name (string)
+        /// The cluster template name (string)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -87,5 +87,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionGetArgs Empty => new ClusterTemplateTemplateRevisionGetArgs();
     }
 }

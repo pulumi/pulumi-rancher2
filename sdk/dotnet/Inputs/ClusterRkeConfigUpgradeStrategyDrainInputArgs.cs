@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigUpgradeStrategyDrainInputArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigUpgradeStrategyDrainInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Delete RKE node local data. Default: `false` (bool)
@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? IgnoreDaemonSets { get; set; }
 
         /// <summary>
-        /// RKE node drain timeout. Default: `60` (int)
+        /// Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
         /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
@@ -45,5 +45,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigUpgradeStrategyDrainInputArgs()
         {
         }
+        public static new ClusterRkeConfigUpgradeStrategyDrainInputArgs Empty => new ClusterRkeConfigUpgradeStrategyDrainInputArgs();
     }
 }

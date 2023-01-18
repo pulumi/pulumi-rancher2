@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter {
     private String datacenters;
     /**
-     * @return The cluster template revision name (string)
+     * @return The cluster template name (string)
      * 
      */
     private String name;
@@ -28,7 +28,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         return this.datacenters;
     }
     /**
-     * @return The cluster template revision name (string)
+     * @return The cluster template name (string)
      * 
      */
     public String name() {

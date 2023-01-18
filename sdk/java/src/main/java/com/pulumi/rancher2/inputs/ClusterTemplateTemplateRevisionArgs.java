@@ -22,14 +22,14 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
     public static final ClusterTemplateTemplateRevisionArgs Empty = new ClusterTemplateTemplateRevisionArgs();
 
     /**
-     * Annotations for the cluster template revision (map)
+     * Annotations for the cluster template (map)
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,Object>> annotations;
 
     /**
-     * @return Annotations for the cluster template revision (map)
+     * @return Annotations for the cluster template (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> annotations() {
@@ -67,14 +67,14 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
     }
 
     /**
-     * Default variable value (string)
+     * Default cluster template revision. Default `false` (bool)
      * 
      */
     @Import(name="default")
     private @Nullable Output<Boolean> default_;
 
     /**
-     * @return Default variable value (string)
+     * @return Default cluster template revision. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> default_() {
@@ -112,14 +112,14 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
     }
 
     /**
-     * Labels for the cluster template revision (map)
+     * Labels for the cluster template (map)
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for the cluster template revision (map)
+     * @return Labels for the cluster template (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -127,14 +127,14 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
     }
 
     /**
-     * The cluster template revision name (string)
+     * The cluster template name (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The cluster template revision name (string)
+     * @return The cluster template name (string)
      * 
      */
     public Output<String> name() {
@@ -189,7 +189,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param annotations Annotations for the cluster template revision (map)
+         * @param annotations Annotations for the cluster template (map)
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param annotations Annotations for the cluster template revision (map)
+         * @param annotations Annotations for the cluster template (map)
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param default_ Default variable value (string)
+         * @param default_ Default cluster template revision. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param default_ Default variable value (string)
+         * @param default_ Default cluster template revision. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param labels Labels for the cluster template revision (map)
+         * @param labels Labels for the cluster template (map)
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param labels Labels for the cluster template revision (map)
+         * @param labels Labels for the cluster template (map)
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name The cluster template revision name (string)
+         * @param name The cluster template name (string)
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name The cluster template revision name (string)
+         * @param name The cluster template name (string)
          * 
          * @return builder
          * 

@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs : global::Pulumi.ResourceArgs
     {
+        [Input("aciNetworkProvider")]
+        public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs>? AciNetworkProvider { get; set; }
+
         [Input("calicoNetworkProvider")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs>? CalicoNetworkProvider { get; set; }
 
@@ -49,5 +52,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs();
     }
 }

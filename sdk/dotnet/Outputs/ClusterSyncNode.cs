@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Capacity;
         /// <summary>
-        /// The Cluster ID of the node (string).
+        /// The cluster ID that is syncing (string)
         /// </summary>
         public readonly string? ClusterId;
         /// <summary>

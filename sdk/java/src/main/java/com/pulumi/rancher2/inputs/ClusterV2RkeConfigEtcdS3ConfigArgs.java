@@ -32,14 +32,14 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * ETCD snapshot S3 cloud credential name (string)
+     * Machine pool cloud credential secret name (string)
      * 
      */
     @Import(name="cloudCredentialName")
     private @Nullable Output<String> cloudCredentialName;
 
     /**
-     * @return ETCD snapshot S3 cloud credential name (string)
+     * @return Machine pool cloud credential secret name (string)
      * 
      */
     public Optional<Output<String>> cloudCredentialName() {
@@ -173,7 +173,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cloudCredentialName ETCD snapshot S3 cloud credential name (string)
+         * @param cloudCredentialName Machine pool cloud credential secret name (string)
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cloudCredentialName ETCD snapshot S3 cloud credential name (string)
+         * @param cloudCredentialName Machine pool cloud credential secret name (string)
          * 
          * @return builder
          * 

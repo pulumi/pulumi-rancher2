@@ -15,32 +15,31 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Rancher2 Cluster Alert Group
+    ///     var fooClusterAlertGroup = new Rancher2.ClusterAlertGroup("fooClusterAlertGroup", new()
     ///     {
-    ///         // Create a new Rancher2 Cluster Alert Group
-    ///         var fooClusterAlertGroup = new Rancher2.ClusterAlertGroup("fooClusterAlertGroup", new Rancher2.ClusterAlertGroupArgs
-    ///         {
-    ///             ClusterId = "&lt;cluster_id&gt;",
-    ///             Description = "Terraform cluster alert group",
-    ///             GroupIntervalSeconds = 300,
-    ///             RepeatIntervalSeconds = 3600,
-    ///         });
-    ///         // Create a new Rancher2 Cluster Alert Rule
-    ///         var fooClusterAlertRule = new Rancher2.ClusterAlertRule("fooClusterAlertRule", new Rancher2.ClusterAlertRuleArgs
-    ///         {
-    ///             ClusterId = fooClusterAlertGroup.ClusterId,
-    ///             GroupId = fooClusterAlertGroup.Id,
-    ///             GroupIntervalSeconds = 600,
-    ///             RepeatIntervalSeconds = 6000,
-    ///         });
-    ///     }
+    ///         ClusterId = "&lt;cluster_id&gt;",
+    ///         Description = "Terraform cluster alert group",
+    ///         GroupIntervalSeconds = 300,
+    ///         RepeatIntervalSeconds = 3600,
+    ///     });
     /// 
-    /// }
+    ///     // Create a new Rancher2 Cluster Alert Rule
+    ///     var fooClusterAlertRule = new Rancher2.ClusterAlertRule("fooClusterAlertRule", new()
+    ///     {
+    ///         ClusterId = fooClusterAlertGroup.ClusterId,
+    ///         GroupId = fooClusterAlertGroup.Id,
+    ///         GroupIntervalSeconds = 600,
+    ///         RepeatIntervalSeconds = 6000,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +51,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterAlertRule:ClusterAlertRule")]
-    public partial class ClusterAlertRule : Pulumi.CustomResource
+    public partial class ClusterAlertRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The cluster alert rule annotations (map)
@@ -163,7 +162,7 @@ namespace Pulumi.Rancher2
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "rancher2:index/clusterAlterRule:ClusterAlterRule"},
+                    new global::Pulumi.Alias { Type = "rancher2:index/clusterAlterRule:ClusterAlterRule"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -186,7 +185,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ClusterAlertRuleArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAlertRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -287,9 +286,10 @@ namespace Pulumi.Rancher2
         public ClusterAlertRuleArgs()
         {
         }
+        public static new ClusterAlertRuleArgs Empty => new ClusterAlertRuleArgs();
     }
 
-    public sealed class ClusterAlertRuleState : Pulumi.ResourceArgs
+    public sealed class ClusterAlertRuleState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -390,5 +390,6 @@ namespace Pulumi.Rancher2
         public ClusterAlertRuleState()
         {
         }
+        public static new ClusterAlertRuleState Empty => new ClusterAlertRuleState();
     }
 }

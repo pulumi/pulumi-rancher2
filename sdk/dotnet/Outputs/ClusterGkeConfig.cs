@@ -22,15 +22,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Credential;
         /// <summary>
-        /// An optional description of this cluster (string)
+        /// The description for Cluster (string)
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The GKE node config disk size Gb (int)
+        /// Size of the disk attached to each node. Default `100` (int)
         /// </summary>
         public readonly int? DiskSizeGb;
         /// <summary>
-        /// The GKE node config disk type (string)
+        /// Type of the disk attached to each node (string)
         /// </summary>
         public readonly string DiskType;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? EnableHttpLoadBalancing;
         /// <summary>
-        /// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+        /// Whether to enable the Kubernetes dashboard. Default `false` (bool)
         /// </summary>
         public readonly bool? EnableKubernetesDashboard;
         /// <summary>
@@ -74,11 +74,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? EnableNodepoolAutoscaling;
         /// <summary>
-        /// Enable GKE cluster private endpoint. Default: `false` (bool)
+        /// Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
         /// </summary>
         public readonly bool? EnablePrivateEndpoint;
         /// <summary>
-        /// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+        /// Whether nodes have internal IP address only. Default `false` (bool)
         /// </summary>
         public readonly bool? EnablePrivateNodes;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? EnableStackdriverMonitoring;
         /// <summary>
-        /// The GKE node config image type (string)
+        /// The image to use for the worker nodes (string)
         /// </summary>
         public readonly string ImageType;
         /// <summary>
@@ -130,23 +130,23 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? KubernetesDashboard;
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels for the Cluster (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
-        /// The GKE node config local ssd count (int)
+        /// The number of local SSD disks to be attached to the node. Default `0` (int)
         /// </summary>
         public readonly int? LocalSsdCount;
         /// <summary>
-        /// The GKE cluster locations (List)
+        /// Locations for GKE cluster (list)
         /// </summary>
         public readonly ImmutableArray<string> Locations;
         /// <summary>
-        /// The GKE node config machine type (string)
+        /// Machine type for GKE cluster (string)
         /// </summary>
         public readonly string MachineType;
         /// <summary>
-        /// The GKE cluster maintenance window (string)
+        /// Maintenance window for GKE cluster (string)
         /// </summary>
         public readonly string MaintenanceWindow;
         /// <summary>
@@ -154,7 +154,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> MasterAuthorizedNetworkCidrBlocks;
         /// <summary>
-        /// The GKE cluster private master ip v4 cidr block (string)
+        /// The IP range in CIDR notation to use for the hosted master network (string)
         /// </summary>
         public readonly string MasterIpv4CidrBlock;
         /// <summary>
@@ -162,15 +162,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string MasterVersion;
         /// <summary>
-        /// The GKE node pool config max node count (int)
+        /// Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
         /// </summary>
         public readonly int? MaxNodeCount;
         /// <summary>
-        /// The GKE node pool config min node count (int)
+        /// Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
         /// </summary>
         public readonly int? MinNodeCount;
         /// <summary>
-        /// The GKE cluster network. Required for create new cluster (string)
+        /// Kubernetes cluster networking (list maxitems:1)
         /// </summary>
         public readonly string Network;
         /// <summary>
@@ -186,19 +186,19 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string NodeVersion;
         /// <summary>
-        /// The GKE node config oauth scopes (List)
+        /// The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
         /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
         /// <summary>
-        /// Enable GKE node config preemptible. Default: `false` (bool)
+        /// Whether the nodes are created as preemptible VM instances. Default `false` (bool)
         /// </summary>
         public readonly bool? Preemptible;
         /// <summary>
-        /// Project ID to apply answer (string)
+        /// Project ID for GKE cluster (string)
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
@@ -214,15 +214,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string SubNetwork;
         /// <summary>
-        /// The GKE node config taints (List)
+        /// List of Kubernetes taints to be applied to each node (list)
         /// </summary>
         public readonly ImmutableArray<string> Taints;
         /// <summary>
-        /// Use GKE ip aliases? Default: `true` (bool)
+        /// Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
         /// </summary>
         public readonly bool? UseIpAliases;
         /// <summary>
-        /// The GKE cluster zone. Required if `region` not set (string)
+        /// (string)
         /// </summary>
         public readonly string? Zone;
 

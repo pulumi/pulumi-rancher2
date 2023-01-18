@@ -212,6 +212,26 @@ func (o FeatureOutput) ToFeatureOutputWithContext(ctx context.Context) FeatureOu
 	return o
 }
 
+// Annotations for feature object (map)
+func (o FeatureOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Labels for feature object (map)
+func (o FeatureOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the feature (string)
+func (o FeatureOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the feature. Default: `false` (bool)
+func (o FeatureOutput) Value() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Feature) pulumi.BoolPtrOutput { return v.Value }).(pulumi.BoolPtrOutput)
+}
+
 type FeatureArrayOutput struct{ *pulumi.OutputState }
 
 func (FeatureArrayOutput) ElementType() reflect.Type {

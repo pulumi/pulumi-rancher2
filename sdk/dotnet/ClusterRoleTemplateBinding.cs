@@ -15,23 +15,21 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Rancher2 Cluster Role Template Binding
+    ///     var foo = new Rancher2.ClusterRoleTemplateBinding("foo", new()
     ///     {
-    ///         // Create a new Rancher2 Cluster Role Template Binding
-    ///         var foo = new Rancher2.ClusterRoleTemplateBinding("foo", new Rancher2.ClusterRoleTemplateBindingArgs
-    ///         {
-    ///             ClusterId = "&lt;cluster_id&gt;",
-    ///             RoleTemplateId = "&lt;role_template_id&gt;",
-    ///             UserId = "&lt;user_id&gt;",
-    ///         });
-    ///     }
+    ///         ClusterId = "&lt;cluster_id&gt;",
+    ///         RoleTemplateId = "&lt;role_template_id&gt;",
+    ///         UserId = "&lt;user_id&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding")]
-    public partial class ClusterRoleTemplateBinding : Pulumi.CustomResource
+    public partial class ClusterRoleTemplateBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for cluster role template binding (map)
@@ -143,7 +141,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ClusterRoleTemplateBindingArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRoleTemplateBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -214,9 +212,10 @@ namespace Pulumi.Rancher2
         public ClusterRoleTemplateBindingArgs()
         {
         }
+        public static new ClusterRoleTemplateBindingArgs Empty => new ClusterRoleTemplateBindingArgs();
     }
 
-    public sealed class ClusterRoleTemplateBindingState : Pulumi.ResourceArgs
+    public sealed class ClusterRoleTemplateBindingState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -287,5 +286,6 @@ namespace Pulumi.Rancher2
         public ClusterRoleTemplateBindingState()
         {
         }
+        public static new ClusterRoleTemplateBindingState Empty => new ClusterRoleTemplateBindingState();
     }
 }

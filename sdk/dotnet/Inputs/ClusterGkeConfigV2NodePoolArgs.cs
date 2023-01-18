@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2NodePoolArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2NodePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GKE node pool config autoscaling (List maxitems:1)
@@ -43,13 +43,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? MaxPodsConstraint { get; set; }
 
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// RKE2 kubernetes version (string)
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -57,5 +57,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2NodePoolArgs()
         {
         }
+        public static new ClusterGkeConfigV2NodePoolArgs Empty => new ClusterGkeConfigV2NodePoolArgs();
     }
 }

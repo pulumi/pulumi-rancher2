@@ -93,7 +93,7 @@ public final class MachineConfigV2OpenstackConfig {
      */
     private @Nullable String imageId;
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return Image name e.g. `harvester-public/image-57hzg` (string)
      * 
      */
     private @Nullable String imageName;
@@ -108,7 +108,7 @@ public final class MachineConfigV2OpenstackConfig {
      */
     private @Nullable String ipVersion;
     /**
-     * @return OpenStack keypair to use to SSH to the instance (string)
+     * @return AWS keypair to use; requires --amazonec2-ssh-keypath (string)
      * 
      */
     private @Nullable String keypairName;
@@ -138,7 +138,7 @@ public final class MachineConfigV2OpenstackConfig {
      */
     private @Nullable String privateKeyFile;
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. (string)
      * 
      */
     private String region;
@@ -148,12 +148,12 @@ public final class MachineConfigV2OpenstackConfig {
      */
     private @Nullable String secGroups;
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * @return SSH port. Default `22` (string)
      * 
      */
     private @Nullable String sshPort;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     private @Nullable String sshUser;
@@ -168,7 +168,7 @@ public final class MachineConfigV2OpenstackConfig {
      */
     private @Nullable String tenantDomainName;
     /**
-     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * @return Azure Tenant ID (string)
      * 
      */
     private @Nullable String tenantId;
@@ -220,7 +220,7 @@ public final class MachineConfigV2OpenstackConfig {
      */
     private @Nullable String volumeSize;
     /**
-     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * @return Amazon EBS volume type. Default `gp2` (string)
      * 
      */
     private @Nullable String volumeType;
@@ -339,7 +339,7 @@ public final class MachineConfigV2OpenstackConfig {
         return Optional.ofNullable(this.imageId);
     }
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return Image name e.g. `harvester-public/image-57hzg` (string)
      * 
      */
     public Optional<String> imageName() {
@@ -360,7 +360,7 @@ public final class MachineConfigV2OpenstackConfig {
         return Optional.ofNullable(this.ipVersion);
     }
     /**
-     * @return OpenStack keypair to use to SSH to the instance (string)
+     * @return AWS keypair to use; requires --amazonec2-ssh-keypath (string)
      * 
      */
     public Optional<String> keypairName() {
@@ -402,7 +402,7 @@ public final class MachineConfigV2OpenstackConfig {
         return Optional.ofNullable(this.privateKeyFile);
     }
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. (string)
      * 
      */
     public String region() {
@@ -416,14 +416,14 @@ public final class MachineConfigV2OpenstackConfig {
         return Optional.ofNullable(this.secGroups);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * @return SSH port. Default `22` (string)
      * 
      */
     public Optional<String> sshPort() {
         return Optional.ofNullable(this.sshPort);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     public Optional<String> sshUser() {
@@ -444,7 +444,7 @@ public final class MachineConfigV2OpenstackConfig {
         return Optional.ofNullable(this.tenantDomainName);
     }
     /**
-     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * @return Azure Tenant ID (string)
      * 
      */
     public Optional<String> tenantId() {
@@ -516,7 +516,7 @@ public final class MachineConfigV2OpenstackConfig {
         return Optional.ofNullable(this.volumeSize);
     }
     /**
-     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * @return Amazon EBS volume type. Default `gp2` (string)
      * 
      */
     public Optional<String> volumeType() {

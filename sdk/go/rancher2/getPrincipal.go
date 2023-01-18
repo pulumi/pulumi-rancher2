@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.GetPrincipal(ctx, &GetPrincipalArgs{
+//			_, err := rancher2.GetPrincipal(ctx, &rancher2.GetPrincipalArgs{
 //				Name: "user@example.com",
 //			}, nil)
 //			if err != nil {

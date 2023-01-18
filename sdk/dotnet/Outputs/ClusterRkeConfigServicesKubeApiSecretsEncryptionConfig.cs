@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? CustomConfig;
         /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// Enable etcd backup (bool)
         /// </summary>
         public readonly bool? Enabled;
 

@@ -22,7 +22,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
      */
     private @Nullable String defaultDatastore;
     /**
-     * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
+     * @return (string)
      * 
      */
     private String folder;
@@ -53,7 +53,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
         return Optional.ofNullable(this.defaultDatastore);
     }
     /**
-     * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
+     * @return (string)
      * 
      */
     public String folder() {

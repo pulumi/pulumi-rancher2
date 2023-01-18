@@ -51,14 +51,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * An optional description of this cluster (string)
+     * The description for Cluster (string)
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An optional description of this cluster (string)
+     * @return The description for Cluster (string)
      * 
      */
     public Optional<Output<String>> description() {
@@ -66,14 +66,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE node config disk size Gb (int)
+     * Size of the disk attached to each node. Default `100` (int)
      * 
      */
     @Import(name="diskSizeGb")
     private @Nullable Output<Integer> diskSizeGb;
 
     /**
-     * @return The GKE node config disk size Gb (int)
+     * @return Size of the disk attached to each node. Default `100` (int)
      * 
      */
     public Optional<Output<Integer>> diskSizeGb() {
@@ -81,14 +81,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE node config disk type (string)
+     * Type of the disk attached to each node (string)
      * 
      */
     @Import(name="diskType", required=true)
     private Output<String> diskType;
 
     /**
-     * @return The GKE node config disk type (string)
+     * @return Type of the disk attached to each node (string)
      * 
      */
     public Output<String> diskType() {
@@ -171,14 +171,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * Whether to enable the Kubernetes dashboard. Default `false` (bool)
      * 
      */
     @Import(name="enableKubernetesDashboard")
     private @Nullable Output<Boolean> enableKubernetesDashboard;
 
     /**
-     * @return Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * @return Whether to enable the Kubernetes dashboard. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> enableKubernetesDashboard() {
@@ -246,14 +246,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable GKE cluster private endpoint. Default: `false` (bool)
+     * Whether the master&#39;s internal IP address is used as the cluster endpoint. Default `false` (bool)
      * 
      */
     @Import(name="enablePrivateEndpoint")
     private @Nullable Output<Boolean> enablePrivateEndpoint;
 
     /**
-     * @return Enable GKE cluster private endpoint. Default: `false` (bool)
+     * @return Whether the master&#39;s internal IP address is used as the cluster endpoint. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> enablePrivateEndpoint() {
@@ -261,14 +261,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * Whether nodes have internal IP address only. Default `false` (bool)
      * 
      */
     @Import(name="enablePrivateNodes")
     private @Nullable Output<Boolean> enablePrivateNodes;
 
     /**
-     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * @return Whether nodes have internal IP address only. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> enablePrivateNodes() {
@@ -306,14 +306,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE node config image type (string)
+     * The image to use for the worker nodes (string)
      * 
      */
     @Import(name="imageType", required=true)
     private Output<String> imageType;
 
     /**
-     * @return The GKE node config image type (string)
+     * @return The image to use for the worker nodes (string)
      * 
      */
     public Output<String> imageType() {
@@ -456,14 +456,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -471,14 +471,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE node config local ssd count (int)
+     * The number of local SSD disks to be attached to the node. Default `0` (int)
      * 
      */
     @Import(name="localSsdCount")
     private @Nullable Output<Integer> localSsdCount;
 
     /**
-     * @return The GKE node config local ssd count (int)
+     * @return The number of local SSD disks to be attached to the node. Default `0` (int)
      * 
      */
     public Optional<Output<Integer>> localSsdCount() {
@@ -486,14 +486,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE cluster locations (List)
+     * Locations for GKE cluster (list)
      * 
      */
     @Import(name="locations", required=true)
     private Output<List<String>> locations;
 
     /**
-     * @return The GKE cluster locations (List)
+     * @return Locations for GKE cluster (list)
      * 
      */
     public Output<List<String>> locations() {
@@ -501,14 +501,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE node config machine type (string)
+     * Machine type for GKE cluster (string)
      * 
      */
     @Import(name="machineType", required=true)
     private Output<String> machineType;
 
     /**
-     * @return The GKE node config machine type (string)
+     * @return Machine type for GKE cluster (string)
      * 
      */
     public Output<String> machineType() {
@@ -516,14 +516,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE cluster maintenance window (string)
+     * Maintenance window for GKE cluster (string)
      * 
      */
     @Import(name="maintenanceWindow", required=true)
     private Output<String> maintenanceWindow;
 
     /**
-     * @return The GKE cluster maintenance window (string)
+     * @return Maintenance window for GKE cluster (string)
      * 
      */
     public Output<String> maintenanceWindow() {
@@ -546,14 +546,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE cluster private master ip v4 cidr block (string)
+     * The IP range in CIDR notation to use for the hosted master network (string)
      * 
      */
     @Import(name="masterIpv4CidrBlock", required=true)
     private Output<String> masterIpv4CidrBlock;
 
     /**
-     * @return The GKE cluster private master ip v4 cidr block (string)
+     * @return The IP range in CIDR notation to use for the hosted master network (string)
      * 
      */
     public Output<String> masterIpv4CidrBlock() {
@@ -576,14 +576,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE node pool config max node count (int)
+     * Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
      * 
      */
     @Import(name="maxNodeCount")
     private @Nullable Output<Integer> maxNodeCount;
 
     /**
-     * @return The GKE node pool config max node count (int)
+     * @return Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
      * 
      */
     public Optional<Output<Integer>> maxNodeCount() {
@@ -591,14 +591,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE node pool config min node count (int)
+     * Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
      * 
      */
     @Import(name="minNodeCount")
     private @Nullable Output<Integer> minNodeCount;
 
     /**
-     * @return The GKE node pool config min node count (int)
+     * @return Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
      * 
      */
     public Optional<Output<Integer>> minNodeCount() {
@@ -606,14 +606,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE cluster network. Required for create new cluster (string)
+     * Kubernetes cluster networking (list maxitems:1)
      * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
-     * @return The GKE cluster network. Required for create new cluster (string)
+     * @return Kubernetes cluster networking (list maxitems:1)
      * 
      */
     public Output<String> network() {
@@ -666,14 +666,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE node config oauth scopes (List)
+     * The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
      * 
      */
     @Import(name="oauthScopes", required=true)
     private Output<List<String>> oauthScopes;
 
     /**
-     * @return The GKE node config oauth scopes (List)
+     * @return The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
      * 
      */
     public Output<List<String>> oauthScopes() {
@@ -681,14 +681,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable GKE node config preemptible. Default: `false` (bool)
+     * Whether the nodes are created as preemptible VM instances. Default `false` (bool)
      * 
      */
     @Import(name="preemptible")
     private @Nullable Output<Boolean> preemptible;
 
     /**
-     * @return Enable GKE node config preemptible. Default: `false` (bool)
+     * @return Whether the nodes are created as preemptible VM instances. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> preemptible() {
@@ -696,14 +696,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Project ID to apply answer (string)
+     * Project ID for GKE cluster (string)
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return Project ID to apply answer (string)
+     * @return Project ID for GKE cluster (string)
      * 
      */
     public Output<String> projectId() {
@@ -711,14 +711,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -771,14 +771,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE node config taints (List)
+     * List of Kubernetes taints to be applied to each node (list)
      * 
      */
     @Import(name="taints")
     private @Nullable Output<List<String>> taints;
 
     /**
-     * @return The GKE node config taints (List)
+     * @return List of Kubernetes taints to be applied to each node (list)
      * 
      */
     public Optional<Output<List<String>>> taints() {
@@ -786,14 +786,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Use GKE ip aliases? Default: `true` (bool)
+     * Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
      * 
      */
     @Import(name="useIpAliases")
     private @Nullable Output<Boolean> useIpAliases;
 
     /**
-     * @return Use GKE ip aliases? Default: `true` (bool)
+     * @return Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> useIpAliases() {
@@ -801,14 +801,14 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE cluster zone. Required if `region` not set (string)
+     * (string)
      * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
-     * @return The GKE cluster zone. Required if `region` not set (string)
+     * @return (string)
      * 
      */
     public Optional<Output<String>> zone() {
@@ -934,7 +934,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description An optional description of this cluster (string)
+         * @param description The description for Cluster (string)
          * 
          * @return builder
          * 
@@ -945,7 +945,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description An optional description of this cluster (string)
+         * @param description The description for Cluster (string)
          * 
          * @return builder
          * 
@@ -955,7 +955,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param diskSizeGb The GKE node config disk size Gb (int)
+         * @param diskSizeGb Size of the disk attached to each node. Default `100` (int)
          * 
          * @return builder
          * 
@@ -966,7 +966,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param diskSizeGb The GKE node config disk size Gb (int)
+         * @param diskSizeGb Size of the disk attached to each node. Default `100` (int)
          * 
          * @return builder
          * 
@@ -976,7 +976,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param diskType The GKE node config disk type (string)
+         * @param diskType Type of the disk attached to each node (string)
          * 
          * @return builder
          * 
@@ -987,7 +987,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param diskType The GKE node config disk type (string)
+         * @param diskType Type of the disk attached to each node (string)
          * 
          * @return builder
          * 
@@ -1102,7 +1102,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableKubernetesDashboard Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+         * @param enableKubernetesDashboard Whether to enable the Kubernetes dashboard. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -1113,7 +1113,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableKubernetesDashboard Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+         * @param enableKubernetesDashboard Whether to enable the Kubernetes dashboard. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -1207,7 +1207,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enablePrivateEndpoint Enable GKE cluster private endpoint. Default: `false` (bool)
+         * @param enablePrivateEndpoint Whether the master&#39;s internal IP address is used as the cluster endpoint. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -1218,7 +1218,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enablePrivateEndpoint Enable GKE cluster private endpoint. Default: `false` (bool)
+         * @param enablePrivateEndpoint Whether the master&#39;s internal IP address is used as the cluster endpoint. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -1228,7 +1228,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enablePrivateNodes Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+         * @param enablePrivateNodes Whether nodes have internal IP address only. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -1239,7 +1239,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enablePrivateNodes Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+         * @param enablePrivateNodes Whether nodes have internal IP address only. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -1291,7 +1291,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param imageType The GKE node config image type (string)
+         * @param imageType The image to use for the worker nodes (string)
          * 
          * @return builder
          * 
@@ -1302,7 +1302,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param imageType The GKE node config image type (string)
+         * @param imageType The image to use for the worker nodes (string)
          * 
          * @return builder
          * 
@@ -1501,7 +1501,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster (map)
          * 
          * @return builder
          * 
@@ -1512,7 +1512,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster (map)
          * 
          * @return builder
          * 
@@ -1522,7 +1522,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localSsdCount The GKE node config local ssd count (int)
+         * @param localSsdCount The number of local SSD disks to be attached to the node. Default `0` (int)
          * 
          * @return builder
          * 
@@ -1533,7 +1533,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localSsdCount The GKE node config local ssd count (int)
+         * @param localSsdCount The number of local SSD disks to be attached to the node. Default `0` (int)
          * 
          * @return builder
          * 
@@ -1543,7 +1543,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param locations The GKE cluster locations (List)
+         * @param locations Locations for GKE cluster (list)
          * 
          * @return builder
          * 
@@ -1554,7 +1554,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param locations The GKE cluster locations (List)
+         * @param locations Locations for GKE cluster (list)
          * 
          * @return builder
          * 
@@ -1564,7 +1564,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param locations The GKE cluster locations (List)
+         * @param locations Locations for GKE cluster (list)
          * 
          * @return builder
          * 
@@ -1574,7 +1574,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param machineType The GKE node config machine type (string)
+         * @param machineType Machine type for GKE cluster (string)
          * 
          * @return builder
          * 
@@ -1585,7 +1585,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param machineType The GKE node config machine type (string)
+         * @param machineType Machine type for GKE cluster (string)
          * 
          * @return builder
          * 
@@ -1595,7 +1595,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maintenanceWindow The GKE cluster maintenance window (string)
+         * @param maintenanceWindow Maintenance window for GKE cluster (string)
          * 
          * @return builder
          * 
@@ -1606,7 +1606,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maintenanceWindow The GKE cluster maintenance window (string)
+         * @param maintenanceWindow Maintenance window for GKE cluster (string)
          * 
          * @return builder
          * 
@@ -1647,7 +1647,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param masterIpv4CidrBlock The GKE cluster private master ip v4 cidr block (string)
+         * @param masterIpv4CidrBlock The IP range in CIDR notation to use for the hosted master network (string)
          * 
          * @return builder
          * 
@@ -1658,7 +1658,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param masterIpv4CidrBlock The GKE cluster private master ip v4 cidr block (string)
+         * @param masterIpv4CidrBlock The IP range in CIDR notation to use for the hosted master network (string)
          * 
          * @return builder
          * 
@@ -1689,7 +1689,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxNodeCount The GKE node pool config max node count (int)
+         * @param maxNodeCount Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
          * 
          * @return builder
          * 
@@ -1700,7 +1700,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxNodeCount The GKE node pool config max node count (int)
+         * @param maxNodeCount Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
          * 
          * @return builder
          * 
@@ -1710,7 +1710,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minNodeCount The GKE node pool config min node count (int)
+         * @param minNodeCount Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
          * 
          * @return builder
          * 
@@ -1721,7 +1721,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minNodeCount The GKE node pool config min node count (int)
+         * @param minNodeCount Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
          * 
          * @return builder
          * 
@@ -1731,7 +1731,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param network The GKE cluster network. Required for create new cluster (string)
+         * @param network Kubernetes cluster networking (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1742,7 +1742,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param network The GKE cluster network. Required for create new cluster (string)
+         * @param network Kubernetes cluster networking (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1815,7 +1815,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param oauthScopes The GKE node config oauth scopes (List)
+         * @param oauthScopes The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
          * 
          * @return builder
          * 
@@ -1826,7 +1826,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param oauthScopes The GKE node config oauth scopes (List)
+         * @param oauthScopes The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
          * 
          * @return builder
          * 
@@ -1836,7 +1836,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param oauthScopes The GKE node config oauth scopes (List)
+         * @param oauthScopes The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
          * 
          * @return builder
          * 
@@ -1846,7 +1846,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param preemptible Enable GKE node config preemptible. Default: `false` (bool)
+         * @param preemptible Whether the nodes are created as preemptible VM instances. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -1857,7 +1857,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param preemptible Enable GKE node config preemptible. Default: `false` (bool)
+         * @param preemptible Whether the nodes are created as preemptible VM instances. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -1867,7 +1867,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param projectId Project ID to apply answer (string)
+         * @param projectId Project ID for GKE cluster (string)
          * 
          * @return builder
          * 
@@ -1878,7 +1878,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param projectId Project ID to apply answer (string)
+         * @param projectId Project ID for GKE cluster (string)
          * 
          * @return builder
          * 
@@ -1888,7 +1888,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region (string)
          * 
          * @return builder
          * 
@@ -1899,7 +1899,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region (string)
          * 
          * @return builder
          * 
@@ -1972,7 +1972,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param taints The GKE node config taints (List)
+         * @param taints List of Kubernetes taints to be applied to each node (list)
          * 
          * @return builder
          * 
@@ -1983,7 +1983,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param taints The GKE node config taints (List)
+         * @param taints List of Kubernetes taints to be applied to each node (list)
          * 
          * @return builder
          * 
@@ -1993,7 +1993,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param taints The GKE node config taints (List)
+         * @param taints List of Kubernetes taints to be applied to each node (list)
          * 
          * @return builder
          * 
@@ -2003,7 +2003,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param useIpAliases Use GKE ip aliases? Default: `true` (bool)
+         * @param useIpAliases Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -2014,7 +2014,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param useIpAliases Use GKE ip aliases? Default: `true` (bool)
+         * @param useIpAliases Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -2024,7 +2024,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zone The GKE cluster zone. Required if `region` not set (string)
+         * @param zone (string)
          * 
          * @return builder
          * 
@@ -2035,7 +2035,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zone The GKE cluster zone. Required if `region` not set (string)
+         * @param zone (string)
          * 
          * @return builder
          * 

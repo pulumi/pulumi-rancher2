@@ -283,6 +283,51 @@ func (o ProjectRoleTemplateBindingOutput) ToProjectRoleTemplateBindingOutputWith
 	return o
 }
 
+// Annotations of the resource (map)
+func (o ProjectRoleTemplateBindingOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The group ID to assign project role template binding (string)
+func (o ProjectRoleTemplateBindingOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The groupPrincipal ID to assign project role template binding (string)
+func (o ProjectRoleTemplateBindingOutput) GroupPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.StringOutput { return v.GroupPrincipalId }).(pulumi.StringOutput)
+}
+
+// Labels of the resource (map)
+func (o ProjectRoleTemplateBindingOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the project role template binding (string)
+func (o ProjectRoleTemplateBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project id where bind project role template (string)
+func (o ProjectRoleTemplateBindingOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The role template id from create project role template binding (string)
+func (o ProjectRoleTemplateBindingOutput) RoleTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.StringOutput { return v.RoleTemplateId }).(pulumi.StringOutput)
+}
+
+// The user ID to assign project role template binding (string)
+func (o ProjectRoleTemplateBindingOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The userPrincipal ID to assign project role template binding (string)
+func (o ProjectRoleTemplateBindingOutput) UserPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.StringOutput { return v.UserPrincipalId }).(pulumi.StringOutput)
+}
+
 type ProjectRoleTemplateBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectRoleTemplateBindingArrayOutput) ElementType() reflect.Type {

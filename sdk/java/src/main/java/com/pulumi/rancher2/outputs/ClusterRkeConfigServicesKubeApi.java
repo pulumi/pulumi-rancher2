@@ -39,22 +39,22 @@ public final class ClusterRkeConfigServicesKubeApi {
      */
     private @Nullable ClusterRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
     /**
-     * @return Extra arguments for scheduler service (map)
+     * @return Extra arguments for RKE Ingress (map)
      * 
      */
     private @Nullable Map<String,Object> extraArgs;
     /**
-     * @return Extra binds for scheduler service (list)
+     * @return Extra binds for etcd service (list)
      * 
      */
     private @Nullable List<String> extraBinds;
     /**
-     * @return Extra environment for scheduler service (list)
+     * @return Extra environment for etcd service (list)
      * 
      */
     private @Nullable List<String> extraEnvs;
     /**
-     * @return Docker image for scheduler service (string)
+     * @return Docker image for etcd service (string)
      * 
      */
     private @Nullable String image;
@@ -69,7 +69,7 @@ public final class ClusterRkeConfigServicesKubeApi {
      */
     private @Nullable ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig;
     /**
-     * @return Service Cluster ip Range option for kube controller service (string)
+     * @return Service Cluster IP Range option for kube API service (string)
      * 
      */
     private @Nullable String serviceClusterIpRange;
@@ -109,28 +109,28 @@ public final class ClusterRkeConfigServicesKubeApi {
         return Optional.ofNullable(this.eventRateLimit);
     }
     /**
-     * @return Extra arguments for scheduler service (map)
+     * @return Extra arguments for RKE Ingress (map)
      * 
      */
     public Map<String,Object> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
     /**
-     * @return Extra binds for scheduler service (list)
+     * @return Extra binds for etcd service (list)
      * 
      */
     public List<String> extraBinds() {
         return this.extraBinds == null ? List.of() : this.extraBinds;
     }
     /**
-     * @return Extra environment for scheduler service (list)
+     * @return Extra environment for etcd service (list)
      * 
      */
     public List<String> extraEnvs() {
         return this.extraEnvs == null ? List.of() : this.extraEnvs;
     }
     /**
-     * @return Docker image for scheduler service (string)
+     * @return Docker image for etcd service (string)
      * 
      */
     public Optional<String> image() {
@@ -151,7 +151,7 @@ public final class ClusterRkeConfigServicesKubeApi {
         return Optional.ofNullable(this.secretsEncryptionConfig);
     }
     /**
-     * @return Service Cluster ip Range option for kube controller service (string)
+     * @return Service Cluster IP Range option for kube API service (string)
      * 
      */
     public Optional<String> serviceClusterIpRange() {

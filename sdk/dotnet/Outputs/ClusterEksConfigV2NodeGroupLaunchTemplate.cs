@@ -18,11 +18,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// RKE2 kubernetes version (string)
         /// </summary>
         public readonly int? Version;
 

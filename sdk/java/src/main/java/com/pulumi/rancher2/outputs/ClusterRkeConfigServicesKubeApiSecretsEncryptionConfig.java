@@ -18,7 +18,7 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
      */
     private @Nullable String customConfig;
     /**
-     * @return Enable scheduled cluster scan. Default: `false` (bool)
+     * @return Enable etcd backup (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -32,7 +32,7 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
         return Optional.ofNullable(this.customConfig);
     }
     /**
-     * @return Enable scheduled cluster scan. Default: `false` (bool)
+     * @return Enable etcd backup (bool)
      * 
      */
     public Optional<Boolean> enabled() {

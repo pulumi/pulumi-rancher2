@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string ApiToken;
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
         /// </summary>
         public readonly string? Image;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? UsePrivateNetwork;
         /// <summary>
-        /// Path to file with cloud-init user-data (string)
+        /// Path to file with cloud-init user data (string)
         /// </summary>
         public readonly string? Userdata;
         /// <summary>

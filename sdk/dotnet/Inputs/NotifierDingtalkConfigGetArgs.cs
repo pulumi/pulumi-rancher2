@@ -10,22 +10,32 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NotifierDingtalkConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NotifierDingtalkConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Wechat proxy url (string)
+        /// Dingtalk proxy url (string)
         /// </summary>
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
 
-        /// <summary>
-        /// Wechat agent ID (string)
-        /// </summary>
         [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        private Input<string>? _secret;
 
         /// <summary>
-        /// Webhook url (string)
+        /// Secret for url sign enable (string)
+        /// </summary>
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Dingtalk url (string)
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -33,5 +43,6 @@ namespace Pulumi.Rancher2.Inputs
         public NotifierDingtalkConfigGetArgs()
         {
         }
+        public static new NotifierDingtalkConfigGetArgs Empty => new NotifierDingtalkConfigGetArgs();
     }
 }

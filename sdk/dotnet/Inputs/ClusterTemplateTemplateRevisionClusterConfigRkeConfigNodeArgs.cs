@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs : global::Pulumi.ResourceArgs
     {
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for the cluster template revision (map)
+        /// Labels for the cluster template (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -54,16 +54,35 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? SshAgentAuth { get; set; }
 
         [Input("sshKey")]
-        public Input<string>? SshKey { get; set; }
+        private Input<string>? _sshKey;
+        public Input<string>? SshKey
+        {
+            get => _sshKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("sshKeyPath")]
         public Input<string>? SshKeyPath { get; set; }
 
         [Input("user", required: true)]
-        public Input<string> User { get; set; } = null!;
+        private Input<string>? _user;
+        public Input<string>? User
+        {
+            get => _user;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _user = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs();
     }
 }

@@ -19,14 +19,14 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
     public static final ClusterAlertRuleNodeRuleArgs Empty = new ClusterAlertRuleNodeRuleArgs();
 
     /**
-     * System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+     * Node rule condition. Supported values : `&#34;cpu&#34; | &#34;mem&#34; | &#34;notready&#34;`. Default: `notready` (string)
      * 
      */
     @Import(name="condition")
     private @Nullable Output<String> condition;
 
     /**
-     * @return System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+     * @return Node rule condition. Supported values : `&#34;cpu&#34; | &#34;mem&#34; | &#34;notready&#34;`. Default: `notready` (string)
      * 
      */
     public Optional<Output<String>> condition() {
@@ -122,7 +122,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param condition System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+         * @param condition Node rule condition. Supported values : `&#34;cpu&#34; | &#34;mem&#34; | &#34;notready&#34;`. Default: `notready` (string)
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param condition System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+         * @param condition Node rule condition. Supported values : `&#34;cpu&#34; | &#34;mem&#34; | &#34;notready&#34;`. Default: `notready` (string)
          * 
          * @return builder
          * 

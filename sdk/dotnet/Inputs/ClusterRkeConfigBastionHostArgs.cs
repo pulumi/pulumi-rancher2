@@ -10,40 +10,50 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigBastionHostArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigBastionHostArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Address ip for node (string)
+        /// Address ip for the bastion host (string)
         /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
         /// <summary>
-        /// Port for node. Default `22` (string)
+        /// Port for bastion host. Default `22` (string)
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// Use ssh agent auth. Default `false` (bool)
+        /// Use ssh agent auth. Default `false`
         /// </summary>
         [Input("sshAgentAuth")]
         public Input<bool>? SshAgentAuth { get; set; }
 
-        /// <summary>
-        /// Node SSH private key (string)
-        /// </summary>
         [Input("sshKey")]
-        public Input<string>? SshKey { get; set; }
+        private Input<string>? _sshKey;
 
         /// <summary>
-        /// Node SSH private key path (string)
+        /// Bastion host SSH private key (string)
+        /// </summary>
+        public Input<string>? SshKey
+        {
+            get => _sshKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Cluster level SSH private key path (string)
         /// </summary>
         [Input("sshKeyPath")]
         public Input<string>? SshKeyPath { get; set; }
 
         /// <summary>
-        /// Registry user (string)
+        /// User to connect bastion host (string)
         /// </summary>
         [Input("user", required: true)]
         public Input<string> User { get; set; } = null!;
@@ -51,5 +61,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigBastionHostArgs()
         {
         }
+        public static new ClusterRkeConfigBastionHostArgs Empty => new ClusterRkeConfigBastionHostArgs();
     }
 }

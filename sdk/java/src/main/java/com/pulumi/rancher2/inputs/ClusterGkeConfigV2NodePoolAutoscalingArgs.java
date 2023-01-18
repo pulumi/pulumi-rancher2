@@ -17,14 +17,14 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
     public static final ClusterGkeConfigV2NodePoolAutoscalingArgs Empty = new ClusterGkeConfigV2NodePoolAutoscalingArgs();
 
     /**
-     * Enable scheduled cluster scan. Default: `false` (bool)
+     * Enable etcd backup (bool)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable scheduled cluster scan. Default: `false` (bool)
+     * @return Enable etcd backup (bool)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,14 +32,14 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
     }
 
     /**
-     * The GKE node pool config max node count (int)
+     * Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
      * 
      */
     @Import(name="maxNodeCount")
     private @Nullable Output<Integer> maxNodeCount;
 
     /**
-     * @return The GKE node pool config max node count (int)
+     * @return Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
      * 
      */
     public Optional<Output<Integer>> maxNodeCount() {
@@ -47,14 +47,14 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
     }
 
     /**
-     * The GKE node pool config min node count (int)
+     * Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
      * 
      */
     @Import(name="minNodeCount")
     private @Nullable Output<Integer> minNodeCount;
 
     /**
-     * @return The GKE node pool config min node count (int)
+     * @return Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
      * 
      */
     public Optional<Output<Integer>> minNodeCount() {
@@ -88,7 +88,7 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
         }
 
         /**
-         * @param enabled Enable scheduled cluster scan. Default: `false` (bool)
+         * @param enabled Enable etcd backup (bool)
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
         }
 
         /**
-         * @param enabled Enable scheduled cluster scan. Default: `false` (bool)
+         * @param enabled Enable etcd backup (bool)
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
         }
 
         /**
-         * @param maxNodeCount The GKE node pool config max node count (int)
+         * @param maxNodeCount Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
         }
 
         /**
-         * @param maxNodeCount The GKE node pool config max node count (int)
+         * @param maxNodeCount Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
         }
 
         /**
-         * @param minNodeCount The GKE node pool config min node count (int)
+         * @param minNodeCount Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
         }
 
         /**
-         * @param minNodeCount The GKE node pool config min node count (int)
+         * @param minNodeCount Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
          * 
          * @return builder
          * 

@@ -24,6 +24,41 @@ import javax.annotation.Nullable;
  * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.AuthConfigKeycloak;
+ * import com.pulumi.rancher2.AuthConfigKeycloakArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var keycloak = new AuthConfigKeycloak(&#34;keycloak&#34;, AuthConfigKeycloakArgs.builder()        
+ *             .displayNameField(&#34;&lt;DISPLAY_NAME_FIELD&gt;&#34;)
+ *             .groupsField(&#34;&lt;GROUPS_FIELD&gt;&#34;)
+ *             .idpMetadataContent(&#34;&lt;IDP_METADATA_CONTENT&gt;&#34;)
+ *             .rancherApiHost(&#34;https://&lt;RANCHER_API_HOST&gt;&#34;)
+ *             .spCert(&#34;&lt;SP_CERT&gt;&#34;)
+ *             .spKey(&#34;&lt;SP_KEY&gt;&#34;)
+ *             .uidField(&#34;&lt;UID_FIELD&gt;&#34;)
+ *             .userNameField(&#34;&lt;USER_NAME_FIELD&gt;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="rancher2:index/authConfigKeycloak:AuthConfigKeycloak")
@@ -285,6 +320,11 @@ public class AuthConfigKeycloak extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "idpMetadataContent",
+                "spCert",
+                "spKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

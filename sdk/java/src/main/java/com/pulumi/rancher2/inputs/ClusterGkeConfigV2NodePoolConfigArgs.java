@@ -22,14 +22,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     public static final ClusterGkeConfigV2NodePoolConfigArgs Empty = new ClusterGkeConfigV2NodePoolConfigArgs();
 
     /**
-     * The GKE node config disk size Gb (int)
+     * Size of the disk attached to each node. Default `100` (int)
      * 
      */
     @Import(name="diskSizeGb")
     private @Nullable Output<Integer> diskSizeGb;
 
     /**
-     * @return The GKE node config disk size Gb (int)
+     * @return Size of the disk attached to each node. Default `100` (int)
      * 
      */
     public Optional<Output<Integer>> diskSizeGb() {
@@ -37,14 +37,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The GKE node config disk type (string)
+     * Type of the disk attached to each node (string)
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return The GKE node config disk type (string)
+     * @return Type of the disk attached to each node (string)
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -52,14 +52,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The GKE node config image type (string)
+     * The image to use for the worker nodes (string)
      * 
      */
     @Import(name="imageType")
     private @Nullable Output<String> imageType;
 
     /**
-     * @return The GKE node config image type (string)
+     * @return The image to use for the worker nodes (string)
      * 
      */
     public Optional<Output<String>> imageType() {
@@ -67,14 +67,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -82,14 +82,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The GKE node config local ssd count (int)
+     * The number of local SSD disks to be attached to the node. Default `0` (int)
      * 
      */
     @Import(name="localSsdCount")
     private @Nullable Output<Integer> localSsdCount;
 
     /**
-     * @return The GKE node config local ssd count (int)
+     * @return The number of local SSD disks to be attached to the node. Default `0` (int)
      * 
      */
     public Optional<Output<Integer>> localSsdCount() {
@@ -97,14 +97,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The GKE node config machine type (string)
+     * Machine type for GKE cluster (string)
      * 
      */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
 
     /**
-     * @return The GKE node config machine type (string)
+     * @return Machine type for GKE cluster (string)
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -112,14 +112,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The GKE node config oauth scopes (List)
+     * The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
      * 
      */
     @Import(name="oauthScopes")
     private @Nullable Output<List<String>> oauthScopes;
 
     /**
-     * @return The GKE node config oauth scopes (List)
+     * @return The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
      * 
      */
     public Optional<Output<List<String>>> oauthScopes() {
@@ -127,14 +127,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Enable GKE node config preemptible. Default: `false` (bool)
+     * Whether the nodes are created as preemptible VM instances. Default `false` (bool)
      * 
      */
     @Import(name="preemptible")
     private @Nullable Output<Boolean> preemptible;
 
     /**
-     * @return Enable GKE node config preemptible. Default: `false` (bool)
+     * @return Whether the nodes are created as preemptible VM instances. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> preemptible() {
@@ -142,14 +142,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The GKE node config tags (List)
+     * Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The GKE node config tags (List)
+     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -157,14 +157,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The GKE node config taints (List)
+     * List of Kubernetes taints to be applied to each node (list)
      * 
      */
     @Import(name="taints")
     private @Nullable Output<List<ClusterGkeConfigV2NodePoolConfigTaintArgs>> taints;
 
     /**
-     * @return The GKE node config taints (List)
+     * @return List of Kubernetes taints to be applied to each node (list)
      * 
      */
     public Optional<Output<List<ClusterGkeConfigV2NodePoolConfigTaintArgs>>> taints() {
@@ -205,7 +205,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param diskSizeGb The GKE node config disk size Gb (int)
+         * @param diskSizeGb Size of the disk attached to each node. Default `100` (int)
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param diskSizeGb The GKE node config disk size Gb (int)
+         * @param diskSizeGb Size of the disk attached to each node. Default `100` (int)
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param diskType The GKE node config disk type (string)
+         * @param diskType Type of the disk attached to each node (string)
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param diskType The GKE node config disk type (string)
+         * @param diskType Type of the disk attached to each node (string)
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param imageType The GKE node config image type (string)
+         * @param imageType The image to use for the worker nodes (string)
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param imageType The GKE node config image type (string)
+         * @param imageType The image to use for the worker nodes (string)
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster (map)
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster (map)
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param localSsdCount The GKE node config local ssd count (int)
+         * @param localSsdCount The number of local SSD disks to be attached to the node. Default `0` (int)
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param localSsdCount The GKE node config local ssd count (int)
+         * @param localSsdCount The number of local SSD disks to be attached to the node. Default `0` (int)
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param machineType The GKE node config machine type (string)
+         * @param machineType Machine type for GKE cluster (string)
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param machineType The GKE node config machine type (string)
+         * @param machineType Machine type for GKE cluster (string)
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param oauthScopes The GKE node config oauth scopes (List)
+         * @param oauthScopes The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param oauthScopes The GKE node config oauth scopes (List)
+         * @param oauthScopes The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param oauthScopes The GKE node config oauth scopes (List)
+         * @param oauthScopes The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param preemptible Enable GKE node config preemptible. Default: `false` (bool)
+         * @param preemptible Whether the nodes are created as preemptible VM instances. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param preemptible Enable GKE node config preemptible. Default: `false` (bool)
+         * @param preemptible Whether the nodes are created as preemptible VM instances. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param taints The GKE node config taints (List)
+         * @param taints List of Kubernetes taints to be applied to each node (list)
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param taints The GKE node config taints (List)
+         * @param taints List of Kubernetes taints to be applied to each node (list)
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param taints The GKE node config taints (List)
+         * @param taints List of Kubernetes taints to be applied to each node (list)
          * 
          * @return builder
          * 

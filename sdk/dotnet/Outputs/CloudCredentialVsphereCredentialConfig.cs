@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class CloudCredentialVsphereCredentialConfig
     {
         /// <summary>
-        /// vSphere password (string)
+        /// OpenStack password (string)
         /// </summary>
         public readonly string Password;
         /// <summary>

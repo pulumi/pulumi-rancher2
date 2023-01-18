@@ -298,6 +298,71 @@ func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoo
 	return o
 }
 
+// Annotations for Node Pool object (map)
+func (o NodePoolOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The RKE cluster id to use Node Pool (string)
+func (o NodePoolOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// RKE control plane role for created nodes (bool)
+func (o NodePoolOutput) ControlPlane() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.ControlPlane }).(pulumi.BoolPtrOutput)
+}
+
+// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+func (o NodePoolOutput) DeleteNotReadyAfterSecs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.DeleteNotReadyAfterSecs }).(pulumi.IntPtrOutput)
+}
+
+// Drain nodes before delete. Default: `false` (bool)
+func (o NodePoolOutput) DrainBeforeDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.DrainBeforeDelete }).(pulumi.BoolPtrOutput)
+}
+
+// RKE etcd role for created nodes (bool)
+func (o NodePoolOutput) Etcd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.Etcd }).(pulumi.BoolPtrOutput)
+}
+
+// The prefix for created nodes of the Node Pool (string)
+func (o NodePoolOutput) HostnamePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.HostnamePrefix }).(pulumi.StringOutput)
+}
+
+// Labels for Node Pool object (map)
+func (o NodePoolOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the Node Pool (string)
+func (o NodePoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Node taints. For Rancher v2.3.3 or above (List)
+func (o NodePoolOutput) NodeTaints() NodePoolNodeTaintArrayOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolNodeTaintArrayOutput { return v.NodeTaints }).(NodePoolNodeTaintArrayOutput)
+}
+
+// The Node Template ID to use for node creation (string)
+func (o NodePoolOutput) NodeTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.NodeTemplateId }).(pulumi.StringOutput)
+}
+
+// The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
+func (o NodePoolOutput) Quantity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.Quantity }).(pulumi.IntPtrOutput)
+}
+
+// RKE role role for created nodes (bool)
+func (o NodePoolOutput) Worker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.Worker }).(pulumi.BoolPtrOutput)
+}
+
 type NodePoolArrayOutput struct{ *pulumi.OutputState }
 
 func (NodePoolArrayOutput) ElementType() reflect.Type {

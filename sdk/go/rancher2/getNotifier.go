@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupNotifier(ctx, &GetNotifierArgs{
+//			_, err := rancher2.LookupNotifier(ctx, &rancher2.LookupNotifierArgs{
 //				ClusterId: "<cluster_id>",
 //				Name:      "foo",
 //			}, nil)

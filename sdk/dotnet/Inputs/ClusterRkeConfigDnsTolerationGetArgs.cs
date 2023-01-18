@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigDnsTolerationGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigDnsTolerationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The GKE taint effect (string)
+        /// The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
         /// <summary>
-        /// The GKE taint key (string)
+        /// The toleration key (string)
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? Seconds { get; set; }
 
         /// <summary>
-        /// The GKE taint value (string)
+        /// Rancher agent env var value (string)
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -45,5 +45,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigDnsTolerationGetArgs()
         {
         }
+        public static new ClusterRkeConfigDnsTolerationGetArgs Empty => new ClusterRkeConfigDnsTolerationGetArgs();
     }
 }

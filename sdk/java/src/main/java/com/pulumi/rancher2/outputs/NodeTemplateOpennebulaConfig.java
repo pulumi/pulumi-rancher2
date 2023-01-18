@@ -38,12 +38,12 @@ public final class NodeTemplateOpennebulaConfig {
      */
     private @Nullable String diskResize;
     /**
-     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * @return Image ID to use as the VM OS. Conflicts with `image_name` (string)
      * 
      */
     private @Nullable String imageId;
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return Image name e.g. `harvester-public/image-57hzg` (string)
      * 
      */
     private @Nullable String imageName;
@@ -63,7 +63,7 @@ public final class NodeTemplateOpennebulaConfig {
      */
     private @Nullable String networkId;
     /**
-     * @return Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+     * @return Network name e.g. `harvester-public/vlan1` (string)
      * 
      */
     private @Nullable String networkName;
@@ -73,12 +73,12 @@ public final class NodeTemplateOpennebulaConfig {
      */
     private @Nullable String networkOwner;
     /**
-     * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Set the password for the XML-RPC API authentication (string)
      * 
      */
     private String password;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     private @Nullable String sshUser;
@@ -145,14 +145,14 @@ public final class NodeTemplateOpennebulaConfig {
         return Optional.ofNullable(this.diskResize);
     }
     /**
-     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * @return Image ID to use as the VM OS. Conflicts with `image_name` (string)
      * 
      */
     public Optional<String> imageId() {
         return Optional.ofNullable(this.imageId);
     }
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return Image name e.g. `harvester-public/image-57hzg` (string)
      * 
      */
     public Optional<String> imageName() {
@@ -180,7 +180,7 @@ public final class NodeTemplateOpennebulaConfig {
         return Optional.ofNullable(this.networkId);
     }
     /**
-     * @return Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+     * @return Network name e.g. `harvester-public/vlan1` (string)
      * 
      */
     public Optional<String> networkName() {
@@ -194,14 +194,14 @@ public final class NodeTemplateOpennebulaConfig {
         return Optional.ofNullable(this.networkOwner);
     }
     /**
-     * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Set the password for the XML-RPC API authentication (string)
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     public Optional<String> sshUser() {

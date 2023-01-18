@@ -11,10 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Rancher v2 Auth Config AzureAD resource. This can be used to configure and enable Auth Config AzureAD for Rancher v2 RKE clusters and retrieve their information.
-//
-// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-//
 // ## Example Usage
 //
 // ```go
@@ -109,6 +105,17 @@ func NewAuthConfigAzureAd(ctx *pulumi.Context,
 	if args.TokenEndpoint == nil {
 		return nil, errors.New("invalid value for required argument 'TokenEndpoint'")
 	}
+	if args.ApplicationId != nil {
+		args.ApplicationId = pulumi.ToSecret(args.ApplicationId).(pulumi.StringInput)
+	}
+	if args.ApplicationSecret != nil {
+		args.ApplicationSecret = pulumi.ToSecret(args.ApplicationSecret).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"applicationId",
+		"applicationSecret",
+	})
+	opts = append(opts, secrets)
 	var resource AuthConfigAzureAd
 	err := ctx.RegisterResource("rancher2:index/authConfigAzureAd:AuthConfigAzureAd", name, args, &resource, opts...)
 	if err != nil {
@@ -344,6 +351,81 @@ func (o AuthConfigAzureAdOutput) ToAuthConfigAzureAdOutput() AuthConfigAzureAdOu
 
 func (o AuthConfigAzureAdOutput) ToAuthConfigAzureAdOutputWithContext(ctx context.Context) AuthConfigAzureAdOutput {
 	return o
+}
+
+// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+func (o AuthConfigAzureAdOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringPtrOutput { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
+func (o AuthConfigAzureAdOutput) AllowedPrincipalIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringArrayOutput { return v.AllowedPrincipalIds }).(pulumi.StringArrayOutput)
+}
+
+// Annotations of the resource (map)
+func (o AuthConfigAzureAdOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// AzureAD auth application ID (string)
+func (o AuthConfigAzureAdOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// AzureAD auth application secret (string)
+func (o AuthConfigAzureAdOutput) ApplicationSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringOutput { return v.ApplicationSecret }).(pulumi.StringOutput)
+}
+
+// AzureAD auth endpoint (string)
+func (o AuthConfigAzureAdOutput) AuthEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringOutput { return v.AuthEndpoint }).(pulumi.StringOutput)
+}
+
+// Enable auth config provider. Default `true` (bool)
+func (o AuthConfigAzureAdOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
+func (o AuthConfigAzureAdOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringPtrOutput { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// AzureAD graph endpoint (string)
+func (o AuthConfigAzureAdOutput) GraphEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringOutput { return v.GraphEndpoint }).(pulumi.StringOutput)
+}
+
+// Labels of the resource (map)
+func (o AuthConfigAzureAdOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// (Computed) The name of the resource (string)
+func (o AuthConfigAzureAdOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Rancher URL (string). "<rancher_url>/verify-auth-azure"
+func (o AuthConfigAzureAdOutput) RancherUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringOutput { return v.RancherUrl }).(pulumi.StringOutput)
+}
+
+// AzureAD tenant ID (string)
+func (o AuthConfigAzureAdOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// AzureAD token endpoint (string)
+func (o AuthConfigAzureAdOutput) TokenEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringOutput { return v.TokenEndpoint }).(pulumi.StringOutput)
+}
+
+// (Computed) The type of the resource (string)
+func (o AuthConfigAzureAdOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type AuthConfigAzureAdArrayOutput struct{ *pulumi.OutputState }

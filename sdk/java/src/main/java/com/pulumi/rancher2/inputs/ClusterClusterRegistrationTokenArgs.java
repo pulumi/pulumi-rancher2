@@ -18,14 +18,14 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
     public static final ClusterClusterRegistrationTokenArgs Empty = new ClusterClusterRegistrationTokenArgs();
 
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster (map)
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,Object>> annotations;
 
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> annotations() {
@@ -33,14 +33,14 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
     }
 
     /**
-     * Cluster ID (string)
+     * Cluster ID to apply answer (string)
      * 
      */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return Cluster ID (string)
+     * @return Cluster ID to apply answer (string)
      * 
      */
     public Optional<Output<String>> clusterId() {
@@ -123,14 +123,14 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
     }
 
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -153,14 +153,14 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
     }
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -183,14 +183,14 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
     }
 
     /**
-     * Token for cluster registration token object (string)
+     * ACI token (string)
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return Token for cluster registration token object (string)
+     * @return ACI token (string)
      * 
      */
     public Optional<Output<String>> token() {
@@ -249,7 +249,7 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
         }
 
         /**
-         * @param annotations Annotations for cluster registration token object (map)
+         * @param annotations Annotations for the Cluster (map)
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
         }
 
         /**
-         * @param annotations Annotations for cluster registration token object (map)
+         * @param annotations Annotations for the Cluster (map)
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
         }
 
         /**
-         * @param clusterId Cluster ID (string)
+         * @param clusterId Cluster ID to apply answer (string)
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
         }
 
         /**
-         * @param clusterId Cluster ID (string)
+         * @param clusterId Cluster ID to apply answer (string)
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster (map)
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster (map)
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
         }
 
         /**
-         * @param token Token for cluster registration token object (string)
+         * @param token ACI token (string)
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
         }
 
         /**
-         * @param token Token for cluster registration token object (string)
+         * @param token ACI token (string)
          * 
          * @return builder
          * 

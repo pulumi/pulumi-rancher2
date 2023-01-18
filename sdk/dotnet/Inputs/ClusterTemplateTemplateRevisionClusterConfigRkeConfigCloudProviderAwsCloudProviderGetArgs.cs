@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("global")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalGetArgs>? Global { get; set; }
@@ -26,5 +26,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGetArgs();
     }
 }

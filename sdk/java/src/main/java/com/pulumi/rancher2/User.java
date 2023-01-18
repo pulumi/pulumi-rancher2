@@ -24,6 +24,43 @@ import javax.annotation.Nullable;
  * When a Rancher User is created, it doesn&#39;t have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.User;
+ * import com.pulumi.rancher2.UserArgs;
+ * import com.pulumi.rancher2.GlobalRoleBinding;
+ * import com.pulumi.rancher2.GlobalRoleBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooUser = new User(&#34;fooUser&#34;, UserArgs.builder()        
+ *             .username(&#34;foo&#34;)
+ *             .password(&#34;changeme&#34;)
+ *             .enabled(true)
+ *             .build());
+ * 
+ *         var fooGlobalRoleBinding = new GlobalRoleBinding(&#34;fooGlobalRoleBinding&#34;, GlobalRoleBindingArgs.builder()        
+ *             .globalRoleId(&#34;user-base&#34;)
+ *             .userId(fooUser.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -159,6 +196,9 @@ public class User extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

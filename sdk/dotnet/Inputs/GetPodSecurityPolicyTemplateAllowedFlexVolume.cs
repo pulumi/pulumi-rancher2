@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs : global::Pulumi.InvokeArgs
     {
         [Input("driver", required: true)]
         public string Driver { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Rancher2.Inputs
         public GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs()
         {
         }
+        public static new GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs Empty => new GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs();
     }
 }

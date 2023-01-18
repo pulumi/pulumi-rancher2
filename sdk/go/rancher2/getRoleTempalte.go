@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupRoleTemplate(ctx, &GetRoleTemplateArgs{
+//			_, err := rancher2.LookupRoleTemplate(ctx, &rancher2.LookupRoleTemplateArgs{
 //				Name: "foo",
 //			}, nil)
 //			if err != nil {

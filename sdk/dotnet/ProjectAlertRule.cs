@@ -15,60 +15,60 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Rancher2 Project
+    ///     var fooProject = new Rancher2.Project("fooProject", new()
     ///     {
-    ///         // Create a new Rancher2 Project
-    ///         var fooProject = new Rancher2.Project("fooProject", new Rancher2.ProjectArgs
+    ///         ClusterId = "&lt;cluster_id&gt;",
+    ///         Description = "Terraform project ",
+    ///         ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
     ///         {
-    ///             ClusterId = "&lt;cluster_id&gt;",
-    ///             Description = "Terraform project ",
-    ///             ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
+    ///             ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
     ///             {
-    ///                 ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
-    ///                 {
-    ///                     LimitsCpu = "2000m",
-    ///                     LimitsMemory = "2000Mi",
-    ///                     RequestsStorage = "2Gi",
-    ///                 },
-    ///                 NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
-    ///                 {
-    ///                     LimitsCpu = "500m",
-    ///                     LimitsMemory = "500Mi",
-    ///                     RequestsStorage = "1Gi",
-    ///                 },
+    ///                 LimitsCpu = "2000m",
+    ///                 LimitsMemory = "2000Mi",
+    ///                 RequestsStorage = "2Gi",
     ///             },
-    ///             ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
+    ///             NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
     ///             {
-    ///                 LimitsCpu = "20m",
-    ///                 LimitsMemory = "20Mi",
-    ///                 RequestsCpu = "1m",
-    ///                 RequestsMemory = "1Mi",
+    ///                 LimitsCpu = "500m",
+    ///                 LimitsMemory = "500Mi",
+    ///                 RequestsStorage = "1Gi",
     ///             },
-    ///         });
-    ///         // Create a new Rancher2 Project Alert Group
-    ///         var fooProjectAlertGroup = new Rancher2.ProjectAlertGroup("fooProjectAlertGroup", new Rancher2.ProjectAlertGroupArgs
+    ///         },
+    ///         ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
     ///         {
-    ///             Description = "Terraform project alert group",
-    ///             ProjectId = fooProject.Id,
-    ///             GroupIntervalSeconds = 300,
-    ///             RepeatIntervalSeconds = 3600,
-    ///         });
-    ///         // Create a new Rancher2 Project Alert Rule
-    ///         var fooProjectAlertRule = new Rancher2.ProjectAlertRule("fooProjectAlertRule", new Rancher2.ProjectAlertRuleArgs
-    ///         {
-    ///             ProjectId = fooProjectAlertGroup.ProjectId,
-    ///             GroupId = fooProjectAlertGroup.Id,
-    ///             GroupIntervalSeconds = 600,
-    ///             RepeatIntervalSeconds = 6000,
-    ///         });
-    ///     }
+    ///             LimitsCpu = "20m",
+    ///             LimitsMemory = "20Mi",
+    ///             RequestsCpu = "1m",
+    ///             RequestsMemory = "1Mi",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     // Create a new Rancher2 Project Alert Group
+    ///     var fooProjectAlertGroup = new Rancher2.ProjectAlertGroup("fooProjectAlertGroup", new()
+    ///     {
+    ///         Description = "Terraform project alert group",
+    ///         ProjectId = fooProject.Id,
+    ///         GroupIntervalSeconds = 300,
+    ///         RepeatIntervalSeconds = 3600,
+    ///     });
+    /// 
+    ///     // Create a new Rancher2 Project Alert Rule
+    ///     var fooProjectAlertRule = new Rancher2.ProjectAlertRule("fooProjectAlertRule", new()
+    ///     {
+    ///         ProjectId = fooProjectAlertGroup.ProjectId,
+    ///         GroupId = fooProjectAlertGroup.Id,
+    ///         GroupIntervalSeconds = 600,
+    ///         RepeatIntervalSeconds = 6000,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -80,7 +80,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/projectAlertRule:ProjectAlertRule")]
-    public partial class ProjectAlertRule : Pulumi.CustomResource
+    public partial class ProjectAlertRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The project alert rule annotations (map)
@@ -204,7 +204,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ProjectAlertRuleArgs : Pulumi.ResourceArgs
+    public sealed class ProjectAlertRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -299,9 +299,10 @@ namespace Pulumi.Rancher2
         public ProjectAlertRuleArgs()
         {
         }
+        public static new ProjectAlertRuleArgs Empty => new ProjectAlertRuleArgs();
     }
 
-    public sealed class ProjectAlertRuleState : Pulumi.ResourceArgs
+    public sealed class ProjectAlertRuleState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -396,5 +397,6 @@ namespace Pulumi.Rancher2
         public ProjectAlertRuleState()
         {
         }
+        public static new ProjectAlertRuleState Empty => new ProjectAlertRuleState();
     }
 }

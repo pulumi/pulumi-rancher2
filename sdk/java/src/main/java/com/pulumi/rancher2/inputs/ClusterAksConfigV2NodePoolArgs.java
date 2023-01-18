@@ -34,14 +34,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool count. Default: `1` (int)
+     * Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
      * 
      */
     @Import(name="count")
     private @Nullable Output<Integer> count;
 
     /**
-     * @return The AKS node pool count. Default: `1` (int)
+     * @return Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
      * 
      */
     public Optional<Output<Integer>> count() {
@@ -79,14 +79,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool max pods. Default: `110` (int)
+     * Maximum number of pods that can run on a node. Default `110` (int)
      * 
      */
     @Import(name="maxPods")
     private @Nullable Output<Integer> maxPods;
 
     /**
-     * @return The AKS node pool max pods. Default: `110` (int)
+     * @return Maximum number of pods that can run on a node. Default `110` (int)
      * 
      */
     public Optional<Output<Integer>> maxPods() {
@@ -109,14 +109,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node group mode. Default: `System` (string)
+     * RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return The AKS node group mode. Default: `System` (string)
+     * @return RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
      * 
      */
     public Optional<Output<String>> mode() {
@@ -124,14 +124,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Output<String> name() {
@@ -281,7 +281,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param count The AKS node pool count. Default: `1` (int)
+         * @param count Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param count The AKS node pool count. Default: `1` (int)
+         * @param count Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxPods The AKS node pool max pods. Default: `110` (int)
+         * @param maxPods Maximum number of pods that can run on a node. Default `110` (int)
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxPods The AKS node pool max pods. Default: `110` (int)
+         * @param maxPods Maximum number of pods that can run on a node. Default `110` (int)
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param mode The AKS node group mode. Default: `System` (string)
+         * @param mode RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param mode The AKS node group mode. Default: `System` (string)
+         * @param mode RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -418,7 +418,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 

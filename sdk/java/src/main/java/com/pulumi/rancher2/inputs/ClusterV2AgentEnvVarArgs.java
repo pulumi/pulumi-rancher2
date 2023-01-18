@@ -14,14 +14,14 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
     public static final ClusterV2AgentEnvVarArgs Empty = new ClusterV2AgentEnvVarArgs();
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster v2 (string)
      * 
      */
     public Output<String> name() {
@@ -29,14 +29,14 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The taint value (string)
+     * Rancher agent env var value (string)
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The taint value (string)
+     * @return Rancher agent env var value (string)
      * 
      */
     public Output<String> value() {
@@ -69,7 +69,7 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster v2 (string)
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster v2 (string)
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param value The taint value (string)
+         * @param value Rancher agent env var value (string)
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param value The taint value (string)
+         * @param value Rancher agent env var value (string)
          * 
          * @return builder
          * 

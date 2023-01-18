@@ -16,14 +16,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
     public static final ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs Empty = new ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs();
 
     /**
-     * The AWS Client ID to use (string)
+     * Access key for S3 service (string)
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return The AWS Client ID to use (string)
+     * @return Access key for S3 service (string)
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -76,14 +76,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
     }
 
     /**
-     * Folder for S3 service. Available from Rancher v2.2.7 (string)
+     * (string)
      * 
      */
     @Import(name="folder")
     private @Nullable Output<String> folder;
 
     /**
-     * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
+     * @return (string)
      * 
      */
     public Optional<Output<String>> folder() {
@@ -91,14 +91,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
     }
 
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -106,14 +106,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
     }
 
     /**
-     * The AWS Client Secret associated with the Client ID (string)
+     * Secret key for S3 service (string)
      * 
      */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
     /**
-     * @return The AWS Client Secret associated with the Client ID (string)
+     * @return Secret key for S3 service (string)
      * 
      */
     public Optional<Output<String>> secretKey() {
@@ -151,7 +151,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
         }
 
         /**
-         * @param accessKey The AWS Client ID to use (string)
+         * @param accessKey Access key for S3 service (string)
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
         }
 
         /**
-         * @param accessKey The AWS Client ID to use (string)
+         * @param accessKey Access key for S3 service (string)
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
         }
 
         /**
-         * @param folder Folder for S3 service. Available from Rancher v2.2.7 (string)
+         * @param folder (string)
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
         }
 
         /**
-         * @param folder Folder for S3 service. Available from Rancher v2.2.7 (string)
+         * @param folder (string)
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region (string)
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region (string)
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
         }
 
         /**
-         * @param secretKey The AWS Client Secret associated with the Client ID (string)
+         * @param secretKey Secret key for S3 service (string)
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
         }
 
         /**
-         * @param secretKey The AWS Client Secret associated with the Client ID (string)
+         * @param secretKey Secret key for S3 service (string)
          * 
          * @return builder
          * 

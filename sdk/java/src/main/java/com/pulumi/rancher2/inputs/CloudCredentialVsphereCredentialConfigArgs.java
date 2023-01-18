@@ -16,14 +16,14 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
     public static final CloudCredentialVsphereCredentialConfigArgs Empty = new CloudCredentialVsphereCredentialConfigArgs();
 
     /**
-     * vSphere password (string)
+     * OpenStack password (string)
      * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
-     * @return vSphere password (string)
+     * @return OpenStack password (string)
      * 
      */
     public Output<String> password() {
@@ -103,7 +103,7 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
         }
 
         /**
-         * @param password vSphere password (string)
+         * @param password OpenStack password (string)
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
         }
 
         /**
-         * @param password vSphere password (string)
+         * @param password OpenStack password (string)
          * 
          * @return builder
          * 

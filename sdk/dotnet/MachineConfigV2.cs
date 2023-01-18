@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2
 {
     /// <summary>
-    /// Provides a Rancher v2 Machine config v2 resource. This can be used to create Machine Config v2 for Rancher v2 and retrieve their information. This resource is supported as tech preview from Rancher v2.6.0 and above.
+    /// Provides a Rancher v2 Machine config v2 resource. This can be used to create Machine Config v2 for Rancher v2 and retrieve their information. This resource is available from Rancher v2.6.0 and above.
     /// 
     /// `amazonec2`, `azure`, `digitalocean`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
     /// 
@@ -20,49 +20,49 @@ namespace Pulumi.Rancher2
     /// ### Using the Harvester Node Driver
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo_harvesterClusterV2 = Rancher2.GetClusterV2.Invoke(new()
     ///     {
-    ///         var foo_harvesterClusterV2 = Output.Create(Rancher2.GetClusterV2.InvokeAsync(new Rancher2.GetClusterV2Args
-    ///         {
-    ///             Name = "foo-harvester",
-    ///         }));
-    ///         // Create a new Cloud Credential for an imported Harvester cluster
-    ///         var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvesterCloudCredential", new Rancher2.CloudCredentialArgs
-    ///         {
-    ///             HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
-    ///             {
-    ///                 ClusterId = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.ClusterV1Id),
-    ///                 ClusterType = "imported",
-    ///                 KubeconfigContent = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.KubeConfig),
-    ///             },
-    ///         });
-    ///         // Create a new rancher2 machine config v2 using harvester node_driver
-    ///         var foo_harvester_v2 = new Rancher2.MachineConfigV2("foo-harvester-v2", new Rancher2.MachineConfigV2Args
-    ///         {
-    ///             GenerateName = "foo-harvester-v2",
-    ///             HarvesterConfig = new Rancher2.Inputs.MachineConfigV2HarvesterConfigArgs
-    ///             {
-    ///                 VmNamespace = "default",
-    ///                 CpuCount = "2",
-    ///                 MemorySize = "4",
-    ///                 DiskSize = "40",
-    ///                 NetworkName = "harvester-public/vlan1",
-    ///                 ImageName = "harvester-public/image-57hzg",
-    ///                 SshUser = "ubuntu",
-    ///             },
-    ///         });
-    ///     }
+    ///         Name = "foo-harvester",
+    ///     });
     /// 
-    /// }
+    ///     // Create a new Cloud Credential for an imported Harvester cluster
+    ///     var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvesterCloudCredential", new()
+    ///     {
+    ///         HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
+    ///         {
+    ///             ClusterId = foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result).Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.ClusterV1Id)),
+    ///             ClusterType = "imported",
+    ///             KubeconfigContent = foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result).Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.KubeConfig)),
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new rancher2 machine config v2 using harvester node_driver
+    ///     var foo_harvester_v2 = new Rancher2.MachineConfigV2("foo-harvester-v2", new()
+    ///     {
+    ///         GenerateName = "foo-harvester-v2",
+    ///         HarvesterConfig = new Rancher2.Inputs.MachineConfigV2HarvesterConfigArgs
+    ///         {
+    ///             VmNamespace = "default",
+    ///             CpuCount = "2",
+    ///             MemorySize = "4",
+    ///             DiskSize = "40",
+    ///             NetworkName = "harvester-public/vlan1",
+    ///             ImageName = "harvester-public/image-57hzg",
+    ///             SshUser = "ubuntu",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/machineConfigV2:MachineConfigV2")]
-    public partial class MachineConfigV2 : Pulumi.CustomResource
+    public partial class MachineConfigV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
@@ -192,7 +192,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class MachineConfigV2Args : Pulumi.ResourceArgs
+    public sealed class MachineConfigV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
@@ -275,9 +275,10 @@ namespace Pulumi.Rancher2
         public MachineConfigV2Args()
         {
         }
+        public static new MachineConfigV2Args Empty => new MachineConfigV2Args();
     }
 
-    public sealed class MachineConfigV2State : Pulumi.ResourceArgs
+    public sealed class MachineConfigV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
@@ -378,5 +379,6 @@ namespace Pulumi.Rancher2
         public MachineConfigV2State()
         {
         }
+        public static new MachineConfigV2State Empty => new MachineConfigV2State();
     }
 }

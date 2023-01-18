@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigDnsNodelocalArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigDnsNodelocalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Nodelocal dns ip address (string)
@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _nodeSelector;
 
         /// <summary>
-        /// RKE monitoring node selector (map)
+        /// DNS add-on node selector (map)
         /// </summary>
         public InputMap<object> NodeSelector
         {
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigDnsNodelocalArgs()
         {
         }
+        public static new ClusterRkeConfigDnsNodelocalArgs Empty => new ClusterRkeConfigDnsNodelocalArgs();
     }
 }

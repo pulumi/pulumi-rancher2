@@ -8,11 +8,8 @@ import * as utilities from "./utilities";
  * Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
  */
 export function getStorageClassV2(args: GetStorageClassV2Args, opts?: pulumi.InvokeOptions): Promise<GetStorageClassV2Result> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getStorageClassV2:getStorageClassV2", {
         "clusterId": args.clusterId,
         "name": args.name,
@@ -80,9 +77,11 @@ export interface GetStorageClassV2Result {
      */
     readonly volumeBindingMode: string;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
+ */
 export function getStorageClassV2Output(args: GetStorageClassV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageClassV2Result> {
-    return pulumi.output(args).apply(a => getStorageClassV2(a, opts))
+    return pulumi.output(args).apply((a: any) => getStorageClassV2(a, opts))
 }
 
 /**

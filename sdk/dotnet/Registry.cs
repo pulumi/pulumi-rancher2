@@ -19,60 +19,56 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Project Registry
+    ///     var foo = new Rancher2.Registry("foo", new()
     ///     {
-    ///         // Create a new rancher2 Project Registry
-    ///         var foo = new Rancher2.Registry("foo", new Rancher2.RegistryArgs
+    ///         Description = "Terraform registry foo",
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         Registries = new[]
     ///         {
-    ///             Description = "Terraform registry foo",
-    ///             ProjectId = "&lt;project_id&gt;",
-    ///             Registries = 
+    ///             new Rancher2.Inputs.RegistryRegistryArgs
     ///             {
-    ///                 new Rancher2.Inputs.RegistryRegistryArgs
-    ///                 {
-    ///                     Address = "test.io",
-    ///                     Password = "pass",
-    ///                     Username = "user",
-    ///                 },
+    ///                 Address = "test.io",
+    ///                 Password = "pass",
+    ///                 Username = "user",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Namespaced Registry
+    ///     var foo = new Rancher2.Registry("foo", new()
     ///     {
-    ///         // Create a new rancher2 Namespaced Registry
-    ///         var foo = new Rancher2.Registry("foo", new Rancher2.RegistryArgs
+    ///         Description = "Terraform registry foo",
+    ///         NamespaceId = "&lt;namespace_id&gt;",
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         Registries = new[]
     ///         {
-    ///             Description = "Terraform registry foo",
-    ///             NamespaceId = "&lt;namespace_id&gt;",
-    ///             ProjectId = "&lt;project_id&gt;",
-    ///             Registries = 
+    ///             new Rancher2.Inputs.RegistryRegistryArgs
     ///             {
-    ///                 new Rancher2.Inputs.RegistryRegistryArgs
-    ///                 {
-    ///                     Address = "test.io",
-    ///                     Password = "pass",
-    ///                     Username = "user2",
-    ///                 },
+    ///                 Address = "test.io",
+    ///                 Password = "pass",
+    ///                 Username = "user2",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -86,7 +82,7 @@ namespace Pulumi.Rancher2
     ///  `&lt;namespace_id&gt;` is optional, just needed for namespaced registry.
     /// </summary>
     [Rancher2ResourceType("rancher2:index/registry:Registry")]
-    public partial class Registry : Pulumi.CustomResource
+    public partial class Registry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for Registry object (map)
@@ -174,7 +170,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class RegistryArgs : Pulumi.ResourceArgs
+    public sealed class RegistryArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -239,9 +235,10 @@ namespace Pulumi.Rancher2
         public RegistryArgs()
         {
         }
+        public static new RegistryArgs Empty => new RegistryArgs();
     }
 
-    public sealed class RegistryState : Pulumi.ResourceArgs
+    public sealed class RegistryState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -306,5 +303,6 @@ namespace Pulumi.Rancher2
         public RegistryState()
         {
         }
+        public static new RegistryState Empty => new RegistryState();
     }
 }

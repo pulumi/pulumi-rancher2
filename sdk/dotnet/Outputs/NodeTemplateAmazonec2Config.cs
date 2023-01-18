@@ -38,6 +38,14 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Endpoint;
         /// <summary>
+        /// Enables or disables the HTTP metadata endpoint on your instances (string)
+        /// </summary>
+        public readonly string? HttpEndpoint;
+        /// <summary>
+        /// The state of token usage for your instance metadata requests (string)
+        /// </summary>
+        public readonly string? HttpTokens;
+        /// <summary>
         /// AWS IAM Instance Profile (string)
         /// </summary>
         public readonly string? IamInstanceProfile;
@@ -46,7 +54,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? InsecureTransport;
         /// <summary>
-        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// AWS instance type. Default `t2.micro` (string)
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
@@ -58,7 +66,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? KmsKey;
         /// <summary>
-        /// Enable monitoring for droplet. Default `false` (bool)
+        /// Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
         /// </summary>
         public readonly bool? Monitoring;
         /// <summary>
@@ -70,7 +78,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? PrivateAddressOnly;
         /// <summary>
-        /// OpenStack region name (string)
+        /// AWS region. (string)
         /// </summary>
         public readonly string Region;
         /// <summary>
@@ -105,12 +113,9 @@ namespace Pulumi.Rancher2.Outputs
         /// AWS spot instance bid price (in dollar). Default `0.50` (string)
         /// </summary>
         public readonly string? SpotPrice;
-        /// <summary>
-        /// SSH Key for Instance (string)
-        /// </summary>
         public readonly string? SshKeypath;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// Set the name of the ssh user (string)
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
@@ -118,7 +123,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string SubnetId;
         /// <summary>
-        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
         /// </summary>
         public readonly string? Tags;
         /// <summary>
@@ -130,11 +135,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? UsePrivateAddress;
         /// <summary>
-        /// Path to file with cloud-init user-data (string)
+        /// Path to file with cloud-init user data (string)
         /// </summary>
         public readonly string? Userdata;
         /// <summary>
-        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        /// Amazon EBS volume type. Default `gp2` (string)
         /// </summary>
         public readonly string? VolumeType;
         /// <summary>
@@ -159,6 +164,10 @@ namespace Pulumi.Rancher2.Outputs
             bool? encryptEbsVolume,
 
             string? endpoint,
+
+            string? httpEndpoint,
+
+            string? httpTokens,
 
             string? iamInstanceProfile,
 
@@ -220,6 +229,8 @@ namespace Pulumi.Rancher2.Outputs
             DeviceName = deviceName;
             EncryptEbsVolume = encryptEbsVolume;
             Endpoint = endpoint;
+            HttpEndpoint = httpEndpoint;
+            HttpTokens = httpTokens;
             IamInstanceProfile = iamInstanceProfile;
             InsecureTransport = insecureTransport;
             InstanceType = instanceType;

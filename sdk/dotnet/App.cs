@@ -13,75 +13,72 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 App
+    ///     var foo = new Rancher2.App("foo", new()
     ///     {
-    ///         // Create a new rancher2 App
-    ///         var foo = new Rancher2.App("foo", new Rancher2.AppArgs
+    ///         Answers = 
     ///         {
-    ///             Answers = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///                 { "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true },
-    ///                 { "ingress_host", "test.xip.io" },
-    ///             },
-    ///             CatalogName = "&lt;catalog_name&gt;",
-    ///             Description = "Foo app",
-    ///             ProjectId = "&lt;project_id&gt;",
-    ///             TargetNamespace = "&lt;namespace_name&gt;",
-    ///             TemplateName = "&lt;template_name&gt;",
-    ///             TemplateVersion = "&lt;template_version&gt;",
-    ///         });
-    ///     }
+    ///             { "foo", "bar" },
+    ///             { "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true },
+    ///             { "ingress_host", "test.xip.io" },
+    ///         },
+    ///         CatalogName = "&lt;catalog_name&gt;",
+    ///         Description = "Foo app",
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         TargetNamespace = "&lt;namespace_name&gt;",
+    ///         TemplateName = "&lt;template_name&gt;",
+    ///         TemplateVersion = "&lt;template_version&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 App in a new namespace
+    ///     var fooNamespace = new Rancher2.Namespace("fooNamespace", new()
     ///     {
-    ///         // Create a new rancher2 App in a new namespace
-    ///         var fooNamespace = new Rancher2.Namespace("fooNamespace", new Rancher2.NamespaceArgs
+    ///         Description = "Foo namespace",
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
     ///         {
-    ///             Description = "Foo namespace",
-    ///             ProjectId = "&lt;project_id&gt;",
-    ///             ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
+    ///             Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
     ///             {
-    ///                 Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
-    ///                 {
-    ///                     LimitsCpu = "100m",
-    ///                     LimitsMemory = "100Mi",
-    ///                     RequestsStorage = "1Gi",
-    ///                 },
+    ///                 LimitsCpu = "100m",
+    ///                 LimitsMemory = "100Mi",
+    ///                 RequestsStorage = "1Gi",
     ///             },
-    ///         });
-    ///         var fooApp = new Rancher2.App("fooApp", new Rancher2.AppArgs
-    ///         {
-    ///             CatalogName = "&lt;catalog_name&gt;",
-    ///             Description = "Foo app",
-    ///             ProjectId = "&lt;project_id&gt;",
-    ///             TemplateName = "&lt;template_name&gt;",
-    ///             TemplateVersion = "&lt;template_version&gt;",
-    ///             TargetNamespace = fooNamespace.Id,
-    ///             Answers = 
-    ///             {
-    ///                 { "ingress_host", "test.xip.io" },
-    ///                 { "foo", "bar" },
-    ///                 { "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var fooApp = new Rancher2.App("fooApp", new()
+    ///     {
+    ///         CatalogName = "&lt;catalog_name&gt;",
+    ///         Description = "Foo app",
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         TemplateName = "&lt;template_name&gt;",
+    ///         TemplateVersion = "&lt;template_version&gt;",
+    ///         TargetNamespace = fooNamespace.Id,
+    ///         Answers = 
+    ///         {
+    ///             { "ingress_host", "test.xip.io" },
+    ///             { "foo", "bar" },
+    ///             { "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -93,7 +90,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/app:App")]
-    public partial class App : Pulumi.CustomResource
+    public partial class App : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for App object (map)
@@ -231,7 +228,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class AppArgs : Pulumi.ResourceArgs
+    public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -340,9 +337,10 @@ namespace Pulumi.Rancher2
         public AppArgs()
         {
         }
+        public static new AppArgs Empty => new AppArgs();
     }
 
-    public sealed class AppState : Pulumi.ResourceArgs
+    public sealed class AppState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -457,5 +455,6 @@ namespace Pulumi.Rancher2
         public AppState()
         {
         }
+        public static new AppState Empty => new AppState();
     }
 }

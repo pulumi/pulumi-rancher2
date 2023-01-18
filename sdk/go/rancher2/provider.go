@@ -48,6 +48,21 @@ func NewProvider(ctx *pulumi.Context,
 	if isZero(args.Insecure) {
 		args.Insecure = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "RANCHER_INSECURE").(bool))
 	}
+	if args.AccessKey != nil {
+		args.AccessKey = pulumi.ToSecret(args.AccessKey).(pulumi.StringPtrInput)
+	}
+	if args.SecretKey != nil {
+		args.SecretKey = pulumi.ToSecret(args.SecretKey).(pulumi.StringPtrInput)
+	}
+	if args.TokenKey != nil {
+		args.TokenKey = pulumi.ToSecret(args.TokenKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accessKey",
+		"secretKey",
+		"tokenKey",
+	})
+	opts = append(opts, secrets)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:rancher2", name, args, &resource, opts...)
 	if err != nil {
@@ -138,6 +153,36 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+// API Key used to authenticate with the rancher server
+func (o ProviderOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// The URL to the rancher API
+func (o ProviderOutput) ApiUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.ApiUrl }).(pulumi.StringOutput)
+}
+
+// CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
+func (o ProviderOutput) CaCerts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CaCerts }).(pulumi.StringPtrOutput)
+}
+
+// API secret used to authenticate with the rancher server
+func (o ProviderOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
+func (o ProviderOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// API token used to authenticate with the rancher server
+func (o ProviderOutput) TokenKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TokenKey }).(pulumi.StringPtrOutput)
 }
 
 func init() {

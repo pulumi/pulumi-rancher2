@@ -19,26 +19,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetPrincipal.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetPrincipal.InvokeAsync(new Rancher2.GetPrincipalArgs
-        ///         {
-        ///             Name = "user@example.com",
-        ///         }));
-        ///     }
+        ///         Name = "user@example.com",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrincipalResult> InvokeAsync(GetPrincipalArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPrincipalResult>("rancher2:index/getPrincipal:getPrincipal", args ?? new GetPrincipalArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrincipalResult>("rancher2:index/getPrincipal:getPrincipal", args ?? new GetPrincipalArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Principal resource.
@@ -48,30 +46,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetPrincipal.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetPrincipal.InvokeAsync(new Rancher2.GetPrincipalArgs
-        ///         {
-        ///             Name = "user@example.com",
-        ///         }));
-        ///     }
+        ///         Name = "user@example.com",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrincipalResult> Invoke(GetPrincipalInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPrincipalResult>("rancher2:index/getPrincipal:getPrincipal", args ?? new GetPrincipalInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrincipalResult>("rancher2:index/getPrincipal:getPrincipal", args ?? new GetPrincipalInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPrincipalArgs : Pulumi.InvokeArgs
+    public sealed class GetPrincipalArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The full name of the principal (string)
@@ -88,9 +84,10 @@ namespace Pulumi.Rancher2
         public GetPrincipalArgs()
         {
         }
+        public static new GetPrincipalArgs Empty => new GetPrincipalArgs();
     }
 
-    public sealed class GetPrincipalInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPrincipalInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The full name of the principal (string)
@@ -107,6 +104,7 @@ namespace Pulumi.Rancher2
         public GetPrincipalInvokeArgs()
         {
         }
+        public static new GetPrincipalInvokeArgs Empty => new GetPrincipalInvokeArgs();
     }
 
 

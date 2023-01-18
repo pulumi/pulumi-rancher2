@@ -14,6 +14,7 @@ import com.pulumi.rancher2.inputs.NodeTemplateLinodeConfigArgs;
 import com.pulumi.rancher2.inputs.NodeTemplateNodeTaintArgs;
 import com.pulumi.rancher2.inputs.NodeTemplateOpennebulaConfigArgs;
 import com.pulumi.rancher2.inputs.NodeTemplateOpenstackConfigArgs;
+import com.pulumi.rancher2.inputs.NodeTemplateOutscaleConfigArgs;
 import com.pulumi.rancher2.inputs.NodeTemplateVsphereConfigArgs;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -405,6 +406,21 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Outscale config for the Node Template (list maxitems:1)
+     * 
+     */
+    @Import(name="outscaleConfig")
+    private @Nullable Output<NodeTemplateOutscaleConfigArgs> outscaleConfig;
+
+    /**
+     * @return Outscale config for the Node Template (list maxitems:1)
+     * 
+     */
+    public Optional<Output<NodeTemplateOutscaleConfigArgs>> outscaleConfig() {
+        return Optional.ofNullable(this.outscaleConfig);
+    }
+
+    /**
      * Engine storage driver for the node template (bool)
      * 
      */
@@ -462,6 +478,7 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
         this.nodeTaints = $.nodeTaints;
         this.opennebulaConfig = $.opennebulaConfig;
         this.openstackConfig = $.openstackConfig;
+        this.outscaleConfig = $.outscaleConfig;
         this.useInternalIpAddress = $.useInternalIpAddress;
         this.vsphereConfig = $.vsphereConfig;
     }
@@ -1037,6 +1054,27 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder openstackConfig(NodeTemplateOpenstackConfigArgs openstackConfig) {
             return openstackConfig(Output.of(openstackConfig));
+        }
+
+        /**
+         * @param outscaleConfig Outscale config for the Node Template (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outscaleConfig(@Nullable Output<NodeTemplateOutscaleConfigArgs> outscaleConfig) {
+            $.outscaleConfig = outscaleConfig;
+            return this;
+        }
+
+        /**
+         * @param outscaleConfig Outscale config for the Node Template (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outscaleConfig(NodeTemplateOutscaleConfigArgs outscaleConfig) {
+            return outscaleConfig(Output.of(outscaleConfig));
         }
 
         /**

@@ -21,7 +21,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterDriver:ClusterDriver")]
-    public partial class ClusterDriver : Pulumi.CustomResource
+    public partial class ClusterDriver : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specify the cluster driver state (bool)
@@ -127,7 +127,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ClusterDriverArgs : Pulumi.ResourceArgs
+    public sealed class ClusterDriverArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the cluster driver state (bool)
@@ -210,9 +210,10 @@ namespace Pulumi.Rancher2
         public ClusterDriverArgs()
         {
         }
+        public static new ClusterDriverArgs Empty => new ClusterDriverArgs();
     }
 
-    public sealed class ClusterDriverState : Pulumi.ResourceArgs
+    public sealed class ClusterDriverState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the cluster driver state (bool)
@@ -295,5 +296,6 @@ namespace Pulumi.Rancher2
         public ClusterDriverState()
         {
         }
+        public static new ClusterDriverState Empty => new ClusterDriverState();
     }
 }

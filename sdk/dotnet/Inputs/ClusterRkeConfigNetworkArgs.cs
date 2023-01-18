@@ -10,8 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigNetworkArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigNetworkArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ACI provider config for RKE network (list maxitems:63)
+        /// </summary>
+        [Input("aciNetworkProvider")]
+        public Input<Inputs.ClusterRkeConfigNetworkAciNetworkProviderArgs>? AciNetworkProvider { get; set; }
+
         /// <summary>
         /// Calico provider config for RKE network (list maxitems:1)
         /// </summary>
@@ -40,7 +46,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _options;
 
         /// <summary>
-        /// RKE options for network (map)
+        /// RKE options for authorization (map)
         /// </summary>
         public InputMap<object> Options
         {
@@ -58,7 +64,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterRkeConfigNetworkTolerationArgs>? _tolerations;
 
         /// <summary>
-        /// Network add-on tolerations (list)
+        /// DNS add-on tolerations (list)
         /// </summary>
         public InputList<Inputs.ClusterRkeConfigNetworkTolerationArgs> Tolerations
         {
@@ -75,5 +81,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigNetworkArgs()
         {
         }
+        public static new ClusterRkeConfigNetworkArgs Empty => new ClusterRkeConfigNetworkArgs();
     }
 }

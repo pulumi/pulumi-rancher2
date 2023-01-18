@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachinePool
     {
         /// <summary>
-        /// Annotations for cluster registration token object (map)
+        /// Annotations for the Cluster V2 (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Annotations;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? EtcdRole;
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels for the Cluster V2 (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
@@ -42,11 +42,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigMachinePoolMachineConfig MachineConfig;
         /// <summary>
+        /// Labels for Machine pool nodes (map)
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? MachineLabels;
+        /// <summary>
         /// Max unhealthy nodes for automated replacement to be allowed (string)
         /// </summary>
         public readonly string? MaxUnhealthy;
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster v2 (string)
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -102,6 +106,8 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.ClusterV2RkeConfigMachinePoolMachineConfig machineConfig,
 
+            ImmutableDictionary<string, object>? machineLabels,
+
             string? maxUnhealthy,
 
             string name,
@@ -131,6 +137,7 @@ namespace Pulumi.Rancher2.Outputs
             EtcdRole = etcdRole;
             Labels = labels;
             MachineConfig = machineConfig;
+            MachineLabels = machineLabels;
             MaxUnhealthy = maxUnhealthy;
             Name = name;
             NodeDrainTimeout = nodeDrainTimeout;

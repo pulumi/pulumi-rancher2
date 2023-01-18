@@ -17,14 +17,14 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
     public static final ProjectLoggingSyslogConfigArgs Empty = new ProjectLoggingSyslogConfigArgs();
 
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -32,14 +32,14 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * SSL client certificate for the syslog service (string)
+     * SSL client certificate for the custom target service (string)
      * 
      */
     @Import(name="clientCert")
     private @Nullable Output<String> clientCert;
 
     /**
-     * @return SSL client certificate for the syslog service (string)
+     * @return SSL client certificate for the custom target service (string)
      * 
      */
     public Optional<Output<String>> clientCert() {
@@ -47,14 +47,14 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * SSL client key for the syslog service (string)
+     * SSL client key for the custom target service (string)
      * 
      */
     @Import(name="clientKey")
     private @Nullable Output<String> clientKey;
 
     /**
-     * @return SSL client key for the syslog service (string)
+     * @return SSL client key for the custom target service (string)
      * 
      */
     public Optional<Output<String>> clientKey() {
@@ -77,14 +77,14 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Endpoint of the syslog service (string)
+     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      * 
      */
     @Import(name="endpoint", required=true)
     private Output<String> endpoint;
 
     /**
-     * @return Endpoint of the syslog service (string)
+     * @return Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      * 
      */
     public Output<String> endpoint() {
@@ -137,14 +137,14 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * SSL verify for the syslog service (bool)
+     * SSL verify for the elascticsearch service (bool)
      * 
      */
     @Import(name="sslVerify")
     private @Nullable Output<Boolean> sslVerify;
 
     /**
-     * @return SSL verify for the syslog service (bool)
+     * @return SSL verify for the elascticsearch service (bool)
      * 
      */
     public Optional<Output<Boolean>> sslVerify() {
@@ -152,14 +152,14 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Token for the syslog service (string)
+     * Token for the splunk service (string)
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return Token for the syslog service (string)
+     * @return Token for the splunk service (string)
      * 
      */
     public Optional<Output<String>> token() {
@@ -200,7 +200,7 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param certificate SSL certificate for the syslog service (string)
+         * @param certificate SSL CA certificate for the custom target service (string)
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param certificate SSL certificate for the syslog service (string)
+         * @param certificate SSL CA certificate for the custom target service (string)
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param clientCert SSL client certificate for the syslog service (string)
+         * @param clientCert SSL client certificate for the custom target service (string)
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param clientCert SSL client certificate for the syslog service (string)
+         * @param clientCert SSL client certificate for the custom target service (string)
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param clientKey SSL client key for the syslog service (string)
+         * @param clientKey SSL client key for the custom target service (string)
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param clientKey SSL client key for the syslog service (string)
+         * @param clientKey SSL client key for the custom target service (string)
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param endpoint Endpoint of the syslog service (string)
+         * @param endpoint Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param endpoint Endpoint of the syslog service (string)
+         * @param endpoint Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sslVerify SSL verify for the syslog service (bool)
+         * @param sslVerify SSL verify for the elascticsearch service (bool)
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sslVerify SSL verify for the syslog service (bool)
+         * @param sslVerify SSL verify for the elascticsearch service (bool)
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param token Token for the syslog service (string)
+         * @param token Token for the splunk service (string)
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class ProjectLoggingSyslogConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param token Token for the syslog service (string)
+         * @param token Token for the splunk service (string)
          * 
          * @return builder
          * 

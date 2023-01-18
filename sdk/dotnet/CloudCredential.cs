@@ -17,53 +17,50 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Cloud Credential
+    ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
-    ///         // Create a new rancher2 Cloud Credential
-    ///         var foo = new Rancher2.CloudCredential("foo", new Rancher2.CloudCredentialArgs
+    ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
     ///         {
-    ///             Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
-    ///             {
-    ///                 AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
-    ///                 SecretKey = "&lt;AWS_SECRET_KEY&gt;",
-    ///             },
-    ///             Description = "foo test",
-    ///         });
-    ///     }
+    ///             AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
+    ///             SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///         },
+    ///         Description = "foo test",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo_harvesterClusterV2 = Rancher2.GetClusterV2.Invoke(new()
     ///     {
-    ///         var foo_harvesterClusterV2 = Output.Create(Rancher2.GetClusterV2.InvokeAsync(new Rancher2.GetClusterV2Args
-    ///         {
-    ///             Name = "foo-harvester",
-    ///         }));
-    ///         // Create a new Cloud Credential for an imported Harvester cluster
-    ///         var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvesterCloudCredential", new Rancher2.CloudCredentialArgs
-    ///         {
-    ///             HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
-    ///             {
-    ///                 ClusterId = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.ClusterV1Id),
-    ///                 ClusterType = "imported",
-    ///                 KubeconfigContent = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.KubeConfig),
-    ///             },
-    ///         });
-    ///     }
+    ///         Name = "foo-harvester",
+    ///     });
     /// 
-    /// }
+    ///     // Create a new Cloud Credential for an imported Harvester cluster
+    ///     var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvesterCloudCredential", new()
+    ///     {
+    ///         HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
+    ///         {
+    ///             ClusterId = foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result).Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.ClusterV1Id)),
+    ///             ClusterType = "imported",
+    ///             KubeconfigContent = foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result).Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.KubeConfig)),
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +74,7 @@ namespace Pulumi.Rancher2
     ///  The following drivers are supported* amazonec2 * azure * digitalocean * googlekubernetesengine * linode * openstack * s3 * vmwarevsphere
     /// </summary>
     [Rancher2ResourceType("rancher2:index/cloudCredential:CloudCredential")]
-    public partial class CloudCredential : Pulumi.CustomResource
+    public partial class CloudCredential : global::Pulumi.CustomResource
     {
         /// <summary>
         /// AWS config for the Cloud Credential (list maxitems:1)
@@ -207,7 +204,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class CloudCredentialArgs : Pulumi.ResourceArgs
+    public sealed class CloudCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AWS config for the Cloud Credential (list maxitems:1)
@@ -302,9 +299,10 @@ namespace Pulumi.Rancher2
         public CloudCredentialArgs()
         {
         }
+        public static new CloudCredentialArgs Empty => new CloudCredentialArgs();
     }
 
-    public sealed class CloudCredentialState : Pulumi.ResourceArgs
+    public sealed class CloudCredentialState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AWS config for the Cloud Credential (list maxitems:1)
@@ -405,5 +403,6 @@ namespace Pulumi.Rancher2
         public CloudCredentialState()
         {
         }
+        public static new CloudCredentialState Empty => new CloudCredentialState();
     }
 }

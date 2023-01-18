@@ -19,27 +19,25 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetProjectAlertGroup.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetProjectAlertGroup.InvokeAsync(new Rancher2.GetProjectAlertGroupArgs
-        ///         {
-        ///             Name = "&lt;project_alert_group_name&gt;",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;project_alert_group_name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectAlertGroupResult> InvokeAsync(GetProjectAlertGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertGroupResult>("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", args ?? new GetProjectAlertGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertGroupResult>("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", args ?? new GetProjectAlertGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 project alert group.
@@ -49,31 +47,29 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetProjectAlertGroup.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetProjectAlertGroup.InvokeAsync(new Rancher2.GetProjectAlertGroupArgs
-        ///         {
-        ///             Name = "&lt;project_alert_group_name&gt;",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;project_alert_group_name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectAlertGroupResult> Invoke(GetProjectAlertGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectAlertGroupResult>("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", args ?? new GetProjectAlertGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectAlertGroupResult>("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", args ?? new GetProjectAlertGroupInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetProjectAlertGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectAlertGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project alert group name (string)
@@ -90,9 +86,10 @@ namespace Pulumi.Rancher2
         public GetProjectAlertGroupArgs()
         {
         }
+        public static new GetProjectAlertGroupArgs Empty => new GetProjectAlertGroupArgs();
     }
 
-    public sealed class GetProjectAlertGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectAlertGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project alert group name (string)
@@ -109,6 +106,7 @@ namespace Pulumi.Rancher2
         public GetProjectAlertGroupInvokeArgs()
         {
         }
+        public static new GetProjectAlertGroupInvokeArgs Empty => new GetProjectAlertGroupInvokeArgs();
     }
 
 

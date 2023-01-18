@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterGkeConfigV2PrivateClusterConfig {
     /**
-     * @return Enable GKE cluster private endpoint. Default: `false` (bool)
+     * @return Whether the master&#39;s internal IP address is used as the cluster endpoint. Default `false` (bool)
      * 
      */
     private @Nullable Boolean enablePrivateEndpoint;
     /**
-     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * @return Whether nodes have internal IP address only. Default `false` (bool)
      * 
      */
     private @Nullable Boolean enablePrivateNodes;
     /**
-     * @return The GKE cluster private master ip v4 cidr block (string)
+     * @return The IP range in CIDR notation to use for the hosted master network (string)
      * 
      */
     private String masterIpv4CidrBlock;
 
     private ClusterGkeConfigV2PrivateClusterConfig() {}
     /**
-     * @return Enable GKE cluster private endpoint. Default: `false` (bool)
+     * @return Whether the master&#39;s internal IP address is used as the cluster endpoint. Default `false` (bool)
      * 
      */
     public Optional<Boolean> enablePrivateEndpoint() {
         return Optional.ofNullable(this.enablePrivateEndpoint);
     }
     /**
-     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * @return Whether nodes have internal IP address only. Default `false` (bool)
      * 
      */
     public Optional<Boolean> enablePrivateNodes() {
         return Optional.ofNullable(this.enablePrivateNodes);
     }
     /**
-     * @return The GKE cluster private master ip v4 cidr block (string)
+     * @return The IP range in CIDR notation to use for the hosted master network (string)
      * 
      */
     public String masterIpv4CidrBlock() {

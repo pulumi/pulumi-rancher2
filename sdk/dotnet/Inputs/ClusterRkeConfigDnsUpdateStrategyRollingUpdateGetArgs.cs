@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigDnsUpdateStrategyRollingUpdateGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigDnsUpdateStrategyRollingUpdateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Monitoring deployment rolling update max surge. Default: `1` (int)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigDnsUpdateStrategyRollingUpdateGetArgs()
         {
         }
+        public static new ClusterRkeConfigDnsUpdateStrategyRollingUpdateGetArgs Empty => new ClusterRkeConfigDnsUpdateStrategyRollingUpdateGetArgs();
     }
 }

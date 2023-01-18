@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterTemplateTemplateRevision {
     /**
-     * @return Annotations for the cluster template revision (map)
+     * @return Annotations for the cluster template (map)
      * 
      */
     private @Nullable Map<String,Object> annotations;
@@ -33,7 +33,7 @@ public final class ClusterTemplateTemplateRevision {
      */
     private @Nullable String clusterTemplateId;
     /**
-     * @return Default variable value (string)
+     * @return Default cluster template revision. Default `false` (bool)
      * 
      */
     private @Nullable Boolean default_;
@@ -48,12 +48,12 @@ public final class ClusterTemplateTemplateRevision {
      */
     private @Nullable String id;
     /**
-     * @return Labels for the cluster template revision (map)
+     * @return Labels for the cluster template (map)
      * 
      */
     private @Nullable Map<String,Object> labels;
     /**
-     * @return The cluster template revision name (string)
+     * @return The cluster template name (string)
      * 
      */
     private String name;
@@ -65,7 +65,7 @@ public final class ClusterTemplateTemplateRevision {
 
     private ClusterTemplateTemplateRevision() {}
     /**
-     * @return Annotations for the cluster template revision (map)
+     * @return Annotations for the cluster template (map)
      * 
      */
     public Map<String,Object> annotations() {
@@ -86,7 +86,7 @@ public final class ClusterTemplateTemplateRevision {
         return Optional.ofNullable(this.clusterTemplateId);
     }
     /**
-     * @return Default variable value (string)
+     * @return Default cluster template revision. Default `false` (bool)
      * 
      */
     public Optional<Boolean> default_() {
@@ -107,14 +107,14 @@ public final class ClusterTemplateTemplateRevision {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Labels for the cluster template revision (map)
+     * @return Labels for the cluster template (map)
      * 
      */
     public Map<String,Object> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
-     * @return The cluster template revision name (string)
+     * @return The cluster template name (string)
      * 
      */
     public String name() {

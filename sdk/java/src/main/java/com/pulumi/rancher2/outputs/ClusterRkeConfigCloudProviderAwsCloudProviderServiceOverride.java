@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride {
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return (string)
      * 
      */
     private @Nullable String region;
@@ -37,14 +37,14 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride 
      */
     private @Nullable String signingRegion;
     /**
-     * @return Registry URL (string)
+     * @return (string)
      * 
      */
     private @Nullable String url;
 
     private ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride() {}
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return (string)
      * 
      */
     public Optional<String> region() {
@@ -79,7 +79,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride 
         return Optional.ofNullable(this.signingRegion);
     }
     /**
-     * @return Registry URL (string)
+     * @return (string)
      * 
      */
     public Optional<String> url() {

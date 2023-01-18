@@ -53,14 +53,14 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Extra arguments for scheduler service (map)
+     * Extra arguments for RKE Ingress (map)
      * 
      */
     @Import(name="extraArgs")
     private @Nullable Output<Map<String,Object>> extraArgs;
 
     /**
-     * @return Extra arguments for scheduler service (map)
+     * @return Extra arguments for RKE Ingress (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> extraArgs() {
@@ -113,14 +113,14 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * RKE monitoring node selector (map)
+     * DNS add-on node selector (map)
      * 
      */
     @Import(name="nodeSelector")
     private @Nullable Output<Map<String,Object>> nodeSelector;
 
     /**
-     * @return RKE monitoring node selector (map)
+     * @return DNS add-on node selector (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> nodeSelector() {
@@ -128,14 +128,14 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * RKE options for network (map)
+     * RKE options for authorization (map)
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,Object>> options;
 
     /**
-     * @return RKE options for network (map)
+     * @return RKE options for authorization (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> options() {
@@ -143,14 +143,14 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * RKE monitoring provider (string)
+     * DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
      * 
      */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
     /**
-     * @return RKE monitoring provider (string)
+     * @return DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
      * 
      */
     public Optional<Output<String>> provider() {
@@ -158,14 +158,14 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Network add-on tolerations (list)
+     * DNS add-on tolerations (list)
      * 
      */
     @Import(name="tolerations")
     private @Nullable Output<List<ClusterRkeConfigIngressTolerationArgs>> tolerations;
 
     /**
-     * @return Network add-on tolerations (list)
+     * @return DNS add-on tolerations (list)
      * 
      */
     public Optional<Output<List<ClusterRkeConfigIngressTolerationArgs>>> tolerations() {
@@ -173,14 +173,14 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * RKE monitoring update strategy (list Maxitems: 1)
+     * DNS update strategy (list Maxitems: 1)
      * 
      */
     @Import(name="updateStrategy")
     private @Nullable Output<ClusterRkeConfigIngressUpdateStrategyArgs> updateStrategy;
 
     /**
-     * @return RKE monitoring update strategy (list Maxitems: 1)
+     * @return DNS update strategy (list Maxitems: 1)
      * 
      */
     public Optional<Output<ClusterRkeConfigIngressUpdateStrategyArgs>> updateStrategy() {
@@ -264,7 +264,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param extraArgs Extra arguments for scheduler service (map)
+         * @param extraArgs Extra arguments for RKE Ingress (map)
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param extraArgs Extra arguments for scheduler service (map)
+         * @param extraArgs Extra arguments for RKE Ingress (map)
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param nodeSelector RKE monitoring node selector (map)
+         * @param nodeSelector DNS add-on node selector (map)
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param nodeSelector RKE monitoring node selector (map)
+         * @param nodeSelector DNS add-on node selector (map)
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options RKE options for network (map)
+         * @param options RKE options for authorization (map)
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options RKE options for network (map)
+         * @param options RKE options for authorization (map)
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param provider RKE monitoring provider (string)
+         * @param provider DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param provider RKE monitoring provider (string)
+         * @param provider DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tolerations Network add-on tolerations (list)
+         * @param tolerations DNS add-on tolerations (list)
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tolerations Network add-on tolerations (list)
+         * @param tolerations DNS add-on tolerations (list)
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tolerations Network add-on tolerations (list)
+         * @param tolerations DNS add-on tolerations (list)
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param updateStrategy RKE monitoring update strategy (list Maxitems: 1)
+         * @param updateStrategy DNS update strategy (list Maxitems: 1)
          * 
          * @return builder
          * 
@@ -453,7 +453,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param updateStrategy RKE monitoring update strategy (list Maxitems: 1)
+         * @param updateStrategy DNS update strategy (list Maxitems: 1)
          * 
          * @return builder
          * 

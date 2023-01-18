@@ -108,6 +108,36 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * Enables or disables the HTTP metadata endpoint on your instances (string)
+     * 
+     */
+    @Import(name="httpEndpoint")
+    private @Nullable Output<String> httpEndpoint;
+
+    /**
+     * @return Enables or disables the HTTP metadata endpoint on your instances (string)
+     * 
+     */
+    public Optional<Output<String>> httpEndpoint() {
+        return Optional.ofNullable(this.httpEndpoint);
+    }
+
+    /**
+     * The state of token usage for your instance metadata requests (string)
+     * 
+     */
+    @Import(name="httpTokens")
+    private @Nullable Output<String> httpTokens;
+
+    /**
+     * @return The state of token usage for your instance metadata requests (string)
+     * 
+     */
+    public Optional<Output<String>> httpTokens() {
+        return Optional.ofNullable(this.httpTokens);
+    }
+
+    /**
      * AWS IAM Instance Profile (string)
      * 
      */
@@ -138,14 +168,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * AWS instance type. Default `t2.micro` (string)
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * @return AWS instance type. Default `t2.micro` (string)
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -183,14 +213,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Enable monitoring for droplet. Default `false` (bool)
+     * Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
      * 
      */
     @Import(name="monitoring")
     private @Nullable Output<Boolean> monitoring;
 
     /**
-     * @return Enable monitoring for droplet. Default `false` (bool)
+     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> monitoring() {
@@ -228,14 +258,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * OpenStack region name (string)
+     * AWS region. (string)
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. (string)
      * 
      */
     public Output<String> region() {
@@ -362,30 +392,22 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.spotPrice);
     }
 
-    /**
-     * SSH Key for Instance (string)
-     * 
-     */
     @Import(name="sshKeypath")
     private @Nullable Output<String> sshKeypath;
 
-    /**
-     * @return SSH Key for Instance (string)
-     * 
-     */
     public Optional<Output<String>> sshKeypath() {
         return Optional.ofNullable(this.sshKeypath);
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * Set the name of the ssh user (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -408,14 +430,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<String> tags;
 
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
      * 
      */
     public Optional<Output<String>> tags() {
@@ -453,14 +475,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Path to file with cloud-init user-data (string)
+     * Path to file with cloud-init user data (string)
      * 
      */
     @Import(name="userdata")
     private @Nullable Output<String> userdata;
 
     /**
-     * @return Path to file with cloud-init user-data (string)
+     * @return Path to file with cloud-init user data (string)
      * 
      */
     public Optional<Output<String>> userdata() {
@@ -468,14 +490,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * Amazon EBS volume type. Default `gp2` (string)
      * 
      */
     @Import(name="volumeType")
     private @Nullable Output<String> volumeType;
 
     /**
-     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * @return Amazon EBS volume type. Default `gp2` (string)
      * 
      */
     public Optional<Output<String>> volumeType() {
@@ -521,6 +543,8 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         this.deviceName = $.deviceName;
         this.encryptEbsVolume = $.encryptEbsVolume;
         this.endpoint = $.endpoint;
+        this.httpEndpoint = $.httpEndpoint;
+        this.httpTokens = $.httpTokens;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.insecureTransport = $.insecureTransport;
         this.instanceType = $.instanceType;
@@ -695,6 +719,48 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param httpEndpoint Enables or disables the HTTP metadata endpoint on your instances (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpEndpoint(@Nullable Output<String> httpEndpoint) {
+            $.httpEndpoint = httpEndpoint;
+            return this;
+        }
+
+        /**
+         * @param httpEndpoint Enables or disables the HTTP metadata endpoint on your instances (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpEndpoint(String httpEndpoint) {
+            return httpEndpoint(Output.of(httpEndpoint));
+        }
+
+        /**
+         * @param httpTokens The state of token usage for your instance metadata requests (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpTokens(@Nullable Output<String> httpTokens) {
+            $.httpTokens = httpTokens;
+            return this;
+        }
+
+        /**
+         * @param httpTokens The state of token usage for your instance metadata requests (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpTokens(String httpTokens) {
+            return httpTokens(Output.of(httpTokens));
+        }
+
+        /**
          * @param iamInstanceProfile AWS IAM Instance Profile (string)
          * 
          * @return builder
@@ -737,7 +803,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+         * @param instanceType AWS instance type. Default `t2.micro` (string)
          * 
          * @return builder
          * 
@@ -748,7 +814,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+         * @param instanceType AWS instance type. Default `t2.micro` (string)
          * 
          * @return builder
          * 
@@ -800,7 +866,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
+         * @param monitoring Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
          * 
          * @return builder
          * 
@@ -811,7 +877,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
+         * @param monitoring Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
          * 
          * @return builder
          * 
@@ -873,7 +939,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region AWS region. (string)
          * 
          * @return builder
          * 
@@ -884,7 +950,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region AWS region. (string)
          * 
          * @return builder
          * 
@@ -1071,29 +1137,17 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
             return spotPrice(Output.of(spotPrice));
         }
 
-        /**
-         * @param sshKeypath SSH Key for Instance (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sshKeypath(@Nullable Output<String> sshKeypath) {
             $.sshKeypath = sshKeypath;
             return this;
         }
 
-        /**
-         * @param sshKeypath SSH Key for Instance (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sshKeypath(String sshKeypath) {
             return sshKeypath(Output.of(sshKeypath));
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+         * @param sshUser Set the name of the ssh user (string)
          * 
          * @return builder
          * 
@@ -1104,7 +1158,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+         * @param sshUser Set the name of the ssh user (string)
          * 
          * @return builder
          * 
@@ -1135,7 +1189,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
          * 
          * @return builder
          * 
@@ -1146,7 +1200,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
          * 
          * @return builder
          * 
@@ -1198,7 +1252,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userdata Path to file with cloud-init user-data (string)
+         * @param userdata Path to file with cloud-init user data (string)
          * 
          * @return builder
          * 
@@ -1209,7 +1263,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userdata Path to file with cloud-init user-data (string)
+         * @param userdata Path to file with cloud-init user data (string)
          * 
          * @return builder
          * 
@@ -1219,7 +1273,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+         * @param volumeType Amazon EBS volume type. Default `gp2` (string)
          * 
          * @return builder
          * 
@@ -1230,7 +1284,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+         * @param volumeType Amazon EBS volume type. Default `gp2` (string)
          * 
          * @return builder
          * 

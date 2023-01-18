@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectLoggingFluentdConfig {
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     private @Nullable String certificate;
@@ -37,7 +37,7 @@ public final class ProjectLoggingFluentdConfig {
 
     private ProjectLoggingFluentdConfig() {}
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     public Optional<String> certificate() {

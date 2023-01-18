@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2GetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GKE cluster addons (List maxitems:1)
@@ -19,13 +19,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterGkeConfigV2ClusterAddonsGetArgs>? ClusterAddons { get; set; }
 
         /// <summary>
-        /// The GKE cluster ip v4 allocation cidr block (string)
+        /// The GKE ip v4 cidr block (string)
         /// </summary>
         [Input("clusterIpv4CidrBlock")]
         public Input<string>? ClusterIpv4CidrBlock { get; set; }
 
         /// <summary>
-        /// An optional description of this cluster (string)
+        /// The description for Cluster (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -36,14 +36,24 @@ namespace Pulumi.Rancher2.Inputs
         [Input("enableKubernetesAlpha")]
         public Input<bool>? EnableKubernetesAlpha { get; set; }
 
+        [Input("googleCredentialSecret", required: true)]
+        private Input<string>? _googleCredentialSecret;
+
         /// <summary>
         /// Google credential secret (string)
         /// </summary>
-        [Input("googleCredentialSecret", required: true)]
-        public Input<string> GoogleCredentialSecret { get; set; } = null!;
+        public Input<string>? GoogleCredentialSecret
+        {
+            get => _googleCredentialSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _googleCredentialSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// Is GKE cluster imported? Default: `false` (bool)
+        /// Is AKS cluster imported? Defaul: `false` (bool)
         /// </summary>
         [Input("imported")]
         public Input<bool>? Imported { get; set; }
@@ -55,7 +65,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterGkeConfigV2IpAllocationPolicyGetArgs>? IpAllocationPolicy { get; set; }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
         /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
@@ -64,7 +74,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels for the Cluster (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -76,7 +86,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _locations;
 
         /// <summary>
-        /// The GKE cluster locations (List)
+        /// Locations for GKE cluster (list)
         /// </summary>
         public InputList<string> Locations
         {
@@ -91,7 +101,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? LoggingService { get; set; }
 
         /// <summary>
-        /// The GKE cluster maintenance window (string)
+        /// Maintenance window for GKE cluster (string)
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<string>? MaintenanceWindow { get; set; }
@@ -109,13 +119,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? MonitoringService { get; set; }
 
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The GKE cluster network. Required for create new cluster (string)
+        /// Kubernetes cluster networking (list maxitems:1)
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -130,7 +140,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterGkeConfigV2NodePoolGetArgs>? _nodePools;
 
         /// <summary>
-        /// The GKE cluster node pools. Required for create new cluster (List)
+        /// The AKS nnode pools. Required if `imported=false` (list)
         /// </summary>
         public InputList<Inputs.ClusterGkeConfigV2NodePoolGetArgs> NodePools
         {
@@ -145,13 +155,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterGkeConfigV2PrivateClusterConfigGetArgs>? PrivateClusterConfig { get; set; }
 
         /// <summary>
-        /// Project ID to apply answer (string)
+        /// Project ID for GKE cluster (string)
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -163,7 +173,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// The GKE cluster zone. Required if `region` not set (string)
+        /// (string)
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -171,5 +181,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2GetArgs()
         {
         }
+        public static new ClusterGkeConfigV2GetArgs Empty => new ClusterGkeConfigV2GetArgs();
     }
 }

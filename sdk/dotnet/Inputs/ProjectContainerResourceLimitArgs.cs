@@ -10,28 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ProjectContainerResourceLimitArgs : Pulumi.ResourceArgs
+    public sealed class ProjectContainerResourceLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Limit for limits cpu in project (string)
+        /// CPU limit for containers (string)
         /// </summary>
         [Input("limitsCpu")]
         public Input<string>? LimitsCpu { get; set; }
 
         /// <summary>
-        /// Limit for limits memory in project (string)
+        /// Memory limit for containers (string)
         /// </summary>
         [Input("limitsMemory")]
         public Input<string>? LimitsMemory { get; set; }
 
         /// <summary>
-        /// Limit for requests cpu in project (string)
+        /// CPU reservation for containers (string)
         /// </summary>
         [Input("requestsCpu")]
         public Input<string>? RequestsCpu { get; set; }
 
         /// <summary>
-        /// Limit for requests memory in project (string)
+        /// Memory reservation for containers (string)
         /// </summary>
         [Input("requestsMemory")]
         public Input<string>? RequestsMemory { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public ProjectContainerResourceLimitArgs()
         {
         }
+        public static new ProjectContainerResourceLimitArgs Empty => new ProjectContainerResourceLimitArgs();
     }
 }

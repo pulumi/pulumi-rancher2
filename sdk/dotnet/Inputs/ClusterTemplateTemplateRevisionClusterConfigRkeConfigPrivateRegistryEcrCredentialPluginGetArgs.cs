@@ -10,19 +10,38 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("awsAccessKeyId")]
         public Input<string>? AwsAccessKeyId { get; set; }
 
         [Input("awsSecretAccessKey")]
-        public Input<string>? AwsSecretAccessKey { get; set; }
+        private Input<string>? _awsSecretAccessKey;
+        public Input<string>? AwsSecretAccessKey
+        {
+            get => _awsSecretAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _awsSecretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("awsSessionToken")]
-        public Input<string>? AwsSessionToken { get; set; }
+        private Input<string>? _awsSessionToken;
+        public Input<string>? AwsSessionToken
+        {
+            get => _awsSessionToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _awsSessionToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginGetArgs();
     }
 }

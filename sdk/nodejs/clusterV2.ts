@@ -2,11 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is supported as tech preview from Rancher v2.6.0 and above.
+ * Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is available from Rancher v2.6.0 and above.
  *
  * ## Example Usage
  * ### Creating Rancher v2 custom cluster v2
@@ -67,7 +68,7 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     public readonly agentEnvVars!: pulumi.Output<outputs.ClusterV2AgentEnvVar[] | undefined>;
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster V2 (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -107,15 +108,15 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     public readonly kubernetesVersion!: pulumi.Output<string>;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster V2 (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * Cluster V2 local auth endpoint (list maxitems:1)
      */
     public readonly localAuthEndpoint!: pulumi.Output<outputs.ClusterV2LocalAuthEndpoint | undefined>;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -179,6 +180,8 @@ export class ClusterV2 extends pulumi.CustomResource {
             resourceInputs["resourceVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["clusterRegistrationToken", "kubeConfig"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ClusterV2.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -192,7 +195,7 @@ export interface ClusterV2State {
      */
     agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterV2AgentEnvVar>[]>;
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster V2 (map)
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -232,15 +235,15 @@ export interface ClusterV2State {
      */
     kubernetesVersion?: pulumi.Input<string>;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster V2 (map)
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * Cluster V2 local auth endpoint (list maxitems:1)
      */
     localAuthEndpoint?: pulumi.Input<inputs.ClusterV2LocalAuthEndpoint>;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      */
     name?: pulumi.Input<string>;
     /**
@@ -262,7 +265,7 @@ export interface ClusterV2Args {
      */
     agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterV2AgentEnvVar>[]>;
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster V2 (map)
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -290,15 +293,15 @@ export interface ClusterV2Args {
      */
     kubernetesVersion: pulumi.Input<string>;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster V2 (map)
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * Cluster V2 local auth endpoint (list maxitems:1)
      */
     localAuthEndpoint?: pulumi.Input<inputs.ClusterV2LocalAuthEndpoint>;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      */
     name?: pulumi.Input<string>;
     /**

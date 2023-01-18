@@ -19,7 +19,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
      */
     private List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
     /**
-     * @return Enable scheduled cluster scan. Default: `false` (bool)
+     * @return Enable etcd backup (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -33,7 +33,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
         return this.cidrBlocks;
     }
     /**
-     * @return Enable scheduled cluster scan. Default: `false` (bool)
+     * @return Enable etcd backup (bool)
      * 
      */
     public Optional<Boolean> enabled() {

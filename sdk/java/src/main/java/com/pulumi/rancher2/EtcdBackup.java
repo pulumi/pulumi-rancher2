@@ -20,6 +20,50 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.EtcdBackup;
+ * import com.pulumi.rancher2.EtcdBackupArgs;
+ * import com.pulumi.rancher2.inputs.EtcdBackupBackupConfigArgs;
+ * import com.pulumi.rancher2.inputs.EtcdBackupBackupConfigS3BackupConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new EtcdBackup(&#34;foo&#34;, EtcdBackupArgs.builder()        
+ *             .backupConfig(EtcdBackupBackupConfigArgs.builder()
+ *                 .enabled(true)
+ *                 .intervalHours(20)
+ *                 .retention(10)
+ *                 .s3BackupConfig(EtcdBackupBackupConfigS3BackupConfigArgs.builder()
+ *                     .accessKey(&#34;access_key&#34;)
+ *                     .bucketName(&#34;bucket_name&#34;)
+ *                     .endpoint(&#34;endpoint&#34;)
+ *                     .folder(&#34;/folder&#34;)
+ *                     .region(&#34;region&#34;)
+ *                     .secretKey(&#34;secret_key&#34;)
+ *                     .build())
+ *                 .build())
+ *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+ *             .filename(&#34;&lt;FILENAME&gt;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterLoggingCustomTargetConfig
     {
         /// <summary>
-        /// SSL certificate for the syslog service (string)
+        /// SSL CA certificate for the custom target service (string)
         /// </summary>
         public readonly string? Certificate;
         /// <summary>
-        /// SSL client certificate for the syslog service (string)
+        /// SSL client certificate for the custom target service (string)
         /// </summary>
         public readonly string? ClientCert;
         /// <summary>
-        /// SSL client key for the syslog service (string)
+        /// SSL client key for the custom target service (string)
         /// </summary>
         public readonly string? ClientKey;
         /// <summary>

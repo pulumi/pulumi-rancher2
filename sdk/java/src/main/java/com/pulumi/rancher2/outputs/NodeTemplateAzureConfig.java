@@ -34,7 +34,7 @@ public final class NodeTemplateAzureConfig {
      */
     private @Nullable String customData;
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     private @Nullable String diskSize;
@@ -44,7 +44,7 @@ public final class NodeTemplateAzureConfig {
      */
     private @Nullable String dns;
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Port number for Docker engine. Default `2376` (string)
      * 
      */
     private @Nullable String dockerPort;
@@ -59,7 +59,7 @@ public final class NodeTemplateAzureConfig {
      */
     private @Nullable String faultDomainCount;
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     private @Nullable String image;
@@ -104,12 +104,12 @@ public final class NodeTemplateAzureConfig {
      */
     private @Nullable String resourceGroup;
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
      * 
      */
     private @Nullable String size;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     private @Nullable String sshUser;
@@ -184,7 +184,7 @@ public final class NodeTemplateAzureConfig {
         return Optional.ofNullable(this.customData);
     }
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     public Optional<String> diskSize() {
@@ -198,7 +198,7 @@ public final class NodeTemplateAzureConfig {
         return Optional.ofNullable(this.dns);
     }
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Port number for Docker engine. Default `2376` (string)
      * 
      */
     public Optional<String> dockerPort() {
@@ -219,7 +219,7 @@ public final class NodeTemplateAzureConfig {
         return Optional.ofNullable(this.faultDomainCount);
     }
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     public Optional<String> image() {
@@ -282,14 +282,14 @@ public final class NodeTemplateAzureConfig {
         return Optional.ofNullable(this.resourceGroup);
     }
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
      * 
      */
     public Optional<String> size() {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     public Optional<String> sshUser() {

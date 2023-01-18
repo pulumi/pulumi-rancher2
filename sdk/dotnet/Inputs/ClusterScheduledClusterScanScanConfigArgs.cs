@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterScheduledClusterScanScanConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterScheduledClusterScanScanConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cluster Cis Scan config (List maxitems:1)
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterScheduledClusterScanScanConfigArgs()
         {
         }
+        public static new ClusterScheduledClusterScanScanConfigArgs Empty => new ClusterScheduledClusterScanScanConfigArgs();
     }
 }

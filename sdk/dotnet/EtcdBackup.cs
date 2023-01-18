@@ -13,37 +13,35 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Etcd Backup
+    ///     var foo = new Rancher2.EtcdBackup("foo", new()
     ///     {
-    ///         // Create a new rancher2 Etcd Backup
-    ///         var foo = new Rancher2.EtcdBackup("foo", new Rancher2.EtcdBackupArgs
+    ///         BackupConfig = new Rancher2.Inputs.EtcdBackupBackupConfigArgs
     ///         {
-    ///             BackupConfig = new Rancher2.Inputs.EtcdBackupBackupConfigArgs
+    ///             Enabled = true,
+    ///             IntervalHours = 20,
+    ///             Retention = 10,
+    ///             S3BackupConfig = new Rancher2.Inputs.EtcdBackupBackupConfigS3BackupConfigArgs
     ///             {
-    ///                 Enabled = true,
-    ///                 IntervalHours = 20,
-    ///                 Retention = 10,
-    ///                 S3BackupConfig = new Rancher2.Inputs.EtcdBackupBackupConfigS3BackupConfigArgs
-    ///                 {
-    ///                     AccessKey = "access_key",
-    ///                     BucketName = "bucket_name",
-    ///                     Endpoint = "endpoint",
-    ///                     Folder = "/folder",
-    ///                     Region = "region",
-    ///                     SecretKey = "secret_key",
-    ///                 },
+    ///                 AccessKey = "access_key",
+    ///                 BucketName = "bucket_name",
+    ///                 Endpoint = "endpoint",
+    ///                 Folder = "/folder",
+    ///                 Region = "region",
+    ///                 SecretKey = "secret_key",
     ///             },
-    ///             ClusterId = "&lt;CLUSTER_ID&gt;",
-    ///             Filename = "&lt;FILENAME&gt;",
-    ///         });
-    ///     }
+    ///         },
+    ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+    ///         Filename = "&lt;FILENAME&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/etcdBackup:EtcdBackup")]
-    public partial class EtcdBackup : Pulumi.CustomResource
+    public partial class EtcdBackup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for Etcd Backup object (map)
@@ -149,7 +147,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class EtcdBackupArgs : Pulumi.ResourceArgs
+    public sealed class EtcdBackupArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -214,9 +212,10 @@ namespace Pulumi.Rancher2
         public EtcdBackupArgs()
         {
         }
+        public static new EtcdBackupArgs Empty => new EtcdBackupArgs();
     }
 
-    public sealed class EtcdBackupState : Pulumi.ResourceArgs
+    public sealed class EtcdBackupState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -281,5 +280,6 @@ namespace Pulumi.Rancher2
         public EtcdBackupState()
         {
         }
+        public static new EtcdBackupState Empty => new EtcdBackupState();
     }
 }

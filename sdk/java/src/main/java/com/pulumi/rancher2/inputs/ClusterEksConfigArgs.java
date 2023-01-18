@@ -19,14 +19,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterEksConfigArgs Empty = new ClusterEksConfigArgs();
 
     /**
-     * The AWS Client ID to use (string)
+     * Access key for S3 service (string)
      * 
      */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
     /**
-     * @return The AWS Client ID to use (string)
+     * @return Access key for S3 service (string)
      * 
      */
     public Output<String> accessKey() {
@@ -86,14 +86,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The EKS node group instance type. Default: `t3.medium` (string)
+     * The type of machine to use for worker nodes. Default `t2.medium` (string)
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return The EKS node group instance type. Default: `t3.medium` (string)
+     * @return The type of machine to use for worker nodes. Default `t2.medium` (string)
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -116,14 +116,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
      * 
      */
     @Import(name="kubernetesVersion", required=true)
     private Output<String> kubernetesVersion;
 
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
      * 
      */
     public Output<String> kubernetesVersion() {
@@ -176,14 +176,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -191,14 +191,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AWS Client Secret associated with the Client ID (string)
+     * Secret key for S3 service (string)
      * 
      */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
     /**
-     * @return The AWS Client Secret associated with the Client ID (string)
+     * @return Secret key for S3 service (string)
      * 
      */
     public Output<String> secretKey() {
@@ -206,14 +206,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * List of security groups to use for the cluster (list)
+     * List of security groups to use for the cluster. If it&#39;s not specified Rancher will create a new security group (list)
      * 
      */
     @Import(name="securityGroups")
     private @Nullable Output<List<String>> securityGroups;
 
     /**
-     * @return List of security groups to use for the cluster (list)
+     * @return List of security groups to use for the cluster. If it&#39;s not specified Rancher will create a new security group (list)
      * 
      */
     public Optional<Output<List<String>>> securityGroups() {
@@ -221,14 +221,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AWS service role to use (string)
+     * The service role to use to perform the cluster operations in AWS. If it&#39;s not specified Rancher will create a new service role (string)
      * 
      */
     @Import(name="serviceRole")
     private @Nullable Output<String> serviceRole;
 
     /**
-     * @return The AWS service role to use (string)
+     * @return The service role to use to perform the cluster operations in AWS. If it&#39;s not specified Rancher will create a new service role (string)
      * 
      */
     public Optional<Output<String>> serviceRole() {
@@ -251,14 +251,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The EKS node group subnets (list string)
+     * List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
      * 
      */
     @Import(name="subnets")
     private @Nullable Output<List<String>> subnets;
 
     /**
-     * @return The EKS node group subnets (list string)
+     * @return List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
      * 
      */
     public Optional<Output<List<String>>> subnets() {
@@ -266,14 +266,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The EKS node group user data (string)
+     * Pass user-data to the nodes to perform automated configuration tasks (string)
      * 
      */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
     /**
-     * @return The EKS node group user data (string)
+     * @return Pass user-data to the nodes to perform automated configuration tasks (string)
      * 
      */
     public Optional<Output<String>> userData() {
@@ -281,14 +281,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
      * 
      */
     @Import(name="virtualNetwork")
     private @Nullable Output<String> virtualNetwork;
 
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
      * 
      */
     public Optional<Output<String>> virtualNetwork() {
@@ -338,7 +338,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessKey The AWS Client ID to use (string)
+         * @param accessKey Access key for S3 service (string)
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessKey The AWS Client ID to use (string)
+         * @param accessKey Access key for S3 service (string)
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceType The EKS node group instance type. Default: `t3.medium` (string)
+         * @param instanceType The type of machine to use for worker nodes. Default `t2.medium` (string)
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceType The EKS node group instance type. Default: `t3.medium` (string)
+         * @param instanceType The type of machine to use for worker nodes. Default `t2.medium` (string)
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
          * 
          * @return builder
          * 
@@ -484,7 +484,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region (string)
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region (string)
          * 
          * @return builder
          * 
@@ -578,7 +578,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secretKey The AWS Client Secret associated with the Client ID (string)
+         * @param secretKey Secret key for S3 service (string)
          * 
          * @return builder
          * 
@@ -589,7 +589,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secretKey The AWS Client Secret associated with the Client ID (string)
+         * @param secretKey Secret key for S3 service (string)
          * 
          * @return builder
          * 
@@ -599,7 +599,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param securityGroups List of security groups to use for the cluster (list)
+         * @param securityGroups List of security groups to use for the cluster. If it&#39;s not specified Rancher will create a new security group (list)
          * 
          * @return builder
          * 
@@ -610,7 +610,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param securityGroups List of security groups to use for the cluster (list)
+         * @param securityGroups List of security groups to use for the cluster. If it&#39;s not specified Rancher will create a new security group (list)
          * 
          * @return builder
          * 
@@ -620,7 +620,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param securityGroups List of security groups to use for the cluster (list)
+         * @param securityGroups List of security groups to use for the cluster. If it&#39;s not specified Rancher will create a new security group (list)
          * 
          * @return builder
          * 
@@ -630,7 +630,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceRole The AWS service role to use (string)
+         * @param serviceRole The service role to use to perform the cluster operations in AWS. If it&#39;s not specified Rancher will create a new service role (string)
          * 
          * @return builder
          * 
@@ -641,7 +641,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceRole The AWS service role to use (string)
+         * @param serviceRole The service role to use to perform the cluster operations in AWS. If it&#39;s not specified Rancher will create a new service role (string)
          * 
          * @return builder
          * 
@@ -672,7 +672,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
          * 
          * @return builder
          * 
@@ -683,7 +683,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
          * 
          * @return builder
          * 
@@ -693,7 +693,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
          * 
          * @return builder
          * 
@@ -703,7 +703,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userData The EKS node group user data (string)
+         * @param userData Pass user-data to the nodes to perform automated configuration tasks (string)
          * 
          * @return builder
          * 
@@ -714,7 +714,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userData The EKS node group user data (string)
+         * @param userData Pass user-data to the nodes to perform automated configuration tasks (string)
          * 
          * @return builder
          * 
@@ -724,7 +724,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param virtualNetwork The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+         * @param virtualNetwork The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
          * 
          * @return builder
          * 
@@ -735,7 +735,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param virtualNetwork The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+         * @param virtualNetwork The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
          * 
          * @return builder
          * 

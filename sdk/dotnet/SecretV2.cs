@@ -21,7 +21,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/secretV2:SecretV2")]
-    public partial class SecretV2 : Pulumi.CustomResource
+    public partial class SecretV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for the secret v2 (map)
@@ -100,6 +100,10 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "data",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -121,7 +125,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class SecretV2Args : Pulumi.ResourceArgs
+    public sealed class SecretV2Args : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -150,7 +154,11 @@ namespace Pulumi.Rancher2
         public InputMap<object> Data
         {
             get => _data ?? (_data = new InputMap<object>());
-            set => _data = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _data = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -192,9 +200,10 @@ namespace Pulumi.Rancher2
         public SecretV2Args()
         {
         }
+        public static new SecretV2Args Empty => new SecretV2Args();
     }
 
-    public sealed class SecretV2State : Pulumi.ResourceArgs
+    public sealed class SecretV2State : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -223,7 +232,11 @@ namespace Pulumi.Rancher2
         public InputMap<object> Data
         {
             get => _data ?? (_data = new InputMap<object>());
-            set => _data = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _data = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -271,5 +284,6 @@ namespace Pulumi.Rancher2
         public SecretV2State()
         {
         }
+        public static new SecretV2State Empty => new SecretV2State();
     }
 }

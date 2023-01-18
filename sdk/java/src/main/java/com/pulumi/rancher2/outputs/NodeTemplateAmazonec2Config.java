@@ -44,6 +44,16 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable String endpoint;
     /**
+     * @return Enables or disables the HTTP metadata endpoint on your instances (string)
+     * 
+     */
+    private @Nullable String httpEndpoint;
+    /**
+     * @return The state of token usage for your instance metadata requests (string)
+     * 
+     */
+    private @Nullable String httpTokens;
+    /**
      * @return AWS IAM Instance Profile (string)
      * 
      */
@@ -54,7 +64,7 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable Boolean insecureTransport;
     /**
-     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * @return AWS instance type. Default `t2.micro` (string)
      * 
      */
     private @Nullable String instanceType;
@@ -69,7 +79,7 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable String kmsKey;
     /**
-     * @return Enable monitoring for droplet. Default `false` (bool)
+     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
      * 
      */
     private @Nullable Boolean monitoring;
@@ -84,7 +94,7 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable Boolean privateAddressOnly;
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. (string)
      * 
      */
     private String region;
@@ -128,13 +138,9 @@ public final class NodeTemplateAmazonec2Config {
      * 
      */
     private @Nullable String spotPrice;
-    /**
-     * @return SSH Key for Instance (string)
-     * 
-     */
     private @Nullable String sshKeypath;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     private @Nullable String sshUser;
@@ -144,7 +150,7 @@ public final class NodeTemplateAmazonec2Config {
      */
     private String subnetId;
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
      * 
      */
     private @Nullable String tags;
@@ -159,12 +165,12 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable Boolean usePrivateAddress;
     /**
-     * @return Path to file with cloud-init user-data (string)
+     * @return Path to file with cloud-init user data (string)
      * 
      */
     private @Nullable String userdata;
     /**
-     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * @return Amazon EBS volume type. Default `gp2` (string)
      * 
      */
     private @Nullable String volumeType;
@@ -223,6 +229,20 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.endpoint);
     }
     /**
+     * @return Enables or disables the HTTP metadata endpoint on your instances (string)
+     * 
+     */
+    public Optional<String> httpEndpoint() {
+        return Optional.ofNullable(this.httpEndpoint);
+    }
+    /**
+     * @return The state of token usage for your instance metadata requests (string)
+     * 
+     */
+    public Optional<String> httpTokens() {
+        return Optional.ofNullable(this.httpTokens);
+    }
+    /**
      * @return AWS IAM Instance Profile (string)
      * 
      */
@@ -237,7 +257,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.insecureTransport);
     }
     /**
-     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * @return AWS instance type. Default `t2.micro` (string)
      * 
      */
     public Optional<String> instanceType() {
@@ -258,7 +278,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.kmsKey);
     }
     /**
-     * @return Enable monitoring for droplet. Default `false` (bool)
+     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
      * 
      */
     public Optional<Boolean> monitoring() {
@@ -279,7 +299,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.privateAddressOnly);
     }
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. (string)
      * 
      */
     public String region() {
@@ -341,15 +361,11 @@ public final class NodeTemplateAmazonec2Config {
     public Optional<String> spotPrice() {
         return Optional.ofNullable(this.spotPrice);
     }
-    /**
-     * @return SSH Key for Instance (string)
-     * 
-     */
     public Optional<String> sshKeypath() {
         return Optional.ofNullable(this.sshKeypath);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     public Optional<String> sshUser() {
@@ -363,7 +379,7 @@ public final class NodeTemplateAmazonec2Config {
         return this.subnetId;
     }
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
      * 
      */
     public Optional<String> tags() {
@@ -384,14 +400,14 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.usePrivateAddress);
     }
     /**
-     * @return Path to file with cloud-init user-data (string)
+     * @return Path to file with cloud-init user data (string)
      * 
      */
     public Optional<String> userdata() {
         return Optional.ofNullable(this.userdata);
     }
     /**
-     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * @return Amazon EBS volume type. Default `gp2` (string)
      * 
      */
     public Optional<String> volumeType() {
@@ -427,6 +443,8 @@ public final class NodeTemplateAmazonec2Config {
         private @Nullable String deviceName;
         private @Nullable Boolean encryptEbsVolume;
         private @Nullable String endpoint;
+        private @Nullable String httpEndpoint;
+        private @Nullable String httpTokens;
         private @Nullable String iamInstanceProfile;
         private @Nullable Boolean insecureTransport;
         private @Nullable String instanceType;
@@ -463,6 +481,8 @@ public final class NodeTemplateAmazonec2Config {
     	      this.deviceName = defaults.deviceName;
     	      this.encryptEbsVolume = defaults.encryptEbsVolume;
     	      this.endpoint = defaults.endpoint;
+    	      this.httpEndpoint = defaults.httpEndpoint;
+    	      this.httpTokens = defaults.httpTokens;
     	      this.iamInstanceProfile = defaults.iamInstanceProfile;
     	      this.insecureTransport = defaults.insecureTransport;
     	      this.instanceType = defaults.instanceType;
@@ -520,6 +540,16 @@ public final class NodeTemplateAmazonec2Config {
         @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
             this.endpoint = endpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder httpEndpoint(@Nullable String httpEndpoint) {
+            this.httpEndpoint = httpEndpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder httpTokens(@Nullable String httpTokens) {
+            this.httpTokens = httpTokens;
             return this;
         }
         @CustomType.Setter
@@ -671,6 +701,8 @@ public final class NodeTemplateAmazonec2Config {
             o.deviceName = deviceName;
             o.encryptEbsVolume = encryptEbsVolume;
             o.endpoint = endpoint;
+            o.httpEndpoint = httpEndpoint;
+            o.httpTokens = httpTokens;
             o.iamInstanceProfile = iamInstanceProfile;
             o.insecureTransport = insecureTransport;
             o.instanceType = instanceType;

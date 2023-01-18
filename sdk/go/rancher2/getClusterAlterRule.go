@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupClusterAlterRule(ctx, &GetClusterAlterRuleArgs{
+//			_, err := rancher2.LookupClusterAlterRule(ctx, &rancher2.LookupClusterAlterRuleArgs{
 //				ClusterId: "<cluster_id>",
 //				Name:      "<cluster_alert_rule_name>",
 //			}, nil)

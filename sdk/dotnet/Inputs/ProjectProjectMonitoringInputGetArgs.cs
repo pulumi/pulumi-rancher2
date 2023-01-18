@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ProjectProjectMonitoringInputGetArgs : Pulumi.ResourceArgs
+    public sealed class ProjectProjectMonitoringInputGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("answers")]
         private InputMap<object>? _answers;
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ProjectProjectMonitoringInputGetArgs()
         {
         }
+        public static new ProjectProjectMonitoringInputGetArgs Empty => new ProjectProjectMonitoringInputGetArgs();
     }
 }

@@ -19,27 +19,25 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetNotifier.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetNotifier.InvokeAsync(new Rancher2.GetNotifierArgs
-        ///         {
-        ///             ClusterId = "&lt;cluster_id&gt;",
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         ClusterId = "&lt;cluster_id&gt;",
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNotifierResult> InvokeAsync(GetNotifierArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 notifier.
@@ -49,31 +47,29 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetNotifier.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetNotifier.InvokeAsync(new Rancher2.GetNotifierArgs
-        ///         {
-        ///             ClusterId = "&lt;cluster_id&gt;",
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         ClusterId = "&lt;cluster_id&gt;",
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNotifierResult> Invoke(GetNotifierInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNotifierArgs : Pulumi.InvokeArgs
+    public sealed class GetNotifierArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id where create notifier (string)
@@ -102,9 +98,10 @@ namespace Pulumi.Rancher2
         public GetNotifierArgs()
         {
         }
+        public static new GetNotifierArgs Empty => new GetNotifierArgs();
     }
 
-    public sealed class GetNotifierInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNotifierInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id where create notifier (string)
@@ -133,6 +130,7 @@ namespace Pulumi.Rancher2
         public GetNotifierInvokeArgs()
         {
         }
+        public static new GetNotifierInvokeArgs Empty => new GetNotifierInvokeArgs();
     }
 
 

@@ -13,18 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getGlobalRoleBinding({
+ * const foo = rancher2.getGlobalRoleBinding({
  *     globalRoleId: "foo_id",
  *     name: "foo",
- * }));
+ * });
  * ```
  */
 export function getGlobalRoleBinding(args: GetGlobalRoleBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalRoleBindingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", {
         "globalRoleId": args.globalRoleId,
         "name": args.name,
@@ -72,9 +69,23 @@ export interface GetGlobalRoleBindingResult {
      */
     readonly userId: string;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 global role binding.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getGlobalRoleBinding({
+ *     globalRoleId: "foo_id",
+ *     name: "foo",
+ * });
+ * ```
+ */
 export function getGlobalRoleBindingOutput(args: GetGlobalRoleBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalRoleBindingResult> {
-    return pulumi.output(args).apply(a => getGlobalRoleBinding(a, opts))
+    return pulumi.output(args).apply((a: any) => getGlobalRoleBinding(a, opts))
 }
 
 /**

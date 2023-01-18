@@ -5,104 +5,496 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./activeDirectory";
-export * from "./app";
-export * from "./appV2";
-export * from "./authConfigActiveDirectory";
-export * from "./authConfigAdfs";
-export * from "./authConfigAzureAd";
-export * from "./authConfigFreeIpa";
-export * from "./authConfigGithub";
-export * from "./authConfigKeycloak";
-export * from "./authConfigOkta";
-export * from "./authConfigOpenLdap";
-export * from "./authConfigPing";
-export * from "./bootstrap";
-export * from "./catalog";
-export * from "./catalogV2";
-export * from "./certificate";
-export * from "./cloudCredential";
-export * from "./cluster";
-export * from "./clusterAlertGroup";
-export * from "./clusterAlertRule";
-export * from "./clusterAlterGroup";
-export * from "./clusterAlterRule";
-export * from "./clusterDriver";
-export * from "./clusterLogging";
-export * from "./clusterRoleTemplateBinding";
-export * from "./clusterSync";
-export * from "./clusterTemplate";
-export * from "./clusterV2";
-export * from "./configMapV2";
-export * from "./etcdBackup";
-export * from "./feature";
-export * from "./getApp";
-export * from "./getCatalog";
-export * from "./getCatalogV2";
-export * from "./getCertificate";
-export * from "./getCloudCredential";
-export * from "./getCluster";
-export * from "./getClusterAlertGroup";
-export * from "./getClusterAlterRule";
-export * from "./getClusterDriver";
-export * from "./getClusterLogging";
-export * from "./getClusterRoleTemplateBinding";
-export * from "./getClusterScan";
-export * from "./getClusterTemplate";
-export * from "./getClusterV2";
-export * from "./getConfigMapV2";
-export * from "./getEtcdBackup";
-export * from "./getGlobalDnsProvider";
-export * from "./getGlobalRole";
-export * from "./getGlobalRoleBinding";
-export * from "./getMultiClusterApp";
-export * from "./getNamespace";
-export * from "./getNodeDriver";
-export * from "./getNodePool";
-export * from "./getNodeTemplate";
-export * from "./getNotifier";
-export * from "./getPodSecurityPolicyTemplate";
-export * from "./getPrincipal";
-export * from "./getProject";
-export * from "./getProjectAlertGroup";
-export * from "./getProjectAlertRule";
-export * from "./getProjectLogging";
-export * from "./getProjectRoleTemplateBinding";
-export * from "./getRegistry";
-export * from "./getRoleTempalte";
-export * from "./getRoleTemplate";
-export * from "./getSecret";
-export * from "./getSecretV2";
-export * from "./getSetting";
-export * from "./getStorageClassV2";
-export * from "./getUser";
-export * from "./globalDns";
-export * from "./globalDnsProvider";
-export * from "./globalRole";
-export * from "./globalRoleBinding";
-export * from "./machineConfigV2";
-export * from "./multiClusterApp";
-export * from "./namespace";
-export * from "./nodeDriver";
-export * from "./nodePool";
-export * from "./nodeTemplate";
-export * from "./notifier";
-export * from "./podSecurityPolicyTemplate";
-export * from "./project";
-export * from "./projectAlertGroup";
-export * from "./projectAlertRule";
-export * from "./projectLogging";
-export * from "./projectRoleTemplateBinding";
-export * from "./provider";
-export * from "./registry";
-export * from "./roleTempalte";
-export * from "./roleTemplate";
-export * from "./secret";
-export * from "./secretV2";
-export * from "./setting";
-export * from "./storageClassV2";
-export * from "./token";
-export * from "./user";
+export { ActiveDirectoryArgs, ActiveDirectoryState } from "./activeDirectory";
+export type ActiveDirectory = import("./activeDirectory").ActiveDirectory;
+export const ActiveDirectory: typeof import("./activeDirectory").ActiveDirectory = null as any;
+utilities.lazyLoad(exports, ["ActiveDirectory"], () => require("./activeDirectory"));
+
+export { AppArgs, AppState } from "./app";
+export type App = import("./app").App;
+export const App: typeof import("./app").App = null as any;
+utilities.lazyLoad(exports, ["App"], () => require("./app"));
+
+export { AppV2Args, AppV2State } from "./appV2";
+export type AppV2 = import("./appV2").AppV2;
+export const AppV2: typeof import("./appV2").AppV2 = null as any;
+utilities.lazyLoad(exports, ["AppV2"], () => require("./appV2"));
+
+export { AuthConfigActiveDirectoryArgs, AuthConfigActiveDirectoryState } from "./authConfigActiveDirectory";
+export type AuthConfigActiveDirectory = import("./authConfigActiveDirectory").AuthConfigActiveDirectory;
+export const AuthConfigActiveDirectory: typeof import("./authConfigActiveDirectory").AuthConfigActiveDirectory = null as any;
+utilities.lazyLoad(exports, ["AuthConfigActiveDirectory"], () => require("./authConfigActiveDirectory"));
+
+export { AuthConfigAdfsArgs, AuthConfigAdfsState } from "./authConfigAdfs";
+export type AuthConfigAdfs = import("./authConfigAdfs").AuthConfigAdfs;
+export const AuthConfigAdfs: typeof import("./authConfigAdfs").AuthConfigAdfs = null as any;
+utilities.lazyLoad(exports, ["AuthConfigAdfs"], () => require("./authConfigAdfs"));
+
+export { AuthConfigAzureAdArgs, AuthConfigAzureAdState } from "./authConfigAzureAd";
+export type AuthConfigAzureAd = import("./authConfigAzureAd").AuthConfigAzureAd;
+export const AuthConfigAzureAd: typeof import("./authConfigAzureAd").AuthConfigAzureAd = null as any;
+utilities.lazyLoad(exports, ["AuthConfigAzureAd"], () => require("./authConfigAzureAd"));
+
+export { AuthConfigFreeIpaArgs, AuthConfigFreeIpaState } from "./authConfigFreeIpa";
+export type AuthConfigFreeIpa = import("./authConfigFreeIpa").AuthConfigFreeIpa;
+export const AuthConfigFreeIpa: typeof import("./authConfigFreeIpa").AuthConfigFreeIpa = null as any;
+utilities.lazyLoad(exports, ["AuthConfigFreeIpa"], () => require("./authConfigFreeIpa"));
+
+export { AuthConfigGithubArgs, AuthConfigGithubState } from "./authConfigGithub";
+export type AuthConfigGithub = import("./authConfigGithub").AuthConfigGithub;
+export const AuthConfigGithub: typeof import("./authConfigGithub").AuthConfigGithub = null as any;
+utilities.lazyLoad(exports, ["AuthConfigGithub"], () => require("./authConfigGithub"));
+
+export { AuthConfigKeycloakArgs, AuthConfigKeycloakState } from "./authConfigKeycloak";
+export type AuthConfigKeycloak = import("./authConfigKeycloak").AuthConfigKeycloak;
+export const AuthConfigKeycloak: typeof import("./authConfigKeycloak").AuthConfigKeycloak = null as any;
+utilities.lazyLoad(exports, ["AuthConfigKeycloak"], () => require("./authConfigKeycloak"));
+
+export { AuthConfigOktaArgs, AuthConfigOktaState } from "./authConfigOkta";
+export type AuthConfigOkta = import("./authConfigOkta").AuthConfigOkta;
+export const AuthConfigOkta: typeof import("./authConfigOkta").AuthConfigOkta = null as any;
+utilities.lazyLoad(exports, ["AuthConfigOkta"], () => require("./authConfigOkta"));
+
+export { AuthConfigOpenLdapArgs, AuthConfigOpenLdapState } from "./authConfigOpenLdap";
+export type AuthConfigOpenLdap = import("./authConfigOpenLdap").AuthConfigOpenLdap;
+export const AuthConfigOpenLdap: typeof import("./authConfigOpenLdap").AuthConfigOpenLdap = null as any;
+utilities.lazyLoad(exports, ["AuthConfigOpenLdap"], () => require("./authConfigOpenLdap"));
+
+export { AuthConfigPingArgs, AuthConfigPingState } from "./authConfigPing";
+export type AuthConfigPing = import("./authConfigPing").AuthConfigPing;
+export const AuthConfigPing: typeof import("./authConfigPing").AuthConfigPing = null as any;
+utilities.lazyLoad(exports, ["AuthConfigPing"], () => require("./authConfigPing"));
+
+export { BootstrapArgs, BootstrapState } from "./bootstrap";
+export type Bootstrap = import("./bootstrap").Bootstrap;
+export const Bootstrap: typeof import("./bootstrap").Bootstrap = null as any;
+utilities.lazyLoad(exports, ["Bootstrap"], () => require("./bootstrap"));
+
+export { CatalogArgs, CatalogState } from "./catalog";
+export type Catalog = import("./catalog").Catalog;
+export const Catalog: typeof import("./catalog").Catalog = null as any;
+utilities.lazyLoad(exports, ["Catalog"], () => require("./catalog"));
+
+export { CatalogV2Args, CatalogV2State } from "./catalogV2";
+export type CatalogV2 = import("./catalogV2").CatalogV2;
+export const CatalogV2: typeof import("./catalogV2").CatalogV2 = null as any;
+utilities.lazyLoad(exports, ["CatalogV2"], () => require("./catalogV2"));
+
+export { CertificateArgs, CertificateState } from "./certificate";
+export type Certificate = import("./certificate").Certificate;
+export const Certificate: typeof import("./certificate").Certificate = null as any;
+utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
+
+export { CloudCredentialArgs, CloudCredentialState } from "./cloudCredential";
+export type CloudCredential = import("./cloudCredential").CloudCredential;
+export const CloudCredential: typeof import("./cloudCredential").CloudCredential = null as any;
+utilities.lazyLoad(exports, ["CloudCredential"], () => require("./cloudCredential"));
+
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
+
+export { ClusterAlertGroupArgs, ClusterAlertGroupState } from "./clusterAlertGroup";
+export type ClusterAlertGroup = import("./clusterAlertGroup").ClusterAlertGroup;
+export const ClusterAlertGroup: typeof import("./clusterAlertGroup").ClusterAlertGroup = null as any;
+utilities.lazyLoad(exports, ["ClusterAlertGroup"], () => require("./clusterAlertGroup"));
+
+export { ClusterAlertRuleArgs, ClusterAlertRuleState } from "./clusterAlertRule";
+export type ClusterAlertRule = import("./clusterAlertRule").ClusterAlertRule;
+export const ClusterAlertRule: typeof import("./clusterAlertRule").ClusterAlertRule = null as any;
+utilities.lazyLoad(exports, ["ClusterAlertRule"], () => require("./clusterAlertRule"));
+
+export { ClusterAlterGroupArgs, ClusterAlterGroupState } from "./clusterAlterGroup";
+export type ClusterAlterGroup = import("./clusterAlterGroup").ClusterAlterGroup;
+export const ClusterAlterGroup: typeof import("./clusterAlterGroup").ClusterAlterGroup = null as any;
+utilities.lazyLoad(exports, ["ClusterAlterGroup"], () => require("./clusterAlterGroup"));
+
+export { ClusterAlterRuleArgs, ClusterAlterRuleState } from "./clusterAlterRule";
+export type ClusterAlterRule = import("./clusterAlterRule").ClusterAlterRule;
+export const ClusterAlterRule: typeof import("./clusterAlterRule").ClusterAlterRule = null as any;
+utilities.lazyLoad(exports, ["ClusterAlterRule"], () => require("./clusterAlterRule"));
+
+export { ClusterDriverArgs, ClusterDriverState } from "./clusterDriver";
+export type ClusterDriver = import("./clusterDriver").ClusterDriver;
+export const ClusterDriver: typeof import("./clusterDriver").ClusterDriver = null as any;
+utilities.lazyLoad(exports, ["ClusterDriver"], () => require("./clusterDriver"));
+
+export { ClusterLoggingArgs, ClusterLoggingState } from "./clusterLogging";
+export type ClusterLogging = import("./clusterLogging").ClusterLogging;
+export const ClusterLogging: typeof import("./clusterLogging").ClusterLogging = null as any;
+utilities.lazyLoad(exports, ["ClusterLogging"], () => require("./clusterLogging"));
+
+export { ClusterRoleTemplateBindingArgs, ClusterRoleTemplateBindingState } from "./clusterRoleTemplateBinding";
+export type ClusterRoleTemplateBinding = import("./clusterRoleTemplateBinding").ClusterRoleTemplateBinding;
+export const ClusterRoleTemplateBinding: typeof import("./clusterRoleTemplateBinding").ClusterRoleTemplateBinding = null as any;
+utilities.lazyLoad(exports, ["ClusterRoleTemplateBinding"], () => require("./clusterRoleTemplateBinding"));
+
+export { ClusterSyncArgs, ClusterSyncState } from "./clusterSync";
+export type ClusterSync = import("./clusterSync").ClusterSync;
+export const ClusterSync: typeof import("./clusterSync").ClusterSync = null as any;
+utilities.lazyLoad(exports, ["ClusterSync"], () => require("./clusterSync"));
+
+export { ClusterTemplateArgs, ClusterTemplateState } from "./clusterTemplate";
+export type ClusterTemplate = import("./clusterTemplate").ClusterTemplate;
+export const ClusterTemplate: typeof import("./clusterTemplate").ClusterTemplate = null as any;
+utilities.lazyLoad(exports, ["ClusterTemplate"], () => require("./clusterTemplate"));
+
+export { ClusterV2Args, ClusterV2State } from "./clusterV2";
+export type ClusterV2 = import("./clusterV2").ClusterV2;
+export const ClusterV2: typeof import("./clusterV2").ClusterV2 = null as any;
+utilities.lazyLoad(exports, ["ClusterV2"], () => require("./clusterV2"));
+
+export { ConfigMapV2Args, ConfigMapV2State } from "./configMapV2";
+export type ConfigMapV2 = import("./configMapV2").ConfigMapV2;
+export const ConfigMapV2: typeof import("./configMapV2").ConfigMapV2 = null as any;
+utilities.lazyLoad(exports, ["ConfigMapV2"], () => require("./configMapV2"));
+
+export { EtcdBackupArgs, EtcdBackupState } from "./etcdBackup";
+export type EtcdBackup = import("./etcdBackup").EtcdBackup;
+export const EtcdBackup: typeof import("./etcdBackup").EtcdBackup = null as any;
+utilities.lazyLoad(exports, ["EtcdBackup"], () => require("./etcdBackup"));
+
+export { FeatureArgs, FeatureState } from "./feature";
+export type Feature = import("./feature").Feature;
+export const Feature: typeof import("./feature").Feature = null as any;
+utilities.lazyLoad(exports, ["Feature"], () => require("./feature"));
+
+export { GetAppArgs, GetAppResult, GetAppOutputArgs } from "./getApp";
+export const getApp: typeof import("./getApp").getApp = null as any;
+export const getAppOutput: typeof import("./getApp").getAppOutput = null as any;
+utilities.lazyLoad(exports, ["getApp","getAppOutput"], () => require("./getApp"));
+
+export { GetCatalogArgs, GetCatalogResult, GetCatalogOutputArgs } from "./getCatalog";
+export const getCatalog: typeof import("./getCatalog").getCatalog = null as any;
+export const getCatalogOutput: typeof import("./getCatalog").getCatalogOutput = null as any;
+utilities.lazyLoad(exports, ["getCatalog","getCatalogOutput"], () => require("./getCatalog"));
+
+export { GetCatalogV2Args, GetCatalogV2Result, GetCatalogV2OutputArgs } from "./getCatalogV2";
+export const getCatalogV2: typeof import("./getCatalogV2").getCatalogV2 = null as any;
+export const getCatalogV2Output: typeof import("./getCatalogV2").getCatalogV2Output = null as any;
+utilities.lazyLoad(exports, ["getCatalogV2","getCatalogV2Output"], () => require("./getCatalogV2"));
+
+export { GetCertificateArgs, GetCertificateResult, GetCertificateOutputArgs } from "./getCertificate";
+export const getCertificate: typeof import("./getCertificate").getCertificate = null as any;
+export const getCertificateOutput: typeof import("./getCertificate").getCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificate","getCertificateOutput"], () => require("./getCertificate"));
+
+export { GetCloudCredentialArgs, GetCloudCredentialResult, GetCloudCredentialOutputArgs } from "./getCloudCredential";
+export const getCloudCredential: typeof import("./getCloudCredential").getCloudCredential = null as any;
+export const getCloudCredentialOutput: typeof import("./getCloudCredential").getCloudCredentialOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudCredential","getCloudCredentialOutput"], () => require("./getCloudCredential"));
+
+export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
+export const getCluster: typeof import("./getCluster").getCluster = null as any;
+export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
+utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
+
+export { GetClusterAlertGroupArgs, GetClusterAlertGroupResult, GetClusterAlertGroupOutputArgs } from "./getClusterAlertGroup";
+export const getClusterAlertGroup: typeof import("./getClusterAlertGroup").getClusterAlertGroup = null as any;
+export const getClusterAlertGroupOutput: typeof import("./getClusterAlertGroup").getClusterAlertGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterAlertGroup","getClusterAlertGroupOutput"], () => require("./getClusterAlertGroup"));
+
+export { GetClusterAlterRuleArgs, GetClusterAlterRuleResult, GetClusterAlterRuleOutputArgs } from "./getClusterAlterRule";
+export const getClusterAlterRule: typeof import("./getClusterAlterRule").getClusterAlterRule = null as any;
+export const getClusterAlterRuleOutput: typeof import("./getClusterAlterRule").getClusterAlterRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterAlterRule","getClusterAlterRuleOutput"], () => require("./getClusterAlterRule"));
+
+export { GetClusterDriverArgs, GetClusterDriverResult, GetClusterDriverOutputArgs } from "./getClusterDriver";
+export const getClusterDriver: typeof import("./getClusterDriver").getClusterDriver = null as any;
+export const getClusterDriverOutput: typeof import("./getClusterDriver").getClusterDriverOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterDriver","getClusterDriverOutput"], () => require("./getClusterDriver"));
+
+export { GetClusterLoggingArgs, GetClusterLoggingResult, GetClusterLoggingOutputArgs } from "./getClusterLogging";
+export const getClusterLogging: typeof import("./getClusterLogging").getClusterLogging = null as any;
+export const getClusterLoggingOutput: typeof import("./getClusterLogging").getClusterLoggingOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterLogging","getClusterLoggingOutput"], () => require("./getClusterLogging"));
+
+export { GetClusterRoleTemplateBindingArgs, GetClusterRoleTemplateBindingResult, GetClusterRoleTemplateBindingOutputArgs } from "./getClusterRoleTemplateBinding";
+export const getClusterRoleTemplateBinding: typeof import("./getClusterRoleTemplateBinding").getClusterRoleTemplateBinding = null as any;
+export const getClusterRoleTemplateBindingOutput: typeof import("./getClusterRoleTemplateBinding").getClusterRoleTemplateBindingOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterRoleTemplateBinding","getClusterRoleTemplateBindingOutput"], () => require("./getClusterRoleTemplateBinding"));
+
+export { GetClusterScanArgs, GetClusterScanResult, GetClusterScanOutputArgs } from "./getClusterScan";
+export const getClusterScan: typeof import("./getClusterScan").getClusterScan = null as any;
+export const getClusterScanOutput: typeof import("./getClusterScan").getClusterScanOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterScan","getClusterScanOutput"], () => require("./getClusterScan"));
+
+export { GetClusterTemplateArgs, GetClusterTemplateResult, GetClusterTemplateOutputArgs } from "./getClusterTemplate";
+export const getClusterTemplate: typeof import("./getClusterTemplate").getClusterTemplate = null as any;
+export const getClusterTemplateOutput: typeof import("./getClusterTemplate").getClusterTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterTemplate","getClusterTemplateOutput"], () => require("./getClusterTemplate"));
+
+export { GetClusterV2Args, GetClusterV2Result, GetClusterV2OutputArgs } from "./getClusterV2";
+export const getClusterV2: typeof import("./getClusterV2").getClusterV2 = null as any;
+export const getClusterV2Output: typeof import("./getClusterV2").getClusterV2Output = null as any;
+utilities.lazyLoad(exports, ["getClusterV2","getClusterV2Output"], () => require("./getClusterV2"));
+
+export { GetConfigMapV2Args, GetConfigMapV2Result, GetConfigMapV2OutputArgs } from "./getConfigMapV2";
+export const getConfigMapV2: typeof import("./getConfigMapV2").getConfigMapV2 = null as any;
+export const getConfigMapV2Output: typeof import("./getConfigMapV2").getConfigMapV2Output = null as any;
+utilities.lazyLoad(exports, ["getConfigMapV2","getConfigMapV2Output"], () => require("./getConfigMapV2"));
+
+export { GetEtcdBackupArgs, GetEtcdBackupResult, GetEtcdBackupOutputArgs } from "./getEtcdBackup";
+export const getEtcdBackup: typeof import("./getEtcdBackup").getEtcdBackup = null as any;
+export const getEtcdBackupOutput: typeof import("./getEtcdBackup").getEtcdBackupOutput = null as any;
+utilities.lazyLoad(exports, ["getEtcdBackup","getEtcdBackupOutput"], () => require("./getEtcdBackup"));
+
+export { GetGlobalDnsProviderArgs, GetGlobalDnsProviderResult, GetGlobalDnsProviderOutputArgs } from "./getGlobalDnsProvider";
+export const getGlobalDnsProvider: typeof import("./getGlobalDnsProvider").getGlobalDnsProvider = null as any;
+export const getGlobalDnsProviderOutput: typeof import("./getGlobalDnsProvider").getGlobalDnsProviderOutput = null as any;
+utilities.lazyLoad(exports, ["getGlobalDnsProvider","getGlobalDnsProviderOutput"], () => require("./getGlobalDnsProvider"));
+
+export { GetGlobalRoleArgs, GetGlobalRoleResult, GetGlobalRoleOutputArgs } from "./getGlobalRole";
+export const getGlobalRole: typeof import("./getGlobalRole").getGlobalRole = null as any;
+export const getGlobalRoleOutput: typeof import("./getGlobalRole").getGlobalRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getGlobalRole","getGlobalRoleOutput"], () => require("./getGlobalRole"));
+
+export { GetGlobalRoleBindingArgs, GetGlobalRoleBindingResult, GetGlobalRoleBindingOutputArgs } from "./getGlobalRoleBinding";
+export const getGlobalRoleBinding: typeof import("./getGlobalRoleBinding").getGlobalRoleBinding = null as any;
+export const getGlobalRoleBindingOutput: typeof import("./getGlobalRoleBinding").getGlobalRoleBindingOutput = null as any;
+utilities.lazyLoad(exports, ["getGlobalRoleBinding","getGlobalRoleBindingOutput"], () => require("./getGlobalRoleBinding"));
+
+export { GetMultiClusterAppArgs, GetMultiClusterAppResult, GetMultiClusterAppOutputArgs } from "./getMultiClusterApp";
+export const getMultiClusterApp: typeof import("./getMultiClusterApp").getMultiClusterApp = null as any;
+export const getMultiClusterAppOutput: typeof import("./getMultiClusterApp").getMultiClusterAppOutput = null as any;
+utilities.lazyLoad(exports, ["getMultiClusterApp","getMultiClusterAppOutput"], () => require("./getMultiClusterApp"));
+
+export { GetNamespaceArgs, GetNamespaceResult, GetNamespaceOutputArgs } from "./getNamespace";
+export const getNamespace: typeof import("./getNamespace").getNamespace = null as any;
+export const getNamespaceOutput: typeof import("./getNamespace").getNamespaceOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespace","getNamespaceOutput"], () => require("./getNamespace"));
+
+export { GetNodeDriverArgs, GetNodeDriverResult, GetNodeDriverOutputArgs } from "./getNodeDriver";
+export const getNodeDriver: typeof import("./getNodeDriver").getNodeDriver = null as any;
+export const getNodeDriverOutput: typeof import("./getNodeDriver").getNodeDriverOutput = null as any;
+utilities.lazyLoad(exports, ["getNodeDriver","getNodeDriverOutput"], () => require("./getNodeDriver"));
+
+export { GetNodePoolArgs, GetNodePoolResult, GetNodePoolOutputArgs } from "./getNodePool";
+export const getNodePool: typeof import("./getNodePool").getNodePool = null as any;
+export const getNodePoolOutput: typeof import("./getNodePool").getNodePoolOutput = null as any;
+utilities.lazyLoad(exports, ["getNodePool","getNodePoolOutput"], () => require("./getNodePool"));
+
+export { GetNodeTemplateArgs, GetNodeTemplateResult, GetNodeTemplateOutputArgs } from "./getNodeTemplate";
+export const getNodeTemplate: typeof import("./getNodeTemplate").getNodeTemplate = null as any;
+export const getNodeTemplateOutput: typeof import("./getNodeTemplate").getNodeTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getNodeTemplate","getNodeTemplateOutput"], () => require("./getNodeTemplate"));
+
+export { GetNotifierArgs, GetNotifierResult, GetNotifierOutputArgs } from "./getNotifier";
+export const getNotifier: typeof import("./getNotifier").getNotifier = null as any;
+export const getNotifierOutput: typeof import("./getNotifier").getNotifierOutput = null as any;
+utilities.lazyLoad(exports, ["getNotifier","getNotifierOutput"], () => require("./getNotifier"));
+
+export { GetPodSecurityPolicyTemplateArgs, GetPodSecurityPolicyTemplateResult, GetPodSecurityPolicyTemplateOutputArgs } from "./getPodSecurityPolicyTemplate";
+export const getPodSecurityPolicyTemplate: typeof import("./getPodSecurityPolicyTemplate").getPodSecurityPolicyTemplate = null as any;
+export const getPodSecurityPolicyTemplateOutput: typeof import("./getPodSecurityPolicyTemplate").getPodSecurityPolicyTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getPodSecurityPolicyTemplate","getPodSecurityPolicyTemplateOutput"], () => require("./getPodSecurityPolicyTemplate"));
+
+export { GetPrincipalArgs, GetPrincipalResult, GetPrincipalOutputArgs } from "./getPrincipal";
+export const getPrincipal: typeof import("./getPrincipal").getPrincipal = null as any;
+export const getPrincipalOutput: typeof import("./getPrincipal").getPrincipalOutput = null as any;
+utilities.lazyLoad(exports, ["getPrincipal","getPrincipalOutput"], () => require("./getPrincipal"));
+
+export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
+export const getProject: typeof import("./getProject").getProject = null as any;
+export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
+utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
+
+export { GetProjectAlertGroupArgs, GetProjectAlertGroupResult, GetProjectAlertGroupOutputArgs } from "./getProjectAlertGroup";
+export const getProjectAlertGroup: typeof import("./getProjectAlertGroup").getProjectAlertGroup = null as any;
+export const getProjectAlertGroupOutput: typeof import("./getProjectAlertGroup").getProjectAlertGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectAlertGroup","getProjectAlertGroupOutput"], () => require("./getProjectAlertGroup"));
+
+export { GetProjectAlertRuleArgs, GetProjectAlertRuleResult, GetProjectAlertRuleOutputArgs } from "./getProjectAlertRule";
+export const getProjectAlertRule: typeof import("./getProjectAlertRule").getProjectAlertRule = null as any;
+export const getProjectAlertRuleOutput: typeof import("./getProjectAlertRule").getProjectAlertRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectAlertRule","getProjectAlertRuleOutput"], () => require("./getProjectAlertRule"));
+
+export { GetProjectLoggingArgs, GetProjectLoggingResult, GetProjectLoggingOutputArgs } from "./getProjectLogging";
+export const getProjectLogging: typeof import("./getProjectLogging").getProjectLogging = null as any;
+export const getProjectLoggingOutput: typeof import("./getProjectLogging").getProjectLoggingOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectLogging","getProjectLoggingOutput"], () => require("./getProjectLogging"));
+
+export { GetProjectRoleTemplateBindingArgs, GetProjectRoleTemplateBindingResult, GetProjectRoleTemplateBindingOutputArgs } from "./getProjectRoleTemplateBinding";
+export const getProjectRoleTemplateBinding: typeof import("./getProjectRoleTemplateBinding").getProjectRoleTemplateBinding = null as any;
+export const getProjectRoleTemplateBindingOutput: typeof import("./getProjectRoleTemplateBinding").getProjectRoleTemplateBindingOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectRoleTemplateBinding","getProjectRoleTemplateBindingOutput"], () => require("./getProjectRoleTemplateBinding"));
+
+export { GetRegistryArgs, GetRegistryResult, GetRegistryOutputArgs } from "./getRegistry";
+export const getRegistry: typeof import("./getRegistry").getRegistry = null as any;
+export const getRegistryOutput: typeof import("./getRegistry").getRegistryOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistry","getRegistryOutput"], () => require("./getRegistry"));
+
+export { GetRoleTempalteArgs, GetRoleTempalteResult, GetRoleTempalteOutputArgs } from "./getRoleTempalte";
+export const getRoleTempalte: typeof import("./getRoleTempalte").getRoleTempalte = null as any;
+export const getRoleTempalteOutput: typeof import("./getRoleTempalte").getRoleTempalteOutput = null as any;
+utilities.lazyLoad(exports, ["getRoleTempalte","getRoleTempalteOutput"], () => require("./getRoleTempalte"));
+
+export { GetRoleTemplateArgs, GetRoleTemplateResult, GetRoleTemplateOutputArgs } from "./getRoleTemplate";
+export const getRoleTemplate: typeof import("./getRoleTemplate").getRoleTemplate = null as any;
+export const getRoleTemplateOutput: typeof import("./getRoleTemplate").getRoleTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getRoleTemplate","getRoleTemplateOutput"], () => require("./getRoleTemplate"));
+
+export { GetSecretArgs, GetSecretResult, GetSecretOutputArgs } from "./getSecret";
+export const getSecret: typeof import("./getSecret").getSecret = null as any;
+export const getSecretOutput: typeof import("./getSecret").getSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getSecret","getSecretOutput"], () => require("./getSecret"));
+
+export { GetSecretV2Args, GetSecretV2Result, GetSecretV2OutputArgs } from "./getSecretV2";
+export const getSecretV2: typeof import("./getSecretV2").getSecretV2 = null as any;
+export const getSecretV2Output: typeof import("./getSecretV2").getSecretV2Output = null as any;
+utilities.lazyLoad(exports, ["getSecretV2","getSecretV2Output"], () => require("./getSecretV2"));
+
+export { GetSettingArgs, GetSettingResult, GetSettingOutputArgs } from "./getSetting";
+export const getSetting: typeof import("./getSetting").getSetting = null as any;
+export const getSettingOutput: typeof import("./getSetting").getSettingOutput = null as any;
+utilities.lazyLoad(exports, ["getSetting","getSettingOutput"], () => require("./getSetting"));
+
+export { GetStorageClassV2Args, GetStorageClassV2Result, GetStorageClassV2OutputArgs } from "./getStorageClassV2";
+export const getStorageClassV2: typeof import("./getStorageClassV2").getStorageClassV2 = null as any;
+export const getStorageClassV2Output: typeof import("./getStorageClassV2").getStorageClassV2Output = null as any;
+utilities.lazyLoad(exports, ["getStorageClassV2","getStorageClassV2Output"], () => require("./getStorageClassV2"));
+
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { GlobalDnsArgs, GlobalDnsState } from "./globalDns";
+export type GlobalDns = import("./globalDns").GlobalDns;
+export const GlobalDns: typeof import("./globalDns").GlobalDns = null as any;
+utilities.lazyLoad(exports, ["GlobalDns"], () => require("./globalDns"));
+
+export { GlobalDnsProviderArgs, GlobalDnsProviderState } from "./globalDnsProvider";
+export type GlobalDnsProvider = import("./globalDnsProvider").GlobalDnsProvider;
+export const GlobalDnsProvider: typeof import("./globalDnsProvider").GlobalDnsProvider = null as any;
+utilities.lazyLoad(exports, ["GlobalDnsProvider"], () => require("./globalDnsProvider"));
+
+export { GlobalRoleArgs, GlobalRoleState } from "./globalRole";
+export type GlobalRole = import("./globalRole").GlobalRole;
+export const GlobalRole: typeof import("./globalRole").GlobalRole = null as any;
+utilities.lazyLoad(exports, ["GlobalRole"], () => require("./globalRole"));
+
+export { GlobalRoleBindingArgs, GlobalRoleBindingState } from "./globalRoleBinding";
+export type GlobalRoleBinding = import("./globalRoleBinding").GlobalRoleBinding;
+export const GlobalRoleBinding: typeof import("./globalRoleBinding").GlobalRoleBinding = null as any;
+utilities.lazyLoad(exports, ["GlobalRoleBinding"], () => require("./globalRoleBinding"));
+
+export { MachineConfigV2Args, MachineConfigV2State } from "./machineConfigV2";
+export type MachineConfigV2 = import("./machineConfigV2").MachineConfigV2;
+export const MachineConfigV2: typeof import("./machineConfigV2").MachineConfigV2 = null as any;
+utilities.lazyLoad(exports, ["MachineConfigV2"], () => require("./machineConfigV2"));
+
+export { MultiClusterAppArgs, MultiClusterAppState } from "./multiClusterApp";
+export type MultiClusterApp = import("./multiClusterApp").MultiClusterApp;
+export const MultiClusterApp: typeof import("./multiClusterApp").MultiClusterApp = null as any;
+utilities.lazyLoad(exports, ["MultiClusterApp"], () => require("./multiClusterApp"));
+
+export { NamespaceArgs, NamespaceState } from "./namespace";
+export type Namespace = import("./namespace").Namespace;
+export const Namespace: typeof import("./namespace").Namespace = null as any;
+utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+
+export { NodeDriverArgs, NodeDriverState } from "./nodeDriver";
+export type NodeDriver = import("./nodeDriver").NodeDriver;
+export const NodeDriver: typeof import("./nodeDriver").NodeDriver = null as any;
+utilities.lazyLoad(exports, ["NodeDriver"], () => require("./nodeDriver"));
+
+export { NodePoolArgs, NodePoolState } from "./nodePool";
+export type NodePool = import("./nodePool").NodePool;
+export const NodePool: typeof import("./nodePool").NodePool = null as any;
+utilities.lazyLoad(exports, ["NodePool"], () => require("./nodePool"));
+
+export { NodeTemplateArgs, NodeTemplateState } from "./nodeTemplate";
+export type NodeTemplate = import("./nodeTemplate").NodeTemplate;
+export const NodeTemplate: typeof import("./nodeTemplate").NodeTemplate = null as any;
+utilities.lazyLoad(exports, ["NodeTemplate"], () => require("./nodeTemplate"));
+
+export { NotifierArgs, NotifierState } from "./notifier";
+export type Notifier = import("./notifier").Notifier;
+export const Notifier: typeof import("./notifier").Notifier = null as any;
+utilities.lazyLoad(exports, ["Notifier"], () => require("./notifier"));
+
+export { PodSecurityPolicyTemplateArgs, PodSecurityPolicyTemplateState } from "./podSecurityPolicyTemplate";
+export type PodSecurityPolicyTemplate = import("./podSecurityPolicyTemplate").PodSecurityPolicyTemplate;
+export const PodSecurityPolicyTemplate: typeof import("./podSecurityPolicyTemplate").PodSecurityPolicyTemplate = null as any;
+utilities.lazyLoad(exports, ["PodSecurityPolicyTemplate"], () => require("./podSecurityPolicyTemplate"));
+
+export { ProjectArgs, ProjectState } from "./project";
+export type Project = import("./project").Project;
+export const Project: typeof import("./project").Project = null as any;
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+
+export { ProjectAlertGroupArgs, ProjectAlertGroupState } from "./projectAlertGroup";
+export type ProjectAlertGroup = import("./projectAlertGroup").ProjectAlertGroup;
+export const ProjectAlertGroup: typeof import("./projectAlertGroup").ProjectAlertGroup = null as any;
+utilities.lazyLoad(exports, ["ProjectAlertGroup"], () => require("./projectAlertGroup"));
+
+export { ProjectAlertRuleArgs, ProjectAlertRuleState } from "./projectAlertRule";
+export type ProjectAlertRule = import("./projectAlertRule").ProjectAlertRule;
+export const ProjectAlertRule: typeof import("./projectAlertRule").ProjectAlertRule = null as any;
+utilities.lazyLoad(exports, ["ProjectAlertRule"], () => require("./projectAlertRule"));
+
+export { ProjectLoggingArgs, ProjectLoggingState } from "./projectLogging";
+export type ProjectLogging = import("./projectLogging").ProjectLogging;
+export const ProjectLogging: typeof import("./projectLogging").ProjectLogging = null as any;
+utilities.lazyLoad(exports, ["ProjectLogging"], () => require("./projectLogging"));
+
+export { ProjectRoleTemplateBindingArgs, ProjectRoleTemplateBindingState } from "./projectRoleTemplateBinding";
+export type ProjectRoleTemplateBinding = import("./projectRoleTemplateBinding").ProjectRoleTemplateBinding;
+export const ProjectRoleTemplateBinding: typeof import("./projectRoleTemplateBinding").ProjectRoleTemplateBinding = null as any;
+utilities.lazyLoad(exports, ["ProjectRoleTemplateBinding"], () => require("./projectRoleTemplateBinding"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { RegistryArgs, RegistryState } from "./registry";
+export type Registry = import("./registry").Registry;
+export const Registry: typeof import("./registry").Registry = null as any;
+utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
+
+export { RoleTempalteArgs, RoleTempalteState } from "./roleTempalte";
+export type RoleTempalte = import("./roleTempalte").RoleTempalte;
+export const RoleTempalte: typeof import("./roleTempalte").RoleTempalte = null as any;
+utilities.lazyLoad(exports, ["RoleTempalte"], () => require("./roleTempalte"));
+
+export { RoleTemplateArgs, RoleTemplateState } from "./roleTemplate";
+export type RoleTemplate = import("./roleTemplate").RoleTemplate;
+export const RoleTemplate: typeof import("./roleTemplate").RoleTemplate = null as any;
+utilities.lazyLoad(exports, ["RoleTemplate"], () => require("./roleTemplate"));
+
+export { SecretArgs, SecretState } from "./secret";
+export type Secret = import("./secret").Secret;
+export const Secret: typeof import("./secret").Secret = null as any;
+utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
+
+export { SecretV2Args, SecretV2State } from "./secretV2";
+export type SecretV2 = import("./secretV2").SecretV2;
+export const SecretV2: typeof import("./secretV2").SecretV2 = null as any;
+utilities.lazyLoad(exports, ["SecretV2"], () => require("./secretV2"));
+
+export { SettingArgs, SettingState } from "./setting";
+export type Setting = import("./setting").Setting;
+export const Setting: typeof import("./setting").Setting = null as any;
+utilities.lazyLoad(exports, ["Setting"], () => require("./setting"));
+
+export { StorageClassV2Args, StorageClassV2State } from "./storageClassV2";
+export type StorageClassV2 = import("./storageClassV2").StorageClassV2;
+export const StorageClassV2: typeof import("./storageClassV2").StorageClassV2 = null as any;
+utilities.lazyLoad(exports, ["StorageClassV2"], () => require("./storageClassV2"));
+
+export { TokenArgs, TokenState } from "./token";
+export type Token = import("./token").Token;
+export const Token: typeof import("./token").Token = null as any;
+utilities.lazyLoad(exports, ["Token"], () => require("./token"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -112,65 +504,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { ActiveDirectory } from "./activeDirectory";
-import { App } from "./app";
-import { AppV2 } from "./appV2";
-import { AuthConfigActiveDirectory } from "./authConfigActiveDirectory";
-import { AuthConfigAdfs } from "./authConfigAdfs";
-import { AuthConfigAzureAd } from "./authConfigAzureAd";
-import { AuthConfigFreeIpa } from "./authConfigFreeIpa";
-import { AuthConfigGithub } from "./authConfigGithub";
-import { AuthConfigKeycloak } from "./authConfigKeycloak";
-import { AuthConfigOkta } from "./authConfigOkta";
-import { AuthConfigOpenLdap } from "./authConfigOpenLdap";
-import { AuthConfigPing } from "./authConfigPing";
-import { Bootstrap } from "./bootstrap";
-import { Catalog } from "./catalog";
-import { CatalogV2 } from "./catalogV2";
-import { Certificate } from "./certificate";
-import { CloudCredential } from "./cloudCredential";
-import { Cluster } from "./cluster";
-import { ClusterAlertGroup } from "./clusterAlertGroup";
-import { ClusterAlertRule } from "./clusterAlertRule";
-import { ClusterAlterGroup } from "./clusterAlterGroup";
-import { ClusterAlterRule } from "./clusterAlterRule";
-import { ClusterDriver } from "./clusterDriver";
-import { ClusterLogging } from "./clusterLogging";
-import { ClusterRoleTemplateBinding } from "./clusterRoleTemplateBinding";
-import { ClusterSync } from "./clusterSync";
-import { ClusterTemplate } from "./clusterTemplate";
-import { ClusterV2 } from "./clusterV2";
-import { ConfigMapV2 } from "./configMapV2";
-import { EtcdBackup } from "./etcdBackup";
-import { Feature } from "./feature";
-import { GlobalDns } from "./globalDns";
-import { GlobalDnsProvider } from "./globalDnsProvider";
-import { GlobalRole } from "./globalRole";
-import { GlobalRoleBinding } from "./globalRoleBinding";
-import { MachineConfigV2 } from "./machineConfigV2";
-import { MultiClusterApp } from "./multiClusterApp";
-import { Namespace } from "./namespace";
-import { NodeDriver } from "./nodeDriver";
-import { NodePool } from "./nodePool";
-import { NodeTemplate } from "./nodeTemplate";
-import { Notifier } from "./notifier";
-import { PodSecurityPolicyTemplate } from "./podSecurityPolicyTemplate";
-import { Project } from "./project";
-import { ProjectAlertGroup } from "./projectAlertGroup";
-import { ProjectAlertRule } from "./projectAlertRule";
-import { ProjectLogging } from "./projectLogging";
-import { ProjectRoleTemplateBinding } from "./projectRoleTemplateBinding";
-import { Registry } from "./registry";
-import { RoleTempalte } from "./roleTempalte";
-import { RoleTemplate } from "./roleTemplate";
-import { Secret } from "./secret";
-import { SecretV2 } from "./secretV2";
-import { Setting } from "./setting";
-import { StorageClassV2 } from "./storageClassV2";
-import { Token } from "./token";
-import { User } from "./user";
 
 const _module = {
     version: utilities.getVersion(),
@@ -352,9 +685,6 @@ pulumi.runtime.registerResourceModule("rancher2", "index/setting", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/storageClassV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/token", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/user", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("rancher2", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

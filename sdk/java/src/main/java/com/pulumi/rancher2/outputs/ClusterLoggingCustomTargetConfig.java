@@ -12,17 +12,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterLoggingCustomTargetConfig {
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     private @Nullable String certificate;
     /**
-     * @return SSL client certificate for the syslog service (string)
+     * @return SSL client certificate for the custom target service (string)
      * 
      */
     private @Nullable String clientCert;
     /**
-     * @return SSL client key for the syslog service (string)
+     * @return SSL client key for the custom target service (string)
      * 
      */
     private @Nullable String clientKey;
@@ -34,21 +34,21 @@ public final class ClusterLoggingCustomTargetConfig {
 
     private ClusterLoggingCustomTargetConfig() {}
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     public Optional<String> certificate() {
         return Optional.ofNullable(this.certificate);
     }
     /**
-     * @return SSL client certificate for the syslog service (string)
+     * @return SSL client certificate for the custom target service (string)
      * 
      */
     public Optional<String> clientCert() {
         return Optional.ofNullable(this.clientCert);
     }
     /**
-     * @return SSL client key for the syslog service (string)
+     * @return SSL client key for the custom target service (string)
      * 
      */
     public Optional<String> clientKey() {

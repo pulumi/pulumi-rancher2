@@ -25,6 +25,75 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Project;
+ * import com.pulumi.rancher2.ProjectArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaProjectLimitArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs;
+ * import com.pulumi.rancher2.inputs.ProjectContainerResourceLimitArgs;
+ * import com.pulumi.rancher2.ProjectAlertGroup;
+ * import com.pulumi.rancher2.ProjectAlertGroupArgs;
+ * import com.pulumi.rancher2.ProjectAlertRule;
+ * import com.pulumi.rancher2.ProjectAlertRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooProject = new Project(&#34;fooProject&#34;, ProjectArgs.builder()        
+ *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+ *             .description(&#34;Terraform project &#34;)
+ *             .resourceQuota(ProjectResourceQuotaArgs.builder()
+ *                 .projectLimit(ProjectResourceQuotaProjectLimitArgs.builder()
+ *                     .limitsCpu(&#34;2000m&#34;)
+ *                     .limitsMemory(&#34;2000Mi&#34;)
+ *                     .requestsStorage(&#34;2Gi&#34;)
+ *                     .build())
+ *                 .namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs.builder()
+ *                     .limitsCpu(&#34;500m&#34;)
+ *                     .limitsMemory(&#34;500Mi&#34;)
+ *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .build())
+ *                 .build())
+ *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()
+ *                 .limitsCpu(&#34;20m&#34;)
+ *                 .limitsMemory(&#34;20Mi&#34;)
+ *                 .requestsCpu(&#34;1m&#34;)
+ *                 .requestsMemory(&#34;1Mi&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooProjectAlertGroup = new ProjectAlertGroup(&#34;fooProjectAlertGroup&#34;, ProjectAlertGroupArgs.builder()        
+ *             .description(&#34;Terraform project alert group&#34;)
+ *             .projectId(fooProject.id())
+ *             .groupIntervalSeconds(300)
+ *             .repeatIntervalSeconds(3600)
+ *             .build());
+ * 
+ *         var fooProjectAlertRule = new ProjectAlertRule(&#34;fooProjectAlertRule&#34;, ProjectAlertRuleArgs.builder()        
+ *             .projectId(fooProjectAlertGroup.projectId())
+ *             .groupId(fooProjectAlertGroup.id())
+ *             .groupIntervalSeconds(600)
+ *             .repeatIntervalSeconds(6000)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

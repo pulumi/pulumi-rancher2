@@ -47,14 +47,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs exten
     }
 
     /**
-     * Drain options enabled? Default `true` (bool)
+     * Enable the authorized cluster endpoint. Default `false` (bool)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Drain options enabled? Default `true` (bool)
+     * @return Enable the authorized cluster endpoint. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -226,7 +226,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs exten
         }
 
         /**
-         * @param enabled Drain options enabled? Default `true` (bool)
+         * @param enabled Enable the authorized cluster endpoint. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs exten
         }
 
         /**
-         * @param enabled Drain options enabled? Default `true` (bool)
+         * @param enabled Enable the authorized cluster endpoint. Default `false` (bool)
          * 
          * @return builder
          * 

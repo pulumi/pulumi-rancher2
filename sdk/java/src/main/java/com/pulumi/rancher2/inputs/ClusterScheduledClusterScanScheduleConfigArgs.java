@@ -32,14 +32,14 @@ public final class ClusterScheduledClusterScanScheduleConfigArgs extends com.pul
     }
 
     /**
-     * Retention for etcd backup. Default `6` (int)
+     * Cluster scan retention (int)
      * 
      */
     @Import(name="retention")
     private @Nullable Output<Integer> retention;
 
     /**
-     * @return Retention for etcd backup. Default `6` (int)
+     * @return Cluster scan retention (int)
      * 
      */
     public Optional<Output<Integer>> retention() {
@@ -93,7 +93,7 @@ public final class ClusterScheduledClusterScanScheduleConfigArgs extends com.pul
         }
 
         /**
-         * @param retention Retention for etcd backup. Default `6` (int)
+         * @param retention Cluster scan retention (int)
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterScheduledClusterScanScheduleConfigArgs extends com.pul
         }
 
         /**
-         * @param retention Retention for etcd backup. Default `6` (int)
+         * @param retention Cluster scan retention (int)
          * 
          * @return builder
          * 

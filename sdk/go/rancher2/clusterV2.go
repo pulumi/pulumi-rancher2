@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is supported as tech preview from Rancher v2.6.0 and above.
+// Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is available from Rancher v2.6.0 and above.
 //
 // ## Example Usage
 // ### Creating Rancher v2 custom cluster v2
@@ -59,7 +59,7 @@ type ClusterV2 struct {
 
 	// Optional Agent Env Vars for Rancher agent (list)
 	AgentEnvVars ClusterV2AgentEnvVarArrayOutput `pulumi:"agentEnvVars"`
-	// Annotations for cluster registration token object (map)
+	// Annotations for the Cluster V2 (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
 	// Cluster V2 cloud credential secret name (string)
 	CloudCredentialSecretName pulumi.StringPtrOutput `pulumi:"cloudCredentialSecretName"`
@@ -79,11 +79,11 @@ type ClusterV2 struct {
 	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
 	// The kubernetes version of the Cluster v2 (list maxitems:1)
 	KubernetesVersion pulumi.StringOutput `pulumi:"kubernetesVersion"`
-	// Labels for cluster registration token object (map)
+	// Labels for the Cluster V2 (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// Use rancher2_cluster_v2.local_auth_endpoint instead
+	// Cluster V2 local auth endpoint (list maxitems:1)
 	LocalAuthEndpoint ClusterV2LocalAuthEndpointPtrOutput `pulumi:"localAuthEndpoint"`
-	// Name of cluster registration token (string)
+	// The name of the Cluster v2 (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Computed) Cluster v2 k8s resource version (string)
 	ResourceVersion pulumi.StringOutput `pulumi:"resourceVersion"`
@@ -101,6 +101,11 @@ func NewClusterV2(ctx *pulumi.Context,
 	if args.KubernetesVersion == nil {
 		return nil, errors.New("invalid value for required argument 'KubernetesVersion'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clusterRegistrationToken",
+		"kubeConfig",
+	})
+	opts = append(opts, secrets)
 	var resource ClusterV2
 	err := ctx.RegisterResource("rancher2:index/clusterV2:ClusterV2", name, args, &resource, opts...)
 	if err != nil {
@@ -125,7 +130,7 @@ func GetClusterV2(ctx *pulumi.Context,
 type clusterV2State struct {
 	// Optional Agent Env Vars for Rancher agent (list)
 	AgentEnvVars []ClusterV2AgentEnvVar `pulumi:"agentEnvVars"`
-	// Annotations for cluster registration token object (map)
+	// Annotations for the Cluster V2 (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// Cluster V2 cloud credential secret name (string)
 	CloudCredentialSecretName *string `pulumi:"cloudCredentialSecretName"`
@@ -145,11 +150,11 @@ type clusterV2State struct {
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The kubernetes version of the Cluster v2 (list maxitems:1)
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
-	// Labels for cluster registration token object (map)
+	// Labels for the Cluster V2 (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Use rancher2_cluster_v2.local_auth_endpoint instead
+	// Cluster V2 local auth endpoint (list maxitems:1)
 	LocalAuthEndpoint *ClusterV2LocalAuthEndpoint `pulumi:"localAuthEndpoint"`
-	// Name of cluster registration token (string)
+	// The name of the Cluster v2 (string)
 	Name *string `pulumi:"name"`
 	// (Computed) Cluster v2 k8s resource version (string)
 	ResourceVersion *string `pulumi:"resourceVersion"`
@@ -160,7 +165,7 @@ type clusterV2State struct {
 type ClusterV2State struct {
 	// Optional Agent Env Vars for Rancher agent (list)
 	AgentEnvVars ClusterV2AgentEnvVarArrayInput
-	// Annotations for cluster registration token object (map)
+	// Annotations for the Cluster V2 (map)
 	Annotations pulumi.MapInput
 	// Cluster V2 cloud credential secret name (string)
 	CloudCredentialSecretName pulumi.StringPtrInput
@@ -180,11 +185,11 @@ type ClusterV2State struct {
 	KubeConfig pulumi.StringPtrInput
 	// The kubernetes version of the Cluster v2 (list maxitems:1)
 	KubernetesVersion pulumi.StringPtrInput
-	// Labels for cluster registration token object (map)
+	// Labels for the Cluster V2 (map)
 	Labels pulumi.MapInput
-	// Use rancher2_cluster_v2.local_auth_endpoint instead
+	// Cluster V2 local auth endpoint (list maxitems:1)
 	LocalAuthEndpoint ClusterV2LocalAuthEndpointPtrInput
-	// Name of cluster registration token (string)
+	// The name of the Cluster v2 (string)
 	Name pulumi.StringPtrInput
 	// (Computed) Cluster v2 k8s resource version (string)
 	ResourceVersion pulumi.StringPtrInput
@@ -199,7 +204,7 @@ func (ClusterV2State) ElementType() reflect.Type {
 type clusterV2Args struct {
 	// Optional Agent Env Vars for Rancher agent (list)
 	AgentEnvVars []ClusterV2AgentEnvVar `pulumi:"agentEnvVars"`
-	// Annotations for cluster registration token object (map)
+	// Annotations for the Cluster V2 (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// Cluster V2 cloud credential secret name (string)
 	CloudCredentialSecretName *string `pulumi:"cloudCredentialSecretName"`
@@ -213,11 +218,11 @@ type clusterV2Args struct {
 	FleetNamespace *string `pulumi:"fleetNamespace"`
 	// The kubernetes version of the Cluster v2 (list maxitems:1)
 	KubernetesVersion string `pulumi:"kubernetesVersion"`
-	// Labels for cluster registration token object (map)
+	// Labels for the Cluster V2 (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Use rancher2_cluster_v2.local_auth_endpoint instead
+	// Cluster V2 local auth endpoint (list maxitems:1)
 	LocalAuthEndpoint *ClusterV2LocalAuthEndpoint `pulumi:"localAuthEndpoint"`
-	// Name of cluster registration token (string)
+	// The name of the Cluster v2 (string)
 	Name *string `pulumi:"name"`
 	// The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
 	RkeConfig *ClusterV2RkeConfig `pulumi:"rkeConfig"`
@@ -227,7 +232,7 @@ type clusterV2Args struct {
 type ClusterV2Args struct {
 	// Optional Agent Env Vars for Rancher agent (list)
 	AgentEnvVars ClusterV2AgentEnvVarArrayInput
-	// Annotations for cluster registration token object (map)
+	// Annotations for the Cluster V2 (map)
 	Annotations pulumi.MapInput
 	// Cluster V2 cloud credential secret name (string)
 	CloudCredentialSecretName pulumi.StringPtrInput
@@ -241,11 +246,11 @@ type ClusterV2Args struct {
 	FleetNamespace pulumi.StringPtrInput
 	// The kubernetes version of the Cluster v2 (list maxitems:1)
 	KubernetesVersion pulumi.StringInput
-	// Labels for cluster registration token object (map)
+	// Labels for the Cluster V2 (map)
 	Labels pulumi.MapInput
-	// Use rancher2_cluster_v2.local_auth_endpoint instead
+	// Cluster V2 local auth endpoint (list maxitems:1)
 	LocalAuthEndpoint ClusterV2LocalAuthEndpointPtrInput
-	// Name of cluster registration token (string)
+	// The name of the Cluster v2 (string)
 	Name pulumi.StringPtrInput
 	// The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
 	RkeConfig ClusterV2RkeConfigPtrInput
@@ -336,6 +341,86 @@ func (o ClusterV2Output) ToClusterV2Output() ClusterV2Output {
 
 func (o ClusterV2Output) ToClusterV2OutputWithContext(ctx context.Context) ClusterV2Output {
 	return o
+}
+
+// Optional Agent Env Vars for Rancher agent (list)
+func (o ClusterV2Output) AgentEnvVars() ClusterV2AgentEnvVarArrayOutput {
+	return o.ApplyT(func(v *ClusterV2) ClusterV2AgentEnvVarArrayOutput { return v.AgentEnvVars }).(ClusterV2AgentEnvVarArrayOutput)
+}
+
+// Annotations for the Cluster V2 (map)
+func (o ClusterV2Output) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Cluster V2 cloud credential secret name (string)
+func (o ClusterV2Output) CloudCredentialSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringPtrOutput { return v.CloudCredentialSecretName }).(pulumi.StringPtrOutput)
+}
+
+// (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
+func (o ClusterV2Output) ClusterRegistrationToken() ClusterV2ClusterRegistrationTokenOutput {
+	return o.ApplyT(func(v *ClusterV2) ClusterV2ClusterRegistrationTokenOutput { return v.ClusterRegistrationToken }).(ClusterV2ClusterRegistrationTokenOutput)
+}
+
+// (Computed) Cluster v1 id for cluster v2. (e.g to be used with `rancher2Sync`) (string)
+func (o ClusterV2Output) ClusterV1Id() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringOutput { return v.ClusterV1Id }).(pulumi.StringOutput)
+}
+
+// Cluster V2 default cluster role for project members (string)
+func (o ClusterV2Output) DefaultClusterRoleForProjectMembers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringPtrOutput { return v.DefaultClusterRoleForProjectMembers }).(pulumi.StringPtrOutput)
+}
+
+// Cluster V2 default pod security policy template name (string)
+func (o ClusterV2Output) DefaultPodSecurityPolicyTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringPtrOutput { return v.DefaultPodSecurityPolicyTemplateName }).(pulumi.StringPtrOutput)
+}
+
+// Enable k8s network policy at Cluster V2 (bool)
+func (o ClusterV2Output) EnableNetworkPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.BoolOutput { return v.EnableNetworkPolicy }).(pulumi.BoolOutput)
+}
+
+// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
+func (o ClusterV2Output) FleetNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringPtrOutput { return v.FleetNamespace }).(pulumi.StringPtrOutput)
+}
+
+// (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
+func (o ClusterV2Output) KubeConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringOutput { return v.KubeConfig }).(pulumi.StringOutput)
+}
+
+// The kubernetes version of the Cluster v2 (list maxitems:1)
+func (o ClusterV2Output) KubernetesVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringOutput { return v.KubernetesVersion }).(pulumi.StringOutput)
+}
+
+// Labels for the Cluster V2 (map)
+func (o ClusterV2Output) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Cluster V2 local auth endpoint (list maxitems:1)
+func (o ClusterV2Output) LocalAuthEndpoint() ClusterV2LocalAuthEndpointPtrOutput {
+	return o.ApplyT(func(v *ClusterV2) ClusterV2LocalAuthEndpointPtrOutput { return v.LocalAuthEndpoint }).(ClusterV2LocalAuthEndpointPtrOutput)
+}
+
+// The name of the Cluster v2 (string)
+func (o ClusterV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed) Cluster v2 k8s resource version (string)
+func (o ClusterV2Output) ResourceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringOutput { return v.ResourceVersion }).(pulumi.StringOutput)
+}
+
+// The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
+func (o ClusterV2Output) RkeConfig() ClusterV2RkeConfigOutput {
+	return o.ApplyT(func(v *ClusterV2) ClusterV2RkeConfigOutput { return v.RkeConfig }).(ClusterV2RkeConfigOutput)
 }
 
 type ClusterV2ArrayOutput struct{ *pulumi.OutputState }

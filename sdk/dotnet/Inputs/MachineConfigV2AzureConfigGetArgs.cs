@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class MachineConfigV2AzureConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class MachineConfigV2AzureConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
@@ -18,17 +18,37 @@ namespace Pulumi.Rancher2.Inputs
         [Input("availabilitySet")]
         public Input<string>? AvailabilitySet { get; set; }
 
+        [Input("clientId")]
+        private Input<string>? _clientId;
+
         /// <summary>
         /// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
+        public Input<string>? ClientId
+        {
+            get => _clientId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
 
         /// <summary>
         /// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Path to file with custom-data (string)
@@ -37,7 +57,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? CustomData { get; set; }
 
         /// <summary>
-        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
         /// </summary>
         [Input("diskSize")]
         public Input<string>? DiskSize { get; set; }
@@ -49,7 +69,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Dns { get; set; }
 
         /// <summary>
-        /// Docker Port. Default `2376` (string)
+        /// Port number for Docker engine. Default `2376` (string)
         /// </summary>
         [Input("dockerPort")]
         public Input<string>? DockerPort { get; set; }
@@ -67,7 +87,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? FaultDomainCount { get; set; }
 
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -109,6 +129,12 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
+        /// Only use a private IP address. Default `false` (bool)
+        /// </summary>
+        [Input("privateAddressOnly")]
+        public Input<bool>? PrivateAddressOnly { get; set; }
+
+        /// <summary>
         /// Specify a static private IP address for the machine. (string)
         /// </summary>
         [Input("privateIpAddress")]
@@ -121,13 +147,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ResourceGroup { get; set; }
 
         /// <summary>
-        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// Size for Azure Virtual Machine. Default `Standard_A2` (string)
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        /// Set the name of the ssh user (string)
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
@@ -156,17 +182,37 @@ namespace Pulumi.Rancher2.Inputs
         [Input("subnetPrefix")]
         public Input<string>? SubnetPrefix { get; set; }
 
-        /// <summary>
-        /// Azure Subscription ID (string)
-        /// </summary>
         [Input("subscriptionId")]
-        public Input<string>? SubscriptionId { get; set; }
+        private Input<string>? _subscriptionId;
 
         /// <summary>
-        /// OpenStack tenant id. Conflicts with `tenant_name` (string)
+        /// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
+        public Input<string>? SubscriptionId
+        {
+            get => _subscriptionId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _subscriptionId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("tenantId")]
-        public Input<string>? TenantId { get; set; }
+        private Input<string>? _tenantId;
+
+        /// <summary>
+        /// Azure Tenant ID (string)
+        /// </summary>
+        public Input<string>? TenantId
+        {
+            get => _tenantId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tenantId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Update domain count to use for availability set. Default `5` (string)
@@ -189,5 +235,6 @@ namespace Pulumi.Rancher2.Inputs
         public MachineConfigV2AzureConfigGetArgs()
         {
         }
+        public static new MachineConfigV2AzureConfigGetArgs Empty => new MachineConfigV2AzureConfigGetArgs();
     }
 }

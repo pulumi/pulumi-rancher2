@@ -18,11 +18,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// Machine selector label match expressions key (string)
+        /// The taint key (string)
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The taint value (string)
+        /// Rancher agent env var value (string)
         /// </summary>
         public readonly string Value;
 

@@ -17,12 +17,12 @@ public final class ProjectResourceQuotaProjectLimit {
      */
     private @Nullable String configMaps;
     /**
-     * @return Limit for limits cpu in project (string)
+     * @return CPU limit for containers (string)
      * 
      */
     private @Nullable String limitsCpu;
     /**
-     * @return Limit for limits memory in project (string)
+     * @return Memory limit for containers (string)
      * 
      */
     private @Nullable String limitsMemory;
@@ -42,12 +42,12 @@ public final class ProjectResourceQuotaProjectLimit {
      */
     private @Nullable String replicationControllers;
     /**
-     * @return Limit for requests cpu in project (string)
+     * @return CPU reservation for containers (string)
      * 
      */
     private @Nullable String requestsCpu;
     /**
-     * @return Limit for requests memory in project (string)
+     * @return Memory reservation for containers (string)
      * 
      */
     private @Nullable String requestsMemory;
@@ -82,14 +82,14 @@ public final class ProjectResourceQuotaProjectLimit {
         return Optional.ofNullable(this.configMaps);
     }
     /**
-     * @return Limit for limits cpu in project (string)
+     * @return CPU limit for containers (string)
      * 
      */
     public Optional<String> limitsCpu() {
         return Optional.ofNullable(this.limitsCpu);
     }
     /**
-     * @return Limit for limits memory in project (string)
+     * @return Memory limit for containers (string)
      * 
      */
     public Optional<String> limitsMemory() {
@@ -117,14 +117,14 @@ public final class ProjectResourceQuotaProjectLimit {
         return Optional.ofNullable(this.replicationControllers);
     }
     /**
-     * @return Limit for requests cpu in project (string)
+     * @return CPU reservation for containers (string)
      * 
      */
     public Optional<String> requestsCpu() {
         return Optional.ofNullable(this.requestsCpu);
     }
     /**
-     * @return Limit for requests memory in project (string)
+     * @return Memory reservation for containers (string)
      * 
      */
     public Optional<String> requestsMemory() {

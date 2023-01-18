@@ -19,6 +19,98 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.App;
+ * import com.pulumi.rancher2.AppArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new App(&#34;foo&#34;, AppArgs.builder()        
+ *             .answers(Map.ofEntries(
+ *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
+ *                 Map.entry(&#34;ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect&#34;, true),
+ *                 Map.entry(&#34;ingress_host&#34;, &#34;test.xip.io&#34;)
+ *             ))
+ *             .catalogName(&#34;&lt;catalog_name&gt;&#34;)
+ *             .description(&#34;Foo app&#34;)
+ *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *             .targetNamespace(&#34;&lt;namespace_name&gt;&#34;)
+ *             .templateName(&#34;&lt;template_name&gt;&#34;)
+ *             .templateVersion(&#34;&lt;template_version&gt;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Namespace;
+ * import com.pulumi.rancher2.NamespaceArgs;
+ * import com.pulumi.rancher2.inputs.NamespaceResourceQuotaArgs;
+ * import com.pulumi.rancher2.inputs.NamespaceResourceQuotaLimitArgs;
+ * import com.pulumi.rancher2.App;
+ * import com.pulumi.rancher2.AppArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooNamespace = new Namespace(&#34;fooNamespace&#34;, NamespaceArgs.builder()        
+ *             .description(&#34;Foo namespace&#34;)
+ *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *             .resourceQuota(NamespaceResourceQuotaArgs.builder()
+ *                 .limit(NamespaceResourceQuotaLimitArgs.builder()
+ *                     .limitsCpu(&#34;100m&#34;)
+ *                     .limitsMemory(&#34;100Mi&#34;)
+ *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooApp = new App(&#34;fooApp&#34;, AppArgs.builder()        
+ *             .catalogName(&#34;&lt;catalog_name&gt;&#34;)
+ *             .description(&#34;Foo app&#34;)
+ *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *             .templateName(&#34;&lt;template_name&gt;&#34;)
+ *             .templateVersion(&#34;&lt;template_version&gt;&#34;)
+ *             .targetNamespace(fooNamespace.id())
+ *             .answers(Map.ofEntries(
+ *                 Map.entry(&#34;ingress_host&#34;, &#34;test.xip.io&#34;),
+ *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
+ *                 Map.entry(&#34;ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect&#34;, true)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

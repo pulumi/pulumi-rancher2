@@ -13,19 +13,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const rancher2App = pulumi.output(rancher2.getApp({
+ * const rancher2 = rancher2.getApp({
  *     name: "foo",
  *     projectId: "<project_id>",
  *     targetNamespace: "<namespace_name>",
- * }));
+ * });
  * ```
  */
 export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getApp:getApp", {
         "annotations": args.annotations,
         "name": args.name,
@@ -108,9 +105,24 @@ export interface GetAppResult {
      */
     readonly valuesYaml: string;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 app.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const rancher2 = rancher2.getApp({
+ *     name: "foo",
+ *     projectId: "<project_id>",
+ *     targetNamespace: "<namespace_name>",
+ * });
+ * ```
+ */
 export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResult> {
-    return pulumi.output(args).apply(a => getApp(a, opts))
+    return pulumi.output(args).apply((a: any) => getApp(a, opts))
 }
 
 /**

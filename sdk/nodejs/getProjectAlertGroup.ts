@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,18 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getProjectAlertGroup({
+ * const foo = rancher2.getProjectAlertGroup({
  *     name: "<project_alert_group_name>",
  *     projectId: "<project_id>",
- * }));
+ * });
  * ```
  */
 export function getProjectAlertGroup(args: GetProjectAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", {
         "name": args.name,
         "projectId": args.projectId,
@@ -85,9 +83,23 @@ export interface GetProjectAlertGroupResult {
      */
     readonly repeatIntervalSeconds: number;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 project alert group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getProjectAlertGroup({
+ *     name: "<project_alert_group_name>",
+ *     projectId: "<project_id>",
+ * });
+ * ```
+ */
 export function getProjectAlertGroupOutput(args: GetProjectAlertGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectAlertGroupResult> {
-    return pulumi.output(args).apply(a => getProjectAlertGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectAlertGroup(a, opts))
 }
 
 /**

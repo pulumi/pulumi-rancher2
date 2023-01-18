@@ -48,14 +48,14 @@ public final class ClusterRkeConfigPrivateRegistryArgs extends com.pulumi.resour
     }
 
     /**
-     * Registry password (string)
+     * (string)
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Registry password (string)
+     * @return (string)
      * 
      */
     public Optional<Output<String>> password() {
@@ -63,14 +63,14 @@ public final class ClusterRkeConfigPrivateRegistryArgs extends com.pulumi.resour
     }
 
     /**
-     * Registry URL (string)
+     * (string)
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return Registry URL (string)
+     * @return (string)
      * 
      */
     public Output<String> url() {
@@ -78,14 +78,14 @@ public final class ClusterRkeConfigPrivateRegistryArgs extends com.pulumi.resour
     }
 
     /**
-     * Registry user (string)
+     * User to connect bastion host (string)
      * 
      */
     @Import(name="user")
     private @Nullable Output<String> user;
 
     /**
-     * @return Registry user (string)
+     * @return User to connect bastion host (string)
      * 
      */
     public Optional<Output<String>> user() {
@@ -163,7 +163,7 @@ public final class ClusterRkeConfigPrivateRegistryArgs extends com.pulumi.resour
         }
 
         /**
-         * @param password Registry password (string)
+         * @param password (string)
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ClusterRkeConfigPrivateRegistryArgs extends com.pulumi.resour
         }
 
         /**
-         * @param password Registry password (string)
+         * @param password (string)
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ClusterRkeConfigPrivateRegistryArgs extends com.pulumi.resour
         }
 
         /**
-         * @param url Registry URL (string)
+         * @param url (string)
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ClusterRkeConfigPrivateRegistryArgs extends com.pulumi.resour
         }
 
         /**
-         * @param url Registry URL (string)
+         * @param url (string)
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ClusterRkeConfigPrivateRegistryArgs extends com.pulumi.resour
         }
 
         /**
-         * @param user Registry user (string)
+         * @param user User to connect bastion host (string)
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ClusterRkeConfigPrivateRegistryArgs extends com.pulumi.resour
         }
 
         /**
-         * @param user Registry user (string)
+         * @param user User to connect bastion host (string)
          * 
          * @return builder
          * 

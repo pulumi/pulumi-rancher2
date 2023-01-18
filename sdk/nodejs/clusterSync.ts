@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -104,7 +105,7 @@ export class ClusterSync extends pulumi.CustomResource {
     }
 
     /**
-     * The Cluster ID of the node (string).
+     * The cluster ID that is syncing (string)
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
@@ -187,6 +188,8 @@ export class ClusterSync extends pulumi.CustomResource {
             resourceInputs["systemProjectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["kubeConfig"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ClusterSync.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -196,7 +199,7 @@ export class ClusterSync extends pulumi.CustomResource {
  */
 export interface ClusterSyncState {
     /**
-     * The Cluster ID of the node (string).
+     * The cluster ID that is syncing (string)
      */
     clusterId?: pulumi.Input<string>;
     /**
@@ -243,7 +246,7 @@ export interface ClusterSyncState {
  */
 export interface ClusterSyncArgs {
     /**
-     * The Cluster ID of the node (string).
+     * The cluster ID that is syncing (string)
      */
     clusterId: pulumi.Input<string>;
     /**

@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesEtcdBackupConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesEtcdBackupConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// Enable etcd backup (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? IntervalHours { get; set; }
 
         /// <summary>
-        /// Retention for etcd backup. Default `6` (int)
+        /// Cluster scan retention (int)
         /// </summary>
         [Input("retention")]
         public Input<int>? Retention { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? SafeTimestamp { get; set; }
 
         /// <summary>
-        /// RKE node drain timeout. Default: `60` (int)
+        /// Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
         /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
@@ -51,5 +51,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesEtcdBackupConfigGetArgs()
         {
         }
+        public static new ClusterRkeConfigServicesEtcdBackupConfigGetArgs Empty => new ClusterRkeConfigServicesEtcdBackupConfigGetArgs();
     }
 }

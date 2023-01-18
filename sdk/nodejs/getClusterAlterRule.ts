@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,18 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getClusterAlterRule({
+ * const foo = rancher2.getClusterAlterRule({
  *     clusterId: "<cluster_id>",
  *     name: "<cluster_alert_rule_name>",
- * }));
+ * });
  * ```
  */
 export function getClusterAlterRule(args: GetClusterAlterRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlterRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getClusterAlterRule:getClusterAlterRule", {
         "clusterId": args.clusterId,
         "labels": args.labels,
@@ -110,9 +108,23 @@ export interface GetClusterAlterRuleResult {
      */
     readonly systemServiceRule: outputs.GetClusterAlterRuleSystemServiceRule;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterAlterRule({
+ *     clusterId: "<cluster_id>",
+ *     name: "<cluster_alert_rule_name>",
+ * });
+ * ```
+ */
 export function getClusterAlterRuleOutput(args: GetClusterAlterRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAlterRuleResult> {
-    return pulumi.output(args).apply(a => getClusterAlterRule(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusterAlterRule(a, opts))
 }
 
 /**

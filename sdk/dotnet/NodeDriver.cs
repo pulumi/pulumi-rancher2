@@ -15,31 +15,29 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Node Driver
+    ///     var foo = new Rancher2.NodeDriver("foo", new()
     ///     {
-    ///         // Create a new rancher2 Node Driver
-    ///         var foo = new Rancher2.NodeDriver("foo", new Rancher2.NodeDriverArgs
+    ///         Active = true,
+    ///         Builtin = false,
+    ///         Checksum = "0x0",
+    ///         Description = "Foo description",
+    ///         ExternalId = "foo_external",
+    ///         UiUrl = "local://ui",
+    ///         Url = "local://",
+    ///         WhitelistDomains = new[]
     ///         {
-    ///             Active = true,
-    ///             Builtin = false,
-    ///             Checksum = "0x0",
-    ///             Description = "Foo description",
-    ///             ExternalId = "foo_external",
-    ///             UiUrl = "local://ui",
-    ///             Url = "local://",
-    ///             WhitelistDomains = 
-    ///             {
-    ///                 "*.foo.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "*.foo.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +49,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/nodeDriver:NodeDriver")]
-    public partial class NodeDriver : Pulumi.CustomResource
+    public partial class NodeDriver : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specify if the node driver state (bool)
@@ -163,7 +161,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class NodeDriverArgs : Pulumi.ResourceArgs
+    public sealed class NodeDriverArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify if the node driver state (bool)
@@ -252,9 +250,10 @@ namespace Pulumi.Rancher2
         public NodeDriverArgs()
         {
         }
+        public static new NodeDriverArgs Empty => new NodeDriverArgs();
     }
 
-    public sealed class NodeDriverState : Pulumi.ResourceArgs
+    public sealed class NodeDriverState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify if the node driver state (bool)
@@ -343,5 +342,6 @@ namespace Pulumi.Rancher2
         public NodeDriverState()
         {
         }
+        public static new NodeDriverState Empty => new NodeDriverState();
     }
 }

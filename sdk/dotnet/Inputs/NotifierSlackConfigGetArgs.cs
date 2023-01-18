@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NotifierSlackConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NotifierSlackConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Wechat default recipient (string)
+        /// Slack default recipient (string)
         /// </summary>
         [Input("defaultRecipient", required: true)]
         public Input<string> DefaultRecipient { get; set; } = null!;
 
         /// <summary>
-        /// Wechat proxy url (string)
+        /// Dingtalk proxy url (string)
         /// </summary>
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
 
         /// <summary>
-        /// Webhook url (string)
+        /// Dingtalk url (string)
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public NotifierSlackConfigGetArgs()
         {
         }
+        public static new NotifierSlackConfigGetArgs Empty => new NotifierSlackConfigGetArgs();
     }
 }

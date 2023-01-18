@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,18 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getProjectAlertRule({
+ * const foo = rancher2.getProjectAlertRule({
  *     name: "<project_alert_rule_name>",
  *     projectId: "<project_id>",
- * }));
+ * });
  * ```
  */
 export function getProjectAlertRule(args: GetProjectAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getProjectAlertRule:getProjectAlertRule", {
         "labels": args.labels,
         "name": args.name,
@@ -106,9 +104,23 @@ export interface GetProjectAlertRuleResult {
      */
     readonly workloadRule: outputs.GetProjectAlertRuleWorkloadRule;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 project alert rule.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getProjectAlertRule({
+ *     name: "<project_alert_rule_name>",
+ *     projectId: "<project_id>",
+ * });
+ * ```
+ */
 export function getProjectAlertRuleOutput(args: GetProjectAlertRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectAlertRuleResult> {
-    return pulumi.output(args).apply(a => getProjectAlertRule(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectAlertRule(a, opts))
 }
 
 /**

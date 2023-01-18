@@ -24,17 +24,17 @@ public final class ClusterRkeConfigPrivateRegistry {
      */
     private @Nullable Boolean isDefault;
     /**
-     * @return Registry password (string)
+     * @return (string)
      * 
      */
     private @Nullable String password;
     /**
-     * @return Registry URL (string)
+     * @return (string)
      * 
      */
     private String url;
     /**
-     * @return Registry user (string)
+     * @return User to connect bastion host (string)
      * 
      */
     private @Nullable String user;
@@ -55,21 +55,21 @@ public final class ClusterRkeConfigPrivateRegistry {
         return Optional.ofNullable(this.isDefault);
     }
     /**
-     * @return Registry password (string)
+     * @return (string)
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return Registry URL (string)
+     * @return (string)
      * 
      */
     public String url() {
         return this.url;
     }
     /**
-     * @return Registry user (string)
+     * @return User to connect bastion host (string)
      * 
      */
     public Optional<String> user() {

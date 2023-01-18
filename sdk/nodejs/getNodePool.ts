@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getNodePool(args: GetNodePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetNodePoolResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getNodePool:getNodePool", {
         "clusterId": args.clusterId,
         "name": args.name,
@@ -99,9 +97,23 @@ export interface GetNodePoolResult {
      */
     readonly worker: boolean;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 Node Pool resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getNodePool({
+ *     clusterId: rancher2_cluster["foo-custom"].id,
+ *     name: "foo",
+ * });
+ * ```
+ */
 export function getNodePoolOutput(args: GetNodePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodePoolResult> {
-    return pulumi.output(args).apply(a => getNodePool(a, opts))
+    return pulumi.output(args).apply((a: any) => getNodePool(a, opts))
 }
 
 /**

@@ -13,17 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getClusterDriver({
+ * const foo = rancher2.getClusterDriver({
  *     name: "foo",
- * }));
+ * });
  * ```
  */
 export function getClusterDriver(args: GetClusterDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterDriverResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getClusterDriver:getClusterDriver", {
         "name": args.name,
         "url": args.url,
@@ -87,9 +84,22 @@ export interface GetClusterDriverResult {
      */
     readonly whitelistDomains: string[];
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterDriver({
+ *     name: "foo",
+ * });
+ * ```
+ */
 export function getClusterDriverOutput(args: GetClusterDriverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterDriverResult> {
-    return pulumi.output(args).apply(a => getClusterDriver(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusterDriver(a, opts))
 }
 
 /**

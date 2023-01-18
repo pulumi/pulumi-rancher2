@@ -18,15 +18,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Datacenters;
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Registry password (string)
+        /// (string)
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// Port for node. Default `22` (string)
+        /// Port for bastion host. Default `22` (string)
         /// </summary>
         public readonly string? Port;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? SoapRoundtripCount;
         /// <summary>
-        /// Registry user (string)
+        /// User to connect bastion host (string)
         /// </summary>
         public readonly string User;
 

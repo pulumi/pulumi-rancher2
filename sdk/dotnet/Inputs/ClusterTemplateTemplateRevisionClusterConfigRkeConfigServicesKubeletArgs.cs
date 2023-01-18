@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs : global::Pulumi.ResourceArgs
     {
         [Input("clusterDnsServer")]
         public Input<string>? ClusterDnsServer { get; set; }
@@ -57,5 +57,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs();
     }
 }

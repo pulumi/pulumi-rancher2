@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigDnsUpdateStrategyGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigDnsUpdateStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Monitoring deployment rolling update (list Maxitems: 1)
+        /// Monitoring daemon set rolling update (list Maxitems: 1)
         /// </summary>
         [Input("rollingUpdate")]
         public Input<Inputs.ClusterRkeConfigDnsUpdateStrategyRollingUpdateGetArgs>? RollingUpdate { get; set; }
 
         /// <summary>
-        /// Monitoring deployment update strategy (string)
+        /// RKE strategy for authentication (string)
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigDnsUpdateStrategyGetArgs()
         {
         }
+        public static new ClusterRkeConfigDnsUpdateStrategyGetArgs Empty => new ClusterRkeConfigDnsUpdateStrategyGetArgs();
     }
 }

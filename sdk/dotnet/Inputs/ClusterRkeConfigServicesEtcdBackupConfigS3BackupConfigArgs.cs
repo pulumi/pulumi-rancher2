@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The AWS Client ID to use (string)
-        /// </summary>
         [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        private Input<string>? _accessKey;
+
+        /// <summary>
+        /// Access key for S3 service (string)
+        /// </summary>
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Bucket name for S3 service (string)
@@ -37,25 +47,36 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Endpoint { get; set; } = null!;
 
         /// <summary>
-        /// Folder for S3 service. Available from Rancher v2.2.7 (string)
+        /// (string)
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
 
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        /// <summary>
-        /// The AWS Client Secret associated with the Client ID (string)
-        /// </summary>
         [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        private Input<string>? _secretKey;
+
+        /// <summary>
+        /// Secret key for S3 service (string)
+        /// </summary>
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs()
         {
         }
+        public static new ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs Empty => new ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs();
     }
 }

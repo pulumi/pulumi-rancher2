@@ -15,17 +15,17 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher2 configMap v2. ConfigMap v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Task<GetConfigMapV2Result> InvokeAsync(GetConfigMapV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigMapV2Result>("rancher2:index/getConfigMapV2:getConfigMapV2", args ?? new GetConfigMapV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConfigMapV2Result>("rancher2:index/getConfigMapV2:getConfigMapV2", args ?? new GetConfigMapV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher2 configMap v2. ConfigMap v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Output<GetConfigMapV2Result> Invoke(GetConfigMapV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConfigMapV2Result>("rancher2:index/getConfigMapV2:getConfigMapV2", args ?? new GetConfigMapV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetConfigMapV2Result>("rancher2:index/getConfigMapV2:getConfigMapV2", args ?? new GetConfigMapV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetConfigMapV2Args : Pulumi.InvokeArgs
+    public sealed class GetConfigMapV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id of the configMap V2 (string)
@@ -48,9 +48,10 @@ namespace Pulumi.Rancher2
         public GetConfigMapV2Args()
         {
         }
+        public static new GetConfigMapV2Args Empty => new GetConfigMapV2Args();
     }
 
-    public sealed class GetConfigMapV2InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConfigMapV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id of the configMap V2 (string)
@@ -73,6 +74,7 @@ namespace Pulumi.Rancher2
         public GetConfigMapV2InvokeArgs()
         {
         }
+        public static new GetConfigMapV2InvokeArgs Empty => new GetConfigMapV2InvokeArgs();
     }
 
 

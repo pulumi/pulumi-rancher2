@@ -20,7 +20,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode {
     private @Nullable String hostnameOverride;
     private @Nullable String internalAddress;
     /**
-     * @return Labels for the cluster template revision (map)
+     * @return Labels for the cluster template (map)
      * 
      */
     private @Nullable Map<String,Object> labels;
@@ -46,7 +46,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode {
         return Optional.ofNullable(this.internalAddress);
     }
     /**
-     * @return Labels for the cluster template revision (map)
+     * @return Labels for the cluster template (map)
      * 
      */
     public Map<String,Object> labels() {

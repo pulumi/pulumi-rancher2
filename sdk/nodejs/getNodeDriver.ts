@@ -13,17 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getNodeDriver({
+ * const foo = rancher2.getNodeDriver({
  *     name: "foo",
- * }));
+ * });
  * ```
  */
 export function getNodeDriver(args: GetNodeDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeDriverResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getNodeDriver:getNodeDriver", {
         "name": args.name,
         "url": args.url,
@@ -91,9 +88,22 @@ export interface GetNodeDriverResult {
      */
     readonly whitelistDomains: string[];
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getNodeDriver({
+ *     name: "foo",
+ * });
+ * ```
+ */
 export function getNodeDriverOutput(args: GetNodeDriverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeDriverResult> {
-    return pulumi.output(args).apply(a => getNodeDriver(a, opts))
+    return pulumi.output(args).apply((a: any) => getNodeDriver(a, opts))
 }
 
 /**

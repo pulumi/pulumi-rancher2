@@ -34,15 +34,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExternalUrls;
         /// <summary>
-        /// Extra arguments for scheduler service (map)
+        /// Extra arguments for RKE Ingress (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? ExtraArgs;
         /// <summary>
-        /// Extra binds for scheduler service (list)
+        /// Extra binds for etcd service (list)
         /// </summary>
         public readonly ImmutableArray<string> ExtraBinds;
         /// <summary>
-        /// Extra environment for scheduler service (list)
+        /// Extra environment for etcd service (list)
         /// </summary>
         public readonly ImmutableArray<string> ExtraEnvs;
         /// <summary>
@@ -50,19 +50,19 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? Gid;
         /// <summary>
-        /// Docker image for scheduler service (string)
+        /// Docker image for etcd service (string)
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// The GKE taint key (string)
+        /// The toleration key (string)
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        /// Path for etcd service (string)
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// Retention for etcd backup. Default `6` (int)
+        /// Cluster scan retention (int)
         /// </summary>
         public readonly string? Retention;
         /// <summary>

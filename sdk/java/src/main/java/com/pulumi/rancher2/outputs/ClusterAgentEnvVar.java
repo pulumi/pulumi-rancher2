@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class ClusterAgentEnvVar {
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     private String name;
     /**
-     * @return The GKE taint value (string)
+     * @return Rancher agent env var value (string)
      * 
      */
     private String value;
 
     private ClusterAgentEnvVar() {}
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The GKE taint value (string)
+     * @return Rancher agent env var value (string)
      * 
      */
     public String value() {

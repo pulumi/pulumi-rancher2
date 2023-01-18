@@ -51,14 +51,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs extends
     }
 
     /**
-     * The GKE cluster network. Required for create new cluster (string)
+     * Kubernetes cluster networking (list maxitems:1)
      * 
      */
     @Import(name="network")
     private @Nullable Output<ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs> network;
 
     /**
-     * @return The GKE cluster network. Required for create new cluster (string)
+     * @return Kubernetes cluster networking (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs>> network() {
@@ -166,7 +166,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs extends
         }
 
         /**
-         * @param network The GKE cluster network. Required for create new cluster (string)
+         * @param network Kubernetes cluster networking (list maxitems:1)
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs extends
         }
 
         /**
-         * @param network The GKE cluster network. Required for create new cluster (string)
+         * @param network Kubernetes cluster networking (list maxitems:1)
          * 
          * @return builder
          * 

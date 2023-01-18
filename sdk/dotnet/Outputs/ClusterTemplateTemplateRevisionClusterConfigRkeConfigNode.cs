@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string? HostnameOverride;
         public readonly string? InternalAddress;
         /// <summary>
-        /// Labels for the cluster template revision (map)
+        /// Labels for the cluster template (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         public readonly string? NodeId;

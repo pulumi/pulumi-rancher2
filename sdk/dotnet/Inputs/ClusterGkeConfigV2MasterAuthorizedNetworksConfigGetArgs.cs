@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2MasterAuthorizedNetworksConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2MasterAuthorizedNetworksConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cidrBlocks", required: true)]
         private InputList<Inputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockGetArgs>? _cidrBlocks;
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// Enable etcd backup (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2MasterAuthorizedNetworksConfigGetArgs()
         {
         }
+        public static new ClusterGkeConfigV2MasterAuthorizedNetworksConfigGetArgs Empty => new ClusterGkeConfigV2MasterAuthorizedNetworksConfigGetArgs();
     }
 }

@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2IpAllocationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2IpAllocationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The GKE cluster ip v4 allocation cidr block (string)
+        /// The GKE ip v4 cidr block (string)
         /// </summary>
         [Input("clusterIpv4CidrBlock")]
         public Input<string>? ClusterIpv4CidrBlock { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? SubnetworkName { get; set; }
 
         /// <summary>
-        /// Use GKE ip aliases? Default: `true` (bool)
+        /// Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
         /// </summary>
         [Input("useIpAliases")]
         public Input<bool>? UseIpAliases { get; set; }
@@ -63,5 +63,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2IpAllocationPolicyArgs()
         {
         }
+        public static new ClusterGkeConfigV2IpAllocationPolicyArgs Empty => new ClusterGkeConfigV2IpAllocationPolicyArgs();
     }
 }
