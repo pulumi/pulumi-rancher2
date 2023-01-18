@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NotifierPagerdutyConfig
     {
         /// <summary>
-        /// Wechat proxy url (string)
+        /// Dingtalk proxy url (string)
         /// </summary>
         public readonly string? ProxyUrl;
         /// <summary>

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (list maxitems:1)
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs>? Global { get; set; }
 
         /// <summary>
-        /// The GKE cluster network. Required for create new cluster (string)
+        /// Kubernetes cluster networking (list maxitems:1)
         /// </summary>
         [Input("network")]
         public Input<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs>? Network { get; set; }
@@ -51,5 +51,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigCloudProviderVsphereCloudProviderArgs()
         {
         }
+        public static new ClusterRkeConfigCloudProviderVsphereCloudProviderArgs Empty => new ClusterRkeConfigCloudProviderVsphereCloudProviderArgs();
     }
 }

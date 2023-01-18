@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigIngressUpdateStrategy {
     /**
-     * @return Monitoring deployment rolling update (list Maxitems: 1)
+     * @return Monitoring daemon set rolling update (list Maxitems: 1)
      * 
      */
     private @Nullable ClusterRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate;
     /**
-     * @return Monitoring deployment update strategy (string)
+     * @return RKE strategy for authentication (string)
      * 
      */
     private @Nullable String strategy;
 
     private ClusterRkeConfigIngressUpdateStrategy() {}
     /**
-     * @return Monitoring deployment rolling update (list Maxitems: 1)
+     * @return Monitoring daemon set rolling update (list Maxitems: 1)
      * 
      */
     public Optional<ClusterRkeConfigIngressUpdateStrategyRollingUpdate> rollingUpdate() {
         return Optional.ofNullable(this.rollingUpdate);
     }
     /**
-     * @return Monitoring deployment update strategy (string)
+     * @return RKE strategy for authentication (string)
      * 
      */
     public Optional<String> strategy() {

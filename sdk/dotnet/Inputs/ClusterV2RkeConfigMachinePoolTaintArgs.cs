@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigMachinePoolTaintArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigMachinePoolTaintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The taint effect. Default: `\"NoExecute\"` (string)
@@ -19,13 +19,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Effect { get; set; }
 
         /// <summary>
-        /// Machine selector label match expressions key (string)
+        /// The taint key (string)
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The taint value (string)
+        /// Rancher agent env var value (string)
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigMachinePoolTaintArgs()
         {
         }
+        public static new ClusterV2RkeConfigMachinePoolTaintArgs Empty => new ClusterV2RkeConfigMachinePoolTaintArgs();
     }
 }

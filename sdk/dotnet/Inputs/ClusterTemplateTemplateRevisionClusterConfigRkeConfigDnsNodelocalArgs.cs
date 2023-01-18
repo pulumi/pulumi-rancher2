@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs : global::Pulumi.ResourceArgs
     {
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -26,5 +26,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs();
     }
 }

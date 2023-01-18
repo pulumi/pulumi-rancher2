@@ -101,7 +101,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * Cluster V2 local auth endpoint (list maxitems:1)
      * 
      * @deprecated
      * Use rancher2_cluster_v2.local_auth_endpoint instead
@@ -112,7 +112,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<ClusterV2RkeConfigLocalAuthEndpointArgs> localAuthEndpoint;
 
     /**
-     * @return Use rancher2_cluster_v2.local_auth_endpoint instead
+     * @return Cluster V2 local auth endpoint (list maxitems:1)
      * 
      * @deprecated
      * Use rancher2_cluster_v2.local_auth_endpoint instead
@@ -354,7 +354,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param localAuthEndpoint Use rancher2_cluster_v2.local_auth_endpoint instead
+         * @param localAuthEndpoint Cluster V2 local auth endpoint (list maxitems:1)
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param localAuthEndpoint Use rancher2_cluster_v2.local_auth_endpoint instead
+         * @param localAuthEndpoint Cluster V2 local auth endpoint (list maxitems:1)
          * 
          * @return builder
          * 

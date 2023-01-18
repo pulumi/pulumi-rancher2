@@ -78,14 +78,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     public Optional<Output<String>> diskSize() {
@@ -108,14 +108,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Docker Port. Default `2376` (string)
+     * Port number for Docker engine. Default `2376` (string)
      * 
      */
     @Import(name="dockerPort")
     private @Nullable Output<String> dockerPort;
 
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Port number for Docker engine. Default `2376` (string)
      * 
      */
     public Optional<Output<String>> dockerPort() {
@@ -153,14 +153,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     public Optional<Output<String>> image() {
@@ -243,6 +243,21 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Only use a private IP address. Default `false` (bool)
+     * 
+     */
+    @Import(name="privateAddressOnly")
+    private @Nullable Output<Boolean> privateAddressOnly;
+
+    /**
+     * @return Only use a private IP address. Default `false` (bool)
+     * 
+     */
+    public Optional<Output<Boolean>> privateAddressOnly() {
+        return Optional.ofNullable(this.privateAddressOnly);
+    }
+
+    /**
      * Specify a static private IP address for the machine. (string)
      * 
      */
@@ -273,14 +288,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * Size for Azure Virtual Machine. Default `Standard_A2` (string)
      * 
      */
     @Import(name="size")
     private @Nullable Output<String> size;
 
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
      * 
      */
     public Optional<Output<String>> size() {
@@ -288,14 +303,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * Set the name of the ssh user (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -363,14 +378,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Azure Subscription ID (string)
+     * Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     @Import(name="subscriptionId")
     private @Nullable Output<String> subscriptionId;
 
     /**
-     * @return Azure Subscription ID (string)
+     * @return Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     public Optional<Output<String>> subscriptionId() {
@@ -378,14 +393,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * Azure Tenant ID (string)
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * @return Azure Tenant ID (string)
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -455,6 +470,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         this.noPublicIp = $.noPublicIp;
         this.nsg = $.nsg;
         this.openPorts = $.openPorts;
+        this.privateAddressOnly = $.privateAddressOnly;
         this.privateIpAddress = $.privateIpAddress;
         this.resourceGroup = $.resourceGroup;
         this.size = $.size;
@@ -573,7 +589,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
+         * @param diskSize Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
          * 
          * @return builder
          * 
@@ -584,7 +600,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
+         * @param diskSize Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
          * 
          * @return builder
          * 
@@ -615,7 +631,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dockerPort Docker Port. Default `2376` (string)
+         * @param dockerPort Port number for Docker engine. Default `2376` (string)
          * 
          * @return builder
          * 
@@ -626,7 +642,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dockerPort Docker Port. Default `2376` (string)
+         * @param dockerPort Port number for Docker engine. Default `2376` (string)
          * 
          * @return builder
          * 
@@ -678,7 +694,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
          * 
          * @return builder
          * 
@@ -689,7 +705,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
          * 
          * @return builder
          * 
@@ -814,6 +830,27 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param privateAddressOnly Only use a private IP address. Default `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAddressOnly(@Nullable Output<Boolean> privateAddressOnly) {
+            $.privateAddressOnly = privateAddressOnly;
+            return this;
+        }
+
+        /**
+         * @param privateAddressOnly Only use a private IP address. Default `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAddressOnly(Boolean privateAddressOnly) {
+            return privateAddressOnly(Output.of(privateAddressOnly));
+        }
+
+        /**
          * @param privateIpAddress Specify a static private IP address for the machine. (string)
          * 
          * @return builder
@@ -856,7 +893,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param size Digital Ocean size. Default `s-1vcpu-1gb` (string)
+         * @param size Size for Azure Virtual Machine. Default `Standard_A2` (string)
          * 
          * @return builder
          * 
@@ -867,7 +904,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param size Digital Ocean size. Default `s-1vcpu-1gb` (string)
+         * @param size Size for Azure Virtual Machine. Default `Standard_A2` (string)
          * 
          * @return builder
          * 
@@ -877,7 +914,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * @param sshUser Set the name of the ssh user (string)
          * 
          * @return builder
          * 
@@ -888,7 +925,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * @param sshUser Set the name of the ssh user (string)
          * 
          * @return builder
          * 
@@ -982,7 +1019,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param subscriptionId Azure Subscription ID (string)
+         * @param subscriptionId Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
          * 
          * @return builder
          * 
@@ -993,7 +1030,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param subscriptionId Azure Subscription ID (string)
+         * @param subscriptionId Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
          * 
          * @return builder
          * 
@@ -1003,7 +1040,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tenantId OpenStack tenant id. Conflicts with `tenant_name` (string)
+         * @param tenantId Azure Tenant ID (string)
          * 
          * @return builder
          * 
@@ -1014,7 +1051,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tenantId OpenStack tenant id. Conflicts with `tenant_name` (string)
+         * @param tenantId Azure Tenant ID (string)
          * 
          * @return builder
          * 

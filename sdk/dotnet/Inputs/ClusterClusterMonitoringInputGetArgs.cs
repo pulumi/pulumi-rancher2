@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterClusterMonitoringInputGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterMonitoringInputGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("answers")]
         private InputMap<object>? _answers;
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// RKE2 kubernetes version (string)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterClusterMonitoringInputGetArgs()
         {
         }
+        public static new ClusterClusterMonitoringInputGetArgs Empty => new ClusterClusterMonitoringInputGetArgs();
     }
 }

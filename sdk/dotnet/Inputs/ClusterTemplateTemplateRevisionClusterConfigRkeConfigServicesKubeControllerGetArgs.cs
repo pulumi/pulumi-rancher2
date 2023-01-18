@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("clusterCidr")]
         public Input<string>? ClusterCidr { get; set; }
@@ -48,5 +48,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerGetArgs();
     }
 }

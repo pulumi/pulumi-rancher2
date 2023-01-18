@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesKubeApiArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesKubeApiArgs : global::Pulumi.ResourceArgs
     {
         [Input("admissionConfiguration")]
         private InputMap<object>? _admissionConfiguration;
@@ -46,7 +46,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _extraArgs;
 
         /// <summary>
-        /// Extra arguments for scheduler service (map)
+        /// Extra arguments for RKE Ingress (map)
         /// </summary>
         public InputMap<object> ExtraArgs
         {
@@ -58,7 +58,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _extraBinds;
 
         /// <summary>
-        /// Extra binds for scheduler service (list)
+        /// Extra binds for etcd service (list)
         /// </summary>
         public InputList<string> ExtraBinds
         {
@@ -70,7 +70,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _extraEnvs;
 
         /// <summary>
-        /// Extra environment for scheduler service (list)
+        /// Extra environment for etcd service (list)
         /// </summary>
         public InputList<string> ExtraEnvs
         {
@@ -79,7 +79,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Docker image for scheduler service (string)
+        /// Docker image for etcd service (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -97,7 +97,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs>? SecretsEncryptionConfig { get; set; }
 
         /// <summary>
-        /// Service Cluster ip Range option for kube controller service (string)
+        /// Service Cluster IP Range option for kube API service (string)
         /// </summary>
         [Input("serviceClusterIpRange")]
         public Input<string>? ServiceClusterIpRange { get; set; }
@@ -111,5 +111,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesKubeApiArgs()
         {
         }
+        public static new ClusterRkeConfigServicesKubeApiArgs Empty => new ClusterRkeConfigServicesKubeApiArgs();
     }
 }

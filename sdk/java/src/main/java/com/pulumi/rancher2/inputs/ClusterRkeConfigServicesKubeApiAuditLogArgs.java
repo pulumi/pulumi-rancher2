@@ -17,14 +17,14 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogArgs extends com.pulum
     public static final ClusterRkeConfigServicesKubeApiAuditLogArgs Empty = new ClusterRkeConfigServicesKubeApiAuditLogArgs();
 
     /**
-     * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     * Audit log configuration. (list maxitems: 1)
      * 
      */
     @Import(name="configuration")
     private @Nullable Output<ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs> configuration;
 
     /**
-     * @return Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     * @return Audit log configuration. (list maxitems: 1)
      * 
      */
     public Optional<Output<ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs>> configuration() {
@@ -32,14 +32,14 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogArgs extends com.pulum
     }
 
     /**
-     * Enable scheduled cluster scan. Default: `false` (bool)
+     * Enable etcd backup (bool)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable scheduled cluster scan. Default: `false` (bool)
+     * @return Enable etcd backup (bool)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -72,7 +72,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogArgs extends com.pulum
         }
 
         /**
-         * @param configuration Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+         * @param configuration Audit log configuration. (list maxitems: 1)
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogArgs extends com.pulum
         }
 
         /**
-         * @param configuration Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+         * @param configuration Audit log configuration. (list maxitems: 1)
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogArgs extends com.pulum
         }
 
         /**
-         * @param enabled Enable scheduled cluster scan. Default: `false` (bool)
+         * @param enabled Enable etcd backup (bool)
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogArgs extends com.pulum
         }
 
         /**
-         * @param enabled Enable scheduled cluster scan. Default: `false` (bool)
+         * @param enabled Enable etcd backup (bool)
          * 
          * @return builder
          * 

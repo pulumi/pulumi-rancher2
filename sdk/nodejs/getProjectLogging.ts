@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,17 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getProjectLogging({
+ * const foo = rancher2.getProjectLogging({
  *     projectId: "<project_id>",
- * }));
+ * });
  * ```
  */
 export function getProjectLogging(args: GetProjectLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectLoggingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getProjectLogging:getProjectLogging", {
         "projectId": args.projectId,
     }, opts);
@@ -100,9 +98,22 @@ export interface GetProjectLoggingResult {
      */
     readonly syslogConfig: outputs.GetProjectLoggingSyslogConfig;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 Project Logging.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getProjectLogging({
+ *     projectId: "<project_id>",
+ * });
+ * ```
+ */
 export function getProjectLoggingOutput(args: GetProjectLoggingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectLoggingResult> {
-    return pulumi.output(args).apply(a => getProjectLogging(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectLogging(a, opts))
 }
 
 /**

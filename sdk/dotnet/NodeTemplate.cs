@@ -12,163 +12,159 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
     /// 
-    /// amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.
+    /// amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, outscale, hetzner and vsphere drivers are supported for node templates.
     /// 
     /// **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
     /// 
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Node Template up to Rancher 2.1.x
+    ///     var foo = new Rancher2.NodeTemplate("foo", new()
     ///     {
-    ///         // Create a new rancher2 Node Template up to Rancher 2.1.x
-    ///         var foo = new Rancher2.NodeTemplate("foo", new Rancher2.NodeTemplateArgs
+    ///         Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
     ///         {
-    ///             Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
+    ///             AccessKey = "AWS_ACCESS_KEY",
+    ///             Ami = "&lt;AMI_ID&gt;",
+    ///             Region = "&lt;REGION&gt;",
+    ///             SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///             SecurityGroups = new[]
     ///             {
-    ///                 AccessKey = "AWS_ACCESS_KEY",
-    ///                 Ami = "&lt;AMI_ID&gt;",
-    ///                 Region = "&lt;REGION&gt;",
-    ///                 SecretKey = "&lt;AWS_SECRET_KEY&gt;",
-    ///                 SecurityGroups = 
-    ///                 {
-    ///                     "&lt;AWS_SECURITY_GROUP&gt;",
-    ///                 },
-    ///                 SubnetId = "&lt;SUBNET_ID&gt;",
-    ///                 VpcId = "&lt;VPC_ID&gt;",
-    ///                 Zone = "&lt;ZONE&gt;",
+    ///                 "&lt;AWS_SECURITY_GROUP&gt;",
     ///             },
-    ///             Description = "foo test",
-    ///         });
-    ///     }
+    ///             SubnetId = "&lt;SUBNET_ID&gt;",
+    ///             VpcId = "&lt;VPC_ID&gt;",
+    ///             Zone = "&lt;ZONE&gt;",
+    ///         },
+    ///         Description = "foo test",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Node Template from Rancher 2.2.x
+    ///     var fooCloudCredential = new Rancher2.CloudCredential("fooCloudCredential", new()
     ///     {
-    ///         // Create a new rancher2 Node Template from Rancher 2.2.x
-    ///         var fooCloudCredential = new Rancher2.CloudCredential("fooCloudCredential", new Rancher2.CloudCredentialArgs
+    ///         Description = "foo test",
+    ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
     ///         {
-    ///             Description = "foo test",
-    ///             Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
-    ///             {
-    ///                 AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
-    ///                 SecretKey = "&lt;AWS_SECRET_KEY&gt;",
-    ///             },
-    ///         });
-    ///         var fooNodeTemplate = new Rancher2.NodeTemplate("fooNodeTemplate", new Rancher2.NodeTemplateArgs
-    ///         {
-    ///             Description = "foo test",
-    ///             CloudCredentialId = fooCloudCredential.Id,
-    ///             Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
-    ///             {
-    ///                 Ami = "&lt;AMI_ID&gt;",
-    ///                 Region = "&lt;REGION&gt;",
-    ///                 SecurityGroups = 
-    ///                 {
-    ///                     "&lt;AWS_SECURITY_GROUP&gt;",
-    ///                 },
-    ///                 SubnetId = "&lt;SUBNET_ID&gt;",
-    ///                 VpcId = "&lt;VPC_ID&gt;",
-    ///                 Zone = "&lt;ZONE&gt;",
-    ///             },
-    ///         });
-    ///     }
+    ///             AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
+    ///             SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var fooNodeTemplate = new Rancher2.NodeTemplate("fooNodeTemplate", new()
+    ///     {
+    ///         Description = "foo test",
+    ///         CloudCredentialId = fooCloudCredential.Id,
+    ///         Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
+    ///         {
+    ///             Ami = "&lt;AMI_ID&gt;",
+    ///             Region = "&lt;REGION&gt;",
+    ///             SecurityGroups = new[]
+    ///             {
+    ///                 "&lt;AWS_SECURITY_GROUP&gt;",
+    ///             },
+    ///             SubnetId = "&lt;SUBNET_ID&gt;",
+    ///             VpcId = "&lt;VPC_ID&gt;",
+    ///             Zone = "&lt;ZONE&gt;",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Using the Harvester Node Driver
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo_harvesterClusterV2 = Rancher2.GetClusterV2.Invoke(new()
     ///     {
-    ///         var foo_harvesterClusterV2 = Output.Create(Rancher2.GetClusterV2.InvokeAsync(new Rancher2.GetClusterV2Args
-    ///         {
-    ///             Name = "foo-harvester",
-    ///         }));
-    ///         // Create a new Cloud Credential for an imported Harvester cluster
-    ///         var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvesterCloudCredential", new Rancher2.CloudCredentialArgs
-    ///         {
-    ///             HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
-    ///             {
-    ///                 ClusterId = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.ClusterV1Id),
-    ///                 ClusterType = "imported",
-    ///                 KubeconfigContent = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.KubeConfig),
-    ///             },
-    ///         });
-    ///         // Create a new rancher2 Node Template using harvester node_driver
-    ///         var foo_harvesterNodeTemplate = new Rancher2.NodeTemplate("foo-harvesterNodeTemplate", new Rancher2.NodeTemplateArgs
-    ///         {
-    ///             CloudCredentialId = foo_harvesterCloudCredential.Id,
-    ///             EngineInstallUrl = "https://releases.rancher.com/install-docker/20.10.sh",
-    ///             HarvesterConfig = new Rancher2.Inputs.NodeTemplateHarvesterConfigArgs
-    ///             {
-    ///                 VmNamespace = "default",
-    ///                 CpuCount = "2",
-    ///                 MemorySize = "4",
-    ///                 DiskSize = "40",
-    ///                 NetworkName = "harvester-public/vlan1",
-    ///                 ImageName = "harvester-public/image-57hzg",
-    ///                 SshUser = "ubuntu",
-    ///             },
-    ///         });
-    ///     }
+    ///         Name = "foo-harvester",
+    ///     });
     /// 
-    /// }
+    ///     // Create a new Cloud Credential for an imported Harvester cluster
+    ///     var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvesterCloudCredential", new()
+    ///     {
+    ///         HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
+    ///         {
+    ///             ClusterId = foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result).Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.ClusterV1Id)),
+    ///             ClusterType = "imported",
+    ///             KubeconfigContent = foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result).Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.KubeConfig)),
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Node Template using harvester node_driver
+    ///     var foo_harvesterNodeTemplate = new Rancher2.NodeTemplate("foo-harvesterNodeTemplate", new()
+    ///     {
+    ///         CloudCredentialId = foo_harvesterCloudCredential.Id,
+    ///         EngineInstallUrl = "https://releases.rancher.com/install-docker/20.10.sh",
+    ///         HarvesterConfig = new Rancher2.Inputs.NodeTemplateHarvesterConfigArgs
+    ///         {
+    ///             VmNamespace = "default",
+    ///             CpuCount = "2",
+    ///             MemorySize = "4",
+    ///             DiskSize = "40",
+    ///             NetworkName = "harvester-public/vlan1",
+    ///             ImageName = "harvester-public/image-57hzg",
+    ///             SshUser = "ubuntu",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Using the Hetzner Node Driver
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Node Template using hetzner node_driver
+    ///     var hetznerNodeDriver = new Rancher2.NodeDriver("hetznerNodeDriver", new()
     ///     {
-    ///         // Create a new rancher2 Node Template using hetzner node_driver
-    ///         var hetznerNodeDriver = new Rancher2.NodeDriver("hetznerNodeDriver", new Rancher2.NodeDriverArgs
+    ///         Active = true,
+    ///         Builtin = false,
+    ///         UiUrl = "https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
+    ///         Url = "https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz",
+    ///         WhitelistDomains = new[]
     ///         {
-    ///             Active = true,
-    ///             Builtin = false,
-    ///             UiUrl = "https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
-    ///             Url = "https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz",
-    ///             WhitelistDomains = 
-    ///             {
-    ///                 "storage.googleapis.com",
-    ///             },
-    ///         });
-    ///         var myHetznerNodeTemplate = new Rancher2.NodeTemplate("myHetznerNodeTemplate", new Rancher2.NodeTemplateArgs
-    ///         {
-    ///             DriverId = hetznerNodeDriver.Id,
-    ///             HetznerConfig = new Rancher2.Inputs.NodeTemplateHetznerConfigArgs
-    ///             {
-    ///                 ApiToken = "XXXXXXXXXX",
-    ///                 Image = "ubuntu-18.04",
-    ///                 ServerLocation = "nbg1",
-    ///                 ServerType = "cx11",
-    ///             },
-    ///         });
-    ///     }
+    ///             "storage.googleapis.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var myHetznerNodeTemplate = new Rancher2.NodeTemplate("myHetznerNodeTemplate", new()
+    ///     {
+    ///         DriverId = hetznerNodeDriver.Id,
+    ///         HetznerConfig = new Rancher2.Inputs.NodeTemplateHetznerConfigArgs
+    ///         {
+    ///             ApiToken = "XXXXXXXXXX",
+    ///             Image = "ubuntu-18.04",
+    ///             ServerLocation = "nbg1",
+    ///             ServerType = "cx11",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -180,7 +176,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/nodeTemplate:NodeTemplate")]
-    public partial class NodeTemplate : Pulumi.CustomResource
+    public partial class NodeTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// AWS config for the Node Template (list maxitems:1)
@@ -333,6 +329,12 @@ namespace Pulumi.Rancher2
         public Output<Outputs.NodeTemplateOpenstackConfig?> OpenstackConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Outscale config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Output("outscaleConfig")]
+        public Output<Outputs.NodeTemplateOutscaleConfig?> OutscaleConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Engine storage driver for the node template (bool)
         /// </summary>
         [Output("useInternalIpAddress")]
@@ -367,6 +369,11 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "authCertificateAuthority",
+                    "authKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -388,7 +395,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class NodeTemplateArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AWS config for the Node Template (list maxitems:1)
@@ -408,17 +415,37 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        [Input("authCertificateAuthority")]
+        private Input<string>? _authCertificateAuthority;
+
         /// <summary>
         /// Auth certificate authority for the Node Template (string)
         /// </summary>
-        [Input("authCertificateAuthority")]
-        public Input<string>? AuthCertificateAuthority { get; set; }
+        public Input<string>? AuthCertificateAuthority
+        {
+            get => _authCertificateAuthority;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authCertificateAuthority = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("authKey")]
+        private Input<string>? _authKey;
 
         /// <summary>
         /// Auth key for the Node Template (string)
         /// </summary>
-        [Input("authKey")]
-        public Input<string>? AuthKey { get; set; }
+        public Input<string>? AuthKey
+        {
+            get => _authKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Azure config for the Node Template (list maxitems:1)
@@ -583,6 +610,12 @@ namespace Pulumi.Rancher2
         public Input<Inputs.NodeTemplateOpenstackConfigArgs>? OpenstackConfig { get; set; }
 
         /// <summary>
+        /// Outscale config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Input("outscaleConfig")]
+        public Input<Inputs.NodeTemplateOutscaleConfigArgs>? OutscaleConfig { get; set; }
+
+        /// <summary>
         /// Engine storage driver for the node template (bool)
         /// </summary>
         [Input("useInternalIpAddress")]
@@ -597,9 +630,10 @@ namespace Pulumi.Rancher2
         public NodeTemplateArgs()
         {
         }
+        public static new NodeTemplateArgs Empty => new NodeTemplateArgs();
     }
 
-    public sealed class NodeTemplateState : Pulumi.ResourceArgs
+    public sealed class NodeTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AWS config for the Node Template (list maxitems:1)
@@ -619,17 +653,37 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        [Input("authCertificateAuthority")]
+        private Input<string>? _authCertificateAuthority;
+
         /// <summary>
         /// Auth certificate authority for the Node Template (string)
         /// </summary>
-        [Input("authCertificateAuthority")]
-        public Input<string>? AuthCertificateAuthority { get; set; }
+        public Input<string>? AuthCertificateAuthority
+        {
+            get => _authCertificateAuthority;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authCertificateAuthority = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("authKey")]
+        private Input<string>? _authKey;
 
         /// <summary>
         /// Auth key for the Node Template (string)
         /// </summary>
-        [Input("authKey")]
-        public Input<string>? AuthKey { get; set; }
+        public Input<string>? AuthKey
+        {
+            get => _authKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Azure config for the Node Template (list maxitems:1)
@@ -800,6 +854,12 @@ namespace Pulumi.Rancher2
         public Input<Inputs.NodeTemplateOpenstackConfigGetArgs>? OpenstackConfig { get; set; }
 
         /// <summary>
+        /// Outscale config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Input("outscaleConfig")]
+        public Input<Inputs.NodeTemplateOutscaleConfigGetArgs>? OutscaleConfig { get; set; }
+
+        /// <summary>
         /// Engine storage driver for the node template (bool)
         /// </summary>
         [Input("useInternalIpAddress")]
@@ -814,5 +874,6 @@ namespace Pulumi.Rancher2
         public NodeTemplateState()
         {
         }
+        public static new NodeTemplateState Empty => new NodeTemplateState();
     }
 }

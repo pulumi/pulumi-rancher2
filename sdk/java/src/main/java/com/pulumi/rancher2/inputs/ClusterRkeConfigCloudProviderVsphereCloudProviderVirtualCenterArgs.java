@@ -32,14 +32,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
     }
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Output<String> name() {
@@ -47,14 +47,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
     }
 
     /**
-     * Registry password (string)
+     * (string)
      * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
-     * @return Registry password (string)
+     * @return (string)
      * 
      */
     public Output<String> password() {
@@ -62,14 +62,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
     }
 
     /**
-     * Port for node. Default `22` (string)
+     * Port for bastion host. Default `22` (string)
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return Port for node. Default `22` (string)
+     * @return Port for bastion host. Default `22` (string)
      * 
      */
     public Optional<Output<String>> port() {
@@ -92,14 +92,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
     }
 
     /**
-     * Registry user (string)
+     * User to connect bastion host (string)
      * 
      */
     @Import(name="user", required=true)
     private Output<String> user;
 
     /**
-     * @return Registry user (string)
+     * @return User to connect bastion host (string)
      * 
      */
     public Output<String> user() {
@@ -157,7 +157,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param password Registry password (string)
+         * @param password (string)
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param password Registry password (string)
+         * @param password (string)
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param port Port for node. Default `22` (string)
+         * @param port Port for bastion host. Default `22` (string)
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param port Port for node. Default `22` (string)
+         * @param port Port for bastion host. Default `22` (string)
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param user Registry user (string)
+         * @param user User to connect bastion host (string)
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param user Registry user (string)
+         * @param user User to connect bastion host (string)
          * 
          * @return builder
          * 

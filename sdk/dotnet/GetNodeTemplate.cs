@@ -19,26 +19,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetNodeTemplate.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetNodeTemplate.InvokeAsync(new Rancher2.GetNodeTemplateArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodeTemplateResult> InvokeAsync(GetNodeTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? new GetNodeTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? new GetNodeTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Node Template resource.
@@ -48,30 +46,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetNodeTemplate.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetNodeTemplate.InvokeAsync(new Rancher2.GetNodeTemplateArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNodeTemplateResult> Invoke(GetNodeTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? new GetNodeTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? new GetNodeTemplateInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNodeTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeTemplateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Node Template (string)
@@ -88,9 +84,10 @@ namespace Pulumi.Rancher2
         public GetNodeTemplateArgs()
         {
         }
+        public static new GetNodeTemplateArgs Empty => new GetNodeTemplateArgs();
     }
 
-    public sealed class GetNodeTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Node Template (string)
@@ -107,6 +104,7 @@ namespace Pulumi.Rancher2
         public GetNodeTemplateInvokeArgs()
         {
         }
+        public static new GetNodeTemplateInvokeArgs Empty => new GetNodeTemplateInvokeArgs();
     }
 
 

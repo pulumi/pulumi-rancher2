@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
-//				AlidnsConfig: &GlobalDnsProviderAlidnsConfigArgs{
+//				AlidnsConfig: &rancher2.GlobalDnsProviderAlidnsConfigArgs{
 //					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
 //					SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
 //				},
@@ -56,7 +56,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
-//				CloudflareConfig: &GlobalDnsProviderCloudflareConfigArgs{
+//				CloudflareConfig: &rancher2.GlobalDnsProviderCloudflareConfigArgs{
 //					ApiEmail:     pulumi.String("test@test.local"),
 //					ApiKey:       pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
 //					ProxySetting: pulumi.Bool(true),
@@ -86,7 +86,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
 //				RootDomain: pulumi.String("example.com"),
-//				Route53Config: &GlobalDnsProviderRoute53ConfigArgs{
+//				Route53Config: &rancher2.GlobalDnsProviderRoute53ConfigArgs{
 //					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
 //					Region:    pulumi.String("us-east-1"),
 //					SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
@@ -310,6 +310,43 @@ func (o GlobalDnsProviderOutput) ToGlobalDnsProviderOutput() GlobalDnsProviderOu
 
 func (o GlobalDnsProviderOutput) ToGlobalDnsProviderOutputWithContext(ctx context.Context) GlobalDnsProviderOutput {
 	return o
+}
+
+func (o GlobalDnsProviderOutput) AlidnsConfig() GlobalDnsProviderAlidnsConfigPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) GlobalDnsProviderAlidnsConfigPtrOutput { return v.AlidnsConfig }).(GlobalDnsProviderAlidnsConfigPtrOutput)
+}
+
+// Annotations for Global DNS Provider (map)
+func (o GlobalDnsProviderOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+func (o GlobalDnsProviderOutput) CloudflareConfig() GlobalDnsProviderCloudflareConfigPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) GlobalDnsProviderCloudflareConfigPtrOutput { return v.CloudflareConfig }).(GlobalDnsProviderCloudflareConfigPtrOutput)
+}
+
+// (Computed) The Global DNS Provider `alidns, cloudflare, route53` (string)
+func (o GlobalDnsProviderOutput) DnsProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.StringOutput { return v.DnsProvider }).(pulumi.StringOutput)
+}
+
+// Labels for Global DNS Provider (map)
+func (o GlobalDnsProviderOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the Global DNS Provider (string)
+func (o GlobalDnsProviderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The user ID to assign Global DNS Provider (string)
+func (o GlobalDnsProviderOutput) RootDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.StringOutput { return v.RootDomain }).(pulumi.StringOutput)
+}
+
+func (o GlobalDnsProviderOutput) Route53Config() GlobalDnsProviderRoute53ConfigPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) GlobalDnsProviderRoute53ConfigPtrOutput { return v.Route53Config }).(GlobalDnsProviderRoute53ConfigPtrOutput)
 }
 
 type GlobalDnsProviderArrayOutput struct{ *pulumi.OutputState }

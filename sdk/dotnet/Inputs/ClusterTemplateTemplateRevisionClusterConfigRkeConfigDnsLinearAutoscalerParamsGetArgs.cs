@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("coresPerReplica")]
         public Input<double>? CoresPerReplica { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsGetArgs();
     }
 }

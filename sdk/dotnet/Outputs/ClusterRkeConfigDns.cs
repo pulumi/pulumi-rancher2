@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigDnsLinearAutoscalerParams? LinearAutoscalerParams;
         /// <summary>
-        /// RKE monitoring node selector (map)
+        /// DNS add-on node selector (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? NodeSelector;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigDnsNodelocal? Nodelocal;
         /// <summary>
-        /// RKE options for network (map)
+        /// RKE options for authorization (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Options;
         /// <summary>
-        /// RKE monitoring provider (string)
+        /// DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
         /// </summary>
         public readonly string? Provider;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ReverseCidrs;
         /// <summary>
-        /// Network add-on tolerations (list)
+        /// DNS add-on tolerations (list)
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterRkeConfigDnsToleration> Tolerations;
         /// <summary>
-        /// RKE monitoring update strategy (list Maxitems: 1)
+        /// DNS update strategy (list Maxitems: 1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigDnsUpdateStrategy? UpdateStrategy;
         /// <summary>

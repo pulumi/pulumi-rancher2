@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Bucket;
         /// <summary>
-        /// ETCD snapshot S3 cloud credential name (string)
+        /// Machine pool cloud credential secret name (string)
         /// </summary>
         public readonly string? CloudCredentialName;
         /// <summary>

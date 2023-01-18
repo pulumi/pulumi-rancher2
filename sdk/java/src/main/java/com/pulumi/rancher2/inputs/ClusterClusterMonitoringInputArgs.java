@@ -33,14 +33,14 @@ public final class ClusterClusterMonitoringInputArgs extends com.pulumi.resource
     }
 
     /**
-     * rancher-monitoring chart version (string)
+     * RKE2 kubernetes version (string)
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return RKE2 kubernetes version (string)
      * 
      */
     public Optional<Output<String>> version() {
@@ -94,7 +94,7 @@ public final class ClusterClusterMonitoringInputArgs extends com.pulumi.resource
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version RKE2 kubernetes version (string)
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ClusterClusterMonitoringInputArgs extends com.pulumi.resource
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version RKE2 kubernetes version (string)
          * 
          * @return builder
          * 

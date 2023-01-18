@@ -27,8 +27,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewCluster(ctx, "foo-customCluster", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
-//				RkeConfig: &ClusterRkeConfigArgs{
-//					Network: &ClusterRkeConfigNetworkArgs{
+//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
+//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
 //						Plugin: pulumi.String("canal"),
 //					},
 //				},
@@ -38,7 +38,7 @@ import (
 //			}
 //			fooNodeTemplate, err := rancher2.NewNodeTemplate(ctx, "fooNodeTemplate", &rancher2.NodeTemplateArgs{
 //				Description: pulumi.String("foo test"),
-//				Amazonec2Config: &NodeTemplateAmazonec2ConfigArgs{
+//				Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
 //					AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
 //					SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
 //					Ami:       pulumi.String("<AMI_ID>"),
@@ -78,19 +78,19 @@ import (
 //			_, err = rancher2.NewProject(ctx, "fooProject", &rancher2.ProjectArgs{
 //				ClusterId:   foo_customClusterSync.ID(),
 //				Description: pulumi.String("Terraform namespace acceptance test"),
-//				ResourceQuota: &ProjectResourceQuotaArgs{
-//					ProjectLimit: &ProjectResourceQuotaProjectLimitArgs{
+//				ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
+//					ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
 //						LimitsCpu:       pulumi.String("2000m"),
 //						LimitsMemory:    pulumi.String("2000Mi"),
 //						RequestsStorage: pulumi.String("2Gi"),
 //					},
-//					NamespaceDefaultLimit: &ProjectResourceQuotaNamespaceDefaultLimitArgs{
+//					NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
 //						LimitsCpu:       pulumi.String("500m"),
 //						LimitsMemory:    pulumi.String("500Mi"),
 //						RequestsStorage: pulumi.String("1Gi"),
 //					},
 //				},
-//				ContainerResourceLimit: &ProjectContainerResourceLimitArgs{
+//				ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
 //					LimitsCpu:      pulumi.String("20m"),
 //					LimitsMemory:   pulumi.String("20Mi"),
 //					RequestsCpu:    pulumi.String("1m"),
@@ -108,7 +108,7 @@ import (
 type ClusterSync struct {
 	pulumi.CustomResourceState
 
-	// The Cluster ID of the node (string).
+	// The cluster ID that is syncing (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// (Computed) Default project ID for the cluster sync (string)
 	DefaultProjectId pulumi.StringOutput `pulumi:"defaultProjectId"`
@@ -141,6 +141,10 @@ func NewClusterSync(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"kubeConfig",
+	})
+	opts = append(opts, secrets)
 	var resource ClusterSync
 	err := ctx.RegisterResource("rancher2:index/clusterSync:ClusterSync", name, args, &resource, opts...)
 	if err != nil {
@@ -163,7 +167,7 @@ func GetClusterSync(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterSync resources.
 type clusterSyncState struct {
-	// The Cluster ID of the node (string).
+	// The cluster ID that is syncing (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// (Computed) Default project ID for the cluster sync (string)
 	DefaultProjectId *string `pulumi:"defaultProjectId"`
@@ -187,7 +191,7 @@ type clusterSyncState struct {
 }
 
 type ClusterSyncState struct {
-	// The Cluster ID of the node (string).
+	// The cluster ID that is syncing (string)
 	ClusterId pulumi.StringPtrInput
 	// (Computed) Default project ID for the cluster sync (string)
 	DefaultProjectId pulumi.StringPtrInput
@@ -215,7 +219,7 @@ func (ClusterSyncState) ElementType() reflect.Type {
 }
 
 type clusterSyncArgs struct {
-	// The Cluster ID of the node (string).
+	// The cluster ID that is syncing (string)
 	ClusterId string `pulumi:"clusterId"`
 	// The node pool IDs used by the cluster id (list)
 	NodePoolIds []string `pulumi:"nodePoolIds"`
@@ -232,7 +236,7 @@ type clusterSyncArgs struct {
 
 // The set of arguments for constructing a ClusterSync resource.
 type ClusterSyncArgs struct {
-	// The Cluster ID of the node (string).
+	// The cluster ID that is syncing (string)
 	ClusterId pulumi.StringInput
 	// The node pool IDs used by the cluster id (list)
 	NodePoolIds pulumi.StringArrayInput
@@ -332,6 +336,60 @@ func (o ClusterSyncOutput) ToClusterSyncOutput() ClusterSyncOutput {
 
 func (o ClusterSyncOutput) ToClusterSyncOutputWithContext(ctx context.Context) ClusterSyncOutput {
 	return o
+}
+
+// The cluster ID that is syncing (string)
+func (o ClusterSyncOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// (Computed) Default project ID for the cluster sync (string)
+func (o ClusterSyncOutput) DefaultProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.StringOutput { return v.DefaultProjectId }).(pulumi.StringOutput)
+}
+
+// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
+func (o ClusterSyncOutput) KubeConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.StringOutput { return v.KubeConfig }).(pulumi.StringOutput)
+}
+
+// The node pool IDs used by the cluster id (list)
+func (o ClusterSyncOutput) NodePoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.StringArrayOutput { return v.NodePoolIds }).(pulumi.StringArrayOutput)
+}
+
+// (Computed) The cluster nodes (list).
+func (o ClusterSyncOutput) Nodes() ClusterSyncNodeArrayOutput {
+	return o.ApplyT(func(v *ClusterSync) ClusterSyncNodeArrayOutput { return v.Nodes }).(ClusterSyncNodeArrayOutput)
+}
+
+// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+func (o ClusterSyncOutput) StateConfirm() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.IntPtrOutput { return v.StateConfirm }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterSyncOutput) Synced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.BoolPtrOutput { return v.Synced }).(pulumi.BoolPtrOutput)
+}
+
+// (Computed) System project ID for the cluster sync (string)
+func (o ClusterSyncOutput) SystemProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.StringOutput { return v.SystemProjectId }).(pulumi.StringOutput)
+}
+
+// Wait until alerting is up and running. Default: `false` (bool)
+func (o ClusterSyncOutput) WaitAlerting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.BoolPtrOutput { return v.WaitAlerting }).(pulumi.BoolPtrOutput)
+}
+
+// Wait until all catalogs are downloaded and active. Default: `false` (bool)
+func (o ClusterSyncOutput) WaitCatalogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.BoolPtrOutput { return v.WaitCatalogs }).(pulumi.BoolPtrOutput)
+}
+
+// Wait until monitoring is up and running. Default: `false` (bool)
+func (o ClusterSyncOutput) WaitMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterSync) pulumi.BoolPtrOutput { return v.WaitMonitoring }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterSyncArrayOutput struct{ *pulumi.OutputState }

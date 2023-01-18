@@ -26,17 +26,17 @@ public final class ClusterRkeConfigServicesKubelet {
      */
     private @Nullable String clusterDomain;
     /**
-     * @return Extra arguments for scheduler service (map)
+     * @return Extra arguments for RKE Ingress (map)
      * 
      */
     private @Nullable Map<String,Object> extraArgs;
     /**
-     * @return Extra binds for scheduler service (list)
+     * @return Extra binds for etcd service (list)
      * 
      */
     private @Nullable List<String> extraBinds;
     /**
-     * @return Extra environment for scheduler service (list)
+     * @return Extra environment for etcd service (list)
      * 
      */
     private @Nullable List<String> extraEnvs;
@@ -51,7 +51,7 @@ public final class ClusterRkeConfigServicesKubelet {
      */
     private @Nullable Boolean generateServingCertificate;
     /**
-     * @return Docker image for scheduler service (string)
+     * @return Docker image for etcd service (string)
      * 
      */
     private @Nullable String image;
@@ -77,21 +77,21 @@ public final class ClusterRkeConfigServicesKubelet {
         return Optional.ofNullable(this.clusterDomain);
     }
     /**
-     * @return Extra arguments for scheduler service (map)
+     * @return Extra arguments for RKE Ingress (map)
      * 
      */
     public Map<String,Object> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
     /**
-     * @return Extra binds for scheduler service (list)
+     * @return Extra binds for etcd service (list)
      * 
      */
     public List<String> extraBinds() {
         return this.extraBinds == null ? List.of() : this.extraBinds;
     }
     /**
-     * @return Extra environment for scheduler service (list)
+     * @return Extra environment for etcd service (list)
      * 
      */
     public List<String> extraEnvs() {
@@ -112,7 +112,7 @@ public final class ClusterRkeConfigServicesKubelet {
         return Optional.ofNullable(this.generateServingCertificate);
     }
     /**
-     * @return Docker image for scheduler service (string)
+     * @return Docker image for etcd service (string)
      * 
      */
     public Optional<String> image() {

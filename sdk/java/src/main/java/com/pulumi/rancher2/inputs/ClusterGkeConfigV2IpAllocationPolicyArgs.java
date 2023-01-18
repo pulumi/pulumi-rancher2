@@ -17,14 +17,14 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
     public static final ClusterGkeConfigV2IpAllocationPolicyArgs Empty = new ClusterGkeConfigV2IpAllocationPolicyArgs();
 
     /**
-     * The GKE cluster ip v4 allocation cidr block (string)
+     * The GKE ip v4 cidr block (string)
      * 
      */
     @Import(name="clusterIpv4CidrBlock")
     private @Nullable Output<String> clusterIpv4CidrBlock;
 
     /**
-     * @return The GKE cluster ip v4 allocation cidr block (string)
+     * @return The GKE ip v4 cidr block (string)
      * 
      */
     public Optional<Output<String>> clusterIpv4CidrBlock() {
@@ -122,14 +122,14 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
     }
 
     /**
-     * Use GKE ip aliases? Default: `true` (bool)
+     * Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
      * 
      */
     @Import(name="useIpAliases")
     private @Nullable Output<Boolean> useIpAliases;
 
     /**
-     * @return Use GKE ip aliases? Default: `true` (bool)
+     * @return Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> useIpAliases() {
@@ -168,7 +168,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param clusterIpv4CidrBlock The GKE cluster ip v4 allocation cidr block (string)
+         * @param clusterIpv4CidrBlock The GKE ip v4 cidr block (string)
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param clusterIpv4CidrBlock The GKE cluster ip v4 allocation cidr block (string)
+         * @param clusterIpv4CidrBlock The GKE ip v4 cidr block (string)
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param useIpAliases Use GKE ip aliases? Default: `true` (bool)
+         * @param useIpAliases Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param useIpAliases Use GKE ip aliases? Default: `true` (bool)
+         * @param useIpAliases Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
          * 
          * @return builder
          * 

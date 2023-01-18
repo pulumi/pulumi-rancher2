@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterClusterRegistrationTokenArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterRegistrationTokenArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for cluster registration token object (map)
+        /// Annotations for the Cluster (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Cluster ID (string)
+        /// Cluster ID to apply answer (string)
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels for the Cluster (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -79,7 +79,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ManifestUrl { get; set; }
 
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -90,11 +90,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("nodeCommand")]
         public Input<string>? NodeCommand { get; set; }
 
-        /// <summary>
-        /// Token for cluster registration token object (string)
-        /// </summary>
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+
+        /// <summary>
+        /// ACI token (string)
+        /// </summary>
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Node command to execute in windows nodes for custom k8s cluster (string)
@@ -105,5 +115,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterClusterRegistrationTokenArgs()
         {
         }
+        public static new ClusterClusterRegistrationTokenArgs Empty => new ClusterClusterRegistrationTokenArgs();
     }
 }

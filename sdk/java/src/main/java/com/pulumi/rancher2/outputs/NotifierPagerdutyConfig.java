@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotifierPagerdutyConfig {
     /**
-     * @return Wechat proxy url (string)
+     * @return Dingtalk proxy url (string)
      * 
      */
     private @Nullable String proxyUrl;
@@ -24,7 +24,7 @@ public final class NotifierPagerdutyConfig {
 
     private NotifierPagerdutyConfig() {}
     /**
-     * @return Wechat proxy url (string)
+     * @return Dingtalk proxy url (string)
      * 
      */
     public Optional<String> proxyUrl() {

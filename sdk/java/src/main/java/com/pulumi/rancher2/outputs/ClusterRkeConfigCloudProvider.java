@@ -31,7 +31,7 @@ public final class ClusterRkeConfigCloudProvider {
      */
     private @Nullable String customCloudProvider;
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     private @Nullable String name;
@@ -69,7 +69,7 @@ public final class ClusterRkeConfigCloudProvider {
         return Optional.ofNullable(this.customCloudProvider);
     }
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Optional<String> name() {

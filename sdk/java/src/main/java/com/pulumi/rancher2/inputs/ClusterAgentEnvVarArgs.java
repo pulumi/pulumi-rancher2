@@ -14,14 +14,14 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
     public static final ClusterAgentEnvVarArgs Empty = new ClusterAgentEnvVarArgs();
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Output<String> name() {
@@ -29,14 +29,14 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE taint value (string)
+     * Rancher agent env var value (string)
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The GKE taint value (string)
+     * @return Rancher agent env var value (string)
      * 
      */
     public Output<String> value() {
@@ -69,7 +69,7 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value The GKE taint value (string)
+         * @param value Rancher agent env var value (string)
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value The GKE taint value (string)
+         * @param value Rancher agent env var value (string)
          * 
          * @return builder
          * 

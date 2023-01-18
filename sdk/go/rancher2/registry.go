@@ -34,8 +34,8 @@ import (
 //			_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
 //				Description: pulumi.String("Terraform registry foo"),
 //				ProjectId:   pulumi.String("<project_id>"),
-//				Registries: RegistryRegistryArray{
-//					&RegistryRegistryArgs{
+//				Registries: rancher2.RegistryRegistryArray{
+//					&rancher2.RegistryRegistryArgs{
 //						Address:  pulumi.String("test.io"),
 //						Password: pulumi.String("pass"),
 //						Username: pulumi.String("user"),
@@ -67,8 +67,8 @@ import (
 //				Description: pulumi.String("Terraform registry foo"),
 //				NamespaceId: pulumi.String("<namespace_id>"),
 //				ProjectId:   pulumi.String("<project_id>"),
-//				Registries: RegistryRegistryArray{
-//					&RegistryRegistryArgs{
+//				Registries: rancher2.RegistryRegistryArray{
+//					&rancher2.RegistryRegistryArgs{
 //						Address:  pulumi.String("test.io"),
 //						Password: pulumi.String("pass"),
 //						Username: pulumi.String("user2"),
@@ -306,6 +306,41 @@ func (o RegistryOutput) ToRegistryOutput() RegistryOutput {
 
 func (o RegistryOutput) ToRegistryOutputWithContext(ctx context.Context) RegistryOutput {
 	return o
+}
+
+// Annotations for Registry object (map)
+func (o RegistryOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Registry) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// A registry description (string)
+func (o RegistryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Labels for Registry object (map)
+func (o RegistryOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Registry) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the registry (string)
+func (o RegistryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace id where to assign the namespaced registry (string)
+func (o RegistryOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringPtrOutput { return v.NamespaceId }).(pulumi.StringPtrOutput)
+}
+
+// The project id where to assign the registry (string)
+func (o RegistryOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Registries data for registry (list)
+func (o RegistryOutput) Registries() RegistryRegistryArrayOutput {
+	return o.ApplyT(func(v *Registry) RegistryRegistryArrayOutput { return v.Registries }).(RegistryRegistryArrayOutput)
 }
 
 type RegistryArrayOutput struct{ *pulumi.OutputState }

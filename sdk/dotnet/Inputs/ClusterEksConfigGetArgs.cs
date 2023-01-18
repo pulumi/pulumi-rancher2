@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterEksConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterEksConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The AWS Client ID to use (string)
-        /// </summary>
         [Input("accessKey", required: true)]
-        public Input<string> AccessKey { get; set; } = null!;
+        private Input<string>? _accessKey;
+
+        /// <summary>
+        /// Access key for S3 service (string)
+        /// </summary>
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AMI ID to use for the worker nodes instead of the default (string)
@@ -40,7 +50,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? EbsEncryption { get; set; }
 
         /// <summary>
-        /// The EKS node group instance type. Default: `t3.medium` (string)
+        /// The type of machine to use for worker nodes. Default `t2.medium` (string)
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -52,7 +62,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
         /// </summary>
         [Input("kubernetesVersion", required: true)]
         public Input<string> KubernetesVersion { get; set; } = null!;
@@ -76,22 +86,32 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? NodeVolumeSize { get; set; }
 
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        /// <summary>
-        /// The AWS Client Secret associated with the Client ID (string)
-        /// </summary>
         [Input("secretKey", required: true)]
-        public Input<string> SecretKey { get; set; } = null!;
+        private Input<string>? _secretKey;
+
+        /// <summary>
+        /// Secret key for S3 service (string)
+        /// </summary>
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// List of security groups to use for the cluster (list)
+        /// List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
         /// </summary>
         public InputList<string> SecurityGroups
         {
@@ -100,22 +120,32 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The AWS service role to use (string)
+        /// The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
         /// </summary>
         [Input("serviceRole")]
         public Input<string>? ServiceRole { get; set; }
 
+        [Input("sessionToken")]
+        private Input<string>? _sessionToken;
+
         /// <summary>
         /// A session token to use with the client key and secret if applicable (string)
         /// </summary>
-        [Input("sessionToken")]
-        public Input<string>? SessionToken { get; set; }
+        public Input<string>? SessionToken
+        {
+            get => _sessionToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sessionToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("subnets")]
         private InputList<string>? _subnets;
 
         /// <summary>
-        /// The EKS node group subnets (list string)
+        /// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
         /// </summary>
         public InputList<string> Subnets
         {
@@ -124,13 +154,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The EKS node group user data (string)
+        /// Pass user-data to the nodes to perform automated configuration tasks (string)
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        /// The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
         /// </summary>
         [Input("virtualNetwork")]
         public Input<string>? VirtualNetwork { get; set; }
@@ -138,5 +168,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterEksConfigGetArgs()
         {
         }
+        public static new ClusterEksConfigGetArgs Empty => new ClusterEksConfigGetArgs();
     }
 }

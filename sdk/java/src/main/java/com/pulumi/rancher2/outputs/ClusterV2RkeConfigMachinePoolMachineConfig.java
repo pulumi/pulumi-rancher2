@@ -15,7 +15,7 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfig {
      */
     private String kind;
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster v2 (string)
      * 
      */
     private String name;
@@ -29,7 +29,7 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfig {
         return this.kind;
     }
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster v2 (string)
      * 
      */
     public String name() {

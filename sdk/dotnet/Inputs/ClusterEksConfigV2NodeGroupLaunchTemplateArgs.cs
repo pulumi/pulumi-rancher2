@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterEksConfigV2NodeGroupLaunchTemplateArgs : Pulumi.ResourceArgs
+    public sealed class ClusterEksConfigV2NodeGroupLaunchTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The EKS node group launch template ID (string)
@@ -19,13 +19,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// RKE2 kubernetes version (string)
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterEksConfigV2NodeGroupLaunchTemplateArgs()
         {
         }
+        public static new ClusterEksConfigV2NodeGroupLaunchTemplateArgs Empty => new ClusterEksConfigV2NodeGroupLaunchTemplateArgs();
     }
 }

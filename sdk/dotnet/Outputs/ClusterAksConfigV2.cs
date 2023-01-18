@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterAksConfigV2
     {
         /// <summary>
-        /// The AKS auth base url (string)
+        /// Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
         /// </summary>
         public readonly string? AuthBaseUrl;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AuthorizedIpRanges;
         /// <summary>
-        /// The AKS base url (string)
+        /// Different resource management API url to use. Default `https://management.azure.com/` (string)
         /// </summary>
         public readonly string? BaseUrl;
         /// <summary>
-        /// The EKS cloud_credential id (string)
+        /// The AKS Cloud Credential ID to use (string)
         /// </summary>
         public readonly string CloudCredentialId;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? HttpApplicationRouting;
         /// <summary>
-        /// Is GKE cluster imported? Default: `false` (bool)
+        /// Is AKS cluster imported? Defaul: `false` (bool)
         /// </summary>
         public readonly bool? Imported;
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
         /// </summary>
         public readonly string? KubernetesVersion;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? LinuxSshPublicKey;
         /// <summary>
-        /// The AKS load balancer sku (string)
+        /// Allowed values: `basic` (default) `standard` (string)
         /// </summary>
         public readonly string? LoadBalancerSku;
         /// <summary>
@@ -66,11 +66,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? LogAnalyticsWorkspaceName;
         /// <summary>
-        /// Is AKS cluster monitoring enabled? (bool)
+        /// Kubernetes cluster monitoring (list maxitems:1)
         /// </summary>
         public readonly bool? Monitoring;
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NetworkDockerBridgeCidr;
         /// <summary>
-        /// The AKS network plugin. Required if `imported=false` (string)
+        /// Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
         /// </summary>
         public readonly string? NetworkPlugin;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NetworkPodCidr;
         /// <summary>
-        /// The AKS network policy (string)
+        /// Network policy used for building Kubernetes network. Chooses from `calico` (string)
         /// </summary>
         public readonly string? NetworkPolicy;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NetworkServiceCidr;
         /// <summary>
-        /// The GKE cluster node pools. Required for create new cluster (List)
+        /// The AKS nnode pools. Required if `imported=false` (list)
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterAksConfigV2NodePool> NodePools;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? PrivateCluster;
         /// <summary>
-        /// The AKS resource group (string)
+        /// (string)
         /// </summary>
         public readonly string ResourceGroup;
         /// <summary>
@@ -114,19 +114,19 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string ResourceLocation;
         /// <summary>
-        /// The AKS subnet (string)
+        /// The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
         /// </summary>
         public readonly string? Subnet;
         /// <summary>
-        /// The GKE node config tags (List)
+        /// Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
-        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        /// The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
         /// </summary>
         public readonly string? VirtualNetwork;
         /// <summary>
-        /// The AKS virtual network resource group (string)
+        /// The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
         /// </summary>
         public readonly string? VirtualNetworkResourceGroup;
 

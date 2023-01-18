@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string CronSchedule;
         /// <summary>
-        /// Retention for etcd backup. Default `6` (int)
+        /// Cluster scan retention (int)
         /// </summary>
         public readonly int? Retention;
 

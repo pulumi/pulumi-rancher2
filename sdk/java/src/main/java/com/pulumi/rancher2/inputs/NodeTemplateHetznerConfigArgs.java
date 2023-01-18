@@ -34,14 +34,14 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     public Optional<Output<String>> image() {
@@ -124,14 +124,14 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Path to file with cloud-init user-data (string)
+     * Path to file with cloud-init user data (string)
      * 
      */
     @Import(name="userdata")
     private @Nullable Output<String> userdata;
 
     /**
-     * @return Path to file with cloud-init user-data (string)
+     * @return Path to file with cloud-init user data (string)
      * 
      */
     public Optional<Output<String>> userdata() {
@@ -207,7 +207,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param userdata Path to file with cloud-init user-data (string)
+         * @param userdata Path to file with cloud-init user data (string)
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param userdata Path to file with cloud-init user-data (string)
+         * @param userdata Path to file with cloud-init user data (string)
          * 
          * @return builder
          * 

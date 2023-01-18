@@ -10,19 +10,46 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs : global::Pulumi.ResourceArgs
     {
         [Input("aadClientCertPassword")]
-        public Input<string>? AadClientCertPassword { get; set; }
+        private Input<string>? _aadClientCertPassword;
+        public Input<string>? AadClientCertPassword
+        {
+            get => _aadClientCertPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _aadClientCertPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("aadClientCertPath")]
         public Input<string>? AadClientCertPath { get; set; }
 
         [Input("aadClientId", required: true)]
-        public Input<string> AadClientId { get; set; } = null!;
+        private Input<string>? _aadClientId;
+        public Input<string>? AadClientId
+        {
+            get => _aadClientId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _aadClientId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("aadClientSecret", required: true)]
-        public Input<string> AadClientSecret { get; set; } = null!;
+        private Input<string>? _aadClientSecret;
+        public Input<string>? AadClientSecret
+        {
+            get => _aadClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _aadClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("cloud")]
         public Input<string>? Cloud { get; set; }
@@ -79,10 +106,28 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? SubnetName { get; set; }
 
         [Input("subscriptionId", required: true)]
-        public Input<string> SubscriptionId { get; set; } = null!;
+        private Input<string>? _subscriptionId;
+        public Input<string>? SubscriptionId
+        {
+            get => _subscriptionId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _subscriptionId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("tenantId", required: true)]
-        public Input<string> TenantId { get; set; } = null!;
+        private Input<string>? _tenantId;
+        public Input<string>? TenantId
+        {
+            get => _tenantId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tenantId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("useInstanceMetadata")]
         public Input<bool>? UseInstanceMetadata { get; set; }
@@ -102,5 +147,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs();
     }
 }

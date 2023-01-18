@@ -19,27 +19,25 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetProjectAlertRule.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetProjectAlertRule.InvokeAsync(new Rancher2.GetProjectAlertRuleArgs
-        ///         {
-        ///             Name = "&lt;project_alert_rule_name&gt;",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;project_alert_rule_name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectAlertRuleResult> InvokeAsync(GetProjectAlertRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? new GetProjectAlertRuleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? new GetProjectAlertRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 project alert rule.
@@ -49,31 +47,29 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetProjectAlertRule.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetProjectAlertRule.InvokeAsync(new Rancher2.GetProjectAlertRuleArgs
-        ///         {
-        ///             Name = "&lt;project_alert_rule_name&gt;",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;project_alert_rule_name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectAlertRuleResult> Invoke(GetProjectAlertRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? new GetProjectAlertRuleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? new GetProjectAlertRuleInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetProjectAlertRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectAlertRuleArgs : global::Pulumi.InvokeArgs
     {
         [Input("labels")]
         private Dictionary<string, object>? _labels;
@@ -102,9 +98,10 @@ namespace Pulumi.Rancher2
         public GetProjectAlertRuleArgs()
         {
         }
+        public static new GetProjectAlertRuleArgs Empty => new GetProjectAlertRuleArgs();
     }
 
-    public sealed class GetProjectAlertRuleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectAlertRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("labels")]
         private InputMap<object>? _labels;
@@ -133,6 +130,7 @@ namespace Pulumi.Rancher2
         public GetProjectAlertRuleInvokeArgs()
         {
         }
+        public static new GetProjectAlertRuleInvokeArgs Empty => new GetProjectAlertRuleInvokeArgs();
     }
 
 

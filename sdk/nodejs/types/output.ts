@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface CloudCredentialAmazonec2CredentialConfig {
     /**
@@ -80,7 +81,7 @@ export interface CloudCredentialLinodeCredentialConfig {
 
 export interface CloudCredentialOpenstackCredentialConfig {
     /**
-     * vSphere password (string)
+     * OpenStack password (string)
      */
     password: string;
 }
@@ -122,7 +123,7 @@ export interface CloudCredentialS3CredentialConfig {
 
 export interface CloudCredentialVsphereCredentialConfig {
     /**
-     * vSphere password (string)
+     * OpenStack password (string)
      */
     password: string;
     /**
@@ -141,11 +142,11 @@ export interface CloudCredentialVsphereCredentialConfig {
 
 export interface ClusterAgentEnvVar {
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name: string;
     /**
-     * The GKE taint value (string)
+     * Rancher agent env var value (string)
      */
     value: string;
 }
@@ -192,11 +193,11 @@ export interface ClusterAksConfig {
      */
     agentVmSize?: string;
     /**
-     * The AKS auth base url (string)
+     * Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
      */
     authBaseUrl?: string;
     /**
-     * The AKS base url (string)
+     * Different resource management API url to use. Default `https://management.azure.com/` (string)
      */
     baseUrl?: string;
     /**
@@ -208,7 +209,7 @@ export interface ClusterAksConfig {
      */
     clientSecret: string;
     /**
-     * The AKS node pool count. Default: `1` (int)
+     * Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
      */
     count?: number;
     /**
@@ -228,15 +229,15 @@ export interface ClusterAksConfig {
      */
     enableMonitoring?: boolean;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rkeConfig is set at cluster_template, kubernetesVersion must be set to the active cluster version so Rancher can clone the RKE template)
      */
     kubernetesVersion: string;
     /**
-     * The AKS load balancer sku (string)
+     * Allowed values: `basic` (default) `standard` (string)
      */
     loadBalancerSku: string;
     /**
-     * Azure Kubernetes cluster location. Default `eastus` (string)
+     * (string)
      */
     location?: string;
     /**
@@ -252,27 +253,27 @@ export interface ClusterAksConfig {
      */
     masterDnsPrefix: string;
     /**
-     * The AKS node pool max pods. Default: `110` (int)
+     * Maximum number of pods that can run on a node. Default `110` (int)
      */
     maxPods?: number;
     /**
-     * The AKS network plugin. Required if `imported=false` (string)
+     * Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
      */
     networkPlugin?: string;
     /**
-     * The AKS network policy (string)
+     * Network policy used for building Kubernetes network. Chooses from `calico` (string)
      */
     networkPolicy?: string;
     /**
-     * A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     * A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
      */
     podCidr?: string;
     /**
-     * The AKS resource group (string)
+     * (string)
      */
     resourceGroup: string;
     /**
-     * A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     * A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
      */
     serviceCidr?: string;
     /**
@@ -280,11 +281,11 @@ export interface ClusterAksConfig {
      */
     sshPublicKeyContents: string;
     /**
-     * The AKS subnet (string)
+     * The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
      */
     subnet: string;
     /**
-     * Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * (string)
      */
     subscriptionId: string;
     /**
@@ -294,26 +295,26 @@ export interface ClusterAksConfig {
      */
     tag: {[key: string]: any};
     /**
-     * The GKE node config tags (List)
+     * Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
      */
     tags: string[];
     /**
-     * Azure tenant ID to use (string)
+     * (string)
      */
     tenantId: string;
     /**
-     * The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+     * The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
      */
     virtualNetwork: string;
     /**
-     * The AKS virtual network resource group (string)
+     * The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
      */
     virtualNetworkResourceGroup: string;
 }
 
 export interface ClusterAksConfigV2 {
     /**
-     * The AKS auth base url (string)
+     * Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
      */
     authBaseUrl?: string;
     /**
@@ -321,11 +322,11 @@ export interface ClusterAksConfigV2 {
      */
     authorizedIpRanges?: string[];
     /**
-     * The AKS base url (string)
+     * Different resource management API url to use. Default `https://management.azure.com/` (string)
      */
     baseUrl?: string;
     /**
-     * The EKS cloudCredential id (string)
+     * The AKS Cloud Credential ID to use (string)
      */
     cloudCredentialId: string;
     /**
@@ -337,11 +338,11 @@ export interface ClusterAksConfigV2 {
      */
     httpApplicationRouting: boolean;
     /**
-     * Is GKE cluster imported? Default: `false` (bool)
+     * Is AKS cluster imported? Defaul: `false` (bool)
      */
     imported?: boolean;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rkeConfig is set at cluster_template, kubernetesVersion must be set to the active cluster version so Rancher can clone the RKE template)
      */
     kubernetesVersion?: string;
     /**
@@ -353,7 +354,7 @@ export interface ClusterAksConfigV2 {
      */
     linuxSshPublicKey: string;
     /**
-     * The AKS load balancer sku (string)
+     * Allowed values: `basic` (default) `standard` (string)
      */
     loadBalancerSku: string;
     /**
@@ -365,11 +366,11 @@ export interface ClusterAksConfigV2 {
      */
     logAnalyticsWorkspaceName: string;
     /**
-     * Is AKS cluster monitoring enabled? (bool)
+     * Kubernetes cluster monitoring (list maxitems:1)
      */
     monitoring: boolean;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name: string;
     /**
@@ -381,7 +382,7 @@ export interface ClusterAksConfigV2 {
      */
     networkDockerBridgeCidr: string;
     /**
-     * The AKS network plugin. Required if `imported=false` (string)
+     * Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
      */
     networkPlugin?: string;
     /**
@@ -389,7 +390,7 @@ export interface ClusterAksConfigV2 {
      */
     networkPodCidr: string;
     /**
-     * The AKS network policy (string)
+     * Network policy used for building Kubernetes network. Chooses from `calico` (string)
      */
     networkPolicy: string;
     /**
@@ -397,7 +398,7 @@ export interface ClusterAksConfigV2 {
      */
     networkServiceCidr: string;
     /**
-     * The GKE cluster node pools. Required for create new cluster (List)
+     * The AKS nnode pools. Required if `imported=false` (list)
      */
     nodePools?: outputs.ClusterAksConfigV2NodePool[];
     /**
@@ -405,7 +406,7 @@ export interface ClusterAksConfigV2 {
      */
     privateCluster: boolean;
     /**
-     * The AKS resource group (string)
+     * (string)
      */
     resourceGroup: string;
     /**
@@ -413,19 +414,19 @@ export interface ClusterAksConfigV2 {
      */
     resourceLocation: string;
     /**
-     * The AKS subnet (string)
+     * The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
      */
     subnet: string;
     /**
-     * The GKE node config tags (List)
+     * Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
      */
     tags: {[key: string]: any};
     /**
-     * The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+     * The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
      */
     virtualNetwork: string;
     /**
-     * The AKS virtual network resource group (string)
+     * The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
      */
     virtualNetworkResourceGroup: string;
 }
@@ -436,7 +437,7 @@ export interface ClusterAksConfigV2NodePool {
      */
     availabilityZones?: string[];
     /**
-     * The AKS node pool count. Default: `1` (int)
+     * Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
      */
     count?: number;
     /**
@@ -448,7 +449,7 @@ export interface ClusterAksConfigV2NodePool {
      */
     maxCount?: number;
     /**
-     * The AKS node pool max pods. Default: `110` (int)
+     * Maximum number of pods that can run on a node. Default `110` (int)
      */
     maxPods?: number;
     /**
@@ -456,11 +457,11 @@ export interface ClusterAksConfigV2NodePool {
      */
     minCount?: number;
     /**
-     * The AKS node group mode. Default: `System` (string)
+     * RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
      */
     mode?: string;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name: string;
     /**
@@ -540,7 +541,7 @@ export interface ClusterAlertRuleMetricRule {
 
 export interface ClusterAlertRuleNodeRule {
     /**
-     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+     * Node rule condition. Supported values : `"cpu" | "mem" | "notready"`. Default: `notready` (string)
      */
     condition?: string;
     /**
@@ -563,7 +564,7 @@ export interface ClusterAlertRuleNodeRule {
 
 export interface ClusterAlertRuleSystemServiceRule {
     /**
-     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+     * Node rule condition. Supported values : `"cpu" | "mem" | "notready"`. Default: `notready` (string)
      */
     condition?: string;
 }
@@ -621,7 +622,7 @@ export interface ClusterClusterAuthEndpoint {
      */
     caCerts?: string;
     /**
-     * Enable scheduled cluster scan. Default: `false` (bool)
+     * Enable etcd backup (bool)
      */
     enabled?: boolean;
     /**
@@ -636,18 +637,18 @@ export interface ClusterClusterMonitoringInput {
      */
     answers?: {[key: string]: any};
     /**
-     * rancher-monitoring chart version (string)
+     * RKE2 kubernetes version (string)
      */
     version?: string;
 }
 
 export interface ClusterClusterRegistrationToken {
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster (map)
      */
     annotations: {[key: string]: any};
     /**
-     * Cluster ID (string)
+     * Cluster ID to apply answer (string)
      */
     clusterId: string;
     /**
@@ -671,7 +672,7 @@ export interface ClusterClusterRegistrationToken {
      */
     insecureWindowsNodeCommand: string;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      */
     labels: {[key: string]: any};
     /**
@@ -679,7 +680,7 @@ export interface ClusterClusterRegistrationToken {
      */
     manifestUrl: string;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name: string;
     /**
@@ -687,7 +688,7 @@ export interface ClusterClusterRegistrationToken {
      */
     nodeCommand: string;
     /**
-     * Token for cluster registration token object (string)
+     * ACI token (string)
      */
     token: string;
     /**
@@ -698,11 +699,11 @@ export interface ClusterClusterRegistrationToken {
 
 export interface ClusterClusterTemplateAnswers {
     /**
-     * Cluster ID (string)
+     * Cluster ID to apply answer (string)
      */
     clusterId: string;
     /**
-     * Project ID to apply answer (string)
+     * Project ID for GKE cluster (string)
      */
     projectId: string;
     /**
@@ -732,7 +733,7 @@ export interface ClusterClusterTemplateQuestion {
 
 export interface ClusterEksConfig {
     /**
-     * The AWS Client ID to use (string)
+     * Access key for S3 service (string)
      */
     accessKey: string;
     /**
@@ -749,7 +750,7 @@ export interface ClusterEksConfig {
     desiredNodes?: number;
     ebsEncryption?: boolean;
     /**
-     * The EKS node group instance type. Default: `t3.medium` (string)
+     * The type of machine to use for worker nodes. Default `t2.medium` (string)
      */
     instanceType?: string;
     /**
@@ -757,7 +758,7 @@ export interface ClusterEksConfig {
      */
     keyPairName?: string;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rkeConfig is set at cluster_template, kubernetesVersion must be set to the active cluster version so Rancher can clone the RKE template)
      */
     kubernetesVersion: string;
     /**
@@ -773,19 +774,19 @@ export interface ClusterEksConfig {
      */
     nodeVolumeSize?: number;
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * (string)
      */
     region?: string;
     /**
-     * The AWS Client Secret associated with the Client ID (string)
+     * Secret key for S3 service (string)
      */
     secretKey: string;
     /**
-     * List of security groups to use for the cluster (list)
+     * List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
      */
     securityGroups?: string[];
     /**
-     * The AWS service role to use (string)
+     * The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
      */
     serviceRole?: string;
     /**
@@ -793,26 +794,26 @@ export interface ClusterEksConfig {
      */
     sessionToken?: string;
     /**
-     * The EKS node group subnets (list string)
+     * List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
      */
     subnets?: string[];
     /**
-     * The EKS node group user data (string)
+     * Pass user-data to the nodes to perform automated configuration tasks (string)
      */
     userData: string;
     /**
-     * The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+     * The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
      */
     virtualNetwork?: string;
 }
 
 export interface ClusterEksConfigV2 {
     /**
-     * The EKS cloudCredential id (string)
+     * The AKS Cloud Credential ID to use (string)
      */
     cloudCredentialId: string;
     /**
-     * Is GKE cluster imported? Default: `false` (bool)
+     * Is AKS cluster imported? Defaul: `false` (bool)
      */
     imported?: boolean;
     /**
@@ -820,7 +821,7 @@ export interface ClusterEksConfigV2 {
      */
     kmsKey?: string;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rkeConfig is set at cluster_template, kubernetesVersion must be set to the active cluster version so Rancher can clone the RKE template)
      */
     kubernetesVersion: string;
     /**
@@ -828,7 +829,7 @@ export interface ClusterEksConfigV2 {
      */
     loggingTypes?: string[];
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name: string;
     /**
@@ -848,7 +849,7 @@ export interface ClusterEksConfigV2 {
      */
     publicAccessSources: string[];
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * (string)
      */
     region?: string;
     /**
@@ -856,19 +857,19 @@ export interface ClusterEksConfigV2 {
      */
     secretsEncryption: boolean;
     /**
-     * List of security groups to use for the cluster (list)
+     * List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
      */
     securityGroups?: string[];
     /**
-     * The AWS service role to use (string)
+     * The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
      */
     serviceRole?: string;
     /**
-     * The EKS node group subnets (list string)
+     * List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
      */
     subnets?: string[];
     /**
-     * The GKE node config tags (List)
+     * Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
      */
     tags?: {[key: string]: any};
 }
@@ -895,11 +896,11 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     imageId?: string;
     /**
-     * The EKS node group instance type. Default: `t3.medium` (string)
+     * The type of machine to use for worker nodes. Default `t2.medium` (string)
      */
     instanceType?: string;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      */
     labels?: {[key: string]: any};
     /**
@@ -907,7 +908,7 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     launchTemplates?: outputs.ClusterEksConfigV2NodeGroupLaunchTemplate[];
     /**
-     * The EKS node group maximum size. Default `2` (int)
+     * Audit log max size. Default: `100` (int)
      */
     maxSize?: number;
     /**
@@ -915,7 +916,7 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     minSize?: number;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name: string;
     /**
@@ -931,19 +932,19 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     spotInstanceTypes?: string[];
     /**
-     * The EKS node group subnets (list string)
+     * List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
      */
     subnets: string[];
     /**
-     * The GKE node config tags (List)
+     * Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
      */
     tags?: {[key: string]: any};
     /**
-     * The EKS node group user data (string)
+     * Pass user-data to the nodes to perform automated configuration tasks (string)
      */
     userData: string;
     /**
-     * rancher-monitoring chart version (string)
+     * RKE2 kubernetes version (string)
      */
     version: string;
 }
@@ -954,11 +955,11 @@ export interface ClusterEksConfigV2NodeGroupLaunchTemplate {
      */
     id: string;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name: string;
     /**
-     * rancher-monitoring chart version (string)
+     * RKE2 kubernetes version (string)
      */
     version?: number;
 }
@@ -973,15 +974,15 @@ export interface ClusterGkeConfig {
      */
     credential: string;
     /**
-     * An optional description of this cluster (string)
+     * The description for Cluster (string)
      */
     description?: string;
     /**
-     * The GKE node config disk size Gb (int)
+     * Size of the disk attached to each node. Default `100` (int)
      */
     diskSizeGb?: number;
     /**
-     * The GKE node config disk type (string)
+     * Type of the disk attached to each node (string)
      */
     diskType: string;
     /**
@@ -1005,7 +1006,7 @@ export interface ClusterGkeConfig {
      */
     enableHttpLoadBalancing?: boolean;
     /**
-     * Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * Whether to enable the Kubernetes dashboard. Default `false` (bool)
      */
     enableKubernetesDashboard?: boolean;
     /**
@@ -1025,11 +1026,11 @@ export interface ClusterGkeConfig {
      */
     enableNodepoolAutoscaling?: boolean;
     /**
-     * Enable GKE cluster private endpoint. Default: `false` (bool)
+     * Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
      */
     enablePrivateEndpoint?: boolean;
     /**
-     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * Whether nodes have internal IP address only. Default `false` (bool)
      */
     enablePrivateNodes?: boolean;
     /**
@@ -1041,7 +1042,7 @@ export interface ClusterGkeConfig {
      */
     enableStackdriverMonitoring?: boolean;
     /**
-     * The GKE node config image type (string)
+     * The image to use for the worker nodes (string)
      */
     imageType: string;
     /**
@@ -1081,23 +1082,23 @@ export interface ClusterGkeConfig {
      */
     kubernetesDashboard?: boolean;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      */
     labels: {[key: string]: any};
     /**
-     * The GKE node config local ssd count (int)
+     * The number of local SSD disks to be attached to the node. Default `0` (int)
      */
     localSsdCount?: number;
     /**
-     * The GKE cluster locations (List)
+     * Locations for GKE cluster (list)
      */
     locations: string[];
     /**
-     * The GKE node config machine type (string)
+     * Machine type for GKE cluster (string)
      */
     machineType: string;
     /**
-     * The GKE cluster maintenance window (string)
+     * Maintenance window for GKE cluster (string)
      */
     maintenanceWindow: string;
     /**
@@ -1105,7 +1106,7 @@ export interface ClusterGkeConfig {
      */
     masterAuthorizedNetworkCidrBlocks?: string[];
     /**
-     * The GKE cluster private master ip v4 cidr block (string)
+     * The IP range in CIDR notation to use for the hosted master network (string)
      */
     masterIpv4CidrBlock: string;
     /**
@@ -1113,15 +1114,15 @@ export interface ClusterGkeConfig {
      */
     masterVersion: string;
     /**
-     * The GKE node pool config max node count (int)
+     * Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
      */
     maxNodeCount?: number;
     /**
-     * The GKE node pool config min node count (int)
+     * Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount. Default `0` (int)
      */
     minNodeCount?: number;
     /**
-     * The GKE cluster network. Required for create new cluster (string)
+     * Kubernetes cluster networking (list maxitems:1)
      */
     network: string;
     /**
@@ -1137,19 +1138,19 @@ export interface ClusterGkeConfig {
      */
     nodeVersion: string;
     /**
-     * The GKE node config oauth scopes (List)
+     * The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
      */
     oauthScopes: string[];
     /**
-     * Enable GKE node config preemptible. Default: `false` (bool)
+     * Whether the nodes are created as preemptible VM instances. Default `false` (bool)
      */
     preemptible?: boolean;
     /**
-     * Project ID to apply answer (string)
+     * Project ID for GKE cluster (string)
      */
     projectId: string;
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * (string)
      */
     region?: string;
     /**
@@ -1165,15 +1166,15 @@ export interface ClusterGkeConfig {
      */
     subNetwork: string;
     /**
-     * The GKE node config taints (List)
+     * List of Kubernetes taints to be applied to each node (list)
      */
     taints?: string[];
     /**
-     * Use GKE ip aliases? Default: `true` (bool)
+     * Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
      */
     useIpAliases?: boolean;
     /**
-     * The GKE cluster zone. Required if `region` not set (string)
+     * (string)
      */
     zone?: string;
 }
@@ -1184,11 +1185,11 @@ export interface ClusterGkeConfigV2 {
      */
     clusterAddons: outputs.ClusterGkeConfigV2ClusterAddons;
     /**
-     * The GKE cluster ip v4 allocation cidr block (string)
+     * The GKE ip v4 cidr block (string)
      */
     clusterIpv4CidrBlock: string;
     /**
-     * An optional description of this cluster (string)
+     * The description for Cluster (string)
      */
     description: string;
     /**
@@ -1200,7 +1201,7 @@ export interface ClusterGkeConfigV2 {
      */
     googleCredentialSecret: string;
     /**
-     * Is GKE cluster imported? Default: `false` (bool)
+     * Is AKS cluster imported? Defaul: `false` (bool)
      */
     imported?: boolean;
     /**
@@ -1208,15 +1209,15 @@ export interface ClusterGkeConfigV2 {
      */
     ipAllocationPolicy: outputs.ClusterGkeConfigV2IpAllocationPolicy;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rkeConfig is set at cluster_template, kubernetesVersion must be set to the active cluster version so Rancher can clone the RKE template)
      */
     kubernetesVersion: string;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      */
     labels: {[key: string]: any};
     /**
-     * The GKE cluster locations (List)
+     * Locations for GKE cluster (list)
      */
     locations: string[];
     /**
@@ -1224,7 +1225,7 @@ export interface ClusterGkeConfigV2 {
      */
     loggingService: string;
     /**
-     * The GKE cluster maintenance window (string)
+     * Maintenance window for GKE cluster (string)
      */
     maintenanceWindow: string;
     /**
@@ -1236,11 +1237,11 @@ export interface ClusterGkeConfigV2 {
      */
     monitoringService: string;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name: string;
     /**
-     * The GKE cluster network. Required for create new cluster (string)
+     * Kubernetes cluster networking (list maxitems:1)
      */
     network: string;
     /**
@@ -1248,7 +1249,7 @@ export interface ClusterGkeConfigV2 {
      */
     networkPolicyEnabled: boolean;
     /**
-     * The GKE cluster node pools. Required for create new cluster (List)
+     * The AKS nnode pools. Required if `imported=false` (list)
      */
     nodePools: outputs.ClusterGkeConfigV2NodePool[];
     /**
@@ -1256,11 +1257,11 @@ export interface ClusterGkeConfigV2 {
      */
     privateClusterConfig: outputs.ClusterGkeConfigV2PrivateClusterConfig;
     /**
-     * Project ID to apply answer (string)
+     * Project ID for GKE cluster (string)
      */
     projectId: string;
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * (string)
      */
     region: string;
     /**
@@ -1268,7 +1269,7 @@ export interface ClusterGkeConfigV2 {
      */
     subnetwork: string;
     /**
-     * The GKE cluster zone. Required if `region` not set (string)
+     * (string)
      */
     zone: string;
 }
@@ -1290,7 +1291,7 @@ export interface ClusterGkeConfigV2ClusterAddons {
 
 export interface ClusterGkeConfigV2IpAllocationPolicy {
     /**
-     * The GKE cluster ip v4 allocation cidr block (string)
+     * The GKE ip v4 cidr block (string)
      */
     clusterIpv4CidrBlock: string;
     /**
@@ -1318,7 +1319,7 @@ export interface ClusterGkeConfigV2IpAllocationPolicy {
      */
     subnetworkName: string;
     /**
-     * Use GKE ip aliases? Default: `true` (bool)
+     * Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
      */
     useIpAliases: boolean;
 }
@@ -1329,7 +1330,7 @@ export interface ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
      */
     cidrBlocks: outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock[];
     /**
-     * Enable scheduled cluster scan. Default: `false` (bool)
+     * Enable etcd backup (bool)
      */
     enabled?: boolean;
 }
@@ -1367,84 +1368,84 @@ export interface ClusterGkeConfigV2NodePool {
      */
     maxPodsConstraint: number;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name: string;
     /**
-     * rancher-monitoring chart version (string)
+     * RKE2 kubernetes version (string)
      */
     version: string;
 }
 
 export interface ClusterGkeConfigV2NodePoolAutoscaling {
     /**
-     * Enable scheduled cluster scan. Default: `false` (bool)
+     * Enable etcd backup (bool)
      */
     enabled?: boolean;
     /**
-     * The GKE node pool config max node count (int)
+     * Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
      */
     maxNodeCount: number;
     /**
-     * The GKE node pool config min node count (int)
+     * Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount. Default `0` (int)
      */
     minNodeCount: number;
 }
 
 export interface ClusterGkeConfigV2NodePoolConfig {
     /**
-     * The GKE node config disk size Gb (int)
+     * Size of the disk attached to each node. Default `100` (int)
      */
     diskSizeGb?: number;
     /**
-     * The GKE node config disk type (string)
+     * Type of the disk attached to each node (string)
      */
     diskType?: string;
     /**
-     * The GKE node config image type (string)
+     * The image to use for the worker nodes (string)
      */
     imageType?: string;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      */
     labels: {[key: string]: any};
     /**
-     * The GKE node config local ssd count (int)
+     * The number of local SSD disks to be attached to the node. Default `0` (int)
      */
     localSsdCount?: number;
     /**
-     * The GKE node config machine type (string)
+     * Machine type for GKE cluster (string)
      */
     machineType?: string;
     /**
-     * The GKE node config oauth scopes (List)
+     * The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
      */
     oauthScopes: string[];
     /**
-     * Enable GKE node config preemptible. Default: `false` (bool)
+     * Whether the nodes are created as preemptible VM instances. Default `false` (bool)
      */
     preemptible?: boolean;
     /**
-     * The GKE node config tags (List)
+     * Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
      */
     tags: string[];
     /**
-     * The GKE node config taints (List)
+     * List of Kubernetes taints to be applied to each node (list)
      */
     taints?: outputs.ClusterGkeConfigV2NodePoolConfigTaint[];
 }
 
 export interface ClusterGkeConfigV2NodePoolConfigTaint {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect: string;
     /**
-     * The GKE taint key (string)
+     * The toleration key (string)
      */
     key: string;
     /**
-     * The GKE taint value (string)
+     * Rancher agent env var value (string)
      */
     value: string;
 }
@@ -1462,26 +1463,26 @@ export interface ClusterGkeConfigV2NodePoolManagement {
 
 export interface ClusterGkeConfigV2PrivateClusterConfig {
     /**
-     * Enable GKE cluster private endpoint. Default: `false` (bool)
+     * Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
      */
     enablePrivateEndpoint?: boolean;
     /**
-     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * Whether nodes have internal IP address only. Default `false` (bool)
      */
     enablePrivateNodes?: boolean;
     /**
-     * The GKE cluster private master ip v4 cidr block (string)
+     * The IP range in CIDR notation to use for the hosted master network (string)
      */
     masterIpv4CidrBlock: string;
 }
 
 export interface ClusterK3sConfig {
     /**
-     * K3S upgrade strategy (List maxitems: 1)
+     * RKE upgrade strategy (list maxitems:1)
      */
     upgradeStrategy: outputs.ClusterK3sConfigUpgradeStrategy;
     /**
-     * rancher-monitoring chart version (string)
+     * RKE2 kubernetes version (string)
      */
     version: string;
 }
@@ -1507,15 +1508,15 @@ export interface ClusterK3sConfigUpgradeStrategy {
 
 export interface ClusterLoggingCustomTargetConfig {
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      */
     certificate?: string;
     /**
-     * SSL client certificate for the syslog service (string)
+     * SSL client certificate for the custom target service (string)
      */
     clientCert?: string;
     /**
-     * SSL client key for the syslog service (string)
+     * SSL client key for the custom target service (string)
      */
     clientKey?: string;
     /**
@@ -1534,19 +1535,19 @@ export interface ClusterLoggingElasticsearchConfig {
      */
     authUsername?: string;
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      */
     certificate?: string;
     /**
-     * SSL client certificate for the syslog service (string)
+     * SSL client certificate for the custom target service (string)
      */
     clientCert?: string;
     /**
-     * SSL client key for the syslog service (string)
+     * SSL client key for the custom target service (string)
      */
     clientKey?: string;
     /**
-     * SSL client key password for the splunk service (string)
+     * SSL client key password for the elascticsearch service (string)
      */
     clientKeyPass?: string;
     /**
@@ -1554,7 +1555,7 @@ export interface ClusterLoggingElasticsearchConfig {
      */
     dateFormat?: string;
     /**
-     * Endpoint of the syslog service (string)
+     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      */
     endpoint: string;
     /**
@@ -1562,7 +1563,7 @@ export interface ClusterLoggingElasticsearchConfig {
      */
     indexPrefix?: string;
     /**
-     * SSL verify for the syslog service (bool)
+     * SSL verify for the elascticsearch service (bool)
      */
     sslVerify: boolean;
     /**
@@ -1573,7 +1574,7 @@ export interface ClusterLoggingElasticsearchConfig {
 
 export interface ClusterLoggingFluentdConfig {
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      */
     certificate?: string;
     /**
@@ -1581,7 +1582,7 @@ export interface ClusterLoggingFluentdConfig {
      */
     compress?: boolean;
     /**
-     * Enable TLS for the syslog service. Default `false` (bool)
+     * Enable TLS for the fluentd service (bool)
      */
     enableTls?: boolean;
     /**
@@ -1592,7 +1593,7 @@ export interface ClusterLoggingFluentdConfig {
 
 export interface ClusterLoggingFluentdConfigFluentServer {
     /**
-     * Endpoint of the syslog service (string)
+     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      */
     endpoint: string;
     /**
@@ -1627,15 +1628,15 @@ export interface ClusterLoggingKafkaConfig {
      */
     brokerEndpoints?: string[];
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      */
     certificate?: string;
     /**
-     * SSL client certificate for the syslog service (string)
+     * SSL client certificate for the custom target service (string)
      */
     clientCert?: string;
     /**
-     * SSL client key for the syslog service (string)
+     * SSL client key for the custom target service (string)
      */
     clientKey?: string;
     /**
@@ -1650,23 +1651,23 @@ export interface ClusterLoggingKafkaConfig {
 
 export interface ClusterLoggingSplunkConfig {
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      */
     certificate?: string;
     /**
-     * SSL client certificate for the syslog service (string)
+     * SSL client certificate for the custom target service (string)
      */
     clientCert?: string;
     /**
-     * SSL client key for the syslog service (string)
+     * SSL client key for the custom target service (string)
      */
     clientKey?: string;
     /**
-     * SSL client key password for the splunk service (string)
+     * SSL client key password for the elascticsearch service (string)
      */
     clientKeyPass?: string;
     /**
-     * Endpoint of the syslog service (string)
+     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      */
     endpoint: string;
     /**
@@ -1678,34 +1679,34 @@ export interface ClusterLoggingSplunkConfig {
      */
     source?: string;
     /**
-     * SSL verify for the syslog service (bool)
+     * SSL verify for the elascticsearch service (bool)
      */
     sslVerify: boolean;
     /**
-     * Token for the syslog service (string)
+     * Token for the splunk service (string)
      */
     token: string;
 }
 
 export interface ClusterLoggingSyslogConfig {
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      */
     certificate?: string;
     /**
-     * SSL client certificate for the syslog service (string)
+     * SSL client certificate for the custom target service (string)
      */
     clientCert?: string;
     /**
-     * SSL client key for the syslog service (string)
+     * SSL client key for the custom target service (string)
      */
     clientKey?: string;
     /**
-     * Enable TLS for the syslog service. Default `false` (bool)
+     * Enable TLS for the fluentd service (bool)
      */
     enableTls?: boolean;
     /**
-     * Endpoint of the syslog service (string)
+     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      */
     endpoint: string;
     /**
@@ -1721,11 +1722,11 @@ export interface ClusterLoggingSyslogConfig {
      */
     severity?: string;
     /**
-     * SSL verify for the syslog service (bool)
+     * SSL verify for the elascticsearch service (bool)
      */
     sslVerify: boolean;
     /**
-     * Token for the syslog service (string)
+     * Token for the splunk service (string)
      */
     token?: string;
 }
@@ -1740,11 +1741,11 @@ export interface ClusterOkeConfig {
      */
     customBootVolumeSize?: number;
     /**
-     * An optional description of this cluster (string)
+     * The description for Cluster (string)
      */
     description?: string;
     /**
-     * Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * Whether to enable the Kubernetes dashboard. Default `false` (bool)
      */
     enableKubernetesDashboard?: boolean;
     /**
@@ -1752,7 +1753,7 @@ export interface ClusterOkeConfig {
      */
     enablePrivateControlPlane?: boolean;
     /**
-     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * Whether nodes have internal IP address only. Default `false` (bool)
      */
     enablePrivateNodes?: boolean;
     /**
@@ -1768,7 +1769,7 @@ export interface ClusterOkeConfig {
      */
     kmsKeyId?: string;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rkeConfig is set at cluster_template, kubernetesVersion must be set to the active cluster version so Rancher can clone the RKE template)
      */
     kubernetesVersion: string;
     /**
@@ -1804,7 +1805,7 @@ export interface ClusterOkeConfig {
      */
     nodeShape: string;
     /**
-     * A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     * A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
      */
     podCidr?: string;
     /**
@@ -1824,11 +1825,11 @@ export interface ClusterOkeConfig {
      */
     quantityPerSubnet?: number;
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * (string)
      */
     region: string;
     /**
-     * A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     * A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
      */
     serviceCidr?: string;
     /**
@@ -1863,11 +1864,11 @@ export interface ClusterOkeConfig {
 
 export interface ClusterRke2Config {
     /**
-     * K3S upgrade strategy (List maxitems: 1)
+     * RKE upgrade strategy (list maxitems:1)
      */
     upgradeStrategy: outputs.ClusterRke2ConfigUpgradeStrategy;
     /**
-     * rancher-monitoring chart version (string)
+     * RKE2 kubernetes version (string)
      */
     version: string;
 }
@@ -1917,7 +1918,7 @@ export interface ClusterRkeConfig {
      */
     bastionHost: outputs.ClusterRkeConfigBastionHost;
     /**
-     * RKE options for Calico network provider (string)
+     * RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
      */
     cloudProvider: outputs.ClusterRkeConfigCloudProvider;
     /**
@@ -1937,15 +1938,15 @@ export interface ClusterRkeConfig {
      */
     ingress: outputs.ClusterRkeConfigIngress;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rkeConfig is set at cluster_template, kubernetesVersion must be set to the active cluster version so Rancher can clone the RKE template)
      */
     kubernetesVersion: string;
     /**
-     * Is AKS cluster monitoring enabled? (bool)
+     * Kubernetes cluster monitoring (list maxitems:1)
      */
     monitoring: outputs.ClusterRkeConfigMonitoring;
     /**
-     * The GKE cluster network. Required for create new cluster (string)
+     * Kubernetes cluster networking (list maxitems:1)
      */
     network: outputs.ClusterRkeConfigNetwork;
     /**
@@ -1965,7 +1966,7 @@ export interface ClusterRkeConfig {
      */
     services: outputs.ClusterRkeConfigServices;
     /**
-     * Use ssh agent auth. Default `false` (bool)
+     * Use ssh agent auth. Default `false`
      */
     sshAgentAuth?: boolean;
     /**
@@ -1973,11 +1974,11 @@ export interface ClusterRkeConfig {
      */
     sshCertPath: string;
     /**
-     * Node SSH private key path (string)
+     * Cluster level SSH private key path (string)
      */
     sshKeyPath: string;
     /**
-     * K3S upgrade strategy (List maxitems: 1)
+     * RKE upgrade strategy (list maxitems:1)
      */
     upgradeStrategy: outputs.ClusterRkeConfigUpgradeStrategy;
     /**
@@ -1992,45 +1993,45 @@ export interface ClusterRkeConfigAuthentication {
      */
     sans: string[];
     /**
-     * Monitoring deployment update strategy (string)
+     * RKE strategy for authentication (string)
      */
     strategy: string;
 }
 
 export interface ClusterRkeConfigAuthorization {
     /**
-     * The AKS node group mode. Default: `System` (string)
+     * RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
      */
     mode?: string;
     /**
-     * RKE options for network (map)
+     * RKE options for authorization (map)
      */
     options: {[key: string]: any};
 }
 
 export interface ClusterRkeConfigBastionHost {
     /**
-     * Address ip for node (string)
+     * Address ip for the bastion host (string)
      */
     address: string;
     /**
-     * Port for node. Default `22` (string)
+     * Port for bastion host. Default `22` (string)
      */
     port?: string;
     /**
-     * Use ssh agent auth. Default `false` (bool)
+     * Use ssh agent auth. Default `false`
      */
     sshAgentAuth?: boolean;
     /**
-     * Node SSH private key (string)
+     * Bastion host SSH private key (string)
      */
     sshKey: string;
     /**
-     * Node SSH private key path (string)
+     * Cluster level SSH private key path (string)
      */
     sshKeyPath: string;
     /**
-     * Registry user (string)
+     * User to connect bastion host (string)
      */
     user: string;
 }
@@ -2049,7 +2050,7 @@ export interface ClusterRkeConfigCloudProvider {
      */
     customCloudProvider: string;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name?: string;
     /**
@@ -2111,14 +2112,14 @@ export interface ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
      */
     vpc: string;
     /**
-     * The GKE cluster zone. Required if `region` not set (string)
+     * (string)
      */
     zone: string;
 }
 
 export interface ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride {
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * (string)
      */
     region: string;
     /**
@@ -2138,7 +2139,7 @@ export interface ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride {
      */
     signingRegion: string;
     /**
-     * Registry URL (string)
+     * (string)
      */
     url: string;
 }
@@ -2197,11 +2198,11 @@ export interface ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     cloudProviderRateLimitQps: number;
     /**
-     * The AKS load balancer sku (string)
+     * Allowed values: `basic` (default) `standard` (string)
      */
     loadBalancerSku?: string;
     /**
-     * Azure Kubernetes cluster location. Default `eastus` (string)
+     * (string)
      */
     location: string;
     /**
@@ -2217,7 +2218,7 @@ export interface ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     primaryScaleSetName: string;
     /**
-     * The AKS resource group (string)
+     * (string)
      */
     resourceGroup: string;
     /**
@@ -2233,11 +2234,11 @@ export interface ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     subnetName: string;
     /**
-     * Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * (string)
      */
     subscriptionId: string;
     /**
-     * Azure tenant ID to use (string)
+     * (string)
      */
     tenantId: string;
     /**
@@ -2318,15 +2319,15 @@ export interface ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
      */
     domainName: string;
     /**
-     * Registry password (string)
+     * (string)
      */
     password: string;
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * (string)
      */
     region: string;
     /**
-     * Azure tenant ID to use (string)
+     * (string)
      */
     tenantId: string;
     /**
@@ -2418,7 +2419,7 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProvider {
      */
     global: outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal;
     /**
-     * The GKE cluster network. Required for create new cluster (string)
+     * Kubernetes cluster networking (list maxitems:1)
      */
     network: outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork;
     /**
@@ -2448,11 +2449,11 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
      */
     insecureFlag: boolean;
     /**
-     * Registry password (string)
+     * (string)
      */
     password: string;
     /**
-     * Port for node. Default `22` (string)
+     * Port for bastion host. Default `22` (string)
      */
     port: string;
     /**
@@ -2460,7 +2461,7 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
      */
     soapRoundtripCount: number;
     /**
-     * Registry user (string)
+     * User to connect bastion host (string)
      */
     user: string;
 }
@@ -2478,15 +2479,15 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter 
      */
     datacenters: string;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      */
     name: string;
     /**
-     * Registry password (string)
+     * (string)
      */
     password: string;
     /**
-     * Port for node. Default `22` (string)
+     * Port for bastion host. Default `22` (string)
      */
     port: string;
     /**
@@ -2494,7 +2495,7 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter 
      */
     soapRoundtripCount: number;
     /**
-     * Registry user (string)
+     * User to connect bastion host (string)
      */
     user: string;
 }
@@ -2509,7 +2510,7 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
      */
     defaultDatastore: string;
     /**
-     * Folder for S3 service. Available from Rancher v2.2.7 (string)
+     * (string)
      */
     folder: string;
     /**
@@ -2528,7 +2529,7 @@ export interface ClusterRkeConfigDns {
      */
     linearAutoscalerParams?: outputs.ClusterRkeConfigDnsLinearAutoscalerParams;
     /**
-     * RKE monitoring node selector (map)
+     * DNS add-on node selector (map)
      */
     nodeSelector: {[key: string]: any};
     /**
@@ -2536,11 +2537,11 @@ export interface ClusterRkeConfigDns {
      */
     nodelocal?: outputs.ClusterRkeConfigDnsNodelocal;
     /**
-     * RKE options for network (map)
+     * RKE options for authorization (map)
      */
     options: {[key: string]: any};
     /**
-     * RKE monitoring provider (string)
+     * DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
      */
     provider?: string;
     /**
@@ -2548,11 +2549,11 @@ export interface ClusterRkeConfigDns {
      */
     reverseCidrs: string[];
     /**
-     * Network add-on tolerations (list)
+     * DNS add-on tolerations (list)
      */
     tolerations?: outputs.ClusterRkeConfigDnsToleration[];
     /**
-     * RKE monitoring update strategy (list Maxitems: 1)
+     * DNS update strategy (list Maxitems: 1)
      */
     updateStrategy?: outputs.ClusterRkeConfigDnsUpdateStrategy;
     /**
@@ -2590,18 +2591,18 @@ export interface ClusterRkeConfigDnsNodelocal {
      */
     ipAddress?: string;
     /**
-     * RKE monitoring node selector (map)
+     * DNS add-on node selector (map)
      */
     nodeSelector?: {[key: string]: any};
 }
 
 export interface ClusterRkeConfigDnsToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: string;
     /**
-     * The GKE taint key (string)
+     * The toleration key (string)
      */
     key: string;
     /**
@@ -2613,18 +2614,18 @@ export interface ClusterRkeConfigDnsToleration {
      */
     seconds: number;
     /**
-     * The GKE taint value (string)
+     * Rancher agent env var value (string)
      */
     value?: string;
 }
 
 export interface ClusterRkeConfigDnsUpdateStrategy {
     /**
-     * Monitoring deployment rolling update (list Maxitems: 1)
+     * Monitoring daemon set rolling update (list Maxitems: 1)
      */
     rollingUpdate?: outputs.ClusterRkeConfigDnsUpdateStrategyRollingUpdate;
     /**
-     * Monitoring deployment update strategy (string)
+     * RKE strategy for authentication (string)
      */
     strategy?: string;
 }
@@ -2650,7 +2651,7 @@ export interface ClusterRkeConfigIngress {
      */
     dnsPolicy: string;
     /**
-     * Extra arguments for scheduler service (map)
+     * Extra arguments for RKE Ingress (map)
      */
     extraArgs: {[key: string]: any};
     /**
@@ -2666,34 +2667,34 @@ export interface ClusterRkeConfigIngress {
      */
     networkMode: string;
     /**
-     * RKE monitoring node selector (map)
+     * DNS add-on node selector (map)
      */
     nodeSelector: {[key: string]: any};
     /**
-     * RKE options for network (map)
+     * RKE options for authorization (map)
      */
     options: {[key: string]: any};
     /**
-     * RKE monitoring provider (string)
+     * DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
      */
     provider: string;
     /**
-     * Network add-on tolerations (list)
+     * DNS add-on tolerations (list)
      */
     tolerations?: outputs.ClusterRkeConfigIngressToleration[];
     /**
-     * RKE monitoring update strategy (list Maxitems: 1)
+     * DNS update strategy (list Maxitems: 1)
      */
     updateStrategy?: outputs.ClusterRkeConfigIngressUpdateStrategy;
 }
 
 export interface ClusterRkeConfigIngressToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: string;
     /**
-     * The GKE taint key (string)
+     * The toleration key (string)
      */
     key: string;
     /**
@@ -2705,18 +2706,18 @@ export interface ClusterRkeConfigIngressToleration {
      */
     seconds: number;
     /**
-     * The GKE taint value (string)
+     * Rancher agent env var value (string)
      */
     value?: string;
 }
 
 export interface ClusterRkeConfigIngressUpdateStrategy {
     /**
-     * Monitoring deployment rolling update (list Maxitems: 1)
+     * Monitoring daemon set rolling update (list Maxitems: 1)
      */
     rollingUpdate?: outputs.ClusterRkeConfigIngressUpdateStrategyRollingUpdate;
     /**
-     * Monitoring deployment update strategy (string)
+     * RKE strategy for authentication (string)
      */
     strategy?: string;
 }
@@ -2730,15 +2731,15 @@ export interface ClusterRkeConfigIngressUpdateStrategyRollingUpdate {
 
 export interface ClusterRkeConfigMonitoring {
     /**
-     * RKE monitoring node selector (map)
+     * DNS add-on node selector (map)
      */
     nodeSelector?: {[key: string]: any};
     /**
-     * RKE options for network (map)
+     * RKE options for authorization (map)
      */
     options: {[key: string]: any};
     /**
-     * RKE monitoring provider (string)
+     * DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
      */
     provider: string;
     /**
@@ -2746,22 +2747,22 @@ export interface ClusterRkeConfigMonitoring {
      */
     replicas: number;
     /**
-     * Network add-on tolerations (list)
+     * DNS add-on tolerations (list)
      */
     tolerations?: outputs.ClusterRkeConfigMonitoringToleration[];
     /**
-     * RKE monitoring update strategy (list Maxitems: 1)
+     * DNS update strategy (list Maxitems: 1)
      */
     updateStrategy?: outputs.ClusterRkeConfigMonitoringUpdateStrategy;
 }
 
 export interface ClusterRkeConfigMonitoringToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: string;
     /**
-     * The GKE taint key (string)
+     * The toleration key (string)
      */
     key: string;
     /**
@@ -2773,18 +2774,18 @@ export interface ClusterRkeConfigMonitoringToleration {
      */
     seconds: number;
     /**
-     * The GKE taint value (string)
+     * Rancher agent env var value (string)
      */
     value?: string;
 }
 
 export interface ClusterRkeConfigMonitoringUpdateStrategy {
     /**
-     * Monitoring deployment rolling update (list Maxitems: 1)
+     * Monitoring daemon set rolling update (list Maxitems: 1)
      */
     rollingUpdate?: outputs.ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate;
     /**
-     * Monitoring deployment update strategy (string)
+     * RKE strategy for authentication (string)
      */
     strategy?: string;
 }
@@ -2802,6 +2803,10 @@ export interface ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
 
 export interface ClusterRkeConfigNetwork {
     /**
+     * ACI provider config for RKE network (list maxitems:63)
+     */
+    aciNetworkProvider?: outputs.ClusterRkeConfigNetworkAciNetworkProvider;
+    /**
      * Calico provider config for RKE network (list maxitems:1)
      */
     calicoNetworkProvider?: outputs.ClusterRkeConfigNetworkCalicoNetworkProvider;
@@ -2818,7 +2823,7 @@ export interface ClusterRkeConfigNetwork {
      */
     mtu?: number;
     /**
-     * RKE options for network (map)
+     * RKE options for authorization (map)
      */
     options: {[key: string]: any};
     /**
@@ -2826,7 +2831,7 @@ export interface ClusterRkeConfigNetwork {
      */
     plugin: string;
     /**
-     * Network add-on tolerations (list)
+     * DNS add-on tolerations (list)
      */
     tolerations?: outputs.ClusterRkeConfigNetworkToleration[];
     /**
@@ -2835,34 +2840,333 @@ export interface ClusterRkeConfigNetwork {
     weaveNetworkProvider?: outputs.ClusterRkeConfigNetworkWeaveNetworkProvider;
 }
 
+export interface ClusterRkeConfigNetworkAciNetworkProvider {
+    /**
+     * Attachable entity profile (string)
+     */
+    aep: string;
+    /**
+     * List of APIC hosts to connect for APIC API (list)
+     */
+    apicHosts: string[];
+    /**
+     * APIC refresh ticker adjust amount (string)
+     */
+    apicRefreshTickerAdjust?: string;
+    /**
+     * APIC refresh time in seconds (string)
+     */
+    apicRefreshTime?: string;
+    /**
+     * APIC subscription delay amount (string)
+     */
+    apicSubscriptionDelay?: string;
+    /**
+     * APIC user certificate (string)
+     */
+    apicUserCrt: string;
+    /**
+     * APIC user key (string)
+     */
+    apicUserKey: string;
+    /**
+     * APIC user name (string)
+     */
+    apicUserName: string;
+    /**
+     * cAPIC cloud (string)
+     */
+    capic?: string;
+    /**
+     * Log level for ACI controller (string)
+     */
+    controllerLogLevel?: string;
+    /**
+     * Whether to disable periodic SNAT global info sync (string)
+     */
+    disablePeriodicSnatGlobalInfoSync?: string;
+    /**
+     * Whether to disable waiting for network (string)
+     */
+    disableWaitForNetwork?: string;
+    /**
+     * Whether to enable drop log (string)
+     */
+    dropLogEnable?: string;
+    /**
+     * The duration to wait for network (string)
+     */
+    durationWaitForNetwork?: string;
+    /**
+     * Whether to enable endpoint slices (string)
+     */
+    enableEndpointSlice?: string;
+    /**
+     * Encap type: vxlan or vlan (string)
+     */
+    encapType: string;
+    /**
+     * EP registry (string)
+     */
+    epRegistry?: string;
+    /**
+     * Subnet to use for dynamic external IPs (string)
+     */
+    externDynamic: string;
+    /**
+     * Subnet to use for static external IPs (string)
+     */
+    externStatic: string;
+    /**
+     * GBH pod subnet (string)
+     */
+    gbpPodSubnet?: string;
+    /**
+     * Log level for ACI host agent (string)
+     */
+    hostAgentLogLevel?: string;
+    /**
+     * Image pull policy (string)
+     */
+    imagePullPolicy?: string;
+    /**
+     * Image pull policy (string)
+     */
+    imagePullSecret?: string;
+    /**
+     * The VLAN used by ACI infra (string)
+     */
+    infraVlan?: string;
+    /**
+     * Whether to install Istio (string)
+     */
+    installIstio?: string;
+    /**
+     * Istio profile name (string)
+     */
+    istioProfile?: string;
+    /**
+     * List of Kafka broker hosts (list)
+     */
+    kafkaBrokers?: string[];
+    /**
+     * Kafka client certificate (string)
+     */
+    kafkaClientCrt?: string;
+    /**
+     * Kafka client key (string)
+     */
+    kafkaClientKey?: string;
+    /**
+     * The VLAN used by the physdom for nodes (string)
+     */
+    kubeApiVlan: string;
+    /**
+     * L3out (string)
+     */
+    l3out: string;
+    /**
+     * L3out external networks (list)
+     */
+    l3outExternalNetworks: string[];
+    /**
+     * Max nodes in service graph (string)
+     */
+    maxNodesSvcGraph?: string;
+    /**
+     * End of mcast range (string)
+     */
+    mcastRangeEnd: string;
+    /**
+     * Start of mcast range (string)
+     */
+    mcastRangeStart: string;
+    /**
+     * MTU head room amount (string)
+     */
+    mtuHeadRoom?: string;
+    /**
+     * Whether to disable Multus (string)
+     */
+    multusDisable?: string;
+    /**
+     * Whether to use priority class (string)
+     */
+    noPriorityClass?: string;
+    /**
+     * Whether to enable node pod interface (string)
+     */
+    nodePodIfEnable?: string;
+    /**
+     * Subnet to use for nodes (string)
+     */
+    nodeSubnet: string;
+    /**
+     * Subnet to use for service graph (string)
+     */
+    nodeSvcSubnet: string;
+    /**
+     * Whether to use client SSL for Opflex (string)
+     */
+    opflexClientSsl?: string;
+    /**
+     * Opflex device delete timeout (string)
+     */
+    opflexDeviceDeleteTimeout?: string;
+    /**
+     * Log level for ACI opflex (string)
+     */
+    opflexLogLevel?: string;
+    /**
+     * Opflex mode (string)
+     */
+    opflexMode?: string;
+    /**
+     * Opflex server port (string)
+     */
+    opflexServerPort?: string;
+    /**
+     * Overlay VRF name (string)
+     */
+    overlayVrfName?: string;
+    /**
+     * OVS memory limit (string)
+     */
+    ovsMemoryLimit?: string;
+    /**
+     * Policy-based routing tracking non snat (string)
+     */
+    pbrTrackingNonSnat?: string;
+    /**
+     * Pod subnet chunk size (string)
+     */
+    podSubnetChunkSize?: string;
+    /**
+     * Whether to run GBP container (string)
+     */
+    runGbpContainer?: string;
+    /**
+     * Whether to run Opflex server container (string)
+     */
+    runOpflexServerContainer?: string;
+    /**
+     * Service monitor interval (string)
+     */
+    serviceMonitorInterval?: string;
+    /**
+     * The VLAN used by LoadBalancer services (string)
+     */
+    serviceVlan: string;
+    /**
+     * Snat contract scope (string)
+     */
+    snatContractScope?: string;
+    /**
+     * Snat namespace (string)
+     */
+    snatNamespace?: string;
+    /**
+     * End of snat port range (string)
+     */
+    snatPortRangeEnd?: string;
+    /**
+     * End of snat port range (string)
+     */
+    snatPortRangeStart?: string;
+    /**
+     * Snat ports per node (string)
+     */
+    snatPortsPerNode?: string;
+    /**
+     * Whether to enable SR-IOV (string)
+     */
+    sriovEnable?: string;
+    /**
+     * Subnet domain name (string)
+     */
+    subnetDomainName?: string;
+    /**
+     * ACI system ID (string)
+     */
+    systemId: string;
+    /**
+     * ACI tenant (string)
+     */
+    tenant?: string;
+    /**
+     * ACI token (string)
+     */
+    token: string;
+    /**
+     * Whether to use ACI anywhere CRD (string)
+     */
+    useAciAnywhereCrd?: string;
+    /**
+     * Whether to use ACI CNI priority class (string)
+     */
+    useAciCniPriorityClass?: string;
+    /**
+     * Whether to use cluster role (string)
+     */
+    useClusterRole?: string;
+    /**
+     * Whether to use host netns volume (string)
+     */
+    useHostNetnsVolume?: string;
+    /**
+     * Whether use Opflex server volume (string)
+     */
+    useOpflexServerVolume?: string;
+    /**
+     * Whether ACI containers should run as privileged (string)
+     */
+    usePrivilegedContainer?: string;
+    /**
+     * VMM controller configuration (string)
+     */
+    vmmController?: string;
+    /**
+     * VMM domain configuration (string)
+     */
+    vmmDomain?: string;
+    /**
+     * VRF name (string)
+     */
+    vrfName: string;
+    /**
+     * VRF tenant (string)
+     */
+    vrfTenant: string;
+}
+
 export interface ClusterRkeConfigNetworkCalicoNetworkProvider {
     /**
-     * RKE options for Calico network provider (string)
+     * RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
      */
     cloudProvider: string;
 }
 
 export interface ClusterRkeConfigNetworkCanalNetworkProvider {
     /**
-     * Iface config Flannel network provider (string)
+     * Iface config Canal network provider (string)
      */
     iface: string;
 }
 
 export interface ClusterRkeConfigNetworkFlannelNetworkProvider {
     /**
-     * Iface config Flannel network provider (string)
+     * Iface config Canal network provider (string)
      */
     iface: string;
 }
 
 export interface ClusterRkeConfigNetworkToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: string;
     /**
-     * The GKE taint key (string)
+     * The toleration key (string)
      */
     key: string;
     /**
@@ -2874,21 +3178,21 @@ export interface ClusterRkeConfigNetworkToleration {
      */
     seconds: number;
     /**
-     * The GKE taint value (string)
+     * Rancher agent env var value (string)
      */
     value?: string;
 }
 
 export interface ClusterRkeConfigNetworkWeaveNetworkProvider {
     /**
-     * Registry password (string)
+     * (string)
      */
     password: string;
 }
 
 export interface ClusterRkeConfigNode {
     /**
-     * Address ip for node (string)
+     * Address ip for the bastion host (string)
      */
     address: string;
     /**
@@ -2904,7 +3208,7 @@ export interface ClusterRkeConfigNode {
      */
     internalAddress?: string;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      */
     labels?: {[key: string]: any};
     /**
@@ -2912,7 +3216,7 @@ export interface ClusterRkeConfigNode {
      */
     nodeId?: string;
     /**
-     * Port for node. Default `22` (string)
+     * Port for bastion host. Default `22` (string)
      */
     port?: string;
     /**
@@ -2920,19 +3224,19 @@ export interface ClusterRkeConfigNode {
      */
     roles: string[];
     /**
-     * Use ssh agent auth. Default `false` (bool)
+     * Use ssh agent auth. Default `false`
      */
     sshAgentAuth?: boolean;
     /**
-     * Node SSH private key (string)
+     * Bastion host SSH private key (string)
      */
     sshKey: string;
     /**
-     * Node SSH private key path (string)
+     * Cluster level SSH private key path (string)
      */
     sshKeyPath: string;
     /**
-     * Registry user (string)
+     * User to connect bastion host (string)
      */
     user: string;
 }
@@ -2947,15 +3251,15 @@ export interface ClusterRkeConfigPrivateRegistry {
      */
     isDefault?: boolean;
     /**
-     * Registry password (string)
+     * (string)
      */
     password?: string;
     /**
-     * Registry URL (string)
+     * (string)
      */
     url: string;
     /**
-     * Registry user (string)
+     * User to connect bastion host (string)
      */
     user?: string;
 }
@@ -3024,15 +3328,15 @@ export interface ClusterRkeConfigServicesEtcd {
      */
     externalUrls?: string[];
     /**
-     * Extra arguments for scheduler service (map)
+     * Extra arguments for RKE Ingress (map)
      */
     extraArgs: {[key: string]: any};
     /**
-     * Extra binds for scheduler service (list)
+     * Extra binds for etcd service (list)
      */
     extraBinds?: string[];
     /**
-     * Extra environment for scheduler service (list)
+     * Extra environment for etcd service (list)
      */
     extraEnvs?: string[];
     /**
@@ -3040,19 +3344,19 @@ export interface ClusterRkeConfigServicesEtcd {
      */
     gid?: number;
     /**
-     * Docker image for scheduler service (string)
+     * Docker image for etcd service (string)
      */
     image: string;
     /**
-     * The GKE taint key (string)
+     * The toleration key (string)
      */
     key: string;
     /**
-     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * Path for etcd service (string)
      */
     path: string;
     /**
-     * Retention for etcd backup. Default `6` (int)
+     * Cluster scan retention (int)
      */
     retention: string;
     /**
@@ -3067,7 +3371,7 @@ export interface ClusterRkeConfigServicesEtcd {
 
 export interface ClusterRkeConfigServicesEtcdBackupConfig {
     /**
-     * Enable scheduled cluster scan. Default: `false` (bool)
+     * Enable etcd backup (bool)
      */
     enabled?: boolean;
     /**
@@ -3075,7 +3379,7 @@ export interface ClusterRkeConfigServicesEtcdBackupConfig {
      */
     intervalHours?: number;
     /**
-     * Retention for etcd backup. Default `6` (int)
+     * Cluster scan retention (int)
      */
     retention?: number;
     /**
@@ -3087,14 +3391,14 @@ export interface ClusterRkeConfigServicesEtcdBackupConfig {
      */
     safeTimestamp?: boolean;
     /**
-     * RKE node drain timeout. Default: `60` (int)
+     * Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
      */
     timeout: number;
 }
 
 export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
     /**
-     * The AWS Client ID to use (string)
+     * Access key for S3 service (string)
      */
     accessKey?: string;
     /**
@@ -3110,15 +3414,15 @@ export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
      */
     endpoint: string;
     /**
-     * Folder for S3 service. Available from Rancher v2.2.7 (string)
+     * (string)
      */
     folder?: string;
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * (string)
      */
     region?: string;
     /**
-     * The AWS Client Secret associated with the Client ID (string)
+     * Secret key for S3 service (string)
      */
     secretKey?: string;
 }
@@ -3141,19 +3445,19 @@ export interface ClusterRkeConfigServicesKubeApi {
      */
     eventRateLimit?: outputs.ClusterRkeConfigServicesKubeApiEventRateLimit;
     /**
-     * Extra arguments for scheduler service (map)
+     * Extra arguments for RKE Ingress (map)
      */
     extraArgs: {[key: string]: any};
     /**
-     * Extra binds for scheduler service (list)
+     * Extra binds for etcd service (list)
      */
     extraBinds?: string[];
     /**
-     * Extra environment for scheduler service (list)
+     * Extra environment for etcd service (list)
      */
     extraEnvs?: string[];
     /**
-     * Docker image for scheduler service (string)
+     * Docker image for etcd service (string)
      */
     image: string;
     /**
@@ -3165,7 +3469,7 @@ export interface ClusterRkeConfigServicesKubeApi {
      */
     secretsEncryptionConfig?: outputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig;
     /**
-     * Service Cluster ip Range option for kube controller service (string)
+     * Service Cluster IP Range option for kube API service (string)
      */
     serviceClusterIpRange: string;
     /**
@@ -3176,11 +3480,11 @@ export interface ClusterRkeConfigServicesKubeApi {
 
 export interface ClusterRkeConfigServicesKubeApiAuditLog {
     /**
-     * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     * Audit log configuration. (list maxitems: 1)
      */
     configuration: outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration;
     /**
-     * Enable scheduled cluster scan. Default: `false` (bool)
+     * Enable etcd backup (bool)
      */
     enabled?: boolean;
 }
@@ -3199,11 +3503,11 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
      */
     maxBackup?: number;
     /**
-     * The EKS node group maximum size. Default `2` (int)
+     * Audit log max size. Default: `100` (int)
      */
     maxSize?: number;
     /**
-     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * Path for etcd service (string)
      */
     path?: string;
     /**
@@ -3214,11 +3518,11 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 
 export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
     /**
-     * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     * Audit log configuration. (list maxitems: 1)
      */
     configuration: string;
     /**
-     * Enable scheduled cluster scan. Default: `false` (bool)
+     * Enable etcd backup (bool)
      */
     enabled?: boolean;
 }
@@ -3229,7 +3533,7 @@ export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
      */
     customConfig?: string;
     /**
-     * Enable scheduled cluster scan. Default: `false` (bool)
+     * Enable etcd backup (bool)
      */
     enabled?: boolean;
 }
@@ -3240,23 +3544,23 @@ export interface ClusterRkeConfigServicesKubeController {
      */
     clusterCidr: string;
     /**
-     * Extra arguments for scheduler service (map)
+     * Extra arguments for RKE Ingress (map)
      */
     extraArgs: {[key: string]: any};
     /**
-     * Extra binds for scheduler service (list)
+     * Extra binds for etcd service (list)
      */
     extraBinds?: string[];
     /**
-     * Extra environment for scheduler service (list)
+     * Extra environment for etcd service (list)
      */
     extraEnvs?: string[];
     /**
-     * Docker image for scheduler service (string)
+     * Docker image for etcd service (string)
      */
     image: string;
     /**
-     * Service Cluster ip Range option for kube controller service (string)
+     * Service Cluster IP Range option for kube API service (string)
      */
     serviceClusterIpRange: string;
 }
@@ -3271,15 +3575,15 @@ export interface ClusterRkeConfigServicesKubelet {
      */
     clusterDomain: string;
     /**
-     * Extra arguments for scheduler service (map)
+     * Extra arguments for RKE Ingress (map)
      */
     extraArgs: {[key: string]: any};
     /**
-     * Extra binds for scheduler service (list)
+     * Extra binds for etcd service (list)
      */
     extraBinds?: string[];
     /**
-     * Extra environment for scheduler service (list)
+     * Extra environment for etcd service (list)
      */
     extraEnvs?: string[];
     /**
@@ -3291,7 +3595,7 @@ export interface ClusterRkeConfigServicesKubelet {
      */
     generateServingCertificate?: boolean;
     /**
-     * Docker image for scheduler service (string)
+     * Docker image for etcd service (string)
      */
     image: string;
     /**
@@ -3302,38 +3606,38 @@ export interface ClusterRkeConfigServicesKubelet {
 
 export interface ClusterRkeConfigServicesKubeproxy {
     /**
-     * Extra arguments for scheduler service (map)
+     * Extra arguments for RKE Ingress (map)
      */
     extraArgs: {[key: string]: any};
     /**
-     * Extra binds for scheduler service (list)
+     * Extra binds for etcd service (list)
      */
     extraBinds?: string[];
     /**
-     * Extra environment for scheduler service (list)
+     * Extra environment for etcd service (list)
      */
     extraEnvs?: string[];
     /**
-     * Docker image for scheduler service (string)
+     * Docker image for etcd service (string)
      */
     image: string;
 }
 
 export interface ClusterRkeConfigServicesScheduler {
     /**
-     * Extra arguments for scheduler service (map)
+     * Extra arguments for RKE Ingress (map)
      */
     extraArgs: {[key: string]: any};
     /**
-     * Extra binds for scheduler service (list)
+     * Extra binds for etcd service (list)
      */
     extraBinds?: string[];
     /**
-     * Extra environment for scheduler service (list)
+     * Extra environment for etcd service (list)
      */
     extraEnvs?: string[];
     /**
-     * Docker image for scheduler service (string)
+     * Docker image for etcd service (string)
      */
     image: string;
 }
@@ -3375,14 +3679,14 @@ export interface ClusterRkeConfigUpgradeStrategyDrainInput {
      */
     ignoreDaemonSets?: boolean;
     /**
-     * RKE node drain timeout. Default: `60` (int)
+     * Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
      */
     timeout?: number;
 }
 
 export interface ClusterScheduledClusterScan {
     /**
-     * Enable scheduled cluster scan. Default: `false` (bool)
+     * Enable etcd backup (bool)
      */
     enabled?: boolean;
     /**
@@ -3431,7 +3735,7 @@ export interface ClusterScheduledClusterScanScheduleConfig {
      */
     cronSchedule: string;
     /**
-     * Retention for etcd backup. Default `6` (int)
+     * Cluster scan retention (int)
      */
     retention: number;
 }
@@ -3446,7 +3750,7 @@ export interface ClusterSyncNode {
      */
     capacity: {[key: string]: any};
     /**
-     * The Cluster ID of the node (string).
+     * The cluster ID that is syncing (string)
      */
     clusterId: string;
     /**
@@ -3520,7 +3824,7 @@ export interface ClusterTemplateMember {
 
 export interface ClusterTemplateTemplateRevision {
     /**
-     * Annotations for the cluster template revision (map)
+     * Annotations for the cluster template (map)
      */
     annotations: {[key: string]: any};
     /**
@@ -3532,7 +3836,7 @@ export interface ClusterTemplateTemplateRevision {
      */
     clusterTemplateId: string;
     /**
-     * Default variable value (string)
+     * Default cluster template revision. Default `false` (bool)
      */
     default?: boolean;
     /**
@@ -3544,11 +3848,11 @@ export interface ClusterTemplateTemplateRevision {
      */
     id: string;
     /**
-     * Labels for the cluster template revision (map)
+     * Labels for the cluster template (map)
      */
     labels: {[key: string]: any};
     /**
-     * The cluster template revision name (string)
+     * The cluster template name (string)
      */
     name: string;
     /**
@@ -3667,7 +3971,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
     azureCloudProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider;
     customCloudProvider: string;
     /**
-     * The cluster template revision name (string)
+     * The cluster template name (string)
      */
     name?: string;
     openstackCloudProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider;
@@ -3811,7 +4115,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter {
     datacenters: string;
     /**
-     * The cluster template revision name (string)
+     * The cluster template name (string)
      */
     name: string;
     password: string;
@@ -3930,6 +4234,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
+    aciNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider;
     calicoNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider;
     canalNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider;
     flannelNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider;
@@ -3938,6 +4243,83 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
     plugin: string;
     tolerations?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration[];
     weaveNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider {
+    aep: string;
+    apicHosts: string[];
+    apicRefreshTickerAdjust?: string;
+    apicRefreshTime?: string;
+    apicSubscriptionDelay?: string;
+    apicUserCrt: string;
+    apicUserKey: string;
+    apicUserName: string;
+    capic?: string;
+    controllerLogLevel?: string;
+    disablePeriodicSnatGlobalInfoSync?: string;
+    disableWaitForNetwork?: string;
+    dropLogEnable?: string;
+    durationWaitForNetwork?: string;
+    enableEndpointSlice?: string;
+    encapType: string;
+    epRegistry?: string;
+    externDynamic: string;
+    externStatic: string;
+    gbpPodSubnet?: string;
+    hostAgentLogLevel?: string;
+    imagePullPolicy?: string;
+    imagePullSecret?: string;
+    infraVlan?: string;
+    installIstio?: string;
+    istioProfile?: string;
+    kafkaBrokers?: string[];
+    kafkaClientCrt?: string;
+    kafkaClientKey?: string;
+    kubeApiVlan: string;
+    l3out: string;
+    l3outExternalNetworks: string[];
+    maxNodesSvcGraph?: string;
+    mcastRangeEnd: string;
+    mcastRangeStart: string;
+    mtuHeadRoom?: string;
+    multusDisable?: string;
+    noPriorityClass?: string;
+    nodePodIfEnable?: string;
+    nodeSubnet: string;
+    nodeSvcSubnet: string;
+    opflexClientSsl?: string;
+    opflexDeviceDeleteTimeout?: string;
+    opflexLogLevel?: string;
+    opflexMode?: string;
+    opflexServerPort?: string;
+    overlayVrfName?: string;
+    ovsMemoryLimit?: string;
+    pbrTrackingNonSnat?: string;
+    podSubnetChunkSize?: string;
+    runGbpContainer?: string;
+    runOpflexServerContainer?: string;
+    serviceMonitorInterval?: string;
+    serviceVlan: string;
+    snatContractScope?: string;
+    snatNamespace?: string;
+    snatPortRangeEnd?: string;
+    snatPortRangeStart?: string;
+    snatPortsPerNode?: string;
+    sriovEnable?: string;
+    subnetDomainName?: string;
+    systemId: string;
+    tenant?: string;
+    token: string;
+    useAciAnywhereCrd?: string;
+    useAciCniPriorityClass?: string;
+    useClusterRole?: string;
+    useHostNetnsVolume?: string;
+    useOpflexServerVolume?: string;
+    usePrivilegedContainer?: string;
+    vmmController?: string;
+    vmmDomain?: string;
+    vrfName: string;
+    vrfTenant: string;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider {
@@ -3970,7 +4352,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode {
     hostnameOverride?: string;
     internalAddress?: string;
     /**
-     * Labels for the cluster template revision (map)
+     * Labels for the cluster template (map)
      */
     labels?: {[key: string]: any};
     nodeId?: string;
@@ -4171,7 +4553,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterSca
 
 export interface ClusterTemplateTemplateRevisionQuestion {
     /**
-     * Default variable value (string)
+     * Default cluster template revision. Default `false` (bool)
      */
     default: string;
     /**
@@ -4190,18 +4572,18 @@ export interface ClusterTemplateTemplateRevisionQuestion {
 
 export interface ClusterV2AgentEnvVar {
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      */
     name: string;
     /**
-     * The taint value (string)
+     * Rancher agent env var value (string)
      */
     value: string;
 }
 
 export interface ClusterV2ClusterRegistrationToken {
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster V2 (map)
      */
     annotations: {[key: string]: any};
     /**
@@ -4229,7 +4611,7 @@ export interface ClusterV2ClusterRegistrationToken {
      */
     insecureWindowsNodeCommand: string;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster V2 (map)
      */
     labels: {[key: string]: any};
     /**
@@ -4237,7 +4619,7 @@ export interface ClusterV2ClusterRegistrationToken {
      */
     manifestUrl: string;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      */
     name: string;
     /**
@@ -4260,7 +4642,7 @@ export interface ClusterV2LocalAuthEndpoint {
      */
     caCerts?: string;
     /**
-     * Drain options enabled? Default `true` (bool)
+     * Enable the authorized cluster endpoint. Default `false` (bool)
      */
     enabled?: boolean;
     /**
@@ -4291,7 +4673,7 @@ export interface ClusterV2RkeConfig {
      */
     etcdSnapshotRestore?: outputs.ClusterV2RkeConfigEtcdSnapshotRestore;
     /**
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * Cluster V2 local auth endpoint (list maxitems:1)
      *
      * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      */
@@ -4347,7 +4729,7 @@ export interface ClusterV2RkeConfigEtcdS3Config {
      */
     bucket: string;
     /**
-     * ETCD snapshot S3 cloud credential name (string)
+     * Machine pool cloud credential secret name (string)
      */
     cloudCredentialName?: string;
     /**
@@ -4374,18 +4756,18 @@ export interface ClusterV2RkeConfigEtcdS3Config {
 
 export interface ClusterV2RkeConfigEtcdSnapshotCreate {
     /**
-     * ETCD snapshot desired generation (int)
+     * Desired certificate rotation generation (int)
      */
     generation: number;
 }
 
 export interface ClusterV2RkeConfigEtcdSnapshotRestore {
     /**
-     * ETCD snapshot desired generation (int)
+     * Desired certificate rotation generation (int)
      */
     generation: number;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      */
     name: string;
     /**
@@ -4400,7 +4782,7 @@ export interface ClusterV2RkeConfigLocalAuthEndpoint {
      */
     caCerts?: string;
     /**
-     * Drain options enabled? Default `true` (bool)
+     * Enable the authorized cluster endpoint. Default `false` (bool)
      */
     enabled?: boolean;
     /**
@@ -4411,7 +4793,7 @@ export interface ClusterV2RkeConfigLocalAuthEndpoint {
 
 export interface ClusterV2RkeConfigMachinePool {
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster V2 (map)
      */
     annotations: {[key: string]: any};
     /**
@@ -4431,7 +4813,7 @@ export interface ClusterV2RkeConfigMachinePool {
      */
     etcdRole?: boolean;
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster V2 (map)
      */
     labels: {[key: string]: any};
     /**
@@ -4439,11 +4821,15 @@ export interface ClusterV2RkeConfigMachinePool {
      */
     machineConfig: outputs.ClusterV2RkeConfigMachinePoolMachineConfig;
     /**
+     * Labels for Machine pool nodes (map)
+     */
+    machineLabels: {[key: string]: any};
+    /**
      * Max unhealthy nodes for automated replacement to be allowed (string)
      */
     maxUnhealthy?: string;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      */
     name: string;
     /**
@@ -4490,7 +4876,7 @@ export interface ClusterV2RkeConfigMachinePoolMachineConfig {
      */
     kind: string;
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      */
     name: string;
 }
@@ -4512,11 +4898,11 @@ export interface ClusterV2RkeConfigMachinePoolTaint {
      */
     effect?: string;
     /**
-     * Machine selector label match expressions key (string)
+     * The taint key (string)
      */
     key: string;
     /**
-     * The taint value (string)
+     * Rancher agent env var value (string)
      */
     value: string;
 }
@@ -4545,7 +4931,7 @@ export interface ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
 
 export interface ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
     /**
-     * Machine selector label match expressions key (string)
+     * The taint key (string)
      */
     key?: string;
     /**
@@ -4609,7 +4995,7 @@ export interface ClusterV2RkeConfigRegistriesMirror {
 
 export interface ClusterV2RkeConfigRotateCertificates {
     /**
-     * ETCD snapshot desired generation (int)
+     * Desired certificate rotation generation (int)
      */
     generation: number;
     /**
@@ -4647,7 +5033,7 @@ export interface ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions {
      */
     disableEviction?: boolean;
     /**
-     * Drain options enabled? Default `true` (bool)
+     * Enable the authorized cluster endpoint. Default `false` (bool)
      */
     enabled?: boolean;
     /**
@@ -4686,7 +5072,7 @@ export interface ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
      */
     disableEviction?: boolean;
     /**
-     * Drain options enabled? Default `true` (bool)
+     * Enable the authorized cluster endpoint. Default `false` (bool)
      */
     enabled?: boolean;
     /**
@@ -5656,6 +6042,7 @@ export interface GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
 }
 
 export interface GetClusterRkeConfigNetwork {
+    aciNetworkProvider?: outputs.GetClusterRkeConfigNetworkAciNetworkProvider;
     calicoNetworkProvider?: outputs.GetClusterRkeConfigNetworkCalicoNetworkProvider;
     canalNetworkProvider?: outputs.GetClusterRkeConfigNetworkCanalNetworkProvider;
     flannelNetworkProvider?: outputs.GetClusterRkeConfigNetworkFlannelNetworkProvider;
@@ -5664,6 +6051,83 @@ export interface GetClusterRkeConfigNetwork {
     plugin: string;
     tolerations?: outputs.GetClusterRkeConfigNetworkToleration[];
     weaveNetworkProvider?: outputs.GetClusterRkeConfigNetworkWeaveNetworkProvider;
+}
+
+export interface GetClusterRkeConfigNetworkAciNetworkProvider {
+    aep: string;
+    apicHosts: string[];
+    apicRefreshTickerAdjust?: string;
+    apicRefreshTime?: string;
+    apicSubscriptionDelay?: string;
+    apicUserCrt: string;
+    apicUserKey: string;
+    apicUserName: string;
+    capic?: string;
+    controllerLogLevel?: string;
+    disablePeriodicSnatGlobalInfoSync?: string;
+    disableWaitForNetwork?: string;
+    dropLogEnable?: string;
+    durationWaitForNetwork?: string;
+    enableEndpointSlice?: string;
+    encapType: string;
+    epRegistry?: string;
+    externDynamic: string;
+    externStatic: string;
+    gbpPodSubnet?: string;
+    hostAgentLogLevel?: string;
+    imagePullPolicy?: string;
+    imagePullSecret?: string;
+    infraVlan?: string;
+    installIstio?: string;
+    istioProfile?: string;
+    kafkaBrokers?: string[];
+    kafkaClientCrt?: string;
+    kafkaClientKey?: string;
+    kubeApiVlan: string;
+    l3out: string;
+    l3outExternalNetworks: string[];
+    maxNodesSvcGraph?: string;
+    mcastRangeEnd: string;
+    mcastRangeStart: string;
+    mtuHeadRoom?: string;
+    multusDisable?: string;
+    noPriorityClass?: string;
+    nodePodIfEnable?: string;
+    nodeSubnet: string;
+    nodeSvcSubnet: string;
+    opflexClientSsl?: string;
+    opflexDeviceDeleteTimeout?: string;
+    opflexLogLevel?: string;
+    opflexMode?: string;
+    opflexServerPort?: string;
+    overlayVrfName?: string;
+    ovsMemoryLimit?: string;
+    pbrTrackingNonSnat?: string;
+    podSubnetChunkSize?: string;
+    runGbpContainer?: string;
+    runOpflexServerContainer?: string;
+    serviceMonitorInterval?: string;
+    serviceVlan: string;
+    snatContractScope?: string;
+    snatNamespace?: string;
+    snatPortRangeEnd?: string;
+    snatPortRangeStart?: string;
+    snatPortsPerNode?: string;
+    sriovEnable?: string;
+    subnetDomainName?: string;
+    systemId: string;
+    tenant?: string;
+    token: string;
+    useAciAnywhereCrd?: string;
+    useAciCniPriorityClass?: string;
+    useClusterRole?: string;
+    useHostNetnsVolume?: string;
+    useOpflexServerVolume?: string;
+    usePrivilegedContainer?: string;
+    vmmController?: string;
+    vmmDomain?: string;
+    vrfName: string;
+    vrfTenant: string;
 }
 
 export interface GetClusterRkeConfigNetworkCalicoNetworkProvider {
@@ -6277,6 +6741,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitor
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
+    aciNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider;
     calicoNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider;
     canalNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider;
     flannelNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider;
@@ -6285,6 +6750,83 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork
     plugin: string;
     tolerations?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration[];
     weaveNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider {
+    aep: string;
+    apicHosts: string[];
+    apicRefreshTickerAdjust?: string;
+    apicRefreshTime?: string;
+    apicSubscriptionDelay?: string;
+    apicUserCrt: string;
+    apicUserKey: string;
+    apicUserName: string;
+    capic?: string;
+    controllerLogLevel?: string;
+    disablePeriodicSnatGlobalInfoSync?: string;
+    disableWaitForNetwork?: string;
+    dropLogEnable?: string;
+    durationWaitForNetwork?: string;
+    enableEndpointSlice?: string;
+    encapType: string;
+    epRegistry?: string;
+    externDynamic: string;
+    externStatic: string;
+    gbpPodSubnet?: string;
+    hostAgentLogLevel?: string;
+    imagePullPolicy?: string;
+    imagePullSecret?: string;
+    infraVlan?: string;
+    installIstio?: string;
+    istioProfile?: string;
+    kafkaBrokers?: string[];
+    kafkaClientCrt?: string;
+    kafkaClientKey?: string;
+    kubeApiVlan: string;
+    l3out: string;
+    l3outExternalNetworks: string[];
+    maxNodesSvcGraph?: string;
+    mcastRangeEnd: string;
+    mcastRangeStart: string;
+    mtuHeadRoom?: string;
+    multusDisable?: string;
+    noPriorityClass?: string;
+    nodePodIfEnable?: string;
+    nodeSubnet: string;
+    nodeSvcSubnet: string;
+    opflexClientSsl?: string;
+    opflexDeviceDeleteTimeout?: string;
+    opflexLogLevel?: string;
+    opflexMode?: string;
+    opflexServerPort?: string;
+    overlayVrfName?: string;
+    ovsMemoryLimit?: string;
+    pbrTrackingNonSnat?: string;
+    podSubnetChunkSize?: string;
+    runGbpContainer?: string;
+    runOpflexServerContainer?: string;
+    serviceMonitorInterval?: string;
+    serviceVlan: string;
+    snatContractScope?: string;
+    snatNamespace?: string;
+    snatPortRangeEnd?: string;
+    snatPortRangeStart?: string;
+    snatPortsPerNode?: string;
+    sriovEnable?: string;
+    subnetDomainName?: string;
+    systemId: string;
+    tenant?: string;
+    token: string;
+    useAciAnywhereCrd?: string;
+    useAciCniPriorityClass?: string;
+    useClusterRole?: string;
+    useHostNetnsVolume?: string;
+    useOpflexServerVolume?: string;
+    usePrivilegedContainer?: string;
+    vmmController?: string;
+    vmmDomain?: string;
+    vrfName: string;
+    vrfTenant: string;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider {
@@ -6603,6 +7145,7 @@ export interface GetClusterV2RkeConfigMachinePool {
     etcdRole?: boolean;
     labels: {[key: string]: any};
     machineConfig: outputs.GetClusterV2RkeConfigMachinePoolMachineConfig;
+    machineLabels: {[key: string]: any};
     maxUnhealthy?: string;
     /**
      * The name of the Cluster v2 (string)
@@ -7117,11 +7660,11 @@ export interface GetRoleTemplateRule {
 
 export interface GlobalDnsProviderAlidnsConfig {
     /**
-     * The AWS Access key (string)
+     * The AliDNS Access key (string)
      */
     accessKey: string;
     /**
-     * The AWS Secret key (string)
+     * The AliDNS Secret key (string)
      */
     secretKey: string;
 }
@@ -7143,7 +7686,7 @@ export interface GlobalDnsProviderCloudflareConfig {
 
 export interface GlobalDnsProviderRoute53Config {
     /**
-     * The AWS Access key (string)
+     * The AliDNS Access key (string)
      */
     accessKey: string;
     /**
@@ -7159,7 +7702,7 @@ export interface GlobalDnsProviderRoute53Config {
      */
     roleArn?: string;
     /**
-     * The AWS Secret key (string)
+     * The AliDNS Secret key (string)
      */
     secretKey: string;
     /**
@@ -7230,11 +7773,11 @@ export interface MachineConfigV2Amazonec2Config {
      */
     insecureTransport?: boolean;
     /**
-     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * AWS instance type. Default `t3a.medium` (string)
      */
     instanceType?: string;
     /**
-     * OpenStack keypair to use to SSH to the instance (string)
+     * AWS keypair to use; requires --amazonec2-ssh-keypath (string)
      */
     keypairName?: string;
     /**
@@ -7242,7 +7785,7 @@ export interface MachineConfigV2Amazonec2Config {
      */
     kmsKey?: string;
     /**
-     * Enable monitoring for droplet. Default `false` (bool)
+     * Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
      */
     monitoring?: boolean;
     /**
@@ -7254,7 +7797,7 @@ export interface MachineConfigV2Amazonec2Config {
      */
     privateAddressOnly?: boolean;
     /**
-     * OpenStack region name (string)
+     * AWS region. (string)
      */
     region: string;
     /**
@@ -7287,11 +7830,11 @@ export interface MachineConfigV2Amazonec2Config {
      */
     spotPrice?: string;
     /**
-     * SSH private key contents (string)
+     * SSH Key for Instance (string)
      */
     sshKeyContents?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
@@ -7299,7 +7842,7 @@ export interface MachineConfigV2Amazonec2Config {
      */
     subnetId: string;
     /**
-     * vSphere tags id e.g. `urn:xxx` (list)
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
      */
     tags?: string;
     /**
@@ -7311,11 +7854,11 @@ export interface MachineConfigV2Amazonec2Config {
      */
     usePrivateAddress?: boolean;
     /**
-     * Path to file with cloud-init user-data (string)
+     * Path to file with cloud-init user data (string)
      */
     userdata?: string;
     /**
-     * OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
+     * Amazon EBS volume type. Default `gp2` (string)
      */
     volumeType?: string;
     /**
@@ -7346,7 +7889,7 @@ export interface MachineConfigV2AzureConfig {
      */
     customData?: string;
     /**
-     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      */
     diskSize?: string;
     /**
@@ -7354,7 +7897,7 @@ export interface MachineConfigV2AzureConfig {
      */
     dns?: string;
     /**
-     * Docker Port. Default `2376` (string)
+     * Port number for Docker engine. Default `2376` (string)
      */
     dockerPort?: string;
     /**
@@ -7366,7 +7909,7 @@ export interface MachineConfigV2AzureConfig {
      */
     faultDomainCount?: string;
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      */
     image?: string;
     /**
@@ -7390,6 +7933,10 @@ export interface MachineConfigV2AzureConfig {
      */
     openPorts?: string[];
     /**
+     * Only use a private IP address. Default `false` (bool)
+     */
+    privateAddressOnly?: boolean;
+    /**
      * Specify a static private IP address for the machine. (string)
      */
     privateIpAddress?: string;
@@ -7398,11 +7945,11 @@ export interface MachineConfigV2AzureConfig {
      */
     resourceGroup?: string;
     /**
-     * Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * Size for Azure Virtual Machine. Default `Standard_A2` (string)
      */
     size?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
@@ -7422,11 +7969,11 @@ export interface MachineConfigV2AzureConfig {
      */
     subnetPrefix?: string;
     /**
-     * Azure Subscription ID (string)
+     * Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     subscriptionId?: string;
     /**
-     * OpenStack tenant id. Conflicts with `tenantName` (string)
+     * Azure Tenant ID (string)
      */
     tenantId?: string;
     /**
@@ -7453,7 +8000,7 @@ export interface MachineConfigV2DigitaloceanConfig {
      */
     backups?: boolean;
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      */
     image?: string;
     /**
@@ -7461,7 +8008,7 @@ export interface MachineConfigV2DigitaloceanConfig {
      */
     ipv6?: boolean;
     /**
-     * Enable monitoring for droplet. Default `false` (bool)
+     * Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
      */
     monitoring?: boolean;
     /**
@@ -7469,15 +8016,15 @@ export interface MachineConfigV2DigitaloceanConfig {
      */
     privateNetworking?: boolean;
     /**
-     * OpenStack region name (string)
+     * AWS region. (string)
      */
     region?: string;
     /**
-     * Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * Size for Azure Virtual Machine. Default `Standard_A2` (string)
      */
     size?: string;
     /**
-     * SSH private key contents (string)
+     * SSH Key for Instance (string)
      */
     sshKeyContents?: string;
     /**
@@ -7485,26 +8032,26 @@ export interface MachineConfigV2DigitaloceanConfig {
      */
     sshKeyFingerprint?: string;
     /**
-     * If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * SSH port. Default `22` (string)
      */
     sshPort?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
-     * vSphere tags id e.g. `urn:xxx` (list)
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
      */
     tags?: string;
     /**
-     * Path to file with cloud-init user-data (string)
+     * Path to file with cloud-init user data (string)
      */
     userdata?: string;
 }
 
 export interface MachineConfigV2HarvesterConfig {
     /**
-     * vSphere CPU number for docker VM. Default `2` (string)
+     * CPU count, Default `2` (string)
      */
     cpuCount?: string;
     /**
@@ -7512,15 +8059,15 @@ export interface MachineConfigV2HarvesterConfig {
      */
     diskBus?: string;
     /**
-     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      */
     diskSize?: string;
     /**
-     * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+     * Image name e.g. `harvester-public/image-57hzg` (string)
      */
     imageName: string;
     /**
-     * vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * Memory size (in GiB), Default `4` (string)
      */
     memorySize?: string;
     /**
@@ -7536,11 +8083,11 @@ export interface MachineConfigV2HarvesterConfig {
      */
     networkName: string;
     /**
-     * If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     * SSH password (string)
      */
     sshPassword?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * Set the name of the ssh user (string)
      */
     sshUser: string;
     /**
@@ -7563,15 +8110,15 @@ export interface MachineConfigV2LinodeConfig {
      */
     createPrivateIp?: boolean;
     /**
-     * Docker Port. Default `2376` (string)
+     * Port number for Docker engine. Default `2376` (string)
      */
     dockerPort?: string;
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      */
     image?: string;
     /**
-     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * AWS instance type. Default `t3a.medium` (string)
      */
     instanceType?: string;
     /**
@@ -7579,7 +8126,7 @@ export interface MachineConfigV2LinodeConfig {
      */
     label?: string;
     /**
-     * OpenStack region name (string)
+     * AWS region. (string)
      */
     region?: string;
     /**
@@ -7587,11 +8134,11 @@ export interface MachineConfigV2LinodeConfig {
      */
     rootPass?: string;
     /**
-     * If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * SSH port. Default `22` (string)
      */
     sshPort?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
@@ -7607,7 +8154,7 @@ export interface MachineConfigV2LinodeConfig {
      */
     swapSize?: string;
     /**
-     * vSphere tags id e.g. `urn:xxx` (list)
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
      */
     tags?: string;
     /**
@@ -7686,7 +8233,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     imageId?: string;
     /**
-     * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+     * Image name e.g. `harvester-public/image-57hzg` (string)
      */
     imageName?: string;
     /**
@@ -7698,7 +8245,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     ipVersion?: string;
     /**
-     * OpenStack keypair to use to SSH to the instance (string)
+     * AWS keypair to use; requires --amazonec2-ssh-keypath (string)
      */
     keypairName?: string;
     /**
@@ -7722,7 +8269,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     privateKeyFile?: string;
     /**
-     * OpenStack region name (string)
+     * AWS region. (string)
      */
     region: string;
     /**
@@ -7730,11 +8277,11 @@ export interface MachineConfigV2OpenstackConfig {
      */
     secGroups?: string;
     /**
-     * If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * SSH port. Default `22` (string)
      */
     sshPort?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
@@ -7746,7 +8293,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     tenantDomainName?: string;
     /**
-     * OpenStack tenant id. Conflicts with `tenantName` (string)
+     * Azure Tenant ID (string)
      */
     tenantId?: string;
     /**
@@ -7788,7 +8335,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     volumeSize?: string;
     /**
-     * OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
+     * Amazon EBS volume type. Default `gp2` (string)
      */
     volumeType?: string;
 }
@@ -7819,7 +8366,7 @@ export interface MachineConfigV2VsphereConfig {
      */
     contentLibrary?: string;
     /**
-     * vSphere CPU number for docker VM. Default `2` (string)
+     * CPU count, Default `2` (string)
      */
     cpuCount?: string;
     /**
@@ -7843,7 +8390,7 @@ export interface MachineConfigV2VsphereConfig {
      */
     datastoreCluster?: string;
     /**
-     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      */
     diskSize?: string;
     /**
@@ -7855,7 +8402,7 @@ export interface MachineConfigV2VsphereConfig {
      */
     hostsystem?: string;
     /**
-     * vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * Memory size (in GiB), Default `4` (string)
      */
     memorySize?: string;
     /**
@@ -7871,15 +8418,15 @@ export interface MachineConfigV2VsphereConfig {
      */
     pool?: string;
     /**
-     * If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     * SSH password (string)
      */
     sshPassword?: string;
     /**
-     * If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * SSH port. Default `22` (string)
      */
     sshPort?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
@@ -7887,7 +8434,7 @@ export interface MachineConfigV2VsphereConfig {
      */
     sshUserGroup?: string;
     /**
-     * vSphere tags id e.g. `urn:xxx` (list)
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
      */
     tags?: string[];
     /**
@@ -7989,19 +8536,19 @@ export interface MultiClusterAppUpgradeStrategyRollingUpdate {
 
 export interface NamespaceContainerResourceLimit {
     /**
-     * Limit for limits cpu in namespace (string)
+     * CPU limit for containers (string)
      */
     limitsCpu?: string;
     /**
-     * Limit for limits memory in namespace (string)
+     * Memory limit for containers (string)
      */
     limitsMemory?: string;
     /**
-     * Limit for requests cpu in namespace (string)
+     * CPU reservation for containers (string)
      */
     requestsCpu?: string;
     /**
-     * Limit for requests memory in namespace (string)
+     * Memory reservation for containers (string)
      */
     requestsMemory?: string;
 }
@@ -8019,11 +8566,11 @@ export interface NamespaceResourceQuotaLimit {
      */
     configMaps?: string;
     /**
-     * Limit for limits cpu in namespace (string)
+     * CPU limit for containers (string)
      */
     limitsCpu?: string;
     /**
-     * Limit for limits memory in namespace (string)
+     * Memory limit for containers (string)
      */
     limitsMemory?: string;
     /**
@@ -8039,11 +8586,11 @@ export interface NamespaceResourceQuotaLimit {
      */
     replicationControllers?: string;
     /**
-     * Limit for requests cpu in namespace (string)
+     * CPU reservation for containers (string)
      */
     requestsCpu?: string;
     /**
-     * Limit for requests memory in namespace (string)
+     * Memory reservation for containers (string)
      */
     requestsMemory?: string;
     /**
@@ -8110,6 +8657,14 @@ export interface NodeTemplateAmazonec2Config {
      */
     endpoint?: string;
     /**
+     * Enables or disables the HTTP metadata endpoint on your instances (string)
+     */
+    httpEndpoint?: string;
+    /**
+     * The state of token usage for your instance metadata requests (string)
+     */
+    httpTokens?: string;
+    /**
      * AWS IAM Instance Profile (string)
      */
     iamInstanceProfile?: string;
@@ -8118,7 +8673,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     insecureTransport?: boolean;
     /**
-     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * AWS instance type. Default `t2.micro` (string)
      */
     instanceType?: string;
     /**
@@ -8130,7 +8685,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     kmsKey?: string;
     /**
-     * Enable monitoring for droplet. Default `false` (bool)
+     * Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
      */
     monitoring?: boolean;
     /**
@@ -8142,7 +8697,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     privateAddressOnly?: boolean;
     /**
-     * OpenStack region name (string)
+     * AWS region. (string)
      */
     region: string;
     /**
@@ -8177,12 +8732,9 @@ export interface NodeTemplateAmazonec2Config {
      * AWS spot instance bid price (in dollar). Default `0.50` (string)
      */
     spotPrice?: string;
-    /**
-     * SSH Key for Instance (string)
-     */
     sshKeypath?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
@@ -8190,7 +8742,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     subnetId: string;
     /**
-     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
      */
     tags?: string;
     /**
@@ -8202,11 +8754,11 @@ export interface NodeTemplateAmazonec2Config {
      */
     usePrivateAddress?: boolean;
     /**
-     * Path to file with cloud-init user-data (string)
+     * Path to file with cloud-init user data (string)
      */
     userdata?: string;
     /**
-     * OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
+     * Amazon EBS volume type. Default `gp2` (string)
      */
     volumeType?: string;
     /**
@@ -8237,7 +8789,7 @@ export interface NodeTemplateAzureConfig {
      */
     customData?: string;
     /**
-     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      */
     diskSize?: string;
     /**
@@ -8245,7 +8797,7 @@ export interface NodeTemplateAzureConfig {
      */
     dns?: string;
     /**
-     * Docker Port. Default `2376` (string)
+     * Port number for Docker engine. Default `2376` (string)
      */
     dockerPort?: string;
     /**
@@ -8257,7 +8809,7 @@ export interface NodeTemplateAzureConfig {
      */
     faultDomainCount?: string;
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      */
     image?: string;
     /**
@@ -8293,11 +8845,11 @@ export interface NodeTemplateAzureConfig {
      */
     resourceGroup?: string;
     /**
-     * Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * Size for Azure Virtual Machine. Default `Standard_A2` (string)
      */
     size?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
@@ -8344,7 +8896,7 @@ export interface NodeTemplateDigitaloceanConfig {
      */
     backups?: boolean;
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      */
     image?: string;
     /**
@@ -8352,7 +8904,7 @@ export interface NodeTemplateDigitaloceanConfig {
      */
     ipv6?: boolean;
     /**
-     * Enable monitoring for droplet. Default `false` (bool)
+     * Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
      */
     monitoring?: boolean;
     /**
@@ -8360,11 +8912,11 @@ export interface NodeTemplateDigitaloceanConfig {
      */
     privateNetworking?: boolean;
     /**
-     * OpenStack region name (string)
+     * AWS region. (string)
      */
     region?: string;
     /**
-     * Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * Size for Azure Virtual Machine. Default `Standard_A2` (string)
      */
     size?: string;
     /**
@@ -8376,26 +8928,26 @@ export interface NodeTemplateDigitaloceanConfig {
      */
     sshKeyPath?: string;
     /**
-     * If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * SSH port. Default `22` (string)
      */
     sshPort?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
-     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
      */
     tags?: string;
     /**
-     * Path to file with cloud-init user-data (string)
+     * Path to file with cloud-init user data (string)
      */
     userdata?: string;
 }
 
 export interface NodeTemplateHarvesterConfig {
     /**
-     * vSphere CPU number for docker VM. Default `2` (string)
+     * CPU count, Default `2` (string)
      */
     cpuCount?: string;
     /**
@@ -8403,15 +8955,15 @@ export interface NodeTemplateHarvesterConfig {
      */
     diskBus?: string;
     /**
-     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      */
     diskSize?: string;
     /**
-     * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+     * Image name e.g. `harvester-public/image-57hzg` (string)
      */
     imageName: string;
     /**
-     * vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * Memory size (in GiB), Default `4` (string)
      */
     memorySize?: string;
     /**
@@ -8423,15 +8975,15 @@ export interface NodeTemplateHarvesterConfig {
      */
     networkModel?: string;
     /**
-     * Opennebula network to connect the machine to. Conflicts with `networkId` (string)
+     * Network name e.g. `harvester-public/vlan1` (string)
      */
     networkName: string;
     /**
-     * If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+     * SSH password (string)
      */
     sshPassword?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * Set the name of the ssh user (string)
      */
     sshUser: string;
     /**
@@ -8450,7 +9002,7 @@ export interface NodeTemplateHetznerConfig {
      */
     apiToken: string;
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      */
     image?: string;
     /**
@@ -8474,7 +9026,7 @@ export interface NodeTemplateHetznerConfig {
      */
     usePrivateNetwork?: boolean;
     /**
-     * Path to file with cloud-init user-data (string)
+     * Path to file with cloud-init user data (string)
      */
     userdata?: string;
     /**
@@ -8493,15 +9045,15 @@ export interface NodeTemplateLinodeConfig {
      */
     createPrivateIp?: boolean;
     /**
-     * Docker Port. Default `2376` (string)
+     * Port number for Docker engine. Default `2376` (string)
      */
     dockerPort?: string;
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      */
     image?: string;
     /**
-     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     * AWS instance type. Default `t2.micro` (string)
      */
     instanceType?: string;
     /**
@@ -8509,7 +9061,7 @@ export interface NodeTemplateLinodeConfig {
      */
     label?: string;
     /**
-     * OpenStack region name (string)
+     * AWS region. (string)
      */
     region?: string;
     /**
@@ -8517,11 +9069,11 @@ export interface NodeTemplateLinodeConfig {
      */
     rootPass?: string;
     /**
-     * If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * SSH port. Default `22` (string)
      */
     sshPort?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
@@ -8537,7 +9089,7 @@ export interface NodeTemplateLinodeConfig {
      */
     swapSize?: string;
     /**
-     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
      */
     tags?: string;
     /**
@@ -8591,11 +9143,11 @@ export interface NodeTemplateOpennebulaConfig {
      */
     diskResize?: string;
     /**
-     * OpenStack image id to use for the instance. Conflicts with `imageName` (string)
+     * Image ID to use as the VM OS. Conflicts with `imageName` (string)
      */
     imageId?: string;
     /**
-     * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+     * Image name e.g. `harvester-public/image-57hzg` (string)
      */
     imageName?: string;
     /**
@@ -8611,7 +9163,7 @@ export interface NodeTemplateOpennebulaConfig {
      */
     networkId?: string;
     /**
-     * Opennebula network to connect the machine to. Conflicts with `networkId` (string)
+     * Network name e.g. `harvester-public/vlan1` (string)
      */
     networkName?: string;
     /**
@@ -8619,11 +9171,11 @@ export interface NodeTemplateOpennebulaConfig {
      */
     networkOwner?: string;
     /**
-     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Set the password for the XML-RPC API authentication (string)
      */
     password: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
@@ -8710,11 +9262,11 @@ export interface NodeTemplateOpenstackConfig {
      */
     floatingIpPool?: string;
     /**
-     * OpenStack image id to use for the instance. Conflicts with `imageName` (string)
+     * Image ID to use as the VM OS. Conflicts with `imageName` (string)
      */
     imageId?: string;
     /**
-     * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+     * Image name e.g. `harvester-public/image-57hzg` (string)
      */
     imageName?: string;
     /**
@@ -8742,7 +9294,7 @@ export interface NodeTemplateOpenstackConfig {
      */
     novaNetwork?: boolean;
     /**
-     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Set the password for the XML-RPC API authentication (string)
      */
     password?: string;
     /**
@@ -8750,7 +9302,7 @@ export interface NodeTemplateOpenstackConfig {
      */
     privateKeyFile?: string;
     /**
-     * OpenStack region name (string)
+     * AWS region. (string)
      */
     region: string;
     /**
@@ -8758,11 +9310,11 @@ export interface NodeTemplateOpenstackConfig {
      */
     secGroups?: string;
     /**
-     * If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * SSH port. Default `22` (string)
      */
     sshPort?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
@@ -8778,7 +9330,7 @@ export interface NodeTemplateOpenstackConfig {
      */
     userDataFile?: string;
     /**
-     * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * OpenStack username (string)
      */
     username?: string;
     /**
@@ -8798,9 +9350,56 @@ export interface NodeTemplateOpenstackConfig {
      */
     volumeSize?: string;
     /**
-     * OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
+     * Amazon EBS volume type. Default `gp2` (string)
      */
     volumeType?: string;
+}
+
+export interface NodeTemplateOutscaleConfig {
+    /**
+     * AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     */
+    accessKey: string;
+    /**
+     * Extra tags for all created resources (e.g. key1=value1,key2=value2) (list)
+     */
+    extraTagsAlls?: string[];
+    /**
+     * Extra tags only for instances (e.g. key1=value1,key2=value2) (list)
+     */
+    extraTagsInstances?: string[];
+    /**
+     * AWS instance type. Default `t2.micro` (string)
+     */
+    instanceType?: string;
+    /**
+     * AWS region. (string)
+     */
+    region?: string;
+    /**
+     * Iops for io1 Root Disk. From 1 to 13000.
+     */
+    rootDiskIops?: number;
+    /**
+     * Size of the Root Disk (in GB). From 1 to 14901.
+     */
+    rootDiskSize?: number;
+    /**
+     * Type of the Root Disk. Possible values are :'standard', 'gp2' or 'io1'.
+     */
+    rootDiskType?: string;
+    /**
+     * AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     */
+    secretKey: string;
+    /**
+     * Ids of user defined Security Groups to add to the machine. (list)
+     */
+    securityGroupIds?: string[];
+    /**
+     * Outscale Machine Image to use as bootstrap for the VM. Default `ami-2cf1fa3e` (string)
+     */
+    sourceOmi?: string;
 }
 
 export interface NodeTemplateVsphereConfig {
@@ -8829,7 +9428,7 @@ export interface NodeTemplateVsphereConfig {
      */
     contentLibrary?: string;
     /**
-     * vSphere CPU number for docker VM. Default `2` (string)
+     * CPU count, Default `2` (string)
      */
     cpuCount?: string;
     /**
@@ -8853,7 +9452,7 @@ export interface NodeTemplateVsphereConfig {
      */
     datastoreCluster?: string;
     /**
-     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      */
     diskSize?: string;
     /**
@@ -8865,7 +9464,7 @@ export interface NodeTemplateVsphereConfig {
      */
     hostsystem?: string;
     /**
-     * vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * Memory size (in GiB), Default `4` (string)
      */
     memorySize?: string;
     /**
@@ -8873,7 +9472,7 @@ export interface NodeTemplateVsphereConfig {
      */
     networks?: string[];
     /**
-     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Set the password for the XML-RPC API authentication (string)
      */
     password?: string;
     /**
@@ -8881,15 +9480,15 @@ export interface NodeTemplateVsphereConfig {
      */
     pool?: string;
     /**
-     * If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+     * SSH password (string)
      */
     sshPassword?: string;
     /**
-     * If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * SSH port. Default `22` (string)
      */
     sshPort?: string;
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * Set the name of the ssh user (string)
      */
     sshUser?: string;
     /**
@@ -8897,11 +9496,11 @@ export interface NodeTemplateVsphereConfig {
      */
     sshUserGroup?: string;
     /**
-     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
      */
     tags?: string[];
     /**
-     * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * OpenStack username (string)
      */
     username?: string;
     /**
@@ -8932,33 +9531,33 @@ export interface NodeTemplateVsphereConfig {
 
 export interface NotifierDingtalkConfig {
     /**
-     * Wechat proxy url (string)
+     * Dingtalk proxy url (string)
      */
     proxyUrl?: string;
     /**
-     * Wechat agent ID (string)
+     * Secret for url sign enable (string)
      */
     secret?: string;
     /**
-     * Webhook url (string)
+     * Dingtalk url (string)
      */
     url: string;
 }
 
 export interface NotifierMsteamsConfig {
     /**
-     * Wechat proxy url (string)
+     * Dingtalk proxy url (string)
      */
     proxyUrl?: string;
     /**
-     * Webhook url (string)
+     * Dingtalk url (string)
      */
     url: string;
 }
 
 export interface NotifierPagerdutyConfig {
     /**
-     * Wechat proxy url (string)
+     * Dingtalk proxy url (string)
      */
     proxyUrl?: string;
     /**
@@ -8969,22 +9568,22 @@ export interface NotifierPagerdutyConfig {
 
 export interface NotifierSlackConfig {
     /**
-     * Wechat default recipient (string)
+     * Slack default recipient (string)
      */
     defaultRecipient: string;
     /**
-     * Wechat proxy url (string)
+     * Dingtalk proxy url (string)
      */
     proxyUrl?: string;
     /**
-     * Webhook url (string)
+     * Dingtalk url (string)
      */
     url: string;
 }
 
 export interface NotifierSmtpConfig {
     /**
-     * Wechat default recipient (string)
+     * SMTP default recipient (string)
      */
     defaultRecipient: string;
     /**
@@ -9015,7 +9614,7 @@ export interface NotifierSmtpConfig {
 
 export interface NotifierWebhookConfig {
     /**
-     * Wechat proxy url (string)
+     * Webhook proxy url (string)
      */
     proxyUrl?: string;
     /**
@@ -9034,11 +9633,11 @@ export interface NotifierWechatConfig {
      */
     corp: string;
     /**
-     * Wechat default recipient (string)
+     * Slack default recipient (string)
      */
     defaultRecipient: string;
     /**
-     * Wechat proxy url (string)
+     * Dingtalk proxy url (string)
      */
     proxyUrl?: string;
     /**
@@ -9046,7 +9645,7 @@ export interface NotifierWechatConfig {
      */
     recipientType?: string;
     /**
-     * Wechat agent ID (string)
+     * Secret for url sign enable (string)
      */
     secret: string;
 }
@@ -9288,34 +9887,34 @@ export interface ProjectAlertRuleWorkloadRule {
 
 export interface ProjectContainerResourceLimit {
     /**
-     * Limit for limits cpu in project (string)
+     * CPU limit for containers (string)
      */
     limitsCpu?: string;
     /**
-     * Limit for limits memory in project (string)
+     * Memory limit for containers (string)
      */
     limitsMemory?: string;
     /**
-     * Limit for requests cpu in project (string)
+     * CPU reservation for containers (string)
      */
     requestsCpu?: string;
     /**
-     * Limit for requests memory in project (string)
+     * Memory reservation for containers (string)
      */
     requestsMemory?: string;
 }
 
 export interface ProjectLoggingCustomTargetConfig {
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      */
     certificate?: string;
     /**
-     * SSL client certificate for the syslog service (string)
+     * SSL client certificate for the custom target service (string)
      */
     clientCert?: string;
     /**
-     * SSL client key for the syslog service (string)
+     * SSL client key for the custom target service (string)
      */
     clientKey?: string;
     /**
@@ -9334,19 +9933,19 @@ export interface ProjectLoggingElasticsearchConfig {
      */
     authUsername?: string;
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      */
     certificate?: string;
     /**
-     * SSL client certificate for the syslog service (string)
+     * SSL client certificate for the custom target service (string)
      */
     clientCert?: string;
     /**
-     * SSL client key for the syslog service (string)
+     * SSL client key for the custom target service (string)
      */
     clientKey?: string;
     /**
-     * SSL client key password for the splunk service (string)
+     * SSL client key password for the elascticsearch service (string)
      */
     clientKeyPass?: string;
     /**
@@ -9354,7 +9953,7 @@ export interface ProjectLoggingElasticsearchConfig {
      */
     dateFormat?: string;
     /**
-     * Endpoint of the syslog service (string)
+     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      */
     endpoint: string;
     /**
@@ -9362,7 +9961,7 @@ export interface ProjectLoggingElasticsearchConfig {
      */
     indexPrefix?: string;
     /**
-     * SSL verify for the syslog service (bool)
+     * SSL verify for the elascticsearch service (bool)
      */
     sslVerify: boolean;
     /**
@@ -9373,7 +9972,7 @@ export interface ProjectLoggingElasticsearchConfig {
 
 export interface ProjectLoggingFluentdConfig {
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      */
     certificate?: string;
     /**
@@ -9392,7 +9991,7 @@ export interface ProjectLoggingFluentdConfig {
 
 export interface ProjectLoggingFluentdConfigFluentServer {
     /**
-     * Endpoint of the syslog service (string)
+     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      */
     endpoint: string;
     /**
@@ -9427,15 +10026,15 @@ export interface ProjectLoggingKafkaConfig {
      */
     brokerEndpoints?: string[];
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      */
     certificate?: string;
     /**
-     * SSL client certificate for the syslog service (string)
+     * SSL client certificate for the custom target service (string)
      */
     clientCert?: string;
     /**
-     * SSL client key for the syslog service (string)
+     * SSL client key for the custom target service (string)
      */
     clientKey?: string;
     /**
@@ -9450,23 +10049,23 @@ export interface ProjectLoggingKafkaConfig {
 
 export interface ProjectLoggingSplunkConfig {
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      */
     certificate?: string;
     /**
-     * SSL client certificate for the syslog service (string)
+     * SSL client certificate for the custom target service (string)
      */
     clientCert?: string;
     /**
-     * SSL client key for the syslog service (string)
+     * SSL client key for the custom target service (string)
      */
     clientKey?: string;
     /**
-     * SSL client key password for the splunk service (string)
+     * SSL client key password for the elascticsearch service (string)
      */
     clientKeyPass?: string;
     /**
-     * Endpoint of the syslog service (string)
+     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      */
     endpoint: string;
     /**
@@ -9478,26 +10077,26 @@ export interface ProjectLoggingSplunkConfig {
      */
     source?: string;
     /**
-     * SSL verify for the syslog service (bool)
+     * SSL verify for the elascticsearch service (bool)
      */
     sslVerify: boolean;
     /**
-     * Token for the syslog service (string)
+     * Token for the splunk service (string)
      */
     token: string;
 }
 
 export interface ProjectLoggingSyslogConfig {
     /**
-     * SSL certificate for the syslog service (string)
+     * SSL CA certificate for the custom target service (string)
      */
     certificate?: string;
     /**
-     * SSL client certificate for the syslog service (string)
+     * SSL client certificate for the custom target service (string)
      */
     clientCert?: string;
     /**
-     * SSL client key for the syslog service (string)
+     * SSL client key for the custom target service (string)
      */
     clientKey?: string;
     /**
@@ -9505,7 +10104,7 @@ export interface ProjectLoggingSyslogConfig {
      */
     enableTls?: boolean;
     /**
-     * Endpoint of the syslog service (string)
+     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      */
     endpoint: string;
     /**
@@ -9521,11 +10120,11 @@ export interface ProjectLoggingSyslogConfig {
      */
     severity?: string;
     /**
-     * SSL verify for the syslog service (bool)
+     * SSL verify for the elascticsearch service (bool)
      */
     sslVerify: boolean;
     /**
-     * Token for the syslog service (string)
+     * Token for the splunk service (string)
      */
     token?: string;
 }
@@ -9558,11 +10157,11 @@ export interface ProjectResourceQuotaNamespaceDefaultLimit {
      */
     configMaps?: string;
     /**
-     * Limit for limits cpu in project (string)
+     * CPU limit for containers (string)
      */
     limitsCpu?: string;
     /**
-     * Limit for limits memory in project (string)
+     * Memory limit for containers (string)
      */
     limitsMemory?: string;
     /**
@@ -9578,11 +10177,11 @@ export interface ProjectResourceQuotaNamespaceDefaultLimit {
      */
     replicationControllers?: string;
     /**
-     * Limit for requests cpu in project (string)
+     * CPU reservation for containers (string)
      */
     requestsCpu?: string;
     /**
-     * Limit for requests memory in project (string)
+     * Memory reservation for containers (string)
      */
     requestsMemory?: string;
     /**
@@ -9610,11 +10209,11 @@ export interface ProjectResourceQuotaProjectLimit {
      */
     configMaps?: string;
     /**
-     * Limit for limits cpu in project (string)
+     * CPU limit for containers (string)
      */
     limitsCpu?: string;
     /**
-     * Limit for limits memory in project (string)
+     * Memory limit for containers (string)
      */
     limitsMemory?: string;
     /**
@@ -9630,11 +10229,11 @@ export interface ProjectResourceQuotaProjectLimit {
      */
     replicationControllers?: string;
     /**
-     * Limit for requests cpu in project (string)
+     * CPU reservation for containers (string)
      */
     requestsCpu?: string;
     /**
-     * Limit for requests memory in project (string)
+     * Memory reservation for containers (string)
      */
     requestsMemory?: string;
     /**
@@ -9716,3 +10315,4 @@ export interface RoleTemplateRule {
      */
     verbs?: string[];
 }
+

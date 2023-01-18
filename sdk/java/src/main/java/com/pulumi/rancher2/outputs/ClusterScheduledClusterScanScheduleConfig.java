@@ -18,7 +18,7 @@ public final class ClusterScheduledClusterScanScheduleConfig {
      */
     private String cronSchedule;
     /**
-     * @return Retention for etcd backup. Default `6` (int)
+     * @return Cluster scan retention (int)
      * 
      */
     private @Nullable Integer retention;
@@ -32,7 +32,7 @@ public final class ClusterScheduledClusterScanScheduleConfig {
         return this.cronSchedule;
     }
     /**
-     * @return Retention for etcd backup. Default `6` (int)
+     * @return Cluster scan retention (int)
      * 
      */
     public Optional<Integer> retention() {

@@ -15,23 +15,21 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Project Role Template Binding
+    ///     var foo = new Rancher2.ProjectRoleTemplateBinding("foo", new()
     ///     {
-    ///         // Create a new rancher2 Project Role Template Binding
-    ///         var foo = new Rancher2.ProjectRoleTemplateBinding("foo", new Rancher2.ProjectRoleTemplateBindingArgs
-    ///         {
-    ///             ProjectId = "&lt;project_id&gt;",
-    ///             RoleTemplateId = "&lt;role_template_id&gt;",
-    ///             UserId = "&lt;user_id&gt;",
-    ///         });
-    ///     }
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         RoleTemplateId = "&lt;role_template_id&gt;",
+    ///         UserId = "&lt;user_id&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding")]
-    public partial class ProjectRoleTemplateBinding : Pulumi.CustomResource
+    public partial class ProjectRoleTemplateBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations of the resource (map)
@@ -143,7 +141,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ProjectRoleTemplateBindingArgs : Pulumi.ResourceArgs
+    public sealed class ProjectRoleTemplateBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -214,9 +212,10 @@ namespace Pulumi.Rancher2
         public ProjectRoleTemplateBindingArgs()
         {
         }
+        public static new ProjectRoleTemplateBindingArgs Empty => new ProjectRoleTemplateBindingArgs();
     }
 
-    public sealed class ProjectRoleTemplateBindingState : Pulumi.ResourceArgs
+    public sealed class ProjectRoleTemplateBindingState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -287,5 +286,6 @@ namespace Pulumi.Rancher2
         public ProjectRoleTemplateBindingState()
         {
         }
+        public static new ProjectRoleTemplateBindingState Empty => new ProjectRoleTemplateBindingState();
     }
 }

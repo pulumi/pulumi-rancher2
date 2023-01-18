@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,19 +15,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getRoleTemplate({
+ * const foo = rancher2.getRoleTemplate({
  *     name: "foo",
- * }));
+ * });
  * ```
  */
 /** @deprecated rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate */
 export function getRoleTempalte(args: GetRoleTempalteArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTempalteResult> {
     pulumi.log.warn("getRoleTempalte is deprecated: rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate")
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getRoleTempalte:getRoleTempalte", {
         "context": args.context,
         "name": args.name,
@@ -102,9 +100,23 @@ export interface GetRoleTempalteResult {
      */
     readonly rules: outputs.GetRoleTempalteRule[];
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 role template resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getRoleTemplate({
+ *     name: "foo",
+ * });
+ * ```
+ */
+/** @deprecated rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate */
 export function getRoleTempalteOutput(args: GetRoleTempalteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleTempalteResult> {
-    return pulumi.output(args).apply(a => getRoleTempalte(a, opts))
+    return pulumi.output(args).apply((a: any) => getRoleTempalte(a, opts))
 }
 
 /**

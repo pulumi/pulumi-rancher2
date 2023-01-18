@@ -76,14 +76,14 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
     }
 
     /**
-     * Registry password (string)
+     * (string)
      * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
-     * @return Registry password (string)
+     * @return (string)
      * 
      */
     public Output<String> password() {
@@ -91,14 +91,14 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
     }
 
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -106,14 +106,14 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
     }
 
     /**
-     * Azure tenant ID to use (string)
+     * (string)
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return Azure tenant ID to use (string)
+     * @return (string)
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -283,7 +283,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param password Registry password (string)
+         * @param password (string)
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param password Registry password (string)
+         * @param password (string)
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region (string)
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region (string)
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param tenantId Azure tenant ID to use (string)
+         * @param tenantId (string)
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param tenantId Azure tenant ID to use (string)
+         * @param tenantId (string)
          * 
          * @return builder
          * 

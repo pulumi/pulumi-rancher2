@@ -17,14 +17,14 @@ public final class ClusterTemplateTemplateRevisionQuestionArgs extends com.pulum
     public static final ClusterTemplateTemplateRevisionQuestionArgs Empty = new ClusterTemplateTemplateRevisionQuestionArgs();
 
     /**
-     * Default variable value (string)
+     * Default cluster template revision. Default `false` (bool)
      * 
      */
     @Import(name="default", required=true)
     private Output<String> default_;
 
     /**
-     * @return Default variable value (string)
+     * @return Default cluster template revision. Default `false` (bool)
      * 
      */
     public Output<String> default_() {
@@ -104,7 +104,7 @@ public final class ClusterTemplateTemplateRevisionQuestionArgs extends com.pulum
         }
 
         /**
-         * @param default_ Default variable value (string)
+         * @param default_ Default cluster template revision. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ClusterTemplateTemplateRevisionQuestionArgs extends com.pulum
         }
 
         /**
-         * @param default_ Default variable value (string)
+         * @param default_ Default cluster template revision. Default `false` (bool)
          * 
          * @return builder
          * 

@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2PrivateClusterConfig
     {
         /// <summary>
-        /// Enable GKE cluster private endpoint. Default: `false` (bool)
+        /// Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
         /// </summary>
         public readonly bool? EnablePrivateEndpoint;
         /// <summary>
-        /// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+        /// Whether nodes have internal IP address only. Default `false` (bool)
         /// </summary>
         public readonly bool? EnablePrivateNodes;
         /// <summary>
-        /// The GKE cluster private master ip v4 cidr block (string)
+        /// The IP range in CIDR notation to use for the hosted master network (string)
         /// </summary>
         public readonly string MasterIpv4CidrBlock;
 

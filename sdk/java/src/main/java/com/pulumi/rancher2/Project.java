@@ -24,6 +24,130 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Project;
+ * import com.pulumi.rancher2.ProjectArgs;
+ * import com.pulumi.rancher2.inputs.ProjectContainerResourceLimitArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaProjectLimitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
+ *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+ *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()
+ *                 .limitsCpu(&#34;20m&#34;)
+ *                 .limitsMemory(&#34;20Mi&#34;)
+ *                 .requestsCpu(&#34;1m&#34;)
+ *                 .requestsMemory(&#34;1Mi&#34;)
+ *                 .build())
+ *             .resourceQuota(ProjectResourceQuotaArgs.builder()
+ *                 .namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs.builder()
+ *                     .limitsCpu(&#34;2000m&#34;)
+ *                     .limitsMemory(&#34;500Mi&#34;)
+ *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .build())
+ *                 .projectLimit(ProjectResourceQuotaProjectLimitArgs.builder()
+ *                     .limitsCpu(&#34;2000m&#34;)
+ *                     .limitsMemory(&#34;2000Mi&#34;)
+ *                     .requestsStorage(&#34;2Gi&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Project;
+ * import com.pulumi.rancher2.ProjectArgs;
+ * import com.pulumi.rancher2.inputs.ProjectContainerResourceLimitArgs;
+ * import com.pulumi.rancher2.inputs.ProjectProjectMonitoringInputArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaProjectLimitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
+ *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+ *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()
+ *                 .limitsCpu(&#34;20m&#34;)
+ *                 .limitsMemory(&#34;20Mi&#34;)
+ *                 .requestsCpu(&#34;1m&#34;)
+ *                 .requestsMemory(&#34;1Mi&#34;)
+ *                 .build())
+ *             .enableProjectMonitoring(true)
+ *             .projectMonitoringInput(ProjectProjectMonitoringInputArgs.builder()
+ *                 .answers(Map.ofEntries(
+ *                     Map.entry(&#34;exporter-kubelets.https&#34;, true),
+ *                     Map.entry(&#34;exporter-node.enabled&#34;, true),
+ *                     Map.entry(&#34;exporter-node.ports.metrics.port&#34;, 9796),
+ *                     Map.entry(&#34;exporter-node.resources.limits.cpu&#34;, &#34;200m&#34;),
+ *                     Map.entry(&#34;exporter-node.resources.limits.memory&#34;, &#34;200Mi&#34;),
+ *                     Map.entry(&#34;grafana.persistence.enabled&#34;, false),
+ *                     Map.entry(&#34;grafana.persistence.size&#34;, &#34;10Gi&#34;),
+ *                     Map.entry(&#34;grafana.persistence.storageClass&#34;, &#34;default&#34;),
+ *                     Map.entry(&#34;operator.resources.limits.memory&#34;, &#34;500Mi&#34;),
+ *                     Map.entry(&#34;prometheus.persistence.enabled&#34;, &#34;false&#34;),
+ *                     Map.entry(&#34;prometheus.persistence.size&#34;, &#34;50Gi&#34;),
+ *                     Map.entry(&#34;prometheus.persistence.storageClass&#34;, &#34;default&#34;),
+ *                     Map.entry(&#34;prometheus.persistent.useReleaseName&#34;, &#34;true&#34;),
+ *                     Map.entry(&#34;prometheus.resources.core.limits.cpu&#34;, &#34;1000m&#34;),
+ *                     Map.entry(&#34;prometheus.resources.core.limits.memory&#34;, &#34;1500Mi&#34;),
+ *                     Map.entry(&#34;prometheus.resources.core.requests.cpu&#34;, &#34;750m&#34;),
+ *                     Map.entry(&#34;prometheus.resources.core.requests.memory&#34;, &#34;750Mi&#34;),
+ *                     Map.entry(&#34;prometheus.retention&#34;, &#34;12h&#34;)
+ *                 ))
+ *                 .build())
+ *             .resourceQuota(ProjectResourceQuotaArgs.builder()
+ *                 .namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs.builder()
+ *                     .limitsCpu(&#34;2000m&#34;)
+ *                     .limitsMemory(&#34;500Mi&#34;)
+ *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .build())
+ *                 .projectLimit(ProjectResourceQuotaProjectLimitArgs.builder()
+ *                     .limitsCpu(&#34;2000m&#34;)
+ *                     .limitsMemory(&#34;2000Mi&#34;)
+ *                     .requestsStorage(&#34;2Gi&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

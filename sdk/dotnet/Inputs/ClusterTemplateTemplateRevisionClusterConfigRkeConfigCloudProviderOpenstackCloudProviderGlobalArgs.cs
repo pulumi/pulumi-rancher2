@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs : global::Pulumi.ResourceArgs
     {
         [Input("authUrl", required: true)]
         public Input<string> AuthUrl { get; set; } = null!;
@@ -19,31 +19,77 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? CaFile { get; set; }
 
         [Input("domainId")]
-        public Input<string>? DomainId { get; set; }
+        private Input<string>? _domainId;
+        public Input<string>? DomainId
+        {
+            get => _domainId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _domainId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
 
         [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        private Input<string>? _password;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         [Input("tenantId")]
-        public Input<string>? TenantId { get; set; }
+        private Input<string>? _tenantId;
+        public Input<string>? TenantId
+        {
+            get => _tenantId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tenantId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("tenantName")]
         public Input<string>? TenantName { get; set; }
 
         [Input("trustId")]
-        public Input<string>? TrustId { get; set; }
+        private Input<string>? _trustId;
+        public Input<string>? TrustId
+        {
+            get => _trustId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _trustId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        private Input<string>? _username;
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs();
     }
 }

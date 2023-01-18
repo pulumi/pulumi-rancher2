@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GlobalDnsProviderCloudflareConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class GlobalDnsProviderCloudflareConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CloudFlare API Email (string)
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public GlobalDnsProviderCloudflareConfigGetArgs()
         {
         }
+        public static new GlobalDnsProviderCloudflareConfigGetArgs Empty => new GlobalDnsProviderCloudflareConfigGetArgs();
     }
 }

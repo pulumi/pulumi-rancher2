@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigMonitoringGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigMonitoringGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
 
         /// <summary>
-        /// RKE monitoring node selector (map)
+        /// DNS add-on node selector (map)
         /// </summary>
         public InputMap<object> NodeSelector
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _options;
 
         /// <summary>
-        /// RKE options for network (map)
+        /// RKE options for authorization (map)
         /// </summary>
         public InputMap<object> Options
         {
@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// RKE monitoring provider (string)
+        /// DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterRkeConfigMonitoringTolerationGetArgs>? _tolerations;
 
         /// <summary>
-        /// Network add-on tolerations (list)
+        /// DNS add-on tolerations (list)
         /// </summary>
         public InputList<Inputs.ClusterRkeConfigMonitoringTolerationGetArgs> Tolerations
         {
@@ -61,7 +61,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// RKE monitoring update strategy (list Maxitems: 1)
+        /// DNS update strategy (list Maxitems: 1)
         /// </summary>
         [Input("updateStrategy")]
         public Input<Inputs.ClusterRkeConfigMonitoringUpdateStrategyGetArgs>? UpdateStrategy { get; set; }
@@ -69,5 +69,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigMonitoringGetArgs()
         {
         }
+        public static new ClusterRkeConfigMonitoringGetArgs Empty => new ClusterRkeConfigMonitoringGetArgs();
     }
 }

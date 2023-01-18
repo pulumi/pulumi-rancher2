@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterAlterRuleEventRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAlterRuleEventRuleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("eventType")]
         public Input<string>? EventType { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterAlterRuleEventRuleGetArgs()
         {
         }
+        public static new ClusterAlterRuleEventRuleGetArgs Empty => new ClusterAlterRuleEventRuleGetArgs();
     }
 }

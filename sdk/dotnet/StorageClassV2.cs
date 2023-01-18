@@ -21,7 +21,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/storageClassV2:StorageClassV2")]
-    public partial class StorageClassV2 : Pulumi.CustomResource
+    public partial class StorageClassV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
@@ -133,7 +133,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class StorageClassV2Args : Pulumi.ResourceArgs
+    public sealed class StorageClassV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
@@ -222,9 +222,10 @@ namespace Pulumi.Rancher2
         public StorageClassV2Args()
         {
         }
+        public static new StorageClassV2Args Empty => new StorageClassV2Args();
     }
 
-    public sealed class StorageClassV2State : Pulumi.ResourceArgs
+    public sealed class StorageClassV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
@@ -319,5 +320,6 @@ namespace Pulumi.Rancher2
         public StorageClassV2State()
         {
         }
+        public static new StorageClassV2State Empty => new StorageClassV2State();
     }
 }

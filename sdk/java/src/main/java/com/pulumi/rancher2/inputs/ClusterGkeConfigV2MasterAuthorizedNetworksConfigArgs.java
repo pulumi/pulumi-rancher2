@@ -33,14 +33,14 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs extends 
     }
 
     /**
-     * Enable scheduled cluster scan. Default: `false` (bool)
+     * Enable etcd backup (bool)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable scheduled cluster scan. Default: `false` (bool)
+     * @return Enable etcd backup (bool)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -104,7 +104,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs extends 
         }
 
         /**
-         * @param enabled Enable scheduled cluster scan. Default: `false` (bool)
+         * @param enabled Enable etcd backup (bool)
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs extends 
         }
 
         /**
-         * @param enabled Enable scheduled cluster scan. Default: `false` (bool)
+         * @param enabled Enable etcd backup (bool)
          * 
          * @return builder
          * 

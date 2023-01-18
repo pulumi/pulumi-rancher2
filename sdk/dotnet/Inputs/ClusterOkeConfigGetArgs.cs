@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterOkeConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterOkeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The OCID of the compartment in which to create resources OKE cluster and related resources (string)
@@ -25,13 +25,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? CustomBootVolumeSize { get; set; }
 
         /// <summary>
-        /// An optional description of this cluster (string)
+        /// The description for Cluster (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+        /// Whether to enable the Kubernetes dashboard. Default `false` (bool)
         /// </summary>
         [Input("enableKubernetesDashboard")]
         public Input<bool>? EnableKubernetesDashboard { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? EnablePrivateControlPlane { get; set; }
 
         /// <summary>
-        /// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+        /// Whether nodes have internal IP address only. Default `false` (bool)
         /// </summary>
         [Input("enablePrivateNodes")]
         public Input<bool>? EnablePrivateNodes { get; set; }
@@ -60,14 +60,24 @@ namespace Pulumi.Rancher2.Inputs
         [Input("flexOcpus")]
         public Input<int>? FlexOcpus { get; set; }
 
+        [Input("kmsKeyId")]
+        private Input<string>? _kmsKeyId;
+
         /// <summary>
         /// The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. Just for Rancher v2.5.9 or above (string)
         /// </summary>
-        [Input("kmsKeyId")]
-        public Input<string>? KmsKeyId { get; set; }
+        public Input<string>? KmsKeyId
+        {
+            get => _kmsKeyId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _kmsKeyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
         /// </summary>
         [Input("kubernetesVersion", required: true)]
         public Input<string> KubernetesVersion { get; set; } = null!;
@@ -121,22 +131,42 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> NodeShape { get; set; } = null!;
 
         /// <summary>
-        /// A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+        /// A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
         /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
 
+        [Input("privateKeyContents", required: true)]
+        private Input<string>? _privateKeyContents;
+
         /// <summary>
         /// The private API key file contents for the specified user, in PEM format (string)
         /// </summary>
-        [Input("privateKeyContents", required: true)]
-        public Input<string> PrivateKeyContents { get; set; } = null!;
+        public Input<string>? PrivateKeyContents
+        {
+            get => _privateKeyContents;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyContents = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("privateKeyPassphrase")]
+        private Input<string>? _privateKeyPassphrase;
 
         /// <summary>
         /// The passphrase (if any) of the private key for the OKE cluster (string)
         /// </summary>
-        [Input("privateKeyPassphrase")]
-        public Input<string>? PrivateKeyPassphrase { get; set; }
+        public Input<string>? PrivateKeyPassphrase
+        {
+            get => _privateKeyPassphrase;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyPassphrase = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Number of node subnets. Default `1` (int)
@@ -151,13 +181,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? QuantityPerSubnet { get; set; }
 
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// (string)
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// A CIDR IP range from which to assign Kubernetes Service IPs (string)
+        /// A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
         /// </summary>
         [Input("serviceCidr")]
         public Input<string>? ServiceCidr { get; set; }
@@ -207,5 +237,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterOkeConfigGetArgs()
         {
         }
+        public static new ClusterOkeConfigGetArgs Empty => new ClusterOkeConfigGetArgs();
     }
 }

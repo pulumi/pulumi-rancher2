@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cluster V2 additional manifest (string)
@@ -43,7 +43,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterV2RkeConfigEtcdSnapshotRestoreArgs>? EtcdSnapshotRestore { get; set; }
 
         /// <summary>
-        /// Use rancher2_cluster_v2.local_auth_endpoint instead
+        /// Cluster V2 local auth endpoint (list maxitems:1)
         /// </summary>
         [Input("localAuthEndpoint")]
         public Input<Inputs.ClusterV2RkeConfigLocalAuthEndpointArgs>? LocalAuthEndpoint { get; set; }
@@ -99,5 +99,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigArgs()
         {
         }
+        public static new ClusterV2RkeConfigArgs Empty => new ClusterV2RkeConfigArgs();
     }
 }

@@ -48,14 +48,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs
     }
 
     /**
-     * Labels for the cluster template revision (map)
+     * Labels for the cluster template (map)
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for the cluster template revision (map)
+     * @return Labels for the cluster template (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -183,7 +183,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs
         }
 
         /**
-         * @param labels Labels for the cluster template revision (map)
+         * @param labels Labels for the cluster template (map)
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs
         }
 
         /**
-         * @param labels Labels for the cluster template revision (map)
+         * @param labels Labels for the cluster template (map)
          * 
          * @return builder
          * 

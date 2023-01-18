@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NodeTemplateNodeTaintGetArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateNodeTaintGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public NodeTemplateNodeTaintGetArgs()
         {
         }
+        public static new NodeTemplateNodeTaintGetArgs Empty => new NodeTemplateNodeTaintGetArgs();
     }
 }

@@ -13,74 +13,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigBastionHost {
     /**
-     * @return Address ip for node (string)
+     * @return Address ip for the bastion host (string)
      * 
      */
     private String address;
     /**
-     * @return Port for node. Default `22` (string)
+     * @return Port for bastion host. Default `22` (string)
      * 
      */
     private @Nullable String port;
     /**
-     * @return Use ssh agent auth. Default `false` (bool)
+     * @return Use ssh agent auth. Default `false`
      * 
      */
     private @Nullable Boolean sshAgentAuth;
     /**
-     * @return Node SSH private key (string)
+     * @return Bastion host SSH private key (string)
      * 
      */
     private @Nullable String sshKey;
     /**
-     * @return Node SSH private key path (string)
+     * @return Cluster level SSH private key path (string)
      * 
      */
     private @Nullable String sshKeyPath;
     /**
-     * @return Registry user (string)
+     * @return User to connect bastion host (string)
      * 
      */
     private String user;
 
     private ClusterRkeConfigBastionHost() {}
     /**
-     * @return Address ip for node (string)
+     * @return Address ip for the bastion host (string)
      * 
      */
     public String address() {
         return this.address;
     }
     /**
-     * @return Port for node. Default `22` (string)
+     * @return Port for bastion host. Default `22` (string)
      * 
      */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Use ssh agent auth. Default `false` (bool)
+     * @return Use ssh agent auth. Default `false`
      * 
      */
     public Optional<Boolean> sshAgentAuth() {
         return Optional.ofNullable(this.sshAgentAuth);
     }
     /**
-     * @return Node SSH private key (string)
+     * @return Bastion host SSH private key (string)
      * 
      */
     public Optional<String> sshKey() {
         return Optional.ofNullable(this.sshKey);
     }
     /**
-     * @return Node SSH private key path (string)
+     * @return Cluster level SSH private key path (string)
      * 
      */
     public Optional<String> sshKeyPath() {
         return Optional.ofNullable(this.sshKeyPath);
     }
     /**
-     * @return Registry user (string)
+     * @return User to connect bastion host (string)
      * 
      */
     public String user() {

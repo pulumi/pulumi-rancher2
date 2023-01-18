@@ -10,43 +10,103 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterLoggingElasticsearchConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterLoggingElasticsearchConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("authPassword")]
+        private Input<string>? _authPassword;
+
         /// <summary>
         /// User password for the elascticsearch service (string)
         /// </summary>
-        [Input("authPassword")]
-        public Input<string>? AuthPassword { get; set; }
+        public Input<string>? AuthPassword
+        {
+            get => _authPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("authUsername")]
+        private Input<string>? _authUsername;
 
         /// <summary>
         /// Username for the elascticsearch service (string)
         /// </summary>
-        [Input("authUsername")]
-        public Input<string>? AuthUsername { get; set; }
+        public Input<string>? AuthUsername
+        {
+            get => _authUsername;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authUsername = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
-        /// <summary>
-        /// SSL certificate for the syslog service (string)
-        /// </summary>
         [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        private Input<string>? _certificate;
 
         /// <summary>
-        /// SSL client certificate for the syslog service (string)
+        /// SSL CA certificate for the custom target service (string)
         /// </summary>
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("clientCert")]
-        public Input<string>? ClientCert { get; set; }
+        private Input<string>? _clientCert;
 
         /// <summary>
-        /// SSL client key for the syslog service (string)
+        /// SSL client certificate for the custom target service (string)
         /// </summary>
+        public Input<string>? ClientCert
+        {
+            get => _clientCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
+        private Input<string>? _clientKey;
 
         /// <summary>
-        /// SSL client key password for the splunk service (string)
+        /// SSL client key for the custom target service (string)
         /// </summary>
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("clientKeyPass")]
-        public Input<string>? ClientKeyPass { get; set; }
+        private Input<string>? _clientKeyPass;
+
+        /// <summary>
+        /// SSL client key password for the elascticsearch service (string)
+        /// </summary>
+        public Input<string>? ClientKeyPass
+        {
+            get => _clientKeyPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKeyPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
@@ -55,7 +115,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? DateFormat { get; set; }
 
         /// <summary>
-        /// Endpoint of the syslog service (string)
+        /// Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
         /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
@@ -67,7 +127,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? IndexPrefix { get; set; }
 
         /// <summary>
-        /// SSL verify for the syslog service (bool)
+        /// SSL verify for the elascticsearch service (bool)
         /// </summary>
         [Input("sslVerify")]
         public Input<bool>? SslVerify { get; set; }
@@ -81,5 +141,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterLoggingElasticsearchConfigGetArgs()
         {
         }
+        public static new ClusterLoggingElasticsearchConfigGetArgs Empty => new ClusterLoggingElasticsearchConfigGetArgs();
     }
 }

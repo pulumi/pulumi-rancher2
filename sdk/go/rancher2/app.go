@@ -62,8 +62,8 @@ import (
 //			fooNamespace, err := rancher2.NewNamespace(ctx, "fooNamespace", &rancher2.NamespaceArgs{
 //				Description: pulumi.String("Foo namespace"),
 //				ProjectId:   pulumi.String("<project_id>"),
-//				ResourceQuota: &NamespaceResourceQuotaArgs{
-//					Limit: &NamespaceResourceQuotaLimitArgs{
+//				ResourceQuota: &rancher2.NamespaceResourceQuotaArgs{
+//					Limit: &rancher2.NamespaceResourceQuotaLimitArgs{
 //						LimitsCpu:       pulumi.String("100m"),
 //						LimitsMemory:    pulumi.String("100Mi"),
 //						RequestsStorage: pulumi.String("1Gi"),
@@ -407,6 +407,83 @@ func (o AppOutput) ToAppOutput() AppOutput {
 
 func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
+}
+
+// Annotations for App object (map)
+func (o AppOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *App) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Answers for the app template. If modified, app will be upgraded (map)
+func (o AppOutput) Answers() pulumi.MapOutput {
+	return o.ApplyT(func(v *App) pulumi.MapOutput { return v.Answers }).(pulumi.MapOutput)
+}
+
+// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
+// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
+// * add project ID before name, `p-XXXXX:<name>`
+func (o AppOutput) CatalogName() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.CatalogName }).(pulumi.StringOutput)
+}
+
+// Description for the app (string)
+func (o AppOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// (Computed) The url of the app template on a catalog (string)
+func (o AppOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// Force app upgrade (string)
+func (o AppOutput) ForceUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.BoolPtrOutput { return v.ForceUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// Labels for App object (map)
+func (o AppOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *App) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the app (string)
+func (o AppOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project id where the app will be installed (string)
+func (o AppOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
+func (o AppOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.RevisionId }).(pulumi.StringOutput)
+}
+
+// The namespace id where the app will be installed (string)
+func (o AppOutput) TargetNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.TargetNamespace }).(pulumi.StringOutput)
+}
+
+// Template name of the app. If modified, app will be upgraded (string)
+func (o AppOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
+func (o AppOutput) TemplateVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.TemplateVersion }).(pulumi.StringOutput)
+}
+
+// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
+func (o AppOutput) ValuesYaml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.ValuesYaml }).(pulumi.StringPtrOutput)
+}
+
+// Wait until app is deployed and active. Default: `true` (bool)
+func (o AppOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.BoolPtrOutput { return v.Wait }).(pulumi.BoolPtrOutput)
 }
 
 type AppArrayOutput struct{ *pulumi.OutputState }

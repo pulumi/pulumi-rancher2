@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable cluster template revision. Default `true` (bool)
@@ -36,5 +36,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs();
     }
 }

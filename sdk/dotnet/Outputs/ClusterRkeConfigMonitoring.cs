@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigMonitoring
     {
         /// <summary>
-        /// RKE monitoring node selector (map)
+        /// DNS add-on node selector (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? NodeSelector;
         /// <summary>
-        /// RKE options for network (map)
+        /// RKE options for authorization (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Options;
         /// <summary>
-        /// RKE monitoring provider (string)
+        /// DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
         /// </summary>
         public readonly string? Provider;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? Replicas;
         /// <summary>
-        /// Network add-on tolerations (list)
+        /// DNS add-on tolerations (list)
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterRkeConfigMonitoringToleration> Tolerations;
         /// <summary>
-        /// RKE monitoring update strategy (list Maxitems: 1)
+        /// DNS update strategy (list Maxitems: 1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigMonitoringUpdateStrategy? UpdateStrategy;
 

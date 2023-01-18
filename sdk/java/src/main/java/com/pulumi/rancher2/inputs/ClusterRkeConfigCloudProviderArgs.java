@@ -65,14 +65,14 @@ public final class ClusterRkeConfigCloudProviderArgs extends com.pulumi.resource
     }
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -202,7 +202,7 @@ public final class ClusterRkeConfigCloudProviderArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class ClusterRkeConfigCloudProviderArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("configuration")]
         public Input<string>? Configuration { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitGetArgs();
     }
 }

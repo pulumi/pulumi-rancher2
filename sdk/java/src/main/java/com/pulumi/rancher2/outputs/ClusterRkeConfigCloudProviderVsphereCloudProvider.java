@@ -27,7 +27,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProvider {
      */
     private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal global;
     /**
-     * @return The GKE cluster network. Required for create new cluster (string)
+     * @return Kubernetes cluster networking (list maxitems:1)
      * 
      */
     private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork network;
@@ -58,7 +58,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProvider {
         return Optional.ofNullable(this.global);
     }
     /**
-     * @return The GKE cluster network. Required for create new cluster (string)
+     * @return Kubernetes cluster networking (list maxitems:1)
      * 
      */
     public Optional<ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork> network() {

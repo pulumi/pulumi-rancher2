@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,17 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getPodSecurityPolicyTemplate({
+ * const foo = rancher2.getPodSecurityPolicyTemplate({
  *     name: "foo",
- * }));
+ * });
  * ```
  */
 export function getPodSecurityPolicyTemplate(args: GetPodSecurityPolicyTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetPodSecurityPolicyTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", {
         "allowPrivilegeEscalation": args.allowPrivilegeEscalation,
         "allowedCapabilities": args.allowedCapabilities,
@@ -209,9 +207,22 @@ export interface GetPodSecurityPolicyTemplateResult {
     readonly supplementalGroup: outputs.GetPodSecurityPolicyTemplateSupplementalGroup;
     readonly volumes: string[];
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getPodSecurityPolicyTemplate({
+ *     name: "foo",
+ * });
+ * ```
+ */
 export function getPodSecurityPolicyTemplateOutput(args: GetPodSecurityPolicyTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPodSecurityPolicyTemplateResult> {
-    return pulumi.output(args).apply(a => getPodSecurityPolicyTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getPodSecurityPolicyTemplate(a, opts))
 }
 
 /**

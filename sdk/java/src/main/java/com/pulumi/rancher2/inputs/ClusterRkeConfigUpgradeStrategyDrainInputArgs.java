@@ -77,14 +77,14 @@ public final class ClusterRkeConfigUpgradeStrategyDrainInputArgs extends com.pul
     }
 
     /**
-     * RKE node drain timeout. Default: `60` (int)
+     * Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
     /**
-     * @return RKE node drain timeout. Default: `60` (int)
+     * @return Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
      * 
      */
     public Optional<Output<Integer>> timeout() {
@@ -204,7 +204,7 @@ public final class ClusterRkeConfigUpgradeStrategyDrainInputArgs extends com.pul
         }
 
         /**
-         * @param timeout RKE node drain timeout. Default: `60` (int)
+         * @param timeout Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ClusterRkeConfigUpgradeStrategyDrainInputArgs extends com.pul
         }
 
         /**
-         * @param timeout RKE node drain timeout. Default: `60` (int)
+         * @param timeout Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
          * 
          * @return builder
          * 

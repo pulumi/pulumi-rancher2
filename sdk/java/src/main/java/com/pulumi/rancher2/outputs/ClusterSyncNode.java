@@ -25,7 +25,7 @@ public final class ClusterSyncNode {
      */
     private @Nullable Map<String,Object> capacity;
     /**
-     * @return The Cluster ID of the node (string).
+     * @return The cluster ID that is syncing (string)
      * 
      */
     private @Nullable String clusterId;
@@ -111,7 +111,7 @@ public final class ClusterSyncNode {
         return this.capacity == null ? Map.of() : this.capacity;
     }
     /**
-     * @return The Cluster ID of the node (string).
+     * @return The cluster ID that is syncing (string)
      * 
      */
     public Optional<String> clusterId() {

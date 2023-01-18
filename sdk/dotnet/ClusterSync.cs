@@ -13,102 +13,104 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 rke Cluster 
+    ///     var foo_customCluster = new Rancher2.Cluster("foo-customCluster", new()
     ///     {
-    ///         // Create a new rancher2 rke Cluster 
-    ///         var foo_customCluster = new Rancher2.Cluster("foo-customCluster", new Rancher2.ClusterArgs
+    ///         Description = "Foo rancher2 custom cluster",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
     ///         {
-    ///             Description = "Foo rancher2 custom cluster",
-    ///             RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
     ///             {
-    ///                 Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
-    ///                 {
-    ///                     Plugin = "canal",
-    ///                 },
+    ///                 Plugin = "canal",
     ///             },
-    ///         });
-    ///         // Create a new rancher2 Node Template
-    ///         var fooNodeTemplate = new Rancher2.NodeTemplate("fooNodeTemplate", new Rancher2.NodeTemplateArgs
-    ///         {
-    ///             Description = "foo test",
-    ///             Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
-    ///             {
-    ///                 AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
-    ///                 SecretKey = "&lt;AWS_SECRET_KEY&gt;",
-    ///                 Ami = "&lt;AMI_ID&gt;",
-    ///                 Region = "&lt;REGION&gt;",
-    ///                 SecurityGroups = 
-    ///                 {
-    ///                     "&lt;AWS_SECURITY_GROUP&gt;",
-    ///                 },
-    ///                 SubnetId = "&lt;SUBNET_ID&gt;",
-    ///                 VpcId = "&lt;VPC_ID&gt;",
-    ///                 Zone = "&lt;ZONE&gt;",
-    ///             },
-    ///         });
-    ///         // Create a new rancher2 Node Pool
-    ///         var fooNodePool = new Rancher2.NodePool("fooNodePool", new Rancher2.NodePoolArgs
-    ///         {
-    ///             ClusterId = foo_customCluster.Id,
-    ///             HostnamePrefix = "foo-cluster-0",
-    ///             NodeTemplateId = fooNodeTemplate.Id,
-    ///             Quantity = 3,
-    ///             ControlPlane = true,
-    ///             Etcd = true,
-    ///             Worker = true,
-    ///         });
-    ///         // Create a new rancher2 Cluster Sync
-    ///         var foo_customClusterSync = new Rancher2.ClusterSync("foo-customClusterSync", new Rancher2.ClusterSyncArgs
-    ///         {
-    ///             ClusterId = foo_customCluster.Id,
-    ///             NodePoolIds = 
-    ///             {
-    ///                 fooNodePool.Id,
-    ///             },
-    ///         });
-    ///         // Create a new rancher2 Project
-    ///         var fooProject = new Rancher2.Project("fooProject", new Rancher2.ProjectArgs
-    ///         {
-    ///             ClusterId = foo_customClusterSync.Id,
-    ///             Description = "Terraform namespace acceptance test",
-    ///             ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
-    ///             {
-    ///                 ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
-    ///                 {
-    ///                     LimitsCpu = "2000m",
-    ///                     LimitsMemory = "2000Mi",
-    ///                     RequestsStorage = "2Gi",
-    ///                 },
-    ///                 NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
-    ///                 {
-    ///                     LimitsCpu = "500m",
-    ///                     LimitsMemory = "500Mi",
-    ///                     RequestsStorage = "1Gi",
-    ///                 },
-    ///             },
-    ///             ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
-    ///             {
-    ///                 LimitsCpu = "20m",
-    ///                 LimitsMemory = "20Mi",
-    ///                 RequestsCpu = "1m",
-    ///                 RequestsMemory = "1Mi",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     // Create a new rancher2 Node Template
+    ///     var fooNodeTemplate = new Rancher2.NodeTemplate("fooNodeTemplate", new()
+    ///     {
+    ///         Description = "foo test",
+    ///         Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
+    ///         {
+    ///             AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
+    ///             SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///             Ami = "&lt;AMI_ID&gt;",
+    ///             Region = "&lt;REGION&gt;",
+    ///             SecurityGroups = new[]
+    ///             {
+    ///                 "&lt;AWS_SECURITY_GROUP&gt;",
+    ///             },
+    ///             SubnetId = "&lt;SUBNET_ID&gt;",
+    ///             VpcId = "&lt;VPC_ID&gt;",
+    ///             Zone = "&lt;ZONE&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Node Pool
+    ///     var fooNodePool = new Rancher2.NodePool("fooNodePool", new()
+    ///     {
+    ///         ClusterId = foo_customCluster.Id,
+    ///         HostnamePrefix = "foo-cluster-0",
+    ///         NodeTemplateId = fooNodeTemplate.Id,
+    ///         Quantity = 3,
+    ///         ControlPlane = true,
+    ///         Etcd = true,
+    ///         Worker = true,
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Cluster Sync
+    ///     var foo_customClusterSync = new Rancher2.ClusterSync("foo-customClusterSync", new()
+    ///     {
+    ///         ClusterId = foo_customCluster.Id,
+    ///         NodePoolIds = new[]
+    ///         {
+    ///             fooNodePool.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Project
+    ///     var fooProject = new Rancher2.Project("fooProject", new()
+    ///     {
+    ///         ClusterId = foo_customClusterSync.Id,
+    ///         Description = "Terraform namespace acceptance test",
+    ///         ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
+    ///         {
+    ///             ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
+    ///             {
+    ///                 LimitsCpu = "2000m",
+    ///                 LimitsMemory = "2000Mi",
+    ///                 RequestsStorage = "2Gi",
+    ///             },
+    ///             NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
+    ///             {
+    ///                 LimitsCpu = "500m",
+    ///                 LimitsMemory = "500Mi",
+    ///                 RequestsStorage = "1Gi",
+    ///             },
+    ///         },
+    ///         ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
+    ///         {
+    ///             LimitsCpu = "20m",
+    ///             LimitsMemory = "20Mi",
+    ///             RequestsCpu = "1m",
+    ///             RequestsMemory = "1Mi",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterSync:ClusterSync")]
-    public partial class ClusterSync : Pulumi.CustomResource
+    public partial class ClusterSync : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Cluster ID of the node (string).
+        /// The cluster ID that is syncing (string)
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
@@ -193,6 +195,10 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "kubeConfig",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -214,10 +220,10 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ClusterSyncArgs : Pulumi.ResourceArgs
+    public sealed class ClusterSyncArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Cluster ID of the node (string).
+        /// The cluster ID that is syncing (string)
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -264,12 +270,13 @@ namespace Pulumi.Rancher2
         public ClusterSyncArgs()
         {
         }
+        public static new ClusterSyncArgs Empty => new ClusterSyncArgs();
     }
 
-    public sealed class ClusterSyncState : Pulumi.ResourceArgs
+    public sealed class ClusterSyncState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Cluster ID of the node (string).
+        /// The cluster ID that is syncing (string)
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -280,11 +287,21 @@ namespace Pulumi.Rancher2
         [Input("defaultProjectId")]
         public Input<string>? DefaultProjectId { get; set; }
 
+        [Input("kubeConfig")]
+        private Input<string>? _kubeConfig;
+
         /// <summary>
         /// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
         /// </summary>
-        [Input("kubeConfig")]
-        public Input<string>? KubeConfig { get; set; }
+        public Input<string>? KubeConfig
+        {
+            get => _kubeConfig;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _kubeConfig = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("nodePoolIds")]
         private InputList<string>? _nodePoolIds;
@@ -346,5 +363,6 @@ namespace Pulumi.Rancher2
         public ClusterSyncState()
         {
         }
+        public static new ClusterSyncState Empty => new ClusterSyncState();
     }
 }

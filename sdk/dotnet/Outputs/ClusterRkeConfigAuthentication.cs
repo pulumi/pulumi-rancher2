@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Sans;
         /// <summary>
-        /// Monitoring deployment update strategy (string)
+        /// RKE strategy for authentication (string)
         /// </summary>
         public readonly string? Strategy;
 

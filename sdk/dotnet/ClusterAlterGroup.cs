@@ -15,24 +15,22 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Rancher2 Cluster Alert Group
+    ///     var foo = new Rancher2.ClusterAlertGroup("foo", new()
     ///     {
-    ///         // Create a new Rancher2 Cluster Alert Group
-    ///         var foo = new Rancher2.ClusterAlertGroup("foo", new Rancher2.ClusterAlertGroupArgs
-    ///         {
-    ///             ClusterId = "&lt;cluster_id&gt;",
-    ///             Description = "Terraform cluster alert group",
-    ///             GroupIntervalSeconds = 300,
-    ///             RepeatIntervalSeconds = 3600,
-    ///         });
-    ///     }
+    ///         ClusterId = "&lt;cluster_id&gt;",
+    ///         Description = "Terraform cluster alert group",
+    ///         GroupIntervalSeconds = 300,
+    ///         RepeatIntervalSeconds = 3600,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +43,7 @@ namespace Pulumi.Rancher2
     /// </summary>
     [Obsolete(@"rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup")]
     [Rancher2ResourceType("rancher2:index/clusterAlterGroup:ClusterAlterGroup")]
-    public partial class ClusterAlterGroup : Pulumi.CustomResource
+    public partial class ClusterAlterGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The cluster alert group annotations (map)
@@ -145,7 +143,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ClusterAlterGroupArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAlterGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -222,9 +220,10 @@ namespace Pulumi.Rancher2
         public ClusterAlterGroupArgs()
         {
         }
+        public static new ClusterAlterGroupArgs Empty => new ClusterAlterGroupArgs();
     }
 
-    public sealed class ClusterAlterGroupState : Pulumi.ResourceArgs
+    public sealed class ClusterAlterGroupState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -301,5 +300,6 @@ namespace Pulumi.Rancher2
         public ClusterAlterGroupState()
         {
         }
+        public static new ClusterAlterGroupState Empty => new ClusterAlterGroupState();
     }
 }

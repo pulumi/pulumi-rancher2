@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesKubeApiAuditLogArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesKubeApiAuditLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+        /// Audit log configuration. (list maxitems: 1)
         /// </summary>
         [Input("configuration")]
         public Input<Inputs.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs>? Configuration { get; set; }
 
         /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// Enable etcd backup (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesKubeApiAuditLogArgs()
         {
         }
+        public static new ClusterRkeConfigServicesKubeApiAuditLogArgs Empty => new ClusterRkeConfigServicesKubeApiAuditLogArgs();
     }
 }

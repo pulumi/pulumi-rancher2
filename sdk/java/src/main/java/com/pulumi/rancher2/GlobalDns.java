@@ -22,6 +22,94 @@ import javax.annotation.Nullable;
  * Provides a Rancher V2 Global DNS resource. This can be used to create Global DNS records for Rancher V2.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.GlobalDnsProvider;
+ * import com.pulumi.rancher2.GlobalDnsProviderArgs;
+ * import com.pulumi.rancher2.inputs.GlobalDnsProviderRoute53ConfigArgs;
+ * import com.pulumi.rancher2.GlobalDns;
+ * import com.pulumi.rancher2.GlobalDnsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooGlobalDnsProvider = new GlobalDnsProvider(&#34;fooGlobalDnsProvider&#34;, GlobalDnsProviderArgs.builder()        
+ *             .rootDomain(&#34;example.com&#34;)
+ *             .route53Config(GlobalDnsProviderRoute53ConfigArgs.builder()
+ *                 .accessKey(&#34;YYYYYYYYYYYYYYYYYYYY&#34;)
+ *                 .secretKey(&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;)
+ *                 .zoneType(&#34;private&#34;)
+ *                 .region(&#34;us-east-1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooGlobalDns = new GlobalDns(&#34;fooGlobalDns&#34;, GlobalDnsArgs.builder()        
+ *             .fqdn(&#34;foo.example.com&#34;)
+ *             .providerId(fooGlobalDnsProvider.id())
+ *             .projectIds(            
+ *                 &#34;project1&#34;,
+ *                 &#34;project2&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.GlobalDnsProvider;
+ * import com.pulumi.rancher2.GlobalDnsProviderArgs;
+ * import com.pulumi.rancher2.inputs.GlobalDnsProviderRoute53ConfigArgs;
+ * import com.pulumi.rancher2.GlobalDns;
+ * import com.pulumi.rancher2.GlobalDnsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooGlobalDnsProvider = new GlobalDnsProvider(&#34;fooGlobalDnsProvider&#34;, GlobalDnsProviderArgs.builder()        
+ *             .rootDomain(&#34;example.com&#34;)
+ *             .route53Config(GlobalDnsProviderRoute53ConfigArgs.builder()
+ *                 .accessKey(&#34;YYYYYYYYYYYYYYYYYYYY&#34;)
+ *                 .secretKey(&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;)
+ *                 .zoneType(&#34;private&#34;)
+ *                 .region(&#34;us-east-1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooGlobalDns = new GlobalDns(&#34;fooGlobalDns&#34;, GlobalDnsArgs.builder()        
+ *             .fqdn(&#34;foo.example.com&#34;)
+ *             .providerId(fooGlobalDnsProvider.id())
+ *             .multiClusterAppId(&#34;&lt;MCA_ID&gt;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterAlertRuleEventRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAlertRuleEventRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterAlertRuleEventRuleGetArgs()
         {
         }
+        public static new ClusterAlertRuleEventRuleGetArgs Empty => new ClusterAlertRuleEventRuleGetArgs();
     }
 }

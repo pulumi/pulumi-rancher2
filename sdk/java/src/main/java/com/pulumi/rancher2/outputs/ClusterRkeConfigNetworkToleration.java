@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigNetworkToleration {
     /**
-     * @return The GKE taint effect (string)
+     * @return The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      * 
      */
     private @Nullable String effect;
     /**
-     * @return The GKE taint key (string)
+     * @return The toleration key (string)
      * 
      */
     private String key;
@@ -33,21 +33,21 @@ public final class ClusterRkeConfigNetworkToleration {
      */
     private @Nullable Integer seconds;
     /**
-     * @return The GKE taint value (string)
+     * @return Rancher agent env var value (string)
      * 
      */
     private @Nullable String value;
 
     private ClusterRkeConfigNetworkToleration() {}
     /**
-     * @return The GKE taint effect (string)
+     * @return The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      * 
      */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
     /**
-     * @return The GKE taint key (string)
+     * @return The toleration key (string)
      * 
      */
     public String key() {
@@ -68,7 +68,7 @@ public final class ClusterRkeConfigNetworkToleration {
         return Optional.ofNullable(this.seconds);
     }
     /**
-     * @return The GKE taint value (string)
+     * @return Rancher agent env var value (string)
      * 
      */
     public Optional<String> value() {

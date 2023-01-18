@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterAksConfigV2NodePoolGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAksConfigV2NodePoolGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The AKS node pool count. Default: `1` (int)
+        /// Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
         /// </summary>
         [Input("count")]
         public Input<int>? Count { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? MaxCount { get; set; }
 
         /// <summary>
-        /// The AKS node pool max pods. Default: `110` (int)
+        /// Maximum number of pods that can run on a node. Default `110` (int)
         /// </summary>
         [Input("maxPods")]
         public Input<int>? MaxPods { get; set; }
@@ -55,13 +55,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? MinCount { get; set; }
 
         /// <summary>
-        /// The AKS node group mode. Default: `System` (string)
+        /// RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -99,5 +99,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterAksConfigV2NodePoolGetArgs()
         {
         }
+        public static new ClusterAksConfigV2NodePoolGetArgs Empty => new ClusterAksConfigV2NodePoolGetArgs();
     }
 }

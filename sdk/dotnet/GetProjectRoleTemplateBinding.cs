@@ -19,27 +19,25 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetProjectRoleTemplateBinding.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetProjectRoleTemplateBinding.InvokeAsync(new Rancher2.GetProjectRoleTemplateBindingArgs
-        ///         {
-        ///             Name = "foo",
-        ///             ProjectId = "foo_id",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///         ProjectId = "foo_id",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectRoleTemplateBindingResult> InvokeAsync(GetProjectRoleTemplateBindingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? new GetProjectRoleTemplateBindingArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? new GetProjectRoleTemplateBindingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 project role template binding.
@@ -49,31 +47,29 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetProjectRoleTemplateBinding.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetProjectRoleTemplateBinding.InvokeAsync(new Rancher2.GetProjectRoleTemplateBindingArgs
-        ///         {
-        ///             Name = "foo",
-        ///             ProjectId = "foo_id",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///         ProjectId = "foo_id",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectRoleTemplateBindingResult> Invoke(GetProjectRoleTemplateBindingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? new GetProjectRoleTemplateBindingInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? new GetProjectRoleTemplateBindingInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetProjectRoleTemplateBindingArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectRoleTemplateBindingArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the project role template binding (string)
@@ -96,9 +92,10 @@ namespace Pulumi.Rancher2
         public GetProjectRoleTemplateBindingArgs()
         {
         }
+        public static new GetProjectRoleTemplateBindingArgs Empty => new GetProjectRoleTemplateBindingArgs();
     }
 
-    public sealed class GetProjectRoleTemplateBindingInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectRoleTemplateBindingInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the project role template binding (string)
@@ -121,6 +118,7 @@ namespace Pulumi.Rancher2
         public GetProjectRoleTemplateBindingInvokeArgs()
         {
         }
+        public static new GetProjectRoleTemplateBindingInvokeArgs Empty => new GetProjectRoleTemplateBindingInvokeArgs();
     }
 
 

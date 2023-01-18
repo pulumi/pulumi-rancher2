@@ -23,6 +23,109 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Namespace;
+ * import com.pulumi.rancher2.NamespaceArgs;
+ * import com.pulumi.rancher2.inputs.NamespaceContainerResourceLimitArgs;
+ * import com.pulumi.rancher2.inputs.NamespaceResourceQuotaArgs;
+ * import com.pulumi.rancher2.inputs.NamespaceResourceQuotaLimitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Namespace(&#34;foo&#34;, NamespaceArgs.builder()        
+ *             .containerResourceLimit(NamespaceContainerResourceLimitArgs.builder()
+ *                 .limitsCpu(&#34;20m&#34;)
+ *                 .limitsMemory(&#34;20Mi&#34;)
+ *                 .requestsCpu(&#34;1m&#34;)
+ *                 .requestsMemory(&#34;1Mi&#34;)
+ *                 .build())
+ *             .description(&#34;foo namespace&#34;)
+ *             .projectId(&#34;&lt;PROJECT_ID&gt;&#34;)
+ *             .resourceQuota(NamespaceResourceQuotaArgs.builder()
+ *                 .limit(NamespaceResourceQuotaLimitArgs.builder()
+ *                     .limitsCpu(&#34;100m&#34;)
+ *                     .limitsMemory(&#34;100Mi&#34;)
+ *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.Namespace;
+ * import com.pulumi.rancher2.NamespaceArgs;
+ * import com.pulumi.rancher2.inputs.NamespaceResourceQuotaArgs;
+ * import com.pulumi.rancher2.inputs.NamespaceResourceQuotaLimitArgs;
+ * import com.pulumi.rancher2.inputs.NamespaceContainerResourceLimitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
+ *             .description(&#34;Foo rancher2 custom cluster&#34;)
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .network(ClusterRkeConfigNetworkArgs.builder()
+ *                     .plugin(&#34;canal&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var foo = new Namespace(&#34;foo&#34;, NamespaceArgs.builder()        
+ *             .projectId(foo_custom.defaultProjectId())
+ *             .description(&#34;foo namespace&#34;)
+ *             .resourceQuota(NamespaceResourceQuotaArgs.builder()
+ *                 .limit(NamespaceResourceQuotaLimitArgs.builder()
+ *                     .limitsCpu(&#34;100m&#34;)
+ *                     .limitsMemory(&#34;100Mi&#34;)
+ *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .build())
+ *                 .build())
+ *             .containerResourceLimit(NamespaceContainerResourceLimitArgs.builder()
+ *                 .limitsCpu(&#34;20m&#34;)
+ *                 .limitsMemory(&#34;20Mi&#34;)
+ *                 .requestsCpu(&#34;1m&#34;)
+ *                 .requestsMemory(&#34;1Mi&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupProjectAlertRule(ctx, &GetProjectAlertRuleArgs{
+//			_, err := rancher2.LookupProjectAlertRule(ctx, &rancher2.LookupProjectAlertRuleArgs{
 //				Name:      "<project_alert_rule_name>",
 //				ProjectId: "<project_id>",
 //			}, nil)

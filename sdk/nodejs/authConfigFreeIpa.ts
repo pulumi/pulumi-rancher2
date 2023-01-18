@@ -234,7 +234,7 @@ export class AuthConfigFreeIpa extends pulumi.CustomResource {
             resourceInputs["accessMode"] = args ? args.accessMode : undefined;
             resourceInputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["certificate"] = args?.certificate ? pulumi.secret(args.certificate) : undefined;
             resourceInputs["connectionTimeout"] = args ? args.connectionTimeout : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["groupDnAttribute"] = args ? args.groupDnAttribute : undefined;
@@ -248,9 +248,9 @@ export class AuthConfigFreeIpa extends pulumi.CustomResource {
             resourceInputs["nestedGroupMembershipEnabled"] = args ? args.nestedGroupMembershipEnabled : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["servers"] = args ? args.servers : undefined;
-            resourceInputs["serviceAccountDistinguishedName"] = args ? args.serviceAccountDistinguishedName : undefined;
-            resourceInputs["serviceAccountPassword"] = args ? args.serviceAccountPassword : undefined;
-            resourceInputs["testPassword"] = args ? args.testPassword : undefined;
+            resourceInputs["serviceAccountDistinguishedName"] = args?.serviceAccountDistinguishedName ? pulumi.secret(args.serviceAccountDistinguishedName) : undefined;
+            resourceInputs["serviceAccountPassword"] = args?.serviceAccountPassword ? pulumi.secret(args.serviceAccountPassword) : undefined;
+            resourceInputs["testPassword"] = args?.testPassword ? pulumi.secret(args.testPassword) : undefined;
             resourceInputs["testUsername"] = args ? args.testUsername : undefined;
             resourceInputs["tls"] = args ? args.tls : undefined;
             resourceInputs["userDisabledBitMask"] = args ? args.userDisabledBitMask : undefined;
@@ -265,6 +265,8 @@ export class AuthConfigFreeIpa extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["certificate", "serviceAccountDistinguishedName", "serviceAccountPassword", "testPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AuthConfigFreeIpa.__pulumiType, name, resourceInputs, opts);
     }
 }

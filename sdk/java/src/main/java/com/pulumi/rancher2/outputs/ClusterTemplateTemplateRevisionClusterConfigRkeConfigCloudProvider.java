@@ -19,7 +19,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider azureCloudProvider;
     private @Nullable String customCloudProvider;
     /**
-     * @return The cluster template revision name (string)
+     * @return The cluster template name (string)
      * 
      */
     private @Nullable String name;
@@ -37,7 +37,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         return Optional.ofNullable(this.customCloudProvider);
     }
     /**
-     * @return The cluster template revision name (string)
+     * @return The cluster template name (string)
      * 
      */
     public Optional<String> name() {

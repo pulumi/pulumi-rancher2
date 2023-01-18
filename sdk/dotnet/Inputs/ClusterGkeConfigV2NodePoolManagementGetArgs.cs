@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2NodePoolManagementGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2NodePoolManagementGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable GKE node pool config management auto repair. Default: `false` (bool)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2NodePoolManagementGetArgs()
         {
         }
+        public static new ClusterGkeConfigV2NodePoolManagementGetArgs Empty => new ClusterGkeConfigV2NodePoolManagementGetArgs();
     }
 }

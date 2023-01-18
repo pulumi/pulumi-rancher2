@@ -10,10 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class MachineConfigV2Amazonec2ConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class MachineConfigV2Amazonec2ConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        private Input<string>? _accessKey;
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AWS machine image (string)
@@ -70,13 +79,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? InsecureTransport { get; set; }
 
         /// <summary>
-        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// AWS instance type. Default `t3a.medium` (string)
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// OpenStack keypair to use to SSH to the instance (string)
+        /// AWS keypair to use; requires --amazonec2-ssh-keypath (string)
         /// </summary>
         [Input("keypairName")]
         public Input<string>? KeypairName { get; set; }
@@ -88,7 +97,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? KmsKey { get; set; }
 
         /// <summary>
-        /// Enable monitoring for droplet. Default `false` (bool)
+        /// Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
@@ -112,7 +121,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? PrivateAddressOnly { get; set; }
 
         /// <summary>
-        /// OpenStack region name (string)
+        /// AWS region. (string)
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -136,7 +145,16 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? RootSize { get; set; }
 
         [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        private Input<string>? _secretKey;
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Skip adding default rules to security groups (bool)
@@ -156,11 +174,21 @@ namespace Pulumi.Rancher2.Inputs
             set => _securityGroups = value;
         }
 
+        [Input("sessionToken")]
+        private Input<string>? _sessionToken;
+
         /// <summary>
         /// AWS Session Token (string)
         /// </summary>
-        [Input("sessionToken")]
-        public Input<string>? SessionToken { get; set; }
+        public Input<string>? SessionToken
+        {
+            get => _sessionToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sessionToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AWS spot instance bid price (in dollar). Default `0.50` (string)
@@ -168,14 +196,24 @@ namespace Pulumi.Rancher2.Inputs
         [Input("spotPrice")]
         public Input<string>? SpotPrice { get; set; }
 
-        /// <summary>
-        /// SSH private key contents (string)
-        /// </summary>
         [Input("sshKeyContents")]
-        public Input<string>? SshKeyContents { get; set; }
+        private Input<string>? _sshKeyContents;
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        /// SSH Key for Instance (string)
+        /// </summary>
+        public Input<string>? SshKeyContents
+        {
+            get => _sshKeyContents;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshKeyContents = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Set the name of the ssh user (string)
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
@@ -187,7 +225,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> SubnetId { get; set; } = null!;
 
         /// <summary>
-        /// vSphere tags id e.g. `urn:xxx` (list)
+        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
         /// </summary>
         [Input("tags")]
         public Input<string>? Tags { get; set; }
@@ -205,13 +243,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? UsePrivateAddress { get; set; }
 
         /// <summary>
-        /// Path to file with cloud-init user-data (string)
+        /// Path to file with cloud-init user data (string)
         /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }
 
         /// <summary>
-        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        /// Amazon EBS volume type. Default `gp2` (string)
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }
@@ -231,5 +269,6 @@ namespace Pulumi.Rancher2.Inputs
         public MachineConfigV2Amazonec2ConfigGetArgs()
         {
         }
+        public static new MachineConfigV2Amazonec2ConfigGetArgs Empty => new MachineConfigV2Amazonec2ConfigGetArgs();
     }
 }

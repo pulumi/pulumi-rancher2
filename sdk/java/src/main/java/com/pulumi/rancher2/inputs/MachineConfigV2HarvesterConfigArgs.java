@@ -16,14 +16,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     public static final MachineConfigV2HarvesterConfigArgs Empty = new MachineConfigV2HarvesterConfigArgs();
 
     /**
-     * vSphere CPU number for docker VM. Default `2` (string)
+     * CPU count, Default `2` (string)
      * 
      */
     @Import(name="cpuCount")
     private @Nullable Output<String> cpuCount;
 
     /**
-     * @return vSphere CPU number for docker VM. Default `2` (string)
+     * @return CPU count, Default `2` (string)
      * 
      */
     public Optional<Output<String>> cpuCount() {
@@ -46,14 +46,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     public Optional<Output<String>> diskSize() {
@@ -61,14 +61,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * Image name e.g. `harvester-public/image-57hzg` (string)
      * 
      */
     @Import(name="imageName", required=true)
     private Output<String> imageName;
 
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return Image name e.g. `harvester-public/image-57hzg` (string)
      * 
      */
     public Output<String> imageName() {
@@ -76,14 +76,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * Memory size (in GiB), Default `4` (string)
      * 
      */
     @Import(name="memorySize")
     private @Nullable Output<String> memorySize;
 
     /**
-     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * @return Memory size (in GiB), Default `4` (string)
      * 
      */
     public Optional<Output<String>> memorySize() {
@@ -136,14 +136,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     * SSH password (string)
      * 
      */
     @Import(name="sshPassword")
     private @Nullable Output<String> sshPassword;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     * @return SSH password (string)
      * 
      */
     public Optional<Output<String>> sshPassword() {
@@ -151,14 +151,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * Set the name of the ssh user (string)
      * 
      */
     @Import(name="sshUser", required=true)
     private Output<String> sshUser;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     public Output<String> sshUser() {
@@ -231,7 +231,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cpuCount vSphere CPU number for docker VM. Default `2` (string)
+         * @param cpuCount CPU count, Default `2` (string)
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cpuCount vSphere CPU number for docker VM. Default `2` (string)
+         * @param cpuCount CPU count, Default `2` (string)
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
+         * @param diskSize Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
+         * @param diskSize Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+         * @param imageName Image name e.g. `harvester-public/image-57hzg` (string)
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+         * @param imageName Image name e.g. `harvester-public/image-57hzg` (string)
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param memorySize vSphere size of memory for docker VM (in MB). Default `2048` (string)
+         * @param memorySize Memory size (in GiB), Default `4` (string)
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param memorySize vSphere size of memory for docker VM (in MB). Default `2048` (string)
+         * @param memorySize Memory size (in GiB), Default `4` (string)
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshPassword If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+         * @param sshPassword SSH password (string)
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshPassword If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+         * @param sshPassword SSH password (string)
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * @param sshUser Set the name of the ssh user (string)
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * @param sshUser Set the name of the ssh user (string)
          * 
          * @return builder
          * 

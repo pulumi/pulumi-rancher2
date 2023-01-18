@@ -24,14 +24,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     public static final ClusterV2RkeConfigMachinePoolArgs Empty = new ClusterV2RkeConfigMachinePoolArgs();
 
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster V2 (map)
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,Object>> annotations;
 
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster V2 (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> annotations() {
@@ -99,14 +99,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster V2 (map)
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster V2 (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -129,6 +129,21 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
+     * Labels for Machine pool nodes (map)
+     * 
+     */
+    @Import(name="machineLabels")
+    private @Nullable Output<Map<String,Object>> machineLabels;
+
+    /**
+     * @return Labels for Machine pool nodes (map)
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> machineLabels() {
+        return Optional.ofNullable(this.machineLabels);
+    }
+
+    /**
      * Max unhealthy nodes for automated replacement to be allowed (string)
      * 
      */
@@ -144,14 +159,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster v2 (string)
      * 
      */
     public Output<String> name() {
@@ -303,6 +318,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         this.etcdRole = $.etcdRole;
         this.labels = $.labels;
         this.machineConfig = $.machineConfig;
+        this.machineLabels = $.machineLabels;
         this.maxUnhealthy = $.maxUnhealthy;
         this.name = $.name;
         this.nodeDrainTimeout = $.nodeDrainTimeout;
@@ -335,7 +351,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param annotations Annotations for cluster registration token object (map)
+         * @param annotations Annotations for the Cluster V2 (map)
          * 
          * @return builder
          * 
@@ -346,7 +362,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param annotations Annotations for cluster registration token object (map)
+         * @param annotations Annotations for the Cluster V2 (map)
          * 
          * @return builder
          * 
@@ -440,7 +456,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster V2 (map)
          * 
          * @return builder
          * 
@@ -451,7 +467,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster V2 (map)
          * 
          * @return builder
          * 
@@ -482,6 +498,27 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
+         * @param machineLabels Labels for Machine pool nodes (map)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder machineLabels(@Nullable Output<Map<String,Object>> machineLabels) {
+            $.machineLabels = machineLabels;
+            return this;
+        }
+
+        /**
+         * @param machineLabels Labels for Machine pool nodes (map)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder machineLabels(Map<String,Object> machineLabels) {
+            return machineLabels(Output.of(machineLabels));
+        }
+
+        /**
          * @param maxUnhealthy Max unhealthy nodes for automated replacement to be allowed (string)
          * 
          * @return builder
@@ -503,7 +540,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster v2 (string)
          * 
          * @return builder
          * 
@@ -514,7 +551,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster v2 (string)
          * 
          * @return builder
          * 

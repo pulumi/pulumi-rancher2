@@ -15,155 +15,153 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 PodSecurityPolicyTemplate
+    ///     var foo = new Rancher2.PodSecurityPolicyTemplate("foo", new()
     ///     {
-    ///         // Create a new rancher2 PodSecurityPolicyTemplate
-    ///         var foo = new Rancher2.PodSecurityPolicyTemplate("foo", new Rancher2.PodSecurityPolicyTemplateArgs
+    ///         AllowPrivilegeEscalation = false,
+    ///         AllowedCsiDrivers = new[]
     ///         {
-    ///             AllowPrivilegeEscalation = false,
-    ///             AllowedCsiDrivers = 
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedCsiDriverArgs
     ///             {
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedCsiDriverArgs
-    ///                 {
-    ///                     Name = "something",
-    ///                 },
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedCsiDriverArgs
-    ///                 {
-    ///                     Name = "something-else",
-    ///                 },
+    ///                 Name = "something",
     ///             },
-    ///             AllowedFlexVolumes = 
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedCsiDriverArgs
     ///             {
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedFlexVolumeArgs
-    ///                 {
-    ///                     Driver = "something",
-    ///                 },
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedFlexVolumeArgs
-    ///                 {
-    ///                     Driver = "something-else",
-    ///                 },
+    ///                 Name = "something-else",
     ///             },
-    ///             AllowedHostPaths = 
+    ///         },
+    ///         AllowedFlexVolumes = new[]
+    ///         {
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedFlexVolumeArgs
     ///             {
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedHostPathArgs
-    ///                 {
-    ///                     PathPrefix = "/",
-    ///                     ReadOnly = true,
-    ///                 },
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedHostPathArgs
-    ///                 {
-    ///                     PathPrefix = "//",
-    ///                     ReadOnly = false,
-    ///                 },
+    ///                 Driver = "something",
     ///             },
-    ///             AllowedProcMountTypes = 
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedFlexVolumeArgs
     ///             {
-    ///                 "Default",
+    ///                 Driver = "something-else",
     ///             },
-    ///             DefaultAllowPrivilegeEscalation = false,
-    ///             Description = "Terraform PodSecurityPolicyTemplate acceptance test - update",
-    ///             FsGroup = new Rancher2.Inputs.PodSecurityPolicyTemplateFsGroupArgs
+    ///         },
+    ///         AllowedHostPaths = new[]
+    ///         {
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedHostPathArgs
     ///             {
-    ///                 Ranges = 
-    ///                 {
-    ///                     new Rancher2.Inputs.PodSecurityPolicyTemplateFsGroupRangeArgs
-    ///                     {
-    ///                         Max = 100,
-    ///                         Min = 0,
-    ///                     },
-    ///                     new Rancher2.Inputs.PodSecurityPolicyTemplateFsGroupRangeArgs
-    ///                     {
-    ///                         Max = 100,
-    ///                         Min = 0,
-    ///                     },
-    ///                 },
-    ///                 Rule = "MustRunAs",
+    ///                 PathPrefix = "/",
+    ///                 ReadOnly = true,
     ///             },
-    ///             HostIpc = false,
-    ///             HostNetwork = false,
-    ///             HostPid = false,
-    ///             HostPorts = 
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedHostPathArgs
     ///             {
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateHostPortArgs
+    ///                 PathPrefix = "//",
+    ///                 ReadOnly = false,
+    ///             },
+    ///         },
+    ///         AllowedProcMountTypes = new[]
+    ///         {
+    ///             "Default",
+    ///         },
+    ///         DefaultAllowPrivilegeEscalation = false,
+    ///         Description = "Terraform PodSecurityPolicyTemplate acceptance test - update",
+    ///         FsGroup = new Rancher2.Inputs.PodSecurityPolicyTemplateFsGroupArgs
+    ///         {
+    ///             Ranges = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateFsGroupRangeArgs
     ///                 {
-    ///                     Max = 65535,
+    ///                     Max = 100,
     ///                     Min = 0,
     ///                 },
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateHostPortArgs
+    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateFsGroupRangeArgs
     ///                 {
-    ///                     Max = 8080,
-    ///                     Min = 1024,
+    ///                     Max = 100,
+    ///                     Min = 0,
     ///                 },
     ///             },
-    ///             Privileged = false,
-    ///             ReadOnlyRootFilesystem = false,
-    ///             RequiredDropCapabilities = 
+    ///             Rule = "MustRunAs",
+    ///         },
+    ///         HostIpc = false,
+    ///         HostNetwork = false,
+    ///         HostPid = false,
+    ///         HostPorts = new[]
+    ///         {
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateHostPortArgs
+    ///             {
+    ///                 Max = 65535,
+    ///                 Min = 0,
+    ///             },
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateHostPortArgs
+    ///             {
+    ///                 Max = 8080,
+    ///                 Min = 1024,
+    ///             },
+    ///         },
+    ///         Privileged = false,
+    ///         ReadOnlyRootFilesystem = false,
+    ///         RequiredDropCapabilities = new[]
+    ///         {
+    ///             "something",
+    ///         },
+    ///         RunAsGroup = new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsGroupArgs
+    ///         {
+    ///             Ranges = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsGroupRangeArgs
+    ///                 {
+    ///                     Max = 100,
+    ///                     Min = 1,
+    ///                 },
+    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsGroupRangeArgs
+    ///                 {
+    ///                     Max = 1024,
+    ///                     Min = 2,
+    ///                 },
+    ///             },
+    ///             Rule = "MustRunAs",
+    ///         },
+    ///         RunAsUser = new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsUserArgs
+    ///         {
+    ///             Ranges = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsUserRangeArgs
+    ///                 {
+    ///                     Max = 100,
+    ///                     Min = 1,
+    ///                 },
+    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsUserRangeArgs
+    ///                 {
+    ///                     Max = 1024,
+    ///                     Min = 2,
+    ///                 },
+    ///             },
+    ///             Rule = "MustRunAs",
+    ///         },
+    ///         RuntimeClass = new Rancher2.Inputs.PodSecurityPolicyTemplateRuntimeClassArgs
+    ///         {
+    ///             AllowedRuntimeClassNames = new[]
     ///             {
     ///                 "something",
     ///             },
-    ///             RunAsGroup = new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsGroupArgs
-    ///             {
-    ///                 Ranges = 
-    ///                 {
-    ///                     new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsGroupRangeArgs
-    ///                     {
-    ///                         Max = 100,
-    ///                         Min = 1,
-    ///                     },
-    ///                     new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsGroupRangeArgs
-    ///                     {
-    ///                         Max = 1024,
-    ///                         Min = 2,
-    ///                     },
-    ///                 },
-    ///                 Rule = "MustRunAs",
-    ///             },
-    ///             RunAsUser = new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsUserArgs
-    ///             {
-    ///                 Ranges = 
-    ///                 {
-    ///                     new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsUserRangeArgs
-    ///                     {
-    ///                         Max = 100,
-    ///                         Min = 1,
-    ///                     },
-    ///                     new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsUserRangeArgs
-    ///                     {
-    ///                         Max = 1024,
-    ///                         Min = 2,
-    ///                     },
-    ///                 },
-    ///                 Rule = "MustRunAs",
-    ///             },
-    ///             RuntimeClass = new Rancher2.Inputs.PodSecurityPolicyTemplateRuntimeClassArgs
-    ///             {
-    ///                 AllowedRuntimeClassNames = 
-    ///                 {
-    ///                     "something",
-    ///                 },
-    ///                 DefaultRuntimeClassName = "something",
-    ///             },
-    ///             SeLinux = new Rancher2.Inputs.PodSecurityPolicyTemplateSeLinuxArgs
-    ///             {
-    ///                 Rule = "RunAsAny",
-    ///             },
-    ///             SupplementalGroup = new Rancher2.Inputs.PodSecurityPolicyTemplateSupplementalGroupArgs
-    ///             {
-    ///                 Rule = "RunAsAny",
-    ///             },
-    ///             Volumes = 
-    ///             {
-    ///                 "azureFile",
-    ///             },
-    ///         });
-    ///     }
+    ///             DefaultRuntimeClassName = "something",
+    ///         },
+    ///         SeLinux = new Rancher2.Inputs.PodSecurityPolicyTemplateSeLinuxArgs
+    ///         {
+    ///             Rule = "RunAsAny",
+    ///         },
+    ///         SupplementalGroup = new Rancher2.Inputs.PodSecurityPolicyTemplateSupplementalGroupArgs
+    ///         {
+    ///             Rule = "RunAsAny",
+    ///         },
+    ///         Volumes = new[]
+    ///         {
+    ///             "azureFile",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -175,7 +173,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate")]
-    public partial class PodSecurityPolicyTemplate : Pulumi.CustomResource
+    public partial class PodSecurityPolicyTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// = (Optional)
@@ -389,7 +387,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class PodSecurityPolicyTemplateArgs : Pulumi.ResourceArgs
+    public sealed class PodSecurityPolicyTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// = (Optional)
@@ -640,9 +638,10 @@ namespace Pulumi.Rancher2
         public PodSecurityPolicyTemplateArgs()
         {
         }
+        public static new PodSecurityPolicyTemplateArgs Empty => new PodSecurityPolicyTemplateArgs();
     }
 
-    public sealed class PodSecurityPolicyTemplateState : Pulumi.ResourceArgs
+    public sealed class PodSecurityPolicyTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// = (Optional)
@@ -893,5 +892,6 @@ namespace Pulumi.Rancher2
         public PodSecurityPolicyTemplateState()
         {
         }
+        public static new PodSecurityPolicyTemplateState Empty => new PodSecurityPolicyTemplateState();
     }
 }

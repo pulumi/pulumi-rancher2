@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigNetworkWeaveNetworkProviderGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigNetworkWeaveNetworkProviderGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Registry password (string)
+        /// (string)
         /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigNetworkWeaveNetworkProviderGetArgs()
         {
         }
+        public static new ClusterRkeConfigNetworkWeaveNetworkProviderGetArgs Empty => new ClusterRkeConfigNetworkWeaveNetworkProviderGetArgs();
     }
 }

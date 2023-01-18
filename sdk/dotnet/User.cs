@@ -17,29 +17,28 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 User
+    ///     var fooUser = new Rancher2.User("fooUser", new()
     ///     {
-    ///         // Create a new rancher2 User
-    ///         var fooUser = new Rancher2.User("fooUser", new Rancher2.UserArgs
-    ///         {
-    ///             Username = "foo",
-    ///             Password = "changeme",
-    ///             Enabled = true,
-    ///         });
-    ///         // Create a new rancher2 global_role_binding for User
-    ///         var fooGlobalRoleBinding = new Rancher2.GlobalRoleBinding("fooGlobalRoleBinding", new Rancher2.GlobalRoleBindingArgs
-    ///         {
-    ///             GlobalRoleId = "user-base",
-    ///             UserId = fooUser.Id,
-    ///         });
-    ///     }
+    ///         Username = "foo",
+    ///         Password = "changeme",
+    ///         Enabled = true,
+    ///     });
     /// 
-    /// }
+    ///     // Create a new rancher2 global_role_binding for User
+    ///     var fooGlobalRoleBinding = new Rancher2.GlobalRoleBinding("fooGlobalRoleBinding", new()
+    ///     {
+    ///         GlobalRoleId = "user-base",
+    ///         UserId = fooUser.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +50,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for global role binding (map)
@@ -115,6 +114,10 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -136,7 +139,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -171,11 +174,21 @@ namespace Pulumi.Rancher2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// The user password (string)
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The user username (string)
@@ -186,9 +199,10 @@ namespace Pulumi.Rancher2
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -223,11 +237,21 @@ namespace Pulumi.Rancher2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The user password (string)
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("principalIds")]
         private InputList<string>? _principalIds;
@@ -250,5 +274,6 @@ namespace Pulumi.Rancher2
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

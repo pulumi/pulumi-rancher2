@@ -32,14 +32,14 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
     }
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,14 +47,14 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
     }
 
     /**
-     * rancher-monitoring chart version (string)
+     * RKE2 kubernetes version (string)
      * 
      */
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return RKE2 kubernetes version (string)
      * 
      */
     public Optional<Output<Integer>> version() {
@@ -109,7 +109,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version RKE2 kubernetes version (string)
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version RKE2 kubernetes version (string)
          * 
          * @return builder
          * 

@@ -22,14 +22,14 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
     public static final ClusterRkeConfigMonitoringArgs Empty = new ClusterRkeConfigMonitoringArgs();
 
     /**
-     * RKE monitoring node selector (map)
+     * DNS add-on node selector (map)
      * 
      */
     @Import(name="nodeSelector")
     private @Nullable Output<Map<String,Object>> nodeSelector;
 
     /**
-     * @return RKE monitoring node selector (map)
+     * @return DNS add-on node selector (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> nodeSelector() {
@@ -37,14 +37,14 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
     }
 
     /**
-     * RKE options for network (map)
+     * RKE options for authorization (map)
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,Object>> options;
 
     /**
-     * @return RKE options for network (map)
+     * @return RKE options for authorization (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> options() {
@@ -52,14 +52,14 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
     }
 
     /**
-     * RKE monitoring provider (string)
+     * DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
      * 
      */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
     /**
-     * @return RKE monitoring provider (string)
+     * @return DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
      * 
      */
     public Optional<Output<String>> provider() {
@@ -82,14 +82,14 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Network add-on tolerations (list)
+     * DNS add-on tolerations (list)
      * 
      */
     @Import(name="tolerations")
     private @Nullable Output<List<ClusterRkeConfigMonitoringTolerationArgs>> tolerations;
 
     /**
-     * @return Network add-on tolerations (list)
+     * @return DNS add-on tolerations (list)
      * 
      */
     public Optional<Output<List<ClusterRkeConfigMonitoringTolerationArgs>>> tolerations() {
@@ -97,14 +97,14 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
     }
 
     /**
-     * RKE monitoring update strategy (list Maxitems: 1)
+     * DNS update strategy (list Maxitems: 1)
      * 
      */
     @Import(name="updateStrategy")
     private @Nullable Output<ClusterRkeConfigMonitoringUpdateStrategyArgs> updateStrategy;
 
     /**
-     * @return RKE monitoring update strategy (list Maxitems: 1)
+     * @return DNS update strategy (list Maxitems: 1)
      * 
      */
     public Optional<Output<ClusterRkeConfigMonitoringUpdateStrategyArgs>> updateStrategy() {
@@ -141,7 +141,7 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param nodeSelector RKE monitoring node selector (map)
+         * @param nodeSelector DNS add-on node selector (map)
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param nodeSelector RKE monitoring node selector (map)
+         * @param nodeSelector DNS add-on node selector (map)
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param options RKE options for network (map)
+         * @param options RKE options for authorization (map)
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param options RKE options for network (map)
+         * @param options RKE options for authorization (map)
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param provider RKE monitoring provider (string)
+         * @param provider DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param provider RKE monitoring provider (string)
+         * @param provider DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tolerations Network add-on tolerations (list)
+         * @param tolerations DNS add-on tolerations (list)
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tolerations Network add-on tolerations (list)
+         * @param tolerations DNS add-on tolerations (list)
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tolerations Network add-on tolerations (list)
+         * @param tolerations DNS add-on tolerations (list)
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param updateStrategy RKE monitoring update strategy (list Maxitems: 1)
+         * @param updateStrategy DNS update strategy (list Maxitems: 1)
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param updateStrategy RKE monitoring update strategy (list Maxitems: 1)
+         * @param updateStrategy DNS update strategy (list Maxitems: 1)
          * 
          * @return builder
          * 

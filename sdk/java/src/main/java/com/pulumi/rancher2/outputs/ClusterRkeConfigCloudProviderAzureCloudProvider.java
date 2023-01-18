@@ -79,12 +79,12 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     private @Nullable Integer cloudProviderRateLimitQps;
     /**
-     * @return The AKS load balancer sku (string)
+     * @return Allowed values: `basic` (default) `standard` (string)
      * 
      */
     private @Nullable String loadBalancerSku;
     /**
-     * @return Azure Kubernetes cluster location. Default `eastus` (string)
+     * @return (string)
      * 
      */
     private @Nullable String location;
@@ -104,7 +104,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     private @Nullable String primaryScaleSetName;
     /**
-     * @return The AKS resource group (string)
+     * @return (string)
      * 
      */
     private @Nullable String resourceGroup;
@@ -124,12 +124,12 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     private @Nullable String subnetName;
     /**
-     * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * @return (string)
      * 
      */
     private String subscriptionId;
     /**
-     * @return Azure tenant ID to use (string)
+     * @return (string)
      * 
      */
     private String tenantId;
@@ -252,14 +252,14 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProvider {
         return Optional.ofNullable(this.cloudProviderRateLimitQps);
     }
     /**
-     * @return The AKS load balancer sku (string)
+     * @return Allowed values: `basic` (default) `standard` (string)
      * 
      */
     public Optional<String> loadBalancerSku() {
         return Optional.ofNullable(this.loadBalancerSku);
     }
     /**
-     * @return Azure Kubernetes cluster location. Default `eastus` (string)
+     * @return (string)
      * 
      */
     public Optional<String> location() {
@@ -287,7 +287,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProvider {
         return Optional.ofNullable(this.primaryScaleSetName);
     }
     /**
-     * @return The AKS resource group (string)
+     * @return (string)
      * 
      */
     public Optional<String> resourceGroup() {
@@ -315,14 +315,14 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProvider {
         return Optional.ofNullable(this.subnetName);
     }
     /**
-     * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * @return (string)
      * 
      */
     public String subscriptionId() {
         return this.subscriptionId;
     }
     /**
-     * @return Azure tenant ID to use (string)
+     * @return (string)
      * 
      */
     public String tenantId() {

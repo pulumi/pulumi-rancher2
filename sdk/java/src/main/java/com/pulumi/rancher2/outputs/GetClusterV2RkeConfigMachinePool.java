@@ -30,6 +30,7 @@ public final class GetClusterV2RkeConfigMachinePool {
     private @Nullable Boolean etcdRole;
     private Map<String,Object> labels;
     private GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
+    private Map<String,Object> machineLabels;
     private @Nullable String maxUnhealthy;
     /**
      * @return The name of the Cluster v2 (string)
@@ -71,6 +72,9 @@ public final class GetClusterV2RkeConfigMachinePool {
     }
     public GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig() {
         return this.machineConfig;
+    }
+    public Map<String,Object> machineLabels() {
+        return this.machineLabels;
     }
     public Optional<String> maxUnhealthy() {
         return Optional.ofNullable(this.maxUnhealthy);
@@ -126,6 +130,7 @@ public final class GetClusterV2RkeConfigMachinePool {
         private @Nullable Boolean etcdRole;
         private Map<String,Object> labels;
         private GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
+        private Map<String,Object> machineLabels;
         private @Nullable String maxUnhealthy;
         private String name;
         private @Nullable Integer nodeDrainTimeout;
@@ -147,6 +152,7 @@ public final class GetClusterV2RkeConfigMachinePool {
     	      this.etcdRole = defaults.etcdRole;
     	      this.labels = defaults.labels;
     	      this.machineConfig = defaults.machineConfig;
+    	      this.machineLabels = defaults.machineLabels;
     	      this.maxUnhealthy = defaults.maxUnhealthy;
     	      this.name = defaults.name;
     	      this.nodeDrainTimeout = defaults.nodeDrainTimeout;
@@ -193,6 +199,11 @@ public final class GetClusterV2RkeConfigMachinePool {
         @CustomType.Setter
         public Builder machineConfig(GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig) {
             this.machineConfig = Objects.requireNonNull(machineConfig);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder machineLabels(Map<String,Object> machineLabels) {
+            this.machineLabels = Objects.requireNonNull(machineLabels);
             return this;
         }
         @CustomType.Setter
@@ -262,6 +273,7 @@ public final class GetClusterV2RkeConfigMachinePool {
             o.etcdRole = etcdRole;
             o.labels = labels;
             o.machineConfig = machineConfig;
+            o.machineLabels = machineLabels;
             o.maxUnhealthy = maxUnhealthy;
             o.name = name;
             o.nodeDrainTimeout = nodeDrainTimeout;

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("rollingUpdate")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateGetArgs>? RollingUpdate { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyGetArgs();
     }
 }

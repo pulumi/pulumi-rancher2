@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("matchExpressions")]
         private InputList<Inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs>? _matchExpressions;
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs()
         {
         }
+        public static new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs Empty => new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs();
     }
 }

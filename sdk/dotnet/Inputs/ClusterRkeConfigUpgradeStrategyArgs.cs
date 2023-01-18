@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigUpgradeStrategyArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigUpgradeStrategyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// RKE drain nodes. Default: `false` (bool)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigUpgradeStrategyArgs()
         {
         }
+        public static new ClusterRkeConfigUpgradeStrategyArgs Empty => new ClusterRkeConfigUpgradeStrategyArgs();
     }
 }

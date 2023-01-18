@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class MultiClusterAppTargetGetArgs : Pulumi.ResourceArgs
+    public sealed class MultiClusterAppTargetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// App ID for target (string)
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public MultiClusterAppTargetGetArgs()
         {
         }
+        public static new MultiClusterAppTargetGetArgs Empty => new MultiClusterAppTargetGetArgs();
     }
 }

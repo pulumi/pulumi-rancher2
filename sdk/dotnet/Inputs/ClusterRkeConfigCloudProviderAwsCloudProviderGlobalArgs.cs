@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Default `false` (bool)
@@ -67,7 +67,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Vpc { get; set; }
 
         /// <summary>
-        /// The GKE cluster zone. Required if `region` not set (string)
+        /// (string)
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -75,5 +75,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs()
         {
         }
+        public static new ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs Empty => new ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs();
     }
 }

@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2NodePoolConfigTaint
     {
         /// <summary>
-        /// The GKE taint effect (string)
+        /// The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         /// </summary>
         public readonly string Effect;
         /// <summary>
-        /// The GKE taint key (string)
+        /// The toleration key (string)
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The GKE taint value (string)
+        /// Rancher agent env var value (string)
         /// </summary>
         public readonly string Value;
 

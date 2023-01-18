@@ -22,15 +22,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? IsDefault;
         /// <summary>
-        /// Registry password (string)
+        /// (string)
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// Registry URL (string)
+        /// (string)
         /// </summary>
         public readonly string Url;
         /// <summary>
-        /// Registry user (string)
+        /// User to connect bastion host (string)
         /// </summary>
         public readonly string? User;
 

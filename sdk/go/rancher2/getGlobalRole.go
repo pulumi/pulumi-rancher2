@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupGlobalRole(ctx, &GetGlobalRoleArgs{
+//			_, err := rancher2.LookupGlobalRole(ctx, &rancher2.LookupGlobalRoleArgs{
 //				Name: "foo",
 //			}, nil)
 //			if err != nil {

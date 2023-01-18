@@ -16,14 +16,14 @@ public final class NotifierPagerdutyConfigArgs extends com.pulumi.resources.Reso
     public static final NotifierPagerdutyConfigArgs Empty = new NotifierPagerdutyConfigArgs();
 
     /**
-     * Wechat proxy url (string)
+     * Dingtalk proxy url (string)
      * 
      */
     @Import(name="proxyUrl")
     private @Nullable Output<String> proxyUrl;
 
     /**
-     * @return Wechat proxy url (string)
+     * @return Dingtalk proxy url (string)
      * 
      */
     public Optional<Output<String>> proxyUrl() {
@@ -71,7 +71,7 @@ public final class NotifierPagerdutyConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Dingtalk proxy url (string)
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class NotifierPagerdutyConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Dingtalk proxy url (string)
          * 
          * @return builder
          * 

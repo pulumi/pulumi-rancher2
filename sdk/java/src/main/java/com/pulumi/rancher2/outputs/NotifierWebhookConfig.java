@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotifierWebhookConfig {
     /**
-     * @return Wechat proxy url (string)
+     * @return Webhook proxy url (string)
      * 
      */
     private @Nullable String proxyUrl;
@@ -24,7 +24,7 @@ public final class NotifierWebhookConfig {
 
     private NotifierWebhookConfig() {}
     /**
-     * @return Wechat proxy url (string)
+     * @return Webhook proxy url (string)
      * 
      */
     public Optional<String> proxyUrl() {

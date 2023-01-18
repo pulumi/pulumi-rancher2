@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NotifierWebhookConfig
     {
         /// <summary>
-        /// Wechat proxy url (string)
+        /// Webhook proxy url (string)
         /// </summary>
         public readonly string? ProxyUrl;
         /// <summary>

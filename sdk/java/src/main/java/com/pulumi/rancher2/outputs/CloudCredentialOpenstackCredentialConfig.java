@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class CloudCredentialOpenstackCredentialConfig {
     /**
-     * @return vSphere password (string)
+     * @return OpenStack password (string)
      * 
      */
     private String password;
 
     private CloudCredentialOpenstackCredentialConfig() {}
     /**
-     * @return vSphere password (string)
+     * @return OpenStack password (string)
      * 
      */
     public String password() {

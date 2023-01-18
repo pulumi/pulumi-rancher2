@@ -15,40 +15,38 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Global Role
+    ///     var foo = new Rancher2.GlobalRole("foo", new()
     ///     {
-    ///         // Create a new rancher2 Global Role
-    ///         var foo = new Rancher2.GlobalRole("foo", new Rancher2.GlobalRoleArgs
+    ///         Description = "Terraform global role acceptance test",
+    ///         NewUserDefault = true,
+    ///         Rules = new[]
     ///         {
-    ///             Description = "Terraform global role acceptance test",
-    ///             NewUserDefault = true,
-    ///             Rules = 
+    ///             new Rancher2.Inputs.GlobalRoleRuleArgs
     ///             {
-    ///                 new Rancher2.Inputs.GlobalRoleRuleArgs
+    ///                 ApiGroups = new[]
     ///                 {
-    ///                     ApiGroups = 
-    ///                     {
-    ///                         "*",
-    ///                     },
-    ///                     Resources = 
-    ///                     {
-    ///                         "secrets",
-    ///                     },
-    ///                     Verbs = 
-    ///                     {
-    ///                         "create",
-    ///                     },
+    ///                     "*",
+    ///                 },
+    ///                 Resources = new[]
+    ///                 {
+    ///                     "secrets",
+    ///                 },
+    ///                 Verbs = new[]
+    ///                 {
+    ///                     "create",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +58,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/globalRole:GlobalRole")]
-    public partial class GlobalRole : Pulumi.CustomResource
+    public partial class GlobalRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for global role object (map)
@@ -148,7 +146,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class GlobalRoleArgs : Pulumi.ResourceArgs
+    public sealed class GlobalRoleArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -207,9 +205,10 @@ namespace Pulumi.Rancher2
         public GlobalRoleArgs()
         {
         }
+        public static new GlobalRoleArgs Empty => new GlobalRoleArgs();
     }
 
-    public sealed class GlobalRoleState : Pulumi.ResourceArgs
+    public sealed class GlobalRoleState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -274,5 +273,6 @@ namespace Pulumi.Rancher2
         public GlobalRoleState()
         {
         }
+        public static new GlobalRoleState Empty => new GlobalRoleState();
     }
 }

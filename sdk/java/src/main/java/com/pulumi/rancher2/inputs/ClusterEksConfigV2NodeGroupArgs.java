@@ -97,14 +97,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group instance type. Default: `t3.medium` (string)
+     * The type of machine to use for worker nodes. Default `t2.medium` (string)
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return The EKS node group instance type. Default: `t3.medium` (string)
+     * @return The type of machine to use for worker nodes. Default `t2.medium` (string)
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -112,14 +112,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster (map)
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -142,14 +142,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group maximum size. Default `2` (int)
+     * Audit log max size. Default: `100` (int)
      * 
      */
     @Import(name="maxSize")
     private @Nullable Output<Integer> maxSize;
 
     /**
-     * @return The EKS node group maximum size. Default `2` (int)
+     * @return Audit log max size. Default: `100` (int)
      * 
      */
     public Optional<Output<Integer>> maxSize() {
@@ -172,14 +172,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Output<String> name() {
@@ -232,14 +232,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group subnets (list string)
+     * List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
      * 
      */
     @Import(name="subnets")
     private @Nullable Output<List<String>> subnets;
 
     /**
-     * @return The EKS node group subnets (list string)
+     * @return List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
      * 
      */
     public Optional<Output<List<String>>> subnets() {
@@ -247,14 +247,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The GKE node config tags (List)
+     * Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The GKE node config tags (List)
+     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -262,14 +262,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group user data (string)
+     * Pass user-data to the nodes to perform automated configuration tasks (string)
      * 
      */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
     /**
-     * @return The EKS node group user data (string)
+     * @return Pass user-data to the nodes to perform automated configuration tasks (string)
      * 
      */
     public Optional<Output<String>> userData() {
@@ -277,14 +277,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * rancher-monitoring chart version (string)
+     * RKE2 kubernetes version (string)
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return RKE2 kubernetes version (string)
      * 
      */
     public Optional<Output<String>> version() {
@@ -438,7 +438,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType The EKS node group instance type. Default: `t3.medium` (string)
+         * @param instanceType The type of machine to use for worker nodes. Default `t2.medium` (string)
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType The EKS node group instance type. Default: `t3.medium` (string)
+         * @param instanceType The type of machine to use for worker nodes. Default `t2.medium` (string)
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster (map)
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster (map)
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param maxSize The EKS node group maximum size. Default `2` (int)
+         * @param maxSize Audit log max size. Default: `100` (int)
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param maxSize The EKS node group maximum size. Default `2` (int)
+         * @param maxSize Audit log max size. Default: `100` (int)
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -647,7 +647,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
          * 
          * @return builder
          * 
@@ -658,7 +658,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
          * 
          * @return builder
          * 
@@ -668,7 +668,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
          * 
          * @return builder
          * 
@@ -678,7 +678,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
          * 
          * @return builder
          * 
@@ -689,7 +689,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
          * 
          * @return builder
          * 
@@ -699,7 +699,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userData The EKS node group user data (string)
+         * @param userData Pass user-data to the nodes to perform automated configuration tasks (string)
          * 
          * @return builder
          * 
@@ -710,7 +710,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userData The EKS node group user data (string)
+         * @param userData Pass user-data to the nodes to perform automated configuration tasks (string)
          * 
          * @return builder
          * 
@@ -720,7 +720,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version RKE2 kubernetes version (string)
          * 
          * @return builder
          * 
@@ -731,7 +731,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version RKE2 kubernetes version (string)
          * 
          * @return builder
          * 

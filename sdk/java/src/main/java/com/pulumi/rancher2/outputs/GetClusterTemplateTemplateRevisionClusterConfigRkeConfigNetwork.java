@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider;
@@ -20,6 +21,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
+    private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider aciNetworkProvider;
     private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider;
     private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
     private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
@@ -30,6 +32,9 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
     private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
 
     private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork() {}
+    public Optional<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider> aciNetworkProvider() {
+        return Optional.ofNullable(this.aciNetworkProvider);
+    }
     public Optional<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider> calicoNetworkProvider() {
         return Optional.ofNullable(this.calicoNetworkProvider);
     }
@@ -64,6 +69,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider aciNetworkProvider;
         private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider;
         private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
         private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
@@ -75,6 +81,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
         public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aciNetworkProvider = defaults.aciNetworkProvider;
     	      this.calicoNetworkProvider = defaults.calicoNetworkProvider;
     	      this.canalNetworkProvider = defaults.canalNetworkProvider;
     	      this.flannelNetworkProvider = defaults.flannelNetworkProvider;
@@ -85,6 +92,11 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
     	      this.weaveNetworkProvider = defaults.weaveNetworkProvider;
         }
 
+        @CustomType.Setter
+        public Builder aciNetworkProvider(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider aciNetworkProvider) {
+            this.aciNetworkProvider = aciNetworkProvider;
+            return this;
+        }
         @CustomType.Setter
         public Builder calicoNetworkProvider(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider) {
             this.calicoNetworkProvider = calicoNetworkProvider;
@@ -130,6 +142,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork build() {
             final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork();
+            o.aciNetworkProvider = aciNetworkProvider;
             o.calicoNetworkProvider = calicoNetworkProvider;
             o.canalNetworkProvider = canalNetworkProvider;
             o.flannelNetworkProvider = flannelNetworkProvider;

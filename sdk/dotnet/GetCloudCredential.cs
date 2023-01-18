@@ -19,26 +19,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var test = Rancher2.GetCloudCredential.Invoke(new()
         ///     {
-        ///         var test = Output.Create(Rancher2.GetCloudCredential.InvokeAsync(new Rancher2.GetCloudCredentialArgs
-        ///         {
-        ///             Name = "test",
-        ///         }));
-        ///     }
+        ///         Name = "test",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCloudCredentialResult> InvokeAsync(GetCloudCredentialArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? new GetCloudCredentialArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? new GetCloudCredentialArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Cloud Credential.
@@ -48,30 +46,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var test = Rancher2.GetCloudCredential.Invoke(new()
         ///     {
-        ///         var test = Output.Create(Rancher2.GetCloudCredential.InvokeAsync(new Rancher2.GetCloudCredentialArgs
-        ///         {
-        ///             Name = "test",
-        ///         }));
-        ///     }
+        ///         Name = "test",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCloudCredentialResult> Invoke(GetCloudCredentialInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? new GetCloudCredentialInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? new GetCloudCredentialInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCloudCredentialArgs : Pulumi.InvokeArgs
+    public sealed class GetCloudCredentialArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Cloud Credential name.
@@ -82,9 +78,10 @@ namespace Pulumi.Rancher2
         public GetCloudCredentialArgs()
         {
         }
+        public static new GetCloudCredentialArgs Empty => new GetCloudCredentialArgs();
     }
 
-    public sealed class GetCloudCredentialInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCloudCredentialInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Cloud Credential name.
@@ -95,6 +92,7 @@ namespace Pulumi.Rancher2
         public GetCloudCredentialInvokeArgs()
         {
         }
+        public static new GetCloudCredentialInvokeArgs Empty => new GetCloudCredentialInvokeArgs();
     }
 
 

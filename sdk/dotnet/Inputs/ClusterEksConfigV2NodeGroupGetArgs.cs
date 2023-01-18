@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterEksConfigV2NodeGroupGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterEksConfigV2NodeGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The EKS node group desired size. Default: `2` (int)
@@ -43,7 +43,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The EKS node group instance type. Default: `t3.medium` (string)
+        /// The type of machine to use for worker nodes. Default `t2.medium` (string)
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels for the Cluster (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -73,7 +73,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The EKS node group maximum size. Default `2` (int)
+        /// Audit log max size. Default: `100` (int)
         /// </summary>
         [Input("maxSize")]
         public Input<int>? MaxSize { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _subnets;
 
         /// <summary>
-        /// The EKS node group subnets (list string)
+        /// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
         /// </summary>
         public InputList<string> Subnets
         {
@@ -136,7 +136,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The GKE node config tags (List)
+        /// Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
         /// </summary>
         public InputMap<object> Tags
         {
@@ -145,13 +145,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The EKS node group user data (string)
+        /// Pass user-data to the nodes to perform automated configuration tasks (string)
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// RKE2 kubernetes version (string)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -159,5 +159,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterEksConfigV2NodeGroupGetArgs()
         {
         }
+        public static new ClusterEksConfigV2NodeGroupGetArgs Empty => new ClusterEksConfigV2NodeGroupGetArgs();
     }
 }

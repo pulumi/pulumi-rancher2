@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class CloudCredentialS3CredentialConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class CloudCredentialS3CredentialConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessKey", required: true)]
+        private Input<string>? _accessKey;
+
         /// <summary>
         /// AWS access key (string)
         /// </summary>
-        [Input("accessKey", required: true)]
-        public Input<string> AccessKey { get; set; } = null!;
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AWS default bucket (string)
@@ -30,11 +40,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("defaultEndpoint")]
         public Input<string>? DefaultEndpoint { get; set; }
 
+        [Input("defaultEndpointCa")]
+        private Input<string>? _defaultEndpointCa;
+
         /// <summary>
         /// AWS default endpoint CA (string)
         /// </summary>
-        [Input("defaultEndpointCa")]
-        public Input<string>? DefaultEndpointCa { get; set; }
+        public Input<string>? DefaultEndpointCa
+        {
+            get => _defaultEndpointCa;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _defaultEndpointCa = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AWS default folder (string)
@@ -54,14 +74,25 @@ namespace Pulumi.Rancher2.Inputs
         [Input("defaultSkipSslVerify")]
         public Input<bool>? DefaultSkipSslVerify { get; set; }
 
+        [Input("secretKey", required: true)]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// AWS secret key (string)
         /// </summary>
-        [Input("secretKey", required: true)]
-        public Input<string> SecretKey { get; set; } = null!;
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public CloudCredentialS3CredentialConfigGetArgs()
         {
         }
+        public static new CloudCredentialS3CredentialConfigGetArgs Empty => new CloudCredentialS3CredentialConfigGetArgs();
     }
 }

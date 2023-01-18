@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("addonJobTimeout")]
         public Input<int>? AddonJobTimeout { get; set; }
@@ -99,5 +99,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigGetArgs();
     }
 }

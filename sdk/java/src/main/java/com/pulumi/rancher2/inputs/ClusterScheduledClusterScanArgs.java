@@ -18,14 +18,14 @@ public final class ClusterScheduledClusterScanArgs extends com.pulumi.resources.
     public static final ClusterScheduledClusterScanArgs Empty = new ClusterScheduledClusterScanArgs();
 
     /**
-     * Enable scheduled cluster scan. Default: `false` (bool)
+     * Enable etcd backup (bool)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable scheduled cluster scan. Default: `false` (bool)
+     * @return Enable etcd backup (bool)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -89,7 +89,7 @@ public final class ClusterScheduledClusterScanArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Enable scheduled cluster scan. Default: `false` (bool)
+         * @param enabled Enable etcd backup (bool)
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ClusterScheduledClusterScanArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Enable scheduled cluster scan. Default: `false` (bool)
+         * @param enabled Enable etcd backup (bool)
          * 
          * @return builder
          * 

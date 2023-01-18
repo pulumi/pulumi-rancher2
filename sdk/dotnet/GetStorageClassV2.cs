@@ -15,17 +15,17 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Task<GetStorageClassV2Result> InvokeAsync(GetStorageClassV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStorageClassV2Result>("rancher2:index/getStorageClassV2:getStorageClassV2", args ?? new GetStorageClassV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetStorageClassV2Result>("rancher2:index/getStorageClassV2:getStorageClassV2", args ?? new GetStorageClassV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Output<GetStorageClassV2Result> Invoke(GetStorageClassV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStorageClassV2Result>("rancher2:index/getStorageClassV2:getStorageClassV2", args ?? new GetStorageClassV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetStorageClassV2Result>("rancher2:index/getStorageClassV2:getStorageClassV2", args ?? new GetStorageClassV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetStorageClassV2Args : Pulumi.InvokeArgs
+    public sealed class GetStorageClassV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id of the storageClass V2 (string)
@@ -42,9 +42,10 @@ namespace Pulumi.Rancher2
         public GetStorageClassV2Args()
         {
         }
+        public static new GetStorageClassV2Args Empty => new GetStorageClassV2Args();
     }
 
-    public sealed class GetStorageClassV2InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetStorageClassV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id of the storageClass V2 (string)
@@ -61,6 +62,7 @@ namespace Pulumi.Rancher2
         public GetStorageClassV2InvokeArgs()
         {
         }
+        public static new GetStorageClassV2InvokeArgs Empty => new GetStorageClassV2InvokeArgs();
     }
 
 

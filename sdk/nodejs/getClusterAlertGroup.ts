@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,18 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getClusterAlertGroup({
+ * const foo = rancher2.getClusterAlertGroup({
  *     clusterId: "<cluster_id>",
  *     name: "<cluster_alert_group_name>",
- * }));
+ * });
  * ```
  */
 export function getClusterAlertGroup(args: GetClusterAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlertGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", {
         "clusterId": args.clusterId,
         "name": args.name,
@@ -85,9 +83,23 @@ export interface GetClusterAlertGroupResult {
      */
     readonly repeatIntervalSeconds: number;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 cluster alert group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterAlertGroup({
+ *     clusterId: "<cluster_id>",
+ *     name: "<cluster_alert_group_name>",
+ * });
+ * ```
+ */
 export function getClusterAlertGroupOutput(args: GetClusterAlertGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAlertGroupResult> {
-    return pulumi.output(args).apply(a => getClusterAlertGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusterAlertGroup(a, opts))
 }
 
 /**

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,17 +17,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getClusterTemplate({
+ * const foo = rancher2.getClusterTemplate({
  *     name: "foo",
- * }));
+ * });
  * ```
  */
 export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getClusterTemplate:getClusterTemplate", {
         "annotations": args.annotations,
         "description": args.description,
@@ -85,9 +83,24 @@ export interface GetClusterTemplateResult {
      */
     readonly templateRevisions: outputs.GetClusterTemplateTemplateRevision[];
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 cluster template.
+ *
+ * Cluster Templates are available from Rancher v2.3.x and above.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterTemplate({
+ *     name: "foo",
+ * });
+ * ```
+ */
 export function getClusterTemplateOutput(args: GetClusterTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterTemplateResult> {
-    return pulumi.output(args).apply(a => getClusterTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusterTemplate(a, opts))
 }
 
 /**

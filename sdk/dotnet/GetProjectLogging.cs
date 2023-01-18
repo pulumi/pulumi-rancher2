@@ -19,26 +19,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetProjectLogging.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetProjectLogging.InvokeAsync(new Rancher2.GetProjectLoggingArgs
-        ///         {
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectLoggingResult> InvokeAsync(GetProjectLoggingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectLoggingResult>("rancher2:index/getProjectLogging:getProjectLogging", args ?? new GetProjectLoggingArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectLoggingResult>("rancher2:index/getProjectLogging:getProjectLogging", args ?? new GetProjectLoggingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Project Logging.
@@ -48,30 +46,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetProjectLogging.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetProjectLogging.InvokeAsync(new Rancher2.GetProjectLoggingArgs
-        ///         {
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectLoggingResult> Invoke(GetProjectLoggingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectLoggingResult>("rancher2:index/getProjectLogging:getProjectLogging", args ?? new GetProjectLoggingInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectLoggingResult>("rancher2:index/getProjectLogging:getProjectLogging", args ?? new GetProjectLoggingInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetProjectLoggingArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectLoggingArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project id to configure logging (string)
@@ -82,9 +78,10 @@ namespace Pulumi.Rancher2
         public GetProjectLoggingArgs()
         {
         }
+        public static new GetProjectLoggingArgs Empty => new GetProjectLoggingArgs();
     }
 
-    public sealed class GetProjectLoggingInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectLoggingInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project id to configure logging (string)
@@ -95,6 +92,7 @@ namespace Pulumi.Rancher2
         public GetProjectLoggingInvokeArgs()
         {
         }
+        public static new GetProjectLoggingInvokeArgs Empty => new GetProjectLoggingInvokeArgs();
     }
 
 

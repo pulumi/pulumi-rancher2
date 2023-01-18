@@ -22,15 +22,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ClusterDomain;
         /// <summary>
-        /// Extra arguments for scheduler service (map)
+        /// Extra arguments for RKE Ingress (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? ExtraArgs;
         /// <summary>
-        /// Extra binds for scheduler service (list)
+        /// Extra binds for etcd service (list)
         /// </summary>
         public readonly ImmutableArray<string> ExtraBinds;
         /// <summary>
-        /// Extra environment for scheduler service (list)
+        /// Extra environment for etcd service (list)
         /// </summary>
         public readonly ImmutableArray<string> ExtraEnvs;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? GenerateServingCertificate;
         /// <summary>
-        /// Docker image for scheduler service (string)
+        /// Docker image for etcd service (string)
         /// </summary>
         public readonly string? Image;
         /// <summary>

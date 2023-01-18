@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterK3sConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterK3sConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// K3S upgrade strategy (List maxitems: 1)
+        /// RKE upgrade strategy (list maxitems:1)
         /// </summary>
         [Input("upgradeStrategy")]
         public Input<Inputs.ClusterK3sConfigUpgradeStrategyArgs>? UpgradeStrategy { get; set; }
 
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// RKE2 kubernetes version (string)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterK3sConfigArgs()
         {
         }
+        public static new ClusterK3sConfigArgs Empty => new ClusterK3sConfigArgs();
     }
 }

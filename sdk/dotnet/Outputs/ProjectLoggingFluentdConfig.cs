@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ProjectLoggingFluentdConfig
     {
         /// <summary>
-        /// SSL certificate for the syslog service (string)
+        /// SSL CA certificate for the custom target service (string)
         /// </summary>
         public readonly string? Certificate;
         /// <summary>

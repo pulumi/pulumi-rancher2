@@ -10,16 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class CloudCredentialLinodeCredentialConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class CloudCredentialLinodeCredentialConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("token", required: true)]
+        private Input<string>? _token;
+
         /// <summary>
         /// Linode API token (string)
         /// </summary>
-        [Input("token", required: true)]
-        public Input<string> Token { get; set; } = null!;
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public CloudCredentialLinodeCredentialConfigGetArgs()
         {
         }
+        public static new CloudCredentialLinodeCredentialConfigGetArgs Empty => new CloudCredentialLinodeCredentialConfigGetArgs();
     }
 }

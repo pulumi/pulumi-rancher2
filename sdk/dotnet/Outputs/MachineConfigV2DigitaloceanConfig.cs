@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? Backups;
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
         /// </summary>
         public readonly string? Image;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? Ipv6;
         /// <summary>
-        /// Enable monitoring for droplet. Default `false` (bool)
+        /// Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
         /// </summary>
         public readonly bool? Monitoring;
         /// <summary>
@@ -38,15 +38,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? PrivateNetworking;
         /// <summary>
-        /// OpenStack region name (string)
+        /// AWS region. (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// Size for Azure Virtual Machine. Default `Standard_A2` (string)
         /// </summary>
         public readonly string? Size;
         /// <summary>
-        /// SSH private key contents (string)
+        /// SSH Key for Instance (string)
         /// </summary>
         public readonly string? SshKeyContents;
         /// <summary>
@@ -54,19 +54,19 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SshKeyFingerprint;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        /// SSH port. Default `22` (string)
         /// </summary>
         public readonly string? SshPort;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        /// Set the name of the ssh user (string)
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
-        /// vSphere tags id e.g. `urn:xxx` (list)
+        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
         /// </summary>
         public readonly string? Tags;
         /// <summary>
-        /// Path to file with cloud-init user-data (string)
+        /// Path to file with cloud-init user data (string)
         /// </summary>
         public readonly string? Userdata;
 

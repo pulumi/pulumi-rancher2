@@ -26,11 +26,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? MaxBackup;
         /// <summary>
-        /// The EKS node group maximum size. Default `2` (int)
+        /// Audit log max size. Default: `100` (int)
         /// </summary>
         public readonly int? MaxSize;
         /// <summary>
-        /// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        /// Path for etcd service (string)
         /// </summary>
         public readonly string? Path;
         /// <summary>

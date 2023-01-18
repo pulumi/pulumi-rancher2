@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterClusterTemplateAnswersGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterTemplateAnswersGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cluster ID (string)
+        /// Cluster ID to apply answer (string)
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Project ID to apply answer (string)
+        /// Project ID for GKE cluster (string)
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterClusterTemplateAnswersGetArgs()
         {
         }
+        public static new ClusterClusterTemplateAnswersGetArgs Empty => new ClusterClusterTemplateAnswersGetArgs();
     }
 }

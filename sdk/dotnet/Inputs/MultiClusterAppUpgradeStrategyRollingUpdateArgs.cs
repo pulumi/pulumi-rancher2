@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class MultiClusterAppUpgradeStrategyRollingUpdateArgs : Pulumi.ResourceArgs
+    public sealed class MultiClusterAppUpgradeStrategyRollingUpdateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Rolling update batch size. Default `1` (int)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public MultiClusterAppUpgradeStrategyRollingUpdateArgs()
         {
         }
+        public static new MultiClusterAppUpgradeStrategyRollingUpdateArgs Empty => new MultiClusterAppUpgradeStrategyRollingUpdateArgs();
     }
 }

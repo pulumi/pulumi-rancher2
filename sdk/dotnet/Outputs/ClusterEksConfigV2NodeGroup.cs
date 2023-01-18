@@ -34,11 +34,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ImageId;
         /// <summary>
-        /// The EKS node group instance type. Default: `t3.medium` (string)
+        /// The type of machine to use for worker nodes. Default `t2.medium` (string)
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels for the Cluster (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterEksConfigV2NodeGroupLaunchTemplate> LaunchTemplates;
         /// <summary>
-        /// The EKS node group maximum size. Default `2` (int)
+        /// Audit log max size. Default: `100` (int)
         /// </summary>
         public readonly int? MaxSize;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? MinSize;
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -70,19 +70,19 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SpotInstanceTypes;
         /// <summary>
-        /// The EKS node group subnets (list string)
+        /// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
-        /// The GKE node config tags (List)
+        /// Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
-        /// The EKS node group user data (string)
+        /// Pass user-data to the nodes to perform automated configuration tasks (string)
         /// </summary>
         public readonly string? UserData;
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// RKE2 kubernetes version (string)
         /// </summary>
         public readonly string? Version;
 

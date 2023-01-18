@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NotifierMsteamsConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NotifierMsteamsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Wechat proxy url (string)
+        /// Dingtalk proxy url (string)
         /// </summary>
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
 
         /// <summary>
-        /// Webhook url (string)
+        /// Dingtalk url (string)
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public NotifierMsteamsConfigGetArgs()
         {
         }
+        public static new NotifierMsteamsConfigGetArgs Empty => new NotifierMsteamsConfigGetArgs();
     }
 }

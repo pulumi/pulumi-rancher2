@@ -18,7 +18,7 @@ public final class ClusterClusterAuthEndpoint {
      */
     private @Nullable String caCerts;
     /**
-     * @return Enable scheduled cluster scan. Default: `false` (bool)
+     * @return Enable etcd backup (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -37,7 +37,7 @@ public final class ClusterClusterAuthEndpoint {
         return Optional.ofNullable(this.caCerts);
     }
     /**
-     * @return Enable scheduled cluster scan. Default: `false` (bool)
+     * @return Enable etcd backup (bool)
      * 
      */
     public Optional<Boolean> enabled() {

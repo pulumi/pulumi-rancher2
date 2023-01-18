@@ -18,12 +18,12 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
      */
     private String id;
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     private @Nullable String name;
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return RKE2 kubernetes version (string)
      * 
      */
     private @Nullable Integer version;
@@ -37,14 +37,14 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
         return this.id;
     }
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return RKE2 kubernetes version (string)
      * 
      */
     public Optional<Integer> version() {

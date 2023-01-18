@@ -13,6 +13,7 @@ import com.pulumi.rancher2.inputs.CatalogState;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,6 +22,44 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Catalog;
+ * import com.pulumi.rancher2.CatalogArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo_global = new Catalog(&#34;foo-global&#34;, CatalogArgs.builder()        
+ *             .url(&#34;https://&lt;CATALOG_URL&gt;&#34;)
+ *             .build());
+ * 
+ *         var foo_cluster = new Catalog(&#34;foo-cluster&#34;, CatalogArgs.builder()        
+ *             .scope(&#34;cluster&#34;)
+ *             .url(&#34;https://&lt;CATALOG_URL&gt;&#34;)
+ *             .build());
+ * 
+ *         var foo_project = new Catalog(&#34;foo-project&#34;, CatalogArgs.builder()        
+ *             .scope(&#34;project&#34;)
+ *             .url(&#34;https://&lt;CATALOG_URL&gt;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -262,6 +301,10 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password",
+                "username"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

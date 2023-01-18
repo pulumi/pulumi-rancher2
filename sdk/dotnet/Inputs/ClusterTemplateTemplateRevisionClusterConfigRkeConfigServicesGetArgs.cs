@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("etcd")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdGetArgs>? Etcd { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesGetArgs();
     }
 }

@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? CaCerts;
         /// <summary>
-        /// Drain options enabled? Default `true` (bool)
+        /// Enable the authorized cluster endpoint. Default `false` (bool)
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

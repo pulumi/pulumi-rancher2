@@ -14,23 +14,23 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterLoggingSyslogConfig
     {
         /// <summary>
-        /// SSL certificate for the syslog service (string)
+        /// SSL CA certificate for the custom target service (string)
         /// </summary>
         public readonly string? Certificate;
         /// <summary>
-        /// SSL client certificate for the syslog service (string)
+        /// SSL client certificate for the custom target service (string)
         /// </summary>
         public readonly string? ClientCert;
         /// <summary>
-        /// SSL client key for the syslog service (string)
+        /// SSL client key for the custom target service (string)
         /// </summary>
         public readonly string? ClientKey;
         /// <summary>
-        /// Enable TLS for the syslog service. Default `false` (bool)
+        /// Enable TLS for the fluentd service (bool)
         /// </summary>
         public readonly bool? EnableTls;
         /// <summary>
-        /// Endpoint of the syslog service (string)
+        /// Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
@@ -46,11 +46,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Severity;
         /// <summary>
-        /// SSL verify for the syslog service (bool)
+        /// SSL verify for the elascticsearch service (bool)
         /// </summary>
         public readonly bool? SslVerify;
         /// <summary>
-        /// Token for the syslog service (string)
+        /// Token for the splunk service (string)
         /// </summary>
         public readonly string? Token;
 

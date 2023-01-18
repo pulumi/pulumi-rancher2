@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2ClusterAddonsGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2ClusterAddonsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable GKE horizontal pod autoscaling. Default: `false` (bool)
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2ClusterAddonsGetArgs()
         {
         }
+        public static new ClusterGkeConfigV2ClusterAddonsGetArgs Empty => new ClusterGkeConfigV2ClusterAddonsGetArgs();
     }
 }

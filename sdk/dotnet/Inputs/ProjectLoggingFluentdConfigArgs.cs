@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ProjectLoggingFluentdConfigArgs : Pulumi.ResourceArgs
+    public sealed class ProjectLoggingFluentdConfigArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// SSL certificate for the syslog service (string)
-        /// </summary>
         [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        private Input<string>? _certificate;
+
+        /// <summary>
+        /// SSL CA certificate for the custom target service (string)
+        /// </summary>
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Compress data for the fluentd service (bool)
@@ -45,5 +55,6 @@ namespace Pulumi.Rancher2.Inputs
         public ProjectLoggingFluentdConfigArgs()
         {
         }
+        public static new ProjectLoggingFluentdConfigArgs Empty => new ProjectLoggingFluentdConfigArgs();
     }
 }

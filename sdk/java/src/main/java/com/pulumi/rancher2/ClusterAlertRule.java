@@ -28,6 +28,46 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.ClusterAlertGroup;
+ * import com.pulumi.rancher2.ClusterAlertGroupArgs;
+ * import com.pulumi.rancher2.ClusterAlertRule;
+ * import com.pulumi.rancher2.ClusterAlertRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooClusterAlertGroup = new ClusterAlertGroup(&#34;fooClusterAlertGroup&#34;, ClusterAlertGroupArgs.builder()        
+ *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+ *             .description(&#34;Terraform cluster alert group&#34;)
+ *             .groupIntervalSeconds(300)
+ *             .repeatIntervalSeconds(3600)
+ *             .build());
+ * 
+ *         var fooClusterAlertRule = new ClusterAlertRule(&#34;fooClusterAlertRule&#34;, ClusterAlertRuleArgs.builder()        
+ *             .clusterId(fooClusterAlertGroup.clusterId())
+ *             .groupId(fooClusterAlertGroup.id())
+ *             .groupIntervalSeconds(600)
+ *             .repeatIntervalSeconds(6000)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

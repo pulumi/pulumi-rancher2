@@ -13,18 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getClusterRoleTemplateBinding({
+ * const foo = rancher2.getClusterRoleTemplateBinding({
  *     clusterId: "foo_id",
  *     name: "foo",
- * }));
+ * });
  * ```
  */
 export function getClusterRoleTemplateBinding(args: GetClusterRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterRoleTemplateBindingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", {
         "clusterId": args.clusterId,
         "name": args.name,
@@ -86,9 +83,23 @@ export interface GetClusterRoleTemplateBindingResult {
      */
     readonly userPrincipalId: string;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 cluster role template binding.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterRoleTemplateBinding({
+ *     clusterId: "foo_id",
+ *     name: "foo",
+ * });
+ * ```
+ */
 export function getClusterRoleTemplateBindingOutput(args: GetClusterRoleTemplateBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterRoleTemplateBindingResult> {
-    return pulumi.output(args).apply(a => getClusterRoleTemplateBinding(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusterRoleTemplateBinding(a, opts))
 }
 
 /**

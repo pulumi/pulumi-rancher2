@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterClusterTemplateAnswers
     {
         /// <summary>
-        /// Cluster ID (string)
+        /// Cluster ID to apply answer (string)
         /// </summary>
         public readonly string? ClusterId;
         /// <summary>
-        /// Project ID to apply answer (string)
+        /// Project ID for GKE cluster (string)
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>

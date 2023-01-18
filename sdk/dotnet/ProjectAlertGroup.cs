@@ -15,24 +15,22 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Rancher2 Project Alert Group
+    ///     var foo = new Rancher2.ProjectAlertGroup("foo", new()
     ///     {
-    ///         // Create a new Rancher2 Project Alert Group
-    ///         var foo = new Rancher2.ProjectAlertGroup("foo", new Rancher2.ProjectAlertGroupArgs
-    ///         {
-    ///             Description = "Terraform project alert group",
-    ///             GroupIntervalSeconds = 300,
-    ///             ProjectId = "&lt;project_id&gt;",
-    ///             RepeatIntervalSeconds = 3600,
-    ///         });
-    ///     }
+    ///         Description = "Terraform project alert group",
+    ///         GroupIntervalSeconds = 300,
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         RepeatIntervalSeconds = 3600,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/projectAlertGroup:ProjectAlertGroup")]
-    public partial class ProjectAlertGroup : Pulumi.CustomResource
+    public partial class ProjectAlertGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The project alert group annotations (map)
@@ -144,7 +142,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ProjectAlertGroupArgs : Pulumi.ResourceArgs
+    public sealed class ProjectAlertGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -221,9 +219,10 @@ namespace Pulumi.Rancher2
         public ProjectAlertGroupArgs()
         {
         }
+        public static new ProjectAlertGroupArgs Empty => new ProjectAlertGroupArgs();
     }
 
-    public sealed class ProjectAlertGroupState : Pulumi.ResourceArgs
+    public sealed class ProjectAlertGroupState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -300,5 +299,6 @@ namespace Pulumi.Rancher2
         public ProjectAlertGroupState()
         {
         }
+        public static new ProjectAlertGroupState Empty => new ProjectAlertGroupState();
     }
 }

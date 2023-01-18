@@ -15,29 +15,27 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Rancher2 Cluster Logging
+    ///     var foo = new Rancher2.ClusterLogging("foo", new()
     ///     {
-    ///         // Create a new Rancher2 Cluster Logging
-    ///         var foo = new Rancher2.ClusterLogging("foo", new Rancher2.ClusterLoggingArgs
+    ///         ClusterId = "&lt;cluster_id&gt;",
+    ///         Kind = "syslog",
+    ///         SyslogConfig = new Rancher2.Inputs.ClusterLoggingSyslogConfigArgs
     ///         {
-    ///             ClusterId = "&lt;cluster_id&gt;",
-    ///             Kind = "syslog",
-    ///             SyslogConfig = new Rancher2.Inputs.ClusterLoggingSyslogConfigArgs
-    ///             {
-    ///                 Endpoint = "&lt;syslog_endpoint&gt;",
-    ///                 Protocol = "udp",
-    ///                 Severity = "notice",
-    ///                 SslVerify = false,
-    ///             },
-    ///         });
-    ///     }
+    ///             Endpoint = "&lt;syslog_endpoint&gt;",
+    ///             Protocol = "udp",
+    ///             Severity = "notice",
+    ///             SslVerify = false,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterLogging:ClusterLogging")]
-    public partial class ClusterLogging : Pulumi.CustomResource
+    public partial class ClusterLogging : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for Cluster Logging object (map)
@@ -185,7 +183,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class ClusterLoggingArgs : Pulumi.ResourceArgs
+    public sealed class ClusterLoggingArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -298,9 +296,10 @@ namespace Pulumi.Rancher2
         public ClusterLoggingArgs()
         {
         }
+        public static new ClusterLoggingArgs Empty => new ClusterLoggingArgs();
     }
 
-    public sealed class ClusterLoggingState : Pulumi.ResourceArgs
+    public sealed class ClusterLoggingState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -413,5 +412,6 @@ namespace Pulumi.Rancher2
         public ClusterLoggingState()
         {
         }
+        public static new ClusterLoggingState Empty => new ClusterLoggingState();
     }
 }

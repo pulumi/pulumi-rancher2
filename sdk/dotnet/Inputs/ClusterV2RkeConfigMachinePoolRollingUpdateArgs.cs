@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigMachinePoolRollingUpdateArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigMachinePoolRollingUpdateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Rolling update max surge (string)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigMachinePoolRollingUpdateArgs()
         {
         }
+        public static new ClusterV2RkeConfigMachinePoolRollingUpdateArgs Empty => new ClusterV2RkeConfigMachinePoolRollingUpdateArgs();
     }
 }

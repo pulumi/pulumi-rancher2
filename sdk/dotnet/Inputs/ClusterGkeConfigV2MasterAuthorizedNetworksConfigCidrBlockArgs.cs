@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GKE master authorized network config cidr block (string)
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs()
         {
         }
+        public static new ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs Empty => new ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs();
     }
 }

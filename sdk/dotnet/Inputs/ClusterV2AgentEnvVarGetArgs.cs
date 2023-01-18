@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2AgentEnvVarGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2AgentEnvVarGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster v2 (string)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The taint value (string)
+        /// Rancher agent env var value (string)
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2AgentEnvVarGetArgs()
         {
         }
+        public static new ClusterV2AgentEnvVarGetArgs Empty => new ClusterV2AgentEnvVarGetArgs();
     }
 }

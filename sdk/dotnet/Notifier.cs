@@ -15,28 +15,26 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new rancher2 Notifier
+    ///     var foo = new Rancher2.Notifier("foo", new()
     ///     {
-    ///         // Create a new rancher2 Notifier
-    ///         var foo = new Rancher2.Notifier("foo", new Rancher2.NotifierArgs
+    ///         ClusterId = "&lt;cluster_id&gt;",
+    ///         Description = "Terraform notifier acceptance test",
+    ///         PagerdutyConfig = new Rancher2.Inputs.NotifierPagerdutyConfigArgs
     ///         {
-    ///             ClusterId = "&lt;cluster_id&gt;",
-    ///             Description = "Terraform notifier acceptance test",
-    ///             PagerdutyConfig = new Rancher2.Inputs.NotifierPagerdutyConfigArgs
-    ///             {
-    ///                 ProxyUrl = "http://proxy.test.io",
-    ///                 ServiceKey = "XXXXXXXX",
-    ///             },
-    ///             SendResolved = true,
-    ///         });
-    ///     }
+    ///             ProxyUrl = "http://proxy.test.io",
+    ///             ServiceKey = "XXXXXXXX",
+    ///         },
+    ///         SendResolved = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.Rancher2
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/notifier:Notifier")]
-    public partial class Notifier : Pulumi.CustomResource
+    public partial class Notifier : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for notifier object (map)
@@ -172,7 +170,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class NotifierArgs : Pulumi.ResourceArgs
+    public sealed class NotifierArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -267,9 +265,10 @@ namespace Pulumi.Rancher2
         public NotifierArgs()
         {
         }
+        public static new NotifierArgs Empty => new NotifierArgs();
     }
 
-    public sealed class NotifierState : Pulumi.ResourceArgs
+    public sealed class NotifierState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -364,5 +363,6 @@ namespace Pulumi.Rancher2
         public NotifierState()
         {
         }
+        public static new NotifierState Empty => new NotifierState();
     }
 }

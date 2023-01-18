@@ -8,11 +8,8 @@ import * as utilities from "./utilities";
  * Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
  */
 export function getCatalogV2(args: GetCatalogV2Args, opts?: pulumi.InvokeOptions): Promise<GetCatalogV2Result> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getCatalogV2:getCatalogV2", {
         "clusterId": args.clusterId,
         "name": args.name,
@@ -96,9 +93,11 @@ export interface GetCatalogV2Result {
      */
     readonly url: string;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
+ */
 export function getCatalogV2Output(args: GetCatalogV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogV2Result> {
-    return pulumi.output(args).apply(a => getCatalogV2(a, opts))
+    return pulumi.output(args).apply((a: any) => getCatalogV2(a, opts))
 }
 
 /**

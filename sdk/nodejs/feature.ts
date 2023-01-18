@@ -12,9 +12,7 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 Feature
- * const fleet = new rancher2.Feature("fleet", {
- *     value: ("<VALUE>" === "true"),
- * });
+ * const fleet = new rancher2.Feature("fleet", {value: "<VALUE>"});
  * ```
  */
 export class Feature extends pulumi.CustomResource {

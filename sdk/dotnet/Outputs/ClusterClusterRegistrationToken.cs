@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterClusterRegistrationToken
     {
         /// <summary>
-        /// Annotations for cluster registration token object (map)
+        /// Annotations for the Cluster (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Annotations;
         /// <summary>
-        /// Cluster ID (string)
+        /// Cluster ID to apply answer (string)
         /// </summary>
         public readonly string? ClusterId;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? InsecureWindowsNodeCommand;
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels for the Cluster (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ManifestUrl;
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster (string)
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NodeCommand;
         /// <summary>
-        /// Token for cluster registration token object (string)
+        /// ACI token (string)
         /// </summary>
         public readonly string? Token;
         /// <summary>

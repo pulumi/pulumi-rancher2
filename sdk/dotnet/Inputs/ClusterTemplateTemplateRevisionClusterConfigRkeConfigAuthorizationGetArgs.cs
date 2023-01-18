@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -26,5 +26,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationGetArgs();
     }
 }

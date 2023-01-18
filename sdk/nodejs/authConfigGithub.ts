@@ -130,8 +130,8 @@ export class AuthConfigGithub extends pulumi.CustomResource {
             resourceInputs["accessMode"] = args ? args.accessMode : undefined;
             resourceInputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["clientId"] = args ? args.clientId : undefined;
-            resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
+            resourceInputs["clientId"] = args?.clientId ? pulumi.secret(args.clientId) : undefined;
+            resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -140,6 +140,8 @@ export class AuthConfigGithub extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["clientId", "clientSecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AuthConfigGithub.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -19,27 +19,25 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetEtcdBackup.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetEtcdBackup.InvokeAsync(new Rancher2.GetEtcdBackupArgs
-        ///         {
-        ///             ClusterId = "&lt;CLUSTER_ID&gt;",
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEtcdBackupResult> InvokeAsync(GetEtcdBackupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 etcd backup.
@@ -49,31 +47,29 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetEtcdBackup.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetEtcdBackup.InvokeAsync(new Rancher2.GetEtcdBackupArgs
-        ///         {
-        ///             ClusterId = "&lt;CLUSTER_ID&gt;",
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEtcdBackupResult> Invoke(GetEtcdBackupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEtcdBackupArgs : Pulumi.InvokeArgs
+    public sealed class GetEtcdBackupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Cluster ID to config Etcd Backup (string)
@@ -90,9 +86,10 @@ namespace Pulumi.Rancher2
         public GetEtcdBackupArgs()
         {
         }
+        public static new GetEtcdBackupArgs Empty => new GetEtcdBackupArgs();
     }
 
-    public sealed class GetEtcdBackupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEtcdBackupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Cluster ID to config Etcd Backup (string)
@@ -109,6 +106,7 @@ namespace Pulumi.Rancher2
         public GetEtcdBackupInvokeArgs()
         {
         }
+        public static new GetEtcdBackupInvokeArgs Empty => new GetEtcdBackupInvokeArgs();
     }
 
 

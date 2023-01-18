@@ -26,6 +26,77 @@ import javax.annotation.Nullable;
  * - Namespaced registry: Available to just `namespace_id` in the `project_id`
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Registry;
+ * import com.pulumi.rancher2.RegistryArgs;
+ * import com.pulumi.rancher2.inputs.RegistryRegistryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Registry(&#34;foo&#34;, RegistryArgs.builder()        
+ *             .description(&#34;Terraform registry foo&#34;)
+ *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *             .registries(RegistryRegistryArgs.builder()
+ *                 .address(&#34;test.io&#34;)
+ *                 .password(&#34;pass&#34;)
+ *                 .username(&#34;user&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Registry;
+ * import com.pulumi.rancher2.RegistryArgs;
+ * import com.pulumi.rancher2.inputs.RegistryRegistryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Registry(&#34;foo&#34;, RegistryArgs.builder()        
+ *             .description(&#34;Terraform registry foo&#34;)
+ *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+ *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *             .registries(RegistryRegistryArgs.builder()
+ *                 .address(&#34;test.io&#34;)
+ *                 .password(&#34;pass&#34;)
+ *                 .username(&#34;user2&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

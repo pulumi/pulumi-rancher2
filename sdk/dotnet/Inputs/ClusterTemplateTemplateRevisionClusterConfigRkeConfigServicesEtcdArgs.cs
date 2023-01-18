@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs : global::Pulumi.ResourceArgs
     {
         [Input("backupConfig")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs>? BackupConfig { get; set; }
@@ -19,7 +19,16 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? CaCert { get; set; }
 
         [Input("cert")]
-        public Input<string>? Cert { get; set; }
+        private Input<string>? _cert;
+        public Input<string>? Cert
+        {
+            get => _cert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _cert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("creation")]
         public Input<string>? Creation { get; set; }
@@ -63,7 +72,16 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Image { get; set; }
 
         [Input("key")]
-        public Input<string>? Key { get; set; }
+        private Input<string>? _key;
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -80,5 +98,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs();
     }
 }

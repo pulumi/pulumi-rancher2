@@ -95,14 +95,14 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public Output<String> name() {
@@ -110,14 +110,14 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * rancher-monitoring chart version (string)
+     * RKE2 kubernetes version (string)
      * 
      */
     @Import(name="version", required=true)
     private Output<String> version;
 
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return RKE2 kubernetes version (string)
      * 
      */
     public Output<String> version() {
@@ -260,7 +260,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster (string)
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version RKE2 kubernetes version (string)
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version RKE2 kubernetes version (string)
          * 
          * @return builder
          * 

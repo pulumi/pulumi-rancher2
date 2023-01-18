@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MachineConfigV2HarvesterConfig {
     /**
-     * @return vSphere CPU number for docker VM. Default `2` (string)
+     * @return CPU count, Default `2` (string)
      * 
      */
     private @Nullable String cpuCount;
@@ -22,17 +22,17 @@ public final class MachineConfigV2HarvesterConfig {
      */
     private @Nullable String diskBus;
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     private @Nullable String diskSize;
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return Image name e.g. `harvester-public/image-57hzg` (string)
      * 
      */
     private String imageName;
     /**
-     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * @return Memory size (in GiB), Default `4` (string)
      * 
      */
     private @Nullable String memorySize;
@@ -52,12 +52,12 @@ public final class MachineConfigV2HarvesterConfig {
      */
     private String networkName;
     /**
-     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     * @return SSH password (string)
      * 
      */
     private @Nullable String sshPassword;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     private String sshUser;
@@ -74,7 +74,7 @@ public final class MachineConfigV2HarvesterConfig {
 
     private MachineConfigV2HarvesterConfig() {}
     /**
-     * @return vSphere CPU number for docker VM. Default `2` (string)
+     * @return CPU count, Default `2` (string)
      * 
      */
     public Optional<String> cpuCount() {
@@ -88,21 +88,21 @@ public final class MachineConfigV2HarvesterConfig {
         return Optional.ofNullable(this.diskBus);
     }
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     public Optional<String> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return Image name e.g. `harvester-public/image-57hzg` (string)
      * 
      */
     public String imageName() {
         return this.imageName;
     }
     /**
-     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * @return Memory size (in GiB), Default `4` (string)
      * 
      */
     public Optional<String> memorySize() {
@@ -130,14 +130,14 @@ public final class MachineConfigV2HarvesterConfig {
         return this.networkName;
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     * @return SSH password (string)
      * 
      */
     public Optional<String> sshPassword() {
         return Optional.ofNullable(this.sshPassword);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     public String sshUser() {

@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
     {
         /// <summary>
-        /// Machine selector label match expressions key (string)
+        /// The taint key (string)
         /// </summary>
         public readonly string? Key;
         /// <summary>

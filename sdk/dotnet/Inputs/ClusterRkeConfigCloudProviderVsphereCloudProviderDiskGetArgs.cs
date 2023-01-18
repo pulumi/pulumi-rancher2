@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderDiskGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (string)
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigCloudProviderVsphereCloudProviderDiskGetArgs()
         {
         }
+        public static new ClusterRkeConfigCloudProviderVsphereCloudProviderDiskGetArgs Empty => new ClusterRkeConfigCloudProviderVsphereCloudProviderDiskGetArgs();
     }
 }

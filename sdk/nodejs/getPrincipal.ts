@@ -13,17 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getPrincipal({
+ * const foo = rancher2.getPrincipal({
  *     name: "user@example.com",
- * }));
+ * });
  * ```
  */
 export function getPrincipal(args: GetPrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetPrincipalResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getPrincipal:getPrincipal", {
         "name": args.name,
         "type": args.type,
@@ -55,9 +52,22 @@ export interface GetPrincipalResult {
     readonly name: string;
     readonly type?: string;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 Principal resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getPrincipal({
+ *     name: "user@example.com",
+ * });
+ * ```
+ */
 export function getPrincipalOutput(args: GetPrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrincipalResult> {
-    return pulumi.output(args).apply(a => getPrincipal(a, opts))
+    return pulumi.output(args).apply((a: any) => getPrincipal(a, opts))
 }
 
 /**

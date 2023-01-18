@@ -19,27 +19,25 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetClusterAlertGroup.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterAlertGroup.InvokeAsync(new Rancher2.GetClusterAlertGroupArgs
-        ///         {
-        ///             ClusterId = "&lt;cluster_id&gt;",
-        ///             Name = "&lt;cluster_alert_group_name&gt;",
-        ///         }));
-        ///     }
+        ///         ClusterId = "&lt;cluster_id&gt;",
+        ///         Name = "&lt;cluster_alert_group_name&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterAlertGroupResult> InvokeAsync(GetClusterAlertGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlertGroupResult>("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", args ?? new GetClusterAlertGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlertGroupResult>("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", args ?? new GetClusterAlertGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 cluster alert group.
@@ -49,31 +47,29 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetClusterAlertGroup.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterAlertGroup.InvokeAsync(new Rancher2.GetClusterAlertGroupArgs
-        ///         {
-        ///             ClusterId = "&lt;cluster_id&gt;",
-        ///             Name = "&lt;cluster_alert_group_name&gt;",
-        ///         }));
-        ///     }
+        ///         ClusterId = "&lt;cluster_id&gt;",
+        ///         Name = "&lt;cluster_alert_group_name&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterAlertGroupResult> Invoke(GetClusterAlertGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterAlertGroupResult>("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", args ?? new GetClusterAlertGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterAlertGroupResult>("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", args ?? new GetClusterAlertGroupInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClusterAlertGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterAlertGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id where create cluster alert group (string)
@@ -90,9 +86,10 @@ namespace Pulumi.Rancher2
         public GetClusterAlertGroupArgs()
         {
         }
+        public static new GetClusterAlertGroupArgs Empty => new GetClusterAlertGroupArgs();
     }
 
-    public sealed class GetClusterAlertGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterAlertGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id where create cluster alert group (string)
@@ -109,6 +106,7 @@ namespace Pulumi.Rancher2
         public GetClusterAlertGroupInvokeArgs()
         {
         }
+        public static new GetClusterAlertGroupInvokeArgs Empty => new GetClusterAlertGroupInvokeArgs();
     }
 
 

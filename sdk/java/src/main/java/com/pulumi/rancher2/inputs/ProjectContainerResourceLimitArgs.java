@@ -16,14 +16,14 @@ public final class ProjectContainerResourceLimitArgs extends com.pulumi.resource
     public static final ProjectContainerResourceLimitArgs Empty = new ProjectContainerResourceLimitArgs();
 
     /**
-     * Limit for limits cpu in project (string)
+     * CPU limit for containers (string)
      * 
      */
     @Import(name="limitsCpu")
     private @Nullable Output<String> limitsCpu;
 
     /**
-     * @return Limit for limits cpu in project (string)
+     * @return CPU limit for containers (string)
      * 
      */
     public Optional<Output<String>> limitsCpu() {
@@ -31,14 +31,14 @@ public final class ProjectContainerResourceLimitArgs extends com.pulumi.resource
     }
 
     /**
-     * Limit for limits memory in project (string)
+     * Memory limit for containers (string)
      * 
      */
     @Import(name="limitsMemory")
     private @Nullable Output<String> limitsMemory;
 
     /**
-     * @return Limit for limits memory in project (string)
+     * @return Memory limit for containers (string)
      * 
      */
     public Optional<Output<String>> limitsMemory() {
@@ -46,14 +46,14 @@ public final class ProjectContainerResourceLimitArgs extends com.pulumi.resource
     }
 
     /**
-     * Limit for requests cpu in project (string)
+     * CPU reservation for containers (string)
      * 
      */
     @Import(name="requestsCpu")
     private @Nullable Output<String> requestsCpu;
 
     /**
-     * @return Limit for requests cpu in project (string)
+     * @return CPU reservation for containers (string)
      * 
      */
     public Optional<Output<String>> requestsCpu() {
@@ -61,14 +61,14 @@ public final class ProjectContainerResourceLimitArgs extends com.pulumi.resource
     }
 
     /**
-     * Limit for requests memory in project (string)
+     * Memory reservation for containers (string)
      * 
      */
     @Import(name="requestsMemory")
     private @Nullable Output<String> requestsMemory;
 
     /**
-     * @return Limit for requests memory in project (string)
+     * @return Memory reservation for containers (string)
      * 
      */
     public Optional<Output<String>> requestsMemory() {
@@ -103,7 +103,7 @@ public final class ProjectContainerResourceLimitArgs extends com.pulumi.resource
         }
 
         /**
-         * @param limitsCpu Limit for limits cpu in project (string)
+         * @param limitsCpu CPU limit for containers (string)
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ProjectContainerResourceLimitArgs extends com.pulumi.resource
         }
 
         /**
-         * @param limitsCpu Limit for limits cpu in project (string)
+         * @param limitsCpu CPU limit for containers (string)
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ProjectContainerResourceLimitArgs extends com.pulumi.resource
         }
 
         /**
-         * @param limitsMemory Limit for limits memory in project (string)
+         * @param limitsMemory Memory limit for containers (string)
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ProjectContainerResourceLimitArgs extends com.pulumi.resource
         }
 
         /**
-         * @param limitsMemory Limit for limits memory in project (string)
+         * @param limitsMemory Memory limit for containers (string)
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ProjectContainerResourceLimitArgs extends com.pulumi.resource
         }
 
         /**
-         * @param requestsCpu Limit for requests cpu in project (string)
+         * @param requestsCpu CPU reservation for containers (string)
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ProjectContainerResourceLimitArgs extends com.pulumi.resource
         }
 
         /**
-         * @param requestsCpu Limit for requests cpu in project (string)
+         * @param requestsCpu CPU reservation for containers (string)
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ProjectContainerResourceLimitArgs extends com.pulumi.resource
         }
 
         /**
-         * @param requestsMemory Limit for requests memory in project (string)
+         * @param requestsMemory Memory reservation for containers (string)
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ProjectContainerResourceLimitArgs extends com.pulumi.resource
         }
 
         /**
-         * @param requestsMemory Limit for requests memory in project (string)
+         * @param requestsMemory Memory reservation for containers (string)
          * 
          * @return builder
          * 

@@ -16,14 +16,14 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
     public static final NotifierSlackConfigArgs Empty = new NotifierSlackConfigArgs();
 
     /**
-     * Wechat default recipient (string)
+     * Slack default recipient (string)
      * 
      */
     @Import(name="defaultRecipient", required=true)
     private Output<String> defaultRecipient;
 
     /**
-     * @return Wechat default recipient (string)
+     * @return Slack default recipient (string)
      * 
      */
     public Output<String> defaultRecipient() {
@@ -31,14 +31,14 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Wechat proxy url (string)
+     * Dingtalk proxy url (string)
      * 
      */
     @Import(name="proxyUrl")
     private @Nullable Output<String> proxyUrl;
 
     /**
-     * @return Wechat proxy url (string)
+     * @return Dingtalk proxy url (string)
      * 
      */
     public Optional<Output<String>> proxyUrl() {
@@ -46,14 +46,14 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Webhook url (string)
+     * Dingtalk url (string)
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return Webhook url (string)
+     * @return Dingtalk url (string)
      * 
      */
     public Output<String> url() {
@@ -87,7 +87,7 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultRecipient Wechat default recipient (string)
+         * @param defaultRecipient Slack default recipient (string)
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultRecipient Wechat default recipient (string)
+         * @param defaultRecipient Slack default recipient (string)
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Dingtalk proxy url (string)
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Dingtalk proxy url (string)
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param url Webhook url (string)
+         * @param url Dingtalk url (string)
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param url Webhook url (string)
+         * @param url Dingtalk url (string)
          * 
          * @return builder
          * 

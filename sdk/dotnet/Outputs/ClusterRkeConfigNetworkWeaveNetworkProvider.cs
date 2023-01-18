@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigNetworkWeaveNetworkProvider
     {
         /// <summary>
-        /// Registry password (string)
+        /// (string)
         /// </summary>
         public readonly string Password;
 

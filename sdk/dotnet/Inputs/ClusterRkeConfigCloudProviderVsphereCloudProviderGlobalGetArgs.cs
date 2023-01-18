@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (string)
@@ -24,14 +24,24 @@ namespace Pulumi.Rancher2.Inputs
         [Input("insecureFlag")]
         public Input<bool>? InsecureFlag { get; set; }
 
-        /// <summary>
-        /// Registry password (string)
-        /// </summary>
         [Input("password")]
-        public Input<string>? Password { get; set; }
+        private Input<string>? _password;
 
         /// <summary>
-        /// Port for node. Default `22` (string)
+        /// (string)
+        /// </summary>
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Port for bastion host. Default `22` (string)
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
@@ -42,14 +52,25 @@ namespace Pulumi.Rancher2.Inputs
         [Input("soapRoundtripCount")]
         public Input<int>? SoapRoundtripCount { get; set; }
 
-        /// <summary>
-        /// Registry user (string)
-        /// </summary>
         [Input("user")]
-        public Input<string>? User { get; set; }
+        private Input<string>? _user;
+
+        /// <summary>
+        /// User to connect bastion host (string)
+        /// </summary>
+        public Input<string>? User
+        {
+            get => _user;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _user = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalGetArgs()
         {
         }
+        public static new ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalGetArgs Empty => new ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalGetArgs();
     }
 }

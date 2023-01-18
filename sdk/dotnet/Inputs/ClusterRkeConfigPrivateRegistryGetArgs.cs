@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigPrivateRegistryGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigPrivateRegistryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ECR credential plugin config (list maxitems:1)
@@ -24,26 +24,47 @@ namespace Pulumi.Rancher2.Inputs
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
-        /// <summary>
-        /// Registry password (string)
-        /// </summary>
         [Input("password")]
-        public Input<string>? Password { get; set; }
+        private Input<string>? _password;
 
         /// <summary>
-        /// Registry URL (string)
+        /// (string)
+        /// </summary>
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// (string)
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
-        /// <summary>
-        /// Registry user (string)
-        /// </summary>
         [Input("user")]
-        public Input<string>? User { get; set; }
+        private Input<string>? _user;
+
+        /// <summary>
+        /// User to connect bastion host (string)
+        /// </summary>
+        public Input<string>? User
+        {
+            get => _user;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _user = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ClusterRkeConfigPrivateRegistryGetArgs()
         {
         }
+        public static new ClusterRkeConfigPrivateRegistryGetArgs Empty => new ClusterRkeConfigPrivateRegistryGetArgs();
     }
 }

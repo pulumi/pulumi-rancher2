@@ -32,17 +32,17 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
      */
     private @Nullable String domainName;
     /**
-     * @return Registry password (string)
+     * @return (string)
      * 
      */
     private String password;
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return (string)
      * 
      */
     private @Nullable String region;
     /**
-     * @return Azure tenant ID to use (string)
+     * @return (string)
      * 
      */
     private @Nullable String tenantId;
@@ -92,21 +92,21 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
         return Optional.ofNullable(this.domainName);
     }
     /**
-     * @return Registry password (string)
+     * @return (string)
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return (string)
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Azure tenant ID to use (string)
+     * @return (string)
      * 
      */
     public Optional<String> tenantId() {

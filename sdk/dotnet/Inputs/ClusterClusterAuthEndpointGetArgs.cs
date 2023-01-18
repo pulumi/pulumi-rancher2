@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterClusterAuthEndpointGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterAuthEndpointGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// CA certs for the authorized cluster endpoint (string)
@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? CaCerts { get; set; }
 
         /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// Enable etcd backup (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterClusterAuthEndpointGetArgs()
         {
         }
+        public static new ClusterClusterAuthEndpointGetArgs Empty => new ClusterClusterAuthEndpointGetArgs();
     }
 }

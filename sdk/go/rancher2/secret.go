@@ -60,6 +60,13 @@ func NewSecret(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
+	if args.Data != nil {
+		args.Data = pulumi.ToSecret(args.Data).(pulumi.MapInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"data",
+	})
+	opts = append(opts, secrets)
 	var resource Secret
 	err := ctx.RegisterResource("rancher2:index/secret:Secret", name, args, &resource, opts...)
 	if err != nil {
@@ -239,6 +246,41 @@ func (o SecretOutput) ToSecretOutput() SecretOutput {
 
 func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 	return o
+}
+
+// Annotations for secret object (map)
+func (o SecretOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Secret key/value data. Base64 encoding required for values (map)
+func (o SecretOutput) Data() pulumi.MapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.MapOutput { return v.Data }).(pulumi.MapOutput)
+}
+
+// A secret description (string)
+func (o SecretOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Labels for secret object (map)
+func (o SecretOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the secret (string)
+func (o SecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace id where to assign the namespaced secret (string)
+func (o SecretOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.NamespaceId }).(pulumi.StringPtrOutput)
+}
+
+// The project id where to assign the secret (string)
+func (o SecretOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 type SecretArrayOutput struct{ *pulumi.OutputState }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class NodeTemplateOpenstackConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateOpenstackConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// OpenStack active timeout Default `200` (string)
@@ -30,11 +30,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("applicationCredentialName")]
         public Input<string>? ApplicationCredentialName { get; set; }
 
+        [Input("applicationCredentialSecret")]
+        private Input<string>? _applicationCredentialSecret;
+
         /// <summary>
         /// OpenStack application credential secret (string)
         /// </summary>
-        [Input("applicationCredentialSecret")]
-        public Input<string>? ApplicationCredentialSecret { get; set; }
+        public Input<string>? ApplicationCredentialSecret
+        {
+            get => _applicationCredentialSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _applicationCredentialSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// OpenStack authentication URL (string)
@@ -103,13 +113,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? FloatingIpPool { get; set; }
 
         /// <summary>
-        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// Image ID to use as the VM OS. Conflicts with `image_name` (string)
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// Image name e.g. `harvester-public/image-57hzg` (string)
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
@@ -150,20 +160,40 @@ namespace Pulumi.Rancher2.Inputs
         [Input("novaNetwork")]
         public Input<bool>? NovaNetwork { get; set; }
 
-        /// <summary>
-        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
-        /// </summary>
         [Input("password")]
-        public Input<string>? Password { get; set; }
+        private Input<string>? _password;
+
+        /// <summary>
+        /// Set the password for the XML-RPC API authentication (string)
+        /// </summary>
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("privateKeyFile")]
+        private Input<string>? _privateKeyFile;
 
         /// <summary>
         /// Private key content to use for SSH (string)
         /// </summary>
-        [Input("privateKeyFile")]
-        public Input<string>? PrivateKeyFile { get; set; }
+        public Input<string>? PrivateKeyFile
+        {
+            get => _privateKeyFile;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyFile = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// OpenStack region name (string)
+        /// AWS region. (string)
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -175,13 +205,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? SecGroups { get; set; }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// SSH port. Default `22` (string)
         /// </summary>
         [Input("sshPort")]
         public Input<string>? SshPort { get; set; }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// Set the name of the ssh user (string)
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
@@ -205,7 +235,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? UserDataFile { get; set; }
 
         /// <summary>
-        /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// OpenStack username (string)
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -235,7 +265,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? VolumeSize { get; set; }
 
         /// <summary>
-        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        /// Amazon EBS volume type. Default `gp2` (string)
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }
@@ -243,5 +273,6 @@ namespace Pulumi.Rancher2.Inputs
         public NodeTemplateOpenstackConfigArgs()
         {
         }
+        public static new NodeTemplateOpenstackConfigArgs Empty => new NodeTemplateOpenstackConfigArgs();
     }
 }

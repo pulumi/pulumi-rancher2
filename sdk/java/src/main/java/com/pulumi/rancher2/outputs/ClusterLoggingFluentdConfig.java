@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterLoggingFluentdConfig {
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     private @Nullable String certificate;
@@ -25,7 +25,7 @@ public final class ClusterLoggingFluentdConfig {
      */
     private @Nullable Boolean compress;
     /**
-     * @return Enable TLS for the syslog service. Default `false` (bool)
+     * @return Enable TLS for the fluentd service (bool)
      * 
      */
     private @Nullable Boolean enableTls;
@@ -37,7 +37,7 @@ public final class ClusterLoggingFluentdConfig {
 
     private ClusterLoggingFluentdConfig() {}
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     public Optional<String> certificate() {
@@ -51,7 +51,7 @@ public final class ClusterLoggingFluentdConfig {
         return Optional.ofNullable(this.compress);
     }
     /**
-     * @return Enable TLS for the syslog service. Default `false` (bool)
+     * @return Enable TLS for the fluentd service (bool)
      * 
      */
     public Optional<Boolean> enableTls() {

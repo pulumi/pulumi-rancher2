@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2NodePoolAutoscaling
     {
         /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// Enable etcd backup (bool)
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The GKE node pool config max node count (int)
+        /// Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
         /// </summary>
         public readonly int? MaxNodeCount;
         /// <summary>
-        /// The GKE node pool config min node count (int)
+        /// Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
         /// </summary>
         public readonly int? MinNodeCount;
 

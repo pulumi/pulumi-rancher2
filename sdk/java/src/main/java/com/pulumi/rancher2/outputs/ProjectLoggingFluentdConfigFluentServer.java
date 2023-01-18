@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectLoggingFluentdConfigFluentServer {
     /**
-     * @return Endpoint of the syslog service (string)
+     * @return Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      * 
      */
     private String endpoint;
@@ -51,7 +51,7 @@ public final class ProjectLoggingFluentdConfigFluentServer {
 
     private ProjectLoggingFluentdConfigFluentServer() {}
     /**
-     * @return Endpoint of the syslog service (string)
+     * @return Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      * 
      */
     public String endpoint() {

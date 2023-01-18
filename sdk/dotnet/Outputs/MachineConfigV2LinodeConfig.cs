@@ -22,15 +22,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? CreatePrivateIp;
         /// <summary>
-        /// Docker Port. Default `2376` (string)
+        /// Port number for Docker engine. Default `2376` (string)
         /// </summary>
         public readonly string? DockerPort;
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// AWS instance type. Default `t3a.medium` (string)
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Label;
         /// <summary>
-        /// OpenStack region name (string)
+        /// AWS region. (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
@@ -46,11 +46,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? RootPass;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        /// SSH port. Default `22` (string)
         /// </summary>
         public readonly string? SshPort;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        /// Set the name of the ssh user (string)
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SwapSize;
         /// <summary>
-        /// vSphere tags id e.g. `urn:xxx` (list)
+        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
         /// </summary>
         public readonly string? Tags;
         /// <summary>

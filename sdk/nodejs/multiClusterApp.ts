@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,7 +17,7 @@ import * as utilities from "./utilities";
  * const foo = new rancher2.MultiClusterApp("foo", {
  *     answers: [{
  *         values: {
- *             ingress_host: "test.xip.io",
+ *             ingressHost: "test.xip.io",
  *         },
  *     }],
  *     catalogName: "<catalog_name>",
@@ -38,13 +39,13 @@ import * as utilities from "./utilities";
  *     answers: [
  *         {
  *             values: {
- *                 ingress_host: "test.xip.io",
+ *                 ingressHost: "test.xip.io",
  *             },
  *         },
  *         {
  *             projectId: "<project_id2>",
  *             values: {
- *                 ingress_host: "test2.xip.io",
+ *                 ingressHost: "test2.xip.io",
  *             },
  *         },
  *     ],

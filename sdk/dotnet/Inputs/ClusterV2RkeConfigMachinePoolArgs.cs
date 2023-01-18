@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigMachinePoolArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigMachinePoolArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for cluster registration token object (map)
+        /// Annotations for the Cluster V2 (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -52,7 +52,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels for the Cluster V2 (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -66,6 +66,18 @@ namespace Pulumi.Rancher2.Inputs
         [Input("machineConfig", required: true)]
         public Input<Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs> MachineConfig { get; set; } = null!;
 
+        [Input("machineLabels")]
+        private InputMap<object>? _machineLabels;
+
+        /// <summary>
+        /// Labels for Machine pool nodes (map)
+        /// </summary>
+        public InputMap<object> MachineLabels
+        {
+            get => _machineLabels ?? (_machineLabels = new InputMap<object>());
+            set => _machineLabels = value;
+        }
+
         /// <summary>
         /// Max unhealthy nodes for automated replacement to be allowed (string)
         /// </summary>
@@ -73,7 +85,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? MaxUnhealthy { get; set; }
 
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster v2 (string)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -141,5 +153,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigMachinePoolArgs()
         {
         }
+        public static new ClusterV2RkeConfigMachinePoolArgs Empty => new ClusterV2RkeConfigMachinePoolArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateAllowedHostPathInputArgs : Pulumi.ResourceArgs
+    public sealed class GetPodSecurityPolicyTemplateAllowedHostPathInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("pathPrefix", required: true)]
         public Input<string> PathPrefix { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public GetPodSecurityPolicyTemplateAllowedHostPathInputArgs()
         {
         }
+        public static new GetPodSecurityPolicyTemplateAllowedHostPathInputArgs Empty => new GetPodSecurityPolicyTemplateAllowedHostPathInputArgs();
     }
 }

@@ -22,6 +22,41 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.NodeDriver;
+ * import com.pulumi.rancher2.NodeDriverArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new NodeDriver(&#34;foo&#34;, NodeDriverArgs.builder()        
+ *             .active(true)
+ *             .builtin(false)
+ *             .checksum(&#34;0x0&#34;)
+ *             .description(&#34;Foo description&#34;)
+ *             .externalId(&#34;foo_external&#34;)
+ *             .uiUrl(&#34;local://ui&#34;)
+ *             .url(&#34;local://&#34;)
+ *             .whitelistDomains(&#34;*.foo.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

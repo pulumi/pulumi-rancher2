@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NotifierSmtpConfig
     {
         /// <summary>
-        /// Wechat default recipient (string)
+        /// SMTP default recipient (string)
         /// </summary>
         public readonly string DefaultRecipient;
         /// <summary>

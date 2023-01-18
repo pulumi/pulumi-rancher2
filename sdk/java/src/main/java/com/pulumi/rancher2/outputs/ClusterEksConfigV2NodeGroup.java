@@ -43,12 +43,12 @@ public final class ClusterEksConfigV2NodeGroup {
      */
     private @Nullable String imageId;
     /**
-     * @return The EKS node group instance type. Default: `t3.medium` (string)
+     * @return The type of machine to use for worker nodes. Default `t2.medium` (string)
      * 
      */
     private @Nullable String instanceType;
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster (map)
      * 
      */
     private @Nullable Map<String,Object> labels;
@@ -58,7 +58,7 @@ public final class ClusterEksConfigV2NodeGroup {
      */
     private @Nullable List<ClusterEksConfigV2NodeGroupLaunchTemplate> launchTemplates;
     /**
-     * @return The EKS node group maximum size. Default `2` (int)
+     * @return Audit log max size. Default: `100` (int)
      * 
      */
     private @Nullable Integer maxSize;
@@ -68,7 +68,7 @@ public final class ClusterEksConfigV2NodeGroup {
      */
     private @Nullable Integer minSize;
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     private String name;
@@ -88,22 +88,22 @@ public final class ClusterEksConfigV2NodeGroup {
      */
     private @Nullable List<String> spotInstanceTypes;
     /**
-     * @return The EKS node group subnets (list string)
+     * @return List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
      * 
      */
     private @Nullable List<String> subnets;
     /**
-     * @return The GKE node config tags (List)
+     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
      * 
      */
     private @Nullable Map<String,Object> tags;
     /**
-     * @return The EKS node group user data (string)
+     * @return Pass user-data to the nodes to perform automated configuration tasks (string)
      * 
      */
     private @Nullable String userData;
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return RKE2 kubernetes version (string)
      * 
      */
     private @Nullable String version;
@@ -145,14 +145,14 @@ public final class ClusterEksConfigV2NodeGroup {
         return Optional.ofNullable(this.imageId);
     }
     /**
-     * @return The EKS node group instance type. Default: `t3.medium` (string)
+     * @return The type of machine to use for worker nodes. Default `t2.medium` (string)
      * 
      */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster (map)
      * 
      */
     public Map<String,Object> labels() {
@@ -166,7 +166,7 @@ public final class ClusterEksConfigV2NodeGroup {
         return this.launchTemplates == null ? List.of() : this.launchTemplates;
     }
     /**
-     * @return The EKS node group maximum size. Default `2` (int)
+     * @return Audit log max size. Default: `100` (int)
      * 
      */
     public Optional<Integer> maxSize() {
@@ -180,7 +180,7 @@ public final class ClusterEksConfigV2NodeGroup {
         return Optional.ofNullable(this.minSize);
     }
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public String name() {
@@ -208,28 +208,28 @@ public final class ClusterEksConfigV2NodeGroup {
         return this.spotInstanceTypes == null ? List.of() : this.spotInstanceTypes;
     }
     /**
-     * @return The EKS node group subnets (list string)
+     * @return List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
      * 
      */
     public List<String> subnets() {
         return this.subnets == null ? List.of() : this.subnets;
     }
     /**
-     * @return The GKE node config tags (List)
+     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
      * 
      */
     public Map<String,Object> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
-     * @return The EKS node group user data (string)
+     * @return Pass user-data to the nodes to perform automated configuration tasks (string)
      * 
      */
     public Optional<String> userData() {
         return Optional.ofNullable(this.userData);
     }
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return RKE2 kubernetes version (string)
      * 
      */
     public Optional<String> version() {

@@ -22,19 +22,19 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? AuthUsername;
         /// <summary>
-        /// SSL certificate for the syslog service (string)
+        /// SSL CA certificate for the custom target service (string)
         /// </summary>
         public readonly string? Certificate;
         /// <summary>
-        /// SSL client certificate for the syslog service (string)
+        /// SSL client certificate for the custom target service (string)
         /// </summary>
         public readonly string? ClientCert;
         /// <summary>
-        /// SSL client key for the syslog service (string)
+        /// SSL client key for the custom target service (string)
         /// </summary>
         public readonly string? ClientKey;
         /// <summary>
-        /// SSL client key password for the splunk service (string)
+        /// SSL client key password for the elascticsearch service (string)
         /// </summary>
         public readonly string? ClientKeyPass;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DateFormat;
         /// <summary>
-        /// Endpoint of the syslog service (string)
+        /// Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? IndexPrefix;
         /// <summary>
-        /// SSL verify for the syslog service (bool)
+        /// SSL verify for the elascticsearch service (bool)
         /// </summary>
         public readonly bool? SslVerify;
         /// <summary>

@@ -249,7 +249,7 @@ export class AuthConfigActiveDirectory extends pulumi.CustomResource {
             resourceInputs["accessMode"] = args ? args.accessMode : undefined;
             resourceInputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["certificate"] = args?.certificate ? pulumi.secret(args.certificate) : undefined;
             resourceInputs["connectionTimeout"] = args ? args.connectionTimeout : undefined;
             resourceInputs["defaultLoginDomain"] = args ? args.defaultLoginDomain : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
@@ -265,10 +265,10 @@ export class AuthConfigActiveDirectory extends pulumi.CustomResource {
             resourceInputs["nestedGroupMembershipEnabled"] = args ? args.nestedGroupMembershipEnabled : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["servers"] = args ? args.servers : undefined;
-            resourceInputs["serviceAccountPassword"] = args ? args.serviceAccountPassword : undefined;
-            resourceInputs["serviceAccountUsername"] = args ? args.serviceAccountUsername : undefined;
+            resourceInputs["serviceAccountPassword"] = args?.serviceAccountPassword ? pulumi.secret(args.serviceAccountPassword) : undefined;
+            resourceInputs["serviceAccountUsername"] = args?.serviceAccountUsername ? pulumi.secret(args.serviceAccountUsername) : undefined;
             resourceInputs["startTls"] = args ? args.startTls : undefined;
-            resourceInputs["testPassword"] = args ? args.testPassword : undefined;
+            resourceInputs["testPassword"] = args?.testPassword ? pulumi.secret(args.testPassword) : undefined;
             resourceInputs["testUsername"] = args ? args.testUsername : undefined;
             resourceInputs["tls"] = args ? args.tls : undefined;
             resourceInputs["userDisabledBitMask"] = args ? args.userDisabledBitMask : undefined;
@@ -285,6 +285,8 @@ export class AuthConfigActiveDirectory extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "rancher2:index/activeDirectory:ActiveDirectory" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
+        const secretOpts = { additionalSecretOutputs: ["certificate", "serviceAccountPassword", "serviceAccountUsername", "testPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AuthConfigActiveDirectory.__pulumiType, name, resourceInputs, opts);
     }
 }

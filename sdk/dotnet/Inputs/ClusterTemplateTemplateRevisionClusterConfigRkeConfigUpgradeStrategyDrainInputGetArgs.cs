@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("deleteLocalData")]
         public Input<bool>? DeleteLocalData { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputGetArgs();
     }
 }

@@ -26,6 +26,37 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.ClusterAlertGroup;
+ * import com.pulumi.rancher2.ClusterAlertGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new ClusterAlertGroup(&#34;foo&#34;, ClusterAlertGroupArgs.builder()        
+ *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+ *             .description(&#34;Terraform cluster alert group&#34;)
+ *             .groupIntervalSeconds(300)
+ *             .repeatIntervalSeconds(3600)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

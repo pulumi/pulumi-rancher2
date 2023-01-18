@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
     /**
-     * @return Machine selector label match expressions key (string)
+     * @return The taint key (string)
      * 
      */
     private @Nullable String key;
@@ -30,7 +30,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
 
     private ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression() {}
     /**
-     * @return Machine selector label match expressions key (string)
+     * @return The taint key (string)
      * 
      */
     public Optional<String> key() {

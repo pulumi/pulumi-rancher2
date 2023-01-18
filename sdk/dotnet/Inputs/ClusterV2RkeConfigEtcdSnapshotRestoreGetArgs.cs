@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterV2RkeConfigEtcdSnapshotRestoreGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterV2RkeConfigEtcdSnapshotRestoreGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ETCD snapshot desired generation (int)
+        /// Desired certificate rotation generation (int)
         /// </summary>
         [Input("generation", required: true)]
         public Input<int> Generation { get; set; } = null!;
 
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster v2 (string)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterV2RkeConfigEtcdSnapshotRestoreGetArgs()
         {
         }
+        public static new ClusterV2RkeConfigEtcdSnapshotRestoreGetArgs Empty => new ClusterV2RkeConfigEtcdSnapshotRestoreGetArgs();
     }
 }

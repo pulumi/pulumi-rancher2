@@ -19,27 +19,25 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetGlobalRoleBinding.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetGlobalRoleBinding.InvokeAsync(new Rancher2.GetGlobalRoleBindingArgs
-        ///         {
-        ///             GlobalRoleId = "foo_id",
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         GlobalRoleId = "foo_id",
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGlobalRoleBindingResult> InvokeAsync(GetGlobalRoleBindingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 global role binding.
@@ -49,31 +47,29 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetGlobalRoleBinding.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetGlobalRoleBinding.InvokeAsync(new Rancher2.GetGlobalRoleBindingArgs
-        ///         {
-        ///             GlobalRoleId = "foo_id",
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         GlobalRoleId = "foo_id",
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGlobalRoleBindingResult> Invoke(GetGlobalRoleBindingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGlobalRoleBindingArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalRoleBindingArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The global role id (string)
@@ -90,9 +86,10 @@ namespace Pulumi.Rancher2
         public GetGlobalRoleBindingArgs()
         {
         }
+        public static new GetGlobalRoleBindingArgs Empty => new GetGlobalRoleBindingArgs();
     }
 
-    public sealed class GetGlobalRoleBindingInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalRoleBindingInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The global role id (string)
@@ -109,6 +106,7 @@ namespace Pulumi.Rancher2
         public GetGlobalRoleBindingInvokeArgs()
         {
         }
+        public static new GetGlobalRoleBindingInvokeArgs Empty => new GetGlobalRoleBindingInvokeArgs();
     }
 
 

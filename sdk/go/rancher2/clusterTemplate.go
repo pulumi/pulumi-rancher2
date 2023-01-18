@@ -30,21 +30,21 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterTemplate(ctx, "foo", &rancher2.ClusterTemplateArgs{
 //				Description: pulumi.String("Terraform cluster template foo"),
-//				Members: ClusterTemplateMemberArray{
-//					&ClusterTemplateMemberArgs{
+//				Members: rancher2.ClusterTemplateMemberArray{
+//					&rancher2.ClusterTemplateMemberArgs{
 //						AccessType:      pulumi.String("owner"),
 //						UserPrincipalId: pulumi.String("local://user-XXXXX"),
 //					},
 //				},
-//				TemplateRevisions: ClusterTemplateTemplateRevisionArray{
-//					&ClusterTemplateTemplateRevisionArgs{
-//						ClusterConfig: &ClusterTemplateTemplateRevisionClusterConfigArgs{
-//							RkeConfig: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
-//								Network: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
+//				TemplateRevisions: rancher2.ClusterTemplateTemplateRevisionArray{
+//					&rancher2.ClusterTemplateTemplateRevisionArgs{
+//						ClusterConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs{
+//							RkeConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
+//								Network: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
 //									Plugin: pulumi.String("canal"),
 //								},
-//								Services: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{
-//									Etcd: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{
+//								Services: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{
+//									Etcd: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{
 //										Creation:  pulumi.String("6h"),
 //										Retention: pulumi.String("24h"),
 //									},
@@ -83,28 +83,28 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterTemplate(ctx, "foo", &rancher2.ClusterTemplateArgs{
 //				Description: pulumi.String("Terraform cluster template foo"),
-//				Members: ClusterTemplateMemberArray{
-//					&ClusterTemplateMemberArgs{
+//				Members: rancher2.ClusterTemplateMemberArray{
+//					&rancher2.ClusterTemplateMemberArgs{
 //						AccessType:      pulumi.String("owner"),
 //						UserPrincipalId: pulumi.String("local://user-XXXXX"),
 //					},
 //				},
-//				TemplateRevisions: ClusterTemplateTemplateRevisionArray{
-//					&ClusterTemplateTemplateRevisionArgs{
-//						ClusterConfig: &ClusterTemplateTemplateRevisionClusterConfigArgs{
-//							RkeConfig: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
-//								Network: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
+//				TemplateRevisions: rancher2.ClusterTemplateTemplateRevisionArray{
+//					&rancher2.ClusterTemplateTemplateRevisionArgs{
+//						ClusterConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs{
+//							RkeConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
+//								Network: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
 //									Plugin: pulumi.String("canal"),
 //								},
-//								Services: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{
-//									Etcd: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{
+//								Services: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{
+//									Etcd: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{
 //										Creation:  pulumi.String("6h"),
 //										Retention: pulumi.String("24h"),
 //									},
 //								},
-//								UpgradeStrategy: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs{
+//								UpgradeStrategy: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs{
 //									Drain:                pulumi.Bool(true),
-//									MaxUnavailableWorker: pulumi.String(fmt.Sprintf("%v%v", "20", "%")),
+//									MaxUnavailableWorker: pulumi.String(fmt.Sprintf("20%v", "%")),
 //								},
 //							},
 //						},
@@ -138,35 +138,35 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterTemplate(ctx, "foo", &rancher2.ClusterTemplateArgs{
 //				Description: pulumi.String("Terraform cluster template foo"),
-//				Members: ClusterTemplateMemberArray{
-//					&ClusterTemplateMemberArgs{
+//				Members: rancher2.ClusterTemplateMemberArray{
+//					&rancher2.ClusterTemplateMemberArgs{
 //						AccessType:      pulumi.String("owner"),
 //						UserPrincipalId: pulumi.String("local://user-XXXXX"),
 //					},
 //				},
-//				TemplateRevisions: ClusterTemplateTemplateRevisionArray{
-//					&ClusterTemplateTemplateRevisionArgs{
-//						ClusterConfig: &ClusterTemplateTemplateRevisionClusterConfigArgs{
-//							RkeConfig: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
-//								Network: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
+//				TemplateRevisions: rancher2.ClusterTemplateTemplateRevisionArray{
+//					&rancher2.ClusterTemplateTemplateRevisionArgs{
+//						ClusterConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs{
+//							RkeConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
+//								Network: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
 //									Plugin: pulumi.String("canal"),
 //								},
-//								Services: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{
-//									Etcd: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{
+//								Services: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{
+//									Etcd: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{
 //										Creation:  pulumi.String("6h"),
 //										Retention: pulumi.String("24h"),
 //									},
 //								},
 //							},
-//							ScheduledClusterScan: &ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs{
+//							ScheduledClusterScan: &rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs{
 //								Enabled: pulumi.Bool(true),
-//								ScanConfig: &ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs{
-//									CisScanConfig: &ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs{
+//								ScanConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs{
+//									CisScanConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs{
 //										DebugMaster: pulumi.Bool(true),
 //										DebugWorker: pulumi.Bool(true),
 //									},
 //								},
-//								ScheduleConfig: &ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs{
+//								ScheduleConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs{
 //									CronSchedule: pulumi.String("30 * * * *"),
 //									Retention:    pulumi.Int(5),
 //								},
@@ -198,17 +198,17 @@ import (
 type ClusterTemplate struct {
 	pulumi.CustomResourceState
 
-	// Annotations for the cluster template revision (map)
+	// Annotations for the cluster template (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
 	// (Computed) Default cluster template revision ID (string)
 	DefaultRevisionId pulumi.StringOutput `pulumi:"defaultRevisionId"`
 	// Cluster template description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Labels for the cluster template revision (map)
+	// Labels for the cluster template (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// Cluster template members (list)
 	Members ClusterTemplateMemberArrayOutput `pulumi:"members"`
-	// The cluster template revision name (string)
+	// The cluster template name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Cluster template revisions (list)
 	TemplateRevisions ClusterTemplateTemplateRevisionArrayOutput `pulumi:"templateRevisions"`
@@ -243,34 +243,34 @@ func GetClusterTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterTemplate resources.
 type clusterTemplateState struct {
-	// Annotations for the cluster template revision (map)
+	// Annotations for the cluster template (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// (Computed) Default cluster template revision ID (string)
 	DefaultRevisionId *string `pulumi:"defaultRevisionId"`
 	// Cluster template description
 	Description *string `pulumi:"description"`
-	// Labels for the cluster template revision (map)
+	// Labels for the cluster template (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Cluster template members (list)
 	Members []ClusterTemplateMember `pulumi:"members"`
-	// The cluster template revision name (string)
+	// The cluster template name (string)
 	Name *string `pulumi:"name"`
 	// Cluster template revisions (list)
 	TemplateRevisions []ClusterTemplateTemplateRevision `pulumi:"templateRevisions"`
 }
 
 type ClusterTemplateState struct {
-	// Annotations for the cluster template revision (map)
+	// Annotations for the cluster template (map)
 	Annotations pulumi.MapInput
 	// (Computed) Default cluster template revision ID (string)
 	DefaultRevisionId pulumi.StringPtrInput
 	// Cluster template description
 	Description pulumi.StringPtrInput
-	// Labels for the cluster template revision (map)
+	// Labels for the cluster template (map)
 	Labels pulumi.MapInput
 	// Cluster template members (list)
 	Members ClusterTemplateMemberArrayInput
-	// The cluster template revision name (string)
+	// The cluster template name (string)
 	Name pulumi.StringPtrInput
 	// Cluster template revisions (list)
 	TemplateRevisions ClusterTemplateTemplateRevisionArrayInput
@@ -281,15 +281,15 @@ func (ClusterTemplateState) ElementType() reflect.Type {
 }
 
 type clusterTemplateArgs struct {
-	// Annotations for the cluster template revision (map)
+	// Annotations for the cluster template (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// Cluster template description
 	Description *string `pulumi:"description"`
-	// Labels for the cluster template revision (map)
+	// Labels for the cluster template (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Cluster template members (list)
 	Members []ClusterTemplateMember `pulumi:"members"`
-	// The cluster template revision name (string)
+	// The cluster template name (string)
 	Name *string `pulumi:"name"`
 	// Cluster template revisions (list)
 	TemplateRevisions []ClusterTemplateTemplateRevision `pulumi:"templateRevisions"`
@@ -297,15 +297,15 @@ type clusterTemplateArgs struct {
 
 // The set of arguments for constructing a ClusterTemplate resource.
 type ClusterTemplateArgs struct {
-	// Annotations for the cluster template revision (map)
+	// Annotations for the cluster template (map)
 	Annotations pulumi.MapInput
 	// Cluster template description
 	Description pulumi.StringPtrInput
-	// Labels for the cluster template revision (map)
+	// Labels for the cluster template (map)
 	Labels pulumi.MapInput
 	// Cluster template members (list)
 	Members ClusterTemplateMemberArrayInput
-	// The cluster template revision name (string)
+	// The cluster template name (string)
 	Name pulumi.StringPtrInput
 	// Cluster template revisions (list)
 	TemplateRevisions ClusterTemplateTemplateRevisionArrayInput
@@ -396,6 +396,41 @@ func (o ClusterTemplateOutput) ToClusterTemplateOutput() ClusterTemplateOutput {
 
 func (o ClusterTemplateOutput) ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput {
 	return o
+}
+
+// Annotations for the cluster template (map)
+func (o ClusterTemplateOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) Default cluster template revision ID (string)
+func (o ClusterTemplateOutput) DefaultRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.DefaultRevisionId }).(pulumi.StringOutput)
+}
+
+// Cluster template description
+func (o ClusterTemplateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Labels for the cluster template (map)
+func (o ClusterTemplateOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Cluster template members (list)
+func (o ClusterTemplateOutput) Members() ClusterTemplateMemberArrayOutput {
+	return o.ApplyT(func(v *ClusterTemplate) ClusterTemplateMemberArrayOutput { return v.Members }).(ClusterTemplateMemberArrayOutput)
+}
+
+// The cluster template name (string)
+func (o ClusterTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Cluster template revisions (list)
+func (o ClusterTemplateOutput) TemplateRevisions() ClusterTemplateTemplateRevisionArrayOutput {
+	return o.ApplyT(func(v *ClusterTemplate) ClusterTemplateTemplateRevisionArrayOutput { return v.TemplateRevisions }).(ClusterTemplateTemplateRevisionArrayOutput)
 }
 
 type ClusterTemplateArrayOutput struct{ *pulumi.OutputState }

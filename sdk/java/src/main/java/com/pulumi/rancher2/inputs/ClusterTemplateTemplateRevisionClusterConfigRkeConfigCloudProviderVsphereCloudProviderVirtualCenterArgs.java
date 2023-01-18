@@ -24,14 +24,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     }
 
     /**
-     * The cluster template revision name (string)
+     * The cluster template name (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The cluster template revision name (string)
+     * @return The cluster template name (string)
      * 
      */
     public Output<String> name() {
@@ -105,7 +105,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         }
 
         /**
-         * @param name The cluster template revision name (string)
+         * @param name The cluster template name (string)
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         }
 
         /**
-         * @param name The cluster template revision name (string)
+         * @param name The cluster template name (string)
          * 
          * @return builder
          * 

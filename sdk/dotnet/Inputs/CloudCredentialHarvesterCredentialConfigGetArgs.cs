@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class CloudCredentialHarvesterCredentialConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class CloudCredentialHarvesterCredentialConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Imported Harvester Cluster ID (string)
@@ -24,14 +24,25 @@ namespace Pulumi.Rancher2.Inputs
         [Input("clusterType", required: true)]
         public Input<string> ClusterType { get; set; } = null!;
 
+        [Input("kubeconfigContent", required: true)]
+        private Input<string>? _kubeconfigContent;
+
         /// <summary>
         /// Harvester Cluster KubeConfig Content (string)
         /// </summary>
-        [Input("kubeconfigContent", required: true)]
-        public Input<string> KubeconfigContent { get; set; } = null!;
+        public Input<string>? KubeconfigContent
+        {
+            get => _kubeconfigContent;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _kubeconfigContent = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public CloudCredentialHarvesterCredentialConfigGetArgs()
         {
         }
+        public static new CloudCredentialHarvesterCredentialConfigGetArgs Empty => new CloudCredentialHarvesterCredentialConfigGetArgs();
     }
 }

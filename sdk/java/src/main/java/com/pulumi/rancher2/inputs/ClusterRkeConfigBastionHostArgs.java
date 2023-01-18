@@ -17,14 +17,14 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
     public static final ClusterRkeConfigBastionHostArgs Empty = new ClusterRkeConfigBastionHostArgs();
 
     /**
-     * Address ip for node (string)
+     * Address ip for the bastion host (string)
      * 
      */
     @Import(name="address", required=true)
     private Output<String> address;
 
     /**
-     * @return Address ip for node (string)
+     * @return Address ip for the bastion host (string)
      * 
      */
     public Output<String> address() {
@@ -32,14 +32,14 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
     }
 
     /**
-     * Port for node. Default `22` (string)
+     * Port for bastion host. Default `22` (string)
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return Port for node. Default `22` (string)
+     * @return Port for bastion host. Default `22` (string)
      * 
      */
     public Optional<Output<String>> port() {
@@ -47,14 +47,14 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
     }
 
     /**
-     * Use ssh agent auth. Default `false` (bool)
+     * Use ssh agent auth. Default `false`
      * 
      */
     @Import(name="sshAgentAuth")
     private @Nullable Output<Boolean> sshAgentAuth;
 
     /**
-     * @return Use ssh agent auth. Default `false` (bool)
+     * @return Use ssh agent auth. Default `false`
      * 
      */
     public Optional<Output<Boolean>> sshAgentAuth() {
@@ -62,14 +62,14 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
     }
 
     /**
-     * Node SSH private key (string)
+     * Bastion host SSH private key (string)
      * 
      */
     @Import(name="sshKey")
     private @Nullable Output<String> sshKey;
 
     /**
-     * @return Node SSH private key (string)
+     * @return Bastion host SSH private key (string)
      * 
      */
     public Optional<Output<String>> sshKey() {
@@ -77,14 +77,14 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
     }
 
     /**
-     * Node SSH private key path (string)
+     * Cluster level SSH private key path (string)
      * 
      */
     @Import(name="sshKeyPath")
     private @Nullable Output<String> sshKeyPath;
 
     /**
-     * @return Node SSH private key path (string)
+     * @return Cluster level SSH private key path (string)
      * 
      */
     public Optional<Output<String>> sshKeyPath() {
@@ -92,14 +92,14 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
     }
 
     /**
-     * Registry user (string)
+     * User to connect bastion host (string)
      * 
      */
     @Import(name="user", required=true)
     private Output<String> user;
 
     /**
-     * @return Registry user (string)
+     * @return User to connect bastion host (string)
      * 
      */
     public Output<String> user() {
@@ -136,7 +136,7 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param address Address ip for node (string)
+         * @param address Address ip for the bastion host (string)
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param address Address ip for node (string)
+         * @param address Address ip for the bastion host (string)
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param port Port for node. Default `22` (string)
+         * @param port Port for bastion host. Default `22` (string)
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param port Port for node. Default `22` (string)
+         * @param port Port for bastion host. Default `22` (string)
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshAgentAuth Use ssh agent auth. Default `false` (bool)
+         * @param sshAgentAuth Use ssh agent auth. Default `false`
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshAgentAuth Use ssh agent auth. Default `false` (bool)
+         * @param sshAgentAuth Use ssh agent auth. Default `false`
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshKey Node SSH private key (string)
+         * @param sshKey Bastion host SSH private key (string)
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshKey Node SSH private key (string)
+         * @param sshKey Bastion host SSH private key (string)
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshKeyPath Node SSH private key path (string)
+         * @param sshKeyPath Cluster level SSH private key path (string)
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshKeyPath Node SSH private key path (string)
+         * @param sshKeyPath Cluster level SSH private key path (string)
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param user Registry user (string)
+         * @param user User to connect bastion host (string)
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param user Registry user (string)
+         * @param user User to connect bastion host (string)
          * 
          * @return builder
          * 

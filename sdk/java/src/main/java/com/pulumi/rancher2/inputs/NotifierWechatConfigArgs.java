@@ -46,14 +46,14 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Wechat default recipient (string)
+     * Slack default recipient (string)
      * 
      */
     @Import(name="defaultRecipient", required=true)
     private Output<String> defaultRecipient;
 
     /**
-     * @return Wechat default recipient (string)
+     * @return Slack default recipient (string)
      * 
      */
     public Output<String> defaultRecipient() {
@@ -61,14 +61,14 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Wechat proxy url (string)
+     * Dingtalk proxy url (string)
      * 
      */
     @Import(name="proxyUrl")
     private @Nullable Output<String> proxyUrl;
 
     /**
-     * @return Wechat proxy url (string)
+     * @return Dingtalk proxy url (string)
      * 
      */
     public Optional<Output<String>> proxyUrl() {
@@ -91,14 +91,14 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Wechat agent ID (string)
+     * Secret for url sign enable (string)
      * 
      */
     @Import(name="secret", required=true)
     private Output<String> secret;
 
     /**
-     * @return Wechat agent ID (string)
+     * @return Secret for url sign enable (string)
      * 
      */
     public Output<String> secret() {
@@ -177,7 +177,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param defaultRecipient Wechat default recipient (string)
+         * @param defaultRecipient Slack default recipient (string)
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param defaultRecipient Wechat default recipient (string)
+         * @param defaultRecipient Slack default recipient (string)
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Dingtalk proxy url (string)
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Dingtalk proxy url (string)
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secret Wechat agent ID (string)
+         * @param secret Secret for url sign enable (string)
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secret Wechat agent ID (string)
+         * @param secret Secret for url sign enable (string)
          * 
          * @return builder
          * 

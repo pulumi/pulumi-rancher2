@@ -23,22 +23,22 @@ public final class ProjectLoggingElasticsearchConfig {
      */
     private @Nullable String authUsername;
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     private @Nullable String certificate;
     /**
-     * @return SSL client certificate for the syslog service (string)
+     * @return SSL client certificate for the custom target service (string)
      * 
      */
     private @Nullable String clientCert;
     /**
-     * @return SSL client key for the syslog service (string)
+     * @return SSL client key for the custom target service (string)
      * 
      */
     private @Nullable String clientKey;
     /**
-     * @return SSL client key password for the splunk service (string)
+     * @return SSL client key password for the elascticsearch service (string)
      * 
      */
     private @Nullable String clientKeyPass;
@@ -48,7 +48,7 @@ public final class ProjectLoggingElasticsearchConfig {
      */
     private @Nullable String dateFormat;
     /**
-     * @return Endpoint of the syslog service (string)
+     * @return Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      * 
      */
     private String endpoint;
@@ -58,7 +58,7 @@ public final class ProjectLoggingElasticsearchConfig {
      */
     private @Nullable String indexPrefix;
     /**
-     * @return SSL verify for the syslog service (bool)
+     * @return SSL verify for the elascticsearch service (bool)
      * 
      */
     private @Nullable Boolean sslVerify;
@@ -84,28 +84,28 @@ public final class ProjectLoggingElasticsearchConfig {
         return Optional.ofNullable(this.authUsername);
     }
     /**
-     * @return SSL certificate for the syslog service (string)
+     * @return SSL CA certificate for the custom target service (string)
      * 
      */
     public Optional<String> certificate() {
         return Optional.ofNullable(this.certificate);
     }
     /**
-     * @return SSL client certificate for the syslog service (string)
+     * @return SSL client certificate for the custom target service (string)
      * 
      */
     public Optional<String> clientCert() {
         return Optional.ofNullable(this.clientCert);
     }
     /**
-     * @return SSL client key for the syslog service (string)
+     * @return SSL client key for the custom target service (string)
      * 
      */
     public Optional<String> clientKey() {
         return Optional.ofNullable(this.clientKey);
     }
     /**
-     * @return SSL client key password for the splunk service (string)
+     * @return SSL client key password for the elascticsearch service (string)
      * 
      */
     public Optional<String> clientKeyPass() {
@@ -119,7 +119,7 @@ public final class ProjectLoggingElasticsearchConfig {
         return Optional.ofNullable(this.dateFormat);
     }
     /**
-     * @return Endpoint of the syslog service (string)
+     * @return Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
      * 
      */
     public String endpoint() {
@@ -133,7 +133,7 @@ public final class ProjectLoggingElasticsearchConfig {
         return Optional.ofNullable(this.indexPrefix);
     }
     /**
-     * @return SSL verify for the syslog service (bool)
+     * @return SSL verify for the elascticsearch service (bool)
      * 
      */
     public Optional<Boolean> sslVerify() {

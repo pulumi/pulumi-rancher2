@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			fooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, "fooGlobalDnsProvider", &rancher2.GlobalDnsProviderArgs{
 //				RootDomain: pulumi.String("example.com"),
-//				Route53Config: &GlobalDnsProviderRoute53ConfigArgs{
+//				Route53Config: &rancher2.GlobalDnsProviderRoute53ConfigArgs{
 //					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
 //					SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
 //					ZoneType:  pulumi.String("private"),
@@ -70,7 +70,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			fooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, "fooGlobalDnsProvider", &rancher2.GlobalDnsProviderArgs{
 //				RootDomain: pulumi.String("example.com"),
-//				Route53Config: &GlobalDnsProviderRoute53ConfigArgs{
+//				Route53Config: &rancher2.GlobalDnsProviderRoute53ConfigArgs{
 //					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
 //					SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
 //					ZoneType:  pulumi.String("private"),
@@ -324,6 +324,46 @@ func (o GlobalDnsOutput) ToGlobalDnsOutput() GlobalDnsOutput {
 
 func (o GlobalDnsOutput) ToGlobalDnsOutputWithContext(ctx context.Context) GlobalDnsOutput {
 	return o
+}
+
+// Annotations for Global DNS (map)
+func (o GlobalDnsOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalDns) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The Global DNS record (string)
+func (o GlobalDnsOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalDns) pulumi.StringOutput { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// Labels for Global DNS (map)
+func (o GlobalDnsOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalDns) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The MultiCluster App ID to assign to the Global DNS. Conflicts with `projectIds` (string)
+func (o GlobalDnsOutput) MultiClusterAppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalDns) pulumi.StringPtrOutput { return v.MultiClusterAppId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Global DNS (string)
+func (o GlobalDnsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalDns) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of projectIds to assign to the Global DNS. Conflicts with `multiClusterAppId` (list(string))
+func (o GlobalDnsOutput) ProjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GlobalDns) pulumi.StringArrayOutput { return v.ProjectIds }).(pulumi.StringArrayOutput)
+}
+
+// The Global DNS provider ID to use (string)
+func (o GlobalDnsOutput) ProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalDns) pulumi.StringOutput { return v.ProviderId }).(pulumi.StringOutput)
+}
+
+// TTL in seconds for DNS record. Default: `300` (int)
+func (o GlobalDnsOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GlobalDns) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
 }
 
 type GlobalDnsArrayOutput struct{ *pulumi.OutputState }

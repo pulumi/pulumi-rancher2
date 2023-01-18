@@ -27,7 +27,7 @@ namespace Pulumi.Rancher2
     ///  `&lt;namespace_id&gt;` is optional, just needed for namespaced secret.
     /// </summary>
     [Rancher2ResourceType("rancher2:index/secret:Secret")]
-    public partial class Secret : Pulumi.CustomResource
+    public partial class Secret : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for secret object (map)
@@ -94,6 +94,10 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "data",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -115,7 +119,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class SecretArgs : Pulumi.ResourceArgs
+    public sealed class SecretArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -138,7 +142,11 @@ namespace Pulumi.Rancher2
         public InputMap<object> Data
         {
             get => _data ?? (_data = new InputMap<object>());
-            set => _data = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _data = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -180,9 +188,10 @@ namespace Pulumi.Rancher2
         public SecretArgs()
         {
         }
+        public static new SecretArgs Empty => new SecretArgs();
     }
 
-    public sealed class SecretState : Pulumi.ResourceArgs
+    public sealed class SecretState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -205,7 +214,11 @@ namespace Pulumi.Rancher2
         public InputMap<object> Data
         {
             get => _data ?? (_data = new InputMap<object>());
-            set => _data = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _data = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -247,5 +260,6 @@ namespace Pulumi.Rancher2
         public SecretState()
         {
         }
+        public static new SecretState Empty => new SecretState();
     }
 }

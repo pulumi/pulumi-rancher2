@@ -30,7 +30,7 @@ import (
 //			_, err := rancher2.NewProjectLogging(ctx, "foo", &rancher2.ProjectLoggingArgs{
 //				Kind:      pulumi.String("syslog"),
 //				ProjectId: pulumi.String("<project_id>"),
-//				SyslogConfig: &ProjectLoggingSyslogConfigArgs{
+//				SyslogConfig: &rancher2.ProjectLoggingSyslogConfigArgs{
 //					Endpoint:  pulumi.String("<syslog_endpoint>"),
 //					Protocol:  pulumi.String("udp"),
 //					Severity:  pulumi.String("notice"),
@@ -346,6 +346,81 @@ func (o ProjectLoggingOutput) ToProjectLoggingOutput() ProjectLoggingOutput {
 
 func (o ProjectLoggingOutput) ToProjectLoggingOutputWithContext(ctx context.Context) ProjectLoggingOutput {
 	return o
+}
+
+// Annotations for Project Logging object (map)
+func (o ProjectLoggingOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ProjectLogging) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+func (o ProjectLoggingOutput) CustomTargetConfig() ProjectLoggingCustomTargetConfigPtrOutput {
+	return o.ApplyT(func(v *ProjectLogging) ProjectLoggingCustomTargetConfigPtrOutput { return v.CustomTargetConfig }).(ProjectLoggingCustomTargetConfigPtrOutput)
+}
+
+// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+func (o ProjectLoggingOutput) ElasticsearchConfig() ProjectLoggingElasticsearchConfigPtrOutput {
+	return o.ApplyT(func(v *ProjectLogging) ProjectLoggingElasticsearchConfigPtrOutput { return v.ElasticsearchConfig }).(ProjectLoggingElasticsearchConfigPtrOutput)
+}
+
+// Enable json log parsing. Default: `false` (bool)
+func (o ProjectLoggingOutput) EnableJsonParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectLogging) pulumi.BoolPtrOutput { return v.EnableJsonParsing }).(pulumi.BoolPtrOutput)
+}
+
+// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+func (o ProjectLoggingOutput) FluentdConfig() ProjectLoggingFluentdConfigPtrOutput {
+	return o.ApplyT(func(v *ProjectLogging) ProjectLoggingFluentdConfigPtrOutput { return v.FluentdConfig }).(ProjectLoggingFluentdConfigPtrOutput)
+}
+
+// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+func (o ProjectLoggingOutput) KafkaConfig() ProjectLoggingKafkaConfigPtrOutput {
+	return o.ApplyT(func(v *ProjectLogging) ProjectLoggingKafkaConfigPtrOutput { return v.KafkaConfig }).(ProjectLoggingKafkaConfigPtrOutput)
+}
+
+// The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+func (o ProjectLoggingOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectLogging) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Labels for Project Logging object (map)
+func (o ProjectLoggingOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ProjectLogging) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the Project Logging config (string)
+func (o ProjectLoggingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectLogging) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace id from Project logging (string)
+func (o ProjectLoggingOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectLogging) pulumi.StringPtrOutput { return v.NamespaceId }).(pulumi.StringPtrOutput)
+}
+
+// How often buffered logs would be flushed. Default: `3` seconds (int)
+func (o ProjectLoggingOutput) OutputFlushInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectLogging) pulumi.IntPtrOutput { return v.OutputFlushInterval }).(pulumi.IntPtrOutput)
+}
+
+// The output tags for Project Logging (map)
+func (o ProjectLoggingOutput) OutputTags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ProjectLogging) pulumi.MapOutput { return v.OutputTags }).(pulumi.MapOutput)
+}
+
+// The project id to configure logging (string)
+func (o ProjectLoggingOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectLogging) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+func (o ProjectLoggingOutput) SplunkConfig() ProjectLoggingSplunkConfigPtrOutput {
+	return o.ApplyT(func(v *ProjectLogging) ProjectLoggingSplunkConfigPtrOutput { return v.SplunkConfig }).(ProjectLoggingSplunkConfigPtrOutput)
+}
+
+// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+func (o ProjectLoggingOutput) SyslogConfig() ProjectLoggingSyslogConfigPtrOutput {
+	return o.ApplyT(func(v *ProjectLogging) ProjectLoggingSyslogConfigPtrOutput { return v.SyslogConfig }).(ProjectLoggingSyslogConfigPtrOutput)
 }
 
 type ProjectLoggingArrayOutput struct{ *pulumi.OutputState }

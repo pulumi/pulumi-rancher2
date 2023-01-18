@@ -18,7 +18,7 @@ public final class ClusterRkeConfigAuthentication {
      */
     private @Nullable List<String> sans;
     /**
-     * @return Monitoring deployment update strategy (string)
+     * @return RKE strategy for authentication (string)
      * 
      */
     private @Nullable String strategy;
@@ -32,7 +32,7 @@ public final class ClusterRkeConfigAuthentication {
         return this.sans == null ? List.of() : this.sans;
     }
     /**
-     * @return Monitoring deployment update strategy (string)
+     * @return RKE strategy for authentication (string)
      * 
      */
     public Optional<String> strategy() {

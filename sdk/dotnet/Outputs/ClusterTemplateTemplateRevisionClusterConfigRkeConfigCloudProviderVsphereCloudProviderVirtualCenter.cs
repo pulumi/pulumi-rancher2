@@ -15,7 +15,7 @@ namespace Pulumi.Rancher2.Outputs
     {
         public readonly string Datacenters;
         /// <summary>
-        /// The cluster template revision name (string)
+        /// The cluster template name (string)
         /// </summary>
         public readonly string Name;
         public readonly string Password;

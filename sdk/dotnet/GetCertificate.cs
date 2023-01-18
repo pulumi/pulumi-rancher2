@@ -23,46 +23,42 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetCertificate.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetCertificate.InvokeAsync(new Rancher2.GetCertificateArgs
-        ///         {
-        ///             Name = "&lt;name&gt;",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetCertificate.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetCertificate.InvokeAsync(new Rancher2.GetCertificateArgs
-        ///         {
-        ///             Name = "&lt;name&gt;",
-        ///             NamespaceId = "&lt;namespace_id&gt;",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;name&gt;",
+        ///         NamespaceId = "&lt;namespace_id&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("rancher2:index/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("rancher2:index/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 certificate.
@@ -76,50 +72,46 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetCertificate.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetCertificate.InvokeAsync(new Rancher2.GetCertificateArgs
-        ///         {
-        ///             Name = "&lt;name&gt;",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetCertificate.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetCertificate.InvokeAsync(new Rancher2.GetCertificateArgs
-        ///         {
-        ///             Name = "&lt;name&gt;",
-        ///             NamespaceId = "&lt;namespace_id&gt;",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;name&gt;",
+        ///         NamespaceId = "&lt;namespace_id&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCertificateResult> Invoke(GetCertificateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCertificateResult>("rancher2:index/getCertificate:getCertificate", args ?? new GetCertificateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCertificateResult>("rancher2:index/getCertificate:getCertificate", args ?? new GetCertificateInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCertificateArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the certificate (string)
@@ -142,9 +134,10 @@ namespace Pulumi.Rancher2
         public GetCertificateArgs()
         {
         }
+        public static new GetCertificateArgs Empty => new GetCertificateArgs();
     }
 
-    public sealed class GetCertificateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the certificate (string)
@@ -167,6 +160,7 @@ namespace Pulumi.Rancher2
         public GetCertificateInvokeArgs()
         {
         }
+        public static new GetCertificateInvokeArgs Empty => new GetCertificateInvokeArgs();
     }
 
 

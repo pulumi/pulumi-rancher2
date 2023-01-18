@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,17 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getClusterLogging({
+ * const foo = rancher2.getClusterLogging({
  *     clusterId: "<cluster_id>",
- * }));
+ * });
  * ```
  */
 export function getClusterLogging(args: GetClusterLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterLoggingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getClusterLogging:getClusterLogging", {
         "clusterId": args.clusterId,
     }, opts);
@@ -100,9 +98,22 @@ export interface GetClusterLoggingResult {
      */
     readonly syslogConfig: outputs.GetClusterLoggingSyslogConfig;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 Cluster Logging.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterLogging({
+ *     clusterId: "<cluster_id>",
+ * });
+ * ```
+ */
 export function getClusterLoggingOutput(args: GetClusterLoggingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterLoggingResult> {
-    return pulumi.output(args).apply(a => getClusterLogging(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusterLogging(a, opts))
 }
 
 /**

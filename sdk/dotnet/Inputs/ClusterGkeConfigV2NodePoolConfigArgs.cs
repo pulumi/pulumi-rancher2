@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterGkeConfigV2NodePoolConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterGkeConfigV2NodePoolConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The GKE node config disk size Gb (int)
+        /// Size of the disk attached to each node. Default `100` (int)
         /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
         /// <summary>
-        /// The GKE node config disk type (string)
+        /// Type of the disk attached to each node (string)
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// The GKE node config image type (string)
+        /// The image to use for the worker nodes (string)
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels for the Cluster (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -43,13 +43,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The GKE node config local ssd count (int)
+        /// The number of local SSD disks to be attached to the node. Default `0` (int)
         /// </summary>
         [Input("localSsdCount")]
         public Input<int>? LocalSsdCount { get; set; }
 
         /// <summary>
-        /// The GKE node config machine type (string)
+        /// Machine type for GKE cluster (string)
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _oauthScopes;
 
         /// <summary>
-        /// The GKE node config oauth scopes (List)
+        /// The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
         /// </summary>
         public InputList<string> OauthScopes
         {
@@ -67,7 +67,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Enable GKE node config preemptible. Default: `false` (bool)
+        /// Whether the nodes are created as preemptible VM instances. Default `false` (bool)
         /// </summary>
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
@@ -76,7 +76,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The GKE node config tags (List)
+        /// Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
         /// </summary>
         public InputList<string> Tags
         {
@@ -88,7 +88,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterGkeConfigV2NodePoolConfigTaintArgs>? _taints;
 
         /// <summary>
-        /// The GKE node config taints (List)
+        /// List of Kubernetes taints to be applied to each node (list)
         /// </summary>
         public InputList<Inputs.ClusterGkeConfigV2NodePoolConfigTaintArgs> Taints
         {
@@ -99,5 +99,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterGkeConfigV2NodePoolConfigArgs()
         {
         }
+        public static new ClusterGkeConfigV2NodePoolConfigArgs Empty => new ClusterGkeConfigV2NodePoolConfigArgs();
     }
 }

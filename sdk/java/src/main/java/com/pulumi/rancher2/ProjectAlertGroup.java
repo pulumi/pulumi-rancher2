@@ -23,6 +23,37 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.ProjectAlertGroup;
+ * import com.pulumi.rancher2.ProjectAlertGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new ProjectAlertGroup(&#34;foo&#34;, ProjectAlertGroupArgs.builder()        
+ *             .description(&#34;Terraform project alert group&#34;)
+ *             .groupIntervalSeconds(300)
+ *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *             .repeatIntervalSeconds(3600)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

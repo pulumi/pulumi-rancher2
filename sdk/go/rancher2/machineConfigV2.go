@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Rancher v2 Machine config v2 resource. This can be used to create Machine Config v2 for Rancher v2 and retrieve their information. This resource is supported as tech preview from Rancher v2.6.0 and above.
+// Provides a Rancher v2 Machine config v2 resource. This can be used to create Machine Config v2 for Rancher v2 and retrieve their information. This resource is available from Rancher v2.6.0 and above.
 //
 // `amazonec2`, `azure`, `digitalocean`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
 //
@@ -32,17 +32,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, &GetClusterV2Args{
+//			foo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
 //				Name: "foo-harvester",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
-//				HarvesterCredentialConfig: &CloudCredentialHarvesterCredentialConfigArgs{
-//					ClusterId:         pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
+//				HarvesterCredentialConfig: &rancher2.CloudCredentialHarvesterCredentialConfigArgs{
+//					ClusterId:         *pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
 //					ClusterType:       pulumi.String("imported"),
-//					KubeconfigContent: pulumi.String(foo_harvesterClusterV2.KubeConfig),
+//					KubeconfigContent: *pulumi.String(foo_harvesterClusterV2.KubeConfig),
 //				},
 //			})
 //			if err != nil {
@@ -50,7 +50,7 @@ import (
 //			}
 //			_, err = rancher2.NewMachineConfigV2(ctx, "foo-harvester-v2", &rancher2.MachineConfigV2Args{
 //				GenerateName: pulumi.String("foo-harvester-v2"),
-//				HarvesterConfig: &MachineConfigV2HarvesterConfigArgs{
+//				HarvesterConfig: &rancher2.MachineConfigV2HarvesterConfigArgs{
 //					VmNamespace: pulumi.String("default"),
 //					CpuCount:    pulumi.String("2"),
 //					MemorySize:  pulumi.String("4"),
@@ -334,6 +334,76 @@ func (o MachineConfigV2Output) ToMachineConfigV2Output() MachineConfigV2Output {
 
 func (o MachineConfigV2Output) ToMachineConfigV2OutputWithContext(ctx context.Context) MachineConfigV2Output {
 	return o
+}
+
+// AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
+func (o MachineConfigV2Output) Amazonec2Config() MachineConfigV2Amazonec2ConfigPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2) MachineConfigV2Amazonec2ConfigPtrOutput { return v.Amazonec2Config }).(MachineConfigV2Amazonec2ConfigPtrOutput)
+}
+
+// Annotations for Machine Config V2 object (map)
+func (o MachineConfigV2Output) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *MachineConfigV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
+func (o MachineConfigV2Output) AzureConfig() MachineConfigV2AzureConfigPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2) MachineConfigV2AzureConfigPtrOutput { return v.AzureConfig }).(MachineConfigV2AzureConfigPtrOutput)
+}
+
+// Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
+func (o MachineConfigV2Output) DigitaloceanConfig() MachineConfigV2DigitaloceanConfigPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2) MachineConfigV2DigitaloceanConfigPtrOutput { return v.DigitaloceanConfig }).(MachineConfigV2DigitaloceanConfigPtrOutput)
+}
+
+// Cluster V2 fleet namespace
+func (o MachineConfigV2Output) FleetNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2) pulumi.StringPtrOutput { return v.FleetNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\"prod-pool1\" will generate \"nc-prod-pool1-?????\" name computed at `name` attribute (string)
+func (o MachineConfigV2Output) GenerateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineConfigV2) pulumi.StringOutput { return v.GenerateName }).(pulumi.StringOutput)
+}
+
+// Harvester config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
+func (o MachineConfigV2Output) HarvesterConfig() MachineConfigV2HarvesterConfigPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2) MachineConfigV2HarvesterConfigPtrOutput { return v.HarvesterConfig }).(MachineConfigV2HarvesterConfigPtrOutput)
+}
+
+// (Computed) The machine config kind (string)
+func (o MachineConfigV2Output) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineConfigV2) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Labels for Machine Config V2 object (map)
+func (o MachineConfigV2Output) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *MachineConfigV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
+func (o MachineConfigV2Output) LinodeConfig() MachineConfigV2LinodeConfigPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2) MachineConfigV2LinodeConfigPtrOutput { return v.LinodeConfig }).(MachineConfigV2LinodeConfigPtrOutput)
+}
+
+// (Computed) The machine config name (string)
+func (o MachineConfigV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineConfigV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig` and `vsphereConfig` (list maxitems:1)
+func (o MachineConfigV2Output) OpenstackConfig() MachineConfigV2OpenstackConfigPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2) MachineConfigV2OpenstackConfigPtrOutput { return v.OpenstackConfig }).(MachineConfigV2OpenstackConfigPtrOutput)
+}
+
+// (Computed) The machine config k8s resource version (string)
+func (o MachineConfigV2Output) ResourceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineConfigV2) pulumi.StringOutput { return v.ResourceVersion }).(pulumi.StringOutput)
+}
+
+// vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig` and `openstackConfig` (list maxitems:1)
+func (o MachineConfigV2Output) VsphereConfig() MachineConfigV2VsphereConfigPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2) MachineConfigV2VsphereConfigPtrOutput { return v.VsphereConfig }).(MachineConfigV2VsphereConfigPtrOutput)
 }
 
 type MachineConfigV2ArrayOutput struct{ *pulumi.OutputState }

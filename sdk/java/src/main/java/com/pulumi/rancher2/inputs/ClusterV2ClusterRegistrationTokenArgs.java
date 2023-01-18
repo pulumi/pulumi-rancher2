@@ -18,14 +18,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     public static final ClusterV2ClusterRegistrationTokenArgs Empty = new ClusterV2ClusterRegistrationTokenArgs();
 
     /**
-     * Annotations for cluster registration token object (map)
+     * Annotations for the Cluster V2 (map)
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,Object>> annotations;
 
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster V2 (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> annotations() {
@@ -123,14 +123,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * Labels for cluster registration token object (map)
+     * Labels for the Cluster V2 (map)
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster V2 (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -153,14 +153,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * Name of cluster registration token (string)
+     * The name of the Cluster v2 (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster v2 (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -249,7 +249,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param annotations Annotations for cluster registration token object (map)
+         * @param annotations Annotations for the Cluster V2 (map)
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param annotations Annotations for cluster registration token object (map)
+         * @param annotations Annotations for the Cluster V2 (map)
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster V2 (map)
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param labels Labels for cluster registration token object (map)
+         * @param labels Labels for the Cluster V2 (map)
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster v2 (string)
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Name of cluster registration token (string)
+         * @param name The name of the Cluster v2 (string)
          * 
          * @return builder
          * 

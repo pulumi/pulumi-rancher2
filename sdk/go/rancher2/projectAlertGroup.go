@@ -281,6 +281,51 @@ func (o ProjectAlertGroupOutput) ToProjectAlertGroupOutputWithContext(ctx contex
 	return o
 }
 
+// The project alert group annotations (map)
+func (o ProjectAlertGroupOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *ProjectAlertGroup) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The project alert group description (string)
+func (o ProjectAlertGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectAlertGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The project alert group interval seconds. Default: `180` (int)
+func (o ProjectAlertGroupOutput) GroupIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectAlertGroup) pulumi.IntPtrOutput { return v.GroupIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The project alert group wait seconds. Default: `180` (int)
+func (o ProjectAlertGroupOutput) GroupWaitSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectAlertGroup) pulumi.IntPtrOutput { return v.GroupWaitSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The project alert group labels (map)
+func (o ProjectAlertGroupOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ProjectAlertGroup) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The project alert group name (string)
+func (o ProjectAlertGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectAlertGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project id where create project alert group (string)
+func (o ProjectAlertGroupOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectAlertGroup) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The project alert group recipients (list)
+func (o ProjectAlertGroupOutput) Recipients() ProjectAlertGroupRecipientArrayOutput {
+	return o.ApplyT(func(v *ProjectAlertGroup) ProjectAlertGroupRecipientArrayOutput { return v.Recipients }).(ProjectAlertGroupRecipientArrayOutput)
+}
+
+// The project alert group wait seconds. Default: `3600` (int)
+func (o ProjectAlertGroupOutput) RepeatIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectAlertGroup) pulumi.IntPtrOutput { return v.RepeatIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
 type ProjectAlertGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectAlertGroupArrayOutput) ElementType() reflect.Type {

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,18 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = pulumi.output(rancher2.getEtcdBackup({
+ * const foo = rancher2.getEtcdBackup({
  *     clusterId: "<CLUSTER_ID>",
  *     name: "foo",
- * }));
+ * });
  * ```
  */
 export function getEtcdBackup(args: GetEtcdBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetEtcdBackupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getEtcdBackup:getEtcdBackup", {
         "clusterId": args.clusterId,
         "name": args.name,
@@ -81,9 +79,23 @@ export interface GetEtcdBackupResult {
      */
     readonly namespaceId: string;
 }
-
+/**
+ * Use this data source to retrieve information about a Rancher v2 etcd backup.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getEtcdBackup({
+ *     clusterId: "<CLUSTER_ID>",
+ *     name: "foo",
+ * });
+ * ```
+ */
 export function getEtcdBackupOutput(args: GetEtcdBackupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEtcdBackupResult> {
-    return pulumi.output(args).apply(a => getEtcdBackup(a, opts))
+    return pulumi.output(args).apply((a: any) => getEtcdBackup(a, opts))
 }
 
 /**

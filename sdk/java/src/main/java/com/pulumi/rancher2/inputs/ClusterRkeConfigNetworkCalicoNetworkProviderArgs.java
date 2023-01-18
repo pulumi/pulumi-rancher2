@@ -16,14 +16,14 @@ public final class ClusterRkeConfigNetworkCalicoNetworkProviderArgs extends com.
     public static final ClusterRkeConfigNetworkCalicoNetworkProviderArgs Empty = new ClusterRkeConfigNetworkCalicoNetworkProviderArgs();
 
     /**
-     * RKE options for Calico network provider (string)
+     * RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
      * 
      */
     @Import(name="cloudProvider")
     private @Nullable Output<String> cloudProvider;
 
     /**
-     * @return RKE options for Calico network provider (string)
+     * @return RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
      * 
      */
     public Optional<Output<String>> cloudProvider() {
@@ -55,7 +55,7 @@ public final class ClusterRkeConfigNetworkCalicoNetworkProviderArgs extends com.
         }
 
         /**
-         * @param cloudProvider RKE options for Calico network provider (string)
+         * @param cloudProvider RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClusterRkeConfigNetworkCalicoNetworkProviderArgs extends com.
         }
 
         /**
-         * @param cloudProvider RKE options for Calico network provider (string)
+         * @param cloudProvider RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
          * 
          * @return builder
          * 

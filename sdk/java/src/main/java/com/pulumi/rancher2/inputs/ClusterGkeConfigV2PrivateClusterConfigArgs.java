@@ -17,14 +17,14 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
     public static final ClusterGkeConfigV2PrivateClusterConfigArgs Empty = new ClusterGkeConfigV2PrivateClusterConfigArgs();
 
     /**
-     * Enable GKE cluster private endpoint. Default: `false` (bool)
+     * Whether the master&#39;s internal IP address is used as the cluster endpoint. Default `false` (bool)
      * 
      */
     @Import(name="enablePrivateEndpoint")
     private @Nullable Output<Boolean> enablePrivateEndpoint;
 
     /**
-     * @return Enable GKE cluster private endpoint. Default: `false` (bool)
+     * @return Whether the master&#39;s internal IP address is used as the cluster endpoint. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> enablePrivateEndpoint() {
@@ -32,14 +32,14 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
     }
 
     /**
-     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * Whether nodes have internal IP address only. Default `false` (bool)
      * 
      */
     @Import(name="enablePrivateNodes")
     private @Nullable Output<Boolean> enablePrivateNodes;
 
     /**
-     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * @return Whether nodes have internal IP address only. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> enablePrivateNodes() {
@@ -47,14 +47,14 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
     }
 
     /**
-     * The GKE cluster private master ip v4 cidr block (string)
+     * The IP range in CIDR notation to use for the hosted master network (string)
      * 
      */
     @Import(name="masterIpv4CidrBlock", required=true)
     private Output<String> masterIpv4CidrBlock;
 
     /**
-     * @return The GKE cluster private master ip v4 cidr block (string)
+     * @return The IP range in CIDR notation to use for the hosted master network (string)
      * 
      */
     public Output<String> masterIpv4CidrBlock() {
@@ -88,7 +88,7 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enablePrivateEndpoint Enable GKE cluster private endpoint. Default: `false` (bool)
+         * @param enablePrivateEndpoint Whether the master&#39;s internal IP address is used as the cluster endpoint. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enablePrivateEndpoint Enable GKE cluster private endpoint. Default: `false` (bool)
+         * @param enablePrivateEndpoint Whether the master&#39;s internal IP address is used as the cluster endpoint. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enablePrivateNodes Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+         * @param enablePrivateNodes Whether nodes have internal IP address only. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enablePrivateNodes Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+         * @param enablePrivateNodes Whether nodes have internal IP address only. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param masterIpv4CidrBlock The GKE cluster private master ip v4 cidr block (string)
+         * @param masterIpv4CidrBlock The IP range in CIDR notation to use for the hosted master network (string)
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param masterIpv4CidrBlock The GKE cluster private master ip v4 cidr block (string)
+         * @param masterIpv4CidrBlock The IP range in CIDR notation to use for the hosted master network (string)
          * 
          * @return builder
          * 

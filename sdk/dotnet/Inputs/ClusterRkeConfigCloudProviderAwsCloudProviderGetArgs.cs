@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (list maxitems:1)
@@ -33,5 +33,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigCloudProviderAwsCloudProviderGetArgs()
         {
         }
+        public static new ClusterRkeConfigCloudProviderAwsCloudProviderGetArgs Empty => new ClusterRkeConfigCloudProviderAwsCloudProviderGetArgs();
     }
 }

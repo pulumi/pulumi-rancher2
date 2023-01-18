@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2ClusterRegistrationToken {
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster V2 (map)
      * 
      */
     private @Nullable Map<String,Object> annotations;
@@ -49,7 +49,7 @@ public final class ClusterV2ClusterRegistrationToken {
      */
     private @Nullable String insecureWindowsNodeCommand;
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster V2 (map)
      * 
      */
     private @Nullable Map<String,Object> labels;
@@ -59,7 +59,7 @@ public final class ClusterV2ClusterRegistrationToken {
      */
     private @Nullable String manifestUrl;
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster v2 (string)
      * 
      */
     private @Nullable String name;
@@ -81,7 +81,7 @@ public final class ClusterV2ClusterRegistrationToken {
 
     private ClusterV2ClusterRegistrationToken() {}
     /**
-     * @return Annotations for cluster registration token object (map)
+     * @return Annotations for the Cluster V2 (map)
      * 
      */
     public Map<String,Object> annotations() {
@@ -130,7 +130,7 @@ public final class ClusterV2ClusterRegistrationToken {
         return Optional.ofNullable(this.insecureWindowsNodeCommand);
     }
     /**
-     * @return Labels for cluster registration token object (map)
+     * @return Labels for the Cluster V2 (map)
      * 
      */
     public Map<String,Object> labels() {
@@ -144,7 +144,7 @@ public final class ClusterV2ClusterRegistrationToken {
         return Optional.ofNullable(this.manifestUrl);
     }
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster v2 (string)
      * 
      */
     public Optional<String> name() {

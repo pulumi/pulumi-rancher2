@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupSetting(ctx, &GetSettingArgs{
+//			_, err := rancher2.LookupSetting(ctx, &rancher2.LookupSettingArgs{
 //				Name: "server-image",
 //			}, nil)
 //			if err != nil {

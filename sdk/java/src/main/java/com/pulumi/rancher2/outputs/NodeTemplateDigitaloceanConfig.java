@@ -23,7 +23,7 @@ public final class NodeTemplateDigitaloceanConfig {
      */
     private @Nullable Boolean backups;
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     private @Nullable String image;
@@ -33,7 +33,7 @@ public final class NodeTemplateDigitaloceanConfig {
      */
     private @Nullable Boolean ipv6;
     /**
-     * @return Enable monitoring for droplet. Default `false` (bool)
+     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
      * 
      */
     private @Nullable Boolean monitoring;
@@ -43,12 +43,12 @@ public final class NodeTemplateDigitaloceanConfig {
      */
     private @Nullable Boolean privateNetworking;
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. (string)
      * 
      */
     private @Nullable String region;
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
      * 
      */
     private @Nullable String size;
@@ -63,22 +63,22 @@ public final class NodeTemplateDigitaloceanConfig {
      */
     private @Nullable String sshKeyPath;
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * @return SSH port. Default `22` (string)
      * 
      */
     private @Nullable String sshPort;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     private @Nullable String sshUser;
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
      * 
      */
     private @Nullable String tags;
     /**
-     * @return Path to file with cloud-init user-data (string)
+     * @return Path to file with cloud-init user data (string)
      * 
      */
     private @Nullable String userdata;
@@ -99,7 +99,7 @@ public final class NodeTemplateDigitaloceanConfig {
         return Optional.ofNullable(this.backups);
     }
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     public Optional<String> image() {
@@ -113,7 +113,7 @@ public final class NodeTemplateDigitaloceanConfig {
         return Optional.ofNullable(this.ipv6);
     }
     /**
-     * @return Enable monitoring for droplet. Default `false` (bool)
+     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
      * 
      */
     public Optional<Boolean> monitoring() {
@@ -127,14 +127,14 @@ public final class NodeTemplateDigitaloceanConfig {
         return Optional.ofNullable(this.privateNetworking);
     }
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. (string)
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
      * 
      */
     public Optional<String> size() {
@@ -155,28 +155,28 @@ public final class NodeTemplateDigitaloceanConfig {
         return Optional.ofNullable(this.sshKeyPath);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * @return SSH port. Default `22` (string)
      * 
      */
     public Optional<String> sshPort() {
         return Optional.ofNullable(this.sshPort);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     public Optional<String> sshUser() {
         return Optional.ofNullable(this.sshUser);
     }
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
      * 
      */
     public Optional<String> tags() {
         return Optional.ofNullable(this.tags);
     }
     /**
-     * @return Path to file with cloud-init user-data (string)
+     * @return Path to file with cloud-init user data (string)
      * 
      */
     public Optional<String> userdata() {

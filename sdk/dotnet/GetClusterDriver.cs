@@ -19,26 +19,24 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetClusterDriver.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterDriver.InvokeAsync(new Rancher2.GetClusterDriverArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterDriverResult> InvokeAsync(GetClusterDriverArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
@@ -48,30 +46,28 @@ namespace Pulumi.Rancher2
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Rancher2.GetClusterDriver.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterDriver.InvokeAsync(new Rancher2.GetClusterDriverArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
+        ///         Name = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterDriverResult> Invoke(GetClusterDriverInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClusterDriverArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterDriverArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of the cluster driver (string)
@@ -88,9 +84,10 @@ namespace Pulumi.Rancher2
         public GetClusterDriverArgs()
         {
         }
+        public static new GetClusterDriverArgs Empty => new GetClusterDriverArgs();
     }
 
-    public sealed class GetClusterDriverInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterDriverInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of the cluster driver (string)
@@ -107,6 +104,7 @@ namespace Pulumi.Rancher2
         public GetClusterDriverInvokeArgs()
         {
         }
+        public static new GetClusterDriverInvokeArgs Empty => new GetClusterDriverInvokeArgs();
     }
 
 

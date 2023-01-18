@@ -17,7 +17,7 @@ namespace Pulumi.Rancher2
     /// - Namespaced certificate: Available to just `namespace_id` in the `project_id`
     /// </summary>
     [Rancher2ResourceType("rancher2:index/certificate:Certificate")]
-    public partial class Certificate : Pulumi.CustomResource
+    public partial class Certificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations for certificate object (map)
@@ -90,6 +90,10 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "key",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -111,7 +115,7 @@ namespace Pulumi.Rancher2
         }
     }
 
-    public sealed class CertificateArgs : Pulumi.ResourceArgs
+    public sealed class CertificateArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -137,11 +141,21 @@ namespace Pulumi.Rancher2
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("key", required: true)]
+        private Input<string>? _key;
+
         /// <summary>
         /// Base64 encoded private key (string)
         /// </summary>
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("labels")]
         private InputMap<object>? _labels;
@@ -176,9 +190,10 @@ namespace Pulumi.Rancher2
         public CertificateArgs()
         {
         }
+        public static new CertificateArgs Empty => new CertificateArgs();
     }
 
-    public sealed class CertificateState : Pulumi.ResourceArgs
+    public sealed class CertificateState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -204,11 +219,21 @@ namespace Pulumi.Rancher2
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("key")]
+        private Input<string>? _key;
+
         /// <summary>
         /// Base64 encoded private key (string)
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("labels")]
         private InputMap<object>? _labels;
@@ -243,5 +268,6 @@ namespace Pulumi.Rancher2
         public CertificateState()
         {
         }
+        public static new CertificateState Empty => new CertificateState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigServicesArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigServicesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Etcd options for RKE services (list maxitems:1)
@@ -51,5 +51,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigServicesArgs()
         {
         }
+        public static new ClusterRkeConfigServicesArgs Empty => new ClusterRkeConfigServicesArgs();
     }
 }

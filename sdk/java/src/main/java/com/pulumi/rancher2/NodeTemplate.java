@@ -19,6 +19,7 @@ import com.pulumi.rancher2.outputs.NodeTemplateLinodeConfig;
 import com.pulumi.rancher2.outputs.NodeTemplateNodeTaint;
 import com.pulumi.rancher2.outputs.NodeTemplateOpennebulaConfig;
 import com.pulumi.rancher2.outputs.NodeTemplateOpenstackConfig;
+import com.pulumi.rancher2.outputs.NodeTemplateOutscaleConfig;
 import com.pulumi.rancher2.outputs.NodeTemplateVsphereConfig;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -31,11 +32,202 @@ import javax.annotation.Nullable;
 /**
  * Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
  * 
- * amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.
+ * amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, outscale, hetzner and vsphere drivers are supported for node templates.
  * 
  * **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.NodeTemplate;
+ * import com.pulumi.rancher2.NodeTemplateArgs;
+ * import com.pulumi.rancher2.inputs.NodeTemplateAmazonec2ConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new NodeTemplate(&#34;foo&#34;, NodeTemplateArgs.builder()        
+ *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
+ *                 .accessKey(&#34;AWS_ACCESS_KEY&#34;)
+ *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
+ *                 .region(&#34;&lt;REGION&gt;&#34;)
+ *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
+ *                 .securityGroups(&#34;&lt;AWS_SECURITY_GROUP&gt;&#34;)
+ *                 .subnetId(&#34;&lt;SUBNET_ID&gt;&#34;)
+ *                 .vpcId(&#34;&lt;VPC_ID&gt;&#34;)
+ *                 .zone(&#34;&lt;ZONE&gt;&#34;)
+ *                 .build())
+ *             .description(&#34;foo test&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.CloudCredential;
+ * import com.pulumi.rancher2.CloudCredentialArgs;
+ * import com.pulumi.rancher2.inputs.CloudCredentialAmazonec2CredentialConfigArgs;
+ * import com.pulumi.rancher2.NodeTemplate;
+ * import com.pulumi.rancher2.NodeTemplateArgs;
+ * import com.pulumi.rancher2.inputs.NodeTemplateAmazonec2ConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *             .description(&#34;foo test&#34;)
+ *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
+ *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
+ *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
+ *             .description(&#34;foo test&#34;)
+ *             .cloudCredentialId(fooCloudCredential.id())
+ *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
+ *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
+ *                 .region(&#34;&lt;REGION&gt;&#34;)
+ *                 .securityGroups(&#34;&lt;AWS_SECURITY_GROUP&gt;&#34;)
+ *                 .subnetId(&#34;&lt;SUBNET_ID&gt;&#34;)
+ *                 .vpcId(&#34;&lt;VPC_ID&gt;&#34;)
+ *                 .zone(&#34;&lt;ZONE&gt;&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Using the Harvester Node Driver
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Rancher2Functions;
+ * import com.pulumi.rancher2.inputs.GetClusterV2Args;
+ * import com.pulumi.rancher2.CloudCredential;
+ * import com.pulumi.rancher2.CloudCredentialArgs;
+ * import com.pulumi.rancher2.inputs.CloudCredentialHarvesterCredentialConfigArgs;
+ * import com.pulumi.rancher2.NodeTemplate;
+ * import com.pulumi.rancher2.NodeTemplateArgs;
+ * import com.pulumi.rancher2.inputs.NodeTemplateHarvesterConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var foo-harvesterClusterV2 = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
+ *             .name(&#34;foo-harvester&#34;)
+ *             .build());
+ * 
+ *         var foo_harvesterCloudCredential = new CloudCredential(&#34;foo-harvesterCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
+ *                 .clusterId(foo_harvesterClusterV2.clusterV1Id())
+ *                 .clusterType(&#34;imported&#34;)
+ *                 .kubeconfigContent(foo_harvesterClusterV2.kubeConfig())
+ *                 .build())
+ *             .build());
+ * 
+ *         var foo_harvesterNodeTemplate = new NodeTemplate(&#34;foo-harvesterNodeTemplate&#34;, NodeTemplateArgs.builder()        
+ *             .cloudCredentialId(foo_harvesterCloudCredential.id())
+ *             .engineInstallUrl(&#34;https://releases.rancher.com/install-docker/20.10.sh&#34;)
+ *             .harvesterConfig(NodeTemplateHarvesterConfigArgs.builder()
+ *                 .vmNamespace(&#34;default&#34;)
+ *                 .cpuCount(&#34;2&#34;)
+ *                 .memorySize(&#34;4&#34;)
+ *                 .diskSize(&#34;40&#34;)
+ *                 .networkName(&#34;harvester-public/vlan1&#34;)
+ *                 .imageName(&#34;harvester-public/image-57hzg&#34;)
+ *                 .sshUser(&#34;ubuntu&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Using the Hetzner Node Driver
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.NodeDriver;
+ * import com.pulumi.rancher2.NodeDriverArgs;
+ * import com.pulumi.rancher2.NodeTemplate;
+ * import com.pulumi.rancher2.NodeTemplateArgs;
+ * import com.pulumi.rancher2.inputs.NodeTemplateHetznerConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var hetznerNodeDriver = new NodeDriver(&#34;hetznerNodeDriver&#34;, NodeDriverArgs.builder()        
+ *             .active(true)
+ *             .builtin(false)
+ *             .uiUrl(&#34;https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js&#34;)
+ *             .url(&#34;https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz&#34;)
+ *             .whitelistDomains(&#34;storage.googleapis.com&#34;)
+ *             .build());
+ * 
+ *         var myHetznerNodeTemplate = new NodeTemplate(&#34;myHetznerNodeTemplate&#34;, NodeTemplateArgs.builder()        
+ *             .driverId(hetznerNodeDriver.id())
+ *             .hetznerConfig(NodeTemplateHetznerConfigArgs.builder()
+ *                 .apiToken(&#34;XXXXXXXXXX&#34;)
+ *                 .image(&#34;ubuntu-18.04&#34;)
+ *                 .serverLocation(&#34;nbg1&#34;)
+ *                 .serverType(&#34;cx11&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -399,6 +591,20 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.openstackConfig);
     }
     /**
+     * Outscale config for the Node Template (list maxitems:1)
+     * 
+     */
+    @Export(name="outscaleConfig", type=NodeTemplateOutscaleConfig.class, parameters={})
+    private Output</* @Nullable */ NodeTemplateOutscaleConfig> outscaleConfig;
+
+    /**
+     * @return Outscale config for the Node Template (list maxitems:1)
+     * 
+     */
+    public Output<Optional<NodeTemplateOutscaleConfig>> outscaleConfig() {
+        return Codegen.optional(this.outscaleConfig);
+    }
+    /**
      * Engine storage driver for the node template (bool)
      * 
      */
@@ -459,6 +665,10 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "authCertificateAuthority",
+                "authKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

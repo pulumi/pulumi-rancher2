@@ -47,7 +47,7 @@ public final class ClusterV2RkeConfig {
      */
     private @Nullable ClusterV2RkeConfigEtcdSnapshotRestore etcdSnapshotRestore;
     /**
-     * @return Use rancher2_cluster_v2.local_auth_endpoint instead
+     * @return Cluster V2 local auth endpoint (list maxitems:1)
      * 
      * @deprecated
      * Use rancher2_cluster_v2.local_auth_endpoint instead
@@ -123,7 +123,7 @@ public final class ClusterV2RkeConfig {
         return Optional.ofNullable(this.etcdSnapshotRestore);
     }
     /**
-     * @return Use rancher2_cluster_v2.local_auth_endpoint instead
+     * @return Cluster V2 local auth endpoint (list maxitems:1)
      * 
      * @deprecated
      * Use rancher2_cluster_v2.local_auth_endpoint instead

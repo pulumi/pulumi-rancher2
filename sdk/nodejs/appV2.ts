@@ -11,8 +11,8 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as rancher2 from "@pulumi/rancher2";
- * import * from "fs";
  *
  * // Create a new Rancher2 App V2 using
  * const foo = new rancher2.AppV2("foo", {

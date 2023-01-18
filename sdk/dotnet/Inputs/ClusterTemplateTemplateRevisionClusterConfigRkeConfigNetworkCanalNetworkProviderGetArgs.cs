@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("iface")]
         public Input<string>? Iface { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderGetArgs()
         {
         }
+        public static new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderGetArgs Empty => new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderGetArgs();
     }
 }

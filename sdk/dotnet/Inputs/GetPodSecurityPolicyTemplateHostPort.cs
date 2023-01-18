@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateHostPortArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateHostPortArgs : global::Pulumi.InvokeArgs
     {
         [Input("max", required: true)]
         public int Max { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public GetPodSecurityPolicyTemplateHostPortArgs()
         {
         }
+        public static new GetPodSecurityPolicyTemplateHostPortArgs Empty => new GetPodSecurityPolicyTemplateHostPortArgs();
     }
 }

@@ -28,6 +28,41 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Notifier;
+ * import com.pulumi.rancher2.NotifierArgs;
+ * import com.pulumi.rancher2.inputs.NotifierPagerdutyConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Notifier(&#34;foo&#34;, NotifierArgs.builder()        
+ *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+ *             .description(&#34;Terraform notifier acceptance test&#34;)
+ *             .pagerdutyConfig(NotifierPagerdutyConfigArgs.builder()
+ *                 .proxyUrl(&#34;http://proxy.test.io&#34;)
+ *                 .serviceKey(&#34;XXXXXXXX&#34;)
+ *                 .build())
+ *             .sendResolved(&#34;true&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

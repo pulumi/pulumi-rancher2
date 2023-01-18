@@ -13,6 +13,7 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterRkeConfigNetworkResult
     {
+        public readonly Outputs.GetClusterRkeConfigNetworkAciNetworkProviderResult? AciNetworkProvider;
         public readonly Outputs.GetClusterRkeConfigNetworkCalicoNetworkProviderResult? CalicoNetworkProvider;
         public readonly Outputs.GetClusterRkeConfigNetworkCanalNetworkProviderResult? CanalNetworkProvider;
         public readonly Outputs.GetClusterRkeConfigNetworkFlannelNetworkProviderResult? FlannelNetworkProvider;
@@ -24,6 +25,8 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private GetClusterRkeConfigNetworkResult(
+            Outputs.GetClusterRkeConfigNetworkAciNetworkProviderResult? aciNetworkProvider,
+
             Outputs.GetClusterRkeConfigNetworkCalicoNetworkProviderResult? calicoNetworkProvider,
 
             Outputs.GetClusterRkeConfigNetworkCanalNetworkProviderResult? canalNetworkProvider,
@@ -40,6 +43,7 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.GetClusterRkeConfigNetworkWeaveNetworkProviderResult? weaveNetworkProvider)
         {
+            AciNetworkProvider = aciNetworkProvider;
             CalicoNetworkProvider = calicoNetworkProvider;
             CanalNetworkProvider = canalNetworkProvider;
             FlannelNetworkProvider = flannelNetworkProvider;

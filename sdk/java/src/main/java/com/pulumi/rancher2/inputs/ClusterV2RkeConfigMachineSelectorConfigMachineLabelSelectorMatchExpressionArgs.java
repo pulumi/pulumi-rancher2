@@ -17,14 +17,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
     public static final ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs Empty = new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs();
 
     /**
-     * Machine selector label match expressions key (string)
+     * The taint key (string)
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return Machine selector label match expressions key (string)
+     * @return The taint key (string)
      * 
      */
     public Optional<Output<String>> key() {
@@ -88,7 +88,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param key Machine selector label match expressions key (string)
+         * @param key The taint key (string)
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param key Machine selector label match expressions key (string)
+         * @param key The taint key (string)
          * 
          * @return builder
          * 

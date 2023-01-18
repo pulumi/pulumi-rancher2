@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigAuthorization
     {
         /// <summary>
-        /// The AKS node group mode. Default: `System` (string)
+        /// RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// RKE options for network (map)
+        /// RKE options for authorization (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Options;
 

@@ -29,19 +29,19 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
 //				ClusterId: pulumi.String("<CLUSTER_ID>"),
-//				ContainerResourceLimit: &ProjectContainerResourceLimitArgs{
+//				ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
 //					LimitsCpu:      pulumi.String("20m"),
 //					LimitsMemory:   pulumi.String("20Mi"),
 //					RequestsCpu:    pulumi.String("1m"),
 //					RequestsMemory: pulumi.String("1Mi"),
 //				},
-//				ResourceQuota: &ProjectResourceQuotaArgs{
-//					NamespaceDefaultLimit: &ProjectResourceQuotaNamespaceDefaultLimitArgs{
+//				ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
+//					NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
 //						LimitsCpu:       pulumi.String("2000m"),
 //						LimitsMemory:    pulumi.String("500Mi"),
 //						RequestsStorage: pulumi.String("1Gi"),
 //					},
-//					ProjectLimit: &ProjectResourceQuotaProjectLimitArgs{
+//					ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
 //						LimitsCpu:       pulumi.String("2000m"),
 //						LimitsMemory:    pulumi.String("2000Mi"),
 //						RequestsStorage: pulumi.String("2Gi"),
@@ -71,14 +71,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
 //				ClusterId: pulumi.String("<CLUSTER_ID>"),
-//				ContainerResourceLimit: &ProjectContainerResourceLimitArgs{
+//				ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
 //					LimitsCpu:      pulumi.String("20m"),
 //					LimitsMemory:   pulumi.String("20Mi"),
 //					RequestsCpu:    pulumi.String("1m"),
 //					RequestsMemory: pulumi.String("1Mi"),
 //				},
 //				EnableProjectMonitoring: pulumi.Bool(true),
-//				ProjectMonitoringInput: &ProjectProjectMonitoringInputArgs{
+//				ProjectMonitoringInput: &rancher2.ProjectProjectMonitoringInputArgs{
 //					Answers: pulumi.AnyMap{
 //						"exporter-kubelets.https":                   pulumi.Any(true),
 //						"exporter-node.enabled":                     pulumi.Any(true),
@@ -100,13 +100,13 @@ import (
 //						"prometheus.retention":                      pulumi.Any("12h"),
 //					},
 //				},
-//				ResourceQuota: &ProjectResourceQuotaArgs{
-//					NamespaceDefaultLimit: &ProjectResourceQuotaNamespaceDefaultLimitArgs{
+//				ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
+//					NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
 //						LimitsCpu:       pulumi.String("2000m"),
 //						LimitsMemory:    pulumi.String("500Mi"),
 //						RequestsStorage: pulumi.String("1Gi"),
 //					},
-//					ProjectLimit: &ProjectResourceQuotaProjectLimitArgs{
+//					ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
 //						LimitsCpu:       pulumi.String("2000m"),
 //						LimitsMemory:    pulumi.String("2000Mi"),
 //						RequestsStorage: pulumi.String("2Gi"),
@@ -379,6 +379,61 @@ func (o ProjectOutput) ToProjectOutput() ProjectOutput {
 
 func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
 	return o
+}
+
+// Annotations for Node Pool object (map)
+func (o ProjectOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Project) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The cluster id where create project (string)
+func (o ProjectOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Default containers resource limits on project (List maxitem:1)
+func (o ProjectOutput) ContainerResourceLimit() ProjectContainerResourceLimitPtrOutput {
+	return o.ApplyT(func(v *Project) ProjectContainerResourceLimitPtrOutput { return v.ContainerResourceLimit }).(ProjectContainerResourceLimitPtrOutput)
+}
+
+// A project description (string)
+func (o ProjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enable built-in project monitoring. Default `false` (bool)
+func (o ProjectOutput) EnableProjectMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.EnableProjectMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+// Labels for Node Pool object (map)
+func (o ProjectOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Project) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the project (string)
+func (o ProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Default Pod Security Policy ID for the project (string)
+func (o ProjectOutput) PodSecurityPolicyTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.PodSecurityPolicyTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
+func (o ProjectOutput) ProjectMonitoringInput() ProjectProjectMonitoringInputPtrOutput {
+	return o.ApplyT(func(v *Project) ProjectProjectMonitoringInputPtrOutput { return v.ProjectMonitoringInput }).(ProjectProjectMonitoringInputPtrOutput)
+}
+
+// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+func (o ProjectOutput) ResourceQuota() ProjectResourceQuotaPtrOutput {
+	return o.ApplyT(func(v *Project) ProjectResourceQuotaPtrOutput { return v.ResourceQuota }).(ProjectResourceQuotaPtrOutput)
+}
+
+// Wait for cluster becomes active. Default `false` (bool)
+func (o ProjectOutput) WaitForCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.WaitForCluster }).(pulumi.BoolPtrOutput)
 }
 
 type ProjectArrayOutput struct{ *pulumi.OutputState }

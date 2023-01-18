@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigEtcdSnapshotRestore
     {
         /// <summary>
-        /// ETCD snapshot desired generation (int)
+        /// Desired certificate rotation generation (int)
         /// </summary>
         public readonly int Generation;
         /// <summary>
-        /// Name of cluster registration token (string)
+        /// The name of the Cluster v2 (string)
         /// </summary>
         public readonly string Name;
         /// <summary>

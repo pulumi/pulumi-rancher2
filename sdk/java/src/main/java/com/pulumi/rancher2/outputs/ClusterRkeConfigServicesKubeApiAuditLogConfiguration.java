@@ -28,12 +28,12 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
      */
     private @Nullable Integer maxBackup;
     /**
-     * @return The EKS node group maximum size. Default `2` (int)
+     * @return Audit log max size. Default: `100` (int)
      * 
      */
     private @Nullable Integer maxSize;
     /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * @return Path for etcd service (string)
      * 
      */
     private @Nullable String path;
@@ -66,14 +66,14 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
         return Optional.ofNullable(this.maxBackup);
     }
     /**
-     * @return The EKS node group maximum size. Default `2` (int)
+     * @return Audit log max size. Default: `100` (int)
      * 
      */
     public Optional<Integer> maxSize() {
         return Optional.ofNullable(this.maxSize);
     }
     /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * @return Path for etcd service (string)
      * 
      */
     public Optional<String> path() {

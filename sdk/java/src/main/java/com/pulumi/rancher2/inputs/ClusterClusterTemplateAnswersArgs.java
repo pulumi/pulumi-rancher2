@@ -18,14 +18,14 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
     public static final ClusterClusterTemplateAnswersArgs Empty = new ClusterClusterTemplateAnswersArgs();
 
     /**
-     * Cluster ID (string)
+     * Cluster ID to apply answer (string)
      * 
      */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return Cluster ID (string)
+     * @return Cluster ID to apply answer (string)
      * 
      */
     public Optional<Output<String>> clusterId() {
@@ -33,14 +33,14 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
     }
 
     /**
-     * Project ID to apply answer (string)
+     * Project ID for GKE cluster (string)
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project ID to apply answer (string)
+     * @return Project ID for GKE cluster (string)
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -89,7 +89,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
         }
 
         /**
-         * @param clusterId Cluster ID (string)
+         * @param clusterId Cluster ID to apply answer (string)
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
         }
 
         /**
-         * @param clusterId Cluster ID (string)
+         * @param clusterId Cluster ID to apply answer (string)
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
         }
 
         /**
-         * @param projectId Project ID to apply answer (string)
+         * @param projectId Project ID for GKE cluster (string)
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
         }
 
         /**
-         * @param projectId Project ID to apply answer (string)
+         * @param projectId Project ID for GKE cluster (string)
          * 
          * @return builder
          * 

@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class ClusterRkeConfigNetworkCanalNetworkProviderArgs : Pulumi.ResourceArgs
+    public sealed class ClusterRkeConfigNetworkCanalNetworkProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Iface config Flannel network provider (string)
+        /// Iface config Canal network provider (string)
         /// </summary>
         [Input("iface")]
         public Input<string>? Iface { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public ClusterRkeConfigNetworkCanalNetworkProviderArgs()
         {
         }
+        public static new ClusterRkeConfigNetworkCanalNetworkProviderArgs Empty => new ClusterRkeConfigNetworkCanalNetworkProviderArgs();
     }
 }

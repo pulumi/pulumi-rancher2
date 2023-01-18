@@ -16,14 +16,14 @@ public final class NotifierWebhookConfigArgs extends com.pulumi.resources.Resour
     public static final NotifierWebhookConfigArgs Empty = new NotifierWebhookConfigArgs();
 
     /**
-     * Wechat proxy url (string)
+     * Webhook proxy url (string)
      * 
      */
     @Import(name="proxyUrl")
     private @Nullable Output<String> proxyUrl;
 
     /**
-     * @return Wechat proxy url (string)
+     * @return Webhook proxy url (string)
      * 
      */
     public Optional<Output<String>> proxyUrl() {
@@ -71,7 +71,7 @@ public final class NotifierWebhookConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Webhook proxy url (string)
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class NotifierWebhookConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Webhook proxy url (string)
          * 
          * @return builder
          * 

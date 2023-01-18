@@ -17,14 +17,14 @@ public final class ClusterRkeConfigDnsTolerationArgs extends com.pulumi.resource
     public static final ClusterRkeConfigDnsTolerationArgs Empty = new ClusterRkeConfigDnsTolerationArgs();
 
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
     /**
-     * @return The GKE taint effect (string)
+     * @return The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      * 
      */
     public Optional<Output<String>> effect() {
@@ -32,14 +32,14 @@ public final class ClusterRkeConfigDnsTolerationArgs extends com.pulumi.resource
     }
 
     /**
-     * The GKE taint key (string)
+     * The toleration key (string)
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The GKE taint key (string)
+     * @return The toleration key (string)
      * 
      */
     public Output<String> key() {
@@ -77,14 +77,14 @@ public final class ClusterRkeConfigDnsTolerationArgs extends com.pulumi.resource
     }
 
     /**
-     * The GKE taint value (string)
+     * Rancher agent env var value (string)
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The GKE taint value (string)
+     * @return Rancher agent env var value (string)
      * 
      */
     public Optional<Output<String>> value() {
@@ -120,7 +120,7 @@ public final class ClusterRkeConfigDnsTolerationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param effect The GKE taint effect (string)
+         * @param effect The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ClusterRkeConfigDnsTolerationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param effect The GKE taint effect (string)
+         * @param effect The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterRkeConfigDnsTolerationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param key The GKE taint key (string)
+         * @param key The toleration key (string)
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ClusterRkeConfigDnsTolerationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param key The GKE taint key (string)
+         * @param key The toleration key (string)
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class ClusterRkeConfigDnsTolerationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param value The GKE taint value (string)
+         * @param value Rancher agent env var value (string)
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ClusterRkeConfigDnsTolerationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param value The GKE taint value (string)
+         * @param value Rancher agent env var value (string)
          * 
          * @return builder
          * 

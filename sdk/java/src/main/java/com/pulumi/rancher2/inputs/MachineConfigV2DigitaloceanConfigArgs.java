@@ -47,14 +47,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
      * 
      */
     public Optional<Output<String>> image() {
@@ -77,14 +77,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Enable monitoring for droplet. Default `false` (bool)
+     * Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
      * 
      */
     @Import(name="monitoring")
     private @Nullable Output<Boolean> monitoring;
 
     /**
-     * @return Enable monitoring for droplet. Default `false` (bool)
+     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> monitoring() {
@@ -107,14 +107,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * OpenStack region name (string)
+     * AWS region. (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return OpenStack region name (string)
+     * @return AWS region. (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -122,14 +122,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * Size for Azure Virtual Machine. Default `Standard_A2` (string)
      * 
      */
     @Import(name="size")
     private @Nullable Output<String> size;
 
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
      * 
      */
     public Optional<Output<String>> size() {
@@ -137,14 +137,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * SSH private key contents (string)
+     * SSH Key for Instance (string)
      * 
      */
     @Import(name="sshKeyContents")
     private @Nullable Output<String> sshKeyContents;
 
     /**
-     * @return SSH private key contents (string)
+     * @return SSH Key for Instance (string)
      * 
      */
     public Optional<Output<String>> sshKeyContents() {
@@ -167,14 +167,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * SSH port. Default `22` (string)
      * 
      */
     @Import(name="sshPort")
     private @Nullable Output<String> sshPort;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * @return SSH port. Default `22` (string)
      * 
      */
     public Optional<Output<String>> sshPort() {
@@ -182,14 +182,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * Set the name of the ssh user (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Set the name of the ssh user (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -197,14 +197,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * vSphere tags id e.g. `urn:xxx` (list)
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<String> tags;
 
     /**
-     * @return vSphere tags id e.g. `urn:xxx` (list)
+     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
      * 
      */
     public Optional<Output<String>> tags() {
@@ -212,14 +212,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Path to file with cloud-init user-data (string)
+     * Path to file with cloud-init user data (string)
      * 
      */
     @Import(name="userdata")
     private @Nullable Output<String> userdata;
 
     /**
-     * @return Path to file with cloud-init user-data (string)
+     * @return Path to file with cloud-init user data (string)
      * 
      */
     public Optional<Output<String>> userdata() {
@@ -306,7 +306,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
+         * @param monitoring Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
+         * @param monitoring Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region AWS region. (string)
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region AWS region. (string)
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param size Digital Ocean size. Default `s-1vcpu-1gb` (string)
+         * @param size Size for Azure Virtual Machine. Default `Standard_A2` (string)
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param size Digital Ocean size. Default `s-1vcpu-1gb` (string)
+         * @param size Size for Azure Virtual Machine. Default `Standard_A2` (string)
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshKeyContents SSH private key contents (string)
+         * @param sshKeyContents SSH Key for Instance (string)
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshKeyContents SSH private key contents (string)
+         * @param sshKeyContents SSH Key for Instance (string)
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22` (string)
+         * @param sshPort SSH port. Default `22` (string)
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22` (string)
+         * @param sshPort SSH port. Default `22` (string)
          * 
          * @return builder
          * 
@@ -495,7 +495,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * @param sshUser Set the name of the ssh user (string)
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * @param sshUser Set the name of the ssh user (string)
          * 
          * @return builder
          * 
@@ -516,7 +516,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx` (list)
+         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx` (list)
+         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param userdata Path to file with cloud-init user-data (string)
+         * @param userdata Path to file with cloud-init user data (string)
          * 
          * @return builder
          * 
@@ -548,7 +548,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param userdata Path to file with cloud-init user-data (string)
+         * @param userdata Path to file with cloud-init user data (string)
          * 
          * @return builder
          * 

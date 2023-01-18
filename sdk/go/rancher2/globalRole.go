@@ -29,8 +29,8 @@ import (
 //			_, err := rancher2.NewGlobalRole(ctx, "foo", &rancher2.GlobalRoleArgs{
 //				Description:    pulumi.String("Terraform global role acceptance test"),
 //				NewUserDefault: pulumi.Bool(true),
-//				Rules: GlobalRoleRuleArray{
-//					&GlobalRoleRuleArgs{
+//				Rules: rancher2.GlobalRoleRuleArray{
+//					&rancher2.GlobalRoleRuleArgs{
 //						ApiGroups: pulumi.StringArray{
 //							pulumi.String("*"),
 //						},
@@ -262,6 +262,41 @@ func (o GlobalRoleOutput) ToGlobalRoleOutput() GlobalRoleOutput {
 
 func (o GlobalRoleOutput) ToGlobalRoleOutputWithContext(ctx context.Context) GlobalRoleOutput {
 	return o
+}
+
+// Annotations for global role object (map)
+func (o GlobalRoleOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalRole) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// (Computed) Builtin global role (bool)
+func (o GlobalRoleOutput) Builtin() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GlobalRole) pulumi.BoolOutput { return v.Builtin }).(pulumi.BoolOutput)
+}
+
+// Global role description (string)
+func (o GlobalRoleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalRole) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Labels for global role object (map)
+func (o GlobalRoleOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalRole) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Global role name (string)
+func (o GlobalRoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether or not this role should be added to new users. Default `false` (bool)
+func (o GlobalRoleOutput) NewUserDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GlobalRole) pulumi.BoolPtrOutput { return v.NewUserDefault }).(pulumi.BoolPtrOutput)
+}
+
+// Global role policy rules (list)
+func (o GlobalRoleOutput) Rules() GlobalRoleRuleArrayOutput {
+	return o.ApplyT(func(v *GlobalRole) GlobalRoleRuleArrayOutput { return v.Rules }).(GlobalRoleRuleArrayOutput)
 }
 
 type GlobalRoleArrayOutput struct{ *pulumi.OutputState }

@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
-//				ClusterMonitoringInput: &ClusterClusterMonitoringInputArgs{
+//				ClusterMonitoringInput: &rancher2.ClusterClusterMonitoringInputArgs{
 //					Answers: pulumi.AnyMap{
 //						"exporter-kubelets.https":                   pulumi.Any(true),
 //						"exporter-node.enabled":                     pulumi.Any(true),
@@ -57,8 +57,8 @@ import (
 //				},
 //				Description:             pulumi.String("Foo rancher2 custom cluster"),
 //				EnableClusterMonitoring: pulumi.Bool(true),
-//				RkeConfig: &ClusterRkeConfigArgs{
-//					Network: &ClusterRkeConfigNetworkArgs{
+//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
+//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
 //						Plugin: pulumi.String("canal"),
 //					},
 //				},
@@ -87,13 +87,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewCluster(ctx, "foo-customCluster", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
-//				RkeConfig: &ClusterRkeConfigArgs{
-//					Network: &ClusterRkeConfigNetworkArgs{
+//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
+//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
 //						Plugin: pulumi.String("canal"),
 //					},
 //				},
 //				EnableClusterMonitoring: pulumi.Bool(true),
-//				ClusterMonitoringInput: &ClusterClusterMonitoringInputArgs{
+//				ClusterMonitoringInput: &rancher2.ClusterClusterMonitoringInputArgs{
 //					Answers: pulumi.AnyMap{
 //						"exporter-kubelets.https":                   pulumi.Any(true),
 //						"exporter-node.enabled":                     pulumi.Any(true),
@@ -207,8 +207,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
-//				RkeConfig: &ClusterRkeConfigArgs{
-//					Network: &ClusterRkeConfigNetworkArgs{
+//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
+//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
 //						Plugin: pulumi.String("canal"),
 //					},
 //				},
@@ -218,7 +218,7 @@ import (
 //			}
 //			fooNodeTemplate, err := rancher2.NewNodeTemplate(ctx, "fooNodeTemplate", &rancher2.NodeTemplateArgs{
 //				Description: pulumi.String("foo test"),
-//				Amazonec2Config: &NodeTemplateAmazonec2ConfigArgs{
+//				Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
 //					AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
 //					SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
 //					Ami:       pulumi.String("<AMI_ID>"),
@@ -266,22 +266,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			fooClusterTemplate, err := rancher2.NewClusterTemplate(ctx, "fooClusterTemplate", &rancher2.ClusterTemplateArgs{
-//				Members: ClusterTemplateMemberArray{
-//					&ClusterTemplateMemberArgs{
+//				Members: rancher2.ClusterTemplateMemberArray{
+//					&rancher2.ClusterTemplateMemberArgs{
 //						AccessType:      pulumi.String("owner"),
 //						UserPrincipalId: pulumi.String("local://user-XXXXX"),
 //					},
 //				},
-//				TemplateRevisions: ClusterTemplateTemplateRevisionArray{
-//					&ClusterTemplateTemplateRevisionArgs{
+//				TemplateRevisions: rancher2.ClusterTemplateTemplateRevisionArray{
+//					&rancher2.ClusterTemplateTemplateRevisionArgs{
 //						Name: pulumi.String("V1"),
-//						ClusterConfig: &ClusterTemplateTemplateRevisionClusterConfigArgs{
-//							RkeConfig: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
-//								Network: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
+//						ClusterConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs{
+//							RkeConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
+//								Network: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
 //									Plugin: pulumi.String("canal"),
 //								},
-//								Services: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{
-//									Etcd: &ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{
+//								Services: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{
+//									Etcd: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{
 //										Creation:  pulumi.String("6h"),
 //										Retention: pulumi.String("24h"),
 //									},
@@ -298,9 +298,9 @@ import (
 //			}
 //			_, err = rancher2.NewCluster(ctx, "fooCluster", &rancher2.ClusterArgs{
 //				ClusterTemplateId: fooClusterTemplate.ID(),
-//				ClusterTemplateRevisionId: fooClusterTemplate.TemplateRevisions.ApplyT(func(templateRevisions []ClusterTemplateTemplateRevision) (string, error) {
-//					return templateRevisions[0].Id, nil
-//				}).(pulumi.StringOutput),
+//				ClusterTemplateRevisionId: fooClusterTemplate.TemplateRevisions.ApplyT(func(templateRevisions []rancher2.ClusterTemplateTemplateRevision) (*string, error) {
+//					return &templateRevisions[0].Id, nil
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -328,32 +328,48 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Terraform custom cluster"),
-//				RkeConfig: &ClusterRkeConfigArgs{
-//					Network: &ClusterRkeConfigNetworkArgs{
+//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
+//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
 //						Plugin: pulumi.String("canal"),
 //					},
-//					Services: &ClusterRkeConfigServicesArgs{
-//						Etcd: &ClusterRkeConfigServicesEtcdArgs{
+//					Services: &rancher2.ClusterRkeConfigServicesArgs{
+//						Etcd: &rancher2.ClusterRkeConfigServicesEtcdArgs{
 //							Creation:  pulumi.String("6h"),
 //							Retention: pulumi.String("24h"),
 //						},
-//						KubeApi: &ClusterRkeConfigServicesKubeApiArgs{
-//							AuditLog: &ClusterRkeConfigServicesKubeApiAuditLogArgs{
-//								Configuration: &ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{
+//						KubeApi: &rancher2.ClusterRkeConfigServicesKubeApiArgs{
+//							AuditLog: &rancher2.ClusterRkeConfigServicesKubeApiAuditLogArgs{
+//								Configuration: &rancher2.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{
 //									Format:    pulumi.String("json"),
 //									MaxAge:    pulumi.Int(5),
 //									MaxBackup: pulumi.Int(5),
 //									MaxSize:   pulumi.Int(100),
 //									Path:      pulumi.String("-"),
-//									Policy:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "apiVersion: audit.k8s.io/v1\n", "kind: Policy\n", "metadata:\n", "  creationTimestamp: null\n", "omitStages:\n", "- RequestReceived\n", "rules:\n", "- level: RequestResponse\n", "  resources:\n", "  - resources:\n", "    - pods\n", "\n")),
+//									Policy: pulumi.String(fmt.Sprintf(`apiVersion: audit.k8s.io/v1
+//
+// kind: Policy
+// metadata:
+//
+//	creationTimestamp: null
+//
+// omitStages:
+// - RequestReceived
+// rules:
+//   - level: RequestResponse
+//     resources:
+//   - resources:
+//   - pods
+//
+// `)),
+//
 //								},
 //								Enabled: pulumi.Bool(true),
 //							},
 //						},
 //					},
-//					UpgradeStrategy: &ClusterRkeConfigUpgradeStrategyArgs{
+//					UpgradeStrategy: &rancher2.ClusterRkeConfigUpgradeStrategyArgs{
 //						Drain:                pulumi.Bool(true),
-//						MaxUnavailableWorker: pulumi.String(fmt.Sprintf("%v%v", "20", "%")),
+//						MaxUnavailableWorker: pulumi.String(fmt.Sprintf("20%v", "%")),
 //					},
 //				},
 //			})
@@ -381,26 +397,26 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Terraform custom cluster"),
-//				RkeConfig: &ClusterRkeConfigArgs{
-//					Network: &ClusterRkeConfigNetworkArgs{
+//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
+//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
 //						Plugin: pulumi.String("canal"),
 //					},
-//					Services: &ClusterRkeConfigServicesArgs{
-//						Etcd: &ClusterRkeConfigServicesEtcdArgs{
+//					Services: &rancher2.ClusterRkeConfigServicesArgs{
+//						Etcd: &rancher2.ClusterRkeConfigServicesEtcdArgs{
 //							Creation:  pulumi.String("6h"),
 //							Retention: pulumi.String("24h"),
 //						},
 //					},
 //				},
-//				ScheduledClusterScan: &ClusterScheduledClusterScanArgs{
+//				ScheduledClusterScan: &rancher2.ClusterScheduledClusterScanArgs{
 //					Enabled: pulumi.Bool(true),
-//					ScanConfig: &ClusterScheduledClusterScanScanConfigArgs{
-//						CisScanConfig: &ClusterScheduledClusterScanScanConfigCisScanConfigArgs{
+//					ScanConfig: &rancher2.ClusterScheduledClusterScanScanConfigArgs{
+//						CisScanConfig: &rancher2.ClusterScheduledClusterScanScanConfigCisScanConfigArgs{
 //							DebugMaster: pulumi.Bool(true),
 //							DebugWorker: pulumi.Bool(true),
 //						},
 //					},
-//					ScheduleConfig: &ClusterScheduledClusterScanScheduleConfigArgs{
+//					ScheduleConfig: &rancher2.ClusterScheduledClusterScanScheduleConfigArgs{
 //						CronSchedule: pulumi.String("30 * * * *"),
 //						Retention:    pulumi.Int(5),
 //					},
@@ -430,7 +446,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			fooCloudCredential, err := rancher2.NewCloudCredential(ctx, "fooCloudCredential", &rancher2.CloudCredentialArgs{
 //				Description: pulumi.String("foo test"),
-//				Amazonec2CredentialConfig: &CloudCredentialAmazonec2CredentialConfigArgs{
+//				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
 //					AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
 //					SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
 //				},
@@ -440,7 +456,7 @@ import (
 //			}
 //			_, err = rancher2.NewCluster(ctx, "fooCluster", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Terraform EKS cluster"),
-//				EksConfigV2: &ClusterEksConfigV2Args{
+//				EksConfigV2: &rancher2.ClusterEksConfigV2Args{
 //					CloudCredentialId: fooCloudCredential.ID(),
 //					Name:              pulumi.String("<CLUSTER_NAME>"),
 //					Region:            pulumi.String("<EKS_REGION>"),
@@ -471,7 +487,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			fooCloudCredential, err := rancher2.NewCloudCredential(ctx, "fooCloudCredential", &rancher2.CloudCredentialArgs{
 //				Description: pulumi.String("foo test"),
-//				Amazonec2CredentialConfig: &CloudCredentialAmazonec2CredentialConfigArgs{
+//				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
 //					AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
 //					SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
 //				},
@@ -481,7 +497,7 @@ import (
 //			}
 //			_, err = rancher2.NewCluster(ctx, "fooCluster", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Terraform EKS cluster"),
-//				EksConfigV2: &ClusterEksConfigV2Args{
+//				EksConfigV2: &rancher2.ClusterEksConfigV2Args{
 //					CloudCredentialId: fooCloudCredential.ID(),
 //					Region:            pulumi.String("<EKS_REGION>"),
 //					KubernetesVersion: pulumi.String("1.17"),
@@ -489,14 +505,14 @@ import (
 //						pulumi.String("audit"),
 //						pulumi.String("api"),
 //					},
-//					NodeGroups: ClusterEksConfigV2NodeGroupArray{
-//						&ClusterEksConfigV2NodeGroupArgs{
+//					NodeGroups: rancher2.ClusterEksConfigV2NodeGroupArray{
+//						&rancher2.ClusterEksConfigV2NodeGroupArgs{
 //							Name:         pulumi.String("node_group1"),
 //							InstanceType: pulumi.String("t3.medium"),
 //							DesiredSize:  pulumi.Int(3),
 //							MaxSize:      pulumi.Int(5),
 //						},
-//						&ClusterEksConfigV2NodeGroupArgs{
+//						&rancher2.ClusterEksConfigV2NodeGroupArgs{
 //							Name:         pulumi.String("node_group2"),
 //							InstanceType: pulumi.String("m5.xlarge"),
 //							DesiredSize:  pulumi.Int(2),
@@ -531,7 +547,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			fooCloudCredential, err := rancher2.NewCloudCredential(ctx, "fooCloudCredential", &rancher2.CloudCredentialArgs{
 //				Description: pulumi.String("foo test"),
-//				Amazonec2CredentialConfig: &CloudCredentialAmazonec2CredentialConfigArgs{
+//				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
 //					AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
 //					SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
 //				},
@@ -541,7 +557,7 @@ import (
 //			}
 //			_, err = rancher2.NewCluster(ctx, "fooCluster", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Terraform EKS cluster"),
-//				EksConfigV2: &ClusterEksConfigV2Args{
+//				EksConfigV2: &rancher2.ClusterEksConfigV2Args{
 //					CloudCredentialId: fooCloudCredential.ID(),
 //					Region:            pulumi.String("<EKS_REGION>"),
 //					KubernetesVersion: pulumi.String("1.17"),
@@ -549,13 +565,13 @@ import (
 //						pulumi.String("audit"),
 //						pulumi.String("api"),
 //					},
-//					NodeGroups: ClusterEksConfigV2NodeGroupArray{
-//						&ClusterEksConfigV2NodeGroupArgs{
+//					NodeGroups: rancher2.ClusterEksConfigV2NodeGroupArray{
+//						&rancher2.ClusterEksConfigV2NodeGroupArgs{
 //							DesiredSize: pulumi.Int(3),
 //							MaxSize:     pulumi.Int(5),
 //							Name:        pulumi.String("node_group1"),
-//							LaunchTemplates: ClusterEksConfigV2NodeGroupLaunchTemplateArray{
-//								&ClusterEksConfigV2NodeGroupLaunchTemplateArgs{
+//							LaunchTemplates: rancher2.ClusterEksConfigV2NodeGroupLaunchTemplateArray{
+//								&rancher2.ClusterEksConfigV2NodeGroupLaunchTemplateArgs{
 //									Id:      pulumi.String("<EC2_LAUNCH_TEMPLATE_ID>"),
 //									Version: pulumi.Int(1),
 //								},
@@ -574,7 +590,7 @@ import (
 //	}
 //
 // ```
-// ### Creating AKS cluster from Rancher v2, using `aksConfigV2`. For Rancher v2.6.0 or above (Tech preview)
+// ### Creating AKS cluster from Rancher v2, using `aksConfigV2`. For Rancher v2.6.0 or above.
 //
 // ```go
 // package main
@@ -589,7 +605,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewCloudCredential(ctx, "foo-aks", &rancher2.CloudCredentialArgs{
-//				AzureCredentialConfig: &CloudCredentialAzureCredentialConfigArgs{
+//				AzureCredentialConfig: &rancher2.CloudCredentialAzureCredentialConfigArgs{
 //					ClientId:       pulumi.String("<CLIENT_ID>"),
 //					ClientSecret:   pulumi.String("<CLIENT_SECRET>"),
 //					SubscriptionId: pulumi.String("<SUBSCRIPTION_ID>"),
@@ -600,15 +616,15 @@ import (
 //			}
 //			_, err = rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Terraform AKS cluster"),
-//				AksConfigV2: &ClusterAksConfigV2Args{
+//				AksConfigV2: &rancher2.ClusterAksConfigV2Args{
 //					CloudCredentialId: foo_aks.ID(),
 //					ResourceGroup:     pulumi.String("<RESOURCE_GROUP>"),
 //					ResourceLocation:  pulumi.String("<RESOURCE_LOCATION>"),
 //					DnsPrefix:         pulumi.String("<DNS_PREFIX>"),
 //					KubernetesVersion: pulumi.String("1.21.2"),
 //					NetworkPlugin:     pulumi.String("<NETWORK_PLUGIN>"),
-//					NodePools: ClusterAksConfigV2NodePoolArray{
-//						&ClusterAksConfigV2NodePoolArgs{
+//					NodePools: rancher2.ClusterAksConfigV2NodePoolArray{
+//						&rancher2.ClusterAksConfigV2NodePoolArgs{
 //							AvailabilityZones: pulumi.StringArray{
 //								pulumi.String("1"),
 //								pulumi.String("2"),
@@ -650,7 +666,7 @@ type Cluster struct {
 	AksConfig ClusterAksConfigPtrOutput `pulumi:"aksConfig"`
 	// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfigV2 ClusterAksConfigV2PtrOutput `pulumi:"aksConfigV2"`
-	// Annotations for cluster registration token object (map)
+	// Annotations for the Cluster (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
 	// TLS CA certificate for etcd service (string)
 	CaCert pulumi.StringOutput `pulumi:"caCert"`
@@ -672,7 +688,7 @@ type Cluster struct {
 	DefaultPodSecurityPolicyTemplateId pulumi.StringOutput `pulumi:"defaultPodSecurityPolicyTemplateId"`
 	// (Computed) Default project ID for the cluster (string)
 	DefaultProjectId pulumi.StringOutput `pulumi:"defaultProjectId"`
-	// An optional description of this cluster (string)
+	// The description for Cluster (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Desired agent image. Just for Rancher v2.3.x and above (string)
 	DesiredAgentImage pulumi.StringOutput `pulumi:"desiredAgentImage"`
@@ -708,9 +724,9 @@ type Cluster struct {
 	K3sConfig ClusterK3sConfigOutput `pulumi:"k3sConfig"`
 	// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
 	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
-	// Labels for cluster registration token object (map)
+	// Labels for the Cluster (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// Name of cluster registration token (string)
+	// The name of the Cluster (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig ClusterOkeConfigPtrOutput `pulumi:"okeConfig"`
@@ -733,6 +749,11 @@ func NewCluster(ctx *pulumi.Context,
 		args = &ClusterArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"caCert",
+		"kubeConfig",
+	})
+	opts = append(opts, secrets)
 	var resource Cluster
 	err := ctx.RegisterResource("rancher2:index/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {
@@ -761,7 +782,7 @@ type clusterState struct {
 	AksConfig *ClusterAksConfig `pulumi:"aksConfig"`
 	// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfigV2 *ClusterAksConfigV2 `pulumi:"aksConfigV2"`
-	// Annotations for cluster registration token object (map)
+	// Annotations for the Cluster (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// TLS CA certificate for etcd service (string)
 	CaCert *string `pulumi:"caCert"`
@@ -783,7 +804,7 @@ type clusterState struct {
 	DefaultPodSecurityPolicyTemplateId *string `pulumi:"defaultPodSecurityPolicyTemplateId"`
 	// (Computed) Default project ID for the cluster (string)
 	DefaultProjectId *string `pulumi:"defaultProjectId"`
-	// An optional description of this cluster (string)
+	// The description for Cluster (string)
 	Description *string `pulumi:"description"`
 	// Desired agent image. Just for Rancher v2.3.x and above (string)
 	DesiredAgentImage *string `pulumi:"desiredAgentImage"`
@@ -819,9 +840,9 @@ type clusterState struct {
 	K3sConfig *ClusterK3sConfig `pulumi:"k3sConfig"`
 	// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
 	KubeConfig *string `pulumi:"kubeConfig"`
-	// Labels for cluster registration token object (map)
+	// Labels for the Cluster (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Name of cluster registration token (string)
+	// The name of the Cluster (string)
 	Name *string `pulumi:"name"`
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig *ClusterOkeConfig `pulumi:"okeConfig"`
@@ -844,7 +865,7 @@ type ClusterState struct {
 	AksConfig ClusterAksConfigPtrInput
 	// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfigV2 ClusterAksConfigV2PtrInput
-	// Annotations for cluster registration token object (map)
+	// Annotations for the Cluster (map)
 	Annotations pulumi.MapInput
 	// TLS CA certificate for etcd service (string)
 	CaCert pulumi.StringPtrInput
@@ -866,7 +887,7 @@ type ClusterState struct {
 	DefaultPodSecurityPolicyTemplateId pulumi.StringPtrInput
 	// (Computed) Default project ID for the cluster (string)
 	DefaultProjectId pulumi.StringPtrInput
-	// An optional description of this cluster (string)
+	// The description for Cluster (string)
 	Description pulumi.StringPtrInput
 	// Desired agent image. Just for Rancher v2.3.x and above (string)
 	DesiredAgentImage pulumi.StringPtrInput
@@ -902,9 +923,9 @@ type ClusterState struct {
 	K3sConfig ClusterK3sConfigPtrInput
 	// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
 	KubeConfig pulumi.StringPtrInput
-	// Labels for cluster registration token object (map)
+	// Labels for the Cluster (map)
 	Labels pulumi.MapInput
-	// Name of cluster registration token (string)
+	// The name of the Cluster (string)
 	Name pulumi.StringPtrInput
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig ClusterOkeConfigPtrInput
@@ -931,7 +952,7 @@ type clusterArgs struct {
 	AksConfig *ClusterAksConfig `pulumi:"aksConfig"`
 	// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfigV2 *ClusterAksConfigV2 `pulumi:"aksConfigV2"`
-	// Annotations for cluster registration token object (map)
+	// Annotations for the Cluster (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint *ClusterClusterAuthEndpoint `pulumi:"clusterAuthEndpoint"`
@@ -947,7 +968,7 @@ type clusterArgs struct {
 	ClusterTemplateRevisionId *string `pulumi:"clusterTemplateRevisionId"`
 	// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
 	DefaultPodSecurityPolicyTemplateId *string `pulumi:"defaultPodSecurityPolicyTemplateId"`
-	// An optional description of this cluster (string)
+	// The description for Cluster (string)
 	Description *string `pulumi:"description"`
 	// Desired agent image. Just for Rancher v2.3.x and above (string)
 	DesiredAgentImage *string `pulumi:"desiredAgentImage"`
@@ -975,9 +996,9 @@ type clusterArgs struct {
 	GkeConfigV2 *ClusterGkeConfigV2 `pulumi:"gkeConfigV2"`
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig *ClusterK3sConfig `pulumi:"k3sConfig"`
-	// Labels for cluster registration token object (map)
+	// Labels for the Cluster (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Name of cluster registration token (string)
+	// The name of the Cluster (string)
 	Name *string `pulumi:"name"`
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig *ClusterOkeConfig `pulumi:"okeConfig"`
@@ -999,7 +1020,7 @@ type ClusterArgs struct {
 	AksConfig ClusterAksConfigPtrInput
 	// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfigV2 ClusterAksConfigV2PtrInput
-	// Annotations for cluster registration token object (map)
+	// Annotations for the Cluster (map)
 	Annotations pulumi.MapInput
 	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint ClusterClusterAuthEndpointPtrInput
@@ -1015,7 +1036,7 @@ type ClusterArgs struct {
 	ClusterTemplateRevisionId pulumi.StringPtrInput
 	// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
 	DefaultPodSecurityPolicyTemplateId pulumi.StringPtrInput
-	// An optional description of this cluster (string)
+	// The description for Cluster (string)
 	Description pulumi.StringPtrInput
 	// Desired agent image. Just for Rancher v2.3.x and above (string)
 	DesiredAgentImage pulumi.StringPtrInput
@@ -1043,9 +1064,9 @@ type ClusterArgs struct {
 	GkeConfigV2 ClusterGkeConfigV2PtrInput
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig ClusterK3sConfigPtrInput
-	// Labels for cluster registration token object (map)
+	// Labels for the Cluster (map)
 	Labels pulumi.MapInput
-	// Name of cluster registration token (string)
+	// The name of the Cluster (string)
 	Name pulumi.StringPtrInput
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig ClusterOkeConfigPtrInput
@@ -1144,6 +1165,203 @@ func (o ClusterOutput) ToClusterOutput() ClusterOutput {
 
 func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return o
+}
+
+// Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+func (o ClusterOutput) AgentEnvVars() ClusterAgentEnvVarArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAgentEnvVarArrayOutput { return v.AgentEnvVars }).(ClusterAgentEnvVarArrayOutput)
+}
+
+// The Azure AKS configuration for `aks` Clusters. Conflicts with `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) AksConfig() ClusterAksConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAksConfigPtrOutput { return v.AksConfig }).(ClusterAksConfigPtrOutput)
+}
+
+// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) AksConfigV2() ClusterAksConfigV2PtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAksConfigV2PtrOutput { return v.AksConfigV2 }).(ClusterAksConfigV2PtrOutput)
+}
+
+// Annotations for the Cluster (map)
+func (o ClusterOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// TLS CA certificate for etcd service (string)
+func (o ClusterOutput) CaCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CaCert }).(pulumi.StringOutput)
+}
+
+// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
+func (o ClusterOutput) ClusterAuthEndpoint() ClusterClusterAuthEndpointOutput {
+	return o.ApplyT(func(v *Cluster) ClusterClusterAuthEndpointOutput { return v.ClusterAuthEndpoint }).(ClusterClusterAuthEndpointOutput)
+}
+
+// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
+func (o ClusterOutput) ClusterMonitoringInput() ClusterClusterMonitoringInputPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterClusterMonitoringInputPtrOutput { return v.ClusterMonitoringInput }).(ClusterClusterMonitoringInputPtrOutput)
+}
+
+// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
+func (o ClusterOutput) ClusterRegistrationToken() ClusterClusterRegistrationTokenOutput {
+	return o.ApplyT(func(v *Cluster) ClusterClusterRegistrationTokenOutput { return v.ClusterRegistrationToken }).(ClusterClusterRegistrationTokenOutput)
+}
+
+// Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+func (o ClusterOutput) ClusterTemplateAnswers() ClusterClusterTemplateAnswersOutput {
+	return o.ApplyT(func(v *Cluster) ClusterClusterTemplateAnswersOutput { return v.ClusterTemplateAnswers }).(ClusterClusterTemplateAnswersOutput)
+}
+
+// Cluster template ID. Just for Rancher v2.3.x and above (string)
+func (o ClusterOutput) ClusterTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Cluster template questions. Just for Rancher v2.3.x and above (list)
+func (o ClusterOutput) ClusterTemplateQuestions() ClusterClusterTemplateQuestionArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterClusterTemplateQuestionArrayOutput { return v.ClusterTemplateQuestions }).(ClusterClusterTemplateQuestionArrayOutput)
+}
+
+// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+func (o ClusterOutput) ClusterTemplateRevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterTemplateRevisionId }).(pulumi.StringPtrOutput)
+}
+
+// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
+func (o ClusterOutput) DefaultPodSecurityPolicyTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DefaultPodSecurityPolicyTemplateId }).(pulumi.StringOutput)
+}
+
+// (Computed) Default project ID for the cluster (string)
+func (o ClusterOutput) DefaultProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DefaultProjectId }).(pulumi.StringOutput)
+}
+
+// The description for Cluster (string)
+func (o ClusterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Desired agent image. Just for Rancher v2.3.x and above (string)
+func (o ClusterOutput) DesiredAgentImage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DesiredAgentImage }).(pulumi.StringOutput)
+}
+
+// Desired auth image. Just for Rancher v2.3.x and above (string)
+func (o ClusterOutput) DesiredAuthImage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DesiredAuthImage }).(pulumi.StringOutput)
+}
+
+// Desired auth image. Just for Rancher v2.3.x and above (string)
+func (o ClusterOutput) DockerRootDir() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DockerRootDir }).(pulumi.StringOutput)
+}
+
+// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
+func (o ClusterOutput) Driver() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Driver }).(pulumi.StringOutput)
+}
+
+// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) EksConfig() ClusterEksConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterEksConfigPtrOutput { return v.EksConfig }).(ClusterEksConfigPtrOutput)
+}
+
+// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+func (o ClusterOutput) EksConfigV2() ClusterEksConfigV2Output {
+	return o.ApplyT(func(v *Cluster) ClusterEksConfigV2Output { return v.EksConfigV2 }).(ClusterEksConfigV2Output)
+}
+
+// Enable built-in cluster alerting (bool)
+func (o ClusterOutput) EnableClusterAlerting() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableClusterAlerting }).(pulumi.BoolOutput)
+}
+
+// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+//
+// Deprecated: Deploy istio using rancher2_app resource instead
+func (o ClusterOutput) EnableClusterIstio() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableClusterIstio }).(pulumi.BoolOutput)
+}
+
+// Enable built-in cluster monitoring (bool)
+func (o ClusterOutput) EnableClusterMonitoring() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableClusterMonitoring }).(pulumi.BoolOutput)
+}
+
+// Enable project network isolation (bool)
+func (o ClusterOutput) EnableNetworkPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableNetworkPolicy }).(pulumi.BoolOutput)
+}
+
+// Fleet workspace name (string)
+func (o ClusterOutput) FleetWorkspaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.FleetWorkspaceName }).(pulumi.StringOutput)
+}
+
+// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) GkeConfig() ClusterGkeConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterGkeConfigPtrOutput { return v.GkeConfig }).(ClusterGkeConfigPtrOutput)
+}
+
+// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+func (o ClusterOutput) GkeConfigV2() ClusterGkeConfigV2PtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterGkeConfigV2PtrOutput { return v.GkeConfigV2 }).(ClusterGkeConfigV2PtrOutput)
+}
+
+// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+func (o ClusterOutput) IstioEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.IstioEnabled }).(pulumi.BoolOutput)
+}
+
+// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) K3sConfig() ClusterK3sConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterK3sConfigOutput { return v.K3sConfig }).(ClusterK3sConfigOutput)
+}
+
+// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
+func (o ClusterOutput) KubeConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.KubeConfig }).(pulumi.StringOutput)
+}
+
+// Labels for the Cluster (map)
+func (o ClusterOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the Cluster (string)
+func (o ClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) OkeConfig() ClusterOkeConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterOkeConfigPtrOutput { return v.OkeConfig }).(ClusterOkeConfigPtrOutput)
+}
+
+// The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+func (o ClusterOutput) Rke2Config() ClusterRke2ConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterRke2ConfigOutput { return v.Rke2Config }).(ClusterRke2ConfigOutput)
+}
+
+// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
+func (o ClusterOutput) RkeConfig() ClusterRkeConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterRkeConfigOutput { return v.RkeConfig }).(ClusterRkeConfigOutput)
+}
+
+// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+func (o ClusterOutput) ScheduledClusterScan() ClusterScheduledClusterScanOutput {
+	return o.ApplyT(func(v *Cluster) ClusterScheduledClusterScanOutput { return v.ScheduledClusterScan }).(ClusterScheduledClusterScanOutput)
+}
+
+// (Computed) System project ID for the cluster (string)
+func (o ClusterOutput) SystemProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SystemProjectId }).(pulumi.StringOutput)
+}
+
+// Windows preferred cluster. Default: `false` (bool)
+func (o ClusterOutput) WindowsPreferedCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.WindowsPreferedCluster }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterArrayOutput struct{ *pulumi.OutputState }

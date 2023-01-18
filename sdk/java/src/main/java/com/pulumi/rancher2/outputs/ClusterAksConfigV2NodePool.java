@@ -20,7 +20,7 @@ public final class ClusterAksConfigV2NodePool {
      */
     private @Nullable List<String> availabilityZones;
     /**
-     * @return The AKS node pool count. Default: `1` (int)
+     * @return Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
      * 
      */
     private @Nullable Integer count;
@@ -35,7 +35,7 @@ public final class ClusterAksConfigV2NodePool {
      */
     private @Nullable Integer maxCount;
     /**
-     * @return The AKS node pool max pods. Default: `110` (int)
+     * @return Maximum number of pods that can run on a node. Default `110` (int)
      * 
      */
     private @Nullable Integer maxPods;
@@ -45,12 +45,12 @@ public final class ClusterAksConfigV2NodePool {
      */
     private @Nullable Integer minCount;
     /**
-     * @return The AKS node group mode. Default: `System` (string)
+     * @return RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
      * 
      */
     private @Nullable String mode;
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     private String name;
@@ -89,7 +89,7 @@ public final class ClusterAksConfigV2NodePool {
         return this.availabilityZones == null ? List.of() : this.availabilityZones;
     }
     /**
-     * @return The AKS node pool count. Default: `1` (int)
+     * @return Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
      * 
      */
     public Optional<Integer> count() {
@@ -110,7 +110,7 @@ public final class ClusterAksConfigV2NodePool {
         return Optional.ofNullable(this.maxCount);
     }
     /**
-     * @return The AKS node pool max pods. Default: `110` (int)
+     * @return Maximum number of pods that can run on a node. Default `110` (int)
      * 
      */
     public Optional<Integer> maxPods() {
@@ -124,14 +124,14 @@ public final class ClusterAksConfigV2NodePool {
         return Optional.ofNullable(this.minCount);
     }
     /**
-     * @return The AKS node group mode. Default: `System` (string)
+     * @return RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
      * 
      */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return Name of cluster registration token (string)
+     * @return The name of the Cluster (string)
      * 
      */
     public String name() {

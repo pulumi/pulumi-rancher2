@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2.Inputs
 {
 
-    public sealed class GetPodSecurityPolicyTemplateAllowedCsiDriverArgs : Pulumi.InvokeArgs
+    public sealed class GetPodSecurityPolicyTemplateAllowedCsiDriverArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the PodSecurityPolicyTemplate (string)
@@ -21,5 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         public GetPodSecurityPolicyTemplateAllowedCsiDriverArgs()
         {
         }
+        public static new GetPodSecurityPolicyTemplateAllowedCsiDriverArgs Empty => new GetPodSecurityPolicyTemplateAllowedCsiDriverArgs();
     }
 }

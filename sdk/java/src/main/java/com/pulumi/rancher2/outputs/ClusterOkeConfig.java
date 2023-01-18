@@ -24,12 +24,12 @@ public final class ClusterOkeConfig {
      */
     private @Nullable Integer customBootVolumeSize;
     /**
-     * @return An optional description of this cluster (string)
+     * @return The description for Cluster (string)
      * 
      */
     private @Nullable String description;
     /**
-     * @return Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * @return Whether to enable the Kubernetes dashboard. Default `false` (bool)
      * 
      */
     private @Nullable Boolean enableKubernetesDashboard;
@@ -39,7 +39,7 @@ public final class ClusterOkeConfig {
      */
     private @Nullable Boolean enablePrivateControlPlane;
     /**
-     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * @return Whether nodes have internal IP address only. Default `false` (bool)
      * 
      */
     private @Nullable Boolean enablePrivateNodes;
@@ -59,7 +59,7 @@ public final class ClusterOkeConfig {
      */
     private @Nullable String kmsKeyId;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
      * 
      */
     private String kubernetesVersion;
@@ -104,7 +104,7 @@ public final class ClusterOkeConfig {
      */
     private String nodeShape;
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     * @return A CIDR notation IP range from which to assign Kubernetes Pod IPs when \&#34;network plugin\&#34; is specified in \&#34;kubenet\&#34;. Default `172.244.0.0/16` (string)
      * 
      */
     private @Nullable String podCidr;
@@ -129,12 +129,12 @@ public final class ClusterOkeConfig {
      */
     private @Nullable Integer quantityPerSubnet;
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return (string)
      * 
      */
     private String region;
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     * @return A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
      * 
      */
     private @Nullable String serviceCidr;
@@ -190,14 +190,14 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.customBootVolumeSize);
     }
     /**
-     * @return An optional description of this cluster (string)
+     * @return The description for Cluster (string)
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * @return Whether to enable the Kubernetes dashboard. Default `false` (bool)
      * 
      */
     public Optional<Boolean> enableKubernetesDashboard() {
@@ -211,7 +211,7 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.enablePrivateControlPlane);
     }
     /**
-     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * @return Whether nodes have internal IP address only. Default `false` (bool)
      * 
      */
     public Optional<Boolean> enablePrivateNodes() {
@@ -239,7 +239,7 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
      * 
      */
     public String kubernetesVersion() {
@@ -302,7 +302,7 @@ public final class ClusterOkeConfig {
         return this.nodeShape;
     }
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     * @return A CIDR notation IP range from which to assign Kubernetes Pod IPs when \&#34;network plugin\&#34; is specified in \&#34;kubenet\&#34;. Default `172.244.0.0/16` (string)
      * 
      */
     public Optional<String> podCidr() {
@@ -337,14 +337,14 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.quantityPerSubnet);
     }
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return (string)
      * 
      */
     public String region() {
         return this.region;
     }
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     * @return A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
      * 
      */
     public Optional<String> serviceCidr() {
