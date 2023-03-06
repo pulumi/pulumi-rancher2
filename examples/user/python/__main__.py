@@ -4,7 +4,7 @@ import pulumi_random as random
 
 username = random.RandomString("random-username",
                                length=10,
-                               special="false")
+                               special=False)
 
 my_user = rancher2.User("python-user",
                             name="Python User",

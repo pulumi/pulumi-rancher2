@@ -6,7 +6,7 @@ replace (
 	github.com/crewjam/saml => github.com/crewjam/saml v0.4.1
 	github.com/docker/distribution => github.com/docker/distribution v2.7.1+incompatible
 	github.com/docker/docker => github.com/docker/docker v20.10.6+incompatible
-	github.com/hashicorp/go-getter => github.com/hashicorp/go-getter v1.5.3
+	github.com/hashicorp/go-getter => github.com/hashicorp/go-getter v1.7.0
 	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.15.0
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20220722231444-8b3c0513bc36
