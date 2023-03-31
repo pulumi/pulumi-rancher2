@@ -20,6 +20,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
@@ -50,6 +51,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
@@ -90,6 +92,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
@@ -105,9 +108,9 @@ namespace Pulumi.Rancher2
     ///     {
     ///         HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
     ///         {
-    ///             ClusterId = foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result).Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.ClusterV1Id)),
+    ///             ClusterId = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.ClusterV1Id)),
     ///             ClusterType = "imported",
-    ///             KubeconfigContent = foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result).Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.KubeConfig)),
+    ///             KubeconfigContent = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.KubeConfig)),
     ///         },
     ///     });
     /// 
@@ -134,6 +137,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
     /// 
