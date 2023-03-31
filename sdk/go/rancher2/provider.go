@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,10 +42,10 @@ func NewProvider(ctx *pulumi.Context,
 	if args.ApiUrl == nil {
 		return nil, errors.New("invalid value for required argument 'ApiUrl'")
 	}
-	if isZero(args.Bootstrap) {
+	if args.Bootstrap == nil {
 		args.Bootstrap = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "RANCHER_BOOTSTRAP").(bool))
 	}
-	if isZero(args.Insecure) {
+	if args.Insecure == nil {
 		args.Insecure = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "RANCHER_INSECURE").(bool))
 	}
 	if args.AccessKey != nil {

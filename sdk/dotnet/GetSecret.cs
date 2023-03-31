@@ -24,6 +24,7 @@ namespace Pulumi.Rancher2
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
@@ -40,6 +41,7 @@ namespace Pulumi.Rancher2
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
@@ -73,6 +75,7 @@ namespace Pulumi.Rancher2
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 
@@ -89,6 +92,7 @@ namespace Pulumi.Rancher2
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Rancher2 = Pulumi.Rancher2;
         /// 

@@ -72,8 +72,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -104,7 +102,7 @@ import (
 //								},
 //								UpgradeStrategy: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs{
 //									Drain:                pulumi.Bool(true),
-//									MaxUnavailableWorker: pulumi.String(fmt.Sprintf("20%v", "%")),
+//									MaxUnavailableWorker: pulumi.String("20%"),
 //								},
 //							},
 //						},

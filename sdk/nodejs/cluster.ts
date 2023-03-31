@@ -276,7 +276,7 @@ import * as utilities from "./utilities";
  *         },
  *         upgradeStrategy: {
  *             drain: true,
- *             maxUnavailableWorker: `20%`,
+ *             maxUnavailableWorker: "20%",
  *         },
  *     },
  * });

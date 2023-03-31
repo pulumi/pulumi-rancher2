@@ -317,8 +317,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -345,23 +343,7 @@ import (
 //									MaxBackup: pulumi.Int(5),
 //									MaxSize:   pulumi.Int(100),
 //									Path:      pulumi.String("-"),
-//									Policy: pulumi.String(fmt.Sprintf(`apiVersion: audit.k8s.io/v1
-//
-// kind: Policy
-// metadata:
-//
-//	creationTimestamp: null
-//
-// omitStages:
-// - RequestReceived
-// rules:
-//   - level: RequestResponse
-//     resources:
-//   - resources:
-//   - pods
-//
-// `)),
-//
+//									Policy:    pulumi.String("apiVersion: audit.k8s.io/v1\nkind: Policy\nmetadata:\n  creationTimestamp: null\nomitStages:\n- RequestReceived\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n\n"),
 //								},
 //								Enabled: pulumi.Bool(true),
 //							},
@@ -369,7 +351,7 @@ import (
 //					},
 //					UpgradeStrategy: &rancher2.ClusterRkeConfigUpgradeStrategyArgs{
 //						Drain:                pulumi.Bool(true),
-//						MaxUnavailableWorker: pulumi.String(fmt.Sprintf("20%v", "%")),
+//						MaxUnavailableWorker: pulumi.String("20%"),
 //					},
 //				},
 //			})
