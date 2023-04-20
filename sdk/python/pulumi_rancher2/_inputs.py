@@ -21248,7 +21248,7 @@ class ClusterV2RkeConfigEtcdS3ConfigArgs:
         """
         :param pulumi.Input[str] bucket: Bucket name for S3 service (string)
         :param pulumi.Input[str] endpoint: ETCD snapshot S3 endpoint (string)
-        :param pulumi.Input[str] cloud_credential_name: Machine pool cloud credential secret name (string)
+        :param pulumi.Input[str] cloud_credential_name: ETCD snapshot S3 cloud credential name (string)
         :param pulumi.Input[str] endpoint_ca: ETCD snapshot S3 endpoint CA (string)
         :param pulumi.Input[str] folder: ETCD snapshot S3 folder (string)
         :param pulumi.Input[str] region: ETCD snapshot S3 region (string)
@@ -21295,7 +21295,7 @@ class ClusterV2RkeConfigEtcdS3ConfigArgs:
     @pulumi.getter(name="cloudCredentialName")
     def cloud_credential_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Machine pool cloud credential secret name (string)
+        ETCD snapshot S3 cloud credential name (string)
         """
         return pulumi.get(self, "cloud_credential_name")
 
@@ -21485,10 +21485,10 @@ class ClusterV2RkeConfigLocalAuthEndpointArgs:
 @pulumi.input_type
 class ClusterV2RkeConfigMachinePoolArgs:
     def __init__(__self__, *,
-                 cloud_credential_secret_name: pulumi.Input[str],
                  machine_config: pulumi.Input['ClusterV2RkeConfigMachinePoolMachineConfigArgs'],
                  name: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cloud_credential_secret_name: Optional[pulumi.Input[str]] = None,
                  control_plane_role: Optional[pulumi.Input[bool]] = None,
                  drain_before_delete: Optional[pulumi.Input[bool]] = None,
                  etcd_role: Optional[pulumi.Input[bool]] = None,
@@ -21505,10 +21505,10 @@ class ClusterV2RkeConfigMachinePoolArgs:
                  unhealthy_range: Optional[pulumi.Input[str]] = None,
                  worker_role: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] cloud_credential_secret_name: Cluster V2 cloud credential secret name (string)
         :param pulumi.Input['ClusterV2RkeConfigMachinePoolMachineConfigArgs'] machine_config: Machine pool node config (list)
         :param pulumi.Input[str] name: The name of the Cluster v2 (string)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster V2 (map)
+        :param pulumi.Input[str] cloud_credential_secret_name: Cluster V2 cloud credential secret name (string)
         :param pulumi.Input[bool] control_plane_role: Machine pool control plane role? (bool)
         :param pulumi.Input[bool] drain_before_delete: Machine Pool Drain Before Delete? (bool)
         :param pulumi.Input[bool] etcd_role: Machine pool etcd role? (bool)
@@ -21525,11 +21525,12 @@ class ClusterV2RkeConfigMachinePoolArgs:
         :param pulumi.Input[str] unhealthy_range: Range of unhealthy nodes for automated replacement to be allowed (string)
         :param pulumi.Input[bool] worker_role: Machine pool worker role? (bool)
         """
-        pulumi.set(__self__, "cloud_credential_secret_name", cloud_credential_secret_name)
         pulumi.set(__self__, "machine_config", machine_config)
         pulumi.set(__self__, "name", name)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if cloud_credential_secret_name is not None:
+            pulumi.set(__self__, "cloud_credential_secret_name", cloud_credential_secret_name)
         if control_plane_role is not None:
             pulumi.set(__self__, "control_plane_role", control_plane_role)
         if drain_before_delete is not None:
@@ -21560,18 +21561,6 @@ class ClusterV2RkeConfigMachinePoolArgs:
             pulumi.set(__self__, "unhealthy_range", unhealthy_range)
         if worker_role is not None:
             pulumi.set(__self__, "worker_role", worker_role)
-
-    @property
-    @pulumi.getter(name="cloudCredentialSecretName")
-    def cloud_credential_secret_name(self) -> pulumi.Input[str]:
-        """
-        Cluster V2 cloud credential secret name (string)
-        """
-        return pulumi.get(self, "cloud_credential_secret_name")
-
-    @cloud_credential_secret_name.setter
-    def cloud_credential_secret_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cloud_credential_secret_name", value)
 
     @property
     @pulumi.getter(name="machineConfig")
@@ -21608,6 +21597,18 @@ class ClusterV2RkeConfigMachinePoolArgs:
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="cloudCredentialSecretName")
+    def cloud_credential_secret_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster V2 cloud credential secret name (string)
+        """
+        return pulumi.get(self, "cloud_credential_secret_name")
+
+    @cloud_credential_secret_name.setter
+    def cloud_credential_secret_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_credential_secret_name", value)
 
     @property
     @pulumi.getter(name="controlPlaneRole")

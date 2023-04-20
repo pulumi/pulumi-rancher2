@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// Machine pool cloud credential secret name (string)
+        /// ETCD snapshot S3 cloud credential name (string)
         /// </summary>
         [Input("cloudCredentialName")]
         public Input<string>? CloudCredentialName { get; set; }

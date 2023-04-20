@@ -4729,7 +4729,7 @@ export interface ClusterV2RkeConfigEtcdS3Config {
      */
     bucket: string;
     /**
-     * Machine pool cloud credential secret name (string)
+     * ETCD snapshot S3 cloud credential name (string)
      */
     cloudCredentialName?: string;
     /**
@@ -4799,7 +4799,7 @@ export interface ClusterV2RkeConfigMachinePool {
     /**
      * Cluster V2 cloud credential secret name (string)
      */
-    cloudCredentialSecretName: string;
+    cloudCredentialSecretName?: string;
     /**
      * Machine pool control plane role? (bool)
      */
@@ -7139,7 +7139,7 @@ export interface GetClusterV2RkeConfigMachinePool {
     /**
      * (Computed) Cluster V2 cloud credential secret name (string)
      */
-    cloudCredentialSecretName: string;
+    cloudCredentialSecretName?: string;
     controlPlaneRole?: boolean;
     drainBeforeDelete?: boolean;
     etcdRole?: boolean;

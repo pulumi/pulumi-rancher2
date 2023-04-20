@@ -27,8 +27,8 @@ namespace Pulumi.Rancher2.Inputs
         /// <summary>
         /// Cluster V2 cloud credential secret name (string)
         /// </summary>
-        [Input("cloudCredentialSecretName", required: true)]
-        public Input<string> CloudCredentialSecretName { get; set; } = null!;
+        [Input("cloudCredentialSecretName")]
+        public Input<string>? CloudCredentialSecretName { get; set; }
 
         /// <summary>
         /// Machine pool control plane role? (bool)

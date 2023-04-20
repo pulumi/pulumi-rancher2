@@ -264,6 +264,7 @@ class _AppV2State:
                  cleanup_on_fail: Optional[pulumi.Input[bool]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
+                 deployment_values: Optional[pulumi.Input[str]] = None,
                  disable_hooks: Optional[pulumi.Input[bool]] = None,
                  disable_open_api_validation: Optional[pulumi.Input[bool]] = None,
                  force_upgrade: Optional[pulumi.Input[bool]] = None,
@@ -283,6 +284,9 @@ class _AppV2State:
         :param pulumi.Input[bool] cleanup_on_fail: Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
         :param pulumi.Input[str] cluster_id: The cluster id of the app (string)
         :param pulumi.Input[str] cluster_name: (Computed) The cluster name of the app (string)
+        :param pulumi.Input[str] deployment_values: Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+               plan output when files change but values stay the same, due to additional computed values included by the provider
+               itself.
         :param pulumi.Input[bool] disable_hooks: Disable app v2 chart hooks. Default: `false` (bool)
         :param pulumi.Input[bool] disable_open_api_validation: Disable app V2 Open API Validation. Default: `false` (bool)
         :param pulumi.Input[bool] force_upgrade: Force app V2 chart upgrade. Default: `false` (bool)
@@ -307,6 +311,8 @@ class _AppV2State:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
+        if deployment_values is not None:
+            pulumi.set(__self__, "deployment_values", deployment_values)
         if disable_hooks is not None:
             pulumi.set(__self__, "disable_hooks", disable_hooks)
         if disable_open_api_validation is not None:
@@ -401,6 +407,20 @@ class _AppV2State:
     @cluster_name.setter
     def cluster_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="deploymentValues")
+    def deployment_values(self) -> Optional[pulumi.Input[str]]:
+        """
+        Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+        plan output when files change but values stay the same, due to additional computed values included by the provider
+        itself.
+        """
+        return pulumi.get(self, "deployment_values")
+
+    @deployment_values.setter
+    def deployment_values(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_values", value)
 
     @property
     @pulumi.getter(name="disableHooks")
@@ -697,6 +717,7 @@ class AppV2(pulumi.CustomResource):
             __props__.__dict__["values"] = values
             __props__.__dict__["wait"] = wait
             __props__.__dict__["cluster_name"] = None
+            __props__.__dict__["deployment_values"] = None
             __props__.__dict__["system_default_registry"] = None
         super(AppV2, __self__).__init__(
             'rancher2:index/appV2:AppV2',
@@ -714,6 +735,7 @@ class AppV2(pulumi.CustomResource):
             cleanup_on_fail: Optional[pulumi.Input[bool]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
+            deployment_values: Optional[pulumi.Input[str]] = None,
             disable_hooks: Optional[pulumi.Input[bool]] = None,
             disable_open_api_validation: Optional[pulumi.Input[bool]] = None,
             force_upgrade: Optional[pulumi.Input[bool]] = None,
@@ -738,6 +760,9 @@ class AppV2(pulumi.CustomResource):
         :param pulumi.Input[bool] cleanup_on_fail: Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
         :param pulumi.Input[str] cluster_id: The cluster id of the app (string)
         :param pulumi.Input[str] cluster_name: (Computed) The cluster name of the app (string)
+        :param pulumi.Input[str] deployment_values: Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+               plan output when files change but values stay the same, due to additional computed values included by the provider
+               itself.
         :param pulumi.Input[bool] disable_hooks: Disable app v2 chart hooks. Default: `false` (bool)
         :param pulumi.Input[bool] disable_open_api_validation: Disable app V2 Open API Validation. Default: `false` (bool)
         :param pulumi.Input[bool] force_upgrade: Force app V2 chart upgrade. Default: `false` (bool)
@@ -760,6 +785,7 @@ class AppV2(pulumi.CustomResource):
         __props__.__dict__["cleanup_on_fail"] = cleanup_on_fail
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cluster_name"] = cluster_name
+        __props__.__dict__["deployment_values"] = deployment_values
         __props__.__dict__["disable_hooks"] = disable_hooks
         __props__.__dict__["disable_open_api_validation"] = disable_open_api_validation
         __props__.__dict__["force_upgrade"] = force_upgrade
@@ -820,6 +846,16 @@ class AppV2(pulumi.CustomResource):
         (Computed) The cluster name of the app (string)
         """
         return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter(name="deploymentValues")
+    def deployment_values(self) -> pulumi.Output[str]:
+        """
+        Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+        plan output when files change but values stay the same, due to additional computed values included by the provider
+        itself.
+        """
+        return pulumi.get(self, "deployment_values")
 
     @property
     @pulumi.getter(name="disableHooks")
