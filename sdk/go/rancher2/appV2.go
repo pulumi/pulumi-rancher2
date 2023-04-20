@@ -22,7 +22,7 @@ import (
 //
 //	"os"
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -78,6 +78,10 @@ type AppV2 struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// (Computed) The cluster name of the app (string)
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
+	// Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+	// plan output when files change but values stay the same, due to additional computed values included by the provider
+	// itself.
+	DeploymentValues pulumi.StringOutput `pulumi:"deploymentValues"`
 	// Disable app v2 chart hooks. Default: `false` (bool)
 	DisableHooks pulumi.BoolPtrOutput `pulumi:"disableHooks"`
 	// Disable app V2 Open API Validation. Default: `false` (bool)
@@ -155,6 +159,10 @@ type appV2State struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// (Computed) The cluster name of the app (string)
 	ClusterName *string `pulumi:"clusterName"`
+	// Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+	// plan output when files change but values stay the same, due to additional computed values included by the provider
+	// itself.
+	DeploymentValues *string `pulumi:"deploymentValues"`
 	// Disable app v2 chart hooks. Default: `false` (bool)
 	DisableHooks *bool `pulumi:"disableHooks"`
 	// Disable app V2 Open API Validation. Default: `false` (bool)
@@ -192,6 +200,10 @@ type AppV2State struct {
 	ClusterId pulumi.StringPtrInput
 	// (Computed) The cluster name of the app (string)
 	ClusterName pulumi.StringPtrInput
+	// Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+	// plan output when files change but values stay the same, due to additional computed values included by the provider
+	// itself.
+	DeploymentValues pulumi.StringPtrInput
 	// Disable app v2 chart hooks. Default: `false` (bool)
 	DisableHooks pulumi.BoolPtrInput
 	// Disable app V2 Open API Validation. Default: `false` (bool)
@@ -402,6 +414,13 @@ func (o AppV2Output) ClusterId() pulumi.StringOutput {
 // (Computed) The cluster name of the app (string)
 func (o AppV2Output) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+// plan output when files change but values stay the same, due to additional computed values included by the provider
+// itself.
+func (o AppV2Output) DeploymentValues() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.DeploymentValues }).(pulumi.StringOutput)
 }
 
 // Disable app v2 chart hooks. Default: `false` (bool)

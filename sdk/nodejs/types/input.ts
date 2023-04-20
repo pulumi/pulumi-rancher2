@@ -4729,7 +4729,7 @@ export interface ClusterV2RkeConfigEtcdS3Config {
      */
     bucket: pulumi.Input<string>;
     /**
-     * Machine pool cloud credential secret name (string)
+     * ETCD snapshot S3 cloud credential name (string)
      */
     cloudCredentialName?: pulumi.Input<string>;
     /**
@@ -4799,7 +4799,7 @@ export interface ClusterV2RkeConfigMachinePool {
     /**
      * Cluster V2 cloud credential secret name (string)
      */
-    cloudCredentialSecretName: pulumi.Input<string>;
+    cloudCredentialSecretName?: pulumi.Input<string>;
     /**
      * Machine pool control plane role? (bool)
      */

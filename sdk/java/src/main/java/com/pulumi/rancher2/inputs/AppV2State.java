@@ -109,6 +109,25 @@ public final class AppV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+     * plan output when files change but values stay the same, due to additional computed values included by the provider
+     * itself.
+     * 
+     */
+    @Import(name="deploymentValues")
+    private @Nullable Output<String> deploymentValues;
+
+    /**
+     * @return Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+     * plan output when files change but values stay the same, due to additional computed values included by the provider
+     * itself.
+     * 
+     */
+    public Optional<Output<String>> deploymentValues() {
+        return Optional.ofNullable(this.deploymentValues);
+    }
+
+    /**
      * Disable app v2 chart hooks. Default: `false` (bool)
      * 
      */
@@ -282,6 +301,7 @@ public final class AppV2State extends com.pulumi.resources.ResourceArgs {
         this.cleanupOnFail = $.cleanupOnFail;
         this.clusterId = $.clusterId;
         this.clusterName = $.clusterName;
+        this.deploymentValues = $.deploymentValues;
         this.disableHooks = $.disableHooks;
         this.disableOpenApiValidation = $.disableOpenApiValidation;
         this.forceUpgrade = $.forceUpgrade;
@@ -437,6 +457,31 @@ public final class AppV2State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterName(String clusterName) {
             return clusterName(Output.of(clusterName));
+        }
+
+        /**
+         * @param deploymentValues Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+         * plan output when files change but values stay the same, due to additional computed values included by the provider
+         * itself.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentValues(@Nullable Output<String> deploymentValues) {
+            $.deploymentValues = deploymentValues;
+            return this;
+        }
+
+        /**
+         * @param deploymentValues Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+         * plan output when files change but values stay the same, due to additional computed values included by the provider
+         * itself.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentValues(String deploymentValues) {
+            return deploymentValues(Output.of(deploymentValues));
         }
 
         /**

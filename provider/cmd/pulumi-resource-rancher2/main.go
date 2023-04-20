@@ -19,8 +19,8 @@ package main
 import (
 	_ "embed"
 
-	rancher2 "github.com/pulumi/pulumi-rancher2/provider/v3"
-	"github.com/pulumi/pulumi-rancher2/provider/v3/pkg/version"
+	rancher2 "github.com/pulumi/pulumi-rancher2/provider/v4"
+	"github.com/pulumi/pulumi-rancher2/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
 

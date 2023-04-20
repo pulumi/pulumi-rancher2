@@ -24,7 +24,7 @@ public final class GetClusterV2RkeConfigMachinePool {
      * @return (Computed) Cluster V2 cloud credential secret name (string)
      * 
      */
-    private String cloudCredentialSecretName;
+    private @Nullable String cloudCredentialSecretName;
     private @Nullable Boolean controlPlaneRole;
     private @Nullable Boolean drainBeforeDelete;
     private @Nullable Boolean etcdRole;
@@ -55,8 +55,8 @@ public final class GetClusterV2RkeConfigMachinePool {
      * @return (Computed) Cluster V2 cloud credential secret name (string)
      * 
      */
-    public String cloudCredentialSecretName() {
-        return this.cloudCredentialSecretName;
+    public Optional<String> cloudCredentialSecretName() {
+        return Optional.ofNullable(this.cloudCredentialSecretName);
     }
     public Optional<Boolean> controlPlaneRole() {
         return Optional.ofNullable(this.controlPlaneRole);
@@ -124,7 +124,7 @@ public final class GetClusterV2RkeConfigMachinePool {
     @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> annotations;
-        private String cloudCredentialSecretName;
+        private @Nullable String cloudCredentialSecretName;
         private @Nullable Boolean controlPlaneRole;
         private @Nullable Boolean drainBeforeDelete;
         private @Nullable Boolean etcdRole;
@@ -172,8 +172,8 @@ public final class GetClusterV2RkeConfigMachinePool {
             return this;
         }
         @CustomType.Setter
-        public Builder cloudCredentialSecretName(String cloudCredentialSecretName) {
-            this.cloudCredentialSecretName = Objects.requireNonNull(cloudCredentialSecretName);
+        public Builder cloudCredentialSecretName(@Nullable String cloudCredentialSecretName) {
+            this.cloudCredentialSecretName = cloudCredentialSecretName;
             return this;
         }
         @CustomType.Setter

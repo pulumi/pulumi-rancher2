@@ -18,7 +18,7 @@ public final class ClusterV2RkeConfigEtcdS3Config {
      */
     private String bucket;
     /**
-     * @return Machine pool cloud credential secret name (string)
+     * @return ETCD snapshot S3 cloud credential name (string)
      * 
      */
     private @Nullable String cloudCredentialName;
@@ -57,7 +57,7 @@ public final class ClusterV2RkeConfigEtcdS3Config {
         return this.bucket;
     }
     /**
-     * @return Machine pool cloud credential secret name (string)
+     * @return ETCD snapshot S3 cloud credential name (string)
      * 
      */
     public Optional<String> cloudCredentialName() {

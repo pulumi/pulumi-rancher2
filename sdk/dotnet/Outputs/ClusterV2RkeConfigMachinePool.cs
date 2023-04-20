@@ -20,7 +20,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Cluster V2 cloud credential secret name (string)
         /// </summary>
-        public readonly string CloudCredentialSecretName;
+        public readonly string? CloudCredentialSecretName;
         /// <summary>
         /// Machine pool control plane role? (bool)
         /// </summary>
@@ -94,7 +94,7 @@ namespace Pulumi.Rancher2.Outputs
         private ClusterV2RkeConfigMachinePool(
             ImmutableDictionary<string, object>? annotations,
 
-            string cloudCredentialSecretName,
+            string? cloudCredentialSecretName,
 
             bool? controlPlaneRole,
 

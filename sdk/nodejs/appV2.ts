@@ -86,6 +86,12 @@ export class AppV2 extends pulumi.CustomResource {
      */
     public /*out*/ readonly clusterName!: pulumi.Output<string>;
     /**
+     * Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+     * plan output when files change but values stay the same, due to additional computed values included by the provider
+     * itself.
+     */
+    public /*out*/ readonly deploymentValues!: pulumi.Output<string>;
+    /**
      * Disable app v2 chart hooks. Default: `false` (bool)
      */
     public readonly disableHooks!: pulumi.Output<boolean | undefined>;
@@ -149,6 +155,7 @@ export class AppV2 extends pulumi.CustomResource {
             resourceInputs["cleanupOnFail"] = state ? state.cleanupOnFail : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["clusterName"] = state ? state.clusterName : undefined;
+            resourceInputs["deploymentValues"] = state ? state.deploymentValues : undefined;
             resourceInputs["disableHooks"] = state ? state.disableHooks : undefined;
             resourceInputs["disableOpenApiValidation"] = state ? state.disableOpenApiValidation : undefined;
             resourceInputs["forceUpgrade"] = state ? state.forceUpgrade : undefined;
@@ -190,6 +197,7 @@ export class AppV2 extends pulumi.CustomResource {
             resourceInputs["values"] = args ? args.values : undefined;
             resourceInputs["wait"] = args ? args.wait : undefined;
             resourceInputs["clusterName"] = undefined /*out*/;
+            resourceInputs["deploymentValues"] = undefined /*out*/;
             resourceInputs["systemDefaultRegistry"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -225,6 +233,12 @@ export interface AppV2State {
      * (Computed) The cluster name of the app (string)
      */
     clusterName?: pulumi.Input<string>;
+    /**
+     * Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
+     * plan output when files change but values stay the same, due to additional computed values included by the provider
+     * itself.
+     */
+    deploymentValues?: pulumi.Input<string>;
     /**
      * Disable app v2 chart hooks. Default: `false` (bool)
      */

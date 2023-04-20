@@ -42,15 +42,15 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
      * Cluster V2 cloud credential secret name (string)
      * 
      */
-    @Import(name="cloudCredentialSecretName", required=true)
-    private Output<String> cloudCredentialSecretName;
+    @Import(name="cloudCredentialSecretName")
+    private @Nullable Output<String> cloudCredentialSecretName;
 
     /**
      * @return Cluster V2 cloud credential secret name (string)
      * 
      */
-    public Output<String> cloudCredentialSecretName() {
-        return this.cloudCredentialSecretName;
+    public Optional<Output<String>> cloudCredentialSecretName() {
+        return Optional.ofNullable(this.cloudCredentialSecretName);
     }
 
     /**
@@ -377,7 +377,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder cloudCredentialSecretName(Output<String> cloudCredentialSecretName) {
+        public Builder cloudCredentialSecretName(@Nullable Output<String> cloudCredentialSecretName) {
             $.cloudCredentialSecretName = cloudCredentialSecretName;
             return this;
         }
@@ -760,7 +760,6 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         public ClusterV2RkeConfigMachinePoolArgs build() {
-            $.cloudCredentialSecretName = Objects.requireNonNull($.cloudCredentialSecretName, "expected parameter 'cloudCredentialSecretName' to be non-null");
             $.machineConfig = Objects.requireNonNull($.machineConfig, "expected parameter 'machineConfig' to be non-null");
             $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;

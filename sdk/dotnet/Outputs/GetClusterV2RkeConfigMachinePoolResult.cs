@@ -17,7 +17,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// (Computed) Cluster V2 cloud credential secret name (string)
         /// </summary>
-        public readonly string CloudCredentialSecretName;
+        public readonly string? CloudCredentialSecretName;
         public readonly bool? ControlPlaneRole;
         public readonly bool? DrainBeforeDelete;
         public readonly bool? EtcdRole;
@@ -43,7 +43,7 @@ namespace Pulumi.Rancher2.Outputs
         private GetClusterV2RkeConfigMachinePoolResult(
             ImmutableDictionary<string, object> annotations,
 
-            string cloudCredentialSecretName,
+            string? cloudCredentialSecretName,
 
             bool? controlPlaneRole,
 
