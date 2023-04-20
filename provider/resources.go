@@ -16,12 +16,14 @@ package rancher2
 
 import (
 	"fmt"
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
 	"path/filepath"
 	"strings"
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/pulumi/pulumi-rancher2/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-rancher2/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
@@ -229,7 +231,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 			Namespaces: namespaceMap,
-		},
+		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
 	prov.RenameDataSource("rancher2_role_template", makeDataSource(mainMod, "getRoleTempalte"),
@@ -261,7 +263,12 @@ func Provider() tfbridge.ProviderInfo {
 	defaults := x.TokensSingleModule("rancher2_", mainMod, x.MakeStandardToken(mainPkg))
 	err := x.ComputeDefaults(&prov, defaults)
 	contract.AssertNoErrorf(err, "failed to compute auto token mapping defaults")
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-rancher2/bridge-metadata.json
+var metadata []byte
