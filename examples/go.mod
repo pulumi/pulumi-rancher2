@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-rancher2/examples/v3
+module github.com/pulumi/pulumi-rancher2/examples/v4
 
 go 1.19
 
