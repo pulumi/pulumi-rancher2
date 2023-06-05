@@ -229,6 +229,8 @@ export class NodeTemplate extends pulumi.CustomResource {
     public readonly hetznerConfig!: pulumi.Output<outputs.NodeTemplateHetznerConfig | undefined>;
     /**
      * Labels for Node Template object (map)
+     *
+     * **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -425,6 +427,8 @@ export interface NodeTemplateState {
     hetznerConfig?: pulumi.Input<inputs.NodeTemplateHetznerConfig>;
     /**
      * Labels for Node Template object (map)
+     *
+     * **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -539,6 +543,8 @@ export interface NodeTemplateArgs {
     hetznerConfig?: pulumi.Input<inputs.NodeTemplateHetznerConfig>;
     /**
      * Labels for Node Template object (map)
+     *
+     * **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**

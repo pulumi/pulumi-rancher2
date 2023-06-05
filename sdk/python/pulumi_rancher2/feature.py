@@ -166,6 +166,14 @@ class Feature(pulumi.CustomResource):
                  value: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Provides a Rancher v2 Feature resource. This can be used to enable/disable [experimental features](https://rancher.com/docs/rancher/v2.x/en/installation/resources/feature-flags/) for Rancher v2 environments.
+
+        Experimental features already exist at Rancher v2.5.x systems, so they can just be updated:
+        * On create, provider will read Feature from Rancher and update its value. It will return an error if feature doesn't exist
+        * On destroy, provider will not delete feature from Rancher, just from tfstate
+
+        **Note** Some Rancher features as `fleet`, may force a Rancher reboot once updated. The provider will wait until Rancher is rebooted. If you are modifying more than one feature in a row, and any of them requires a Rancher reboot, `pulumi up` may fail on first run. Run `pulumi up` again should work fine.
+
         ## Example Usage
 
         ```python
@@ -190,6 +198,14 @@ class Feature(pulumi.CustomResource):
                  args: Optional[FeatureArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Rancher v2 Feature resource. This can be used to enable/disable [experimental features](https://rancher.com/docs/rancher/v2.x/en/installation/resources/feature-flags/) for Rancher v2 environments.
+
+        Experimental features already exist at Rancher v2.5.x systems, so they can just be updated:
+        * On create, provider will read Feature from Rancher and update its value. It will return an error if feature doesn't exist
+        * On destroy, provider will not delete feature from Rancher, just from tfstate
+
+        **Note** Some Rancher features as `fleet`, may force a Rancher reboot once updated. The provider will wait until Rancher is rebooted. If you are modifying more than one feature in a row, and any of them requires a Rancher reboot, `pulumi up` may fail on first run. Run `pulumi up` again should work fine.
+
         ## Example Usage
 
         ```python

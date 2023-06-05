@@ -43,10 +43,14 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ApiUrl'")
 	}
 	if args.Bootstrap == nil {
-		args.Bootstrap = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "RANCHER_BOOTSTRAP").(bool))
+		if d := getEnvOrDefault(false, parseEnvBool, "RANCHER_BOOTSTRAP"); d != nil {
+			args.Bootstrap = pulumi.BoolPtr(d.(bool))
+		}
 	}
 	if args.Insecure == nil {
-		args.Insecure = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "RANCHER_INSECURE").(bool))
+		if d := getEnvOrDefault(false, parseEnvBool, "RANCHER_INSECURE"); d != nil {
+			args.Insecure = pulumi.BoolPtr(d.(bool))
+		}
 	}
 	if args.AccessKey != nil {
 		args.AccessKey = pulumi.ToSecret(args.AccessKey).(pulumi.StringPtrInput)

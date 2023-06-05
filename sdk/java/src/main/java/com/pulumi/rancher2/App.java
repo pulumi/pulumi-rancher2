@@ -18,6 +18,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Rancher v2 app resource. This can be used to deploy apps within Rancher v2 projects.
+ * 
+ * This resource can also modify Rancher v2 apps in 3 ways:
+ * - `Update`: If `description`, `annotations` or `labels` arguments are modified the app will be updated. No new `revision_id` will be generated in Rancher.
+ * - `Upgrade`: If `answers`, `catalog_name`, `template_name`, `template_version` or `values_yaml` arguments are modified, the app will be upgraded. A new `revision_id` will be generated in Rancher.
+ * - `Rollback`: If `revision_id` argument is provided or modified the app will be rolled back accordingly. A new `revision_id` will be generated in Rancher. It will also generate a non-empty pulumi preview that will require manual .tf file intervention. Use carefully.
+ * 
+ * Note: In case of multiple resource modifications in a row, `rollback` has preference over `upgrade`.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;

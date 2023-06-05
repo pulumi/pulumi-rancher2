@@ -102,12 +102,16 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     /**
      * Is AKS cluster imported? Defaul: `false` (bool)
      * 
+     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
+     * 
      */
     @Import(name="imported")
     private @Nullable Output<Boolean> imported;
 
     /**
      * @return Is AKS cluster imported? Defaul: `false` (bool)
+     * 
+     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
      * 
      */
     public Optional<Output<Boolean>> imported() {
@@ -523,6 +527,8 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         /**
          * @param imported Is AKS cluster imported? Defaul: `false` (bool)
          * 
+         * The following arguments are supported just for creating new AKS clusters (`imported=false`):
+         * 
          * @return builder
          * 
          */
@@ -533,6 +539,8 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
 
         /**
          * @param imported Is AKS cluster imported? Defaul: `false` (bool)
+         * 
+         * The following arguments are supported just for creating new AKS clusters (`imported=false`):
          * 
          * @return builder
          * 

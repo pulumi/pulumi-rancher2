@@ -119,6 +119,8 @@ type ClusterSync struct {
 	// (Computed) The cluster nodes (list).
 	Nodes ClusterSyncNodeArrayOutput `pulumi:"nodes"`
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+	//
+	// **Note** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
 	StateConfirm pulumi.IntPtrOutput  `pulumi:"stateConfirm"`
 	Synced       pulumi.BoolPtrOutput `pulumi:"synced"`
 	// (Computed) System project ID for the cluster sync (string)
@@ -178,6 +180,8 @@ type clusterSyncState struct {
 	// (Computed) The cluster nodes (list).
 	Nodes []ClusterSyncNode `pulumi:"nodes"`
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+	//
+	// **Note** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
 	StateConfirm *int  `pulumi:"stateConfirm"`
 	Synced       *bool `pulumi:"synced"`
 	// (Computed) System project ID for the cluster sync (string)
@@ -202,6 +206,8 @@ type ClusterSyncState struct {
 	// (Computed) The cluster nodes (list).
 	Nodes ClusterSyncNodeArrayInput
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+	//
+	// **Note** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
 	StateConfirm pulumi.IntPtrInput
 	Synced       pulumi.BoolPtrInput
 	// (Computed) System project ID for the cluster sync (string)
@@ -224,6 +230,8 @@ type clusterSyncArgs struct {
 	// The node pool IDs used by the cluster id (list)
 	NodePoolIds []string `pulumi:"nodePoolIds"`
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+	//
+	// **Note** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
 	StateConfirm *int  `pulumi:"stateConfirm"`
 	Synced       *bool `pulumi:"synced"`
 	// Wait until alerting is up and running. Default: `false` (bool)
@@ -241,6 +249,8 @@ type ClusterSyncArgs struct {
 	// The node pool IDs used by the cluster id (list)
 	NodePoolIds pulumi.StringArrayInput
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+	//
+	// **Note** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
 	StateConfirm pulumi.IntPtrInput
 	Synced       pulumi.BoolPtrInput
 	// Wait until alerting is up and running. Default: `false` (bool)
@@ -364,6 +374,8 @@ func (o ClusterSyncOutput) Nodes() ClusterSyncNodeArrayOutput {
 }
 
 // Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+//
+// **Note** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
 func (o ClusterSyncOutput) StateConfirm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterSync) pulumi.IntPtrOutput { return v.StateConfirm }).(pulumi.IntPtrOutput)
 }

@@ -115,6 +115,8 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for Machine Config V2 object (map)
+        /// 
+        /// **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
@@ -248,6 +250,8 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for Machine Config V2 object (map)
+        /// 
+        /// **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         /// </summary>
         public InputMap<object> Labels
         {
@@ -340,6 +344,8 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for Machine Config V2 object (map)
+        /// 
+        /// **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         /// </summary>
         public InputMap<object> Labels
         {

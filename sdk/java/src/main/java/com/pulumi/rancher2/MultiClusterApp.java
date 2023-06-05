@@ -24,6 +24,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Rancher v2 multi_cluster_app resource. This can be used to deploy multi_cluster_app on Rancher v2.
+ * 
+ * This resource can also modify Rancher v2 multi cluster apps in 3 ways:
+ * - `Add/Remove targets`: If `targets` arguments is modified, the multi cluster app targets will be updated.
+ * - `Rollback`: If `revision_id` argument is provided or modified the app will be rolled back accordingly. A new `revision_id` will be generated in Rancher. It will also generate a non-empty pulumi preview that will require manual .tf file intervention. Use carefully.
+ * - `Update`: If any other argument is modified the app will be upgraded.
+ * 
+ * Note: In case of multiple resource modification in a row, `rollback` has preference.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;

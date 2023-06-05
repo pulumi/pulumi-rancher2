@@ -20,6 +20,8 @@ namespace Pulumi.Rancher2.Inputs
 
         /// <summary>
         /// Is AKS cluster imported? Defaul: `false` (bool)
+        /// 
+        /// The following arguments are supported just for creating new AKS clusters (`imported=false`):
         /// </summary>
         [Input("imported")]
         public Input<bool>? Imported { get; set; }

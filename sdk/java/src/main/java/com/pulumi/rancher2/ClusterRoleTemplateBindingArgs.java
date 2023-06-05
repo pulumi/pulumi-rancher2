@@ -80,12 +80,16 @@ public final class ClusterRoleTemplateBindingArgs extends com.pulumi.resources.R
     /**
      * Labels for cluster role template binding (map)
      * 
+     * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
      * @return Labels for cluster role template binding (map)
+     * 
+     * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -271,6 +275,8 @@ public final class ClusterRoleTemplateBindingArgs extends com.pulumi.resources.R
         /**
          * @param labels Labels for cluster role template binding (map)
          * 
+         * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+         * 
          * @return builder
          * 
          */
@@ -281,6 +287,8 @@ public final class ClusterRoleTemplateBindingArgs extends com.pulumi.resources.R
 
         /**
          * @param labels Labels for cluster role template binding (map)
+         * 
+         * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
          * 
          * @return builder
          * 

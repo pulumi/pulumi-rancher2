@@ -66,6 +66,8 @@ type GlobalRoleBinding struct {
 	// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
 	GroupPrincipalId pulumi.StringOutput `pulumi:"groupPrincipalId"`
 	// Labels for global role binding (map)
+	//
+	// **Note** user `userId` OR group `groupPrincipalId` must be defined
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The name of the global role binding (string)
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -112,6 +114,8 @@ type globalRoleBindingState struct {
 	// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
 	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
 	// Labels for global role binding (map)
+	//
+	// **Note** user `userId` OR group `groupPrincipalId` must be defined
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the global role binding (string)
 	Name *string `pulumi:"name"`
@@ -127,6 +131,8 @@ type GlobalRoleBindingState struct {
 	// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
 	GroupPrincipalId pulumi.StringPtrInput
 	// Labels for global role binding (map)
+	//
+	// **Note** user `userId` OR group `groupPrincipalId` must be defined
 	Labels pulumi.MapInput
 	// The name of the global role binding (string)
 	Name pulumi.StringPtrInput
@@ -146,6 +152,8 @@ type globalRoleBindingArgs struct {
 	// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
 	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
 	// Labels for global role binding (map)
+	//
+	// **Note** user `userId` OR group `groupPrincipalId` must be defined
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the global role binding (string)
 	Name *string `pulumi:"name"`
@@ -162,6 +170,8 @@ type GlobalRoleBindingArgs struct {
 	// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
 	GroupPrincipalId pulumi.StringPtrInput
 	// Labels for global role binding (map)
+	//
+	// **Note** user `userId` OR group `groupPrincipalId` must be defined
 	Labels pulumi.MapInput
 	// The name of the global role binding (string)
 	Name pulumi.StringPtrInput
@@ -272,6 +282,8 @@ func (o GlobalRoleBindingOutput) GroupPrincipalId() pulumi.StringOutput {
 }
 
 // Labels for global role binding (map)
+//
+// **Note** user `userId` OR group `groupPrincipalId` must be defined
 func (o GlobalRoleBindingOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *GlobalRoleBinding) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }

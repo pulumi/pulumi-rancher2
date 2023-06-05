@@ -37,6 +37,8 @@ class MachineConfigV2Args:
         :param pulumi.Input[str] fleet_namespace: Cluster V2 fleet namespace
         :param pulumi.Input['MachineConfigV2HarvesterConfigArgs'] harvester_config: Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Machine Config V2 object (map)
+               
+               **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         :param pulumi.Input['MachineConfigV2LinodeConfigArgs'] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input['MachineConfigV2OpenstackConfigArgs'] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input['MachineConfigV2VsphereConfigArgs'] vsphere_config: vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)
@@ -152,6 +154,8 @@ class MachineConfigV2Args:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Labels for Machine Config V2 object (map)
+
+        **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         """
         return pulumi.get(self, "labels")
 
@@ -224,6 +228,8 @@ class _MachineConfigV2State:
         :param pulumi.Input['MachineConfigV2HarvesterConfigArgs'] harvester_config: Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] kind: (Computed) The machine config kind (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Machine Config V2 object (map)
+               
+               **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         :param pulumi.Input['MachineConfigV2LinodeConfigArgs'] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] name: (Computed) The machine config name (string)
         :param pulumi.Input['MachineConfigV2OpenstackConfigArgs'] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)
@@ -360,6 +366,8 @@ class _MachineConfigV2State:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Labels for Machine Config V2 object (map)
+
+        **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         """
         return pulumi.get(self, "labels")
 
@@ -490,6 +498,8 @@ class MachineConfigV2(pulumi.CustomResource):
         :param pulumi.Input[str] generate_name: Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\\"prod-pool1\\" will generate \\"nc-prod-pool1-?????\\" name computed at `name` attribute (string)
         :param pulumi.Input[pulumi.InputType['MachineConfigV2HarvesterConfigArgs']] harvester_config: Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Machine Config V2 object (map)
+               
+               **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         :param pulumi.Input[pulumi.InputType['MachineConfigV2LinodeConfigArgs']] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['MachineConfigV2OpenstackConfigArgs']] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['MachineConfigV2VsphereConfigArgs']] vsphere_config: vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)
@@ -626,6 +636,8 @@ class MachineConfigV2(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MachineConfigV2HarvesterConfigArgs']] harvester_config: Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] kind: (Computed) The machine config kind (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Machine Config V2 object (map)
+               
+               **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         :param pulumi.Input[pulumi.InputType['MachineConfigV2LinodeConfigArgs']] linode_config: Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[str] name: (Computed) The machine config name (string)
         :param pulumi.Input[pulumi.InputType['MachineConfigV2OpenstackConfigArgs']] openstack_config: Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)
@@ -721,6 +733,8 @@ class MachineConfigV2(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for Machine Config V2 object (map)
+
+        **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         """
         return pulumi.get(self, "labels")
 

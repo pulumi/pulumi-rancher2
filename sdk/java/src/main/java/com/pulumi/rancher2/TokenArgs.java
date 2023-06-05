@@ -97,12 +97,16 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Token time to live in seconds. Default `0` (int)
      * 
+     * From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+     * 
      */
     @Import(name="ttl")
     private @Nullable Output<Integer> ttl;
 
     /**
      * @return Token time to live in seconds. Default `0` (int)
+     * 
+     * From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
      * 
      */
     public Optional<Output<Integer>> ttl() {
@@ -246,6 +250,8 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param ttl Token time to live in seconds. Default `0` (int)
          * 
+         * From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+         * 
          * @return builder
          * 
          */
@@ -256,6 +262,8 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ttl Token time to live in seconds. Default `0` (int)
+         * 
+         * From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
          * 
          * @return builder
          * 

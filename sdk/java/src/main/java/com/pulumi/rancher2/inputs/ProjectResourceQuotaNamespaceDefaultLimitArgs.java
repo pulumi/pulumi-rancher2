@@ -190,12 +190,16 @@ public final class ProjectResourceQuotaNamespaceDefaultLimitArgs extends com.pul
     /**
      * Limit for services node ports in project (string)
      * 
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+     * 
      */
     @Import(name="servicesNodePorts")
     private @Nullable Output<String> servicesNodePorts;
 
     /**
      * @return Limit for services node ports in project (string)
+     * 
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
      * 
      */
     public Optional<Output<String>> servicesNodePorts() {
@@ -481,6 +485,8 @@ public final class ProjectResourceQuotaNamespaceDefaultLimitArgs extends com.pul
         /**
          * @param servicesNodePorts Limit for services node ports in project (string)
          * 
+         * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+         * 
          * @return builder
          * 
          */
@@ -491,6 +497,8 @@ public final class ProjectResourceQuotaNamespaceDefaultLimitArgs extends com.pul
 
         /**
          * @param servicesNodePorts Limit for services node ports in project (string)
+         * 
+         * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
          * 
          * @return builder
          * 

@@ -35,6 +35,8 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string GoogleCredentialSecret;
         /// <summary>
         /// Is AKS cluster imported? Defaul: `false` (bool)
+        /// 
+        /// The following arguments are supported just for creating new AKS clusters (`imported=false`):
         /// </summary>
         public readonly bool? Imported;
         /// <summary>

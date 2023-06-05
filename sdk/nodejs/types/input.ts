@@ -339,6 +339,8 @@ export interface ClusterAksConfigV2 {
     httpApplicationRouting?: pulumi.Input<boolean>;
     /**
      * Is AKS cluster imported? Defaul: `false` (bool)
+     *
+     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
      */
     imported?: pulumi.Input<boolean>;
     /**
@@ -814,6 +816,8 @@ export interface ClusterEksConfigV2 {
     cloudCredentialId: pulumi.Input<string>;
     /**
      * Is AKS cluster imported? Defaul: `false` (bool)
+     *
+     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
      */
     imported?: pulumi.Input<boolean>;
     /**
@@ -1202,6 +1206,8 @@ export interface ClusterGkeConfigV2 {
     googleCredentialSecret: pulumi.Input<string>;
     /**
      * Is AKS cluster imported? Defaul: `false` (bool)
+     *
+     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
      */
     imported?: pulumi.Input<boolean>;
     /**
@@ -3530,6 +3536,10 @@ export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
 export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
     /**
      * Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
      */
     customConfig?: pulumi.Input<string>;
     /**
@@ -6281,6 +6291,8 @@ export interface NamespaceResourceQuotaLimit {
     servicesLoadBalancers?: pulumi.Input<string>;
     /**
      * Limit for services node ports in namespace (string)
+     *
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
      */
     servicesNodePorts?: pulumi.Input<string>;
 }
@@ -6428,6 +6440,8 @@ export interface NodeTemplateAmazonec2Config {
     usePrivateAddress?: pulumi.Input<boolean>;
     /**
      * Path to file with cloud-init user data (string)
+     *
+     * > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: pulumi.Input<string>;
     /**
@@ -6614,6 +6628,8 @@ export interface NodeTemplateDigitaloceanConfig {
     tags?: pulumi.Input<string>;
     /**
      * Path to file with cloud-init user data (string)
+     *
+     * > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: pulumi.Input<string>;
 }
@@ -6700,6 +6716,8 @@ export interface NodeTemplateHetznerConfig {
     usePrivateNetwork?: pulumi.Input<boolean>;
     /**
      * Path to file with cloud-init user data (string)
+     *
+     * > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: pulumi.Input<string>;
     /**
@@ -6865,6 +6883,8 @@ export interface NodeTemplateOpennebulaConfig {
     user: pulumi.Input<string>;
     /**
      * VCPUs for the VM (string)
+     *
+     * > **Note**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
      */
     vcpu?: pulumi.Input<string>;
     /**
@@ -7008,6 +7028,10 @@ export interface NodeTemplateOpenstackConfig {
     username?: pulumi.Input<string>;
     /**
      * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
+     *
+     * > **Note**: `Required*` denotes that either the _name or _id is required but you cannot use both.
+     *
+     * > **Note**: `Required**` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
      */
     volumeDevicePath?: pulumi.Input<string>;
     /**
@@ -7872,6 +7896,8 @@ export interface ProjectResourceQuotaNamespaceDefaultLimit {
     servicesLoadBalancers?: pulumi.Input<string>;
     /**
      * Limit for services node ports in project (string)
+     *
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
      */
     servicesNodePorts?: pulumi.Input<string>;
 }
@@ -7924,6 +7950,8 @@ export interface ProjectResourceQuotaProjectLimit {
     servicesLoadBalancers?: pulumi.Input<string>;
     /**
      * Limit for services node ports in project (string)
+     *
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
      */
     servicesNodePorts?: pulumi.Input<string>;
 }

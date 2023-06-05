@@ -1496,6 +1496,8 @@ class ClusterAksConfigV2Args:
         :param pulumi.Input[str] dns_prefix: The AKS dns prefix. Required if `imported=false` (string)
         :param pulumi.Input[bool] http_application_routing: Enable AKS http application routing? (bool)
         :param pulumi.Input[bool] imported: Is AKS cluster imported? Defaul: `false` (bool)
+               
+               The following arguments are supported just for creating new AKS clusters (`imported=false`):
         :param pulumi.Input[str] kubernetes_version: K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
         :param pulumi.Input[str] linux_admin_username: The AKS linux admin username (string)
         :param pulumi.Input[str] linux_ssh_public_key: The AKS linux ssh public key (string)
@@ -1674,6 +1676,8 @@ class ClusterAksConfigV2Args:
     def imported(self) -> Optional[pulumi.Input[bool]]:
         """
         Is AKS cluster imported? Defaul: `false` (bool)
+
+        The following arguments are supported just for creating new AKS clusters (`imported=false`):
         """
         return pulumi.get(self, "imported")
 
@@ -3445,6 +3449,8 @@ class ClusterEksConfigV2Args:
         """
         :param pulumi.Input[str] cloud_credential_id: The AKS Cloud Credential ID to use (string)
         :param pulumi.Input[bool] imported: Is AKS cluster imported? Defaul: `false` (bool)
+               
+               The following arguments are supported just for creating new AKS clusters (`imported=false`):
         :param pulumi.Input[str] kms_key: The AWS kms key to use (string)
         :param pulumi.Input[str] kubernetes_version: K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] logging_types: The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
@@ -3509,6 +3515,8 @@ class ClusterEksConfigV2Args:
     def imported(self) -> Optional[pulumi.Input[bool]]:
         """
         Is AKS cluster imported? Defaul: `false` (bool)
+
+        The following arguments are supported just for creating new AKS clusters (`imported=false`):
         """
         return pulumi.get(self, "imported")
 
@@ -4901,6 +4909,8 @@ class ClusterGkeConfigV2Args:
         :param pulumi.Input[str] description: The description for Cluster (string)
         :param pulumi.Input[bool] enable_kubernetes_alpha: Enable Kubernetes alpha. Default: `false` (bool)
         :param pulumi.Input[bool] imported: Is AKS cluster imported? Defaul: `false` (bool)
+               
+               The following arguments are supported just for creating new AKS clusters (`imported=false`):
         :param pulumi.Input['ClusterGkeConfigV2IpAllocationPolicyArgs'] ip_allocation_policy: The GKE ip allocation policy (List maxitems:1)
         :param pulumi.Input[str] kubernetes_version: K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
@@ -5050,6 +5060,8 @@ class ClusterGkeConfigV2Args:
     def imported(self) -> Optional[pulumi.Input[bool]]:
         """
         Is AKS cluster imported? Defaul: `false` (bool)
+
+        The following arguments are supported just for creating new AKS clusters (`imported=false`):
         """
         return pulumi.get(self, "imported")
 
@@ -13805,6 +13817,10 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] custom_config: Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[bool] enabled: Enable etcd backup (bool)
         """
         if custom_config is not None:
@@ -13817,6 +13833,10 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
     def custom_config(self) -> Optional[pulumi.Input[str]]:
         """
         Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "custom_config")
 
@@ -26393,6 +26413,8 @@ class NamespaceResourceQuotaLimitArgs:
         :param pulumi.Input[str] secrets: Limit for secrets in namespace (string)
         :param pulumi.Input[str] services_load_balancers: Limit for services load balancers in namespace (string)
         :param pulumi.Input[str] services_node_ports: Limit for services node ports in namespace (string)
+               
+               More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
         """
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
@@ -26567,6 +26589,8 @@ class NamespaceResourceQuotaLimitArgs:
     def services_node_ports(self) -> Optional[pulumi.Input[str]]:
         """
         Limit for services node ports in namespace (string)
+
+        More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
         """
         return pulumi.get(self, "services_node_ports")
 
@@ -26716,6 +26740,8 @@ class NodeTemplateAmazonec2ConfigArgs:
         :param pulumi.Input[bool] use_ebs_optimized_instance: Create an EBS optimized instance. Default `false` (bool)
         :param pulumi.Input[bool] use_private_address: Force the usage of private IP address. Default `false` (bool)
         :param pulumi.Input[str] userdata: Path to file with cloud-init user data (string)
+               
+               > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         :param pulumi.Input[str] volume_type: Amazon EBS volume type. Default `gp2` (string)
         """
         pulumi.set(__self__, "ami", ami)
@@ -27181,6 +27207,8 @@ class NodeTemplateAmazonec2ConfigArgs:
     def userdata(self) -> Optional[pulumi.Input[str]]:
         """
         Path to file with cloud-init user data (string)
+
+        > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         """
         return pulumi.get(self, "userdata")
 
@@ -27688,6 +27716,8 @@ class NodeTemplateDigitaloceanConfigArgs:
         :param pulumi.Input[str] ssh_user: Set the name of the ssh user (string)
         :param pulumi.Input[str] tags: AWS Tags (e.g. key1,value1,key2,value2) (string)
         :param pulumi.Input[str] userdata: Path to file with cloud-init user data (string)
+               
+               > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         """
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
@@ -27879,6 +27909,8 @@ class NodeTemplateDigitaloceanConfigArgs:
     def userdata(self) -> Optional[pulumi.Input[str]]:
         """
         Path to file with cloud-init user data (string)
+
+        > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         """
         return pulumi.get(self, "userdata")
 
@@ -28103,6 +28135,8 @@ class NodeTemplateHetznerConfigArgs:
         :param pulumi.Input[str] server_type: Hetzner Cloud server type. Default `cx11` (string)
         :param pulumi.Input[bool] use_private_network: Use private network. Default `false` (bool)
         :param pulumi.Input[str] userdata: Path to file with cloud-init user data (string)
+               
+               > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         :param pulumi.Input[str] volumes: Comma-separated list of volume IDs or names which should be attached to the server (string)
         """
         pulumi.set(__self__, "api_token", api_token)
@@ -28212,6 +28246,8 @@ class NodeTemplateHetznerConfigArgs:
     def userdata(self) -> Optional[pulumi.Input[str]]:
         """
         Path to file with cloud-init user data (string)
+
+        > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         """
         return pulumi.get(self, "userdata")
 
@@ -28606,6 +28642,8 @@ class NodeTemplateOpennebulaConfigArgs:
         :param pulumi.Input[str] template_id: Opennebula template ID to use. Conflicts with `template_name` (string)
         :param pulumi.Input[str] template_name: Name of the Opennbula template to use. Conflicts with `template_id` (string)
         :param pulumi.Input[str] vcpu: VCPUs for the VM (string)
+               
+               > **Note**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
         """
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "user", user)
@@ -28864,6 +28902,8 @@ class NodeTemplateOpennebulaConfigArgs:
     def vcpu(self) -> Optional[pulumi.Input[str]]:
         """
         VCPUs for the VM (string)
+
+        > **Note**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
         """
         return pulumi.get(self, "vcpu")
 
@@ -28948,6 +28988,10 @@ class NodeTemplateOpenstackConfigArgs:
         :param pulumi.Input[str] user_data_file: File containing an openstack userdata script (string)
         :param pulumi.Input[str] username: OpenStack username (string)
         :param pulumi.Input[str] volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+               
+               > **Note**: `Required*` denotes that either the _name or _id is required but you cannot use both.
+               
+               > **Note**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
         :param pulumi.Input[str] volume_id: OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param pulumi.Input[str] volume_name: OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param pulumi.Input[str] volume_size: OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
@@ -29428,6 +29472,10 @@ class NodeTemplateOpenstackConfigArgs:
     def volume_device_path(self) -> Optional[pulumi.Input[str]]:
         """
         OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+
+        > **Note**: `Required*` denotes that either the _name or _id is required but you cannot use both.
+
+        > **Note**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
         """
         return pulumi.get(self, "volume_device_path")
 
@@ -32473,6 +32521,8 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
         :param pulumi.Input[str] secrets: Limit for secrets in project (string)
         :param pulumi.Input[str] services_load_balancers: Limit for services load balancers in project (string)
         :param pulumi.Input[str] services_node_ports: Limit for services node ports in project (string)
+               
+               More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
         """
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
@@ -32647,6 +32697,8 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     def services_node_ports(self) -> Optional[pulumi.Input[str]]:
         """
         Limit for services node ports in project (string)
+
+        More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
         """
         return pulumi.get(self, "services_node_ports")
 
@@ -32684,6 +32736,8 @@ class ProjectResourceQuotaProjectLimitArgs:
         :param pulumi.Input[str] secrets: Limit for secrets in project (string)
         :param pulumi.Input[str] services_load_balancers: Limit for services load balancers in project (string)
         :param pulumi.Input[str] services_node_ports: Limit for services node ports in project (string)
+               
+               More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
         """
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
@@ -32858,6 +32912,8 @@ class ProjectResourceQuotaProjectLimitArgs:
     def services_node_ports(self) -> Optional[pulumi.Input[str]]:
         """
         Limit for services node ports in project (string)
+
+        More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
         """
         return pulumi.get(self, "services_node_ports")
 

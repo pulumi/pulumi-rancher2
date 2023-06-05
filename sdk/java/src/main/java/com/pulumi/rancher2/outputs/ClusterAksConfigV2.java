@@ -49,6 +49,8 @@ public final class ClusterAksConfigV2 {
     /**
      * @return Is AKS cluster imported? Defaul: `false` (bool)
      * 
+     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
+     * 
      */
     private @Nullable Boolean imported;
     /**
@@ -207,6 +209,8 @@ public final class ClusterAksConfigV2 {
     }
     /**
      * @return Is AKS cluster imported? Defaul: `false` (bool)
+     * 
+     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
      * 
      */
     public Optional<Boolean> imported() {

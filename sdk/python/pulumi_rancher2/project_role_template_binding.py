@@ -31,6 +31,8 @@ class ProjectRoleTemplateBindingArgs:
         :param pulumi.Input[str] group_id: The group ID to assign project role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign project role template binding (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+               
+               **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the project role template binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign project role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign project role template binding (string)
@@ -117,6 +119,8 @@ class ProjectRoleTemplateBindingArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Labels of the resource (map)
+
+        **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         """
         return pulumi.get(self, "labels")
 
@@ -179,6 +183,8 @@ class _ProjectRoleTemplateBindingState:
         :param pulumi.Input[str] group_id: The group ID to assign project role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign project role template binding (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+               
+               **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the project role template binding (string)
         :param pulumi.Input[str] project_id: The project id where bind project role template (string)
         :param pulumi.Input[str] role_template_id: The role template id from create project role template binding (string)
@@ -245,6 +251,8 @@ class _ProjectRoleTemplateBindingState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Labels of the resource (map)
+
+        **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         """
         return pulumi.get(self, "labels")
 
@@ -358,6 +366,8 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The group ID to assign project role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign project role template binding (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+               
+               **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the project role template binding (string)
         :param pulumi.Input[str] project_id: The project id where bind project role template (string)
         :param pulumi.Input[str] role_template_id: The role template id from create project role template binding (string)
@@ -470,6 +480,8 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The group ID to assign project role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign project role template binding (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+               
+               **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the project role template binding (string)
         :param pulumi.Input[str] project_id: The project id where bind project role template (string)
         :param pulumi.Input[str] role_template_id: The role template id from create project role template binding (string)
@@ -520,6 +532,8 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels of the resource (map)
+
+        **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         """
         return pulumi.get(self, "labels")
 

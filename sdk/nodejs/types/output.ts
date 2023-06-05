@@ -339,6 +339,8 @@ export interface ClusterAksConfigV2 {
     httpApplicationRouting: boolean;
     /**
      * Is AKS cluster imported? Defaul: `false` (bool)
+     *
+     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
      */
     imported?: boolean;
     /**
@@ -814,6 +816,8 @@ export interface ClusterEksConfigV2 {
     cloudCredentialId: string;
     /**
      * Is AKS cluster imported? Defaul: `false` (bool)
+     *
+     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
      */
     imported?: boolean;
     /**
@@ -1202,6 +1206,8 @@ export interface ClusterGkeConfigV2 {
     googleCredentialSecret: string;
     /**
      * Is AKS cluster imported? Defaul: `false` (bool)
+     *
+     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
      */
     imported?: boolean;
     /**
@@ -3530,6 +3536,10 @@ export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
 export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
     /**
      * Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
      */
     customConfig?: string;
     /**
@@ -8608,6 +8618,8 @@ export interface NamespaceResourceQuotaLimit {
     servicesLoadBalancers?: string;
     /**
      * Limit for services node ports in namespace (string)
+     *
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
      */
     servicesNodePorts?: string;
 }
@@ -8755,6 +8767,8 @@ export interface NodeTemplateAmazonec2Config {
     usePrivateAddress?: boolean;
     /**
      * Path to file with cloud-init user data (string)
+     *
+     * > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: string;
     /**
@@ -8941,6 +8955,8 @@ export interface NodeTemplateDigitaloceanConfig {
     tags?: string;
     /**
      * Path to file with cloud-init user data (string)
+     *
+     * > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: string;
 }
@@ -9027,6 +9043,8 @@ export interface NodeTemplateHetznerConfig {
     usePrivateNetwork?: boolean;
     /**
      * Path to file with cloud-init user data (string)
+     *
+     * > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: string;
     /**
@@ -9192,6 +9210,8 @@ export interface NodeTemplateOpennebulaConfig {
     user: string;
     /**
      * VCPUs for the VM (string)
+     *
+     * > **Note**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
      */
     vcpu?: string;
     /**
@@ -9335,6 +9355,10 @@ export interface NodeTemplateOpenstackConfig {
     username?: string;
     /**
      * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
+     *
+     * > **Note**: `Required*` denotes that either the _name or _id is required but you cannot use both.
+     *
+     * > **Note**: `Required**` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
      */
     volumeDevicePath?: string;
     /**
@@ -10199,6 +10223,8 @@ export interface ProjectResourceQuotaNamespaceDefaultLimit {
     servicesLoadBalancers?: string;
     /**
      * Limit for services node ports in project (string)
+     *
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
      */
     servicesNodePorts?: string;
 }
@@ -10251,6 +10277,8 @@ export interface ProjectResourceQuotaProjectLimit {
     servicesLoadBalancers?: string;
     /**
      * Limit for services node ports in project (string)
+     *
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
      */
     servicesNodePorts?: string;
 }

@@ -24,7 +24,11 @@ func GetBootstrap(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "RANCHER_BOOTSTRAP").(bool)
+	var value bool
+	if d := getEnvOrDefault(false, parseEnvBool, "RANCHER_BOOTSTRAP"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }
 
 // CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
@@ -38,7 +42,11 @@ func GetInsecure(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "RANCHER_INSECURE").(bool)
+	var value bool
+	if d := getEnvOrDefault(false, parseEnvBool, "RANCHER_INSECURE"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }
 
 // Rancher connection retries

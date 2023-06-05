@@ -5,6 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a Rancher v2 app resource. This can be used to deploy apps within Rancher v2 projects.
+ *
+ * This resource can also modify Rancher v2 apps in 3 ways:
+ * - `Update`: If `description`, `annotations` or `labels` arguments are modified the app will be updated. No new `revisionId` will be generated in Rancher.
+ * - `Upgrade`: If `answers`, `catalogName`, `templateName`, `templateVersion` or `valuesYaml` arguments are modified, the app will be upgraded. A new `revisionId` will be generated in Rancher.
+ * - `Rollback`: If `revisionId` argument is provided or modified the app will be rolled back accordingly. A new `revisionId` will be generated in Rancher. It will also generate a non-empty pulumi preview that will require manual .tf file intervention. Use carefully.
+ *
+ * Note: In case of multiple resource modifications in a row, `rollback` has preference over `upgrade`.
+ *
  * ## Example Usage
  *
  * ```typescript

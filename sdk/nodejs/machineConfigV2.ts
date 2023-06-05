@@ -106,6 +106,8 @@ export class MachineConfigV2 extends pulumi.CustomResource {
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Labels for Machine Config V2 object (map)
+     *
+     * **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -219,6 +221,8 @@ export interface MachineConfigV2State {
     kind?: pulumi.Input<string>;
     /**
      * Labels for Machine Config V2 object (map)
+     *
+     * **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -277,6 +281,8 @@ export interface MachineConfigV2Args {
     harvesterConfig?: pulumi.Input<inputs.MachineConfigV2HarvesterConfig>;
     /**
      * Labels for Machine Config V2 object (map)
+     *
+     * **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**

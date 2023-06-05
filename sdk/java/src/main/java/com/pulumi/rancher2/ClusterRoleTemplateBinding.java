@@ -120,12 +120,16 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
     /**
      * Labels for cluster role template binding (map)
      * 
+     * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+     * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> labels;
 
     /**
      * @return Labels for cluster role template binding (map)
+     * 
+     * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
      * 
      */
     public Output<Map<String,Object>> labels() {
