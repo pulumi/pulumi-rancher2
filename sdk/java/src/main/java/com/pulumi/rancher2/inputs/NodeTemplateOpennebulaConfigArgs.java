@@ -274,12 +274,16 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     /**
      * VCPUs for the VM (string)
      * 
+     * &gt; **Note**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+     * 
      */
     @Import(name="vcpu")
     private @Nullable Output<String> vcpu;
 
     /**
      * @return VCPUs for the VM (string)
+     * 
+     * &gt; **Note**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
      * 
      */
     public Optional<Output<String>> vcpu() {
@@ -703,6 +707,8 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         /**
          * @param vcpu VCPUs for the VM (string)
          * 
+         * &gt; **Note**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+         * 
          * @return builder
          * 
          */
@@ -713,6 +719,8 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
 
         /**
          * @param vcpu VCPUs for the VM (string)
+         * 
+         * &gt; **Note**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
          * 
          * @return builder
          * 

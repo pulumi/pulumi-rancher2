@@ -70,6 +70,8 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for global role binding (map)
+        /// 
+        /// **Note** user `user_id` OR group `group_principal_id` must be defined
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
@@ -161,6 +163,8 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for global role binding (map)
+        /// 
+        /// **Note** user `user_id` OR group `group_principal_id` must be defined
         /// </summary>
         public InputMap<object> Labels
         {
@@ -217,6 +221,8 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for global role binding (map)
+        /// 
+        /// **Note** user `user_id` OR group `group_principal_id` must be defined
         /// </summary>
         public InputMap<object> Labels
         {

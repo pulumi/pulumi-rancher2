@@ -244,6 +244,8 @@ type NodeTemplate struct {
 	// Hetzner config for the Node Template (list maxitems:1)
 	HetznerConfig NodeTemplateHetznerConfigPtrOutput `pulumi:"hetznerConfig"`
 	// Labels for Node Template object (map)
+	//
+	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig NodeTemplateLinodeConfigPtrOutput `pulumi:"linodeConfig"`
@@ -342,6 +344,8 @@ type nodeTemplateState struct {
 	// Hetzner config for the Node Template (list maxitems:1)
 	HetznerConfig *NodeTemplateHetznerConfig `pulumi:"hetznerConfig"`
 	// Labels for Node Template object (map)
+	//
+	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig *NodeTemplateLinodeConfig `pulumi:"linodeConfig"`
@@ -401,6 +405,8 @@ type NodeTemplateState struct {
 	// Hetzner config for the Node Template (list maxitems:1)
 	HetznerConfig NodeTemplateHetznerConfigPtrInput
 	// Labels for Node Template object (map)
+	//
+	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
 	Labels pulumi.MapInput
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig NodeTemplateLinodeConfigPtrInput
@@ -462,6 +468,8 @@ type nodeTemplateArgs struct {
 	// Hetzner config for the Node Template (list maxitems:1)
 	HetznerConfig *NodeTemplateHetznerConfig `pulumi:"hetznerConfig"`
 	// Labels for Node Template object (map)
+	//
+	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig *NodeTemplateLinodeConfig `pulumi:"linodeConfig"`
@@ -520,6 +528,8 @@ type NodeTemplateArgs struct {
 	// Hetzner config for the Node Template (list maxitems:1)
 	HetznerConfig NodeTemplateHetznerConfigPtrInput
 	// Labels for Node Template object (map)
+	//
+	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
 	Labels pulumi.MapInput
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig NodeTemplateLinodeConfigPtrInput
@@ -722,6 +732,8 @@ func (o NodeTemplateOutput) HetznerConfig() NodeTemplateHetznerConfigPtrOutput {
 }
 
 // Labels for Node Template object (map)
+//
+// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
 func (o NodeTemplateOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *NodeTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }

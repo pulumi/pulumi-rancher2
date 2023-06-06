@@ -220,12 +220,16 @@ public class Token extends com.pulumi.resources.CustomResource {
     /**
      * Token time to live in seconds. Default `0` (int)
      * 
+     * From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+     * 
      */
     @Export(name="ttl", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> ttl;
 
     /**
      * @return Token time to live in seconds. Default `0` (int)
+     * 
+     * From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
      * 
      */
     public Output<Optional<Integer>> ttl() {

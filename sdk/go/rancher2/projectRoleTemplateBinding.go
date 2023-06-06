@@ -60,6 +60,8 @@ type ProjectRoleTemplateBinding struct {
 	// The groupPrincipal ID to assign project role template binding (string)
 	GroupPrincipalId pulumi.StringOutput `pulumi:"groupPrincipalId"`
 	// Labels of the resource (map)
+	//
+	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The name of the project role template binding (string)
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -115,6 +117,8 @@ type projectRoleTemplateBindingState struct {
 	// The groupPrincipal ID to assign project role template binding (string)
 	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
 	// Labels of the resource (map)
+	//
+	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the project role template binding (string)
 	Name *string `pulumi:"name"`
@@ -136,6 +140,8 @@ type ProjectRoleTemplateBindingState struct {
 	// The groupPrincipal ID to assign project role template binding (string)
 	GroupPrincipalId pulumi.StringPtrInput
 	// Labels of the resource (map)
+	//
+	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels pulumi.MapInput
 	// The name of the project role template binding (string)
 	Name pulumi.StringPtrInput
@@ -161,6 +167,8 @@ type projectRoleTemplateBindingArgs struct {
 	// The groupPrincipal ID to assign project role template binding (string)
 	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
 	// Labels of the resource (map)
+	//
+	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the project role template binding (string)
 	Name *string `pulumi:"name"`
@@ -183,6 +191,8 @@ type ProjectRoleTemplateBindingArgs struct {
 	// The groupPrincipal ID to assign project role template binding (string)
 	GroupPrincipalId pulumi.StringPtrInput
 	// Labels of the resource (map)
+	//
+	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels pulumi.MapInput
 	// The name of the project role template binding (string)
 	Name pulumi.StringPtrInput
@@ -299,6 +309,8 @@ func (o ProjectRoleTemplateBindingOutput) GroupPrincipalId() pulumi.StringOutput
 }
 
 // Labels of the resource (map)
+//
+// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 func (o ProjectRoleTemplateBindingOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }

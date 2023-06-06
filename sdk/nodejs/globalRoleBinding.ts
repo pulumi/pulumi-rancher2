@@ -75,6 +75,8 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
     public readonly groupPrincipalId!: pulumi.Output<string>;
     /**
      * Labels for global role binding (map)
+     *
+     * **Note** user `userId` OR group `groupPrincipalId` must be defined
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -140,6 +142,8 @@ export interface GlobalRoleBindingState {
     groupPrincipalId?: pulumi.Input<string>;
     /**
      * Labels for global role binding (map)
+     *
+     * **Note** user `userId` OR group `groupPrincipalId` must be defined
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -170,6 +174,8 @@ export interface GlobalRoleBindingArgs {
     groupPrincipalId?: pulumi.Input<string>;
     /**
      * Labels for global role binding (map)
+     *
+     * **Note** user `userId` OR group `groupPrincipalId` must be defined
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**

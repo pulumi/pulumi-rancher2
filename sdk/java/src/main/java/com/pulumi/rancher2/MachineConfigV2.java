@@ -206,12 +206,16 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
     /**
      * Labels for Machine Config V2 object (map)
      * 
+     * **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
+     * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> labels;
 
     /**
      * @return Labels for Machine Config V2 object (map)
+     * 
+     * **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
      * 
      */
     public Output<Map<String,Object>> labels() {

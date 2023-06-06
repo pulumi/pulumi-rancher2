@@ -83,6 +83,8 @@ namespace Pulumi.Rancher2.Inputs
 
         /// <summary>
         /// Limit for services node ports in project (string)
+        /// 
+        /// More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
         /// </summary>
         [Input("servicesNodePorts")]
         public Input<string>? ServicesNodePorts { get; set; }

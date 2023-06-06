@@ -70,6 +70,8 @@ public final class NamespaceResourceQuotaLimit {
     /**
      * @return Limit for services node ports in namespace (string)
      * 
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+     * 
      */
     private @Nullable String servicesNodePorts;
 
@@ -156,6 +158,8 @@ public final class NamespaceResourceQuotaLimit {
     }
     /**
      * @return Limit for services node ports in namespace (string)
+     * 
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
      * 
      */
     public Optional<String> servicesNodePorts() {

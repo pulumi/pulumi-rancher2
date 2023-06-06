@@ -298,6 +298,8 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for Node Template object (map)
+        /// 
+        /// **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
@@ -570,6 +572,8 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for Node Template object (map)
+        /// 
+        /// **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         /// </summary>
         public InputMap<object> Labels
         {
@@ -814,6 +818,8 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for Node Template object (map)
+        /// 
+        /// **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         /// </summary>
         public InputMap<object> Labels
         {

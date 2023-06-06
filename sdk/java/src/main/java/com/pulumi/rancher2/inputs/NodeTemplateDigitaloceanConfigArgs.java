@@ -214,12 +214,16 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
     /**
      * Path to file with cloud-init user data (string)
      * 
+     * &gt; **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * 
      */
     @Import(name="userdata")
     private @Nullable Output<String> userdata;
 
     /**
      * @return Path to file with cloud-init user data (string)
+     * 
+     * &gt; **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 
      */
     public Optional<Output<String>> userdata() {
@@ -539,6 +543,8 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         /**
          * @param userdata Path to file with cloud-init user data (string)
          * 
+         * &gt; **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+         * 
          * @return builder
          * 
          */
@@ -549,6 +555,8 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
 
         /**
          * @param userdata Path to file with cloud-init user data (string)
+         * 
+         * &gt; **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
          * 
          * @return builder
          * 

@@ -132,12 +132,16 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
     /**
      * Labels for Machine Config V2 object (map)
      * 
+     * **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
      * @return Labels for Machine Config V2 object (map)
+     * 
+     * **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -373,6 +377,8 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels Labels for Machine Config V2 object (map)
          * 
+         * **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
+         * 
          * @return builder
          * 
          */
@@ -383,6 +389,8 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param labels Labels for Machine Config V2 object (map)
+         * 
+         * **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
          * 
          * @return builder
          * 

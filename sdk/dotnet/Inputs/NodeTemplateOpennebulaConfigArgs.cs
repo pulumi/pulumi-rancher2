@@ -126,6 +126,8 @@ namespace Pulumi.Rancher2.Inputs
 
         /// <summary>
         /// VCPUs for the VM (string)
+        /// 
+        /// &gt; **Note**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
         /// </summary>
         [Input("vcpu")]
         public Input<string>? Vcpu { get; set; }

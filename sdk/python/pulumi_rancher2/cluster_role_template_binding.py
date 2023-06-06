@@ -31,6 +31,8 @@ class ClusterRoleTemplateBindingArgs:
         :param pulumi.Input[str] group_id: The group ID to assign cluster role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign cluster role template binding (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster role template binding (map)
+               
+               **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the cluster role template binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign cluster role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign cluster role template binding (string)
@@ -117,6 +119,8 @@ class ClusterRoleTemplateBindingArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Labels for cluster role template binding (map)
+
+        **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         """
         return pulumi.get(self, "labels")
 
@@ -180,6 +184,8 @@ class _ClusterRoleTemplateBindingState:
         :param pulumi.Input[str] group_id: The group ID to assign cluster role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign cluster role template binding (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster role template binding (map)
+               
+               **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the cluster role template binding (string)
         :param pulumi.Input[str] role_template_id: The role template id from create cluster role template binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign cluster role template binding (string)
@@ -257,6 +263,8 @@ class _ClusterRoleTemplateBindingState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Labels for cluster role template binding (map)
+
+        **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         """
         return pulumi.get(self, "labels")
 
@@ -359,6 +367,8 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The group ID to assign cluster role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign cluster role template binding (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster role template binding (map)
+               
+               **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the cluster role template binding (string)
         :param pulumi.Input[str] role_template_id: The role template id from create cluster role template binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign cluster role template binding (string)
@@ -471,6 +481,8 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The group ID to assign cluster role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign cluster role template binding (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster role template binding (map)
+               
+               **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the cluster role template binding (string)
         :param pulumi.Input[str] role_template_id: The role template id from create cluster role template binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign cluster role template binding (string)
@@ -528,6 +540,8 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for cluster role template binding (map)
+
+        **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         """
         return pulumi.get(self, "labels")
 

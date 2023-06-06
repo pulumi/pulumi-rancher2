@@ -71,6 +71,8 @@ type Token struct {
 	// (Computed/Sensitive) Token value (string)
 	Token pulumi.StringOutput `pulumi:"token"`
 	// Token time to live in seconds. Default `0` (int)
+	//
+	// From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
 	// (Computed) Token user ID (string)
 	UserId pulumi.StringOutput `pulumi:"userId"`
@@ -133,6 +135,8 @@ type tokenState struct {
 	// (Computed/Sensitive) Token value (string)
 	Token *string `pulumi:"token"`
 	// Token time to live in seconds. Default `0` (int)
+	//
+	// From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
 	Ttl *int `pulumi:"ttl"`
 	// (Computed) Token user ID (string)
 	UserId *string `pulumi:"userId"`
@@ -162,6 +166,8 @@ type TokenState struct {
 	// (Computed/Sensitive) Token value (string)
 	Token pulumi.StringPtrInput
 	// Token time to live in seconds. Default `0` (int)
+	//
+	// From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
 	Ttl pulumi.IntPtrInput
 	// (Computed) Token user ID (string)
 	UserId pulumi.StringPtrInput
@@ -183,6 +189,8 @@ type tokenArgs struct {
 	// Renew expired or disabled token
 	Renew *bool `pulumi:"renew"`
 	// Token time to live in seconds. Default `0` (int)
+	//
+	// From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
 	Ttl *int `pulumi:"ttl"`
 }
 
@@ -199,6 +207,8 @@ type TokenArgs struct {
 	// Renew expired or disabled token
 	Renew pulumi.BoolPtrInput
 	// Token time to live in seconds. Default `0` (int)
+	//
+	// From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
 	Ttl pulumi.IntPtrInput
 }
 
@@ -345,6 +355,8 @@ func (o TokenOutput) Token() pulumi.StringOutput {
 }
 
 // Token time to live in seconds. Default `0` (int)
+//
+// From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
 func (o TokenOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
 }
