@@ -23,7 +23,7 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/pulumi/pulumi-rancher2/provider/v4/pkg/version"
+	"github.com/pulumi/pulumi-rancher2/provider/v5/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
@@ -121,7 +121,6 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_cluster":                       {Tok: makeResource(mainMod, "Cluster")},
 			"rancher2_cluster_v2":                    {Tok: makeResource(mainMod, "ClusterV2")},
 			"rancher2_cluster_driver":                {Tok: makeResource(mainMod, "ClusterDriver")},
-			"rancher2_cluster_logging":               {Tok: makeResource(mainMod, "ClusterLogging")},
 			"rancher2_cluster_role_template_binding": {Tok: makeResource(mainMod, "ClusterRoleTemplateBinding")},
 			"rancher2_cluster_sync":                  {Tok: makeResource(mainMod, "ClusterSync")},
 			"rancher2_cluster_template":              {Tok: makeResource(mainMod, "ClusterTemplate")},
@@ -136,7 +135,6 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_project":                       {Tok: makeResource(mainMod, "Project")},
 			"rancher2_project_alert_group":           {Tok: makeResource(mainMod, "ProjectAlertGroup")},
 			"rancher2_project_alert_rule":            {Tok: makeResource(mainMod, "ProjectAlertRule")},
-			"rancher2_project_logging":               {Tok: makeResource(mainMod, "ProjectLogging")},
 			"rancher2_project_role_template_binding": {Tok: makeResource(mainMod, "ProjectRoleTemplateBinding")},
 			"rancher2_registry":                      {Tok: makeResource(mainMod, "Registry")},
 			"rancher2_secret":                        {Tok: makeResource(mainMod, "Secret")},

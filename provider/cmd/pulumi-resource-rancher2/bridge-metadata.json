@@ -2103,7 +2103,6 @@
             "rancher2:index/clusterAlterGroup:ClusterAlterGroup": "rancher2_cluster_alert_group_legacy",
             "rancher2:index/clusterAlterRule:ClusterAlterRule": "rancher2_cluster_alert_rule_legacy",
             "rancher2:index/clusterDriver:ClusterDriver": "rancher2_cluster_driver",
-            "rancher2:index/clusterLogging:ClusterLogging": "rancher2_cluster_logging",
             "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding": "rancher2_cluster_role_template_binding",
             "rancher2:index/clusterSync:ClusterSync": "rancher2_cluster_sync",
             "rancher2:index/clusterTemplate:ClusterTemplate": "rancher2_cluster_template",
@@ -2126,7 +2125,6 @@
             "rancher2:index/project:Project": "rancher2_project",
             "rancher2:index/projectAlertGroup:ProjectAlertGroup": "rancher2_project_alert_group",
             "rancher2:index/projectAlertRule:ProjectAlertRule": "rancher2_project_alert_rule",
-            "rancher2:index/projectLogging:ProjectLogging": "rancher2_project_logging",
             "rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding": "rancher2_project_role_template_binding",
             "rancher2:index/registry:Registry": "rancher2_registry",
             "rancher2:index/roleTempalte:RoleTempalte": "rancher2_role_template_legacy",
@@ -2148,9 +2146,7 @@
             "rancher2:index/getClusterAlertGroup:getClusterAlertGroup": "rancher2_cluster_alert_group",
             "rancher2:index/getClusterAlterRule:getClusterAlterRule": "rancher2_cluster_alert_rule",
             "rancher2:index/getClusterDriver:getClusterDriver": "rancher2_cluster_driver",
-            "rancher2:index/getClusterLogging:getClusterLogging": "rancher2_cluster_logging",
             "rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding": "rancher2_cluster_role_template_binding",
-            "rancher2:index/getClusterScan:getClusterScan": "rancher2_cluster_scan",
             "rancher2:index/getClusterTemplate:getClusterTemplate": "rancher2_cluster_template",
             "rancher2:index/getClusterV2:getClusterV2": "rancher2_cluster_v2",
             "rancher2:index/getConfigMapV2:getConfigMapV2": "rancher2_config_map_v2",
@@ -2169,7 +2165,6 @@
             "rancher2:index/getProject:getProject": "rancher2_project",
             "rancher2:index/getProjectAlertGroup:getProjectAlertGroup": "rancher2_project_alert_group",
             "rancher2:index/getProjectAlertRule:getProjectAlertRule": "rancher2_project_alert_rule",
-            "rancher2:index/getProjectLogging:getProjectLogging": "rancher2_project_logging",
             "rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding": "rancher2_project_role_template_binding",
             "rancher2:index/getRegistry:getRegistry": "rancher2_registry",
             "rancher2:index/getRoleTempalte:getRoleTempalte": "rancher2_role_template_legacy",
@@ -2380,6 +2375,7 @@
                 "launchTemplates": "launch_template",
                 "maxSize": "max_size",
                 "minSize": "min_size",
+                "nodeRole": "node_role",
                 "requestSpotInstances": "request_spot_instances",
                 "resourceTags": "resource_tags",
                 "spotInstanceTypes": "spot_instance_types",
@@ -2502,46 +2498,6 @@
                 "drainWorkerNodes": "drain_worker_nodes",
                 "serverConcurrency": "server_concurrency",
                 "workerConcurrency": "worker_concurrency"
-            },
-            "rancher2:index/ClusterLoggingCustomTargetConfig:ClusterLoggingCustomTargetConfig": {
-                "clientCert": "client_cert",
-                "clientKey": "client_key"
-            },
-            "rancher2:index/ClusterLoggingElasticsearchConfig:ClusterLoggingElasticsearchConfig": {
-                "authPassword": "auth_password",
-                "authUsername": "auth_username",
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "clientKeyPass": "client_key_pass",
-                "dateFormat": "date_format",
-                "indexPrefix": "index_prefix",
-                "sslVerify": "ssl_verify",
-                "sslVersion": "ssl_version"
-            },
-            "rancher2:index/ClusterLoggingFluentdConfig:ClusterLoggingFluentdConfig": {
-                "enableTls": "enable_tls",
-                "fluentServers": "fluent_servers"
-            },
-            "rancher2:index/ClusterLoggingFluentdConfigFluentServer:ClusterLoggingFluentdConfigFluentServer": {
-                "sharedKey": "shared_key"
-            },
-            "rancher2:index/ClusterLoggingKafkaConfig:ClusterLoggingKafkaConfig": {
-                "brokerEndpoints": "broker_endpoints",
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "zookeeperEndpoint": "zookeeper_endpoint"
-            },
-            "rancher2:index/ClusterLoggingSplunkConfig:ClusterLoggingSplunkConfig": {
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "clientKeyPass": "client_key_pass",
-                "sslVerify": "ssl_verify"
-            },
-            "rancher2:index/ClusterLoggingSyslogConfig:ClusterLoggingSyslogConfig": {
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "enableTls": "enable_tls",
-                "sslVerify": "ssl_verify"
             },
             "rancher2:index/ClusterOkeConfig:ClusterOkeConfig": {
                 "compartmentId": "compartment_id",
@@ -2947,22 +2903,6 @@
                 "gracePeriod": "grace_period",
                 "ignoreDaemonSets": "ignore_daemon_sets"
             },
-            "rancher2:index/ClusterScheduledClusterScan:ClusterScheduledClusterScan": {
-                "scanConfig": "scan_config",
-                "scheduleConfig": "schedule_config"
-            },
-            "rancher2:index/ClusterScheduledClusterScanScanConfig:ClusterScheduledClusterScanScanConfig": {
-                "cisScanConfig": "cis_scan_config"
-            },
-            "rancher2:index/ClusterScheduledClusterScanScanConfigCisScanConfig:ClusterScheduledClusterScanScanConfigCisScanConfig": {
-                "debugMaster": "debug_master",
-                "debugWorker": "debug_worker",
-                "overrideBenchmarkVersion": "override_benchmark_version",
-                "overrideSkips": "override_skip"
-            },
-            "rancher2:index/ClusterScheduledClusterScanScheduleConfig:ClusterScheduledClusterScanScheduleConfig": {
-                "cronSchedule": "cron_schedule"
-            },
             "rancher2:index/ClusterSyncNode:ClusterSyncNode": {
                 "clusterId": "cluster_id",
                 "externalIpAddress": "external_ip_address",
@@ -2994,7 +2934,6 @@
                 "enableClusterMonitoring": "enable_cluster_monitoring",
                 "enableNetworkPolicy": "enable_network_policy",
                 "rkeConfig": "rke_config",
-                "scheduledClusterScan": "scheduled_cluster_scan",
                 "windowsPreferedCluster": "windows_prefered_cluster"
             },
             "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint:ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint": {
@@ -3364,22 +3303,6 @@
                 "gracePeriod": "grace_period",
                 "ignoreDaemonSets": "ignore_daemon_sets"
             },
-            "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan:ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan": {
-                "scanConfig": "scan_config",
-                "scheduleConfig": "schedule_config"
-            },
-            "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig:ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig": {
-                "cisScanConfig": "cis_scan_config"
-            },
-            "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig:ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig": {
-                "debugMaster": "debug_master",
-                "debugWorker": "debug_worker",
-                "overrideBenchmarkVersion": "override_benchmark_version",
-                "overrideSkips": "override_skip"
-            },
-            "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig:ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig": {
-                "cronSchedule": "cron_schedule"
-            },
             "rancher2:index/ClusterV2ClusterRegistrationToken:ClusterV2ClusterRegistrationToken": {
                 "clusterId": "cluster_id",
                 "insecureCommand": "insecure_command",
@@ -3536,7 +3459,9 @@
                 "vpcId": "vpc_id"
             },
             "rancher2:index/MachineConfigV2AzureConfig:MachineConfigV2AzureConfig": {
+                "acceleratedNetworking": "accelerated_networking",
                 "availabilitySet": "availability_set",
+                "availabilityZone": "availability_zone",
                 "clientId": "client_id",
                 "clientSecret": "client_secret",
                 "customData": "custom_data",
@@ -3556,7 +3481,8 @@
                 "subscriptionId": "subscription_id",
                 "tenantId": "tenant_id",
                 "updateDomainCount": "update_domain_count",
-                "usePrivateIp": "use_private_ip"
+                "usePrivateIp": "use_private_ip",
+                "usePublicIpStandardSku": "use_public_ip_standard_sku"
             },
             "rancher2:index/MachineConfigV2DigitaloceanConfig:MachineConfigV2DigitaloceanConfig": {
                 "accessToken": "access_token",
@@ -3569,15 +3495,18 @@
             "rancher2:index/MachineConfigV2HarvesterConfig:MachineConfigV2HarvesterConfig": {
                 "cpuCount": "cpu_count",
                 "diskBus": "disk_bus",
+                "diskInfo": "disk_info",
                 "diskSize": "disk_size",
                 "imageName": "image_name",
                 "memorySize": "memory_size",
                 "networkData": "network_data",
+                "networkInfo": "network_info",
                 "networkModel": "network_model",
                 "networkName": "network_name",
                 "sshPassword": "ssh_password",
                 "sshUser": "ssh_user",
                 "userData": "user_data",
+                "vmAffinity": "vm_affinity",
                 "vmNamespace": "vm_namespace"
             },
             "rancher2:index/MachineConfigV2LinodeConfig:MachineConfigV2LinodeConfig": {
@@ -3725,7 +3654,9 @@
                 "vpcId": "vpc_id"
             },
             "rancher2:index/NodeTemplateAzureConfig:NodeTemplateAzureConfig": {
+                "acceleratedNetworking": "accelerated_networking",
                 "availabilitySet": "availability_set",
+                "availabilityZone": "availability_zone",
                 "clientId": "client_id",
                 "clientSecret": "client_secret",
                 "customData": "custom_data",
@@ -3743,7 +3674,8 @@
                 "subnetPrefix": "subnet_prefix",
                 "subscriptionId": "subscription_id",
                 "updateDomainCount": "update_domain_count",
-                "usePrivateIp": "use_private_ip"
+                "usePrivateIp": "use_private_ip",
+                "usePublicIpStandardSku": "use_public_ip_standard_sku"
             },
             "rancher2:index/NodeTemplateDigitaloceanConfig:NodeTemplateDigitaloceanConfig": {
                 "accessToken": "access_token",
@@ -3756,15 +3688,18 @@
             "rancher2:index/NodeTemplateHarvesterConfig:NodeTemplateHarvesterConfig": {
                 "cpuCount": "cpu_count",
                 "diskBus": "disk_bus",
+                "diskInfo": "disk_info",
                 "diskSize": "disk_size",
                 "imageName": "image_name",
                 "memorySize": "memory_size",
                 "networkData": "network_data",
+                "networkInfo": "network_info",
                 "networkModel": "network_model",
                 "networkName": "network_name",
                 "sshPassword": "ssh_password",
                 "sshUser": "ssh_user",
                 "userData": "user_data",
+                "vmAffinity": "vm_affinity",
                 "vmNamespace": "vm_namespace"
             },
             "rancher2:index/NodeTemplateHetznerConfig:NodeTemplateHetznerConfig": {
@@ -3945,46 +3880,6 @@
                 "limitsMemory": "limits_memory",
                 "requestsCpu": "requests_cpu",
                 "requestsMemory": "requests_memory"
-            },
-            "rancher2:index/ProjectLoggingCustomTargetConfig:ProjectLoggingCustomTargetConfig": {
-                "clientCert": "client_cert",
-                "clientKey": "client_key"
-            },
-            "rancher2:index/ProjectLoggingElasticsearchConfig:ProjectLoggingElasticsearchConfig": {
-                "authPassword": "auth_password",
-                "authUsername": "auth_username",
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "clientKeyPass": "client_key_pass",
-                "dateFormat": "date_format",
-                "indexPrefix": "index_prefix",
-                "sslVerify": "ssl_verify",
-                "sslVersion": "ssl_version"
-            },
-            "rancher2:index/ProjectLoggingFluentdConfig:ProjectLoggingFluentdConfig": {
-                "enableTls": "enable_tls",
-                "fluentServers": "fluent_servers"
-            },
-            "rancher2:index/ProjectLoggingFluentdConfigFluentServer:ProjectLoggingFluentdConfigFluentServer": {
-                "sharedKey": "shared_key"
-            },
-            "rancher2:index/ProjectLoggingKafkaConfig:ProjectLoggingKafkaConfig": {
-                "brokerEndpoints": "broker_endpoints",
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "zookeeperEndpoint": "zookeeper_endpoint"
-            },
-            "rancher2:index/ProjectLoggingSplunkConfig:ProjectLoggingSplunkConfig": {
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "clientKeyPass": "client_key_pass",
-                "sslVerify": "ssl_verify"
-            },
-            "rancher2:index/ProjectLoggingSyslogConfig:ProjectLoggingSyslogConfig": {
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "enableTls": "enable_tls",
-                "sslVerify": "ssl_verify"
             },
             "rancher2:index/ProjectResourceQuota:ProjectResourceQuota": {
                 "namespaceDefaultLimit": "namespace_default_limit",
@@ -4293,7 +4188,6 @@
                 "okeConfig": "oke_config",
                 "rke2Config": "rke2_config",
                 "rkeConfig": "rke_config",
-                "scheduledClusterScan": "scheduled_cluster_scan",
                 "systemProjectId": "system_project_id",
                 "windowsPreferedCluster": "windows_prefered_cluster"
             },
@@ -4335,19 +4229,6 @@
                 "actualUrl": "actual_url",
                 "uiUrl": "ui_url",
                 "whitelistDomains": "whitelist_domains"
-            },
-            "rancher2:index/clusterLogging:ClusterLogging": {
-                "clusterId": "cluster_id",
-                "customTargetConfig": "custom_target_config",
-                "elasticsearchConfig": "elasticsearch_config",
-                "enableJsonParsing": "enable_json_parsing",
-                "fluentdConfig": "fluentd_config",
-                "kafkaConfig": "kafka_config",
-                "namespaceId": "namespace_id",
-                "outputFlushInterval": "output_flush_interval",
-                "outputTags": "output_tags",
-                "splunkConfig": "splunk_config",
-                "syslogConfig": "syslog_config"
             },
             "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding": {
                 "clusterId": "cluster_id",
@@ -4452,7 +4333,6 @@
                 "okeConfig": "oke_config",
                 "rke2Config": "rke2_config",
                 "rkeConfig": "rke_config",
-                "scheduledClusterScans": "scheduled_cluster_scan",
                 "systemProjectId": "system_project_id"
             },
             "rancher2:index/getClusterAksConfig:getClusterAksConfig": {
@@ -4624,6 +4504,7 @@
                 "launchTemplates": "launch_template",
                 "maxSize": "max_size",
                 "minSize": "min_size",
+                "nodeRole": "node_role",
                 "requestSpotInstances": "request_spot_instances",
                 "resourceTags": "resource_tags",
                 "spotInstanceTypes": "spot_instance_types",
@@ -4746,59 +4627,6 @@
                 "drainWorkerNodes": "drain_worker_nodes",
                 "serverConcurrency": "server_concurrency",
                 "workerConcurrency": "worker_concurrency"
-            },
-            "rancher2:index/getClusterLogging:getClusterLogging": {
-                "clusterId": "cluster_id",
-                "customTargetConfig": "custom_target_config",
-                "elasticsearchConfig": "elasticsearch_config",
-                "enableJsonParsing": "enable_json_parsing",
-                "fluentdConfig": "fluentd_config",
-                "kafkaConfig": "kafka_config",
-                "namespaceId": "namespace_id",
-                "outputFlushInterval": "output_flush_interval",
-                "outputTags": "output_tags",
-                "splunkConfig": "splunk_config",
-                "syslogConfig": "syslog_config"
-            },
-            "rancher2:index/getClusterLoggingCustomTargetConfig:getClusterLoggingCustomTargetConfig": {
-                "clientCert": "client_cert",
-                "clientKey": "client_key"
-            },
-            "rancher2:index/getClusterLoggingElasticsearchConfig:getClusterLoggingElasticsearchConfig": {
-                "authPassword": "auth_password",
-                "authUsername": "auth_username",
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "clientKeyPass": "client_key_pass",
-                "dateFormat": "date_format",
-                "indexPrefix": "index_prefix",
-                "sslVerify": "ssl_verify",
-                "sslVersion": "ssl_version"
-            },
-            "rancher2:index/getClusterLoggingFluentdConfig:getClusterLoggingFluentdConfig": {
-                "enableTls": "enable_tls",
-                "fluentServers": "fluent_servers"
-            },
-            "rancher2:index/getClusterLoggingFluentdConfigFluentServer:getClusterLoggingFluentdConfigFluentServer": {
-                "sharedKey": "shared_key"
-            },
-            "rancher2:index/getClusterLoggingKafkaConfig:getClusterLoggingKafkaConfig": {
-                "brokerEndpoints": "broker_endpoints",
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "zookeeperEndpoint": "zookeeper_endpoint"
-            },
-            "rancher2:index/getClusterLoggingSplunkConfig:getClusterLoggingSplunkConfig": {
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "clientKeyPass": "client_key_pass",
-                "sslVerify": "ssl_verify"
-            },
-            "rancher2:index/getClusterLoggingSyslogConfig:getClusterLoggingSyslogConfig": {
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "enableTls": "enable_tls",
-                "sslVerify": "ssl_verify"
             },
             "rancher2:index/getClusterOkeConfig:getClusterOkeConfig": {
                 "compartmentId": "compartment_id",
@@ -5212,37 +5040,6 @@
                 "userId": "user_id",
                 "userPrincipalId": "user_principal_id"
             },
-            "rancher2:index/getClusterScan:getClusterScan": {
-                "clusterId": "cluster_id",
-                "runType": "run_type",
-                "scanConfig": "scan_config",
-                "scanType": "scan_type"
-            },
-            "rancher2:index/getClusterScanScanConfig:getClusterScanScanConfig": {
-                "cisScanConfig": "cis_scan_config"
-            },
-            "rancher2:index/getClusterScanScanConfigCisScanConfig:getClusterScanScanConfigCisScanConfig": {
-                "debugMaster": "debug_master",
-                "debugWorker": "debug_worker",
-                "overrideBenchmarkVersion": "override_benchmark_version",
-                "overrideSkips": "override_skip"
-            },
-            "rancher2:index/getClusterScheduledClusterScan:getClusterScheduledClusterScan": {
-                "scanConfig": "scan_config",
-                "scheduleConfig": "schedule_config"
-            },
-            "rancher2:index/getClusterScheduledClusterScanScanConfig:getClusterScheduledClusterScanScanConfig": {
-                "cisScanConfig": "cis_scan_config"
-            },
-            "rancher2:index/getClusterScheduledClusterScanScanConfigCisScanConfig:getClusterScheduledClusterScanScanConfigCisScanConfig": {
-                "debugMaster": "debug_master",
-                "debugWorker": "debug_worker",
-                "overrideBenchmarkVersion": "override_benchmark_version",
-                "overrideSkips": "override_skip"
-            },
-            "rancher2:index/getClusterScheduledClusterScanScheduleConfig:getClusterScheduledClusterScanScheduleConfig": {
-                "cronSchedule": "cron_schedule"
-            },
             "rancher2:index/getClusterTemplate:getClusterTemplate": {
                 "defaultRevisionId": "default_revision_id",
                 "templateRevisions": "template_revisions"
@@ -5267,7 +5064,6 @@
                 "enableClusterMonitoring": "enable_cluster_monitoring",
                 "enableNetworkPolicy": "enable_network_policy",
                 "rkeConfig": "rke_config",
-                "scheduledClusterScan": "scheduled_cluster_scan",
                 "windowsPreferedCluster": "windows_prefered_cluster"
             },
             "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint:getClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint": {
@@ -5636,22 +5432,6 @@
                 "deleteLocalData": "delete_local_data",
                 "gracePeriod": "grace_period",
                 "ignoreDaemonSets": "ignore_daemon_sets"
-            },
-            "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan:getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan": {
-                "scanConfig": "scan_config",
-                "scheduleConfig": "schedule_config"
-            },
-            "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig:getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig": {
-                "cisScanConfig": "cis_scan_config"
-            },
-            "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig:getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig": {
-                "debugMaster": "debug_master",
-                "debugWorker": "debug_worker",
-                "overrideBenchmarkVersion": "override_benchmark_version",
-                "overrideSkips": "override_skip"
-            },
-            "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig:getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig": {
-                "cronSchedule": "cron_schedule"
             },
             "rancher2:index/getClusterV2:getClusterV2": {
                 "agentEnvVars": "agent_env_vars",
@@ -6025,59 +5805,6 @@
                 "requestsCpu": "requests_cpu",
                 "requestsMemory": "requests_memory"
             },
-            "rancher2:index/getProjectLogging:getProjectLogging": {
-                "customTargetConfig": "custom_target_config",
-                "elasticsearchConfig": "elasticsearch_config",
-                "enableJsonParsing": "enable_json_parsing",
-                "fluentdConfig": "fluentd_config",
-                "kafkaConfig": "kafka_config",
-                "namespaceId": "namespace_id",
-                "outputFlushInterval": "output_flush_interval",
-                "outputTags": "output_tags",
-                "projectId": "project_id",
-                "splunkConfig": "splunk_config",
-                "syslogConfig": "syslog_config"
-            },
-            "rancher2:index/getProjectLoggingCustomTargetConfig:getProjectLoggingCustomTargetConfig": {
-                "clientCert": "client_cert",
-                "clientKey": "client_key"
-            },
-            "rancher2:index/getProjectLoggingElasticsearchConfig:getProjectLoggingElasticsearchConfig": {
-                "authPassword": "auth_password",
-                "authUsername": "auth_username",
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "clientKeyPass": "client_key_pass",
-                "dateFormat": "date_format",
-                "indexPrefix": "index_prefix",
-                "sslVerify": "ssl_verify",
-                "sslVersion": "ssl_version"
-            },
-            "rancher2:index/getProjectLoggingFluentdConfig:getProjectLoggingFluentdConfig": {
-                "enableTls": "enable_tls",
-                "fluentServers": "fluent_servers"
-            },
-            "rancher2:index/getProjectLoggingFluentdConfigFluentServer:getProjectLoggingFluentdConfigFluentServer": {
-                "sharedKey": "shared_key"
-            },
-            "rancher2:index/getProjectLoggingKafkaConfig:getProjectLoggingKafkaConfig": {
-                "brokerEndpoints": "broker_endpoints",
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "zookeeperEndpoint": "zookeeper_endpoint"
-            },
-            "rancher2:index/getProjectLoggingSplunkConfig:getProjectLoggingSplunkConfig": {
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "clientKeyPass": "client_key_pass",
-                "sslVerify": "ssl_verify"
-            },
-            "rancher2:index/getProjectLoggingSyslogConfig:getProjectLoggingSyslogConfig": {
-                "clientCert": "client_cert",
-                "clientKey": "client_key",
-                "enableTls": "enable_tls",
-                "sslVerify": "ssl_verify"
-            },
             "rancher2:index/getProjectResourceQuota:getProjectResourceQuota": {
                 "namespaceDefaultLimit": "namespace_default_limit",
                 "projectLimit": "project_limit"
@@ -6302,19 +6029,6 @@
                 "projectId": "project_id",
                 "repeatIntervalSeconds": "repeat_interval_seconds",
                 "workloadRule": "workload_rule"
-            },
-            "rancher2:index/projectLogging:ProjectLogging": {
-                "customTargetConfig": "custom_target_config",
-                "elasticsearchConfig": "elasticsearch_config",
-                "enableJsonParsing": "enable_json_parsing",
-                "fluentdConfig": "fluentd_config",
-                "kafkaConfig": "kafka_config",
-                "namespaceId": "namespace_id",
-                "outputFlushInterval": "output_flush_interval",
-                "outputTags": "output_tags",
-                "projectId": "project_id",
-                "splunkConfig": "splunk_config",
-                "syslogConfig": "syslog_config"
             },
             "rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding": {
                 "groupId": "group_id",
