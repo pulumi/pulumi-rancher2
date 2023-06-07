@@ -70,7 +70,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * Annotations for the app v2 (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -84,7 +84,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * The app v2 chart name (string)
      * 
      */
-    @Export(name="chartName", type=String.class, parameters={})
+    @Export(name="chartName", refs={String.class}, tree="[0]")
     private Output<String> chartName;
 
     /**
@@ -98,7 +98,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * The app v2 chart version (string)
      * 
      */
-    @Export(name="chartVersion", type=String.class, parameters={})
+    @Export(name="chartVersion", refs={String.class}, tree="[0]")
     private Output<String> chartVersion;
 
     /**
@@ -112,7 +112,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
      * 
      */
-    @Export(name="cleanupOnFail", type=Boolean.class, parameters={})
+    @Export(name="cleanupOnFail", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cleanupOnFail;
 
     /**
@@ -126,7 +126,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * The cluster id of the app (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -140,7 +140,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * (Computed) The cluster name of the app (string)
      * 
      */
-    @Export(name="clusterName", type=String.class, parameters={})
+    @Export(name="clusterName", refs={String.class}, tree="[0]")
     private Output<String> clusterName;
 
     /**
@@ -156,7 +156,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * itself.
      * 
      */
-    @Export(name="deploymentValues", type=String.class, parameters={})
+    @Export(name="deploymentValues", refs={String.class}, tree="[0]")
     private Output<String> deploymentValues;
 
     /**
@@ -172,7 +172,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * Disable app v2 chart hooks. Default: `false` (bool)
      * 
      */
-    @Export(name="disableHooks", type=Boolean.class, parameters={})
+    @Export(name="disableHooks", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableHooks;
 
     /**
@@ -186,7 +186,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * Disable app V2 Open API Validation. Default: `false` (bool)
      * 
      */
-    @Export(name="disableOpenApiValidation", type=Boolean.class, parameters={})
+    @Export(name="disableOpenApiValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableOpenApiValidation;
 
     /**
@@ -200,7 +200,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * Force app V2 chart upgrade. Default: `false` (bool)
      * 
      */
-    @Export(name="forceUpgrade", type=Boolean.class, parameters={})
+    @Export(name="forceUpgrade", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceUpgrade;
 
     /**
@@ -214,7 +214,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * Labels for the app v2 (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -228,7 +228,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * The name of the app v2 (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -242,7 +242,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * The namespace of the app v2 (string)
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -256,7 +256,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * Deploy the app v2 within project ID (string)
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
@@ -270,7 +270,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * Repo name (string)
      * 
      */
-    @Export(name="repoName", type=String.class, parameters={})
+    @Export(name="repoName", refs={String.class}, tree="[0]")
     private Output<String> repoName;
 
     /**
@@ -284,7 +284,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * (Computed) The system default registry of the app (string)
      * 
      */
-    @Export(name="systemDefaultRegistry", type=String.class, parameters={})
+    @Export(name="systemDefaultRegistry", refs={String.class}, tree="[0]")
     private Output<String> systemDefaultRegistry;
 
     /**
@@ -298,7 +298,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * The app v2 values yaml. Yaml format is required (string)
      * 
      */
-    @Export(name="values", type=String.class, parameters={})
+    @Export(name="values", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> values;
 
     /**
@@ -312,7 +312,7 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      * Wait until app is deployed. Default: `true` (bool)
      * 
      */
-    @Export(name="wait", type=Boolean.class, parameters={})
+    @Export(name="wait", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> wait;
 
     /**

@@ -107,14 +107,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Image name e.g. `harvester-public/image-57hzg` (string)
+     * Use `disk_info` instead
      * 
      */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
     /**
-     * @return Image name e.g. `harvester-public/image-57hzg` (string)
+     * @return Use `disk_info` instead
      * 
      */
     public Optional<Output<String>> imageName() {
@@ -167,14 +167,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Network name e.g. `harvester-public/vlan1` (string)
+     * Use `network_info` instead
      * 
      */
     @Import(name="networkName")
     private @Nullable Output<String> networkName;
 
     /**
-     * @return Network name e.g. `harvester-public/vlan1` (string)
+     * @return Use `network_info` instead
      * 
      */
     public Optional<Output<String>> networkName() {
@@ -474,7 +474,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param imageName Image name e.g. `harvester-public/image-57hzg` (string)
+         * @param imageName Use `disk_info` instead
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param imageName Image name e.g. `harvester-public/image-57hzg` (string)
+         * @param imageName Use `disk_info` instead
          * 
          * @return builder
          * 
@@ -558,7 +558,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkName Network name e.g. `harvester-public/vlan1` (string)
+         * @param networkName Use `network_info` instead
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkName Network name e.g. `harvester-public/vlan1` (string)
+         * @param networkName Use `network_info` instead
          * 
          * @return builder
          * 

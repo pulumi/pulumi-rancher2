@@ -31,48 +31,87 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Disk bus, Default `virtio` (string)
+     * Use `disk_info` instead
+     * 
+     * @deprecated
+     * Use disk_info instead
      * 
      */
+    @Deprecated /* Use disk_info instead */
     @Import(name="diskBus")
     private @Nullable Output<String> diskBus;
 
     /**
-     * @return Disk bus, Default `virtio` (string)
+     * @return Use `disk_info` instead
+     * 
+     * @deprecated
+     * Use disk_info instead
      * 
      */
+    @Deprecated /* Use disk_info instead */
     public Optional<Output<String>> diskBus() {
         return Optional.ofNullable(this.diskBus);
     }
 
     /**
-     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
      * 
      */
+    @Import(name="diskInfo", required=true)
+    private Output<String> diskInfo;
+
+    /**
+     * @return A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
+     * 
+     */
+    public Output<String> diskInfo() {
+        return this.diskInfo;
+    }
+
+    /**
+     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * 
+     * @deprecated
+     * Use disk_info instead
+     * 
+     */
+    @Deprecated /* Use disk_info instead */
     @Import(name="diskSize")
     private @Nullable Output<String> diskSize;
 
     /**
      * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
+     * @deprecated
+     * Use disk_info instead
+     * 
      */
+    @Deprecated /* Use disk_info instead */
     public Optional<Output<String>> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }
 
     /**
-     * Image name e.g. `harvester-public/image-57hzg` (string)
+     * Use `disk_info` instead
+     * 
+     * @deprecated
+     * Use disk_info instead
      * 
      */
-    @Import(name="imageName", required=true)
-    private Output<String> imageName;
+    @Deprecated /* Use disk_info instead */
+    @Import(name="imageName")
+    private @Nullable Output<String> imageName;
 
     /**
-     * @return Image name e.g. `harvester-public/image-57hzg` (string)
+     * @return Use `disk_info` instead
+     * 
+     * @deprecated
+     * Use disk_info instead
      * 
      */
-    public Output<String> imageName() {
-        return this.imageName;
+    @Deprecated /* Use disk_info instead */
+    public Optional<Output<String>> imageName() {
+        return Optional.ofNullable(this.imageName);
     }
 
     /**
@@ -106,33 +145,64 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Network model, Default `virtio` (string)
+     * A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
      * 
      */
+    @Import(name="networkInfo", required=true)
+    private Output<String> networkInfo;
+
+    /**
+     * @return A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
+     * 
+     */
+    public Output<String> networkInfo() {
+        return this.networkInfo;
+    }
+
+    /**
+     * Use `network_info` instead
+     * 
+     * @deprecated
+     * Use network_info instead
+     * 
+     */
+    @Deprecated /* Use network_info instead */
     @Import(name="networkModel")
     private @Nullable Output<String> networkModel;
 
     /**
-     * @return Network model, Default `virtio` (string)
+     * @return Use `network_info` instead
+     * 
+     * @deprecated
+     * Use network_info instead
      * 
      */
+    @Deprecated /* Use network_info instead */
     public Optional<Output<String>> networkModel() {
         return Optional.ofNullable(this.networkModel);
     }
 
     /**
-     * Network name e.g. `harvester-public/vlan1` (string)
+     * Use `network_info` instead
+     * 
+     * @deprecated
+     * Use network_info instead
      * 
      */
-    @Import(name="networkName", required=true)
-    private Output<String> networkName;
+    @Deprecated /* Use network_info instead */
+    @Import(name="networkName")
+    private @Nullable Output<String> networkName;
 
     /**
-     * @return Network name e.g. `harvester-public/vlan1` (string)
+     * @return Use `network_info` instead
+     * 
+     * @deprecated
+     * Use network_info instead
      * 
      */
-    public Output<String> networkName() {
-        return this.networkName;
+    @Deprecated /* Use network_info instead */
+    public Optional<Output<String>> networkName() {
+        return Optional.ofNullable(this.networkName);
     }
 
     /**
@@ -166,18 +236,33 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * UserData content of cloud-init, base64 is supported (string)
+     * UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
      * 
      */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
     /**
-     * @return UserData content of cloud-init, base64 is supported (string)
+     * @return UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
      * 
      */
     public Optional<Output<String>> userData() {
         return Optional.ofNullable(this.userData);
+    }
+
+    /**
+     * Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+     * 
+     */
+    @Import(name="vmAffinity")
+    private @Nullable Output<String> vmAffinity;
+
+    /**
+     * @return Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+     * 
+     */
+    public Optional<Output<String>> vmAffinity() {
+        return Optional.ofNullable(this.vmAffinity);
     }
 
     /**
@@ -200,15 +285,18 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     private MachineConfigV2HarvesterConfigArgs(MachineConfigV2HarvesterConfigArgs $) {
         this.cpuCount = $.cpuCount;
         this.diskBus = $.diskBus;
+        this.diskInfo = $.diskInfo;
         this.diskSize = $.diskSize;
         this.imageName = $.imageName;
         this.memorySize = $.memorySize;
         this.networkData = $.networkData;
+        this.networkInfo = $.networkInfo;
         this.networkModel = $.networkModel;
         this.networkName = $.networkName;
         this.sshPassword = $.sshPassword;
         this.sshUser = $.sshUser;
         this.userData = $.userData;
+        this.vmAffinity = $.vmAffinity;
         this.vmNamespace = $.vmNamespace;
     }
 
@@ -252,24 +340,53 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param diskBus Disk bus, Default `virtio` (string)
+         * @param diskBus Use `disk_info` instead
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use disk_info instead
+         * 
          */
+        @Deprecated /* Use disk_info instead */
         public Builder diskBus(@Nullable Output<String> diskBus) {
             $.diskBus = diskBus;
             return this;
         }
 
         /**
-         * @param diskBus Disk bus, Default `virtio` (string)
+         * @param diskBus Use `disk_info` instead
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use disk_info instead
+         * 
+         */
+        @Deprecated /* Use disk_info instead */
+        public Builder diskBus(String diskBus) {
+            return diskBus(Output.of(diskBus));
+        }
+
+        /**
+         * @param diskInfo A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
          * 
          * @return builder
          * 
          */
-        public Builder diskBus(String diskBus) {
-            return diskBus(Output.of(diskBus));
+        public Builder diskInfo(Output<String> diskInfo) {
+            $.diskInfo = diskInfo;
+            return this;
+        }
+
+        /**
+         * @param diskInfo A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskInfo(String diskInfo) {
+            return diskInfo(Output.of(diskInfo));
         }
 
         /**
@@ -277,7 +394,11 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use disk_info instead
+         * 
          */
+        @Deprecated /* Use disk_info instead */
         public Builder diskSize(@Nullable Output<String> diskSize) {
             $.diskSize = diskSize;
             return this;
@@ -288,28 +409,40 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use disk_info instead
+         * 
          */
+        @Deprecated /* Use disk_info instead */
         public Builder diskSize(String diskSize) {
             return diskSize(Output.of(diskSize));
         }
 
         /**
-         * @param imageName Image name e.g. `harvester-public/image-57hzg` (string)
+         * @param imageName Use `disk_info` instead
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use disk_info instead
+         * 
          */
-        public Builder imageName(Output<String> imageName) {
+        @Deprecated /* Use disk_info instead */
+        public Builder imageName(@Nullable Output<String> imageName) {
             $.imageName = imageName;
             return this;
         }
 
         /**
-         * @param imageName Image name e.g. `harvester-public/image-57hzg` (string)
+         * @param imageName Use `disk_info` instead
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use disk_info instead
+         * 
          */
+        @Deprecated /* Use disk_info instead */
         public Builder imageName(String imageName) {
             return imageName(Output.of(imageName));
         }
@@ -357,43 +490,80 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networkModel Network model, Default `virtio` (string)
+         * @param networkInfo A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
          * 
          * @return builder
          * 
          */
+        public Builder networkInfo(Output<String> networkInfo) {
+            $.networkInfo = networkInfo;
+            return this;
+        }
+
+        /**
+         * @param networkInfo A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInfo(String networkInfo) {
+            return networkInfo(Output.of(networkInfo));
+        }
+
+        /**
+         * @param networkModel Use `network_info` instead
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use network_info instead
+         * 
+         */
+        @Deprecated /* Use network_info instead */
         public Builder networkModel(@Nullable Output<String> networkModel) {
             $.networkModel = networkModel;
             return this;
         }
 
         /**
-         * @param networkModel Network model, Default `virtio` (string)
+         * @param networkModel Use `network_info` instead
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use network_info instead
+         * 
          */
+        @Deprecated /* Use network_info instead */
         public Builder networkModel(String networkModel) {
             return networkModel(Output.of(networkModel));
         }
 
         /**
-         * @param networkName Network name e.g. `harvester-public/vlan1` (string)
+         * @param networkName Use `network_info` instead
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use network_info instead
+         * 
          */
-        public Builder networkName(Output<String> networkName) {
+        @Deprecated /* Use network_info instead */
+        public Builder networkName(@Nullable Output<String> networkName) {
             $.networkName = networkName;
             return this;
         }
 
         /**
-         * @param networkName Network name e.g. `harvester-public/vlan1` (string)
+         * @param networkName Use `network_info` instead
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use network_info instead
+         * 
          */
+        @Deprecated /* Use network_info instead */
         public Builder networkName(String networkName) {
             return networkName(Output.of(networkName));
         }
@@ -441,7 +611,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userData UserData content of cloud-init, base64 is supported (string)
+         * @param userData UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
          * 
          * @return builder
          * 
@@ -452,13 +622,34 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userData UserData content of cloud-init, base64 is supported (string)
+         * @param userData UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
          * 
          * @return builder
          * 
          */
         public Builder userData(String userData) {
             return userData(Output.of(userData));
+        }
+
+        /**
+         * @param vmAffinity Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vmAffinity(@Nullable Output<String> vmAffinity) {
+            $.vmAffinity = vmAffinity;
+            return this;
+        }
+
+        /**
+         * @param vmAffinity Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vmAffinity(String vmAffinity) {
+            return vmAffinity(Output.of(vmAffinity));
         }
 
         /**
@@ -483,8 +674,8 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         public MachineConfigV2HarvesterConfigArgs build() {
-            $.imageName = Objects.requireNonNull($.imageName, "expected parameter 'imageName' to be non-null");
-            $.networkName = Objects.requireNonNull($.networkName, "expected parameter 'networkName' to be non-null");
+            $.diskInfo = Objects.requireNonNull($.diskInfo, "expected parameter 'diskInfo' to be non-null");
+            $.networkInfo = Objects.requireNonNull($.networkInfo, "expected parameter 'networkInfo' to be non-null");
             $.sshUser = Objects.requireNonNull($.sshUser, "expected parameter 'sshUser' to be non-null");
             $.vmNamespace = Objects.requireNonNull($.vmNamespace, "expected parameter 'vmNamespace' to be non-null");
             return $;

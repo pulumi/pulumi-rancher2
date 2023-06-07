@@ -124,10 +124,33 @@ namespace Pulumi.Rancher2
     ///             VmNamespace = "default",
     ///             CpuCount = "2",
     ///             MemorySize = "4",
-    ///             DiskSize = "40",
-    ///             NetworkName = "harvester-public/vlan1",
-    ///             ImageName = "harvester-public/image-57hzg",
-    ///             SshUser = "ubuntu",
+    ///             DiskInfo = @"    {
+    ///         ""disks"": [{
+    ///             ""imageName"": ""harvester-public/image-57hzg"",
+    ///             ""size"": 40,
+    ///             ""bootOrder"": 1
+    ///         }]
+    ///     }
+    ///     EOF,
+    ///     networkInfo = &lt;&lt;EOF
+    ///     {
+    ///         ""interfaces"": [{
+    ///             ""networkName"": ""harvester-public/vlan1""
+    ///         }]
+    ///     }
+    ///     EOF,
+    ///     sshUser = ""ubuntu"",
+    ///     userData = &lt;&lt;EOF
+    ///     package_update: true
+    ///     packages:
+    ///       - qemu-guest-agent
+    ///       - iptables
+    ///     runcmd:
+    ///       - - systemctl
+    ///         - enable
+    ///         - '--now'
+    ///         - qemu-guest-agent.service
+    /// ",
     ///         },
     ///     });
     /// 

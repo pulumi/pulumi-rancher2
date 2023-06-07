@@ -19,7 +19,6 @@ import com.pulumi.rancher2.outputs.GetClusterK3sConfig;
 import com.pulumi.rancher2.outputs.GetClusterOkeConfig;
 import com.pulumi.rancher2.outputs.GetClusterRke2Config;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfig;
-import com.pulumi.rancher2.outputs.GetClusterScheduledClusterScan;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -181,7 +180,6 @@ public final class GetClusterResult {
      * 
      */
     private GetClusterRkeConfig rkeConfig;
-    private List<GetClusterScheduledClusterScan> scheduledClusterScans;
     /**
      * @return (Computed) System project ID for the cluster (string)
      * 
@@ -405,9 +403,6 @@ public final class GetClusterResult {
     public GetClusterRkeConfig rkeConfig() {
         return this.rkeConfig;
     }
-    public List<GetClusterScheduledClusterScan> scheduledClusterScans() {
-        return this.scheduledClusterScans;
-    }
     /**
      * @return (Computed) System project ID for the cluster (string)
      * 
@@ -457,7 +452,6 @@ public final class GetClusterResult {
         private GetClusterOkeConfig okeConfig;
         private GetClusterRke2Config rke2Config;
         private GetClusterRkeConfig rkeConfig;
-        private List<GetClusterScheduledClusterScan> scheduledClusterScans;
         private String systemProjectId;
         public Builder() {}
         public Builder(GetClusterResult defaults) {
@@ -494,7 +488,6 @@ public final class GetClusterResult {
     	      this.okeConfig = defaults.okeConfig;
     	      this.rke2Config = defaults.rke2Config;
     	      this.rkeConfig = defaults.rkeConfig;
-    	      this.scheduledClusterScans = defaults.scheduledClusterScans;
     	      this.systemProjectId = defaults.systemProjectId;
         }
 
@@ -665,14 +658,6 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder scheduledClusterScans(List<GetClusterScheduledClusterScan> scheduledClusterScans) {
-            this.scheduledClusterScans = Objects.requireNonNull(scheduledClusterScans);
-            return this;
-        }
-        public Builder scheduledClusterScans(GetClusterScheduledClusterScan... scheduledClusterScans) {
-            return scheduledClusterScans(List.of(scheduledClusterScans));
-        }
-        @CustomType.Setter
         public Builder systemProjectId(String systemProjectId) {
             this.systemProjectId = Objects.requireNonNull(systemProjectId);
             return this;
@@ -711,7 +696,6 @@ public final class GetClusterResult {
             o.okeConfig = okeConfig;
             o.rke2Config = rke2Config;
             o.rkeConfig = rkeConfig;
-            o.scheduledClusterScans = scheduledClusterScans;
             o.systemProjectId = systemProjectId;
             return o;
         }

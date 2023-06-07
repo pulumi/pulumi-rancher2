@@ -6,7 +6,6 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfig;
-import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -25,7 +24,6 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
     private @Nullable Boolean enableClusterMonitoring;
     private @Nullable Boolean enableNetworkPolicy;
     private GetClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig;
-    private @Nullable GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan scheduledClusterScan;
     private @Nullable Boolean windowsPreferedCluster;
 
     private GetClusterTemplateTemplateRevisionClusterConfig() {}
@@ -59,9 +57,6 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
     public GetClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig() {
         return this.rkeConfig;
     }
-    public Optional<GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan> scheduledClusterScan() {
-        return Optional.ofNullable(this.scheduledClusterScan);
-    }
     public Optional<Boolean> windowsPreferedCluster() {
         return Optional.ofNullable(this.windowsPreferedCluster);
     }
@@ -85,7 +80,6 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
         private @Nullable Boolean enableClusterMonitoring;
         private @Nullable Boolean enableNetworkPolicy;
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig;
-        private @Nullable GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan scheduledClusterScan;
         private @Nullable Boolean windowsPreferedCluster;
         public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfig defaults) {
@@ -100,7 +94,6 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
     	      this.enableClusterMonitoring = defaults.enableClusterMonitoring;
     	      this.enableNetworkPolicy = defaults.enableNetworkPolicy;
     	      this.rkeConfig = defaults.rkeConfig;
-    	      this.scheduledClusterScan = defaults.scheduledClusterScan;
     	      this.windowsPreferedCluster = defaults.windowsPreferedCluster;
         }
 
@@ -155,11 +148,6 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder scheduledClusterScan(@Nullable GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan scheduledClusterScan) {
-            this.scheduledClusterScan = scheduledClusterScan;
-            return this;
-        }
-        @CustomType.Setter
         public Builder windowsPreferedCluster(@Nullable Boolean windowsPreferedCluster) {
             this.windowsPreferedCluster = windowsPreferedCluster;
             return this;
@@ -176,7 +164,6 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
             o.enableClusterMonitoring = enableClusterMonitoring;
             o.enableNetworkPolicy = enableNetworkPolicy;
             o.rkeConfig = rkeConfig;
-            o.scheduledClusterScan = scheduledClusterScan;
             o.windowsPreferedCluster = windowsPreferedCluster;
             return o;
         }

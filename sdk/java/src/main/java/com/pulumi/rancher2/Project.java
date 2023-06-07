@@ -164,7 +164,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Annotations for Node Pool object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -178,7 +178,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The cluster id where create project (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -192,7 +192,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Default containers resource limits on project (List maxitem:1)
      * 
      */
-    @Export(name="containerResourceLimit", type=ProjectContainerResourceLimit.class, parameters={})
+    @Export(name="containerResourceLimit", refs={ProjectContainerResourceLimit.class}, tree="[0]")
     private Output</* @Nullable */ ProjectContainerResourceLimit> containerResourceLimit;
 
     /**
@@ -206,7 +206,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * A project description (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -220,7 +220,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable built-in project monitoring. Default `false` (bool)
      * 
      */
-    @Export(name="enableProjectMonitoring", type=Boolean.class, parameters={})
+    @Export(name="enableProjectMonitoring", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableProjectMonitoring;
 
     /**
@@ -234,7 +234,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Labels for Node Pool object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -248,7 +248,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The name of the project (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -262,7 +262,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Default Pod Security Policy ID for the project (string)
      * 
      */
-    @Export(name="podSecurityPolicyTemplateId", type=String.class, parameters={})
+    @Export(name="podSecurityPolicyTemplateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> podSecurityPolicyTemplateId;
 
     /**
@@ -276,7 +276,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
      * 
      */
-    @Export(name="projectMonitoringInput", type=ProjectProjectMonitoringInput.class, parameters={})
+    @Export(name="projectMonitoringInput", refs={ProjectProjectMonitoringInput.class}, tree="[0]")
     private Output</* @Nullable */ ProjectProjectMonitoringInput> projectMonitoringInput;
 
     /**
@@ -290,7 +290,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
      * 
      */
-    @Export(name="resourceQuota", type=ProjectResourceQuota.class, parameters={})
+    @Export(name="resourceQuota", refs={ProjectResourceQuota.class}, tree="[0]")
     private Output</* @Nullable */ ProjectResourceQuota> resourceQuota;
 
     /**
@@ -304,7 +304,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Wait for cluster becomes active. Default `false` (bool)
      * 
      */
-    @Export(name="waitForCluster", type=Boolean.class, parameters={})
+    @Export(name="waitForCluster", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForCluster;
 
     /**

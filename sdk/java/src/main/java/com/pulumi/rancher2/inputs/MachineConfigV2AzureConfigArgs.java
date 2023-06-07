@@ -17,6 +17,13 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
 
     public static final MachineConfigV2AzureConfigArgs Empty = new MachineConfigV2AzureConfigArgs();
 
+    @Import(name="acceleratedNetworking")
+    private @Nullable Output<Boolean> acceleratedNetworking;
+
+    public Optional<Output<Boolean>> acceleratedNetworking() {
+        return Optional.ofNullable(this.acceleratedNetworking);
+    }
+
     /**
      * Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
      * 
@@ -30,6 +37,21 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
      */
     public Optional<Output<String>> availabilitySet() {
         return Optional.ofNullable(this.availabilitySet);
+    }
+
+    /**
+     * OpenStack availability zone (string)
+     * 
+     */
+    @Import(name="availabilityZone")
+    private @Nullable Output<String> availabilityZone;
+
+    /**
+     * @return OpenStack availability zone (string)
+     * 
+     */
+    public Optional<Output<String>> availabilityZone() {
+        return Optional.ofNullable(this.availabilityZone);
     }
 
     /**
@@ -393,6 +415,21 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<String> tags;
+
+    /**
+     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * 
+     */
+    public Optional<Output<String>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * Azure Tenant ID (string)
      * 
      */
@@ -437,6 +474,13 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.usePrivateIp);
     }
 
+    @Import(name="usePublicIpStandardSku")
+    private @Nullable Output<Boolean> usePublicIpStandardSku;
+
+    public Optional<Output<Boolean>> usePublicIpStandardSku() {
+        return Optional.ofNullable(this.usePublicIpStandardSku);
+    }
+
     /**
      * Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
      * 
@@ -455,7 +499,9 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     private MachineConfigV2AzureConfigArgs() {}
 
     private MachineConfigV2AzureConfigArgs(MachineConfigV2AzureConfigArgs $) {
+        this.acceleratedNetworking = $.acceleratedNetworking;
         this.availabilitySet = $.availabilitySet;
+        this.availabilityZone = $.availabilityZone;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.customData = $.customData;
@@ -480,9 +526,11 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         this.subnet = $.subnet;
         this.subnetPrefix = $.subnetPrefix;
         this.subscriptionId = $.subscriptionId;
+        this.tags = $.tags;
         this.tenantId = $.tenantId;
         this.updateDomainCount = $.updateDomainCount;
         this.usePrivateIp = $.usePrivateIp;
+        this.usePublicIpStandardSku = $.usePublicIpStandardSku;
         this.vnet = $.vnet;
     }
 
@@ -504,6 +552,15 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
             $ = new MachineConfigV2AzureConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder acceleratedNetworking(@Nullable Output<Boolean> acceleratedNetworking) {
+            $.acceleratedNetworking = acceleratedNetworking;
+            return this;
+        }
+
+        public Builder acceleratedNetworking(Boolean acceleratedNetworking) {
+            return acceleratedNetworking(Output.of(acceleratedNetworking));
+        }
+
         /**
          * @param availabilitySet Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
          * 
@@ -523,6 +580,27 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
          */
         public Builder availabilitySet(String availabilitySet) {
             return availabilitySet(Output.of(availabilitySet));
+        }
+
+        /**
+         * @param availabilityZone OpenStack availability zone (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
+            $.availabilityZone = availabilityZone;
+            return this;
+        }
+
+        /**
+         * @param availabilityZone OpenStack availability zone (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(String availabilityZone) {
+            return availabilityZone(Output.of(availabilityZone));
         }
 
         /**
@@ -1040,6 +1118,27 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<String> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
          * @param tenantId Azure Tenant ID (string)
          * 
          * @return builder
@@ -1100,6 +1199,15 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
          */
         public Builder usePrivateIp(Boolean usePrivateIp) {
             return usePrivateIp(Output.of(usePrivateIp));
+        }
+
+        public Builder usePublicIpStandardSku(@Nullable Output<Boolean> usePublicIpStandardSku) {
+            $.usePublicIpStandardSku = usePublicIpStandardSku;
+            return this;
+        }
+
+        public Builder usePublicIpStandardSku(Boolean usePublicIpStandardSku) {
+            return usePublicIpStandardSku(Output.of(usePublicIpStandardSku));
         }
 
         /**

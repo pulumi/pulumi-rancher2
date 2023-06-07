@@ -58,6 +58,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The EKS node group node role ARN. Default `""` (string)
+        /// </summary>
+        public readonly string? NodeRole;
+        /// <summary>
         /// Enable EKS node group request spot instances (bool)
         /// </summary>
         public readonly bool? RequestSpotInstances;
@@ -110,6 +114,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string name,
 
+            string? nodeRole,
+
             bool? requestSpotInstances,
 
             ImmutableDictionary<string, object>? resourceTags,
@@ -135,6 +141,7 @@ namespace Pulumi.Rancher2.Outputs
             MaxSize = maxSize;
             MinSize = minSize;
             Name = name;
+            NodeRole = nodeRole;
             RequestSpotInstances = requestSpotInstances;
             ResourceTags = resourceTags;
             SpotInstanceTypes = spotInstanceTypes;

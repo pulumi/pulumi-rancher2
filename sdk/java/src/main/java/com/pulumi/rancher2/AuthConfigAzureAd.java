@@ -62,7 +62,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      * 
      */
-    @Export(name="accessMode", type=String.class, parameters={})
+    @Export(name="accessMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessMode;
 
     /**
@@ -76,7 +76,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `azuread_user://&lt;USER_ID&gt;`  `azuread_group://&lt;GROUP_ID&gt;` (list)
      * 
      */
-    @Export(name="allowedPrincipalIds", type=List.class, parameters={String.class})
+    @Export(name="allowedPrincipalIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedPrincipalIds;
 
     /**
@@ -90,7 +90,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * Annotations of the resource (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -104,7 +104,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * AzureAD auth application ID (string)
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -118,7 +118,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * AzureAD auth application secret (string)
      * 
      */
-    @Export(name="applicationSecret", type=String.class, parameters={})
+    @Export(name="applicationSecret", refs={String.class}, tree="[0]")
     private Output<String> applicationSecret;
 
     /**
@@ -132,7 +132,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * AzureAD auth endpoint (string)
      * 
      */
-    @Export(name="authEndpoint", type=String.class, parameters={})
+    @Export(name="authEndpoint", refs={String.class}, tree="[0]")
     private Output<String> authEndpoint;
 
     /**
@@ -146,7 +146,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * Enable auth config provider. Default `true` (bool)
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -160,7 +160,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpoint;
 
     /**
@@ -174,7 +174,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * AzureAD graph endpoint (string)
      * 
      */
-    @Export(name="graphEndpoint", type=String.class, parameters={})
+    @Export(name="graphEndpoint", refs={String.class}, tree="[0]")
     private Output<String> graphEndpoint;
 
     /**
@@ -188,7 +188,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * Labels of the resource (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -202,7 +202,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * (Computed) The name of the resource (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -216,7 +216,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * Rancher URL (string). &#34;&lt;rancher_url&gt;/verify-auth-azure&#34;
      * 
      */
-    @Export(name="rancherUrl", type=String.class, parameters={})
+    @Export(name="rancherUrl", refs={String.class}, tree="[0]")
     private Output<String> rancherUrl;
 
     /**
@@ -230,7 +230,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * AzureAD tenant ID (string)
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
@@ -244,7 +244,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * AzureAD token endpoint (string)
      * 
      */
-    @Export(name="tokenEndpoint", type=String.class, parameters={})
+    @Export(name="tokenEndpoint", refs={String.class}, tree="[0]")
     private Output<String> tokenEndpoint;
 
     /**
@@ -258,7 +258,7 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
      * (Computed) The type of the resource (string)
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

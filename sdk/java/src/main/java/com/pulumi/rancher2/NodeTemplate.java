@@ -172,10 +172,34 @@ import javax.annotation.Nullable;
  *                 .vmNamespace(&#34;default&#34;)
  *                 .cpuCount(&#34;2&#34;)
  *                 .memorySize(&#34;4&#34;)
- *                 .diskSize(&#34;40&#34;)
- *                 .networkName(&#34;harvester-public/vlan1&#34;)
- *                 .imageName(&#34;harvester-public/image-57hzg&#34;)
- *                 .sshUser(&#34;ubuntu&#34;)
+ *                 .diskInfo(&#34;&#34;&#34;
+ *     {
+ *         &#34;disks&#34;: [{
+ *             &#34;imageName&#34;: &#34;harvester-public/image-57hzg&#34;,
+ *             &#34;size&#34;: 40,
+ *             &#34;bootOrder&#34;: 1
+ *         }]
+ *     }
+ *     EOF,
+ *     networkInfo = &lt;&lt;EOF
+ *     {
+ *         &#34;interfaces&#34;: [{
+ *             &#34;networkName&#34;: &#34;harvester-public/vlan1&#34;
+ *         }]
+ *     }
+ *     EOF,
+ *     sshUser = &#34;ubuntu&#34;,
+ *     userData = &lt;&lt;EOF
+ *     package_update: true
+ *     packages:
+ *       - qemu-guest-agent
+ *       - iptables
+ *     runcmd:
+ *       - - systemctl
+ *         - enable
+ *         - &#39;--now&#39;
+ *         - qemu-guest-agent.service
+ *                 &#34;&#34;&#34;)
  *                 .build())
  *             .build());
  * 
@@ -244,7 +268,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * AWS config for the Node Template (list maxitems:1)
      * 
      */
-    @Export(name="amazonec2Config", type=NodeTemplateAmazonec2Config.class, parameters={})
+    @Export(name="amazonec2Config", refs={NodeTemplateAmazonec2Config.class}, tree="[0]")
     private Output</* @Nullable */ NodeTemplateAmazonec2Config> amazonec2Config;
 
     /**
@@ -258,7 +282,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Annotations for Node Template object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -272,7 +296,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Auth certificate authority for the Node Template (string)
      * 
      */
-    @Export(name="authCertificateAuthority", type=String.class, parameters={})
+    @Export(name="authCertificateAuthority", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authCertificateAuthority;
 
     /**
@@ -286,7 +310,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Auth key for the Node Template (string)
      * 
      */
-    @Export(name="authKey", type=String.class, parameters={})
+    @Export(name="authKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authKey;
 
     /**
@@ -300,7 +324,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Azure config for the Node Template (list maxitems:1)
      * 
      */
-    @Export(name="azureConfig", type=NodeTemplateAzureConfig.class, parameters={})
+    @Export(name="azureConfig", refs={NodeTemplateAzureConfig.class}, tree="[0]")
     private Output</* @Nullable */ NodeTemplateAzureConfig> azureConfig;
 
     /**
@@ -314,7 +338,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
      * 
      */
-    @Export(name="cloudCredentialId", type=String.class, parameters={})
+    @Export(name="cloudCredentialId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudCredentialId;
 
     /**
@@ -328,7 +352,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Description for the Node Template (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -342,7 +366,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Digitalocean config for the Node Template (list maxitems:1)
      * 
      */
-    @Export(name="digitaloceanConfig", type=NodeTemplateDigitaloceanConfig.class, parameters={})
+    @Export(name="digitaloceanConfig", refs={NodeTemplateDigitaloceanConfig.class}, tree="[0]")
     private Output</* @Nullable */ NodeTemplateDigitaloceanConfig> digitaloceanConfig;
 
     /**
@@ -356,7 +380,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * (Computed) The driver of the node template (string)
      * 
      */
-    @Export(name="driver", type=String.class, parameters={})
+    @Export(name="driver", refs={String.class}, tree="[0]")
     private Output<String> driver;
 
     /**
@@ -370,7 +394,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * The node driver id used by the node template. It&#39;s required if the node driver isn&#39;t built in Rancher (string)
      * 
      */
-    @Export(name="driverId", type=String.class, parameters={})
+    @Export(name="driverId", refs={String.class}, tree="[0]")
     private Output<String> driverId;
 
     /**
@@ -384,7 +408,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Engine environment for the node template (string)
      * 
      */
-    @Export(name="engineEnv", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="engineEnv", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> engineEnv;
 
     /**
@@ -398,7 +422,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Insecure registry for the node template (list)
      * 
      */
-    @Export(name="engineInsecureRegistries", type=List.class, parameters={String.class})
+    @Export(name="engineInsecureRegistries", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> engineInsecureRegistries;
 
     /**
@@ -412,7 +436,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
      * 
      */
-    @Export(name="engineInstallUrl", type=String.class, parameters={})
+    @Export(name="engineInstallUrl", refs={String.class}, tree="[0]")
     private Output<String> engineInstallUrl;
 
     /**
@@ -426,7 +450,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Engine label for the node template (string)
      * 
      */
-    @Export(name="engineLabel", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="engineLabel", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> engineLabel;
 
     /**
@@ -440,7 +464,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Engine options for the node template (map)
      * 
      */
-    @Export(name="engineOpt", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="engineOpt", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> engineOpt;
 
     /**
@@ -454,7 +478,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Engine registry mirror for the node template (list)
      * 
      */
-    @Export(name="engineRegistryMirrors", type=List.class, parameters={String.class})
+    @Export(name="engineRegistryMirrors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> engineRegistryMirrors;
 
     /**
@@ -468,7 +492,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Engine storage driver for the node template (string)
      * 
      */
-    @Export(name="engineStorageDriver", type=String.class, parameters={})
+    @Export(name="engineStorageDriver", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> engineStorageDriver;
 
     /**
@@ -482,7 +506,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Harvester config for the Node Template (list maxitems:1)
      * 
      */
-    @Export(name="harvesterConfig", type=NodeTemplateHarvesterConfig.class, parameters={})
+    @Export(name="harvesterConfig", refs={NodeTemplateHarvesterConfig.class}, tree="[0]")
     private Output</* @Nullable */ NodeTemplateHarvesterConfig> harvesterConfig;
 
     /**
@@ -496,7 +520,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Hetzner config for the Node Template (list maxitems:1)
      * 
      */
-    @Export(name="hetznerConfig", type=NodeTemplateHetznerConfig.class, parameters={})
+    @Export(name="hetznerConfig", refs={NodeTemplateHetznerConfig.class}, tree="[0]")
     private Output</* @Nullable */ NodeTemplateHetznerConfig> hetznerConfig;
 
     /**
@@ -512,7 +536,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -528,7 +552,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Linode config for the Node Template (list maxitems:1)
      * 
      */
-    @Export(name="linodeConfig", type=NodeTemplateLinodeConfig.class, parameters={})
+    @Export(name="linodeConfig", refs={NodeTemplateLinodeConfig.class}, tree="[0]")
     private Output</* @Nullable */ NodeTemplateLinodeConfig> linodeConfig;
 
     /**
@@ -542,7 +566,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * The name of the Node Template (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -556,7 +580,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Node taints. For Rancher v2.3.3 or above (List)
      * 
      */
-    @Export(name="nodeTaints", type=List.class, parameters={NodeTemplateNodeTaint.class})
+    @Export(name="nodeTaints", refs={List.class,NodeTemplateNodeTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NodeTemplateNodeTaint>> nodeTaints;
 
     /**
@@ -570,7 +594,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Opennebula config for the Node Template (list maxitems:1)
      * 
      */
-    @Export(name="opennebulaConfig", type=NodeTemplateOpennebulaConfig.class, parameters={})
+    @Export(name="opennebulaConfig", refs={NodeTemplateOpennebulaConfig.class}, tree="[0]")
     private Output</* @Nullable */ NodeTemplateOpennebulaConfig> opennebulaConfig;
 
     /**
@@ -584,7 +608,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Openstack config for the Node Template (list maxitems:1)
      * 
      */
-    @Export(name="openstackConfig", type=NodeTemplateOpenstackConfig.class, parameters={})
+    @Export(name="openstackConfig", refs={NodeTemplateOpenstackConfig.class}, tree="[0]")
     private Output</* @Nullable */ NodeTemplateOpenstackConfig> openstackConfig;
 
     /**
@@ -598,7 +622,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Outscale config for the Node Template (list maxitems:1)
      * 
      */
-    @Export(name="outscaleConfig", type=NodeTemplateOutscaleConfig.class, parameters={})
+    @Export(name="outscaleConfig", refs={NodeTemplateOutscaleConfig.class}, tree="[0]")
     private Output</* @Nullable */ NodeTemplateOutscaleConfig> outscaleConfig;
 
     /**
@@ -612,7 +636,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Engine storage driver for the node template (bool)
      * 
      */
-    @Export(name="useInternalIpAddress", type=Boolean.class, parameters={})
+    @Export(name="useInternalIpAddress", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useInternalIpAddress;
 
     /**
@@ -626,7 +650,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * vSphere config for the Node Template (list maxitems:1)
      * 
      */
-    @Export(name="vsphereConfig", type=NodeTemplateVsphereConfig.class, parameters={})
+    @Export(name="vsphereConfig", refs={NodeTemplateVsphereConfig.class}, tree="[0]")
     private Output</* @Nullable */ NodeTemplateVsphereConfig> vsphereConfig;
 
     /**

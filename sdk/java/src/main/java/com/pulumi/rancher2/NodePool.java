@@ -116,7 +116,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Annotations for Node Pool object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -130,7 +130,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The RKE cluster id to use Node Pool (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -144,7 +144,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * RKE control plane role for created nodes (bool)
      * 
      */
-    @Export(name="controlPlane", type=Boolean.class, parameters={})
+    @Export(name="controlPlane", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> controlPlane;
 
     /**
@@ -158,7 +158,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
      * 
      */
-    @Export(name="deleteNotReadyAfterSecs", type=Integer.class, parameters={})
+    @Export(name="deleteNotReadyAfterSecs", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> deleteNotReadyAfterSecs;
 
     /**
@@ -172,7 +172,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Drain nodes before delete. Default: `false` (bool)
      * 
      */
-    @Export(name="drainBeforeDelete", type=Boolean.class, parameters={})
+    @Export(name="drainBeforeDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> drainBeforeDelete;
 
     /**
@@ -186,7 +186,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * RKE etcd role for created nodes (bool)
      * 
      */
-    @Export(name="etcd", type=Boolean.class, parameters={})
+    @Export(name="etcd", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> etcd;
 
     /**
@@ -200,7 +200,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The prefix for created nodes of the Node Pool (string)
      * 
      */
-    @Export(name="hostnamePrefix", type=String.class, parameters={})
+    @Export(name="hostnamePrefix", refs={String.class}, tree="[0]")
     private Output<String> hostnamePrefix;
 
     /**
@@ -214,7 +214,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Labels for Node Pool object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -228,7 +228,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The name of the Node Pool (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -242,7 +242,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Node taints. For Rancher v2.3.3 or above (List)
      * 
      */
-    @Export(name="nodeTaints", type=List.class, parameters={NodePoolNodeTaint.class})
+    @Export(name="nodeTaints", refs={List.class,NodePoolNodeTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NodePoolNodeTaint>> nodeTaints;
 
     /**
@@ -256,7 +256,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The Node Template ID to use for node creation (string)
      * 
      */
-    @Export(name="nodeTemplateId", type=String.class, parameters={})
+    @Export(name="nodeTemplateId", refs={String.class}, tree="[0]")
     private Output<String> nodeTemplateId;
 
     /**
@@ -270,7 +270,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The number of nodes to create on Node Pool. Default `1`. Only values &gt;= 1 allowed (int)
      * 
      */
-    @Export(name="quantity", type=Integer.class, parameters={})
+    @Export(name="quantity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> quantity;
 
     /**
@@ -284,7 +284,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * RKE role role for created nodes (bool)
      * 
      */
-    @Export(name="worker", type=Boolean.class, parameters={})
+    @Export(name="worker", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> worker;
 
     /**

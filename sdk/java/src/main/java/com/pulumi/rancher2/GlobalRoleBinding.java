@@ -69,7 +69,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
      * Annotations for global role binding (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -83,7 +83,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
      * The role id from create global role binding (string)
      * 
      */
-    @Export(name="globalRoleId", type=String.class, parameters={})
+    @Export(name="globalRoleId", refs={String.class}, tree="[0]")
     private Output<String> globalRoleId;
 
     /**
@@ -97,7 +97,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
      * The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
      * 
      */
-    @Export(name="groupPrincipalId", type=String.class, parameters={})
+    @Export(name="groupPrincipalId", refs={String.class}, tree="[0]")
     private Output<String> groupPrincipalId;
 
     /**
@@ -113,7 +113,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
      * **Note** user `user_id` OR group `group_principal_id` must be defined
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -129,7 +129,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
      * The name of the global role binding (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -143,7 +143,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
      * The user ID to assign global role binding (string)
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

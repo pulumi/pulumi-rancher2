@@ -129,7 +129,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Cluster scan retention (int)
+        /// Retention option for etcd service (string)
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }

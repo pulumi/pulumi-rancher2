@@ -74,7 +74,7 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
      * Annotations for global role object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -88,7 +88,7 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
      * (Computed) Builtin global role (bool)
      * 
      */
-    @Export(name="builtin", type=Boolean.class, parameters={})
+    @Export(name="builtin", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> builtin;
 
     /**
@@ -102,7 +102,7 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
      * Global role description (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -116,7 +116,7 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
      * Labels for global role object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -130,7 +130,7 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
      * Global role name (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -144,7 +144,7 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
      * Whether or not this role should be added to new users. Default `false` (bool)
      * 
      */
-    @Export(name="newUserDefault", type=Boolean.class, parameters={})
+    @Export(name="newUserDefault", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> newUserDefault;
 
     /**
@@ -158,7 +158,7 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
      * Global role policy rules (list)
      * 
      */
-    @Export(name="rules", type=List.class, parameters={GlobalRoleRule.class})
+    @Export(name="rules", refs={List.class,GlobalRoleRule.class}, tree="[0,1]")
     private Output<List<GlobalRoleRule>> rules;
 
     /**

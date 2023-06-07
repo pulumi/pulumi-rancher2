@@ -76,7 +76,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * Optional Agent Env Vars for Rancher agent (list)
      * 
      */
-    @Export(name="agentEnvVars", type=List.class, parameters={ClusterV2AgentEnvVar.class})
+    @Export(name="agentEnvVars", refs={List.class,ClusterV2AgentEnvVar.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterV2AgentEnvVar>> agentEnvVars;
 
     /**
@@ -90,7 +90,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * Annotations for the Cluster V2 (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -104,7 +104,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * Cluster V2 cloud credential secret name (string)
      * 
      */
-    @Export(name="cloudCredentialSecretName", type=String.class, parameters={})
+    @Export(name="cloudCredentialSecretName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudCredentialSecretName;
 
     /**
@@ -118,7 +118,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
      * 
      */
-    @Export(name="clusterRegistrationToken", type=ClusterV2ClusterRegistrationToken.class, parameters={})
+    @Export(name="clusterRegistrationToken", refs={ClusterV2ClusterRegistrationToken.class}, tree="[0]")
     private Output<ClusterV2ClusterRegistrationToken> clusterRegistrationToken;
 
     /**
@@ -132,7 +132,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * (Computed) Cluster v1 id for cluster v2. (e.g to be used with `rancher2_sync`) (string)
      * 
      */
-    @Export(name="clusterV1Id", type=String.class, parameters={})
+    @Export(name="clusterV1Id", refs={String.class}, tree="[0]")
     private Output<String> clusterV1Id;
 
     /**
@@ -146,7 +146,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * Cluster V2 default cluster role for project members (string)
      * 
      */
-    @Export(name="defaultClusterRoleForProjectMembers", type=String.class, parameters={})
+    @Export(name="defaultClusterRoleForProjectMembers", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultClusterRoleForProjectMembers;
 
     /**
@@ -160,7 +160,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * Cluster V2 default pod security policy template name (string)
      * 
      */
-    @Export(name="defaultPodSecurityPolicyTemplateName", type=String.class, parameters={})
+    @Export(name="defaultPodSecurityPolicyTemplateName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultPodSecurityPolicyTemplateName;
 
     /**
@@ -174,7 +174,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * Enable k8s network policy at Cluster V2 (bool)
      * 
      */
-    @Export(name="enableNetworkPolicy", type=Boolean.class, parameters={})
+    @Export(name="enableNetworkPolicy", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableNetworkPolicy;
 
     /**
@@ -188,7 +188,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * The fleet namespace of the Cluster v2. Default: `\&#34;fleet-default\&#34;` (string)
      * 
      */
-    @Export(name="fleetNamespace", type=String.class, parameters={})
+    @Export(name="fleetNamespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fleetNamespace;
 
     /**
@@ -202,7 +202,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
      * 
      */
-    @Export(name="kubeConfig", type=String.class, parameters={})
+    @Export(name="kubeConfig", refs={String.class}, tree="[0]")
     private Output<String> kubeConfig;
 
     /**
@@ -216,7 +216,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * The kubernetes version of the Cluster v2 (list maxitems:1)
      * 
      */
-    @Export(name="kubernetesVersion", type=String.class, parameters={})
+    @Export(name="kubernetesVersion", refs={String.class}, tree="[0]")
     private Output<String> kubernetesVersion;
 
     /**
@@ -230,7 +230,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * Labels for the Cluster V2 (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -244,7 +244,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * Cluster V2 local auth endpoint (list maxitems:1)
      * 
      */
-    @Export(name="localAuthEndpoint", type=ClusterV2LocalAuthEndpoint.class, parameters={})
+    @Export(name="localAuthEndpoint", refs={ClusterV2LocalAuthEndpoint.class}, tree="[0]")
     private Output</* @Nullable */ ClusterV2LocalAuthEndpoint> localAuthEndpoint;
 
     /**
@@ -258,7 +258,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * The name of the Cluster v2 (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -272,7 +272,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * (Computed) Cluster v2 k8s resource version (string)
      * 
      */
-    @Export(name="resourceVersion", type=String.class, parameters={})
+    @Export(name="resourceVersion", refs={String.class}, tree="[0]")
     private Output<String> resourceVersion;
 
     /**
@@ -286,7 +286,7 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
      * 
      */
-    @Export(name="rkeConfig", type=ClusterV2RkeConfig.class, parameters={})
+    @Export(name="rkeConfig", refs={ClusterV2RkeConfig.class}, tree="[0]")
     private Output<ClusterV2RkeConfig> rkeConfig;
 
     /**

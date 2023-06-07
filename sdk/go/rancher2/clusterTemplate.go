@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -72,7 +72,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -103,70 +103,6 @@ import (
 //								UpgradeStrategy: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs{
 //									Drain:                pulumi.Bool(true),
 //									MaxUnavailableWorker: pulumi.String("20%"),
-//								},
-//							},
-//						},
-//						Default: pulumi.Bool(true),
-//						Name:    pulumi.String("V1"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Creating Rancher v2 RKE cluster template with scheduled cluster scan. For Rancher v2.4.x or above.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.NewClusterTemplate(ctx, "foo", &rancher2.ClusterTemplateArgs{
-//				Description: pulumi.String("Terraform cluster template foo"),
-//				Members: rancher2.ClusterTemplateMemberArray{
-//					&rancher2.ClusterTemplateMemberArgs{
-//						AccessType:      pulumi.String("owner"),
-//						UserPrincipalId: pulumi.String("local://user-XXXXX"),
-//					},
-//				},
-//				TemplateRevisions: rancher2.ClusterTemplateTemplateRevisionArray{
-//					&rancher2.ClusterTemplateTemplateRevisionArgs{
-//						ClusterConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs{
-//							RkeConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
-//								Network: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
-//									Plugin: pulumi.String("canal"),
-//								},
-//								Services: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{
-//									Etcd: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{
-//										Creation:  pulumi.String("6h"),
-//										Retention: pulumi.String("24h"),
-//									},
-//								},
-//							},
-//							ScheduledClusterScan: &rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs{
-//								Enabled: pulumi.Bool(true),
-//								ScanConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs{
-//									CisScanConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs{
-//										DebugMaster: pulumi.Bool(true),
-//										DebugWorker: pulumi.Bool(true),
-//									},
-//								},
-//								ScheduleConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs{
-//									CronSchedule: pulumi.String("30 * * * *"),
-//									Retention:    pulumi.Int(5),
 //								},
 //							},
 //						},

@@ -78,7 +78,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ImageId;
         /// <summary>
-        /// Image name e.g. `harvester-public/image-57hzg` (string)
+        /// Use `disk_info` instead
         /// </summary>
         public readonly string? ImageName;
         /// <summary>

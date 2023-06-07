@@ -117,7 +117,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * Administrative role template. Default `false` (bool)
      * 
      */
-    @Export(name="administrative", type=Boolean.class, parameters={})
+    @Export(name="administrative", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> administrative;
 
     /**
@@ -131,7 +131,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * Annotations for role template object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -145,7 +145,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * (Computed) Builtin role template (string)
      * 
      */
-    @Export(name="builtin", type=Boolean.class, parameters={})
+    @Export(name="builtin", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> builtin;
 
     /**
@@ -159,7 +159,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
      * 
      */
-    @Export(name="context", type=String.class, parameters={})
+    @Export(name="context", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> context;
 
     /**
@@ -173,7 +173,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * Default role template for new created cluster or project. Default `false` (bool)
      * 
      */
-    @Export(name="defaultRole", type=Boolean.class, parameters={})
+    @Export(name="defaultRole", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> defaultRole;
 
     /**
@@ -187,7 +187,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * Role template description (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -201,7 +201,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * External role template. Default `false` (bool)
      * 
      */
-    @Export(name="external", type=Boolean.class, parameters={})
+    @Export(name="external", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> external;
 
     /**
@@ -215,7 +215,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * Hidden role template. Default `false` (bool)
      * 
      */
-    @Export(name="hidden", type=Boolean.class, parameters={})
+    @Export(name="hidden", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hidden;
 
     /**
@@ -229,7 +229,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * Labels for role template object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -243,7 +243,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * Locked role template. Default `false` (bool)
      * 
      */
-    @Export(name="locked", type=Boolean.class, parameters={})
+    @Export(name="locked", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> locked;
 
     /**
@@ -257,7 +257,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * Role template name (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -271,7 +271,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * Inherit role template IDs (list)
      * 
      */
-    @Export(name="roleTemplateIds", type=List.class, parameters={String.class})
+    @Export(name="roleTemplateIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> roleTemplateIds;
 
     /**
@@ -285,7 +285,7 @@ public class RoleTempalte extends com.pulumi.resources.CustomResource {
      * Role template policy rules (list)
      * 
      */
-    @Export(name="rules", type=List.class, parameters={RoleTempalteRule.class})
+    @Export(name="rules", refs={List.class,RoleTempalteRule.class}, tree="[0,1]")
     private Output<List<RoleTempalteRule>> rules;
 
     /**

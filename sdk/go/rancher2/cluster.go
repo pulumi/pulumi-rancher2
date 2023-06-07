@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -78,7 +78,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -198,7 +198,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -258,7 +258,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -317,7 +317,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -363,55 +363,6 @@ import (
 //	}
 //
 // ```
-// ### Creating Rancher v2 RKE cluster with scheduled cluster scan. For Rancher v2.4.x or above.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
-//				Description: pulumi.String("Terraform custom cluster"),
-//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
-//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
-//						Plugin: pulumi.String("canal"),
-//					},
-//					Services: &rancher2.ClusterRkeConfigServicesArgs{
-//						Etcd: &rancher2.ClusterRkeConfigServicesEtcdArgs{
-//							Creation:  pulumi.String("6h"),
-//							Retention: pulumi.String("24h"),
-//						},
-//					},
-//				},
-//				ScheduledClusterScan: &rancher2.ClusterScheduledClusterScanArgs{
-//					Enabled: pulumi.Bool(true),
-//					ScanConfig: &rancher2.ClusterScheduledClusterScanScanConfigArgs{
-//						CisScanConfig: &rancher2.ClusterScheduledClusterScanScanConfigCisScanConfigArgs{
-//							DebugMaster: pulumi.Bool(true),
-//							DebugWorker: pulumi.Bool(true),
-//						},
-//					},
-//					ScheduleConfig: &rancher2.ClusterScheduledClusterScanScheduleConfigArgs{
-//						CronSchedule: pulumi.String("30 * * * *"),
-//						Retention:    pulumi.Int(5),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Importing EKS cluster to Rancher v2, using `eksConfigV2`. For Rancher v2.5.x or above.
 //
 // ```go
@@ -419,7 +370,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -460,7 +411,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -482,7 +433,7 @@ import (
 //				EksConfigV2: &rancher2.ClusterEksConfigV2Args{
 //					CloudCredentialId: fooCloudCredential.ID(),
 //					Region:            pulumi.String("<EKS_REGION>"),
-//					KubernetesVersion: pulumi.String("1.17"),
+//					KubernetesVersion: pulumi.String("1.24"),
 //					LoggingTypes: pulumi.StringArray{
 //						pulumi.String("audit"),
 //						pulumi.String("api"),
@@ -499,6 +450,7 @@ import (
 //							InstanceType: pulumi.String("m5.xlarge"),
 //							DesiredSize:  pulumi.Int(2),
 //							MaxSize:      pulumi.Int(3),
+//							NodeRole:     pulumi.String("arn:aws:iam::role/test-NodeInstanceRole"),
 //						},
 //					},
 //					PrivateAccess: pulumi.Bool(true),
@@ -520,7 +472,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -542,7 +494,7 @@ import (
 //				EksConfigV2: &rancher2.ClusterEksConfigV2Args{
 //					CloudCredentialId: fooCloudCredential.ID(),
 //					Region:            pulumi.String("<EKS_REGION>"),
-//					KubernetesVersion: pulumi.String("1.17"),
+//					KubernetesVersion: pulumi.String("1.24"),
 //					LoggingTypes: pulumi.StringArray{
 //						pulumi.String("audit"),
 //						pulumi.String("api"),
@@ -579,7 +531,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -603,7 +555,7 @@ import (
 //					ResourceGroup:     pulumi.String("<RESOURCE_GROUP>"),
 //					ResourceLocation:  pulumi.String("<RESOURCE_LOCATION>"),
 //					DnsPrefix:         pulumi.String("<DNS_PREFIX>"),
-//					KubernetesVersion: pulumi.String("1.21.2"),
+//					KubernetesVersion: pulumi.String("1.24.6"),
 //					NetworkPlugin:     pulumi.String("<NETWORK_PLUGIN>"),
 //					NodePools: rancher2.ClusterAksConfigV2NodePoolArray{
 //						&rancher2.ClusterAksConfigV2NodePoolArgs{
@@ -716,8 +668,6 @@ type Cluster struct {
 	Rke2Config ClusterRke2ConfigOutput `pulumi:"rke2Config"`
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigOutput `pulumi:"rkeConfig"`
-	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-	ScheduledClusterScan ClusterScheduledClusterScanOutput `pulumi:"scheduledClusterScan"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId pulumi.StringOutput `pulumi:"systemProjectId"`
 	// Windows preferred cluster. Default: `false` (bool)
@@ -832,8 +782,6 @@ type clusterState struct {
 	Rke2Config *ClusterRke2Config `pulumi:"rke2Config"`
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig *ClusterRkeConfig `pulumi:"rkeConfig"`
-	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-	ScheduledClusterScan *ClusterScheduledClusterScan `pulumi:"scheduledClusterScan"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId *string `pulumi:"systemProjectId"`
 	// Windows preferred cluster. Default: `false` (bool)
@@ -915,8 +863,6 @@ type ClusterState struct {
 	Rke2Config ClusterRke2ConfigPtrInput
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigPtrInput
-	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-	ScheduledClusterScan ClusterScheduledClusterScanPtrInput
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId pulumi.StringPtrInput
 	// Windows preferred cluster. Default: `false` (bool)
@@ -988,8 +934,6 @@ type clusterArgs struct {
 	Rke2Config *ClusterRke2Config `pulumi:"rke2Config"`
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig *ClusterRkeConfig `pulumi:"rkeConfig"`
-	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-	ScheduledClusterScan *ClusterScheduledClusterScan `pulumi:"scheduledClusterScan"`
 	// Windows preferred cluster. Default: `false` (bool)
 	WindowsPreferedCluster *bool `pulumi:"windowsPreferedCluster"`
 }
@@ -1056,8 +1000,6 @@ type ClusterArgs struct {
 	Rke2Config ClusterRke2ConfigPtrInput
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigPtrInput
-	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-	ScheduledClusterScan ClusterScheduledClusterScanPtrInput
 	// Windows preferred cluster. Default: `false` (bool)
 	WindowsPreferedCluster pulumi.BoolPtrInput
 }
@@ -1329,11 +1271,6 @@ func (o ClusterOutput) Rke2Config() ClusterRke2ConfigOutput {
 // The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 func (o ClusterOutput) RkeConfig() ClusterRkeConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterRkeConfigOutput { return v.RkeConfig }).(ClusterRkeConfigOutput)
-}
-
-// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-func (o ClusterOutput) ScheduledClusterScan() ClusterScheduledClusterScanOutput {
-	return o.ApplyT(func(v *Cluster) ClusterScheduledClusterScanOutput { return v.ScheduledClusterScan }).(ClusterScheduledClusterScanOutput)
 }
 
 // (Computed) System project ID for the cluster (string)

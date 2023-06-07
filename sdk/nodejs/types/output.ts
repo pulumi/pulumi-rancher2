@@ -924,6 +924,10 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     name: string;
     /**
+     * The EKS node group node role ARN. Default `""` (string)
+     */
+    nodeRole?: string;
+    /**
      * Enable EKS node group request spot instances (bool)
      */
     requestSpotInstances?: boolean;
@@ -1510,231 +1514,6 @@ export interface ClusterK3sConfigUpgradeStrategy {
      * Worker concurrency. Default: `1` (int)
      */
     workerConcurrency?: number;
-}
-
-export interface ClusterLoggingCustomTargetConfig {
-    /**
-     * SSL CA certificate for the custom target service (string)
-     */
-    certificate?: string;
-    /**
-     * SSL client certificate for the custom target service (string)
-     */
-    clientCert?: string;
-    /**
-     * SSL client key for the custom target service (string)
-     */
-    clientKey?: string;
-    /**
-     * Custom target config content (string)
-     */
-    content: string;
-}
-
-export interface ClusterLoggingElasticsearchConfig {
-    /**
-     * User password for the elascticsearch service (string)
-     */
-    authPassword?: string;
-    /**
-     * Username for the elascticsearch service (string)
-     */
-    authUsername?: string;
-    /**
-     * SSL CA certificate for the custom target service (string)
-     */
-    certificate?: string;
-    /**
-     * SSL client certificate for the custom target service (string)
-     */
-    clientCert?: string;
-    /**
-     * SSL client key for the custom target service (string)
-     */
-    clientKey?: string;
-    /**
-     * SSL client key password for the elascticsearch service (string)
-     */
-    clientKeyPass?: string;
-    /**
-     * Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
-     */
-    dateFormat?: string;
-    /**
-     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-     */
-    endpoint: string;
-    /**
-     * Index prefix for the elascticsearch logs. Default: `local` (string)
-     */
-    indexPrefix?: string;
-    /**
-     * SSL verify for the elascticsearch service (bool)
-     */
-    sslVerify: boolean;
-    /**
-     * SSL version for the elascticsearch service (string)
-     */
-    sslVersion?: string;
-}
-
-export interface ClusterLoggingFluentdConfig {
-    /**
-     * SSL CA certificate for the custom target service (string)
-     */
-    certificate?: string;
-    /**
-     * Compress data for the fluentd service (bool)
-     */
-    compress?: boolean;
-    /**
-     * Enable TLS for the fluentd service (bool)
-     */
-    enableTls?: boolean;
-    /**
-     * Servers for the fluentd service (list)
-     */
-    fluentServers: outputs.ClusterLoggingFluentdConfigFluentServer[];
-}
-
-export interface ClusterLoggingFluentdConfigFluentServer {
-    /**
-     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-     */
-    endpoint: string;
-    /**
-     * Hostname of the fluentd service (string)
-     */
-    hostname?: string;
-    /**
-     * User password of the fluentd service (string)
-     */
-    password?: string;
-    /**
-     * Shared key of the fluentd service (string)
-     */
-    sharedKey?: string;
-    /**
-     * Standby server of the fluentd service (bool)
-     */
-    standby?: boolean;
-    /**
-     * Username of the fluentd service (string)
-     */
-    username?: string;
-    /**
-     * Weight of the fluentd server (int)
-     */
-    weight?: number;
-}
-
-export interface ClusterLoggingKafkaConfig {
-    /**
-     * Kafka endpoints for kafka service. Conflicts with `zookeeperEndpoint` (list)
-     */
-    brokerEndpoints?: string[];
-    /**
-     * SSL CA certificate for the custom target service (string)
-     */
-    certificate?: string;
-    /**
-     * SSL client certificate for the custom target service (string)
-     */
-    clientCert?: string;
-    /**
-     * SSL client key for the custom target service (string)
-     */
-    clientKey?: string;
-    /**
-     * Topic to publish on the kafka service (string)
-     */
-    topic: string;
-    /**
-     * Zookeeper endpoint for kafka service. Conflicts with `brokerEndpoints` (string)
-     */
-    zookeeperEndpoint?: string;
-}
-
-export interface ClusterLoggingSplunkConfig {
-    /**
-     * SSL CA certificate for the custom target service (string)
-     */
-    certificate?: string;
-    /**
-     * SSL client certificate for the custom target service (string)
-     */
-    clientCert?: string;
-    /**
-     * SSL client key for the custom target service (string)
-     */
-    clientKey?: string;
-    /**
-     * SSL client key password for the elascticsearch service (string)
-     */
-    clientKeyPass?: string;
-    /**
-     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-     */
-    endpoint: string;
-    /**
-     * Index prefix for the splunk logs (string)
-     */
-    index?: string;
-    /**
-     * Date format for the splunk logs (string)
-     */
-    source?: string;
-    /**
-     * SSL verify for the elascticsearch service (bool)
-     */
-    sslVerify: boolean;
-    /**
-     * Token for the splunk service (string)
-     */
-    token: string;
-}
-
-export interface ClusterLoggingSyslogConfig {
-    /**
-     * SSL CA certificate for the custom target service (string)
-     */
-    certificate?: string;
-    /**
-     * SSL client certificate for the custom target service (string)
-     */
-    clientCert?: string;
-    /**
-     * SSL client key for the custom target service (string)
-     */
-    clientKey?: string;
-    /**
-     * Enable TLS for the fluentd service (bool)
-     */
-    enableTls?: boolean;
-    /**
-     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-     */
-    endpoint: string;
-    /**
-     * Program for the syslog service (string)
-     */
-    program?: string;
-    /**
-     * Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
-     */
-    protocol?: string;
-    /**
-     * Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
-     */
-    severity?: string;
-    /**
-     * SSL verify for the elascticsearch service (bool)
-     */
-    sslVerify: boolean;
-    /**
-     * Token for the splunk service (string)
-     */
-    token?: string;
 }
 
 export interface ClusterOkeConfig {
@@ -3362,7 +3141,7 @@ export interface ClusterRkeConfigServicesEtcd {
      */
     path: string;
     /**
-     * Cluster scan retention (int)
+     * Retention option for etcd service (string)
      */
     retention: string;
     /**
@@ -3385,7 +3164,7 @@ export interface ClusterRkeConfigServicesEtcdBackupConfig {
      */
     intervalHours?: number;
     /**
-     * Cluster scan retention (int)
+     * Retention option for etcd service (string)
      */
     retention?: number;
     /**
@@ -3694,62 +3473,6 @@ export interface ClusterRkeConfigUpgradeStrategyDrainInput {
     timeout?: number;
 }
 
-export interface ClusterScheduledClusterScan {
-    /**
-     * Enable etcd backup (bool)
-     */
-    enabled?: boolean;
-    /**
-     * Cluster scan config (List maxitems:1)
-     */
-    scanConfig: outputs.ClusterScheduledClusterScanScanConfig;
-    /**
-     * Cluster scan schedule config (list maxitems:1)
-     */
-    scheduleConfig: outputs.ClusterScheduledClusterScanScheduleConfig;
-}
-
-export interface ClusterScheduledClusterScanScanConfig {
-    /**
-     * Cluster Cis Scan config (List maxitems:1)
-     */
-    cisScanConfig: outputs.ClusterScheduledClusterScanScanConfigCisScanConfig;
-}
-
-export interface ClusterScheduledClusterScanScanConfigCisScanConfig {
-    /**
-     * Debug master. Default: `false` (bool)
-     */
-    debugMaster?: boolean;
-    /**
-     * Debug worker. Default: `false` (bool)
-     */
-    debugWorker?: boolean;
-    /**
-     * Override benchmark version (string)
-     */
-    overrideBenchmarkVersion?: string;
-    /**
-     * Override skip (string)
-     */
-    overrideSkips?: string[];
-    /**
-     * Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
-     */
-    profile?: string;
-}
-
-export interface ClusterScheduledClusterScanScheduleConfig {
-    /**
-     * Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
-     */
-    cronSchedule: string;
-    /**
-     * Cluster scan retention (int)
-     */
-    retention: number;
-}
-
 export interface ClusterSyncNode {
     /**
      * Annotations of the node (map).
@@ -3912,10 +3635,6 @@ export interface ClusterTemplateTemplateRevisionClusterConfig {
      * Rancher Kubernetes Engine Config (list maxitems: 1)
      */
     rkeConfig: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig;
-    /**
-     * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-     */
-    scheduledClusterScan?: outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan;
     /**
      * Windows prefered cluster. Default: `false` (bool)
      */
@@ -4533,32 +4252,6 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStr
     gracePeriod?: number;
     ignoreDaemonSets?: boolean;
     timeout?: number;
-}
-
-export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan {
-    /**
-     * Enable cluster template revision. Default `true` (bool)
-     */
-    enabled?: boolean;
-    scanConfig: outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig;
-    scheduleConfig: outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig;
-}
-
-export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig {
-    cisScanConfig: outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig;
-}
-
-export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig {
-    debugMaster?: boolean;
-    debugWorker?: boolean;
-    overrideBenchmarkVersion?: string;
-    overrideSkips?: string[];
-    profile?: string;
-}
-
-export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig {
-    cronSchedule: string;
-    retention: number;
 }
 
 export interface ClusterTemplateTemplateRevisionQuestion {
@@ -5408,6 +5101,7 @@ export interface GetClusterEksConfigV2NodeGroup {
      * The name of the Cluster (string)
      */
     name: string;
+    nodeRole?: string;
     requestSpotInstances?: boolean;
     resourceTags?: {[key: string]: any};
     spotInstanceTypes?: string[];
@@ -5615,78 +5309,6 @@ export interface GetClusterK3sConfigUpgradeStrategy {
     drainWorkerNodes?: boolean;
     serverConcurrency?: number;
     workerConcurrency?: number;
-}
-
-export interface GetClusterLoggingCustomTargetConfig {
-    certificate?: string;
-    clientCert?: string;
-    clientKey?: string;
-    content: string;
-}
-
-export interface GetClusterLoggingElasticsearchConfig {
-    authPassword?: string;
-    authUsername?: string;
-    certificate?: string;
-    clientCert?: string;
-    clientKey?: string;
-    clientKeyPass?: string;
-    dateFormat?: string;
-    endpoint: string;
-    indexPrefix?: string;
-    sslVerify: boolean;
-    sslVersion?: string;
-}
-
-export interface GetClusterLoggingFluentdConfig {
-    certificate?: string;
-    compress?: boolean;
-    enableTls?: boolean;
-    fluentServers: outputs.GetClusterLoggingFluentdConfigFluentServer[];
-}
-
-export interface GetClusterLoggingFluentdConfigFluentServer {
-    endpoint: string;
-    hostname?: string;
-    password?: string;
-    sharedKey?: string;
-    standby?: boolean;
-    username?: string;
-    weight?: number;
-}
-
-export interface GetClusterLoggingKafkaConfig {
-    brokerEndpoints?: string[];
-    certificate?: string;
-    clientCert?: string;
-    clientKey?: string;
-    topic: string;
-    zookeeperEndpoint?: string;
-}
-
-export interface GetClusterLoggingSplunkConfig {
-    certificate?: string;
-    clientCert?: string;
-    clientKey?: string;
-    clientKeyPass?: string;
-    endpoint: string;
-    index?: string;
-    source?: string;
-    sslVerify: boolean;
-    token: string;
-}
-
-export interface GetClusterLoggingSyslogConfig {
-    certificate?: string;
-    clientCert?: string;
-    clientKey?: string;
-    enableTls?: boolean;
-    endpoint: string;
-    program?: string;
-    protocol?: string;
-    severity?: string;
-    sslVerify: boolean;
-    token?: string;
 }
 
 export interface GetClusterOkeConfig {
@@ -6334,59 +5956,6 @@ export interface GetClusterRkeConfigUpgradeStrategyDrainInput {
     timeout?: number;
 }
 
-export interface GetClusterScanScanConfig {
-    /**
-     * Cluster Cis Scan config (List maxitems:1)
-     */
-    cisScanConfig: outputs.GetClusterScanScanConfigCisScanConfig;
-}
-
-export interface GetClusterScanScanConfigCisScanConfig {
-    /**
-     * Debug master. Default: `false` (bool)
-     */
-    debugMaster?: boolean;
-    /**
-     * Debug worker. Default: `false` (bool)
-     */
-    debugWorker?: boolean;
-    /**
-     * Override benchmark version (string)
-     */
-    overrideBenchmarkVersion?: string;
-    /**
-     * Override skip (string)
-     */
-    overrideSkips?: string[];
-    /**
-     * Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
-     */
-    profile?: string;
-}
-
-export interface GetClusterScheduledClusterScan {
-    enabled?: boolean;
-    scanConfig: outputs.GetClusterScheduledClusterScanScanConfig;
-    scheduleConfig: outputs.GetClusterScheduledClusterScanScheduleConfig;
-}
-
-export interface GetClusterScheduledClusterScanScanConfig {
-    cisScanConfig: outputs.GetClusterScheduledClusterScanScanConfigCisScanConfig;
-}
-
-export interface GetClusterScheduledClusterScanScanConfigCisScanConfig {
-    debugMaster?: boolean;
-    debugWorker?: boolean;
-    overrideBenchmarkVersion?: string;
-    overrideSkips?: string[];
-    profile?: string;
-}
-
-export interface GetClusterScheduledClusterScanScheduleConfig {
-    cronSchedule: string;
-    retention: number;
-}
-
 export interface GetClusterTemplateMember {
     accessType?: string;
     groupPrincipalId?: string;
@@ -6428,7 +5997,6 @@ export interface GetClusterTemplateTemplateRevisionClusterConfig {
     enableClusterMonitoring?: boolean;
     enableNetworkPolicy?: boolean;
     rkeConfig: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfig;
-    scheduledClusterScan?: outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan;
     windowsPreferedCluster?: boolean;
 }
 
@@ -7030,29 +6598,6 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgrade
     timeout?: number;
 }
 
-export interface GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan {
-    enabled?: boolean;
-    scanConfig: outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig;
-    scheduleConfig: outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig;
-}
-
-export interface GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig {
-    cisScanConfig: outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig;
-}
-
-export interface GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig {
-    debugMaster?: boolean;
-    debugWorker?: boolean;
-    overrideBenchmarkVersion?: string;
-    overrideSkips?: string[];
-    profile?: string;
-}
-
-export interface GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig {
-    cronSchedule: string;
-    retention: number;
-}
-
 export interface GetClusterTemplateTemplateRevisionQuestion {
     default: string;
     required?: boolean;
@@ -7537,78 +7082,6 @@ export interface GetProjectContainerResourceLimit {
     requestsMemory?: string;
 }
 
-export interface GetProjectLoggingCustomTargetConfig {
-    certificate?: string;
-    clientCert?: string;
-    clientKey?: string;
-    content: string;
-}
-
-export interface GetProjectLoggingElasticsearchConfig {
-    authPassword?: string;
-    authUsername?: string;
-    certificate?: string;
-    clientCert?: string;
-    clientKey?: string;
-    clientKeyPass?: string;
-    dateFormat?: string;
-    endpoint: string;
-    indexPrefix?: string;
-    sslVerify: boolean;
-    sslVersion?: string;
-}
-
-export interface GetProjectLoggingFluentdConfig {
-    certificate?: string;
-    compress?: boolean;
-    enableTls?: boolean;
-    fluentServers: outputs.GetProjectLoggingFluentdConfigFluentServer[];
-}
-
-export interface GetProjectLoggingFluentdConfigFluentServer {
-    endpoint: string;
-    hostname?: string;
-    password?: string;
-    sharedKey?: string;
-    standby?: boolean;
-    username?: string;
-    weight?: number;
-}
-
-export interface GetProjectLoggingKafkaConfig {
-    brokerEndpoints?: string[];
-    certificate?: string;
-    clientCert?: string;
-    clientKey?: string;
-    topic: string;
-    zookeeperEndpoint?: string;
-}
-
-export interface GetProjectLoggingSplunkConfig {
-    certificate?: string;
-    clientCert?: string;
-    clientKey?: string;
-    clientKeyPass?: string;
-    endpoint: string;
-    index?: string;
-    source?: string;
-    sslVerify: boolean;
-    token: string;
-}
-
-export interface GetProjectLoggingSyslogConfig {
-    certificate?: string;
-    clientCert?: string;
-    clientKey?: string;
-    enableTls?: boolean;
-    endpoint: string;
-    program?: string;
-    protocol?: string;
-    severity?: string;
-    sslVerify: boolean;
-    token?: string;
-}
-
 export interface GetProjectResourceQuota {
     namespaceDefaultLimit: outputs.GetProjectResourceQuotaNamespaceDefaultLimit;
     projectLimit: outputs.GetProjectResourceQuotaProjectLimit;
@@ -7882,10 +7355,15 @@ export interface MachineConfigV2Amazonec2Config {
 }
 
 export interface MachineConfigV2AzureConfig {
+    acceleratedNetworking?: boolean;
     /**
      * Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
      */
     availabilitySet?: string;
+    /**
+     * OpenStack availability zone (string)
+     */
+    availabilityZone?: string;
     /**
      * Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
@@ -7983,6 +7461,10 @@ export interface MachineConfigV2AzureConfig {
      */
     subscriptionId?: string;
     /**
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
+     */
+    tags?: string;
+    /**
      * Azure Tenant ID (string)
      */
     tenantId?: string;
@@ -7994,6 +7476,7 @@ export interface MachineConfigV2AzureConfig {
      * Use private IP address of the machine to connect. Default `false` (bool)
      */
     usePrivateIp?: boolean;
+    usePublicIpStandardSku?: boolean;
     /**
      * Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
      */
@@ -8065,17 +7548,27 @@ export interface MachineConfigV2HarvesterConfig {
      */
     cpuCount?: string;
     /**
-     * Disk bus, Default `virtio` (string)
+     * Use `diskInfo` instead
+     *
+     * @deprecated Use disk_info instead
      */
     diskBus?: string;
     /**
+     * A JSON string specifying info for the disks e.g. `{\"disks\":[{\"imageName\":\"harvester-public/image-57hzg\",\"bootOrder\":1,\"size\":40},{\"storageClassName\":\"node-driver-test\",\"bootOrder\":2,\"size\":1}]}` (string)
+     */
+    diskInfo: string;
+    /**
      * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     *
+     * @deprecated Use disk_info instead
      */
     diskSize?: string;
     /**
-     * Image name e.g. `harvester-public/image-57hzg` (string)
+     * Use `diskInfo` instead
+     *
+     * @deprecated Use disk_info instead
      */
-    imageName: string;
+    imageName?: string;
     /**
      * Memory size (in GiB), Default `4` (string)
      */
@@ -8085,13 +7578,21 @@ export interface MachineConfigV2HarvesterConfig {
      */
     networkData?: string;
     /**
-     * Network model, Default `virtio` (string)
+     * A JSON string specifying info for the networks e.g. `{\"interfaces\":[{\"networkName\":\"harvester-public/vlan1\"},{\"networkName\":\"harvester-public/vlan2\"}]}` (string)
+     */
+    networkInfo: string;
+    /**
+     * Use `networkInfo` instead
+     *
+     * @deprecated Use network_info instead
      */
     networkModel?: string;
     /**
-     * Network name e.g. `harvester-public/vlan1` (string)
+     * Use `networkInfo` instead
+     *
+     * @deprecated Use network_info instead
      */
-    networkName: string;
+    networkName?: string;
     /**
      * SSH password (string)
      */
@@ -8101,9 +7602,13 @@ export interface MachineConfigV2HarvesterConfig {
      */
     sshUser: string;
     /**
-     * UserData content of cloud-init, base64 is supported (string)
+     * UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
      */
     userData?: string;
+    /**
+     * Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+     */
+    vmAffinity?: string;
     /**
      * Virtual machine namespace e.g. `default` (string)
      */
@@ -8243,7 +7748,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     imageId?: string;
     /**
-     * Image name e.g. `harvester-public/image-57hzg` (string)
+     * Use `diskInfo` instead
      */
     imageName?: string;
     /**
@@ -8786,10 +8291,15 @@ export interface NodeTemplateAmazonec2Config {
 }
 
 export interface NodeTemplateAzureConfig {
+    acceleratedNetworking?: boolean;
     /**
      * Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
      */
     availabilitySet?: string;
+    /**
+     * OpenStack availability zone (string)
+     */
+    availabilityZone?: string;
     /**
      * Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
@@ -8887,6 +8397,10 @@ export interface NodeTemplateAzureConfig {
      */
     subscriptionId?: string;
     /**
+     * AWS Tags (e.g. key1,value1,key2,value2) (string)
+     */
+    tags?: string;
+    /**
      * Update domain count to use for availability set. Default `5` (string)
      */
     updateDomainCount?: string;
@@ -8894,6 +8408,7 @@ export interface NodeTemplateAzureConfig {
      * Use private IP address of the machine to connect. Default `false` (bool)
      */
     usePrivateIp?: boolean;
+    usePublicIpStandardSku?: boolean;
     /**
      * Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
      */
@@ -8967,17 +8482,27 @@ export interface NodeTemplateHarvesterConfig {
      */
     cpuCount?: string;
     /**
-     * Disk bus, Default `virtio` (string)
+     * Use `diskInfo` instead
+     *
+     * @deprecated Use disk_info instead
      */
     diskBus?: string;
     /**
+     * A JSON string specifying info for the disks e.g. `{\"disks\":[{\"imageName\":\"harvester-public/image-57hzg\",\"bootOrder\":1,\"size\":40},{\"storageClassName\":\"node-driver-test\",\"bootOrder\":2,\"size\":1}]}` (string)
+     */
+    diskInfo: string;
+    /**
      * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     *
+     * @deprecated Use disk_info instead
      */
     diskSize?: string;
     /**
-     * Image name e.g. `harvester-public/image-57hzg` (string)
+     * Use `diskInfo` instead
+     *
+     * @deprecated Use disk_info instead
      */
-    imageName: string;
+    imageName?: string;
     /**
      * Memory size (in GiB), Default `4` (string)
      */
@@ -8987,13 +8512,21 @@ export interface NodeTemplateHarvesterConfig {
      */
     networkData?: string;
     /**
-     * Network model, Default `virtio` (string)
+     * A JSON string specifying info for the networks e.g. `{\"interfaces\":[{\"networkName\":\"harvester-public/vlan1\"},{\"networkName\":\"harvester-public/vlan2\"}]}` (string)
+     */
+    networkInfo: string;
+    /**
+     * Use `networkInfo` instead
+     *
+     * @deprecated Use network_info instead
      */
     networkModel?: string;
     /**
-     * Network name e.g. `harvester-public/vlan1` (string)
+     * Use `networkInfo` instead
+     *
+     * @deprecated Use network_info instead
      */
-    networkName: string;
+    networkName?: string;
     /**
      * SSH password (string)
      */
@@ -9003,9 +8536,13 @@ export interface NodeTemplateHarvesterConfig {
      */
     sshUser: string;
     /**
-     * UserData content of cloud-init, base64 is supported (string)
+     * UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
      */
     userData?: string;
+    /**
+     * Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+     */
+    vmAffinity?: string;
     /**
      * Virtual machine namespace e.g. `default` (string)
      */
@@ -9165,7 +8702,7 @@ export interface NodeTemplateOpennebulaConfig {
      */
     imageId?: string;
     /**
-     * Image name e.g. `harvester-public/image-57hzg` (string)
+     * Use `diskInfo` instead
      */
     imageName?: string;
     /**
@@ -9181,7 +8718,7 @@ export interface NodeTemplateOpennebulaConfig {
      */
     networkId?: string;
     /**
-     * Network name e.g. `harvester-public/vlan1` (string)
+     * Use `networkInfo` instead
      */
     networkName?: string;
     /**
@@ -9286,7 +8823,7 @@ export interface NodeTemplateOpenstackConfig {
      */
     imageId?: string;
     /**
-     * Image name e.g. `harvester-public/image-57hzg` (string)
+     * Use `diskInfo` instead
      */
     imageName?: string;
     /**
@@ -9926,231 +9463,6 @@ export interface ProjectContainerResourceLimit {
      * Memory reservation for containers (string)
      */
     requestsMemory?: string;
-}
-
-export interface ProjectLoggingCustomTargetConfig {
-    /**
-     * SSL CA certificate for the custom target service (string)
-     */
-    certificate?: string;
-    /**
-     * SSL client certificate for the custom target service (string)
-     */
-    clientCert?: string;
-    /**
-     * SSL client key for the custom target service (string)
-     */
-    clientKey?: string;
-    /**
-     * Custom target config content (string)
-     */
-    content: string;
-}
-
-export interface ProjectLoggingElasticsearchConfig {
-    /**
-     * User password for the elascticsearch service (string)
-     */
-    authPassword?: string;
-    /**
-     * Username for the elascticsearch service (string)
-     */
-    authUsername?: string;
-    /**
-     * SSL CA certificate for the custom target service (string)
-     */
-    certificate?: string;
-    /**
-     * SSL client certificate for the custom target service (string)
-     */
-    clientCert?: string;
-    /**
-     * SSL client key for the custom target service (string)
-     */
-    clientKey?: string;
-    /**
-     * SSL client key password for the elascticsearch service (string)
-     */
-    clientKeyPass?: string;
-    /**
-     * Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
-     */
-    dateFormat?: string;
-    /**
-     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-     */
-    endpoint: string;
-    /**
-     * Index prefix for the elascticsearch logs. Default: `local` (string)
-     */
-    indexPrefix?: string;
-    /**
-     * SSL verify for the elascticsearch service (bool)
-     */
-    sslVerify: boolean;
-    /**
-     * SSL version for the elascticsearch service (string)
-     */
-    sslVersion?: string;
-}
-
-export interface ProjectLoggingFluentdConfig {
-    /**
-     * SSL CA certificate for the custom target service (string)
-     */
-    certificate?: string;
-    /**
-     * Compress data for the fluentd service (bool)
-     */
-    compress?: boolean;
-    /**
-     * Enable TLS for the fluentd service (bool)
-     */
-    enableTls?: boolean;
-    /**
-     * Servers for the fluentd service (list)
-     */
-    fluentServers: outputs.ProjectLoggingFluentdConfigFluentServer[];
-}
-
-export interface ProjectLoggingFluentdConfigFluentServer {
-    /**
-     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-     */
-    endpoint: string;
-    /**
-     * Hostname of the fluentd service (string)
-     */
-    hostname?: string;
-    /**
-     * User password of the fluentd service (string)
-     */
-    password?: string;
-    /**
-     * Shared key of the fluentd service (string)
-     */
-    sharedKey?: string;
-    /**
-     * Standby server of the fluentd service (bool)
-     */
-    standby?: boolean;
-    /**
-     * Username of the fluentd service (string)
-     */
-    username?: string;
-    /**
-     * Weight of the fluentd server (int)
-     */
-    weight?: number;
-}
-
-export interface ProjectLoggingKafkaConfig {
-    /**
-     * Kafka endpoints for kafka service. Conflicts with `zookeeperEndpoint` (list)
-     */
-    brokerEndpoints?: string[];
-    /**
-     * SSL CA certificate for the custom target service (string)
-     */
-    certificate?: string;
-    /**
-     * SSL client certificate for the custom target service (string)
-     */
-    clientCert?: string;
-    /**
-     * SSL client key for the custom target service (string)
-     */
-    clientKey?: string;
-    /**
-     * Topic to publish on the kafka service (string)
-     */
-    topic: string;
-    /**
-     * Zookeeper endpoint for kafka service. Conflicts with `brokerEndpoints` (string)
-     */
-    zookeeperEndpoint?: string;
-}
-
-export interface ProjectLoggingSplunkConfig {
-    /**
-     * SSL CA certificate for the custom target service (string)
-     */
-    certificate?: string;
-    /**
-     * SSL client certificate for the custom target service (string)
-     */
-    clientCert?: string;
-    /**
-     * SSL client key for the custom target service (string)
-     */
-    clientKey?: string;
-    /**
-     * SSL client key password for the elascticsearch service (string)
-     */
-    clientKeyPass?: string;
-    /**
-     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-     */
-    endpoint: string;
-    /**
-     * Index prefix for the splunk logs (string)
-     */
-    index?: string;
-    /**
-     * Date format for the splunk logs (string)
-     */
-    source?: string;
-    /**
-     * SSL verify for the elascticsearch service (bool)
-     */
-    sslVerify: boolean;
-    /**
-     * Token for the splunk service (string)
-     */
-    token: string;
-}
-
-export interface ProjectLoggingSyslogConfig {
-    /**
-     * SSL CA certificate for the custom target service (string)
-     */
-    certificate?: string;
-    /**
-     * SSL client certificate for the custom target service (string)
-     */
-    clientCert?: string;
-    /**
-     * SSL client key for the custom target service (string)
-     */
-    clientKey?: string;
-    /**
-     * Enable TLS for the fluentd service (bool)
-     */
-    enableTls?: boolean;
-    /**
-     * Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-     */
-    endpoint: string;
-    /**
-     * Program for the syslog service (string)
-     */
-    program?: string;
-    /**
-     * Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
-     */
-    protocol?: string;
-    /**
-     * Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
-     */
-    severity?: string;
-    /**
-     * SSL verify for the elascticsearch service (bool)
-     */
-    sslVerify: boolean;
-    /**
-     * Token for the splunk service (string)
-     */
-    token?: string;
 }
 
 export interface ProjectProjectMonitoringInput {

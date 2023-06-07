@@ -74,7 +74,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * Specify the cluster driver state (bool)
      * 
      */
-    @Export(name="active", type=Boolean.class, parameters={})
+    @Export(name="active", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> active;
 
     /**
@@ -88,7 +88,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * Actual url of the cluster driver (string)
      * 
      */
-    @Export(name="actualUrl", type=String.class, parameters={})
+    @Export(name="actualUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> actualUrl;
 
     /**
@@ -102,7 +102,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * Annotations of the resource (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -116,7 +116,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * Specify whether the cluster driver is an internal cluster driver or not (bool)
      * 
      */
-    @Export(name="builtin", type=Boolean.class, parameters={})
+    @Export(name="builtin", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> builtin;
 
     /**
@@ -130,7 +130,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * Verify that the downloaded driver matches the expected checksum (string)
      * 
      */
-    @Export(name="checksum", type=String.class, parameters={})
+    @Export(name="checksum", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> checksum;
 
     /**
@@ -144,7 +144,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * Labels of the resource (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -158,7 +158,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * Name of the cluster driver (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -172,7 +172,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * The URL to load for customized Add Clusters screen for this driver (string)
      * 
      */
-    @Export(name="uiUrl", type=String.class, parameters={})
+    @Export(name="uiUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> uiUrl;
 
     /**
@@ -186,7 +186,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * The URL to download the machine driver binary for 64-bit Linux (string)
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -200,7 +200,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * Domains to whitelist for the ui (list)
      * 
      */
-    @Export(name="whitelistDomains", type=List.class, parameters={String.class})
+    @Export(name="whitelistDomains", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> whitelistDomains;
 
     /**

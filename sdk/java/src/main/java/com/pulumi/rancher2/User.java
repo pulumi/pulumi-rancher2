@@ -77,7 +77,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Annotations for global role binding (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -87,7 +87,7 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<Map<String,Object>> annotations() {
         return this.annotations;
     }
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     public Output<Optional<Boolean>> enabled() {
@@ -97,7 +97,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Labels for global role binding (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -111,7 +111,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user full name (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -125,7 +125,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user password (string)
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -139,7 +139,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * (Computed) The user principal IDs (list)
      * 
      */
-    @Export(name="principalIds", type=List.class, parameters={String.class})
+    @Export(name="principalIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> principalIds;
 
     /**
@@ -153,7 +153,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user username (string)
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

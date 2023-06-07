@@ -26,7 +26,6 @@ import com.pulumi.rancher2.outputs.ClusterK3sConfig;
 import com.pulumi.rancher2.outputs.ClusterOkeConfig;
 import com.pulumi.rancher2.outputs.ClusterRke2Config;
 import com.pulumi.rancher2.outputs.ClusterRkeConfig;
-import com.pulumi.rancher2.outputs.ClusterScheduledClusterScan;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -438,67 +437,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Creating Rancher v2 RKE cluster with scheduled cluster scan. For Rancher v2.4.x or above.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.rancher2.Cluster;
- * import com.pulumi.rancher2.ClusterArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesEtcdArgs;
- * import com.pulumi.rancher2.inputs.ClusterScheduledClusterScanArgs;
- * import com.pulumi.rancher2.inputs.ClusterScheduledClusterScanScanConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterScheduledClusterScanScanConfigCisScanConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterScheduledClusterScanScheduleConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
- *             .description(&#34;Terraform custom cluster&#34;)
- *             .rkeConfig(ClusterRkeConfigArgs.builder()
- *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin(&#34;canal&#34;)
- *                     .build())
- *                 .services(ClusterRkeConfigServicesArgs.builder()
- *                     .etcd(ClusterRkeConfigServicesEtcdArgs.builder()
- *                         .creation(&#34;6h&#34;)
- *                         .retention(&#34;24h&#34;)
- *                         .build())
- *                     .build())
- *                 .build())
- *             .scheduledClusterScan(ClusterScheduledClusterScanArgs.builder()
- *                 .enabled(true)
- *                 .scanConfig(ClusterScheduledClusterScanScanConfigArgs.builder()
- *                     .cisScanConfig(ClusterScheduledClusterScanScanConfigCisScanConfigArgs.builder()
- *                         .debugMaster(true)
- *                         .debugWorker(true)
- *                         .build())
- *                     .build())
- *                 .scheduleConfig(ClusterScheduledClusterScanScheduleConfigArgs.builder()
- *                     .cronSchedule(&#34;30 * * * *&#34;)
- *                     .retention(5)
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.
  * ```java
  * package generated_program;
@@ -585,7 +523,7 @@ import javax.annotation.Nullable;
  *             .eksConfigV2(ClusterEksConfigV2Args.builder()
  *                 .cloudCredentialId(fooCloudCredential.id())
  *                 .region(&#34;&lt;EKS_REGION&gt;&#34;)
- *                 .kubernetesVersion(&#34;1.17&#34;)
+ *                 .kubernetesVersion(&#34;1.24&#34;)
  *                 .loggingTypes(                
  *                     &#34;audit&#34;,
  *                     &#34;api&#34;)
@@ -601,6 +539,7 @@ import javax.annotation.Nullable;
  *                         .instanceType(&#34;m5.xlarge&#34;)
  *                         .desiredSize(2)
  *                         .maxSize(3)
+ *                         .nodeRole(&#34;arn:aws:iam::role/test-NodeInstanceRole&#34;)
  *                         .build())
  *                 .privateAccess(true)
  *                 .publicAccess(false)
@@ -649,7 +588,7 @@ import javax.annotation.Nullable;
  *             .eksConfigV2(ClusterEksConfigV2Args.builder()
  *                 .cloudCredentialId(fooCloudCredential.id())
  *                 .region(&#34;&lt;EKS_REGION&gt;&#34;)
- *                 .kubernetesVersion(&#34;1.17&#34;)
+ *                 .kubernetesVersion(&#34;1.24&#34;)
  *                 .loggingTypes(                
  *                     &#34;audit&#34;,
  *                     &#34;api&#34;)
@@ -711,7 +650,7 @@ import javax.annotation.Nullable;
  *                 .resourceGroup(&#34;&lt;RESOURCE_GROUP&gt;&#34;)
  *                 .resourceLocation(&#34;&lt;RESOURCE_LOCATION&gt;&#34;)
  *                 .dnsPrefix(&#34;&lt;DNS_PREFIX&gt;&#34;)
- *                 .kubernetesVersion(&#34;1.21.2&#34;)
+ *                 .kubernetesVersion(&#34;1.24.6&#34;)
  *                 .networkPlugin(&#34;&lt;NETWORK_PLUGIN&gt;&#34;)
  *                 .nodePools(ClusterAksConfigV2NodePoolArgs.builder()
  *                     .availabilityZones(                    
@@ -746,7 +685,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
      * 
      */
-    @Export(name="agentEnvVars", type=List.class, parameters={ClusterAgentEnvVar.class})
+    @Export(name="agentEnvVars", refs={List.class,ClusterAgentEnvVar.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterAgentEnvVar>> agentEnvVars;
 
     /**
@@ -760,7 +699,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
-    @Export(name="aksConfig", type=ClusterAksConfig.class, parameters={})
+    @Export(name="aksConfig", refs={ClusterAksConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterAksConfig> aksConfig;
 
     /**
@@ -774,7 +713,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
-    @Export(name="aksConfigV2", type=ClusterAksConfigV2.class, parameters={})
+    @Export(name="aksConfigV2", refs={ClusterAksConfigV2.class}, tree="[0]")
     private Output</* @Nullable */ ClusterAksConfigV2> aksConfigV2;
 
     /**
@@ -788,7 +727,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Annotations for the Cluster (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -802,7 +741,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * TLS CA certificate for etcd service (string)
      * 
      */
-    @Export(name="caCert", type=String.class, parameters={})
+    @Export(name="caCert", refs={String.class}, tree="[0]")
     private Output<String> caCert;
 
     /**
@@ -816,7 +755,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
      * 
      */
-    @Export(name="clusterAuthEndpoint", type=ClusterClusterAuthEndpoint.class, parameters={})
+    @Export(name="clusterAuthEndpoint", refs={ClusterClusterAuthEndpoint.class}, tree="[0]")
     private Output<ClusterClusterAuthEndpoint> clusterAuthEndpoint;
 
     /**
@@ -830,7 +769,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
      * 
      */
-    @Export(name="clusterMonitoringInput", type=ClusterClusterMonitoringInput.class, parameters={})
+    @Export(name="clusterMonitoringInput", refs={ClusterClusterMonitoringInput.class}, tree="[0]")
     private Output</* @Nullable */ ClusterClusterMonitoringInput> clusterMonitoringInput;
 
     /**
@@ -844,7 +783,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
      * 
      */
-    @Export(name="clusterRegistrationToken", type=ClusterClusterRegistrationToken.class, parameters={})
+    @Export(name="clusterRegistrationToken", refs={ClusterClusterRegistrationToken.class}, tree="[0]")
     private Output<ClusterClusterRegistrationToken> clusterRegistrationToken;
 
     /**
@@ -858,7 +797,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
      * 
      */
-    @Export(name="clusterTemplateAnswers", type=ClusterClusterTemplateAnswers.class, parameters={})
+    @Export(name="clusterTemplateAnswers", refs={ClusterClusterTemplateAnswers.class}, tree="[0]")
     private Output<ClusterClusterTemplateAnswers> clusterTemplateAnswers;
 
     /**
@@ -872,7 +811,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Cluster template ID. Just for Rancher v2.3.x and above (string)
      * 
      */
-    @Export(name="clusterTemplateId", type=String.class, parameters={})
+    @Export(name="clusterTemplateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterTemplateId;
 
     /**
@@ -886,7 +825,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Cluster template questions. Just for Rancher v2.3.x and above (list)
      * 
      */
-    @Export(name="clusterTemplateQuestions", type=List.class, parameters={ClusterClusterTemplateQuestion.class})
+    @Export(name="clusterTemplateQuestions", refs={List.class,ClusterClusterTemplateQuestion.class}, tree="[0,1]")
     private Output<List<ClusterClusterTemplateQuestion>> clusterTemplateQuestions;
 
     /**
@@ -900,7 +839,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Cluster template revision ID. Just for Rancher v2.3.x and above (string)
      * 
      */
-    @Export(name="clusterTemplateRevisionId", type=String.class, parameters={})
+    @Export(name="clusterTemplateRevisionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterTemplateRevisionId;
 
     /**
@@ -914,7 +853,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
      * 
      */
-    @Export(name="defaultPodSecurityPolicyTemplateId", type=String.class, parameters={})
+    @Export(name="defaultPodSecurityPolicyTemplateId", refs={String.class}, tree="[0]")
     private Output<String> defaultPodSecurityPolicyTemplateId;
 
     /**
@@ -928,7 +867,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * (Computed) Default project ID for the cluster (string)
      * 
      */
-    @Export(name="defaultProjectId", type=String.class, parameters={})
+    @Export(name="defaultProjectId", refs={String.class}, tree="[0]")
     private Output<String> defaultProjectId;
 
     /**
@@ -942,7 +881,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The description for Cluster (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -956,7 +895,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Desired agent image. Just for Rancher v2.3.x and above (string)
      * 
      */
-    @Export(name="desiredAgentImage", type=String.class, parameters={})
+    @Export(name="desiredAgentImage", refs={String.class}, tree="[0]")
     private Output<String> desiredAgentImage;
 
     /**
@@ -970,7 +909,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Desired auth image. Just for Rancher v2.3.x and above (string)
      * 
      */
-    @Export(name="desiredAuthImage", type=String.class, parameters={})
+    @Export(name="desiredAuthImage", refs={String.class}, tree="[0]")
     private Output<String> desiredAuthImage;
 
     /**
@@ -984,7 +923,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Desired auth image. Just for Rancher v2.3.x and above (string)
      * 
      */
-    @Export(name="dockerRootDir", type=String.class, parameters={})
+    @Export(name="dockerRootDir", refs={String.class}, tree="[0]")
     private Output<String> dockerRootDir;
 
     /**
@@ -998,7 +937,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
      * 
      */
-    @Export(name="driver", type=String.class, parameters={})
+    @Export(name="driver", refs={String.class}, tree="[0]")
     private Output<String> driver;
 
     /**
@@ -1012,7 +951,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
-    @Export(name="eksConfig", type=ClusterEksConfig.class, parameters={})
+    @Export(name="eksConfig", refs={ClusterEksConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterEksConfig> eksConfig;
 
     /**
@@ -1026,7 +965,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
      * 
      */
-    @Export(name="eksConfigV2", type=ClusterEksConfigV2.class, parameters={})
+    @Export(name="eksConfigV2", refs={ClusterEksConfigV2.class}, tree="[0]")
     private Output<ClusterEksConfigV2> eksConfigV2;
 
     /**
@@ -1040,7 +979,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Enable built-in cluster alerting (bool)
      * 
      */
-    @Export(name="enableClusterAlerting", type=Boolean.class, parameters={})
+    @Export(name="enableClusterAlerting", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableClusterAlerting;
 
     /**
@@ -1058,7 +997,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Deploy istio using rancher2_app resource instead */
-    @Export(name="enableClusterIstio", type=Boolean.class, parameters={})
+    @Export(name="enableClusterIstio", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableClusterIstio;
 
     /**
@@ -1072,7 +1011,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Enable built-in cluster monitoring (bool)
      * 
      */
-    @Export(name="enableClusterMonitoring", type=Boolean.class, parameters={})
+    @Export(name="enableClusterMonitoring", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableClusterMonitoring;
 
     /**
@@ -1086,7 +1025,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Enable project network isolation (bool)
      * 
      */
-    @Export(name="enableNetworkPolicy", type=Boolean.class, parameters={})
+    @Export(name="enableNetworkPolicy", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableNetworkPolicy;
 
     /**
@@ -1100,7 +1039,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Fleet workspace name (string)
      * 
      */
-    @Export(name="fleetWorkspaceName", type=String.class, parameters={})
+    @Export(name="fleetWorkspaceName", refs={String.class}, tree="[0]")
     private Output<String> fleetWorkspaceName;
 
     /**
@@ -1114,7 +1053,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
-    @Export(name="gkeConfig", type=ClusterGkeConfig.class, parameters={})
+    @Export(name="gkeConfig", refs={ClusterGkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterGkeConfig> gkeConfig;
 
     /**
@@ -1128,7 +1067,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
      * 
      */
-    @Export(name="gkeConfigV2", type=ClusterGkeConfigV2.class, parameters={})
+    @Export(name="gkeConfigV2", refs={ClusterGkeConfigV2.class}, tree="[0]")
     private Output</* @Nullable */ ClusterGkeConfigV2> gkeConfigV2;
 
     /**
@@ -1142,7 +1081,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
      * 
      */
-    @Export(name="istioEnabled", type=Boolean.class, parameters={})
+    @Export(name="istioEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> istioEnabled;
 
     /**
@@ -1156,7 +1095,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
      * 
      */
-    @Export(name="k3sConfig", type=ClusterK3sConfig.class, parameters={})
+    @Export(name="k3sConfig", refs={ClusterK3sConfig.class}, tree="[0]")
     private Output<ClusterK3sConfig> k3sConfig;
 
     /**
@@ -1170,7 +1109,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
      * 
      */
-    @Export(name="kubeConfig", type=String.class, parameters={})
+    @Export(name="kubeConfig", refs={String.class}, tree="[0]")
     private Output<String> kubeConfig;
 
     /**
@@ -1184,7 +1123,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Labels for the Cluster (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -1198,7 +1137,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of the Cluster (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -1212,7 +1151,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
-    @Export(name="okeConfig", type=ClusterOkeConfig.class, parameters={})
+    @Export(name="okeConfig", refs={ClusterOkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterOkeConfig> okeConfig;
 
     /**
@@ -1226,7 +1165,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
-    @Export(name="rke2Config", type=ClusterRke2Config.class, parameters={})
+    @Export(name="rke2Config", refs={ClusterRke2Config.class}, tree="[0]")
     private Output<ClusterRke2Config> rke2Config;
 
     /**
@@ -1240,7 +1179,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
      * 
      */
-    @Export(name="rkeConfig", type=ClusterRkeConfig.class, parameters={})
+    @Export(name="rkeConfig", refs={ClusterRkeConfig.class}, tree="[0]")
     private Output<ClusterRkeConfig> rkeConfig;
 
     /**
@@ -1251,24 +1190,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.rkeConfig;
     }
     /**
-     * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-     * 
-     */
-    @Export(name="scheduledClusterScan", type=ClusterScheduledClusterScan.class, parameters={})
-    private Output<ClusterScheduledClusterScan> scheduledClusterScan;
-
-    /**
-     * @return Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-     * 
-     */
-    public Output<ClusterScheduledClusterScan> scheduledClusterScan() {
-        return this.scheduledClusterScan;
-    }
-    /**
      * (Computed) System project ID for the cluster (string)
      * 
      */
-    @Export(name="systemProjectId", type=String.class, parameters={})
+    @Export(name="systemProjectId", refs={String.class}, tree="[0]")
     private Output<String> systemProjectId;
 
     /**
@@ -1282,7 +1207,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Windows preferred cluster. Default: `false` (bool)
      * 
      */
-    @Export(name="windowsPreferedCluster", type=Boolean.class, parameters={})
+    @Export(name="windowsPreferedCluster", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> windowsPreferedCluster;
 
     /**

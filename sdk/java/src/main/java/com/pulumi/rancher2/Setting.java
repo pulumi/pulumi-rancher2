@@ -67,7 +67,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * Annotations for setting object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -81,7 +81,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * Labels for setting object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -95,7 +95,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * The name of the setting (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -109,7 +109,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * The value of the setting (string)
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

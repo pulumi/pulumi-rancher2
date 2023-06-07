@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -115,8 +115,7 @@ type LookupClusterResult struct {
 	// (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	Rke2Config GetClusterRke2Config `pulumi:"rke2Config"`
 	// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
-	RkeConfig             GetClusterRkeConfig              `pulumi:"rkeConfig"`
-	ScheduledClusterScans []GetClusterScheduledClusterScan `pulumi:"scheduledClusterScans"`
+	RkeConfig GetClusterRkeConfig `pulumi:"rkeConfig"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId string `pulumi:"systemProjectId"`
 }
@@ -315,10 +314,6 @@ func (o LookupClusterResultOutput) Rke2Config() GetClusterRke2ConfigOutput {
 // (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 func (o LookupClusterResultOutput) RkeConfig() GetClusterRkeConfigOutput {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterRkeConfig { return v.RkeConfig }).(GetClusterRkeConfigOutput)
-}
-
-func (o LookupClusterResultOutput) ScheduledClusterScans() GetClusterScheduledClusterScanArrayOutput {
-	return o.ApplyT(func(v LookupClusterResult) []GetClusterScheduledClusterScan { return v.ScheduledClusterScans }).(GetClusterScheduledClusterScanArrayOutput)
 }
 
 // (Computed) System project ID for the cluster (string)

@@ -36,7 +36,7 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * Annotations for the secret v2 (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -50,7 +50,7 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * The cluster id of the secret V2 (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -64,7 +64,7 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * The data of the secret v2 (map)
      * 
      */
-    @Export(name="data", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="data", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> data;
 
     /**
@@ -78,7 +78,7 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * If set to true, any secret update will remove and recreate the secret. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
      * 
      */
-    @Export(name="immutable", type=Boolean.class, parameters={})
+    @Export(name="immutable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> immutable;
 
     /**
@@ -92,7 +92,7 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * Labels for the secret v2 (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -106,7 +106,7 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * The name of the secret v2 (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -120,7 +120,7 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * The namespaces of the secret v2. Default: `default` (string)
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -134,7 +134,7 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * (Computed) The k8s resource version (string)
      * 
      */
-    @Export(name="resourceVersion", type=String.class, parameters={})
+    @Export(name="resourceVersion", refs={String.class}, tree="[0]")
     private Output<String> resourceVersion;
 
     /**
@@ -148,7 +148,7 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format.  Default: `Opaque` (string)
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**

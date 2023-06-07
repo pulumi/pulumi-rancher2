@@ -119,7 +119,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Image name e.g. `harvester-public/image-57hzg` (string)
+        /// Use `disk_info` instead
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }

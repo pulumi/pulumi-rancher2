@@ -84,7 +84,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule annotations (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -98,7 +98,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster id where create cluster alert rule (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -112,7 +112,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule event rule. ConflictsWith: `&#34;metric_rule&#34;, &#34;node_rule&#34;, &#34;system_service_rule&#34;`` (list Maxitems:1)
      * 
      */
-    @Export(name="eventRule", type=ClusterAlertRuleEventRule.class, parameters={})
+    @Export(name="eventRule", refs={ClusterAlertRuleEventRule.class}, tree="[0]")
     private Output</* @Nullable */ ClusterAlertRuleEventRule> eventRule;
 
     /**
@@ -126,7 +126,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule alert group ID (string)
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -140,7 +140,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule group interval seconds. Default: `180` (int)
      * 
      */
-    @Export(name="groupIntervalSeconds", type=Integer.class, parameters={})
+    @Export(name="groupIntervalSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> groupIntervalSeconds;
 
     /**
@@ -154,7 +154,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule group wait seconds. Default: `180` (int)
      * 
      */
-    @Export(name="groupWaitSeconds", type=Integer.class, parameters={})
+    @Export(name="groupWaitSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> groupWaitSeconds;
 
     /**
@@ -168,7 +168,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule inherited. Default: `true` (bool)
      * 
      */
-    @Export(name="inherited", type=Boolean.class, parameters={})
+    @Export(name="inherited", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> inherited;
 
     /**
@@ -182,7 +182,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule labels (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -196,7 +196,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule metric rule. ConflictsWith: `&#34;event_rule&#34;, &#34;node_rule&#34;, &#34;system_service_rule&#34;`` (list Maxitems:1)
      * 
      */
-    @Export(name="metricRule", type=ClusterAlertRuleMetricRule.class, parameters={})
+    @Export(name="metricRule", refs={ClusterAlertRuleMetricRule.class}, tree="[0]")
     private Output</* @Nullable */ ClusterAlertRuleMetricRule> metricRule;
 
     /**
@@ -210,7 +210,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule name (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -224,7 +224,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule node rule. ConflictsWith: `&#34;event_rule&#34;, &#34;metric_rule&#34;, &#34;system_service_rule&#34;`` (list Maxitems:1)
      * 
      */
-    @Export(name="nodeRule", type=ClusterAlertRuleNodeRule.class, parameters={})
+    @Export(name="nodeRule", refs={ClusterAlertRuleNodeRule.class}, tree="[0]")
     private Output</* @Nullable */ ClusterAlertRuleNodeRule> nodeRule;
 
     /**
@@ -238,7 +238,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule wait seconds. Default: `3600` (int)
      * 
      */
-    @Export(name="repeatIntervalSeconds", type=Integer.class, parameters={})
+    @Export(name="repeatIntervalSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> repeatIntervalSeconds;
 
     /**
@@ -252,7 +252,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule severity. Supported values : `&#34;critical&#34; | &#34;info&#34; | &#34;warning&#34;`. Default: `critical` (string)
      * 
      */
-    @Export(name="severity", type=String.class, parameters={})
+    @Export(name="severity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> severity;
 
     /**
@@ -266,7 +266,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * The cluster alert rule system service rule. ConflictsWith: `&#34;event_rule&#34;, &#34;metric_rule&#34;, &#34;node_rule&#34;` (list Maxitems:1)
      * 
      */
-    @Export(name="systemServiceRule", type=ClusterAlertRuleSystemServiceRule.class, parameters={})
+    @Export(name="systemServiceRule", refs={ClusterAlertRuleSystemServiceRule.class}, tree="[0]")
     private Output</* @Nullable */ ClusterAlertRuleSystemServiceRule> systemServiceRule;
 
     /**

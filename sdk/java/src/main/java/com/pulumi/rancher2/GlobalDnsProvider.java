@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="rancher2:index/globalDnsProvider:GlobalDnsProvider")
 public class GlobalDnsProvider extends com.pulumi.resources.CustomResource {
-    @Export(name="alidnsConfig", type=GlobalDnsProviderAlidnsConfig.class, parameters={})
+    @Export(name="alidnsConfig", refs={GlobalDnsProviderAlidnsConfig.class}, tree="[0]")
     private Output</* @Nullable */ GlobalDnsProviderAlidnsConfig> alidnsConfig;
 
     public Output<Optional<GlobalDnsProviderAlidnsConfig>> alidnsConfig() {
@@ -147,7 +147,7 @@ public class GlobalDnsProvider extends com.pulumi.resources.CustomResource {
      * Annotations for Global DNS Provider (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -157,7 +157,7 @@ public class GlobalDnsProvider extends com.pulumi.resources.CustomResource {
     public Output<Map<String,Object>> annotations() {
         return this.annotations;
     }
-    @Export(name="cloudflareConfig", type=GlobalDnsProviderCloudflareConfig.class, parameters={})
+    @Export(name="cloudflareConfig", refs={GlobalDnsProviderCloudflareConfig.class}, tree="[0]")
     private Output</* @Nullable */ GlobalDnsProviderCloudflareConfig> cloudflareConfig;
 
     public Output<Optional<GlobalDnsProviderCloudflareConfig>> cloudflareConfig() {
@@ -167,7 +167,7 @@ public class GlobalDnsProvider extends com.pulumi.resources.CustomResource {
      * (Computed) The Global DNS Provider `alidns, cloudflare, route53` (string)
      * 
      */
-    @Export(name="dnsProvider", type=String.class, parameters={})
+    @Export(name="dnsProvider", refs={String.class}, tree="[0]")
     private Output<String> dnsProvider;
 
     /**
@@ -181,7 +181,7 @@ public class GlobalDnsProvider extends com.pulumi.resources.CustomResource {
      * Labels for Global DNS Provider (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -195,7 +195,7 @@ public class GlobalDnsProvider extends com.pulumi.resources.CustomResource {
      * The name of the Global DNS Provider (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -209,7 +209,7 @@ public class GlobalDnsProvider extends com.pulumi.resources.CustomResource {
      * The user ID to assign Global DNS Provider (string)
      * 
      */
-    @Export(name="rootDomain", type=String.class, parameters={})
+    @Export(name="rootDomain", refs={String.class}, tree="[0]")
     private Output<String> rootDomain;
 
     /**
@@ -219,7 +219,7 @@ public class GlobalDnsProvider extends com.pulumi.resources.CustomResource {
     public Output<String> rootDomain() {
         return this.rootDomain;
     }
-    @Export(name="route53Config", type=GlobalDnsProviderRoute53Config.class, parameters={})
+    @Export(name="route53Config", refs={GlobalDnsProviderRoute53Config.class}, tree="[0]")
     private Output</* @Nullable */ GlobalDnsProviderRoute53Config> route53Config;
 
     public Output<Optional<GlobalDnsProviderRoute53Config>> route53Config() {

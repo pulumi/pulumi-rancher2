@@ -63,7 +63,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * Annotations for feature object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -77,7 +77,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * Labels for feature object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -91,7 +91,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * The name of the feature (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -105,7 +105,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * The value of the feature. Default: `false` (bool)
      * 
      */
-    @Export(name="value", type=Boolean.class, parameters={})
+    @Export(name="value", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> value;
 
     /**

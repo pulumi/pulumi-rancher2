@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs;
-import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -170,21 +169,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     }
 
     /**
-     * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-     * 
-     */
-    @Import(name="scheduledClusterScan")
-    private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs> scheduledClusterScan;
-
-    /**
-     * @return Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-     * 
-     */
-    public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs>> scheduledClusterScan() {
-        return Optional.ofNullable(this.scheduledClusterScan);
-    }
-
-    /**
      * Windows prefered cluster. Default: `false` (bool)
      * 
      */
@@ -212,7 +196,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         this.enableClusterMonitoring = $.enableClusterMonitoring;
         this.enableNetworkPolicy = $.enableNetworkPolicy;
         this.rkeConfig = $.rkeConfig;
-        this.scheduledClusterScan = $.scheduledClusterScan;
         this.windowsPreferedCluster = $.windowsPreferedCluster;
     }
 
@@ -442,27 +425,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
          */
         public Builder rkeConfig(ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs rkeConfig) {
             return rkeConfig(Output.of(rkeConfig));
-        }
-
-        /**
-         * @param scheduledClusterScan Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder scheduledClusterScan(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs> scheduledClusterScan) {
-            $.scheduledClusterScan = scheduledClusterScan;
-            return this;
-        }
-
-        /**
-         * @param scheduledClusterScan Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder scheduledClusterScan(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs scheduledClusterScan) {
-            return scheduledClusterScan(Output.of(scheduledClusterScan));
         }
 
         /**

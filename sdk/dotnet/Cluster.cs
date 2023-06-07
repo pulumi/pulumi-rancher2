@@ -367,55 +367,6 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// ### Creating Rancher v2 RKE cluster with scheduled cluster scan. For Rancher v2.4.x or above.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new Rancher2.Cluster("foo", new()
-    ///     {
-    ///         Description = "Terraform custom cluster",
-    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
-    ///         {
-    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
-    ///             {
-    ///                 Plugin = "canal",
-    ///             },
-    ///             Services = new Rancher2.Inputs.ClusterRkeConfigServicesArgs
-    ///             {
-    ///                 Etcd = new Rancher2.Inputs.ClusterRkeConfigServicesEtcdArgs
-    ///                 {
-    ///                     Creation = "6h",
-    ///                     Retention = "24h",
-    ///                 },
-    ///             },
-    ///         },
-    ///         ScheduledClusterScan = new Rancher2.Inputs.ClusterScheduledClusterScanArgs
-    ///         {
-    ///             Enabled = true,
-    ///             ScanConfig = new Rancher2.Inputs.ClusterScheduledClusterScanScanConfigArgs
-    ///             {
-    ///                 CisScanConfig = new Rancher2.Inputs.ClusterScheduledClusterScanScanConfigCisScanConfigArgs
-    ///                 {
-    ///                     DebugMaster = true,
-    ///                     DebugWorker = true,
-    ///                 },
-    ///             },
-    ///             ScheduleConfig = new Rancher2.Inputs.ClusterScheduledClusterScanScheduleConfigArgs
-    ///             {
-    ///                 CronSchedule = "30 * * * *",
-    ///                 Retention = 5,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.
     /// 
     /// ```csharp
@@ -477,7 +428,7 @@ namespace Pulumi.Rancher2
     ///         {
     ///             CloudCredentialId = fooCloudCredential.Id,
     ///             Region = "&lt;EKS_REGION&gt;",
-    ///             KubernetesVersion = "1.17",
+    ///             KubernetesVersion = "1.24",
     ///             LoggingTypes = new[]
     ///             {
     ///                 "audit",
@@ -498,6 +449,7 @@ namespace Pulumi.Rancher2
     ///                     InstanceType = "m5.xlarge",
     ///                     DesiredSize = 2,
     ///                     MaxSize = 3,
+    ///                     NodeRole = "arn:aws:iam::role/test-NodeInstanceRole",
     ///                 },
     ///             },
     ///             PrivateAccess = true,
@@ -534,7 +486,7 @@ namespace Pulumi.Rancher2
     ///         {
     ///             CloudCredentialId = fooCloudCredential.Id,
     ///             Region = "&lt;EKS_REGION&gt;",
-    ///             KubernetesVersion = "1.17",
+    ///             KubernetesVersion = "1.24",
     ///             LoggingTypes = new[]
     ///             {
     ///                 "audit",
@@ -593,7 +545,7 @@ namespace Pulumi.Rancher2
     ///             ResourceGroup = "&lt;RESOURCE_GROUP&gt;",
     ///             ResourceLocation = "&lt;RESOURCE_LOCATION&gt;",
     ///             DnsPrefix = "&lt;DNS_PREFIX&gt;",
-    ///             KubernetesVersion = "1.21.2",
+    ///             KubernetesVersion = "1.24.6",
     ///             NetworkPlugin = "&lt;NETWORK_PLUGIN&gt;",
     ///             NodePools = new[]
     ///             {
@@ -844,12 +796,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("rkeConfig")]
         public Output<Outputs.ClusterRkeConfig> RkeConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-        /// </summary>
-        [Output("scheduledClusterScan")]
-        public Output<Outputs.ClusterScheduledClusterScan> ScheduledClusterScan { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) System project ID for the cluster (string)
@@ -1117,12 +1063,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("rkeConfig")]
         public Input<Inputs.ClusterRkeConfigArgs>? RkeConfig { get; set; }
-
-        /// <summary>
-        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-        /// </summary>
-        [Input("scheduledClusterScan")]
-        public Input<Inputs.ClusterScheduledClusterScanArgs>? ScheduledClusterScan { get; set; }
 
         /// <summary>
         /// Windows preferred cluster. Default: `false` (bool)
@@ -1397,12 +1337,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("rkeConfig")]
         public Input<Inputs.ClusterRkeConfigGetArgs>? RkeConfig { get; set; }
-
-        /// <summary>
-        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-        /// </summary>
-        [Input("scheduledClusterScan")]
-        public Input<Inputs.ClusterScheduledClusterScanGetArgs>? ScheduledClusterScan { get; set; }
 
         /// <summary>
         /// (Computed) System project ID for the cluster (string)

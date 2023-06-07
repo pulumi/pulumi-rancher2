@@ -46,7 +46,6 @@ class ClusterArgs:
                  oke_config: Optional[pulumi.Input['ClusterOkeConfigArgs']] = None,
                  rke2_config: Optional[pulumi.Input['ClusterRke2ConfigArgs']] = None,
                  rke_config: Optional[pulumi.Input['ClusterRkeConfigArgs']] = None,
-                 scheduled_cluster_scan: Optional[pulumi.Input['ClusterScheduledClusterScanArgs']] = None,
                  windows_prefered_cluster: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Cluster resource.
@@ -80,7 +79,6 @@ class ClusterArgs:
         :param pulumi.Input['ClusterOkeConfigArgs'] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterRke2ConfigArgs'] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterRkeConfigArgs'] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
-        :param pulumi.Input['ClusterScheduledClusterScanArgs'] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
         if agent_env_vars is not None:
@@ -143,8 +141,6 @@ class ClusterArgs:
             pulumi.set(__self__, "rke2_config", rke2_config)
         if rke_config is not None:
             pulumi.set(__self__, "rke_config", rke_config)
-        if scheduled_cluster_scan is not None:
-            pulumi.set(__self__, "scheduled_cluster_scan", scheduled_cluster_scan)
         if windows_prefered_cluster is not None:
             pulumi.set(__self__, "windows_prefered_cluster", windows_prefered_cluster)
 
@@ -509,18 +505,6 @@ class ClusterArgs:
         pulumi.set(self, "rke_config", value)
 
     @property
-    @pulumi.getter(name="scheduledClusterScan")
-    def scheduled_cluster_scan(self) -> Optional[pulumi.Input['ClusterScheduledClusterScanArgs']]:
-        """
-        Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-        """
-        return pulumi.get(self, "scheduled_cluster_scan")
-
-    @scheduled_cluster_scan.setter
-    def scheduled_cluster_scan(self, value: Optional[pulumi.Input['ClusterScheduledClusterScanArgs']]):
-        pulumi.set(self, "scheduled_cluster_scan", value)
-
-    @property
     @pulumi.getter(name="windowsPreferedCluster")
     def windows_prefered_cluster(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -572,7 +556,6 @@ class _ClusterState:
                  oke_config: Optional[pulumi.Input['ClusterOkeConfigArgs']] = None,
                  rke2_config: Optional[pulumi.Input['ClusterRke2ConfigArgs']] = None,
                  rke_config: Optional[pulumi.Input['ClusterRkeConfigArgs']] = None,
-                 scheduled_cluster_scan: Optional[pulumi.Input['ClusterScheduledClusterScanArgs']] = None,
                  system_project_id: Optional[pulumi.Input[str]] = None,
                  windows_prefered_cluster: Optional[pulumi.Input[bool]] = None):
         """
@@ -613,7 +596,6 @@ class _ClusterState:
         :param pulumi.Input['ClusterOkeConfigArgs'] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterRke2ConfigArgs'] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterRkeConfigArgs'] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
-        :param pulumi.Input['ClusterScheduledClusterScanArgs'] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster (string)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
@@ -692,8 +674,6 @@ class _ClusterState:
             pulumi.set(__self__, "rke2_config", rke2_config)
         if rke_config is not None:
             pulumi.set(__self__, "rke_config", rke_config)
-        if scheduled_cluster_scan is not None:
-            pulumi.set(__self__, "scheduled_cluster_scan", scheduled_cluster_scan)
         if system_project_id is not None:
             pulumi.set(__self__, "system_project_id", system_project_id)
         if windows_prefered_cluster is not None:
@@ -1132,18 +1112,6 @@ class _ClusterState:
         pulumi.set(self, "rke_config", value)
 
     @property
-    @pulumi.getter(name="scheduledClusterScan")
-    def scheduled_cluster_scan(self) -> Optional[pulumi.Input['ClusterScheduledClusterScanArgs']]:
-        """
-        Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-        """
-        return pulumi.get(self, "scheduled_cluster_scan")
-
-    @scheduled_cluster_scan.setter
-    def scheduled_cluster_scan(self, value: Optional[pulumi.Input['ClusterScheduledClusterScanArgs']]):
-        pulumi.set(self, "scheduled_cluster_scan", value)
-
-    @property
     @pulumi.getter(name="systemProjectId")
     def system_project_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1203,7 +1171,6 @@ class Cluster(pulumi.CustomResource):
                  oke_config: Optional[pulumi.Input[pulumi.InputType['ClusterOkeConfigArgs']]] = None,
                  rke2_config: Optional[pulumi.Input[pulumi.InputType['ClusterRke2ConfigArgs']]] = None,
                  rke_config: Optional[pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']]] = None,
-                 scheduled_cluster_scan: Optional[pulumi.Input[pulumi.InputType['ClusterScheduledClusterScanArgs']]] = None,
                  windows_prefered_cluster: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -1470,39 +1437,6 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        ### Creating Rancher v2 RKE cluster with scheduled cluster scan. For Rancher v2.4.x or above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo = rancher2.Cluster("foo",
-            description="Terraform custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-                services=rancher2.ClusterRkeConfigServicesArgs(
-                    etcd=rancher2.ClusterRkeConfigServicesEtcdArgs(
-                        creation="6h",
-                        retention="24h",
-                    ),
-                ),
-            ),
-            scheduled_cluster_scan=rancher2.ClusterScheduledClusterScanArgs(
-                enabled=True,
-                scan_config=rancher2.ClusterScheduledClusterScanScanConfigArgs(
-                    cis_scan_config=rancher2.ClusterScheduledClusterScanScanConfigCisScanConfigArgs(
-                        debug_master=True,
-                        debug_worker=True,
-                    ),
-                ),
-                schedule_config=rancher2.ClusterScheduledClusterScanScheduleConfigArgs(
-                    cron_schedule="30 * * * *",
-                    retention=5,
-                ),
-            ))
-        ```
         ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.
 
         ```python
@@ -1541,7 +1475,7 @@ class Cluster(pulumi.CustomResource):
             eks_config_v2=rancher2.ClusterEksConfigV2Args(
                 cloud_credential_id=foo_cloud_credential.id,
                 region="<EKS_REGION>",
-                kubernetes_version="1.17",
+                kubernetes_version="1.24",
                 logging_types=[
                     "audit",
                     "api",
@@ -1558,6 +1492,7 @@ class Cluster(pulumi.CustomResource):
                         instance_type="m5.xlarge",
                         desired_size=2,
                         max_size=3,
+                        node_role="arn:aws:iam::role/test-NodeInstanceRole",
                     ),
                 ],
                 private_access=True,
@@ -1581,7 +1516,7 @@ class Cluster(pulumi.CustomResource):
             eks_config_v2=rancher2.ClusterEksConfigV2Args(
                 cloud_credential_id=foo_cloud_credential.id,
                 region="<EKS_REGION>",
-                kubernetes_version="1.17",
+                kubernetes_version="1.24",
                 logging_types=[
                     "audit",
                     "api",
@@ -1617,7 +1552,7 @@ class Cluster(pulumi.CustomResource):
                 resource_group="<RESOURCE_GROUP>",
                 resource_location="<RESOURCE_LOCATION>",
                 dns_prefix="<DNS_PREFIX>",
-                kubernetes_version="1.21.2",
+                kubernetes_version="1.24.6",
                 network_plugin="<NETWORK_PLUGIN>",
                 node_pools=[rancher2.ClusterAksConfigV2NodePoolArgs(
                     availability_zones=[
@@ -1674,7 +1609,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterOkeConfigArgs']] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterRke2ConfigArgs']] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterScheduledClusterScanArgs']] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
         ...
@@ -1947,39 +1881,6 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        ### Creating Rancher v2 RKE cluster with scheduled cluster scan. For Rancher v2.4.x or above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo = rancher2.Cluster("foo",
-            description="Terraform custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-                services=rancher2.ClusterRkeConfigServicesArgs(
-                    etcd=rancher2.ClusterRkeConfigServicesEtcdArgs(
-                        creation="6h",
-                        retention="24h",
-                    ),
-                ),
-            ),
-            scheduled_cluster_scan=rancher2.ClusterScheduledClusterScanArgs(
-                enabled=True,
-                scan_config=rancher2.ClusterScheduledClusterScanScanConfigArgs(
-                    cis_scan_config=rancher2.ClusterScheduledClusterScanScanConfigCisScanConfigArgs(
-                        debug_master=True,
-                        debug_worker=True,
-                    ),
-                ),
-                schedule_config=rancher2.ClusterScheduledClusterScanScheduleConfigArgs(
-                    cron_schedule="30 * * * *",
-                    retention=5,
-                ),
-            ))
-        ```
         ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.
 
         ```python
@@ -2018,7 +1919,7 @@ class Cluster(pulumi.CustomResource):
             eks_config_v2=rancher2.ClusterEksConfigV2Args(
                 cloud_credential_id=foo_cloud_credential.id,
                 region="<EKS_REGION>",
-                kubernetes_version="1.17",
+                kubernetes_version="1.24",
                 logging_types=[
                     "audit",
                     "api",
@@ -2035,6 +1936,7 @@ class Cluster(pulumi.CustomResource):
                         instance_type="m5.xlarge",
                         desired_size=2,
                         max_size=3,
+                        node_role="arn:aws:iam::role/test-NodeInstanceRole",
                     ),
                 ],
                 private_access=True,
@@ -2058,7 +1960,7 @@ class Cluster(pulumi.CustomResource):
             eks_config_v2=rancher2.ClusterEksConfigV2Args(
                 cloud_credential_id=foo_cloud_credential.id,
                 region="<EKS_REGION>",
-                kubernetes_version="1.17",
+                kubernetes_version="1.24",
                 logging_types=[
                     "audit",
                     "api",
@@ -2094,7 +1996,7 @@ class Cluster(pulumi.CustomResource):
                 resource_group="<RESOURCE_GROUP>",
                 resource_location="<RESOURCE_LOCATION>",
                 dns_prefix="<DNS_PREFIX>",
-                kubernetes_version="1.21.2",
+                kubernetes_version="1.24.6",
                 network_plugin="<NETWORK_PLUGIN>",
                 node_pools=[rancher2.ClusterAksConfigV2NodePoolArgs(
                     availability_zones=[
@@ -2164,7 +2066,6 @@ class Cluster(pulumi.CustomResource):
                  oke_config: Optional[pulumi.Input[pulumi.InputType['ClusterOkeConfigArgs']]] = None,
                  rke2_config: Optional[pulumi.Input[pulumi.InputType['ClusterRke2ConfigArgs']]] = None,
                  rke_config: Optional[pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']]] = None,
-                 scheduled_cluster_scan: Optional[pulumi.Input[pulumi.InputType['ClusterScheduledClusterScanArgs']]] = None,
                  windows_prefered_cluster: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -2205,7 +2106,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["oke_config"] = oke_config
             __props__.__dict__["rke2_config"] = rke2_config
             __props__.__dict__["rke_config"] = rke_config
-            __props__.__dict__["scheduled_cluster_scan"] = scheduled_cluster_scan
             __props__.__dict__["windows_prefered_cluster"] = windows_prefered_cluster
             __props__.__dict__["ca_cert"] = None
             __props__.__dict__["cluster_registration_token"] = None
@@ -2262,7 +2162,6 @@ class Cluster(pulumi.CustomResource):
             oke_config: Optional[pulumi.Input[pulumi.InputType['ClusterOkeConfigArgs']]] = None,
             rke2_config: Optional[pulumi.Input[pulumi.InputType['ClusterRke2ConfigArgs']]] = None,
             rke_config: Optional[pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']]] = None,
-            scheduled_cluster_scan: Optional[pulumi.Input[pulumi.InputType['ClusterScheduledClusterScanArgs']]] = None,
             system_project_id: Optional[pulumi.Input[str]] = None,
             windows_prefered_cluster: Optional[pulumi.Input[bool]] = None) -> 'Cluster':
         """
@@ -2308,7 +2207,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterOkeConfigArgs']] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterRke2ConfigArgs']] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterScheduledClusterScanArgs']] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster (string)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
@@ -2352,7 +2250,6 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["oke_config"] = oke_config
         __props__.__dict__["rke2_config"] = rke2_config
         __props__.__dict__["rke_config"] = rke_config
-        __props__.__dict__["scheduled_cluster_scan"] = scheduled_cluster_scan
         __props__.__dict__["system_project_id"] = system_project_id
         __props__.__dict__["windows_prefered_cluster"] = windows_prefered_cluster
         return Cluster(resource_name, opts=opts, __props__=__props__)
@@ -2644,14 +2541,6 @@ class Cluster(pulumi.CustomResource):
         The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke_config")
-
-    @property
-    @pulumi.getter(name="scheduledClusterScan")
-    def scheduled_cluster_scan(self) -> pulumi.Output['outputs.ClusterScheduledClusterScan']:
-        """
-        Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-        """
-        return pulumi.get(self, "scheduled_cluster_scan")
 
     @property
     @pulumi.getter(name="systemProjectId")

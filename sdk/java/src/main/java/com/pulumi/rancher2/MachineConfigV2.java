@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Rancher v2 Machine config v2 resource. This can be used to create Machine Config v2 for Rancher v2 and retrieve their information. This resource is available from Rancher v2.6.0 and above.
  * 
- * `amazonec2`, `azure`, `digitalocean`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
+ * `amazonec2`, `azure`, `digitalocean`, `harvester`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
  * 
  * **Note** This resource is used by
  * 
@@ -77,10 +77,34 @@ import javax.annotation.Nullable;
  *                 .vmNamespace(&#34;default&#34;)
  *                 .cpuCount(&#34;2&#34;)
  *                 .memorySize(&#34;4&#34;)
- *                 .diskSize(&#34;40&#34;)
- *                 .networkName(&#34;harvester-public/vlan1&#34;)
- *                 .imageName(&#34;harvester-public/image-57hzg&#34;)
- *                 .sshUser(&#34;ubuntu&#34;)
+ *                 .diskInfo(&#34;&#34;&#34;
+ *     {
+ *         &#34;disks&#34;: [{
+ *             &#34;imageName&#34;: &#34;harvester-public/image-57hzg&#34;,
+ *             &#34;size&#34;: 40,
+ *             &#34;bootOrder&#34;: 1
+ *         }]
+ *     }
+ *     EOF,
+ *     networkInfo = &lt;&lt;EOF
+ *     {
+ *         &#34;interfaces&#34;: [{
+ *             &#34;networkName&#34;: &#34;harvester-public/vlan1&#34;
+ *         }]
+ *     }
+ *     EOF,
+ *     sshUser = &#34;ubuntu&#34;,
+ *     userData = &lt;&lt;EOF
+ *     package_update: true
+ *     packages:
+ *       - qemu-guest-agent
+ *       - iptables
+ *     runcmd:
+ *       - - systemctl
+ *         - enable
+ *         - &#39;--now&#39;
+ *         - qemu-guest-agent.service
+ *                 &#34;&#34;&#34;)
  *                 .build())
  *             .build());
  * 
@@ -95,7 +119,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
      * 
      */
-    @Export(name="amazonec2Config", type=MachineConfigV2Amazonec2Config.class, parameters={})
+    @Export(name="amazonec2Config", refs={MachineConfigV2Amazonec2Config.class}, tree="[0]")
     private Output</* @Nullable */ MachineConfigV2Amazonec2Config> amazonec2Config;
 
     /**
@@ -109,7 +133,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * Annotations for Machine Config V2 object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -123,7 +147,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
      * 
      */
-    @Export(name="azureConfig", type=MachineConfigV2AzureConfig.class, parameters={})
+    @Export(name="azureConfig", refs={MachineConfigV2AzureConfig.class}, tree="[0]")
     private Output</* @Nullable */ MachineConfigV2AzureConfig> azureConfig;
 
     /**
@@ -137,7 +161,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
      * 
      */
-    @Export(name="digitaloceanConfig", type=MachineConfigV2DigitaloceanConfig.class, parameters={})
+    @Export(name="digitaloceanConfig", refs={MachineConfigV2DigitaloceanConfig.class}, tree="[0]")
     private Output</* @Nullable */ MachineConfigV2DigitaloceanConfig> digitaloceanConfig;
 
     /**
@@ -151,7 +175,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * Cluster V2 fleet namespace
      * 
      */
-    @Export(name="fleetNamespace", type=String.class, parameters={})
+    @Export(name="fleetNamespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fleetNamespace;
 
     /**
@@ -165,7 +189,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\&#34;prod-pool1\&#34; will generate \&#34;nc-prod-pool1-?????\&#34; name computed at `name` attribute (string)
      * 
      */
-    @Export(name="generateName", type=String.class, parameters={})
+    @Export(name="generateName", refs={String.class}, tree="[0]")
     private Output<String> generateName;
 
     /**
@@ -179,7 +203,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
      * 
      */
-    @Export(name="harvesterConfig", type=MachineConfigV2HarvesterConfig.class, parameters={})
+    @Export(name="harvesterConfig", refs={MachineConfigV2HarvesterConfig.class}, tree="[0]")
     private Output</* @Nullable */ MachineConfigV2HarvesterConfig> harvesterConfig;
 
     /**
@@ -193,7 +217,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * (Computed) The machine config kind (string)
      * 
      */
-    @Export(name="kind", type=String.class, parameters={})
+    @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
@@ -209,7 +233,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -225,7 +249,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
      * 
      */
-    @Export(name="linodeConfig", type=MachineConfigV2LinodeConfig.class, parameters={})
+    @Export(name="linodeConfig", refs={MachineConfigV2LinodeConfig.class}, tree="[0]")
     private Output</* @Nullable */ MachineConfigV2LinodeConfig> linodeConfig;
 
     /**
@@ -239,7 +263,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * (Computed) The machine config name (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -253,7 +277,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `vsphere_config` (list maxitems:1)
      * 
      */
-    @Export(name="openstackConfig", type=MachineConfigV2OpenstackConfig.class, parameters={})
+    @Export(name="openstackConfig", refs={MachineConfigV2OpenstackConfig.class}, tree="[0]")
     private Output</* @Nullable */ MachineConfigV2OpenstackConfig> openstackConfig;
 
     /**
@@ -267,7 +291,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * (Computed) The machine config k8s resource version (string)
      * 
      */
-    @Export(name="resourceVersion", type=String.class, parameters={})
+    @Export(name="resourceVersion", refs={String.class}, tree="[0]")
     private Output<String> resourceVersion;
 
     /**
@@ -281,7 +305,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
      * vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config` and `openstack_config` (list maxitems:1)
      * 
      */
-    @Export(name="vsphereConfig", type=MachineConfigV2VsphereConfig.class, parameters={})
+    @Export(name="vsphereConfig", refs={MachineConfigV2VsphereConfig.class}, tree="[0]")
     private Output</* @Nullable */ MachineConfigV2VsphereConfig> vsphereConfig;
 
     /**

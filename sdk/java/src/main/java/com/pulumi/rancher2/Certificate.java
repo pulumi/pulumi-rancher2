@@ -31,7 +31,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Annotations for certificate object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -45,7 +45,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Base64 encoded public certs (string)
      * 
      */
-    @Export(name="certs", type=String.class, parameters={})
+    @Export(name="certs", refs={String.class}, tree="[0]")
     private Output<String> certs;
 
     /**
@@ -59,7 +59,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * A certificate description (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -73,7 +73,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Base64 encoded private key (string)
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -87,7 +87,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Labels for certificate object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -101,7 +101,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The name of the certificate (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -115,7 +115,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The namespace id where the namespaced certificate should be created (string)
      * 
      */
-    @Export(name="namespaceId", type=String.class, parameters={})
+    @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespaceId;
 
     /**
@@ -129,7 +129,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The project id where the certificate should be created  (string)
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**

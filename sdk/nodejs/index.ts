@@ -120,11 +120,6 @@ export type ClusterDriver = import("./clusterDriver").ClusterDriver;
 export const ClusterDriver: typeof import("./clusterDriver").ClusterDriver = null as any;
 utilities.lazyLoad(exports, ["ClusterDriver"], () => require("./clusterDriver"));
 
-export { ClusterLoggingArgs, ClusterLoggingState } from "./clusterLogging";
-export type ClusterLogging = import("./clusterLogging").ClusterLogging;
-export const ClusterLogging: typeof import("./clusterLogging").ClusterLogging = null as any;
-utilities.lazyLoad(exports, ["ClusterLogging"], () => require("./clusterLogging"));
-
 export { ClusterRoleTemplateBindingArgs, ClusterRoleTemplateBindingState } from "./clusterRoleTemplateBinding";
 export type ClusterRoleTemplateBinding = import("./clusterRoleTemplateBinding").ClusterRoleTemplateBinding;
 export const ClusterRoleTemplateBinding: typeof import("./clusterRoleTemplateBinding").ClusterRoleTemplateBinding = null as any;
@@ -205,20 +200,10 @@ export const getClusterDriver: typeof import("./getClusterDriver").getClusterDri
 export const getClusterDriverOutput: typeof import("./getClusterDriver").getClusterDriverOutput = null as any;
 utilities.lazyLoad(exports, ["getClusterDriver","getClusterDriverOutput"], () => require("./getClusterDriver"));
 
-export { GetClusterLoggingArgs, GetClusterLoggingResult, GetClusterLoggingOutputArgs } from "./getClusterLogging";
-export const getClusterLogging: typeof import("./getClusterLogging").getClusterLogging = null as any;
-export const getClusterLoggingOutput: typeof import("./getClusterLogging").getClusterLoggingOutput = null as any;
-utilities.lazyLoad(exports, ["getClusterLogging","getClusterLoggingOutput"], () => require("./getClusterLogging"));
-
 export { GetClusterRoleTemplateBindingArgs, GetClusterRoleTemplateBindingResult, GetClusterRoleTemplateBindingOutputArgs } from "./getClusterRoleTemplateBinding";
 export const getClusterRoleTemplateBinding: typeof import("./getClusterRoleTemplateBinding").getClusterRoleTemplateBinding = null as any;
 export const getClusterRoleTemplateBindingOutput: typeof import("./getClusterRoleTemplateBinding").getClusterRoleTemplateBindingOutput = null as any;
 utilities.lazyLoad(exports, ["getClusterRoleTemplateBinding","getClusterRoleTemplateBindingOutput"], () => require("./getClusterRoleTemplateBinding"));
-
-export { GetClusterScanArgs, GetClusterScanResult, GetClusterScanOutputArgs } from "./getClusterScan";
-export const getClusterScan: typeof import("./getClusterScan").getClusterScan = null as any;
-export const getClusterScanOutput: typeof import("./getClusterScan").getClusterScanOutput = null as any;
-utilities.lazyLoad(exports, ["getClusterScan","getClusterScanOutput"], () => require("./getClusterScan"));
 
 export { GetClusterTemplateArgs, GetClusterTemplateResult, GetClusterTemplateOutputArgs } from "./getClusterTemplate";
 export const getClusterTemplate: typeof import("./getClusterTemplate").getClusterTemplate = null as any;
@@ -309,11 +294,6 @@ export { GetProjectAlertRuleArgs, GetProjectAlertRuleResult, GetProjectAlertRule
 export const getProjectAlertRule: typeof import("./getProjectAlertRule").getProjectAlertRule = null as any;
 export const getProjectAlertRuleOutput: typeof import("./getProjectAlertRule").getProjectAlertRuleOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectAlertRule","getProjectAlertRuleOutput"], () => require("./getProjectAlertRule"));
-
-export { GetProjectLoggingArgs, GetProjectLoggingResult, GetProjectLoggingOutputArgs } from "./getProjectLogging";
-export const getProjectLogging: typeof import("./getProjectLogging").getProjectLogging = null as any;
-export const getProjectLoggingOutput: typeof import("./getProjectLogging").getProjectLoggingOutput = null as any;
-utilities.lazyLoad(exports, ["getProjectLogging","getProjectLoggingOutput"], () => require("./getProjectLogging"));
 
 export { GetProjectRoleTemplateBindingArgs, GetProjectRoleTemplateBindingResult, GetProjectRoleTemplateBindingOutputArgs } from "./getProjectRoleTemplateBinding";
 export const getProjectRoleTemplateBinding: typeof import("./getProjectRoleTemplateBinding").getProjectRoleTemplateBinding = null as any;
@@ -435,11 +415,6 @@ export type ProjectAlertRule = import("./projectAlertRule").ProjectAlertRule;
 export const ProjectAlertRule: typeof import("./projectAlertRule").ProjectAlertRule = null as any;
 utilities.lazyLoad(exports, ["ProjectAlertRule"], () => require("./projectAlertRule"));
 
-export { ProjectLoggingArgs, ProjectLoggingState } from "./projectLogging";
-export type ProjectLogging = import("./projectLogging").ProjectLogging;
-export const ProjectLogging: typeof import("./projectLogging").ProjectLogging = null as any;
-utilities.lazyLoad(exports, ["ProjectLogging"], () => require("./projectLogging"));
-
 export { ProjectRoleTemplateBindingArgs, ProjectRoleTemplateBindingState } from "./projectRoleTemplateBinding";
 export type ProjectRoleTemplateBinding = import("./projectRoleTemplateBinding").ProjectRoleTemplateBinding;
 export const ProjectRoleTemplateBinding: typeof import("./projectRoleTemplateBinding").ProjectRoleTemplateBinding = null as any;
@@ -555,8 +530,6 @@ const _module = {
                 return new ClusterAlterRule(name, <any>undefined, { urn })
             case "rancher2:index/clusterDriver:ClusterDriver":
                 return new ClusterDriver(name, <any>undefined, { urn })
-            case "rancher2:index/clusterLogging:ClusterLogging":
-                return new ClusterLogging(name, <any>undefined, { urn })
             case "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding":
                 return new ClusterRoleTemplateBinding(name, <any>undefined, { urn })
             case "rancher2:index/clusterSync:ClusterSync":
@@ -601,8 +574,6 @@ const _module = {
                 return new ProjectAlertGroup(name, <any>undefined, { urn })
             case "rancher2:index/projectAlertRule:ProjectAlertRule":
                 return new ProjectAlertRule(name, <any>undefined, { urn })
-            case "rancher2:index/projectLogging:ProjectLogging":
-                return new ProjectLogging(name, <any>undefined, { urn })
             case "rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding":
                 return new ProjectRoleTemplateBinding(name, <any>undefined, { urn })
             case "rancher2:index/registry:Registry":
@@ -651,7 +622,6 @@ pulumi.runtime.registerResourceModule("rancher2", "index/clusterAlertRule", _mod
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterAlterGroup", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterAlterRule", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterDriver", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/clusterLogging", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterRoleTemplateBinding", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterSync", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterTemplate", _module)
@@ -674,7 +644,6 @@ pulumi.runtime.registerResourceModule("rancher2", "index/podSecurityPolicyTempla
 pulumi.runtime.registerResourceModule("rancher2", "index/project", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/projectAlertGroup", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/projectAlertRule", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/projectLogging", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/projectRoleTemplateBinding", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/registry", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/roleTempalte", _module)

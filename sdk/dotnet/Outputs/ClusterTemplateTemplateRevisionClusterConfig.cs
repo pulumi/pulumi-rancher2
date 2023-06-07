@@ -54,10 +54,6 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig RkeConfig;
         /// <summary>
-        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-        /// </summary>
-        public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan? ScheduledClusterScan;
-        /// <summary>
         /// Windows prefered cluster. Default: `false` (bool)
         /// </summary>
         public readonly bool? WindowsPreferedCluster;
@@ -84,8 +80,6 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig,
 
-            Outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan? scheduledClusterScan,
-
             bool? windowsPreferedCluster)
         {
             ClusterAuthEndpoint = clusterAuthEndpoint;
@@ -98,7 +92,6 @@ namespace Pulumi.Rancher2.Outputs
             EnableClusterMonitoring = enableClusterMonitoring;
             EnableNetworkPolicy = enableNetworkPolicy;
             RkeConfig = rkeConfig;
-            ScheduledClusterScan = scheduledClusterScan;
             WindowsPreferedCluster = windowsPreferedCluster;
         }
     }

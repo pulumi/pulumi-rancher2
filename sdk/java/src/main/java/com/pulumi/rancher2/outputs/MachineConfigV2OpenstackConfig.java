@@ -93,7 +93,7 @@ public final class MachineConfigV2OpenstackConfig {
      */
     private @Nullable String imageId;
     /**
-     * @return Image name e.g. `harvester-public/image-57hzg` (string)
+     * @return Use `disk_info` instead
      * 
      */
     private @Nullable String imageName;
@@ -339,7 +339,7 @@ public final class MachineConfigV2OpenstackConfig {
         return Optional.ofNullable(this.imageId);
     }
     /**
-     * @return Image name e.g. `harvester-public/image-57hzg` (string)
+     * @return Use `disk_info` instead
      * 
      */
     public Optional<String> imageName() {

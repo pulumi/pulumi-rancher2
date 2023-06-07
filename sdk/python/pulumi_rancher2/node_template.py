@@ -1022,10 +1022,33 @@ class NodeTemplate(pulumi.CustomResource):
                 vm_namespace="default",
                 cpu_count="2",
                 memory_size="4",
-                disk_size="40",
-                network_name="harvester-public/vlan1",
-                image_name="harvester-public/image-57hzg",
-                ssh_user="ubuntu",
+                disk_info=\"\"\"    {
+                "disks": [{
+                    "imageName": "harvester-public/image-57hzg",
+                    "size": 40,
+                    "bootOrder": 1
+                }]
+            }
+            EOF,
+            networkInfo = <<EOF
+            {
+                "interfaces": [{
+                    "networkName": "harvester-public/vlan1"
+                }]
+            }
+            EOF,
+            sshUser = "ubuntu",
+            userData = <<EOF
+            package_update: true
+            packages:
+              - qemu-guest-agent
+              - iptables
+            runcmd:
+              - - systemctl
+                - enable
+                - '--now'
+                - qemu-guest-agent.service
+        \"\"\",
             ))
         ```
         ### Using the Hetzner Node Driver
@@ -1169,10 +1192,33 @@ class NodeTemplate(pulumi.CustomResource):
                 vm_namespace="default",
                 cpu_count="2",
                 memory_size="4",
-                disk_size="40",
-                network_name="harvester-public/vlan1",
-                image_name="harvester-public/image-57hzg",
-                ssh_user="ubuntu",
+                disk_info=\"\"\"    {
+                "disks": [{
+                    "imageName": "harvester-public/image-57hzg",
+                    "size": 40,
+                    "bootOrder": 1
+                }]
+            }
+            EOF,
+            networkInfo = <<EOF
+            {
+                "interfaces": [{
+                    "networkName": "harvester-public/vlan1"
+                }]
+            }
+            EOF,
+            sshUser = "ubuntu",
+            userData = <<EOF
+            package_update: true
+            packages:
+              - qemu-guest-agent
+              - iptables
+            runcmd:
+              - - systemctl
+                - enable
+                - '--now'
+                - qemu-guest-agent.service
+        \"\"\",
             ))
         ```
         ### Using the Hetzner Node Driver

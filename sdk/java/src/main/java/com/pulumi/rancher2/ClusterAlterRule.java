@@ -77,7 +77,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * The cluster alert group annotations (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -91,7 +91,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * The cluster id where create cluster alert group (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -105,7 +105,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * Alert event rule
      * 
      */
-    @Export(name="eventRule", type=ClusterAlterRuleEventRule.class, parameters={})
+    @Export(name="eventRule", refs={ClusterAlterRuleEventRule.class}, tree="[0]")
     private Output</* @Nullable */ ClusterAlterRuleEventRule> eventRule;
 
     /**
@@ -119,7 +119,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * Alert rule group ID
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -133,7 +133,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * The cluster alert group interval seconds. Default: `180` (int)
      * 
      */
-    @Export(name="groupIntervalSeconds", type=Integer.class, parameters={})
+    @Export(name="groupIntervalSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> groupIntervalSeconds;
 
     /**
@@ -147,7 +147,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * The cluster alert group wait seconds. Default: `180` (int)
      * 
      */
-    @Export(name="groupWaitSeconds", type=Integer.class, parameters={})
+    @Export(name="groupWaitSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> groupWaitSeconds;
 
     /**
@@ -161,7 +161,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * Alert rule inherited
      * 
      */
-    @Export(name="inherited", type=Boolean.class, parameters={})
+    @Export(name="inherited", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> inherited;
 
     /**
@@ -175,7 +175,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * The cluster alert group labels (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -189,7 +189,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * Alert metric rule
      * 
      */
-    @Export(name="metricRule", type=ClusterAlterRuleMetricRule.class, parameters={})
+    @Export(name="metricRule", refs={ClusterAlterRuleMetricRule.class}, tree="[0]")
     private Output</* @Nullable */ ClusterAlterRuleMetricRule> metricRule;
 
     /**
@@ -203,7 +203,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * The cluster alert group name (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -217,7 +217,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * Alert node rule
      * 
      */
-    @Export(name="nodeRule", type=ClusterAlterRuleNodeRule.class, parameters={})
+    @Export(name="nodeRule", refs={ClusterAlterRuleNodeRule.class}, tree="[0]")
     private Output</* @Nullable */ ClusterAlterRuleNodeRule> nodeRule;
 
     /**
@@ -231,7 +231,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * The cluster alert group wait seconds. Default: `3600` (int)
      * 
      */
-    @Export(name="repeatIntervalSeconds", type=Integer.class, parameters={})
+    @Export(name="repeatIntervalSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> repeatIntervalSeconds;
 
     /**
@@ -245,7 +245,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * Alert rule severity
      * 
      */
-    @Export(name="severity", type=String.class, parameters={})
+    @Export(name="severity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> severity;
 
     /**
@@ -259,7 +259,7 @@ public class ClusterAlterRule extends com.pulumi.resources.CustomResource {
      * Alert system service rule
      * 
      */
-    @Export(name="systemServiceRule", type=ClusterAlterRuleSystemServiceRule.class, parameters={})
+    @Export(name="systemServiceRule", refs={ClusterAlterRuleSystemServiceRule.class}, tree="[0]")
     private Output</* @Nullable */ ClusterAlterRuleSystemServiceRule> systemServiceRule;
 
     /**

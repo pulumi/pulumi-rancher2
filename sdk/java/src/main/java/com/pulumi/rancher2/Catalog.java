@@ -76,7 +76,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * Annotations for the catalog (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -90,7 +90,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * The branch of the catalog repo to use. Default `master` (string)
      * 
      */
-    @Export(name="branch", type=String.class, parameters={})
+    @Export(name="branch", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> branch;
 
     /**
@@ -104,7 +104,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * The cluster id of the catalog. Mandatory if `scope = cluster` (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterId;
 
     /**
@@ -118,7 +118,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * A catalog description (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -132,7 +132,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * The kind of the catalog. Just helm by the moment (string)
      * 
      */
-    @Export(name="kind", type=String.class, parameters={})
+    @Export(name="kind", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kind;
 
     /**
@@ -146,7 +146,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * Labels for the catalog (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -160,7 +160,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * The name of the catalog (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -174,7 +174,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * The password to access the catalog if needed (string)
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -188,7 +188,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * The project id of the catalog. Mandatory if `scope = project` (string)
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
@@ -202,7 +202,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
      * 
      */
-    @Export(name="refresh", type=Boolean.class, parameters={})
+    @Export(name="refresh", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> refresh;
 
     /**
@@ -216,7 +216,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scope;
 
     /**
@@ -230,7 +230,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * The url of the catalog repo (string)
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -244,7 +244,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * The username to access the catalog if needed (string)
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**
@@ -258,7 +258,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**

@@ -164,7 +164,6 @@ export interface GetClusterResult {
      * (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
      */
     readonly rkeConfig: outputs.GetClusterRkeConfig;
-    readonly scheduledClusterScans: outputs.GetClusterScheduledClusterScan[];
     /**
      * (Computed) System project ID for the cluster (string)
      */

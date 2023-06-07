@@ -67,7 +67,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      * 
      */
-    @Export(name="accessMode", type=String.class, parameters={})
+    @Export(name="accessMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessMode;
 
     /**
@@ -81,7 +81,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `adfs_user://&lt;USER_ID&gt;`  `adfs_group://&lt;GROUP_ID&gt;` (list)
      * 
      */
-    @Export(name="allowedPrincipalIds", type=List.class, parameters={String.class})
+    @Export(name="allowedPrincipalIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedPrincipalIds;
 
     /**
@@ -95,7 +95,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * Annotations of the resource (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -109,7 +109,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * ADFS display name field (string)
      * 
      */
-    @Export(name="displayNameField", type=String.class, parameters={})
+    @Export(name="displayNameField", refs={String.class}, tree="[0]")
     private Output<String> displayNameField;
 
     /**
@@ -123,7 +123,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * Enable auth config provider. Default `true` (bool)
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -137,7 +137,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * ADFS group field (string)
      * 
      */
-    @Export(name="groupsField", type=String.class, parameters={})
+    @Export(name="groupsField", refs={String.class}, tree="[0]")
     private Output<String> groupsField;
 
     /**
@@ -151,7 +151,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * ADFS IDP metadata content (string)
      * 
      */
-    @Export(name="idpMetadataContent", type=String.class, parameters={})
+    @Export(name="idpMetadataContent", refs={String.class}, tree="[0]")
     private Output<String> idpMetadataContent;
 
     /**
@@ -165,7 +165,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * Labels of the resource (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -179,7 +179,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * (Computed) The name of the resource (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -193,7 +193,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * Rancher URL. URL scheme needs to be specified, `https://&lt;RANCHER_API_HOST&gt;` (string)
      * 
      */
-    @Export(name="rancherApiHost", type=String.class, parameters={})
+    @Export(name="rancherApiHost", refs={String.class}, tree="[0]")
     private Output<String> rancherApiHost;
 
     /**
@@ -207,7 +207,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * ADFS SP cert (string)
      * 
      */
-    @Export(name="spCert", type=String.class, parameters={})
+    @Export(name="spCert", refs={String.class}, tree="[0]")
     private Output<String> spCert;
 
     /**
@@ -221,7 +221,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * ADFS SP key (string)
      * 
      */
-    @Export(name="spKey", type=String.class, parameters={})
+    @Export(name="spKey", refs={String.class}, tree="[0]")
     private Output<String> spKey;
 
     /**
@@ -235,7 +235,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * (Computed) The type of the resource (string)
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -249,7 +249,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * ADFS UID field (string)
      * 
      */
-    @Export(name="uidField", type=String.class, parameters={})
+    @Export(name="uidField", refs={String.class}, tree="[0]")
     private Output<String> uidField;
 
     /**
@@ -263,7 +263,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * ADFS user name field (string)
      * 
      */
-    @Export(name="userNameField", type=String.class, parameters={})
+    @Export(name="userNameField", refs={String.class}, tree="[0]")
     private Output<String> userNameField;
 
     /**

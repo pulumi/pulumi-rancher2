@@ -62,7 +62,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// Cluster scan retention (int)
+        /// Retention option for etcd service (string)
         /// </summary>
         public readonly string? Retention;
         /// <summary>

@@ -41,7 +41,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * Annotations for secret object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -55,7 +55,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * Secret key/value data. Base64 encoding required for values (map)
      * 
      */
-    @Export(name="data", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="data", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> data;
 
     /**
@@ -69,7 +69,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * A secret description (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -83,7 +83,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * Labels for secret object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -97,7 +97,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The name of the secret (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -111,7 +111,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The namespace id where to assign the namespaced secret (string)
      * 
      */
-    @Export(name="namespaceId", type=String.class, parameters={})
+    @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespaceId;
 
     /**
@@ -125,7 +125,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The project id where to assign the secret (string)
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**

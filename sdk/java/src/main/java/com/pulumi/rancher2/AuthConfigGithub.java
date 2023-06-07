@@ -61,7 +61,7 @@ public class AuthConfigGithub extends com.pulumi.resources.CustomResource {
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      * 
      */
-    @Export(name="accessMode", type=String.class, parameters={})
+    @Export(name="accessMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessMode;
 
     /**
@@ -75,7 +75,7 @@ public class AuthConfigGithub extends com.pulumi.resources.CustomResource {
      * Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
      * 
      */
-    @Export(name="allowedPrincipalIds", type=List.class, parameters={String.class})
+    @Export(name="allowedPrincipalIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedPrincipalIds;
 
     /**
@@ -89,7 +89,7 @@ public class AuthConfigGithub extends com.pulumi.resources.CustomResource {
      * Annotations of the resource (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -103,7 +103,7 @@ public class AuthConfigGithub extends com.pulumi.resources.CustomResource {
      * Github auth Client ID (string)
      * 
      */
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
@@ -117,7 +117,7 @@ public class AuthConfigGithub extends com.pulumi.resources.CustomResource {
      * Github auth Client secret (string)
      * 
      */
-    @Export(name="clientSecret", type=String.class, parameters={})
+    @Export(name="clientSecret", refs={String.class}, tree="[0]")
     private Output<String> clientSecret;
 
     /**
@@ -131,7 +131,7 @@ public class AuthConfigGithub extends com.pulumi.resources.CustomResource {
      * Enable auth config provider. Default `true` (bool)
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -145,7 +145,7 @@ public class AuthConfigGithub extends com.pulumi.resources.CustomResource {
      * Github hostname to connect. Default `github.com` (string)
      * 
      */
-    @Export(name="hostname", type=String.class, parameters={})
+    @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostname;
 
     /**
@@ -159,7 +159,7 @@ public class AuthConfigGithub extends com.pulumi.resources.CustomResource {
      * Labels of the resource (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -173,7 +173,7 @@ public class AuthConfigGithub extends com.pulumi.resources.CustomResource {
      * (Computed) The name of the resource (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -187,7 +187,7 @@ public class AuthConfigGithub extends com.pulumi.resources.CustomResource {
      * Enable TLS connection. Default `true` (bool)
      * 
      */
-    @Export(name="tls", type=Boolean.class, parameters={})
+    @Export(name="tls", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> tls;
 
     /**
@@ -201,7 +201,7 @@ public class AuthConfigGithub extends com.pulumi.resources.CustomResource {
      * (Computed) The type of the resource (string)
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

@@ -281,40 +281,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * ### Creating Rancher v2 RKE cluster with scheduled cluster scan. For Rancher v2.4.x or above.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = new rancher2.Cluster("foo", {
- *     description: "Terraform custom cluster",
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *         services: {
- *             etcd: {
- *                 creation: "6h",
- *                 retention: "24h",
- *             },
- *         },
- *     },
- *     scheduledClusterScan: {
- *         enabled: true,
- *         scanConfig: {
- *             cisScanConfig: {
- *                 debugMaster: true,
- *                 debugWorker: true,
- *             },
- *         },
- *         scheduleConfig: {
- *             cronSchedule: "30 * * * *",
- *             retention: 5,
- *         },
- *     },
- * });
- * ```
  * ### Importing EKS cluster to Rancher v2, using `eksConfigV2`. For Rancher v2.5.x or above.
  *
  * ```typescript
@@ -356,7 +322,7 @@ import * as utilities from "./utilities";
  *     eksConfigV2: {
  *         cloudCredentialId: fooCloudCredential.id,
  *         region: "<EKS_REGION>",
- *         kubernetesVersion: "1.17",
+ *         kubernetesVersion: "1.24",
  *         loggingTypes: [
  *             "audit",
  *             "api",
@@ -373,6 +339,7 @@ import * as utilities from "./utilities";
  *                 instanceType: "m5.xlarge",
  *                 desiredSize: 2,
  *                 maxSize: 3,
+ *                 nodeRole: "arn:aws:iam::role/test-NodeInstanceRole",
  *             },
  *         ],
  *         privateAccess: true,
@@ -398,7 +365,7 @@ import * as utilities from "./utilities";
  *     eksConfigV2: {
  *         cloudCredentialId: fooCloudCredential.id,
  *         region: "<EKS_REGION>",
- *         kubernetesVersion: "1.17",
+ *         kubernetesVersion: "1.24",
  *         loggingTypes: [
  *             "audit",
  *             "api",
@@ -435,7 +402,7 @@ import * as utilities from "./utilities";
  *         resourceGroup: "<RESOURCE_GROUP>",
  *         resourceLocation: "<RESOURCE_LOCATION>",
  *         dnsPrefix: "<DNS_PREFIX>",
- *         kubernetesVersion: "1.21.2",
+ *         kubernetesVersion: "1.24.6",
  *         networkPlugin: "<NETWORK_PLUGIN>",
  *         nodePools: [{
  *             availabilityZones: [
@@ -636,10 +603,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly rkeConfig!: pulumi.Output<outputs.ClusterRkeConfig>;
     /**
-     * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-     */
-    public readonly scheduledClusterScan!: pulumi.Output<outputs.ClusterScheduledClusterScan>;
-    /**
      * (Computed) System project ID for the cluster (string)
      */
     public /*out*/ readonly systemProjectId!: pulumi.Output<string>;
@@ -697,7 +660,6 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["okeConfig"] = state ? state.okeConfig : undefined;
             resourceInputs["rke2Config"] = state ? state.rke2Config : undefined;
             resourceInputs["rkeConfig"] = state ? state.rkeConfig : undefined;
-            resourceInputs["scheduledClusterScan"] = state ? state.scheduledClusterScan : undefined;
             resourceInputs["systemProjectId"] = state ? state.systemProjectId : undefined;
             resourceInputs["windowsPreferedCluster"] = state ? state.windowsPreferedCluster : undefined;
         } else {
@@ -732,7 +694,6 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["okeConfig"] = args ? args.okeConfig : undefined;
             resourceInputs["rke2Config"] = args ? args.rke2Config : undefined;
             resourceInputs["rkeConfig"] = args ? args.rkeConfig : undefined;
-            resourceInputs["scheduledClusterScan"] = args ? args.scheduledClusterScan : undefined;
             resourceInputs["windowsPreferedCluster"] = args ? args.windowsPreferedCluster : undefined;
             resourceInputs["caCert"] = undefined /*out*/;
             resourceInputs["clusterRegistrationToken"] = undefined /*out*/;
@@ -900,10 +861,6 @@ export interface ClusterState {
      */
     rkeConfig?: pulumi.Input<inputs.ClusterRkeConfig>;
     /**
-     * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-     */
-    scheduledClusterScan?: pulumi.Input<inputs.ClusterScheduledClusterScan>;
-    /**
      * (Computed) System project ID for the cluster (string)
      */
     systemProjectId?: pulumi.Input<string>;
@@ -1037,10 +994,6 @@ export interface ClusterArgs {
      * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
      */
     rkeConfig?: pulumi.Input<inputs.ClusterRkeConfig>;
-    /**
-     * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-     */
-    scheduledClusterScan?: pulumi.Input<inputs.ClusterScheduledClusterScan>;
     /**
      * Windows preferred cluster. Default: `false` (bool)
      */

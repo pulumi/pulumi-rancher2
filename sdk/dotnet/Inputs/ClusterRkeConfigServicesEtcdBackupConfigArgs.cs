@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? IntervalHours { get; set; }
 
         /// <summary>
-        /// Cluster scan retention (int)
+        /// Retention option for etcd service (string)
         /// </summary>
         [Input("retention")]
         public Input<int>? Retention { get; set; }

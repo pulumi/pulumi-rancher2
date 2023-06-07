@@ -36,7 +36,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
      * 
      */
-    @Export(name="allowVolumeExpansion", type=Boolean.class, parameters={})
+    @Export(name="allowVolumeExpansion", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowVolumeExpansion;
 
     /**
@@ -50,7 +50,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * Annotations for the storageClass v2 (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -64,7 +64,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * The cluster id of the storageClass V2 (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -78,7 +78,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * The provisioner of the storageClass v2 (string)
      * 
      */
-    @Export(name="k8sProvisioner", type=String.class, parameters={})
+    @Export(name="k8sProvisioner", refs={String.class}, tree="[0]")
     private Output<String> k8sProvisioner;
 
     /**
@@ -92,7 +92,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * Labels for the storageClass v2 (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -106,7 +106,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * The mount options for storageClass v2 (list)
      * 
      */
-    @Export(name="mountOptions", type=List.class, parameters={String.class})
+    @Export(name="mountOptions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> mountOptions;
 
     /**
@@ -120,7 +120,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * The name of the storageClass v2 (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -134,7 +134,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * The parameters for storageClass v2 (string)
      * 
      */
-    @Export(name="parameters", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="parameters", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> parameters;
 
     /**
@@ -148,7 +148,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
      * 
      */
-    @Export(name="reclaimPolicy", type=String.class, parameters={})
+    @Export(name="reclaimPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> reclaimPolicy;
 
     /**
@@ -162,7 +162,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * (Computed) The k8s resource version (string)
      * 
      */
-    @Export(name="resourceVersion", type=String.class, parameters={})
+    @Export(name="resourceVersion", refs={String.class}, tree="[0]")
     private Output<String> resourceVersion;
 
     /**
@@ -176,7 +176,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
      * 
      */
-    @Export(name="volumeBindingMode", type=String.class, parameters={})
+    @Export(name="volumeBindingMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> volumeBindingMode;
 
     /**

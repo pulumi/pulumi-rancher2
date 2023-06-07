@@ -36,6 +36,7 @@ public final class GetClusterEksConfigV2NodeGroup {
      * 
      */
     private String name;
+    private @Nullable String nodeRole;
     private @Nullable Boolean requestSpotInstances;
     private @Nullable Map<String,Object> resourceTags;
     private @Nullable List<String> spotInstanceTypes;
@@ -86,6 +87,9 @@ public final class GetClusterEksConfigV2NodeGroup {
     public String name() {
         return this.name;
     }
+    public Optional<String> nodeRole() {
+        return Optional.ofNullable(this.nodeRole);
+    }
     public Optional<Boolean> requestSpotInstances() {
         return Optional.ofNullable(this.requestSpotInstances);
     }
@@ -128,6 +132,7 @@ public final class GetClusterEksConfigV2NodeGroup {
         private @Nullable Integer maxSize;
         private @Nullable Integer minSize;
         private String name;
+        private @Nullable String nodeRole;
         private @Nullable Boolean requestSpotInstances;
         private @Nullable Map<String,Object> resourceTags;
         private @Nullable List<String> spotInstanceTypes;
@@ -149,6 +154,7 @@ public final class GetClusterEksConfigV2NodeGroup {
     	      this.maxSize = defaults.maxSize;
     	      this.minSize = defaults.minSize;
     	      this.name = defaults.name;
+    	      this.nodeRole = defaults.nodeRole;
     	      this.requestSpotInstances = defaults.requestSpotInstances;
     	      this.resourceTags = defaults.resourceTags;
     	      this.spotInstanceTypes = defaults.spotInstanceTypes;
@@ -217,6 +223,11 @@ public final class GetClusterEksConfigV2NodeGroup {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeRole(@Nullable String nodeRole) {
+            this.nodeRole = nodeRole;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requestSpotInstances(@Nullable Boolean requestSpotInstances) {
             this.requestSpotInstances = requestSpotInstances;
             return this;
@@ -270,6 +281,7 @@ public final class GetClusterEksConfigV2NodeGroup {
             o.maxSize = maxSize;
             o.minSize = minSize;
             o.name = name;
+            o.nodeRole = nodeRole;
             o.requestSpotInstances = requestSpotInstances;
             o.resourceTags = resourceTags;
             o.spotInstanceTypes = spotInstanceTypes;

@@ -110,7 +110,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule annotations (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -124,7 +124,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule alert group ID (string)
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -138,7 +138,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule group interval seconds. Default: `180` (int)
      * 
      */
-    @Export(name="groupIntervalSeconds", type=Integer.class, parameters={})
+    @Export(name="groupIntervalSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> groupIntervalSeconds;
 
     /**
@@ -152,7 +152,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule group wait seconds. Default: `180` (int)
      * 
      */
-    @Export(name="groupWaitSeconds", type=Integer.class, parameters={})
+    @Export(name="groupWaitSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> groupWaitSeconds;
 
     /**
@@ -166,7 +166,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule inherited. Default: `true` (bool)
      * 
      */
-    @Export(name="inherited", type=Boolean.class, parameters={})
+    @Export(name="inherited", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> inherited;
 
     /**
@@ -180,7 +180,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule labels (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -194,7 +194,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule metric rule. ConflictsWith: `&#34;pod_rule&#34;, &#34;workload_rule&#34;`` (list Maxitems:1)
      * 
      */
-    @Export(name="metricRule", type=ProjectAlertRuleMetricRule.class, parameters={})
+    @Export(name="metricRule", refs={ProjectAlertRuleMetricRule.class}, tree="[0]")
     private Output</* @Nullable */ ProjectAlertRuleMetricRule> metricRule;
 
     /**
@@ -208,7 +208,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule name (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -222,7 +222,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule pod rule. ConflictsWith: `&#34;metric_rule&#34;, &#34;workload_rule&#34;`` (list Maxitems:1)
      * 
      */
-    @Export(name="podRule", type=ProjectAlertRulePodRule.class, parameters={})
+    @Export(name="podRule", refs={ProjectAlertRulePodRule.class}, tree="[0]")
     private Output</* @Nullable */ ProjectAlertRulePodRule> podRule;
 
     /**
@@ -236,7 +236,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project id where create project alert rule (string)
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -250,7 +250,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule wait seconds. Default: `3600` (int)
      * 
      */
-    @Export(name="repeatIntervalSeconds", type=Integer.class, parameters={})
+    @Export(name="repeatIntervalSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> repeatIntervalSeconds;
 
     /**
@@ -264,7 +264,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule severity. Supported values : `&#34;critical&#34; | &#34;info&#34; | &#34;warning&#34;`. Default: `critical` (string)
      * 
      */
-    @Export(name="severity", type=String.class, parameters={})
+    @Export(name="severity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> severity;
 
     /**
@@ -278,7 +278,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule workload rule. ConflictsWith: `&#34;metric_rule&#34;, &#34;pod_rule&#34;`` (list Maxitems:1)
      * 
      */
-    @Export(name="workloadRule", type=ProjectAlertRuleWorkloadRule.class, parameters={})
+    @Export(name="workloadRule", refs={ProjectAlertRuleWorkloadRule.class}, tree="[0]")
     private Output</* @Nullable */ ProjectAlertRuleWorkloadRule> workloadRule;
 
     /**

@@ -48,14 +48,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
     }
 
     /**
-     * Cluster scan retention (int)
+     * Retention option for etcd service (string)
      * 
      */
     @Import(name="retention")
     private @Nullable Output<Integer> retention;
 
     /**
-     * @return Cluster scan retention (int)
+     * @return Retention option for etcd service (string)
      * 
      */
     public Optional<Output<Integer>> retention() {
@@ -179,7 +179,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
         }
 
         /**
-         * @param retention Cluster scan retention (int)
+         * @param retention Retention option for etcd service (string)
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
         }
 
         /**
-         * @param retention Cluster scan retention (int)
+         * @param retention Retention option for etcd service (string)
          * 
          * @return builder
          * 

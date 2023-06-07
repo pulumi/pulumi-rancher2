@@ -187,6 +187,21 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
+     * The EKS node group node role ARN. Default `&#34;&#34;` (string)
+     * 
+     */
+    @Import(name="nodeRole")
+    private @Nullable Output<String> nodeRole;
+
+    /**
+     * @return The EKS node group node role ARN. Default `&#34;&#34;` (string)
+     * 
+     */
+    public Optional<Output<String>> nodeRole() {
+        return Optional.ofNullable(this.nodeRole);
+    }
+
+    /**
      * Enable EKS node group request spot instances (bool)
      * 
      */
@@ -305,6 +320,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         this.maxSize = $.maxSize;
         this.minSize = $.minSize;
         this.name = $.name;
+        this.nodeRole = $.nodeRole;
         this.requestSpotInstances = $.requestSpotInstances;
         this.resourceTags = $.resourceTags;
         this.spotInstanceTypes = $.spotInstanceTypes;
@@ -571,6 +587,27 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nodeRole The EKS node group node role ARN. Default `&#34;&#34;` (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeRole(@Nullable Output<String> nodeRole) {
+            $.nodeRole = nodeRole;
+            return this;
+        }
+
+        /**
+         * @param nodeRole The EKS node group node role ARN. Default `&#34;&#34;` (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeRole(String nodeRole) {
+            return nodeRole(Output.of(nodeRole));
         }
 
         /**

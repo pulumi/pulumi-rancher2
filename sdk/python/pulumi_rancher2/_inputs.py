@@ -56,13 +56,6 @@ __all__ = [
     'ClusterGkeConfigV2PrivateClusterConfigArgs',
     'ClusterK3sConfigArgs',
     'ClusterK3sConfigUpgradeStrategyArgs',
-    'ClusterLoggingCustomTargetConfigArgs',
-    'ClusterLoggingElasticsearchConfigArgs',
-    'ClusterLoggingFluentdConfigArgs',
-    'ClusterLoggingFluentdConfigFluentServerArgs',
-    'ClusterLoggingKafkaConfigArgs',
-    'ClusterLoggingSplunkConfigArgs',
-    'ClusterLoggingSyslogConfigArgs',
     'ClusterOkeConfigArgs',
     'ClusterRke2ConfigArgs',
     'ClusterRke2ConfigUpgradeStrategyArgs',
@@ -126,10 +119,6 @@ __all__ = [
     'ClusterRkeConfigServicesSchedulerArgs',
     'ClusterRkeConfigUpgradeStrategyArgs',
     'ClusterRkeConfigUpgradeStrategyDrainInputArgs',
-    'ClusterScheduledClusterScanArgs',
-    'ClusterScheduledClusterScanScanConfigArgs',
-    'ClusterScheduledClusterScanScanConfigCisScanConfigArgs',
-    'ClusterScheduledClusterScanScheduleConfigArgs',
     'ClusterSyncNodeArgs',
     'ClusterTemplateMemberArgs',
     'ClusterTemplateTemplateRevisionArgs',
@@ -195,10 +184,6 @@ __all__ = [
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs',
-    'ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs',
-    'ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs',
-    'ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs',
-    'ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs',
     'ClusterTemplateTemplateRevisionQuestionArgs',
     'ClusterV2AgentEnvVarArgs',
     'ClusterV2ClusterRegistrationTokenArgs',
@@ -283,13 +268,6 @@ __all__ = [
     'ProjectAlertRulePodRuleArgs',
     'ProjectAlertRuleWorkloadRuleArgs',
     'ProjectContainerResourceLimitArgs',
-    'ProjectLoggingCustomTargetConfigArgs',
-    'ProjectLoggingElasticsearchConfigArgs',
-    'ProjectLoggingFluentdConfigArgs',
-    'ProjectLoggingFluentdConfigFluentServerArgs',
-    'ProjectLoggingKafkaConfigArgs',
-    'ProjectLoggingSplunkConfigArgs',
-    'ProjectLoggingSyslogConfigArgs',
     'ProjectProjectMonitoringInputArgs',
     'ProjectResourceQuotaArgs',
     'ProjectResourceQuotaNamespaceDefaultLimitArgs',
@@ -3707,6 +3685,7 @@ class ClusterEksConfigV2NodeGroupArgs:
                  launch_templates: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupLaunchTemplateArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
+                 node_role: Optional[pulumi.Input[str]] = None,
                  request_spot_instances: Optional[pulumi.Input[bool]] = None,
                  resource_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  spot_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3726,6 +3705,7 @@ class ClusterEksConfigV2NodeGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupLaunchTemplateArgs']]] launch_templates: The EKS node groups launch template (list Maxitem: 1)
         :param pulumi.Input[int] max_size: Audit log max size. Default: `100` (int)
         :param pulumi.Input[int] min_size: The EKS node group maximum size. Default `2` (int)
+        :param pulumi.Input[str] node_role: The EKS node group node role ARN. Default `""` (string)
         :param pulumi.Input[bool] request_spot_instances: Enable EKS node group request spot instances (bool)
         :param pulumi.Input[Mapping[str, Any]] resource_tags: The EKS node group resource tags (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_instance_types: The EKS node group sport instace types (list string)
@@ -3755,6 +3735,8 @@ class ClusterEksConfigV2NodeGroupArgs:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
+        if node_role is not None:
+            pulumi.set(__self__, "node_role", node_role)
         if request_spot_instances is not None:
             pulumi.set(__self__, "request_spot_instances", request_spot_instances)
         if resource_tags is not None:
@@ -3901,6 +3883,18 @@ class ClusterEksConfigV2NodeGroupArgs:
     @min_size.setter
     def min_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_size", value)
+
+    @property
+    @pulumi.getter(name="nodeRole")
+    def node_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The EKS node group node role ARN. Default `""` (string)
+        """
+        return pulumi.get(self, "node_role")
+
+    @node_role.setter
+    def node_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_role", value)
 
     @property
     @pulumi.getter(name="requestSpotInstances")
@@ -6107,863 +6101,6 @@ class ClusterK3sConfigUpgradeStrategyArgs:
     @worker_concurrency.setter
     def worker_concurrency(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "worker_concurrency", value)
-
-
-@pulumi.input_type
-class ClusterLoggingCustomTargetConfigArgs:
-    def __init__(__self__, *,
-                 content: pulumi.Input[str],
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 client_cert: Optional[pulumi.Input[str]] = None,
-                 client_key: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] content: Custom target config content (string)
-        :param pulumi.Input[str] certificate: SSL CA certificate for the custom target service (string)
-        :param pulumi.Input[str] client_cert: SSL client certificate for the custom target service (string)
-        :param pulumi.Input[str] client_key: SSL client key for the custom target service (string)
-        """
-        pulumi.set(__self__, "content", content)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-
-    @property
-    @pulumi.getter
-    def content(self) -> pulumi.Input[str]:
-        """
-        Custom target config content (string)
-        """
-        return pulumi.get(self, "content")
-
-    @content.setter
-    def content(self, value: pulumi.Input[str]):
-        pulumi.set(self, "content", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_cert", value)
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key", value)
-
-
-@pulumi.input_type
-class ClusterLoggingElasticsearchConfigArgs:
-    def __init__(__self__, *,
-                 endpoint: pulumi.Input[str],
-                 auth_password: Optional[pulumi.Input[str]] = None,
-                 auth_username: Optional[pulumi.Input[str]] = None,
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 client_cert: Optional[pulumi.Input[str]] = None,
-                 client_key: Optional[pulumi.Input[str]] = None,
-                 client_key_pass: Optional[pulumi.Input[str]] = None,
-                 date_format: Optional[pulumi.Input[str]] = None,
-                 index_prefix: Optional[pulumi.Input[str]] = None,
-                 ssl_verify: Optional[pulumi.Input[bool]] = None,
-                 ssl_version: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param pulumi.Input[str] auth_password: User password for the elascticsearch service (string)
-        :param pulumi.Input[str] auth_username: Username for the elascticsearch service (string)
-        :param pulumi.Input[str] certificate: SSL CA certificate for the custom target service (string)
-        :param pulumi.Input[str] client_cert: SSL client certificate for the custom target service (string)
-        :param pulumi.Input[str] client_key: SSL client key for the custom target service (string)
-        :param pulumi.Input[str] client_key_pass: SSL client key password for the elascticsearch service (string)
-        :param pulumi.Input[str] date_format: Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
-        :param pulumi.Input[str] index_prefix: Index prefix for the elascticsearch logs. Default: `local` (string)
-        :param pulumi.Input[bool] ssl_verify: SSL verify for the elascticsearch service (bool)
-        :param pulumi.Input[str] ssl_version: SSL version for the elascticsearch service (string)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        if auth_password is not None:
-            pulumi.set(__self__, "auth_password", auth_password)
-        if auth_username is not None:
-            pulumi.set(__self__, "auth_username", auth_username)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if client_key_pass is not None:
-            pulumi.set(__self__, "client_key_pass", client_key_pass)
-        if date_format is not None:
-            pulumi.set(__self__, "date_format", date_format)
-        if index_prefix is not None:
-            pulumi.set(__self__, "index_prefix", index_prefix)
-        if ssl_verify is not None:
-            pulumi.set(__self__, "ssl_verify", ssl_verify)
-        if ssl_version is not None:
-            pulumi.set(__self__, "ssl_version", ssl_version)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> pulumi.Input[str]:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @endpoint.setter
-    def endpoint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "endpoint", value)
-
-    @property
-    @pulumi.getter(name="authPassword")
-    def auth_password(self) -> Optional[pulumi.Input[str]]:
-        """
-        User password for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "auth_password")
-
-    @auth_password.setter
-    def auth_password(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "auth_password", value)
-
-    @property
-    @pulumi.getter(name="authUsername")
-    def auth_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "auth_username")
-
-    @auth_username.setter
-    def auth_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "auth_username", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_cert", value)
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key", value)
-
-    @property
-    @pulumi.getter(name="clientKeyPass")
-    def client_key_pass(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key password for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "client_key_pass")
-
-    @client_key_pass.setter
-    def client_key_pass(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key_pass", value)
-
-    @property
-    @pulumi.getter(name="dateFormat")
-    def date_format(self) -> Optional[pulumi.Input[str]]:
-        """
-        Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
-        """
-        return pulumi.get(self, "date_format")
-
-    @date_format.setter
-    def date_format(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "date_format", value)
-
-    @property
-    @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        Index prefix for the elascticsearch logs. Default: `local` (string)
-        """
-        return pulumi.get(self, "index_prefix")
-
-    @index_prefix.setter
-    def index_prefix(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "index_prefix", value)
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> Optional[pulumi.Input[bool]]:
-        """
-        SSL verify for the elascticsearch service (bool)
-        """
-        return pulumi.get(self, "ssl_verify")
-
-    @ssl_verify.setter
-    def ssl_verify(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "ssl_verify", value)
-
-    @property
-    @pulumi.getter(name="sslVersion")
-    def ssl_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL version for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "ssl_version")
-
-    @ssl_version.setter
-    def ssl_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ssl_version", value)
-
-
-@pulumi.input_type
-class ClusterLoggingFluentdConfigArgs:
-    def __init__(__self__, *,
-                 fluent_servers: pulumi.Input[Sequence[pulumi.Input['ClusterLoggingFluentdConfigFluentServerArgs']]],
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 compress: Optional[pulumi.Input[bool]] = None,
-                 enable_tls: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterLoggingFluentdConfigFluentServerArgs']]] fluent_servers: Servers for the fluentd service (list)
-        :param pulumi.Input[str] certificate: SSL CA certificate for the custom target service (string)
-        :param pulumi.Input[bool] compress: Compress data for the fluentd service (bool)
-        :param pulumi.Input[bool] enable_tls: Enable TLS for the fluentd service (bool)
-        """
-        pulumi.set(__self__, "fluent_servers", fluent_servers)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if compress is not None:
-            pulumi.set(__self__, "compress", compress)
-        if enable_tls is not None:
-            pulumi.set(__self__, "enable_tls", enable_tls)
-
-    @property
-    @pulumi.getter(name="fluentServers")
-    def fluent_servers(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterLoggingFluentdConfigFluentServerArgs']]]:
-        """
-        Servers for the fluentd service (list)
-        """
-        return pulumi.get(self, "fluent_servers")
-
-    @fluent_servers.setter
-    def fluent_servers(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterLoggingFluentdConfigFluentServerArgs']]]):
-        pulumi.set(self, "fluent_servers", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter
-    def compress(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Compress data for the fluentd service (bool)
-        """
-        return pulumi.get(self, "compress")
-
-    @compress.setter
-    def compress(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "compress", value)
-
-    @property
-    @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable TLS for the fluentd service (bool)
-        """
-        return pulumi.get(self, "enable_tls")
-
-    @enable_tls.setter
-    def enable_tls(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_tls", value)
-
-
-@pulumi.input_type
-class ClusterLoggingFluentdConfigFluentServerArgs:
-    def __init__(__self__, *,
-                 endpoint: pulumi.Input[str],
-                 hostname: Optional[pulumi.Input[str]] = None,
-                 password: Optional[pulumi.Input[str]] = None,
-                 shared_key: Optional[pulumi.Input[str]] = None,
-                 standby: Optional[pulumi.Input[bool]] = None,
-                 username: Optional[pulumi.Input[str]] = None,
-                 weight: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[str] endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param pulumi.Input[str] hostname: Hostname of the fluentd service (string)
-        :param pulumi.Input[str] password: User password of the fluentd service (string)
-        :param pulumi.Input[str] shared_key: Shared key of the fluentd service (string)
-        :param pulumi.Input[bool] standby: Standby server of the fluentd service (bool)
-        :param pulumi.Input[str] username: Username of the fluentd service (string)
-        :param pulumi.Input[int] weight: Weight of the fluentd server (int)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if shared_key is not None:
-            pulumi.set(__self__, "shared_key", shared_key)
-        if standby is not None:
-            pulumi.set(__self__, "standby", standby)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
-        if weight is not None:
-            pulumi.set(__self__, "weight", weight)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> pulumi.Input[str]:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @endpoint.setter
-    def endpoint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "endpoint", value)
-
-    @property
-    @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[str]]:
-        """
-        Hostname of the fluentd service (string)
-        """
-        return pulumi.get(self, "hostname")
-
-    @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "hostname", value)
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[str]]:
-        """
-        User password of the fluentd service (string)
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter(name="sharedKey")
-    def shared_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Shared key of the fluentd service (string)
-        """
-        return pulumi.get(self, "shared_key")
-
-    @shared_key.setter
-    def shared_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "shared_key", value)
-
-    @property
-    @pulumi.getter
-    def standby(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Standby server of the fluentd service (bool)
-        """
-        return pulumi.get(self, "standby")
-
-    @standby.setter
-    def standby(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "standby", value)
-
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username of the fluentd service (string)
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "username", value)
-
-    @property
-    @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[int]]:
-        """
-        Weight of the fluentd server (int)
-        """
-        return pulumi.get(self, "weight")
-
-    @weight.setter
-    def weight(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "weight", value)
-
-
-@pulumi.input_type
-class ClusterLoggingKafkaConfigArgs:
-    def __init__(__self__, *,
-                 topic: pulumi.Input[str],
-                 broker_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 client_cert: Optional[pulumi.Input[str]] = None,
-                 client_key: Optional[pulumi.Input[str]] = None,
-                 zookeeper_endpoint: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] topic: Topic to publish on the kafka service (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] broker_endpoints: Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
-        :param pulumi.Input[str] certificate: SSL CA certificate for the custom target service (string)
-        :param pulumi.Input[str] client_cert: SSL client certificate for the custom target service (string)
-        :param pulumi.Input[str] client_key: SSL client key for the custom target service (string)
-        :param pulumi.Input[str] zookeeper_endpoint: Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
-        """
-        pulumi.set(__self__, "topic", topic)
-        if broker_endpoints is not None:
-            pulumi.set(__self__, "broker_endpoints", broker_endpoints)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if zookeeper_endpoint is not None:
-            pulumi.set(__self__, "zookeeper_endpoint", zookeeper_endpoint)
-
-    @property
-    @pulumi.getter
-    def topic(self) -> pulumi.Input[str]:
-        """
-        Topic to publish on the kafka service (string)
-        """
-        return pulumi.get(self, "topic")
-
-    @topic.setter
-    def topic(self, value: pulumi.Input[str]):
-        pulumi.set(self, "topic", value)
-
-    @property
-    @pulumi.getter(name="brokerEndpoints")
-    def broker_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
-        """
-        return pulumi.get(self, "broker_endpoints")
-
-    @broker_endpoints.setter
-    def broker_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "broker_endpoints", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_cert", value)
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key", value)
-
-    @property
-    @pulumi.getter(name="zookeeperEndpoint")
-    def zookeeper_endpoint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
-        """
-        return pulumi.get(self, "zookeeper_endpoint")
-
-    @zookeeper_endpoint.setter
-    def zookeeper_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "zookeeper_endpoint", value)
-
-
-@pulumi.input_type
-class ClusterLoggingSplunkConfigArgs:
-    def __init__(__self__, *,
-                 endpoint: pulumi.Input[str],
-                 token: pulumi.Input[str],
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 client_cert: Optional[pulumi.Input[str]] = None,
-                 client_key: Optional[pulumi.Input[str]] = None,
-                 client_key_pass: Optional[pulumi.Input[str]] = None,
-                 index: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[str]] = None,
-                 ssl_verify: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[str] endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param pulumi.Input[str] token: Token for the splunk service (string)
-        :param pulumi.Input[str] certificate: SSL CA certificate for the custom target service (string)
-        :param pulumi.Input[str] client_cert: SSL client certificate for the custom target service (string)
-        :param pulumi.Input[str] client_key: SSL client key for the custom target service (string)
-        :param pulumi.Input[str] client_key_pass: SSL client key password for the elascticsearch service (string)
-        :param pulumi.Input[str] index: Index prefix for the splunk logs (string)
-        :param pulumi.Input[str] source: Date format for the splunk logs (string)
-        :param pulumi.Input[bool] ssl_verify: SSL verify for the elascticsearch service (bool)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "token", token)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if client_key_pass is not None:
-            pulumi.set(__self__, "client_key_pass", client_key_pass)
-        if index is not None:
-            pulumi.set(__self__, "index", index)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-        if ssl_verify is not None:
-            pulumi.set(__self__, "ssl_verify", ssl_verify)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> pulumi.Input[str]:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @endpoint.setter
-    def endpoint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "endpoint", value)
-
-    @property
-    @pulumi.getter
-    def token(self) -> pulumi.Input[str]:
-        """
-        Token for the splunk service (string)
-        """
-        return pulumi.get(self, "token")
-
-    @token.setter
-    def token(self, value: pulumi.Input[str]):
-        pulumi.set(self, "token", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_cert", value)
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key", value)
-
-    @property
-    @pulumi.getter(name="clientKeyPass")
-    def client_key_pass(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key password for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "client_key_pass")
-
-    @client_key_pass.setter
-    def client_key_pass(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key_pass", value)
-
-    @property
-    @pulumi.getter
-    def index(self) -> Optional[pulumi.Input[str]]:
-        """
-        Index prefix for the splunk logs (string)
-        """
-        return pulumi.get(self, "index")
-
-    @index.setter
-    def index(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "index", value)
-
-    @property
-    @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[str]]:
-        """
-        Date format for the splunk logs (string)
-        """
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source", value)
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> Optional[pulumi.Input[bool]]:
-        """
-        SSL verify for the elascticsearch service (bool)
-        """
-        return pulumi.get(self, "ssl_verify")
-
-    @ssl_verify.setter
-    def ssl_verify(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "ssl_verify", value)
-
-
-@pulumi.input_type
-class ClusterLoggingSyslogConfigArgs:
-    def __init__(__self__, *,
-                 endpoint: pulumi.Input[str],
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 client_cert: Optional[pulumi.Input[str]] = None,
-                 client_key: Optional[pulumi.Input[str]] = None,
-                 enable_tls: Optional[pulumi.Input[bool]] = None,
-                 program: Optional[pulumi.Input[str]] = None,
-                 protocol: Optional[pulumi.Input[str]] = None,
-                 severity: Optional[pulumi.Input[str]] = None,
-                 ssl_verify: Optional[pulumi.Input[bool]] = None,
-                 token: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param pulumi.Input[str] certificate: SSL CA certificate for the custom target service (string)
-        :param pulumi.Input[str] client_cert: SSL client certificate for the custom target service (string)
-        :param pulumi.Input[str] client_key: SSL client key for the custom target service (string)
-        :param pulumi.Input[bool] enable_tls: Enable TLS for the fluentd service (bool)
-        :param pulumi.Input[str] program: Program for the syslog service (string)
-        :param pulumi.Input[str] protocol: Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
-        :param pulumi.Input[str] severity: Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
-        :param pulumi.Input[bool] ssl_verify: SSL verify for the elascticsearch service (bool)
-        :param pulumi.Input[str] token: Token for the splunk service (string)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if enable_tls is not None:
-            pulumi.set(__self__, "enable_tls", enable_tls)
-        if program is not None:
-            pulumi.set(__self__, "program", program)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if severity is not None:
-            pulumi.set(__self__, "severity", severity)
-        if ssl_verify is not None:
-            pulumi.set(__self__, "ssl_verify", ssl_verify)
-        if token is not None:
-            pulumi.set(__self__, "token", token)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> pulumi.Input[str]:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @endpoint.setter
-    def endpoint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "endpoint", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_cert", value)
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key", value)
-
-    @property
-    @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable TLS for the fluentd service (bool)
-        """
-        return pulumi.get(self, "enable_tls")
-
-    @enable_tls.setter
-    def enable_tls(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_tls", value)
-
-    @property
-    @pulumi.getter
-    def program(self) -> Optional[pulumi.Input[str]]:
-        """
-        Program for the syslog service (string)
-        """
-        return pulumi.get(self, "program")
-
-    @program.setter
-    def program(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "program", value)
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
-        """
-        return pulumi.get(self, "protocol")
-
-    @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "protocol", value)
-
-    @property
-    @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[str]]:
-        """
-        Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
-        """
-        return pulumi.get(self, "severity")
-
-    @severity.setter
-    def severity(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "severity", value)
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> Optional[pulumi.Input[bool]]:
-        """
-        SSL verify for the elascticsearch service (bool)
-        """
-        return pulumi.get(self, "ssl_verify")
-
-    @ssl_verify.setter
-    def ssl_verify(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "ssl_verify", value)
-
-    @property
-    @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[str]]:
-        """
-        Token for the splunk service (string)
-        """
-        return pulumi.get(self, "token")
-
-    @token.setter
-    def token(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "token", value)
 
 
 @pulumi.input_type
@@ -12994,7 +12131,7 @@ class ClusterRkeConfigServicesEtcdArgs:
         :param pulumi.Input[str] image: Docker image for etcd service (string)
         :param pulumi.Input[str] key: The toleration key (string)
         :param pulumi.Input[str] path: Path for etcd service (string)
-        :param pulumi.Input[str] retention: Cluster scan retention (int)
+        :param pulumi.Input[str] retention: Retention option for etcd service (string)
         :param pulumi.Input[bool] snapshot: Snapshot option for etcd service (bool)
         :param pulumi.Input[int] uid: Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
         """
@@ -13177,7 +12314,7 @@ class ClusterRkeConfigServicesEtcdArgs:
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster scan retention (int)
+        Retention option for etcd service (string)
         """
         return pulumi.get(self, "retention")
 
@@ -13222,7 +12359,7 @@ class ClusterRkeConfigServicesEtcdBackupConfigArgs:
         """
         :param pulumi.Input[bool] enabled: Enable etcd backup (bool)
         :param pulumi.Input[int] interval_hours: Interval hours for etcd backup. Default `12` (int)
-        :param pulumi.Input[int] retention: Cluster scan retention (int)
+        :param pulumi.Input[int] retention: Retention option for etcd service (string)
         :param pulumi.Input['ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs'] s3_backup_config: S3 config options for etcd backup (list maxitems:1)
         :param pulumi.Input[bool] safe_timestamp: Safe timestamp for etcd backup. Default: `false` (bool)
         :param pulumi.Input[int] timeout: Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
@@ -13268,7 +12405,7 @@ class ClusterRkeConfigServicesEtcdBackupConfigArgs:
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[int]]:
         """
-        Cluster scan retention (int)
+        Retention option for etcd service (string)
         """
         return pulumi.get(self, "retention")
 
@@ -14412,207 +13549,6 @@ class ClusterRkeConfigUpgradeStrategyDrainInputArgs:
 
 
 @pulumi.input_type
-class ClusterScheduledClusterScanArgs:
-    def __init__(__self__, *,
-                 scan_config: pulumi.Input['ClusterScheduledClusterScanScanConfigArgs'],
-                 schedule_config: pulumi.Input['ClusterScheduledClusterScanScheduleConfigArgs'],
-                 enabled: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input['ClusterScheduledClusterScanScanConfigArgs'] scan_config: Cluster scan config (List maxitems:1)
-        :param pulumi.Input['ClusterScheduledClusterScanScheduleConfigArgs'] schedule_config: Cluster scan schedule config (list maxitems:1)
-        :param pulumi.Input[bool] enabled: Enable etcd backup (bool)
-        """
-        pulumi.set(__self__, "scan_config", scan_config)
-        pulumi.set(__self__, "schedule_config", schedule_config)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter(name="scanConfig")
-    def scan_config(self) -> pulumi.Input['ClusterScheduledClusterScanScanConfigArgs']:
-        """
-        Cluster scan config (List maxitems:1)
-        """
-        return pulumi.get(self, "scan_config")
-
-    @scan_config.setter
-    def scan_config(self, value: pulumi.Input['ClusterScheduledClusterScanScanConfigArgs']):
-        pulumi.set(self, "scan_config", value)
-
-    @property
-    @pulumi.getter(name="scheduleConfig")
-    def schedule_config(self) -> pulumi.Input['ClusterScheduledClusterScanScheduleConfigArgs']:
-        """
-        Cluster scan schedule config (list maxitems:1)
-        """
-        return pulumi.get(self, "schedule_config")
-
-    @schedule_config.setter
-    def schedule_config(self, value: pulumi.Input['ClusterScheduledClusterScanScheduleConfigArgs']):
-        pulumi.set(self, "schedule_config", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable etcd backup (bool)
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
-
-
-@pulumi.input_type
-class ClusterScheduledClusterScanScanConfigArgs:
-    def __init__(__self__, *,
-                 cis_scan_config: Optional[pulumi.Input['ClusterScheduledClusterScanScanConfigCisScanConfigArgs']] = None):
-        """
-        :param pulumi.Input['ClusterScheduledClusterScanScanConfigCisScanConfigArgs'] cis_scan_config: Cluster Cis Scan config (List maxitems:1)
-        """
-        if cis_scan_config is not None:
-            pulumi.set(__self__, "cis_scan_config", cis_scan_config)
-
-    @property
-    @pulumi.getter(name="cisScanConfig")
-    def cis_scan_config(self) -> Optional[pulumi.Input['ClusterScheduledClusterScanScanConfigCisScanConfigArgs']]:
-        """
-        Cluster Cis Scan config (List maxitems:1)
-        """
-        return pulumi.get(self, "cis_scan_config")
-
-    @cis_scan_config.setter
-    def cis_scan_config(self, value: Optional[pulumi.Input['ClusterScheduledClusterScanScanConfigCisScanConfigArgs']]):
-        pulumi.set(self, "cis_scan_config", value)
-
-
-@pulumi.input_type
-class ClusterScheduledClusterScanScanConfigCisScanConfigArgs:
-    def __init__(__self__, *,
-                 debug_master: Optional[pulumi.Input[bool]] = None,
-                 debug_worker: Optional[pulumi.Input[bool]] = None,
-                 override_benchmark_version: Optional[pulumi.Input[str]] = None,
-                 override_skips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 profile: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[bool] debug_master: Debug master. Default: `false` (bool)
-        :param pulumi.Input[bool] debug_worker: Debug worker. Default: `false` (bool)
-        :param pulumi.Input[str] override_benchmark_version: Override benchmark version (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] override_skips: Override skip (string)
-        :param pulumi.Input[str] profile: Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
-        """
-        if debug_master is not None:
-            pulumi.set(__self__, "debug_master", debug_master)
-        if debug_worker is not None:
-            pulumi.set(__self__, "debug_worker", debug_worker)
-        if override_benchmark_version is not None:
-            pulumi.set(__self__, "override_benchmark_version", override_benchmark_version)
-        if override_skips is not None:
-            pulumi.set(__self__, "override_skips", override_skips)
-        if profile is not None:
-            pulumi.set(__self__, "profile", profile)
-
-    @property
-    @pulumi.getter(name="debugMaster")
-    def debug_master(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Debug master. Default: `false` (bool)
-        """
-        return pulumi.get(self, "debug_master")
-
-    @debug_master.setter
-    def debug_master(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "debug_master", value)
-
-    @property
-    @pulumi.getter(name="debugWorker")
-    def debug_worker(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Debug worker. Default: `false` (bool)
-        """
-        return pulumi.get(self, "debug_worker")
-
-    @debug_worker.setter
-    def debug_worker(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "debug_worker", value)
-
-    @property
-    @pulumi.getter(name="overrideBenchmarkVersion")
-    def override_benchmark_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Override benchmark version (string)
-        """
-        return pulumi.get(self, "override_benchmark_version")
-
-    @override_benchmark_version.setter
-    def override_benchmark_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "override_benchmark_version", value)
-
-    @property
-    @pulumi.getter(name="overrideSkips")
-    def override_skips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Override skip (string)
-        """
-        return pulumi.get(self, "override_skips")
-
-    @override_skips.setter
-    def override_skips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "override_skips", value)
-
-    @property
-    @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
-        """
-        return pulumi.get(self, "profile")
-
-    @profile.setter
-    def profile(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "profile", value)
-
-
-@pulumi.input_type
-class ClusterScheduledClusterScanScheduleConfigArgs:
-    def __init__(__self__, *,
-                 cron_schedule: pulumi.Input[str],
-                 retention: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[str] cron_schedule: Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
-        :param pulumi.Input[int] retention: Cluster scan retention (int)
-        """
-        pulumi.set(__self__, "cron_schedule", cron_schedule)
-        if retention is not None:
-            pulumi.set(__self__, "retention", retention)
-
-    @property
-    @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> pulumi.Input[str]:
-        """
-        Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
-        """
-        return pulumi.get(self, "cron_schedule")
-
-    @cron_schedule.setter
-    def cron_schedule(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cron_schedule", value)
-
-    @property
-    @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[int]]:
-        """
-        Cluster scan retention (int)
-        """
-        return pulumi.get(self, "retention")
-
-    @retention.setter
-    def retention(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "retention", value)
-
-
-@pulumi.input_type
 class ClusterSyncNodeArgs:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -15092,7 +14028,6 @@ class ClusterTemplateTemplateRevisionClusterConfigArgs:
                  enable_cluster_alerting: Optional[pulumi.Input[bool]] = None,
                  enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_network_policy: Optional[pulumi.Input[bool]] = None,
-                 scheduled_cluster_scan: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs']] = None,
                  windows_prefered_cluster: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs'] rke_config: Rancher Kubernetes Engine Config (list maxitems: 1)
@@ -15105,7 +14040,6 @@ class ClusterTemplateTemplateRevisionClusterConfigArgs:
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting. Default: `false` (bool)
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring. Default: `false` (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation. Default: `false` (bool)
-        :param pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs'] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows prefered cluster. Default: `false` (bool)
         """
         pulumi.set(__self__, "rke_config", rke_config)
@@ -15127,8 +14061,6 @@ class ClusterTemplateTemplateRevisionClusterConfigArgs:
             pulumi.set(__self__, "enable_cluster_monitoring", enable_cluster_monitoring)
         if enable_network_policy is not None:
             pulumi.set(__self__, "enable_network_policy", enable_network_policy)
-        if scheduled_cluster_scan is not None:
-            pulumi.set(__self__, "scheduled_cluster_scan", scheduled_cluster_scan)
         if windows_prefered_cluster is not None:
             pulumi.set(__self__, "windows_prefered_cluster", windows_prefered_cluster)
 
@@ -15251,18 +14183,6 @@ class ClusterTemplateTemplateRevisionClusterConfigArgs:
     @enable_network_policy.setter
     def enable_network_policy(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_network_policy", value)
-
-    @property
-    @pulumi.getter(name="scheduledClusterScan")
-    def scheduled_cluster_scan(self) -> Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs']]:
-        """
-        Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-        """
-        return pulumi.get(self, "scheduled_cluster_scan")
-
-    @scheduled_cluster_scan.setter
-    def scheduled_cluster_scan(self, value: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs']]):
-        pulumi.set(self, "scheduled_cluster_scan", value)
 
     @property
     @pulumi.getter(name="windowsPreferedCluster")
@@ -20452,161 +19372,6 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainI
 
 
 @pulumi.input_type
-class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs:
-    def __init__(__self__, *,
-                 scan_config: pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs'],
-                 schedule_config: pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs'],
-                 enabled: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[bool] enabled: Enable cluster template revision. Default `true` (bool)
-        """
-        pulumi.set(__self__, "scan_config", scan_config)
-        pulumi.set(__self__, "schedule_config", schedule_config)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter(name="scanConfig")
-    def scan_config(self) -> pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs']:
-        return pulumi.get(self, "scan_config")
-
-    @scan_config.setter
-    def scan_config(self, value: pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs']):
-        pulumi.set(self, "scan_config", value)
-
-    @property
-    @pulumi.getter(name="scheduleConfig")
-    def schedule_config(self) -> pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs']:
-        return pulumi.get(self, "schedule_config")
-
-    @schedule_config.setter
-    def schedule_config(self, value: pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs']):
-        pulumi.set(self, "schedule_config", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable cluster template revision. Default `true` (bool)
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
-
-
-@pulumi.input_type
-class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs:
-    def __init__(__self__, *,
-                 cis_scan_config: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs']] = None):
-        if cis_scan_config is not None:
-            pulumi.set(__self__, "cis_scan_config", cis_scan_config)
-
-    @property
-    @pulumi.getter(name="cisScanConfig")
-    def cis_scan_config(self) -> Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs']]:
-        return pulumi.get(self, "cis_scan_config")
-
-    @cis_scan_config.setter
-    def cis_scan_config(self, value: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs']]):
-        pulumi.set(self, "cis_scan_config", value)
-
-
-@pulumi.input_type
-class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs:
-    def __init__(__self__, *,
-                 debug_master: Optional[pulumi.Input[bool]] = None,
-                 debug_worker: Optional[pulumi.Input[bool]] = None,
-                 override_benchmark_version: Optional[pulumi.Input[str]] = None,
-                 override_skips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 profile: Optional[pulumi.Input[str]] = None):
-        if debug_master is not None:
-            pulumi.set(__self__, "debug_master", debug_master)
-        if debug_worker is not None:
-            pulumi.set(__self__, "debug_worker", debug_worker)
-        if override_benchmark_version is not None:
-            pulumi.set(__self__, "override_benchmark_version", override_benchmark_version)
-        if override_skips is not None:
-            pulumi.set(__self__, "override_skips", override_skips)
-        if profile is not None:
-            pulumi.set(__self__, "profile", profile)
-
-    @property
-    @pulumi.getter(name="debugMaster")
-    def debug_master(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "debug_master")
-
-    @debug_master.setter
-    def debug_master(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "debug_master", value)
-
-    @property
-    @pulumi.getter(name="debugWorker")
-    def debug_worker(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "debug_worker")
-
-    @debug_worker.setter
-    def debug_worker(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "debug_worker", value)
-
-    @property
-    @pulumi.getter(name="overrideBenchmarkVersion")
-    def override_benchmark_version(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "override_benchmark_version")
-
-    @override_benchmark_version.setter
-    def override_benchmark_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "override_benchmark_version", value)
-
-    @property
-    @pulumi.getter(name="overrideSkips")
-    def override_skips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "override_skips")
-
-    @override_skips.setter
-    def override_skips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "override_skips", value)
-
-    @property
-    @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "profile")
-
-    @profile.setter
-    def profile(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "profile", value)
-
-
-@pulumi.input_type
-class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs:
-    def __init__(__self__, *,
-                 cron_schedule: pulumi.Input[str],
-                 retention: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "cron_schedule", cron_schedule)
-        if retention is not None:
-            pulumi.set(__self__, "retention", retention)
-
-    @property
-    @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "cron_schedule")
-
-    @cron_schedule.setter
-    def cron_schedule(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cron_schedule", value)
-
-    @property
-    @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "retention")
-
-    @retention.setter
-    def retention(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "retention", value)
-
-
-@pulumi.input_type
 class ClusterTemplateTemplateRevisionQuestionArgs:
     def __init__(__self__, *,
                  default: pulumi.Input[str],
@@ -23709,7 +22474,9 @@ class MachineConfigV2Amazonec2ConfigArgs:
 @pulumi.input_type
 class MachineConfigV2AzureConfigArgs:
     def __init__(__self__, *,
+                 accelerated_networking: Optional[pulumi.Input[bool]] = None,
                  availability_set: Optional[pulumi.Input[str]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
@@ -23734,12 +22501,15 @@ class MachineConfigV2AzureConfigArgs:
                  subnet: Optional[pulumi.Input[str]] = None,
                  subnet_prefix: Optional[pulumi.Input[str]] = None,
                  subscription_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  update_domain_count: Optional[pulumi.Input[str]] = None,
                  use_private_ip: Optional[pulumi.Input[bool]] = None,
+                 use_public_ip_standard_sku: Optional[pulumi.Input[bool]] = None,
                  vnet: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] availability_set: Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        :param pulumi.Input[str] availability_zone: OpenStack availability zone (string)
         :param pulumi.Input[str] client_id: Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param pulumi.Input[str] client_secret: Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param pulumi.Input[str] custom_data: Path to file with custom-data (string)
@@ -23764,13 +22534,18 @@ class MachineConfigV2AzureConfigArgs:
         :param pulumi.Input[str] subnet: Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
         :param pulumi.Input[str] subnet_prefix: Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
         :param pulumi.Input[str] subscription_id: Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param pulumi.Input[str] tags: AWS Tags (e.g. key1,value1,key2,value2) (string)
         :param pulumi.Input[str] tenant_id: Azure Tenant ID (string)
         :param pulumi.Input[str] update_domain_count: Update domain count to use for availability set. Default `5` (string)
         :param pulumi.Input[bool] use_private_ip: Use private IP address of the machine to connect. Default `false` (bool)
         :param pulumi.Input[str] vnet: Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
         """
+        if accelerated_networking is not None:
+            pulumi.set(__self__, "accelerated_networking", accelerated_networking)
         if availability_set is not None:
             pulumi.set(__self__, "availability_set", availability_set)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
@@ -23819,14 +22594,27 @@ class MachineConfigV2AzureConfigArgs:
             pulumi.set(__self__, "subnet_prefix", subnet_prefix)
         if subscription_id is not None:
             pulumi.set(__self__, "subscription_id", subscription_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if update_domain_count is not None:
             pulumi.set(__self__, "update_domain_count", update_domain_count)
         if use_private_ip is not None:
             pulumi.set(__self__, "use_private_ip", use_private_ip)
+        if use_public_ip_standard_sku is not None:
+            pulumi.set(__self__, "use_public_ip_standard_sku", use_public_ip_standard_sku)
         if vnet is not None:
             pulumi.set(__self__, "vnet", vnet)
+
+    @property
+    @pulumi.getter(name="acceleratedNetworking")
+    def accelerated_networking(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "accelerated_networking")
+
+    @accelerated_networking.setter
+    def accelerated_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "accelerated_networking", value)
 
     @property
     @pulumi.getter(name="availabilitySet")
@@ -23839,6 +22627,18 @@ class MachineConfigV2AzureConfigArgs:
     @availability_set.setter
     def availability_set(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "availability_set", value)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack availability zone (string)
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_zone", value)
 
     @property
     @pulumi.getter(name="clientId")
@@ -24129,6 +22929,18 @@ class MachineConfigV2AzureConfigArgs:
         pulumi.set(self, "subscription_id", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS Tags (e.g. key1,value1,key2,value2) (string)
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -24163,6 +22975,15 @@ class MachineConfigV2AzureConfigArgs:
     @use_private_ip.setter
     def use_private_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_private_ip", value)
+
+    @property
+    @pulumi.getter(name="usePublicIpStandardSku")
+    def use_public_ip_standard_sku(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_public_ip_standard_sku")
+
+    @use_public_ip_standard_sku.setter
+    def use_public_ip_standard_sku(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_public_ip_standard_sku", value)
 
     @property
     @pulumi.getter
@@ -24411,76 +23232,103 @@ class MachineConfigV2DigitaloceanConfigArgs:
 @pulumi.input_type
 class MachineConfigV2HarvesterConfigArgs:
     def __init__(__self__, *,
-                 image_name: pulumi.Input[str],
-                 network_name: pulumi.Input[str],
+                 disk_info: pulumi.Input[str],
+                 network_info: pulumi.Input[str],
                  ssh_user: pulumi.Input[str],
                  vm_namespace: pulumi.Input[str],
                  cpu_count: Optional[pulumi.Input[str]] = None,
                  disk_bus: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[str]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
                  memory_size: Optional[pulumi.Input[str]] = None,
                  network_data: Optional[pulumi.Input[str]] = None,
                  network_model: Optional[pulumi.Input[str]] = None,
+                 network_name: Optional[pulumi.Input[str]] = None,
                  ssh_password: Optional[pulumi.Input[str]] = None,
-                 user_data: Optional[pulumi.Input[str]] = None):
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 vm_affinity: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] image_name: Image name e.g. `harvester-public/image-57hzg` (string)
-        :param pulumi.Input[str] network_name: Network name e.g. `harvester-public/vlan1` (string)
+        :param pulumi.Input[str] disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
+        :param pulumi.Input[str] network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         :param pulumi.Input[str] ssh_user: Set the name of the ssh user (string)
         :param pulumi.Input[str] vm_namespace: Virtual machine namespace e.g. `default` (string)
         :param pulumi.Input[str] cpu_count: CPU count, Default `2` (string)
-        :param pulumi.Input[str] disk_bus: Disk bus, Default `virtio` (string)
+        :param pulumi.Input[str] disk_bus: Use `disk_info` instead
         :param pulumi.Input[str] disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        :param pulumi.Input[str] image_name: Use `disk_info` instead
         :param pulumi.Input[str] memory_size: Memory size (in GiB), Default `4` (string)
         :param pulumi.Input[str] network_data: NetworkData content of cloud-init, base64 is supported (string)
-        :param pulumi.Input[str] network_model: Network model, Default `virtio` (string)
+        :param pulumi.Input[str] network_model: Use `network_info` instead
+        :param pulumi.Input[str] network_name: Use `network_info` instead
         :param pulumi.Input[str] ssh_password: SSH password (string)
-        :param pulumi.Input[str] user_data: UserData content of cloud-init, base64 is supported (string)
+        :param pulumi.Input[str] user_data: UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
+        :param pulumi.Input[str] vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
         """
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "network_name", network_name)
+        pulumi.set(__self__, "disk_info", disk_info)
+        pulumi.set(__self__, "network_info", network_info)
         pulumi.set(__self__, "ssh_user", ssh_user)
         pulumi.set(__self__, "vm_namespace", vm_namespace)
         if cpu_count is not None:
             pulumi.set(__self__, "cpu_count", cpu_count)
         if disk_bus is not None:
+            warnings.warn("""Use disk_info instead""", DeprecationWarning)
+            pulumi.log.warn("""disk_bus is deprecated: Use disk_info instead""")
+        if disk_bus is not None:
             pulumi.set(__self__, "disk_bus", disk_bus)
         if disk_size is not None:
+            warnings.warn("""Use disk_info instead""", DeprecationWarning)
+            pulumi.log.warn("""disk_size is deprecated: Use disk_info instead""")
+        if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
+        if image_name is not None:
+            warnings.warn("""Use disk_info instead""", DeprecationWarning)
+            pulumi.log.warn("""image_name is deprecated: Use disk_info instead""")
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
         if memory_size is not None:
             pulumi.set(__self__, "memory_size", memory_size)
         if network_data is not None:
             pulumi.set(__self__, "network_data", network_data)
         if network_model is not None:
+            warnings.warn("""Use network_info instead""", DeprecationWarning)
+            pulumi.log.warn("""network_model is deprecated: Use network_info instead""")
+        if network_model is not None:
             pulumi.set(__self__, "network_model", network_model)
+        if network_name is not None:
+            warnings.warn("""Use network_info instead""", DeprecationWarning)
+            pulumi.log.warn("""network_name is deprecated: Use network_info instead""")
+        if network_name is not None:
+            pulumi.set(__self__, "network_name", network_name)
         if ssh_password is not None:
             pulumi.set(__self__, "ssh_password", ssh_password)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
+        if vm_affinity is not None:
+            pulumi.set(__self__, "vm_affinity", vm_affinity)
 
     @property
-    @pulumi.getter(name="imageName")
-    def image_name(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="diskInfo")
+    def disk_info(self) -> pulumi.Input[str]:
         """
-        Image name e.g. `harvester-public/image-57hzg` (string)
+        A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
         """
-        return pulumi.get(self, "image_name")
+        return pulumi.get(self, "disk_info")
 
-    @image_name.setter
-    def image_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "image_name", value)
+    @disk_info.setter
+    def disk_info(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk_info", value)
 
     @property
-    @pulumi.getter(name="networkName")
-    def network_name(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="networkInfo")
+    def network_info(self) -> pulumi.Input[str]:
         """
-        Network name e.g. `harvester-public/vlan1` (string)
+        A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         """
-        return pulumi.get(self, "network_name")
+        return pulumi.get(self, "network_info")
 
-    @network_name.setter
-    def network_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "network_name", value)
+    @network_info.setter
+    def network_info(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_info", value)
 
     @property
     @pulumi.getter(name="sshUser")
@@ -24522,7 +23370,7 @@ class MachineConfigV2HarvesterConfigArgs:
     @pulumi.getter(name="diskBus")
     def disk_bus(self) -> Optional[pulumi.Input[str]]:
         """
-        Disk bus, Default `virtio` (string)
+        Use `disk_info` instead
         """
         return pulumi.get(self, "disk_bus")
 
@@ -24541,6 +23389,18 @@ class MachineConfigV2HarvesterConfigArgs:
     @disk_size.setter
     def disk_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use `disk_info` instead
+        """
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_name", value)
 
     @property
     @pulumi.getter(name="memorySize")
@@ -24570,13 +23430,25 @@ class MachineConfigV2HarvesterConfigArgs:
     @pulumi.getter(name="networkModel")
     def network_model(self) -> Optional[pulumi.Input[str]]:
         """
-        Network model, Default `virtio` (string)
+        Use `network_info` instead
         """
         return pulumi.get(self, "network_model")
 
     @network_model.setter
     def network_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_model", value)
+
+    @property
+    @pulumi.getter(name="networkName")
+    def network_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use `network_info` instead
+        """
+        return pulumi.get(self, "network_name")
+
+    @network_name.setter
+    def network_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_name", value)
 
     @property
     @pulumi.getter(name="sshPassword")
@@ -24594,13 +23466,25 @@ class MachineConfigV2HarvesterConfigArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        UserData content of cloud-init, base64 is supported (string)
+        UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
     def user_data(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_data", value)
+
+    @property
+    @pulumi.getter(name="vmAffinity")
+    def vm_affinity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+        """
+        return pulumi.get(self, "vm_affinity")
+
+    @vm_affinity.setter
+    def vm_affinity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vm_affinity", value)
 
 
 @pulumi.input_type
@@ -24929,7 +23813,7 @@ class MachineConfigV2OpenstackConfigArgs:
         :param pulumi.Input[str] flavor_name: OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
         :param pulumi.Input[str] floating_ip_pool: OpenStack floating IP pool to get an IP from to assign to the instance (string)
         :param pulumi.Input[str] image_id: OpenStack image id to use for the instance. Conflicts with `image_name` (string)
-        :param pulumi.Input[str] image_name: Image name e.g. `harvester-public/image-57hzg` (string)
+        :param pulumi.Input[str] image_name: Use `disk_info` instead
         :param pulumi.Input[bool] insecure: Disable TLS credential checking. Default `false` (bool)
         :param pulumi.Input[str] ip_version: OpenStack version of IP address assigned for the machine Default `4` (string)
         :param pulumi.Input[str] keypair_name: AWS keypair to use; requires --amazonec2-ssh-keypath (string)
@@ -25247,7 +24131,7 @@ class MachineConfigV2OpenstackConfigArgs:
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Image name e.g. `harvester-public/image-57hzg` (string)
+        Use `disk_info` instead
         """
         return pulumi.get(self, "image_name")
 
@@ -27232,7 +26116,9 @@ class NodeTemplateAmazonec2ConfigArgs:
 @pulumi.input_type
 class NodeTemplateAzureConfigArgs:
     def __init__(__self__, *,
+                 accelerated_networking: Optional[pulumi.Input[bool]] = None,
                  availability_set: Optional[pulumi.Input[str]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
@@ -27257,11 +26143,14 @@ class NodeTemplateAzureConfigArgs:
                  subnet: Optional[pulumi.Input[str]] = None,
                  subnet_prefix: Optional[pulumi.Input[str]] = None,
                  subscription_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[str]] = None,
                  update_domain_count: Optional[pulumi.Input[str]] = None,
                  use_private_ip: Optional[pulumi.Input[bool]] = None,
+                 use_public_ip_standard_sku: Optional[pulumi.Input[bool]] = None,
                  vnet: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] availability_set: Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        :param pulumi.Input[str] availability_zone: OpenStack availability zone (string)
         :param pulumi.Input[str] client_id: Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param pulumi.Input[str] client_secret: Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param pulumi.Input[str] custom_data: Path to file with custom-data (string)
@@ -27286,12 +26175,17 @@ class NodeTemplateAzureConfigArgs:
         :param pulumi.Input[str] subnet: Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
         :param pulumi.Input[str] subnet_prefix: Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
         :param pulumi.Input[str] subscription_id: Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param pulumi.Input[str] tags: AWS Tags (e.g. key1,value1,key2,value2) (string)
         :param pulumi.Input[str] update_domain_count: Update domain count to use for availability set. Default `5` (string)
         :param pulumi.Input[bool] use_private_ip: Use private IP address of the machine to connect. Default `false` (bool)
         :param pulumi.Input[str] vnet: Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
         """
+        if accelerated_networking is not None:
+            pulumi.set(__self__, "accelerated_networking", accelerated_networking)
         if availability_set is not None:
             pulumi.set(__self__, "availability_set", availability_set)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
@@ -27340,12 +26234,25 @@ class NodeTemplateAzureConfigArgs:
             pulumi.set(__self__, "subnet_prefix", subnet_prefix)
         if subscription_id is not None:
             pulumi.set(__self__, "subscription_id", subscription_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if update_domain_count is not None:
             pulumi.set(__self__, "update_domain_count", update_domain_count)
         if use_private_ip is not None:
             pulumi.set(__self__, "use_private_ip", use_private_ip)
+        if use_public_ip_standard_sku is not None:
+            pulumi.set(__self__, "use_public_ip_standard_sku", use_public_ip_standard_sku)
         if vnet is not None:
             pulumi.set(__self__, "vnet", vnet)
+
+    @property
+    @pulumi.getter(name="acceleratedNetworking")
+    def accelerated_networking(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "accelerated_networking")
+
+    @accelerated_networking.setter
+    def accelerated_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "accelerated_networking", value)
 
     @property
     @pulumi.getter(name="availabilitySet")
@@ -27358,6 +26265,18 @@ class NodeTemplateAzureConfigArgs:
     @availability_set.setter
     def availability_set(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "availability_set", value)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack availability zone (string)
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_zone", value)
 
     @property
     @pulumi.getter(name="clientId")
@@ -27648,6 +26567,18 @@ class NodeTemplateAzureConfigArgs:
         pulumi.set(self, "subscription_id", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS Tags (e.g. key1,value1,key2,value2) (string)
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="updateDomainCount")
     def update_domain_count(self) -> Optional[pulumi.Input[str]]:
         """
@@ -27670,6 +26601,15 @@ class NodeTemplateAzureConfigArgs:
     @use_private_ip.setter
     def use_private_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_private_ip", value)
+
+    @property
+    @pulumi.getter(name="usePublicIpStandardSku")
+    def use_public_ip_standard_sku(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_public_ip_standard_sku")
+
+    @use_public_ip_standard_sku.setter
+    def use_public_ip_standard_sku(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_public_ip_standard_sku", value)
 
     @property
     @pulumi.getter
@@ -27922,76 +26862,103 @@ class NodeTemplateDigitaloceanConfigArgs:
 @pulumi.input_type
 class NodeTemplateHarvesterConfigArgs:
     def __init__(__self__, *,
-                 image_name: pulumi.Input[str],
-                 network_name: pulumi.Input[str],
+                 disk_info: pulumi.Input[str],
+                 network_info: pulumi.Input[str],
                  ssh_user: pulumi.Input[str],
                  vm_namespace: pulumi.Input[str],
                  cpu_count: Optional[pulumi.Input[str]] = None,
                  disk_bus: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[str]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
                  memory_size: Optional[pulumi.Input[str]] = None,
                  network_data: Optional[pulumi.Input[str]] = None,
                  network_model: Optional[pulumi.Input[str]] = None,
+                 network_name: Optional[pulumi.Input[str]] = None,
                  ssh_password: Optional[pulumi.Input[str]] = None,
-                 user_data: Optional[pulumi.Input[str]] = None):
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 vm_affinity: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] image_name: Image name e.g. `harvester-public/image-57hzg` (string)
-        :param pulumi.Input[str] network_name: Network name e.g. `harvester-public/vlan1` (string)
+        :param pulumi.Input[str] disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
+        :param pulumi.Input[str] network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         :param pulumi.Input[str] ssh_user: Set the name of the ssh user (string)
         :param pulumi.Input[str] vm_namespace: Virtual machine namespace e.g. `default` (string)
         :param pulumi.Input[str] cpu_count: CPU count, Default `2` (string)
-        :param pulumi.Input[str] disk_bus: Disk bus, Default `virtio` (string)
+        :param pulumi.Input[str] disk_bus: Use `disk_info` instead
         :param pulumi.Input[str] disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        :param pulumi.Input[str] image_name: Use `disk_info` instead
         :param pulumi.Input[str] memory_size: Memory size (in GiB), Default `4` (string)
         :param pulumi.Input[str] network_data: NetworkData content of cloud-init, base64 is supported (string)
-        :param pulumi.Input[str] network_model: Network model, Default `virtio` (string)
+        :param pulumi.Input[str] network_model: Use `network_info` instead
+        :param pulumi.Input[str] network_name: Use `network_info` instead
         :param pulumi.Input[str] ssh_password: SSH password (string)
-        :param pulumi.Input[str] user_data: UserData content of cloud-init, base64 is supported (string)
+        :param pulumi.Input[str] user_data: UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
+        :param pulumi.Input[str] vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
         """
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "network_name", network_name)
+        pulumi.set(__self__, "disk_info", disk_info)
+        pulumi.set(__self__, "network_info", network_info)
         pulumi.set(__self__, "ssh_user", ssh_user)
         pulumi.set(__self__, "vm_namespace", vm_namespace)
         if cpu_count is not None:
             pulumi.set(__self__, "cpu_count", cpu_count)
         if disk_bus is not None:
+            warnings.warn("""Use disk_info instead""", DeprecationWarning)
+            pulumi.log.warn("""disk_bus is deprecated: Use disk_info instead""")
+        if disk_bus is not None:
             pulumi.set(__self__, "disk_bus", disk_bus)
         if disk_size is not None:
+            warnings.warn("""Use disk_info instead""", DeprecationWarning)
+            pulumi.log.warn("""disk_size is deprecated: Use disk_info instead""")
+        if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
+        if image_name is not None:
+            warnings.warn("""Use disk_info instead""", DeprecationWarning)
+            pulumi.log.warn("""image_name is deprecated: Use disk_info instead""")
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
         if memory_size is not None:
             pulumi.set(__self__, "memory_size", memory_size)
         if network_data is not None:
             pulumi.set(__self__, "network_data", network_data)
         if network_model is not None:
+            warnings.warn("""Use network_info instead""", DeprecationWarning)
+            pulumi.log.warn("""network_model is deprecated: Use network_info instead""")
+        if network_model is not None:
             pulumi.set(__self__, "network_model", network_model)
+        if network_name is not None:
+            warnings.warn("""Use network_info instead""", DeprecationWarning)
+            pulumi.log.warn("""network_name is deprecated: Use network_info instead""")
+        if network_name is not None:
+            pulumi.set(__self__, "network_name", network_name)
         if ssh_password is not None:
             pulumi.set(__self__, "ssh_password", ssh_password)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
+        if vm_affinity is not None:
+            pulumi.set(__self__, "vm_affinity", vm_affinity)
 
     @property
-    @pulumi.getter(name="imageName")
-    def image_name(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="diskInfo")
+    def disk_info(self) -> pulumi.Input[str]:
         """
-        Image name e.g. `harvester-public/image-57hzg` (string)
+        A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
         """
-        return pulumi.get(self, "image_name")
+        return pulumi.get(self, "disk_info")
 
-    @image_name.setter
-    def image_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "image_name", value)
+    @disk_info.setter
+    def disk_info(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk_info", value)
 
     @property
-    @pulumi.getter(name="networkName")
-    def network_name(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="networkInfo")
+    def network_info(self) -> pulumi.Input[str]:
         """
-        Network name e.g. `harvester-public/vlan1` (string)
+        A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         """
-        return pulumi.get(self, "network_name")
+        return pulumi.get(self, "network_info")
 
-    @network_name.setter
-    def network_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "network_name", value)
+    @network_info.setter
+    def network_info(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_info", value)
 
     @property
     @pulumi.getter(name="sshUser")
@@ -28033,7 +27000,7 @@ class NodeTemplateHarvesterConfigArgs:
     @pulumi.getter(name="diskBus")
     def disk_bus(self) -> Optional[pulumi.Input[str]]:
         """
-        Disk bus, Default `virtio` (string)
+        Use `disk_info` instead
         """
         return pulumi.get(self, "disk_bus")
 
@@ -28052,6 +27019,18 @@ class NodeTemplateHarvesterConfigArgs:
     @disk_size.setter
     def disk_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use `disk_info` instead
+        """
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_name", value)
 
     @property
     @pulumi.getter(name="memorySize")
@@ -28081,13 +27060,25 @@ class NodeTemplateHarvesterConfigArgs:
     @pulumi.getter(name="networkModel")
     def network_model(self) -> Optional[pulumi.Input[str]]:
         """
-        Network model, Default `virtio` (string)
+        Use `network_info` instead
         """
         return pulumi.get(self, "network_model")
 
     @network_model.setter
     def network_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_model", value)
+
+    @property
+    @pulumi.getter(name="networkName")
+    def network_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use `network_info` instead
+        """
+        return pulumi.get(self, "network_name")
+
+    @network_name.setter
+    def network_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_name", value)
 
     @property
     @pulumi.getter(name="sshPassword")
@@ -28105,13 +27096,25 @@ class NodeTemplateHarvesterConfigArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        UserData content of cloud-init, base64 is supported (string)
+        UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
     def user_data(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_data", value)
+
+    @property
+    @pulumi.getter(name="vmAffinity")
+    def vm_affinity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+        """
+        return pulumi.get(self, "vm_affinity")
+
+    @vm_affinity.setter
+    def vm_affinity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vm_affinity", value)
 
 
 @pulumi.input_type
@@ -28632,11 +27635,11 @@ class NodeTemplateOpennebulaConfigArgs:
         :param pulumi.Input[bool] disable_vnc: VNC is enabled by default. Disable it with this flag (bool)
         :param pulumi.Input[str] disk_resize: Size of the disk for the VM in MB (string)
         :param pulumi.Input[str] image_id: Image ID to use as the VM OS. Conflicts with `image_name` (string)
-        :param pulumi.Input[str] image_name: Image name e.g. `harvester-public/image-57hzg` (string)
+        :param pulumi.Input[str] image_name: Use `disk_info` instead
         :param pulumi.Input[str] image_owner: Owner of the image to use as the VM OS (string)
         :param pulumi.Input[str] memory: Size of the memory for the VM in MB (string)
         :param pulumi.Input[str] network_id: Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
-        :param pulumi.Input[str] network_name: Network name e.g. `harvester-public/vlan1` (string)
+        :param pulumi.Input[str] network_name: Use `network_info` instead
         :param pulumi.Input[str] network_owner: Opennebula user ID of the Network to connect the machine to (string)
         :param pulumi.Input[str] ssh_user: Set the name of the ssh user (string)
         :param pulumi.Input[str] template_id: Opennebula template ID to use. Conflicts with `template_name` (string)
@@ -28793,7 +27796,7 @@ class NodeTemplateOpennebulaConfigArgs:
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Image name e.g. `harvester-public/image-57hzg` (string)
+        Use `disk_info` instead
         """
         return pulumi.get(self, "image_name")
 
@@ -28841,7 +27844,7 @@ class NodeTemplateOpennebulaConfigArgs:
     @pulumi.getter(name="networkName")
     def network_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Network name e.g. `harvester-public/vlan1` (string)
+        Use `network_info` instead
         """
         return pulumi.get(self, "network_name")
 
@@ -28971,7 +27974,7 @@ class NodeTemplateOpenstackConfigArgs:
         :param pulumi.Input[str] flavor_name: OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
         :param pulumi.Input[str] floating_ip_pool: OpenStack floating IP pool to get an IP from to assign to the instance (string)
         :param pulumi.Input[str] image_id: Image ID to use as the VM OS. Conflicts with `image_name` (string)
-        :param pulumi.Input[str] image_name: Image name e.g. `harvester-public/image-57hzg` (string)
+        :param pulumi.Input[str] image_name: Use `disk_info` instead
         :param pulumi.Input[bool] insecure: Disable TLS credential checking. Default `false` (bool)
         :param pulumi.Input[str] ip_version: OpenStack version of IP address assigned for the machine Default `4` (string)
         :param pulumi.Input[str] keypair_name: OpenStack keypair to use to SSH to the instance (string)
@@ -29279,7 +28282,7 @@ class NodeTemplateOpenstackConfigArgs:
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Image name e.g. `harvester-public/image-57hzg` (string)
+        Use `disk_info` instead
         """
         return pulumi.get(self, "image_name")
 
@@ -31557,863 +30560,6 @@ class ProjectContainerResourceLimitArgs:
     @requests_memory.setter
     def requests_memory(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "requests_memory", value)
-
-
-@pulumi.input_type
-class ProjectLoggingCustomTargetConfigArgs:
-    def __init__(__self__, *,
-                 content: pulumi.Input[str],
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 client_cert: Optional[pulumi.Input[str]] = None,
-                 client_key: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] content: Custom target config content (string)
-        :param pulumi.Input[str] certificate: SSL CA certificate for the custom target service (string)
-        :param pulumi.Input[str] client_cert: SSL client certificate for the custom target service (string)
-        :param pulumi.Input[str] client_key: SSL client key for the custom target service (string)
-        """
-        pulumi.set(__self__, "content", content)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-
-    @property
-    @pulumi.getter
-    def content(self) -> pulumi.Input[str]:
-        """
-        Custom target config content (string)
-        """
-        return pulumi.get(self, "content")
-
-    @content.setter
-    def content(self, value: pulumi.Input[str]):
-        pulumi.set(self, "content", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_cert", value)
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key", value)
-
-
-@pulumi.input_type
-class ProjectLoggingElasticsearchConfigArgs:
-    def __init__(__self__, *,
-                 endpoint: pulumi.Input[str],
-                 auth_password: Optional[pulumi.Input[str]] = None,
-                 auth_username: Optional[pulumi.Input[str]] = None,
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 client_cert: Optional[pulumi.Input[str]] = None,
-                 client_key: Optional[pulumi.Input[str]] = None,
-                 client_key_pass: Optional[pulumi.Input[str]] = None,
-                 date_format: Optional[pulumi.Input[str]] = None,
-                 index_prefix: Optional[pulumi.Input[str]] = None,
-                 ssl_verify: Optional[pulumi.Input[bool]] = None,
-                 ssl_version: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param pulumi.Input[str] auth_password: User password for the elascticsearch service (string)
-        :param pulumi.Input[str] auth_username: Username for the elascticsearch service (string)
-        :param pulumi.Input[str] certificate: SSL CA certificate for the custom target service (string)
-        :param pulumi.Input[str] client_cert: SSL client certificate for the custom target service (string)
-        :param pulumi.Input[str] client_key: SSL client key for the custom target service (string)
-        :param pulumi.Input[str] client_key_pass: SSL client key password for the elascticsearch service (string)
-        :param pulumi.Input[str] date_format: Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
-        :param pulumi.Input[str] index_prefix: Index prefix for the elascticsearch logs. Default: `local` (string)
-        :param pulumi.Input[bool] ssl_verify: SSL verify for the elascticsearch service (bool)
-        :param pulumi.Input[str] ssl_version: SSL version for the elascticsearch service (string)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        if auth_password is not None:
-            pulumi.set(__self__, "auth_password", auth_password)
-        if auth_username is not None:
-            pulumi.set(__self__, "auth_username", auth_username)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if client_key_pass is not None:
-            pulumi.set(__self__, "client_key_pass", client_key_pass)
-        if date_format is not None:
-            pulumi.set(__self__, "date_format", date_format)
-        if index_prefix is not None:
-            pulumi.set(__self__, "index_prefix", index_prefix)
-        if ssl_verify is not None:
-            pulumi.set(__self__, "ssl_verify", ssl_verify)
-        if ssl_version is not None:
-            pulumi.set(__self__, "ssl_version", ssl_version)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> pulumi.Input[str]:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @endpoint.setter
-    def endpoint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "endpoint", value)
-
-    @property
-    @pulumi.getter(name="authPassword")
-    def auth_password(self) -> Optional[pulumi.Input[str]]:
-        """
-        User password for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "auth_password")
-
-    @auth_password.setter
-    def auth_password(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "auth_password", value)
-
-    @property
-    @pulumi.getter(name="authUsername")
-    def auth_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "auth_username")
-
-    @auth_username.setter
-    def auth_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "auth_username", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_cert", value)
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key", value)
-
-    @property
-    @pulumi.getter(name="clientKeyPass")
-    def client_key_pass(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key password for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "client_key_pass")
-
-    @client_key_pass.setter
-    def client_key_pass(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key_pass", value)
-
-    @property
-    @pulumi.getter(name="dateFormat")
-    def date_format(self) -> Optional[pulumi.Input[str]]:
-        """
-        Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
-        """
-        return pulumi.get(self, "date_format")
-
-    @date_format.setter
-    def date_format(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "date_format", value)
-
-    @property
-    @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        Index prefix for the elascticsearch logs. Default: `local` (string)
-        """
-        return pulumi.get(self, "index_prefix")
-
-    @index_prefix.setter
-    def index_prefix(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "index_prefix", value)
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> Optional[pulumi.Input[bool]]:
-        """
-        SSL verify for the elascticsearch service (bool)
-        """
-        return pulumi.get(self, "ssl_verify")
-
-    @ssl_verify.setter
-    def ssl_verify(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "ssl_verify", value)
-
-    @property
-    @pulumi.getter(name="sslVersion")
-    def ssl_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL version for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "ssl_version")
-
-    @ssl_version.setter
-    def ssl_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ssl_version", value)
-
-
-@pulumi.input_type
-class ProjectLoggingFluentdConfigArgs:
-    def __init__(__self__, *,
-                 fluent_servers: pulumi.Input[Sequence[pulumi.Input['ProjectLoggingFluentdConfigFluentServerArgs']]],
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 compress: Optional[pulumi.Input[bool]] = None,
-                 enable_tls: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectLoggingFluentdConfigFluentServerArgs']]] fluent_servers: Servers for the fluentd service (list)
-        :param pulumi.Input[str] certificate: SSL CA certificate for the custom target service (string)
-        :param pulumi.Input[bool] compress: Compress data for the fluentd service (bool)
-        :param pulumi.Input[bool] enable_tls: Enable TLS for the fluentd service (bool)
-        """
-        pulumi.set(__self__, "fluent_servers", fluent_servers)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if compress is not None:
-            pulumi.set(__self__, "compress", compress)
-        if enable_tls is not None:
-            pulumi.set(__self__, "enable_tls", enable_tls)
-
-    @property
-    @pulumi.getter(name="fluentServers")
-    def fluent_servers(self) -> pulumi.Input[Sequence[pulumi.Input['ProjectLoggingFluentdConfigFluentServerArgs']]]:
-        """
-        Servers for the fluentd service (list)
-        """
-        return pulumi.get(self, "fluent_servers")
-
-    @fluent_servers.setter
-    def fluent_servers(self, value: pulumi.Input[Sequence[pulumi.Input['ProjectLoggingFluentdConfigFluentServerArgs']]]):
-        pulumi.set(self, "fluent_servers", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter
-    def compress(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Compress data for the fluentd service (bool)
-        """
-        return pulumi.get(self, "compress")
-
-    @compress.setter
-    def compress(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "compress", value)
-
-    @property
-    @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable TLS for the fluentd service (bool)
-        """
-        return pulumi.get(self, "enable_tls")
-
-    @enable_tls.setter
-    def enable_tls(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_tls", value)
-
-
-@pulumi.input_type
-class ProjectLoggingFluentdConfigFluentServerArgs:
-    def __init__(__self__, *,
-                 endpoint: pulumi.Input[str],
-                 hostname: Optional[pulumi.Input[str]] = None,
-                 password: Optional[pulumi.Input[str]] = None,
-                 shared_key: Optional[pulumi.Input[str]] = None,
-                 standby: Optional[pulumi.Input[bool]] = None,
-                 username: Optional[pulumi.Input[str]] = None,
-                 weight: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[str] endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param pulumi.Input[str] hostname: Hostname of the fluentd service (string)
-        :param pulumi.Input[str] password: User password of the fluentd service (string)
-        :param pulumi.Input[str] shared_key: Shared key of the fluentd service (string)
-        :param pulumi.Input[bool] standby: Standby server of the fluentd service (bool)
-        :param pulumi.Input[str] username: Username of the fluentd service (string)
-        :param pulumi.Input[int] weight: Weight of the fluentd server (int)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if shared_key is not None:
-            pulumi.set(__self__, "shared_key", shared_key)
-        if standby is not None:
-            pulumi.set(__self__, "standby", standby)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
-        if weight is not None:
-            pulumi.set(__self__, "weight", weight)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> pulumi.Input[str]:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @endpoint.setter
-    def endpoint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "endpoint", value)
-
-    @property
-    @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[str]]:
-        """
-        Hostname of the fluentd service (string)
-        """
-        return pulumi.get(self, "hostname")
-
-    @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "hostname", value)
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[str]]:
-        """
-        User password of the fluentd service (string)
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter(name="sharedKey")
-    def shared_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Shared key of the fluentd service (string)
-        """
-        return pulumi.get(self, "shared_key")
-
-    @shared_key.setter
-    def shared_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "shared_key", value)
-
-    @property
-    @pulumi.getter
-    def standby(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Standby server of the fluentd service (bool)
-        """
-        return pulumi.get(self, "standby")
-
-    @standby.setter
-    def standby(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "standby", value)
-
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username of the fluentd service (string)
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "username", value)
-
-    @property
-    @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[int]]:
-        """
-        Weight of the fluentd server (int)
-        """
-        return pulumi.get(self, "weight")
-
-    @weight.setter
-    def weight(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "weight", value)
-
-
-@pulumi.input_type
-class ProjectLoggingKafkaConfigArgs:
-    def __init__(__self__, *,
-                 topic: pulumi.Input[str],
-                 broker_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 client_cert: Optional[pulumi.Input[str]] = None,
-                 client_key: Optional[pulumi.Input[str]] = None,
-                 zookeeper_endpoint: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] topic: Topic to publish on the kafka service (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] broker_endpoints: Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
-        :param pulumi.Input[str] certificate: SSL CA certificate for the custom target service (string)
-        :param pulumi.Input[str] client_cert: SSL client certificate for the custom target service (string)
-        :param pulumi.Input[str] client_key: SSL client key for the custom target service (string)
-        :param pulumi.Input[str] zookeeper_endpoint: Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
-        """
-        pulumi.set(__self__, "topic", topic)
-        if broker_endpoints is not None:
-            pulumi.set(__self__, "broker_endpoints", broker_endpoints)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if zookeeper_endpoint is not None:
-            pulumi.set(__self__, "zookeeper_endpoint", zookeeper_endpoint)
-
-    @property
-    @pulumi.getter
-    def topic(self) -> pulumi.Input[str]:
-        """
-        Topic to publish on the kafka service (string)
-        """
-        return pulumi.get(self, "topic")
-
-    @topic.setter
-    def topic(self, value: pulumi.Input[str]):
-        pulumi.set(self, "topic", value)
-
-    @property
-    @pulumi.getter(name="brokerEndpoints")
-    def broker_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
-        """
-        return pulumi.get(self, "broker_endpoints")
-
-    @broker_endpoints.setter
-    def broker_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "broker_endpoints", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_cert", value)
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key", value)
-
-    @property
-    @pulumi.getter(name="zookeeperEndpoint")
-    def zookeeper_endpoint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
-        """
-        return pulumi.get(self, "zookeeper_endpoint")
-
-    @zookeeper_endpoint.setter
-    def zookeeper_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "zookeeper_endpoint", value)
-
-
-@pulumi.input_type
-class ProjectLoggingSplunkConfigArgs:
-    def __init__(__self__, *,
-                 endpoint: pulumi.Input[str],
-                 token: pulumi.Input[str],
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 client_cert: Optional[pulumi.Input[str]] = None,
-                 client_key: Optional[pulumi.Input[str]] = None,
-                 client_key_pass: Optional[pulumi.Input[str]] = None,
-                 index: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[str]] = None,
-                 ssl_verify: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[str] endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param pulumi.Input[str] token: Token for the splunk service (string)
-        :param pulumi.Input[str] certificate: SSL CA certificate for the custom target service (string)
-        :param pulumi.Input[str] client_cert: SSL client certificate for the custom target service (string)
-        :param pulumi.Input[str] client_key: SSL client key for the custom target service (string)
-        :param pulumi.Input[str] client_key_pass: SSL client key password for the elascticsearch service (string)
-        :param pulumi.Input[str] index: Index prefix for the splunk logs (string)
-        :param pulumi.Input[str] source: Date format for the splunk logs (string)
-        :param pulumi.Input[bool] ssl_verify: SSL verify for the elascticsearch service (bool)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "token", token)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if client_key_pass is not None:
-            pulumi.set(__self__, "client_key_pass", client_key_pass)
-        if index is not None:
-            pulumi.set(__self__, "index", index)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-        if ssl_verify is not None:
-            pulumi.set(__self__, "ssl_verify", ssl_verify)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> pulumi.Input[str]:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @endpoint.setter
-    def endpoint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "endpoint", value)
-
-    @property
-    @pulumi.getter
-    def token(self) -> pulumi.Input[str]:
-        """
-        Token for the splunk service (string)
-        """
-        return pulumi.get(self, "token")
-
-    @token.setter
-    def token(self, value: pulumi.Input[str]):
-        pulumi.set(self, "token", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_cert", value)
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key", value)
-
-    @property
-    @pulumi.getter(name="clientKeyPass")
-    def client_key_pass(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key password for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "client_key_pass")
-
-    @client_key_pass.setter
-    def client_key_pass(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key_pass", value)
-
-    @property
-    @pulumi.getter
-    def index(self) -> Optional[pulumi.Input[str]]:
-        """
-        Index prefix for the splunk logs (string)
-        """
-        return pulumi.get(self, "index")
-
-    @index.setter
-    def index(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "index", value)
-
-    @property
-    @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[str]]:
-        """
-        Date format for the splunk logs (string)
-        """
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source", value)
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> Optional[pulumi.Input[bool]]:
-        """
-        SSL verify for the elascticsearch service (bool)
-        """
-        return pulumi.get(self, "ssl_verify")
-
-    @ssl_verify.setter
-    def ssl_verify(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "ssl_verify", value)
-
-
-@pulumi.input_type
-class ProjectLoggingSyslogConfigArgs:
-    def __init__(__self__, *,
-                 endpoint: pulumi.Input[str],
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 client_cert: Optional[pulumi.Input[str]] = None,
-                 client_key: Optional[pulumi.Input[str]] = None,
-                 enable_tls: Optional[pulumi.Input[bool]] = None,
-                 program: Optional[pulumi.Input[str]] = None,
-                 protocol: Optional[pulumi.Input[str]] = None,
-                 severity: Optional[pulumi.Input[str]] = None,
-                 ssl_verify: Optional[pulumi.Input[bool]] = None,
-                 token: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param pulumi.Input[str] certificate: SSL CA certificate for the custom target service (string)
-        :param pulumi.Input[str] client_cert: SSL client certificate for the custom target service (string)
-        :param pulumi.Input[str] client_key: SSL client key for the custom target service (string)
-        :param pulumi.Input[bool] enable_tls: Enable TLS for the fluentd service (bool)
-        :param pulumi.Input[str] program: Program for the syslog service (string)
-        :param pulumi.Input[str] protocol: Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
-        :param pulumi.Input[str] severity: Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
-        :param pulumi.Input[bool] ssl_verify: SSL verify for the elascticsearch service (bool)
-        :param pulumi.Input[str] token: Token for the splunk service (string)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if enable_tls is not None:
-            pulumi.set(__self__, "enable_tls", enable_tls)
-        if program is not None:
-            pulumi.set(__self__, "program", program)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if severity is not None:
-            pulumi.set(__self__, "severity", severity)
-        if ssl_verify is not None:
-            pulumi.set(__self__, "ssl_verify", ssl_verify)
-        if token is not None:
-            pulumi.set(__self__, "token", token)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> pulumi.Input[str]:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @endpoint.setter
-    def endpoint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "endpoint", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_cert", value)
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key", value)
-
-    @property
-    @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable TLS for the fluentd service (bool)
-        """
-        return pulumi.get(self, "enable_tls")
-
-    @enable_tls.setter
-    def enable_tls(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_tls", value)
-
-    @property
-    @pulumi.getter
-    def program(self) -> Optional[pulumi.Input[str]]:
-        """
-        Program for the syslog service (string)
-        """
-        return pulumi.get(self, "program")
-
-    @program.setter
-    def program(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "program", value)
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
-        """
-        return pulumi.get(self, "protocol")
-
-    @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "protocol", value)
-
-    @property
-    @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[str]]:
-        """
-        Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
-        """
-        return pulumi.get(self, "severity")
-
-    @severity.setter
-    def severity(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "severity", value)
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> Optional[pulumi.Input[bool]]:
-        """
-        SSL verify for the elascticsearch service (bool)
-        """
-        return pulumi.get(self, "ssl_verify")
-
-    @ssl_verify.setter
-    def ssl_verify(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "ssl_verify", value)
-
-    @property
-    @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[str]]:
-        """
-        Token for the splunk service (string)
-        """
-        return pulumi.get(self, "token")
-
-    @token.setter
-    def token(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "token", value)
 
 
 @pulumi.input_type

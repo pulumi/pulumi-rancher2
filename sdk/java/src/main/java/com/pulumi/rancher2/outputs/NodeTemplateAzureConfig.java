@@ -13,11 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodeTemplateAzureConfig {
+    private @Nullable Boolean acceleratedNetworking;
     /**
      * @return Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
      * 
      */
     private @Nullable String availabilitySet;
+    /**
+     * @return OpenStack availability zone (string)
+     * 
+     */
+    private @Nullable String availabilityZone;
     /**
      * @return Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
@@ -139,6 +145,11 @@ public final class NodeTemplateAzureConfig {
      */
     private @Nullable String subscriptionId;
     /**
+     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * 
+     */
+    private @Nullable String tags;
+    /**
      * @return Update domain count to use for availability set. Default `5` (string)
      * 
      */
@@ -148,6 +159,7 @@ public final class NodeTemplateAzureConfig {
      * 
      */
     private @Nullable Boolean usePrivateIp;
+    private @Nullable Boolean usePublicIpStandardSku;
     /**
      * @return Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
      * 
@@ -155,12 +167,22 @@ public final class NodeTemplateAzureConfig {
     private @Nullable String vnet;
 
     private NodeTemplateAzureConfig() {}
+    public Optional<Boolean> acceleratedNetworking() {
+        return Optional.ofNullable(this.acceleratedNetworking);
+    }
     /**
      * @return Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
      * 
      */
     public Optional<String> availabilitySet() {
         return Optional.ofNullable(this.availabilitySet);
+    }
+    /**
+     * @return OpenStack availability zone (string)
+     * 
+     */
+    public Optional<String> availabilityZone() {
+        return Optional.ofNullable(this.availabilityZone);
     }
     /**
      * @return Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
@@ -331,6 +353,13 @@ public final class NodeTemplateAzureConfig {
         return Optional.ofNullable(this.subscriptionId);
     }
     /**
+     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * 
+     */
+    public Optional<String> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+    /**
      * @return Update domain count to use for availability set. Default `5` (string)
      * 
      */
@@ -343,6 +372,9 @@ public final class NodeTemplateAzureConfig {
      */
     public Optional<Boolean> usePrivateIp() {
         return Optional.ofNullable(this.usePrivateIp);
+    }
+    public Optional<Boolean> usePublicIpStandardSku() {
+        return Optional.ofNullable(this.usePublicIpStandardSku);
     }
     /**
      * @return Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
@@ -361,7 +393,9 @@ public final class NodeTemplateAzureConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean acceleratedNetworking;
         private @Nullable String availabilitySet;
+        private @Nullable String availabilityZone;
         private @Nullable String clientId;
         private @Nullable String clientSecret;
         private @Nullable String customData;
@@ -386,13 +420,17 @@ public final class NodeTemplateAzureConfig {
         private @Nullable String subnet;
         private @Nullable String subnetPrefix;
         private @Nullable String subscriptionId;
+        private @Nullable String tags;
         private @Nullable String updateDomainCount;
         private @Nullable Boolean usePrivateIp;
+        private @Nullable Boolean usePublicIpStandardSku;
         private @Nullable String vnet;
         public Builder() {}
         public Builder(NodeTemplateAzureConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acceleratedNetworking = defaults.acceleratedNetworking;
     	      this.availabilitySet = defaults.availabilitySet;
+    	      this.availabilityZone = defaults.availabilityZone;
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
     	      this.customData = defaults.customData;
@@ -417,14 +455,26 @@ public final class NodeTemplateAzureConfig {
     	      this.subnet = defaults.subnet;
     	      this.subnetPrefix = defaults.subnetPrefix;
     	      this.subscriptionId = defaults.subscriptionId;
+    	      this.tags = defaults.tags;
     	      this.updateDomainCount = defaults.updateDomainCount;
     	      this.usePrivateIp = defaults.usePrivateIp;
+    	      this.usePublicIpStandardSku = defaults.usePublicIpStandardSku;
     	      this.vnet = defaults.vnet;
         }
 
         @CustomType.Setter
+        public Builder acceleratedNetworking(@Nullable Boolean acceleratedNetworking) {
+            this.acceleratedNetworking = acceleratedNetworking;
+            return this;
+        }
+        @CustomType.Setter
         public Builder availabilitySet(@Nullable String availabilitySet) {
             this.availabilitySet = availabilitySet;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder availabilityZone(@Nullable String availabilityZone) {
+            this.availabilityZone = availabilityZone;
             return this;
         }
         @CustomType.Setter
@@ -551,6 +601,11 @@ public final class NodeTemplateAzureConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(@Nullable String tags) {
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateDomainCount(@Nullable String updateDomainCount) {
             this.updateDomainCount = updateDomainCount;
             return this;
@@ -561,13 +616,20 @@ public final class NodeTemplateAzureConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder usePublicIpStandardSku(@Nullable Boolean usePublicIpStandardSku) {
+            this.usePublicIpStandardSku = usePublicIpStandardSku;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vnet(@Nullable String vnet) {
             this.vnet = vnet;
             return this;
         }
         public NodeTemplateAzureConfig build() {
             final var o = new NodeTemplateAzureConfig();
+            o.acceleratedNetworking = acceleratedNetworking;
             o.availabilitySet = availabilitySet;
+            o.availabilityZone = availabilityZone;
             o.clientId = clientId;
             o.clientSecret = clientSecret;
             o.customData = customData;
@@ -592,8 +654,10 @@ public final class NodeTemplateAzureConfig {
             o.subnet = subnet;
             o.subnetPrefix = subnetPrefix;
             o.subscriptionId = subscriptionId;
+            o.tags = tags;
             o.updateDomainCount = updateDomainCount;
             o.usePrivateIp = usePrivateIp;
+            o.usePublicIpStandardSku = usePublicIpStandardSku;
             o.vnet = vnet;
             return o;
         }

@@ -35,7 +35,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * Annotations for the catalog v2 (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -49,7 +49,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * PEM encoded CA bundle which will be used to validate the repo&#39;s certificate (string)
      * 
      */
-    @Export(name="caBundle", type=String.class, parameters={})
+    @Export(name="caBundle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caBundle;
 
     /**
@@ -63,7 +63,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * The cluster id of the catalog V2 (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -77,7 +77,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -91,7 +91,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * Git Repository branch containing Helm chart definitions. Default `master` (string)
      * 
      */
-    @Export(name="gitBranch", type=String.class, parameters={})
+    @Export(name="gitBranch", refs={String.class}, tree="[0]")
     private Output<String> gitBranch;
 
     /**
@@ -105,7 +105,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * The url of the catalog v2 repo. Conflicts with `url` (string)
      * 
      */
-    @Export(name="gitRepo", type=String.class, parameters={})
+    @Export(name="gitRepo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gitRepo;
 
     /**
@@ -119,7 +119,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * Use insecure HTTPS to download the repo&#39;s index. Default: `false` (bool)
      * 
      */
-    @Export(name="insecure", type=Boolean.class, parameters={})
+    @Export(name="insecure", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> insecure;
 
     /**
@@ -133,7 +133,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * Labels for the catalog v2 (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -147,7 +147,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * The name of the catalog v2 (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -161,7 +161,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * (Computed) The k8s resource version (string)
      * 
      */
-    @Export(name="resourceVersion", type=String.class, parameters={})
+    @Export(name="resourceVersion", refs={String.class}, tree="[0]")
     private Output<String> resourceVersion;
 
     /**
@@ -175,7 +175,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * K8s secret name to be used to connect to the repo (string)
      * 
      */
-    @Export(name="secretName", type=String.class, parameters={})
+    @Export(name="secretName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretName;
 
     /**
@@ -189,7 +189,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * K8s secret namespace (string)
      * 
      */
-    @Export(name="secretNamespace", type=String.class, parameters={})
+    @Export(name="secretNamespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretNamespace;
 
     /**
@@ -203,7 +203,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * K8s service account used to deploy charts instead of the end users credentials (string)
      * 
      */
-    @Export(name="serviceAccount", type=String.class, parameters={})
+    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccount;
 
     /**
@@ -217,7 +217,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * The username to access the catalog if needed (string)
      * 
      */
-    @Export(name="serviceAccountNamespace", type=String.class, parameters={})
+    @Export(name="serviceAccountNamespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccountNamespace;
 
     /**
@@ -231,7 +231,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * URL to an index generated by Helm. Conflicts with `git_repo` (string)
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> url;
 
     /**

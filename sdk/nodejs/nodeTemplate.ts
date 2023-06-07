@@ -83,10 +83,33 @@ import * as utilities from "./utilities";
  *         vmNamespace: "default",
  *         cpuCount: "2",
  *         memorySize: "4",
- *         diskSize: "40",
- *         networkName: "harvester-public/vlan1",
- *         imageName: "harvester-public/image-57hzg",
- *         sshUser: "ubuntu",
+ *         diskInfo: `    {
+ *         "disks": [{
+ *             "imageName": "harvester-public/image-57hzg",
+ *             "size": 40,
+ *             "bootOrder": 1
+ *         }]
+ *     }
+ *     EOF,
+ *     networkInfo = <<EOF
+ *     {
+ *         "interfaces": [{
+ *             "networkName": "harvester-public/vlan1"
+ *         }]
+ *     }
+ *     EOF,
+ *     sshUser = "ubuntu",
+ *     userData = <<EOF
+ *     package_update: true
+ *     packages:
+ *       - qemu-guest-agent
+ *       - iptables
+ *     runcmd:
+ *       - - systemctl
+ *         - enable
+ *         - '--now'
+ *         - qemu-guest-agent.service
+ * `,
  *     },
  * });
  * ```
