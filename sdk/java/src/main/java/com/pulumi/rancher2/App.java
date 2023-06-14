@@ -136,7 +136,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Annotations for App object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -150,7 +150,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Answers for the app template. If modified, app will be upgraded (map)
      * 
      */
-    @Export(name="answers", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="answers", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> answers;
 
     /**
@@ -166,7 +166,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * * add project ID before name, `p-XXXXX:&lt;name&gt;`
      * 
      */
-    @Export(name="catalogName", type=String.class, parameters={})
+    @Export(name="catalogName", refs={String.class}, tree="[0]")
     private Output<String> catalogName;
 
     /**
@@ -182,7 +182,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Description for the app (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -196,7 +196,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * (Computed) The url of the app template on a catalog (string)
      * 
      */
-    @Export(name="externalId", type=String.class, parameters={})
+    @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output<String> externalId;
 
     /**
@@ -210,7 +210,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Force app upgrade (string)
      * 
      */
-    @Export(name="forceUpgrade", type=Boolean.class, parameters={})
+    @Export(name="forceUpgrade", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceUpgrade;
 
     /**
@@ -224,7 +224,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Labels for App object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -238,7 +238,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The name of the app (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -252,7 +252,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The project id where the app will be installed (string)
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -266,7 +266,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revision_id` (string)
      * 
      */
-    @Export(name="revisionId", type=String.class, parameters={})
+    @Export(name="revisionId", refs={String.class}, tree="[0]")
     private Output<String> revisionId;
 
     /**
@@ -280,7 +280,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The namespace id where the app will be installed (string)
      * 
      */
-    @Export(name="targetNamespace", type=String.class, parameters={})
+    @Export(name="targetNamespace", refs={String.class}, tree="[0]")
     private Output<String> targetNamespace;
 
     /**
@@ -294,7 +294,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Template name of the app. If modified, app will be upgraded (string)
      * 
      */
-    @Export(name="templateName", type=String.class, parameters={})
+    @Export(name="templateName", refs={String.class}, tree="[0]")
     private Output<String> templateName;
 
     /**
@@ -308,7 +308,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
      * 
      */
-    @Export(name="templateVersion", type=String.class, parameters={})
+    @Export(name="templateVersion", refs={String.class}, tree="[0]")
     private Output<String> templateVersion;
 
     /**
@@ -322,7 +322,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
      * 
      */
-    @Export(name="valuesYaml", type=String.class, parameters={})
+    @Export(name="valuesYaml", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> valuesYaml;
 
     /**
@@ -336,7 +336,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Wait until app is deployed and active. Default: `true` (bool)
      * 
      */
-    @Export(name="wait", type=Boolean.class, parameters={})
+    @Export(name="wait", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> wait;
 
     /**

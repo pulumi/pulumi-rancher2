@@ -22,7 +22,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, agent_env_vars=None, aks_config=None, aks_config_v2=None, annotations=None, ca_cert=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, eks_config_v2=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, fleet_workspace_name=None, gke_config=None, gke_config_v2=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke2_config=None, rke_config=None, scheduled_cluster_scans=None, system_project_id=None):
+    def __init__(__self__, agent_env_vars=None, aks_config=None, aks_config_v2=None, annotations=None, ca_cert=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, eks_config_v2=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, fleet_workspace_name=None, gke_config=None, gke_config_v2=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke2_config=None, rke_config=None, system_project_id=None):
         if agent_env_vars and not isinstance(agent_env_vars, list):
             raise TypeError("Expected argument 'agent_env_vars' to be a list")
         pulumi.set(__self__, "agent_env_vars", agent_env_vars)
@@ -119,9 +119,6 @@ class GetClusterResult:
         if rke_config and not isinstance(rke_config, dict):
             raise TypeError("Expected argument 'rke_config' to be a dict")
         pulumi.set(__self__, "rke_config", rke_config)
-        if scheduled_cluster_scans and not isinstance(scheduled_cluster_scans, list):
-            raise TypeError("Expected argument 'scheduled_cluster_scans' to be a list")
-        pulumi.set(__self__, "scheduled_cluster_scans", scheduled_cluster_scans)
         if system_project_id and not isinstance(system_project_id, str):
             raise TypeError("Expected argument 'system_project_id' to be a str")
         pulumi.set(__self__, "system_project_id", system_project_id)
@@ -377,11 +374,6 @@ class GetClusterResult:
         return pulumi.get(self, "rke_config")
 
     @property
-    @pulumi.getter(name="scheduledClusterScans")
-    def scheduled_cluster_scans(self) -> Sequence['outputs.GetClusterScheduledClusterScanResult']:
-        return pulumi.get(self, "scheduled_cluster_scans")
-
-    @property
     @pulumi.getter(name="systemProjectId")
     def system_project_id(self) -> str:
         """
@@ -428,7 +420,6 @@ class AwaitableGetClusterResult(GetClusterResult):
             oke_config=self.oke_config,
             rke2_config=self.rke2_config,
             rke_config=self.rke_config,
-            scheduled_cluster_scans=self.scheduled_cluster_scans,
             system_project_id=self.system_project_id)
 
 
@@ -487,7 +478,6 @@ def get_cluster(name: Optional[str] = None,
         oke_config=__ret__.oke_config,
         rke2_config=__ret__.rke2_config,
         rke_config=__ret__.rke_config,
-        scheduled_cluster_scans=__ret__.scheduled_cluster_scans,
         system_project_id=__ret__.system_project_id)
 
 

@@ -66,8 +66,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClusterAlterRule{}
 	case "rancher2:index/clusterDriver:ClusterDriver":
 		r = &ClusterDriver{}
-	case "rancher2:index/clusterLogging:ClusterLogging":
-		r = &ClusterLogging{}
 	case "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding":
 		r = &ClusterRoleTemplateBinding{}
 	case "rancher2:index/clusterSync:ClusterSync":
@@ -112,8 +110,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectAlertGroup{}
 	case "rancher2:index/projectAlertRule:ProjectAlertRule":
 		r = &ProjectAlertRule{}
-	case "rancher2:index/projectLogging:ProjectLogging":
-		r = &ProjectLogging{}
 	case "rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding":
 		r = &ProjectRoleTemplateBinding{}
 	case "rancher2:index/registry:Registry":
@@ -279,11 +275,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
-		"index/clusterLogging",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
 		"index/clusterRoleTemplateBinding",
 		&module{version},
 	)
@@ -390,11 +381,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/projectAlertRule",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/projectLogging",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

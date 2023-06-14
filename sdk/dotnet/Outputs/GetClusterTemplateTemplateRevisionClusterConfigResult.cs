@@ -23,7 +23,6 @@ namespace Pulumi.Rancher2.Outputs
         public readonly bool? EnableClusterMonitoring;
         public readonly bool? EnableNetworkPolicy;
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigResult RkeConfig;
-        public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanResult? ScheduledClusterScan;
         public readonly bool? WindowsPreferedCluster;
 
         [OutputConstructor]
@@ -48,8 +47,6 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigResult rkeConfig,
 
-            Outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanResult? scheduledClusterScan,
-
             bool? windowsPreferedCluster)
         {
             ClusterAuthEndpoint = clusterAuthEndpoint;
@@ -62,7 +59,6 @@ namespace Pulumi.Rancher2.Outputs
             EnableClusterMonitoring = enableClusterMonitoring;
             EnableNetworkPolicy = enableNetworkPolicy;
             RkeConfig = rkeConfig;
-            ScheduledClusterScan = scheduledClusterScan;
             WindowsPreferedCluster = windowsPreferedCluster;
         }
     }

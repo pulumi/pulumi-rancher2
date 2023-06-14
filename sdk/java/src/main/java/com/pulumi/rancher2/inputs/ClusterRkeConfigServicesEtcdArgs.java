@@ -202,14 +202,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     }
 
     /**
-     * Cluster scan retention (int)
+     * Retention option for etcd service (string)
      * 
      */
     @Import(name="retention")
     private @Nullable Output<String> retention;
 
     /**
-     * @return Cluster scan retention (int)
+     * @return Retention option for etcd service (string)
      * 
      */
     public Optional<Output<String>> retention() {
@@ -567,7 +567,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param retention Cluster scan retention (int)
+         * @param retention Retention option for etcd service (string)
          * 
          * @return builder
          * 
@@ -578,7 +578,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param retention Cluster scan retention (int)
+         * @param retention Retention option for etcd service (string)
          * 
          * @return builder
          * 

@@ -30,6 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// The name of the Cluster (string)
         /// </summary>
         public readonly string Name;
+        public readonly string? NodeRole;
         public readonly bool? RequestSpotInstances;
         public readonly ImmutableDictionary<string, object>? ResourceTags;
         public readonly ImmutableArray<string> SpotInstanceTypes;
@@ -62,6 +63,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string name,
 
+            string? nodeRole,
+
             bool? requestSpotInstances,
 
             ImmutableDictionary<string, object>? resourceTags,
@@ -87,6 +90,7 @@ namespace Pulumi.Rancher2.Outputs
             MaxSize = maxSize;
             MinSize = minSize;
             Name = name;
+            NodeRole = nodeRole;
             RequestSpotInstances = requestSpotInstances;
             ResourceTags = resourceTags;
             SpotInstanceTypes = spotInstanceTypes;

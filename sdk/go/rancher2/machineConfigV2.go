@@ -13,7 +13,7 @@ import (
 
 // Provides a Rancher v2 Machine config v2 resource. This can be used to create Machine Config v2 for Rancher v2 and retrieve their information. This resource is available from Rancher v2.6.0 and above.
 //
-// `amazonec2`, `azure`, `digitalocean`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
+// `amazonec2`, `azure`, `digitalocean`, `harvester`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
 //
 // **Note** This resource is used by
 //
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v4/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -54,10 +54,7 @@ import (
 //					VmNamespace: pulumi.String("default"),
 //					CpuCount:    pulumi.String("2"),
 //					MemorySize:  pulumi.String("4"),
-//					DiskSize:    pulumi.String("40"),
-//					NetworkName: pulumi.String("harvester-public/vlan1"),
-//					ImageName:   pulumi.String("harvester-public/image-57hzg"),
-//					SshUser:     pulumi.String("ubuntu"),
+//					DiskInfo:    pulumi.String("    {\n        \"disks\": [{\n            \"imageName\": \"harvester-public/image-57hzg\",\n            \"size\": 40,\n            \"bootOrder\": 1\n        }]\n    }\n    EOF,\n    networkInfo = <<EOF\n    {\n        \"interfaces\": [{\n            \"networkName\": \"harvester-public/vlan1\"\n        }]\n    }\n    EOF,\n    sshUser = \"ubuntu\",\n    userData = <<EOF\n    package_update: true\n    packages:\n      - qemu-guest-agent\n      - iptables\n    runcmd:\n      - - systemctl\n        - enable\n        - '--now'\n        - qemu-guest-agent.service\n"),
 //				},
 //			})
 //			if err != nil {

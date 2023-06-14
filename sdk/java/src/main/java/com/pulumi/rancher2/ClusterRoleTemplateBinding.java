@@ -65,7 +65,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * Annotations for cluster role template binding (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -79,7 +79,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * The cluster id where bind cluster role template binding (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -93,7 +93,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * The group ID to assign cluster role template binding (string)
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -107,7 +107,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * The group_principal ID to assign cluster role template binding (string)
      * 
      */
-    @Export(name="groupPrincipalId", type=String.class, parameters={})
+    @Export(name="groupPrincipalId", refs={String.class}, tree="[0]")
     private Output<String> groupPrincipalId;
 
     /**
@@ -123,7 +123,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -139,7 +139,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * The name of the cluster role template binding (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -153,7 +153,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * The role template id from create cluster role template binding (string)
      * 
      */
-    @Export(name="roleTemplateId", type=String.class, parameters={})
+    @Export(name="roleTemplateId", refs={String.class}, tree="[0]")
     private Output<String> roleTemplateId;
 
     /**
@@ -167,7 +167,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * The user ID to assign cluster role template binding (string)
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
@@ -181,7 +181,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * The user_principal ID to assign cluster role template binding (string)
      * 
      */
-    @Export(name="userPrincipalId", type=String.class, parameters={})
+    @Export(name="userPrincipalId", refs={String.class}, tree="[0]")
     private Output<String> userPrincipalId;
 
     /**

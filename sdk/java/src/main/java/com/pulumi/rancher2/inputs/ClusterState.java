@@ -21,7 +21,6 @@ import com.pulumi.rancher2.inputs.ClusterK3sConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterOkeConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterRke2ConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
-import com.pulumi.rancher2.inputs.ClusterScheduledClusterScanArgs;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -585,21 +584,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-     * 
-     */
-    @Import(name="scheduledClusterScan")
-    private @Nullable Output<ClusterScheduledClusterScanArgs> scheduledClusterScan;
-
-    /**
-     * @return Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-     * 
-     */
-    public Optional<Output<ClusterScheduledClusterScanArgs>> scheduledClusterScan() {
-        return Optional.ofNullable(this.scheduledClusterScan);
-    }
-
-    /**
      * (Computed) System project ID for the cluster (string)
      * 
      */
@@ -668,7 +652,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.okeConfig = $.okeConfig;
         this.rke2Config = $.rke2Config;
         this.rkeConfig = $.rkeConfig;
-        this.scheduledClusterScan = $.scheduledClusterScan;
         this.systemProjectId = $.systemProjectId;
         this.windowsPreferedCluster = $.windowsPreferedCluster;
     }
@@ -1473,27 +1456,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rkeConfig(ClusterRkeConfigArgs rkeConfig) {
             return rkeConfig(Output.of(rkeConfig));
-        }
-
-        /**
-         * @param scheduledClusterScan Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder scheduledClusterScan(@Nullable Output<ClusterScheduledClusterScanArgs> scheduledClusterScan) {
-            $.scheduledClusterScan = scheduledClusterScan;
-            return this;
-        }
-
-        /**
-         * @param scheduledClusterScan Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder scheduledClusterScan(ClusterScheduledClusterScanArgs scheduledClusterScan) {
-            return scheduledClusterScan(Output.of(scheduledClusterScan));
         }
 
         /**

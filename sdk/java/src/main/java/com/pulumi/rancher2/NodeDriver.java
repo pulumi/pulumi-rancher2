@@ -73,7 +73,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * Specify if the node driver state (bool)
      * 
      */
-    @Export(name="active", type=Boolean.class, parameters={})
+    @Export(name="active", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> active;
 
     /**
@@ -87,7 +87,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * Annotations of the resource (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -101,7 +101,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * Specify wheter the node driver is an internal node driver or not (bool)
      * 
      */
-    @Export(name="builtin", type=Boolean.class, parameters={})
+    @Export(name="builtin", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> builtin;
 
     /**
@@ -115,7 +115,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * Verify that the downloaded driver matches the expected checksum (string)
      * 
      */
-    @Export(name="checksum", type=String.class, parameters={})
+    @Export(name="checksum", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> checksum;
 
     /**
@@ -129,7 +129,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * Description of the node driver (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -143,7 +143,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * External ID (string)
      * 
      */
-    @Export(name="externalId", type=String.class, parameters={})
+    @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalId;
 
     /**
@@ -157,7 +157,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * Labels of the resource (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -171,7 +171,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * Name of the node driver (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -185,7 +185,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * The URL to load for customized Add Nodes screen for this driver (string)
      * 
      */
-    @Export(name="uiUrl", type=String.class, parameters={})
+    @Export(name="uiUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> uiUrl;
 
     /**
@@ -199,7 +199,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * The URL to download the machine driver binary for 64-bit Linux (string)
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -213,7 +213,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * Domains to whitelist for the ui (list)
      * 
      */
-    @Export(name="whitelistDomains", type=List.class, parameters={String.class})
+    @Export(name="whitelistDomains", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> whitelistDomains;
 
     /**

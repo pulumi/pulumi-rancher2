@@ -13,10 +13,15 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class NodeTemplateAzureConfig
     {
+        public readonly bool? AcceleratedNetworking;
         /// <summary>
         /// Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
         /// </summary>
         public readonly string? AvailabilitySet;
+        /// <summary>
+        /// OpenStack availability zone (string)
+        /// </summary>
+        public readonly string? AvailabilityZone;
         /// <summary>
         /// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
@@ -114,6 +119,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SubscriptionId;
         /// <summary>
+        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
+        /// </summary>
+        public readonly string? Tags;
+        /// <summary>
         /// Update domain count to use for availability set. Default `5` (string)
         /// </summary>
         public readonly string? UpdateDomainCount;
@@ -121,6 +130,7 @@ namespace Pulumi.Rancher2.Outputs
         /// Use private IP address of the machine to connect. Default `false` (bool)
         /// </summary>
         public readonly bool? UsePrivateIp;
+        public readonly bool? UsePublicIpStandardSku;
         /// <summary>
         /// Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
         /// </summary>
@@ -128,7 +138,11 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private NodeTemplateAzureConfig(
+            bool? acceleratedNetworking,
+
             string? availabilitySet,
+
+            string? availabilityZone,
 
             string? clientId,
 
@@ -178,13 +192,19 @@ namespace Pulumi.Rancher2.Outputs
 
             string? subscriptionId,
 
+            string? tags,
+
             string? updateDomainCount,
 
             bool? usePrivateIp,
 
+            bool? usePublicIpStandardSku,
+
             string? vnet)
         {
+            AcceleratedNetworking = acceleratedNetworking;
             AvailabilitySet = availabilitySet;
+            AvailabilityZone = availabilityZone;
             ClientId = clientId;
             ClientSecret = clientSecret;
             CustomData = customData;
@@ -209,8 +229,10 @@ namespace Pulumi.Rancher2.Outputs
             Subnet = subnet;
             SubnetPrefix = subnetPrefix;
             SubscriptionId = subscriptionId;
+            Tags = tags;
             UpdateDomainCount = updateDomainCount;
             UsePrivateIp = usePrivateIp;
+            UsePublicIpStandardSku = usePublicIpStandardSku;
             Vnet = vnet;
         }
     }

@@ -28,7 +28,6 @@ from .cluster_alert_rule import *
 from .cluster_alter_group import *
 from .cluster_alter_rule import *
 from .cluster_driver import *
-from .cluster_logging import *
 from .cluster_role_template_binding import *
 from .cluster_sync import *
 from .cluster_template import *
@@ -45,9 +44,7 @@ from .get_cluster import *
 from .get_cluster_alert_group import *
 from .get_cluster_alter_rule import *
 from .get_cluster_driver import *
-from .get_cluster_logging import *
 from .get_cluster_role_template_binding import *
-from .get_cluster_scan import *
 from .get_cluster_template import *
 from .get_cluster_v2 import *
 from .get_config_map_v2 import *
@@ -66,7 +63,6 @@ from .get_principal import *
 from .get_project import *
 from .get_project_alert_group import *
 from .get_project_alert_rule import *
-from .get_project_logging import *
 from .get_project_role_template_binding import *
 from .get_registry import *
 from .get_role_tempalte import *
@@ -91,7 +87,6 @@ from .pod_security_policy_template import *
 from .project import *
 from .project_alert_group import *
 from .project_alert_rule import *
-from .project_logging import *
 from .project_role_template_binding import *
 from .provider import *
 from .registry import *
@@ -302,14 +297,6 @@ _utilities.register(
  },
  {
   "pkg": "rancher2",
-  "mod": "index/clusterLogging",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/clusterLogging:ClusterLogging": "ClusterLogging"
-  }
- },
- {
-  "pkg": "rancher2",
   "mod": "index/clusterRoleTemplateBinding",
   "fqn": "pulumi_rancher2",
   "classes": {
@@ -482,14 +469,6 @@ _utilities.register(
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/projectAlertRule:ProjectAlertRule": "ProjectAlertRule"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/projectLogging",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/projectLogging:ProjectLogging": "ProjectLogging"
   }
  },
  {

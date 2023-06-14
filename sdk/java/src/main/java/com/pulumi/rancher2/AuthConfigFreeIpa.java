@@ -31,7 +31,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      * 
      */
-    @Export(name="accessMode", type=String.class, parameters={})
+    @Export(name="accessMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessMode;
 
     /**
@@ -45,7 +45,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://&lt;DN&gt;`  `freeipa_group://&lt;DN&gt;` (list)
      * 
      */
-    @Export(name="allowedPrincipalIds", type=List.class, parameters={String.class})
+    @Export(name="allowedPrincipalIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedPrincipalIds;
 
     /**
@@ -59,7 +59,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Annotations of the resource (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -73,7 +73,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Base64 encoded CA certificate for TLS if self-signed. Use filebase64(&lt;FILE&gt;) for encoding file (string)
      * 
      */
-    @Export(name="certificate", type=String.class, parameters={})
+    @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificate;
 
     /**
@@ -87,7 +87,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * FreeIpa connection timeout. Default `5000` (int)
      * 
      */
-    @Export(name="connectionTimeout", type=Integer.class, parameters={})
+    @Export(name="connectionTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> connectionTimeout;
 
     /**
@@ -101,7 +101,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Enable auth config provider. Default `true` (bool)
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -115,7 +115,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Group DN attribute. Default `entryDN` (string)
      * 
      */
-    @Export(name="groupDnAttribute", type=String.class, parameters={})
+    @Export(name="groupDnAttribute", refs={String.class}, tree="[0]")
     private Output<String> groupDnAttribute;
 
     /**
@@ -129,7 +129,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Group member mapping attribute. Default `member` (string)
      * 
      */
-    @Export(name="groupMemberMappingAttribute", type=String.class, parameters={})
+    @Export(name="groupMemberMappingAttribute", refs={String.class}, tree="[0]")
     private Output<String> groupMemberMappingAttribute;
 
     /**
@@ -143,7 +143,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Group member user attribute. Default `entryDN` (string)
      * 
      */
-    @Export(name="groupMemberUserAttribute", type=String.class, parameters={})
+    @Export(name="groupMemberUserAttribute", refs={String.class}, tree="[0]")
     private Output<String> groupMemberUserAttribute;
 
     /**
@@ -157,7 +157,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Group name attribute. Default `cn` (string)
      * 
      */
-    @Export(name="groupNameAttribute", type=String.class, parameters={})
+    @Export(name="groupNameAttribute", refs={String.class}, tree="[0]")
     private Output<String> groupNameAttribute;
 
     /**
@@ -171,7 +171,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Group object class. Default `groupOfNames` (string)
      * 
      */
-    @Export(name="groupObjectClass", type=String.class, parameters={})
+    @Export(name="groupObjectClass", refs={String.class}, tree="[0]")
     private Output<String> groupObjectClass;
 
     /**
@@ -185,7 +185,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Group search attribute. Default `cn` (string)
      * 
      */
-    @Export(name="groupSearchAttribute", type=String.class, parameters={})
+    @Export(name="groupSearchAttribute", refs={String.class}, tree="[0]")
     private Output<String> groupSearchAttribute;
 
     /**
@@ -199,7 +199,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Group search base (string)
      * 
      */
-    @Export(name="groupSearchBase", type=String.class, parameters={})
+    @Export(name="groupSearchBase", refs={String.class}, tree="[0]")
     private Output<String> groupSearchBase;
 
     /**
@@ -213,7 +213,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Labels of the resource (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -227,7 +227,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * (Computed) The name of the resource (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -241,7 +241,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Nested group membership enable. Default `false` (bool)
      * 
      */
-    @Export(name="nestedGroupMembershipEnabled", type=Boolean.class, parameters={})
+    @Export(name="nestedGroupMembershipEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> nestedGroupMembershipEnabled;
 
     /**
@@ -255,7 +255,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * FreeIpa port. Default `389` (int)
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -269,7 +269,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * FreeIpa servers list (list)
      * 
      */
-    @Export(name="servers", type=List.class, parameters={String.class})
+    @Export(name="servers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> servers;
 
     /**
@@ -283,7 +283,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Service account DN for access FreeIpa service (string)
      * 
      */
-    @Export(name="serviceAccountDistinguishedName", type=String.class, parameters={})
+    @Export(name="serviceAccountDistinguishedName", refs={String.class}, tree="[0]")
     private Output<String> serviceAccountDistinguishedName;
 
     /**
@@ -297,7 +297,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Service account password for access FreeIpa service (string)
      * 
      */
-    @Export(name="serviceAccountPassword", type=String.class, parameters={})
+    @Export(name="serviceAccountPassword", refs={String.class}, tree="[0]")
     private Output<String> serviceAccountPassword;
 
     /**
@@ -311,7 +311,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Password for test access to FreeIpa service (string)
      * 
      */
-    @Export(name="testPassword", type=String.class, parameters={})
+    @Export(name="testPassword", refs={String.class}, tree="[0]")
     private Output<String> testPassword;
 
     /**
@@ -325,7 +325,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Username for test access to FreeIpa service (string)
      * 
      */
-    @Export(name="testUsername", type=String.class, parameters={})
+    @Export(name="testUsername", refs={String.class}, tree="[0]")
     private Output<String> testUsername;
 
     /**
@@ -339,7 +339,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * Enable TLS connection (bool)
      * 
      */
-    @Export(name="tls", type=Boolean.class, parameters={})
+    @Export(name="tls", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> tls;
 
     /**
@@ -353,7 +353,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * (Computed) The type of the resource (string)
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -367,7 +367,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * User disabled bit mask (int)
      * 
      */
-    @Export(name="userDisabledBitMask", type=Integer.class, parameters={})
+    @Export(name="userDisabledBitMask", refs={Integer.class}, tree="[0]")
     private Output<Integer> userDisabledBitMask;
 
     /**
@@ -381,7 +381,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * User enable attribute (string)
      * 
      */
-    @Export(name="userEnabledAttribute", type=String.class, parameters={})
+    @Export(name="userEnabledAttribute", refs={String.class}, tree="[0]")
     private Output<String> userEnabledAttribute;
 
     /**
@@ -395,7 +395,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * User login attribute. Default `uid` (string)
      * 
      */
-    @Export(name="userLoginAttribute", type=String.class, parameters={})
+    @Export(name="userLoginAttribute", refs={String.class}, tree="[0]")
     private Output<String> userLoginAttribute;
 
     /**
@@ -409,7 +409,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * User member attribute. Default `memberOf` (string)
      * 
      */
-    @Export(name="userMemberAttribute", type=String.class, parameters={})
+    @Export(name="userMemberAttribute", refs={String.class}, tree="[0]")
     private Output<String> userMemberAttribute;
 
     /**
@@ -423,7 +423,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * User name attribute. Default `givenName` (string)
      * 
      */
-    @Export(name="userNameAttribute", type=String.class, parameters={})
+    @Export(name="userNameAttribute", refs={String.class}, tree="[0]")
     private Output<String> userNameAttribute;
 
     /**
@@ -437,7 +437,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * User object class. Default `inetorgperson` (string)
      * 
      */
-    @Export(name="userObjectClass", type=String.class, parameters={})
+    @Export(name="userObjectClass", refs={String.class}, tree="[0]")
     private Output<String> userObjectClass;
 
     /**
@@ -451,7 +451,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * User search attribute. Default `uid|sn|givenName` (string)
      * 
      */
-    @Export(name="userSearchAttribute", type=String.class, parameters={})
+    @Export(name="userSearchAttribute", refs={String.class}, tree="[0]")
     private Output<String> userSearchAttribute;
 
     /**
@@ -465,7 +465,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * User search base DN (string)
      * 
      */
-    @Export(name="userSearchBase", type=String.class, parameters={})
+    @Export(name="userSearchBase", refs={String.class}, tree="[0]")
     private Output<String> userSearchBase;
 
     /**

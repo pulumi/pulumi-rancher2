@@ -57,13 +57,6 @@ __all__ = [
     'ClusterGkeConfigV2PrivateClusterConfig',
     'ClusterK3sConfig',
     'ClusterK3sConfigUpgradeStrategy',
-    'ClusterLoggingCustomTargetConfig',
-    'ClusterLoggingElasticsearchConfig',
-    'ClusterLoggingFluentdConfig',
-    'ClusterLoggingFluentdConfigFluentServer',
-    'ClusterLoggingKafkaConfig',
-    'ClusterLoggingSplunkConfig',
-    'ClusterLoggingSyslogConfig',
     'ClusterOkeConfig',
     'ClusterRke2Config',
     'ClusterRke2ConfigUpgradeStrategy',
@@ -127,10 +120,6 @@ __all__ = [
     'ClusterRkeConfigServicesScheduler',
     'ClusterRkeConfigUpgradeStrategy',
     'ClusterRkeConfigUpgradeStrategyDrainInput',
-    'ClusterScheduledClusterScan',
-    'ClusterScheduledClusterScanScanConfig',
-    'ClusterScheduledClusterScanScanConfigCisScanConfig',
-    'ClusterScheduledClusterScanScheduleConfig',
     'ClusterSyncNode',
     'ClusterTemplateMember',
     'ClusterTemplateTemplateRevision',
@@ -196,10 +185,6 @@ __all__ = [
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput',
-    'ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan',
-    'ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig',
-    'ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig',
-    'ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig',
     'ClusterTemplateTemplateRevisionQuestion',
     'ClusterV2AgentEnvVar',
     'ClusterV2ClusterRegistrationToken',
@@ -284,13 +269,6 @@ __all__ = [
     'ProjectAlertRulePodRule',
     'ProjectAlertRuleWorkloadRule',
     'ProjectContainerResourceLimit',
-    'ProjectLoggingCustomTargetConfig',
-    'ProjectLoggingElasticsearchConfig',
-    'ProjectLoggingFluentdConfig',
-    'ProjectLoggingFluentdConfigFluentServer',
-    'ProjectLoggingKafkaConfig',
-    'ProjectLoggingSplunkConfig',
-    'ProjectLoggingSyslogConfig',
     'ProjectProjectMonitoringInput',
     'ProjectResourceQuota',
     'ProjectResourceQuotaNamespaceDefaultLimit',
@@ -329,13 +307,6 @@ __all__ = [
     'GetClusterGkeConfigV2PrivateClusterConfigResult',
     'GetClusterK3sConfigResult',
     'GetClusterK3sConfigUpgradeStrategyResult',
-    'GetClusterLoggingCustomTargetConfigResult',
-    'GetClusterLoggingElasticsearchConfigResult',
-    'GetClusterLoggingFluentdConfigResult',
-    'GetClusterLoggingFluentdConfigFluentServerResult',
-    'GetClusterLoggingKafkaConfigResult',
-    'GetClusterLoggingSplunkConfigResult',
-    'GetClusterLoggingSyslogConfigResult',
     'GetClusterOkeConfigResult',
     'GetClusterRke2ConfigResult',
     'GetClusterRke2ConfigUpgradeStrategyResult',
@@ -399,12 +370,6 @@ __all__ = [
     'GetClusterRkeConfigServicesSchedulerResult',
     'GetClusterRkeConfigUpgradeStrategyResult',
     'GetClusterRkeConfigUpgradeStrategyDrainInputResult',
-    'GetClusterScanScanConfigResult',
-    'GetClusterScanScanConfigCisScanConfigResult',
-    'GetClusterScheduledClusterScanResult',
-    'GetClusterScheduledClusterScanScanConfigResult',
-    'GetClusterScheduledClusterScanScanConfigCisScanConfigResult',
-    'GetClusterScheduledClusterScanScheduleConfigResult',
     'GetClusterTemplateMemberResult',
     'GetClusterTemplateTemplateRevisionResult',
     'GetClusterTemplateTemplateRevisionClusterConfigResult',
@@ -469,10 +434,6 @@ __all__ = [
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputResult',
-    'GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanResult',
-    'GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigResult',
-    'GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigResult',
-    'GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigResult',
     'GetClusterTemplateTemplateRevisionQuestionResult',
     'GetClusterV2AgentEnvVarResult',
     'GetClusterV2ClusterRegistrationTokenResult',
@@ -539,13 +500,6 @@ __all__ = [
     'GetProjectAlertRulePodRuleResult',
     'GetProjectAlertRuleWorkloadRuleResult',
     'GetProjectContainerResourceLimitResult',
-    'GetProjectLoggingCustomTargetConfigResult',
-    'GetProjectLoggingElasticsearchConfigResult',
-    'GetProjectLoggingFluentdConfigResult',
-    'GetProjectLoggingFluentdConfigFluentServerResult',
-    'GetProjectLoggingKafkaConfigResult',
-    'GetProjectLoggingSplunkConfigResult',
-    'GetProjectLoggingSyslogConfigResult',
     'GetProjectResourceQuotaResult',
     'GetProjectResourceQuotaNamespaceDefaultLimitResult',
     'GetProjectResourceQuotaProjectLimitResult',
@@ -3766,6 +3720,8 @@ class ClusterEksConfigV2NodeGroup(dict):
             suggest = "max_size"
         elif key == "minSize":
             suggest = "min_size"
+        elif key == "nodeRole":
+            suggest = "node_role"
         elif key == "requestSpotInstances":
             suggest = "request_spot_instances"
         elif key == "resourceTags":
@@ -3798,6 +3754,7 @@ class ClusterEksConfigV2NodeGroup(dict):
                  launch_templates: Optional[Sequence['outputs.ClusterEksConfigV2NodeGroupLaunchTemplate']] = None,
                  max_size: Optional[int] = None,
                  min_size: Optional[int] = None,
+                 node_role: Optional[str] = None,
                  request_spot_instances: Optional[bool] = None,
                  resource_tags: Optional[Mapping[str, Any]] = None,
                  spot_instance_types: Optional[Sequence[str]] = None,
@@ -3817,6 +3774,7 @@ class ClusterEksConfigV2NodeGroup(dict):
         :param Sequence['ClusterEksConfigV2NodeGroupLaunchTemplateArgs'] launch_templates: The EKS node groups launch template (list Maxitem: 1)
         :param int max_size: Audit log max size. Default: `100` (int)
         :param int min_size: The EKS node group maximum size. Default `2` (int)
+        :param str node_role: The EKS node group node role ARN. Default `""` (string)
         :param bool request_spot_instances: Enable EKS node group request spot instances (bool)
         :param Mapping[str, Any] resource_tags: The EKS node group resource tags (map)
         :param Sequence[str] spot_instance_types: The EKS node group sport instace types (list string)
@@ -3846,6 +3804,8 @@ class ClusterEksConfigV2NodeGroup(dict):
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
+        if node_role is not None:
+            pulumi.set(__self__, "node_role", node_role)
         if request_spot_instances is not None:
             pulumi.set(__self__, "request_spot_instances", request_spot_instances)
         if resource_tags is not None:
@@ -3948,6 +3908,14 @@ class ClusterEksConfigV2NodeGroup(dict):
         The EKS node group maximum size. Default `2` (int)
         """
         return pulumi.get(self, "min_size")
+
+    @property
+    @pulumi.getter(name="nodeRole")
+    def node_role(self) -> Optional[str]:
+        """
+        The EKS node group node role ARN. Default `""` (string)
+        """
+        return pulumi.get(self, "node_role")
 
     @property
     @pulumi.getter(name="requestSpotInstances")
@@ -5993,816 +5961,6 @@ class ClusterK3sConfigUpgradeStrategy(dict):
         Worker concurrency. Default: `1` (int)
         """
         return pulumi.get(self, "worker_concurrency")
-
-
-@pulumi.output_type
-class ClusterLoggingCustomTargetConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientCert":
-            suggest = "client_cert"
-        elif key == "clientKey":
-            suggest = "client_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterLoggingCustomTargetConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterLoggingCustomTargetConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterLoggingCustomTargetConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 content: str,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None):
-        """
-        :param str content: Custom target config content (string)
-        :param str certificate: SSL CA certificate for the custom target service (string)
-        :param str client_cert: SSL client certificate for the custom target service (string)
-        :param str client_key: SSL client key for the custom target service (string)
-        """
-        pulumi.set(__self__, "content", content)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-
-    @property
-    @pulumi.getter
-    def content(self) -> str:
-        """
-        Custom target config content (string)
-        """
-        return pulumi.get(self, "content")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-
-@pulumi.output_type
-class ClusterLoggingElasticsearchConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authPassword":
-            suggest = "auth_password"
-        elif key == "authUsername":
-            suggest = "auth_username"
-        elif key == "clientCert":
-            suggest = "client_cert"
-        elif key == "clientKey":
-            suggest = "client_key"
-        elif key == "clientKeyPass":
-            suggest = "client_key_pass"
-        elif key == "dateFormat":
-            suggest = "date_format"
-        elif key == "indexPrefix":
-            suggest = "index_prefix"
-        elif key == "sslVerify":
-            suggest = "ssl_verify"
-        elif key == "sslVersion":
-            suggest = "ssl_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterLoggingElasticsearchConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterLoggingElasticsearchConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterLoggingElasticsearchConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 endpoint: str,
-                 auth_password: Optional[str] = None,
-                 auth_username: Optional[str] = None,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 client_key_pass: Optional[str] = None,
-                 date_format: Optional[str] = None,
-                 index_prefix: Optional[str] = None,
-                 ssl_verify: Optional[bool] = None,
-                 ssl_version: Optional[str] = None):
-        """
-        :param str endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param str auth_password: User password for the elascticsearch service (string)
-        :param str auth_username: Username for the elascticsearch service (string)
-        :param str certificate: SSL CA certificate for the custom target service (string)
-        :param str client_cert: SSL client certificate for the custom target service (string)
-        :param str client_key: SSL client key for the custom target service (string)
-        :param str client_key_pass: SSL client key password for the elascticsearch service (string)
-        :param str date_format: Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
-        :param str index_prefix: Index prefix for the elascticsearch logs. Default: `local` (string)
-        :param bool ssl_verify: SSL verify for the elascticsearch service (bool)
-        :param str ssl_version: SSL version for the elascticsearch service (string)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        if auth_password is not None:
-            pulumi.set(__self__, "auth_password", auth_password)
-        if auth_username is not None:
-            pulumi.set(__self__, "auth_username", auth_username)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if client_key_pass is not None:
-            pulumi.set(__self__, "client_key_pass", client_key_pass)
-        if date_format is not None:
-            pulumi.set(__self__, "date_format", date_format)
-        if index_prefix is not None:
-            pulumi.set(__self__, "index_prefix", index_prefix)
-        if ssl_verify is not None:
-            pulumi.set(__self__, "ssl_verify", ssl_verify)
-        if ssl_version is not None:
-            pulumi.set(__self__, "ssl_version", ssl_version)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter(name="authPassword")
-    def auth_password(self) -> Optional[str]:
-        """
-        User password for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "auth_password")
-
-    @property
-    @pulumi.getter(name="authUsername")
-    def auth_username(self) -> Optional[str]:
-        """
-        Username for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "auth_username")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="clientKeyPass")
-    def client_key_pass(self) -> Optional[str]:
-        """
-        SSL client key password for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "client_key_pass")
-
-    @property
-    @pulumi.getter(name="dateFormat")
-    def date_format(self) -> Optional[str]:
-        """
-        Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
-        """
-        return pulumi.get(self, "date_format")
-
-    @property
-    @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[str]:
-        """
-        Index prefix for the elascticsearch logs. Default: `local` (string)
-        """
-        return pulumi.get(self, "index_prefix")
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> Optional[bool]:
-        """
-        SSL verify for the elascticsearch service (bool)
-        """
-        return pulumi.get(self, "ssl_verify")
-
-    @property
-    @pulumi.getter(name="sslVersion")
-    def ssl_version(self) -> Optional[str]:
-        """
-        SSL version for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "ssl_version")
-
-
-@pulumi.output_type
-class ClusterLoggingFluentdConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fluentServers":
-            suggest = "fluent_servers"
-        elif key == "enableTls":
-            suggest = "enable_tls"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterLoggingFluentdConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterLoggingFluentdConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterLoggingFluentdConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 fluent_servers: Sequence['outputs.ClusterLoggingFluentdConfigFluentServer'],
-                 certificate: Optional[str] = None,
-                 compress: Optional[bool] = None,
-                 enable_tls: Optional[bool] = None):
-        """
-        :param Sequence['ClusterLoggingFluentdConfigFluentServerArgs'] fluent_servers: Servers for the fluentd service (list)
-        :param str certificate: SSL CA certificate for the custom target service (string)
-        :param bool compress: Compress data for the fluentd service (bool)
-        :param bool enable_tls: Enable TLS for the fluentd service (bool)
-        """
-        pulumi.set(__self__, "fluent_servers", fluent_servers)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if compress is not None:
-            pulumi.set(__self__, "compress", compress)
-        if enable_tls is not None:
-            pulumi.set(__self__, "enable_tls", enable_tls)
-
-    @property
-    @pulumi.getter(name="fluentServers")
-    def fluent_servers(self) -> Sequence['outputs.ClusterLoggingFluentdConfigFluentServer']:
-        """
-        Servers for the fluentd service (list)
-        """
-        return pulumi.get(self, "fluent_servers")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter
-    def compress(self) -> Optional[bool]:
-        """
-        Compress data for the fluentd service (bool)
-        """
-        return pulumi.get(self, "compress")
-
-    @property
-    @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[bool]:
-        """
-        Enable TLS for the fluentd service (bool)
-        """
-        return pulumi.get(self, "enable_tls")
-
-
-@pulumi.output_type
-class ClusterLoggingFluentdConfigFluentServer(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sharedKey":
-            suggest = "shared_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterLoggingFluentdConfigFluentServer. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterLoggingFluentdConfigFluentServer.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterLoggingFluentdConfigFluentServer.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 endpoint: str,
-                 hostname: Optional[str] = None,
-                 password: Optional[str] = None,
-                 shared_key: Optional[str] = None,
-                 standby: Optional[bool] = None,
-                 username: Optional[str] = None,
-                 weight: Optional[int] = None):
-        """
-        :param str endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param str hostname: Hostname of the fluentd service (string)
-        :param str password: User password of the fluentd service (string)
-        :param str shared_key: Shared key of the fluentd service (string)
-        :param bool standby: Standby server of the fluentd service (bool)
-        :param str username: Username of the fluentd service (string)
-        :param int weight: Weight of the fluentd server (int)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if shared_key is not None:
-            pulumi.set(__self__, "shared_key", shared_key)
-        if standby is not None:
-            pulumi.set(__self__, "standby", standby)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
-        if weight is not None:
-            pulumi.set(__self__, "weight", weight)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter
-    def hostname(self) -> Optional[str]:
-        """
-        Hostname of the fluentd service (string)
-        """
-        return pulumi.get(self, "hostname")
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[str]:
-        """
-        User password of the fluentd service (string)
-        """
-        return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter(name="sharedKey")
-    def shared_key(self) -> Optional[str]:
-        """
-        Shared key of the fluentd service (string)
-        """
-        return pulumi.get(self, "shared_key")
-
-    @property
-    @pulumi.getter
-    def standby(self) -> Optional[bool]:
-        """
-        Standby server of the fluentd service (bool)
-        """
-        return pulumi.get(self, "standby")
-
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[str]:
-        """
-        Username of the fluentd service (string)
-        """
-        return pulumi.get(self, "username")
-
-    @property
-    @pulumi.getter
-    def weight(self) -> Optional[int]:
-        """
-        Weight of the fluentd server (int)
-        """
-        return pulumi.get(self, "weight")
-
-
-@pulumi.output_type
-class ClusterLoggingKafkaConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "brokerEndpoints":
-            suggest = "broker_endpoints"
-        elif key == "clientCert":
-            suggest = "client_cert"
-        elif key == "clientKey":
-            suggest = "client_key"
-        elif key == "zookeeperEndpoint":
-            suggest = "zookeeper_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterLoggingKafkaConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterLoggingKafkaConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterLoggingKafkaConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 topic: str,
-                 broker_endpoints: Optional[Sequence[str]] = None,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 zookeeper_endpoint: Optional[str] = None):
-        """
-        :param str topic: Topic to publish on the kafka service (string)
-        :param Sequence[str] broker_endpoints: Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
-        :param str certificate: SSL CA certificate for the custom target service (string)
-        :param str client_cert: SSL client certificate for the custom target service (string)
-        :param str client_key: SSL client key for the custom target service (string)
-        :param str zookeeper_endpoint: Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
-        """
-        pulumi.set(__self__, "topic", topic)
-        if broker_endpoints is not None:
-            pulumi.set(__self__, "broker_endpoints", broker_endpoints)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if zookeeper_endpoint is not None:
-            pulumi.set(__self__, "zookeeper_endpoint", zookeeper_endpoint)
-
-    @property
-    @pulumi.getter
-    def topic(self) -> str:
-        """
-        Topic to publish on the kafka service (string)
-        """
-        return pulumi.get(self, "topic")
-
-    @property
-    @pulumi.getter(name="brokerEndpoints")
-    def broker_endpoints(self) -> Optional[Sequence[str]]:
-        """
-        Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
-        """
-        return pulumi.get(self, "broker_endpoints")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="zookeeperEndpoint")
-    def zookeeper_endpoint(self) -> Optional[str]:
-        """
-        Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
-        """
-        return pulumi.get(self, "zookeeper_endpoint")
-
-
-@pulumi.output_type
-class ClusterLoggingSplunkConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientCert":
-            suggest = "client_cert"
-        elif key == "clientKey":
-            suggest = "client_key"
-        elif key == "clientKeyPass":
-            suggest = "client_key_pass"
-        elif key == "sslVerify":
-            suggest = "ssl_verify"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterLoggingSplunkConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterLoggingSplunkConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterLoggingSplunkConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 endpoint: str,
-                 token: str,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 client_key_pass: Optional[str] = None,
-                 index: Optional[str] = None,
-                 source: Optional[str] = None,
-                 ssl_verify: Optional[bool] = None):
-        """
-        :param str endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param str token: Token for the splunk service (string)
-        :param str certificate: SSL CA certificate for the custom target service (string)
-        :param str client_cert: SSL client certificate for the custom target service (string)
-        :param str client_key: SSL client key for the custom target service (string)
-        :param str client_key_pass: SSL client key password for the elascticsearch service (string)
-        :param str index: Index prefix for the splunk logs (string)
-        :param str source: Date format for the splunk logs (string)
-        :param bool ssl_verify: SSL verify for the elascticsearch service (bool)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "token", token)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if client_key_pass is not None:
-            pulumi.set(__self__, "client_key_pass", client_key_pass)
-        if index is not None:
-            pulumi.set(__self__, "index", index)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-        if ssl_verify is not None:
-            pulumi.set(__self__, "ssl_verify", ssl_verify)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter
-    def token(self) -> str:
-        """
-        Token for the splunk service (string)
-        """
-        return pulumi.get(self, "token")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="clientKeyPass")
-    def client_key_pass(self) -> Optional[str]:
-        """
-        SSL client key password for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "client_key_pass")
-
-    @property
-    @pulumi.getter
-    def index(self) -> Optional[str]:
-        """
-        Index prefix for the splunk logs (string)
-        """
-        return pulumi.get(self, "index")
-
-    @property
-    @pulumi.getter
-    def source(self) -> Optional[str]:
-        """
-        Date format for the splunk logs (string)
-        """
-        return pulumi.get(self, "source")
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> Optional[bool]:
-        """
-        SSL verify for the elascticsearch service (bool)
-        """
-        return pulumi.get(self, "ssl_verify")
-
-
-@pulumi.output_type
-class ClusterLoggingSyslogConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientCert":
-            suggest = "client_cert"
-        elif key == "clientKey":
-            suggest = "client_key"
-        elif key == "enableTls":
-            suggest = "enable_tls"
-        elif key == "sslVerify":
-            suggest = "ssl_verify"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterLoggingSyslogConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterLoggingSyslogConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterLoggingSyslogConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 endpoint: str,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 enable_tls: Optional[bool] = None,
-                 program: Optional[str] = None,
-                 protocol: Optional[str] = None,
-                 severity: Optional[str] = None,
-                 ssl_verify: Optional[bool] = None,
-                 token: Optional[str] = None):
-        """
-        :param str endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param str certificate: SSL CA certificate for the custom target service (string)
-        :param str client_cert: SSL client certificate for the custom target service (string)
-        :param str client_key: SSL client key for the custom target service (string)
-        :param bool enable_tls: Enable TLS for the fluentd service (bool)
-        :param str program: Program for the syslog service (string)
-        :param str protocol: Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
-        :param str severity: Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
-        :param bool ssl_verify: SSL verify for the elascticsearch service (bool)
-        :param str token: Token for the splunk service (string)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if enable_tls is not None:
-            pulumi.set(__self__, "enable_tls", enable_tls)
-        if program is not None:
-            pulumi.set(__self__, "program", program)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if severity is not None:
-            pulumi.set(__self__, "severity", severity)
-        if ssl_verify is not None:
-            pulumi.set(__self__, "ssl_verify", ssl_verify)
-        if token is not None:
-            pulumi.set(__self__, "token", token)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[bool]:
-        """
-        Enable TLS for the fluentd service (bool)
-        """
-        return pulumi.get(self, "enable_tls")
-
-    @property
-    @pulumi.getter
-    def program(self) -> Optional[str]:
-        """
-        Program for the syslog service (string)
-        """
-        return pulumi.get(self, "program")
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[str]:
-        """
-        Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
-        """
-        return pulumi.get(self, "protocol")
-
-    @property
-    @pulumi.getter
-    def severity(self) -> Optional[str]:
-        """
-        Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
-        """
-        return pulumi.get(self, "severity")
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> Optional[bool]:
-        """
-        SSL verify for the elascticsearch service (bool)
-        """
-        return pulumi.get(self, "ssl_verify")
-
-    @property
-    @pulumi.getter
-    def token(self) -> Optional[str]:
-        """
-        Token for the splunk service (string)
-        """
-        return pulumi.get(self, "token")
 
 
 @pulumi.output_type
@@ -12530,7 +11688,7 @@ class ClusterRkeConfigServicesEtcd(dict):
         :param str image: Docker image for etcd service (string)
         :param str key: The toleration key (string)
         :param str path: Path for etcd service (string)
-        :param str retention: Cluster scan retention (int)
+        :param str retention: Retention option for etcd service (string)
         :param bool snapshot: Snapshot option for etcd service (bool)
         :param int uid: Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
         """
@@ -12665,7 +11823,7 @@ class ClusterRkeConfigServicesEtcd(dict):
     @pulumi.getter
     def retention(self) -> Optional[str]:
         """
-        Cluster scan retention (int)
+        Retention option for etcd service (string)
         """
         return pulumi.get(self, "retention")
 
@@ -12719,7 +11877,7 @@ class ClusterRkeConfigServicesEtcdBackupConfig(dict):
         """
         :param bool enabled: Enable etcd backup (bool)
         :param int interval_hours: Interval hours for etcd backup. Default `12` (int)
-        :param int retention: Cluster scan retention (int)
+        :param int retention: Retention option for etcd service (string)
         :param 'ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs' s3_backup_config: S3 config options for etcd backup (list maxitems:1)
         :param bool safe_timestamp: Safe timestamp for etcd backup. Default: `false` (bool)
         :param int timeout: Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
@@ -12757,7 +11915,7 @@ class ClusterRkeConfigServicesEtcdBackupConfig(dict):
     @pulumi.getter
     def retention(self) -> Optional[int]:
         """
-        Cluster scan retention (int)
+        Retention option for etcd service (string)
         """
         return pulumi.get(self, "retention")
 
@@ -13871,239 +13029,6 @@ class ClusterRkeConfigUpgradeStrategyDrainInput(dict):
 
 
 @pulumi.output_type
-class ClusterScheduledClusterScan(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "scanConfig":
-            suggest = "scan_config"
-        elif key == "scheduleConfig":
-            suggest = "schedule_config"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterScheduledClusterScan. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterScheduledClusterScan.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterScheduledClusterScan.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 scan_config: 'outputs.ClusterScheduledClusterScanScanConfig',
-                 schedule_config: 'outputs.ClusterScheduledClusterScanScheduleConfig',
-                 enabled: Optional[bool] = None):
-        """
-        :param 'ClusterScheduledClusterScanScanConfigArgs' scan_config: Cluster scan config (List maxitems:1)
-        :param 'ClusterScheduledClusterScanScheduleConfigArgs' schedule_config: Cluster scan schedule config (list maxitems:1)
-        :param bool enabled: Enable etcd backup (bool)
-        """
-        pulumi.set(__self__, "scan_config", scan_config)
-        pulumi.set(__self__, "schedule_config", schedule_config)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter(name="scanConfig")
-    def scan_config(self) -> 'outputs.ClusterScheduledClusterScanScanConfig':
-        """
-        Cluster scan config (List maxitems:1)
-        """
-        return pulumi.get(self, "scan_config")
-
-    @property
-    @pulumi.getter(name="scheduleConfig")
-    def schedule_config(self) -> 'outputs.ClusterScheduledClusterScanScheduleConfig':
-        """
-        Cluster scan schedule config (list maxitems:1)
-        """
-        return pulumi.get(self, "schedule_config")
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[bool]:
-        """
-        Enable etcd backup (bool)
-        """
-        return pulumi.get(self, "enabled")
-
-
-@pulumi.output_type
-class ClusterScheduledClusterScanScanConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cisScanConfig":
-            suggest = "cis_scan_config"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterScheduledClusterScanScanConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterScheduledClusterScanScanConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterScheduledClusterScanScanConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 cis_scan_config: Optional['outputs.ClusterScheduledClusterScanScanConfigCisScanConfig'] = None):
-        """
-        :param 'ClusterScheduledClusterScanScanConfigCisScanConfigArgs' cis_scan_config: Cluster Cis Scan config (List maxitems:1)
-        """
-        if cis_scan_config is not None:
-            pulumi.set(__self__, "cis_scan_config", cis_scan_config)
-
-    @property
-    @pulumi.getter(name="cisScanConfig")
-    def cis_scan_config(self) -> Optional['outputs.ClusterScheduledClusterScanScanConfigCisScanConfig']:
-        """
-        Cluster Cis Scan config (List maxitems:1)
-        """
-        return pulumi.get(self, "cis_scan_config")
-
-
-@pulumi.output_type
-class ClusterScheduledClusterScanScanConfigCisScanConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "debugMaster":
-            suggest = "debug_master"
-        elif key == "debugWorker":
-            suggest = "debug_worker"
-        elif key == "overrideBenchmarkVersion":
-            suggest = "override_benchmark_version"
-        elif key == "overrideSkips":
-            suggest = "override_skips"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterScheduledClusterScanScanConfigCisScanConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterScheduledClusterScanScanConfigCisScanConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterScheduledClusterScanScanConfigCisScanConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 debug_master: Optional[bool] = None,
-                 debug_worker: Optional[bool] = None,
-                 override_benchmark_version: Optional[str] = None,
-                 override_skips: Optional[Sequence[str]] = None,
-                 profile: Optional[str] = None):
-        """
-        :param bool debug_master: Debug master. Default: `false` (bool)
-        :param bool debug_worker: Debug worker. Default: `false` (bool)
-        :param str override_benchmark_version: Override benchmark version (string)
-        :param Sequence[str] override_skips: Override skip (string)
-        :param str profile: Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
-        """
-        if debug_master is not None:
-            pulumi.set(__self__, "debug_master", debug_master)
-        if debug_worker is not None:
-            pulumi.set(__self__, "debug_worker", debug_worker)
-        if override_benchmark_version is not None:
-            pulumi.set(__self__, "override_benchmark_version", override_benchmark_version)
-        if override_skips is not None:
-            pulumi.set(__self__, "override_skips", override_skips)
-        if profile is not None:
-            pulumi.set(__self__, "profile", profile)
-
-    @property
-    @pulumi.getter(name="debugMaster")
-    def debug_master(self) -> Optional[bool]:
-        """
-        Debug master. Default: `false` (bool)
-        """
-        return pulumi.get(self, "debug_master")
-
-    @property
-    @pulumi.getter(name="debugWorker")
-    def debug_worker(self) -> Optional[bool]:
-        """
-        Debug worker. Default: `false` (bool)
-        """
-        return pulumi.get(self, "debug_worker")
-
-    @property
-    @pulumi.getter(name="overrideBenchmarkVersion")
-    def override_benchmark_version(self) -> Optional[str]:
-        """
-        Override benchmark version (string)
-        """
-        return pulumi.get(self, "override_benchmark_version")
-
-    @property
-    @pulumi.getter(name="overrideSkips")
-    def override_skips(self) -> Optional[Sequence[str]]:
-        """
-        Override skip (string)
-        """
-        return pulumi.get(self, "override_skips")
-
-    @property
-    @pulumi.getter
-    def profile(self) -> Optional[str]:
-        """
-        Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
-        """
-        return pulumi.get(self, "profile")
-
-
-@pulumi.output_type
-class ClusterScheduledClusterScanScheduleConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cronSchedule":
-            suggest = "cron_schedule"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterScheduledClusterScanScheduleConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterScheduledClusterScanScheduleConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterScheduledClusterScanScheduleConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 cron_schedule: str,
-                 retention: Optional[int] = None):
-        """
-        :param str cron_schedule: Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
-        :param int retention: Cluster scan retention (int)
-        """
-        pulumi.set(__self__, "cron_schedule", cron_schedule)
-        if retention is not None:
-            pulumi.set(__self__, "retention", retention)
-
-    @property
-    @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> str:
-        """
-        Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
-        """
-        return pulumi.get(self, "cron_schedule")
-
-    @property
-    @pulumi.getter
-    def retention(self) -> Optional[int]:
-        """
-        Cluster scan retention (int)
-        """
-        return pulumi.get(self, "retention")
-
-
-@pulumi.output_type
 class ClusterSyncNode(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -14556,8 +13481,6 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
             suggest = "enable_cluster_monitoring"
         elif key == "enableNetworkPolicy":
             suggest = "enable_network_policy"
-        elif key == "scheduledClusterScan":
-            suggest = "scheduled_cluster_scan"
         elif key == "windowsPreferedCluster":
             suggest = "windows_prefered_cluster"
 
@@ -14583,7 +13506,6 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
                  enable_cluster_alerting: Optional[bool] = None,
                  enable_cluster_monitoring: Optional[bool] = None,
                  enable_network_policy: Optional[bool] = None,
-                 scheduled_cluster_scan: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan'] = None,
                  windows_prefered_cluster: Optional[bool] = None):
         """
         :param 'ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs' rke_config: Rancher Kubernetes Engine Config (list maxitems: 1)
@@ -14596,7 +13518,6 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
         :param bool enable_cluster_alerting: Enable built-in cluster alerting. Default: `false` (bool)
         :param bool enable_cluster_monitoring: Enable built-in cluster monitoring. Default: `false` (bool)
         :param bool enable_network_policy: Enable project network isolation. Default: `false` (bool)
-        :param 'ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs' scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
         :param bool windows_prefered_cluster: Windows prefered cluster. Default: `false` (bool)
         """
         pulumi.set(__self__, "rke_config", rke_config)
@@ -14618,8 +13539,6 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
             pulumi.set(__self__, "enable_cluster_monitoring", enable_cluster_monitoring)
         if enable_network_policy is not None:
             pulumi.set(__self__, "enable_network_policy", enable_network_policy)
-        if scheduled_cluster_scan is not None:
-            pulumi.set(__self__, "scheduled_cluster_scan", scheduled_cluster_scan)
         if windows_prefered_cluster is not None:
             pulumi.set(__self__, "windows_prefered_cluster", windows_prefered_cluster)
 
@@ -14702,14 +13621,6 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
         Enable project network isolation. Default: `false` (bool)
         """
         return pulumi.get(self, "enable_network_policy")
-
-    @property
-    @pulumi.getter(name="scheduledClusterScan")
-    def scheduled_cluster_scan(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan']:
-        """
-        Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-        """
-        return pulumi.get(self, "scheduled_cluster_scan")
 
     @property
     @pulumi.getter(name="windowsPreferedCluster")
@@ -19559,193 +18470,6 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainI
 
 
 @pulumi.output_type
-class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "scanConfig":
-            suggest = "scan_config"
-        elif key == "scheduleConfig":
-            suggest = "schedule_config"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 scan_config: 'outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig',
-                 schedule_config: 'outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig',
-                 enabled: Optional[bool] = None):
-        """
-        :param bool enabled: Enable cluster template revision. Default `true` (bool)
-        """
-        pulumi.set(__self__, "scan_config", scan_config)
-        pulumi.set(__self__, "schedule_config", schedule_config)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter(name="scanConfig")
-    def scan_config(self) -> 'outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig':
-        return pulumi.get(self, "scan_config")
-
-    @property
-    @pulumi.getter(name="scheduleConfig")
-    def schedule_config(self) -> 'outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig':
-        return pulumi.get(self, "schedule_config")
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[bool]:
-        """
-        Enable cluster template revision. Default `true` (bool)
-        """
-        return pulumi.get(self, "enabled")
-
-
-@pulumi.output_type
-class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cisScanConfig":
-            suggest = "cis_scan_config"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 cis_scan_config: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig'] = None):
-        if cis_scan_config is not None:
-            pulumi.set(__self__, "cis_scan_config", cis_scan_config)
-
-    @property
-    @pulumi.getter(name="cisScanConfig")
-    def cis_scan_config(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig']:
-        return pulumi.get(self, "cis_scan_config")
-
-
-@pulumi.output_type
-class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "debugMaster":
-            suggest = "debug_master"
-        elif key == "debugWorker":
-            suggest = "debug_worker"
-        elif key == "overrideBenchmarkVersion":
-            suggest = "override_benchmark_version"
-        elif key == "overrideSkips":
-            suggest = "override_skips"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 debug_master: Optional[bool] = None,
-                 debug_worker: Optional[bool] = None,
-                 override_benchmark_version: Optional[str] = None,
-                 override_skips: Optional[Sequence[str]] = None,
-                 profile: Optional[str] = None):
-        if debug_master is not None:
-            pulumi.set(__self__, "debug_master", debug_master)
-        if debug_worker is not None:
-            pulumi.set(__self__, "debug_worker", debug_worker)
-        if override_benchmark_version is not None:
-            pulumi.set(__self__, "override_benchmark_version", override_benchmark_version)
-        if override_skips is not None:
-            pulumi.set(__self__, "override_skips", override_skips)
-        if profile is not None:
-            pulumi.set(__self__, "profile", profile)
-
-    @property
-    @pulumi.getter(name="debugMaster")
-    def debug_master(self) -> Optional[bool]:
-        return pulumi.get(self, "debug_master")
-
-    @property
-    @pulumi.getter(name="debugWorker")
-    def debug_worker(self) -> Optional[bool]:
-        return pulumi.get(self, "debug_worker")
-
-    @property
-    @pulumi.getter(name="overrideBenchmarkVersion")
-    def override_benchmark_version(self) -> Optional[str]:
-        return pulumi.get(self, "override_benchmark_version")
-
-    @property
-    @pulumi.getter(name="overrideSkips")
-    def override_skips(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "override_skips")
-
-    @property
-    @pulumi.getter
-    def profile(self) -> Optional[str]:
-        return pulumi.get(self, "profile")
-
-
-@pulumi.output_type
-class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cronSchedule":
-            suggest = "cron_schedule"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 cron_schedule: str,
-                 retention: Optional[int] = None):
-        pulumi.set(__self__, "cron_schedule", cron_schedule)
-        if retention is not None:
-            pulumi.set(__self__, "retention", retention)
-
-    @property
-    @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> str:
-        return pulumi.get(self, "cron_schedule")
-
-    @property
-    @pulumi.getter
-    def retention(self) -> Optional[int]:
-        return pulumi.get(self, "retention")
-
-
-@pulumi.output_type
 class ClusterTemplateTemplateRevisionQuestion(dict):
     def __init__(__self__, *,
                  default: str,
@@ -22667,8 +21391,12 @@ class MachineConfigV2AzureConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "availabilitySet":
+        if key == "acceleratedNetworking":
+            suggest = "accelerated_networking"
+        elif key == "availabilitySet":
             suggest = "availability_set"
+        elif key == "availabilityZone":
+            suggest = "availability_zone"
         elif key == "clientId":
             suggest = "client_id"
         elif key == "clientSecret":
@@ -22709,6 +21437,8 @@ class MachineConfigV2AzureConfig(dict):
             suggest = "update_domain_count"
         elif key == "usePrivateIp":
             suggest = "use_private_ip"
+        elif key == "usePublicIpStandardSku":
+            suggest = "use_public_ip_standard_sku"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MachineConfigV2AzureConfig. Access the value via the '{suggest}' property getter instead.")
@@ -22722,7 +21452,9 @@ class MachineConfigV2AzureConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 accelerated_networking: Optional[bool] = None,
                  availability_set: Optional[str] = None,
+                 availability_zone: Optional[str] = None,
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None,
                  custom_data: Optional[str] = None,
@@ -22747,12 +21479,15 @@ class MachineConfigV2AzureConfig(dict):
                  subnet: Optional[str] = None,
                  subnet_prefix: Optional[str] = None,
                  subscription_id: Optional[str] = None,
+                 tags: Optional[str] = None,
                  tenant_id: Optional[str] = None,
                  update_domain_count: Optional[str] = None,
                  use_private_ip: Optional[bool] = None,
+                 use_public_ip_standard_sku: Optional[bool] = None,
                  vnet: Optional[str] = None):
         """
         :param str availability_set: Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        :param str availability_zone: OpenStack availability zone (string)
         :param str client_id: Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param str client_secret: Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param str custom_data: Path to file with custom-data (string)
@@ -22777,13 +21512,18 @@ class MachineConfigV2AzureConfig(dict):
         :param str subnet: Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
         :param str subnet_prefix: Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
         :param str subscription_id: Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str tags: AWS Tags (e.g. key1,value1,key2,value2) (string)
         :param str tenant_id: Azure Tenant ID (string)
         :param str update_domain_count: Update domain count to use for availability set. Default `5` (string)
         :param bool use_private_ip: Use private IP address of the machine to connect. Default `false` (bool)
         :param str vnet: Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
         """
+        if accelerated_networking is not None:
+            pulumi.set(__self__, "accelerated_networking", accelerated_networking)
         if availability_set is not None:
             pulumi.set(__self__, "availability_set", availability_set)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
@@ -22832,14 +21572,23 @@ class MachineConfigV2AzureConfig(dict):
             pulumi.set(__self__, "subnet_prefix", subnet_prefix)
         if subscription_id is not None:
             pulumi.set(__self__, "subscription_id", subscription_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if update_domain_count is not None:
             pulumi.set(__self__, "update_domain_count", update_domain_count)
         if use_private_ip is not None:
             pulumi.set(__self__, "use_private_ip", use_private_ip)
+        if use_public_ip_standard_sku is not None:
+            pulumi.set(__self__, "use_public_ip_standard_sku", use_public_ip_standard_sku)
         if vnet is not None:
             pulumi.set(__self__, "vnet", vnet)
+
+    @property
+    @pulumi.getter(name="acceleratedNetworking")
+    def accelerated_networking(self) -> Optional[bool]:
+        return pulumi.get(self, "accelerated_networking")
 
     @property
     @pulumi.getter(name="availabilitySet")
@@ -22848,6 +21597,14 @@ class MachineConfigV2AzureConfig(dict):
         Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
         """
         return pulumi.get(self, "availability_set")
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[str]:
+        """
+        OpenStack availability zone (string)
+        """
+        return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="clientId")
@@ -23042,6 +21799,14 @@ class MachineConfigV2AzureConfig(dict):
         return pulumi.get(self, "subscription_id")
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[str]:
+        """
+        AWS Tags (e.g. key1,value1,key2,value2) (string)
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[str]:
         """
@@ -23064,6 +21829,11 @@ class MachineConfigV2AzureConfig(dict):
         Use private IP address of the machine to connect. Default `false` (bool)
         """
         return pulumi.get(self, "use_private_ip")
+
+    @property
+    @pulumi.getter(name="usePublicIpStandardSku")
+    def use_public_ip_standard_sku(self) -> Optional[bool]:
+        return pulumi.get(self, "use_public_ip_standard_sku")
 
     @property
     @pulumi.getter
@@ -23281,10 +22051,10 @@ class MachineConfigV2HarvesterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "imageName":
-            suggest = "image_name"
-        elif key == "networkName":
-            suggest = "network_name"
+        if key == "diskInfo":
+            suggest = "disk_info"
+        elif key == "networkInfo":
+            suggest = "network_info"
         elif key == "sshUser":
             suggest = "ssh_user"
         elif key == "vmNamespace":
@@ -23295,16 +22065,22 @@ class MachineConfigV2HarvesterConfig(dict):
             suggest = "disk_bus"
         elif key == "diskSize":
             suggest = "disk_size"
+        elif key == "imageName":
+            suggest = "image_name"
         elif key == "memorySize":
             suggest = "memory_size"
         elif key == "networkData":
             suggest = "network_data"
         elif key == "networkModel":
             suggest = "network_model"
+        elif key == "networkName":
+            suggest = "network_name"
         elif key == "sshPassword":
             suggest = "ssh_password"
         elif key == "userData":
             suggest = "user_data"
+        elif key == "vmAffinity":
+            suggest = "vm_affinity"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MachineConfigV2HarvesterConfig. Access the value via the '{suggest}' property getter instead.")
@@ -23318,34 +22094,40 @@ class MachineConfigV2HarvesterConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 image_name: str,
-                 network_name: str,
+                 disk_info: str,
+                 network_info: str,
                  ssh_user: str,
                  vm_namespace: str,
                  cpu_count: Optional[str] = None,
                  disk_bus: Optional[str] = None,
                  disk_size: Optional[str] = None,
+                 image_name: Optional[str] = None,
                  memory_size: Optional[str] = None,
                  network_data: Optional[str] = None,
                  network_model: Optional[str] = None,
+                 network_name: Optional[str] = None,
                  ssh_password: Optional[str] = None,
-                 user_data: Optional[str] = None):
+                 user_data: Optional[str] = None,
+                 vm_affinity: Optional[str] = None):
         """
-        :param str image_name: Image name e.g. `harvester-public/image-57hzg` (string)
-        :param str network_name: Network name e.g. `harvester-public/vlan1` (string)
+        :param str disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
+        :param str network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         :param str ssh_user: Set the name of the ssh user (string)
         :param str vm_namespace: Virtual machine namespace e.g. `default` (string)
         :param str cpu_count: CPU count, Default `2` (string)
-        :param str disk_bus: Disk bus, Default `virtio` (string)
+        :param str disk_bus: Use `disk_info` instead
         :param str disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        :param str image_name: Use `disk_info` instead
         :param str memory_size: Memory size (in GiB), Default `4` (string)
         :param str network_data: NetworkData content of cloud-init, base64 is supported (string)
-        :param str network_model: Network model, Default `virtio` (string)
+        :param str network_model: Use `network_info` instead
+        :param str network_name: Use `network_info` instead
         :param str ssh_password: SSH password (string)
-        :param str user_data: UserData content of cloud-init, base64 is supported (string)
+        :param str user_data: UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
+        :param str vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
         """
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "network_name", network_name)
+        pulumi.set(__self__, "disk_info", disk_info)
+        pulumi.set(__self__, "network_info", network_info)
         pulumi.set(__self__, "ssh_user", ssh_user)
         pulumi.set(__self__, "vm_namespace", vm_namespace)
         if cpu_count is not None:
@@ -23354,32 +22136,38 @@ class MachineConfigV2HarvesterConfig(dict):
             pulumi.set(__self__, "disk_bus", disk_bus)
         if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
         if memory_size is not None:
             pulumi.set(__self__, "memory_size", memory_size)
         if network_data is not None:
             pulumi.set(__self__, "network_data", network_data)
         if network_model is not None:
             pulumi.set(__self__, "network_model", network_model)
+        if network_name is not None:
+            pulumi.set(__self__, "network_name", network_name)
         if ssh_password is not None:
             pulumi.set(__self__, "ssh_password", ssh_password)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
+        if vm_affinity is not None:
+            pulumi.set(__self__, "vm_affinity", vm_affinity)
 
     @property
-    @pulumi.getter(name="imageName")
-    def image_name(self) -> str:
+    @pulumi.getter(name="diskInfo")
+    def disk_info(self) -> str:
         """
-        Image name e.g. `harvester-public/image-57hzg` (string)
+        A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
         """
-        return pulumi.get(self, "image_name")
+        return pulumi.get(self, "disk_info")
 
     @property
-    @pulumi.getter(name="networkName")
-    def network_name(self) -> str:
+    @pulumi.getter(name="networkInfo")
+    def network_info(self) -> str:
         """
-        Network name e.g. `harvester-public/vlan1` (string)
+        A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         """
-        return pulumi.get(self, "network_name")
+        return pulumi.get(self, "network_info")
 
     @property
     @pulumi.getter(name="sshUser")
@@ -23409,7 +22197,7 @@ class MachineConfigV2HarvesterConfig(dict):
     @pulumi.getter(name="diskBus")
     def disk_bus(self) -> Optional[str]:
         """
-        Disk bus, Default `virtio` (string)
+        Use `disk_info` instead
         """
         return pulumi.get(self, "disk_bus")
 
@@ -23420,6 +22208,14 @@ class MachineConfigV2HarvesterConfig(dict):
         Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
         """
         return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[str]:
+        """
+        Use `disk_info` instead
+        """
+        return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter(name="memorySize")
@@ -23441,9 +22237,17 @@ class MachineConfigV2HarvesterConfig(dict):
     @pulumi.getter(name="networkModel")
     def network_model(self) -> Optional[str]:
         """
-        Network model, Default `virtio` (string)
+        Use `network_info` instead
         """
         return pulumi.get(self, "network_model")
+
+    @property
+    @pulumi.getter(name="networkName")
+    def network_name(self) -> Optional[str]:
+        """
+        Use `network_info` instead
+        """
+        return pulumi.get(self, "network_name")
 
     @property
     @pulumi.getter(name="sshPassword")
@@ -23457,9 +22261,17 @@ class MachineConfigV2HarvesterConfig(dict):
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[str]:
         """
-        UserData content of cloud-init, base64 is supported (string)
+        UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
         """
         return pulumi.get(self, "user_data")
+
+    @property
+    @pulumi.getter(name="vmAffinity")
+    def vm_affinity(self) -> Optional[str]:
+        """
+        Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+        """
+        return pulumi.get(self, "vm_affinity")
 
 
 @pulumi.output_type
@@ -23848,7 +22660,7 @@ class MachineConfigV2OpenstackConfig(dict):
         :param str flavor_name: OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
         :param str floating_ip_pool: OpenStack floating IP pool to get an IP from to assign to the instance (string)
         :param str image_id: OpenStack image id to use for the instance. Conflicts with `image_name` (string)
-        :param str image_name: Image name e.g. `harvester-public/image-57hzg` (string)
+        :param str image_name: Use `disk_info` instead
         :param bool insecure: Disable TLS credential checking. Default `false` (bool)
         :param str ip_version: OpenStack version of IP address assigned for the machine Default `4` (string)
         :param str keypair_name: AWS keypair to use; requires --amazonec2-ssh-keypath (string)
@@ -24098,7 +22910,7 @@ class MachineConfigV2OpenstackConfig(dict):
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[str]:
         """
-        Image name e.g. `harvester-public/image-57hzg` (string)
+        Use `disk_info` instead
         """
         return pulumi.get(self, "image_name")
 
@@ -25873,8 +24685,12 @@ class NodeTemplateAzureConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "availabilitySet":
+        if key == "acceleratedNetworking":
+            suggest = "accelerated_networking"
+        elif key == "availabilitySet":
             suggest = "availability_set"
+        elif key == "availabilityZone":
+            suggest = "availability_zone"
         elif key == "clientId":
             suggest = "client_id"
         elif key == "clientSecret":
@@ -25911,6 +24727,8 @@ class NodeTemplateAzureConfig(dict):
             suggest = "update_domain_count"
         elif key == "usePrivateIp":
             suggest = "use_private_ip"
+        elif key == "usePublicIpStandardSku":
+            suggest = "use_public_ip_standard_sku"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodeTemplateAzureConfig. Access the value via the '{suggest}' property getter instead.")
@@ -25924,7 +24742,9 @@ class NodeTemplateAzureConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 accelerated_networking: Optional[bool] = None,
                  availability_set: Optional[str] = None,
+                 availability_zone: Optional[str] = None,
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None,
                  custom_data: Optional[str] = None,
@@ -25949,11 +24769,14 @@ class NodeTemplateAzureConfig(dict):
                  subnet: Optional[str] = None,
                  subnet_prefix: Optional[str] = None,
                  subscription_id: Optional[str] = None,
+                 tags: Optional[str] = None,
                  update_domain_count: Optional[str] = None,
                  use_private_ip: Optional[bool] = None,
+                 use_public_ip_standard_sku: Optional[bool] = None,
                  vnet: Optional[str] = None):
         """
         :param str availability_set: Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        :param str availability_zone: OpenStack availability zone (string)
         :param str client_id: Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param str client_secret: Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param str custom_data: Path to file with custom-data (string)
@@ -25978,12 +24801,17 @@ class NodeTemplateAzureConfig(dict):
         :param str subnet: Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
         :param str subnet_prefix: Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
         :param str subscription_id: Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str tags: AWS Tags (e.g. key1,value1,key2,value2) (string)
         :param str update_domain_count: Update domain count to use for availability set. Default `5` (string)
         :param bool use_private_ip: Use private IP address of the machine to connect. Default `false` (bool)
         :param str vnet: Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
         """
+        if accelerated_networking is not None:
+            pulumi.set(__self__, "accelerated_networking", accelerated_networking)
         if availability_set is not None:
             pulumi.set(__self__, "availability_set", availability_set)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
@@ -26032,12 +24860,21 @@ class NodeTemplateAzureConfig(dict):
             pulumi.set(__self__, "subnet_prefix", subnet_prefix)
         if subscription_id is not None:
             pulumi.set(__self__, "subscription_id", subscription_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if update_domain_count is not None:
             pulumi.set(__self__, "update_domain_count", update_domain_count)
         if use_private_ip is not None:
             pulumi.set(__self__, "use_private_ip", use_private_ip)
+        if use_public_ip_standard_sku is not None:
+            pulumi.set(__self__, "use_public_ip_standard_sku", use_public_ip_standard_sku)
         if vnet is not None:
             pulumi.set(__self__, "vnet", vnet)
+
+    @property
+    @pulumi.getter(name="acceleratedNetworking")
+    def accelerated_networking(self) -> Optional[bool]:
+        return pulumi.get(self, "accelerated_networking")
 
     @property
     @pulumi.getter(name="availabilitySet")
@@ -26046,6 +24883,14 @@ class NodeTemplateAzureConfig(dict):
         Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
         """
         return pulumi.get(self, "availability_set")
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[str]:
+        """
+        OpenStack availability zone (string)
+        """
+        return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="clientId")
@@ -26240,6 +25085,14 @@ class NodeTemplateAzureConfig(dict):
         return pulumi.get(self, "subscription_id")
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[str]:
+        """
+        AWS Tags (e.g. key1,value1,key2,value2) (string)
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="updateDomainCount")
     def update_domain_count(self) -> Optional[str]:
         """
@@ -26254,6 +25107,11 @@ class NodeTemplateAzureConfig(dict):
         Use private IP address of the machine to connect. Default `false` (bool)
         """
         return pulumi.get(self, "use_private_ip")
+
+    @property
+    @pulumi.getter(name="usePublicIpStandardSku")
+    def use_public_ip_standard_sku(self) -> Optional[bool]:
+        return pulumi.get(self, "use_public_ip_standard_sku")
 
     @property
     @pulumi.getter
@@ -26475,10 +25333,10 @@ class NodeTemplateHarvesterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "imageName":
-            suggest = "image_name"
-        elif key == "networkName":
-            suggest = "network_name"
+        if key == "diskInfo":
+            suggest = "disk_info"
+        elif key == "networkInfo":
+            suggest = "network_info"
         elif key == "sshUser":
             suggest = "ssh_user"
         elif key == "vmNamespace":
@@ -26489,16 +25347,22 @@ class NodeTemplateHarvesterConfig(dict):
             suggest = "disk_bus"
         elif key == "diskSize":
             suggest = "disk_size"
+        elif key == "imageName":
+            suggest = "image_name"
         elif key == "memorySize":
             suggest = "memory_size"
         elif key == "networkData":
             suggest = "network_data"
         elif key == "networkModel":
             suggest = "network_model"
+        elif key == "networkName":
+            suggest = "network_name"
         elif key == "sshPassword":
             suggest = "ssh_password"
         elif key == "userData":
             suggest = "user_data"
+        elif key == "vmAffinity":
+            suggest = "vm_affinity"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodeTemplateHarvesterConfig. Access the value via the '{suggest}' property getter instead.")
@@ -26512,34 +25376,40 @@ class NodeTemplateHarvesterConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 image_name: str,
-                 network_name: str,
+                 disk_info: str,
+                 network_info: str,
                  ssh_user: str,
                  vm_namespace: str,
                  cpu_count: Optional[str] = None,
                  disk_bus: Optional[str] = None,
                  disk_size: Optional[str] = None,
+                 image_name: Optional[str] = None,
                  memory_size: Optional[str] = None,
                  network_data: Optional[str] = None,
                  network_model: Optional[str] = None,
+                 network_name: Optional[str] = None,
                  ssh_password: Optional[str] = None,
-                 user_data: Optional[str] = None):
+                 user_data: Optional[str] = None,
+                 vm_affinity: Optional[str] = None):
         """
-        :param str image_name: Image name e.g. `harvester-public/image-57hzg` (string)
-        :param str network_name: Network name e.g. `harvester-public/vlan1` (string)
+        :param str disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
+        :param str network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         :param str ssh_user: Set the name of the ssh user (string)
         :param str vm_namespace: Virtual machine namespace e.g. `default` (string)
         :param str cpu_count: CPU count, Default `2` (string)
-        :param str disk_bus: Disk bus, Default `virtio` (string)
+        :param str disk_bus: Use `disk_info` instead
         :param str disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        :param str image_name: Use `disk_info` instead
         :param str memory_size: Memory size (in GiB), Default `4` (string)
         :param str network_data: NetworkData content of cloud-init, base64 is supported (string)
-        :param str network_model: Network model, Default `virtio` (string)
+        :param str network_model: Use `network_info` instead
+        :param str network_name: Use `network_info` instead
         :param str ssh_password: SSH password (string)
-        :param str user_data: UserData content of cloud-init, base64 is supported (string)
+        :param str user_data: UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
+        :param str vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
         """
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "network_name", network_name)
+        pulumi.set(__self__, "disk_info", disk_info)
+        pulumi.set(__self__, "network_info", network_info)
         pulumi.set(__self__, "ssh_user", ssh_user)
         pulumi.set(__self__, "vm_namespace", vm_namespace)
         if cpu_count is not None:
@@ -26548,32 +25418,38 @@ class NodeTemplateHarvesterConfig(dict):
             pulumi.set(__self__, "disk_bus", disk_bus)
         if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
         if memory_size is not None:
             pulumi.set(__self__, "memory_size", memory_size)
         if network_data is not None:
             pulumi.set(__self__, "network_data", network_data)
         if network_model is not None:
             pulumi.set(__self__, "network_model", network_model)
+        if network_name is not None:
+            pulumi.set(__self__, "network_name", network_name)
         if ssh_password is not None:
             pulumi.set(__self__, "ssh_password", ssh_password)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
+        if vm_affinity is not None:
+            pulumi.set(__self__, "vm_affinity", vm_affinity)
 
     @property
-    @pulumi.getter(name="imageName")
-    def image_name(self) -> str:
+    @pulumi.getter(name="diskInfo")
+    def disk_info(self) -> str:
         """
-        Image name e.g. `harvester-public/image-57hzg` (string)
+        A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
         """
-        return pulumi.get(self, "image_name")
+        return pulumi.get(self, "disk_info")
 
     @property
-    @pulumi.getter(name="networkName")
-    def network_name(self) -> str:
+    @pulumi.getter(name="networkInfo")
+    def network_info(self) -> str:
         """
-        Network name e.g. `harvester-public/vlan1` (string)
+        A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         """
-        return pulumi.get(self, "network_name")
+        return pulumi.get(self, "network_info")
 
     @property
     @pulumi.getter(name="sshUser")
@@ -26603,7 +25479,7 @@ class NodeTemplateHarvesterConfig(dict):
     @pulumi.getter(name="diskBus")
     def disk_bus(self) -> Optional[str]:
         """
-        Disk bus, Default `virtio` (string)
+        Use `disk_info` instead
         """
         return pulumi.get(self, "disk_bus")
 
@@ -26614,6 +25490,14 @@ class NodeTemplateHarvesterConfig(dict):
         Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
         """
         return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[str]:
+        """
+        Use `disk_info` instead
+        """
+        return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter(name="memorySize")
@@ -26635,9 +25519,17 @@ class NodeTemplateHarvesterConfig(dict):
     @pulumi.getter(name="networkModel")
     def network_model(self) -> Optional[str]:
         """
-        Network model, Default `virtio` (string)
+        Use `network_info` instead
         """
         return pulumi.get(self, "network_model")
+
+    @property
+    @pulumi.getter(name="networkName")
+    def network_name(self) -> Optional[str]:
+        """
+        Use `network_info` instead
+        """
+        return pulumi.get(self, "network_name")
 
     @property
     @pulumi.getter(name="sshPassword")
@@ -26651,9 +25543,17 @@ class NodeTemplateHarvesterConfig(dict):
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[str]:
         """
-        UserData content of cloud-init, base64 is supported (string)
+        UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
         """
         return pulumi.get(self, "user_data")
+
+    @property
+    @pulumi.getter(name="vmAffinity")
+    def vm_affinity(self) -> Optional[str]:
+        """
+        Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+        """
+        return pulumi.get(self, "vm_affinity")
 
 
 @pulumi.output_type
@@ -27178,11 +26078,11 @@ class NodeTemplateOpennebulaConfig(dict):
         :param bool disable_vnc: VNC is enabled by default. Disable it with this flag (bool)
         :param str disk_resize: Size of the disk for the VM in MB (string)
         :param str image_id: Image ID to use as the VM OS. Conflicts with `image_name` (string)
-        :param str image_name: Image name e.g. `harvester-public/image-57hzg` (string)
+        :param str image_name: Use `disk_info` instead
         :param str image_owner: Owner of the image to use as the VM OS (string)
         :param str memory: Size of the memory for the VM in MB (string)
         :param str network_id: Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
-        :param str network_name: Network name e.g. `harvester-public/vlan1` (string)
+        :param str network_name: Use `network_info` instead
         :param str network_owner: Opennebula user ID of the Network to connect the machine to (string)
         :param str ssh_user: Set the name of the ssh user (string)
         :param str template_id: Opennebula template ID to use. Conflicts with `template_name` (string)
@@ -27303,7 +26203,7 @@ class NodeTemplateOpennebulaConfig(dict):
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[str]:
         """
-        Image name e.g. `harvester-public/image-57hzg` (string)
+        Use `disk_info` instead
         """
         return pulumi.get(self, "image_name")
 
@@ -27335,7 +26235,7 @@ class NodeTemplateOpennebulaConfig(dict):
     @pulumi.getter(name="networkName")
     def network_name(self) -> Optional[str]:
         """
-        Network name e.g. `harvester-public/vlan1` (string)
+        Use `network_info` instead
         """
         return pulumi.get(self, "network_name")
 
@@ -27522,7 +26422,7 @@ class NodeTemplateOpenstackConfig(dict):
         :param str flavor_name: OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
         :param str floating_ip_pool: OpenStack floating IP pool to get an IP from to assign to the instance (string)
         :param str image_id: Image ID to use as the VM OS. Conflicts with `image_name` (string)
-        :param str image_name: Image name e.g. `harvester-public/image-57hzg` (string)
+        :param str image_name: Use `disk_info` instead
         :param bool insecure: Disable TLS credential checking. Default `false` (bool)
         :param str ip_version: OpenStack version of IP address assigned for the machine Default `4` (string)
         :param str keypair_name: OpenStack keypair to use to SSH to the instance (string)
@@ -27762,7 +26662,7 @@ class NodeTemplateOpenstackConfig(dict):
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[str]:
         """
-        Image name e.g. `harvester-public/image-57hzg` (string)
+        Use `disk_info` instead
         """
         return pulumi.get(self, "image_name")
 
@@ -29862,816 +28762,6 @@ class ProjectContainerResourceLimit(dict):
 
 
 @pulumi.output_type
-class ProjectLoggingCustomTargetConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientCert":
-            suggest = "client_cert"
-        elif key == "clientKey":
-            suggest = "client_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProjectLoggingCustomTargetConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProjectLoggingCustomTargetConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProjectLoggingCustomTargetConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 content: str,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None):
-        """
-        :param str content: Custom target config content (string)
-        :param str certificate: SSL CA certificate for the custom target service (string)
-        :param str client_cert: SSL client certificate for the custom target service (string)
-        :param str client_key: SSL client key for the custom target service (string)
-        """
-        pulumi.set(__self__, "content", content)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-
-    @property
-    @pulumi.getter
-    def content(self) -> str:
-        """
-        Custom target config content (string)
-        """
-        return pulumi.get(self, "content")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-
-@pulumi.output_type
-class ProjectLoggingElasticsearchConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authPassword":
-            suggest = "auth_password"
-        elif key == "authUsername":
-            suggest = "auth_username"
-        elif key == "clientCert":
-            suggest = "client_cert"
-        elif key == "clientKey":
-            suggest = "client_key"
-        elif key == "clientKeyPass":
-            suggest = "client_key_pass"
-        elif key == "dateFormat":
-            suggest = "date_format"
-        elif key == "indexPrefix":
-            suggest = "index_prefix"
-        elif key == "sslVerify":
-            suggest = "ssl_verify"
-        elif key == "sslVersion":
-            suggest = "ssl_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProjectLoggingElasticsearchConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProjectLoggingElasticsearchConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProjectLoggingElasticsearchConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 endpoint: str,
-                 auth_password: Optional[str] = None,
-                 auth_username: Optional[str] = None,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 client_key_pass: Optional[str] = None,
-                 date_format: Optional[str] = None,
-                 index_prefix: Optional[str] = None,
-                 ssl_verify: Optional[bool] = None,
-                 ssl_version: Optional[str] = None):
-        """
-        :param str endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param str auth_password: User password for the elascticsearch service (string)
-        :param str auth_username: Username for the elascticsearch service (string)
-        :param str certificate: SSL CA certificate for the custom target service (string)
-        :param str client_cert: SSL client certificate for the custom target service (string)
-        :param str client_key: SSL client key for the custom target service (string)
-        :param str client_key_pass: SSL client key password for the elascticsearch service (string)
-        :param str date_format: Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
-        :param str index_prefix: Index prefix for the elascticsearch logs. Default: `local` (string)
-        :param bool ssl_verify: SSL verify for the elascticsearch service (bool)
-        :param str ssl_version: SSL version for the elascticsearch service (string)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        if auth_password is not None:
-            pulumi.set(__self__, "auth_password", auth_password)
-        if auth_username is not None:
-            pulumi.set(__self__, "auth_username", auth_username)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if client_key_pass is not None:
-            pulumi.set(__self__, "client_key_pass", client_key_pass)
-        if date_format is not None:
-            pulumi.set(__self__, "date_format", date_format)
-        if index_prefix is not None:
-            pulumi.set(__self__, "index_prefix", index_prefix)
-        if ssl_verify is not None:
-            pulumi.set(__self__, "ssl_verify", ssl_verify)
-        if ssl_version is not None:
-            pulumi.set(__self__, "ssl_version", ssl_version)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter(name="authPassword")
-    def auth_password(self) -> Optional[str]:
-        """
-        User password for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "auth_password")
-
-    @property
-    @pulumi.getter(name="authUsername")
-    def auth_username(self) -> Optional[str]:
-        """
-        Username for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "auth_username")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="clientKeyPass")
-    def client_key_pass(self) -> Optional[str]:
-        """
-        SSL client key password for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "client_key_pass")
-
-    @property
-    @pulumi.getter(name="dateFormat")
-    def date_format(self) -> Optional[str]:
-        """
-        Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
-        """
-        return pulumi.get(self, "date_format")
-
-    @property
-    @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[str]:
-        """
-        Index prefix for the elascticsearch logs. Default: `local` (string)
-        """
-        return pulumi.get(self, "index_prefix")
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> Optional[bool]:
-        """
-        SSL verify for the elascticsearch service (bool)
-        """
-        return pulumi.get(self, "ssl_verify")
-
-    @property
-    @pulumi.getter(name="sslVersion")
-    def ssl_version(self) -> Optional[str]:
-        """
-        SSL version for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "ssl_version")
-
-
-@pulumi.output_type
-class ProjectLoggingFluentdConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fluentServers":
-            suggest = "fluent_servers"
-        elif key == "enableTls":
-            suggest = "enable_tls"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProjectLoggingFluentdConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProjectLoggingFluentdConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProjectLoggingFluentdConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 fluent_servers: Sequence['outputs.ProjectLoggingFluentdConfigFluentServer'],
-                 certificate: Optional[str] = None,
-                 compress: Optional[bool] = None,
-                 enable_tls: Optional[bool] = None):
-        """
-        :param Sequence['ProjectLoggingFluentdConfigFluentServerArgs'] fluent_servers: Servers for the fluentd service (list)
-        :param str certificate: SSL CA certificate for the custom target service (string)
-        :param bool compress: Compress data for the fluentd service (bool)
-        :param bool enable_tls: Enable TLS for the fluentd service (bool)
-        """
-        pulumi.set(__self__, "fluent_servers", fluent_servers)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if compress is not None:
-            pulumi.set(__self__, "compress", compress)
-        if enable_tls is not None:
-            pulumi.set(__self__, "enable_tls", enable_tls)
-
-    @property
-    @pulumi.getter(name="fluentServers")
-    def fluent_servers(self) -> Sequence['outputs.ProjectLoggingFluentdConfigFluentServer']:
-        """
-        Servers for the fluentd service (list)
-        """
-        return pulumi.get(self, "fluent_servers")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter
-    def compress(self) -> Optional[bool]:
-        """
-        Compress data for the fluentd service (bool)
-        """
-        return pulumi.get(self, "compress")
-
-    @property
-    @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[bool]:
-        """
-        Enable TLS for the fluentd service (bool)
-        """
-        return pulumi.get(self, "enable_tls")
-
-
-@pulumi.output_type
-class ProjectLoggingFluentdConfigFluentServer(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sharedKey":
-            suggest = "shared_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProjectLoggingFluentdConfigFluentServer. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProjectLoggingFluentdConfigFluentServer.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProjectLoggingFluentdConfigFluentServer.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 endpoint: str,
-                 hostname: Optional[str] = None,
-                 password: Optional[str] = None,
-                 shared_key: Optional[str] = None,
-                 standby: Optional[bool] = None,
-                 username: Optional[str] = None,
-                 weight: Optional[int] = None):
-        """
-        :param str endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param str hostname: Hostname of the fluentd service (string)
-        :param str password: User password of the fluentd service (string)
-        :param str shared_key: Shared key of the fluentd service (string)
-        :param bool standby: Standby server of the fluentd service (bool)
-        :param str username: Username of the fluentd service (string)
-        :param int weight: Weight of the fluentd server (int)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if shared_key is not None:
-            pulumi.set(__self__, "shared_key", shared_key)
-        if standby is not None:
-            pulumi.set(__self__, "standby", standby)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
-        if weight is not None:
-            pulumi.set(__self__, "weight", weight)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter
-    def hostname(self) -> Optional[str]:
-        """
-        Hostname of the fluentd service (string)
-        """
-        return pulumi.get(self, "hostname")
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[str]:
-        """
-        User password of the fluentd service (string)
-        """
-        return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter(name="sharedKey")
-    def shared_key(self) -> Optional[str]:
-        """
-        Shared key of the fluentd service (string)
-        """
-        return pulumi.get(self, "shared_key")
-
-    @property
-    @pulumi.getter
-    def standby(self) -> Optional[bool]:
-        """
-        Standby server of the fluentd service (bool)
-        """
-        return pulumi.get(self, "standby")
-
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[str]:
-        """
-        Username of the fluentd service (string)
-        """
-        return pulumi.get(self, "username")
-
-    @property
-    @pulumi.getter
-    def weight(self) -> Optional[int]:
-        """
-        Weight of the fluentd server (int)
-        """
-        return pulumi.get(self, "weight")
-
-
-@pulumi.output_type
-class ProjectLoggingKafkaConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "brokerEndpoints":
-            suggest = "broker_endpoints"
-        elif key == "clientCert":
-            suggest = "client_cert"
-        elif key == "clientKey":
-            suggest = "client_key"
-        elif key == "zookeeperEndpoint":
-            suggest = "zookeeper_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProjectLoggingKafkaConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProjectLoggingKafkaConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProjectLoggingKafkaConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 topic: str,
-                 broker_endpoints: Optional[Sequence[str]] = None,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 zookeeper_endpoint: Optional[str] = None):
-        """
-        :param str topic: Topic to publish on the kafka service (string)
-        :param Sequence[str] broker_endpoints: Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
-        :param str certificate: SSL CA certificate for the custom target service (string)
-        :param str client_cert: SSL client certificate for the custom target service (string)
-        :param str client_key: SSL client key for the custom target service (string)
-        :param str zookeeper_endpoint: Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
-        """
-        pulumi.set(__self__, "topic", topic)
-        if broker_endpoints is not None:
-            pulumi.set(__self__, "broker_endpoints", broker_endpoints)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if zookeeper_endpoint is not None:
-            pulumi.set(__self__, "zookeeper_endpoint", zookeeper_endpoint)
-
-    @property
-    @pulumi.getter
-    def topic(self) -> str:
-        """
-        Topic to publish on the kafka service (string)
-        """
-        return pulumi.get(self, "topic")
-
-    @property
-    @pulumi.getter(name="brokerEndpoints")
-    def broker_endpoints(self) -> Optional[Sequence[str]]:
-        """
-        Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
-        """
-        return pulumi.get(self, "broker_endpoints")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="zookeeperEndpoint")
-    def zookeeper_endpoint(self) -> Optional[str]:
-        """
-        Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
-        """
-        return pulumi.get(self, "zookeeper_endpoint")
-
-
-@pulumi.output_type
-class ProjectLoggingSplunkConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientCert":
-            suggest = "client_cert"
-        elif key == "clientKey":
-            suggest = "client_key"
-        elif key == "clientKeyPass":
-            suggest = "client_key_pass"
-        elif key == "sslVerify":
-            suggest = "ssl_verify"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProjectLoggingSplunkConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProjectLoggingSplunkConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProjectLoggingSplunkConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 endpoint: str,
-                 token: str,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 client_key_pass: Optional[str] = None,
-                 index: Optional[str] = None,
-                 source: Optional[str] = None,
-                 ssl_verify: Optional[bool] = None):
-        """
-        :param str endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param str token: Token for the splunk service (string)
-        :param str certificate: SSL CA certificate for the custom target service (string)
-        :param str client_cert: SSL client certificate for the custom target service (string)
-        :param str client_key: SSL client key for the custom target service (string)
-        :param str client_key_pass: SSL client key password for the elascticsearch service (string)
-        :param str index: Index prefix for the splunk logs (string)
-        :param str source: Date format for the splunk logs (string)
-        :param bool ssl_verify: SSL verify for the elascticsearch service (bool)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "token", token)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if client_key_pass is not None:
-            pulumi.set(__self__, "client_key_pass", client_key_pass)
-        if index is not None:
-            pulumi.set(__self__, "index", index)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-        if ssl_verify is not None:
-            pulumi.set(__self__, "ssl_verify", ssl_verify)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter
-    def token(self) -> str:
-        """
-        Token for the splunk service (string)
-        """
-        return pulumi.get(self, "token")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="clientKeyPass")
-    def client_key_pass(self) -> Optional[str]:
-        """
-        SSL client key password for the elascticsearch service (string)
-        """
-        return pulumi.get(self, "client_key_pass")
-
-    @property
-    @pulumi.getter
-    def index(self) -> Optional[str]:
-        """
-        Index prefix for the splunk logs (string)
-        """
-        return pulumi.get(self, "index")
-
-    @property
-    @pulumi.getter
-    def source(self) -> Optional[str]:
-        """
-        Date format for the splunk logs (string)
-        """
-        return pulumi.get(self, "source")
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> Optional[bool]:
-        """
-        SSL verify for the elascticsearch service (bool)
-        """
-        return pulumi.get(self, "ssl_verify")
-
-
-@pulumi.output_type
-class ProjectLoggingSyslogConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientCert":
-            suggest = "client_cert"
-        elif key == "clientKey":
-            suggest = "client_key"
-        elif key == "enableTls":
-            suggest = "enable_tls"
-        elif key == "sslVerify":
-            suggest = "ssl_verify"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProjectLoggingSyslogConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProjectLoggingSyslogConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProjectLoggingSyslogConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 endpoint: str,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 enable_tls: Optional[bool] = None,
-                 program: Optional[str] = None,
-                 protocol: Optional[str] = None,
-                 severity: Optional[str] = None,
-                 ssl_verify: Optional[bool] = None,
-                 token: Optional[str] = None):
-        """
-        :param str endpoint: Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        :param str certificate: SSL CA certificate for the custom target service (string)
-        :param str client_cert: SSL client certificate for the custom target service (string)
-        :param str client_key: SSL client key for the custom target service (string)
-        :param bool enable_tls: Enable TLS for the fluentd service (bool)
-        :param str program: Program for the syslog service (string)
-        :param str protocol: Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
-        :param str severity: Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
-        :param bool ssl_verify: SSL verify for the elascticsearch service (bool)
-        :param str token: Token for the splunk service (string)
-        """
-        pulumi.set(__self__, "endpoint", endpoint)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if enable_tls is not None:
-            pulumi.set(__self__, "enable_tls", enable_tls)
-        if program is not None:
-            pulumi.set(__self__, "program", program)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if severity is not None:
-            pulumi.set(__self__, "severity", severity)
-        if ssl_verify is not None:
-            pulumi.set(__self__, "ssl_verify", ssl_verify)
-        if token is not None:
-            pulumi.set(__self__, "token", token)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        """
-        Endpoint of the elascticsearch service. Must include protocol, `http://` or `https://` (string)
-        """
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        """
-        SSL CA certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        """
-        SSL client certificate for the custom target service (string)
-        """
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        """
-        SSL client key for the custom target service (string)
-        """
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[bool]:
-        """
-        Enable TLS for the fluentd service (bool)
-        """
-        return pulumi.get(self, "enable_tls")
-
-    @property
-    @pulumi.getter
-    def program(self) -> Optional[str]:
-        """
-        Program for the syslog service (string)
-        """
-        return pulumi.get(self, "program")
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[str]:
-        """
-        Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
-        """
-        return pulumi.get(self, "protocol")
-
-    @property
-    @pulumi.getter
-    def severity(self) -> Optional[str]:
-        """
-        Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
-        """
-        return pulumi.get(self, "severity")
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> Optional[bool]:
-        """
-        SSL verify for the elascticsearch service (bool)
-        """
-        return pulumi.get(self, "ssl_verify")
-
-    @property
-    @pulumi.getter
-    def token(self) -> Optional[str]:
-        """
-        Token for the splunk service (string)
-        """
-        return pulumi.get(self, "token")
-
-
-@pulumi.output_type
 class ProjectProjectMonitoringInput(dict):
     def __init__(__self__, *,
                  answers: Optional[Mapping[str, Any]] = None,
@@ -32681,6 +30771,7 @@ class GetClusterEksConfigV2NodeGroupResult(dict):
                  launch_templates: Optional[Sequence['outputs.GetClusterEksConfigV2NodeGroupLaunchTemplateResult']] = None,
                  max_size: Optional[int] = None,
                  min_size: Optional[int] = None,
+                 node_role: Optional[str] = None,
                  request_spot_instances: Optional[bool] = None,
                  resource_tags: Optional[Mapping[str, Any]] = None,
                  spot_instance_types: Optional[Sequence[str]] = None,
@@ -32713,6 +30804,8 @@ class GetClusterEksConfigV2NodeGroupResult(dict):
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
+        if node_role is not None:
+            pulumi.set(__self__, "node_role", node_role)
         if request_spot_instances is not None:
             pulumi.set(__self__, "request_spot_instances", request_spot_instances)
         if resource_tags is not None:
@@ -32797,6 +30890,11 @@ class GetClusterEksConfigV2NodeGroupResult(dict):
     @pulumi.getter(name="minSize")
     def min_size(self) -> Optional[int]:
         return pulumi.get(self, "min_size")
+
+    @property
+    @pulumi.getter(name="nodeRole")
+    def node_role(self) -> Optional[str]:
+        return pulumi.get(self, "node_role")
 
     @property
     @pulumi.getter(name="requestSpotInstances")
@@ -33881,438 +31979,6 @@ class GetClusterK3sConfigUpgradeStrategyResult(dict):
     @pulumi.getter(name="workerConcurrency")
     def worker_concurrency(self) -> Optional[int]:
         return pulumi.get(self, "worker_concurrency")
-
-
-@pulumi.output_type
-class GetClusterLoggingCustomTargetConfigResult(dict):
-    def __init__(__self__, *,
-                 content: str,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None):
-        pulumi.set(__self__, "content", content)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-
-    @property
-    @pulumi.getter
-    def content(self) -> str:
-        return pulumi.get(self, "content")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        return pulumi.get(self, "client_key")
-
-
-@pulumi.output_type
-class GetClusterLoggingElasticsearchConfigResult(dict):
-    def __init__(__self__, *,
-                 endpoint: str,
-                 ssl_verify: bool,
-                 auth_password: Optional[str] = None,
-                 auth_username: Optional[str] = None,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 client_key_pass: Optional[str] = None,
-                 date_format: Optional[str] = None,
-                 index_prefix: Optional[str] = None,
-                 ssl_version: Optional[str] = None):
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "ssl_verify", ssl_verify)
-        if auth_password is not None:
-            pulumi.set(__self__, "auth_password", auth_password)
-        if auth_username is not None:
-            pulumi.set(__self__, "auth_username", auth_username)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if client_key_pass is not None:
-            pulumi.set(__self__, "client_key_pass", client_key_pass)
-        if date_format is not None:
-            pulumi.set(__self__, "date_format", date_format)
-        if index_prefix is not None:
-            pulumi.set(__self__, "index_prefix", index_prefix)
-        if ssl_version is not None:
-            pulumi.set(__self__, "ssl_version", ssl_version)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> bool:
-        return pulumi.get(self, "ssl_verify")
-
-    @property
-    @pulumi.getter(name="authPassword")
-    def auth_password(self) -> Optional[str]:
-        return pulumi.get(self, "auth_password")
-
-    @property
-    @pulumi.getter(name="authUsername")
-    def auth_username(self) -> Optional[str]:
-        return pulumi.get(self, "auth_username")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="clientKeyPass")
-    def client_key_pass(self) -> Optional[str]:
-        return pulumi.get(self, "client_key_pass")
-
-    @property
-    @pulumi.getter(name="dateFormat")
-    def date_format(self) -> Optional[str]:
-        return pulumi.get(self, "date_format")
-
-    @property
-    @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[str]:
-        return pulumi.get(self, "index_prefix")
-
-    @property
-    @pulumi.getter(name="sslVersion")
-    def ssl_version(self) -> Optional[str]:
-        return pulumi.get(self, "ssl_version")
-
-
-@pulumi.output_type
-class GetClusterLoggingFluentdConfigResult(dict):
-    def __init__(__self__, *,
-                 fluent_servers: Sequence['outputs.GetClusterLoggingFluentdConfigFluentServerResult'],
-                 certificate: Optional[str] = None,
-                 compress: Optional[bool] = None,
-                 enable_tls: Optional[bool] = None):
-        pulumi.set(__self__, "fluent_servers", fluent_servers)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if compress is not None:
-            pulumi.set(__self__, "compress", compress)
-        if enable_tls is not None:
-            pulumi.set(__self__, "enable_tls", enable_tls)
-
-    @property
-    @pulumi.getter(name="fluentServers")
-    def fluent_servers(self) -> Sequence['outputs.GetClusterLoggingFluentdConfigFluentServerResult']:
-        return pulumi.get(self, "fluent_servers")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter
-    def compress(self) -> Optional[bool]:
-        return pulumi.get(self, "compress")
-
-    @property
-    @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[bool]:
-        return pulumi.get(self, "enable_tls")
-
-
-@pulumi.output_type
-class GetClusterLoggingFluentdConfigFluentServerResult(dict):
-    def __init__(__self__, *,
-                 endpoint: str,
-                 hostname: Optional[str] = None,
-                 password: Optional[str] = None,
-                 shared_key: Optional[str] = None,
-                 standby: Optional[bool] = None,
-                 username: Optional[str] = None,
-                 weight: Optional[int] = None):
-        pulumi.set(__self__, "endpoint", endpoint)
-        if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if shared_key is not None:
-            pulumi.set(__self__, "shared_key", shared_key)
-        if standby is not None:
-            pulumi.set(__self__, "standby", standby)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
-        if weight is not None:
-            pulumi.set(__self__, "weight", weight)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter
-    def hostname(self) -> Optional[str]:
-        return pulumi.get(self, "hostname")
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[str]:
-        return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter(name="sharedKey")
-    def shared_key(self) -> Optional[str]:
-        return pulumi.get(self, "shared_key")
-
-    @property
-    @pulumi.getter
-    def standby(self) -> Optional[bool]:
-        return pulumi.get(self, "standby")
-
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[str]:
-        return pulumi.get(self, "username")
-
-    @property
-    @pulumi.getter
-    def weight(self) -> Optional[int]:
-        return pulumi.get(self, "weight")
-
-
-@pulumi.output_type
-class GetClusterLoggingKafkaConfigResult(dict):
-    def __init__(__self__, *,
-                 topic: str,
-                 broker_endpoints: Optional[Sequence[str]] = None,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 zookeeper_endpoint: Optional[str] = None):
-        pulumi.set(__self__, "topic", topic)
-        if broker_endpoints is not None:
-            pulumi.set(__self__, "broker_endpoints", broker_endpoints)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if zookeeper_endpoint is not None:
-            pulumi.set(__self__, "zookeeper_endpoint", zookeeper_endpoint)
-
-    @property
-    @pulumi.getter
-    def topic(self) -> str:
-        return pulumi.get(self, "topic")
-
-    @property
-    @pulumi.getter(name="brokerEndpoints")
-    def broker_endpoints(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "broker_endpoints")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="zookeeperEndpoint")
-    def zookeeper_endpoint(self) -> Optional[str]:
-        return pulumi.get(self, "zookeeper_endpoint")
-
-
-@pulumi.output_type
-class GetClusterLoggingSplunkConfigResult(dict):
-    def __init__(__self__, *,
-                 endpoint: str,
-                 ssl_verify: bool,
-                 token: str,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 client_key_pass: Optional[str] = None,
-                 index: Optional[str] = None,
-                 source: Optional[str] = None):
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "ssl_verify", ssl_verify)
-        pulumi.set(__self__, "token", token)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if client_key_pass is not None:
-            pulumi.set(__self__, "client_key_pass", client_key_pass)
-        if index is not None:
-            pulumi.set(__self__, "index", index)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> bool:
-        return pulumi.get(self, "ssl_verify")
-
-    @property
-    @pulumi.getter
-    def token(self) -> str:
-        return pulumi.get(self, "token")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="clientKeyPass")
-    def client_key_pass(self) -> Optional[str]:
-        return pulumi.get(self, "client_key_pass")
-
-    @property
-    @pulumi.getter
-    def index(self) -> Optional[str]:
-        return pulumi.get(self, "index")
-
-    @property
-    @pulumi.getter
-    def source(self) -> Optional[str]:
-        return pulumi.get(self, "source")
-
-
-@pulumi.output_type
-class GetClusterLoggingSyslogConfigResult(dict):
-    def __init__(__self__, *,
-                 endpoint: str,
-                 ssl_verify: bool,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 enable_tls: Optional[bool] = None,
-                 program: Optional[str] = None,
-                 protocol: Optional[str] = None,
-                 severity: Optional[str] = None,
-                 token: Optional[str] = None):
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "ssl_verify", ssl_verify)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if enable_tls is not None:
-            pulumi.set(__self__, "enable_tls", enable_tls)
-        if program is not None:
-            pulumi.set(__self__, "program", program)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if severity is not None:
-            pulumi.set(__self__, "severity", severity)
-        if token is not None:
-            pulumi.set(__self__, "token", token)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> bool:
-        return pulumi.get(self, "ssl_verify")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[bool]:
-        return pulumi.get(self, "enable_tls")
-
-    @property
-    @pulumi.getter
-    def program(self) -> Optional[str]:
-        return pulumi.get(self, "program")
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[str]:
-        return pulumi.get(self, "protocol")
-
-    @property
-    @pulumi.getter
-    def severity(self) -> Optional[str]:
-        return pulumi.get(self, "severity")
-
-    @property
-    @pulumi.getter
-    def token(self) -> Optional[str]:
-        return pulumi.get(self, "token")
 
 
 @pulumi.output_type
@@ -37960,194 +35626,6 @@ class GetClusterRkeConfigUpgradeStrategyDrainInputResult(dict):
 
 
 @pulumi.output_type
-class GetClusterScanScanConfigResult(dict):
-    def __init__(__self__, *,
-                 cis_scan_config: 'outputs.GetClusterScanScanConfigCisScanConfigResult'):
-        """
-        :param 'GetClusterScanScanConfigCisScanConfigArgs' cis_scan_config: Cluster Cis Scan config (List maxitems:1)
-        """
-        pulumi.set(__self__, "cis_scan_config", cis_scan_config)
-
-    @property
-    @pulumi.getter(name="cisScanConfig")
-    def cis_scan_config(self) -> 'outputs.GetClusterScanScanConfigCisScanConfigResult':
-        """
-        Cluster Cis Scan config (List maxitems:1)
-        """
-        return pulumi.get(self, "cis_scan_config")
-
-
-@pulumi.output_type
-class GetClusterScanScanConfigCisScanConfigResult(dict):
-    def __init__(__self__, *,
-                 debug_master: Optional[bool] = None,
-                 debug_worker: Optional[bool] = None,
-                 override_benchmark_version: Optional[str] = None,
-                 override_skips: Optional[Sequence[str]] = None,
-                 profile: Optional[str] = None):
-        """
-        :param bool debug_master: Debug master. Default: `false` (bool)
-        :param bool debug_worker: Debug worker. Default: `false` (bool)
-        :param str override_benchmark_version: Override benchmark version (string)
-        :param Sequence[str] override_skips: Override skip (string)
-        :param str profile: Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
-        """
-        if debug_master is not None:
-            pulumi.set(__self__, "debug_master", debug_master)
-        if debug_worker is not None:
-            pulumi.set(__self__, "debug_worker", debug_worker)
-        if override_benchmark_version is not None:
-            pulumi.set(__self__, "override_benchmark_version", override_benchmark_version)
-        if override_skips is not None:
-            pulumi.set(__self__, "override_skips", override_skips)
-        if profile is not None:
-            pulumi.set(__self__, "profile", profile)
-
-    @property
-    @pulumi.getter(name="debugMaster")
-    def debug_master(self) -> Optional[bool]:
-        """
-        Debug master. Default: `false` (bool)
-        """
-        return pulumi.get(self, "debug_master")
-
-    @property
-    @pulumi.getter(name="debugWorker")
-    def debug_worker(self) -> Optional[bool]:
-        """
-        Debug worker. Default: `false` (bool)
-        """
-        return pulumi.get(self, "debug_worker")
-
-    @property
-    @pulumi.getter(name="overrideBenchmarkVersion")
-    def override_benchmark_version(self) -> Optional[str]:
-        """
-        Override benchmark version (string)
-        """
-        return pulumi.get(self, "override_benchmark_version")
-
-    @property
-    @pulumi.getter(name="overrideSkips")
-    def override_skips(self) -> Optional[Sequence[str]]:
-        """
-        Override skip (string)
-        """
-        return pulumi.get(self, "override_skips")
-
-    @property
-    @pulumi.getter
-    def profile(self) -> Optional[str]:
-        """
-        Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
-        """
-        return pulumi.get(self, "profile")
-
-
-@pulumi.output_type
-class GetClusterScheduledClusterScanResult(dict):
-    def __init__(__self__, *,
-                 scan_config: 'outputs.GetClusterScheduledClusterScanScanConfigResult',
-                 schedule_config: 'outputs.GetClusterScheduledClusterScanScheduleConfigResult',
-                 enabled: Optional[bool] = None):
-        pulumi.set(__self__, "scan_config", scan_config)
-        pulumi.set(__self__, "schedule_config", schedule_config)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter(name="scanConfig")
-    def scan_config(self) -> 'outputs.GetClusterScheduledClusterScanScanConfigResult':
-        return pulumi.get(self, "scan_config")
-
-    @property
-    @pulumi.getter(name="scheduleConfig")
-    def schedule_config(self) -> 'outputs.GetClusterScheduledClusterScanScheduleConfigResult':
-        return pulumi.get(self, "schedule_config")
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[bool]:
-        return pulumi.get(self, "enabled")
-
-
-@pulumi.output_type
-class GetClusterScheduledClusterScanScanConfigResult(dict):
-    def __init__(__self__, *,
-                 cis_scan_config: 'outputs.GetClusterScheduledClusterScanScanConfigCisScanConfigResult'):
-        pulumi.set(__self__, "cis_scan_config", cis_scan_config)
-
-    @property
-    @pulumi.getter(name="cisScanConfig")
-    def cis_scan_config(self) -> 'outputs.GetClusterScheduledClusterScanScanConfigCisScanConfigResult':
-        return pulumi.get(self, "cis_scan_config")
-
-
-@pulumi.output_type
-class GetClusterScheduledClusterScanScanConfigCisScanConfigResult(dict):
-    def __init__(__self__, *,
-                 debug_master: Optional[bool] = None,
-                 debug_worker: Optional[bool] = None,
-                 override_benchmark_version: Optional[str] = None,
-                 override_skips: Optional[Sequence[str]] = None,
-                 profile: Optional[str] = None):
-        if debug_master is not None:
-            pulumi.set(__self__, "debug_master", debug_master)
-        if debug_worker is not None:
-            pulumi.set(__self__, "debug_worker", debug_worker)
-        if override_benchmark_version is not None:
-            pulumi.set(__self__, "override_benchmark_version", override_benchmark_version)
-        if override_skips is not None:
-            pulumi.set(__self__, "override_skips", override_skips)
-        if profile is not None:
-            pulumi.set(__self__, "profile", profile)
-
-    @property
-    @pulumi.getter(name="debugMaster")
-    def debug_master(self) -> Optional[bool]:
-        return pulumi.get(self, "debug_master")
-
-    @property
-    @pulumi.getter(name="debugWorker")
-    def debug_worker(self) -> Optional[bool]:
-        return pulumi.get(self, "debug_worker")
-
-    @property
-    @pulumi.getter(name="overrideBenchmarkVersion")
-    def override_benchmark_version(self) -> Optional[str]:
-        return pulumi.get(self, "override_benchmark_version")
-
-    @property
-    @pulumi.getter(name="overrideSkips")
-    def override_skips(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "override_skips")
-
-    @property
-    @pulumi.getter
-    def profile(self) -> Optional[str]:
-        return pulumi.get(self, "profile")
-
-
-@pulumi.output_type
-class GetClusterScheduledClusterScanScheduleConfigResult(dict):
-    def __init__(__self__, *,
-                 cron_schedule: str,
-                 retention: int):
-        pulumi.set(__self__, "cron_schedule", cron_schedule)
-        pulumi.set(__self__, "retention", retention)
-
-    @property
-    @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> str:
-        return pulumi.get(self, "cron_schedule")
-
-    @property
-    @pulumi.getter
-    def retention(self) -> int:
-        return pulumi.get(self, "retention")
-
-
-@pulumi.output_type
 class GetClusterTemplateMemberResult(dict):
     def __init__(__self__, *,
                  access_type: Optional[str] = None,
@@ -38278,7 +35756,6 @@ class GetClusterTemplateTemplateRevisionClusterConfigResult(dict):
                  enable_cluster_alerting: Optional[bool] = None,
                  enable_cluster_monitoring: Optional[bool] = None,
                  enable_network_policy: Optional[bool] = None,
-                 scheduled_cluster_scan: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanResult'] = None,
                  windows_prefered_cluster: Optional[bool] = None):
         pulumi.set(__self__, "cluster_auth_endpoint", cluster_auth_endpoint)
         pulumi.set(__self__, "default_cluster_role_for_project_members", default_cluster_role_for_project_members)
@@ -38293,8 +35770,6 @@ class GetClusterTemplateTemplateRevisionClusterConfigResult(dict):
             pulumi.set(__self__, "enable_cluster_monitoring", enable_cluster_monitoring)
         if enable_network_policy is not None:
             pulumi.set(__self__, "enable_network_policy", enable_network_policy)
-        if scheduled_cluster_scan is not None:
-            pulumi.set(__self__, "scheduled_cluster_scan", scheduled_cluster_scan)
         if windows_prefered_cluster is not None:
             pulumi.set(__self__, "windows_prefered_cluster", windows_prefered_cluster)
 
@@ -38347,11 +35822,6 @@ class GetClusterTemplateTemplateRevisionClusterConfigResult(dict):
     @pulumi.getter(name="enableNetworkPolicy")
     def enable_network_policy(self) -> Optional[bool]:
         return pulumi.get(self, "enable_network_policy")
-
-    @property
-    @pulumi.getter(name="scheduledClusterScan")
-    def scheduled_cluster_scan(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanResult']:
-        return pulumi.get(self, "scheduled_cluster_scan")
 
     @property
     @pulumi.getter(name="windowsPreferedCluster")
@@ -41713,109 +39183,6 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDra
 
 
 @pulumi.output_type
-class GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanResult(dict):
-    def __init__(__self__, *,
-                 scan_config: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigResult',
-                 schedule_config: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigResult',
-                 enabled: Optional[bool] = None):
-        pulumi.set(__self__, "scan_config", scan_config)
-        pulumi.set(__self__, "schedule_config", schedule_config)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter(name="scanConfig")
-    def scan_config(self) -> 'outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigResult':
-        return pulumi.get(self, "scan_config")
-
-    @property
-    @pulumi.getter(name="scheduleConfig")
-    def schedule_config(self) -> 'outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigResult':
-        return pulumi.get(self, "schedule_config")
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[bool]:
-        return pulumi.get(self, "enabled")
-
-
-@pulumi.output_type
-class GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigResult(dict):
-    def __init__(__self__, *,
-                 cis_scan_config: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigResult'):
-        pulumi.set(__self__, "cis_scan_config", cis_scan_config)
-
-    @property
-    @pulumi.getter(name="cisScanConfig")
-    def cis_scan_config(self) -> 'outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigResult':
-        return pulumi.get(self, "cis_scan_config")
-
-
-@pulumi.output_type
-class GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigResult(dict):
-    def __init__(__self__, *,
-                 debug_master: Optional[bool] = None,
-                 debug_worker: Optional[bool] = None,
-                 override_benchmark_version: Optional[str] = None,
-                 override_skips: Optional[Sequence[str]] = None,
-                 profile: Optional[str] = None):
-        if debug_master is not None:
-            pulumi.set(__self__, "debug_master", debug_master)
-        if debug_worker is not None:
-            pulumi.set(__self__, "debug_worker", debug_worker)
-        if override_benchmark_version is not None:
-            pulumi.set(__self__, "override_benchmark_version", override_benchmark_version)
-        if override_skips is not None:
-            pulumi.set(__self__, "override_skips", override_skips)
-        if profile is not None:
-            pulumi.set(__self__, "profile", profile)
-
-    @property
-    @pulumi.getter(name="debugMaster")
-    def debug_master(self) -> Optional[bool]:
-        return pulumi.get(self, "debug_master")
-
-    @property
-    @pulumi.getter(name="debugWorker")
-    def debug_worker(self) -> Optional[bool]:
-        return pulumi.get(self, "debug_worker")
-
-    @property
-    @pulumi.getter(name="overrideBenchmarkVersion")
-    def override_benchmark_version(self) -> Optional[str]:
-        return pulumi.get(self, "override_benchmark_version")
-
-    @property
-    @pulumi.getter(name="overrideSkips")
-    def override_skips(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "override_skips")
-
-    @property
-    @pulumi.getter
-    def profile(self) -> Optional[str]:
-        return pulumi.get(self, "profile")
-
-
-@pulumi.output_type
-class GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigResult(dict):
-    def __init__(__self__, *,
-                 cron_schedule: str,
-                 retention: int):
-        pulumi.set(__self__, "cron_schedule", cron_schedule)
-        pulumi.set(__self__, "retention", retention)
-
-    @property
-    @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> str:
-        return pulumi.get(self, "cron_schedule")
-
-    @property
-    @pulumi.getter
-    def retention(self) -> int:
-        return pulumi.get(self, "retention")
-
-
-@pulumi.output_type
 class GetClusterTemplateTemplateRevisionQuestionResult(dict):
     def __init__(__self__, *,
                  default: str,
@@ -44153,438 +41520,6 @@ class GetProjectContainerResourceLimitResult(dict):
     @pulumi.getter(name="requestsMemory")
     def requests_memory(self) -> Optional[str]:
         return pulumi.get(self, "requests_memory")
-
-
-@pulumi.output_type
-class GetProjectLoggingCustomTargetConfigResult(dict):
-    def __init__(__self__, *,
-                 content: str,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None):
-        pulumi.set(__self__, "content", content)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-
-    @property
-    @pulumi.getter
-    def content(self) -> str:
-        return pulumi.get(self, "content")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        return pulumi.get(self, "client_key")
-
-
-@pulumi.output_type
-class GetProjectLoggingElasticsearchConfigResult(dict):
-    def __init__(__self__, *,
-                 endpoint: str,
-                 ssl_verify: bool,
-                 auth_password: Optional[str] = None,
-                 auth_username: Optional[str] = None,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 client_key_pass: Optional[str] = None,
-                 date_format: Optional[str] = None,
-                 index_prefix: Optional[str] = None,
-                 ssl_version: Optional[str] = None):
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "ssl_verify", ssl_verify)
-        if auth_password is not None:
-            pulumi.set(__self__, "auth_password", auth_password)
-        if auth_username is not None:
-            pulumi.set(__self__, "auth_username", auth_username)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if client_key_pass is not None:
-            pulumi.set(__self__, "client_key_pass", client_key_pass)
-        if date_format is not None:
-            pulumi.set(__self__, "date_format", date_format)
-        if index_prefix is not None:
-            pulumi.set(__self__, "index_prefix", index_prefix)
-        if ssl_version is not None:
-            pulumi.set(__self__, "ssl_version", ssl_version)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> bool:
-        return pulumi.get(self, "ssl_verify")
-
-    @property
-    @pulumi.getter(name="authPassword")
-    def auth_password(self) -> Optional[str]:
-        return pulumi.get(self, "auth_password")
-
-    @property
-    @pulumi.getter(name="authUsername")
-    def auth_username(self) -> Optional[str]:
-        return pulumi.get(self, "auth_username")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="clientKeyPass")
-    def client_key_pass(self) -> Optional[str]:
-        return pulumi.get(self, "client_key_pass")
-
-    @property
-    @pulumi.getter(name="dateFormat")
-    def date_format(self) -> Optional[str]:
-        return pulumi.get(self, "date_format")
-
-    @property
-    @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[str]:
-        return pulumi.get(self, "index_prefix")
-
-    @property
-    @pulumi.getter(name="sslVersion")
-    def ssl_version(self) -> Optional[str]:
-        return pulumi.get(self, "ssl_version")
-
-
-@pulumi.output_type
-class GetProjectLoggingFluentdConfigResult(dict):
-    def __init__(__self__, *,
-                 fluent_servers: Sequence['outputs.GetProjectLoggingFluentdConfigFluentServerResult'],
-                 certificate: Optional[str] = None,
-                 compress: Optional[bool] = None,
-                 enable_tls: Optional[bool] = None):
-        pulumi.set(__self__, "fluent_servers", fluent_servers)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if compress is not None:
-            pulumi.set(__self__, "compress", compress)
-        if enable_tls is not None:
-            pulumi.set(__self__, "enable_tls", enable_tls)
-
-    @property
-    @pulumi.getter(name="fluentServers")
-    def fluent_servers(self) -> Sequence['outputs.GetProjectLoggingFluentdConfigFluentServerResult']:
-        return pulumi.get(self, "fluent_servers")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter
-    def compress(self) -> Optional[bool]:
-        return pulumi.get(self, "compress")
-
-    @property
-    @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[bool]:
-        return pulumi.get(self, "enable_tls")
-
-
-@pulumi.output_type
-class GetProjectLoggingFluentdConfigFluentServerResult(dict):
-    def __init__(__self__, *,
-                 endpoint: str,
-                 hostname: Optional[str] = None,
-                 password: Optional[str] = None,
-                 shared_key: Optional[str] = None,
-                 standby: Optional[bool] = None,
-                 username: Optional[str] = None,
-                 weight: Optional[int] = None):
-        pulumi.set(__self__, "endpoint", endpoint)
-        if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if shared_key is not None:
-            pulumi.set(__self__, "shared_key", shared_key)
-        if standby is not None:
-            pulumi.set(__self__, "standby", standby)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
-        if weight is not None:
-            pulumi.set(__self__, "weight", weight)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter
-    def hostname(self) -> Optional[str]:
-        return pulumi.get(self, "hostname")
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[str]:
-        return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter(name="sharedKey")
-    def shared_key(self) -> Optional[str]:
-        return pulumi.get(self, "shared_key")
-
-    @property
-    @pulumi.getter
-    def standby(self) -> Optional[bool]:
-        return pulumi.get(self, "standby")
-
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[str]:
-        return pulumi.get(self, "username")
-
-    @property
-    @pulumi.getter
-    def weight(self) -> Optional[int]:
-        return pulumi.get(self, "weight")
-
-
-@pulumi.output_type
-class GetProjectLoggingKafkaConfigResult(dict):
-    def __init__(__self__, *,
-                 topic: str,
-                 broker_endpoints: Optional[Sequence[str]] = None,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 zookeeper_endpoint: Optional[str] = None):
-        pulumi.set(__self__, "topic", topic)
-        if broker_endpoints is not None:
-            pulumi.set(__self__, "broker_endpoints", broker_endpoints)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if zookeeper_endpoint is not None:
-            pulumi.set(__self__, "zookeeper_endpoint", zookeeper_endpoint)
-
-    @property
-    @pulumi.getter
-    def topic(self) -> str:
-        return pulumi.get(self, "topic")
-
-    @property
-    @pulumi.getter(name="brokerEndpoints")
-    def broker_endpoints(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "broker_endpoints")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="zookeeperEndpoint")
-    def zookeeper_endpoint(self) -> Optional[str]:
-        return pulumi.get(self, "zookeeper_endpoint")
-
-
-@pulumi.output_type
-class GetProjectLoggingSplunkConfigResult(dict):
-    def __init__(__self__, *,
-                 endpoint: str,
-                 ssl_verify: bool,
-                 token: str,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 client_key_pass: Optional[str] = None,
-                 index: Optional[str] = None,
-                 source: Optional[str] = None):
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "ssl_verify", ssl_verify)
-        pulumi.set(__self__, "token", token)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if client_key_pass is not None:
-            pulumi.set(__self__, "client_key_pass", client_key_pass)
-        if index is not None:
-            pulumi.set(__self__, "index", index)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> bool:
-        return pulumi.get(self, "ssl_verify")
-
-    @property
-    @pulumi.getter
-    def token(self) -> str:
-        return pulumi.get(self, "token")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="clientKeyPass")
-    def client_key_pass(self) -> Optional[str]:
-        return pulumi.get(self, "client_key_pass")
-
-    @property
-    @pulumi.getter
-    def index(self) -> Optional[str]:
-        return pulumi.get(self, "index")
-
-    @property
-    @pulumi.getter
-    def source(self) -> Optional[str]:
-        return pulumi.get(self, "source")
-
-
-@pulumi.output_type
-class GetProjectLoggingSyslogConfigResult(dict):
-    def __init__(__self__, *,
-                 endpoint: str,
-                 ssl_verify: bool,
-                 certificate: Optional[str] = None,
-                 client_cert: Optional[str] = None,
-                 client_key: Optional[str] = None,
-                 enable_tls: Optional[bool] = None,
-                 program: Optional[str] = None,
-                 protocol: Optional[str] = None,
-                 severity: Optional[str] = None,
-                 token: Optional[str] = None):
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "ssl_verify", ssl_verify)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
-        if enable_tls is not None:
-            pulumi.set(__self__, "enable_tls", enable_tls)
-        if program is not None:
-            pulumi.set(__self__, "program", program)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if severity is not None:
-            pulumi.set(__self__, "severity", severity)
-        if token is not None:
-            pulumi.set(__self__, "token", token)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter(name="sslVerify")
-    def ssl_verify(self) -> bool:
-        return pulumi.get(self, "ssl_verify")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[str]:
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
-        return pulumi.get(self, "client_cert")
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
-        return pulumi.get(self, "client_key")
-
-    @property
-    @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[bool]:
-        return pulumi.get(self, "enable_tls")
-
-    @property
-    @pulumi.getter
-    def program(self) -> Optional[str]:
-        return pulumi.get(self, "program")
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[str]:
-        return pulumi.get(self, "protocol")
-
-    @property
-    @pulumi.getter
-    def severity(self) -> Optional[str]:
-        return pulumi.get(self, "severity")
-
-    @property
-    @pulumi.getter
-    def token(self) -> Optional[str]:
-        return pulumi.get(self, "token")
 
 
 @pulumi.output_type

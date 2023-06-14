@@ -126,7 +126,7 @@ public class GlobalDns extends com.pulumi.resources.CustomResource {
      * Annotations for Global DNS (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -140,7 +140,7 @@ public class GlobalDns extends com.pulumi.resources.CustomResource {
      * The Global DNS record (string)
      * 
      */
-    @Export(name="fqdn", type=String.class, parameters={})
+    @Export(name="fqdn", refs={String.class}, tree="[0]")
     private Output<String> fqdn;
 
     /**
@@ -154,7 +154,7 @@ public class GlobalDns extends com.pulumi.resources.CustomResource {
      * Labels for Global DNS (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -168,7 +168,7 @@ public class GlobalDns extends com.pulumi.resources.CustomResource {
      * The MultiCluster App ID to assign to the Global DNS. Conflicts with `project_ids` (string)
      * 
      */
-    @Export(name="multiClusterAppId", type=String.class, parameters={})
+    @Export(name="multiClusterAppId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> multiClusterAppId;
 
     /**
@@ -182,7 +182,7 @@ public class GlobalDns extends com.pulumi.resources.CustomResource {
      * The name of the Global DNS (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -196,7 +196,7 @@ public class GlobalDns extends com.pulumi.resources.CustomResource {
      * A list of project_ids to assign to the Global DNS. Conflicts with `multi_cluster_app_id` (list(string))
      * 
      */
-    @Export(name="projectIds", type=List.class, parameters={String.class})
+    @Export(name="projectIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> projectIds;
 
     /**
@@ -210,7 +210,7 @@ public class GlobalDns extends com.pulumi.resources.CustomResource {
      * The Global DNS provider ID to use (string)
      * 
      */
-    @Export(name="providerId", type=String.class, parameters={})
+    @Export(name="providerId", refs={String.class}, tree="[0]")
     private Output<String> providerId;
 
     /**
@@ -224,7 +224,7 @@ public class GlobalDns extends com.pulumi.resources.CustomResource {
      * TTL in seconds for DNS record. Default: `300` (int)
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ttl;
 
     /**

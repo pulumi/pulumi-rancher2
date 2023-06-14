@@ -70,7 +70,7 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      * The project alert group annotations (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -84,7 +84,7 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      * The project alert group description (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -98,7 +98,7 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      * The project alert group interval seconds. Default: `180` (int)
      * 
      */
-    @Export(name="groupIntervalSeconds", type=Integer.class, parameters={})
+    @Export(name="groupIntervalSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> groupIntervalSeconds;
 
     /**
@@ -112,7 +112,7 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      * The project alert group wait seconds. Default: `180` (int)
      * 
      */
-    @Export(name="groupWaitSeconds", type=Integer.class, parameters={})
+    @Export(name="groupWaitSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> groupWaitSeconds;
 
     /**
@@ -126,7 +126,7 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      * The project alert group labels (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -140,7 +140,7 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      * The project alert group name (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -154,7 +154,7 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      * The project id where create project alert group (string)
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -168,7 +168,7 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      * The project alert group recipients (list)
      * 
      */
-    @Export(name="recipients", type=List.class, parameters={ProjectAlertGroupRecipient.class})
+    @Export(name="recipients", refs={List.class,ProjectAlertGroupRecipient.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ProjectAlertGroupRecipient>> recipients;
 
     /**
@@ -182,7 +182,7 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      * The project alert group wait seconds. Default: `3600` (int)
      * 
      */
-    @Export(name="repeatIntervalSeconds", type=Integer.class, parameters={})
+    @Export(name="repeatIntervalSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> repeatIntervalSeconds;
 
     /**

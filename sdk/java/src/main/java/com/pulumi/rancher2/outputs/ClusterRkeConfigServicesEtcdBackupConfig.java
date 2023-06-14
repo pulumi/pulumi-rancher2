@@ -24,7 +24,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfig {
      */
     private @Nullable Integer intervalHours;
     /**
-     * @return Cluster scan retention (int)
+     * @return Retention option for etcd service (string)
      * 
      */
     private @Nullable Integer retention;
@@ -60,7 +60,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfig {
         return Optional.ofNullable(this.intervalHours);
     }
     /**
-     * @return Cluster scan retention (int)
+     * @return Retention option for etcd service (string)
      * 
      */
     public Optional<Integer> retention() {

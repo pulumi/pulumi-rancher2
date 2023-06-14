@@ -78,7 +78,7 @@ public final class ClusterRkeConfigServicesEtcd {
      */
     private @Nullable String path;
     /**
-     * @return Cluster scan retention (int)
+     * @return Retention option for etcd service (string)
      * 
      */
     private @Nullable String retention;
@@ -179,7 +179,7 @@ public final class ClusterRkeConfigServicesEtcd {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return Cluster scan retention (int)
+     * @return Retention option for etcd service (string)
      * 
      */
     public Optional<String> retention() {

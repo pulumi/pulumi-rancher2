@@ -12,11 +12,20 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class NodeTemplateAzureConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("acceleratedNetworking")]
+        public Input<bool>? AcceleratedNetworking { get; set; }
+
         /// <summary>
         /// Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
         /// </summary>
         [Input("availabilitySet")]
         public Input<string>? AvailabilitySet { get; set; }
+
+        /// <summary>
+        /// OpenStack availability zone (string)
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
 
         [Input("clientId")]
         private Input<string>? _clientId;
@@ -199,6 +208,12 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
+        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
+        /// </summary>
+        [Input("tags")]
+        public Input<string>? Tags { get; set; }
+
+        /// <summary>
         /// Update domain count to use for availability set. Default `5` (string)
         /// </summary>
         [Input("updateDomainCount")]
@@ -209,6 +224,9 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("usePrivateIp")]
         public Input<bool>? UsePrivateIp { get; set; }
+
+        [Input("usePublicIpStandardSku")]
+        public Input<bool>? UsePublicIpStandardSku { get; set; }
 
         /// <summary>
         /// Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)

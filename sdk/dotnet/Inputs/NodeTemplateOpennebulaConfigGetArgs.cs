@@ -49,7 +49,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Image name e.g. `harvester-public/image-57hzg` (string)
+        /// Use `disk_info` instead
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// Network name e.g. `harvester-public/vlan1` (string)
+        /// Use `network_info` instead
         /// </summary>
         [Input("networkName")]
         public Input<string>? NetworkName { get; set; }

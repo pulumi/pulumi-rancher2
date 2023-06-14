@@ -35,7 +35,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      * 
      */
-    @Export(name="accessMode", type=String.class, parameters={})
+    @Export(name="accessMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessMode;
 
     /**
@@ -49,7 +49,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
      * 
      */
-    @Export(name="allowedPrincipalIds", type=List.class, parameters={String.class})
+    @Export(name="allowedPrincipalIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedPrincipalIds;
 
     /**
@@ -63,7 +63,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Annotations of the resource (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -77,7 +77,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * CA certificate for TLS if selfsigned (string)
      * 
      */
-    @Export(name="certificate", type=String.class, parameters={})
+    @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificate;
 
     /**
@@ -91,7 +91,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * ActiveDirectory connection timeout. Default `5000` (int)
      * 
      */
-    @Export(name="connectionTimeout", type=Integer.class, parameters={})
+    @Export(name="connectionTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> connectionTimeout;
 
     /**
@@ -105,7 +105,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * ActiveDirectory defult login domain (string)
      * 
      */
-    @Export(name="defaultLoginDomain", type=String.class, parameters={})
+    @Export(name="defaultLoginDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultLoginDomain;
 
     /**
@@ -119,7 +119,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Enable auth config provider. Default `true` (bool)
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -133,7 +133,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Group DN attribute. Default `distinguishedName` (string)
      * 
      */
-    @Export(name="groupDnAttribute", type=String.class, parameters={})
+    @Export(name="groupDnAttribute", refs={String.class}, tree="[0]")
     private Output<String> groupDnAttribute;
 
     /**
@@ -147,7 +147,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Group member mapping attribute. Default `member` (string)
      * 
      */
-    @Export(name="groupMemberMappingAttribute", type=String.class, parameters={})
+    @Export(name="groupMemberMappingAttribute", refs={String.class}, tree="[0]")
     private Output<String> groupMemberMappingAttribute;
 
     /**
@@ -161,7 +161,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Group member user attribute. Default `distinguishedName` (string)
      * 
      */
-    @Export(name="groupMemberUserAttribute", type=String.class, parameters={})
+    @Export(name="groupMemberUserAttribute", refs={String.class}, tree="[0]")
     private Output<String> groupMemberUserAttribute;
 
     /**
@@ -175,7 +175,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Group name attribute. Default `name` (string)
      * 
      */
-    @Export(name="groupNameAttribute", type=String.class, parameters={})
+    @Export(name="groupNameAttribute", refs={String.class}, tree="[0]")
     private Output<String> groupNameAttribute;
 
     /**
@@ -189,7 +189,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Group object class. Default `group` (string)
      * 
      */
-    @Export(name="groupObjectClass", type=String.class, parameters={})
+    @Export(name="groupObjectClass", refs={String.class}, tree="[0]")
     private Output<String> groupObjectClass;
 
     /**
@@ -203,7 +203,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Group search attribute. Default `sAMAccountName` (string)
      * 
      */
-    @Export(name="groupSearchAttribute", type=String.class, parameters={})
+    @Export(name="groupSearchAttribute", refs={String.class}, tree="[0]")
     private Output<String> groupSearchAttribute;
 
     /**
@@ -217,7 +217,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Group search base (string)
      * 
      */
-    @Export(name="groupSearchBase", type=String.class, parameters={})
+    @Export(name="groupSearchBase", refs={String.class}, tree="[0]")
     private Output<String> groupSearchBase;
 
     /**
@@ -231,7 +231,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Group search filter (string)
      * 
      */
-    @Export(name="groupSearchFilter", type=String.class, parameters={})
+    @Export(name="groupSearchFilter", refs={String.class}, tree="[0]")
     private Output<String> groupSearchFilter;
 
     /**
@@ -245,7 +245,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Labels of the resource (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -259,7 +259,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * (Computed) The name of the resource (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -273,7 +273,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Nested group membership enable. Default `false` (bool)
      * 
      */
-    @Export(name="nestedGroupMembershipEnabled", type=Boolean.class, parameters={})
+    @Export(name="nestedGroupMembershipEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> nestedGroupMembershipEnabled;
 
     /**
@@ -287,7 +287,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * ActiveDirectory port. Default `389` (int)
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -301,7 +301,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * ActiveDirectory servers list (list)
      * 
      */
-    @Export(name="servers", type=List.class, parameters={String.class})
+    @Export(name="servers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> servers;
 
     /**
@@ -315,7 +315,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Service account password for access ActiveDirectory service (string)
      * 
      */
-    @Export(name="serviceAccountPassword", type=String.class, parameters={})
+    @Export(name="serviceAccountPassword", refs={String.class}, tree="[0]")
     private Output<String> serviceAccountPassword;
 
     /**
@@ -329,7 +329,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Service account DN for access ActiveDirectory service (string)
      * 
      */
-    @Export(name="serviceAccountUsername", type=String.class, parameters={})
+    @Export(name="serviceAccountUsername", refs={String.class}, tree="[0]")
     private Output<String> serviceAccountUsername;
 
     /**
@@ -343,7 +343,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Enable start TLS connection (bool)
      * 
      */
-    @Export(name="startTls", type=Boolean.class, parameters={})
+    @Export(name="startTls", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> startTls;
 
     /**
@@ -357,7 +357,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Password for test access to ActiveDirectory service (string)
      * 
      */
-    @Export(name="testPassword", type=String.class, parameters={})
+    @Export(name="testPassword", refs={String.class}, tree="[0]")
     private Output<String> testPassword;
 
     /**
@@ -371,7 +371,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Username for test access to ActiveDirectory service (string)
      * 
      */
-    @Export(name="testUsername", type=String.class, parameters={})
+    @Export(name="testUsername", refs={String.class}, tree="[0]")
     private Output<String> testUsername;
 
     /**
@@ -385,7 +385,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * Enable TLS connection (bool)
      * 
      */
-    @Export(name="tls", type=Boolean.class, parameters={})
+    @Export(name="tls", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> tls;
 
     /**
@@ -399,7 +399,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * (Computed) The type of the resource (string)
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -413,7 +413,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * User disabled bit mask. Default `2` (int)
      * 
      */
-    @Export(name="userDisabledBitMask", type=Integer.class, parameters={})
+    @Export(name="userDisabledBitMask", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> userDisabledBitMask;
 
     /**
@@ -427,7 +427,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * User enable attribute (string)
      * 
      */
-    @Export(name="userEnabledAttribute", type=String.class, parameters={})
+    @Export(name="userEnabledAttribute", refs={String.class}, tree="[0]")
     private Output<String> userEnabledAttribute;
 
     /**
@@ -441,7 +441,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * User login attribute. Default `sAMAccountName` (string)
      * 
      */
-    @Export(name="userLoginAttribute", type=String.class, parameters={})
+    @Export(name="userLoginAttribute", refs={String.class}, tree="[0]")
     private Output<String> userLoginAttribute;
 
     /**
@@ -455,7 +455,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * User name attribute. Default `name` (string)
      * 
      */
-    @Export(name="userNameAttribute", type=String.class, parameters={})
+    @Export(name="userNameAttribute", refs={String.class}, tree="[0]")
     private Output<String> userNameAttribute;
 
     /**
@@ -469,7 +469,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * User object class. Default `person` (string)
      * 
      */
-    @Export(name="userObjectClass", type=String.class, parameters={})
+    @Export(name="userObjectClass", refs={String.class}, tree="[0]")
     private Output<String> userObjectClass;
 
     /**
@@ -483,7 +483,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * User search attribute. Default `sAMAccountName|sn|givenName` (string)
      * 
      */
-    @Export(name="userSearchAttribute", type=String.class, parameters={})
+    @Export(name="userSearchAttribute", refs={String.class}, tree="[0]")
     private Output<String> userSearchAttribute;
 
     /**
@@ -497,7 +497,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * User search base DN (string)
      * 
      */
-    @Export(name="userSearchBase", type=String.class, parameters={})
+    @Export(name="userSearchBase", refs={String.class}, tree="[0]")
     private Output<String> userSearchBase;
 
     /**
@@ -511,7 +511,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * User search filter (string)
      * 
      */
-    @Export(name="userSearchFilter", type=String.class, parameters={})
+    @Export(name="userSearchFilter", refs={String.class}, tree="[0]")
     private Output<String> userSearchFilter;
 
     /**

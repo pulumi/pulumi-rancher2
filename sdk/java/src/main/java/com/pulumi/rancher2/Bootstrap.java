@@ -125,7 +125,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * (Computed/Sensitive) Current password for Admin user (string)
      * 
      */
-    @Export(name="currentPassword", type=String.class, parameters={})
+    @Export(name="currentPassword", refs={String.class}, tree="[0]")
     private Output<String> currentPassword;
 
     /**
@@ -139,7 +139,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * Initial password for Admin user. Default: `admin` (string)
      * 
      */
-    @Export(name="initialPassword", type=String.class, parameters={})
+    @Export(name="initialPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> initialPassword;
 
     /**
@@ -153,7 +153,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * Password for Admin user or random generated if empty (string)
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -167,7 +167,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * Send telemetry anonymous data. Default: `false` (bool)
      * 
      */
-    @Export(name="telemetry", type=Boolean.class, parameters={})
+    @Export(name="telemetry", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> telemetry;
 
     /**
@@ -181,7 +181,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * (Computed) Generated API temporary token as helper. Should be empty (string)
      * 
      */
-    @Export(name="tempToken", type=String.class, parameters={})
+    @Export(name="tempToken", refs={String.class}, tree="[0]")
     private Output<String> tempToken;
 
     /**
@@ -195,7 +195,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * (Computed) Generated API temporary token id as helper. Should be empty (string)
      * 
      */
-    @Export(name="tempTokenId", type=String.class, parameters={})
+    @Export(name="tempTokenId", refs={String.class}, tree="[0]")
     private Output<String> tempTokenId;
 
     /**
@@ -209,7 +209,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * (Computed) Generated API token for Admin User (string)
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
@@ -223,7 +223,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * (Computed) Generated API token id for Admin User (string)
      * 
      */
-    @Export(name="tokenId", type=String.class, parameters={})
+    @Export(name="tokenId", refs={String.class}, tree="[0]")
     private Output<String> tokenId;
 
     /**
@@ -237,7 +237,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * TTL in seconds for generated admin token. Default: `0`  (int)
      * 
      */
-    @Export(name="tokenTtl", type=Integer.class, parameters={})
+    @Export(name="tokenTtl", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> tokenTtl;
 
     /**
@@ -251,7 +251,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * Regenerate admin token. Default: `false` (bool)
      * 
      */
-    @Export(name="tokenUpdate", type=Boolean.class, parameters={})
+    @Export(name="tokenUpdate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> tokenUpdate;
 
     /**
@@ -265,7 +265,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
      * 
      */
-    @Export(name="uiDefaultLanding", type=String.class, parameters={})
+    @Export(name="uiDefaultLanding", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> uiDefaultLanding;
 
     /**
@@ -279,7 +279,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * (Computed) URL set as server-url (string)
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -293,7 +293,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * (Computed) Admin username (string)
      * 
      */
-    @Export(name="user", type=String.class, parameters={})
+    @Export(name="user", refs={String.class}, tree="[0]")
     private Output<String> user;
 
     /**

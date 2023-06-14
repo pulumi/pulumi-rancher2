@@ -148,7 +148,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Annotations for Node Pool object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -162,7 +162,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Default containers resource limits on namespace (List maxitem:1)
      * 
      */
-    @Export(name="containerResourceLimit", type=NamespaceContainerResourceLimit.class, parameters={})
+    @Export(name="containerResourceLimit", refs={NamespaceContainerResourceLimit.class}, tree="[0]")
     private Output</* @Nullable */ NamespaceContainerResourceLimit> containerResourceLimit;
 
     /**
@@ -176,7 +176,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * A namespace description (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -190,7 +190,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Labels for Node Pool object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -204,7 +204,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The name of the namespace (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -218,7 +218,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The project id where assign namespace. It&#39;s on the form `project_id=&lt;cluster_id&gt;:&lt;id&gt;`. Updating `&lt;id&gt;` part on same `&lt;cluster_id&gt;` namespace will be moved between projects (string)
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -232,7 +232,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
      * 
      */
-    @Export(name="resourceQuota", type=NamespaceResourceQuota.class, parameters={})
+    @Export(name="resourceQuota", refs={NamespaceResourceQuota.class}, tree="[0]")
     private Output<NamespaceResourceQuota> resourceQuota;
 
     /**
@@ -246,7 +246,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Wait for cluster becomes active. Default `false` (bool)
      * 
      */
-    @Export(name="waitForCluster", type=Boolean.class, parameters={})
+    @Export(name="waitForCluster", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForCluster;
 
     /**

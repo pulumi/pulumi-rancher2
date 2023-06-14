@@ -257,14 +257,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Image name e.g. `harvester-public/image-57hzg` (string)
+     * Use `disk_info` instead
      * 
      */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
     /**
-     * @return Image name e.g. `harvester-public/image-57hzg` (string)
+     * @return Use `disk_info` instead
      * 
      */
     public Optional<Output<String>> imageName() {
@@ -1052,7 +1052,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param imageName Image name e.g. `harvester-public/image-57hzg` (string)
+         * @param imageName Use `disk_info` instead
          * 
          * @return builder
          * 
@@ -1063,7 +1063,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param imageName Image name e.g. `harvester-public/image-57hzg` (string)
+         * @param imageName Use `disk_info` instead
          * 
          * @return builder
          * 

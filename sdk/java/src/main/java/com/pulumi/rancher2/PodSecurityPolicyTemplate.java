@@ -174,7 +174,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * = (Optional)
      * 
      */
-    @Export(name="allowPrivilegeEscalation", type=Boolean.class, parameters={})
+    @Export(name="allowPrivilegeEscalation", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowPrivilegeEscalation;
 
     /**
@@ -188,7 +188,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list)
      * 
      */
-    @Export(name="allowedCapabilities", type=List.class, parameters={String.class})
+    @Export(name="allowedCapabilities", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedCapabilities;
 
     /**
@@ -202,7 +202,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list)
      * 
      */
-    @Export(name="allowedCsiDrivers", type=List.class, parameters={PodSecurityPolicyTemplateAllowedCsiDriver.class})
+    @Export(name="allowedCsiDrivers", refs={List.class,PodSecurityPolicyTemplateAllowedCsiDriver.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PodSecurityPolicyTemplateAllowedCsiDriver>> allowedCsiDrivers;
 
     /**
@@ -216,7 +216,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list)
      * 
      */
-    @Export(name="allowedFlexVolumes", type=List.class, parameters={PodSecurityPolicyTemplateAllowedFlexVolume.class})
+    @Export(name="allowedFlexVolumes", refs={List.class,PodSecurityPolicyTemplateAllowedFlexVolume.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PodSecurityPolicyTemplateAllowedFlexVolume>> allowedFlexVolumes;
 
     /**
@@ -230,7 +230,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list)
      * 
      */
-    @Export(name="allowedHostPaths", type=List.class, parameters={PodSecurityPolicyTemplateAllowedHostPath.class})
+    @Export(name="allowedHostPaths", refs={List.class,PodSecurityPolicyTemplateAllowedHostPath.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PodSecurityPolicyTemplateAllowedHostPath>> allowedHostPaths;
 
     /**
@@ -244,7 +244,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list)
      * 
      */
-    @Export(name="allowedProcMountTypes", type=List.class, parameters={String.class})
+    @Export(name="allowedProcMountTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedProcMountTypes;
 
     /**
@@ -258,7 +258,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list)
      * 
      */
-    @Export(name="allowedUnsafeSysctls", type=List.class, parameters={String.class})
+    @Export(name="allowedUnsafeSysctls", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedUnsafeSysctls;
 
     /**
@@ -272,7 +272,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * Annotations for PodSecurityPolicyTemplate object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -286,7 +286,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list)
      * 
      */
-    @Export(name="defaultAddCapabilities", type=List.class, parameters={String.class})
+    @Export(name="defaultAddCapabilities", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> defaultAddCapabilities;
 
     /**
@@ -300,7 +300,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list)
      * 
      */
-    @Export(name="defaultAllowPrivilegeEscalation", type=Boolean.class, parameters={})
+    @Export(name="defaultAllowPrivilegeEscalation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> defaultAllowPrivilegeEscalation;
 
     /**
@@ -314,7 +314,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * The PodSecurityPolicyTemplate description (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -328,7 +328,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list)
      * 
      */
-    @Export(name="forbiddenSysctls", type=List.class, parameters={String.class})
+    @Export(name="forbiddenSysctls", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> forbiddenSysctls;
 
     /**
@@ -342,7 +342,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list maxitems:1)
      * 
      */
-    @Export(name="fsGroup", type=PodSecurityPolicyTemplateFsGroup.class, parameters={})
+    @Export(name="fsGroup", refs={PodSecurityPolicyTemplateFsGroup.class}, tree="[0]")
     private Output<PodSecurityPolicyTemplateFsGroup> fsGroup;
 
     /**
@@ -356,7 +356,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (bool)
      * 
      */
-    @Export(name="hostIpc", type=Boolean.class, parameters={})
+    @Export(name="hostIpc", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hostIpc;
 
     /**
@@ -370,7 +370,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
      * 
      */
-    @Export(name="hostNetwork", type=Boolean.class, parameters={})
+    @Export(name="hostNetwork", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hostNetwork;
 
     /**
@@ -384,7 +384,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (bool)
      * 
      */
-    @Export(name="hostPid", type=Boolean.class, parameters={})
+    @Export(name="hostPid", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hostPid;
 
     /**
@@ -398,7 +398,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list)
      * 
      */
-    @Export(name="hostPorts", type=List.class, parameters={PodSecurityPolicyTemplateHostPort.class})
+    @Export(name="hostPorts", refs={List.class,PodSecurityPolicyTemplateHostPort.class}, tree="[0,1]")
     private Output<List<PodSecurityPolicyTemplateHostPort>> hostPorts;
 
     /**
@@ -412,7 +412,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * Labels for PodSecurityPolicyTemplate object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -426,7 +426,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * The name of the PodSecurityPolicyTemplate (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -440,7 +440,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (bool)
      * 
      */
-    @Export(name="privileged", type=Boolean.class, parameters={})
+    @Export(name="privileged", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> privileged;
 
     /**
@@ -454,7 +454,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (bool)
      * 
      */
-    @Export(name="readOnlyRootFilesystem", type=Boolean.class, parameters={})
+    @Export(name="readOnlyRootFilesystem", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> readOnlyRootFilesystem;
 
     /**
@@ -468,7 +468,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list)
      * 
      */
-    @Export(name="requiredDropCapabilities", type=List.class, parameters={String.class})
+    @Export(name="requiredDropCapabilities", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> requiredDropCapabilities;
 
     /**
@@ -482,7 +482,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list maxitems:1)
      * 
      */
-    @Export(name="runAsGroup", type=PodSecurityPolicyTemplateRunAsGroup.class, parameters={})
+    @Export(name="runAsGroup", refs={PodSecurityPolicyTemplateRunAsGroup.class}, tree="[0]")
     private Output</* @Nullable */ PodSecurityPolicyTemplateRunAsGroup> runAsGroup;
 
     /**
@@ -496,7 +496,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list maxitems:1)
      * 
      */
-    @Export(name="runAsUser", type=PodSecurityPolicyTemplateRunAsUser.class, parameters={})
+    @Export(name="runAsUser", refs={PodSecurityPolicyTemplateRunAsUser.class}, tree="[0]")
     private Output<PodSecurityPolicyTemplateRunAsUser> runAsUser;
 
     /**
@@ -510,7 +510,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list maxitems:1)
      * 
      */
-    @Export(name="runtimeClass", type=PodSecurityPolicyTemplateRuntimeClass.class, parameters={})
+    @Export(name="runtimeClass", refs={PodSecurityPolicyTemplateRuntimeClass.class}, tree="[0]")
     private Output</* @Nullable */ PodSecurityPolicyTemplateRuntimeClass> runtimeClass;
 
     /**
@@ -524,7 +524,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list maxitems:1)
      * 
      */
-    @Export(name="seLinux", type=PodSecurityPolicyTemplateSeLinux.class, parameters={})
+    @Export(name="seLinux", refs={PodSecurityPolicyTemplateSeLinux.class}, tree="[0]")
     private Output<PodSecurityPolicyTemplateSeLinux> seLinux;
 
     /**
@@ -538,7 +538,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list maxitems:1)
      * 
      */
-    @Export(name="supplementalGroup", type=PodSecurityPolicyTemplateSupplementalGroup.class, parameters={})
+    @Export(name="supplementalGroup", refs={PodSecurityPolicyTemplateSupplementalGroup.class}, tree="[0]")
     private Output<PodSecurityPolicyTemplateSupplementalGroup> supplementalGroup;
 
     /**
@@ -552,7 +552,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * (list)
      * 
      */
-    @Export(name="volumes", type=List.class, parameters={String.class})
+    @Export(name="volumes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> volumes;
 
     /**

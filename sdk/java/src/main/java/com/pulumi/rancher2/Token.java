@@ -67,7 +67,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * (Computed) Token access key part (string)
      * 
      */
-    @Export(name="accessKey", type=String.class, parameters={})
+    @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     /**
@@ -81,7 +81,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * (Computed) Annotations of the token (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -95,7 +95,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * Cluster ID for scoped token (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterId;
 
     /**
@@ -109,7 +109,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * Token description (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -123,7 +123,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * (Computed) Token is enabled (bool)
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -137,7 +137,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * (Computed) Token is expired (bool)
      * 
      */
-    @Export(name="expired", type=Boolean.class, parameters={})
+    @Export(name="expired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> expired;
 
     /**
@@ -151,7 +151,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * (Computed) Labels of the token (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -165,7 +165,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * (Computed) Token name (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -179,7 +179,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * Renew expired or disabled token
      * 
      */
-    @Export(name="renew", type=Boolean.class, parameters={})
+    @Export(name="renew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> renew;
 
     /**
@@ -193,7 +193,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * (Computed/Sensitive) Token secret key part (string)
      * 
      */
-    @Export(name="secretKey", type=String.class, parameters={})
+    @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output<String> secretKey;
 
     /**
@@ -207,7 +207,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * (Computed/Sensitive) Token value (string)
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
@@ -223,7 +223,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ttl;
 
     /**
@@ -239,7 +239,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * (Computed) Token user ID (string)
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

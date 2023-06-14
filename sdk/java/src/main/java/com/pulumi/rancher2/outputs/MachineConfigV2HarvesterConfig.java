@@ -17,20 +17,37 @@ public final class MachineConfigV2HarvesterConfig {
      */
     private @Nullable String cpuCount;
     /**
-     * @return Disk bus, Default `virtio` (string)
+     * @return Use `disk_info` instead
+     * 
+     * @deprecated
+     * Use disk_info instead
      * 
      */
+    @Deprecated /* Use disk_info instead */
     private @Nullable String diskBus;
+    /**
+     * @return A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
+     * 
+     */
+    private String diskInfo;
     /**
      * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
-     */
-    private @Nullable String diskSize;
-    /**
-     * @return Image name e.g. `harvester-public/image-57hzg` (string)
+     * @deprecated
+     * Use disk_info instead
      * 
      */
-    private String imageName;
+    @Deprecated /* Use disk_info instead */
+    private @Nullable String diskSize;
+    /**
+     * @return Use `disk_info` instead
+     * 
+     * @deprecated
+     * Use disk_info instead
+     * 
+     */
+    @Deprecated /* Use disk_info instead */
+    private @Nullable String imageName;
     /**
      * @return Memory size (in GiB), Default `4` (string)
      * 
@@ -42,15 +59,28 @@ public final class MachineConfigV2HarvesterConfig {
      */
     private @Nullable String networkData;
     /**
-     * @return Network model, Default `virtio` (string)
+     * @return A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
      * 
      */
+    private String networkInfo;
+    /**
+     * @return Use `network_info` instead
+     * 
+     * @deprecated
+     * Use network_info instead
+     * 
+     */
+    @Deprecated /* Use network_info instead */
     private @Nullable String networkModel;
     /**
-     * @return Network name e.g. `harvester-public/vlan1` (string)
+     * @return Use `network_info` instead
+     * 
+     * @deprecated
+     * Use network_info instead
      * 
      */
-    private String networkName;
+    @Deprecated /* Use network_info instead */
+    private @Nullable String networkName;
     /**
      * @return SSH password (string)
      * 
@@ -62,10 +92,15 @@ public final class MachineConfigV2HarvesterConfig {
      */
     private String sshUser;
     /**
-     * @return UserData content of cloud-init, base64 is supported (string)
+     * @return UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
      * 
      */
     private @Nullable String userData;
+    /**
+     * @return Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+     * 
+     */
+    private @Nullable String vmAffinity;
     /**
      * @return Virtual machine namespace e.g. `default` (string)
      * 
@@ -81,25 +116,44 @@ public final class MachineConfigV2HarvesterConfig {
         return Optional.ofNullable(this.cpuCount);
     }
     /**
-     * @return Disk bus, Default `virtio` (string)
+     * @return Use `disk_info` instead
+     * 
+     * @deprecated
+     * Use disk_info instead
      * 
      */
+    @Deprecated /* Use disk_info instead */
     public Optional<String> diskBus() {
         return Optional.ofNullable(this.diskBus);
     }
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
      * 
      */
+    public String diskInfo() {
+        return this.diskInfo;
+    }
+    /**
+     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * 
+     * @deprecated
+     * Use disk_info instead
+     * 
+     */
+    @Deprecated /* Use disk_info instead */
     public Optional<String> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }
     /**
-     * @return Image name e.g. `harvester-public/image-57hzg` (string)
+     * @return Use `disk_info` instead
+     * 
+     * @deprecated
+     * Use disk_info instead
      * 
      */
-    public String imageName() {
-        return this.imageName;
+    @Deprecated /* Use disk_info instead */
+    public Optional<String> imageName() {
+        return Optional.ofNullable(this.imageName);
     }
     /**
      * @return Memory size (in GiB), Default `4` (string)
@@ -116,18 +170,33 @@ public final class MachineConfigV2HarvesterConfig {
         return Optional.ofNullable(this.networkData);
     }
     /**
-     * @return Network model, Default `virtio` (string)
+     * @return A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
      * 
      */
+    public String networkInfo() {
+        return this.networkInfo;
+    }
+    /**
+     * @return Use `network_info` instead
+     * 
+     * @deprecated
+     * Use network_info instead
+     * 
+     */
+    @Deprecated /* Use network_info instead */
     public Optional<String> networkModel() {
         return Optional.ofNullable(this.networkModel);
     }
     /**
-     * @return Network name e.g. `harvester-public/vlan1` (string)
+     * @return Use `network_info` instead
+     * 
+     * @deprecated
+     * Use network_info instead
      * 
      */
-    public String networkName() {
-        return this.networkName;
+    @Deprecated /* Use network_info instead */
+    public Optional<String> networkName() {
+        return Optional.ofNullable(this.networkName);
     }
     /**
      * @return SSH password (string)
@@ -144,11 +213,18 @@ public final class MachineConfigV2HarvesterConfig {
         return this.sshUser;
     }
     /**
-     * @return UserData content of cloud-init, base64 is supported (string)
+     * @return UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
      * 
      */
     public Optional<String> userData() {
         return Optional.ofNullable(this.userData);
+    }
+    /**
+     * @return Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+     * 
+     */
+    public Optional<String> vmAffinity() {
+        return Optional.ofNullable(this.vmAffinity);
     }
     /**
      * @return Virtual machine namespace e.g. `default` (string)
@@ -169,30 +245,36 @@ public final class MachineConfigV2HarvesterConfig {
     public static final class Builder {
         private @Nullable String cpuCount;
         private @Nullable String diskBus;
+        private String diskInfo;
         private @Nullable String diskSize;
-        private String imageName;
+        private @Nullable String imageName;
         private @Nullable String memorySize;
         private @Nullable String networkData;
+        private String networkInfo;
         private @Nullable String networkModel;
-        private String networkName;
+        private @Nullable String networkName;
         private @Nullable String sshPassword;
         private String sshUser;
         private @Nullable String userData;
+        private @Nullable String vmAffinity;
         private String vmNamespace;
         public Builder() {}
         public Builder(MachineConfigV2HarvesterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCount = defaults.cpuCount;
     	      this.diskBus = defaults.diskBus;
+    	      this.diskInfo = defaults.diskInfo;
     	      this.diskSize = defaults.diskSize;
     	      this.imageName = defaults.imageName;
     	      this.memorySize = defaults.memorySize;
     	      this.networkData = defaults.networkData;
+    	      this.networkInfo = defaults.networkInfo;
     	      this.networkModel = defaults.networkModel;
     	      this.networkName = defaults.networkName;
     	      this.sshPassword = defaults.sshPassword;
     	      this.sshUser = defaults.sshUser;
     	      this.userData = defaults.userData;
+    	      this.vmAffinity = defaults.vmAffinity;
     	      this.vmNamespace = defaults.vmNamespace;
         }
 
@@ -207,13 +289,18 @@ public final class MachineConfigV2HarvesterConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder diskInfo(String diskInfo) {
+            this.diskInfo = Objects.requireNonNull(diskInfo);
+            return this;
+        }
+        @CustomType.Setter
         public Builder diskSize(@Nullable String diskSize) {
             this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
-        public Builder imageName(String imageName) {
-            this.imageName = Objects.requireNonNull(imageName);
+        public Builder imageName(@Nullable String imageName) {
+            this.imageName = imageName;
             return this;
         }
         @CustomType.Setter
@@ -227,13 +314,18 @@ public final class MachineConfigV2HarvesterConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder networkInfo(String networkInfo) {
+            this.networkInfo = Objects.requireNonNull(networkInfo);
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkModel(@Nullable String networkModel) {
             this.networkModel = networkModel;
             return this;
         }
         @CustomType.Setter
-        public Builder networkName(String networkName) {
-            this.networkName = Objects.requireNonNull(networkName);
+        public Builder networkName(@Nullable String networkName) {
+            this.networkName = networkName;
             return this;
         }
         @CustomType.Setter
@@ -252,6 +344,11 @@ public final class MachineConfigV2HarvesterConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder vmAffinity(@Nullable String vmAffinity) {
+            this.vmAffinity = vmAffinity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vmNamespace(String vmNamespace) {
             this.vmNamespace = Objects.requireNonNull(vmNamespace);
             return this;
@@ -260,15 +357,18 @@ public final class MachineConfigV2HarvesterConfig {
             final var o = new MachineConfigV2HarvesterConfig();
             o.cpuCount = cpuCount;
             o.diskBus = diskBus;
+            o.diskInfo = diskInfo;
             o.diskSize = diskSize;
             o.imageName = imageName;
             o.memorySize = memorySize;
             o.networkData = networkData;
+            o.networkInfo = networkInfo;
             o.networkModel = networkModel;
             o.networkName = networkName;
             o.sshPassword = sshPassword;
             o.sshUser = sshUser;
             o.userData = userData;
+            o.vmAffinity = vmAffinity;
             o.vmNamespace = vmNamespace;
             return o;
         }

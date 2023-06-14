@@ -35,7 +35,7 @@ public class ConfigMapV2 extends com.pulumi.resources.CustomResource {
      * Annotations for the configMap v2 (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -49,7 +49,7 @@ public class ConfigMapV2 extends com.pulumi.resources.CustomResource {
      * The cluster id of the configMap V2 (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -63,7 +63,7 @@ public class ConfigMapV2 extends com.pulumi.resources.CustomResource {
      * The data of the configMap v2 (map)
      * 
      */
-    @Export(name="data", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="data", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> data;
 
     /**
@@ -77,7 +77,7 @@ public class ConfigMapV2 extends com.pulumi.resources.CustomResource {
      * If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
      * 
      */
-    @Export(name="immutable", type=Boolean.class, parameters={})
+    @Export(name="immutable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> immutable;
 
     /**
@@ -91,7 +91,7 @@ public class ConfigMapV2 extends com.pulumi.resources.CustomResource {
      * Labels for the configMap v2 (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -105,7 +105,7 @@ public class ConfigMapV2 extends com.pulumi.resources.CustomResource {
      * The name of the configMap v2 (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -119,7 +119,7 @@ public class ConfigMapV2 extends com.pulumi.resources.CustomResource {
      * The namespaces of the configMap v2. Default: `default` (string)
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -133,7 +133,7 @@ public class ConfigMapV2 extends com.pulumi.resources.CustomResource {
      * (Computed) The k8s resource version (string)
      * 
      */
-    @Export(name="resourceVersion", type=String.class, parameters={})
+    @Export(name="resourceVersion", refs={String.class}, tree="[0]")
     private Output<String> resourceVersion;
 
     /**

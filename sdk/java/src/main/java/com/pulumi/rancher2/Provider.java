@@ -27,7 +27,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * API Key used to authenticate with the rancher server
      * 
      */
-    @Export(name="accessKey", type=String.class, parameters={})
+    @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKey;
 
     /**
@@ -41,7 +41,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The URL to the rancher API
      * 
      */
-    @Export(name="apiUrl", type=String.class, parameters={})
+    @Export(name="apiUrl", refs={String.class}, tree="[0]")
     private Output<String> apiUrl;
 
     /**
@@ -55,7 +55,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
      * 
      */
-    @Export(name="caCerts", type=String.class, parameters={})
+    @Export(name="caCerts", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caCerts;
 
     /**
@@ -69,7 +69,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * API secret used to authenticate with the rancher server
      * 
      */
-    @Export(name="secretKey", type=String.class, parameters={})
+    @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretKey;
 
     /**
@@ -83,7 +83,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Rancher connection timeout (retry every 5s). Golang duration format, ex: &#34;60s&#34;
      * 
      */
-    @Export(name="timeout", type=String.class, parameters={})
+    @Export(name="timeout", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timeout;
 
     /**
@@ -97,7 +97,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * API token used to authenticate with the rancher server
      * 
      */
-    @Export(name="tokenKey", type=String.class, parameters={})
+    @Export(name="tokenKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tokenKey;
 
     /**

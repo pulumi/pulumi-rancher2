@@ -128,7 +128,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * The cluster ID that is syncing (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -142,7 +142,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * (Computed) Default project ID for the cluster sync (string)
      * 
      */
-    @Export(name="defaultProjectId", type=String.class, parameters={})
+    @Export(name="defaultProjectId", refs={String.class}, tree="[0]")
     private Output<String> defaultProjectId;
 
     /**
@@ -156,7 +156,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * (Computed/Sensitive) Kube Config generated for the cluster sync (string)
      * 
      */
-    @Export(name="kubeConfig", type=String.class, parameters={})
+    @Export(name="kubeConfig", refs={String.class}, tree="[0]")
     private Output<String> kubeConfig;
 
     /**
@@ -170,7 +170,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * The node pool IDs used by the cluster id (list)
      * 
      */
-    @Export(name="nodePoolIds", type=List.class, parameters={String.class})
+    @Export(name="nodePoolIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> nodePoolIds;
 
     /**
@@ -184,7 +184,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * (Computed) The cluster nodes (list).
      * 
      */
-    @Export(name="nodes", type=List.class, parameters={ClusterSyncNode.class})
+    @Export(name="nodes", refs={List.class,ClusterSyncNode.class}, tree="[0,1]")
     private Output<List<ClusterSyncNode>> nodes;
 
     /**
@@ -200,7 +200,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * **Note** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
      * 
      */
-    @Export(name="stateConfirm", type=Integer.class, parameters={})
+    @Export(name="stateConfirm", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> stateConfirm;
 
     /**
@@ -212,7 +212,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> stateConfirm() {
         return Codegen.optional(this.stateConfirm);
     }
-    @Export(name="synced", type=Boolean.class, parameters={})
+    @Export(name="synced", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> synced;
 
     public Output<Optional<Boolean>> synced() {
@@ -222,7 +222,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * (Computed) System project ID for the cluster sync (string)
      * 
      */
-    @Export(name="systemProjectId", type=String.class, parameters={})
+    @Export(name="systemProjectId", refs={String.class}, tree="[0]")
     private Output<String> systemProjectId;
 
     /**
@@ -236,7 +236,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * Wait until alerting is up and running. Default: `false` (bool)
      * 
      */
-    @Export(name="waitAlerting", type=Boolean.class, parameters={})
+    @Export(name="waitAlerting", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitAlerting;
 
     /**
@@ -250,7 +250,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      * 
      */
-    @Export(name="waitCatalogs", type=Boolean.class, parameters={})
+    @Export(name="waitCatalogs", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitCatalogs;
 
     /**
@@ -264,7 +264,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * Wait until monitoring is up and running. Default: `false` (bool)
      * 
      */
-    @Export(name="waitMonitoring", type=Boolean.class, parameters={})
+    @Export(name="waitMonitoring", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitMonitoring;
 
     /**

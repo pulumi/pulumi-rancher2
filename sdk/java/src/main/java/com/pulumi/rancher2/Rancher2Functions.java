@@ -25,13 +25,9 @@ import com.pulumi.rancher2.inputs.GetClusterAlterRulePlainArgs;
 import com.pulumi.rancher2.inputs.GetClusterArgs;
 import com.pulumi.rancher2.inputs.GetClusterDriverArgs;
 import com.pulumi.rancher2.inputs.GetClusterDriverPlainArgs;
-import com.pulumi.rancher2.inputs.GetClusterLoggingArgs;
-import com.pulumi.rancher2.inputs.GetClusterLoggingPlainArgs;
 import com.pulumi.rancher2.inputs.GetClusterPlainArgs;
 import com.pulumi.rancher2.inputs.GetClusterRoleTemplateBindingArgs;
 import com.pulumi.rancher2.inputs.GetClusterRoleTemplateBindingPlainArgs;
-import com.pulumi.rancher2.inputs.GetClusterScanArgs;
-import com.pulumi.rancher2.inputs.GetClusterScanPlainArgs;
 import com.pulumi.rancher2.inputs.GetClusterTemplateArgs;
 import com.pulumi.rancher2.inputs.GetClusterTemplatePlainArgs;
 import com.pulumi.rancher2.inputs.GetClusterV2Args;
@@ -67,8 +63,6 @@ import com.pulumi.rancher2.inputs.GetProjectAlertGroupPlainArgs;
 import com.pulumi.rancher2.inputs.GetProjectAlertRuleArgs;
 import com.pulumi.rancher2.inputs.GetProjectAlertRulePlainArgs;
 import com.pulumi.rancher2.inputs.GetProjectArgs;
-import com.pulumi.rancher2.inputs.GetProjectLoggingArgs;
-import com.pulumi.rancher2.inputs.GetProjectLoggingPlainArgs;
 import com.pulumi.rancher2.inputs.GetProjectPlainArgs;
 import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingArgs;
 import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingPlainArgs;
@@ -96,10 +90,8 @@ import com.pulumi.rancher2.outputs.GetCloudCredentialResult;
 import com.pulumi.rancher2.outputs.GetClusterAlertGroupResult;
 import com.pulumi.rancher2.outputs.GetClusterAlterRuleResult;
 import com.pulumi.rancher2.outputs.GetClusterDriverResult;
-import com.pulumi.rancher2.outputs.GetClusterLoggingResult;
 import com.pulumi.rancher2.outputs.GetClusterResult;
 import com.pulumi.rancher2.outputs.GetClusterRoleTemplateBindingResult;
-import com.pulumi.rancher2.outputs.GetClusterScanResult;
 import com.pulumi.rancher2.outputs.GetClusterTemplateResult;
 import com.pulumi.rancher2.outputs.GetClusterV2Result;
 import com.pulumi.rancher2.outputs.GetConfigMapV2Result;
@@ -117,7 +109,6 @@ import com.pulumi.rancher2.outputs.GetPodSecurityPolicyTemplateResult;
 import com.pulumi.rancher2.outputs.GetPrincipalResult;
 import com.pulumi.rancher2.outputs.GetProjectAlertGroupResult;
 import com.pulumi.rancher2.outputs.GetProjectAlertRuleResult;
-import com.pulumi.rancher2.outputs.GetProjectLoggingResult;
 import com.pulumi.rancher2.outputs.GetProjectResult;
 import com.pulumi.rancher2.outputs.GetProjectRoleTemplateBindingResult;
 import com.pulumi.rancher2.outputs.GetRegistryResult;
@@ -1500,154 +1491,6 @@ public final class Rancher2Functions {
         return Deployment.getInstance().invokeAsync("rancher2:index/getClusterDriver:getClusterDriver", TypeShape.of(GetClusterDriverResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve information about a Rancher v2 Cluster Logging.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetClusterLoggingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getClusterLogging(GetClusterLoggingArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static Output<GetClusterLoggingResult> getClusterLogging(GetClusterLoggingArgs args) {
-        return getClusterLogging(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 Cluster Logging.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetClusterLoggingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getClusterLogging(GetClusterLoggingArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static CompletableFuture<GetClusterLoggingResult> getClusterLoggingPlain(GetClusterLoggingPlainArgs args) {
-        return getClusterLoggingPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 Cluster Logging.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetClusterLoggingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getClusterLogging(GetClusterLoggingArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static Output<GetClusterLoggingResult> getClusterLogging(GetClusterLoggingArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("rancher2:index/getClusterLogging:getClusterLogging", TypeShape.of(GetClusterLoggingResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 Cluster Logging.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetClusterLoggingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getClusterLogging(GetClusterLoggingArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static CompletableFuture<GetClusterLoggingResult> getClusterLoggingPlain(GetClusterLoggingPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("rancher2:index/getClusterLogging:getClusterLogging", TypeShape.of(GetClusterLoggingResult.class), args, Utilities.withVersion(options));
-    }
-    /**
      * Use this data source to retrieve information about a Rancher v2 cluster role template binding.
      * 
      * ## Example Usage
@@ -1798,34 +1641,6 @@ public final class Rancher2Functions {
      */
     public static CompletableFuture<GetClusterRoleTemplateBindingResult> getClusterRoleTemplateBindingPlain(GetClusterRoleTemplateBindingPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", TypeShape.of(GetClusterRoleTemplateBindingResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
-     * 
-     */
-    public static Output<GetClusterScanResult> getClusterScan(GetClusterScanArgs args) {
-        return getClusterScan(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
-     * 
-     */
-    public static CompletableFuture<GetClusterScanResult> getClusterScanPlain(GetClusterScanPlainArgs args) {
-        return getClusterScanPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
-     * 
-     */
-    public static Output<GetClusterScanResult> getClusterScan(GetClusterScanArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("rancher2:index/getClusterScan:getClusterScan", TypeShape.of(GetClusterScanResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
-     * 
-     */
-    public static CompletableFuture<GetClusterScanResult> getClusterScanPlain(GetClusterScanPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("rancher2:index/getClusterScan:getClusterScan", TypeShape.of(GetClusterScanResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 cluster template.
@@ -4274,154 +4089,6 @@ public final class Rancher2Functions {
      */
     public static CompletableFuture<GetProjectAlertRuleResult> getProjectAlertRulePlain(GetProjectAlertRulePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("rancher2:index/getProjectAlertRule:getProjectAlertRule", TypeShape.of(GetProjectAlertRuleResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 Project Logging.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetProjectLoggingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getProjectLogging(GetProjectLoggingArgs.builder()
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static Output<GetProjectLoggingResult> getProjectLogging(GetProjectLoggingArgs args) {
-        return getProjectLogging(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 Project Logging.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetProjectLoggingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getProjectLogging(GetProjectLoggingArgs.builder()
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static CompletableFuture<GetProjectLoggingResult> getProjectLoggingPlain(GetProjectLoggingPlainArgs args) {
-        return getProjectLoggingPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 Project Logging.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetProjectLoggingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getProjectLogging(GetProjectLoggingArgs.builder()
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static Output<GetProjectLoggingResult> getProjectLogging(GetProjectLoggingArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("rancher2:index/getProjectLogging:getProjectLogging", TypeShape.of(GetProjectLoggingResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 Project Logging.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetProjectLoggingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getProjectLogging(GetProjectLoggingArgs.builder()
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static CompletableFuture<GetProjectLoggingResult> getProjectLoggingPlain(GetProjectLoggingPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("rancher2:index/getProjectLogging:getProjectLogging", TypeShape.of(GetProjectLoggingResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 project role template binding.

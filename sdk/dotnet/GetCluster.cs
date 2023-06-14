@@ -223,7 +223,6 @@ namespace Pulumi.Rancher2
         /// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterRkeConfigResult RkeConfig;
-        public readonly ImmutableArray<Outputs.GetClusterScheduledClusterScanResult> ScheduledClusterScans;
         /// <summary>
         /// (Computed) System project ID for the cluster (string)
         /// </summary>
@@ -295,8 +294,6 @@ namespace Pulumi.Rancher2
 
             Outputs.GetClusterRkeConfigResult rkeConfig,
 
-            ImmutableArray<Outputs.GetClusterScheduledClusterScanResult> scheduledClusterScans,
-
             string systemProjectId)
         {
             AgentEnvVars = agentEnvVars;
@@ -331,7 +328,6 @@ namespace Pulumi.Rancher2
             OkeConfig = okeConfig;
             Rke2Config = rke2Config;
             RkeConfig = rkeConfig;
-            ScheduledClusterScans = scheduledClusterScans;
             SystemProjectId = systemProjectId;
         }
     }

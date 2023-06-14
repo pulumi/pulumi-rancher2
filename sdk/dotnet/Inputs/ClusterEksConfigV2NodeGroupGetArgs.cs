@@ -91,6 +91,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// The EKS node group node role ARN. Default `""` (string)
+        /// </summary>
+        [Input("nodeRole")]
+        public Input<string>? NodeRole { get; set; }
+
+        /// <summary>
         /// Enable EKS node group request spot instances (bool)
         /// </summary>
         [Input("requestSpotInstances")]

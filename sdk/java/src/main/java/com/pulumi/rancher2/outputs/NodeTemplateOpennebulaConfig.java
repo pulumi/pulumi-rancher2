@@ -43,7 +43,7 @@ public final class NodeTemplateOpennebulaConfig {
      */
     private @Nullable String imageId;
     /**
-     * @return Image name e.g. `harvester-public/image-57hzg` (string)
+     * @return Use `disk_info` instead
      * 
      */
     private @Nullable String imageName;
@@ -63,7 +63,7 @@ public final class NodeTemplateOpennebulaConfig {
      */
     private @Nullable String networkId;
     /**
-     * @return Network name e.g. `harvester-public/vlan1` (string)
+     * @return Use `network_info` instead
      * 
      */
     private @Nullable String networkName;
@@ -154,7 +154,7 @@ public final class NodeTemplateOpennebulaConfig {
         return Optional.ofNullable(this.imageId);
     }
     /**
-     * @return Image name e.g. `harvester-public/image-57hzg` (string)
+     * @return Use `disk_info` instead
      * 
      */
     public Optional<String> imageName() {
@@ -182,7 +182,7 @@ public final class NodeTemplateOpennebulaConfig {
         return Optional.ofNullable(this.networkId);
     }
     /**
-     * @return Network name e.g. `harvester-public/vlan1` (string)
+     * @return Use `network_info` instead
      * 
      */
     public Optional<String> networkName() {

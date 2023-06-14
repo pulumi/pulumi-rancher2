@@ -73,12 +73,6 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs> RkeConfig { get; set; } = null!;
 
         /// <summary>
-        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-        /// </summary>
-        [Input("scheduledClusterScan")]
-        public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs>? ScheduledClusterScan { get; set; }
-
-        /// <summary>
         /// Windows prefered cluster. Default: `false` (bool)
         /// </summary>
         [Input("windowsPreferedCluster")]

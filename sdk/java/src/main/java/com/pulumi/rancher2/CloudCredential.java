@@ -121,7 +121,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * AWS config for the Cloud Credential (list maxitems:1)
      * 
      */
-    @Export(name="amazonec2CredentialConfig", type=CloudCredentialAmazonec2CredentialConfig.class, parameters={})
+    @Export(name="amazonec2CredentialConfig", refs={CloudCredentialAmazonec2CredentialConfig.class}, tree="[0]")
     private Output</* @Nullable */ CloudCredentialAmazonec2CredentialConfig> amazonec2CredentialConfig;
 
     /**
@@ -135,7 +135,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * Annotations for Cloud Credential object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -149,7 +149,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * Azure config for the Cloud Credential (list maxitems:1)
      * 
      */
-    @Export(name="azureCredentialConfig", type=CloudCredentialAzureCredentialConfig.class, parameters={})
+    @Export(name="azureCredentialConfig", refs={CloudCredentialAzureCredentialConfig.class}, tree="[0]")
     private Output</* @Nullable */ CloudCredentialAzureCredentialConfig> azureCredentialConfig;
 
     /**
@@ -163,7 +163,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * Description for the Cloud Credential (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -177,7 +177,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * DigitalOcean config for the Cloud Credential (list maxitems:1)
      * 
      */
-    @Export(name="digitaloceanCredentialConfig", type=CloudCredentialDigitaloceanCredentialConfig.class, parameters={})
+    @Export(name="digitaloceanCredentialConfig", refs={CloudCredentialDigitaloceanCredentialConfig.class}, tree="[0]")
     private Output</* @Nullable */ CloudCredentialDigitaloceanCredentialConfig> digitaloceanCredentialConfig;
 
     /**
@@ -191,7 +191,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * (Computed) The driver of the Cloud Credential (string)
      * 
      */
-    @Export(name="driver", type=String.class, parameters={})
+    @Export(name="driver", refs={String.class}, tree="[0]")
     private Output<String> driver;
 
     /**
@@ -205,7 +205,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * Google config for the Cloud Credential (list maxitems:1)
      * 
      */
-    @Export(name="googleCredentialConfig", type=CloudCredentialGoogleCredentialConfig.class, parameters={})
+    @Export(name="googleCredentialConfig", refs={CloudCredentialGoogleCredentialConfig.class}, tree="[0]")
     private Output</* @Nullable */ CloudCredentialGoogleCredentialConfig> googleCredentialConfig;
 
     /**
@@ -219,7 +219,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * Harvester config for the Cloud Credential (list maxitems:1)
      * 
      */
-    @Export(name="harvesterCredentialConfig", type=CloudCredentialHarvesterCredentialConfig.class, parameters={})
+    @Export(name="harvesterCredentialConfig", refs={CloudCredentialHarvesterCredentialConfig.class}, tree="[0]")
     private Output</* @Nullable */ CloudCredentialHarvesterCredentialConfig> harvesterCredentialConfig;
 
     /**
@@ -233,7 +233,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * Labels for Cloud Credential object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -247,7 +247,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * Linode config for the Cloud Credential (list maxitems:1)
      * 
      */
-    @Export(name="linodeCredentialConfig", type=CloudCredentialLinodeCredentialConfig.class, parameters={})
+    @Export(name="linodeCredentialConfig", refs={CloudCredentialLinodeCredentialConfig.class}, tree="[0]")
     private Output</* @Nullable */ CloudCredentialLinodeCredentialConfig> linodeCredentialConfig;
 
     /**
@@ -261,7 +261,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * The name of the Cloud Credential (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -275,7 +275,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * OpenStack config for the Cloud Credential (list maxitems:1)
      * 
      */
-    @Export(name="openstackCredentialConfig", type=CloudCredentialOpenstackCredentialConfig.class, parameters={})
+    @Export(name="openstackCredentialConfig", refs={CloudCredentialOpenstackCredentialConfig.class}, tree="[0]")
     private Output</* @Nullable */ CloudCredentialOpenstackCredentialConfig> openstackCredentialConfig;
 
     /**
@@ -289,7 +289,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
      * 
      */
-    @Export(name="s3CredentialConfig", type=CloudCredentialS3CredentialConfig.class, parameters={})
+    @Export(name="s3CredentialConfig", refs={CloudCredentialS3CredentialConfig.class}, tree="[0]")
     private Output</* @Nullable */ CloudCredentialS3CredentialConfig> s3CredentialConfig;
 
     /**
@@ -303,7 +303,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * vSphere config for the Cloud Credential (list maxitems:1)
      * 
      */
-    @Export(name="vsphereCredentialConfig", type=CloudCredentialVsphereCredentialConfig.class, parameters={})
+    @Export(name="vsphereCredentialConfig", refs={CloudCredentialVsphereCredentialConfig.class}, tree="[0]")
     private Output</* @Nullable */ CloudCredentialVsphereCredentialConfig> vsphereCredentialConfig;
 
     /**

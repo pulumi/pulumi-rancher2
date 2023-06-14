@@ -79,7 +79,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * Annotations for notifier object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -93,7 +93,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * The cluster id where create notifier (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -107,7 +107,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * The notifier description (string)
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -121,7 +121,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * Dingtalk config for notifier (list maxitems:1)
      * 
      */
-    @Export(name="dingtalkConfig", type=NotifierDingtalkConfig.class, parameters={})
+    @Export(name="dingtalkConfig", refs={NotifierDingtalkConfig.class}, tree="[0]")
     private Output</* @Nullable */ NotifierDingtalkConfig> dingtalkConfig;
 
     /**
@@ -135,7 +135,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * Labels for notifier object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -149,7 +149,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * MSTeams config for notifier (list maxitems:1)
      * 
      */
-    @Export(name="msteamsConfig", type=NotifierMsteamsConfig.class, parameters={})
+    @Export(name="msteamsConfig", refs={NotifierMsteamsConfig.class}, tree="[0]")
     private Output</* @Nullable */ NotifierMsteamsConfig> msteamsConfig;
 
     /**
@@ -163,7 +163,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * The name of the notifier (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -177,7 +177,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * Pagerduty config for notifier (list maxitems:1)
      * 
      */
-    @Export(name="pagerdutyConfig", type=NotifierPagerdutyConfig.class, parameters={})
+    @Export(name="pagerdutyConfig", refs={NotifierPagerdutyConfig.class}, tree="[0]")
     private Output</* @Nullable */ NotifierPagerdutyConfig> pagerdutyConfig;
 
     /**
@@ -191,7 +191,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      * 
      */
-    @Export(name="sendResolved", type=Boolean.class, parameters={})
+    @Export(name="sendResolved", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sendResolved;
 
     /**
@@ -205,7 +205,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * Slack config for notifier (list maxitems:1)
      * 
      */
-    @Export(name="slackConfig", type=NotifierSlackConfig.class, parameters={})
+    @Export(name="slackConfig", refs={NotifierSlackConfig.class}, tree="[0]")
     private Output</* @Nullable */ NotifierSlackConfig> slackConfig;
 
     /**
@@ -219,7 +219,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * SMTP config for notifier (list maxitems:1)
      * 
      */
-    @Export(name="smtpConfig", type=NotifierSmtpConfig.class, parameters={})
+    @Export(name="smtpConfig", refs={NotifierSmtpConfig.class}, tree="[0]")
     private Output</* @Nullable */ NotifierSmtpConfig> smtpConfig;
 
     /**
@@ -233,7 +233,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * Webhook config for notifier (list maxitems:1)
      * 
      */
-    @Export(name="webhookConfig", type=NotifierWebhookConfig.class, parameters={})
+    @Export(name="webhookConfig", refs={NotifierWebhookConfig.class}, tree="[0]")
     private Output</* @Nullable */ NotifierWebhookConfig> webhookConfig;
 
     /**
@@ -247,7 +247,7 @@ public class Notifier extends com.pulumi.resources.CustomResource {
      * Wechat config for notifier (list maxitems:1)
      * 
      */
-    @Export(name="wechatConfig", type=NotifierWechatConfig.class, parameters={})
+    @Export(name="wechatConfig", refs={NotifierWechatConfig.class}, tree="[0]")
     private Output</* @Nullable */ NotifierWechatConfig> wechatConfig;
 
     /**

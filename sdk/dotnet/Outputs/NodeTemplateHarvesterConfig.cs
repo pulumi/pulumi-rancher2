@@ -18,17 +18,21 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? CpuCount;
         /// <summary>
-        /// Disk bus, Default `virtio` (string)
+        /// Use `disk_info` instead
         /// </summary>
         public readonly string? DiskBus;
+        /// <summary>
+        /// A JSON string specifying info for the disks e.g. `{\"disks\":[{\"imageName\":\"harvester-public/image-57hzg\",\"bootOrder\":1,\"size\":40},{\"storageClassName\":\"node-driver-test\",\"bootOrder\":2,\"size\":1}]}` (string)
+        /// </summary>
+        public readonly string DiskInfo;
         /// <summary>
         /// Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
         /// </summary>
         public readonly string? DiskSize;
         /// <summary>
-        /// Image name e.g. `harvester-public/image-57hzg` (string)
+        /// Use `disk_info` instead
         /// </summary>
-        public readonly string ImageName;
+        public readonly string? ImageName;
         /// <summary>
         /// Memory size (in GiB), Default `4` (string)
         /// </summary>
@@ -38,13 +42,17 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NetworkData;
         /// <summary>
-        /// Network model, Default `virtio` (string)
+        /// A JSON string specifying info for the networks e.g. `{\"interfaces\":[{\"networkName\":\"harvester-public/vlan1\"},{\"networkName\":\"harvester-public/vlan2\"}]}` (string)
+        /// </summary>
+        public readonly string NetworkInfo;
+        /// <summary>
+        /// Use `network_info` instead
         /// </summary>
         public readonly string? NetworkModel;
         /// <summary>
-        /// Network name e.g. `harvester-public/vlan1` (string)
+        /// Use `network_info` instead
         /// </summary>
-        public readonly string NetworkName;
+        public readonly string? NetworkName;
         /// <summary>
         /// SSH password (string)
         /// </summary>
@@ -54,9 +62,13 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string SshUser;
         /// <summary>
-        /// UserData content of cloud-init, base64 is supported (string)
+        /// UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
         /// </summary>
         public readonly string? UserData;
+        /// <summary>
+        /// Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+        /// </summary>
+        public readonly string? VmAffinity;
         /// <summary>
         /// Virtual machine namespace e.g. `default` (string)
         /// </summary>
@@ -68,17 +80,21 @@ namespace Pulumi.Rancher2.Outputs
 
             string? diskBus,
 
+            string diskInfo,
+
             string? diskSize,
 
-            string imageName,
+            string? imageName,
 
             string? memorySize,
 
             string? networkData,
 
+            string networkInfo,
+
             string? networkModel,
 
-            string networkName,
+            string? networkName,
 
             string? sshPassword,
 
@@ -86,19 +102,24 @@ namespace Pulumi.Rancher2.Outputs
 
             string? userData,
 
+            string? vmAffinity,
+
             string vmNamespace)
         {
             CpuCount = cpuCount;
             DiskBus = diskBus;
+            DiskInfo = diskInfo;
             DiskSize = diskSize;
             ImageName = imageName;
             MemorySize = memorySize;
             NetworkData = networkData;
+            NetworkInfo = networkInfo;
             NetworkModel = networkModel;
             NetworkName = networkName;
             SshPassword = sshPassword;
             SshUser = sshUser;
             UserData = userData;
+            VmAffinity = vmAffinity;
             VmNamespace = vmNamespace;
         }
     }

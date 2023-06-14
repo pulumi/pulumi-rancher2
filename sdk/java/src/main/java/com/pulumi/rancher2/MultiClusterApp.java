@@ -137,7 +137,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * Annotations for multi cluster app object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -151,7 +151,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * The multi cluster app answers (list)
      * 
      */
-    @Export(name="answers", type=List.class, parameters={MultiClusterAppAnswer.class})
+    @Export(name="answers", refs={List.class,MultiClusterAppAnswer.class}, tree="[0,1]")
     private Output<List<MultiClusterAppAnswer>> answers;
 
     /**
@@ -165,7 +165,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * The multi cluster app catalog name (string)
      * 
      */
-    @Export(name="catalogName", type=String.class, parameters={})
+    @Export(name="catalogName", refs={String.class}, tree="[0]")
     private Output<String> catalogName;
 
     /**
@@ -179,7 +179,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * Labels for multi cluster app object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -193,7 +193,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * The multi cluster app answers (list)
      * 
      */
-    @Export(name="members", type=List.class, parameters={MultiClusterAppMember.class})
+    @Export(name="members", refs={List.class,MultiClusterAppMember.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MultiClusterAppMember>> members;
 
     /**
@@ -207,7 +207,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * The multi cluster app name (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -221,7 +221,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * The multi cluster app revision history limit. Default `10` (int)
      * 
      */
-    @Export(name="revisionHistoryLimit", type=Integer.class, parameters={})
+    @Export(name="revisionHistoryLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> revisionHistoryLimit;
 
     /**
@@ -235,7 +235,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * Current revision id for the multi cluster app (string)
      * 
      */
-    @Export(name="revisionId", type=String.class, parameters={})
+    @Export(name="revisionId", refs={String.class}, tree="[0]")
     private Output<String> revisionId;
 
     /**
@@ -249,7 +249,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * The multi cluster app roles (list)
      * 
      */
-    @Export(name="roles", type=List.class, parameters={String.class})
+    @Export(name="roles", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> roles;
 
     /**
@@ -263,7 +263,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * The multi cluster app target projects (list)
      * 
      */
-    @Export(name="targets", type=List.class, parameters={MultiClusterAppTarget.class})
+    @Export(name="targets", refs={List.class,MultiClusterAppTarget.class}, tree="[0,1]")
     private Output<List<MultiClusterAppTarget>> targets;
 
     /**
@@ -277,7 +277,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * The multi cluster app template name (string)
      * 
      */
-    @Export(name="templateName", type=String.class, parameters={})
+    @Export(name="templateName", refs={String.class}, tree="[0]")
     private Output<String> templateName;
 
     /**
@@ -291,7 +291,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * The multi cluster app template version. Default: `latest` (string)
      * 
      */
-    @Export(name="templateVersion", type=String.class, parameters={})
+    @Export(name="templateVersion", refs={String.class}, tree="[0]")
     private Output<String> templateVersion;
 
     /**
@@ -305,7 +305,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * (Computed) The multi cluster app template version ID (string)
      * 
      */
-    @Export(name="templateVersionId", type=String.class, parameters={})
+    @Export(name="templateVersionId", refs={String.class}, tree="[0]")
     private Output<String> templateVersionId;
 
     /**
@@ -319,7 +319,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * The multi cluster app upgrade strategy (list MaxItems:1)
      * 
      */
-    @Export(name="upgradeStrategy", type=MultiClusterAppUpgradeStrategy.class, parameters={})
+    @Export(name="upgradeStrategy", refs={MultiClusterAppUpgradeStrategy.class}, tree="[0]")
     private Output<MultiClusterAppUpgradeStrategy> upgradeStrategy;
 
     /**
@@ -333,7 +333,7 @@ public class MultiClusterApp extends com.pulumi.resources.CustomResource {
      * Wait until the multi cluster app is active. Default `true` (bool)
      * 
      */
-    @Export(name="wait", type=Boolean.class, parameters={})
+    @Export(name="wait", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> wait;
 
     /**

@@ -84,7 +84,7 @@ public class EtcdBackup extends com.pulumi.resources.CustomResource {
      * Annotations for Etcd Backup object (map)
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
@@ -98,7 +98,7 @@ public class EtcdBackup extends com.pulumi.resources.CustomResource {
      * Backup config for etcd backup (list maxitems:1)
      * 
      */
-    @Export(name="backupConfig", type=EtcdBackupBackupConfig.class, parameters={})
+    @Export(name="backupConfig", refs={EtcdBackupBackupConfig.class}, tree="[0]")
     private Output<EtcdBackupBackupConfig> backupConfig;
 
     /**
@@ -112,7 +112,7 @@ public class EtcdBackup extends com.pulumi.resources.CustomResource {
      * Cluster ID to config Etcd Backup (string)
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -126,7 +126,7 @@ public class EtcdBackup extends com.pulumi.resources.CustomResource {
      * Filename of the Etcd Backup (string)
      * 
      */
-    @Export(name="filename", type=String.class, parameters={})
+    @Export(name="filename", refs={String.class}, tree="[0]")
     private Output<String> filename;
 
     /**
@@ -140,7 +140,7 @@ public class EtcdBackup extends com.pulumi.resources.CustomResource {
      * Labels for Etcd Backup object (map)
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -154,7 +154,7 @@ public class EtcdBackup extends com.pulumi.resources.CustomResource {
      * Manual execution of the Etcd Backup. Default `false` (bool)
      * 
      */
-    @Export(name="manual", type=Boolean.class, parameters={})
+    @Export(name="manual", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> manual;
 
     /**
@@ -168,7 +168,7 @@ public class EtcdBackup extends com.pulumi.resources.CustomResource {
      * The name of the Etcd Backup (string)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -182,7 +182,7 @@ public class EtcdBackup extends com.pulumi.resources.CustomResource {
      * Description for the Etcd Backup (string)
      * 
      */
-    @Export(name="namespaceId", type=String.class, parameters={})
+    @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output<String> namespaceId;
 
     /**

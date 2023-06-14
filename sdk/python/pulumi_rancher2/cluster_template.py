@@ -322,51 +322,6 @@ class ClusterTemplate(pulumi.CustomResource):
             )])
         ```
 
-        Creating Rancher v2 RKE cluster template with scheduled cluster scan. For Rancher v2.4.x or above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Cluster Template
-        foo = rancher2.ClusterTemplate("foo",
-            description="Terraform cluster template foo",
-            members=[rancher2.ClusterTemplateMemberArgs(
-                access_type="owner",
-                user_principal_id="local://user-XXXXX",
-            )],
-            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
-                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
-                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
-                            plugin="canal",
-                        ),
-                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
-                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
-                                creation="6h",
-                                retention="24h",
-                            ),
-                        ),
-                    ),
-                    scheduled_cluster_scan=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs(
-                        enabled=True,
-                        scan_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs(
-                            cis_scan_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs(
-                                debug_master=True,
-                                debug_worker=True,
-                            ),
-                        ),
-                        schedule_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs(
-                            cron_schedule="30 * * * *",
-                            retention=5,
-                        ),
-                    ),
-                ),
-                default=True,
-                name="V1",
-            )])
-        ```
-
         ## Import
 
         Cluster Template can be imported using the rancher Cluster Template ID
@@ -455,51 +410,6 @@ class ClusterTemplate(pulumi.CustomResource):
                         upgrade_strategy=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs(
                             drain=True,
                             max_unavailable_worker="20%",
-                        ),
-                    ),
-                ),
-                default=True,
-                name="V1",
-            )])
-        ```
-
-        Creating Rancher v2 RKE cluster template with scheduled cluster scan. For Rancher v2.4.x or above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Cluster Template
-        foo = rancher2.ClusterTemplate("foo",
-            description="Terraform cluster template foo",
-            members=[rancher2.ClusterTemplateMemberArgs(
-                access_type="owner",
-                user_principal_id="local://user-XXXXX",
-            )],
-            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
-                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
-                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
-                            plugin="canal",
-                        ),
-                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
-                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
-                                creation="6h",
-                                retention="24h",
-                            ),
-                        ),
-                    ),
-                    scheduled_cluster_scan=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs(
-                        enabled=True,
-                        scan_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs(
-                            cis_scan_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs(
-                                debug_master=True,
-                                debug_worker=True,
-                            ),
-                        ),
-                        schedule_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs(
-                            cron_schedule="30 * * * *",
-                            retention=5,
                         ),
                     ),
                 ),
