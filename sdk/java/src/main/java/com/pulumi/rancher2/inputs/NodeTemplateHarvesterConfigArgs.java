@@ -57,15 +57,15 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
      * A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
      * 
      */
-    @Import(name="diskInfo", required=true)
-    private Output<String> diskInfo;
+    @Import(name="diskInfo")
+    private @Nullable Output<String> diskInfo;
 
     /**
      * @return A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
      * 
      */
-    public Output<String> diskInfo() {
-        return this.diskInfo;
+    public Optional<Output<String>> diskInfo() {
+        return Optional.ofNullable(this.diskInfo);
     }
 
     /**
@@ -148,15 +148,15 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
      * A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
      * 
      */
-    @Import(name="networkInfo", required=true)
-    private Output<String> networkInfo;
+    @Import(name="networkInfo")
+    private @Nullable Output<String> networkInfo;
 
     /**
      * @return A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
      * 
      */
-    public Output<String> networkInfo() {
-        return this.networkInfo;
+    public Optional<Output<String>> networkInfo() {
+        return Optional.ofNullable(this.networkInfo);
     }
 
     /**
@@ -374,7 +374,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder diskInfo(Output<String> diskInfo) {
+        public Builder diskInfo(@Nullable Output<String> diskInfo) {
             $.diskInfo = diskInfo;
             return this;
         }
@@ -495,7 +495,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder networkInfo(Output<String> networkInfo) {
+        public Builder networkInfo(@Nullable Output<String> networkInfo) {
             $.networkInfo = networkInfo;
             return this;
         }
@@ -674,8 +674,6 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         public NodeTemplateHarvesterConfigArgs build() {
-            $.diskInfo = Objects.requireNonNull($.diskInfo, "expected parameter 'diskInfo' to be non-null");
-            $.networkInfo = Objects.requireNonNull($.networkInfo, "expected parameter 'networkInfo' to be non-null");
             $.sshUser = Objects.requireNonNull($.sshUser, "expected parameter 'sshUser' to be non-null");
             $.vmNamespace = Objects.requireNonNull($.vmNamespace, "expected parameter 'vmNamespace' to be non-null");
             return $;

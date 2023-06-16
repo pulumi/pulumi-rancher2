@@ -29,7 +29,7 @@ public final class NodeTemplateHarvesterConfig {
      * @return A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
      * 
      */
-    private String diskInfo;
+    private @Nullable String diskInfo;
     /**
      * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      * 
@@ -62,7 +62,7 @@ public final class NodeTemplateHarvesterConfig {
      * @return A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
      * 
      */
-    private String networkInfo;
+    private @Nullable String networkInfo;
     /**
      * @return Use `network_info` instead
      * 
@@ -130,8 +130,8 @@ public final class NodeTemplateHarvesterConfig {
      * @return A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
      * 
      */
-    public String diskInfo() {
-        return this.diskInfo;
+    public Optional<String> diskInfo() {
+        return Optional.ofNullable(this.diskInfo);
     }
     /**
      * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
@@ -173,8 +173,8 @@ public final class NodeTemplateHarvesterConfig {
      * @return A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
      * 
      */
-    public String networkInfo() {
-        return this.networkInfo;
+    public Optional<String> networkInfo() {
+        return Optional.ofNullable(this.networkInfo);
     }
     /**
      * @return Use `network_info` instead
@@ -245,12 +245,12 @@ public final class NodeTemplateHarvesterConfig {
     public static final class Builder {
         private @Nullable String cpuCount;
         private @Nullable String diskBus;
-        private String diskInfo;
+        private @Nullable String diskInfo;
         private @Nullable String diskSize;
         private @Nullable String imageName;
         private @Nullable String memorySize;
         private @Nullable String networkData;
-        private String networkInfo;
+        private @Nullable String networkInfo;
         private @Nullable String networkModel;
         private @Nullable String networkName;
         private @Nullable String sshPassword;
@@ -289,8 +289,8 @@ public final class NodeTemplateHarvesterConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder diskInfo(String diskInfo) {
-            this.diskInfo = Objects.requireNonNull(diskInfo);
+        public Builder diskInfo(@Nullable String diskInfo) {
+            this.diskInfo = diskInfo;
             return this;
         }
         @CustomType.Setter
@@ -314,8 +314,8 @@ public final class NodeTemplateHarvesterConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder networkInfo(String networkInfo) {
-            this.networkInfo = Objects.requireNonNull(networkInfo);
+        public Builder networkInfo(@Nullable String networkInfo) {
+            this.networkInfo = networkInfo;
             return this;
         }
         @CustomType.Setter

@@ -5449,7 +5449,7 @@ export interface MachineConfigV2HarvesterConfig {
     /**
      * A JSON string specifying info for the disks e.g. `{\"disks\":[{\"imageName\":\"harvester-public/image-57hzg\",\"bootOrder\":1,\"size\":40},{\"storageClassName\":\"node-driver-test\",\"bootOrder\":2,\"size\":1}]}` (string)
      */
-    diskInfo: pulumi.Input<string>;
+    diskInfo?: pulumi.Input<string>;
     /**
      * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      *
@@ -5473,7 +5473,7 @@ export interface MachineConfigV2HarvesterConfig {
     /**
      * A JSON string specifying info for the networks e.g. `{\"interfaces\":[{\"networkName\":\"harvester-public/vlan1\"},{\"networkName\":\"harvester-public/vlan2\"}]}` (string)
      */
-    networkInfo: pulumi.Input<string>;
+    networkInfo?: pulumi.Input<string>;
     /**
      * Use `networkInfo` instead
      *
@@ -6383,7 +6383,7 @@ export interface NodeTemplateHarvesterConfig {
     /**
      * A JSON string specifying info for the disks e.g. `{\"disks\":[{\"imageName\":\"harvester-public/image-57hzg\",\"bootOrder\":1,\"size\":40},{\"storageClassName\":\"node-driver-test\",\"bootOrder\":2,\"size\":1}]}` (string)
      */
-    diskInfo: pulumi.Input<string>;
+    diskInfo?: pulumi.Input<string>;
     /**
      * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
      *
@@ -6407,7 +6407,7 @@ export interface NodeTemplateHarvesterConfig {
     /**
      * A JSON string specifying info for the networks e.g. `{\"interfaces\":[{\"networkName\":\"harvester-public/vlan1\"},{\"networkName\":\"harvester-public/vlan2\"}]}` (string)
      */
-    networkInfo: pulumi.Input<string>;
+    networkInfo?: pulumi.Input<string>;
     /**
      * Use `networkInfo` instead
      *

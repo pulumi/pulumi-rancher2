@@ -22051,11 +22051,7 @@ class MachineConfigV2HarvesterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "diskInfo":
-            suggest = "disk_info"
-        elif key == "networkInfo":
-            suggest = "network_info"
-        elif key == "sshUser":
+        if key == "sshUser":
             suggest = "ssh_user"
         elif key == "vmNamespace":
             suggest = "vm_namespace"
@@ -22063,6 +22059,8 @@ class MachineConfigV2HarvesterConfig(dict):
             suggest = "cpu_count"
         elif key == "diskBus":
             suggest = "disk_bus"
+        elif key == "diskInfo":
+            suggest = "disk_info"
         elif key == "diskSize":
             suggest = "disk_size"
         elif key == "imageName":
@@ -22071,6 +22069,8 @@ class MachineConfigV2HarvesterConfig(dict):
             suggest = "memory_size"
         elif key == "networkData":
             suggest = "network_data"
+        elif key == "networkInfo":
+            suggest = "network_info"
         elif key == "networkModel":
             suggest = "network_model"
         elif key == "networkName":
@@ -22094,46 +22094,46 @@ class MachineConfigV2HarvesterConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 disk_info: str,
-                 network_info: str,
                  ssh_user: str,
                  vm_namespace: str,
                  cpu_count: Optional[str] = None,
                  disk_bus: Optional[str] = None,
+                 disk_info: Optional[str] = None,
                  disk_size: Optional[str] = None,
                  image_name: Optional[str] = None,
                  memory_size: Optional[str] = None,
                  network_data: Optional[str] = None,
+                 network_info: Optional[str] = None,
                  network_model: Optional[str] = None,
                  network_name: Optional[str] = None,
                  ssh_password: Optional[str] = None,
                  user_data: Optional[str] = None,
                  vm_affinity: Optional[str] = None):
         """
-        :param str disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
-        :param str network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         :param str ssh_user: Set the name of the ssh user (string)
         :param str vm_namespace: Virtual machine namespace e.g. `default` (string)
         :param str cpu_count: CPU count, Default `2` (string)
         :param str disk_bus: Use `disk_info` instead
+        :param str disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
         :param str disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
         :param str image_name: Use `disk_info` instead
         :param str memory_size: Memory size (in GiB), Default `4` (string)
         :param str network_data: NetworkData content of cloud-init, base64 is supported (string)
+        :param str network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         :param str network_model: Use `network_info` instead
         :param str network_name: Use `network_info` instead
         :param str ssh_password: SSH password (string)
         :param str user_data: UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
         :param str vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
         """
-        pulumi.set(__self__, "disk_info", disk_info)
-        pulumi.set(__self__, "network_info", network_info)
         pulumi.set(__self__, "ssh_user", ssh_user)
         pulumi.set(__self__, "vm_namespace", vm_namespace)
         if cpu_count is not None:
             pulumi.set(__self__, "cpu_count", cpu_count)
         if disk_bus is not None:
             pulumi.set(__self__, "disk_bus", disk_bus)
+        if disk_info is not None:
+            pulumi.set(__self__, "disk_info", disk_info)
         if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
         if image_name is not None:
@@ -22142,6 +22142,8 @@ class MachineConfigV2HarvesterConfig(dict):
             pulumi.set(__self__, "memory_size", memory_size)
         if network_data is not None:
             pulumi.set(__self__, "network_data", network_data)
+        if network_info is not None:
+            pulumi.set(__self__, "network_info", network_info)
         if network_model is not None:
             pulumi.set(__self__, "network_model", network_model)
         if network_name is not None:
@@ -22152,22 +22154,6 @@ class MachineConfigV2HarvesterConfig(dict):
             pulumi.set(__self__, "user_data", user_data)
         if vm_affinity is not None:
             pulumi.set(__self__, "vm_affinity", vm_affinity)
-
-    @property
-    @pulumi.getter(name="diskInfo")
-    def disk_info(self) -> str:
-        """
-        A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
-        """
-        return pulumi.get(self, "disk_info")
-
-    @property
-    @pulumi.getter(name="networkInfo")
-    def network_info(self) -> str:
-        """
-        A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
-        """
-        return pulumi.get(self, "network_info")
 
     @property
     @pulumi.getter(name="sshUser")
@@ -22202,6 +22188,14 @@ class MachineConfigV2HarvesterConfig(dict):
         return pulumi.get(self, "disk_bus")
 
     @property
+    @pulumi.getter(name="diskInfo")
+    def disk_info(self) -> Optional[str]:
+        """
+        A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
+        """
+        return pulumi.get(self, "disk_info")
+
+    @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[str]:
         """
@@ -22232,6 +22226,14 @@ class MachineConfigV2HarvesterConfig(dict):
         NetworkData content of cloud-init, base64 is supported (string)
         """
         return pulumi.get(self, "network_data")
+
+    @property
+    @pulumi.getter(name="networkInfo")
+    def network_info(self) -> Optional[str]:
+        """
+        A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
+        """
+        return pulumi.get(self, "network_info")
 
     @property
     @pulumi.getter(name="networkModel")
@@ -25333,11 +25335,7 @@ class NodeTemplateHarvesterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "diskInfo":
-            suggest = "disk_info"
-        elif key == "networkInfo":
-            suggest = "network_info"
-        elif key == "sshUser":
+        if key == "sshUser":
             suggest = "ssh_user"
         elif key == "vmNamespace":
             suggest = "vm_namespace"
@@ -25345,6 +25343,8 @@ class NodeTemplateHarvesterConfig(dict):
             suggest = "cpu_count"
         elif key == "diskBus":
             suggest = "disk_bus"
+        elif key == "diskInfo":
+            suggest = "disk_info"
         elif key == "diskSize":
             suggest = "disk_size"
         elif key == "imageName":
@@ -25353,6 +25353,8 @@ class NodeTemplateHarvesterConfig(dict):
             suggest = "memory_size"
         elif key == "networkData":
             suggest = "network_data"
+        elif key == "networkInfo":
+            suggest = "network_info"
         elif key == "networkModel":
             suggest = "network_model"
         elif key == "networkName":
@@ -25376,46 +25378,46 @@ class NodeTemplateHarvesterConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 disk_info: str,
-                 network_info: str,
                  ssh_user: str,
                  vm_namespace: str,
                  cpu_count: Optional[str] = None,
                  disk_bus: Optional[str] = None,
+                 disk_info: Optional[str] = None,
                  disk_size: Optional[str] = None,
                  image_name: Optional[str] = None,
                  memory_size: Optional[str] = None,
                  network_data: Optional[str] = None,
+                 network_info: Optional[str] = None,
                  network_model: Optional[str] = None,
                  network_name: Optional[str] = None,
                  ssh_password: Optional[str] = None,
                  user_data: Optional[str] = None,
                  vm_affinity: Optional[str] = None):
         """
-        :param str disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
-        :param str network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         :param str ssh_user: Set the name of the ssh user (string)
         :param str vm_namespace: Virtual machine namespace e.g. `default` (string)
         :param str cpu_count: CPU count, Default `2` (string)
         :param str disk_bus: Use `disk_info` instead
+        :param str disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
         :param str disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
         :param str image_name: Use `disk_info` instead
         :param str memory_size: Memory size (in GiB), Default `4` (string)
         :param str network_data: NetworkData content of cloud-init, base64 is supported (string)
+        :param str network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         :param str network_model: Use `network_info` instead
         :param str network_name: Use `network_info` instead
         :param str ssh_password: SSH password (string)
         :param str user_data: UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
         :param str vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
         """
-        pulumi.set(__self__, "disk_info", disk_info)
-        pulumi.set(__self__, "network_info", network_info)
         pulumi.set(__self__, "ssh_user", ssh_user)
         pulumi.set(__self__, "vm_namespace", vm_namespace)
         if cpu_count is not None:
             pulumi.set(__self__, "cpu_count", cpu_count)
         if disk_bus is not None:
             pulumi.set(__self__, "disk_bus", disk_bus)
+        if disk_info is not None:
+            pulumi.set(__self__, "disk_info", disk_info)
         if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
         if image_name is not None:
@@ -25424,6 +25426,8 @@ class NodeTemplateHarvesterConfig(dict):
             pulumi.set(__self__, "memory_size", memory_size)
         if network_data is not None:
             pulumi.set(__self__, "network_data", network_data)
+        if network_info is not None:
+            pulumi.set(__self__, "network_info", network_info)
         if network_model is not None:
             pulumi.set(__self__, "network_model", network_model)
         if network_name is not None:
@@ -25434,22 +25438,6 @@ class NodeTemplateHarvesterConfig(dict):
             pulumi.set(__self__, "user_data", user_data)
         if vm_affinity is not None:
             pulumi.set(__self__, "vm_affinity", vm_affinity)
-
-    @property
-    @pulumi.getter(name="diskInfo")
-    def disk_info(self) -> str:
-        """
-        A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
-        """
-        return pulumi.get(self, "disk_info")
-
-    @property
-    @pulumi.getter(name="networkInfo")
-    def network_info(self) -> str:
-        """
-        A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
-        """
-        return pulumi.get(self, "network_info")
 
     @property
     @pulumi.getter(name="sshUser")
@@ -25484,6 +25472,14 @@ class NodeTemplateHarvesterConfig(dict):
         return pulumi.get(self, "disk_bus")
 
     @property
+    @pulumi.getter(name="diskInfo")
+    def disk_info(self) -> Optional[str]:
+        """
+        A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
+        """
+        return pulumi.get(self, "disk_info")
+
+    @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[str]:
         """
@@ -25514,6 +25510,14 @@ class NodeTemplateHarvesterConfig(dict):
         NetworkData content of cloud-init, base64 is supported (string)
         """
         return pulumi.get(self, "network_data")
+
+    @property
+    @pulumi.getter(name="networkInfo")
+    def network_info(self) -> Optional[str]:
+        """
+        A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
+        """
+        return pulumi.get(self, "network_info")
 
     @property
     @pulumi.getter(name="networkModel")

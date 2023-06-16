@@ -23232,40 +23232,38 @@ class MachineConfigV2DigitaloceanConfigArgs:
 @pulumi.input_type
 class MachineConfigV2HarvesterConfigArgs:
     def __init__(__self__, *,
-                 disk_info: pulumi.Input[str],
-                 network_info: pulumi.Input[str],
                  ssh_user: pulumi.Input[str],
                  vm_namespace: pulumi.Input[str],
                  cpu_count: Optional[pulumi.Input[str]] = None,
                  disk_bus: Optional[pulumi.Input[str]] = None,
+                 disk_info: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
                  memory_size: Optional[pulumi.Input[str]] = None,
                  network_data: Optional[pulumi.Input[str]] = None,
+                 network_info: Optional[pulumi.Input[str]] = None,
                  network_model: Optional[pulumi.Input[str]] = None,
                  network_name: Optional[pulumi.Input[str]] = None,
                  ssh_password: Optional[pulumi.Input[str]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vm_affinity: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
-        :param pulumi.Input[str] network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         :param pulumi.Input[str] ssh_user: Set the name of the ssh user (string)
         :param pulumi.Input[str] vm_namespace: Virtual machine namespace e.g. `default` (string)
         :param pulumi.Input[str] cpu_count: CPU count, Default `2` (string)
         :param pulumi.Input[str] disk_bus: Use `disk_info` instead
+        :param pulumi.Input[str] disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
         :param pulumi.Input[str] disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
         :param pulumi.Input[str] image_name: Use `disk_info` instead
         :param pulumi.Input[str] memory_size: Memory size (in GiB), Default `4` (string)
         :param pulumi.Input[str] network_data: NetworkData content of cloud-init, base64 is supported (string)
+        :param pulumi.Input[str] network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         :param pulumi.Input[str] network_model: Use `network_info` instead
         :param pulumi.Input[str] network_name: Use `network_info` instead
         :param pulumi.Input[str] ssh_password: SSH password (string)
         :param pulumi.Input[str] user_data: UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
         :param pulumi.Input[str] vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
         """
-        pulumi.set(__self__, "disk_info", disk_info)
-        pulumi.set(__self__, "network_info", network_info)
         pulumi.set(__self__, "ssh_user", ssh_user)
         pulumi.set(__self__, "vm_namespace", vm_namespace)
         if cpu_count is not None:
@@ -23275,6 +23273,8 @@ class MachineConfigV2HarvesterConfigArgs:
             pulumi.log.warn("""disk_bus is deprecated: Use disk_info instead""")
         if disk_bus is not None:
             pulumi.set(__self__, "disk_bus", disk_bus)
+        if disk_info is not None:
+            pulumi.set(__self__, "disk_info", disk_info)
         if disk_size is not None:
             warnings.warn("""Use disk_info instead""", DeprecationWarning)
             pulumi.log.warn("""disk_size is deprecated: Use disk_info instead""")
@@ -23289,6 +23289,8 @@ class MachineConfigV2HarvesterConfigArgs:
             pulumi.set(__self__, "memory_size", memory_size)
         if network_data is not None:
             pulumi.set(__self__, "network_data", network_data)
+        if network_info is not None:
+            pulumi.set(__self__, "network_info", network_info)
         if network_model is not None:
             warnings.warn("""Use network_info instead""", DeprecationWarning)
             pulumi.log.warn("""network_model is deprecated: Use network_info instead""")
@@ -23305,30 +23307,6 @@ class MachineConfigV2HarvesterConfigArgs:
             pulumi.set(__self__, "user_data", user_data)
         if vm_affinity is not None:
             pulumi.set(__self__, "vm_affinity", vm_affinity)
-
-    @property
-    @pulumi.getter(name="diskInfo")
-    def disk_info(self) -> pulumi.Input[str]:
-        """
-        A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
-        """
-        return pulumi.get(self, "disk_info")
-
-    @disk_info.setter
-    def disk_info(self, value: pulumi.Input[str]):
-        pulumi.set(self, "disk_info", value)
-
-    @property
-    @pulumi.getter(name="networkInfo")
-    def network_info(self) -> pulumi.Input[str]:
-        """
-        A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
-        """
-        return pulumi.get(self, "network_info")
-
-    @network_info.setter
-    def network_info(self, value: pulumi.Input[str]):
-        pulumi.set(self, "network_info", value)
 
     @property
     @pulumi.getter(name="sshUser")
@@ -23379,6 +23357,18 @@ class MachineConfigV2HarvesterConfigArgs:
         pulumi.set(self, "disk_bus", value)
 
     @property
+    @pulumi.getter(name="diskInfo")
+    def disk_info(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
+        """
+        return pulumi.get(self, "disk_info")
+
+    @disk_info.setter
+    def disk_info(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_info", value)
+
+    @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[str]]:
         """
@@ -23425,6 +23415,18 @@ class MachineConfigV2HarvesterConfigArgs:
     @network_data.setter
     def network_data(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_data", value)
+
+    @property
+    @pulumi.getter(name="networkInfo")
+    def network_info(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
+        """
+        return pulumi.get(self, "network_info")
+
+    @network_info.setter
+    def network_info(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_info", value)
 
     @property
     @pulumi.getter(name="networkModel")
@@ -26862,40 +26864,38 @@ class NodeTemplateDigitaloceanConfigArgs:
 @pulumi.input_type
 class NodeTemplateHarvesterConfigArgs:
     def __init__(__self__, *,
-                 disk_info: pulumi.Input[str],
-                 network_info: pulumi.Input[str],
                  ssh_user: pulumi.Input[str],
                  vm_namespace: pulumi.Input[str],
                  cpu_count: Optional[pulumi.Input[str]] = None,
                  disk_bus: Optional[pulumi.Input[str]] = None,
+                 disk_info: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
                  memory_size: Optional[pulumi.Input[str]] = None,
                  network_data: Optional[pulumi.Input[str]] = None,
+                 network_info: Optional[pulumi.Input[str]] = None,
                  network_model: Optional[pulumi.Input[str]] = None,
                  network_name: Optional[pulumi.Input[str]] = None,
                  ssh_password: Optional[pulumi.Input[str]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vm_affinity: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
-        :param pulumi.Input[str] network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         :param pulumi.Input[str] ssh_user: Set the name of the ssh user (string)
         :param pulumi.Input[str] vm_namespace: Virtual machine namespace e.g. `default` (string)
         :param pulumi.Input[str] cpu_count: CPU count, Default `2` (string)
         :param pulumi.Input[str] disk_bus: Use `disk_info` instead
+        :param pulumi.Input[str] disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
         :param pulumi.Input[str] disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
         :param pulumi.Input[str] image_name: Use `disk_info` instead
         :param pulumi.Input[str] memory_size: Memory size (in GiB), Default `4` (string)
         :param pulumi.Input[str] network_data: NetworkData content of cloud-init, base64 is supported (string)
+        :param pulumi.Input[str] network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
         :param pulumi.Input[str] network_model: Use `network_info` instead
         :param pulumi.Input[str] network_name: Use `network_info` instead
         :param pulumi.Input[str] ssh_password: SSH password (string)
         :param pulumi.Input[str] user_data: UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
         :param pulumi.Input[str] vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
         """
-        pulumi.set(__self__, "disk_info", disk_info)
-        pulumi.set(__self__, "network_info", network_info)
         pulumi.set(__self__, "ssh_user", ssh_user)
         pulumi.set(__self__, "vm_namespace", vm_namespace)
         if cpu_count is not None:
@@ -26905,6 +26905,8 @@ class NodeTemplateHarvesterConfigArgs:
             pulumi.log.warn("""disk_bus is deprecated: Use disk_info instead""")
         if disk_bus is not None:
             pulumi.set(__self__, "disk_bus", disk_bus)
+        if disk_info is not None:
+            pulumi.set(__self__, "disk_info", disk_info)
         if disk_size is not None:
             warnings.warn("""Use disk_info instead""", DeprecationWarning)
             pulumi.log.warn("""disk_size is deprecated: Use disk_info instead""")
@@ -26919,6 +26921,8 @@ class NodeTemplateHarvesterConfigArgs:
             pulumi.set(__self__, "memory_size", memory_size)
         if network_data is not None:
             pulumi.set(__self__, "network_data", network_data)
+        if network_info is not None:
+            pulumi.set(__self__, "network_info", network_info)
         if network_model is not None:
             warnings.warn("""Use network_info instead""", DeprecationWarning)
             pulumi.log.warn("""network_model is deprecated: Use network_info instead""")
@@ -26935,30 +26939,6 @@ class NodeTemplateHarvesterConfigArgs:
             pulumi.set(__self__, "user_data", user_data)
         if vm_affinity is not None:
             pulumi.set(__self__, "vm_affinity", vm_affinity)
-
-    @property
-    @pulumi.getter(name="diskInfo")
-    def disk_info(self) -> pulumi.Input[str]:
-        """
-        A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
-        """
-        return pulumi.get(self, "disk_info")
-
-    @disk_info.setter
-    def disk_info(self, value: pulumi.Input[str]):
-        pulumi.set(self, "disk_info", value)
-
-    @property
-    @pulumi.getter(name="networkInfo")
-    def network_info(self) -> pulumi.Input[str]:
-        """
-        A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
-        """
-        return pulumi.get(self, "network_info")
-
-    @network_info.setter
-    def network_info(self, value: pulumi.Input[str]):
-        pulumi.set(self, "network_info", value)
 
     @property
     @pulumi.getter(name="sshUser")
@@ -27009,6 +26989,18 @@ class NodeTemplateHarvesterConfigArgs:
         pulumi.set(self, "disk_bus", value)
 
     @property
+    @pulumi.getter(name="diskInfo")
+    def disk_info(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
+        """
+        return pulumi.get(self, "disk_info")
+
+    @disk_info.setter
+    def disk_info(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_info", value)
+
+    @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[str]]:
         """
@@ -27055,6 +27047,18 @@ class NodeTemplateHarvesterConfigArgs:
     @network_data.setter
     def network_data(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_data", value)
+
+    @property
+    @pulumi.getter(name="networkInfo")
+    def network_info(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
+        """
+        return pulumi.get(self, "network_info")
+
+    @network_info.setter
+    def network_info(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_info", value)
 
     @property
     @pulumi.getter(name="networkModel")
