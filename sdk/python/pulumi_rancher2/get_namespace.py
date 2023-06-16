@@ -136,7 +136,7 @@ def get_namespace(name: Optional[str] = None,
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_namespace(name="foo",
-        project_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        project_id=rancher2_cluster["foo-custom"]["default_project_id"])
     ```
 
 
@@ -174,7 +174,7 @@ def get_namespace_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_namespace(name="foo",
-        project_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        project_id=rancher2_cluster["foo-custom"]["default_project_id"])
     ```
 
 

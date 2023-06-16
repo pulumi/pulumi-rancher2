@@ -27,8 +27,8 @@ namespace Pulumi.Rancher2.Inputs
         /// <summary>
         /// A JSON string specifying info for the disks e.g. `{\"disks\":[{\"imageName\":\"harvester-public/image-57hzg\",\"bootOrder\":1,\"size\":40},{\"storageClassName\":\"node-driver-test\",\"bootOrder\":2,\"size\":1}]}` (string)
         /// </summary>
-        [Input("diskInfo", required: true)]
-        public Input<string> DiskInfo { get; set; } = null!;
+        [Input("diskInfo")]
+        public Input<string>? DiskInfo { get; set; }
 
         /// <summary>
         /// Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
@@ -57,8 +57,8 @@ namespace Pulumi.Rancher2.Inputs
         /// <summary>
         /// A JSON string specifying info for the networks e.g. `{\"interfaces\":[{\"networkName\":\"harvester-public/vlan1\"},{\"networkName\":\"harvester-public/vlan2\"}]}` (string)
         /// </summary>
-        [Input("networkInfo", required: true)]
-        public Input<string> NetworkInfo { get; set; } = null!;
+        [Input("networkInfo")]
+        public Input<string>? NetworkInfo { get; set; }
 
         /// <summary>
         /// Use `network_info` instead

@@ -193,7 +193,7 @@ def get_node_pool(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
-    foo = rancher2.get_node_pool(cluster_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    foo = rancher2.get_node_pool(cluster_id=rancher2_cluster["foo-custom"]["id"],
         name="foo")
     ```
 
@@ -239,7 +239,7 @@ def get_node_pool_output(cluster_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
-    foo = rancher2.get_node_pool(cluster_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    foo = rancher2.get_node_pool(cluster_id=rancher2_cluster["foo-custom"]["id"],
         name="foo")
     ```
 

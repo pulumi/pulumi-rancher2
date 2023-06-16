@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// A JSON string specifying info for the disks e.g. `{\"disks\":[{\"imageName\":\"harvester-public/image-57hzg\",\"bootOrder\":1,\"size\":40},{\"storageClassName\":\"node-driver-test\",\"bootOrder\":2,\"size\":1}]}` (string)
         /// </summary>
-        public readonly string DiskInfo;
+        public readonly string? DiskInfo;
         /// <summary>
         /// Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
         /// </summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// A JSON string specifying info for the networks e.g. `{\"interfaces\":[{\"networkName\":\"harvester-public/vlan1\"},{\"networkName\":\"harvester-public/vlan2\"}]}` (string)
         /// </summary>
-        public readonly string NetworkInfo;
+        public readonly string? NetworkInfo;
         /// <summary>
         /// Use `network_info` instead
         /// </summary>
@@ -80,7 +80,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? diskBus,
 
-            string diskInfo,
+            string? diskInfo,
 
             string? diskSize,
 
@@ -90,7 +90,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? networkData,
 
-            string networkInfo,
+            string? networkInfo,
 
             string? networkModel,
 
