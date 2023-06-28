@@ -42,9 +42,9 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.50.1
-	github.com/pulumi/pulumi/sdk/v3 v3.72.0
-	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20230607062054-444cda55f12b
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.51.0
+	github.com/pulumi/pulumi/sdk/v3 v3.72.2
+	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20230621133649-31ab1f782a14
 )
 
 require (
@@ -230,9 +230,9 @@ require (
 	github.com/pulumi/pulumi-java/pkg v0.9.4 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 // indirect
 	github.com/pulumi/pulumi-yaml v1.1.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.72.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.72.2 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
-	github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e // indirect
+	github.com/pulumi/terraform-diff-reader v0.0.1 // indirect
 	github.com/rancher/aks-operator v1.1.1-rc2 // indirect
 	github.com/rancher/eks-operator v1.2.1-rc3 // indirect
 	github.com/rancher/fleet/pkg/apis v0.0.0-20230420151154-ab055fa31e05 // indirect
