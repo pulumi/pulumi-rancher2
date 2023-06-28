@@ -1958,124 +1958,1547 @@
         },
         "datasources": {
             "rancher2_app": {
-                "current": "rancher2:index/getApp:getApp"
+                "current": "rancher2:index/getApp:getApp",
+                "majorVersion": 5
             },
             "rancher2_catalog": {
-                "current": "rancher2:index/getCatalog:getCatalog"
+                "current": "rancher2:index/getCatalog:getCatalog",
+                "majorVersion": 5
             },
             "rancher2_catalog_v2": {
-                "current": "rancher2:index/getCatalogV2:getCatalogV2"
+                "current": "rancher2:index/getCatalogV2:getCatalogV2",
+                "majorVersion": 5
             },
             "rancher2_certificate": {
-                "current": "rancher2:index/getCertificate:getCertificate"
+                "current": "rancher2:index/getCertificate:getCertificate",
+                "majorVersion": 5
             },
             "rancher2_cloud_credential": {
-                "current": "rancher2:index/getCloudCredential:getCloudCredential"
+                "current": "rancher2:index/getCloudCredential:getCloudCredential",
+                "majorVersion": 5
             },
             "rancher2_cluster": {
-                "current": "rancher2:index/getCluster:getCluster"
+                "current": "rancher2:index/getCluster:getCluster",
+                "majorVersion": 5,
+                "fields": {
+                    "agent_env_vars": {
+                        "maxItemsOne": false
+                    },
+                    "aks_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "aks_config_v2": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "authorized_ip_ranges": {
+                                    "maxItemsOne": false
+                                },
+                                "node_pools": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "availability_zones": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "cluster_auth_endpoint": {
+                        "maxItemsOne": true
+                    },
+                    "cluster_monitoring_input": {
+                        "maxItemsOne": true
+                    },
+                    "cluster_registration_token": {
+                        "maxItemsOne": true
+                    },
+                    "cluster_template_answers": {
+                        "maxItemsOne": true
+                    },
+                    "cluster_template_questions": {
+                        "maxItemsOne": false
+                    },
+                    "eks_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "security_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "subnets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "eks_config_v2": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "logging_types": {
+                                    "maxItemsOne": false
+                                },
+                                "node_groups": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "launch_template": {
+                                                "maxItemsOne": false
+                                            },
+                                            "spot_instance_types": {
+                                                "maxItemsOne": false
+                                            },
+                                            "subnets": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "public_access_sources": {
+                                    "maxItemsOne": false
+                                },
+                                "security_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "subnets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "gke_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "locations": {
+                                    "maxItemsOne": false
+                                },
+                                "master_authorized_network_cidr_blocks": {
+                                    "maxItemsOne": false
+                                },
+                                "oauth_scopes": {
+                                    "maxItemsOne": false
+                                },
+                                "taints": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "gke_config_v2": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "cluster_addons": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_allocation_policy": {
+                                    "maxItemsOne": true
+                                },
+                                "locations": {
+                                    "maxItemsOne": false
+                                },
+                                "master_authorized_networks_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "cidr_blocks": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "node_pools": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "autoscaling": {
+                                                "maxItemsOne": true
+                                            },
+                                            "config": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "oauth_scopes": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "tags": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "taints": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "management": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "private_cluster_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "k3s_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "upgrade_strategy": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "oke_config": {
+                        "maxItemsOne": true
+                    },
+                    "rke2_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "upgrade_strategy": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "rke_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "addons_include": {
+                                    "maxItemsOne": false
+                                },
+                                "authentication": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "sans": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "authorization": {
+                                    "maxItemsOne": true
+                                },
+                                "bastion_host": {
+                                    "maxItemsOne": true
+                                },
+                                "cloud_provider": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "aws_cloud_provider": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "global": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "service_override": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "azure_cloud_provider": {
+                                                "maxItemsOne": true
+                                            },
+                                            "openstack_cloud_provider": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "block_storage": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "global": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "load_balancer": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "metadata": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "route": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "vsphere_cloud_provider": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "disk": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "global": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "network": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "virtual_center": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "workspace": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "dns": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "linear_autoscaler_params": {
+                                                "maxItemsOne": true
+                                            },
+                                            "nodelocal": {
+                                                "maxItemsOne": true
+                                            },
+                                            "reverse_cidrs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "tolerations": {
+                                                "maxItemsOne": false
+                                            },
+                                            "update_strategy": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "rolling_update": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "upstream_nameservers": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "ingress": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "tolerations": {
+                                                "maxItemsOne": false
+                                            },
+                                            "update_strategy": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "rolling_update": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "monitoring": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "tolerations": {
+                                                "maxItemsOne": false
+                                            },
+                                            "update_strategy": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "rolling_update": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "network": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "aci_network_provider": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "apic_hosts": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "kafka_brokers": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "l3out_external_networks": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "calico_network_provider": {
+                                                "maxItemsOne": true
+                                            },
+                                            "canal_network_provider": {
+                                                "maxItemsOne": true
+                                            },
+                                            "flannel_network_provider": {
+                                                "maxItemsOne": true
+                                            },
+                                            "tolerations": {
+                                                "maxItemsOne": false
+                                            },
+                                            "weave_network_provider": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "nodes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "role": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "private_registries": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ecr_credential_plugin": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "services": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "etcd": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "backup_config": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "s3_backup_config": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "external_urls": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "extra_binds": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "extra_env": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "kube_api": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "audit_log": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "configuration": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "event_rate_limit": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "extra_binds": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "extra_env": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "secrets_encryption_config": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "kube_controller": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "extra_binds": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "extra_env": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "kubelet": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "extra_binds": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "extra_env": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "kubeproxy": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "extra_binds": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "extra_env": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "scheduler": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "extra_binds": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "extra_env": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "upgrade_strategy": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "drain_input": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "rancher2_cluster_alert_group": {
-                "current": "rancher2:index/getClusterAlertGroup:getClusterAlertGroup"
+                "current": "rancher2:index/getClusterAlertGroup:getClusterAlertGroup",
+                "majorVersion": 5,
+                "fields": {
+                    "recipients": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rancher2_cluster_alert_rule": {
-                "current": "rancher2:index/getClusterAlterRule:getClusterAlterRule"
+                "current": "rancher2:index/getClusterAlterRule:getClusterAlterRule",
+                "majorVersion": 5,
+                "fields": {
+                    "event_rule": {
+                        "maxItemsOne": true
+                    },
+                    "metric_rule": {
+                        "maxItemsOne": true
+                    },
+                    "node_rule": {
+                        "maxItemsOne": true
+                    },
+                    "system_service_rule": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "rancher2_cluster_driver": {
-                "current": "rancher2:index/getClusterDriver:getClusterDriver"
+                "current": "rancher2:index/getClusterDriver:getClusterDriver",
+                "majorVersion": 5,
+                "fields": {
+                    "whitelist_domains": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rancher2_cluster_logging": {
                 "current": "rancher2:index/getClusterLogging:getClusterLogging"
             },
             "rancher2_cluster_role_template_binding": {
-                "current": "rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding"
+                "current": "rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding",
+                "majorVersion": 5
             },
             "rancher2_cluster_scan": {
                 "current": "rancher2:index/getClusterScan:getClusterScan"
             },
             "rancher2_cluster_template": {
-                "current": "rancher2:index/getClusterTemplate:getClusterTemplate"
+                "current": "rancher2:index/getClusterTemplate:getClusterTemplate",
+                "majorVersion": 5,
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    },
+                    "template_revisions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "cluster_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "cluster_auth_endpoint": {
+                                                "maxItemsOne": true
+                                            },
+                                            "rke_config": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "addons_include": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "authentication": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "sans": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "authorization": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "bastion_host": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "cloud_provider": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "aws_cloud_provider": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "global": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "service_override": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "azure_cloud_provider": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "openstack_cloud_provider": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "block_storage": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "global": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "load_balancer": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "metadata": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "route": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "vsphere_cloud_provider": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "disk": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "global": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "network": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "virtual_center": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "workspace": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "dns": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "linear_autoscaler_params": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "nodelocal": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "reverse_cidrs": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "tolerations": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "update_strategy": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "rolling_update": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "upstream_nameservers": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "ingress": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "tolerations": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "update_strategy": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "rolling_update": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "monitoring": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "tolerations": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "update_strategy": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "rolling_update": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "network": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "aci_network_provider": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "apic_hosts": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "kafka_brokers": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "l3out_external_networks": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "calico_network_provider": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "canal_network_provider": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "flannel_network_provider": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "tolerations": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "weave_network_provider": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "nodes": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "role": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "private_registries": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "ecr_credential_plugin": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "services": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "etcd": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "backup_config": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "s3_backup_config": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "external_urls": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "extra_binds": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "extra_env": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "kube_api": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "audit_log": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "configuration": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "event_rate_limit": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "extra_binds": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "extra_env": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "secrets_encryption_config": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "kube_controller": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "extra_binds": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "extra_env": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "kubelet": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "extra_binds": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "extra_env": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "kubeproxy": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "extra_binds": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "extra_env": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "scheduler": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "extra_binds": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "extra_env": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "upgrade_strategy": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "drain_input": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "questions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "rancher2_cluster_v2": {
-                "current": "rancher2:index/getClusterV2:getClusterV2"
+                "current": "rancher2:index/getClusterV2:getClusterV2",
+                "majorVersion": 5,
+                "fields": {
+                    "agent_env_vars": {
+                        "maxItemsOne": false
+                    },
+                    "cluster_registration_token": {
+                        "maxItemsOne": true
+                    },
+                    "rke_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "etcd": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "s3_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "etcd_snapshot_create": {
+                                    "maxItemsOne": true
+                                },
+                                "etcd_snapshot_restore": {
+                                    "maxItemsOne": true
+                                },
+                                "local_auth_endpoint": {
+                                    "maxItemsOne": true
+                                },
+                                "machine_pools": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "machine_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "rolling_update": {
+                                                "maxItemsOne": true
+                                            },
+                                            "taints": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "machine_selector_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "machine_label_selector": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "match_expressions": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "values": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "registries": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "configs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "mirrors": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "endpoints": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "rotate_certificates": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "services": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "upgrade_strategy": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "control_plane_drain_options": {
+                                                "maxItemsOne": true
+                                            },
+                                            "worker_drain_options": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "rancher2_config_map_v2": {
-                "current": "rancher2:index/getConfigMapV2:getConfigMapV2"
+                "current": "rancher2:index/getConfigMapV2:getConfigMapV2",
+                "majorVersion": 5
             },
             "rancher2_etcd_backup": {
-                "current": "rancher2:index/getEtcdBackup:getEtcdBackup"
+                "current": "rancher2:index/getEtcdBackup:getEtcdBackup",
+                "majorVersion": 5,
+                "fields": {
+                    "backup_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "s3_backup_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "rancher2_global_dns_provider": {
-                "current": "rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider"
+                "current": "rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider",
+                "majorVersion": 5,
+                "fields": {
+                    "alidns_config": {
+                        "maxItemsOne": true
+                    },
+                    "cloudflare_config": {
+                        "maxItemsOne": true
+                    },
+                    "route53_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "rancher2_global_role": {
-                "current": "rancher2:index/getGlobalRole:getGlobalRole"
+                "current": "rancher2:index/getGlobalRole:getGlobalRole",
+                "majorVersion": 5,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "api_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "non_resource_urls": {
+                                    "maxItemsOne": false
+                                },
+                                "resource_names": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                },
+                                "verbs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "rancher2_global_role_binding": {
-                "current": "rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding"
+                "current": "rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding",
+                "majorVersion": 5
             },
             "rancher2_multi_cluster_app": {
-                "current": "rancher2:index/getMultiClusterApp:getMultiClusterApp"
+                "current": "rancher2:index/getMultiClusterApp:getMultiClusterApp",
+                "majorVersion": 5,
+                "fields": {
+                    "answers": {
+                        "maxItemsOne": false
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    },
+                    "roles": {
+                        "maxItemsOne": false
+                    },
+                    "targets": {
+                        "maxItemsOne": false
+                    },
+                    "upgrade_strategy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "rolling_update": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "rancher2_namespace": {
-                "current": "rancher2:index/getNamespace:getNamespace"
+                "current": "rancher2:index/getNamespace:getNamespace",
+                "majorVersion": 5,
+                "fields": {
+                    "container_resource_limit": {
+                        "maxItemsOne": true
+                    },
+                    "resource_quota": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "limit": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "rancher2_node_driver": {
-                "current": "rancher2:index/getNodeDriver:getNodeDriver"
+                "current": "rancher2:index/getNodeDriver:getNodeDriver",
+                "majorVersion": 5,
+                "fields": {
+                    "whitelist_domains": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rancher2_node_pool": {
-                "current": "rancher2:index/getNodePool:getNodePool"
+                "current": "rancher2:index/getNodePool:getNodePool",
+                "majorVersion": 5,
+                "fields": {
+                    "node_taints": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rancher2_node_template": {
-                "current": "rancher2:index/getNodeTemplate:getNodeTemplate"
+                "current": "rancher2:index/getNodeTemplate:getNodeTemplate",
+                "majorVersion": 5,
+                "fields": {
+                    "engine_insecure_registry": {
+                        "maxItemsOne": false
+                    },
+                    "engine_registry_mirror": {
+                        "maxItemsOne": false
+                    },
+                    "node_taints": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rancher2_notifier": {
-                "current": "rancher2:index/getNotifier:getNotifier"
+                "current": "rancher2:index/getNotifier:getNotifier",
+                "majorVersion": 5,
+                "fields": {
+                    "dingtalk_config": {
+                        "maxItemsOne": true
+                    },
+                    "msteams_config": {
+                        "maxItemsOne": true
+                    },
+                    "pagerduty_config": {
+                        "maxItemsOne": true
+                    },
+                    "slack_config": {
+                        "maxItemsOne": true
+                    },
+                    "smtp_config": {
+                        "maxItemsOne": true
+                    },
+                    "webhook_config": {
+                        "maxItemsOne": true
+                    },
+                    "wechat_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "rancher2_pod_security_policy_template": {
-                "current": "rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate"
+                "current": "rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate",
+                "majorVersion": 5,
+                "fields": {
+                    "allowed_capabilities": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_csi_driver": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_flex_volume": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_host_path": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_proc_mount_types": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_unsafe_sysctls": {
+                        "maxItemsOne": false
+                    },
+                    "default_add_capabilities": {
+                        "maxItemsOne": false
+                    },
+                    "forbidden_sysctls": {
+                        "maxItemsOne": false
+                    },
+                    "fs_group": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "range": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "host_port": {
+                        "maxItemsOne": false
+                    },
+                    "required_drop_capabilities": {
+                        "maxItemsOne": false
+                    },
+                    "run_as_group": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "range": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "run_as_user": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "range": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "runtime_class": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_runtime_class_names": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "se_linux": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "se_linux_option": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "supplemental_group": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "range": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "volumes": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rancher2_principal": {
-                "current": "rancher2:index/getPrincipal:getPrincipal"
+                "current": "rancher2:index/getPrincipal:getPrincipal",
+                "majorVersion": 5
             },
             "rancher2_project": {
-                "current": "rancher2:index/getProject:getProject"
+                "current": "rancher2:index/getProject:getProject",
+                "majorVersion": 5,
+                "fields": {
+                    "container_resource_limit": {
+                        "maxItemsOne": true
+                    },
+                    "resource_quota": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "namespace_default_limit": {
+                                    "maxItemsOne": true
+                                },
+                                "project_limit": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "rancher2_project_alert_group": {
-                "current": "rancher2:index/getProjectAlertGroup:getProjectAlertGroup"
+                "current": "rancher2:index/getProjectAlertGroup:getProjectAlertGroup",
+                "majorVersion": 5,
+                "fields": {
+                    "recipients": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rancher2_project_alert_rule": {
-                "current": "rancher2:index/getProjectAlertRule:getProjectAlertRule"
+                "current": "rancher2:index/getProjectAlertRule:getProjectAlertRule",
+                "majorVersion": 5,
+                "fields": {
+                    "metric_rule": {
+                        "maxItemsOne": true
+                    },
+                    "pod_rule": {
+                        "maxItemsOne": true
+                    },
+                    "workload_rule": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "rancher2_project_logging": {
                 "current": "rancher2:index/getProjectLogging:getProjectLogging"
             },
             "rancher2_project_role_template_binding": {
-                "current": "rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding"
+                "current": "rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding",
+                "majorVersion": 5
             },
             "rancher2_registry": {
-                "current": "rancher2:index/getRegistry:getRegistry"
+                "current": "rancher2:index/getRegistry:getRegistry",
+                "majorVersion": 5,
+                "fields": {
+                    "registries": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rancher2_role_template": {
-                "current": "rancher2:index/getRoleTemplate:getRoleTemplate"
+                "current": "rancher2:index/getRoleTemplate:getRoleTemplate",
+                "majorVersion": 5,
+                "fields": {
+                    "role_template_ids": {
+                        "maxItemsOne": false
+                    },
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "api_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "non_resource_urls": {
+                                    "maxItemsOne": false
+                                },
+                                "resource_names": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                },
+                                "verbs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "rancher2_role_template_legacy": {
-                "current": "rancher2:index/getRoleTempalte:getRoleTempalte"
+                "current": "rancher2:index/getRoleTempalte:getRoleTempalte",
+                "majorVersion": 5,
+                "fields": {
+                    "role_template_ids": {
+                        "maxItemsOne": false
+                    },
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "api_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "non_resource_urls": {
+                                    "maxItemsOne": false
+                                },
+                                "resource_names": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                },
+                                "verbs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "rancher2_secret": {
-                "current": "rancher2:index/getSecret:getSecret"
+                "current": "rancher2:index/getSecret:getSecret",
+                "majorVersion": 5
             },
             "rancher2_secret_v2": {
-                "current": "rancher2:index/getSecretV2:getSecretV2"
+                "current": "rancher2:index/getSecretV2:getSecretV2",
+                "majorVersion": 5
             },
             "rancher2_setting": {
-                "current": "rancher2:index/getSetting:getSetting"
+                "current": "rancher2:index/getSetting:getSetting",
+                "majorVersion": 5
             },
             "rancher2_storage_class_v2": {
-                "current": "rancher2:index/getStorageClassV2:getStorageClassV2"
+                "current": "rancher2:index/getStorageClassV2:getStorageClassV2",
+                "majorVersion": 5,
+                "fields": {
+                    "mount_options": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rancher2_user": {
-                "current": "rancher2:index/getUser:getUser"
+                "current": "rancher2:index/getUser:getUser",
+                "majorVersion": 5,
+                "fields": {
+                    "principal_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         }
     },
