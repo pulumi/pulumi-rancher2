@@ -76,6 +76,10 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     public readonly cloudCredentialSecretName!: pulumi.Output<string | undefined>;
     /**
+     * Optional customization for cluster agent
+     */
+    public readonly clusterAgentDeploymentCustomizations!: pulumi.Output<outputs.ClusterV2ClusterAgentDeploymentCustomization[] | undefined>;
+    /**
      * (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
      */
     public /*out*/ readonly clusterRegistrationToken!: pulumi.Output<outputs.ClusterV2ClusterRegistrationToken>;
@@ -88,6 +92,10 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     public readonly defaultClusterRoleForProjectMembers!: pulumi.Output<string | undefined>;
     /**
+     * Cluster V2 default pod security admission configuration template name (string)
+     */
+    public readonly defaultPodSecurityAdmissionConfigurationTemplateName!: pulumi.Output<string | undefined>;
+    /**
      * Cluster V2 default pod security policy template name (string)
      */
     public readonly defaultPodSecurityPolicyTemplateName!: pulumi.Output<string | undefined>;
@@ -95,6 +103,10 @@ export class ClusterV2 extends pulumi.CustomResource {
      * Enable k8s network policy at Cluster V2 (bool)
      */
     public readonly enableNetworkPolicy!: pulumi.Output<boolean>;
+    /**
+     * Optional customization for fleet agent
+     */
+    public readonly fleetAgentDeploymentCustomizations!: pulumi.Output<outputs.ClusterV2FleetAgentDeploymentCustomization[] | undefined>;
     /**
      * The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
      */
@@ -144,11 +156,14 @@ export class ClusterV2 extends pulumi.CustomResource {
             resourceInputs["agentEnvVars"] = state ? state.agentEnvVars : undefined;
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["cloudCredentialSecretName"] = state ? state.cloudCredentialSecretName : undefined;
+            resourceInputs["clusterAgentDeploymentCustomizations"] = state ? state.clusterAgentDeploymentCustomizations : undefined;
             resourceInputs["clusterRegistrationToken"] = state ? state.clusterRegistrationToken : undefined;
             resourceInputs["clusterV1Id"] = state ? state.clusterV1Id : undefined;
             resourceInputs["defaultClusterRoleForProjectMembers"] = state ? state.defaultClusterRoleForProjectMembers : undefined;
+            resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = state ? state.defaultPodSecurityAdmissionConfigurationTemplateName : undefined;
             resourceInputs["defaultPodSecurityPolicyTemplateName"] = state ? state.defaultPodSecurityPolicyTemplateName : undefined;
             resourceInputs["enableNetworkPolicy"] = state ? state.enableNetworkPolicy : undefined;
+            resourceInputs["fleetAgentDeploymentCustomizations"] = state ? state.fleetAgentDeploymentCustomizations : undefined;
             resourceInputs["fleetNamespace"] = state ? state.fleetNamespace : undefined;
             resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
             resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
@@ -165,9 +180,12 @@ export class ClusterV2 extends pulumi.CustomResource {
             resourceInputs["agentEnvVars"] = args ? args.agentEnvVars : undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["cloudCredentialSecretName"] = args ? args.cloudCredentialSecretName : undefined;
+            resourceInputs["clusterAgentDeploymentCustomizations"] = args ? args.clusterAgentDeploymentCustomizations : undefined;
             resourceInputs["defaultClusterRoleForProjectMembers"] = args ? args.defaultClusterRoleForProjectMembers : undefined;
+            resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = args ? args.defaultPodSecurityAdmissionConfigurationTemplateName : undefined;
             resourceInputs["defaultPodSecurityPolicyTemplateName"] = args ? args.defaultPodSecurityPolicyTemplateName : undefined;
             resourceInputs["enableNetworkPolicy"] = args ? args.enableNetworkPolicy : undefined;
+            resourceInputs["fleetAgentDeploymentCustomizations"] = args ? args.fleetAgentDeploymentCustomizations : undefined;
             resourceInputs["fleetNamespace"] = args ? args.fleetNamespace : undefined;
             resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -203,6 +221,10 @@ export interface ClusterV2State {
      */
     cloudCredentialSecretName?: pulumi.Input<string>;
     /**
+     * Optional customization for cluster agent
+     */
+    clusterAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomization>[]>;
+    /**
      * (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
      */
     clusterRegistrationToken?: pulumi.Input<inputs.ClusterV2ClusterRegistrationToken>;
@@ -215,6 +237,10 @@ export interface ClusterV2State {
      */
     defaultClusterRoleForProjectMembers?: pulumi.Input<string>;
     /**
+     * Cluster V2 default pod security admission configuration template name (string)
+     */
+    defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
+    /**
      * Cluster V2 default pod security policy template name (string)
      */
     defaultPodSecurityPolicyTemplateName?: pulumi.Input<string>;
@@ -222,6 +248,10 @@ export interface ClusterV2State {
      * Enable k8s network policy at Cluster V2 (bool)
      */
     enableNetworkPolicy?: pulumi.Input<boolean>;
+    /**
+     * Optional customization for fleet agent
+     */
+    fleetAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomization>[]>;
     /**
      * The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
      */
@@ -273,9 +303,17 @@ export interface ClusterV2Args {
      */
     cloudCredentialSecretName?: pulumi.Input<string>;
     /**
+     * Optional customization for cluster agent
+     */
+    clusterAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomization>[]>;
+    /**
      * Cluster V2 default cluster role for project members (string)
      */
     defaultClusterRoleForProjectMembers?: pulumi.Input<string>;
+    /**
+     * Cluster V2 default pod security admission configuration template name (string)
+     */
+    defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
     /**
      * Cluster V2 default pod security policy template name (string)
      */
@@ -284,6 +322,10 @@ export interface ClusterV2Args {
      * Enable k8s network policy at Cluster V2 (bool)
      */
     enableNetworkPolicy?: pulumi.Input<boolean>;
+    /**
+     * Optional customization for fleet agent
+     */
+    fleetAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomization>[]>;
     /**
      * The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
      */

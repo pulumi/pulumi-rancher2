@@ -13,7 +13,37 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigServicesKubeApiAuditLog {
     /**
-     * @return Audit log configuration. (list maxitems: 1)
+     * @return Plugin configuration. (string) Ex:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * configuration = &lt;&lt;EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     *   burst: 35000
+     *   qps: 6000
+     *   EOF
      * 
      */
     private @Nullable ClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration;
@@ -25,7 +55,37 @@ public final class ClusterRkeConfigServicesKubeApiAuditLog {
 
     private ClusterRkeConfigServicesKubeApiAuditLog() {}
     /**
-     * @return Audit log configuration. (list maxitems: 1)
+     * @return Plugin configuration. (string) Ex:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * configuration = &lt;&lt;EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     *   burst: 35000
+     *   qps: 6000
+     *   EOF
      * 
      */
     public Optional<ClusterRkeConfigServicesKubeApiAuditLogConfiguration> configuration() {

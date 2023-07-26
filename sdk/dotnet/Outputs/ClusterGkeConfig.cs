@@ -214,7 +214,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string SubNetwork;
         /// <summary>
-        /// List of Kubernetes taints to be applied to each node (list)
+        /// The AKS node pool taints (list)
         /// </summary>
         public readonly ImmutableArray<string> Taints;
         /// <summary>

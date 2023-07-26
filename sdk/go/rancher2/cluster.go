@@ -564,11 +564,33 @@ import (
 //								pulumi.String("2"),
 //								pulumi.String("3"),
 //							},
-//							Name:                pulumi.String("<NODEPOOL_NAME>"),
+//							Name:                pulumi.String("<NODEPOOL_NAME_1>"),
+//							Mode:                pulumi.String("System"),
 //							Count:               pulumi.Int(1),
 //							OrchestratorVersion: pulumi.String("1.21.2"),
 //							OsDiskSizeGb:        pulumi.Int(128),
 //							VmSize:              pulumi.String("Standard_DS2_v2"),
+//						},
+//						&rancher2.ClusterAksConfigV2NodePoolArgs{
+//							AvailabilityZones: pulumi.StringArray{
+//								pulumi.String("1"),
+//								pulumi.String("2"),
+//								pulumi.String("3"),
+//							},
+//							Name:                pulumi.String("<NODEPOOL_NAME_2>"),
+//							Count:               pulumi.Int(1),
+//							Mode:                pulumi.String("User"),
+//							OrchestratorVersion: pulumi.String("1.21.2"),
+//							OsDiskSizeGb:        pulumi.Int(128),
+//							VmSize:              pulumi.String("Standard_DS2_v2"),
+//							MaxSurge:            pulumi.String("25%"),
+//							Labels: pulumi.AnyMap{
+//								"test1": pulumi.Any("data1"),
+//								"test2": pulumi.Any("data2"),
+//							},
+//							Taints: pulumi.StringArray{
+//								pulumi.String("none:PreferNoSchedule"),
+//							},
 //						},
 //					},
 //				},
@@ -604,6 +626,8 @@ type Cluster struct {
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
 	// TLS CA certificate for etcd service (string)
 	CaCert pulumi.StringOutput `pulumi:"caCert"`
+	// Optional customization for cluster agent
+	ClusterAgentDeploymentCustomizations ClusterClusterAgentDeploymentCustomizationArrayOutput `pulumi:"clusterAgentDeploymentCustomizations"`
 	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint ClusterClusterAuthEndpointOutput `pulumi:"clusterAuthEndpoint"`
 	// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
@@ -618,6 +642,8 @@ type Cluster struct {
 	ClusterTemplateQuestions ClusterClusterTemplateQuestionArrayOutput `pulumi:"clusterTemplateQuestions"`
 	// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateRevisionId pulumi.StringPtrOutput `pulumi:"clusterTemplateRevisionId"`
+	// Cluster default pod security admission configuration template name
+	DefaultPodSecurityAdmissionConfigurationTemplateName pulumi.StringOutput `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
 	// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
 	DefaultPodSecurityPolicyTemplateId pulumi.StringOutput `pulumi:"defaultPodSecurityPolicyTemplateId"`
 	// (Computed) Default project ID for the cluster (string)
@@ -646,6 +672,8 @@ type Cluster struct {
 	EnableClusterMonitoring pulumi.BoolOutput `pulumi:"enableClusterMonitoring"`
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy pulumi.BoolOutput `pulumi:"enableNetworkPolicy"`
+	// Optional customization for fleet agent
+	FleetAgentDeploymentCustomizations ClusterFleetAgentDeploymentCustomizationArrayOutput `pulumi:"fleetAgentDeploymentCustomizations"`
 	// Fleet workspace name (string)
 	FleetWorkspaceName pulumi.StringOutput `pulumi:"fleetWorkspaceName"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
@@ -718,6 +746,8 @@ type clusterState struct {
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// TLS CA certificate for etcd service (string)
 	CaCert *string `pulumi:"caCert"`
+	// Optional customization for cluster agent
+	ClusterAgentDeploymentCustomizations []ClusterClusterAgentDeploymentCustomization `pulumi:"clusterAgentDeploymentCustomizations"`
 	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint *ClusterClusterAuthEndpoint `pulumi:"clusterAuthEndpoint"`
 	// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
@@ -732,6 +762,8 @@ type clusterState struct {
 	ClusterTemplateQuestions []ClusterClusterTemplateQuestion `pulumi:"clusterTemplateQuestions"`
 	// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateRevisionId *string `pulumi:"clusterTemplateRevisionId"`
+	// Cluster default pod security admission configuration template name
+	DefaultPodSecurityAdmissionConfigurationTemplateName *string `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
 	// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
 	DefaultPodSecurityPolicyTemplateId *string `pulumi:"defaultPodSecurityPolicyTemplateId"`
 	// (Computed) Default project ID for the cluster (string)
@@ -760,6 +792,8 @@ type clusterState struct {
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
+	// Optional customization for fleet agent
+	FleetAgentDeploymentCustomizations []ClusterFleetAgentDeploymentCustomization `pulumi:"fleetAgentDeploymentCustomizations"`
 	// Fleet workspace name (string)
 	FleetWorkspaceName *string `pulumi:"fleetWorkspaceName"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
@@ -799,6 +833,8 @@ type ClusterState struct {
 	Annotations pulumi.MapInput
 	// TLS CA certificate for etcd service (string)
 	CaCert pulumi.StringPtrInput
+	// Optional customization for cluster agent
+	ClusterAgentDeploymentCustomizations ClusterClusterAgentDeploymentCustomizationArrayInput
 	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint ClusterClusterAuthEndpointPtrInput
 	// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
@@ -813,6 +849,8 @@ type ClusterState struct {
 	ClusterTemplateQuestions ClusterClusterTemplateQuestionArrayInput
 	// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateRevisionId pulumi.StringPtrInput
+	// Cluster default pod security admission configuration template name
+	DefaultPodSecurityAdmissionConfigurationTemplateName pulumi.StringPtrInput
 	// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
 	DefaultPodSecurityPolicyTemplateId pulumi.StringPtrInput
 	// (Computed) Default project ID for the cluster (string)
@@ -841,6 +879,8 @@ type ClusterState struct {
 	EnableClusterMonitoring pulumi.BoolPtrInput
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy pulumi.BoolPtrInput
+	// Optional customization for fleet agent
+	FleetAgentDeploymentCustomizations ClusterFleetAgentDeploymentCustomizationArrayInput
 	// Fleet workspace name (string)
 	FleetWorkspaceName pulumi.StringPtrInput
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
@@ -882,6 +922,8 @@ type clusterArgs struct {
 	AksConfigV2 *ClusterAksConfigV2 `pulumi:"aksConfigV2"`
 	// Annotations for the Cluster (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
+	// Optional customization for cluster agent
+	ClusterAgentDeploymentCustomizations []ClusterClusterAgentDeploymentCustomization `pulumi:"clusterAgentDeploymentCustomizations"`
 	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint *ClusterClusterAuthEndpoint `pulumi:"clusterAuthEndpoint"`
 	// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
@@ -894,6 +936,8 @@ type clusterArgs struct {
 	ClusterTemplateQuestions []ClusterClusterTemplateQuestion `pulumi:"clusterTemplateQuestions"`
 	// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateRevisionId *string `pulumi:"clusterTemplateRevisionId"`
+	// Cluster default pod security admission configuration template name
+	DefaultPodSecurityAdmissionConfigurationTemplateName *string `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
 	// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
 	DefaultPodSecurityPolicyTemplateId *string `pulumi:"defaultPodSecurityPolicyTemplateId"`
 	// The description for Cluster (string)
@@ -916,6 +960,8 @@ type clusterArgs struct {
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
+	// Optional customization for fleet agent
+	FleetAgentDeploymentCustomizations []ClusterFleetAgentDeploymentCustomization `pulumi:"fleetAgentDeploymentCustomizations"`
 	// Fleet workspace name (string)
 	FleetWorkspaceName *string `pulumi:"fleetWorkspaceName"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
@@ -948,6 +994,8 @@ type ClusterArgs struct {
 	AksConfigV2 ClusterAksConfigV2PtrInput
 	// Annotations for the Cluster (map)
 	Annotations pulumi.MapInput
+	// Optional customization for cluster agent
+	ClusterAgentDeploymentCustomizations ClusterClusterAgentDeploymentCustomizationArrayInput
 	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint ClusterClusterAuthEndpointPtrInput
 	// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
@@ -960,6 +1008,8 @@ type ClusterArgs struct {
 	ClusterTemplateQuestions ClusterClusterTemplateQuestionArrayInput
 	// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateRevisionId pulumi.StringPtrInput
+	// Cluster default pod security admission configuration template name
+	DefaultPodSecurityAdmissionConfigurationTemplateName pulumi.StringPtrInput
 	// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
 	DefaultPodSecurityPolicyTemplateId pulumi.StringPtrInput
 	// The description for Cluster (string)
@@ -982,6 +1032,8 @@ type ClusterArgs struct {
 	EnableClusterMonitoring pulumi.BoolPtrInput
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy pulumi.BoolPtrInput
+	// Optional customization for fleet agent
+	FleetAgentDeploymentCustomizations ClusterFleetAgentDeploymentCustomizationArrayInput
 	// Fleet workspace name (string)
 	FleetWorkspaceName pulumi.StringPtrInput
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
@@ -1116,6 +1168,13 @@ func (o ClusterOutput) CaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CaCert }).(pulumi.StringOutput)
 }
 
+// Optional customization for cluster agent
+func (o ClusterOutput) ClusterAgentDeploymentCustomizations() ClusterClusterAgentDeploymentCustomizationArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterClusterAgentDeploymentCustomizationArrayOutput {
+		return v.ClusterAgentDeploymentCustomizations
+	}).(ClusterClusterAgentDeploymentCustomizationArrayOutput)
+}
+
 // Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 func (o ClusterOutput) ClusterAuthEndpoint() ClusterClusterAuthEndpointOutput {
 	return o.ApplyT(func(v *Cluster) ClusterClusterAuthEndpointOutput { return v.ClusterAuthEndpoint }).(ClusterClusterAuthEndpointOutput)
@@ -1149,6 +1208,11 @@ func (o ClusterOutput) ClusterTemplateQuestions() ClusterClusterTemplateQuestion
 // Cluster template revision ID. Just for Rancher v2.3.x and above (string)
 func (o ClusterOutput) ClusterTemplateRevisionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterTemplateRevisionId }).(pulumi.StringPtrOutput)
+}
+
+// Cluster default pod security admission configuration template name
+func (o ClusterOutput) DefaultPodSecurityAdmissionConfigurationTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DefaultPodSecurityAdmissionConfigurationTemplateName }).(pulumi.StringOutput)
 }
 
 // [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
@@ -1216,6 +1280,13 @@ func (o ClusterOutput) EnableClusterMonitoring() pulumi.BoolOutput {
 // Enable project network isolation (bool)
 func (o ClusterOutput) EnableNetworkPolicy() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableNetworkPolicy }).(pulumi.BoolOutput)
+}
+
+// Optional customization for fleet agent
+func (o ClusterOutput) FleetAgentDeploymentCustomizations() ClusterFleetAgentDeploymentCustomizationArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterFleetAgentDeploymentCustomizationArrayOutput {
+		return v.FleetAgentDeploymentCustomizations
+	}).(ClusterFleetAgentDeploymentCustomizationArrayOutput)
 }
 
 // Fleet workspace name (string)

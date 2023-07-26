@@ -157,14 +157,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * List of Kubernetes taints to be applied to each node (list)
+     * The AKS node pool taints (list)
      * 
      */
     @Import(name="taints")
     private @Nullable Output<List<ClusterGkeConfigV2NodePoolConfigTaintArgs>> taints;
 
     /**
-     * @return List of Kubernetes taints to be applied to each node (list)
+     * @return The AKS node pool taints (list)
      * 
      */
     public Optional<Output<List<ClusterGkeConfigV2NodePoolConfigTaintArgs>>> taints() {
@@ -414,7 +414,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param taints List of Kubernetes taints to be applied to each node (list)
+         * @param taints The AKS node pool taints (list)
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param taints List of Kubernetes taints to be applied to each node (list)
+         * @param taints The AKS node pool taints (list)
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param taints List of Kubernetes taints to be applied to each node (list)
+         * @param taints The AKS node pool taints (list)
          * 
          * @return builder
          * 

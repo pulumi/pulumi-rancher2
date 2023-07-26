@@ -24,6 +24,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
      * 
      */
     private @Nullable String defaultClusterRoleForProjectMembers;
+    private @Nullable String defaultPodSecurityAdmissionConfigurationTemplateName;
     /**
      * @return Default pod security policy template ID (string)
      * 
@@ -84,6 +85,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
      */
     public Optional<String> defaultClusterRoleForProjectMembers() {
         return Optional.ofNullable(this.defaultClusterRoleForProjectMembers);
+    }
+    public Optional<String> defaultPodSecurityAdmissionConfigurationTemplateName() {
+        return Optional.ofNullable(this.defaultPodSecurityAdmissionConfigurationTemplateName);
     }
     /**
      * @return Default pod security policy template ID (string)
@@ -160,6 +164,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
     public static final class Builder {
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint;
         private @Nullable String defaultClusterRoleForProjectMembers;
+        private @Nullable String defaultPodSecurityAdmissionConfigurationTemplateName;
         private @Nullable String defaultPodSecurityPolicyTemplateId;
         private @Nullable String desiredAgentImage;
         private @Nullable String desiredAuthImage;
@@ -174,6 +179,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
     	      Objects.requireNonNull(defaults);
     	      this.clusterAuthEndpoint = defaults.clusterAuthEndpoint;
     	      this.defaultClusterRoleForProjectMembers = defaults.defaultClusterRoleForProjectMembers;
+    	      this.defaultPodSecurityAdmissionConfigurationTemplateName = defaults.defaultPodSecurityAdmissionConfigurationTemplateName;
     	      this.defaultPodSecurityPolicyTemplateId = defaults.defaultPodSecurityPolicyTemplateId;
     	      this.desiredAgentImage = defaults.desiredAgentImage;
     	      this.desiredAuthImage = defaults.desiredAuthImage;
@@ -193,6 +199,11 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
         @CustomType.Setter
         public Builder defaultClusterRoleForProjectMembers(@Nullable String defaultClusterRoleForProjectMembers) {
             this.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder defaultPodSecurityAdmissionConfigurationTemplateName(@Nullable String defaultPodSecurityAdmissionConfigurationTemplateName) {
+            this.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             return this;
         }
         @CustomType.Setter
@@ -244,6 +255,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
             final var o = new ClusterTemplateTemplateRevisionClusterConfig();
             o.clusterAuthEndpoint = clusterAuthEndpoint;
             o.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
+            o.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             o.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
             o.desiredAgentImage = desiredAgentImage;
             o.desiredAuthImage = desiredAuthImage;

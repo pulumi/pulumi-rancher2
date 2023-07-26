@@ -21,6 +21,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly bool? ControlPlaneRole;
         public readonly bool? DrainBeforeDelete;
         public readonly bool? EtcdRole;
+        public readonly int? HostnameLengthLimit;
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly Outputs.GetClusterV2RkeConfigMachinePoolMachineConfigResult MachineConfig;
         public readonly ImmutableDictionary<string, object> MachineLabels;
@@ -50,6 +51,8 @@ namespace Pulumi.Rancher2.Outputs
             bool? drainBeforeDelete,
 
             bool? etcdRole,
+
+            int? hostnameLengthLimit,
 
             ImmutableDictionary<string, object> labels,
 
@@ -84,6 +87,7 @@ namespace Pulumi.Rancher2.Outputs
             ControlPlaneRole = controlPlaneRole;
             DrainBeforeDelete = drainBeforeDelete;
             EtcdRole = etcdRole;
+            HostnameLengthLimit = hostnameLengthLimit;
             Labels = labels;
             MachineConfig = machineConfig;
             MachineLabels = machineLabels;

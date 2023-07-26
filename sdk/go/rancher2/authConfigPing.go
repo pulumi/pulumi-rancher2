@@ -59,7 +59,8 @@ type AuthConfigPing struct {
 	// Ping display name field (string)
 	DisplayNameField pulumi.StringOutput `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	Enabled       pulumi.BoolPtrOutput   `pulumi:"enabled"`
+	EntityIdField pulumi.StringPtrOutput `pulumi:"entityIdField"`
 	// Ping group field (string)
 	GroupsField pulumi.StringOutput `pulumi:"groupsField"`
 	// Ping IDP metadata content (string)
@@ -159,7 +160,8 @@ type authConfigPingState struct {
 	// Ping display name field (string)
 	DisplayNameField *string `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
-	Enabled *bool `pulumi:"enabled"`
+	Enabled       *bool   `pulumi:"enabled"`
+	EntityIdField *string `pulumi:"entityIdField"`
 	// Ping group field (string)
 	GroupsField *string `pulumi:"groupsField"`
 	// Ping IDP metadata content (string)
@@ -192,7 +194,8 @@ type AuthConfigPingState struct {
 	// Ping display name field (string)
 	DisplayNameField pulumi.StringPtrInput
 	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrInput
+	Enabled       pulumi.BoolPtrInput
+	EntityIdField pulumi.StringPtrInput
 	// Ping group field (string)
 	GroupsField pulumi.StringPtrInput
 	// Ping IDP metadata content (string)
@@ -229,7 +232,8 @@ type authConfigPingArgs struct {
 	// Ping display name field (string)
 	DisplayNameField string `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
-	Enabled *bool `pulumi:"enabled"`
+	Enabled       *bool   `pulumi:"enabled"`
+	EntityIdField *string `pulumi:"entityIdField"`
 	// Ping group field (string)
 	GroupsField string `pulumi:"groupsField"`
 	// Ping IDP metadata content (string)
@@ -259,7 +263,8 @@ type AuthConfigPingArgs struct {
 	// Ping display name field (string)
 	DisplayNameField pulumi.StringInput
 	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrInput
+	Enabled       pulumi.BoolPtrInput
+	EntityIdField pulumi.StringPtrInput
 	// Ping group field (string)
 	GroupsField pulumi.StringInput
 	// Ping IDP metadata content (string)
@@ -388,6 +393,10 @@ func (o AuthConfigPingOutput) DisplayNameField() pulumi.StringOutput {
 // Enable auth config provider. Default `true` (bool)
 func (o AuthConfigPingOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AuthConfigPing) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o AuthConfigPingOutput) EntityIdField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringPtrOutput { return v.EntityIdField }).(pulumi.StringPtrOutput)
 }
 
 // Ping group field (string)

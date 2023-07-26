@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig;
@@ -18,7 +19,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi {
-    private @Nullable Map<String,Object> admissionConfiguration;
+    private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration;
     private @Nullable Boolean alwaysPullImages;
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog auditLog;
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
@@ -32,8 +33,8 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     private @Nullable String serviceNodePortRange;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi() {}
-    public Map<String,Object> admissionConfiguration() {
-        return this.admissionConfiguration == null ? Map.of() : this.admissionConfiguration;
+    public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration> admissionConfiguration() {
+        return Optional.ofNullable(this.admissionConfiguration);
     }
     public Optional<Boolean> alwaysPullImages() {
         return Optional.ofNullable(this.alwaysPullImages);
@@ -78,7 +79,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> admissionConfiguration;
+        private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration;
         private @Nullable Boolean alwaysPullImages;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog auditLog;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
@@ -108,7 +109,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         }
 
         @CustomType.Setter
-        public Builder admissionConfiguration(@Nullable Map<String,Object> admissionConfiguration) {
+        public Builder admissionConfiguration(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration) {
             this.admissionConfiguration = admissionConfiguration;
             return this;
         }

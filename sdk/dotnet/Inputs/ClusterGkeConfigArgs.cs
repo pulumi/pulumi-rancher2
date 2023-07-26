@@ -356,7 +356,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _taints;
 
         /// <summary>
-        /// List of Kubernetes taints to be applied to each node (list)
+        /// The AKS node pool taints (list)
         /// </summary>
         public InputList<string> Taints
         {

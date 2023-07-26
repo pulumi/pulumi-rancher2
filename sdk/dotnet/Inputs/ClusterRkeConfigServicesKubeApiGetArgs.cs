@@ -12,17 +12,11 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigServicesKubeApiGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("admissionConfiguration")]
-        private InputMap<object>? _admissionConfiguration;
-
         /// <summary>
         /// Admission configuration (map)
         /// </summary>
-        public InputMap<object> AdmissionConfiguration
-        {
-            get => _admissionConfiguration ?? (_admissionConfiguration = new InputMap<object>());
-            set => _admissionConfiguration = value;
-        }
+        [Input("admissionConfiguration")]
+        public Input<Inputs.ClusterRkeConfigServicesKubeApiAdmissionConfigurationGetArgs>? AdmissionConfiguration { get; set; }
 
         /// <summary>
         /// Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)

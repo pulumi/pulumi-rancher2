@@ -24,6 +24,7 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getCluster:getCluster", {
+        "defaultPodSecurityAdmissionConfigurationTemplateName": args.defaultPodSecurityAdmissionConfigurationTemplateName,
         "name": args.name,
     }, opts);
 }
@@ -32,6 +33,7 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getCluster.
  */
 export interface GetClusterArgs {
+    defaultPodSecurityAdmissionConfigurationTemplateName?: string;
     /**
      * The name of the Cluster (string)
      */
@@ -90,6 +92,7 @@ export interface GetClusterResult {
      * (Computed) Cluster template revision ID (string)
      */
     readonly clusterTemplateRevisionId: string;
+    readonly defaultPodSecurityAdmissionConfigurationTemplateName: string;
     /**
      * (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
      */
@@ -191,6 +194,7 @@ export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getCluster.
  */
 export interface GetClusterOutputArgs {
+    defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
     /**
      * The name of the Cluster (string)
      */

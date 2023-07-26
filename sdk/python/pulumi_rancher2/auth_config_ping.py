@@ -26,6 +26,7 @@ class AuthConfigPingArgs:
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 entity_id_field: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a AuthConfigPing resource.
@@ -59,6 +60,8 @@ class AuthConfigPingArgs:
             pulumi.set(__self__, "annotations", annotations)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if entity_id_field is not None:
+            pulumi.set(__self__, "entity_id_field", entity_id_field)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
 
@@ -207,6 +210,15 @@ class AuthConfigPingArgs:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter(name="entityIdField")
+    def entity_id_field(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "entity_id_field")
+
+    @entity_id_field.setter
+    def entity_id_field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_id_field", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -227,6 +239,7 @@ class _AuthConfigPingState:
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  display_name_field: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 entity_id_field: Optional[pulumi.Input[str]] = None,
                  groups_field: Optional[pulumi.Input[str]] = None,
                  idp_metadata_content: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -265,6 +278,8 @@ class _AuthConfigPingState:
             pulumi.set(__self__, "display_name_field", display_name_field)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if entity_id_field is not None:
+            pulumi.set(__self__, "entity_id_field", entity_id_field)
         if groups_field is not None:
             pulumi.set(__self__, "groups_field", groups_field)
         if idp_metadata_content is not None:
@@ -345,6 +360,15 @@ class _AuthConfigPingState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="entityIdField")
+    def entity_id_field(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "entity_id_field")
+
+    @entity_id_field.setter
+    def entity_id_field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_id_field", value)
 
     @property
     @pulumi.getter(name="groupsField")
@@ -477,6 +501,7 @@ class AuthConfigPing(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  display_name_field: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 entity_id_field: Optional[pulumi.Input[str]] = None,
                  groups_field: Optional[pulumi.Input[str]] = None,
                  idp_metadata_content: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -574,6 +599,7 @@ class AuthConfigPing(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  display_name_field: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 entity_id_field: Optional[pulumi.Input[str]] = None,
                  groups_field: Optional[pulumi.Input[str]] = None,
                  idp_metadata_content: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -598,6 +624,7 @@ class AuthConfigPing(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name_field'")
             __props__.__dict__["display_name_field"] = display_name_field
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["entity_id_field"] = entity_id_field
             if groups_field is None and not opts.urn:
                 raise TypeError("Missing required property 'groups_field'")
             __props__.__dict__["groups_field"] = groups_field
@@ -639,6 +666,7 @@ class AuthConfigPing(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             display_name_field: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            entity_id_field: Optional[pulumi.Input[str]] = None,
             groups_field: Optional[pulumi.Input[str]] = None,
             idp_metadata_content: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -681,6 +709,7 @@ class AuthConfigPing(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["display_name_field"] = display_name_field
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["entity_id_field"] = entity_id_field
         __props__.__dict__["groups_field"] = groups_field
         __props__.__dict__["idp_metadata_content"] = idp_metadata_content
         __props__.__dict__["labels"] = labels
@@ -732,6 +761,11 @@ class AuthConfigPing(pulumi.CustomResource):
         Enable auth config provider. Default `true` (bool)
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="entityIdField")
+    def entity_id_field(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "entity_id_field")
 
     @property
     @pulumi.getter(name="groupsField")

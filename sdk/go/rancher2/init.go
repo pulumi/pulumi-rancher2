@@ -76,6 +76,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClusterV2{}
 	case "rancher2:index/configMapV2:ConfigMapV2":
 		r = &ConfigMapV2{}
+	case "rancher2:index/customUserToken:CustomUserToken":
+		r = &CustomUserToken{}
 	case "rancher2:index/etcdBackup:EtcdBackup":
 		r = &EtcdBackup{}
 	case "rancher2:index/feature:Feature":
@@ -296,6 +298,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/configMapV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
+		"index/customUserToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

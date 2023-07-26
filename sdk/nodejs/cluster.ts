@@ -404,18 +404,40 @@ import * as utilities from "./utilities";
  *         dnsPrefix: "<DNS_PREFIX>",
  *         kubernetesVersion: "1.24.6",
  *         networkPlugin: "<NETWORK_PLUGIN>",
- *         nodePools: [{
- *             availabilityZones: [
- *                 "1",
- *                 "2",
- *                 "3",
- *             ],
- *             name: "<NODEPOOL_NAME>",
- *             count: 1,
- *             orchestratorVersion: "1.21.2",
- *             osDiskSizeGb: 128,
- *             vmSize: "Standard_DS2_v2",
- *         }],
+ *         nodePools: [
+ *             {
+ *                 availabilityZones: [
+ *                     "1",
+ *                     "2",
+ *                     "3",
+ *                 ],
+ *                 name: "<NODEPOOL_NAME_1>",
+ *                 mode: "System",
+ *                 count: 1,
+ *                 orchestratorVersion: "1.21.2",
+ *                 osDiskSizeGb: 128,
+ *                 vmSize: "Standard_DS2_v2",
+ *             },
+ *             {
+ *                 availabilityZones: [
+ *                     "1",
+ *                     "2",
+ *                     "3",
+ *                 ],
+ *                 name: "<NODEPOOL_NAME_2>",
+ *                 count: 1,
+ *                 mode: "User",
+ *                 orchestratorVersion: "1.21.2",
+ *                 osDiskSizeGb: 128,
+ *                 vmSize: "Standard_DS2_v2",
+ *                 maxSurge: "25%",
+ *                 labels: {
+ *                     test1: "data1",
+ *                     test2: "data2",
+ *                 },
+ *                 taints: ["none:PreferNoSchedule"],
+ *             },
+ *         ],
  *     },
  * });
  * ```
@@ -477,6 +499,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly caCert!: pulumi.Output<string>;
     /**
+     * Optional customization for cluster agent
+     */
+    public readonly clusterAgentDeploymentCustomizations!: pulumi.Output<outputs.ClusterClusterAgentDeploymentCustomization[] | undefined>;
+    /**
      * Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
      */
     public readonly clusterAuthEndpoint!: pulumi.Output<outputs.ClusterClusterAuthEndpoint>;
@@ -504,6 +530,10 @@ export class Cluster extends pulumi.CustomResource {
      * Cluster template revision ID. Just for Rancher v2.3.x and above (string)
      */
     public readonly clusterTemplateRevisionId!: pulumi.Output<string | undefined>;
+    /**
+     * Cluster default pod security admission configuration template name
+     */
+    public readonly defaultPodSecurityAdmissionConfigurationTemplateName!: pulumi.Output<string>;
     /**
      * [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
      */
@@ -558,6 +588,10 @@ export class Cluster extends pulumi.CustomResource {
      * Enable project network isolation (bool)
      */
     public readonly enableNetworkPolicy!: pulumi.Output<boolean>;
+    /**
+     * Optional customization for fleet agent
+     */
+    public readonly fleetAgentDeploymentCustomizations!: pulumi.Output<outputs.ClusterFleetAgentDeploymentCustomization[] | undefined>;
     /**
      * Fleet workspace name (string)
      */
@@ -629,6 +663,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["aksConfigV2"] = state ? state.aksConfigV2 : undefined;
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["caCert"] = state ? state.caCert : undefined;
+            resourceInputs["clusterAgentDeploymentCustomizations"] = state ? state.clusterAgentDeploymentCustomizations : undefined;
             resourceInputs["clusterAuthEndpoint"] = state ? state.clusterAuthEndpoint : undefined;
             resourceInputs["clusterMonitoringInput"] = state ? state.clusterMonitoringInput : undefined;
             resourceInputs["clusterRegistrationToken"] = state ? state.clusterRegistrationToken : undefined;
@@ -636,6 +671,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterTemplateId"] = state ? state.clusterTemplateId : undefined;
             resourceInputs["clusterTemplateQuestions"] = state ? state.clusterTemplateQuestions : undefined;
             resourceInputs["clusterTemplateRevisionId"] = state ? state.clusterTemplateRevisionId : undefined;
+            resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = state ? state.defaultPodSecurityAdmissionConfigurationTemplateName : undefined;
             resourceInputs["defaultPodSecurityPolicyTemplateId"] = state ? state.defaultPodSecurityPolicyTemplateId : undefined;
             resourceInputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -649,6 +685,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableClusterIstio"] = state ? state.enableClusterIstio : undefined;
             resourceInputs["enableClusterMonitoring"] = state ? state.enableClusterMonitoring : undefined;
             resourceInputs["enableNetworkPolicy"] = state ? state.enableNetworkPolicy : undefined;
+            resourceInputs["fleetAgentDeploymentCustomizations"] = state ? state.fleetAgentDeploymentCustomizations : undefined;
             resourceInputs["fleetWorkspaceName"] = state ? state.fleetWorkspaceName : undefined;
             resourceInputs["gkeConfig"] = state ? state.gkeConfig : undefined;
             resourceInputs["gkeConfigV2"] = state ? state.gkeConfigV2 : undefined;
@@ -668,12 +705,14 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["aksConfig"] = args ? args.aksConfig : undefined;
             resourceInputs["aksConfigV2"] = args ? args.aksConfigV2 : undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["clusterAgentDeploymentCustomizations"] = args ? args.clusterAgentDeploymentCustomizations : undefined;
             resourceInputs["clusterAuthEndpoint"] = args ? args.clusterAuthEndpoint : undefined;
             resourceInputs["clusterMonitoringInput"] = args ? args.clusterMonitoringInput : undefined;
             resourceInputs["clusterTemplateAnswers"] = args ? args.clusterTemplateAnswers : undefined;
             resourceInputs["clusterTemplateId"] = args ? args.clusterTemplateId : undefined;
             resourceInputs["clusterTemplateQuestions"] = args ? args.clusterTemplateQuestions : undefined;
             resourceInputs["clusterTemplateRevisionId"] = args ? args.clusterTemplateRevisionId : undefined;
+            resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = args ? args.defaultPodSecurityAdmissionConfigurationTemplateName : undefined;
             resourceInputs["defaultPodSecurityPolicyTemplateId"] = args ? args.defaultPodSecurityPolicyTemplateId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["desiredAgentImage"] = args ? args.desiredAgentImage : undefined;
@@ -685,6 +724,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableClusterAlerting"] = args ? args.enableClusterAlerting : undefined;
             resourceInputs["enableClusterMonitoring"] = args ? args.enableClusterMonitoring : undefined;
             resourceInputs["enableNetworkPolicy"] = args ? args.enableNetworkPolicy : undefined;
+            resourceInputs["fleetAgentDeploymentCustomizations"] = args ? args.fleetAgentDeploymentCustomizations : undefined;
             resourceInputs["fleetWorkspaceName"] = args ? args.fleetWorkspaceName : undefined;
             resourceInputs["gkeConfig"] = args ? args.gkeConfig : undefined;
             resourceInputs["gkeConfigV2"] = args ? args.gkeConfigV2 : undefined;
@@ -735,6 +775,10 @@ export interface ClusterState {
      */
     caCert?: pulumi.Input<string>;
     /**
+     * Optional customization for cluster agent
+     */
+    clusterAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomization>[]>;
+    /**
      * Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
      */
     clusterAuthEndpoint?: pulumi.Input<inputs.ClusterClusterAuthEndpoint>;
@@ -762,6 +806,10 @@ export interface ClusterState {
      * Cluster template revision ID. Just for Rancher v2.3.x and above (string)
      */
     clusterTemplateRevisionId?: pulumi.Input<string>;
+    /**
+     * Cluster default pod security admission configuration template name
+     */
+    defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
     /**
      * [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
      */
@@ -816,6 +864,10 @@ export interface ClusterState {
      * Enable project network isolation (bool)
      */
     enableNetworkPolicy?: pulumi.Input<boolean>;
+    /**
+     * Optional customization for fleet agent
+     */
+    fleetAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterFleetAgentDeploymentCustomization>[]>;
     /**
      * Fleet workspace name (string)
      */
@@ -891,6 +943,10 @@ export interface ClusterArgs {
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
+     * Optional customization for cluster agent
+     */
+    clusterAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomization>[]>;
+    /**
      * Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
      */
     clusterAuthEndpoint?: pulumi.Input<inputs.ClusterClusterAuthEndpoint>;
@@ -914,6 +970,10 @@ export interface ClusterArgs {
      * Cluster template revision ID. Just for Rancher v2.3.x and above (string)
      */
     clusterTemplateRevisionId?: pulumi.Input<string>;
+    /**
+     * Cluster default pod security admission configuration template name
+     */
+    defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
     /**
      * [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
      */
@@ -958,6 +1018,10 @@ export interface ClusterArgs {
      * Enable project network isolation (bool)
      */
     enableNetworkPolicy?: pulumi.Input<boolean>;
+    /**
+     * Optional customization for fleet agent
+     */
+    fleetAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterFleetAgentDeploymentCustomization>[]>;
     /**
      * Fleet workspace name (string)
      */

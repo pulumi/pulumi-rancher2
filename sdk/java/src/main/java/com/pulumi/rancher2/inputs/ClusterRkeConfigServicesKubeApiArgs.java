@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiAuditLogArgs;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiEventRateLimitArgs;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs;
@@ -27,13 +28,13 @@ public final class ClusterRkeConfigServicesKubeApiArgs extends com.pulumi.resour
      * 
      */
     @Import(name="admissionConfiguration")
-    private @Nullable Output<Map<String,Object>> admissionConfiguration;
+    private @Nullable Output<ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs> admissionConfiguration;
 
     /**
      * @return Admission configuration (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> admissionConfiguration() {
+    public Optional<Output<ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs>> admissionConfiguration() {
         return Optional.ofNullable(this.admissionConfiguration);
     }
 
@@ -243,7 +244,7 @@ public final class ClusterRkeConfigServicesKubeApiArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder admissionConfiguration(@Nullable Output<Map<String,Object>> admissionConfiguration) {
+        public Builder admissionConfiguration(@Nullable Output<ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs> admissionConfiguration) {
             $.admissionConfiguration = admissionConfiguration;
             return this;
         }
@@ -254,7 +255,7 @@ public final class ClusterRkeConfigServicesKubeApiArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder admissionConfiguration(Map<String,Object> admissionConfiguration) {
+        public Builder admissionConfiguration(ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs admissionConfiguration) {
             return admissionConfiguration(Output.of(admissionConfiguration));
         }
 

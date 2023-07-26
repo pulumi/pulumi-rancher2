@@ -557,11 +557,37 @@ namespace Pulumi.Rancher2
     ///                         "2",
     ///                         "3",
     ///                     },
-    ///                     Name = "&lt;NODEPOOL_NAME&gt;",
+    ///                     Name = "&lt;NODEPOOL_NAME_1&gt;",
+    ///                     Mode = "System",
     ///                     Count = 1,
     ///                     OrchestratorVersion = "1.21.2",
     ///                     OsDiskSizeGb = 128,
     ///                     VmSize = "Standard_DS2_v2",
+    ///                 },
+    ///                 new Rancher2.Inputs.ClusterAksConfigV2NodePoolArgs
+    ///                 {
+    ///                     AvailabilityZones = new[]
+    ///                     {
+    ///                         "1",
+    ///                         "2",
+    ///                         "3",
+    ///                     },
+    ///                     Name = "&lt;NODEPOOL_NAME_2&gt;",
+    ///                     Count = 1,
+    ///                     Mode = "User",
+    ///                     OrchestratorVersion = "1.21.2",
+    ///                     OsDiskSizeGb = 128,
+    ///                     VmSize = "Standard_DS2_v2",
+    ///                     MaxSurge = "25%",
+    ///                     Labels = 
+    ///                     {
+    ///                         { "test1", "data1" },
+    ///                         { "test2", "data2" },
+    ///                     },
+    ///                     Taints = new[]
+    ///                     {
+    ///                         "none:PreferNoSchedule",
+    ///                     },
     ///                 },
     ///             },
     ///         },
@@ -612,6 +638,12 @@ namespace Pulumi.Rancher2
         public Output<string> CaCert { get; private set; } = null!;
 
         /// <summary>
+        /// Optional customization for cluster agent
+        /// </summary>
+        [Output("clusterAgentDeploymentCustomizations")]
+        public Output<ImmutableArray<Outputs.ClusterClusterAgentDeploymentCustomization>> ClusterAgentDeploymentCustomizations { get; private set; } = null!;
+
+        /// <summary>
         /// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         /// </summary>
         [Output("clusterAuthEndpoint")]
@@ -652,6 +684,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("clusterTemplateRevisionId")]
         public Output<string?> ClusterTemplateRevisionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Cluster default pod security admission configuration template name
+        /// </summary>
+        [Output("defaultPodSecurityAdmissionConfigurationTemplateName")]
+        public Output<string> DefaultPodSecurityAdmissionConfigurationTemplateName { get; private set; } = null!;
 
         /// <summary>
         /// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
@@ -730,6 +768,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("enableNetworkPolicy")]
         public Output<bool> EnableNetworkPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional customization for fleet agent
+        /// </summary>
+        [Output("fleetAgentDeploymentCustomizations")]
+        public Output<ImmutableArray<Outputs.ClusterFleetAgentDeploymentCustomization>> FleetAgentDeploymentCustomizations { get; private set; } = null!;
 
         /// <summary>
         /// Fleet workspace name (string)
@@ -896,6 +940,18 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        [Input("clusterAgentDeploymentCustomizations")]
+        private InputList<Inputs.ClusterClusterAgentDeploymentCustomizationArgs>? _clusterAgentDeploymentCustomizations;
+
+        /// <summary>
+        /// Optional customization for cluster agent
+        /// </summary>
+        public InputList<Inputs.ClusterClusterAgentDeploymentCustomizationArgs> ClusterAgentDeploymentCustomizations
+        {
+            get => _clusterAgentDeploymentCustomizations ?? (_clusterAgentDeploymentCustomizations = new InputList<Inputs.ClusterClusterAgentDeploymentCustomizationArgs>());
+            set => _clusterAgentDeploymentCustomizations = value;
+        }
+
         /// <summary>
         /// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         /// </summary>
@@ -937,6 +993,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("clusterTemplateRevisionId")]
         public Input<string>? ClusterTemplateRevisionId { get; set; }
+
+        /// <summary>
+        /// Cluster default pod security admission configuration template name
+        /// </summary>
+        [Input("defaultPodSecurityAdmissionConfigurationTemplateName")]
+        public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
 
         /// <summary>
         /// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
@@ -1003,6 +1065,18 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }
+
+        [Input("fleetAgentDeploymentCustomizations")]
+        private InputList<Inputs.ClusterFleetAgentDeploymentCustomizationArgs>? _fleetAgentDeploymentCustomizations;
+
+        /// <summary>
+        /// Optional customization for fleet agent
+        /// </summary>
+        public InputList<Inputs.ClusterFleetAgentDeploymentCustomizationArgs> FleetAgentDeploymentCustomizations
+        {
+            get => _fleetAgentDeploymentCustomizations ?? (_fleetAgentDeploymentCustomizations = new InputList<Inputs.ClusterFleetAgentDeploymentCustomizationArgs>());
+            set => _fleetAgentDeploymentCustomizations = value;
+        }
 
         /// <summary>
         /// Fleet workspace name (string)
@@ -1130,6 +1204,18 @@ namespace Pulumi.Rancher2
             }
         }
 
+        [Input("clusterAgentDeploymentCustomizations")]
+        private InputList<Inputs.ClusterClusterAgentDeploymentCustomizationGetArgs>? _clusterAgentDeploymentCustomizations;
+
+        /// <summary>
+        /// Optional customization for cluster agent
+        /// </summary>
+        public InputList<Inputs.ClusterClusterAgentDeploymentCustomizationGetArgs> ClusterAgentDeploymentCustomizations
+        {
+            get => _clusterAgentDeploymentCustomizations ?? (_clusterAgentDeploymentCustomizations = new InputList<Inputs.ClusterClusterAgentDeploymentCustomizationGetArgs>());
+            set => _clusterAgentDeploymentCustomizations = value;
+        }
+
         /// <summary>
         /// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         /// </summary>
@@ -1177,6 +1263,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("clusterTemplateRevisionId")]
         public Input<string>? ClusterTemplateRevisionId { get; set; }
+
+        /// <summary>
+        /// Cluster default pod security admission configuration template name
+        /// </summary>
+        [Input("defaultPodSecurityAdmissionConfigurationTemplateName")]
+        public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
 
         /// <summary>
         /// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
@@ -1255,6 +1347,18 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }
+
+        [Input("fleetAgentDeploymentCustomizations")]
+        private InputList<Inputs.ClusterFleetAgentDeploymentCustomizationGetArgs>? _fleetAgentDeploymentCustomizations;
+
+        /// <summary>
+        /// Optional customization for fleet agent
+        /// </summary>
+        public InputList<Inputs.ClusterFleetAgentDeploymentCustomizationGetArgs> FleetAgentDeploymentCustomizations
+        {
+            get => _fleetAgentDeploymentCustomizations ?? (_fleetAgentDeploymentCustomizations = new InputList<Inputs.ClusterFleetAgentDeploymentCustomizationGetArgs>());
+            set => _fleetAgentDeploymentCustomizations = value;
+        }
 
         /// <summary>
         /// Fleet workspace name (string)

@@ -15,6 +15,7 @@ namespace Pulumi.Rancher2.Outputs
     {
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointResult ClusterAuthEndpoint;
         public readonly string DefaultClusterRoleForProjectMembers;
+        public readonly string DefaultPodSecurityAdmissionConfigurationTemplateName;
         public readonly string DefaultPodSecurityPolicyTemplateId;
         public readonly string DesiredAgentImage;
         public readonly string DesiredAuthImage;
@@ -30,6 +31,8 @@ namespace Pulumi.Rancher2.Outputs
             Outputs.GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointResult clusterAuthEndpoint,
 
             string defaultClusterRoleForProjectMembers,
+
+            string defaultPodSecurityAdmissionConfigurationTemplateName,
 
             string defaultPodSecurityPolicyTemplateId,
 
@@ -51,6 +54,7 @@ namespace Pulumi.Rancher2.Outputs
         {
             ClusterAuthEndpoint = clusterAuthEndpoint;
             DefaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
+            DefaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             DefaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
             DesiredAgentImage = desiredAgentImage;
             DesiredAuthImage = desiredAuthImage;

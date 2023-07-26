@@ -33,6 +33,7 @@ from .cluster_sync import *
 from .cluster_template import *
 from .cluster_v2 import *
 from .config_map_v2 import *
+from .custom_user_token import *
 from .etcd_backup import *
 from .feature import *
 from .get_app import *
@@ -333,6 +334,14 @@ _utilities.register(
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/configMapV2:ConfigMapV2": "ConfigMapV2"
+  }
+ },
+ {
+  "pkg": "rancher2",
+  "mod": "index/customUserToken",
+  "fqn": "pulumi_rancher2",
+  "classes": {
+   "rancher2:index/customUserToken:CustomUserToken": "CustomUserToken"
   }
  },
  {

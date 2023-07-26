@@ -70,6 +70,10 @@ export interface GetClusterV2Result {
      */
     readonly defaultClusterRoleForProjectMembers: string;
     /**
+     * (Computed) Cluster V2 default pod security admission configuration template name (string)
+     */
+    readonly defaultPodSecurityAdmissionConfigurationTemplateName: string;
+    /**
      * (Computed) Cluster V2 default pod security policy template name (string)
      */
     readonly defaultPodSecurityPolicyTemplateName: string;

@@ -145,6 +145,11 @@ export type ConfigMapV2 = import("./configMapV2").ConfigMapV2;
 export const ConfigMapV2: typeof import("./configMapV2").ConfigMapV2 = null as any;
 utilities.lazyLoad(exports, ["ConfigMapV2"], () => require("./configMapV2"));
 
+export { CustomUserTokenArgs, CustomUserTokenState } from "./customUserToken";
+export type CustomUserToken = import("./customUserToken").CustomUserToken;
+export const CustomUserToken: typeof import("./customUserToken").CustomUserToken = null as any;
+utilities.lazyLoad(exports, ["CustomUserToken"], () => require("./customUserToken"));
+
 export { EtcdBackupArgs, EtcdBackupState } from "./etcdBackup";
 export type EtcdBackup = import("./etcdBackup").EtcdBackup;
 export const EtcdBackup: typeof import("./etcdBackup").EtcdBackup = null as any;
@@ -540,6 +545,8 @@ const _module = {
                 return new ClusterV2(name, <any>undefined, { urn })
             case "rancher2:index/configMapV2:ConfigMapV2":
                 return new ConfigMapV2(name, <any>undefined, { urn })
+            case "rancher2:index/customUserToken:CustomUserToken":
+                return new CustomUserToken(name, <any>undefined, { urn })
             case "rancher2:index/etcdBackup:EtcdBackup":
                 return new EtcdBackup(name, <any>undefined, { urn })
             case "rancher2:index/feature:Feature":
@@ -627,6 +634,7 @@ pulumi.runtime.registerResourceModule("rancher2", "index/clusterSync", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/configMapV2", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/customUserToken", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/etcdBackup", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/feature", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalDns", _module)

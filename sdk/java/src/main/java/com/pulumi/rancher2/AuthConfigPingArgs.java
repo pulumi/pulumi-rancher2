@@ -94,6 +94,13 @@ public final class AuthConfigPingArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.enabled);
     }
 
+    @Import(name="entityIdField")
+    private @Nullable Output<String> entityIdField;
+
+    public Optional<Output<String>> entityIdField() {
+        return Optional.ofNullable(this.entityIdField);
+    }
+
     /**
      * Ping group field (string)
      * 
@@ -222,6 +229,7 @@ public final class AuthConfigPingArgs extends com.pulumi.resources.ResourceArgs 
         this.annotations = $.annotations;
         this.displayNameField = $.displayNameField;
         this.enabled = $.enabled;
+        this.entityIdField = $.entityIdField;
         this.groupsField = $.groupsField;
         this.idpMetadataContent = $.idpMetadataContent;
         this.labels = $.labels;
@@ -363,6 +371,15 @@ public final class AuthConfigPingArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        public Builder entityIdField(@Nullable Output<String> entityIdField) {
+            $.entityIdField = entityIdField;
+            return this;
+        }
+
+        public Builder entityIdField(String entityIdField) {
+            return entityIdField(Output.of(entityIdField));
         }
 
         /**

@@ -447,6 +447,10 @@ export interface ClusterAksConfigV2NodePool {
      */
     enableAutoScaling?: pulumi.Input<boolean>;
     /**
+     * Labels for the Cluster (map)
+     */
+    labels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
      */
     maxCount?: pulumi.Input<number>;
@@ -454,6 +458,10 @@ export interface ClusterAksConfigV2NodePool {
      * Maximum number of pods that can run on a node. Default `110` (int)
      */
     maxPods?: pulumi.Input<number>;
+    /**
+     * Monitoring deployment rolling update max surge. Default: `1` (int)
+     */
+    maxSurge?: pulumi.Input<string>;
     /**
      * The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
      */
@@ -482,6 +490,10 @@ export interface ClusterAksConfigV2NodePool {
      * The AKS node pool os type. Default: `Linux` (string)
      */
     osType?: pulumi.Input<string>;
+    /**
+     * The AKS node pool taints (list)
+     */
+    taints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The AKS node pool orchestrator version (string)
      */
@@ -616,6 +628,42 @@ export interface ClusterAlterRuleNodeRule {
 
 export interface ClusterAlterRuleSystemServiceRule {
     condition?: pulumi.Input<string>;
+}
+
+export interface ClusterClusterAgentDeploymentCustomization {
+    appendTolerations?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomizationAppendToleration>[]>;
+    overrideAffinity?: pulumi.Input<string>;
+    overrideResourceRequirements?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement>[]>;
+}
+
+export interface ClusterClusterAgentDeploymentCustomizationAppendToleration {
+    /**
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     */
+    effect?: pulumi.Input<string>;
+    /**
+     * The toleration key (string)
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The toleration seconds (int)
+     */
+    seconds?: pulumi.Input<number>;
+    /**
+     * Rancher agent env var value (string)
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement {
+    cpuLimit?: pulumi.Input<string>;
+    cpuRequest?: pulumi.Input<string>;
+    memoryLimit?: pulumi.Input<string>;
+    memoryRequest?: pulumi.Input<string>;
 }
 
 export interface ClusterClusterAuthEndpoint {
@@ -972,6 +1020,42 @@ export interface ClusterEksConfigV2NodeGroupLaunchTemplate {
     version?: pulumi.Input<number>;
 }
 
+export interface ClusterFleetAgentDeploymentCustomization {
+    appendTolerations?: pulumi.Input<pulumi.Input<inputs.ClusterFleetAgentDeploymentCustomizationAppendToleration>[]>;
+    overrideAffinity?: pulumi.Input<string>;
+    overrideResourceRequirements?: pulumi.Input<pulumi.Input<inputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement>[]>;
+}
+
+export interface ClusterFleetAgentDeploymentCustomizationAppendToleration {
+    /**
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     */
+    effect?: pulumi.Input<string>;
+    /**
+     * The toleration key (string)
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The toleration seconds (int)
+     */
+    seconds?: pulumi.Input<number>;
+    /**
+     * Rancher agent env var value (string)
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement {
+    cpuLimit?: pulumi.Input<string>;
+    cpuRequest?: pulumi.Input<string>;
+    memoryLimit?: pulumi.Input<string>;
+    memoryRequest?: pulumi.Input<string>;
+}
+
 export interface ClusterGkeConfig {
     /**
      * The IP address range of the container pods (string)
@@ -1174,7 +1258,7 @@ export interface ClusterGkeConfig {
      */
     subNetwork: pulumi.Input<string>;
     /**
-     * List of Kubernetes taints to be applied to each node (list)
+     * The AKS node pool taints (list)
      */
     taints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1440,7 +1524,7 @@ export interface ClusterGkeConfigV2NodePoolConfig {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of Kubernetes taints to be applied to each node (list)
+     * The AKS node pool taints (list)
      */
     taints?: pulumi.Input<pulumi.Input<inputs.ClusterGkeConfigV2NodePoolConfigTaint>[]>;
 }
@@ -3216,7 +3300,7 @@ export interface ClusterRkeConfigServicesKubeApi {
     /**
      * Admission configuration (map)
      */
-    admissionConfiguration?: pulumi.Input<{[key: string]: any}>;
+    admissionConfiguration?: pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiAdmissionConfiguration>;
     /**
      * Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
      */
@@ -3263,9 +3347,63 @@ export interface ClusterRkeConfigServicesKubeApi {
     serviceNodePortRange?: pulumi.Input<string>;
 }
 
+export interface ClusterRkeConfigServicesKubeApiAdmissionConfiguration {
+    /**
+     * Admission configuration ApiVersion. Default: `apiserver.config.k8s.io/v1` (string)
+     */
+    apiVersion?: pulumi.Input<string>;
+    /**
+     * Admission configuration Kind. Default: `AdmissionConfiguration` (string)
+     */
+    kind?: pulumi.Input<string>;
+    /**
+     * Admission configuration plugins. (list `plugin`)
+     */
+    plugins?: pulumi.Input<pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin>[]>;
+}
+
+export interface ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
+    /**
+     * Plugin configuration. (string) Ex:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     * configuration = <<EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     * burst: 35000
+     * qps: 6000
+     * EOF
+     */
+    configuration?: pulumi.Input<string>;
+    /**
+     * The name of the Cluster (string)
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Path for etcd service (string)
+     */
+    path?: pulumi.Input<string>;
+}
+
 export interface ClusterRkeConfigServicesKubeApiAuditLog {
     /**
-     * Audit log configuration. (list maxitems: 1)
+     * Plugin configuration. (string) Ex:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     * configuration = <<EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     * burst: 35000
+     * qps: 6000
+     * EOF
      */
     configuration?: pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration>;
     /**
@@ -3303,7 +3441,19 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 
 export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
     /**
-     * Audit log configuration. (list maxitems: 1)
+     * Plugin configuration. (string) Ex:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     * configuration = <<EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     * burst: 35000
+     * qps: 6000
+     * EOF
      */
     configuration?: pulumi.Input<string>;
     /**
@@ -3603,6 +3753,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfig {
      * Default cluster role for project members (string)
      */
     defaultClusterRoleForProjectMembers?: pulumi.Input<string>;
+    defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
     /**
      * Default pod security policy template ID (string)
      */
@@ -4157,7 +4308,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEt
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi {
-    admissionConfiguration?: pulumi.Input<{[key: string]: any}>;
+    admissionConfiguration?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration>;
     alwaysPullImages?: pulumi.Input<boolean>;
     auditLog?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog>;
     eventRateLimit?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit>;
@@ -4169,6 +4320,21 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
     secretsEncryptionConfig?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig>;
     serviceClusterIpRange?: pulumi.Input<string>;
     serviceNodePortRange?: pulumi.Input<string>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration {
+    apiVersion?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
+    plugins?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin>[]>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
+    configuration?: pulumi.Input<string>;
+    /**
+     * The cluster template name (string)
+     */
+    name?: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog {
@@ -4284,6 +4450,39 @@ export interface ClusterV2AgentEnvVar {
     value: pulumi.Input<string>;
 }
 
+export interface ClusterV2ClusterAgentDeploymentCustomization {
+    appendTolerations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration>[]>;
+    overrideAffinity?: pulumi.Input<string>;
+    overrideResourceRequirements?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement>[]>;
+}
+
+export interface ClusterV2ClusterAgentDeploymentCustomizationAppendToleration {
+    /**
+     * The taint effect. Default: `\"NoExecute\"` (string)
+     */
+    effect?: pulumi.Input<string>;
+    /**
+     * The taint key (string)
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Machine selector label match expressions operator (string)
+     */
+    operator?: pulumi.Input<string>;
+    seconds?: pulumi.Input<number>;
+    /**
+     * Rancher agent env var value (string)
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement {
+    cpuLimit?: pulumi.Input<string>;
+    cpuRequest?: pulumi.Input<string>;
+    memoryLimit?: pulumi.Input<string>;
+    memoryRequest?: pulumi.Input<string>;
+}
+
 export interface ClusterV2ClusterRegistrationToken {
     /**
      * Annotations for the Cluster V2 (map)
@@ -4339,6 +4538,39 @@ export interface ClusterV2ClusterRegistrationToken {
     windowsNodeCommand?: pulumi.Input<string>;
 }
 
+export interface ClusterV2FleetAgentDeploymentCustomization {
+    appendTolerations?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration>[]>;
+    overrideAffinity?: pulumi.Input<string>;
+    overrideResourceRequirements?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement>[]>;
+}
+
+export interface ClusterV2FleetAgentDeploymentCustomizationAppendToleration {
+    /**
+     * The taint effect. Default: `\"NoExecute\"` (string)
+     */
+    effect?: pulumi.Input<string>;
+    /**
+     * The taint key (string)
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Machine selector label match expressions operator (string)
+     */
+    operator?: pulumi.Input<string>;
+    seconds?: pulumi.Input<number>;
+    /**
+     * Rancher agent env var value (string)
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement {
+    cpuLimit?: pulumi.Input<string>;
+    cpuRequest?: pulumi.Input<string>;
+    memoryLimit?: pulumi.Input<string>;
+    memoryRequest?: pulumi.Input<string>;
+}
+
 export interface ClusterV2LocalAuthEndpoint {
     /**
      * CA certs for the authorized cluster endpoint (string)
@@ -4385,6 +4617,7 @@ export interface ClusterV2RkeConfig {
      * Cluster V2 machine global config. Must be in YAML format (string)
      */
     machineGlobalConfig?: pulumi.Input<string>;
+    machinePoolDefaults?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachinePoolDefault>[]>;
     /**
      * Cluster V2 machine pools (list)
      */
@@ -4515,6 +4748,7 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool etcd role? (bool)
      */
     etcdRole?: pulumi.Input<boolean>;
+    hostnameLengthLimit?: pulumi.Input<number>;
     /**
      * Labels for the Cluster V2 (map)
      */
@@ -4571,6 +4805,10 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool worker role? (bool)
      */
     workerRole?: pulumi.Input<boolean>;
+}
+
+export interface ClusterV2RkeConfigMachinePoolDefault {
+    hostnameLengthLimit?: pulumi.Input<number>;
 }
 
 export interface ClusterV2RkeConfigMachinePoolMachineConfig {

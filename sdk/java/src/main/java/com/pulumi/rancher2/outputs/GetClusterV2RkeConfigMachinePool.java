@@ -28,6 +28,7 @@ public final class GetClusterV2RkeConfigMachinePool {
     private @Nullable Boolean controlPlaneRole;
     private @Nullable Boolean drainBeforeDelete;
     private @Nullable Boolean etcdRole;
+    private @Nullable Integer hostnameLengthLimit;
     private Map<String,Object> labels;
     private GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
     private Map<String,Object> machineLabels;
@@ -66,6 +67,9 @@ public final class GetClusterV2RkeConfigMachinePool {
     }
     public Optional<Boolean> etcdRole() {
         return Optional.ofNullable(this.etcdRole);
+    }
+    public Optional<Integer> hostnameLengthLimit() {
+        return Optional.ofNullable(this.hostnameLengthLimit);
     }
     public Map<String,Object> labels() {
         return this.labels;
@@ -128,6 +132,7 @@ public final class GetClusterV2RkeConfigMachinePool {
         private @Nullable Boolean controlPlaneRole;
         private @Nullable Boolean drainBeforeDelete;
         private @Nullable Boolean etcdRole;
+        private @Nullable Integer hostnameLengthLimit;
         private Map<String,Object> labels;
         private GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
         private Map<String,Object> machineLabels;
@@ -150,6 +155,7 @@ public final class GetClusterV2RkeConfigMachinePool {
     	      this.controlPlaneRole = defaults.controlPlaneRole;
     	      this.drainBeforeDelete = defaults.drainBeforeDelete;
     	      this.etcdRole = defaults.etcdRole;
+    	      this.hostnameLengthLimit = defaults.hostnameLengthLimit;
     	      this.labels = defaults.labels;
     	      this.machineConfig = defaults.machineConfig;
     	      this.machineLabels = defaults.machineLabels;
@@ -189,6 +195,11 @@ public final class GetClusterV2RkeConfigMachinePool {
         @CustomType.Setter
         public Builder etcdRole(@Nullable Boolean etcdRole) {
             this.etcdRole = etcdRole;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostnameLengthLimit(@Nullable Integer hostnameLengthLimit) {
+            this.hostnameLengthLimit = hostnameLengthLimit;
             return this;
         }
         @CustomType.Setter
@@ -271,6 +282,7 @@ public final class GetClusterV2RkeConfigMachinePool {
             o.controlPlaneRole = controlPlaneRole;
             o.drainBeforeDelete = drainBeforeDelete;
             o.etcdRole = etcdRole;
+            o.hostnameLengthLimit = hostnameLengthLimit;
             o.labels = labels;
             o.machineConfig = machineConfig;
             o.machineLabels = machineLabels;

@@ -13,12 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("admissionConfiguration")]
-        private InputMap<object>? _admissionConfiguration;
-        public InputMap<object> AdmissionConfiguration
-        {
-            get => _admissionConfiguration ?? (_admissionConfiguration = new InputMap<object>());
-            set => _admissionConfiguration = value;
-        }
+        public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationGetArgs>? AdmissionConfiguration { get; set; }
 
         [Input("alwaysPullImages")]
         public Input<bool>? AlwaysPullImages { get; set; }

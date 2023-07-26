@@ -6,11 +6,20 @@ package com.pulumi.rancher2.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetClusterPlainArgs Empty = new GetClusterPlainArgs();
+
+    @Import(name="defaultPodSecurityAdmissionConfigurationTemplateName")
+    private @Nullable String defaultPodSecurityAdmissionConfigurationTemplateName;
+
+    public Optional<String> defaultPodSecurityAdmissionConfigurationTemplateName() {
+        return Optional.ofNullable(this.defaultPodSecurityAdmissionConfigurationTemplateName);
+    }
 
     /**
      * The name of the Cluster (string)
@@ -30,6 +39,7 @@ public final class GetClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetClusterPlainArgs() {}
 
     private GetClusterPlainArgs(GetClusterPlainArgs $) {
+        this.defaultPodSecurityAdmissionConfigurationTemplateName = $.defaultPodSecurityAdmissionConfigurationTemplateName;
         this.name = $.name;
     }
 
@@ -49,6 +59,11 @@ public final class GetClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetClusterPlainArgs defaults) {
             $ = new GetClusterPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder defaultPodSecurityAdmissionConfigurationTemplateName(@Nullable String defaultPodSecurityAdmissionConfigurationTemplateName) {
+            $.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
+            return this;
         }
 
         /**

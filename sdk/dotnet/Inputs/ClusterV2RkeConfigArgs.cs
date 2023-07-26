@@ -54,6 +54,14 @@ namespace Pulumi.Rancher2.Inputs
         [Input("machineGlobalConfig")]
         public Input<string>? MachineGlobalConfig { get; set; }
 
+        [Input("machinePoolDefaults")]
+        private InputList<Inputs.ClusterV2RkeConfigMachinePoolDefaultArgs>? _machinePoolDefaults;
+        public InputList<Inputs.ClusterV2RkeConfigMachinePoolDefaultArgs> MachinePoolDefaults
+        {
+            get => _machinePoolDefaults ?? (_machinePoolDefaults = new InputList<Inputs.ClusterV2RkeConfigMachinePoolDefaultArgs>());
+            set => _machinePoolDefaults = value;
+        }
+
         [Input("machinePools")]
         private InputList<Inputs.ClusterV2RkeConfigMachinePoolArgs>? _machinePools;
 

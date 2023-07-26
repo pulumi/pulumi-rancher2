@@ -190,9 +190,25 @@
                                         "fields": {
                                             "availability_zones": {
                                                 "maxItemsOne": false
+                                            },
+                                            "taints": {
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    },
+                    "cluster_agent_deployment_customization": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "append_tolerations": {
+                                    "maxItemsOne": false
+                                },
+                                "override_resource_requirements": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -255,6 +271,19 @@
                                     "maxItemsOne": false
                                 },
                                 "subnets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "fleet_agent_deployment_customization": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "append_tolerations": {
+                                    "maxItemsOne": false
+                                },
+                                "override_resource_requirements": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -614,6 +643,16 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "admission_configuration": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "plugins": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "audit_log": {
                                                             "maxItemsOne": true,
                                                             "elem": {
@@ -1104,6 +1143,16 @@
                                                                         "maxItemsOne": true,
                                                                         "elem": {
                                                                             "fields": {
+                                                                                "admission_configuration": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "plugins": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
                                                                                 "audit_log": {
                                                                                     "maxItemsOne": true,
                                                                                     "elem": {
@@ -1215,8 +1264,34 @@
                     "agent_env_vars": {
                         "maxItemsOne": false
                     },
+                    "cluster_agent_deployment_customization": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "append_tolerations": {
+                                    "maxItemsOne": false
+                                },
+                                "override_resource_requirements": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "cluster_registration_token": {
                         "maxItemsOne": true
+                    },
+                    "fleet_agent_deployment_customization": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "append_tolerations": {
+                                    "maxItemsOne": false
+                                },
+                                "override_resource_requirements": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "local_auth_endpoint": {
                         "maxItemsOne": true
@@ -1243,6 +1318,9 @@
                                 },
                                 "local_auth_endpoint": {
                                     "maxItemsOne": true
+                                },
+                                "machine_pool_defaults": {
+                                    "maxItemsOne": false
                                 },
                                 "machine_pools": {
                                     "maxItemsOne": false,
@@ -1334,6 +1412,10 @@
             },
             "rancher2_config_map_v2": {
                 "current": "rancher2:index/configMapV2:ConfigMapV2",
+                "majorVersion": 5
+            },
+            "rancher2_custom_user_token": {
+                "current": "rancher2:index/customUserToken:CustomUserToken",
                 "majorVersion": 5
             },
             "rancher2_etcd_backup": {
@@ -2007,6 +2089,9 @@
                                         "fields": {
                                             "availability_zones": {
                                                 "maxItemsOne": false
+                                            },
+                                            "taints": {
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -2431,6 +2516,16 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "admission_configuration": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "plugins": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "audit_log": {
                                                             "maxItemsOne": true,
                                                             "elem": {
@@ -2844,6 +2939,16 @@
                                                                         "maxItemsOne": true,
                                                                         "elem": {
                                                                             "fields": {
+                                                                                "admission_configuration": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "plugins": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
                                                                                 "audit_log": {
                                                                                     "maxItemsOne": true,
                                                                                     "elem": {
@@ -2980,6 +3085,9 @@
                                 },
                                 "local_auth_endpoint": {
                                     "maxItemsOne": true
+                                },
+                                "machine_pool_defaults": {
+                                    "maxItemsOne": false
                                 },
                                 "machine_pools": {
                                     "maxItemsOne": false,
@@ -3532,6 +3640,7 @@
             "rancher2:index/clusterTemplate:ClusterTemplate": "rancher2_cluster_template",
             "rancher2:index/clusterV2:ClusterV2": "rancher2_cluster_v2",
             "rancher2:index/configMapV2:ConfigMapV2": "rancher2_config_map_v2",
+            "rancher2:index/customUserToken:CustomUserToken": "rancher2_custom_user_token",
             "rancher2:index/etcdBackup:EtcdBackup": "rancher2_etcd_backup",
             "rancher2:index/feature:Feature": "rancher2_feature",
             "rancher2:index/globalDns:GlobalDns": "rancher2_global_dns",
@@ -3702,6 +3811,7 @@
                 "enableAutoScaling": "enable_auto_scaling",
                 "maxCount": "max_count",
                 "maxPods": "max_pods",
+                "maxSurge": "max_surge",
                 "minCount": "min_count",
                 "orchestratorVersion": "orchestrator_version",
                 "osDiskSizeGb": "os_disk_size_gb",
@@ -3742,6 +3852,17 @@
                 "cpuThreshold": "cpu_threshold",
                 "memThreshold": "mem_threshold",
                 "nodeId": "node_id"
+            },
+            "rancher2:index/ClusterClusterAgentDeploymentCustomization:ClusterClusterAgentDeploymentCustomization": {
+                "appendTolerations": "append_tolerations",
+                "overrideAffinity": "override_affinity",
+                "overrideResourceRequirements": "override_resource_requirements"
+            },
+            "rancher2:index/ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement:ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement": {
+                "cpuLimit": "cpu_limit",
+                "cpuRequest": "cpu_request",
+                "memoryLimit": "memory_limit",
+                "memoryRequest": "memory_request"
             },
             "rancher2:index/ClusterClusterAuthEndpoint:ClusterClusterAuthEndpoint": {
                 "caCerts": "ca_certs"
@@ -3804,6 +3925,17 @@
                 "resourceTags": "resource_tags",
                 "spotInstanceTypes": "spot_instance_types",
                 "userData": "user_data"
+            },
+            "rancher2:index/ClusterFleetAgentDeploymentCustomization:ClusterFleetAgentDeploymentCustomization": {
+                "appendTolerations": "append_tolerations",
+                "overrideAffinity": "override_affinity",
+                "overrideResourceRequirements": "override_resource_requirements"
+            },
+            "rancher2:index/ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement:ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement": {
+                "cpuLimit": "cpu_limit",
+                "cpuRequest": "cpu_request",
+                "memoryLimit": "memory_limit",
+                "memoryRequest": "memory_request"
             },
             "rancher2:index/ClusterGkeConfig:ClusterGkeConfig": {
                 "clusterIpv4Cidr": "cluster_ipv4_cidr",
@@ -4282,6 +4414,9 @@
                 "serviceClusterIpRange": "service_cluster_ip_range",
                 "serviceNodePortRange": "service_node_port_range"
             },
+            "rancher2:index/ClusterRkeConfigServicesKubeApiAdmissionConfiguration:ClusterRkeConfigServicesKubeApiAdmissionConfiguration": {
+                "apiVersion": "api_version"
+            },
             "rancher2:index/ClusterRkeConfigServicesKubeApiAuditLogConfiguration:ClusterRkeConfigServicesKubeApiAuditLogConfiguration": {
                 "maxAge": "max_age",
                 "maxBackup": "max_backup",
@@ -4350,6 +4485,7 @@
             "rancher2:index/ClusterTemplateTemplateRevisionClusterConfig:ClusterTemplateTemplateRevisionClusterConfig": {
                 "clusterAuthEndpoint": "cluster_auth_endpoint",
                 "defaultClusterRoleForProjectMembers": "default_cluster_role_for_project_members",
+                "defaultPodSecurityAdmissionConfigurationTemplateName": "default_pod_security_admission_configuration_template_name",
                 "defaultPodSecurityPolicyTemplateId": "default_pod_security_policy_template_id",
                 "desiredAgentImage": "desired_agent_image",
                 "desiredAuthImage": "desired_auth_image",
@@ -4682,6 +4818,9 @@
                 "serviceClusterIpRange": "service_cluster_ip_range",
                 "serviceNodePortRange": "service_node_port_range"
             },
+            "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration:ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration": {
+                "apiVersion": "api_version"
+            },
             "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration:ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration": {
                 "maxAge": "max_age",
                 "maxBackup": "max_backup",
@@ -4727,6 +4866,17 @@
                 "gracePeriod": "grace_period",
                 "ignoreDaemonSets": "ignore_daemon_sets"
             },
+            "rancher2:index/ClusterV2ClusterAgentDeploymentCustomization:ClusterV2ClusterAgentDeploymentCustomization": {
+                "appendTolerations": "append_tolerations",
+                "overrideAffinity": "override_affinity",
+                "overrideResourceRequirements": "override_resource_requirements"
+            },
+            "rancher2:index/ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement:ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement": {
+                "cpuLimit": "cpu_limit",
+                "cpuRequest": "cpu_request",
+                "memoryLimit": "memory_limit",
+                "memoryRequest": "memory_request"
+            },
             "rancher2:index/ClusterV2ClusterRegistrationToken:ClusterV2ClusterRegistrationToken": {
                 "clusterId": "cluster_id",
                 "insecureCommand": "insecure_command",
@@ -4735,6 +4885,17 @@
                 "manifestUrl": "manifest_url",
                 "nodeCommand": "node_command",
                 "windowsNodeCommand": "windows_node_command"
+            },
+            "rancher2:index/ClusterV2FleetAgentDeploymentCustomization:ClusterV2FleetAgentDeploymentCustomization": {
+                "appendTolerations": "append_tolerations",
+                "overrideAffinity": "override_affinity",
+                "overrideResourceRequirements": "override_resource_requirements"
+            },
+            "rancher2:index/ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement:ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement": {
+                "cpuLimit": "cpu_limit",
+                "cpuRequest": "cpu_request",
+                "memoryLimit": "memory_limit",
+                "memoryRequest": "memory_request"
             },
             "rancher2:index/ClusterV2LocalAuthEndpoint:ClusterV2LocalAuthEndpoint": {
                 "caCerts": "ca_certs"
@@ -4746,6 +4907,7 @@
                 "etcdSnapshotRestore": "etcd_snapshot_restore",
                 "localAuthEndpoint": "local_auth_endpoint",
                 "machineGlobalConfig": "machine_global_config",
+                "machinePoolDefaults": "machine_pool_defaults",
                 "machinePools": "machine_pools",
                 "machineSelectorConfigs": "machine_selector_config",
                 "rotateCertificates": "rotate_certificates",
@@ -4773,6 +4935,7 @@
                 "controlPlaneRole": "control_plane_role",
                 "drainBeforeDelete": "drain_before_delete",
                 "etcdRole": "etcd_role",
+                "hostnameLengthLimit": "hostname_length_limit",
                 "machineConfig": "machine_config",
                 "machineLabels": "machine_labels",
                 "maxUnhealthy": "max_unhealthy",
@@ -4782,6 +4945,9 @@
                 "unhealthyNodeTimeoutSeconds": "unhealthy_node_timeout_seconds",
                 "unhealthyRange": "unhealthy_range",
                 "workerRole": "worker_role"
+            },
+            "rancher2:index/ClusterV2RkeConfigMachinePoolDefault:ClusterV2RkeConfigMachinePoolDefault": {
+                "hostnameLengthLimit": "hostname_length_limit"
             },
             "rancher2:index/ClusterV2RkeConfigMachinePoolRollingUpdate:ClusterV2RkeConfigMachinePoolRollingUpdate": {
                 "maxSurge": "max_surge",
@@ -5532,6 +5698,7 @@
                 "accessMode": "access_mode",
                 "allowedPrincipalIds": "allowed_principal_ids",
                 "displayNameField": "display_name_field",
+                "entityIdField": "entity_id_field",
                 "groupsField": "groups_field",
                 "idpMetadataContent": "idp_metadata_content",
                 "rancherApiHost": "rancher_api_host",
@@ -5585,6 +5752,7 @@
                 "aksConfig": "aks_config",
                 "aksConfigV2": "aks_config_v2",
                 "caCert": "ca_cert",
+                "clusterAgentDeploymentCustomizations": "cluster_agent_deployment_customization",
                 "clusterAuthEndpoint": "cluster_auth_endpoint",
                 "clusterMonitoringInput": "cluster_monitoring_input",
                 "clusterRegistrationToken": "cluster_registration_token",
@@ -5592,6 +5760,7 @@
                 "clusterTemplateId": "cluster_template_id",
                 "clusterTemplateQuestions": "cluster_template_questions",
                 "clusterTemplateRevisionId": "cluster_template_revision_id",
+                "defaultPodSecurityAdmissionConfigurationTemplateName": "default_pod_security_admission_configuration_template_name",
                 "defaultPodSecurityPolicyTemplateId": "default_pod_security_policy_template_id",
                 "defaultProjectId": "default_project_id",
                 "desiredAgentImage": "desired_agent_image",
@@ -5603,6 +5772,7 @@
                 "enableClusterIstio": "enable_cluster_istio",
                 "enableClusterMonitoring": "enable_cluster_monitoring",
                 "enableNetworkPolicy": "enable_network_policy",
+                "fleetAgentDeploymentCustomizations": "fleet_agent_deployment_customization",
                 "fleetWorkspaceName": "fleet_workspace_name",
                 "gkeConfig": "gke_config",
                 "gkeConfigV2": "gke_config_v2",
@@ -5680,11 +5850,14 @@
             "rancher2:index/clusterV2:ClusterV2": {
                 "agentEnvVars": "agent_env_vars",
                 "cloudCredentialSecretName": "cloud_credential_secret_name",
+                "clusterAgentDeploymentCustomizations": "cluster_agent_deployment_customization",
                 "clusterRegistrationToken": "cluster_registration_token",
                 "clusterV1Id": "cluster_v1_id",
                 "defaultClusterRoleForProjectMembers": "default_cluster_role_for_project_members",
+                "defaultPodSecurityAdmissionConfigurationTemplateName": "default_pod_security_admission_configuration_template_name",
                 "defaultPodSecurityPolicyTemplateName": "default_pod_security_policy_template_name",
                 "enableNetworkPolicy": "enable_network_policy",
+                "fleetAgentDeploymentCustomizations": "fleet_agent_deployment_customization",
                 "fleetNamespace": "fleet_namespace",
                 "kubeConfig": "kube_config",
                 "kubernetesVersion": "kubernetes_version",
@@ -5695,6 +5868,14 @@
             "rancher2:index/configMapV2:ConfigMapV2": {
                 "clusterId": "cluster_id",
                 "resourceVersion": "resource_version"
+            },
+            "rancher2:index/customUserToken:CustomUserToken": {
+                "accessKey": "access_key",
+                "clusterId": "cluster_id",
+                "secretKey": "secret_key",
+                "tempToken": "temp_token",
+                "tempTokenId": "temp_token_id",
+                "userId": "user_id"
             },
             "rancher2:index/etcdBackup:EtcdBackup": {
                 "backupConfig": "backup_config",
@@ -5742,6 +5923,7 @@
                 "clusterTemplateId": "cluster_template_id",
                 "clusterTemplateQuestions": "cluster_template_questions",
                 "clusterTemplateRevisionId": "cluster_template_revision_id",
+                "defaultPodSecurityAdmissionConfigurationTemplateName": "default_pod_security_admission_configuration_template_name",
                 "defaultPodSecurityPolicyTemplateId": "default_pod_security_policy_template_id",
                 "defaultProjectId": "default_project_id",
                 "eksConfig": "eks_config",
@@ -5826,6 +6008,7 @@
                 "enableAutoScaling": "enable_auto_scaling",
                 "maxCount": "max_count",
                 "maxPods": "max_pods",
+                "maxSurge": "max_surge",
                 "minCount": "min_count",
                 "orchestratorVersion": "orchestrator_version",
                 "osDiskSizeGb": "os_disk_size_gb",
@@ -6411,6 +6594,9 @@
                 "serviceClusterIpRange": "service_cluster_ip_range",
                 "serviceNodePortRange": "service_node_port_range"
             },
+            "rancher2:index/getClusterRkeConfigServicesKubeApiAdmissionConfiguration:getClusterRkeConfigServicesKubeApiAdmissionConfiguration": {
+                "apiVersion": "api_version"
+            },
             "rancher2:index/getClusterRkeConfigServicesKubeApiAuditLogConfiguration:getClusterRkeConfigServicesKubeApiAuditLogConfiguration": {
                 "maxAge": "max_age",
                 "maxBackup": "max_backup",
@@ -6480,6 +6666,7 @@
             "rancher2:index/getClusterTemplateTemplateRevisionClusterConfig:getClusterTemplateTemplateRevisionClusterConfig": {
                 "clusterAuthEndpoint": "cluster_auth_endpoint",
                 "defaultClusterRoleForProjectMembers": "default_cluster_role_for_project_members",
+                "defaultPodSecurityAdmissionConfigurationTemplateName": "default_pod_security_admission_configuration_template_name",
                 "defaultPodSecurityPolicyTemplateId": "default_pod_security_policy_template_id",
                 "desiredAgentImage": "desired_agent_image",
                 "desiredAuthImage": "desired_auth_image",
@@ -6812,6 +6999,9 @@
                 "serviceClusterIpRange": "service_cluster_ip_range",
                 "serviceNodePortRange": "service_node_port_range"
             },
+            "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration": {
+                "apiVersion": "api_version"
+            },
             "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration": {
                 "maxAge": "max_age",
                 "maxBackup": "max_backup",
@@ -6863,6 +7053,7 @@
                 "clusterRegistrationToken": "cluster_registration_token",
                 "clusterV1Id": "cluster_v1_id",
                 "defaultClusterRoleForProjectMembers": "default_cluster_role_for_project_members",
+                "defaultPodSecurityAdmissionConfigurationTemplateName": "default_pod_security_admission_configuration_template_name",
                 "defaultPodSecurityPolicyTemplateName": "default_pod_security_policy_template_name",
                 "enableNetworkPolicy": "enable_network_policy",
                 "fleetNamespace": "fleet_namespace",
@@ -6887,6 +7078,7 @@
                 "etcdSnapshotRestore": "etcd_snapshot_restore",
                 "localAuthEndpoint": "local_auth_endpoint",
                 "machineGlobalConfig": "machine_global_config",
+                "machinePoolDefaults": "machine_pool_defaults",
                 "machinePools": "machine_pools",
                 "machineSelectorConfigs": "machine_selector_config",
                 "rotateCertificates": "rotate_certificates",
@@ -6914,6 +7106,7 @@
                 "controlPlaneRole": "control_plane_role",
                 "drainBeforeDelete": "drain_before_delete",
                 "etcdRole": "etcd_role",
+                "hostnameLengthLimit": "hostname_length_limit",
                 "machineConfig": "machine_config",
                 "machineLabels": "machine_labels",
                 "maxUnhealthy": "max_unhealthy",
@@ -6923,6 +7116,9 @@
                 "unhealthyNodeTimeoutSeconds": "unhealthy_node_timeout_seconds",
                 "unhealthyRange": "unhealthy_range",
                 "workerRole": "worker_role"
+            },
+            "rancher2:index/getClusterV2RkeConfigMachinePoolDefault:getClusterV2RkeConfigMachinePoolDefault": {
+                "hostnameLengthLimit": "hostname_length_limit"
             },
             "rancher2:index/getClusterV2RkeConfigMachinePoolRollingUpdate:getClusterV2RkeConfigMachinePoolRollingUpdate": {
                 "maxSurge": "max_surge",

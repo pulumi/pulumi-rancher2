@@ -24,6 +24,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("defaultClusterRoleForProjectMembers")]
         public Input<string>? DefaultClusterRoleForProjectMembers { get; set; }
 
+        [Input("defaultPodSecurityAdmissionConfigurationTemplateName")]
+        public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
+
         /// <summary>
         /// Default pod security policy template ID (string)
         /// </summary>

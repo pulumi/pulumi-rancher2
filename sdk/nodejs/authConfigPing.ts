@@ -76,6 +76,7 @@ export class AuthConfigPing extends pulumi.CustomResource {
      * Enable auth config provider. Default `true` (bool)
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly entityIdField!: pulumi.Output<string | undefined>;
     /**
      * Ping group field (string)
      */
@@ -135,6 +136,7 @@ export class AuthConfigPing extends pulumi.CustomResource {
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["displayNameField"] = state ? state.displayNameField : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["entityIdField"] = state ? state.entityIdField : undefined;
             resourceInputs["groupsField"] = state ? state.groupsField : undefined;
             resourceInputs["idpMetadataContent"] = state ? state.idpMetadataContent : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -176,6 +178,7 @@ export class AuthConfigPing extends pulumi.CustomResource {
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["displayNameField"] = args ? args.displayNameField : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["entityIdField"] = args ? args.entityIdField : undefined;
             resourceInputs["groupsField"] = args ? args.groupsField : undefined;
             resourceInputs["idpMetadataContent"] = args?.idpMetadataContent ? pulumi.secret(args.idpMetadataContent) : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -218,6 +221,7 @@ export interface AuthConfigPingState {
      * Enable auth config provider. Default `true` (bool)
      */
     enabled?: pulumi.Input<boolean>;
+    entityIdField?: pulumi.Input<string>;
     /**
      * Ping group field (string)
      */
@@ -284,6 +288,7 @@ export interface AuthConfigPingArgs {
      * Enable auth config provider. Default `true` (bool)
      */
     enabled?: pulumi.Input<boolean>;
+    entityIdField?: pulumi.Input<string>;
     /**
      * Ping group field (string)
      */

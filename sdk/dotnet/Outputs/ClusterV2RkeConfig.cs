@@ -41,6 +41,7 @@ namespace Pulumi.Rancher2.Outputs
         /// Cluster V2 machine global config. Must be in YAML format (string)
         /// </summary>
         public readonly string? MachineGlobalConfig;
+        public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachinePoolDefault> MachinePoolDefaults;
         /// <summary>
         /// Cluster V2 machine pools (list)
         /// </summary>
@@ -78,6 +79,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? machineGlobalConfig,
 
+            ImmutableArray<Outputs.ClusterV2RkeConfigMachinePoolDefault> machinePoolDefaults,
+
             ImmutableArray<Outputs.ClusterV2RkeConfigMachinePool> machinePools,
 
             ImmutableArray<Outputs.ClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs,
@@ -95,6 +98,7 @@ namespace Pulumi.Rancher2.Outputs
             EtcdSnapshotRestore = etcdSnapshotRestore;
             LocalAuthEndpoint = localAuthEndpoint;
             MachineGlobalConfig = machineGlobalConfig;
+            MachinePoolDefaults = machinePoolDefaults;
             MachinePools = machinePools;
             MachineSelectorConfigs = machineSelectorConfigs;
             Registries = registries;

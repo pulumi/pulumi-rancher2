@@ -33,6 +33,7 @@ namespace Pulumi.Rancher2.Outputs
         /// Machine pool etcd role? (bool)
         /// </summary>
         public readonly bool? EtcdRole;
+        public readonly int? HostnameLengthLimit;
         /// <summary>
         /// Labels for the Cluster V2 (map)
         /// </summary>
@@ -102,6 +103,8 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? etcdRole,
 
+            int? hostnameLengthLimit,
+
             ImmutableDictionary<string, object>? labels,
 
             Outputs.ClusterV2RkeConfigMachinePoolMachineConfig machineConfig,
@@ -135,6 +138,7 @@ namespace Pulumi.Rancher2.Outputs
             ControlPlaneRole = controlPlaneRole;
             DrainBeforeDelete = drainBeforeDelete;
             EtcdRole = etcdRole;
+            HostnameLengthLimit = hostnameLengthLimit;
             Labels = labels;
             MachineConfig = machineConfig;
             MachineLabels = machineLabels;

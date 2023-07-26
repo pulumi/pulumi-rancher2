@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.rancher2.outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfiguration;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigServicesKubeApiAuditLog;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigServicesKubeApiEventRateLimit;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig;
@@ -18,7 +19,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigServicesKubeApi {
-    private @Nullable Map<String,Object> admissionConfiguration;
+    private @Nullable GetClusterRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration;
     private @Nullable Boolean alwaysPullImages;
     private @Nullable GetClusterRkeConfigServicesKubeApiAuditLog auditLog;
     private @Nullable GetClusterRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
@@ -32,8 +33,8 @@ public final class GetClusterRkeConfigServicesKubeApi {
     private String serviceNodePortRange;
 
     private GetClusterRkeConfigServicesKubeApi() {}
-    public Map<String,Object> admissionConfiguration() {
-        return this.admissionConfiguration == null ? Map.of() : this.admissionConfiguration;
+    public Optional<GetClusterRkeConfigServicesKubeApiAdmissionConfiguration> admissionConfiguration() {
+        return Optional.ofNullable(this.admissionConfiguration);
     }
     public Optional<Boolean> alwaysPullImages() {
         return Optional.ofNullable(this.alwaysPullImages);
@@ -78,7 +79,7 @@ public final class GetClusterRkeConfigServicesKubeApi {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> admissionConfiguration;
+        private @Nullable GetClusterRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration;
         private @Nullable Boolean alwaysPullImages;
         private @Nullable GetClusterRkeConfigServicesKubeApiAuditLog auditLog;
         private @Nullable GetClusterRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
@@ -108,7 +109,7 @@ public final class GetClusterRkeConfigServicesKubeApi {
         }
 
         @CustomType.Setter
-        public Builder admissionConfiguration(@Nullable Map<String,Object> admissionConfiguration) {
+        public Builder admissionConfiguration(@Nullable GetClusterRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration) {
             this.admissionConfiguration = admissionConfiguration;
             return this;
         }

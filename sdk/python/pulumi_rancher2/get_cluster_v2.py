@@ -22,7 +22,7 @@ class GetClusterV2Result:
     """
     A collection of values returned by getClusterV2.
     """
-    def __init__(__self__, agent_env_vars=None, annotations=None, cloud_credential_secret_name=None, cluster_registration_token=None, cluster_v1_id=None, default_cluster_role_for_project_members=None, default_pod_security_policy_template_name=None, enable_network_policy=None, fleet_namespace=None, id=None, kube_config=None, kubernetes_version=None, labels=None, name=None, resource_version=None, rke_config=None):
+    def __init__(__self__, agent_env_vars=None, annotations=None, cloud_credential_secret_name=None, cluster_registration_token=None, cluster_v1_id=None, default_cluster_role_for_project_members=None, default_pod_security_admission_configuration_template_name=None, default_pod_security_policy_template_name=None, enable_network_policy=None, fleet_namespace=None, id=None, kube_config=None, kubernetes_version=None, labels=None, name=None, resource_version=None, rke_config=None):
         if agent_env_vars and not isinstance(agent_env_vars, list):
             raise TypeError("Expected argument 'agent_env_vars' to be a list")
         pulumi.set(__self__, "agent_env_vars", agent_env_vars)
@@ -41,6 +41,9 @@ class GetClusterV2Result:
         if default_cluster_role_for_project_members and not isinstance(default_cluster_role_for_project_members, str):
             raise TypeError("Expected argument 'default_cluster_role_for_project_members' to be a str")
         pulumi.set(__self__, "default_cluster_role_for_project_members", default_cluster_role_for_project_members)
+        if default_pod_security_admission_configuration_template_name and not isinstance(default_pod_security_admission_configuration_template_name, str):
+            raise TypeError("Expected argument 'default_pod_security_admission_configuration_template_name' to be a str")
+        pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
         if default_pod_security_policy_template_name and not isinstance(default_pod_security_policy_template_name, str):
             raise TypeError("Expected argument 'default_pod_security_policy_template_name' to be a str")
         pulumi.set(__self__, "default_pod_security_policy_template_name", default_pod_security_policy_template_name)
@@ -116,6 +119,14 @@ class GetClusterV2Result:
         (Computed) Cluster V2 default cluster role for project members (string)
         """
         return pulumi.get(self, "default_cluster_role_for_project_members")
+
+    @property
+    @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
+    def default_pod_security_admission_configuration_template_name(self) -> str:
+        """
+        (Computed) Cluster V2 default pod security admission configuration template name (string)
+        """
+        return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
 
     @property
     @pulumi.getter(name="defaultPodSecurityPolicyTemplateName")
@@ -201,6 +212,7 @@ class AwaitableGetClusterV2Result(GetClusterV2Result):
             cluster_registration_token=self.cluster_registration_token,
             cluster_v1_id=self.cluster_v1_id,
             default_cluster_role_for_project_members=self.default_cluster_role_for_project_members,
+            default_pod_security_admission_configuration_template_name=self.default_pod_security_admission_configuration_template_name,
             default_pod_security_policy_template_name=self.default_pod_security_policy_template_name,
             enable_network_policy=self.enable_network_policy,
             fleet_namespace=self.fleet_namespace,
@@ -246,6 +258,7 @@ def get_cluster_v2(fleet_namespace: Optional[str] = None,
         cluster_registration_token=__ret__.cluster_registration_token,
         cluster_v1_id=__ret__.cluster_v1_id,
         default_cluster_role_for_project_members=__ret__.default_cluster_role_for_project_members,
+        default_pod_security_admission_configuration_template_name=__ret__.default_pod_security_admission_configuration_template_name,
         default_pod_security_policy_template_name=__ret__.default_pod_security_policy_template_name,
         enable_network_policy=__ret__.enable_network_policy,
         fleet_namespace=__ret__.fleet_namespace,

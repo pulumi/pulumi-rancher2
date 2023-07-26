@@ -36,6 +36,18 @@ namespace Pulumi.Rancher2.Inputs
         [Input("enableAutoScaling")]
         public Input<bool>? EnableAutoScaling { get; set; }
 
+        [Input("labels")]
+        private InputMap<object>? _labels;
+
+        /// <summary>
+        /// Labels for the Cluster (map)
+        /// </summary>
+        public InputMap<object> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<object>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
         /// </summary>
@@ -47,6 +59,12 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("maxPods")]
         public Input<int>? MaxPods { get; set; }
+
+        /// <summary>
+        /// Monitoring deployment rolling update max surge. Default: `1` (int)
+        /// </summary>
+        [Input("maxSurge")]
+        public Input<string>? MaxSurge { get; set; }
 
         /// <summary>
         /// The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
@@ -89,6 +107,18 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("osType")]
         public Input<string>? OsType { get; set; }
+
+        [Input("taints")]
+        private InputList<string>? _taints;
+
+        /// <summary>
+        /// The AKS node pool taints (list)
+        /// </summary>
+        public InputList<string> Taints
+        {
+            get => _taints ?? (_taints = new InputList<string>());
+            set => _taints = value;
+        }
 
         /// <summary>
         /// The AKS node pool orchestrator version (string)
