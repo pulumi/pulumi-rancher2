@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiResult
     {
-        public readonly ImmutableDictionary<string, object>? AdmissionConfiguration;
+        public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationResult? AdmissionConfiguration;
         public readonly bool? AlwaysPullImages;
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogResult? AuditLog;
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitResult? EventRateLimit;
@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiResult(
-            ImmutableDictionary<string, object>? admissionConfiguration,
+            Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationResult? admissionConfiguration,
 
             bool? alwaysPullImages,
 

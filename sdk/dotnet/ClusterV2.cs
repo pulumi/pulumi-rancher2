@@ -67,6 +67,12 @@ namespace Pulumi.Rancher2
         public Output<string?> CloudCredentialSecretName { get; private set; } = null!;
 
         /// <summary>
+        /// Optional customization for cluster agent
+        /// </summary>
+        [Output("clusterAgentDeploymentCustomizations")]
+        public Output<ImmutableArray<Outputs.ClusterV2ClusterAgentDeploymentCustomization>> ClusterAgentDeploymentCustomizations { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
         /// </summary>
         [Output("clusterRegistrationToken")]
@@ -85,6 +91,12 @@ namespace Pulumi.Rancher2
         public Output<string?> DefaultClusterRoleForProjectMembers { get; private set; } = null!;
 
         /// <summary>
+        /// Cluster V2 default pod security admission configuration template name (string)
+        /// </summary>
+        [Output("defaultPodSecurityAdmissionConfigurationTemplateName")]
+        public Output<string?> DefaultPodSecurityAdmissionConfigurationTemplateName { get; private set; } = null!;
+
+        /// <summary>
         /// Cluster V2 default pod security policy template name (string)
         /// </summary>
         [Output("defaultPodSecurityPolicyTemplateName")]
@@ -95,6 +107,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("enableNetworkPolicy")]
         public Output<bool> EnableNetworkPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional customization for fleet agent
+        /// </summary>
+        [Output("fleetAgentDeploymentCustomizations")]
+        public Output<ImmutableArray<Outputs.ClusterV2FleetAgentDeploymentCustomization>> FleetAgentDeploymentCustomizations { get; private set; } = null!;
 
         /// <summary>
         /// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
@@ -225,11 +243,29 @@ namespace Pulumi.Rancher2
         [Input("cloudCredentialSecretName")]
         public Input<string>? CloudCredentialSecretName { get; set; }
 
+        [Input("clusterAgentDeploymentCustomizations")]
+        private InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs>? _clusterAgentDeploymentCustomizations;
+
+        /// <summary>
+        /// Optional customization for cluster agent
+        /// </summary>
+        public InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs> ClusterAgentDeploymentCustomizations
+        {
+            get => _clusterAgentDeploymentCustomizations ?? (_clusterAgentDeploymentCustomizations = new InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs>());
+            set => _clusterAgentDeploymentCustomizations = value;
+        }
+
         /// <summary>
         /// Cluster V2 default cluster role for project members (string)
         /// </summary>
         [Input("defaultClusterRoleForProjectMembers")]
         public Input<string>? DefaultClusterRoleForProjectMembers { get; set; }
+
+        /// <summary>
+        /// Cluster V2 default pod security admission configuration template name (string)
+        /// </summary>
+        [Input("defaultPodSecurityAdmissionConfigurationTemplateName")]
+        public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
 
         /// <summary>
         /// Cluster V2 default pod security policy template name (string)
@@ -242,6 +278,18 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }
+
+        [Input("fleetAgentDeploymentCustomizations")]
+        private InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationArgs>? _fleetAgentDeploymentCustomizations;
+
+        /// <summary>
+        /// Optional customization for fleet agent
+        /// </summary>
+        public InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationArgs> FleetAgentDeploymentCustomizations
+        {
+            get => _fleetAgentDeploymentCustomizations ?? (_fleetAgentDeploymentCustomizations = new InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationArgs>());
+            set => _fleetAgentDeploymentCustomizations = value;
+        }
 
         /// <summary>
         /// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
@@ -323,6 +371,18 @@ namespace Pulumi.Rancher2
         [Input("cloudCredentialSecretName")]
         public Input<string>? CloudCredentialSecretName { get; set; }
 
+        [Input("clusterAgentDeploymentCustomizations")]
+        private InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationGetArgs>? _clusterAgentDeploymentCustomizations;
+
+        /// <summary>
+        /// Optional customization for cluster agent
+        /// </summary>
+        public InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationGetArgs> ClusterAgentDeploymentCustomizations
+        {
+            get => _clusterAgentDeploymentCustomizations ?? (_clusterAgentDeploymentCustomizations = new InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationGetArgs>());
+            set => _clusterAgentDeploymentCustomizations = value;
+        }
+
         [Input("clusterRegistrationToken")]
         private Input<Inputs.ClusterV2ClusterRegistrationTokenGetArgs>? _clusterRegistrationToken;
 
@@ -352,6 +412,12 @@ namespace Pulumi.Rancher2
         public Input<string>? DefaultClusterRoleForProjectMembers { get; set; }
 
         /// <summary>
+        /// Cluster V2 default pod security admission configuration template name (string)
+        /// </summary>
+        [Input("defaultPodSecurityAdmissionConfigurationTemplateName")]
+        public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
+
+        /// <summary>
         /// Cluster V2 default pod security policy template name (string)
         /// </summary>
         [Input("defaultPodSecurityPolicyTemplateName")]
@@ -362,6 +428,18 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }
+
+        [Input("fleetAgentDeploymentCustomizations")]
+        private InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationGetArgs>? _fleetAgentDeploymentCustomizations;
+
+        /// <summary>
+        /// Optional customization for fleet agent
+        /// </summary>
+        public InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationGetArgs> FleetAgentDeploymentCustomizations
+        {
+            get => _fleetAgentDeploymentCustomizations ?? (_fleetAgentDeploymentCustomizations = new InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationGetArgs>());
+            set => _fleetAgentDeploymentCustomizations = value;
+        }
 
         /// <summary>
         /// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)

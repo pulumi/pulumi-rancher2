@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs;
@@ -23,9 +24,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     public static final ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs();
 
     @Import(name="admissionConfiguration")
-    private @Nullable Output<Map<String,Object>> admissionConfiguration;
+    private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs> admissionConfiguration;
 
-    public Optional<Output<Map<String,Object>>> admissionConfiguration() {
+    public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs>> admissionConfiguration() {
         return Optional.ofNullable(this.admissionConfiguration);
     }
 
@@ -141,12 +142,12 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             $ = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder admissionConfiguration(@Nullable Output<Map<String,Object>> admissionConfiguration) {
+        public Builder admissionConfiguration(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs> admissionConfiguration) {
             $.admissionConfiguration = admissionConfiguration;
             return this;
         }
 
-        public Builder admissionConfiguration(Map<String,Object> admissionConfiguration) {
+        public Builder admissionConfiguration(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs admissionConfiguration) {
             return admissionConfiguration(Output.of(admissionConfiguration));
         }
 

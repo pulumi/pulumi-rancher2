@@ -13,6 +13,7 @@ import com.pulumi.rancher2.inputs.ClusterState;
 import com.pulumi.rancher2.outputs.ClusterAgentEnvVar;
 import com.pulumi.rancher2.outputs.ClusterAksConfig;
 import com.pulumi.rancher2.outputs.ClusterAksConfigV2;
+import com.pulumi.rancher2.outputs.ClusterClusterAgentDeploymentCustomization;
 import com.pulumi.rancher2.outputs.ClusterClusterAuthEndpoint;
 import com.pulumi.rancher2.outputs.ClusterClusterMonitoringInput;
 import com.pulumi.rancher2.outputs.ClusterClusterRegistrationToken;
@@ -20,6 +21,7 @@ import com.pulumi.rancher2.outputs.ClusterClusterTemplateAnswers;
 import com.pulumi.rancher2.outputs.ClusterClusterTemplateQuestion;
 import com.pulumi.rancher2.outputs.ClusterEksConfig;
 import com.pulumi.rancher2.outputs.ClusterEksConfigV2;
+import com.pulumi.rancher2.outputs.ClusterFleetAgentDeploymentCustomization;
 import com.pulumi.rancher2.outputs.ClusterGkeConfig;
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2;
 import com.pulumi.rancher2.outputs.ClusterK3sConfig;
@@ -652,17 +654,37 @@ import javax.annotation.Nullable;
  *                 .dnsPrefix(&#34;&lt;DNS_PREFIX&gt;&#34;)
  *                 .kubernetesVersion(&#34;1.24.6&#34;)
  *                 .networkPlugin(&#34;&lt;NETWORK_PLUGIN&gt;&#34;)
- *                 .nodePools(ClusterAksConfigV2NodePoolArgs.builder()
- *                     .availabilityZones(                    
- *                         &#34;1&#34;,
- *                         &#34;2&#34;,
- *                         &#34;3&#34;)
- *                     .name(&#34;&lt;NODEPOOL_NAME&gt;&#34;)
- *                     .count(1)
- *                     .orchestratorVersion(&#34;1.21.2&#34;)
- *                     .osDiskSizeGb(128)
- *                     .vmSize(&#34;Standard_DS2_v2&#34;)
- *                     .build())
+ *                 .nodePools(                
+ *                     ClusterAksConfigV2NodePoolArgs.builder()
+ *                         .availabilityZones(                        
+ *                             &#34;1&#34;,
+ *                             &#34;2&#34;,
+ *                             &#34;3&#34;)
+ *                         .name(&#34;&lt;NODEPOOL_NAME_1&gt;&#34;)
+ *                         .mode(&#34;System&#34;)
+ *                         .count(1)
+ *                         .orchestratorVersion(&#34;1.21.2&#34;)
+ *                         .osDiskSizeGb(128)
+ *                         .vmSize(&#34;Standard_DS2_v2&#34;)
+ *                         .build(),
+ *                     ClusterAksConfigV2NodePoolArgs.builder()
+ *                         .availabilityZones(                        
+ *                             &#34;1&#34;,
+ *                             &#34;2&#34;,
+ *                             &#34;3&#34;)
+ *                         .name(&#34;&lt;NODEPOOL_NAME_2&gt;&#34;)
+ *                         .count(1)
+ *                         .mode(&#34;User&#34;)
+ *                         .orchestratorVersion(&#34;1.21.2&#34;)
+ *                         .osDiskSizeGb(128)
+ *                         .vmSize(&#34;Standard_DS2_v2&#34;)
+ *                         .maxSurge(&#34;25%&#34;)
+ *                         .labels(Map.ofEntries(
+ *                             Map.entry(&#34;test1&#34;, &#34;data1&#34;),
+ *                             Map.entry(&#34;test2&#34;, &#34;data2&#34;)
+ *                         ))
+ *                         .taints(&#34;none:PreferNoSchedule&#34;)
+ *                         .build())
  *                 .build())
  *             .build());
  * 
@@ -750,6 +772,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> caCert() {
         return this.caCert;
+    }
+    /**
+     * Optional customization for cluster agent
+     * 
+     */
+    @Export(name="clusterAgentDeploymentCustomizations", refs={List.class,ClusterClusterAgentDeploymentCustomization.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ClusterClusterAgentDeploymentCustomization>> clusterAgentDeploymentCustomizations;
+
+    /**
+     * @return Optional customization for cluster agent
+     * 
+     */
+    public Output<Optional<List<ClusterClusterAgentDeploymentCustomization>>> clusterAgentDeploymentCustomizations() {
+        return Codegen.optional(this.clusterAgentDeploymentCustomizations);
     }
     /**
      * Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
@@ -848,6 +884,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> clusterTemplateRevisionId() {
         return Codegen.optional(this.clusterTemplateRevisionId);
+    }
+    /**
+     * Cluster default pod security admission configuration template name
+     * 
+     */
+    @Export(name="defaultPodSecurityAdmissionConfigurationTemplateName", refs={String.class}, tree="[0]")
+    private Output<String> defaultPodSecurityAdmissionConfigurationTemplateName;
+
+    /**
+     * @return Cluster default pod security admission configuration template name
+     * 
+     */
+    public Output<String> defaultPodSecurityAdmissionConfigurationTemplateName() {
+        return this.defaultPodSecurityAdmissionConfigurationTemplateName;
     }
     /**
      * [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
@@ -1034,6 +1084,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> enableNetworkPolicy() {
         return this.enableNetworkPolicy;
+    }
+    /**
+     * Optional customization for fleet agent
+     * 
+     */
+    @Export(name="fleetAgentDeploymentCustomizations", refs={List.class,ClusterFleetAgentDeploymentCustomization.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ClusterFleetAgentDeploymentCustomization>> fleetAgentDeploymentCustomizations;
+
+    /**
+     * @return Optional customization for fleet agent
+     * 
+     */
+    public Output<Optional<List<ClusterFleetAgentDeploymentCustomization>>> fleetAgentDeploymentCustomizations() {
+        return Codegen.optional(this.fleetAgentDeploymentCustomizations);
     }
     /**
      * Fleet workspace name (string)

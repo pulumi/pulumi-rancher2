@@ -10,6 +10,7 @@ import com.pulumi.rancher2.inputs.ClusterV2RkeConfigEtcdSnapshotCreateArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigEtcdSnapshotRestoreArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigLocalAuthEndpointArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachinePoolArgs;
+import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachinePoolDefaultArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachineSelectorConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigRegistriesArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigRotateCertificatesArgs;
@@ -138,6 +139,13 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.machineGlobalConfig);
     }
 
+    @Import(name="machinePoolDefaults")
+    private @Nullable Output<List<ClusterV2RkeConfigMachinePoolDefaultArgs>> machinePoolDefaults;
+
+    public Optional<Output<List<ClusterV2RkeConfigMachinePoolDefaultArgs>>> machinePoolDefaults() {
+        return Optional.ofNullable(this.machinePoolDefaults);
+    }
+
     /**
      * Cluster V2 machine pools (list)
      * 
@@ -223,6 +231,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         this.etcdSnapshotRestore = $.etcdSnapshotRestore;
         this.localAuthEndpoint = $.localAuthEndpoint;
         this.machineGlobalConfig = $.machineGlobalConfig;
+        this.machinePoolDefaults = $.machinePoolDefaults;
         this.machinePools = $.machinePools;
         this.machineSelectorConfigs = $.machineSelectorConfigs;
         this.registries = $.registries;
@@ -401,6 +410,19 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder machineGlobalConfig(String machineGlobalConfig) {
             return machineGlobalConfig(Output.of(machineGlobalConfig));
+        }
+
+        public Builder machinePoolDefaults(@Nullable Output<List<ClusterV2RkeConfigMachinePoolDefaultArgs>> machinePoolDefaults) {
+            $.machinePoolDefaults = machinePoolDefaults;
+            return this;
+        }
+
+        public Builder machinePoolDefaults(List<ClusterV2RkeConfigMachinePoolDefaultArgs> machinePoolDefaults) {
+            return machinePoolDefaults(Output.of(machinePoolDefaults));
+        }
+
+        public Builder machinePoolDefaults(ClusterV2RkeConfigMachinePoolDefaultArgs... machinePoolDefaults) {
+            return machinePoolDefaults(List.of(machinePoolDefaults));
         }
 
         /**

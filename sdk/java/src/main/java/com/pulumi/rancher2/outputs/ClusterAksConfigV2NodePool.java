@@ -6,8 +6,10 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +32,11 @@ public final class ClusterAksConfigV2NodePool {
      */
     private @Nullable Boolean enableAutoScaling;
     /**
+     * @return Labels for the Cluster (map)
+     * 
+     */
+    private @Nullable Map<String,Object> labels;
+    /**
      * @return The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
      * 
      */
@@ -39,6 +46,11 @@ public final class ClusterAksConfigV2NodePool {
      * 
      */
     private @Nullable Integer maxPods;
+    /**
+     * @return Monitoring deployment rolling update max surge. Default: `1` (int)
+     * 
+     */
+    private @Nullable String maxSurge;
     /**
      * @return The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
      * 
@@ -75,6 +87,11 @@ public final class ClusterAksConfigV2NodePool {
      */
     private @Nullable String osType;
     /**
+     * @return The AKS node pool taints (list)
+     * 
+     */
+    private @Nullable List<String> taints;
+    /**
      * @return The AKS node pool orchestrator version (string)
      * 
      */
@@ -103,6 +120,13 @@ public final class ClusterAksConfigV2NodePool {
         return Optional.ofNullable(this.enableAutoScaling);
     }
     /**
+     * @return Labels for the Cluster (map)
+     * 
+     */
+    public Map<String,Object> labels() {
+        return this.labels == null ? Map.of() : this.labels;
+    }
+    /**
      * @return The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
      * 
      */
@@ -115,6 +139,13 @@ public final class ClusterAksConfigV2NodePool {
      */
     public Optional<Integer> maxPods() {
         return Optional.ofNullable(this.maxPods);
+    }
+    /**
+     * @return Monitoring deployment rolling update max surge. Default: `1` (int)
+     * 
+     */
+    public Optional<String> maxSurge() {
+        return Optional.ofNullable(this.maxSurge);
     }
     /**
      * @return The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
@@ -166,6 +197,13 @@ public final class ClusterAksConfigV2NodePool {
         return Optional.ofNullable(this.osType);
     }
     /**
+     * @return The AKS node pool taints (list)
+     * 
+     */
+    public List<String> taints() {
+        return this.taints == null ? List.of() : this.taints;
+    }
+    /**
      * @return The AKS node pool orchestrator version (string)
      * 
      */
@@ -185,8 +223,10 @@ public final class ClusterAksConfigV2NodePool {
         private @Nullable List<String> availabilityZones;
         private @Nullable Integer count;
         private @Nullable Boolean enableAutoScaling;
+        private @Nullable Map<String,Object> labels;
         private @Nullable Integer maxCount;
         private @Nullable Integer maxPods;
+        private @Nullable String maxSurge;
         private @Nullable Integer minCount;
         private @Nullable String mode;
         private String name;
@@ -194,6 +234,7 @@ public final class ClusterAksConfigV2NodePool {
         private @Nullable Integer osDiskSizeGb;
         private @Nullable String osDiskType;
         private @Nullable String osType;
+        private @Nullable List<String> taints;
         private @Nullable String vmSize;
         public Builder() {}
         public Builder(ClusterAksConfigV2NodePool defaults) {
@@ -201,8 +242,10 @@ public final class ClusterAksConfigV2NodePool {
     	      this.availabilityZones = defaults.availabilityZones;
     	      this.count = defaults.count;
     	      this.enableAutoScaling = defaults.enableAutoScaling;
+    	      this.labels = defaults.labels;
     	      this.maxCount = defaults.maxCount;
     	      this.maxPods = defaults.maxPods;
+    	      this.maxSurge = defaults.maxSurge;
     	      this.minCount = defaults.minCount;
     	      this.mode = defaults.mode;
     	      this.name = defaults.name;
@@ -210,6 +253,7 @@ public final class ClusterAksConfigV2NodePool {
     	      this.osDiskSizeGb = defaults.osDiskSizeGb;
     	      this.osDiskType = defaults.osDiskType;
     	      this.osType = defaults.osType;
+    	      this.taints = defaults.taints;
     	      this.vmSize = defaults.vmSize;
         }
 
@@ -232,6 +276,11 @@ public final class ClusterAksConfigV2NodePool {
             return this;
         }
         @CustomType.Setter
+        public Builder labels(@Nullable Map<String,Object> labels) {
+            this.labels = labels;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxCount(@Nullable Integer maxCount) {
             this.maxCount = maxCount;
             return this;
@@ -239,6 +288,11 @@ public final class ClusterAksConfigV2NodePool {
         @CustomType.Setter
         public Builder maxPods(@Nullable Integer maxPods) {
             this.maxPods = maxPods;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxSurge(@Nullable String maxSurge) {
+            this.maxSurge = maxSurge;
             return this;
         }
         @CustomType.Setter
@@ -277,6 +331,14 @@ public final class ClusterAksConfigV2NodePool {
             return this;
         }
         @CustomType.Setter
+        public Builder taints(@Nullable List<String> taints) {
+            this.taints = taints;
+            return this;
+        }
+        public Builder taints(String... taints) {
+            return taints(List.of(taints));
+        }
+        @CustomType.Setter
         public Builder vmSize(@Nullable String vmSize) {
             this.vmSize = vmSize;
             return this;
@@ -286,8 +348,10 @@ public final class ClusterAksConfigV2NodePool {
             o.availabilityZones = availabilityZones;
             o.count = count;
             o.enableAutoScaling = enableAutoScaling;
+            o.labels = labels;
             o.maxCount = maxCount;
             o.maxPods = maxPods;
+            o.maxSurge = maxSurge;
             o.minCount = minCount;
             o.mode = mode;
             o.name = name;
@@ -295,6 +359,7 @@ public final class ClusterAksConfigV2NodePool {
             o.osDiskSizeGb = osDiskSizeGb;
             o.osDiskType = osDiskType;
             o.osType = osType;
+            o.taints = taints;
             o.vmSize = vmSize;
             return o;
         }

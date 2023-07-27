@@ -45,6 +45,11 @@ public final class GetClusterV2Result {
      */
     private String defaultClusterRoleForProjectMembers;
     /**
+     * @return (Computed) Cluster V2 default pod security admission configuration template name (string)
+     * 
+     */
+    private String defaultPodSecurityAdmissionConfigurationTemplateName;
+    /**
      * @return (Computed) Cluster V2 default pod security policy template name (string)
      * 
      */
@@ -123,6 +128,13 @@ public final class GetClusterV2Result {
         return this.defaultClusterRoleForProjectMembers;
     }
     /**
+     * @return (Computed) Cluster V2 default pod security admission configuration template name (string)
+     * 
+     */
+    public String defaultPodSecurityAdmissionConfigurationTemplateName() {
+        return this.defaultPodSecurityAdmissionConfigurationTemplateName;
+    }
+    /**
      * @return (Computed) Cluster V2 default pod security policy template name (string)
      * 
      */
@@ -196,6 +208,7 @@ public final class GetClusterV2Result {
         private GetClusterV2ClusterRegistrationToken clusterRegistrationToken;
         private String clusterV1Id;
         private String defaultClusterRoleForProjectMembers;
+        private String defaultPodSecurityAdmissionConfigurationTemplateName;
         private String defaultPodSecurityPolicyTemplateName;
         private Boolean enableNetworkPolicy;
         private @Nullable String fleetNamespace;
@@ -215,6 +228,7 @@ public final class GetClusterV2Result {
     	      this.clusterRegistrationToken = defaults.clusterRegistrationToken;
     	      this.clusterV1Id = defaults.clusterV1Id;
     	      this.defaultClusterRoleForProjectMembers = defaults.defaultClusterRoleForProjectMembers;
+    	      this.defaultPodSecurityAdmissionConfigurationTemplateName = defaults.defaultPodSecurityAdmissionConfigurationTemplateName;
     	      this.defaultPodSecurityPolicyTemplateName = defaults.defaultPodSecurityPolicyTemplateName;
     	      this.enableNetworkPolicy = defaults.enableNetworkPolicy;
     	      this.fleetNamespace = defaults.fleetNamespace;
@@ -258,6 +272,11 @@ public final class GetClusterV2Result {
         @CustomType.Setter
         public Builder defaultClusterRoleForProjectMembers(String defaultClusterRoleForProjectMembers) {
             this.defaultClusterRoleForProjectMembers = Objects.requireNonNull(defaultClusterRoleForProjectMembers);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder defaultPodSecurityAdmissionConfigurationTemplateName(String defaultPodSecurityAdmissionConfigurationTemplateName) {
+            this.defaultPodSecurityAdmissionConfigurationTemplateName = Objects.requireNonNull(defaultPodSecurityAdmissionConfigurationTemplateName);
             return this;
         }
         @CustomType.Setter
@@ -318,6 +337,7 @@ public final class GetClusterV2Result {
             o.clusterRegistrationToken = clusterRegistrationToken;
             o.clusterV1Id = clusterV1Id;
             o.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
+            o.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             o.defaultPodSecurityPolicyTemplateName = defaultPodSecurityPolicyTemplateName;
             o.enableNetworkPolicy = enableNetworkPolicy;
             o.fleetNamespace = fleetNamespace;

@@ -34,6 +34,9 @@ __all__ = [
     'ClusterAlterRuleMetricRule',
     'ClusterAlterRuleNodeRule',
     'ClusterAlterRuleSystemServiceRule',
+    'ClusterClusterAgentDeploymentCustomization',
+    'ClusterClusterAgentDeploymentCustomizationAppendToleration',
+    'ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement',
     'ClusterClusterAuthEndpoint',
     'ClusterClusterMonitoringInput',
     'ClusterClusterRegistrationToken',
@@ -43,6 +46,9 @@ __all__ = [
     'ClusterEksConfigV2',
     'ClusterEksConfigV2NodeGroup',
     'ClusterEksConfigV2NodeGroupLaunchTemplate',
+    'ClusterFleetAgentDeploymentCustomization',
+    'ClusterFleetAgentDeploymentCustomizationAppendToleration',
+    'ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement',
     'ClusterGkeConfig',
     'ClusterGkeConfigV2',
     'ClusterGkeConfigV2ClusterAddons',
@@ -110,6 +116,8 @@ __all__ = [
     'ClusterRkeConfigServicesEtcdBackupConfig',
     'ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig',
     'ClusterRkeConfigServicesKubeApi',
+    'ClusterRkeConfigServicesKubeApiAdmissionConfiguration',
+    'ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin',
     'ClusterRkeConfigServicesKubeApiAuditLog',
     'ClusterRkeConfigServicesKubeApiAuditLogConfiguration',
     'ClusterRkeConfigServicesKubeApiEventRateLimit',
@@ -175,6 +183,8 @@ __all__ = [
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit',
@@ -187,7 +197,13 @@ __all__ = [
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput',
     'ClusterTemplateTemplateRevisionQuestion',
     'ClusterV2AgentEnvVar',
+    'ClusterV2ClusterAgentDeploymentCustomization',
+    'ClusterV2ClusterAgentDeploymentCustomizationAppendToleration',
+    'ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement',
     'ClusterV2ClusterRegistrationToken',
+    'ClusterV2FleetAgentDeploymentCustomization',
+    'ClusterV2FleetAgentDeploymentCustomizationAppendToleration',
+    'ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement',
     'ClusterV2LocalAuthEndpoint',
     'ClusterV2RkeConfig',
     'ClusterV2RkeConfigEtcd',
@@ -196,6 +212,7 @@ __all__ = [
     'ClusterV2RkeConfigEtcdSnapshotRestore',
     'ClusterV2RkeConfigLocalAuthEndpoint',
     'ClusterV2RkeConfigMachinePool',
+    'ClusterV2RkeConfigMachinePoolDefault',
     'ClusterV2RkeConfigMachinePoolMachineConfig',
     'ClusterV2RkeConfigMachinePoolRollingUpdate',
     'ClusterV2RkeConfigMachinePoolTaint',
@@ -360,6 +377,8 @@ __all__ = [
     'GetClusterRkeConfigServicesEtcdBackupConfigResult',
     'GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigResult',
     'GetClusterRkeConfigServicesKubeApiResult',
+    'GetClusterRkeConfigServicesKubeApiAdmissionConfigurationResult',
+    'GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginResult',
     'GetClusterRkeConfigServicesKubeApiAuditLogResult',
     'GetClusterRkeConfigServicesKubeApiAuditLogConfigurationResult',
     'GetClusterRkeConfigServicesKubeApiEventRateLimitResult',
@@ -424,6 +443,8 @@ __all__ = [
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiResult',
+    'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationResult',
+    'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitResult',
@@ -444,6 +465,7 @@ __all__ = [
     'GetClusterV2RkeConfigEtcdSnapshotRestoreResult',
     'GetClusterV2RkeConfigLocalAuthEndpointResult',
     'GetClusterV2RkeConfigMachinePoolResult',
+    'GetClusterV2RkeConfigMachinePoolDefaultResult',
     'GetClusterV2RkeConfigMachinePoolMachineConfigResult',
     'GetClusterV2RkeConfigMachinePoolRollingUpdateResult',
     'GetClusterV2RkeConfigMachinePoolTaintResult',
@@ -2033,6 +2055,8 @@ class ClusterAksConfigV2NodePool(dict):
             suggest = "max_count"
         elif key == "maxPods":
             suggest = "max_pods"
+        elif key == "maxSurge":
+            suggest = "max_surge"
         elif key == "minCount":
             suggest = "min_count"
         elif key == "orchestratorVersion":
@@ -2062,28 +2086,34 @@ class ClusterAksConfigV2NodePool(dict):
                  availability_zones: Optional[Sequence[str]] = None,
                  count: Optional[int] = None,
                  enable_auto_scaling: Optional[bool] = None,
+                 labels: Optional[Mapping[str, Any]] = None,
                  max_count: Optional[int] = None,
                  max_pods: Optional[int] = None,
+                 max_surge: Optional[str] = None,
                  min_count: Optional[int] = None,
                  mode: Optional[str] = None,
                  orchestrator_version: Optional[str] = None,
                  os_disk_size_gb: Optional[int] = None,
                  os_disk_type: Optional[str] = None,
                  os_type: Optional[str] = None,
+                 taints: Optional[Sequence[str]] = None,
                  vm_size: Optional[str] = None):
         """
         :param str name: The name of the Cluster (string)
         :param Sequence[str] availability_zones: The AKS node pool availability zones (list)
         :param int count: Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
         :param bool enable_auto_scaling: Is AKS node pool auto scaling enabled? Default: `false` (bool)
+        :param Mapping[str, Any] labels: Labels for the Cluster (map)
         :param int max_count: The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
         :param int max_pods: Maximum number of pods that can run on a node. Default `110` (int)
+        :param str max_surge: Monitoring deployment rolling update max surge. Default: `1` (int)
         :param int min_count: The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
         :param str mode: RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
         :param str orchestrator_version: The AKS node pool orchestrator version (string)
         :param int os_disk_size_gb: The AKS node pool os disk size gb. Default: `128` (int)
         :param str os_disk_type: The AKS node pool os disk type. Default: `Managed` (string)
         :param str os_type: The AKS node pool os type. Default: `Linux` (string)
+        :param Sequence[str] taints: The AKS node pool taints (list)
         :param str vm_size: The AKS node pool orchestrator version (string)
         """
         pulumi.set(__self__, "name", name)
@@ -2093,10 +2123,14 @@ class ClusterAksConfigV2NodePool(dict):
             pulumi.set(__self__, "count", count)
         if enable_auto_scaling is not None:
             pulumi.set(__self__, "enable_auto_scaling", enable_auto_scaling)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if max_count is not None:
             pulumi.set(__self__, "max_count", max_count)
         if max_pods is not None:
             pulumi.set(__self__, "max_pods", max_pods)
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
         if min_count is not None:
             pulumi.set(__self__, "min_count", min_count)
         if mode is not None:
@@ -2109,6 +2143,8 @@ class ClusterAksConfigV2NodePool(dict):
             pulumi.set(__self__, "os_disk_type", os_disk_type)
         if os_type is not None:
             pulumi.set(__self__, "os_type", os_type)
+        if taints is not None:
+            pulumi.set(__self__, "taints", taints)
         if vm_size is not None:
             pulumi.set(__self__, "vm_size", vm_size)
 
@@ -2145,6 +2181,14 @@ class ClusterAksConfigV2NodePool(dict):
         return pulumi.get(self, "enable_auto_scaling")
 
     @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Labels for the Cluster (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
     @pulumi.getter(name="maxCount")
     def max_count(self) -> Optional[int]:
         """
@@ -2159,6 +2203,14 @@ class ClusterAksConfigV2NodePool(dict):
         Maximum number of pods that can run on a node. Default `110` (int)
         """
         return pulumi.get(self, "max_pods")
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[str]:
+        """
+        Monitoring deployment rolling update max surge. Default: `1` (int)
+        """
+        return pulumi.get(self, "max_surge")
 
     @property
     @pulumi.getter(name="minCount")
@@ -2207,6 +2259,14 @@ class ClusterAksConfigV2NodePool(dict):
         The AKS node pool os type. Default: `Linux` (string)
         """
         return pulumi.get(self, "os_type")
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Optional[Sequence[str]]:
+        """
+        The AKS node pool taints (list)
+        """
+        return pulumi.get(self, "taints")
 
     @property
     @pulumi.getter(name="vmSize")
@@ -2785,6 +2845,182 @@ class ClusterAlterRuleSystemServiceRule(dict):
     @pulumi.getter
     def condition(self) -> Optional[str]:
         return pulumi.get(self, "condition")
+
+
+@pulumi.output_type
+class ClusterClusterAgentDeploymentCustomization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appendTolerations":
+            suggest = "append_tolerations"
+        elif key == "overrideAffinity":
+            suggest = "override_affinity"
+        elif key == "overrideResourceRequirements":
+            suggest = "override_resource_requirements"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterAgentDeploymentCustomization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterAgentDeploymentCustomization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterAgentDeploymentCustomization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 append_tolerations: Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationAppendToleration']] = None,
+                 override_affinity: Optional[str] = None,
+                 override_resource_requirements: Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement']] = None):
+        if append_tolerations is not None:
+            pulumi.set(__self__, "append_tolerations", append_tolerations)
+        if override_affinity is not None:
+            pulumi.set(__self__, "override_affinity", override_affinity)
+        if override_resource_requirements is not None:
+            pulumi.set(__self__, "override_resource_requirements", override_resource_requirements)
+
+    @property
+    @pulumi.getter(name="appendTolerations")
+    def append_tolerations(self) -> Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationAppendToleration']]:
+        return pulumi.get(self, "append_tolerations")
+
+    @property
+    @pulumi.getter(name="overrideAffinity")
+    def override_affinity(self) -> Optional[str]:
+        return pulumi.get(self, "override_affinity")
+
+    @property
+    @pulumi.getter(name="overrideResourceRequirements")
+    def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement']]:
+        return pulumi.get(self, "override_resource_requirements")
+
+
+@pulumi.output_type
+class ClusterClusterAgentDeploymentCustomizationAppendToleration(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 seconds: Optional[int] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The toleration key (string)
+        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        :param int seconds: The toleration seconds (int)
+        :param str value: Rancher agent env var value (string)
+        """
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The toleration key (string)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        """
+        The toleration seconds (int)
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Rancher agent env var value (string)
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuLimit":
+            suggest = "cpu_limit"
+        elif key == "cpuRequest":
+            suggest = "cpu_request"
+        elif key == "memoryLimit":
+            suggest = "memory_limit"
+        elif key == "memoryRequest":
+            suggest = "memory_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_limit: Optional[str] = None,
+                 cpu_request: Optional[str] = None,
+                 memory_limit: Optional[str] = None,
+                 memory_request: Optional[str] = None):
+        if cpu_limit is not None:
+            pulumi.set(__self__, "cpu_limit", cpu_limit)
+        if cpu_request is not None:
+            pulumi.set(__self__, "cpu_request", cpu_request)
+        if memory_limit is not None:
+            pulumi.set(__self__, "memory_limit", memory_limit)
+        if memory_request is not None:
+            pulumi.set(__self__, "memory_request", memory_request)
+
+    @property
+    @pulumi.getter(name="cpuLimit")
+    def cpu_limit(self) -> Optional[str]:
+        return pulumi.get(self, "cpu_limit")
+
+    @property
+    @pulumi.getter(name="cpuRequest")
+    def cpu_request(self) -> Optional[str]:
+        return pulumi.get(self, "cpu_request")
+
+    @property
+    @pulumi.getter(name="memoryLimit")
+    def memory_limit(self) -> Optional[str]:
+        return pulumi.get(self, "memory_limit")
+
+    @property
+    @pulumi.getter(name="memoryRequest")
+    def memory_request(self) -> Optional[str]:
+        return pulumi.get(self, "memory_request")
 
 
 @pulumi.output_type
@@ -4017,6 +4253,182 @@ class ClusterEksConfigV2NodeGroupLaunchTemplate(dict):
 
 
 @pulumi.output_type
+class ClusterFleetAgentDeploymentCustomization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appendTolerations":
+            suggest = "append_tolerations"
+        elif key == "overrideAffinity":
+            suggest = "override_affinity"
+        elif key == "overrideResourceRequirements":
+            suggest = "override_resource_requirements"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterFleetAgentDeploymentCustomization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterFleetAgentDeploymentCustomization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterFleetAgentDeploymentCustomization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 append_tolerations: Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationAppendToleration']] = None,
+                 override_affinity: Optional[str] = None,
+                 override_resource_requirements: Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement']] = None):
+        if append_tolerations is not None:
+            pulumi.set(__self__, "append_tolerations", append_tolerations)
+        if override_affinity is not None:
+            pulumi.set(__self__, "override_affinity", override_affinity)
+        if override_resource_requirements is not None:
+            pulumi.set(__self__, "override_resource_requirements", override_resource_requirements)
+
+    @property
+    @pulumi.getter(name="appendTolerations")
+    def append_tolerations(self) -> Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationAppendToleration']]:
+        return pulumi.get(self, "append_tolerations")
+
+    @property
+    @pulumi.getter(name="overrideAffinity")
+    def override_affinity(self) -> Optional[str]:
+        return pulumi.get(self, "override_affinity")
+
+    @property
+    @pulumi.getter(name="overrideResourceRequirements")
+    def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement']]:
+        return pulumi.get(self, "override_resource_requirements")
+
+
+@pulumi.output_type
+class ClusterFleetAgentDeploymentCustomizationAppendToleration(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 seconds: Optional[int] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The toleration key (string)
+        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        :param int seconds: The toleration seconds (int)
+        :param str value: Rancher agent env var value (string)
+        """
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The toleration key (string)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        """
+        The toleration seconds (int)
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Rancher agent env var value (string)
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuLimit":
+            suggest = "cpu_limit"
+        elif key == "cpuRequest":
+            suggest = "cpu_request"
+        elif key == "memoryLimit":
+            suggest = "memory_limit"
+        elif key == "memoryRequest":
+            suggest = "memory_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_limit: Optional[str] = None,
+                 cpu_request: Optional[str] = None,
+                 memory_limit: Optional[str] = None,
+                 memory_request: Optional[str] = None):
+        if cpu_limit is not None:
+            pulumi.set(__self__, "cpu_limit", cpu_limit)
+        if cpu_request is not None:
+            pulumi.set(__self__, "cpu_request", cpu_request)
+        if memory_limit is not None:
+            pulumi.set(__self__, "memory_limit", memory_limit)
+        if memory_request is not None:
+            pulumi.set(__self__, "memory_request", memory_request)
+
+    @property
+    @pulumi.getter(name="cpuLimit")
+    def cpu_limit(self) -> Optional[str]:
+        return pulumi.get(self, "cpu_limit")
+
+    @property
+    @pulumi.getter(name="cpuRequest")
+    def cpu_request(self) -> Optional[str]:
+        return pulumi.get(self, "cpu_request")
+
+    @property
+    @pulumi.getter(name="memoryLimit")
+    def memory_limit(self) -> Optional[str]:
+        return pulumi.get(self, "memory_limit")
+
+    @property
+    @pulumi.getter(name="memoryRequest")
+    def memory_request(self) -> Optional[str]:
+        return pulumi.get(self, "memory_request")
+
+
+@pulumi.output_type
 class ClusterGkeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4226,7 +4638,7 @@ class ClusterGkeConfig(dict):
         :param bool preemptible: Whether the nodes are created as preemptible VM instances. Default `false` (bool)
         :param str region: (string)
         :param Mapping[str, Any] resource_labels: The map of Kubernetes labels to be applied to each cluster (map)
-        :param Sequence[str] taints: List of Kubernetes taints to be applied to each node (list)
+        :param Sequence[str] taints: The AKS node pool taints (list)
         :param bool use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
         :param str zone: (string)
         """
@@ -4719,7 +5131,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter
     def taints(self) -> Optional[Sequence[str]]:
         """
-        List of Kubernetes taints to be applied to each node (list)
+        The AKS node pool taints (list)
         """
         return pulumi.get(self, "taints")
 
@@ -5580,7 +5992,7 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
         :param bool preemptible: Whether the nodes are created as preemptible VM instances. Default `false` (bool)
         :param Sequence[str] tags: Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
-        :param Sequence['ClusterGkeConfigV2NodePoolConfigTaintArgs'] taints: List of Kubernetes taints to be applied to each node (list)
+        :param Sequence['ClusterGkeConfigV2NodePoolConfigTaintArgs'] taints: The AKS node pool taints (list)
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
@@ -5679,7 +6091,7 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
     @pulumi.getter
     def taints(self) -> Optional[Sequence['outputs.ClusterGkeConfigV2NodePoolConfigTaint']]:
         """
-        List of Kubernetes taints to be applied to each node (list)
+        The AKS node pool taints (list)
         """
         return pulumi.get(self, "taints")
 
@@ -12096,7 +12508,7 @@ class ClusterRkeConfigServicesKubeApi(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 admission_configuration: Optional[Mapping[str, Any]] = None,
+                 admission_configuration: Optional['outputs.ClusterRkeConfigServicesKubeApiAdmissionConfiguration'] = None,
                  always_pull_images: Optional[bool] = None,
                  audit_log: Optional['outputs.ClusterRkeConfigServicesKubeApiAuditLog'] = None,
                  event_rate_limit: Optional['outputs.ClusterRkeConfigServicesKubeApiEventRateLimit'] = None,
@@ -12109,7 +12521,7 @@ class ClusterRkeConfigServicesKubeApi(dict):
                  service_cluster_ip_range: Optional[str] = None,
                  service_node_port_range: Optional[str] = None):
         """
-        :param Mapping[str, Any] admission_configuration: Admission configuration (map)
+        :param 'ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs' admission_configuration: Admission configuration (map)
         :param bool always_pull_images: Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
         :param 'ClusterRkeConfigServicesKubeApiAuditLogArgs' audit_log: K8s audit log configuration. (list maxitems: 1)
         :param 'ClusterRkeConfigServicesKubeApiEventRateLimitArgs' event_rate_limit: K8s event rate limit configuration. (list maxitems: 1)
@@ -12149,7 +12561,7 @@ class ClusterRkeConfigServicesKubeApi(dict):
 
     @property
     @pulumi.getter(name="admissionConfiguration")
-    def admission_configuration(self) -> Optional[Mapping[str, Any]]:
+    def admission_configuration(self) -> Optional['outputs.ClusterRkeConfigServicesKubeApiAdmissionConfiguration']:
         """
         Admission configuration (map)
         """
@@ -12245,12 +12657,151 @@ class ClusterRkeConfigServicesKubeApi(dict):
 
 
 @pulumi.output_type
+class ClusterRkeConfigServicesKubeApiAdmissionConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiVersion":
+            suggest = "api_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterRkeConfigServicesKubeApiAdmissionConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterRkeConfigServicesKubeApiAdmissionConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterRkeConfigServicesKubeApiAdmissionConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_version: Optional[str] = None,
+                 kind: Optional[str] = None,
+                 plugins: Optional[Sequence['outputs.ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin']] = None):
+        """
+        :param str api_version: Admission configuration ApiVersion. Default: `apiserver.config.k8s.io/v1` (string)
+        :param str kind: Admission configuration Kind. Default: `AdmissionConfiguration` (string)
+        :param Sequence['ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs'] plugins: Admission configuration plugins. (list `plugin`)
+        """
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if plugins is not None:
+            pulumi.set(__self__, "plugins", plugins)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[str]:
+        """
+        Admission configuration ApiVersion. Default: `apiserver.config.k8s.io/v1` (string)
+        """
+        return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        """
+        Admission configuration Kind. Default: `AdmissionConfiguration` (string)
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def plugins(self) -> Optional[Sequence['outputs.ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin']]:
+        """
+        Admission configuration plugins. (list `plugin`)
+        """
+        return pulumi.get(self, "plugins")
+
+
+@pulumi.output_type
+class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin(dict):
+    def __init__(__self__, *,
+                 configuration: Optional[str] = None,
+                 name: Optional[str] = None,
+                 path: Optional[str] = None):
+        """
+        :param str configuration: Plugin configuration. (string) Ex:
+               
+               ```python
+               import pulumi
+               ```
+               configuration = <<EOF
+               apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+               kind: Configuration
+               limits:
+               - type: Server
+               burst: 35000
+               qps: 6000
+               EOF
+        :param str name: The name of the Cluster (string)
+        :param str path: Path for etcd service (string)
+        """
+        if configuration is not None:
+            pulumi.set(__self__, "configuration", configuration)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def configuration(self) -> Optional[str]:
+        """
+        Plugin configuration. (string) Ex:
+
+        ```python
+        import pulumi
+        ```
+        configuration = <<EOF
+        apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+        kind: Configuration
+        limits:
+        - type: Server
+        burst: 35000
+        qps: 6000
+        EOF
+        """
+        return pulumi.get(self, "configuration")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the Cluster (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Path for etcd service (string)
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
 class ClusterRkeConfigServicesKubeApiAuditLog(dict):
     def __init__(__self__, *,
                  configuration: Optional['outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration'] = None,
                  enabled: Optional[bool] = None):
         """
-        :param 'ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs' configuration: Audit log configuration. (list maxitems: 1)
+        :param 'ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs' configuration: Plugin configuration. (string) Ex:
+               
+               ```python
+               import pulumi
+               ```
+               configuration = <<EOF
+               apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+               kind: Configuration
+               limits:
+               - type: Server
+               burst: 35000
+               qps: 6000
+               EOF
         :param bool enabled: Enable etcd backup (bool)
         """
         if configuration is not None:
@@ -12262,7 +12813,19 @@ class ClusterRkeConfigServicesKubeApiAuditLog(dict):
     @pulumi.getter
     def configuration(self) -> Optional['outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration']:
         """
-        Audit log configuration. (list maxitems: 1)
+        Plugin configuration. (string) Ex:
+
+        ```python
+        import pulumi
+        ```
+        configuration = <<EOF
+        apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+        kind: Configuration
+        limits:
+        - type: Server
+        burst: 35000
+        qps: 6000
+        EOF
         """
         return pulumi.get(self, "configuration")
 
@@ -12381,7 +12944,19 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
                  configuration: Optional[str] = None,
                  enabled: Optional[bool] = None):
         """
-        :param str configuration: Audit log configuration. (list maxitems: 1)
+        :param str configuration: Plugin configuration. (string) Ex:
+               
+               ```python
+               import pulumi
+               ```
+               configuration = <<EOF
+               apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+               kind: Configuration
+               limits:
+               - type: Server
+               burst: 35000
+               qps: 6000
+               EOF
         :param bool enabled: Enable etcd backup (bool)
         """
         if configuration is not None:
@@ -12393,7 +12968,19 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
     @pulumi.getter
     def configuration(self) -> Optional[str]:
         """
-        Audit log configuration. (list maxitems: 1)
+        Plugin configuration. (string) Ex:
+
+        ```python
+        import pulumi
+        ```
+        configuration = <<EOF
+        apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+        kind: Configuration
+        limits:
+        - type: Server
+        burst: 35000
+        qps: 6000
+        EOF
         """
         return pulumi.get(self, "configuration")
 
@@ -13467,6 +14054,8 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
             suggest = "cluster_auth_endpoint"
         elif key == "defaultClusterRoleForProjectMembers":
             suggest = "default_cluster_role_for_project_members"
+        elif key == "defaultPodSecurityAdmissionConfigurationTemplateName":
+            suggest = "default_pod_security_admission_configuration_template_name"
         elif key == "defaultPodSecurityPolicyTemplateId":
             suggest = "default_pod_security_policy_template_id"
         elif key == "desiredAgentImage":
@@ -13499,6 +14088,7 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
                  rke_config: 'outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig',
                  cluster_auth_endpoint: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint'] = None,
                  default_cluster_role_for_project_members: Optional[str] = None,
+                 default_pod_security_admission_configuration_template_name: Optional[str] = None,
                  default_pod_security_policy_template_id: Optional[str] = None,
                  desired_agent_image: Optional[str] = None,
                  desired_auth_image: Optional[str] = None,
@@ -13525,6 +14115,8 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
             pulumi.set(__self__, "cluster_auth_endpoint", cluster_auth_endpoint)
         if default_cluster_role_for_project_members is not None:
             pulumi.set(__self__, "default_cluster_role_for_project_members", default_cluster_role_for_project_members)
+        if default_pod_security_admission_configuration_template_name is not None:
+            pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
         if default_pod_security_policy_template_id is not None:
             pulumi.set(__self__, "default_pod_security_policy_template_id", default_pod_security_policy_template_id)
         if desired_agent_image is not None:
@@ -13565,6 +14157,11 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
         Default cluster role for project members (string)
         """
         return pulumi.get(self, "default_cluster_role_for_project_members")
+
+    @property
+    @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
+    def default_pod_security_admission_configuration_template_name(self) -> Optional[str]:
+        return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
 
     @property
     @pulumi.getter(name="defaultPodSecurityPolicyTemplateId")
@@ -17773,7 +18370,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi(dict)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 admission_configuration: Optional[Mapping[str, Any]] = None,
+                 admission_configuration: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration'] = None,
                  always_pull_images: Optional[bool] = None,
                  audit_log: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog'] = None,
                  event_rate_limit: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit'] = None,
@@ -17812,7 +18409,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi(dict)
 
     @property
     @pulumi.getter(name="admissionConfiguration")
-    def admission_configuration(self) -> Optional[Mapping[str, Any]]:
+    def admission_configuration(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration']:
         return pulumi.get(self, "admission_configuration")
 
     @property
@@ -17869,6 +18466,87 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi(dict)
     @pulumi.getter(name="serviceNodePortRange")
     def service_node_port_range(self) -> Optional[str]:
         return pulumi.get(self, "service_node_port_range")
+
+
+@pulumi.output_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiVersion":
+            suggest = "api_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_version: Optional[str] = None,
+                 kind: Optional[str] = None,
+                 plugins: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin']] = None):
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if plugins is not None:
+            pulumi.set(__self__, "plugins", plugins)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[str]:
+        return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def plugins(self) -> Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin']]:
+        return pulumi.get(self, "plugins")
+
+
+@pulumi.output_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin(dict):
+    def __init__(__self__, *,
+                 configuration: Optional[str] = None,
+                 name: Optional[str] = None,
+                 path: Optional[str] = None):
+        """
+        :param str name: The cluster template name (string)
+        """
+        if configuration is not None:
+            pulumi.set(__self__, "configuration", configuration)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def configuration(self) -> Optional[str]:
+        return pulumi.get(self, "configuration")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The cluster template name (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type
@@ -18552,6 +19230,178 @@ class ClusterV2AgentEnvVar(dict):
 
 
 @pulumi.output_type
+class ClusterV2ClusterAgentDeploymentCustomization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appendTolerations":
+            suggest = "append_tolerations"
+        elif key == "overrideAffinity":
+            suggest = "override_affinity"
+        elif key == "overrideResourceRequirements":
+            suggest = "override_resource_requirements"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2ClusterAgentDeploymentCustomization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2ClusterAgentDeploymentCustomization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2ClusterAgentDeploymentCustomization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 append_tolerations: Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration']] = None,
+                 override_affinity: Optional[str] = None,
+                 override_resource_requirements: Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement']] = None):
+        if append_tolerations is not None:
+            pulumi.set(__self__, "append_tolerations", append_tolerations)
+        if override_affinity is not None:
+            pulumi.set(__self__, "override_affinity", override_affinity)
+        if override_resource_requirements is not None:
+            pulumi.set(__self__, "override_resource_requirements", override_resource_requirements)
+
+    @property
+    @pulumi.getter(name="appendTolerations")
+    def append_tolerations(self) -> Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration']]:
+        return pulumi.get(self, "append_tolerations")
+
+    @property
+    @pulumi.getter(name="overrideAffinity")
+    def override_affinity(self) -> Optional[str]:
+        return pulumi.get(self, "override_affinity")
+
+    @property
+    @pulumi.getter(name="overrideResourceRequirements")
+    def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement']]:
+        return pulumi.get(self, "override_resource_requirements")
+
+
+@pulumi.output_type
+class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 seconds: Optional[int] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The taint key (string)
+        :param str effect: The taint effect. Default: `\\"NoExecute\\"` (string)
+        :param str operator: Machine selector label match expressions operator (string)
+        :param str value: Rancher agent env var value (string)
+        """
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The taint key (string)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        The taint effect. Default: `\\"NoExecute\\"` (string)
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        Machine selector label match expressions operator (string)
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Rancher agent env var value (string)
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuLimit":
+            suggest = "cpu_limit"
+        elif key == "cpuRequest":
+            suggest = "cpu_request"
+        elif key == "memoryLimit":
+            suggest = "memory_limit"
+        elif key == "memoryRequest":
+            suggest = "memory_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_limit: Optional[str] = None,
+                 cpu_request: Optional[str] = None,
+                 memory_limit: Optional[str] = None,
+                 memory_request: Optional[str] = None):
+        if cpu_limit is not None:
+            pulumi.set(__self__, "cpu_limit", cpu_limit)
+        if cpu_request is not None:
+            pulumi.set(__self__, "cpu_request", cpu_request)
+        if memory_limit is not None:
+            pulumi.set(__self__, "memory_limit", memory_limit)
+        if memory_request is not None:
+            pulumi.set(__self__, "memory_request", memory_request)
+
+    @property
+    @pulumi.getter(name="cpuLimit")
+    def cpu_limit(self) -> Optional[str]:
+        return pulumi.get(self, "cpu_limit")
+
+    @property
+    @pulumi.getter(name="cpuRequest")
+    def cpu_request(self) -> Optional[str]:
+        return pulumi.get(self, "cpu_request")
+
+    @property
+    @pulumi.getter(name="memoryLimit")
+    def memory_limit(self) -> Optional[str]:
+        return pulumi.get(self, "memory_limit")
+
+    @property
+    @pulumi.getter(name="memoryRequest")
+    def memory_request(self) -> Optional[str]:
+        return pulumi.get(self, "memory_request")
+
+
+@pulumi.output_type
 class ClusterV2ClusterRegistrationToken(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -18744,6 +19594,178 @@ class ClusterV2ClusterRegistrationToken(dict):
 
 
 @pulumi.output_type
+class ClusterV2FleetAgentDeploymentCustomization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appendTolerations":
+            suggest = "append_tolerations"
+        elif key == "overrideAffinity":
+            suggest = "override_affinity"
+        elif key == "overrideResourceRequirements":
+            suggest = "override_resource_requirements"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2FleetAgentDeploymentCustomization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2FleetAgentDeploymentCustomization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2FleetAgentDeploymentCustomization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 append_tolerations: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration']] = None,
+                 override_affinity: Optional[str] = None,
+                 override_resource_requirements: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement']] = None):
+        if append_tolerations is not None:
+            pulumi.set(__self__, "append_tolerations", append_tolerations)
+        if override_affinity is not None:
+            pulumi.set(__self__, "override_affinity", override_affinity)
+        if override_resource_requirements is not None:
+            pulumi.set(__self__, "override_resource_requirements", override_resource_requirements)
+
+    @property
+    @pulumi.getter(name="appendTolerations")
+    def append_tolerations(self) -> Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration']]:
+        return pulumi.get(self, "append_tolerations")
+
+    @property
+    @pulumi.getter(name="overrideAffinity")
+    def override_affinity(self) -> Optional[str]:
+        return pulumi.get(self, "override_affinity")
+
+    @property
+    @pulumi.getter(name="overrideResourceRequirements")
+    def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement']]:
+        return pulumi.get(self, "override_resource_requirements")
+
+
+@pulumi.output_type
+class ClusterV2FleetAgentDeploymentCustomizationAppendToleration(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 seconds: Optional[int] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The taint key (string)
+        :param str effect: The taint effect. Default: `\\"NoExecute\\"` (string)
+        :param str operator: Machine selector label match expressions operator (string)
+        :param str value: Rancher agent env var value (string)
+        """
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The taint key (string)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        The taint effect. Default: `\\"NoExecute\\"` (string)
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        Machine selector label match expressions operator (string)
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Rancher agent env var value (string)
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuLimit":
+            suggest = "cpu_limit"
+        elif key == "cpuRequest":
+            suggest = "cpu_request"
+        elif key == "memoryLimit":
+            suggest = "memory_limit"
+        elif key == "memoryRequest":
+            suggest = "memory_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_limit: Optional[str] = None,
+                 cpu_request: Optional[str] = None,
+                 memory_limit: Optional[str] = None,
+                 memory_request: Optional[str] = None):
+        if cpu_limit is not None:
+            pulumi.set(__self__, "cpu_limit", cpu_limit)
+        if cpu_request is not None:
+            pulumi.set(__self__, "cpu_request", cpu_request)
+        if memory_limit is not None:
+            pulumi.set(__self__, "memory_limit", memory_limit)
+        if memory_request is not None:
+            pulumi.set(__self__, "memory_request", memory_request)
+
+    @property
+    @pulumi.getter(name="cpuLimit")
+    def cpu_limit(self) -> Optional[str]:
+        return pulumi.get(self, "cpu_limit")
+
+    @property
+    @pulumi.getter(name="cpuRequest")
+    def cpu_request(self) -> Optional[str]:
+        return pulumi.get(self, "cpu_request")
+
+    @property
+    @pulumi.getter(name="memoryLimit")
+    def memory_limit(self) -> Optional[str]:
+        return pulumi.get(self, "memory_limit")
+
+    @property
+    @pulumi.getter(name="memoryRequest")
+    def memory_request(self) -> Optional[str]:
+        return pulumi.get(self, "memory_request")
+
+
+@pulumi.output_type
 class ClusterV2LocalAuthEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -18820,6 +19842,8 @@ class ClusterV2RkeConfig(dict):
             suggest = "local_auth_endpoint"
         elif key == "machineGlobalConfig":
             suggest = "machine_global_config"
+        elif key == "machinePoolDefaults":
+            suggest = "machine_pool_defaults"
         elif key == "machinePools":
             suggest = "machine_pools"
         elif key == "machineSelectorConfigs":
@@ -18848,6 +19872,7 @@ class ClusterV2RkeConfig(dict):
                  etcd_snapshot_restore: Optional['outputs.ClusterV2RkeConfigEtcdSnapshotRestore'] = None,
                  local_auth_endpoint: Optional['outputs.ClusterV2RkeConfigLocalAuthEndpoint'] = None,
                  machine_global_config: Optional[str] = None,
+                 machine_pool_defaults: Optional[Sequence['outputs.ClusterV2RkeConfigMachinePoolDefault']] = None,
                  machine_pools: Optional[Sequence['outputs.ClusterV2RkeConfigMachinePool']] = None,
                  machine_selector_configs: Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorConfig']] = None,
                  registries: Optional['outputs.ClusterV2RkeConfigRegistries'] = None,
@@ -18881,6 +19906,8 @@ class ClusterV2RkeConfig(dict):
             pulumi.set(__self__, "local_auth_endpoint", local_auth_endpoint)
         if machine_global_config is not None:
             pulumi.set(__self__, "machine_global_config", machine_global_config)
+        if machine_pool_defaults is not None:
+            pulumi.set(__self__, "machine_pool_defaults", machine_pool_defaults)
         if machine_pools is not None:
             pulumi.set(__self__, "machine_pools", machine_pools)
         if machine_selector_configs is not None:
@@ -18947,6 +19974,11 @@ class ClusterV2RkeConfig(dict):
         Cluster V2 machine global config. Must be in YAML format (string)
         """
         return pulumi.get(self, "machine_global_config")
+
+    @property
+    @pulumi.getter(name="machinePoolDefaults")
+    def machine_pool_defaults(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachinePoolDefault']]:
+        return pulumi.get(self, "machine_pool_defaults")
 
     @property
     @pulumi.getter(name="machinePools")
@@ -19328,6 +20360,8 @@ class ClusterV2RkeConfigMachinePool(dict):
             suggest = "drain_before_delete"
         elif key == "etcdRole":
             suggest = "etcd_role"
+        elif key == "hostnameLengthLimit":
+            suggest = "hostname_length_limit"
         elif key == "machineLabels":
             suggest = "machine_labels"
         elif key == "maxUnhealthy":
@@ -19364,6 +20398,7 @@ class ClusterV2RkeConfigMachinePool(dict):
                  control_plane_role: Optional[bool] = None,
                  drain_before_delete: Optional[bool] = None,
                  etcd_role: Optional[bool] = None,
+                 hostname_length_limit: Optional[int] = None,
                  labels: Optional[Mapping[str, Any]] = None,
                  machine_labels: Optional[Mapping[str, Any]] = None,
                  max_unhealthy: Optional[str] = None,
@@ -19409,6 +20444,8 @@ class ClusterV2RkeConfigMachinePool(dict):
             pulumi.set(__self__, "drain_before_delete", drain_before_delete)
         if etcd_role is not None:
             pulumi.set(__self__, "etcd_role", etcd_role)
+        if hostname_length_limit is not None:
+            pulumi.set(__self__, "hostname_length_limit", hostname_length_limit)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if machine_labels is not None:
@@ -19489,6 +20526,11 @@ class ClusterV2RkeConfigMachinePool(dict):
         Machine pool etcd role? (bool)
         """
         return pulumi.get(self, "etcd_role")
+
+    @property
+    @pulumi.getter(name="hostnameLengthLimit")
+    def hostname_length_limit(self) -> Optional[int]:
+        return pulumi.get(self, "hostname_length_limit")
 
     @property
     @pulumi.getter
@@ -19585,6 +20627,36 @@ class ClusterV2RkeConfigMachinePool(dict):
         Machine pool worker role? (bool)
         """
         return pulumi.get(self, "worker_role")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachinePoolDefault(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostnameLengthLimit":
+            suggest = "hostname_length_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigMachinePoolDefault. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigMachinePoolDefault.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigMachinePoolDefault.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hostname_length_limit: Optional[int] = None):
+        if hostname_length_limit is not None:
+            pulumi.set(__self__, "hostname_length_limit", hostname_length_limit)
+
+    @property
+    @pulumi.getter(name="hostnameLengthLimit")
+    def hostname_length_limit(self) -> Optional[int]:
+        return pulumi.get(self, "hostname_length_limit")
 
 
 @pulumi.output_type
@@ -29985,13 +31057,16 @@ class GetClusterAksConfigV2Result(dict):
 @pulumi.output_type
 class GetClusterAksConfigV2NodePoolResult(dict):
     def __init__(__self__, *,
+                 labels: Mapping[str, Any],
                  name: str,
+                 taints: Sequence[str],
                  vm_size: str,
                  availability_zones: Optional[Sequence[str]] = None,
                  count: Optional[int] = None,
                  enable_auto_scaling: Optional[bool] = None,
                  max_count: Optional[int] = None,
                  max_pods: Optional[int] = None,
+                 max_surge: Optional[str] = None,
                  min_count: Optional[int] = None,
                  mode: Optional[str] = None,
                  orchestrator_version: Optional[str] = None,
@@ -29999,9 +31074,12 @@ class GetClusterAksConfigV2NodePoolResult(dict):
                  os_disk_type: Optional[str] = None,
                  os_type: Optional[str] = None):
         """
+        :param Mapping[str, Any] labels: (Computed) Labels for Node Pool object (map)
         :param str name: The name of the Cluster (string)
         """
+        pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "vm_size", vm_size)
         if availability_zones is not None:
             pulumi.set(__self__, "availability_zones", availability_zones)
@@ -30013,6 +31091,8 @@ class GetClusterAksConfigV2NodePoolResult(dict):
             pulumi.set(__self__, "max_count", max_count)
         if max_pods is not None:
             pulumi.set(__self__, "max_pods", max_pods)
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
         if min_count is not None:
             pulumi.set(__self__, "min_count", min_count)
         if mode is not None:
@@ -30028,11 +31108,24 @@ class GetClusterAksConfigV2NodePoolResult(dict):
 
     @property
     @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels for Node Pool object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The name of the Cluster (string)
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Sequence[str]:
+        return pulumi.get(self, "taints")
 
     @property
     @pulumi.getter(name="vmSize")
@@ -30063,6 +31156,11 @@ class GetClusterAksConfigV2NodePoolResult(dict):
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> Optional[int]:
         return pulumi.get(self, "max_pods")
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[str]:
+        return pulumi.get(self, "max_surge")
 
     @property
     @pulumi.getter(name="minCount")
@@ -35156,7 +36254,7 @@ class GetClusterRkeConfigServicesKubeApiResult(dict):
                  image: str,
                  service_cluster_ip_range: str,
                  service_node_port_range: str,
-                 admission_configuration: Optional[Mapping[str, Any]] = None,
+                 admission_configuration: Optional['outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfigurationResult'] = None,
                  always_pull_images: Optional[bool] = None,
                  audit_log: Optional['outputs.GetClusterRkeConfigServicesKubeApiAuditLogResult'] = None,
                  event_rate_limit: Optional['outputs.GetClusterRkeConfigServicesKubeApiEventRateLimitResult'] = None,
@@ -35207,7 +36305,7 @@ class GetClusterRkeConfigServicesKubeApiResult(dict):
 
     @property
     @pulumi.getter(name="admissionConfiguration")
-    def admission_configuration(self) -> Optional[Mapping[str, Any]]:
+    def admission_configuration(self) -> Optional['outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfigurationResult']:
         return pulumi.get(self, "admission_configuration")
 
     @property
@@ -35244,6 +36342,67 @@ class GetClusterRkeConfigServicesKubeApiResult(dict):
     @pulumi.getter(name="secretsEncryptionConfig")
     def secrets_encryption_config(self) -> Optional['outputs.GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigResult']:
         return pulumi.get(self, "secrets_encryption_config")
+
+
+@pulumi.output_type
+class GetClusterRkeConfigServicesKubeApiAdmissionConfigurationResult(dict):
+    def __init__(__self__, *,
+                 plugins: Sequence['outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginResult'],
+                 api_version: Optional[str] = None,
+                 kind: Optional[str] = None):
+        pulumi.set(__self__, "plugins", plugins)
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def plugins(self) -> Sequence['outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginResult']:
+        return pulumi.get(self, "plugins")
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[str]:
+        return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+
+@pulumi.output_type
+class GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginResult(dict):
+    def __init__(__self__, *,
+                 configuration: str,
+                 name: str,
+                 path: Optional[str] = None):
+        """
+        :param str name: The name of the Cluster (string)
+        """
+        pulumi.set(__self__, "configuration", configuration)
+        pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def configuration(self) -> str:
+        return pulumi.get(self, "configuration")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type
@@ -35752,6 +36911,7 @@ class GetClusterTemplateTemplateRevisionClusterConfigResult(dict):
     def __init__(__self__, *,
                  cluster_auth_endpoint: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointResult',
                  default_cluster_role_for_project_members: str,
+                 default_pod_security_admission_configuration_template_name: str,
                  default_pod_security_policy_template_id: str,
                  desired_agent_image: str,
                  desired_auth_image: str,
@@ -35763,6 +36923,7 @@ class GetClusterTemplateTemplateRevisionClusterConfigResult(dict):
                  windows_prefered_cluster: Optional[bool] = None):
         pulumi.set(__self__, "cluster_auth_endpoint", cluster_auth_endpoint)
         pulumi.set(__self__, "default_cluster_role_for_project_members", default_cluster_role_for_project_members)
+        pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
         pulumi.set(__self__, "default_pod_security_policy_template_id", default_pod_security_policy_template_id)
         pulumi.set(__self__, "desired_agent_image", desired_agent_image)
         pulumi.set(__self__, "desired_auth_image", desired_auth_image)
@@ -35786,6 +36947,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigResult(dict):
     @pulumi.getter(name="defaultClusterRoleForProjectMembers")
     def default_cluster_role_for_project_members(self) -> str:
         return pulumi.get(self, "default_cluster_role_for_project_members")
+
+    @property
+    @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
+    def default_pod_security_admission_configuration_template_name(self) -> str:
+        return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
 
     @property
     @pulumi.getter(name="defaultPodSecurityPolicyTemplateId")
@@ -38713,7 +39879,7 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiRes
                  image: str,
                  service_cluster_ip_range: str,
                  service_node_port_range: str,
-                 admission_configuration: Optional[Mapping[str, Any]] = None,
+                 admission_configuration: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationResult'] = None,
                  always_pull_images: Optional[bool] = None,
                  audit_log: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogResult'] = None,
                  event_rate_limit: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitResult'] = None,
@@ -38764,7 +39930,7 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiRes
 
     @property
     @pulumi.getter(name="admissionConfiguration")
-    def admission_configuration(self) -> Optional[Mapping[str, Any]]:
+    def admission_configuration(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationResult']:
         return pulumi.get(self, "admission_configuration")
 
     @property
@@ -38801,6 +39967,67 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiRes
     @pulumi.getter(name="secretsEncryptionConfig")
     def secrets_encryption_config(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult']:
         return pulumi.get(self, "secrets_encryption_config")
+
+
+@pulumi.output_type
+class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationResult(dict):
+    def __init__(__self__, *,
+                 plugins: Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginResult'],
+                 api_version: Optional[str] = None,
+                 kind: Optional[str] = None):
+        pulumi.set(__self__, "plugins", plugins)
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def plugins(self) -> Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginResult']:
+        return pulumi.get(self, "plugins")
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[str]:
+        return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+
+@pulumi.output_type
+class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginResult(dict):
+    def __init__(__self__, *,
+                 configuration: str,
+                 name: str,
+                 path: Optional[str] = None):
+        """
+        :param str name: The cluster template name (string)
+        """
+        pulumi.set(__self__, "configuration", configuration)
+        pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def configuration(self) -> str:
+        return pulumi.get(self, "configuration")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The cluster template name (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type
@@ -39356,6 +40583,7 @@ class GetClusterV2ClusterRegistrationTokenResult(dict):
 class GetClusterV2RkeConfigResult(dict):
     def __init__(__self__, *,
                  etcd: 'outputs.GetClusterV2RkeConfigEtcdResult',
+                 machine_pool_defaults: Sequence['outputs.GetClusterV2RkeConfigMachinePoolDefaultResult'],
                  machine_pools: Sequence['outputs.GetClusterV2RkeConfigMachinePoolResult'],
                  machine_selector_configs: Sequence['outputs.GetClusterV2RkeConfigMachineSelectorConfigResult'],
                  additional_manifest: Optional[str] = None,
@@ -39368,6 +40596,7 @@ class GetClusterV2RkeConfigResult(dict):
                  rotate_certificates: Optional['outputs.GetClusterV2RkeConfigRotateCertificatesResult'] = None,
                  upgrade_strategy: Optional['outputs.GetClusterV2RkeConfigUpgradeStrategyResult'] = None):
         pulumi.set(__self__, "etcd", etcd)
+        pulumi.set(__self__, "machine_pool_defaults", machine_pool_defaults)
         pulumi.set(__self__, "machine_pools", machine_pools)
         pulumi.set(__self__, "machine_selector_configs", machine_selector_configs)
         if additional_manifest is not None:
@@ -39393,6 +40622,11 @@ class GetClusterV2RkeConfigResult(dict):
     @pulumi.getter
     def etcd(self) -> 'outputs.GetClusterV2RkeConfigEtcdResult':
         return pulumi.get(self, "etcd")
+
+    @property
+    @pulumi.getter(name="machinePoolDefaults")
+    def machine_pool_defaults(self) -> Sequence['outputs.GetClusterV2RkeConfigMachinePoolDefaultResult']:
+        return pulumi.get(self, "machine_pool_defaults")
 
     @property
     @pulumi.getter(name="machinePools")
@@ -39632,6 +40866,7 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
                  control_plane_role: Optional[bool] = None,
                  drain_before_delete: Optional[bool] = None,
                  etcd_role: Optional[bool] = None,
+                 hostname_length_limit: Optional[int] = None,
                  max_unhealthy: Optional[str] = None,
                  node_drain_timeout: Optional[int] = None,
                  node_startup_timeout_seconds: Optional[int] = None,
@@ -39659,6 +40894,8 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
             pulumi.set(__self__, "drain_before_delete", drain_before_delete)
         if etcd_role is not None:
             pulumi.set(__self__, "etcd_role", etcd_role)
+        if hostname_length_limit is not None:
+            pulumi.set(__self__, "hostname_length_limit", hostname_length_limit)
         if max_unhealthy is not None:
             pulumi.set(__self__, "max_unhealthy", max_unhealthy)
         if node_drain_timeout is not None:
@@ -39732,6 +40969,11 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
         return pulumi.get(self, "etcd_role")
 
     @property
+    @pulumi.getter(name="hostnameLengthLimit")
+    def hostname_length_limit(self) -> Optional[int]:
+        return pulumi.get(self, "hostname_length_limit")
+
+    @property
     @pulumi.getter(name="maxUnhealthy")
     def max_unhealthy(self) -> Optional[str]:
         return pulumi.get(self, "max_unhealthy")
@@ -39780,6 +41022,19 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
     @pulumi.getter(name="workerRole")
     def worker_role(self) -> Optional[bool]:
         return pulumi.get(self, "worker_role")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachinePoolDefaultResult(dict):
+    def __init__(__self__, *,
+                 hostname_length_limit: Optional[int] = None):
+        if hostname_length_limit is not None:
+            pulumi.set(__self__, "hostname_length_limit", hostname_length_limit)
+
+    @property
+    @pulumi.getter(name="hostnameLengthLimit")
+    def hostname_length_limit(self) -> Optional[int]:
+        return pulumi.get(self, "hostname_length_limit")
 
 
 @pulumi.output_type

@@ -13,7 +13,25 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigServicesKubeApiAuditLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Audit log configuration. (list maxitems: 1)
+        /// Plugin configuration. (string) Ex:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// configuration = &lt;&lt;EOF
+        /// apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+        /// kind: Configuration
+        /// limits:
+        /// - type: Server
+        /// burst: 35000
+        /// qps: 6000
+        /// EOF
         /// </summary>
         [Input("configuration")]
         public Input<Inputs.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs>? Configuration { get; set; }

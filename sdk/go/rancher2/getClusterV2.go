@@ -68,6 +68,8 @@ type LookupClusterV2Result struct {
 	ClusterV1Id string `pulumi:"clusterV1Id"`
 	// (Computed) Cluster V2 default cluster role for project members (string)
 	DefaultClusterRoleForProjectMembers string `pulumi:"defaultClusterRoleForProjectMembers"`
+	// (Computed) Cluster V2 default pod security admission configuration template name (string)
+	DefaultPodSecurityAdmissionConfigurationTemplateName string `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
 	// (Computed) Cluster V2 default pod security policy template name (string)
 	DefaultPodSecurityPolicyTemplateName string `pulumi:"defaultPodSecurityPolicyTemplateName"`
 	// (Computed) Enable k8s network policy at Cluster V2 (bool)
@@ -154,6 +156,11 @@ func (o LookupClusterV2ResultOutput) ClusterV1Id() pulumi.StringOutput {
 // (Computed) Cluster V2 default cluster role for project members (string)
 func (o LookupClusterV2ResultOutput) DefaultClusterRoleForProjectMembers() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterV2Result) string { return v.DefaultClusterRoleForProjectMembers }).(pulumi.StringOutput)
+}
+
+// (Computed) Cluster V2 default pod security admission configuration template name (string)
+func (o LookupClusterV2ResultOutput) DefaultPodSecurityAdmissionConfigurationTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) string { return v.DefaultPodSecurityAdmissionConfigurationTemplateName }).(pulumi.StringOutput)
 }
 
 // (Computed) Cluster V2 default pod security policy template name (string)

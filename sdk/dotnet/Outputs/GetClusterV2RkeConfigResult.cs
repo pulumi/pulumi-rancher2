@@ -20,6 +20,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly Outputs.GetClusterV2RkeConfigEtcdSnapshotRestoreResult? EtcdSnapshotRestore;
         public readonly Outputs.GetClusterV2RkeConfigLocalAuthEndpointResult? LocalAuthEndpoint;
         public readonly string? MachineGlobalConfig;
+        public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigMachinePoolDefaultResult> MachinePoolDefaults;
         public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigMachinePoolResult> MachinePools;
         public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigMachineSelectorConfigResult> MachineSelectorConfigs;
         public readonly Outputs.GetClusterV2RkeConfigRegistriesResult? Registries;
@@ -42,6 +43,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? machineGlobalConfig,
 
+            ImmutableArray<Outputs.GetClusterV2RkeConfigMachinePoolDefaultResult> machinePoolDefaults,
+
             ImmutableArray<Outputs.GetClusterV2RkeConfigMachinePoolResult> machinePools,
 
             ImmutableArray<Outputs.GetClusterV2RkeConfigMachineSelectorConfigResult> machineSelectorConfigs,
@@ -59,6 +62,7 @@ namespace Pulumi.Rancher2.Outputs
             EtcdSnapshotRestore = etcdSnapshotRestore;
             LocalAuthEndpoint = localAuthEndpoint;
             MachineGlobalConfig = machineGlobalConfig;
+            MachinePoolDefaults = machinePoolDefaults;
             MachinePools = machinePools;
             MachineSelectorConfigs = machineSelectorConfigs;
             Registries = registries;

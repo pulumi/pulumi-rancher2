@@ -63,7 +63,7 @@ public final class ClusterGkeConfigV2NodePoolConfig {
      */
     private @Nullable List<String> tags;
     /**
-     * @return List of Kubernetes taints to be applied to each node (list)
+     * @return The AKS node pool taints (list)
      * 
      */
     private @Nullable List<ClusterGkeConfigV2NodePoolConfigTaint> taints;
@@ -133,7 +133,7 @@ public final class ClusterGkeConfigV2NodePoolConfig {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return List of Kubernetes taints to be applied to each node (list)
+     * @return The AKS node pool taints (list)
      * 
      */
     public List<ClusterGkeConfigV2NodePoolConfigTaint> taints() {

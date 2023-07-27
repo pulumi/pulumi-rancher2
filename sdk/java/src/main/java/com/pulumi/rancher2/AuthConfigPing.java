@@ -133,6 +133,12 @@ public class AuthConfigPing extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
+    @Export(name="entityIdField", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> entityIdField;
+
+    public Output<Optional<String>> entityIdField() {
+        return Codegen.optional(this.entityIdField);
+    }
     /**
      * Ping group field (string)
      * 

@@ -267,7 +267,7 @@ public final class ClusterGkeConfig {
      */
     private String subNetwork;
     /**
-     * @return List of Kubernetes taints to be applied to each node (list)
+     * @return The AKS node pool taints (list)
      * 
      */
     private @Nullable List<String> taints;
@@ -634,7 +634,7 @@ public final class ClusterGkeConfig {
         return this.subNetwork;
     }
     /**
-     * @return List of Kubernetes taints to be applied to each node (list)
+     * @return The AKS node pool taints (list)
      * 
      */
     public List<String> taints() {

@@ -8,12 +8,14 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.rancher2.inputs.ClusterAgentEnvVarArgs;
 import com.pulumi.rancher2.inputs.ClusterAksConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterAksConfigV2Args;
+import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterAuthEndpointArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterMonitoringInputArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterTemplateAnswersArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterTemplateQuestionArgs;
 import com.pulumi.rancher2.inputs.ClusterEksConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterEksConfigV2Args;
+import com.pulumi.rancher2.inputs.ClusterFleetAgentDeploymentCustomizationArgs;
 import com.pulumi.rancher2.inputs.ClusterGkeConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterGkeConfigV2Args;
 import com.pulumi.rancher2.inputs.ClusterK3sConfigArgs;
@@ -92,6 +94,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,Object>>> annotations() {
         return Optional.ofNullable(this.annotations);
+    }
+
+    /**
+     * Optional customization for cluster agent
+     * 
+     */
+    @Import(name="clusterAgentDeploymentCustomizations")
+    private @Nullable Output<List<ClusterClusterAgentDeploymentCustomizationArgs>> clusterAgentDeploymentCustomizations;
+
+    /**
+     * @return Optional customization for cluster agent
+     * 
+     */
+    public Optional<Output<List<ClusterClusterAgentDeploymentCustomizationArgs>>> clusterAgentDeploymentCustomizations() {
+        return Optional.ofNullable(this.clusterAgentDeploymentCustomizations);
     }
 
     /**
@@ -182,6 +199,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> clusterTemplateRevisionId() {
         return Optional.ofNullable(this.clusterTemplateRevisionId);
+    }
+
+    /**
+     * Cluster default pod security admission configuration template name
+     * 
+     */
+    @Import(name="defaultPodSecurityAdmissionConfigurationTemplateName")
+    private @Nullable Output<String> defaultPodSecurityAdmissionConfigurationTemplateName;
+
+    /**
+     * @return Cluster default pod security admission configuration template name
+     * 
+     */
+    public Optional<Output<String>> defaultPodSecurityAdmissionConfigurationTemplateName() {
+        return Optional.ofNullable(this.defaultPodSecurityAdmissionConfigurationTemplateName);
     }
 
     /**
@@ -350,6 +382,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional customization for fleet agent
+     * 
+     */
+    @Import(name="fleetAgentDeploymentCustomizations")
+    private @Nullable Output<List<ClusterFleetAgentDeploymentCustomizationArgs>> fleetAgentDeploymentCustomizations;
+
+    /**
+     * @return Optional customization for fleet agent
+     * 
+     */
+    public Optional<Output<List<ClusterFleetAgentDeploymentCustomizationArgs>>> fleetAgentDeploymentCustomizations() {
+        return Optional.ofNullable(this.fleetAgentDeploymentCustomizations);
+    }
+
+    /**
      * Fleet workspace name (string)
      * 
      */
@@ -506,12 +553,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.aksConfig = $.aksConfig;
         this.aksConfigV2 = $.aksConfigV2;
         this.annotations = $.annotations;
+        this.clusterAgentDeploymentCustomizations = $.clusterAgentDeploymentCustomizations;
         this.clusterAuthEndpoint = $.clusterAuthEndpoint;
         this.clusterMonitoringInput = $.clusterMonitoringInput;
         this.clusterTemplateAnswers = $.clusterTemplateAnswers;
         this.clusterTemplateId = $.clusterTemplateId;
         this.clusterTemplateQuestions = $.clusterTemplateQuestions;
         this.clusterTemplateRevisionId = $.clusterTemplateRevisionId;
+        this.defaultPodSecurityAdmissionConfigurationTemplateName = $.defaultPodSecurityAdmissionConfigurationTemplateName;
         this.defaultPodSecurityPolicyTemplateId = $.defaultPodSecurityPolicyTemplateId;
         this.description = $.description;
         this.desiredAgentImage = $.desiredAgentImage;
@@ -523,6 +572,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.enableClusterAlerting = $.enableClusterAlerting;
         this.enableClusterMonitoring = $.enableClusterMonitoring;
         this.enableNetworkPolicy = $.enableNetworkPolicy;
+        this.fleetAgentDeploymentCustomizations = $.fleetAgentDeploymentCustomizations;
         this.fleetWorkspaceName = $.fleetWorkspaceName;
         this.gkeConfig = $.gkeConfig;
         this.gkeConfigV2 = $.gkeConfigV2;
@@ -645,6 +695,37 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder annotations(Map<String,Object> annotations) {
             return annotations(Output.of(annotations));
+        }
+
+        /**
+         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterAgentDeploymentCustomizations(@Nullable Output<List<ClusterClusterAgentDeploymentCustomizationArgs>> clusterAgentDeploymentCustomizations) {
+            $.clusterAgentDeploymentCustomizations = clusterAgentDeploymentCustomizations;
+            return this;
+        }
+
+        /**
+         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterAgentDeploymentCustomizations(List<ClusterClusterAgentDeploymentCustomizationArgs> clusterAgentDeploymentCustomizations) {
+            return clusterAgentDeploymentCustomizations(Output.of(clusterAgentDeploymentCustomizations));
+        }
+
+        /**
+         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterAgentDeploymentCustomizations(ClusterClusterAgentDeploymentCustomizationArgs... clusterAgentDeploymentCustomizations) {
+            return clusterAgentDeploymentCustomizations(List.of(clusterAgentDeploymentCustomizations));
         }
 
         /**
@@ -781,6 +862,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterTemplateRevisionId(String clusterTemplateRevisionId) {
             return clusterTemplateRevisionId(Output.of(clusterTemplateRevisionId));
+        }
+
+        /**
+         * @param defaultPodSecurityAdmissionConfigurationTemplateName Cluster default pod security admission configuration template name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultPodSecurityAdmissionConfigurationTemplateName(@Nullable Output<String> defaultPodSecurityAdmissionConfigurationTemplateName) {
+            $.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
+            return this;
+        }
+
+        /**
+         * @param defaultPodSecurityAdmissionConfigurationTemplateName Cluster default pod security admission configuration template name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultPodSecurityAdmissionConfigurationTemplateName(String defaultPodSecurityAdmissionConfigurationTemplateName) {
+            return defaultPodSecurityAdmissionConfigurationTemplateName(Output.of(defaultPodSecurityAdmissionConfigurationTemplateName));
         }
 
         /**
@@ -1012,6 +1114,37 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableNetworkPolicy(Boolean enableNetworkPolicy) {
             return enableNetworkPolicy(Output.of(enableNetworkPolicy));
+        }
+
+        /**
+         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fleetAgentDeploymentCustomizations(@Nullable Output<List<ClusterFleetAgentDeploymentCustomizationArgs>> fleetAgentDeploymentCustomizations) {
+            $.fleetAgentDeploymentCustomizations = fleetAgentDeploymentCustomizations;
+            return this;
+        }
+
+        /**
+         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fleetAgentDeploymentCustomizations(List<ClusterFleetAgentDeploymentCustomizationArgs> fleetAgentDeploymentCustomizations) {
+            return fleetAgentDeploymentCustomizations(Output.of(fleetAgentDeploymentCustomizations));
+        }
+
+        /**
+         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fleetAgentDeploymentCustomizations(ClusterFleetAgentDeploymentCustomizationArgs... fleetAgentDeploymentCustomizations) {
+            return fleetAgentDeploymentCustomizations(List.of(fleetAgentDeploymentCustomizations));
         }
 
         /**

@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 public final class GetClusterTemplateTemplateRevisionClusterConfig {
     private GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint;
     private String defaultClusterRoleForProjectMembers;
+    private String defaultPodSecurityAdmissionConfigurationTemplateName;
     private String defaultPodSecurityPolicyTemplateId;
     private String desiredAgentImage;
     private String desiredAuthImage;
@@ -32,6 +33,9 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
     }
     public String defaultClusterRoleForProjectMembers() {
         return this.defaultClusterRoleForProjectMembers;
+    }
+    public String defaultPodSecurityAdmissionConfigurationTemplateName() {
+        return this.defaultPodSecurityAdmissionConfigurationTemplateName;
     }
     public String defaultPodSecurityPolicyTemplateId() {
         return this.defaultPodSecurityPolicyTemplateId;
@@ -72,6 +76,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
     public static final class Builder {
         private GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint;
         private String defaultClusterRoleForProjectMembers;
+        private String defaultPodSecurityAdmissionConfigurationTemplateName;
         private String defaultPodSecurityPolicyTemplateId;
         private String desiredAgentImage;
         private String desiredAuthImage;
@@ -86,6 +91,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
     	      Objects.requireNonNull(defaults);
     	      this.clusterAuthEndpoint = defaults.clusterAuthEndpoint;
     	      this.defaultClusterRoleForProjectMembers = defaults.defaultClusterRoleForProjectMembers;
+    	      this.defaultPodSecurityAdmissionConfigurationTemplateName = defaults.defaultPodSecurityAdmissionConfigurationTemplateName;
     	      this.defaultPodSecurityPolicyTemplateId = defaults.defaultPodSecurityPolicyTemplateId;
     	      this.desiredAgentImage = defaults.desiredAgentImage;
     	      this.desiredAuthImage = defaults.desiredAuthImage;
@@ -105,6 +111,11 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
         @CustomType.Setter
         public Builder defaultClusterRoleForProjectMembers(String defaultClusterRoleForProjectMembers) {
             this.defaultClusterRoleForProjectMembers = Objects.requireNonNull(defaultClusterRoleForProjectMembers);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder defaultPodSecurityAdmissionConfigurationTemplateName(String defaultPodSecurityAdmissionConfigurationTemplateName) {
+            this.defaultPodSecurityAdmissionConfigurationTemplateName = Objects.requireNonNull(defaultPodSecurityAdmissionConfigurationTemplateName);
             return this;
         }
         @CustomType.Setter
@@ -156,6 +167,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
             final var o = new GetClusterTemplateTemplateRevisionClusterConfig();
             o.clusterAuthEndpoint = clusterAuthEndpoint;
             o.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
+            o.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             o.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
             o.desiredAgentImage = desiredAgentImage;
             o.desiredAuthImage = desiredAuthImage;

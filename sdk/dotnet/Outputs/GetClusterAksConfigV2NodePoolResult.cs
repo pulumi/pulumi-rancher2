@@ -16,8 +16,13 @@ namespace Pulumi.Rancher2.Outputs
         public readonly ImmutableArray<string> AvailabilityZones;
         public readonly int? Count;
         public readonly bool? EnableAutoScaling;
+        /// <summary>
+        /// (Computed) Labels for Node Pool object (map)
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Labels;
         public readonly int? MaxCount;
         public readonly int? MaxPods;
+        public readonly string? MaxSurge;
         public readonly int? MinCount;
         public readonly string? Mode;
         /// <summary>
@@ -28,6 +33,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly int? OsDiskSizeGb;
         public readonly string? OsDiskType;
         public readonly string? OsType;
+        public readonly ImmutableArray<string> Taints;
         public readonly string VmSize;
 
         [OutputConstructor]
@@ -38,9 +44,13 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? enableAutoScaling,
 
+            ImmutableDictionary<string, object> labels,
+
             int? maxCount,
 
             int? maxPods,
+
+            string? maxSurge,
 
             int? minCount,
 
@@ -56,13 +66,17 @@ namespace Pulumi.Rancher2.Outputs
 
             string? osType,
 
+            ImmutableArray<string> taints,
+
             string vmSize)
         {
             AvailabilityZones = availabilityZones;
             Count = count;
             EnableAutoScaling = enableAutoScaling;
+            Labels = labels;
             MaxCount = maxCount;
             MaxPods = maxPods;
+            MaxSurge = maxSurge;
             MinCount = minCount;
             Mode = mode;
             Name = name;
@@ -70,6 +84,7 @@ namespace Pulumi.Rancher2.Outputs
             OsDiskSizeGb = osDiskSizeGb;
             OsDiskType = osDiskType;
             OsType = osType;
+            Taints = taints;
             VmSize = vmSize;
         }
     }

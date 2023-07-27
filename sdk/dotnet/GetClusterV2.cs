@@ -137,6 +137,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string DefaultClusterRoleForProjectMembers;
         /// <summary>
+        /// (Computed) Cluster V2 default pod security admission configuration template name (string)
+        /// </summary>
+        public readonly string DefaultPodSecurityAdmissionConfigurationTemplateName;
+        /// <summary>
         /// (Computed) Cluster V2 default pod security policy template name (string)
         /// </summary>
         public readonly string DefaultPodSecurityPolicyTemplateName;
@@ -182,6 +186,8 @@ namespace Pulumi.Rancher2
 
             string defaultClusterRoleForProjectMembers,
 
+            string defaultPodSecurityAdmissionConfigurationTemplateName,
+
             string defaultPodSecurityPolicyTemplateName,
 
             bool enableNetworkPolicy,
@@ -208,6 +214,7 @@ namespace Pulumi.Rancher2
             ClusterRegistrationToken = clusterRegistrationToken;
             ClusterV1Id = clusterV1Id;
             DefaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
+            DefaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             DefaultPodSecurityPolicyTemplateName = defaultPodSecurityPolicyTemplateName;
             EnableNetworkPolicy = enableNetworkPolicy;
             FleetNamespace = fleetNamespace;

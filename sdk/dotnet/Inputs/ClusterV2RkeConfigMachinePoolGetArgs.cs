@@ -48,6 +48,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("etcdRole")]
         public Input<bool>? EtcdRole { get; set; }
 
+        [Input("hostnameLengthLimit")]
+        public Input<int>? HostnameLengthLimit { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
 

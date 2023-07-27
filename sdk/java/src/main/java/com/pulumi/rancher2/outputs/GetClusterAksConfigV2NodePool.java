@@ -6,8 +6,10 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,8 +19,14 @@ public final class GetClusterAksConfigV2NodePool {
     private @Nullable List<String> availabilityZones;
     private @Nullable Integer count;
     private @Nullable Boolean enableAutoScaling;
+    /**
+     * @return (Computed) Labels for Node Pool object (map)
+     * 
+     */
+    private Map<String,Object> labels;
     private @Nullable Integer maxCount;
     private @Nullable Integer maxPods;
+    private @Nullable String maxSurge;
     private @Nullable Integer minCount;
     private @Nullable String mode;
     /**
@@ -30,6 +38,7 @@ public final class GetClusterAksConfigV2NodePool {
     private @Nullable Integer osDiskSizeGb;
     private @Nullable String osDiskType;
     private @Nullable String osType;
+    private List<String> taints;
     private String vmSize;
 
     private GetClusterAksConfigV2NodePool() {}
@@ -42,11 +51,21 @@ public final class GetClusterAksConfigV2NodePool {
     public Optional<Boolean> enableAutoScaling() {
         return Optional.ofNullable(this.enableAutoScaling);
     }
+    /**
+     * @return (Computed) Labels for Node Pool object (map)
+     * 
+     */
+    public Map<String,Object> labels() {
+        return this.labels;
+    }
     public Optional<Integer> maxCount() {
         return Optional.ofNullable(this.maxCount);
     }
     public Optional<Integer> maxPods() {
         return Optional.ofNullable(this.maxPods);
+    }
+    public Optional<String> maxSurge() {
+        return Optional.ofNullable(this.maxSurge);
     }
     public Optional<Integer> minCount() {
         return Optional.ofNullable(this.minCount);
@@ -73,6 +92,9 @@ public final class GetClusterAksConfigV2NodePool {
     public Optional<String> osType() {
         return Optional.ofNullable(this.osType);
     }
+    public List<String> taints() {
+        return this.taints;
+    }
     public String vmSize() {
         return this.vmSize;
     }
@@ -89,8 +111,10 @@ public final class GetClusterAksConfigV2NodePool {
         private @Nullable List<String> availabilityZones;
         private @Nullable Integer count;
         private @Nullable Boolean enableAutoScaling;
+        private Map<String,Object> labels;
         private @Nullable Integer maxCount;
         private @Nullable Integer maxPods;
+        private @Nullable String maxSurge;
         private @Nullable Integer minCount;
         private @Nullable String mode;
         private String name;
@@ -98,6 +122,7 @@ public final class GetClusterAksConfigV2NodePool {
         private @Nullable Integer osDiskSizeGb;
         private @Nullable String osDiskType;
         private @Nullable String osType;
+        private List<String> taints;
         private String vmSize;
         public Builder() {}
         public Builder(GetClusterAksConfigV2NodePool defaults) {
@@ -105,8 +130,10 @@ public final class GetClusterAksConfigV2NodePool {
     	      this.availabilityZones = defaults.availabilityZones;
     	      this.count = defaults.count;
     	      this.enableAutoScaling = defaults.enableAutoScaling;
+    	      this.labels = defaults.labels;
     	      this.maxCount = defaults.maxCount;
     	      this.maxPods = defaults.maxPods;
+    	      this.maxSurge = defaults.maxSurge;
     	      this.minCount = defaults.minCount;
     	      this.mode = defaults.mode;
     	      this.name = defaults.name;
@@ -114,6 +141,7 @@ public final class GetClusterAksConfigV2NodePool {
     	      this.osDiskSizeGb = defaults.osDiskSizeGb;
     	      this.osDiskType = defaults.osDiskType;
     	      this.osType = defaults.osType;
+    	      this.taints = defaults.taints;
     	      this.vmSize = defaults.vmSize;
         }
 
@@ -136,6 +164,11 @@ public final class GetClusterAksConfigV2NodePool {
             return this;
         }
         @CustomType.Setter
+        public Builder labels(Map<String,Object> labels) {
+            this.labels = Objects.requireNonNull(labels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxCount(@Nullable Integer maxCount) {
             this.maxCount = maxCount;
             return this;
@@ -143,6 +176,11 @@ public final class GetClusterAksConfigV2NodePool {
         @CustomType.Setter
         public Builder maxPods(@Nullable Integer maxPods) {
             this.maxPods = maxPods;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxSurge(@Nullable String maxSurge) {
+            this.maxSurge = maxSurge;
             return this;
         }
         @CustomType.Setter
@@ -181,6 +219,14 @@ public final class GetClusterAksConfigV2NodePool {
             return this;
         }
         @CustomType.Setter
+        public Builder taints(List<String> taints) {
+            this.taints = Objects.requireNonNull(taints);
+            return this;
+        }
+        public Builder taints(String... taints) {
+            return taints(List.of(taints));
+        }
+        @CustomType.Setter
         public Builder vmSize(String vmSize) {
             this.vmSize = Objects.requireNonNull(vmSize);
             return this;
@@ -190,8 +236,10 @@ public final class GetClusterAksConfigV2NodePool {
             o.availabilityZones = availabilityZones;
             o.count = count;
             o.enableAutoScaling = enableAutoScaling;
+            o.labels = labels;
             o.maxCount = maxCount;
             o.maxPods = maxPods;
+            o.maxSurge = maxSurge;
             o.minCount = minCount;
             o.mode = mode;
             o.name = name;
@@ -199,6 +247,7 @@ public final class GetClusterAksConfigV2NodePool {
             o.osDiskSizeGb = osDiskSizeGb;
             o.osDiskType = osDiskType;
             o.osType = osType;
+            o.taints = taints;
             o.vmSize = vmSize;
             return o;
         }

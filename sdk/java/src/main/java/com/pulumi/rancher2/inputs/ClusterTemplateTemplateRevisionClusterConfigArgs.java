@@ -48,6 +48,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         return Optional.ofNullable(this.defaultClusterRoleForProjectMembers);
     }
 
+    @Import(name="defaultPodSecurityAdmissionConfigurationTemplateName")
+    private @Nullable Output<String> defaultPodSecurityAdmissionConfigurationTemplateName;
+
+    public Optional<Output<String>> defaultPodSecurityAdmissionConfigurationTemplateName() {
+        return Optional.ofNullable(this.defaultPodSecurityAdmissionConfigurationTemplateName);
+    }
+
     /**
      * Default pod security policy template ID (string)
      * 
@@ -188,6 +195,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     private ClusterTemplateTemplateRevisionClusterConfigArgs(ClusterTemplateTemplateRevisionClusterConfigArgs $) {
         this.clusterAuthEndpoint = $.clusterAuthEndpoint;
         this.defaultClusterRoleForProjectMembers = $.defaultClusterRoleForProjectMembers;
+        this.defaultPodSecurityAdmissionConfigurationTemplateName = $.defaultPodSecurityAdmissionConfigurationTemplateName;
         this.defaultPodSecurityPolicyTemplateId = $.defaultPodSecurityPolicyTemplateId;
         this.desiredAgentImage = $.desiredAgentImage;
         this.desiredAuthImage = $.desiredAuthImage;
@@ -257,6 +265,15 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
          */
         public Builder defaultClusterRoleForProjectMembers(String defaultClusterRoleForProjectMembers) {
             return defaultClusterRoleForProjectMembers(Output.of(defaultClusterRoleForProjectMembers));
+        }
+
+        public Builder defaultPodSecurityAdmissionConfigurationTemplateName(@Nullable Output<String> defaultPodSecurityAdmissionConfigurationTemplateName) {
+            $.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
+            return this;
+        }
+
+        public Builder defaultPodSecurityAdmissionConfigurationTemplateName(String defaultPodSecurityAdmissionConfigurationTemplateName) {
+            return defaultPodSecurityAdmissionConfigurationTemplateName(Output.of(defaultPodSecurityAdmissionConfigurationTemplateName));
         }
 
         /**

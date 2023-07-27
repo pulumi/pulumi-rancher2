@@ -44,7 +44,7 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.51.0
 	github.com/pulumi/pulumi/sdk/v3 v3.72.2
-	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20230621133649-31ab1f782a14
+	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20230724181902-4642c3685b90
 )
 
 require (
@@ -80,7 +80,7 @@ require (
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/armon/go-metrics v0.4.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
-	github.com/aws/aws-sdk-go v1.44.253 // indirect
+	github.com/aws/aws-sdk-go v1.44.266 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.17.4 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.10 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.18.12 // indirect
@@ -118,13 +118,14 @@ require (
 	github.com/ettle/strcase v0.1.1 // indirect
 	github.com/evanphx/json-patch v4.12.0+incompatible // indirect
 	github.com/fatih/color v1.13.0 // indirect
+	github.com/felixge/httpsnoop v1.0.3 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-git/gcfg v1.5.0 // indirect
 	github.com/go-git/go-billy/v5 v5.4.0 // indirect
 	github.com/go-git/go-git/v5 v5.6.0 // indirect
-	github.com/go-logr/logr v1.2.3 // indirect
+	github.com/go-logr/logr v1.2.4 // indirect
 	github.com/go-openapi/jsonpointer v0.19.6 // indirect
 	github.com/go-openapi/jsonreference v0.20.1 // indirect
 	github.com/go-openapi/swag v0.22.3 // indirect
@@ -137,6 +138,7 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/gnostic v0.5.7-v3refs // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
+	github.com/google/go-github/v29 v29.0.3 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
@@ -144,6 +146,7 @@ require (
 	github.com/google/wire v0.5.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.2.3 // indirect
 	github.com/googleapis/gax-go/v2 v2.7.0 // indirect
+	github.com/gorilla/handlers v1.5.1 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
@@ -192,6 +195,7 @@ require (
 	github.com/klauspost/compress v1.16.0 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
+	github.com/matryer/moq v0.0.0-20200607124540-4638a53893e6 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.16 // indirect
 	github.com/mattn/go-runewidth v0.0.13 // indirect
@@ -207,6 +211,7 @@ require (
 	github.com/mitchellh/hashstructure v1.0.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
+	github.com/moby/locker v1.0.1 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/muesli/cancelreader v0.2.2 // indirect
@@ -234,12 +239,14 @@ require (
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.1 // indirect
 	github.com/rancher/aks-operator v1.1.1-rc2 // indirect
-	github.com/rancher/eks-operator v1.2.1-rc3 // indirect
+	github.com/rancher/apiserver v0.0.0-20230120214941-e88c32739dc7 // indirect
+	github.com/rancher/channelserver v0.5.1-0.20220405170618-28c9b37deff1 // indirect
+	github.com/rancher/eks-operator v1.2.1 // indirect
 	github.com/rancher/fleet/pkg/apis v0.0.0-20230420151154-ab055fa31e05 // indirect
 	github.com/rancher/gke-operator v1.1.5 // indirect
-	github.com/rancher/lasso v0.0.0-20221227210133-6ea88ca2fbcc // indirect
-	github.com/rancher/norman v0.0.0-20230328153514-ae12f166495a // indirect
-	github.com/rancher/rancher v0.0.0-20230113190314-623addd2b1f0 // indirect
+	github.com/rancher/lasso v0.0.0-20230428185353-36908edf817b // indirect
+	github.com/rancher/norman v0.0.0-20230426211126-d3552b018687 // indirect
+	github.com/rancher/rancher v0.0.0-20230512212658-eaa7b90049a4 // indirect
 	github.com/rancher/rancher/pkg/apis v0.0.0 // indirect
 	github.com/rancher/rancher/pkg/client v0.0.0 // indirect
 	github.com/rancher/rke v1.4.6-rc3 // indirect
@@ -254,7 +261,7 @@ require (
 	github.com/segmentio/encoding v0.3.5 // indirect
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
-	github.com/sirupsen/logrus v1.9.0 // indirect
+	github.com/sirupsen/logrus v1.9.2 // indirect
 	github.com/skeema/knownhosts v1.1.0 // indirect
 	github.com/spf13/afero v1.9.5 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
@@ -280,13 +287,14 @@ require (
 	gocloud.dev/secrets/hashivault v0.27.0 // indirect
 	golang.org/x/crypto v0.7.0 // indirect
 	golang.org/x/mod v0.10.0 // indirect
-	golang.org/x/net v0.9.0 // indirect
+	golang.org/x/net v0.10.0 // indirect
 	golang.org/x/oauth2 v0.6.0 // indirect
-	golang.org/x/sync v0.1.0 // indirect
-	golang.org/x/sys v0.7.0 // indirect
-	golang.org/x/term v0.7.0 // indirect
+	golang.org/x/sync v0.2.0 // indirect
+	golang.org/x/sys v0.8.0 // indirect
+	golang.org/x/term v0.8.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
+	golang.org/x/tools v0.9.1 // indirect
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
 	gomodules.xyz/jsonpatch/v2 v2.2.0 // indirect
 	google.golang.org/api v0.111.0 // indirect
@@ -305,6 +313,7 @@ require (
 	k8s.io/apiserver v0.25.4 // indirect
 	k8s.io/client-go v12.0.0+incompatible // indirect
 	k8s.io/component-base v0.25.4 // indirect
+	k8s.io/gengo v0.0.0-20220902162205-c0856e24416d // indirect
 	k8s.io/klog/v2 v2.90.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20230308215209-15aac26d736a // indirect
 	k8s.io/kubernetes v1.25.4 // indirect

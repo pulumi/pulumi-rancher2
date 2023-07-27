@@ -447,6 +447,10 @@ export interface ClusterAksConfigV2NodePool {
      */
     enableAutoScaling?: boolean;
     /**
+     * Labels for the Cluster (map)
+     */
+    labels: {[key: string]: any};
+    /**
      * The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
      */
     maxCount?: number;
@@ -454,6 +458,10 @@ export interface ClusterAksConfigV2NodePool {
      * Maximum number of pods that can run on a node. Default `110` (int)
      */
     maxPods?: number;
+    /**
+     * Monitoring deployment rolling update max surge. Default: `1` (int)
+     */
+    maxSurge?: string;
     /**
      * The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
      */
@@ -482,6 +490,10 @@ export interface ClusterAksConfigV2NodePool {
      * The AKS node pool os type. Default: `Linux` (string)
      */
     osType?: string;
+    /**
+     * The AKS node pool taints (list)
+     */
+    taints: string[];
     /**
      * The AKS node pool orchestrator version (string)
      */
@@ -616,6 +628,42 @@ export interface ClusterAlterRuleNodeRule {
 
 export interface ClusterAlterRuleSystemServiceRule {
     condition?: string;
+}
+
+export interface ClusterClusterAgentDeploymentCustomization {
+    appendTolerations?: outputs.ClusterClusterAgentDeploymentCustomizationAppendToleration[];
+    overrideAffinity?: string;
+    overrideResourceRequirements?: outputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement[];
+}
+
+export interface ClusterClusterAgentDeploymentCustomizationAppendToleration {
+    /**
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     */
+    effect?: string;
+    /**
+     * The toleration key (string)
+     */
+    key: string;
+    /**
+     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     */
+    operator?: string;
+    /**
+     * The toleration seconds (int)
+     */
+    seconds: number;
+    /**
+     * Rancher agent env var value (string)
+     */
+    value?: string;
+}
+
+export interface ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement {
+    cpuLimit?: string;
+    cpuRequest?: string;
+    memoryLimit?: string;
+    memoryRequest?: string;
 }
 
 export interface ClusterClusterAuthEndpoint {
@@ -972,6 +1020,42 @@ export interface ClusterEksConfigV2NodeGroupLaunchTemplate {
     version?: number;
 }
 
+export interface ClusterFleetAgentDeploymentCustomization {
+    appendTolerations?: outputs.ClusterFleetAgentDeploymentCustomizationAppendToleration[];
+    overrideAffinity?: string;
+    overrideResourceRequirements?: outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement[];
+}
+
+export interface ClusterFleetAgentDeploymentCustomizationAppendToleration {
+    /**
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     */
+    effect?: string;
+    /**
+     * The toleration key (string)
+     */
+    key: string;
+    /**
+     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     */
+    operator?: string;
+    /**
+     * The toleration seconds (int)
+     */
+    seconds: number;
+    /**
+     * Rancher agent env var value (string)
+     */
+    value?: string;
+}
+
+export interface ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement {
+    cpuLimit?: string;
+    cpuRequest?: string;
+    memoryLimit?: string;
+    memoryRequest?: string;
+}
+
 export interface ClusterGkeConfig {
     /**
      * The IP address range of the container pods (string)
@@ -1174,7 +1258,7 @@ export interface ClusterGkeConfig {
      */
     subNetwork: string;
     /**
-     * List of Kubernetes taints to be applied to each node (list)
+     * The AKS node pool taints (list)
      */
     taints?: string[];
     /**
@@ -1440,7 +1524,7 @@ export interface ClusterGkeConfigV2NodePoolConfig {
      */
     tags: string[];
     /**
-     * List of Kubernetes taints to be applied to each node (list)
+     * The AKS node pool taints (list)
      */
     taints?: outputs.ClusterGkeConfigV2NodePoolConfigTaint[];
 }
@@ -3216,7 +3300,7 @@ export interface ClusterRkeConfigServicesKubeApi {
     /**
      * Admission configuration (map)
      */
-    admissionConfiguration?: {[key: string]: any};
+    admissionConfiguration?: outputs.ClusterRkeConfigServicesKubeApiAdmissionConfiguration;
     /**
      * Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
      */
@@ -3263,9 +3347,63 @@ export interface ClusterRkeConfigServicesKubeApi {
     serviceNodePortRange: string;
 }
 
+export interface ClusterRkeConfigServicesKubeApiAdmissionConfiguration {
+    /**
+     * Admission configuration ApiVersion. Default: `apiserver.config.k8s.io/v1` (string)
+     */
+    apiVersion?: string;
+    /**
+     * Admission configuration Kind. Default: `AdmissionConfiguration` (string)
+     */
+    kind?: string;
+    /**
+     * Admission configuration plugins. (list `plugin`)
+     */
+    plugins: outputs.ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin[];
+}
+
+export interface ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
+    /**
+     * Plugin configuration. (string) Ex:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     * configuration = <<EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     * burst: 35000
+     * qps: 6000
+     * EOF
+     */
+    configuration: string;
+    /**
+     * The name of the Cluster (string)
+     */
+    name: string;
+    /**
+     * Path for etcd service (string)
+     */
+    path?: string;
+}
+
 export interface ClusterRkeConfigServicesKubeApiAuditLog {
     /**
-     * Audit log configuration. (list maxitems: 1)
+     * Plugin configuration. (string) Ex:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     * configuration = <<EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     * burst: 35000
+     * qps: 6000
+     * EOF
      */
     configuration: outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration;
     /**
@@ -3303,7 +3441,19 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 
 export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
     /**
-     * Audit log configuration. (list maxitems: 1)
+     * Plugin configuration. (string) Ex:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     * configuration = <<EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     * burst: 35000
+     * qps: 6000
+     * EOF
      */
     configuration: string;
     /**
@@ -3603,6 +3753,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfig {
      * Default cluster role for project members (string)
      */
     defaultClusterRoleForProjectMembers: string;
+    defaultPodSecurityAdmissionConfigurationTemplateName: string;
     /**
      * Default pod security policy template ID (string)
      */
@@ -4157,7 +4308,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEt
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi {
-    admissionConfiguration?: {[key: string]: any};
+    admissionConfiguration?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration;
     alwaysPullImages?: boolean;
     auditLog?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog;
     eventRateLimit?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit;
@@ -4169,6 +4320,21 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
     secretsEncryptionConfig?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig;
     serviceClusterIpRange: string;
     serviceNodePortRange: string;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration {
+    apiVersion?: string;
+    kind?: string;
+    plugins: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin[];
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
+    configuration: string;
+    /**
+     * The cluster template name (string)
+     */
+    name: string;
+    path?: string;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog {
@@ -4284,6 +4450,39 @@ export interface ClusterV2AgentEnvVar {
     value: string;
 }
 
+export interface ClusterV2ClusterAgentDeploymentCustomization {
+    appendTolerations?: outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration[];
+    overrideAffinity?: string;
+    overrideResourceRequirements?: outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement[];
+}
+
+export interface ClusterV2ClusterAgentDeploymentCustomizationAppendToleration {
+    /**
+     * The taint effect. Default: `\"NoExecute\"` (string)
+     */
+    effect?: string;
+    /**
+     * The taint key (string)
+     */
+    key: string;
+    /**
+     * Machine selector label match expressions operator (string)
+     */
+    operator?: string;
+    seconds: number;
+    /**
+     * Rancher agent env var value (string)
+     */
+    value?: string;
+}
+
+export interface ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement {
+    cpuLimit?: string;
+    cpuRequest?: string;
+    memoryLimit?: string;
+    memoryRequest?: string;
+}
+
 export interface ClusterV2ClusterRegistrationToken {
     /**
      * Annotations for the Cluster V2 (map)
@@ -4339,6 +4538,39 @@ export interface ClusterV2ClusterRegistrationToken {
     windowsNodeCommand: string;
 }
 
+export interface ClusterV2FleetAgentDeploymentCustomization {
+    appendTolerations?: outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration[];
+    overrideAffinity?: string;
+    overrideResourceRequirements?: outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement[];
+}
+
+export interface ClusterV2FleetAgentDeploymentCustomizationAppendToleration {
+    /**
+     * The taint effect. Default: `\"NoExecute\"` (string)
+     */
+    effect?: string;
+    /**
+     * The taint key (string)
+     */
+    key: string;
+    /**
+     * Machine selector label match expressions operator (string)
+     */
+    operator?: string;
+    seconds: number;
+    /**
+     * Rancher agent env var value (string)
+     */
+    value?: string;
+}
+
+export interface ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement {
+    cpuLimit?: string;
+    cpuRequest?: string;
+    memoryLimit?: string;
+    memoryRequest?: string;
+}
+
 export interface ClusterV2LocalAuthEndpoint {
     /**
      * CA certs for the authorized cluster endpoint (string)
@@ -4385,6 +4617,7 @@ export interface ClusterV2RkeConfig {
      * Cluster V2 machine global config. Must be in YAML format (string)
      */
     machineGlobalConfig?: string;
+    machinePoolDefaults: outputs.ClusterV2RkeConfigMachinePoolDefault[];
     /**
      * Cluster V2 machine pools (list)
      */
@@ -4515,6 +4748,7 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool etcd role? (bool)
      */
     etcdRole?: boolean;
+    hostnameLengthLimit?: number;
     /**
      * Labels for the Cluster V2 (map)
      */
@@ -4571,6 +4805,10 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool worker role? (bool)
      */
     workerRole?: boolean;
+}
+
+export interface ClusterV2RkeConfigMachinePoolDefault {
+    hostnameLengthLimit?: number;
 }
 
 export interface ClusterV2RkeConfigMachinePoolMachineConfig {
@@ -4940,8 +5178,13 @@ export interface GetClusterAksConfigV2NodePool {
     availabilityZones?: string[];
     count?: number;
     enableAutoScaling?: boolean;
+    /**
+     * (Computed) Labels for Node Pool object (map)
+     */
+    labels: {[key: string]: any};
     maxCount?: number;
     maxPods?: number;
+    maxSurge?: string;
     minCount?: number;
     mode?: string;
     /**
@@ -4952,6 +5195,7 @@ export interface GetClusterAksConfigV2NodePool {
     osDiskSizeGb?: number;
     osDiskType?: string;
     osType?: string;
+    taints: string[];
     vmSize: string;
 }
 
@@ -5868,7 +6112,7 @@ export interface GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
 }
 
 export interface GetClusterRkeConfigServicesKubeApi {
-    admissionConfiguration?: {[key: string]: any};
+    admissionConfiguration?: outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfiguration;
     alwaysPullImages?: boolean;
     auditLog?: outputs.GetClusterRkeConfigServicesKubeApiAuditLog;
     eventRateLimit?: outputs.GetClusterRkeConfigServicesKubeApiEventRateLimit;
@@ -5880,6 +6124,21 @@ export interface GetClusterRkeConfigServicesKubeApi {
     secretsEncryptionConfig?: outputs.GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig;
     serviceClusterIpRange: string;
     serviceNodePortRange: string;
+}
+
+export interface GetClusterRkeConfigServicesKubeApiAdmissionConfiguration {
+    apiVersion?: string;
+    kind?: string;
+    plugins: outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin[];
+}
+
+export interface GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
+    configuration: string;
+    /**
+     * The name of the Cluster (string)
+     */
+    name: string;
+    path?: string;
 }
 
 export interface GetClusterRkeConfigServicesKubeApiAuditLog {
@@ -5989,6 +6248,7 @@ export interface GetClusterTemplateTemplateRevision {
 export interface GetClusterTemplateTemplateRevisionClusterConfig {
     clusterAuthEndpoint: outputs.GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint;
     defaultClusterRoleForProjectMembers: string;
+    defaultPodSecurityAdmissionConfigurationTemplateName: string;
     defaultPodSecurityPolicyTemplateId: string;
     desiredAgentImage: string;
     desiredAuthImage: string;
@@ -6510,7 +6770,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi {
-    admissionConfiguration?: {[key: string]: any};
+    admissionConfiguration?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration;
     alwaysPullImages?: boolean;
     auditLog?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog;
     eventRateLimit?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit;
@@ -6522,6 +6782,21 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
     secretsEncryptionConfig?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig;
     serviceClusterIpRange: string;
     serviceNodePortRange: string;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration {
+    apiVersion?: string;
+    kind?: string;
+    plugins: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin[];
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
+    configuration: string;
+    /**
+     * The cluster template name (string)
+     */
+    name: string;
+    path?: string;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog {
@@ -6646,6 +6921,7 @@ export interface GetClusterV2RkeConfig {
      */
     localAuthEndpoint?: outputs.GetClusterV2RkeConfigLocalAuthEndpoint;
     machineGlobalConfig?: string;
+    machinePoolDefaults: outputs.GetClusterV2RkeConfigMachinePoolDefault[];
     machinePools: outputs.GetClusterV2RkeConfigMachinePool[];
     machineSelectorConfigs: outputs.GetClusterV2RkeConfigMachineSelectorConfig[];
     registries?: outputs.GetClusterV2RkeConfigRegistries;
@@ -6698,6 +6974,7 @@ export interface GetClusterV2RkeConfigMachinePool {
     controlPlaneRole?: boolean;
     drainBeforeDelete?: boolean;
     etcdRole?: boolean;
+    hostnameLengthLimit?: number;
     labels: {[key: string]: any};
     machineConfig: outputs.GetClusterV2RkeConfigMachinePoolMachineConfig;
     machineLabels: {[key: string]: any};
@@ -6715,6 +6992,10 @@ export interface GetClusterV2RkeConfigMachinePool {
     unhealthyNodeTimeoutSeconds?: number;
     unhealthyRange?: string;
     workerRole?: boolean;
+}
+
+export interface GetClusterV2RkeConfigMachinePoolDefault {
+    hostnameLengthLimit?: number;
 }
 
 export interface GetClusterV2RkeConfigMachinePoolMachineConfig {

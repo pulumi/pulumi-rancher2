@@ -9,6 +9,7 @@ import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigEtcdSnapshotCreate;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigEtcdSnapshotRestore;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigLocalAuthEndpoint;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachinePool;
+import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachinePoolDefault;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachineSelectorConfig;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigRegistries;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigRotateCertificates;
@@ -34,6 +35,7 @@ public final class GetClusterV2RkeConfig {
     @Deprecated /* Use rancher2_cluster_v2.local_auth_endpoint instead */
     private @Nullable GetClusterV2RkeConfigLocalAuthEndpoint localAuthEndpoint;
     private @Nullable String machineGlobalConfig;
+    private List<GetClusterV2RkeConfigMachinePoolDefault> machinePoolDefaults;
     private List<GetClusterV2RkeConfigMachinePool> machinePools;
     private List<GetClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs;
     private @Nullable GetClusterV2RkeConfigRegistries registries;
@@ -68,6 +70,9 @@ public final class GetClusterV2RkeConfig {
     public Optional<String> machineGlobalConfig() {
         return Optional.ofNullable(this.machineGlobalConfig);
     }
+    public List<GetClusterV2RkeConfigMachinePoolDefault> machinePoolDefaults() {
+        return this.machinePoolDefaults;
+    }
     public List<GetClusterV2RkeConfigMachinePool> machinePools() {
         return this.machinePools;
     }
@@ -100,6 +105,7 @@ public final class GetClusterV2RkeConfig {
         private @Nullable GetClusterV2RkeConfigEtcdSnapshotRestore etcdSnapshotRestore;
         private @Nullable GetClusterV2RkeConfigLocalAuthEndpoint localAuthEndpoint;
         private @Nullable String machineGlobalConfig;
+        private List<GetClusterV2RkeConfigMachinePoolDefault> machinePoolDefaults;
         private List<GetClusterV2RkeConfigMachinePool> machinePools;
         private List<GetClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs;
         private @Nullable GetClusterV2RkeConfigRegistries registries;
@@ -115,6 +121,7 @@ public final class GetClusterV2RkeConfig {
     	      this.etcdSnapshotRestore = defaults.etcdSnapshotRestore;
     	      this.localAuthEndpoint = defaults.localAuthEndpoint;
     	      this.machineGlobalConfig = defaults.machineGlobalConfig;
+    	      this.machinePoolDefaults = defaults.machinePoolDefaults;
     	      this.machinePools = defaults.machinePools;
     	      this.machineSelectorConfigs = defaults.machineSelectorConfigs;
     	      this.registries = defaults.registries;
@@ -158,6 +165,14 @@ public final class GetClusterV2RkeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder machinePoolDefaults(List<GetClusterV2RkeConfigMachinePoolDefault> machinePoolDefaults) {
+            this.machinePoolDefaults = Objects.requireNonNull(machinePoolDefaults);
+            return this;
+        }
+        public Builder machinePoolDefaults(GetClusterV2RkeConfigMachinePoolDefault... machinePoolDefaults) {
+            return machinePoolDefaults(List.of(machinePoolDefaults));
+        }
+        @CustomType.Setter
         public Builder machinePools(List<GetClusterV2RkeConfigMachinePool> machinePools) {
             this.machinePools = Objects.requireNonNull(machinePools);
             return this;
@@ -197,6 +212,7 @@ public final class GetClusterV2RkeConfig {
             o.etcdSnapshotRestore = etcdSnapshotRestore;
             o.localAuthEndpoint = localAuthEndpoint;
             o.machineGlobalConfig = machineGlobalConfig;
+            o.machinePoolDefaults = machinePoolDefaults;
             o.machinePools = machinePools;
             o.machineSelectorConfigs = machineSelectorConfigs;
             o.registries = registries;

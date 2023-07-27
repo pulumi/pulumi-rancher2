@@ -6,6 +6,8 @@ package com.pulumi.rancher2;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.rancher2.inputs.ClusterV2AgentEnvVarArgs;
+import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs;
+import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationArgs;
 import com.pulumi.rancher2.inputs.ClusterV2LocalAuthEndpointArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
 import java.lang.Boolean;
@@ -68,6 +70,21 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional customization for cluster agent
+     * 
+     */
+    @Import(name="clusterAgentDeploymentCustomizations")
+    private @Nullable Output<List<ClusterV2ClusterAgentDeploymentCustomizationArgs>> clusterAgentDeploymentCustomizations;
+
+    /**
+     * @return Optional customization for cluster agent
+     * 
+     */
+    public Optional<Output<List<ClusterV2ClusterAgentDeploymentCustomizationArgs>>> clusterAgentDeploymentCustomizations() {
+        return Optional.ofNullable(this.clusterAgentDeploymentCustomizations);
+    }
+
+    /**
      * Cluster V2 default cluster role for project members (string)
      * 
      */
@@ -80,6 +97,21 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> defaultClusterRoleForProjectMembers() {
         return Optional.ofNullable(this.defaultClusterRoleForProjectMembers);
+    }
+
+    /**
+     * Cluster V2 default pod security admission configuration template name (string)
+     * 
+     */
+    @Import(name="defaultPodSecurityAdmissionConfigurationTemplateName")
+    private @Nullable Output<String> defaultPodSecurityAdmissionConfigurationTemplateName;
+
+    /**
+     * @return Cluster V2 default pod security admission configuration template name (string)
+     * 
+     */
+    public Optional<Output<String>> defaultPodSecurityAdmissionConfigurationTemplateName() {
+        return Optional.ofNullable(this.defaultPodSecurityAdmissionConfigurationTemplateName);
     }
 
     /**
@@ -110,6 +142,21 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableNetworkPolicy() {
         return Optional.ofNullable(this.enableNetworkPolicy);
+    }
+
+    /**
+     * Optional customization for fleet agent
+     * 
+     */
+    @Import(name="fleetAgentDeploymentCustomizations")
+    private @Nullable Output<List<ClusterV2FleetAgentDeploymentCustomizationArgs>> fleetAgentDeploymentCustomizations;
+
+    /**
+     * @return Optional customization for fleet agent
+     * 
+     */
+    public Optional<Output<List<ClusterV2FleetAgentDeploymentCustomizationArgs>>> fleetAgentDeploymentCustomizations() {
+        return Optional.ofNullable(this.fleetAgentDeploymentCustomizations);
     }
 
     /**
@@ -208,9 +255,12 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         this.agentEnvVars = $.agentEnvVars;
         this.annotations = $.annotations;
         this.cloudCredentialSecretName = $.cloudCredentialSecretName;
+        this.clusterAgentDeploymentCustomizations = $.clusterAgentDeploymentCustomizations;
         this.defaultClusterRoleForProjectMembers = $.defaultClusterRoleForProjectMembers;
+        this.defaultPodSecurityAdmissionConfigurationTemplateName = $.defaultPodSecurityAdmissionConfigurationTemplateName;
         this.defaultPodSecurityPolicyTemplateName = $.defaultPodSecurityPolicyTemplateName;
         this.enableNetworkPolicy = $.enableNetworkPolicy;
+        this.fleetAgentDeploymentCustomizations = $.fleetAgentDeploymentCustomizations;
         this.fleetNamespace = $.fleetNamespace;
         this.kubernetesVersion = $.kubernetesVersion;
         this.labels = $.labels;
@@ -311,6 +361,37 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterAgentDeploymentCustomizations(@Nullable Output<List<ClusterV2ClusterAgentDeploymentCustomizationArgs>> clusterAgentDeploymentCustomizations) {
+            $.clusterAgentDeploymentCustomizations = clusterAgentDeploymentCustomizations;
+            return this;
+        }
+
+        /**
+         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterAgentDeploymentCustomizations(List<ClusterV2ClusterAgentDeploymentCustomizationArgs> clusterAgentDeploymentCustomizations) {
+            return clusterAgentDeploymentCustomizations(Output.of(clusterAgentDeploymentCustomizations));
+        }
+
+        /**
+         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterAgentDeploymentCustomizations(ClusterV2ClusterAgentDeploymentCustomizationArgs... clusterAgentDeploymentCustomizations) {
+            return clusterAgentDeploymentCustomizations(List.of(clusterAgentDeploymentCustomizations));
+        }
+
+        /**
          * @param defaultClusterRoleForProjectMembers Cluster V2 default cluster role for project members (string)
          * 
          * @return builder
@@ -329,6 +410,27 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultClusterRoleForProjectMembers(String defaultClusterRoleForProjectMembers) {
             return defaultClusterRoleForProjectMembers(Output.of(defaultClusterRoleForProjectMembers));
+        }
+
+        /**
+         * @param defaultPodSecurityAdmissionConfigurationTemplateName Cluster V2 default pod security admission configuration template name (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultPodSecurityAdmissionConfigurationTemplateName(@Nullable Output<String> defaultPodSecurityAdmissionConfigurationTemplateName) {
+            $.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
+            return this;
+        }
+
+        /**
+         * @param defaultPodSecurityAdmissionConfigurationTemplateName Cluster V2 default pod security admission configuration template name (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultPodSecurityAdmissionConfigurationTemplateName(String defaultPodSecurityAdmissionConfigurationTemplateName) {
+            return defaultPodSecurityAdmissionConfigurationTemplateName(Output.of(defaultPodSecurityAdmissionConfigurationTemplateName));
         }
 
         /**
@@ -371,6 +473,37 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableNetworkPolicy(Boolean enableNetworkPolicy) {
             return enableNetworkPolicy(Output.of(enableNetworkPolicy));
+        }
+
+        /**
+         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fleetAgentDeploymentCustomizations(@Nullable Output<List<ClusterV2FleetAgentDeploymentCustomizationArgs>> fleetAgentDeploymentCustomizations) {
+            $.fleetAgentDeploymentCustomizations = fleetAgentDeploymentCustomizations;
+            return this;
+        }
+
+        /**
+         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fleetAgentDeploymentCustomizations(List<ClusterV2FleetAgentDeploymentCustomizationArgs> fleetAgentDeploymentCustomizations) {
+            return fleetAgentDeploymentCustomizations(Output.of(fleetAgentDeploymentCustomizations));
+        }
+
+        /**
+         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fleetAgentDeploymentCustomizations(ClusterV2FleetAgentDeploymentCustomizationArgs... fleetAgentDeploymentCustomizations) {
+            return fleetAgentDeploymentCustomizations(List.of(fleetAgentDeploymentCustomizations));
         }
 
         /**

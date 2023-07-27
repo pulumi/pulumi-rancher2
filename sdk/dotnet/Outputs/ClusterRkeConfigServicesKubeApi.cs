@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Admission configuration (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? AdmissionConfiguration;
+        public readonly Outputs.ClusterRkeConfigServicesKubeApiAdmissionConfiguration? AdmissionConfiguration;
         /// <summary>
         /// Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
         /// </summary>
@@ -64,7 +64,7 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private ClusterRkeConfigServicesKubeApi(
-            ImmutableDictionary<string, object>? admissionConfiguration,
+            Outputs.ClusterRkeConfigServicesKubeApiAdmissionConfiguration? admissionConfiguration,
 
             bool? alwaysPullImages,
 

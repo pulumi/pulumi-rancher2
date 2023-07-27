@@ -11,7 +11,9 @@ import com.pulumi.rancher2.ClusterV2Args;
 import com.pulumi.rancher2.Utilities;
 import com.pulumi.rancher2.inputs.ClusterV2State;
 import com.pulumi.rancher2.outputs.ClusterV2AgentEnvVar;
+import com.pulumi.rancher2.outputs.ClusterV2ClusterAgentDeploymentCustomization;
 import com.pulumi.rancher2.outputs.ClusterV2ClusterRegistrationToken;
+import com.pulumi.rancher2.outputs.ClusterV2FleetAgentDeploymentCustomization;
 import com.pulumi.rancher2.outputs.ClusterV2LocalAuthEndpoint;
 import com.pulumi.rancher2.outputs.ClusterV2RkeConfig;
 import java.lang.Boolean;
@@ -115,6 +117,20 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cloudCredentialSecretName);
     }
     /**
+     * Optional customization for cluster agent
+     * 
+     */
+    @Export(name="clusterAgentDeploymentCustomizations", refs={List.class,ClusterV2ClusterAgentDeploymentCustomization.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ClusterV2ClusterAgentDeploymentCustomization>> clusterAgentDeploymentCustomizations;
+
+    /**
+     * @return Optional customization for cluster agent
+     * 
+     */
+    public Output<Optional<List<ClusterV2ClusterAgentDeploymentCustomization>>> clusterAgentDeploymentCustomizations() {
+        return Codegen.optional(this.clusterAgentDeploymentCustomizations);
+    }
+    /**
      * (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
      * 
      */
@@ -157,6 +173,20 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultClusterRoleForProjectMembers);
     }
     /**
+     * Cluster V2 default pod security admission configuration template name (string)
+     * 
+     */
+    @Export(name="defaultPodSecurityAdmissionConfigurationTemplateName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> defaultPodSecurityAdmissionConfigurationTemplateName;
+
+    /**
+     * @return Cluster V2 default pod security admission configuration template name (string)
+     * 
+     */
+    public Output<Optional<String>> defaultPodSecurityAdmissionConfigurationTemplateName() {
+        return Codegen.optional(this.defaultPodSecurityAdmissionConfigurationTemplateName);
+    }
+    /**
      * Cluster V2 default pod security policy template name (string)
      * 
      */
@@ -183,6 +213,20 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> enableNetworkPolicy() {
         return this.enableNetworkPolicy;
+    }
+    /**
+     * Optional customization for fleet agent
+     * 
+     */
+    @Export(name="fleetAgentDeploymentCustomizations", refs={List.class,ClusterV2FleetAgentDeploymentCustomization.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ClusterV2FleetAgentDeploymentCustomization>> fleetAgentDeploymentCustomizations;
+
+    /**
+     * @return Optional customization for fleet agent
+     * 
+     */
+    public Output<Optional<List<ClusterV2FleetAgentDeploymentCustomization>>> fleetAgentDeploymentCustomizations() {
+        return Codegen.optional(this.fleetAgentDeploymentCustomizations);
     }
     /**
      * The fleet namespace of the Cluster v2. Default: `\&#34;fleet-default\&#34;` (string)

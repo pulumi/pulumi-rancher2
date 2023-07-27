@@ -7,8 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -64,6 +66,21 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Labels for the Cluster (map)
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,Object>> labels;
+
+    /**
+     * @return Labels for the Cluster (map)
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
      * The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
      * 
      */
@@ -91,6 +108,21 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
      */
     public Optional<Output<Integer>> maxPods() {
         return Optional.ofNullable(this.maxPods);
+    }
+
+    /**
+     * Monitoring deployment rolling update max surge. Default: `1` (int)
+     * 
+     */
+    @Import(name="maxSurge")
+    private @Nullable Output<String> maxSurge;
+
+    /**
+     * @return Monitoring deployment rolling update max surge. Default: `1` (int)
+     * 
+     */
+    public Optional<Output<String>> maxSurge() {
+        return Optional.ofNullable(this.maxSurge);
     }
 
     /**
@@ -199,6 +231,21 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
+     * The AKS node pool taints (list)
+     * 
+     */
+    @Import(name="taints")
+    private @Nullable Output<List<String>> taints;
+
+    /**
+     * @return The AKS node pool taints (list)
+     * 
+     */
+    public Optional<Output<List<String>>> taints() {
+        return Optional.ofNullable(this.taints);
+    }
+
+    /**
      * The AKS node pool orchestrator version (string)
      * 
      */
@@ -219,8 +266,10 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         this.availabilityZones = $.availabilityZones;
         this.count = $.count;
         this.enableAutoScaling = $.enableAutoScaling;
+        this.labels = $.labels;
         this.maxCount = $.maxCount;
         this.maxPods = $.maxPods;
+        this.maxSurge = $.maxSurge;
         this.minCount = $.minCount;
         this.mode = $.mode;
         this.name = $.name;
@@ -228,6 +277,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         this.osDiskSizeGb = $.osDiskSizeGb;
         this.osDiskType = $.osDiskType;
         this.osType = $.osType;
+        this.taints = $.taints;
         this.vmSize = $.vmSize;
     }
 
@@ -323,6 +373,27 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param labels Labels for the Cluster (map)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels for the Cluster (map)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,Object> labels) {
+            return labels(Output.of(labels));
+        }
+
+        /**
          * @param maxCount The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
          * 
          * @return builder
@@ -362,6 +433,27 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
          */
         public Builder maxPods(Integer maxPods) {
             return maxPods(Output.of(maxPods));
+        }
+
+        /**
+         * @param maxSurge Monitoring deployment rolling update max surge. Default: `1` (int)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSurge(@Nullable Output<String> maxSurge) {
+            $.maxSurge = maxSurge;
+            return this;
+        }
+
+        /**
+         * @param maxSurge Monitoring deployment rolling update max surge. Default: `1` (int)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSurge(String maxSurge) {
+            return maxSurge(Output.of(maxSurge));
         }
 
         /**
@@ -509,6 +601,37 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
          */
         public Builder osType(String osType) {
             return osType(Output.of(osType));
+        }
+
+        /**
+         * @param taints The AKS node pool taints (list)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taints(@Nullable Output<List<String>> taints) {
+            $.taints = taints;
+            return this;
+        }
+
+        /**
+         * @param taints The AKS node pool taints (list)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taints(List<String> taints) {
+            return taints(Output.of(taints));
+        }
+
+        /**
+         * @param taints The AKS node pool taints (list)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taints(String... taints) {
+            return taints(List.of(taints));
         }
 
         /**

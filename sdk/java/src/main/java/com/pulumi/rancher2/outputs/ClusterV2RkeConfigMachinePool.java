@@ -44,6 +44,7 @@ public final class ClusterV2RkeConfigMachinePool {
      * 
      */
     private @Nullable Boolean etcdRole;
+    private @Nullable Integer hostnameLengthLimit;
     /**
      * @return Labels for the Cluster V2 (map)
      * 
@@ -150,6 +151,9 @@ public final class ClusterV2RkeConfigMachinePool {
      */
     public Optional<Boolean> etcdRole() {
         return Optional.ofNullable(this.etcdRole);
+    }
+    public Optional<Integer> hostnameLengthLimit() {
+        return Optional.ofNullable(this.hostnameLengthLimit);
     }
     /**
      * @return Labels for the Cluster V2 (map)
@@ -264,6 +268,7 @@ public final class ClusterV2RkeConfigMachinePool {
         private @Nullable Boolean controlPlaneRole;
         private @Nullable Boolean drainBeforeDelete;
         private @Nullable Boolean etcdRole;
+        private @Nullable Integer hostnameLengthLimit;
         private @Nullable Map<String,Object> labels;
         private ClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
         private @Nullable Map<String,Object> machineLabels;
@@ -286,6 +291,7 @@ public final class ClusterV2RkeConfigMachinePool {
     	      this.controlPlaneRole = defaults.controlPlaneRole;
     	      this.drainBeforeDelete = defaults.drainBeforeDelete;
     	      this.etcdRole = defaults.etcdRole;
+    	      this.hostnameLengthLimit = defaults.hostnameLengthLimit;
     	      this.labels = defaults.labels;
     	      this.machineConfig = defaults.machineConfig;
     	      this.machineLabels = defaults.machineLabels;
@@ -325,6 +331,11 @@ public final class ClusterV2RkeConfigMachinePool {
         @CustomType.Setter
         public Builder etcdRole(@Nullable Boolean etcdRole) {
             this.etcdRole = etcdRole;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostnameLengthLimit(@Nullable Integer hostnameLengthLimit) {
+            this.hostnameLengthLimit = hostnameLengthLimit;
             return this;
         }
         @CustomType.Setter
@@ -407,6 +418,7 @@ public final class ClusterV2RkeConfigMachinePool {
             o.controlPlaneRole = controlPlaneRole;
             o.drainBeforeDelete = drainBeforeDelete;
             o.etcdRole = etcdRole;
+            o.hostnameLengthLimit = hostnameLengthLimit;
             o.labels = labels;
             o.machineConfig = machineConfig;
             o.machineLabels = machineLabels;

@@ -26,6 +26,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? EnableAutoScaling;
         /// <summary>
+        /// Labels for the Cluster (map)
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Labels;
+        /// <summary>
         /// The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
         /// </summary>
         public readonly int? MaxCount;
@@ -33,6 +37,10 @@ namespace Pulumi.Rancher2.Outputs
         /// Maximum number of pods that can run on a node. Default `110` (int)
         /// </summary>
         public readonly int? MaxPods;
+        /// <summary>
+        /// Monitoring deployment rolling update max surge. Default: `1` (int)
+        /// </summary>
+        public readonly string? MaxSurge;
         /// <summary>
         /// The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
         /// </summary>
@@ -62,6 +70,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? OsType;
         /// <summary>
+        /// The AKS node pool taints (list)
+        /// </summary>
+        public readonly ImmutableArray<string> Taints;
+        /// <summary>
         /// The AKS node pool orchestrator version (string)
         /// </summary>
         public readonly string? VmSize;
@@ -74,9 +86,13 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? enableAutoScaling,
 
+            ImmutableDictionary<string, object>? labels,
+
             int? maxCount,
 
             int? maxPods,
+
+            string? maxSurge,
 
             int? minCount,
 
@@ -92,13 +108,17 @@ namespace Pulumi.Rancher2.Outputs
 
             string? osType,
 
+            ImmutableArray<string> taints,
+
             string? vmSize)
         {
             AvailabilityZones = availabilityZones;
             Count = count;
             EnableAutoScaling = enableAutoScaling;
+            Labels = labels;
             MaxCount = maxCount;
             MaxPods = maxPods;
+            MaxSurge = maxSurge;
             MinCount = minCount;
             Mode = mode;
             Name = name;
@@ -106,6 +126,7 @@ namespace Pulumi.Rancher2.Outputs
             OsDiskSizeGb = osDiskSizeGb;
             OsDiskType = osDiskType;
             OsType = osType;
+            Taints = taints;
             VmSize = vmSize;
         }
     }

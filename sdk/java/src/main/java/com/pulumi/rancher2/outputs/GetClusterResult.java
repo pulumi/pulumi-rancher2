@@ -88,6 +88,7 @@ public final class GetClusterResult {
      * 
      */
     private String clusterTemplateRevisionId;
+    private String defaultPodSecurityAdmissionConfigurationTemplateName;
     /**
      * @return (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
      * 
@@ -271,6 +272,9 @@ public final class GetClusterResult {
     public String clusterTemplateRevisionId() {
         return this.clusterTemplateRevisionId;
     }
+    public String defaultPodSecurityAdmissionConfigurationTemplateName() {
+        return this.defaultPodSecurityAdmissionConfigurationTemplateName;
+    }
     /**
      * @return (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
      * 
@@ -432,6 +436,7 @@ public final class GetClusterResult {
         private String clusterTemplateId;
         private List<GetClusterClusterTemplateQuestion> clusterTemplateQuestions;
         private String clusterTemplateRevisionId;
+        private String defaultPodSecurityAdmissionConfigurationTemplateName;
         private String defaultPodSecurityPolicyTemplateId;
         private String defaultProjectId;
         private String description;
@@ -468,6 +473,7 @@ public final class GetClusterResult {
     	      this.clusterTemplateId = defaults.clusterTemplateId;
     	      this.clusterTemplateQuestions = defaults.clusterTemplateQuestions;
     	      this.clusterTemplateRevisionId = defaults.clusterTemplateRevisionId;
+    	      this.defaultPodSecurityAdmissionConfigurationTemplateName = defaults.defaultPodSecurityAdmissionConfigurationTemplateName;
     	      this.defaultPodSecurityPolicyTemplateId = defaults.defaultPodSecurityPolicyTemplateId;
     	      this.defaultProjectId = defaults.defaultProjectId;
     	      this.description = defaults.description;
@@ -555,6 +561,11 @@ public final class GetClusterResult {
         @CustomType.Setter
         public Builder clusterTemplateRevisionId(String clusterTemplateRevisionId) {
             this.clusterTemplateRevisionId = Objects.requireNonNull(clusterTemplateRevisionId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder defaultPodSecurityAdmissionConfigurationTemplateName(String defaultPodSecurityAdmissionConfigurationTemplateName) {
+            this.defaultPodSecurityAdmissionConfigurationTemplateName = Objects.requireNonNull(defaultPodSecurityAdmissionConfigurationTemplateName);
             return this;
         }
         @CustomType.Setter
@@ -676,6 +687,7 @@ public final class GetClusterResult {
             o.clusterTemplateId = clusterTemplateId;
             o.clusterTemplateQuestions = clusterTemplateQuestions;
             o.clusterTemplateRevisionId = clusterTemplateRevisionId;
+            o.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             o.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
             o.defaultProjectId = defaultProjectId;
             o.description = description;

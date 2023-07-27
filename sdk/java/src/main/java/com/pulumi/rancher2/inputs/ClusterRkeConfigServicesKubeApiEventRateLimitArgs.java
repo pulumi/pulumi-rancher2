@@ -17,14 +17,74 @@ public final class ClusterRkeConfigServicesKubeApiEventRateLimitArgs extends com
     public static final ClusterRkeConfigServicesKubeApiEventRateLimitArgs Empty = new ClusterRkeConfigServicesKubeApiEventRateLimitArgs();
 
     /**
-     * Audit log configuration. (list maxitems: 1)
+     * Plugin configuration. (string) Ex:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * configuration = &lt;&lt;EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     *   burst: 35000
+     *   qps: 6000
+     *   EOF
      * 
      */
     @Import(name="configuration")
     private @Nullable Output<String> configuration;
 
     /**
-     * @return Audit log configuration. (list maxitems: 1)
+     * @return Plugin configuration. (string) Ex:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * configuration = &lt;&lt;EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     *   burst: 35000
+     *   qps: 6000
+     *   EOF
      * 
      */
     public Optional<Output<String>> configuration() {
@@ -72,7 +132,37 @@ public final class ClusterRkeConfigServicesKubeApiEventRateLimitArgs extends com
         }
 
         /**
-         * @param configuration Audit log configuration. (list maxitems: 1)
+         * @param configuration Plugin configuration. (string) Ex:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * configuration = &lt;&lt;EOF
+         * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+         * kind: Configuration
+         * limits:
+         * - type: Server
+         *   burst: 35000
+         *   qps: 6000
+         *   EOF
          * 
          * @return builder
          * 
@@ -83,7 +173,37 @@ public final class ClusterRkeConfigServicesKubeApiEventRateLimitArgs extends com
         }
 
         /**
-         * @param configuration Audit log configuration. (list maxitems: 1)
+         * @param configuration Plugin configuration. (string) Ex:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * configuration = &lt;&lt;EOF
+         * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+         * kind: Configuration
+         * limits:
+         * - type: Server
+         *   burst: 35000
+         *   qps: 6000
+         *   EOF
          * 
          * @return builder
          * 

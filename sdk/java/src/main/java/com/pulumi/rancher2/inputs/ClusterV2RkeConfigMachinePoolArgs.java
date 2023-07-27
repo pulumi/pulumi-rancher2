@@ -98,6 +98,13 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         return Optional.ofNullable(this.etcdRole);
     }
 
+    @Import(name="hostnameLengthLimit")
+    private @Nullable Output<Integer> hostnameLengthLimit;
+
+    public Optional<Output<Integer>> hostnameLengthLimit() {
+        return Optional.ofNullable(this.hostnameLengthLimit);
+    }
+
     /**
      * Labels for the Cluster V2 (map)
      * 
@@ -316,6 +323,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         this.controlPlaneRole = $.controlPlaneRole;
         this.drainBeforeDelete = $.drainBeforeDelete;
         this.etcdRole = $.etcdRole;
+        this.hostnameLengthLimit = $.hostnameLengthLimit;
         this.labels = $.labels;
         this.machineConfig = $.machineConfig;
         this.machineLabels = $.machineLabels;
@@ -453,6 +461,15 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
          */
         public Builder etcdRole(Boolean etcdRole) {
             return etcdRole(Output.of(etcdRole));
+        }
+
+        public Builder hostnameLengthLimit(@Nullable Output<Integer> hostnameLengthLimit) {
+            $.hostnameLengthLimit = hostnameLengthLimit;
+            return this;
+        }
+
+        public Builder hostnameLengthLimit(Integer hostnameLengthLimit) {
+            return hostnameLengthLimit(Output.of(hostnameLengthLimit));
         }
 
         /**

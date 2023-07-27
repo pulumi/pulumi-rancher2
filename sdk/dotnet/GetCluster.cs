@@ -71,6 +71,9 @@ namespace Pulumi.Rancher2
 
     public sealed class GetClusterArgs : global::Pulumi.InvokeArgs
     {
+        [Input("defaultPodSecurityAdmissionConfigurationTemplateName")]
+        public string? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
+
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
@@ -85,6 +88,9 @@ namespace Pulumi.Rancher2
 
     public sealed class GetClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("defaultPodSecurityAdmissionConfigurationTemplateName")]
+        public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
+
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
@@ -149,6 +155,7 @@ namespace Pulumi.Rancher2
         /// (Computed) Cluster template revision ID (string)
         /// </summary>
         public readonly string ClusterTemplateRevisionId;
+        public readonly string DefaultPodSecurityAdmissionConfigurationTemplateName;
         /// <summary>
         /// (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
         /// </summary>
@@ -254,6 +261,8 @@ namespace Pulumi.Rancher2
 
             string clusterTemplateRevisionId,
 
+            string defaultPodSecurityAdmissionConfigurationTemplateName,
+
             string defaultPodSecurityPolicyTemplateId,
 
             string defaultProjectId,
@@ -308,6 +317,7 @@ namespace Pulumi.Rancher2
             ClusterTemplateId = clusterTemplateId;
             ClusterTemplateQuestions = clusterTemplateQuestions;
             ClusterTemplateRevisionId = clusterTemplateRevisionId;
+            DefaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             DefaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
             DefaultProjectId = defaultProjectId;
             Description = description;

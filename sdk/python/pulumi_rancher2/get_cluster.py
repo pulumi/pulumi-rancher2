@@ -22,7 +22,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, agent_env_vars=None, aks_config=None, aks_config_v2=None, annotations=None, ca_cert=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, eks_config_v2=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, fleet_workspace_name=None, gke_config=None, gke_config_v2=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke2_config=None, rke_config=None, system_project_id=None):
+    def __init__(__self__, agent_env_vars=None, aks_config=None, aks_config_v2=None, annotations=None, ca_cert=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_admission_configuration_template_name=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, eks_config_v2=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, fleet_workspace_name=None, gke_config=None, gke_config_v2=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke2_config=None, rke_config=None, system_project_id=None):
         if agent_env_vars and not isinstance(agent_env_vars, list):
             raise TypeError("Expected argument 'agent_env_vars' to be a list")
         pulumi.set(__self__, "agent_env_vars", agent_env_vars)
@@ -59,6 +59,9 @@ class GetClusterResult:
         if cluster_template_revision_id and not isinstance(cluster_template_revision_id, str):
             raise TypeError("Expected argument 'cluster_template_revision_id' to be a str")
         pulumi.set(__self__, "cluster_template_revision_id", cluster_template_revision_id)
+        if default_pod_security_admission_configuration_template_name and not isinstance(default_pod_security_admission_configuration_template_name, str):
+            raise TypeError("Expected argument 'default_pod_security_admission_configuration_template_name' to be a str")
+        pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
         if default_pod_security_policy_template_id and not isinstance(default_pod_security_policy_template_id, str):
             raise TypeError("Expected argument 'default_pod_security_policy_template_id' to be a str")
         pulumi.set(__self__, "default_pod_security_policy_template_id", default_pod_security_policy_template_id)
@@ -218,6 +221,11 @@ class GetClusterResult:
         (Computed) Cluster template revision ID (string)
         """
         return pulumi.get(self, "cluster_template_revision_id")
+
+    @property
+    @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
+    def default_pod_security_admission_configuration_template_name(self) -> str:
+        return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
 
     @property
     @pulumi.getter(name="defaultPodSecurityPolicyTemplateId")
@@ -400,6 +408,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             cluster_template_id=self.cluster_template_id,
             cluster_template_questions=self.cluster_template_questions,
             cluster_template_revision_id=self.cluster_template_revision_id,
+            default_pod_security_admission_configuration_template_name=self.default_pod_security_admission_configuration_template_name,
             default_pod_security_policy_template_id=self.default_pod_security_policy_template_id,
             default_project_id=self.default_project_id,
             description=self.description,
@@ -423,7 +432,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             system_project_id=self.system_project_id)
 
 
-def get_cluster(name: Optional[str] = None,
+def get_cluster(default_pod_security_admission_configuration_template_name: Optional[str] = None,
+                name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Use this data source to retrieve information about a Rancher v2 cluster.
@@ -441,6 +451,7 @@ def get_cluster(name: Optional[str] = None,
     :param str name: The name of the Cluster (string)
     """
     __args__ = dict()
+    __args__['defaultPodSecurityAdmissionConfigurationTemplateName'] = default_pod_security_admission_configuration_template_name
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('rancher2:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
@@ -458,6 +469,7 @@ def get_cluster(name: Optional[str] = None,
         cluster_template_id=__ret__.cluster_template_id,
         cluster_template_questions=__ret__.cluster_template_questions,
         cluster_template_revision_id=__ret__.cluster_template_revision_id,
+        default_pod_security_admission_configuration_template_name=__ret__.default_pod_security_admission_configuration_template_name,
         default_pod_security_policy_template_id=__ret__.default_pod_security_policy_template_id,
         default_project_id=__ret__.default_project_id,
         description=__ret__.description,
@@ -482,7 +494,8 @@ def get_cluster(name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_cluster)
-def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
+def get_cluster_output(default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[Optional[str]]] = None,
+                       name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
     """
     Use this data source to retrieve information about a Rancher v2 cluster.

@@ -48,6 +48,7 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getCluster.
 type LookupClusterArgs struct {
+	DefaultPodSecurityAdmissionConfigurationTemplateName *string `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
 	// The name of the Cluster (string)
 	Name string `pulumi:"name"`
 }
@@ -77,7 +78,8 @@ type LookupClusterResult struct {
 	// (Computed) Cluster template questions (list)
 	ClusterTemplateQuestions []GetClusterClusterTemplateQuestion `pulumi:"clusterTemplateQuestions"`
 	// (Computed) Cluster template revision ID (string)
-	ClusterTemplateRevisionId string `pulumi:"clusterTemplateRevisionId"`
+	ClusterTemplateRevisionId                            string `pulumi:"clusterTemplateRevisionId"`
+	DefaultPodSecurityAdmissionConfigurationTemplateName string `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
 	// (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
 	DefaultPodSecurityPolicyTemplateId string `pulumi:"defaultPodSecurityPolicyTemplateId"`
 	// (Computed) Default project ID for the cluster (string)
@@ -135,6 +137,7 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 
 // A collection of arguments for invoking getCluster.
 type LookupClusterOutputArgs struct {
+	DefaultPodSecurityAdmissionConfigurationTemplateName pulumi.StringPtrInput `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
 	// The name of the Cluster (string)
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -216,6 +219,10 @@ func (o LookupClusterResultOutput) ClusterTemplateQuestions() GetClusterClusterT
 // (Computed) Cluster template revision ID (string)
 func (o LookupClusterResultOutput) ClusterTemplateRevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterTemplateRevisionId }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) DefaultPodSecurityAdmissionConfigurationTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DefaultPodSecurityAdmissionConfigurationTemplateName }).(pulumi.StringOutput)
 }
 
 // (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.rancher2.outputs.ClusterRkeConfigServicesKubeApiAdmissionConfiguration;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigServicesKubeApiAuditLog;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigServicesKubeApiEventRateLimit;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig;
@@ -22,7 +23,7 @@ public final class ClusterRkeConfigServicesKubeApi {
      * @return Admission configuration (map)
      * 
      */
-    private @Nullable Map<String,Object> admissionConfiguration;
+    private @Nullable ClusterRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration;
     /**
      * @return Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
      * 
@@ -84,8 +85,8 @@ public final class ClusterRkeConfigServicesKubeApi {
      * @return Admission configuration (map)
      * 
      */
-    public Map<String,Object> admissionConfiguration() {
-        return this.admissionConfiguration == null ? Map.of() : this.admissionConfiguration;
+    public Optional<ClusterRkeConfigServicesKubeApiAdmissionConfiguration> admissionConfiguration() {
+        return Optional.ofNullable(this.admissionConfiguration);
     }
     /**
      * @return Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
@@ -174,7 +175,7 @@ public final class ClusterRkeConfigServicesKubeApi {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> admissionConfiguration;
+        private @Nullable ClusterRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration;
         private @Nullable Boolean alwaysPullImages;
         private @Nullable ClusterRkeConfigServicesKubeApiAuditLog auditLog;
         private @Nullable ClusterRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
@@ -204,7 +205,7 @@ public final class ClusterRkeConfigServicesKubeApi {
         }
 
         @CustomType.Setter
-        public Builder admissionConfiguration(@Nullable Map<String,Object> admissionConfiguration) {
+        public Builder admissionConfiguration(@Nullable ClusterRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration) {
             this.admissionConfiguration = admissionConfiguration;
             return this;
         }
