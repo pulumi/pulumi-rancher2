@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -218,6 +219,7 @@ func NewPodSecurityPolicyTemplate(ctx *pulumi.Context,
 		args = &PodSecurityPolicyTemplateArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PodSecurityPolicyTemplate
 	err := ctx.RegisterResource("rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate", name, args, &resource, opts...)
 	if err != nil {

@@ -65,10 +65,10 @@ class NodeTemplateArgs:
         :param pulumi.Input['NodeTemplateHetznerConfigArgs'] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
                
-               **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+               **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         :param pulumi.Input['NodeTemplateLinodeConfigArgs'] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
-        :param pulumi.Input[Sequence[pulumi.Input['NodeTemplateNodeTaintArgs']]] node_taints: Node taints. For Rancher v2.3.3 or above (List)
+        :param pulumi.Input[Sequence[pulumi.Input['NodeTemplateNodeTaintArgs']]] node_taints: Node taints. For Rancher v2.3.3 and above (List)
         :param pulumi.Input['NodeTemplateOpennebulaConfigArgs'] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
         :param pulumi.Input['NodeTemplateOpenstackConfigArgs'] openstack_config: Openstack config for the Node Template (list maxitems:1)
         :param pulumi.Input['NodeTemplateOutscaleConfigArgs'] outscale_config: Outscale config for the Node Template (list maxitems:1)
@@ -352,7 +352,7 @@ class NodeTemplateArgs:
         """
         Labels for Node Template object (map)
 
-        **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+        **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         """
         return pulumi.get(self, "labels")
 
@@ -388,7 +388,7 @@ class NodeTemplateArgs:
     @pulumi.getter(name="nodeTaints")
     def node_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateNodeTaintArgs']]]]:
         """
-        Node taints. For Rancher v2.3.3 or above (List)
+        Node taints. For Rancher v2.3.3 and above (List)
         """
         return pulumi.get(self, "node_taints")
 
@@ -511,10 +511,10 @@ class _NodeTemplateState:
         :param pulumi.Input['NodeTemplateHetznerConfigArgs'] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
                
-               **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+               **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         :param pulumi.Input['NodeTemplateLinodeConfigArgs'] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
-        :param pulumi.Input[Sequence[pulumi.Input['NodeTemplateNodeTaintArgs']]] node_taints: Node taints. For Rancher v2.3.3 or above (List)
+        :param pulumi.Input[Sequence[pulumi.Input['NodeTemplateNodeTaintArgs']]] node_taints: Node taints. For Rancher v2.3.3 and above (List)
         :param pulumi.Input['NodeTemplateOpennebulaConfigArgs'] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
         :param pulumi.Input['NodeTemplateOpenstackConfigArgs'] openstack_config: Openstack config for the Node Template (list maxitems:1)
         :param pulumi.Input['NodeTemplateOutscaleConfigArgs'] outscale_config: Outscale config for the Node Template (list maxitems:1)
@@ -812,7 +812,7 @@ class _NodeTemplateState:
         """
         Labels for Node Template object (map)
 
-        **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+        **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         """
         return pulumi.get(self, "labels")
 
@@ -848,7 +848,7 @@ class _NodeTemplateState:
     @pulumi.getter(name="nodeTaints")
     def node_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateNodeTaintArgs']]]]:
         """
-        Node taints. For Rancher v2.3.3 or above (List)
+        Node taints. For Rancher v2.3.3 and above (List)
         """
         return pulumi.get(self, "node_taints")
 
@@ -955,7 +955,7 @@ class NodeTemplate(pulumi.CustomResource):
 
         amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, outscale, hetzner and vsphere drivers are supported for node templates.
 
-        **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
+        **Note:** If you are upgrading to Rancher v2.3.3, please take a look to final section
 
         ## Example Usage
 
@@ -1104,10 +1104,10 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodeTemplateHetznerConfigArgs']] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
                
-               **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+               **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]] node_taints: Node taints. For Rancher v2.3.3 or above (List)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]] node_taints: Node taints. For Rancher v2.3.3 and above (List)
         :param pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']] openstack_config: Openstack config for the Node Template (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['NodeTemplateOutscaleConfigArgs']] outscale_config: Outscale config for the Node Template (list maxitems:1)
@@ -1125,7 +1125,7 @@ class NodeTemplate(pulumi.CustomResource):
 
         amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, outscale, hetzner and vsphere drivers are supported for node templates.
 
-        **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
+        **Note:** If you are upgrading to Rancher v2.3.3, please take a look to final section
 
         ## Example Usage
 
@@ -1399,10 +1399,10 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodeTemplateHetznerConfigArgs']] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
                
-               **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+               **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]] node_taints: Node taints. For Rancher v2.3.3 or above (List)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]] node_taints: Node taints. For Rancher v2.3.3 and above (List)
         :param pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']] openstack_config: Openstack config for the Node Template (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['NodeTemplateOutscaleConfigArgs']] outscale_config: Outscale config for the Node Template (list maxitems:1)
@@ -1601,7 +1601,7 @@ class NodeTemplate(pulumi.CustomResource):
         """
         Labels for Node Template object (map)
 
-        **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+        **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         """
         return pulumi.get(self, "labels")
 
@@ -1625,7 +1625,7 @@ class NodeTemplate(pulumi.CustomResource):
     @pulumi.getter(name="nodeTaints")
     def node_taints(self) -> pulumi.Output[Optional[Sequence['outputs.NodeTemplateNodeTaint']]]:
         """
-        Node taints. For Rancher v2.3.3 or above (List)
+        Node taints. For Rancher v2.3.3 and above (List)
         """
         return pulumi.get(self, "node_taints")
 

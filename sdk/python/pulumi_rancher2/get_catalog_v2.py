@@ -235,22 +235,22 @@ def get_catalog_v2(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getCatalogV2:getCatalogV2', __args__, opts=opts, typ=GetCatalogV2Result).value
 
     return AwaitableGetCatalogV2Result(
-        annotations=__ret__.annotations,
-        ca_bundle=__ret__.ca_bundle,
-        cluster_id=__ret__.cluster_id,
-        enabled=__ret__.enabled,
-        git_branch=__ret__.git_branch,
-        git_repo=__ret__.git_repo,
-        id=__ret__.id,
-        insecure=__ret__.insecure,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        resource_version=__ret__.resource_version,
-        secret_name=__ret__.secret_name,
-        secret_namespace=__ret__.secret_namespace,
-        service_account=__ret__.service_account,
-        service_account_namespace=__ret__.service_account_namespace,
-        url=__ret__.url)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        ca_bundle=pulumi.get(__ret__, 'ca_bundle'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        git_branch=pulumi.get(__ret__, 'git_branch'),
+        git_repo=pulumi.get(__ret__, 'git_repo'),
+        id=pulumi.get(__ret__, 'id'),
+        insecure=pulumi.get(__ret__, 'insecure'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        resource_version=pulumi.get(__ret__, 'resource_version'),
+        secret_name=pulumi.get(__ret__, 'secret_name'),
+        secret_namespace=pulumi.get(__ret__, 'secret_namespace'),
+        service_account=pulumi.get(__ret__, 'service_account'),
+        service_account_namespace=pulumi.get(__ret__, 'service_account_namespace'),
+        url=pulumi.get(__ret__, 'url'))
 
 
 @_utilities.lift_output_func(get_catalog_v2)

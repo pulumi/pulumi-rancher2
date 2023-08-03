@@ -71,14 +71,14 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional customization for cluster agent
+     * Optional customization for cluster agent (list)
      * 
      */
     @Import(name="clusterAgentDeploymentCustomizations")
     private @Nullable Output<List<ClusterV2ClusterAgentDeploymentCustomizationArgs>> clusterAgentDeploymentCustomizations;
 
     /**
-     * @return Optional customization for cluster agent
+     * @return Optional customization for cluster agent (list)
      * 
      */
     public Optional<Output<List<ClusterV2ClusterAgentDeploymentCustomizationArgs>>> clusterAgentDeploymentCustomizations() {
@@ -176,14 +176,14 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional customization for fleet agent
+     * Optional customization for fleet agent (list)
      * 
      */
     @Import(name="fleetAgentDeploymentCustomizations")
     private @Nullable Output<List<ClusterV2FleetAgentDeploymentCustomizationArgs>> fleetAgentDeploymentCustomizations;
 
     /**
-     * @return Optional customization for fleet agent
+     * @return Optional customization for fleet agent (list)
      * 
      */
     public Optional<Output<List<ClusterV2FleetAgentDeploymentCustomizationArgs>>> fleetAgentDeploymentCustomizations() {
@@ -426,7 +426,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent
+         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent (list)
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent
+         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent (list)
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent
+         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent (list)
          * 
          * @return builder
          * 
@@ -583,7 +583,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent
+         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent (list)
          * 
          * @return builder
          * 
@@ -594,7 +594,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent
+         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent (list)
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent
+         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent (list)
          * 
          * @return builder
          * 

@@ -225,20 +225,20 @@ def get_project_alert_rule(labels: Optional[Mapping[str, Any]] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getProjectAlertRule:getProjectAlertRule', __args__, opts=opts, typ=GetProjectAlertRuleResult).value
 
     return AwaitableGetProjectAlertRuleResult(
-        annotations=__ret__.annotations,
-        group_id=__ret__.group_id,
-        group_interval_seconds=__ret__.group_interval_seconds,
-        group_wait_seconds=__ret__.group_wait_seconds,
-        id=__ret__.id,
-        inherited=__ret__.inherited,
-        labels=__ret__.labels,
-        metric_rule=__ret__.metric_rule,
-        name=__ret__.name,
-        pod_rule=__ret__.pod_rule,
-        project_id=__ret__.project_id,
-        repeat_interval_seconds=__ret__.repeat_interval_seconds,
-        severity=__ret__.severity,
-        workload_rule=__ret__.workload_rule)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        group_id=pulumi.get(__ret__, 'group_id'),
+        group_interval_seconds=pulumi.get(__ret__, 'group_interval_seconds'),
+        group_wait_seconds=pulumi.get(__ret__, 'group_wait_seconds'),
+        id=pulumi.get(__ret__, 'id'),
+        inherited=pulumi.get(__ret__, 'inherited'),
+        labels=pulumi.get(__ret__, 'labels'),
+        metric_rule=pulumi.get(__ret__, 'metric_rule'),
+        name=pulumi.get(__ret__, 'name'),
+        pod_rule=pulumi.get(__ret__, 'pod_rule'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        repeat_interval_seconds=pulumi.get(__ret__, 'repeat_interval_seconds'),
+        severity=pulumi.get(__ret__, 'severity'),
+        workload_rule=pulumi.get(__ret__, 'workload_rule'))
 
 
 @_utilities.lift_output_func(get_project_alert_rule)

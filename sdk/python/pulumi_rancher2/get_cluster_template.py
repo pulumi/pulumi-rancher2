@@ -156,14 +156,14 @@ def get_cluster_template(annotations: Optional[Mapping[str, Any]] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getClusterTemplate:getClusterTemplate', __args__, opts=opts, typ=GetClusterTemplateResult).value
 
     return AwaitableGetClusterTemplateResult(
-        annotations=__ret__.annotations,
-        default_revision_id=__ret__.default_revision_id,
-        description=__ret__.description,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        members=__ret__.members,
-        name=__ret__.name,
-        template_revisions=__ret__.template_revisions)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        default_revision_id=pulumi.get(__ret__, 'default_revision_id'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        members=pulumi.get(__ret__, 'members'),
+        name=pulumi.get(__ret__, 'name'),
+        template_revisions=pulumi.get(__ret__, 'template_revisions'))
 
 
 @_utilities.lift_output_func(get_cluster_template)

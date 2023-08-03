@@ -631,14 +631,23 @@ export interface ClusterAlterRuleSystemServiceRule {
 }
 
 export interface ClusterClusterAgentDeploymentCustomization {
+    /**
+     * User defined tolerations to append to agent (list)
+     */
     appendTolerations?: outputs.ClusterClusterAgentDeploymentCustomizationAppendToleration[];
+    /**
+     * User defined affinity to override default agent affinity (string)
+     */
     overrideAffinity?: string;
+    /**
+     * User defined resource requirements to set on the agent (list)
+     */
     overrideResourceRequirements?: outputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement[];
 }
 
 export interface ClusterClusterAgentDeploymentCustomizationAppendToleration {
     /**
-     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * The toleration effect. Default: `\"NoSchedule\"` (string)
      */
     effect?: string;
     /**
@@ -646,11 +655,11 @@ export interface ClusterClusterAgentDeploymentCustomizationAppendToleration {
      */
     key: string;
     /**
-     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     * The toleration operator (string)
      */
     operator?: string;
     /**
-     * The toleration seconds (int)
+     * The number of seconds a pod will stay bound to a node with a matching taint (int)
      */
     seconds: number;
     /**
@@ -660,9 +669,21 @@ export interface ClusterClusterAgentDeploymentCustomizationAppendToleration {
 }
 
 export interface ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement {
+    /**
+     * The maximum CPU limit for agent (string)
+     */
     cpuLimit?: string;
+    /**
+     * The minimum CPU required for agent (string)
+     */
     cpuRequest?: string;
+    /**
+     * The maximum memory limit for agent (string)
+     */
     memoryLimit?: string;
+    /**
+     * The minimum memory required for agent (string)
+     */
     memoryRequest?: string;
 }
 
@@ -795,7 +816,7 @@ export interface ClusterEksConfig {
      */
     associateWorkerNodePublicIp?: boolean;
     /**
-     * The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+     * The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
      */
     desiredNodes?: number;
     ebsEncryption?: boolean;
@@ -804,7 +825,7 @@ export interface ClusterEksConfig {
      */
     instanceType?: string;
     /**
-     * Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+     * Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
      */
     keyPairName?: string;
     /**
@@ -1021,14 +1042,23 @@ export interface ClusterEksConfigV2NodeGroupLaunchTemplate {
 }
 
 export interface ClusterFleetAgentDeploymentCustomization {
+    /**
+     * User defined tolerations to append to agent (list)
+     */
     appendTolerations?: outputs.ClusterFleetAgentDeploymentCustomizationAppendToleration[];
+    /**
+     * User defined affinity to override default agent affinity (string)
+     */
     overrideAffinity?: string;
+    /**
+     * User defined resource requirements to set on the agent (list)
+     */
     overrideResourceRequirements?: outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement[];
 }
 
 export interface ClusterFleetAgentDeploymentCustomizationAppendToleration {
     /**
-     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * The toleration effect. Default: `\"NoSchedule\"` (string)
      */
     effect?: string;
     /**
@@ -1036,11 +1066,11 @@ export interface ClusterFleetAgentDeploymentCustomizationAppendToleration {
      */
     key: string;
     /**
-     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     * The toleration operator (string)
      */
     operator?: string;
     /**
-     * The toleration seconds (int)
+     * The number of seconds a pod will stay bound to a node with a matching taint (int)
      */
     seconds: number;
     /**
@@ -1050,9 +1080,21 @@ export interface ClusterFleetAgentDeploymentCustomizationAppendToleration {
 }
 
 export interface ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement {
+    /**
+     * The maximum CPU limit for agent (string)
+     */
     cpuLimit?: string;
+    /**
+     * The minimum CPU required for agent (string)
+     */
     cpuRequest?: string;
+    /**
+     * The maximum memory limit for agent (string)
+     */
     memoryLimit?: string;
+    /**
+     * The minimum memory required for agent (string)
+     */
     memoryRequest?: string;
 }
 
@@ -1531,7 +1573,7 @@ export interface ClusterGkeConfigV2NodePoolConfig {
 
 export interface ClusterGkeConfigV2NodePoolConfigTaint {
     /**
-     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * The toleration effect. Default: `\"NoSchedule\"` (string)
      */
     effect: string;
     /**
@@ -1618,7 +1660,7 @@ export interface ClusterOkeConfig {
      */
     enableKubernetesDashboard?: boolean;
     /**
-     * Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` Just for Rancher v2.5.10 or above (bool)
+     * Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
      */
     enablePrivateControlPlane?: boolean;
     /**
@@ -1634,7 +1676,7 @@ export interface ClusterOkeConfig {
      */
     flexOcpus?: number;
     /**
-     * The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. Just for Rancher v2.5.9 or above (string)
+     * The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
      */
     kmsKeyId?: string;
     /**
@@ -1791,7 +1833,7 @@ export interface ClusterRkeConfig {
      */
     cloudProvider: outputs.ClusterRkeConfigCloudProvider;
     /**
-     * RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+     * RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
      */
     dns: outputs.ClusterRkeConfigDns;
     /**
@@ -2467,7 +2509,7 @@ export interface ClusterRkeConfigDnsNodelocal {
 
 export interface ClusterRkeConfigDnsToleration {
     /**
-     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * The toleration effect. Default: `\"NoSchedule\"` (string)
      */
     effect?: string;
     /**
@@ -2475,11 +2517,11 @@ export interface ClusterRkeConfigDnsToleration {
      */
     key: string;
     /**
-     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     * The toleration operator (string)
      */
     operator?: string;
     /**
-     * The toleration seconds (int)
+     * The number of seconds a pod will stay bound to a node with a matching taint (int)
      */
     seconds: number;
     /**
@@ -2559,7 +2601,7 @@ export interface ClusterRkeConfigIngress {
 
 export interface ClusterRkeConfigIngressToleration {
     /**
-     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * The toleration effect. Default: `\"NoSchedule\"` (string)
      */
     effect?: string;
     /**
@@ -2567,11 +2609,11 @@ export interface ClusterRkeConfigIngressToleration {
      */
     key: string;
     /**
-     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     * The toleration operator (string)
      */
     operator?: string;
     /**
-     * The toleration seconds (int)
+     * The number of seconds a pod will stay bound to a node with a matching taint (int)
      */
     seconds: number;
     /**
@@ -2627,7 +2669,7 @@ export interface ClusterRkeConfigMonitoring {
 
 export interface ClusterRkeConfigMonitoringToleration {
     /**
-     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * The toleration effect. Default: `\"NoSchedule\"` (string)
      */
     effect?: string;
     /**
@@ -2635,11 +2677,11 @@ export interface ClusterRkeConfigMonitoringToleration {
      */
     key: string;
     /**
-     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     * The toleration operator (string)
      */
     operator?: string;
     /**
-     * The toleration seconds (int)
+     * The number of seconds a pod will stay bound to a node with a matching taint (int)
      */
     seconds: number;
     /**
@@ -3031,7 +3073,7 @@ export interface ClusterRkeConfigNetworkFlannelNetworkProvider {
 
 export interface ClusterRkeConfigNetworkToleration {
     /**
-     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * The toleration effect. Default: `\"NoSchedule\"` (string)
      */
     effect?: string;
     /**
@@ -3039,11 +3081,11 @@ export interface ClusterRkeConfigNetworkToleration {
      */
     key: string;
     /**
-     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     * The toleration operator (string)
      */
     operator?: string;
     /**
-     * The toleration seconds (int)
+     * The number of seconds a pod will stay bound to a node with a matching taint (int)
      */
     seconds: number;
     /**
@@ -3177,7 +3219,7 @@ export interface ClusterRkeConfigServices {
 
 export interface ClusterRkeConfigServicesEtcd {
     /**
-     * Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
+     * Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
      */
     backupConfig: outputs.ClusterRkeConfigServicesEtcdBackupConfig;
     /**
@@ -3209,7 +3251,7 @@ export interface ClusterRkeConfigServicesEtcd {
      */
     extraEnvs?: string[];
     /**
-     * Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
+     * Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
      */
     gid?: number;
     /**
@@ -3233,7 +3275,7 @@ export interface ClusterRkeConfigServicesEtcd {
      */
     snapshot: boolean;
     /**
-     * Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
+     * Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
      */
     uid?: number;
 }
@@ -3260,7 +3302,7 @@ export interface ClusterRkeConfigServicesEtcdBackupConfig {
      */
     safeTimestamp?: boolean;
     /**
-     * Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+     * Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
      */
     timeout: number;
 }
@@ -3365,18 +3407,6 @@ export interface ClusterRkeConfigServicesKubeApiAdmissionConfiguration {
 export interface ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
     /**
      * Plugin configuration. (string) Ex:
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * configuration = <<EOF
-     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
-     * kind: Configuration
-     * limits:
-     * - type: Server
-     * burst: 35000
-     * qps: 6000
-     * EOF
      */
     configuration: string;
     /**
@@ -3392,18 +3422,6 @@ export interface ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
 export interface ClusterRkeConfigServicesKubeApiAuditLog {
     /**
      * Plugin configuration. (string) Ex:
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * configuration = <<EOF
-     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
-     * kind: Configuration
-     * limits:
-     * - type: Server
-     * burst: 35000
-     * qps: 6000
-     * EOF
      */
     configuration: outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration;
     /**
@@ -3442,18 +3460,6 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
     /**
      * Plugin configuration. (string) Ex:
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * configuration = <<EOF
-     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
-     * kind: Configuration
-     * limits:
-     * - type: Server
-     * burst: 35000
-     * qps: 6000
-     * EOF
      */
     configuration: string;
     /**
@@ -3618,7 +3624,7 @@ export interface ClusterRkeConfigUpgradeStrategyDrainInput {
      */
     ignoreDaemonSets?: boolean;
     /**
-     * Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+     * Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
      */
     timeout?: number;
 }
@@ -4451,24 +4457,36 @@ export interface ClusterV2AgentEnvVar {
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomization {
+    /**
+     * User defined tolerations to append to agent (list)
+     */
     appendTolerations?: outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration[];
+    /**
+     * User defined affinity to override default agent affinity (string)
+     */
     overrideAffinity?: string;
+    /**
+     * User defined resource requirements to set on the agent (list)
+     */
     overrideResourceRequirements?: outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement[];
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationAppendToleration {
     /**
-     * The taint effect. Default: `\"NoExecute\"` (string)
+     * The toleration effect. Default: `\"NoSchedule\"` (string)
      */
     effect?: string;
     /**
-     * The taint key (string)
+     * The toleration key (string)
      */
     key: string;
     /**
-     * Machine selector label match expressions operator (string)
+     * The toleration operator (string)
      */
     operator?: string;
+    /**
+     * The number of seconds a pod will stay bound to a node with a matching taint (int)
+     */
     seconds: number;
     /**
      * Rancher agent env var value (string)
@@ -4477,9 +4495,21 @@ export interface ClusterV2ClusterAgentDeploymentCustomizationAppendToleration {
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement {
+    /**
+     * The maximum CPU limit for agent (string)
+     */
     cpuLimit?: string;
+    /**
+     * The minimum CPU required for agent (string)
+     */
     cpuRequest?: string;
+    /**
+     * The maximum memory limit for agent (string)
+     */
     memoryLimit?: string;
+    /**
+     * The minimum memory required for agent (string)
+     */
     memoryRequest?: string;
 }
 
@@ -4539,24 +4569,36 @@ export interface ClusterV2ClusterRegistrationToken {
 }
 
 export interface ClusterV2FleetAgentDeploymentCustomization {
+    /**
+     * User defined tolerations to append to agent (list)
+     */
     appendTolerations?: outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration[];
+    /**
+     * User defined affinity to override default agent affinity (string)
+     */
     overrideAffinity?: string;
+    /**
+     * User defined resource requirements to set on the agent (list)
+     */
     overrideResourceRequirements?: outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement[];
 }
 
 export interface ClusterV2FleetAgentDeploymentCustomizationAppendToleration {
     /**
-     * The taint effect. Default: `\"NoExecute\"` (string)
+     * The toleration effect. Default: `\"NoSchedule\"` (string)
      */
     effect?: string;
     /**
-     * The taint key (string)
+     * The toleration key (string)
      */
     key: string;
     /**
-     * Machine selector label match expressions operator (string)
+     * The toleration operator (string)
      */
     operator?: string;
+    /**
+     * The number of seconds a pod will stay bound to a node with a matching taint (int)
+     */
     seconds: number;
     /**
      * Rancher agent env var value (string)
@@ -4565,9 +4607,21 @@ export interface ClusterV2FleetAgentDeploymentCustomizationAppendToleration {
 }
 
 export interface ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement {
+    /**
+     * The maximum CPU limit for agent (string)
+     */
     cpuLimit?: string;
+    /**
+     * The minimum CPU required for agent (string)
+     */
     cpuRequest?: string;
+    /**
+     * The maximum memory limit for agent (string)
+     */
     memoryLimit?: string;
+    /**
+     * The minimum memory required for agent (string)
+     */
     memoryRequest?: string;
 }
 
@@ -4835,11 +4889,11 @@ export interface ClusterV2RkeConfigMachinePoolRollingUpdate {
 
 export interface ClusterV2RkeConfigMachinePoolTaint {
     /**
-     * The taint effect. Default: `\"NoExecute\"` (string)
+     * The toleration effect. Default: `\"NoSchedule\"` (string)
      */
     effect?: string;
     /**
-     * The taint key (string)
+     * The toleration key (string)
      */
     key: string;
     /**
@@ -4872,11 +4926,11 @@ export interface ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
 
 export interface ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
     /**
-     * The taint key (string)
+     * The toleration key (string)
      */
     key?: string;
     /**
-     * Machine selector label match expressions operator (string)
+     * The toleration operator (string)
      */
     operator?: string;
     /**
@@ -7658,7 +7712,7 @@ export interface MachineConfigV2AzureConfig {
      */
     customData?: string;
     /**
-     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      */
     diskSize?: string;
     /**
@@ -7686,7 +7740,7 @@ export interface MachineConfigV2AzureConfig {
      */
     location?: string;
     /**
-     * Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+     * Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
      */
     managedDisks?: boolean;
     /**
@@ -7839,7 +7893,7 @@ export interface MachineConfigV2HarvesterConfig {
      */
     diskInfo?: string;
     /**
-     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      *
      * @deprecated Use disk_info instead
      */
@@ -7887,7 +7941,7 @@ export interface MachineConfigV2HarvesterConfig {
      */
     userData?: string;
     /**
-     * Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+     * Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
      */
     vmAffinity?: string;
     /**
@@ -8114,8 +8168,8 @@ export interface MachineConfigV2OpenstackConfig {
     username?: string;
     /**
      * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
-     * > **Note**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-     * > **Note**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
+     * > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+     * > **Note:**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
      */
     volumeDevicePath?: string;
     /**
@@ -8186,7 +8240,7 @@ export interface MachineConfigV2VsphereConfig {
      */
     datastoreCluster?: string;
     /**
-     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      */
     diskSize?: string;
     /**
@@ -8554,7 +8608,7 @@ export interface NodeTemplateAmazonec2Config {
     /**
      * Path to file with cloud-init user data (string)
      *
-     * > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: string;
     /**
@@ -8594,7 +8648,7 @@ export interface NodeTemplateAzureConfig {
      */
     customData?: string;
     /**
-     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      */
     diskSize?: string;
     /**
@@ -8622,7 +8676,7 @@ export interface NodeTemplateAzureConfig {
      */
     location?: string;
     /**
-     * Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+     * Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
      */
     managedDisks?: boolean;
     /**
@@ -8638,7 +8692,7 @@ export interface NodeTemplateAzureConfig {
      */
     openPorts?: string[];
     /**
-     * Azure marketplace purchase plan for Azure Virtual Machine. Format is `<publisher>:<product>:<plan>`. Just for Rancher v2.6.3 and above. (string)
+     * Azure marketplace purchase plan for Azure Virtual Machine. Format is `<publisher>:<product>:<plan>`. For Rancher v2.6.3 and above. (string)
      */
     plan?: string;
     /**
@@ -8752,7 +8806,7 @@ export interface NodeTemplateDigitaloceanConfig {
     /**
      * Path to file with cloud-init user data (string)
      *
-     * > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: string;
 }
@@ -8773,7 +8827,7 @@ export interface NodeTemplateHarvesterConfig {
      */
     diskInfo?: string;
     /**
-     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      *
      * @deprecated Use disk_info instead
      */
@@ -8821,7 +8875,7 @@ export interface NodeTemplateHarvesterConfig {
      */
     userData?: string;
     /**
-     * Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+     * Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
      */
     vmAffinity?: string;
     /**
@@ -8862,7 +8916,7 @@ export interface NodeTemplateHetznerConfig {
     /**
      * Path to file with cloud-init user data (string)
      *
-     * > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: string;
     /**
@@ -9029,7 +9083,7 @@ export interface NodeTemplateOpennebulaConfig {
     /**
      * VCPUs for the VM (string)
      *
-     * > **Note**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
+     * > **Note:**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
      */
     vcpu?: string;
     /**
@@ -9174,9 +9228,9 @@ export interface NodeTemplateOpenstackConfig {
     /**
      * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
      *
-     * > **Note**: `Required*` denotes that either the _name or _id is required but you cannot use both.
+     * > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
      *
-     * > **Note**: `Required**` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
+     * > **Note:**: `Required**` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
      */
     volumeDevicePath?: string;
     /**
@@ -9294,7 +9348,7 @@ export interface NodeTemplateVsphereConfig {
      */
     datastoreCluster?: string;
     /**
-     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      */
     diskSize?: string;
     /**

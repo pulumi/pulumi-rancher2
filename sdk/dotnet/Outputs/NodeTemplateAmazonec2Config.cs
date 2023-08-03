@@ -137,7 +137,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Path to file with cloud-init user data (string)
         /// 
-        /// &gt; **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        /// &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         /// </summary>
         public readonly string? Userdata;
         /// <summary>

@@ -137,13 +137,13 @@ def get_global_role_binding(global_role_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding', __args__, opts=opts, typ=GetGlobalRoleBindingResult).value
 
     return AwaitableGetGlobalRoleBindingResult(
-        annotations=__ret__.annotations,
-        global_role_id=__ret__.global_role_id,
-        group_principal_id=__ret__.group_principal_id,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        user_id=__ret__.user_id)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        global_role_id=pulumi.get(__ret__, 'global_role_id'),
+        group_principal_id=pulumi.get(__ret__, 'group_principal_id'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        user_id=pulumi.get(__ret__, 'user_id'))
 
 
 @_utilities.lift_output_func(get_global_role_binding)

@@ -30,7 +30,7 @@ public final class ClusterEksConfig {
      */
     private @Nullable Boolean associateWorkerNodePublicIp;
     /**
-     * @return The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+     * @return The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
      * 
      */
     private @Nullable Integer desiredNodes;
@@ -41,7 +41,7 @@ public final class ClusterEksConfig {
      */
     private @Nullable String instanceType;
     /**
-     * @return Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+     * @return Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
      * 
      */
     private @Nullable String keyPairName;
@@ -129,7 +129,7 @@ public final class ClusterEksConfig {
         return Optional.ofNullable(this.associateWorkerNodePublicIp);
     }
     /**
-     * @return The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+     * @return The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
      * 
      */
     public Optional<Integer> desiredNodes() {
@@ -146,7 +146,7 @@ public final class ClusterEksConfig {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+     * @return Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
      * 
      */
     public Optional<String> keyPairName() {

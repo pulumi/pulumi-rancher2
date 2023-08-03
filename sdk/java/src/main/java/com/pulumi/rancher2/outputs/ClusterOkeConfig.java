@@ -34,7 +34,7 @@ public final class ClusterOkeConfig {
      */
     private @Nullable Boolean enableKubernetesDashboard;
     /**
-     * @return Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` Just for Rancher v2.5.10 or above (bool)
+     * @return Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
      * 
      */
     private @Nullable Boolean enablePrivateControlPlane;
@@ -54,7 +54,7 @@ public final class ClusterOkeConfig {
      */
     private @Nullable Integer flexOcpus;
     /**
-     * @return The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. Just for Rancher v2.5.9 or above (string)
+     * @return The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
      * 
      */
     private @Nullable String kmsKeyId;
@@ -204,7 +204,7 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.enableKubernetesDashboard);
     }
     /**
-     * @return Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` Just for Rancher v2.5.10 or above (bool)
+     * @return Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
      * 
      */
     public Optional<Boolean> enablePrivateControlPlane() {
@@ -232,7 +232,7 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.flexOcpus);
     }
     /**
-     * @return The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. Just for Rancher v2.5.9 or above (string)
+     * @return The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
      * 
      */
     public Optional<String> kmsKeyId() {

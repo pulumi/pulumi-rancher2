@@ -42,7 +42,7 @@ class CloudCredentialArgs:
         :param pulumi.Input['CloudCredentialLinodeCredentialConfigArgs'] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
         :param pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs'] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
-        :param pulumi.Input['CloudCredentialS3CredentialConfigArgs'] s3_credential_config: S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        :param pulumi.Input['CloudCredentialS3CredentialConfigArgs'] s3_credential_config: S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
         :param pulumi.Input['CloudCredentialVsphereCredentialConfigArgs'] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
         """
         if amazonec2_credential_config is not None:
@@ -208,7 +208,7 @@ class CloudCredentialArgs:
     @pulumi.getter(name="s3CredentialConfig")
     def s3_credential_config(self) -> Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']]:
         """
-        S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
         """
         return pulumi.get(self, "s3_credential_config")
 
@@ -260,7 +260,7 @@ class _CloudCredentialState:
         :param pulumi.Input['CloudCredentialLinodeCredentialConfigArgs'] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
         :param pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs'] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
-        :param pulumi.Input['CloudCredentialS3CredentialConfigArgs'] s3_credential_config: S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        :param pulumi.Input['CloudCredentialS3CredentialConfigArgs'] s3_credential_config: S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
         :param pulumi.Input['CloudCredentialVsphereCredentialConfigArgs'] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
         """
         if amazonec2_credential_config is not None:
@@ -440,7 +440,7 @@ class _CloudCredentialState:
     @pulumi.getter(name="s3CredentialConfig")
     def s3_credential_config(self) -> Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']]:
         """
-        S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
         """
         return pulumi.get(self, "s3_credential_config")
 
@@ -536,7 +536,7 @@ class CloudCredential(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
         :param pulumi.Input[pulumi.InputType['CloudCredentialOpenstackCredentialConfigArgs']] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']] s3_credential_config: S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']] s3_credential_config: S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['CloudCredentialVsphereCredentialConfigArgs']] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
         """
         ...
@@ -682,7 +682,7 @@ class CloudCredential(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
         :param pulumi.Input[pulumi.InputType['CloudCredentialOpenstackCredentialConfigArgs']] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']] s3_credential_config: S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']] s3_credential_config: S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['CloudCredentialVsphereCredentialConfigArgs']] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -805,7 +805,7 @@ class CloudCredential(pulumi.CustomResource):
     @pulumi.getter(name="s3CredentialConfig")
     def s3_credential_config(self) -> pulumi.Output[Optional['outputs.CloudCredentialS3CredentialConfig']]:
         """
-        S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+        S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
         """
         return pulumi.get(self, "s3_credential_config")
 

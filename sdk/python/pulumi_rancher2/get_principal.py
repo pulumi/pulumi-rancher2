@@ -88,9 +88,9 @@ def get_principal(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getPrincipal:getPrincipal', __args__, opts=opts, typ=GetPrincipalResult).value
 
     return AwaitableGetPrincipalResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        type=__ret__.type)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_principal)

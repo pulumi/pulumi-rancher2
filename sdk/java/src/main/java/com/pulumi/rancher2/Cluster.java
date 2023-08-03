@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  * **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enable_cluster_monitoring = false`, `cloud_provider {}`, `name = &#34;&#34;`
  * ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
  * 
- * **Note** Cluster monitoring version `0.2.0` or above, can&#39;t be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
+ * **Note** Cluster monitoring version `0.2.0` and above, can&#39;t be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
  * ```java
  * package generated_program;
  * 
@@ -297,7 +297,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x or above.
+ * ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
  * ```java
  * package generated_program;
  * 
@@ -361,7 +361,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x or above.
+ * ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
  * ```java
  * package generated_program;
  * 
@@ -439,7 +439,75 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.
+ * ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+ *             .clusterAgentDeploymentCustomizations(ClusterClusterAgentDeploymentCustomizationArgs.builder()
+ *                 .appendTolerations(ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs.builder()
+ *                     .effect(&#34;NoSchedule&#34;)
+ *                     .key(&#34;tolerate/control-plane&#34;)
+ *                     .value(&#34;true&#34;)
+ *                     .build())
+ *                 .overrideAffinity(&#34;&#34;&#34;
+ * {
+ *   &#34;nodeAffinity&#34;: {
+ *     &#34;requiredDuringSchedulingIgnoredDuringExecution&#34;: {
+ *       &#34;nodeSelectorTerms&#34;: [{
+ *         &#34;matchExpressions&#34;: [{
+ *           &#34;key&#34;: &#34;not.this/nodepool&#34;,
+ *           &#34;operator&#34;: &#34;In&#34;,
+ *           &#34;values&#34;: [
+ *             &#34;true&#34;
+ *           ]
+ *         }]
+ *       }]
+ *     }
+ *   }
+ * }
+ * 
+ *                 &#34;&#34;&#34;)
+ *                 .overrideResourceRequirements(ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs.builder()
+ *                     .cpuLimit(&#34;800&#34;)
+ *                     .cpuRequest(&#34;500&#34;)
+ *                     .memoryLimit(&#34;800&#34;)
+ *                     .memoryRequest(&#34;500&#34;)
+ *                     .build())
+ *                 .build())
+ *             .description(&#34;Terraform cluster with agent customization&#34;)
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .network(ClusterRkeConfigNetworkArgs.builder()
+ *                     .plugin(&#34;canal&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
  * ```java
  * package generated_program;
  * 
@@ -486,7 +554,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.
+ * ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
  * ```java
  * package generated_program;
  * 
@@ -551,7 +619,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 or above.
+ * ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
  * ```java
  * package generated_program;
  * 
@@ -611,7 +679,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 or above.
+ * ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
  * ```java
  * package generated_program;
  * 
@@ -704,14 +772,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="rancher2:index/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
     /**
-     * Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     * Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
      * 
      */
     @Export(name="agentEnvVars", refs={List.class,ClusterAgentEnvVar.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterAgentEnvVar>> agentEnvVars;
 
     /**
-     * @return Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     * @return Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
      * 
      */
     public Output<Optional<List<ClusterAgentEnvVar>>> agentEnvVars() {
@@ -774,14 +842,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.caCert;
     }
     /**
-     * Optional customization for cluster agent
+     * Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
      * 
      */
     @Export(name="clusterAgentDeploymentCustomizations", refs={List.class,ClusterClusterAgentDeploymentCustomization.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterClusterAgentDeploymentCustomization>> clusterAgentDeploymentCustomizations;
 
     /**
-     * @return Optional customization for cluster agent
+     * @return Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
      * 
      */
     public Output<Optional<List<ClusterClusterAgentDeploymentCustomization>>> clusterAgentDeploymentCustomizations() {
@@ -830,70 +898,70 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterRegistrationToken;
     }
     /**
-     * Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+     * Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
      * 
      */
     @Export(name="clusterTemplateAnswers", refs={ClusterClusterTemplateAnswers.class}, tree="[0]")
     private Output<ClusterClusterTemplateAnswers> clusterTemplateAnswers;
 
     /**
-     * @return Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+     * @return Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
      * 
      */
     public Output<ClusterClusterTemplateAnswers> clusterTemplateAnswers() {
         return this.clusterTemplateAnswers;
     }
     /**
-     * Cluster template ID. Just for Rancher v2.3.x and above (string)
+     * Cluster template ID. For Rancher v2.3.x and above (string)
      * 
      */
     @Export(name="clusterTemplateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterTemplateId;
 
     /**
-     * @return Cluster template ID. Just for Rancher v2.3.x and above (string)
+     * @return Cluster template ID. For Rancher v2.3.x and above (string)
      * 
      */
     public Output<Optional<String>> clusterTemplateId() {
         return Codegen.optional(this.clusterTemplateId);
     }
     /**
-     * Cluster template questions. Just for Rancher v2.3.x and above (list)
+     * Cluster template questions. For Rancher v2.3.x and above (list)
      * 
      */
     @Export(name="clusterTemplateQuestions", refs={List.class,ClusterClusterTemplateQuestion.class}, tree="[0,1]")
     private Output<List<ClusterClusterTemplateQuestion>> clusterTemplateQuestions;
 
     /**
-     * @return Cluster template questions. Just for Rancher v2.3.x and above (list)
+     * @return Cluster template questions. For Rancher v2.3.x and above (list)
      * 
      */
     public Output<List<ClusterClusterTemplateQuestion>> clusterTemplateQuestions() {
         return this.clusterTemplateQuestions;
     }
     /**
-     * Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+     * Cluster template revision ID. For Rancher v2.3.x and above (string)
      * 
      */
     @Export(name="clusterTemplateRevisionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterTemplateRevisionId;
 
     /**
-     * @return Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+     * @return Cluster template revision ID. For Rancher v2.3.x and above (string)
      * 
      */
     public Output<Optional<String>> clusterTemplateRevisionId() {
         return Codegen.optional(this.clusterTemplateRevisionId);
     }
     /**
-     * Cluster default pod security admission configuration template name
+     * Cluster default pod security admission configuration template name (string)
      * 
      */
     @Export(name="defaultPodSecurityAdmissionConfigurationTemplateName", refs={String.class}, tree="[0]")
     private Output<String> defaultPodSecurityAdmissionConfigurationTemplateName;
 
     /**
-     * @return Cluster default pod security admission configuration template name
+     * @return Cluster default pod security admission configuration template name (string)
      * 
      */
     public Output<String> defaultPodSecurityAdmissionConfigurationTemplateName() {
@@ -942,42 +1010,42 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Desired agent image. Just for Rancher v2.3.x and above (string)
+     * Desired agent image. For Rancher v2.3.x and above (string)
      * 
      */
     @Export(name="desiredAgentImage", refs={String.class}, tree="[0]")
     private Output<String> desiredAgentImage;
 
     /**
-     * @return Desired agent image. Just for Rancher v2.3.x and above (string)
+     * @return Desired agent image. For Rancher v2.3.x and above (string)
      * 
      */
     public Output<String> desiredAgentImage() {
         return this.desiredAgentImage;
     }
     /**
-     * Desired auth image. Just for Rancher v2.3.x and above (string)
+     * Desired auth image. For Rancher v2.3.x and above (string)
      * 
      */
     @Export(name="desiredAuthImage", refs={String.class}, tree="[0]")
     private Output<String> desiredAuthImage;
 
     /**
-     * @return Desired auth image. Just for Rancher v2.3.x and above (string)
+     * @return Desired auth image. For Rancher v2.3.x and above (string)
      * 
      */
     public Output<String> desiredAuthImage() {
         return this.desiredAuthImage;
     }
     /**
-     * Desired auth image. Just for Rancher v2.3.x and above (string)
+     * Desired auth image. For Rancher v2.3.x and above (string)
      * 
      */
     @Export(name="dockerRootDir", refs={String.class}, tree="[0]")
     private Output<String> dockerRootDir;
 
     /**
-     * @return Desired auth image. Just for Rancher v2.3.x and above (string)
+     * @return Desired auth image. For Rancher v2.3.x and above (string)
      * 
      */
     public Output<String> dockerRootDir() {
@@ -1012,14 +1080,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.eksConfig);
     }
     /**
-     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     @Export(name="eksConfigV2", refs={ClusterEksConfigV2.class}, tree="[0]")
     private Output<ClusterEksConfigV2> eksConfigV2;
 
     /**
-     * @return The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+     * @return The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     public Output<ClusterEksConfigV2> eksConfigV2() {
@@ -1086,14 +1154,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.enableNetworkPolicy;
     }
     /**
-     * Optional customization for fleet agent
+     * Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
      * 
      */
     @Export(name="fleetAgentDeploymentCustomizations", refs={List.class,ClusterFleetAgentDeploymentCustomization.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterFleetAgentDeploymentCustomization>> fleetAgentDeploymentCustomizations;
 
     /**
-     * @return Optional customization for fleet agent
+     * @return Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
      * 
      */
     public Output<Optional<List<ClusterFleetAgentDeploymentCustomization>>> fleetAgentDeploymentCustomizations() {
@@ -1128,28 +1196,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gkeConfig);
     }
     /**
-     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     @Export(name="gkeConfigV2", refs={ClusterGkeConfigV2.class}, tree="[0]")
     private Output</* @Nullable */ ClusterGkeConfigV2> gkeConfigV2;
 
     /**
-     * @return The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+     * @return The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     public Output<Optional<ClusterGkeConfigV2>> gkeConfigV2() {
         return Codegen.optional(this.gkeConfigV2);
     }
     /**
-     * (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+     * (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
      * 
      */
     @Export(name="istioEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> istioEnabled;
 
     /**
-     * @return (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+     * @return (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
      * 
      */
     public Output<Boolean> istioEnabled() {

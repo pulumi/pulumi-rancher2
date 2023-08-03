@@ -40,7 +40,7 @@ public final class NodeTemplateAzureConfig {
      */
     private @Nullable String customData;
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     private @Nullable String diskSize;
@@ -75,7 +75,7 @@ public final class NodeTemplateAzureConfig {
      */
     private @Nullable String location;
     /**
-     * @return Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+     * @return Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
      * 
      */
     private @Nullable Boolean managedDisks;
@@ -95,7 +95,7 @@ public final class NodeTemplateAzureConfig {
      */
     private @Nullable List<String> openPorts;
     /**
-     * @return Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. Just for Rancher v2.6.3 and above. (string)
+     * @return Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. For Rancher v2.6.3 and above. (string)
      * 
      */
     private @Nullable String plan;
@@ -206,7 +206,7 @@ public final class NodeTemplateAzureConfig {
         return Optional.ofNullable(this.customData);
     }
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     public Optional<String> diskSize() {
@@ -255,7 +255,7 @@ public final class NodeTemplateAzureConfig {
         return Optional.ofNullable(this.location);
     }
     /**
-     * @return Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+     * @return Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
      * 
      */
     public Optional<Boolean> managedDisks() {
@@ -283,7 +283,7 @@ public final class NodeTemplateAzureConfig {
         return this.openPorts == null ? List.of() : this.openPorts;
     }
     /**
-     * @return Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. Just for Rancher v2.6.3 and above. (string)
+     * @return Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. For Rancher v2.6.3 and above. (string)
      * 
      */
     public Optional<String> plan() {

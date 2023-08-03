@@ -76,7 +76,7 @@ export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
     /**
      * Labels for cluster role template binding (map)
      *
-     * **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+     * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -164,7 +164,7 @@ export interface ClusterRoleTemplateBindingState {
     /**
      * Labels for cluster role template binding (map)
      *
-     * **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+     * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -208,7 +208,7 @@ export interface ClusterRoleTemplateBindingArgs {
     /**
      * Labels for cluster role template binding (map)
      *
-     * **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+     * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**

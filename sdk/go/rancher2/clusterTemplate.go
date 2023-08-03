@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,7 +66,7 @@ import (
 //
 // ```
 //
-// Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x or above.
+// Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
 //
 // ```go
 // package main
@@ -155,6 +156,7 @@ func NewClusterTemplate(ctx *pulumi.Context,
 		args = &ClusterTemplateArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClusterTemplate
 	err := ctx.RegisterResource("rancher2:index/clusterTemplate:ClusterTemplate", name, args, &resource, opts...)
 	if err != nil {

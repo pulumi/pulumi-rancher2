@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
 	err := ctx.Invoke("rancher2:index/getCluster:getCluster", args, &rv, opts...)
 	if err != nil {
@@ -55,7 +57,7 @@ type LookupClusterArgs struct {
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
-	// (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+	// (Computed) Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
 	AgentEnvVars []string `pulumi:"agentEnvVars"`
 	// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig GetClusterAksConfig `pulumi:"aksConfig"`
@@ -90,7 +92,7 @@ type LookupClusterResult struct {
 	Driver string `pulumi:"driver"`
 	// (Computed) The Amazon eks configuration for `eks` Conflicts with `aksConfig`, `aksConfigV2`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	EksConfig GetClusterEksConfig `pulumi:"eksConfig"`
-	// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+	// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
 	EksConfigV2           GetClusterEksConfigV2 `pulumi:"eksConfigV2"`
 	EnableClusterAlerting bool                  `pulumi:"enableClusterAlerting"`
 	// (Computed) Enable built-in cluster monitoring. Default `false` (bool)
@@ -101,7 +103,7 @@ type LookupClusterResult struct {
 	FleetWorkspaceName string `pulumi:"fleetWorkspaceName"`
 	// (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1) (list maxitems:1)
 	GkeConfig GetClusterGkeConfig `pulumi:"gkeConfig"`
-	// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+	// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
 	GkeConfigV2 GetClusterGkeConfigV2 `pulumi:"gkeConfigV2"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -161,7 +163,7 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx co
 	return o
 }
 
-// (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+// (Computed) Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
 func (o LookupClusterResultOutput) AgentEnvVars() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []string { return v.AgentEnvVars }).(pulumi.StringArrayOutput)
 }
@@ -250,7 +252,7 @@ func (o LookupClusterResultOutput) EksConfig() GetClusterEksConfigOutput {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterEksConfig { return v.EksConfig }).(GetClusterEksConfigOutput)
 }
 
-// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
 func (o LookupClusterResultOutput) EksConfigV2() GetClusterEksConfigV2Output {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterEksConfigV2 { return v.EksConfigV2 }).(GetClusterEksConfigV2Output)
 }
@@ -279,7 +281,7 @@ func (o LookupClusterResultOutput) GkeConfig() GetClusterGkeConfigOutput {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterGkeConfig { return v.GkeConfig }).(GetClusterGkeConfigOutput)
 }
 
-// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
 func (o LookupClusterResultOutput) GkeConfigV2() GetClusterGkeConfigV2Output {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterGkeConfigV2 { return v.GkeConfigV2 }).(GetClusterGkeConfigV2Output)
 }

@@ -17,14 +17,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
     public static final ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs Empty = new ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs();
 
     /**
-     * The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+     * The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
     /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     public Optional<Output<String>> effect() {
@@ -32,14 +32,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
     }
 
     /**
-     * The taint key (string)
+     * The toleration key (string)
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The taint key (string)
+     * @return The toleration key (string)
      * 
      */
     public Output<String> key() {
@@ -47,23 +47,31 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
     }
 
     /**
-     * Machine selector label match expressions operator (string)
+     * The toleration operator (string)
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return Machine selector label match expressions operator (string)
+     * @return The toleration operator (string)
      * 
      */
     public Optional<Output<String>> operator() {
         return Optional.ofNullable(this.operator);
     }
 
+    /**
+     * The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * 
+     */
     @Import(name="seconds")
     private @Nullable Output<Integer> seconds;
 
+    /**
+     * @return The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * 
+     */
     public Optional<Output<Integer>> seconds() {
         return Optional.ofNullable(this.seconds);
     }
@@ -112,7 +120,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
          * 
          * @return builder
          * 
@@ -123,7 +131,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
          * 
          * @return builder
          * 
@@ -133,7 +141,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param key The taint key (string)
+         * @param key The toleration key (string)
          * 
          * @return builder
          * 
@@ -144,7 +152,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param key The taint key (string)
+         * @param key The toleration key (string)
          * 
          * @return builder
          * 
@@ -154,7 +162,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param operator Machine selector label match expressions operator (string)
+         * @param operator The toleration operator (string)
          * 
          * @return builder
          * 
@@ -165,7 +173,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param operator Machine selector label match expressions operator (string)
+         * @param operator The toleration operator (string)
          * 
          * @return builder
          * 
@@ -174,11 +182,23 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
             return operator(Output.of(operator));
         }
 
+        /**
+         * @param seconds The number of seconds a pod will stay bound to a node with a matching taint (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder seconds(@Nullable Output<Integer> seconds) {
             $.seconds = seconds;
             return this;
         }
 
+        /**
+         * @param seconds The number of seconds a pod will stay bound to a node with a matching taint (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder seconds(Integer seconds) {
             return seconds(Output.of(seconds));
         }

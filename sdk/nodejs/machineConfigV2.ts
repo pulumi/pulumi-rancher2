@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * `amazonec2`, `azure`, `digitalocean`, `harvester`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
  *
- * **Note** This resource is used by
+ * **Note:** This resource is used by
  *
  * ## Example Usage
  * ### Using the Harvester Node Driver
@@ -130,7 +130,7 @@ export class MachineConfigV2 extends pulumi.CustomResource {
     /**
      * Labels for Machine Config V2 object (map)
      *
-     * **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
+     * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -245,7 +245,7 @@ export interface MachineConfigV2State {
     /**
      * Labels for Machine Config V2 object (map)
      *
-     * **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
+     * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -305,7 +305,7 @@ export interface MachineConfigV2Args {
     /**
      * Labels for Machine Config V2 object (map)
      *
-     * **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
+     * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**

@@ -13,23 +13,26 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The taint effect. Default: `\"NoExecute\"` (string)
+        /// The toleration effect. Default: `\"NoSchedule\"` (string)
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
         /// <summary>
-        /// The taint key (string)
+        /// The toleration key (string)
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Machine selector label match expressions operator (string)
+        /// The toleration operator (string)
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
+        /// <summary>
+        /// The number of seconds a pod will stay bound to a node with a matching taint (int)
+        /// </summary>
         [Input("seconds")]
         public Input<int>? Seconds { get; set; }
 

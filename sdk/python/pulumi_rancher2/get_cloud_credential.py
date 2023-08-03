@@ -100,10 +100,10 @@ def get_cloud_credential(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getCloudCredential:getCloudCredential', __args__, opts=opts, typ=GetCloudCredentialResult).value
 
     return AwaitableGetCloudCredentialResult(
-        annotations=__ret__.annotations,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_cloud_credential)

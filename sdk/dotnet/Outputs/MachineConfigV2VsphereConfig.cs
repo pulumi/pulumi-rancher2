@@ -62,7 +62,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DatastoreCluster;
         /// <summary>
-        /// Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        /// Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         /// </summary>
         public readonly string? DiskSize;
         /// <summary>

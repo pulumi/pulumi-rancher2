@@ -126,6 +126,9 @@ class ProviderArgs:
         """
         Rancher connection retries
         """
+        warnings.warn("""Use timeout instead""", DeprecationWarning)
+        pulumi.log.warn("""retries is deprecated: Use timeout instead""")
+
         return pulumi.get(self, "retries")
 
     @retries.setter

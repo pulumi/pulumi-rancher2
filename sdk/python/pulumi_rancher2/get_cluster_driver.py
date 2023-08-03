@@ -184,17 +184,17 @@ def get_cluster_driver(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getClusterDriver:getClusterDriver', __args__, opts=opts, typ=GetClusterDriverResult).value
 
     return AwaitableGetClusterDriverResult(
-        active=__ret__.active,
-        actual_url=__ret__.actual_url,
-        annotations=__ret__.annotations,
-        builtin=__ret__.builtin,
-        checksum=__ret__.checksum,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        ui_url=__ret__.ui_url,
-        url=__ret__.url,
-        whitelist_domains=__ret__.whitelist_domains)
+        active=pulumi.get(__ret__, 'active'),
+        actual_url=pulumi.get(__ret__, 'actual_url'),
+        annotations=pulumi.get(__ret__, 'annotations'),
+        builtin=pulumi.get(__ret__, 'builtin'),
+        checksum=pulumi.get(__ret__, 'checksum'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        ui_url=pulumi.get(__ret__, 'ui_url'),
+        url=pulumi.get(__ret__, 'url'),
+        whitelist_domains=pulumi.get(__ret__, 'whitelist_domains'))
 
 
 @_utilities.lift_output_func(get_cluster_driver)

@@ -286,14 +286,14 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.openstackCredentialConfig);
     }
     /**
-     * S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+     * S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
      * 
      */
     @Export(name="s3CredentialConfig", refs={CloudCredentialS3CredentialConfig.class}, tree="[0]")
     private Output</* @Nullable */ CloudCredentialS3CredentialConfig> s3CredentialConfig;
 
     /**
-     * @return S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+     * @return S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
      * 
      */
     public Output<Optional<CloudCredentialS3CredentialConfig>> s3CredentialConfig() {

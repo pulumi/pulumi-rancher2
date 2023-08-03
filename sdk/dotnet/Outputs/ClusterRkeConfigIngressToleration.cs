@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigIngressToleration
     {
         /// <summary>
-        /// The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        /// The toleration effect. Default: `\"NoSchedule\"` (string)
         /// </summary>
         public readonly string? Effect;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        /// The toleration operator (string)
         /// </summary>
         public readonly string? Operator;
         /// <summary>
-        /// The toleration seconds (int)
+        /// The number of seconds a pod will stay bound to a node with a matching taint (int)
         /// </summary>
         public readonly int? Seconds;
         /// <summary>

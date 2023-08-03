@@ -15,24 +15,6 @@ namespace Pulumi.Rancher2.Outputs
     {
         /// <summary>
         /// Plugin configuration. (string) Ex:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// configuration = &lt;&lt;EOF
-        /// apiVersion: eventratelimit.admission.k8s.io/v1alpha1
-        /// kind: Configuration
-        /// limits:
-        /// - type: Server
-        /// burst: 35000
-        /// qps: 6000
-        /// EOF
         /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration? Configuration;
         /// <summary>

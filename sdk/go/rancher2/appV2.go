@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -125,6 +126,7 @@ func NewAppV2(ctx *pulumi.Context,
 	if args.RepoName == nil {
 		return nil, errors.New("invalid value for required argument 'RepoName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppV2
 	err := ctx.RegisterResource("rancher2:index/appV2:AppV2", name, args, &resource, opts...)
 	if err != nil {

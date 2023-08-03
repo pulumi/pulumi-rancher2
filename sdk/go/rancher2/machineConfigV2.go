@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // `amazonec2`, `azure`, `digitalocean`, `harvester`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
 //
-// **Note** This resource is used by
+// **Note:** This resource is used by
 //
 // ## Example Usage
 // ### Using the Harvester Node Driver
@@ -54,7 +55,35 @@ import (
 //					VmNamespace: pulumi.String("default"),
 //					CpuCount:    pulumi.String("2"),
 //					MemorySize:  pulumi.String("4"),
-//					DiskInfo:    pulumi.String("    {\n        \"disks\": [{\n            \"imageName\": \"harvester-public/image-57hzg\",\n            \"size\": 40,\n            \"bootOrder\": 1\n        }]\n    }\n    EOF,\n    networkInfo = <<EOF\n    {\n        \"interfaces\": [{\n            \"networkName\": \"harvester-public/vlan1\"\n        }]\n    }\n    EOF,\n    sshUser = \"ubuntu\",\n    userData = <<EOF\n    package_update: true\n    packages:\n      - qemu-guest-agent\n      - iptables\n    runcmd:\n      - - systemctl\n        - enable\n        - '--now'\n        - qemu-guest-agent.service\n"),
+//					DiskInfo: pulumi.String(`    {
+//	        "disks": [{
+//	            "imageName": "harvester-public/image-57hzg",
+//	            "size": 40,
+//	            "bootOrder": 1
+//	        }]
+//	    }
+//	    EOF,
+//	    networkInfo = <<EOF
+//	    {
+//	        "interfaces": [{
+//	            "networkName": "harvester-public/vlan1"
+//	        }]
+//	    }
+//	    EOF,
+//	    sshUser = "ubuntu",
+//	    userData = <<EOF
+//	    package_update: true
+//	    packages:
+//	      - qemu-guest-agent
+//	      - iptables
+//	    runcmd:
+//	      - - systemctl
+//	        - enable
+//	        - '--now'
+//	        - qemu-guest-agent.service
+//
+// `),
+//
 //				},
 //			})
 //			if err != nil {
@@ -86,7 +115,7 @@ type MachineConfigV2 struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Labels for Machine Config V2 object (map)
 	//
-	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
+	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	LinodeConfig MachineConfigV2LinodeConfigPtrOutput `pulumi:"linodeConfig"`
@@ -110,6 +139,7 @@ func NewMachineConfigV2(ctx *pulumi.Context,
 	if args.GenerateName == nil {
 		return nil, errors.New("invalid value for required argument 'GenerateName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MachineConfigV2
 	err := ctx.RegisterResource("rancher2:index/machineConfigV2:MachineConfigV2", name, args, &resource, opts...)
 	if err != nil {
@@ -150,7 +180,7 @@ type machineConfigV2State struct {
 	Kind *string `pulumi:"kind"`
 	// Labels for Machine Config V2 object (map)
 	//
-	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
+	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	LinodeConfig *MachineConfigV2LinodeConfig `pulumi:"linodeConfig"`
@@ -183,7 +213,7 @@ type MachineConfigV2State struct {
 	Kind pulumi.StringPtrInput
 	// Labels for Machine Config V2 object (map)
 	//
-	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
+	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
 	Labels pulumi.MapInput
 	// Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	LinodeConfig MachineConfigV2LinodeConfigPtrInput
@@ -218,7 +248,7 @@ type machineConfigV2Args struct {
 	HarvesterConfig *MachineConfigV2HarvesterConfig `pulumi:"harvesterConfig"`
 	// Labels for Machine Config V2 object (map)
 	//
-	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
+	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	LinodeConfig *MachineConfigV2LinodeConfig `pulumi:"linodeConfig"`
@@ -246,7 +276,7 @@ type MachineConfigV2Args struct {
 	HarvesterConfig MachineConfigV2HarvesterConfigPtrInput
 	// Labels for Machine Config V2 object (map)
 	//
-	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
+	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
 	Labels pulumi.MapInput
 	// Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	LinodeConfig MachineConfigV2LinodeConfigPtrInput
@@ -385,7 +415,7 @@ func (o MachineConfigV2Output) Kind() pulumi.StringOutput {
 
 // Labels for Machine Config V2 object (map)
 //
-// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
+// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
 func (o MachineConfigV2Output) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *MachineConfigV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }

@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigServicesEtcdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
+        /// Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
         /// </summary>
         [Input("backupConfig")]
         public Input<Inputs.ClusterRkeConfigServicesEtcdBackupConfigArgs>? BackupConfig { get; set; }
@@ -95,7 +95,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
+        /// Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
         /// </summary>
         [Input("gid")]
         public Input<int>? Gid { get; set; }
@@ -141,7 +141,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? Snapshot { get; set; }
 
         /// <summary>
-        /// Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
+        /// Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
         /// </summary>
         [Input("uid")]
         public Input<int>? Uid { get; set; }

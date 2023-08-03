@@ -108,7 +108,7 @@ namespace Pulumi.Rancher2
     public sealed class GetClusterResult
     {
         /// <summary>
-        /// (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        /// (Computed) Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         /// </summary>
         public readonly ImmutableArray<string> AgentEnvVars;
         /// <summary>
@@ -177,7 +177,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly Outputs.GetClusterEksConfigResult EksConfig;
         /// <summary>
-        /// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+        /// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterEksConfigV2Result EksConfigV2;
         public readonly bool EnableClusterAlerting;
@@ -198,7 +198,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly Outputs.GetClusterGkeConfigResult GkeConfig;
         /// <summary>
-        /// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        /// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterGkeConfigV2Result GkeConfigV2;
         /// <summary>

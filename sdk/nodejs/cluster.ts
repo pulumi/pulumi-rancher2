@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enableClusterMonitoring = false`, `cloudProvider {}`, `name = ""`
  * ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
  *
- * **Note** Cluster monitoring version `0.2.0` or above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
+ * **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -194,7 +194,7 @@ import * as utilities from "./utilities";
  *     worker: true,
  * });
  * ```
- * ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x or above.
+ * ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -231,7 +231,7 @@ import * as utilities from "./utilities";
  *     clusterTemplateRevisionId: fooClusterTemplate.templateRevisions.apply(templateRevisions => templateRevisions[0].id),
  * });
  * ```
- * ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x or above.
+ * ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -281,7 +281,52 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * ### Importing EKS cluster to Rancher v2, using `eksConfigV2`. For Rancher v2.5.x or above.
+ * ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = new rancher2.Cluster("foo", {
+ *     clusterAgentDeploymentCustomizations: [{
+ *         appendTolerations: [{
+ *             effect: "NoSchedule",
+ *             key: "tolerate/control-plane",
+ *             value: "true",
+ *         }],
+ *         overrideAffinity: `{
+ *   "nodeAffinity": {
+ *     "requiredDuringSchedulingIgnoredDuringExecution": {
+ *       "nodeSelectorTerms": [{
+ *         "matchExpressions": [{
+ *           "key": "not.this/nodepool",
+ *           "operator": "In",
+ *           "values": [
+ *             "true"
+ *           ]
+ *         }]
+ *       }]
+ *     }
+ *   }
+ * }
+ *
+ * `,
+ *         overrideResourceRequirements: [{
+ *             cpuLimit: "800",
+ *             cpuRequest: "500",
+ *             memoryLimit: "800",
+ *             memoryRequest: "500",
+ *         }],
+ *     }],
+ *     description: "Terraform cluster with agent customization",
+ *     rkeConfig: {
+ *         network: {
+ *             plugin: "canal",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Importing EKS cluster to Rancher v2, using `eksConfigV2`. For Rancher v2.5.x and above.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -304,7 +349,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * ### Creating EKS cluster from Rancher v2, using `eksConfigV2`. For Rancher v2.5.x or above.
+ * ### Creating EKS cluster from Rancher v2, using `eksConfigV2`. For Rancher v2.5.x and above.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -347,7 +392,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * ### Creating EKS cluster from Rancher v2, using `eksConfigV2` and launch template. For Rancher v2.5.6 or above.
+ * ### Creating EKS cluster from Rancher v2, using `eksConfigV2` and launch template. For Rancher v2.5.6 and above.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -384,7 +429,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * ### Creating AKS cluster from Rancher v2, using `aksConfigV2`. For Rancher v2.6.0 or above.
+ * ### Creating AKS cluster from Rancher v2, using `aksConfigV2`. For Rancher v2.6.0 and above.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -479,7 +524,7 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     * Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
      */
     public readonly agentEnvVars!: pulumi.Output<outputs.ClusterAgentEnvVar[] | undefined>;
     /**
@@ -499,7 +544,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly caCert!: pulumi.Output<string>;
     /**
-     * Optional customization for cluster agent
+     * Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
      */
     public readonly clusterAgentDeploymentCustomizations!: pulumi.Output<outputs.ClusterClusterAgentDeploymentCustomization[] | undefined>;
     /**
@@ -515,23 +560,23 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly clusterRegistrationToken!: pulumi.Output<outputs.ClusterClusterRegistrationToken>;
     /**
-     * Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+     * Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
      */
     public readonly clusterTemplateAnswers!: pulumi.Output<outputs.ClusterClusterTemplateAnswers>;
     /**
-     * Cluster template ID. Just for Rancher v2.3.x and above (string)
+     * Cluster template ID. For Rancher v2.3.x and above (string)
      */
     public readonly clusterTemplateId!: pulumi.Output<string | undefined>;
     /**
-     * Cluster template questions. Just for Rancher v2.3.x and above (list)
+     * Cluster template questions. For Rancher v2.3.x and above (list)
      */
     public readonly clusterTemplateQuestions!: pulumi.Output<outputs.ClusterClusterTemplateQuestion[]>;
     /**
-     * Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+     * Cluster template revision ID. For Rancher v2.3.x and above (string)
      */
     public readonly clusterTemplateRevisionId!: pulumi.Output<string | undefined>;
     /**
-     * Cluster default pod security admission configuration template name
+     * Cluster default pod security admission configuration template name (string)
      */
     public readonly defaultPodSecurityAdmissionConfigurationTemplateName!: pulumi.Output<string>;
     /**
@@ -547,15 +592,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Desired agent image. Just for Rancher v2.3.x and above (string)
+     * Desired agent image. For Rancher v2.3.x and above (string)
      */
     public readonly desiredAgentImage!: pulumi.Output<string>;
     /**
-     * Desired auth image. Just for Rancher v2.3.x and above (string)
+     * Desired auth image. For Rancher v2.3.x and above (string)
      */
     public readonly desiredAuthImage!: pulumi.Output<string>;
     /**
-     * Desired auth image. Just for Rancher v2.3.x and above (string)
+     * Desired auth image. For Rancher v2.3.x and above (string)
      */
     public readonly dockerRootDir!: pulumi.Output<string>;
     /**
@@ -567,7 +612,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly eksConfig!: pulumi.Output<outputs.ClusterEksConfig | undefined>;
     /**
-     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      */
     public readonly eksConfigV2!: pulumi.Output<outputs.ClusterEksConfigV2>;
     /**
@@ -589,7 +634,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableNetworkPolicy!: pulumi.Output<boolean>;
     /**
-     * Optional customization for fleet agent
+     * Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
      */
     public readonly fleetAgentDeploymentCustomizations!: pulumi.Output<outputs.ClusterFleetAgentDeploymentCustomization[] | undefined>;
     /**
@@ -601,11 +646,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly gkeConfig!: pulumi.Output<outputs.ClusterGkeConfig | undefined>;
     /**
-     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      */
     public readonly gkeConfigV2!: pulumi.Output<outputs.ClusterGkeConfigV2 | undefined>;
     /**
-     * (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+     * (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
      */
     public /*out*/ readonly istioEnabled!: pulumi.Output<boolean>;
     /**
@@ -755,7 +800,7 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterState {
     /**
-     * Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     * Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
      */
     agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterAgentEnvVar>[]>;
     /**
@@ -775,7 +820,7 @@ export interface ClusterState {
      */
     caCert?: pulumi.Input<string>;
     /**
-     * Optional customization for cluster agent
+     * Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
      */
     clusterAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomization>[]>;
     /**
@@ -791,23 +836,23 @@ export interface ClusterState {
      */
     clusterRegistrationToken?: pulumi.Input<inputs.ClusterClusterRegistrationToken>;
     /**
-     * Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+     * Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
      */
     clusterTemplateAnswers?: pulumi.Input<inputs.ClusterClusterTemplateAnswers>;
     /**
-     * Cluster template ID. Just for Rancher v2.3.x and above (string)
+     * Cluster template ID. For Rancher v2.3.x and above (string)
      */
     clusterTemplateId?: pulumi.Input<string>;
     /**
-     * Cluster template questions. Just for Rancher v2.3.x and above (list)
+     * Cluster template questions. For Rancher v2.3.x and above (list)
      */
     clusterTemplateQuestions?: pulumi.Input<pulumi.Input<inputs.ClusterClusterTemplateQuestion>[]>;
     /**
-     * Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+     * Cluster template revision ID. For Rancher v2.3.x and above (string)
      */
     clusterTemplateRevisionId?: pulumi.Input<string>;
     /**
-     * Cluster default pod security admission configuration template name
+     * Cluster default pod security admission configuration template name (string)
      */
     defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
     /**
@@ -823,15 +868,15 @@ export interface ClusterState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Desired agent image. Just for Rancher v2.3.x and above (string)
+     * Desired agent image. For Rancher v2.3.x and above (string)
      */
     desiredAgentImage?: pulumi.Input<string>;
     /**
-     * Desired auth image. Just for Rancher v2.3.x and above (string)
+     * Desired auth image. For Rancher v2.3.x and above (string)
      */
     desiredAuthImage?: pulumi.Input<string>;
     /**
-     * Desired auth image. Just for Rancher v2.3.x and above (string)
+     * Desired auth image. For Rancher v2.3.x and above (string)
      */
     dockerRootDir?: pulumi.Input<string>;
     /**
@@ -843,7 +888,7 @@ export interface ClusterState {
      */
     eksConfig?: pulumi.Input<inputs.ClusterEksConfig>;
     /**
-     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      */
     eksConfigV2?: pulumi.Input<inputs.ClusterEksConfigV2>;
     /**
@@ -865,7 +910,7 @@ export interface ClusterState {
      */
     enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
-     * Optional customization for fleet agent
+     * Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
      */
     fleetAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterFleetAgentDeploymentCustomization>[]>;
     /**
@@ -877,11 +922,11 @@ export interface ClusterState {
      */
     gkeConfig?: pulumi.Input<inputs.ClusterGkeConfig>;
     /**
-     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      */
     gkeConfigV2?: pulumi.Input<inputs.ClusterGkeConfigV2>;
     /**
-     * (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+     * (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
      */
     istioEnabled?: pulumi.Input<boolean>;
     /**
@@ -927,7 +972,7 @@ export interface ClusterState {
  */
 export interface ClusterArgs {
     /**
-     * Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     * Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
      */
     agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterAgentEnvVar>[]>;
     /**
@@ -943,7 +988,7 @@ export interface ClusterArgs {
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Optional customization for cluster agent
+     * Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
      */
     clusterAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomization>[]>;
     /**
@@ -955,23 +1000,23 @@ export interface ClusterArgs {
      */
     clusterMonitoringInput?: pulumi.Input<inputs.ClusterClusterMonitoringInput>;
     /**
-     * Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+     * Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
      */
     clusterTemplateAnswers?: pulumi.Input<inputs.ClusterClusterTemplateAnswers>;
     /**
-     * Cluster template ID. Just for Rancher v2.3.x and above (string)
+     * Cluster template ID. For Rancher v2.3.x and above (string)
      */
     clusterTemplateId?: pulumi.Input<string>;
     /**
-     * Cluster template questions. Just for Rancher v2.3.x and above (list)
+     * Cluster template questions. For Rancher v2.3.x and above (list)
      */
     clusterTemplateQuestions?: pulumi.Input<pulumi.Input<inputs.ClusterClusterTemplateQuestion>[]>;
     /**
-     * Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+     * Cluster template revision ID. For Rancher v2.3.x and above (string)
      */
     clusterTemplateRevisionId?: pulumi.Input<string>;
     /**
-     * Cluster default pod security admission configuration template name
+     * Cluster default pod security admission configuration template name (string)
      */
     defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
     /**
@@ -983,15 +1028,15 @@ export interface ClusterArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Desired agent image. Just for Rancher v2.3.x and above (string)
+     * Desired agent image. For Rancher v2.3.x and above (string)
      */
     desiredAgentImage?: pulumi.Input<string>;
     /**
-     * Desired auth image. Just for Rancher v2.3.x and above (string)
+     * Desired auth image. For Rancher v2.3.x and above (string)
      */
     desiredAuthImage?: pulumi.Input<string>;
     /**
-     * Desired auth image. Just for Rancher v2.3.x and above (string)
+     * Desired auth image. For Rancher v2.3.x and above (string)
      */
     dockerRootDir?: pulumi.Input<string>;
     /**
@@ -1003,7 +1048,7 @@ export interface ClusterArgs {
      */
     eksConfig?: pulumi.Input<inputs.ClusterEksConfig>;
     /**
-     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      */
     eksConfigV2?: pulumi.Input<inputs.ClusterEksConfigV2>;
     /**
@@ -1019,7 +1064,7 @@ export interface ClusterArgs {
      */
     enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
-     * Optional customization for fleet agent
+     * Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
      */
     fleetAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterFleetAgentDeploymentCustomization>[]>;
     /**
@@ -1031,7 +1076,7 @@ export interface ClusterArgs {
      */
     gkeConfig?: pulumi.Input<inputs.ClusterGkeConfig>;
     /**
-     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      */
     gkeConfigV2?: pulumi.Input<inputs.ClusterGkeConfigV2>;
     /**

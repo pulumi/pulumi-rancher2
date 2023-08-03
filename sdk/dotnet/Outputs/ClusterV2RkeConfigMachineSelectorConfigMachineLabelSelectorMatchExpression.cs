@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
     {
         /// <summary>
-        /// The taint key (string)
+        /// The toleration key (string)
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// Machine selector label match expressions operator (string)
+        /// The toleration operator (string)
         /// </summary>
         public readonly string? Operator;
         /// <summary>

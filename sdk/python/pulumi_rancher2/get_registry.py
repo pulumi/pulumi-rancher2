@@ -163,14 +163,14 @@ def get_registry(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getRegistry:getRegistry', __args__, opts=opts, typ=GetRegistryResult).value
 
     return AwaitableGetRegistryResult(
-        annotations=__ret__.annotations,
-        description=__ret__.description,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        namespace_id=__ret__.namespace_id,
-        project_id=__ret__.project_id,
-        registries=__ret__.registries)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        namespace_id=pulumi.get(__ret__, 'namespace_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        registries=pulumi.get(__ret__, 'registries'))
 
 
 @_utilities.lift_output_func(get_registry)

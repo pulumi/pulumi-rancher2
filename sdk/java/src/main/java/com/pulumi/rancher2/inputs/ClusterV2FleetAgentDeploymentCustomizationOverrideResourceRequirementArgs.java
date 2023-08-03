@@ -15,30 +15,62 @@ public final class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceReq
 
     public static final ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs Empty = new ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs();
 
+    /**
+     * The maximum CPU limit for agent (string)
+     * 
+     */
     @Import(name="cpuLimit")
     private @Nullable Output<String> cpuLimit;
 
+    /**
+     * @return The maximum CPU limit for agent (string)
+     * 
+     */
     public Optional<Output<String>> cpuLimit() {
         return Optional.ofNullable(this.cpuLimit);
     }
 
+    /**
+     * The minimum CPU required for agent (string)
+     * 
+     */
     @Import(name="cpuRequest")
     private @Nullable Output<String> cpuRequest;
 
+    /**
+     * @return The minimum CPU required for agent (string)
+     * 
+     */
     public Optional<Output<String>> cpuRequest() {
         return Optional.ofNullable(this.cpuRequest);
     }
 
+    /**
+     * The maximum memory limit for agent (string)
+     * 
+     */
     @Import(name="memoryLimit")
     private @Nullable Output<String> memoryLimit;
 
+    /**
+     * @return The maximum memory limit for agent (string)
+     * 
+     */
     public Optional<Output<String>> memoryLimit() {
         return Optional.ofNullable(this.memoryLimit);
     }
 
+    /**
+     * The minimum memory required for agent (string)
+     * 
+     */
     @Import(name="memoryRequest")
     private @Nullable Output<String> memoryRequest;
 
+    /**
+     * @return The minimum memory required for agent (string)
+     * 
+     */
     public Optional<Output<String>> memoryRequest() {
         return Optional.ofNullable(this.memoryRequest);
     }
@@ -70,38 +102,86 @@ public final class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceReq
             $ = new ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cpuLimit The maximum CPU limit for agent (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuLimit(@Nullable Output<String> cpuLimit) {
             $.cpuLimit = cpuLimit;
             return this;
         }
 
+        /**
+         * @param cpuLimit The maximum CPU limit for agent (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuLimit(String cpuLimit) {
             return cpuLimit(Output.of(cpuLimit));
         }
 
+        /**
+         * @param cpuRequest The minimum CPU required for agent (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuRequest(@Nullable Output<String> cpuRequest) {
             $.cpuRequest = cpuRequest;
             return this;
         }
 
+        /**
+         * @param cpuRequest The minimum CPU required for agent (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuRequest(String cpuRequest) {
             return cpuRequest(Output.of(cpuRequest));
         }
 
+        /**
+         * @param memoryLimit The maximum memory limit for agent (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryLimit(@Nullable Output<String> memoryLimit) {
             $.memoryLimit = memoryLimit;
             return this;
         }
 
+        /**
+         * @param memoryLimit The maximum memory limit for agent (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryLimit(String memoryLimit) {
             return memoryLimit(Output.of(memoryLimit));
         }
 
+        /**
+         * @param memoryRequest The minimum memory required for agent (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryRequest(@Nullable Output<String> memoryRequest) {
             $.memoryRequest = memoryRequest;
             return this;
         }
 
+        /**
+         * @param memoryRequest The minimum memory required for agent (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryRequest(String memoryRequest) {
             return memoryRequest(Output.of(memoryRequest));
         }

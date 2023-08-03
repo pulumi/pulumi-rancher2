@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigIngressToleration {
     /**
-     * @return The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     private @Nullable String effect;
@@ -23,12 +23,12 @@ public final class ClusterRkeConfigIngressToleration {
      */
     private String key;
     /**
-     * @return The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     * @return The toleration operator (string)
      * 
      */
     private @Nullable String operator;
     /**
-     * @return The toleration seconds (int)
+     * @return The number of seconds a pod will stay bound to a node with a matching taint (int)
      * 
      */
     private @Nullable Integer seconds;
@@ -40,7 +40,7 @@ public final class ClusterRkeConfigIngressToleration {
 
     private ClusterRkeConfigIngressToleration() {}
     /**
-     * @return The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     public Optional<String> effect() {
@@ -54,14 +54,14 @@ public final class ClusterRkeConfigIngressToleration {
         return this.key;
     }
     /**
-     * @return The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     * @return The toleration operator (string)
      * 
      */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
     /**
-     * @return The toleration seconds (int)
+     * @return The number of seconds a pod will stay bound to a node with a matching taint (int)
      * 
      */
     public Optional<Integer> seconds() {

@@ -130,7 +130,7 @@ class GetClusterResult:
     @pulumi.getter(name="agentEnvVars")
     def agent_env_vars(self) -> Sequence[str]:
         """
-        (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        (Computed) Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         """
         return pulumi.get(self, "agent_env_vars")
 
@@ -271,7 +271,7 @@ class GetClusterResult:
     @pulumi.getter(name="eksConfigV2")
     def eks_config_v2(self) -> 'outputs.GetClusterEksConfigV2Result':
         """
-        (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+        (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         """
         return pulumi.get(self, "eks_config_v2")
 
@@ -316,7 +316,7 @@ class GetClusterResult:
     @pulumi.getter(name="gkeConfigV2")
     def gke_config_v2(self) -> 'outputs.GetClusterGkeConfigV2Result':
         """
-        (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
         """
         return pulumi.get(self, "gke_config_v2")
 
@@ -457,40 +457,40 @@ def get_cluster(default_pod_security_admission_configuration_template_name: Opti
     __ret__ = pulumi.runtime.invoke('rancher2:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
-        agent_env_vars=__ret__.agent_env_vars,
-        aks_config=__ret__.aks_config,
-        aks_config_v2=__ret__.aks_config_v2,
-        annotations=__ret__.annotations,
-        ca_cert=__ret__.ca_cert,
-        cluster_auth_endpoint=__ret__.cluster_auth_endpoint,
-        cluster_monitoring_input=__ret__.cluster_monitoring_input,
-        cluster_registration_token=__ret__.cluster_registration_token,
-        cluster_template_answers=__ret__.cluster_template_answers,
-        cluster_template_id=__ret__.cluster_template_id,
-        cluster_template_questions=__ret__.cluster_template_questions,
-        cluster_template_revision_id=__ret__.cluster_template_revision_id,
-        default_pod_security_admission_configuration_template_name=__ret__.default_pod_security_admission_configuration_template_name,
-        default_pod_security_policy_template_id=__ret__.default_pod_security_policy_template_id,
-        default_project_id=__ret__.default_project_id,
-        description=__ret__.description,
-        driver=__ret__.driver,
-        eks_config=__ret__.eks_config,
-        eks_config_v2=__ret__.eks_config_v2,
-        enable_cluster_alerting=__ret__.enable_cluster_alerting,
-        enable_cluster_monitoring=__ret__.enable_cluster_monitoring,
-        enable_network_policy=__ret__.enable_network_policy,
-        fleet_workspace_name=__ret__.fleet_workspace_name,
-        gke_config=__ret__.gke_config,
-        gke_config_v2=__ret__.gke_config_v2,
-        id=__ret__.id,
-        k3s_config=__ret__.k3s_config,
-        kube_config=__ret__.kube_config,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        oke_config=__ret__.oke_config,
-        rke2_config=__ret__.rke2_config,
-        rke_config=__ret__.rke_config,
-        system_project_id=__ret__.system_project_id)
+        agent_env_vars=pulumi.get(__ret__, 'agent_env_vars'),
+        aks_config=pulumi.get(__ret__, 'aks_config'),
+        aks_config_v2=pulumi.get(__ret__, 'aks_config_v2'),
+        annotations=pulumi.get(__ret__, 'annotations'),
+        ca_cert=pulumi.get(__ret__, 'ca_cert'),
+        cluster_auth_endpoint=pulumi.get(__ret__, 'cluster_auth_endpoint'),
+        cluster_monitoring_input=pulumi.get(__ret__, 'cluster_monitoring_input'),
+        cluster_registration_token=pulumi.get(__ret__, 'cluster_registration_token'),
+        cluster_template_answers=pulumi.get(__ret__, 'cluster_template_answers'),
+        cluster_template_id=pulumi.get(__ret__, 'cluster_template_id'),
+        cluster_template_questions=pulumi.get(__ret__, 'cluster_template_questions'),
+        cluster_template_revision_id=pulumi.get(__ret__, 'cluster_template_revision_id'),
+        default_pod_security_admission_configuration_template_name=pulumi.get(__ret__, 'default_pod_security_admission_configuration_template_name'),
+        default_pod_security_policy_template_id=pulumi.get(__ret__, 'default_pod_security_policy_template_id'),
+        default_project_id=pulumi.get(__ret__, 'default_project_id'),
+        description=pulumi.get(__ret__, 'description'),
+        driver=pulumi.get(__ret__, 'driver'),
+        eks_config=pulumi.get(__ret__, 'eks_config'),
+        eks_config_v2=pulumi.get(__ret__, 'eks_config_v2'),
+        enable_cluster_alerting=pulumi.get(__ret__, 'enable_cluster_alerting'),
+        enable_cluster_monitoring=pulumi.get(__ret__, 'enable_cluster_monitoring'),
+        enable_network_policy=pulumi.get(__ret__, 'enable_network_policy'),
+        fleet_workspace_name=pulumi.get(__ret__, 'fleet_workspace_name'),
+        gke_config=pulumi.get(__ret__, 'gke_config'),
+        gke_config_v2=pulumi.get(__ret__, 'gke_config_v2'),
+        id=pulumi.get(__ret__, 'id'),
+        k3s_config=pulumi.get(__ret__, 'k3s_config'),
+        kube_config=pulumi.get(__ret__, 'kube_config'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        oke_config=pulumi.get(__ret__, 'oke_config'),
+        rke2_config=pulumi.get(__ret__, 'rke2_config'),
+        rke_config=pulumi.get(__ret__, 'rke_config'),
+        system_project_id=pulumi.get(__ret__, 'system_project_id'))
 
 
 @_utilities.lift_output_func(get_cluster)

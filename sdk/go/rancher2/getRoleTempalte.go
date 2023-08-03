@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // Deprecated: rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
 func LookupRoleTempalte(ctx *pulumi.Context, args *LookupRoleTempalteArgs, opts ...pulumi.InvokeOption) (*LookupRoleTempalteResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleTempalteResult
 	err := ctx.Invoke("rancher2:index/getRoleTempalte:getRoleTempalte", args, &rv, opts...)
 	if err != nil {

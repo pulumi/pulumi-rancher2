@@ -43,7 +43,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? SafeTimestamp { get; set; }
 
         /// <summary>
-        /// Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+        /// Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
         /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }

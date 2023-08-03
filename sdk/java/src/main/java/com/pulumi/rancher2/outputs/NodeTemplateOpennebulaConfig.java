@@ -100,7 +100,7 @@ public final class NodeTemplateOpennebulaConfig {
     /**
      * @return VCPUs for the VM (string)
      * 
-     * &gt; **Note**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+     * &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
      * 
      */
     private @Nullable String vcpu;
@@ -233,7 +233,7 @@ public final class NodeTemplateOpennebulaConfig {
     /**
      * @return VCPUs for the VM (string)
      * 
-     * &gt; **Note**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+     * &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
      * 
      */
     public Optional<String> vcpu() {

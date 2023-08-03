@@ -207,14 +207,14 @@ public final class CloudCredentialState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+     * S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
      * 
      */
     @Import(name="s3CredentialConfig")
     private @Nullable Output<CloudCredentialS3CredentialConfigArgs> s3CredentialConfig;
 
     /**
-     * @return S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+     * @return S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
      * 
      */
     public Optional<Output<CloudCredentialS3CredentialConfigArgs>> s3CredentialConfig() {
@@ -526,7 +526,7 @@ public final class CloudCredentialState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param s3CredentialConfig S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+         * @param s3CredentialConfig S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class CloudCredentialState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param s3CredentialConfig S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+         * @param s3CredentialConfig S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
          * 
          * @return builder
          * 

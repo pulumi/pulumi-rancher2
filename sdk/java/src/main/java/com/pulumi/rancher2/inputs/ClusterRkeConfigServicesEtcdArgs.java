@@ -22,14 +22,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     public static final ClusterRkeConfigServicesEtcdArgs Empty = new ClusterRkeConfigServicesEtcdArgs();
 
     /**
-     * Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
+     * Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
      * 
      */
     @Import(name="backupConfig")
     private @Nullable Output<ClusterRkeConfigServicesEtcdBackupConfigArgs> backupConfig;
 
     /**
-     * @return Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
+     * @return Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterRkeConfigServicesEtcdBackupConfigArgs>> backupConfig() {
@@ -142,14 +142,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     }
 
     /**
-     * Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
+     * Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
      * 
      */
     @Import(name="gid")
     private @Nullable Output<Integer> gid;
 
     /**
-     * @return Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
+     * @return Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
      * 
      */
     public Optional<Output<Integer>> gid() {
@@ -232,14 +232,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     }
 
     /**
-     * Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
+     * Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
      * 
      */
     @Import(name="uid")
     private @Nullable Output<Integer> uid;
 
     /**
-     * @return Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
+     * @return Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
      * 
      */
     public Optional<Output<Integer>> uid() {
@@ -285,7 +285,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param backupConfig Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
+         * @param backupConfig Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param backupConfig Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
+         * @param backupConfig Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param gid Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
+         * @param gid Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param gid Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
+         * @param gid Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
          * 
          * @return builder
          * 
@@ -609,7 +609,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param uid Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
+         * @param uid Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
          * 
          * @return builder
          * 
@@ -620,7 +620,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param uid Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
+         * @param uid Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
          * 
          * @return builder
          * 

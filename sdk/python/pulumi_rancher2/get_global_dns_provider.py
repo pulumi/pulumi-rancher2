@@ -149,15 +149,15 @@ def get_global_dns_provider(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider', __args__, opts=opts, typ=GetGlobalDnsProviderResult).value
 
     return AwaitableGetGlobalDnsProviderResult(
-        alidns_config=__ret__.alidns_config,
-        annotations=__ret__.annotations,
-        cloudflare_config=__ret__.cloudflare_config,
-        dns_provider=__ret__.dns_provider,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        root_domain=__ret__.root_domain,
-        route53_config=__ret__.route53_config)
+        alidns_config=pulumi.get(__ret__, 'alidns_config'),
+        annotations=pulumi.get(__ret__, 'annotations'),
+        cloudflare_config=pulumi.get(__ret__, 'cloudflare_config'),
+        dns_provider=pulumi.get(__ret__, 'dns_provider'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        root_domain=pulumi.get(__ret__, 'root_domain'),
+        route53_config=pulumi.get(__ret__, 'route53_config'))
 
 
 @_utilities.lift_output_func(get_global_dns_provider)

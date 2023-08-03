@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement {
+    /**
+     * @return The maximum CPU limit for agent (string)
+     * 
+     */
     private @Nullable String cpuLimit;
+    /**
+     * @return The minimum CPU required for agent (string)
+     * 
+     */
     private @Nullable String cpuRequest;
+    /**
+     * @return The maximum memory limit for agent (string)
+     * 
+     */
     private @Nullable String memoryLimit;
+    /**
+     * @return The minimum memory required for agent (string)
+     * 
+     */
     private @Nullable String memoryRequest;
 
     private ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement() {}
+    /**
+     * @return The maximum CPU limit for agent (string)
+     * 
+     */
     public Optional<String> cpuLimit() {
         return Optional.ofNullable(this.cpuLimit);
     }
+    /**
+     * @return The minimum CPU required for agent (string)
+     * 
+     */
     public Optional<String> cpuRequest() {
         return Optional.ofNullable(this.cpuRequest);
     }
+    /**
+     * @return The maximum memory limit for agent (string)
+     * 
+     */
     public Optional<String> memoryLimit() {
         return Optional.ofNullable(this.memoryLimit);
     }
+    /**
+     * @return The minimum memory required for agent (string)
+     * 
+     */
     public Optional<String> memoryRequest() {
         return Optional.ofNullable(this.memoryRequest);
     }

@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x or above.
+ * Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

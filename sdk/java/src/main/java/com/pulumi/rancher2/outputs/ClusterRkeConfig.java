@@ -62,7 +62,7 @@ public final class ClusterRkeConfig {
      */
     private @Nullable ClusterRkeConfigCloudProvider cloudProvider;
     /**
-     * @return RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+     * @return RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
      * 
      */
     private @Nullable ClusterRkeConfigDns dns;
@@ -193,7 +193,7 @@ public final class ClusterRkeConfig {
         return Optional.ofNullable(this.cloudProvider);
     }
     /**
-     * @return RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+     * @return RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
      * 
      */
     public Optional<ClusterRkeConfigDns> dns() {

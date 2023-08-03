@@ -110,7 +110,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
     /**
      * Labels for global role binding (map)
      * 
-     * **Note** user `user_id` OR group `group_principal_id` must be defined
+     * **Note:** user `user_id` OR group `group_principal_id` must be defined
      * 
      */
     @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
@@ -119,7 +119,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
     /**
      * @return Labels for global role binding (map)
      * 
-     * **Note** user `user_id` OR group `group_principal_id` must be defined
+     * **Note:** user `user_id` OR group `group_principal_id` must be defined
      * 
      */
     public Output<Map<String,Object>> labels() {

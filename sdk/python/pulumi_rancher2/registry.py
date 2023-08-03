@@ -265,11 +265,11 @@ class Registry(pulumi.CustomResource):
                  registries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]]] = None,
                  __props__=None):
         """
-        Provides a Rancher v2 Registry resource. This can be used to create docker registries for Rancher v2 environments and retrieve their information.
+        Provides a Rancher v2 Registry resource. This resource creates Kubernetes secrets with the type `kubernetes.io/dockerconfigjson` for authenticating against Docker registries for Rancher v2 environments and retrieving their information.
 
-        Depending of the availability, there are 2 types of Rancher v2 docker registries:
-        - Project registry: Available to all namespaces in the `project_id`
-        - Namespaced registry: Available to just `namespace_id` in the `project_id`
+        Depending on the availability, there are 2 types of Rancher v2 Docker registry resources:
+        - Project registry resource: Available to all namespaces in the `project_id`.
+        - Namespaced registry resource: Available to `namespace_id` in the `project_id`.
 
         ## Example Usage
 
@@ -331,11 +331,11 @@ class Registry(pulumi.CustomResource):
                  args: RegistryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Rancher v2 Registry resource. This can be used to create docker registries for Rancher v2 environments and retrieve their information.
+        Provides a Rancher v2 Registry resource. This resource creates Kubernetes secrets with the type `kubernetes.io/dockerconfigjson` for authenticating against Docker registries for Rancher v2 environments and retrieving their information.
 
-        Depending of the availability, there are 2 types of Rancher v2 docker registries:
-        - Project registry: Available to all namespaces in the `project_id`
-        - Namespaced registry: Available to just `namespace_id` in the `project_id`
+        Depending on the availability, there are 2 types of Rancher v2 Docker registry resources:
+        - Project registry resource: Available to all namespaces in the `project_id`.
+        - Namespaced registry resource: Available to `namespace_id` in the `project_id`.
 
         ## Example Usage
 

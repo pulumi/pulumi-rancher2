@@ -174,16 +174,16 @@ def get_project_alert_group(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getProjectAlertGroup:getProjectAlertGroup', __args__, opts=opts, typ=GetProjectAlertGroupResult).value
 
     return AwaitableGetProjectAlertGroupResult(
-        annotations=__ret__.annotations,
-        description=__ret__.description,
-        group_interval_seconds=__ret__.group_interval_seconds,
-        group_wait_seconds=__ret__.group_wait_seconds,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        project_id=__ret__.project_id,
-        recipients=__ret__.recipients,
-        repeat_interval_seconds=__ret__.repeat_interval_seconds)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        description=pulumi.get(__ret__, 'description'),
+        group_interval_seconds=pulumi.get(__ret__, 'group_interval_seconds'),
+        group_wait_seconds=pulumi.get(__ret__, 'group_wait_seconds'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        recipients=pulumi.get(__ret__, 'recipients'),
+        repeat_interval_seconds=pulumi.get(__ret__, 'repeat_interval_seconds'))
 
 
 @_utilities.lift_output_func(get_project_alert_group)

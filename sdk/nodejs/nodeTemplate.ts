@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, outscale, hetzner and vsphere drivers are supported for node templates.
  *
- * **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
+ * **Note:** If you are upgrading to Rancher v2.3.3, please take a look to final section
  *
  * ## Example Usage
  *
@@ -253,7 +253,7 @@ export class NodeTemplate extends pulumi.CustomResource {
     /**
      * Labels for Node Template object (map)
      *
-     * **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
+     * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -265,7 +265,7 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Node taints. For Rancher v2.3.3 or above (List)
+     * Node taints. For Rancher v2.3.3 and above (List)
      */
     public readonly nodeTaints!: pulumi.Output<outputs.NodeTemplateNodeTaint[] | undefined>;
     /**
@@ -451,7 +451,7 @@ export interface NodeTemplateState {
     /**
      * Labels for Node Template object (map)
      *
-     * **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
+     * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -463,7 +463,7 @@ export interface NodeTemplateState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Node taints. For Rancher v2.3.3 or above (List)
+     * Node taints. For Rancher v2.3.3 and above (List)
      */
     nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodeTemplateNodeTaint>[]>;
     /**
@@ -567,7 +567,7 @@ export interface NodeTemplateArgs {
     /**
      * Labels for Node Template object (map)
      *
-     * **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
+     * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -579,7 +579,7 @@ export interface NodeTemplateArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Node taints. For Rancher v2.3.3 or above (List)
+     * Node taints. For Rancher v2.3.3 and above (List)
      */
     nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodeTemplateNodeTaint>[]>;
     /**

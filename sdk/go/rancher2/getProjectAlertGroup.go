@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupProjectAlertGroup(ctx *pulumi.Context, args *LookupProjectAlertGroupArgs, opts ...pulumi.InvokeOption) (*LookupProjectAlertGroupResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectAlertGroupResult
 	err := ctx.Invoke("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", args, &rv, opts...)
 	if err != nil {

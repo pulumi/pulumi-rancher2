@@ -14,17 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterV2FleetAgentDeploymentCustomization {
+    /**
+     * @return User defined tolerations to append to agent (list)
+     * 
+     */
     private @Nullable List<ClusterV2FleetAgentDeploymentCustomizationAppendToleration> appendTolerations;
+    /**
+     * @return User defined affinity to override default agent affinity (string)
+     * 
+     */
     private @Nullable String overrideAffinity;
+    /**
+     * @return User defined resource requirements to set on the agent (list)
+     * 
+     */
     private @Nullable List<ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements;
 
     private ClusterV2FleetAgentDeploymentCustomization() {}
+    /**
+     * @return User defined tolerations to append to agent (list)
+     * 
+     */
     public List<ClusterV2FleetAgentDeploymentCustomizationAppendToleration> appendTolerations() {
         return this.appendTolerations == null ? List.of() : this.appendTolerations;
     }
+    /**
+     * @return User defined affinity to override default agent affinity (string)
+     * 
+     */
     public Optional<String> overrideAffinity() {
         return Optional.ofNullable(this.overrideAffinity);
     }
+    /**
+     * @return User defined resource requirements to set on the agent (list)
+     * 
+     */
     public List<ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements() {
         return this.overrideResourceRequirements == null ? List.of() : this.overrideResourceRequirements;
     }

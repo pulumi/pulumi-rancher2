@@ -94,9 +94,17 @@ public final class AuthConfigPingArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Ping entity ID field (string)
+     * 
+     */
     @Import(name="entityIdField")
     private @Nullable Output<String> entityIdField;
 
+    /**
+     * @return Ping entity ID field (string)
+     * 
+     */
     public Optional<Output<String>> entityIdField() {
         return Optional.ofNullable(this.entityIdField);
     }
@@ -373,11 +381,23 @@ public final class AuthConfigPingArgs extends com.pulumi.resources.ResourceArgs 
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param entityIdField Ping entity ID field (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder entityIdField(@Nullable Output<String> entityIdField) {
             $.entityIdField = entityIdField;
             return this;
         }
 
+        /**
+         * @param entityIdField Ping entity ID field (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder entityIdField(String entityIdField) {
             return entityIdField(Output.of(entityIdField));
         }

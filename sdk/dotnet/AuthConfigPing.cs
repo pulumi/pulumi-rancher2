@@ -73,6 +73,9 @@ namespace Pulumi.Rancher2
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Ping entity ID field (string)
+        /// </summary>
         [Output("entityIdField")]
         public Output<string?> EntityIdField { get; private set; } = null!;
 
@@ -230,6 +233,9 @@ namespace Pulumi.Rancher2
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Ping entity ID field (string)
+        /// </summary>
         [Input("entityIdField")]
         public Input<string>? EntityIdField { get; set; }
 
@@ -367,6 +373,9 @@ namespace Pulumi.Rancher2
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Ping entity ID field (string)
+        /// </summary>
         [Input("entityIdField")]
         public Input<string>? EntityIdField { get; set; }
 

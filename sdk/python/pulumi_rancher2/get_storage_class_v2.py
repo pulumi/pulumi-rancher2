@@ -187,18 +187,18 @@ def get_storage_class_v2(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getStorageClassV2:getStorageClassV2', __args__, opts=opts, typ=GetStorageClassV2Result).value
 
     return AwaitableGetStorageClassV2Result(
-        allow_volume_expansion=__ret__.allow_volume_expansion,
-        annotations=__ret__.annotations,
-        cluster_id=__ret__.cluster_id,
-        id=__ret__.id,
-        k8s_provisioner=__ret__.k8s_provisioner,
-        labels=__ret__.labels,
-        mount_options=__ret__.mount_options,
-        name=__ret__.name,
-        parameters=__ret__.parameters,
-        reclaim_policy=__ret__.reclaim_policy,
-        resource_version=__ret__.resource_version,
-        volume_binding_mode=__ret__.volume_binding_mode)
+        allow_volume_expansion=pulumi.get(__ret__, 'allow_volume_expansion'),
+        annotations=pulumi.get(__ret__, 'annotations'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        id=pulumi.get(__ret__, 'id'),
+        k8s_provisioner=pulumi.get(__ret__, 'k8s_provisioner'),
+        labels=pulumi.get(__ret__, 'labels'),
+        mount_options=pulumi.get(__ret__, 'mount_options'),
+        name=pulumi.get(__ret__, 'name'),
+        parameters=pulumi.get(__ret__, 'parameters'),
+        reclaim_policy=pulumi.get(__ret__, 'reclaim_policy'),
+        resource_version=pulumi.get(__ret__, 'resource_version'),
+        volume_binding_mode=pulumi.get(__ret__, 'volume_binding_mode'))
 
 
 @_utilities.lift_output_func(get_storage_class_v2)

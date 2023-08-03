@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,12 +44,12 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ApiUrl'")
 	}
 	if args.Bootstrap == nil {
-		if d := getEnvOrDefault(false, parseEnvBool, "RANCHER_BOOTSTRAP"); d != nil {
+		if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "RANCHER_BOOTSTRAP"); d != nil {
 			args.Bootstrap = pulumi.BoolPtr(d.(bool))
 		}
 	}
 	if args.Insecure == nil {
-		if d := getEnvOrDefault(false, parseEnvBool, "RANCHER_INSECURE"); d != nil {
+		if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "RANCHER_INSECURE"); d != nil {
 			args.Insecure = pulumi.BoolPtr(d.(bool))
 		}
 	}
@@ -67,6 +68,7 @@ func NewProvider(ctx *pulumi.Context,
 		"tokenKey",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:rancher2", name, args, &resource, opts...)
 	if err != nil {

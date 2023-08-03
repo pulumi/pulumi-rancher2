@@ -35,7 +35,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? CustomData;
         /// <summary>
-        /// Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        /// Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         /// </summary>
         public readonly string? DiskSize;
         /// <summary>
@@ -63,7 +63,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Location;
         /// <summary>
-        /// Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        /// Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
         /// </summary>
         public readonly bool? ManagedDisks;
         /// <summary>

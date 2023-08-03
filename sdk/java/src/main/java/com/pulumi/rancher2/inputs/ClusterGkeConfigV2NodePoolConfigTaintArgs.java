@@ -14,14 +14,14 @@ public final class ClusterGkeConfigV2NodePoolConfigTaintArgs extends com.pulumi.
     public static final ClusterGkeConfigV2NodePoolConfigTaintArgs Empty = new ClusterGkeConfigV2NodePoolConfigTaintArgs();
 
     /**
-     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     @Import(name="effect", required=true)
     private Output<String> effect;
 
     /**
-     * @return The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     public Output<String> effect() {
@@ -85,7 +85,7 @@ public final class ClusterGkeConfigV2NodePoolConfigTaintArgs extends com.pulumi.
         }
 
         /**
-         * @param effect The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class ClusterGkeConfigV2NodePoolConfigTaintArgs extends com.pulumi.
         }
 
         /**
-         * @param effect The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
          * 
          * @return builder
          * 

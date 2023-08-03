@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupGlobalDnsProvider(ctx *pulumi.Context, args *LookupGlobalDnsProviderArgs, opts ...pulumi.InvokeOption) (*LookupGlobalDnsProviderResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalDnsProviderResult
 	err := ctx.Invoke("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", args, &rv, opts...)
 	if err != nil {

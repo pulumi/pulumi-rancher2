@@ -61,7 +61,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigCloudProviderGetArgs>? CloudProvider { get; set; }
 
         /// <summary>
-        /// RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+        /// RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
         /// </summary>
         [Input("dns")]
         public Input<Inputs.ClusterRkeConfigDnsGetArgs>? Dns { get; set; }

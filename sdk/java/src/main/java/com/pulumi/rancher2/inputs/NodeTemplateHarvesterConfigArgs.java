@@ -69,7 +69,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      * @deprecated
      * Use disk_info instead
@@ -80,7 +80,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      * @deprecated
      * Use disk_info instead
@@ -251,14 +251,14 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+     * Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
      * 
      */
     @Import(name="vmAffinity")
     private @Nullable Output<String> vmAffinity;
 
     /**
-     * @return Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+     * @return Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
      * 
      */
     public Optional<Output<String>> vmAffinity() {
@@ -390,7 +390,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
          * 
          * @return builder
          * 
@@ -632,7 +632,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param vmAffinity Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+         * @param vmAffinity Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
          * 
          * @return builder
          * 
@@ -643,7 +643,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param vmAffinity Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+         * @param vmAffinity Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
          * 
          * @return builder
          * 

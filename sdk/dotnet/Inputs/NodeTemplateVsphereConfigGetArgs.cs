@@ -97,7 +97,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? DatastoreCluster { get; set; }
 
         /// <summary>
-        /// Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        /// Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         /// </summary>
         [Input("diskSize")]
         public Input<string>? DiskSize { get; set; }

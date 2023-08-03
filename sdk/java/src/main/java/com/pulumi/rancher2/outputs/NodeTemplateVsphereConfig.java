@@ -73,7 +73,7 @@ public final class NodeTemplateVsphereConfig {
      */
     private @Nullable String datastoreCluster;
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     private @Nullable String diskSize;
@@ -254,7 +254,7 @@ public final class NodeTemplateVsphereConfig {
         return Optional.ofNullable(this.datastoreCluster);
     }
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     public Optional<String> diskSize() {

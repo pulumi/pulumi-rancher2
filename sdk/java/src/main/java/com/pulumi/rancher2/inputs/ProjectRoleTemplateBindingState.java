@@ -65,7 +65,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
     /**
      * Labels of the resource (map)
      * 
-     * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+     * **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
      * 
      */
     @Import(name="labels")
@@ -74,7 +74,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
     /**
      * @return Labels of the resource (map)
      * 
-     * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+     * **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -254,7 +254,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
         /**
          * @param labels Labels of the resource (map)
          * 
-         * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+         * **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
         /**
          * @param labels Labels of the resource (map)
          * 
-         * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+         * **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
          * 
          * @return builder
          * 

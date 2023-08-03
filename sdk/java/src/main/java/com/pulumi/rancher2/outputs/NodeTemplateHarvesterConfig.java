@@ -31,7 +31,7 @@ public final class NodeTemplateHarvesterConfig {
      */
     private @Nullable String diskInfo;
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      * @deprecated
      * Use disk_info instead
@@ -97,7 +97,7 @@ public final class NodeTemplateHarvesterConfig {
      */
     private @Nullable String userData;
     /**
-     * @return Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+     * @return Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
      * 
      */
     private @Nullable String vmAffinity;
@@ -134,7 +134,7 @@ public final class NodeTemplateHarvesterConfig {
         return Optional.ofNullable(this.diskInfo);
     }
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      * @deprecated
      * Use disk_info instead
@@ -220,7 +220,7 @@ public final class NodeTemplateHarvesterConfig {
         return Optional.ofNullable(this.userData);
     }
     /**
-     * @return Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+     * @return Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
      * 
      */
     public Optional<String> vmAffinity() {

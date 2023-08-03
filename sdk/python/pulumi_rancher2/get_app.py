@@ -225,20 +225,20 @@ def get_app(annotations: Optional[Mapping[str, Any]] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getApp:getApp', __args__, opts=opts, typ=GetAppResult).value
 
     return AwaitableGetAppResult(
-        annotations=__ret__.annotations,
-        answers=__ret__.answers,
-        catalog_name=__ret__.catalog_name,
-        description=__ret__.description,
-        external_id=__ret__.external_id,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        project_id=__ret__.project_id,
-        revision_id=__ret__.revision_id,
-        target_namespace=__ret__.target_namespace,
-        template_name=__ret__.template_name,
-        template_version=__ret__.template_version,
-        values_yaml=__ret__.values_yaml)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        answers=pulumi.get(__ret__, 'answers'),
+        catalog_name=pulumi.get(__ret__, 'catalog_name'),
+        description=pulumi.get(__ret__, 'description'),
+        external_id=pulumi.get(__ret__, 'external_id'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        revision_id=pulumi.get(__ret__, 'revision_id'),
+        target_namespace=pulumi.get(__ret__, 'target_namespace'),
+        template_name=pulumi.get(__ret__, 'template_name'),
+        template_version=pulumi.get(__ret__, 'template_version'),
+        values_yaml=pulumi.get(__ret__, 'values_yaml'))
 
 
 @_utilities.lift_output_func(get_app)

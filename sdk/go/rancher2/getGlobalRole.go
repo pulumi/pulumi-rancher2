@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupGlobalRole(ctx *pulumi.Context, args *LookupGlobalRoleArgs, opts ...pulumi.InvokeOption) (*LookupGlobalRoleResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalRoleResult
 	err := ctx.Invoke("rancher2:index/getGlobalRole:getGlobalRole", args, &rv, opts...)
 	if err != nil {

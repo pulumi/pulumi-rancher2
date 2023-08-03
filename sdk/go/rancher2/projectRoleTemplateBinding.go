@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,7 +62,7 @@ type ProjectRoleTemplateBinding struct {
 	GroupPrincipalId pulumi.StringOutput `pulumi:"groupPrincipalId"`
 	// Labels of the resource (map)
 	//
-	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The name of the project role template binding (string)
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -88,6 +89,7 @@ func NewProjectRoleTemplateBinding(ctx *pulumi.Context,
 	if args.RoleTemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'RoleTemplateId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectRoleTemplateBinding
 	err := ctx.RegisterResource("rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding", name, args, &resource, opts...)
 	if err != nil {
@@ -118,7 +120,7 @@ type projectRoleTemplateBindingState struct {
 	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
 	// Labels of the resource (map)
 	//
-	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the project role template binding (string)
 	Name *string `pulumi:"name"`
@@ -141,7 +143,7 @@ type ProjectRoleTemplateBindingState struct {
 	GroupPrincipalId pulumi.StringPtrInput
 	// Labels of the resource (map)
 	//
-	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels pulumi.MapInput
 	// The name of the project role template binding (string)
 	Name pulumi.StringPtrInput
@@ -168,7 +170,7 @@ type projectRoleTemplateBindingArgs struct {
 	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
 	// Labels of the resource (map)
 	//
-	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the project role template binding (string)
 	Name *string `pulumi:"name"`
@@ -192,7 +194,7 @@ type ProjectRoleTemplateBindingArgs struct {
 	GroupPrincipalId pulumi.StringPtrInput
 	// Labels of the resource (map)
 	//
-	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels pulumi.MapInput
 	// The name of the project role template binding (string)
 	Name pulumi.StringPtrInput
@@ -310,7 +312,7 @@ func (o ProjectRoleTemplateBindingOutput) GroupPrincipalId() pulumi.StringOutput
 
 // Labels of the resource (map)
 //
-// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 func (o ProjectRoleTemplateBindingOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }

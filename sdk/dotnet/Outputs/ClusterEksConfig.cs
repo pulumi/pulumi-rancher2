@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? AssociateWorkerNodePublicIp;
         /// <summary>
-        /// The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+        /// The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
         /// </summary>
         public readonly int? DesiredNodes;
         public readonly bool? EbsEncryption;
@@ -35,7 +35,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+        /// Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
         /// </summary>
         public readonly string? KeyPairName;
         /// <summary>

@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class ClusterGkeConfigV2NodePoolConfigTaint {
     /**
-     * @return The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     private String effect;
@@ -27,7 +27,7 @@ public final class ClusterGkeConfigV2NodePoolConfigTaint {
 
     private ClusterGkeConfigV2NodePoolConfigTaint() {}
     /**
-     * @return The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     public String effect() {

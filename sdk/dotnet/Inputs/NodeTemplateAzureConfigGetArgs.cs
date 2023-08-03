@@ -66,7 +66,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? CustomData { get; set; }
 
         /// <summary>
-        /// Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        /// Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         /// </summary>
         [Input("diskSize")]
         public Input<string>? DiskSize { get; set; }
@@ -108,7 +108,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        /// Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
         /// </summary>
         [Input("managedDisks")]
         public Input<bool>? ManagedDisks { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. Just for Rancher v2.6.3 and above. (string)
+        /// Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. For Rancher v2.6.3 and above. (string)
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }

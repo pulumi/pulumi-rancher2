@@ -67,14 +67,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     * Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
      * 
      */
     @Import(name="deleteNotReadyAfterSecs")
     private @Nullable Output<Integer> deleteNotReadyAfterSecs;
 
     /**
-     * @return Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     * @return Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
      * 
      */
     public Optional<Output<Integer>> deleteNotReadyAfterSecs() {
@@ -157,14 +157,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node taints. For Rancher v2.3.3 or above (List)
+     * Node taints. For Rancher v2.3.3 and above (List)
      * 
      */
     @Import(name="nodeTaints")
     private @Nullable Output<List<NodePoolNodeTaintArgs>> nodeTaints;
 
     /**
-     * @return Node taints. For Rancher v2.3.3 or above (List)
+     * @return Node taints. For Rancher v2.3.3 and above (List)
      * 
      */
     public Optional<Output<List<NodePoolNodeTaintArgs>>> nodeTaints() {
@@ -316,7 +316,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteNotReadyAfterSecs Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+         * @param deleteNotReadyAfterSecs Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteNotReadyAfterSecs Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+         * @param deleteNotReadyAfterSecs Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeTaints Node taints. For Rancher v2.3.3 or above (List)
+         * @param nodeTaints Node taints. For Rancher v2.3.3 and above (List)
          * 
          * @return builder
          * 
@@ -453,7 +453,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeTaints Node taints. For Rancher v2.3.3 or above (List)
+         * @param nodeTaints Node taints. For Rancher v2.3.3 and above (List)
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeTaints Node taints. For Rancher v2.3.3 or above (List)
+         * @param nodeTaints Node taints. For Rancher v2.3.3 and above (List)
          * 
          * @return builder
          * 

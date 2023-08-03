@@ -18,23 +18,47 @@ public final class ClusterFleetAgentDeploymentCustomizationArgs extends com.pulu
 
     public static final ClusterFleetAgentDeploymentCustomizationArgs Empty = new ClusterFleetAgentDeploymentCustomizationArgs();
 
+    /**
+     * User defined tolerations to append to agent (list)
+     * 
+     */
     @Import(name="appendTolerations")
     private @Nullable Output<List<ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs>> appendTolerations;
 
+    /**
+     * @return User defined tolerations to append to agent (list)
+     * 
+     */
     public Optional<Output<List<ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs>>> appendTolerations() {
         return Optional.ofNullable(this.appendTolerations);
     }
 
+    /**
+     * User defined affinity to override default agent affinity (string)
+     * 
+     */
     @Import(name="overrideAffinity")
     private @Nullable Output<String> overrideAffinity;
 
+    /**
+     * @return User defined affinity to override default agent affinity (string)
+     * 
+     */
     public Optional<Output<String>> overrideAffinity() {
         return Optional.ofNullable(this.overrideAffinity);
     }
 
+    /**
+     * User defined resource requirements to set on the agent (list)
+     * 
+     */
     @Import(name="overrideResourceRequirements")
     private @Nullable Output<List<ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs>> overrideResourceRequirements;
 
+    /**
+     * @return User defined resource requirements to set on the agent (list)
+     * 
+     */
     public Optional<Output<List<ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs>>> overrideResourceRequirements() {
         return Optional.ofNullable(this.overrideResourceRequirements);
     }
@@ -65,37 +89,85 @@ public final class ClusterFleetAgentDeploymentCustomizationArgs extends com.pulu
             $ = new ClusterFleetAgentDeploymentCustomizationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param appendTolerations User defined tolerations to append to agent (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder appendTolerations(@Nullable Output<List<ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs>> appendTolerations) {
             $.appendTolerations = appendTolerations;
             return this;
         }
 
+        /**
+         * @param appendTolerations User defined tolerations to append to agent (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder appendTolerations(List<ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs> appendTolerations) {
             return appendTolerations(Output.of(appendTolerations));
         }
 
+        /**
+         * @param appendTolerations User defined tolerations to append to agent (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder appendTolerations(ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs... appendTolerations) {
             return appendTolerations(List.of(appendTolerations));
         }
 
+        /**
+         * @param overrideAffinity User defined affinity to override default agent affinity (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder overrideAffinity(@Nullable Output<String> overrideAffinity) {
             $.overrideAffinity = overrideAffinity;
             return this;
         }
 
+        /**
+         * @param overrideAffinity User defined affinity to override default agent affinity (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder overrideAffinity(String overrideAffinity) {
             return overrideAffinity(Output.of(overrideAffinity));
         }
 
+        /**
+         * @param overrideResourceRequirements User defined resource requirements to set on the agent (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder overrideResourceRequirements(@Nullable Output<List<ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs>> overrideResourceRequirements) {
             $.overrideResourceRequirements = overrideResourceRequirements;
             return this;
         }
 
+        /**
+         * @param overrideResourceRequirements User defined resource requirements to set on the agent (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder overrideResourceRequirements(List<ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs> overrideResourceRequirements) {
             return overrideResourceRequirements(Output.of(overrideResourceRequirements));
         }
 
+        /**
+         * @param overrideResourceRequirements User defined resource requirements to set on the agent (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder overrideResourceRequirements(ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs... overrideResourceRequirements) {
             return overrideResourceRequirements(List.of(overrideResourceRequirements));
         }

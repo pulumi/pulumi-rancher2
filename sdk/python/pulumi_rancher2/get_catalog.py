@@ -220,20 +220,20 @@ def get_catalog(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getCatalog:getCatalog', __args__, opts=opts, typ=GetCatalogResult).value
 
     return AwaitableGetCatalogResult(
-        annotations=__ret__.annotations,
-        branch=__ret__.branch,
-        cluster_id=__ret__.cluster_id,
-        description=__ret__.description,
-        id=__ret__.id,
-        kind=__ret__.kind,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        password=__ret__.password,
-        project_id=__ret__.project_id,
-        scope=__ret__.scope,
-        url=__ret__.url,
-        username=__ret__.username,
-        version=__ret__.version)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        branch=pulumi.get(__ret__, 'branch'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        kind=pulumi.get(__ret__, 'kind'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        password=pulumi.get(__ret__, 'password'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        scope=pulumi.get(__ret__, 'scope'),
+        url=pulumi.get(__ret__, 'url'),
+        username=pulumi.get(__ret__, 'username'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_catalog)

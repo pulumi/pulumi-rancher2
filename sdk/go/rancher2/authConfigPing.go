@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,7 +60,8 @@ type AuthConfigPing struct {
 	// Ping display name field (string)
 	DisplayNameField pulumi.StringOutput `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
-	Enabled       pulumi.BoolPtrOutput   `pulumi:"enabled"`
+	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// Ping entity ID field (string)
 	EntityIdField pulumi.StringPtrOutput `pulumi:"entityIdField"`
 	// Ping group field (string)
 	GroupsField pulumi.StringOutput `pulumi:"groupsField"`
@@ -129,6 +131,7 @@ func NewAuthConfigPing(ctx *pulumi.Context,
 		"spKey",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AuthConfigPing
 	err := ctx.RegisterResource("rancher2:index/authConfigPing:AuthConfigPing", name, args, &resource, opts...)
 	if err != nil {
@@ -160,7 +163,8 @@ type authConfigPingState struct {
 	// Ping display name field (string)
 	DisplayNameField *string `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
-	Enabled       *bool   `pulumi:"enabled"`
+	Enabled *bool `pulumi:"enabled"`
+	// Ping entity ID field (string)
 	EntityIdField *string `pulumi:"entityIdField"`
 	// Ping group field (string)
 	GroupsField *string `pulumi:"groupsField"`
@@ -194,7 +198,8 @@ type AuthConfigPingState struct {
 	// Ping display name field (string)
 	DisplayNameField pulumi.StringPtrInput
 	// Enable auth config provider. Default `true` (bool)
-	Enabled       pulumi.BoolPtrInput
+	Enabled pulumi.BoolPtrInput
+	// Ping entity ID field (string)
 	EntityIdField pulumi.StringPtrInput
 	// Ping group field (string)
 	GroupsField pulumi.StringPtrInput
@@ -232,7 +237,8 @@ type authConfigPingArgs struct {
 	// Ping display name field (string)
 	DisplayNameField string `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
-	Enabled       *bool   `pulumi:"enabled"`
+	Enabled *bool `pulumi:"enabled"`
+	// Ping entity ID field (string)
 	EntityIdField *string `pulumi:"entityIdField"`
 	// Ping group field (string)
 	GroupsField string `pulumi:"groupsField"`
@@ -263,7 +269,8 @@ type AuthConfigPingArgs struct {
 	// Ping display name field (string)
 	DisplayNameField pulumi.StringInput
 	// Enable auth config provider. Default `true` (bool)
-	Enabled       pulumi.BoolPtrInput
+	Enabled pulumi.BoolPtrInput
+	// Ping entity ID field (string)
 	EntityIdField pulumi.StringPtrInput
 	// Ping group field (string)
 	GroupsField pulumi.StringInput
@@ -395,6 +402,7 @@ func (o AuthConfigPingOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AuthConfigPing) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Ping entity ID field (string)
 func (o AuthConfigPingOutput) EntityIdField() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringPtrOutput { return v.EntityIdField }).(pulumi.StringPtrOutput)
 }

@@ -151,14 +151,14 @@ def get_user(is_external: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
-        annotations=__ret__.annotations,
-        enabled=__ret__.enabled,
-        id=__ret__.id,
-        is_external=__ret__.is_external,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        principal_ids=__ret__.principal_ids,
-        username=__ret__.username)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        id=pulumi.get(__ret__, 'id'),
+        is_external=pulumi.get(__ret__, 'is_external'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        principal_ids=pulumi.get(__ret__, 'principal_ids'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_user)

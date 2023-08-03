@@ -155,14 +155,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.controlPlane);
     }
     /**
-     * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     * Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
      * 
      */
     @Export(name="deleteNotReadyAfterSecs", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> deleteNotReadyAfterSecs;
 
     /**
-     * @return Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     * @return Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
      * 
      */
     public Output<Optional<Integer>> deleteNotReadyAfterSecs() {
@@ -239,14 +239,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Node taints. For Rancher v2.3.3 or above (List)
+     * Node taints. For Rancher v2.3.3 and above (List)
      * 
      */
     @Export(name="nodeTaints", refs={List.class,NodePoolNodeTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NodePoolNodeTaint>> nodeTaints;
 
     /**
-     * @return Node taints. For Rancher v2.3.3 or above (List)
+     * @return Node taints. For Rancher v2.3.3 and above (List)
      * 
      */
     public Output<Optional<List<NodePoolNodeTaint>>> nodeTaints() {

@@ -175,17 +175,17 @@ def get_project(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        annotations=__ret__.annotations,
-        cluster_id=__ret__.cluster_id,
-        container_resource_limit=__ret__.container_resource_limit,
-        description=__ret__.description,
-        enable_project_monitoring=__ret__.enable_project_monitoring,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        pod_security_policy_template_id=__ret__.pod_security_policy_template_id,
-        resource_quota=__ret__.resource_quota,
-        uuid=__ret__.uuid)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        container_resource_limit=pulumi.get(__ret__, 'container_resource_limit'),
+        description=pulumi.get(__ret__, 'description'),
+        enable_project_monitoring=pulumi.get(__ret__, 'enable_project_monitoring'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        pod_security_policy_template_id=pulumi.get(__ret__, 'pod_security_policy_template_id'),
+        resource_quota=pulumi.get(__ret__, 'resource_quota'),
+        uuid=pulumi.get(__ret__, 'uuid'))
 
 
 @_utilities.lift_output_func(get_project)

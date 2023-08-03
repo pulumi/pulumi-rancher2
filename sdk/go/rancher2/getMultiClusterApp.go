@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupMultiClusterApp(ctx *pulumi.Context, args *LookupMultiClusterAppArgs, opts ...pulumi.InvokeOption) (*LookupMultiClusterAppResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMultiClusterAppResult
 	err := ctx.Invoke("rancher2:index/getMultiClusterApp:getMultiClusterApp", args, &rv, opts...)
 	if err != nil {

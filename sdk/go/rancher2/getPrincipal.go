@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetPrincipal(ctx *pulumi.Context, args *GetPrincipalArgs, opts ...pulumi.InvokeOption) (*GetPrincipalResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrincipalResult
 	err := ctx.Invoke("rancher2:index/getPrincipal:getPrincipal", args, &rv, opts...)
 	if err != nil {

@@ -25,44 +25,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is available from Rancher v2.6.0 and above.
- * 
- * ## Example Usage
- * ### Creating Rancher v2 custom cluster v2
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.rancher2.ClusterV2;
- * import com.pulumi.rancher2.ClusterV2Args;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foo = new ClusterV2(&#34;foo&#34;, ClusterV2Args.builder()        
- *             .defaultClusterRoleForProjectMembers(&#34;user&#34;)
- *             .enableNetworkPolicy(false)
- *             .fleetNamespace(&#34;fleet-ns&#34;)
- *             .kubernetesVersion(&#34;v1.21.4+k3s1&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * **Note** Once created, get the node command from `rancher2_cluster_v2.foo.cluster_registration_token`
- * 
  * ## Import
  * 
  * Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &amp;lt;FLEET_NAMESPACE&amp;gt;/&amp;lt;CLUSTER_NAME&amp;gt;
@@ -117,14 +79,14 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cloudCredentialSecretName);
     }
     /**
-     * Optional customization for cluster agent
+     * Optional customization for cluster agent (list)
      * 
      */
     @Export(name="clusterAgentDeploymentCustomizations", refs={List.class,ClusterV2ClusterAgentDeploymentCustomization.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterV2ClusterAgentDeploymentCustomization>> clusterAgentDeploymentCustomizations;
 
     /**
-     * @return Optional customization for cluster agent
+     * @return Optional customization for cluster agent (list)
      * 
      */
     public Output<Optional<List<ClusterV2ClusterAgentDeploymentCustomization>>> clusterAgentDeploymentCustomizations() {
@@ -215,14 +177,14 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return this.enableNetworkPolicy;
     }
     /**
-     * Optional customization for fleet agent
+     * Optional customization for fleet agent (list)
      * 
      */
     @Export(name="fleetAgentDeploymentCustomizations", refs={List.class,ClusterV2FleetAgentDeploymentCustomization.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterV2FleetAgentDeploymentCustomization>> fleetAgentDeploymentCustomizations;
 
     /**
-     * @return Optional customization for fleet agent
+     * @return Optional customization for fleet agent (list)
      * 
      */
     public Output<Optional<List<ClusterV2FleetAgentDeploymentCustomization>>> fleetAgentDeploymentCustomizations() {
