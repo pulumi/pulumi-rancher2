@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,7 +15,7 @@ import (
 //
 // amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, outscale, hetzner and vsphere drivers are supported for node templates.
 //
-// **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
+// **Note:** If you are upgrading to Rancher v2.3.3, please take a look to final section
 //
 // ## Example Usage
 //
@@ -135,7 +136,35 @@ import (
 //					VmNamespace: pulumi.String("default"),
 //					CpuCount:    pulumi.String("2"),
 //					MemorySize:  pulumi.String("4"),
-//					DiskInfo:    pulumi.String("    {\n        \"disks\": [{\n            \"imageName\": \"harvester-public/image-57hzg\",\n            \"size\": 40,\n            \"bootOrder\": 1\n        }]\n    }\n    EOF,\n    networkInfo = <<EOF\n    {\n        \"interfaces\": [{\n            \"networkName\": \"harvester-public/vlan1\"\n        }]\n    }\n    EOF,\n    sshUser = \"ubuntu\",\n    userData = <<EOF\n    package_update: true\n    packages:\n      - qemu-guest-agent\n      - iptables\n    runcmd:\n      - - systemctl\n        - enable\n        - '--now'\n        - qemu-guest-agent.service\n"),
+//					DiskInfo: pulumi.String(`    {
+//	        "disks": [{
+//	            "imageName": "harvester-public/image-57hzg",
+//	            "size": 40,
+//	            "bootOrder": 1
+//	        }]
+//	    }
+//	    EOF,
+//	    networkInfo = <<EOF
+//	    {
+//	        "interfaces": [{
+//	            "networkName": "harvester-public/vlan1"
+//	        }]
+//	    }
+//	    EOF,
+//	    sshUser = "ubuntu",
+//	    userData = <<EOF
+//	    package_update: true
+//	    packages:
+//	      - qemu-guest-agent
+//	      - iptables
+//	    runcmd:
+//	      - - systemctl
+//	        - enable
+//	        - '--now'
+//	        - qemu-guest-agent.service
+//
+// `),
+//
 //				},
 //			})
 //			if err != nil {
@@ -242,13 +271,13 @@ type NodeTemplate struct {
 	HetznerConfig NodeTemplateHetznerConfigPtrOutput `pulumi:"hetznerConfig"`
 	// Labels for Node Template object (map)
 	//
-	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
+	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig NodeTemplateLinodeConfigPtrOutput `pulumi:"linodeConfig"`
 	// The name of the Node Template (string)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Node taints. For Rancher v2.3.3 or above (List)
+	// Node taints. For Rancher v2.3.3 and above (List)
 	NodeTaints NodeTemplateNodeTaintArrayOutput `pulumi:"nodeTaints"`
 	// Opennebula config for the Node Template (list maxitems:1)
 	OpennebulaConfig NodeTemplateOpennebulaConfigPtrOutput `pulumi:"opennebulaConfig"`
@@ -280,6 +309,7 @@ func NewNodeTemplate(ctx *pulumi.Context,
 		"authKey",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NodeTemplate
 	err := ctx.RegisterResource("rancher2:index/nodeTemplate:NodeTemplate", name, args, &resource, opts...)
 	if err != nil {
@@ -342,13 +372,13 @@ type nodeTemplateState struct {
 	HetznerConfig *NodeTemplateHetznerConfig `pulumi:"hetznerConfig"`
 	// Labels for Node Template object (map)
 	//
-	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
+	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig *NodeTemplateLinodeConfig `pulumi:"linodeConfig"`
 	// The name of the Node Template (string)
 	Name *string `pulumi:"name"`
-	// Node taints. For Rancher v2.3.3 or above (List)
+	// Node taints. For Rancher v2.3.3 and above (List)
 	NodeTaints []NodeTemplateNodeTaint `pulumi:"nodeTaints"`
 	// Opennebula config for the Node Template (list maxitems:1)
 	OpennebulaConfig *NodeTemplateOpennebulaConfig `pulumi:"opennebulaConfig"`
@@ -403,13 +433,13 @@ type NodeTemplateState struct {
 	HetznerConfig NodeTemplateHetznerConfigPtrInput
 	// Labels for Node Template object (map)
 	//
-	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
+	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
 	Labels pulumi.MapInput
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig NodeTemplateLinodeConfigPtrInput
 	// The name of the Node Template (string)
 	Name pulumi.StringPtrInput
-	// Node taints. For Rancher v2.3.3 or above (List)
+	// Node taints. For Rancher v2.3.3 and above (List)
 	NodeTaints NodeTemplateNodeTaintArrayInput
 	// Opennebula config for the Node Template (list maxitems:1)
 	OpennebulaConfig NodeTemplateOpennebulaConfigPtrInput
@@ -466,13 +496,13 @@ type nodeTemplateArgs struct {
 	HetznerConfig *NodeTemplateHetznerConfig `pulumi:"hetznerConfig"`
 	// Labels for Node Template object (map)
 	//
-	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
+	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig *NodeTemplateLinodeConfig `pulumi:"linodeConfig"`
 	// The name of the Node Template (string)
 	Name *string `pulumi:"name"`
-	// Node taints. For Rancher v2.3.3 or above (List)
+	// Node taints. For Rancher v2.3.3 and above (List)
 	NodeTaints []NodeTemplateNodeTaint `pulumi:"nodeTaints"`
 	// Opennebula config for the Node Template (list maxitems:1)
 	OpennebulaConfig *NodeTemplateOpennebulaConfig `pulumi:"opennebulaConfig"`
@@ -526,13 +556,13 @@ type NodeTemplateArgs struct {
 	HetznerConfig NodeTemplateHetznerConfigPtrInput
 	// Labels for Node Template object (map)
 	//
-	// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
+	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
 	Labels pulumi.MapInput
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig NodeTemplateLinodeConfigPtrInput
 	// The name of the Node Template (string)
 	Name pulumi.StringPtrInput
-	// Node taints. For Rancher v2.3.3 or above (List)
+	// Node taints. For Rancher v2.3.3 and above (List)
 	NodeTaints NodeTemplateNodeTaintArrayInput
 	// Opennebula config for the Node Template (list maxitems:1)
 	OpennebulaConfig NodeTemplateOpennebulaConfigPtrInput
@@ -730,7 +760,7 @@ func (o NodeTemplateOutput) HetznerConfig() NodeTemplateHetznerConfigPtrOutput {
 
 // Labels for Node Template object (map)
 //
-// **Note** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
+// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
 func (o NodeTemplateOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *NodeTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }
@@ -745,7 +775,7 @@ func (o NodeTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Node taints. For Rancher v2.3.3 or above (List)
+// Node taints. For Rancher v2.3.3 and above (List)
 func (o NodeTemplateOutput) NodeTaints() NodeTemplateNodeTaintArrayOutput {
 	return o.ApplyT(func(v *NodeTemplate) NodeTemplateNodeTaintArrayOutput { return v.NodeTaints }).(NodeTemplateNodeTaintArrayOutput)
 }

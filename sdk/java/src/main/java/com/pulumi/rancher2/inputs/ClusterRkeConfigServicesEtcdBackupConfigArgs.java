@@ -93,14 +93,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
     }
 
     /**
-     * Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+     * Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
     /**
-     * @return Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+     * @return Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
      * 
      */
     public Optional<Output<Integer>> timeout() {
@@ -242,7 +242,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
         }
 
         /**
-         * @param timeout Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+         * @param timeout Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
         }
 
         /**
-         * @param timeout Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+         * @param timeout Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
          * 
          * @return builder
          * 

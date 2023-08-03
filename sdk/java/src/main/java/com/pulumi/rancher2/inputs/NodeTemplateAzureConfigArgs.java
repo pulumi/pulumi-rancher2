@@ -100,14 +100,14 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     public Optional<Output<String>> diskSize() {
@@ -205,14 +205,14 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+     * Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
      * 
      */
     @Import(name="managedDisks")
     private @Nullable Output<Boolean> managedDisks;
 
     /**
-     * @return Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+     * @return Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> managedDisks() {
@@ -265,14 +265,14 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. Just for Rancher v2.6.3 and above. (string)
+     * Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. For Rancher v2.6.3 and above. (string)
      * 
      */
     @Import(name="plan")
     private @Nullable Output<String> plan;
 
     /**
-     * @return Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. Just for Rancher v2.6.3 and above. (string)
+     * @return Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. For Rancher v2.6.3 and above. (string)
      * 
      */
     public Optional<Output<String>> plan() {
@@ -651,7 +651,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
          * 
          * @return builder
          * 
@@ -662,7 +662,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
          * 
          * @return builder
          * 
@@ -798,7 +798,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param managedDisks Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+         * @param managedDisks Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -809,7 +809,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param managedDisks Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+         * @param managedDisks Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -892,7 +892,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param plan Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. Just for Rancher v2.6.3 and above. (string)
+         * @param plan Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. For Rancher v2.6.3 and above. (string)
          * 
          * @return builder
          * 
@@ -903,7 +903,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param plan Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. Just for Rancher v2.6.3 and above. (string)
+         * @param plan Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. For Rancher v2.6.3 and above. (string)
          * 
          * @return builder
          * 

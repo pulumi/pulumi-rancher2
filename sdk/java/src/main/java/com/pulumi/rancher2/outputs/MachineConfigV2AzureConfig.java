@@ -40,7 +40,7 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable String customData;
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     private @Nullable String diskSize;
@@ -75,7 +75,7 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable String location;
     /**
-     * @return Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+     * @return Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
      * 
      */
     private @Nullable Boolean managedDisks;
@@ -211,7 +211,7 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.customData);
     }
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     public Optional<String> diskSize() {
@@ -260,7 +260,7 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.location);
     }
     /**
-     * @return Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+     * @return Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
      * 
      */
     public Optional<Boolean> managedDisks() {

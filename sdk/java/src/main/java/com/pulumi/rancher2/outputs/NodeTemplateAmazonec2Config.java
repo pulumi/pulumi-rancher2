@@ -167,7 +167,7 @@ public final class NodeTemplateAmazonec2Config {
     /**
      * @return Path to file with cloud-init user data (string)
      * 
-     * &gt; **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 
      */
     private @Nullable String userdata;
@@ -404,7 +404,7 @@ public final class NodeTemplateAmazonec2Config {
     /**
      * @return Path to file with cloud-init user data (string)
      * 
-     * &gt; **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 
      */
     public Optional<String> userdata() {

@@ -58,7 +58,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly controlPlane!: pulumi.Output<boolean | undefined>;
     /**
-     * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     * Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
      */
     public readonly deleteNotReadyAfterSecs!: pulumi.Output<number | undefined>;
     /**
@@ -82,7 +82,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Node taints. For Rancher v2.3.3 or above (List)
+     * Node taints. For Rancher v2.3.3 and above (List)
      */
     public readonly nodeTaints!: pulumi.Output<outputs.NodePoolNodeTaint[] | undefined>;
     /**
@@ -171,7 +171,7 @@ export interface NodePoolState {
      */
     controlPlane?: pulumi.Input<boolean>;
     /**
-     * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     * Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
      */
     deleteNotReadyAfterSecs?: pulumi.Input<number>;
     /**
@@ -195,7 +195,7 @@ export interface NodePoolState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Node taints. For Rancher v2.3.3 or above (List)
+     * Node taints. For Rancher v2.3.3 and above (List)
      */
     nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodePoolNodeTaint>[]>;
     /**
@@ -229,7 +229,7 @@ export interface NodePoolArgs {
      */
     controlPlane?: pulumi.Input<boolean>;
     /**
-     * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     * Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
      */
     deleteNotReadyAfterSecs?: pulumi.Input<number>;
     /**
@@ -253,7 +253,7 @@ export interface NodePoolArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Node taints. For Rancher v2.3.3 or above (List)
+     * Node taints. For Rancher v2.3.3 and above (List)
      */
     nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodePoolNodeTaint>[]>;
     /**

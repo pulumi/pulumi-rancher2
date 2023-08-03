@@ -27,7 +27,7 @@ class GlobalRoleBindingArgs:
         :param pulumi.Input[str] group_principal_id: The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role binding (map)
                
-               **Note** user `user_id` OR group `group_principal_id` must be defined
+               **Note:** user `user_id` OR group `group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the global role binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign global role binding (string)
         """
@@ -85,7 +85,7 @@ class GlobalRoleBindingArgs:
         """
         Labels for global role binding (map)
 
-        **Note** user `user_id` OR group `group_principal_id` must be defined
+        **Note:** user `user_id` OR group `group_principal_id` must be defined
         """
         return pulumi.get(self, "labels")
 
@@ -134,7 +134,7 @@ class _GlobalRoleBindingState:
         :param pulumi.Input[str] group_principal_id: The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role binding (map)
                
-               **Note** user `user_id` OR group `group_principal_id` must be defined
+               **Note:** user `user_id` OR group `group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the global role binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign global role binding (string)
         """
@@ -193,7 +193,7 @@ class _GlobalRoleBindingState:
         """
         Labels for global role binding (map)
 
-        **Note** user `user_id` OR group `group_principal_id` must be defined
+        **Note:** user `user_id` OR group `group_principal_id` must be defined
         """
         return pulumi.get(self, "labels")
 
@@ -272,7 +272,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] group_principal_id: The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role binding (map)
                
-               **Note** user `user_id` OR group `group_principal_id` must be defined
+               **Note:** user `user_id` OR group `group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the global role binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign global role binding (string)
         """
@@ -375,7 +375,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] group_principal_id: The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role binding (map)
                
-               **Note** user `user_id` OR group `group_principal_id` must be defined
+               **Note:** user `user_id` OR group `group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the global role binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign global role binding (string)
         """
@@ -421,7 +421,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
         """
         Labels for global role binding (map)
 
-        **Note** user `user_id` OR group `group_principal_id` must be defined
+        **Note:** user `user_id` OR group `group_principal_id` must be defined
         """
         return pulumi.get(self, "labels")
 

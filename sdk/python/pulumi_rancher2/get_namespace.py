@@ -150,14 +150,14 @@ def get_namespace(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getNamespace:getNamespace', __args__, opts=opts, typ=GetNamespaceResult).value
 
     return AwaitableGetNamespaceResult(
-        annotations=__ret__.annotations,
-        container_resource_limit=__ret__.container_resource_limit,
-        description=__ret__.description,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        project_id=__ret__.project_id,
-        resource_quota=__ret__.resource_quota)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        container_resource_limit=pulumi.get(__ret__, 'container_resource_limit'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        resource_quota=pulumi.get(__ret__, 'resource_quota'))
 
 
 @_utilities.lift_output_func(get_namespace)

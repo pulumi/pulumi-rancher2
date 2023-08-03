@@ -248,22 +248,22 @@ def get_node_template(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getNodeTemplate:getNodeTemplate', __args__, opts=opts, typ=GetNodeTemplateResult).value
 
     return AwaitableGetNodeTemplateResult(
-        annotations=__ret__.annotations,
-        cloud_credential_id=__ret__.cloud_credential_id,
-        description=__ret__.description,
-        driver=__ret__.driver,
-        engine_env=__ret__.engine_env,
-        engine_insecure_registries=__ret__.engine_insecure_registries,
-        engine_install_url=__ret__.engine_install_url,
-        engine_label=__ret__.engine_label,
-        engine_opt=__ret__.engine_opt,
-        engine_registry_mirrors=__ret__.engine_registry_mirrors,
-        engine_storage_driver=__ret__.engine_storage_driver,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        node_taints=__ret__.node_taints,
-        use_internal_ip_address=__ret__.use_internal_ip_address)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        cloud_credential_id=pulumi.get(__ret__, 'cloud_credential_id'),
+        description=pulumi.get(__ret__, 'description'),
+        driver=pulumi.get(__ret__, 'driver'),
+        engine_env=pulumi.get(__ret__, 'engine_env'),
+        engine_insecure_registries=pulumi.get(__ret__, 'engine_insecure_registries'),
+        engine_install_url=pulumi.get(__ret__, 'engine_install_url'),
+        engine_label=pulumi.get(__ret__, 'engine_label'),
+        engine_opt=pulumi.get(__ret__, 'engine_opt'),
+        engine_registry_mirrors=pulumi.get(__ret__, 'engine_registry_mirrors'),
+        engine_storage_driver=pulumi.get(__ret__, 'engine_storage_driver'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        node_taints=pulumi.get(__ret__, 'node_taints'),
+        use_internal_ip_address=pulumi.get(__ret__, 'use_internal_ip_address'))
 
 
 @_utilities.lift_output_func(get_node_template)

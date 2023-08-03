@@ -45,7 +45,7 @@ export interface GetClusterArgs {
  */
 export interface GetClusterResult {
     /**
-     * (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     * (Computed) Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
      */
     readonly agentEnvVars: string[];
     /**
@@ -114,7 +114,7 @@ export interface GetClusterResult {
      */
     readonly eksConfig: outputs.GetClusterEksConfig;
     /**
-     * (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+     * (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      */
     readonly eksConfigV2: outputs.GetClusterEksConfigV2;
     readonly enableClusterAlerting: boolean;
@@ -135,7 +135,7 @@ export interface GetClusterResult {
      */
     readonly gkeConfig: outputs.GetClusterGkeConfig;
     /**
-     * (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+     * (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      */
     readonly gkeConfigV2: outputs.GetClusterGkeConfigV2;
     /**

@@ -149,14 +149,14 @@ def get_global_role(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getGlobalRole:getGlobalRole', __args__, opts=opts, typ=GetGlobalRoleResult).value
 
     return AwaitableGetGlobalRoleResult(
-        annotations=__ret__.annotations,
-        builtin=__ret__.builtin,
-        description=__ret__.description,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        new_user_default=__ret__.new_user_default,
-        rules=__ret__.rules)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        builtin=pulumi.get(__ret__, 'builtin'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        new_user_default=pulumi.get(__ret__, 'new_user_default'),
+        rules=pulumi.get(__ret__, 'rules'))
 
 
 @_utilities.lift_output_func(get_global_role)

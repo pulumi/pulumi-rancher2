@@ -42,6 +42,7 @@ class AuthConfigPingArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
+        :param pulumi.Input[str] entity_id_field: Ping entity ID field (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         """
         pulumi.set(__self__, "display_name_field", display_name_field)
@@ -212,6 +213,9 @@ class AuthConfigPingArgs:
     @property
     @pulumi.getter(name="entityIdField")
     def entity_id_field(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ping entity ID field (string)
+        """
         return pulumi.get(self, "entity_id_field")
 
     @entity_id_field.setter
@@ -257,6 +261,7 @@ class _AuthConfigPingState:
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] display_name_field: Ping display name field (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
+        :param pulumi.Input[str] entity_id_field: Ping entity ID field (string)
         :param pulumi.Input[str] groups_field: Ping group field (string)
         :param pulumi.Input[str] idp_metadata_content: Ping IDP metadata content (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
@@ -364,6 +369,9 @@ class _AuthConfigPingState:
     @property
     @pulumi.getter(name="entityIdField")
     def entity_id_field(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ping entity ID field (string)
+        """
         return pulumi.get(self, "entity_id_field")
 
     @entity_id_field.setter
@@ -541,6 +549,7 @@ class AuthConfigPing(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] display_name_field: Ping display name field (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
+        :param pulumi.Input[str] entity_id_field: Ping entity ID field (string)
         :param pulumi.Input[str] groups_field: Ping group field (string)
         :param pulumi.Input[str] idp_metadata_content: Ping IDP metadata content (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
@@ -689,6 +698,7 @@ class AuthConfigPing(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] display_name_field: Ping display name field (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
+        :param pulumi.Input[str] entity_id_field: Ping entity ID field (string)
         :param pulumi.Input[str] groups_field: Ping group field (string)
         :param pulumi.Input[str] idp_metadata_content: Ping IDP metadata content (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
@@ -765,6 +775,9 @@ class AuthConfigPing(pulumi.CustomResource):
     @property
     @pulumi.getter(name="entityIdField")
     def entity_id_field(self) -> pulumi.Output[Optional[str]]:
+        """
+        Ping entity ID field (string)
+        """
         return pulumi.get(self, "entity_id_field")
 
     @property

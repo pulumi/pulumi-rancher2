@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCatalogResult
 	err := ctx.Invoke("rancher2:index/getCatalog:getCatalog", args, &rv, opts...)
 	if err != nil {

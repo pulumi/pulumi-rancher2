@@ -14,17 +14,20 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2FleetAgentDeploymentCustomizationAppendToleration
     {
         /// <summary>
-        /// The taint effect. Default: `\"NoExecute\"` (string)
+        /// The toleration effect. Default: `\"NoSchedule\"` (string)
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// The taint key (string)
+        /// The toleration key (string)
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Machine selector label match expressions operator (string)
+        /// The toleration operator (string)
         /// </summary>
         public readonly string? Operator;
+        /// <summary>
+        /// The number of seconds a pod will stay bound to a node with a matching taint (int)
+        /// </summary>
         public readonly int? Seconds;
         /// <summary>
         /// Rancher agent env var value (string)

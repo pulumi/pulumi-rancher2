@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +32,7 @@ type NodePool struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// RKE control plane role for created nodes (bool)
 	ControlPlane pulumi.BoolPtrOutput `pulumi:"controlPlane"`
-	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+	// Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
 	DeleteNotReadyAfterSecs pulumi.IntPtrOutput `pulumi:"deleteNotReadyAfterSecs"`
 	// Drain nodes before delete. Default: `false` (bool)
 	DrainBeforeDelete pulumi.BoolPtrOutput `pulumi:"drainBeforeDelete"`
@@ -43,7 +44,7 @@ type NodePool struct {
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The name of the Node Pool (string)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Node taints. For Rancher v2.3.3 or above (List)
+	// Node taints. For Rancher v2.3.3 and above (List)
 	NodeTaints NodePoolNodeTaintArrayOutput `pulumi:"nodeTaints"`
 	// The Node Template ID to use for node creation (string)
 	NodeTemplateId pulumi.StringOutput `pulumi:"nodeTemplateId"`
@@ -69,6 +70,7 @@ func NewNodePool(ctx *pulumi.Context,
 	if args.NodeTemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'NodeTemplateId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NodePool
 	err := ctx.RegisterResource("rancher2:index/nodePool:NodePool", name, args, &resource, opts...)
 	if err != nil {
@@ -97,7 +99,7 @@ type nodePoolState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// RKE control plane role for created nodes (bool)
 	ControlPlane *bool `pulumi:"controlPlane"`
-	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+	// Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
 	DeleteNotReadyAfterSecs *int `pulumi:"deleteNotReadyAfterSecs"`
 	// Drain nodes before delete. Default: `false` (bool)
 	DrainBeforeDelete *bool `pulumi:"drainBeforeDelete"`
@@ -109,7 +111,7 @@ type nodePoolState struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the Node Pool (string)
 	Name *string `pulumi:"name"`
-	// Node taints. For Rancher v2.3.3 or above (List)
+	// Node taints. For Rancher v2.3.3 and above (List)
 	NodeTaints []NodePoolNodeTaint `pulumi:"nodeTaints"`
 	// The Node Template ID to use for node creation (string)
 	NodeTemplateId *string `pulumi:"nodeTemplateId"`
@@ -126,7 +128,7 @@ type NodePoolState struct {
 	ClusterId pulumi.StringPtrInput
 	// RKE control plane role for created nodes (bool)
 	ControlPlane pulumi.BoolPtrInput
-	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+	// Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
 	DeleteNotReadyAfterSecs pulumi.IntPtrInput
 	// Drain nodes before delete. Default: `false` (bool)
 	DrainBeforeDelete pulumi.BoolPtrInput
@@ -138,7 +140,7 @@ type NodePoolState struct {
 	Labels pulumi.MapInput
 	// The name of the Node Pool (string)
 	Name pulumi.StringPtrInput
-	// Node taints. For Rancher v2.3.3 or above (List)
+	// Node taints. For Rancher v2.3.3 and above (List)
 	NodeTaints NodePoolNodeTaintArrayInput
 	// The Node Template ID to use for node creation (string)
 	NodeTemplateId pulumi.StringPtrInput
@@ -159,7 +161,7 @@ type nodePoolArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// RKE control plane role for created nodes (bool)
 	ControlPlane *bool `pulumi:"controlPlane"`
-	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+	// Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
 	DeleteNotReadyAfterSecs *int `pulumi:"deleteNotReadyAfterSecs"`
 	// Drain nodes before delete. Default: `false` (bool)
 	DrainBeforeDelete *bool `pulumi:"drainBeforeDelete"`
@@ -171,7 +173,7 @@ type nodePoolArgs struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the Node Pool (string)
 	Name *string `pulumi:"name"`
-	// Node taints. For Rancher v2.3.3 or above (List)
+	// Node taints. For Rancher v2.3.3 and above (List)
 	NodeTaints []NodePoolNodeTaint `pulumi:"nodeTaints"`
 	// The Node Template ID to use for node creation (string)
 	NodeTemplateId string `pulumi:"nodeTemplateId"`
@@ -189,7 +191,7 @@ type NodePoolArgs struct {
 	ClusterId pulumi.StringInput
 	// RKE control plane role for created nodes (bool)
 	ControlPlane pulumi.BoolPtrInput
-	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+	// Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
 	DeleteNotReadyAfterSecs pulumi.IntPtrInput
 	// Drain nodes before delete. Default: `false` (bool)
 	DrainBeforeDelete pulumi.BoolPtrInput
@@ -201,7 +203,7 @@ type NodePoolArgs struct {
 	Labels pulumi.MapInput
 	// The name of the Node Pool (string)
 	Name pulumi.StringPtrInput
-	// Node taints. For Rancher v2.3.3 or above (List)
+	// Node taints. For Rancher v2.3.3 and above (List)
 	NodeTaints NodePoolNodeTaintArrayInput
 	// The Node Template ID to use for node creation (string)
 	NodeTemplateId pulumi.StringInput
@@ -313,7 +315,7 @@ func (o NodePoolOutput) ControlPlane() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.ControlPlane }).(pulumi.BoolPtrOutput)
 }
 
-// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+// Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
 func (o NodePoolOutput) DeleteNotReadyAfterSecs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.DeleteNotReadyAfterSecs }).(pulumi.IntPtrOutput)
 }
@@ -343,7 +345,7 @@ func (o NodePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Node taints. For Rancher v2.3.3 or above (List)
+// Node taints. For Rancher v2.3.3 and above (List)
 func (o NodePoolOutput) NodeTaints() NodePoolNodeTaintArrayOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolNodeTaintArrayOutput { return v.NodeTaints }).(NodePoolNodeTaintArrayOutput)
 }

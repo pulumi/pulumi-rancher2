@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigServicesEtcd
     {
         /// <summary>
-        /// Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
+        /// Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesEtcdBackupConfig? BackupConfig;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExtraEnvs;
         /// <summary>
-        /// Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
+        /// Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
         /// </summary>
         public readonly int? Gid;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? Snapshot;
         /// <summary>
-        /// Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
+        /// Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
         /// </summary>
         public readonly int? Uid;
 

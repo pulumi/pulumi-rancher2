@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -95,6 +96,7 @@ func NewNotifier(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Notifier
 	err := ctx.RegisterResource("rancher2:index/notifier:Notifier", name, args, &resource, opts...)
 	if err != nil {

@@ -42,7 +42,7 @@ namespace Pulumi.Rancher2
         public Output<bool?> ControlPlane { get; private set; } = null!;
 
         /// <summary>
-        /// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        /// Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
         /// </summary>
         [Output("deleteNotReadyAfterSecs")]
         public Output<int?> DeleteNotReadyAfterSecs { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.Rancher2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// Node taints. For Rancher v2.3.3 and above (List)
         /// </summary>
         [Output("nodeTaints")]
         public Output<ImmutableArray<Outputs.NodePoolNodeTaint>> NodeTaints { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? ControlPlane { get; set; }
 
         /// <summary>
-        /// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        /// Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
         /// </summary>
         [Input("deleteNotReadyAfterSecs")]
         public Input<int>? DeleteNotReadyAfterSecs { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.NodePoolNodeTaintArgs>? _nodeTaints;
 
         /// <summary>
-        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// Node taints. For Rancher v2.3.3 and above (List)
         /// </summary>
         public InputList<Inputs.NodePoolNodeTaintArgs> NodeTaints
         {
@@ -276,7 +276,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? ControlPlane { get; set; }
 
         /// <summary>
-        /// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        /// Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
         /// </summary>
         [Input("deleteNotReadyAfterSecs")]
         public Input<int>? DeleteNotReadyAfterSecs { get; set; }
@@ -321,7 +321,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.NodePoolNodeTaintGetArgs>? _nodeTaints;
 
         /// <summary>
-        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// Node taints. For Rancher v2.3.3 and above (List)
         /// </summary>
         public InputList<Inputs.NodePoolNodeTaintGetArgs> NodeTaints
         {

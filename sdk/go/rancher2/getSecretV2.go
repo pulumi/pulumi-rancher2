@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
 func LookupSecretV2(ctx *pulumi.Context, args *LookupSecretV2Args, opts ...pulumi.InvokeOption) (*LookupSecretV2Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretV2Result
 	err := ctx.Invoke("rancher2:index/getSecretV2:getSecretV2", args, &rv, opts...)
 	if err != nil {

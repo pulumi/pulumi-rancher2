@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigMachinePoolTaintGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The taint effect. Default: `\"NoExecute\"` (string)
+        /// The toleration effect. Default: `\"NoSchedule\"` (string)
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
         /// <summary>
-        /// The taint key (string)
+        /// The toleration key (string)
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

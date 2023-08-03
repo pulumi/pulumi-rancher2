@@ -210,19 +210,19 @@ def get_node_pool(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getNodePool:getNodePool', __args__, opts=opts, typ=GetNodePoolResult).value
 
     return AwaitableGetNodePoolResult(
-        annotations=__ret__.annotations,
-        cluster_id=__ret__.cluster_id,
-        control_plane=__ret__.control_plane,
-        delete_not_ready_after_secs=__ret__.delete_not_ready_after_secs,
-        etcd=__ret__.etcd,
-        hostname_prefix=__ret__.hostname_prefix,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        node_taints=__ret__.node_taints,
-        node_template_id=__ret__.node_template_id,
-        quantity=__ret__.quantity,
-        worker=__ret__.worker)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        control_plane=pulumi.get(__ret__, 'control_plane'),
+        delete_not_ready_after_secs=pulumi.get(__ret__, 'delete_not_ready_after_secs'),
+        etcd=pulumi.get(__ret__, 'etcd'),
+        hostname_prefix=pulumi.get(__ret__, 'hostname_prefix'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        node_taints=pulumi.get(__ret__, 'node_taints'),
+        node_template_id=pulumi.get(__ret__, 'node_template_id'),
+        quantity=pulumi.get(__ret__, 'quantity'),
+        worker=pulumi.get(__ret__, 'worker'))
 
 
 @_utilities.lift_output_func(get_node_pool)

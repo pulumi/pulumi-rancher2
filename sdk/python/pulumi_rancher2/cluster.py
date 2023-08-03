@@ -52,33 +52,33 @@ class ClusterArgs:
                  windows_prefered_cluster: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Cluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]] agent_env_vars: Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]] agent_env_vars: Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         :param pulumi.Input['ClusterAksConfigArgs'] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterAksConfigV2Args'] aks_config_v2: The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster (map)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Optional customization for cluster agent
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input['ClusterClusterAuthEndpointArgs'] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         :param pulumi.Input['ClusterClusterMonitoringInputArgs'] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-        :param pulumi.Input['ClusterClusterTemplateAnswersArgs'] cluster_template_answers: Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
-        :param pulumi.Input[str] cluster_template_id: Cluster template ID. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]] cluster_template_questions: Cluster template questions. Just for Rancher v2.3.x and above (list)
-        :param pulumi.Input[str] cluster_template_revision_id: Cluster template revision ID. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: Cluster default pod security admission configuration template name
+        :param pulumi.Input['ClusterClusterTemplateAnswersArgs'] cluster_template_answers: Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
+        :param pulumi.Input[str] cluster_template_id: Cluster template ID. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]] cluster_template_questions: Cluster template questions. For Rancher v2.3.x and above (list)
+        :param pulumi.Input[str] cluster_template_revision_id: Cluster template revision ID. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: Cluster default pod security admission configuration template name (string)
         :param pulumi.Input[str] default_pod_security_policy_template_id: [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
         :param pulumi.Input[str] description: The description for Cluster (string)
-        :param pulumi.Input[str] desired_agent_image: Desired agent image. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[str] desired_auth_image: Desired auth image. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] desired_agent_image: Desired agent image. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] desired_auth_image: Desired auth image. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] docker_root_dir: Desired auth image. For Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         :param pulumi.Input['ClusterEksConfigArgs'] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input['ClusterEksConfigV2Args'] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+        :param pulumi.Input['ClusterEksConfigV2Args'] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]] fleet_agent_deployment_customizations: Optional customization for fleet agent
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]] fleet_agent_deployment_customizations: Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input[str] fleet_workspace_name: Fleet workspace name (string)
         :param pulumi.Input['ClusterGkeConfigArgs'] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input['ClusterGkeConfigV2Args'] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        :param pulumi.Input['ClusterGkeConfigV2Args'] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
         :param pulumi.Input['ClusterK3sConfigArgs'] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
         :param pulumi.Input[str] name: The name of the Cluster (string)
@@ -160,7 +160,7 @@ class ClusterArgs:
     @pulumi.getter(name="agentEnvVars")
     def agent_env_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]:
         """
-        Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         """
         return pulumi.get(self, "agent_env_vars")
 
@@ -208,7 +208,7 @@ class ClusterArgs:
     @pulumi.getter(name="clusterAgentDeploymentCustomizations")
     def cluster_agent_deployment_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]]:
         """
-        Optional customization for cluster agent
+        Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         """
         return pulumi.get(self, "cluster_agent_deployment_customizations")
 
@@ -244,7 +244,7 @@ class ClusterArgs:
     @pulumi.getter(name="clusterTemplateAnswers")
     def cluster_template_answers(self) -> Optional[pulumi.Input['ClusterClusterTemplateAnswersArgs']]:
         """
-        Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+        Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
         """
         return pulumi.get(self, "cluster_template_answers")
 
@@ -256,7 +256,7 @@ class ClusterArgs:
     @pulumi.getter(name="clusterTemplateId")
     def cluster_template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster template ID. Just for Rancher v2.3.x and above (string)
+        Cluster template ID. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "cluster_template_id")
 
@@ -268,7 +268,7 @@ class ClusterArgs:
     @pulumi.getter(name="clusterTemplateQuestions")
     def cluster_template_questions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]:
         """
-        Cluster template questions. Just for Rancher v2.3.x and above (list)
+        Cluster template questions. For Rancher v2.3.x and above (list)
         """
         return pulumi.get(self, "cluster_template_questions")
 
@@ -280,7 +280,7 @@ class ClusterArgs:
     @pulumi.getter(name="clusterTemplateRevisionId")
     def cluster_template_revision_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+        Cluster template revision ID. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "cluster_template_revision_id")
 
@@ -292,7 +292,7 @@ class ClusterArgs:
     @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
     def default_pod_security_admission_configuration_template_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster default pod security admission configuration template name
+        Cluster default pod security admission configuration template name (string)
         """
         return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
 
@@ -328,7 +328,7 @@ class ClusterArgs:
     @pulumi.getter(name="desiredAgentImage")
     def desired_agent_image(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired agent image. Just for Rancher v2.3.x and above (string)
+        Desired agent image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "desired_agent_image")
 
@@ -340,7 +340,7 @@ class ClusterArgs:
     @pulumi.getter(name="desiredAuthImage")
     def desired_auth_image(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired auth image. Just for Rancher v2.3.x and above (string)
+        Desired auth image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "desired_auth_image")
 
@@ -352,7 +352,7 @@ class ClusterArgs:
     @pulumi.getter(name="dockerRootDir")
     def docker_root_dir(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired auth image. Just for Rancher v2.3.x and above (string)
+        Desired auth image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "docker_root_dir")
 
@@ -388,7 +388,7 @@ class ClusterArgs:
     @pulumi.getter(name="eksConfigV2")
     def eks_config_v2(self) -> Optional[pulumi.Input['ClusterEksConfigV2Args']]:
         """
-        The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+        The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         """
         return pulumi.get(self, "eks_config_v2")
 
@@ -436,7 +436,7 @@ class ClusterArgs:
     @pulumi.getter(name="fleetAgentDeploymentCustomizations")
     def fleet_agent_deployment_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]]:
         """
-        Optional customization for fleet agent
+        Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
         """
         return pulumi.get(self, "fleet_agent_deployment_customizations")
 
@@ -472,7 +472,7 @@ class ClusterArgs:
     @pulumi.getter(name="gkeConfigV2")
     def gke_config_v2(self) -> Optional[pulumi.Input['ClusterGkeConfigV2Args']]:
         """
-        The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
         """
         return pulumi.get(self, "gke_config_v2")
 
@@ -611,38 +611,38 @@ class _ClusterState:
                  windows_prefered_cluster: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]] agent_env_vars: Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]] agent_env_vars: Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         :param pulumi.Input['ClusterAksConfigArgs'] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterAksConfigV2Args'] aks_config_v2: The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster (map)
         :param pulumi.Input[str] ca_cert: TLS CA certificate for etcd service (string)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Optional customization for cluster agent
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input['ClusterClusterAuthEndpointArgs'] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         :param pulumi.Input['ClusterClusterMonitoringInputArgs'] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
         :param pulumi.Input['ClusterClusterRegistrationTokenArgs'] cluster_registration_token: (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
-        :param pulumi.Input['ClusterClusterTemplateAnswersArgs'] cluster_template_answers: Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
-        :param pulumi.Input[str] cluster_template_id: Cluster template ID. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]] cluster_template_questions: Cluster template questions. Just for Rancher v2.3.x and above (list)
-        :param pulumi.Input[str] cluster_template_revision_id: Cluster template revision ID. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: Cluster default pod security admission configuration template name
+        :param pulumi.Input['ClusterClusterTemplateAnswersArgs'] cluster_template_answers: Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
+        :param pulumi.Input[str] cluster_template_id: Cluster template ID. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]] cluster_template_questions: Cluster template questions. For Rancher v2.3.x and above (list)
+        :param pulumi.Input[str] cluster_template_revision_id: Cluster template revision ID. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: Cluster default pod security admission configuration template name (string)
         :param pulumi.Input[str] default_pod_security_policy_template_id: [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
         :param pulumi.Input[str] default_project_id: (Computed) Default project ID for the cluster (string)
         :param pulumi.Input[str] description: The description for Cluster (string)
-        :param pulumi.Input[str] desired_agent_image: Desired agent image. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[str] desired_auth_image: Desired auth image. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] desired_agent_image: Desired agent image. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] desired_auth_image: Desired auth image. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] docker_root_dir: Desired auth image. For Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         :param pulumi.Input['ClusterEksConfigArgs'] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input['ClusterEksConfigV2Args'] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+        :param pulumi.Input['ClusterEksConfigV2Args'] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
         :param pulumi.Input[bool] enable_cluster_istio: Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]] fleet_agent_deployment_customizations: Optional customization for fleet agent
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]] fleet_agent_deployment_customizations: Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input[str] fleet_workspace_name: Fleet workspace name (string)
         :param pulumi.Input['ClusterGkeConfigArgs'] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input['ClusterGkeConfigV2Args'] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
-        :param pulumi.Input[bool] istio_enabled: (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+        :param pulumi.Input['ClusterGkeConfigV2Args'] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+        :param pulumi.Input[bool] istio_enabled: (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
         :param pulumi.Input['ClusterK3sConfigArgs'] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
@@ -743,7 +743,7 @@ class _ClusterState:
     @pulumi.getter(name="agentEnvVars")
     def agent_env_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]:
         """
-        Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         """
         return pulumi.get(self, "agent_env_vars")
 
@@ -803,7 +803,7 @@ class _ClusterState:
     @pulumi.getter(name="clusterAgentDeploymentCustomizations")
     def cluster_agent_deployment_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]]:
         """
-        Optional customization for cluster agent
+        Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         """
         return pulumi.get(self, "cluster_agent_deployment_customizations")
 
@@ -851,7 +851,7 @@ class _ClusterState:
     @pulumi.getter(name="clusterTemplateAnswers")
     def cluster_template_answers(self) -> Optional[pulumi.Input['ClusterClusterTemplateAnswersArgs']]:
         """
-        Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+        Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
         """
         return pulumi.get(self, "cluster_template_answers")
 
@@ -863,7 +863,7 @@ class _ClusterState:
     @pulumi.getter(name="clusterTemplateId")
     def cluster_template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster template ID. Just for Rancher v2.3.x and above (string)
+        Cluster template ID. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "cluster_template_id")
 
@@ -875,7 +875,7 @@ class _ClusterState:
     @pulumi.getter(name="clusterTemplateQuestions")
     def cluster_template_questions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]:
         """
-        Cluster template questions. Just for Rancher v2.3.x and above (list)
+        Cluster template questions. For Rancher v2.3.x and above (list)
         """
         return pulumi.get(self, "cluster_template_questions")
 
@@ -887,7 +887,7 @@ class _ClusterState:
     @pulumi.getter(name="clusterTemplateRevisionId")
     def cluster_template_revision_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+        Cluster template revision ID. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "cluster_template_revision_id")
 
@@ -899,7 +899,7 @@ class _ClusterState:
     @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
     def default_pod_security_admission_configuration_template_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster default pod security admission configuration template name
+        Cluster default pod security admission configuration template name (string)
         """
         return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
 
@@ -947,7 +947,7 @@ class _ClusterState:
     @pulumi.getter(name="desiredAgentImage")
     def desired_agent_image(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired agent image. Just for Rancher v2.3.x and above (string)
+        Desired agent image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "desired_agent_image")
 
@@ -959,7 +959,7 @@ class _ClusterState:
     @pulumi.getter(name="desiredAuthImage")
     def desired_auth_image(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired auth image. Just for Rancher v2.3.x and above (string)
+        Desired auth image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "desired_auth_image")
 
@@ -971,7 +971,7 @@ class _ClusterState:
     @pulumi.getter(name="dockerRootDir")
     def docker_root_dir(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired auth image. Just for Rancher v2.3.x and above (string)
+        Desired auth image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "docker_root_dir")
 
@@ -1007,7 +1007,7 @@ class _ClusterState:
     @pulumi.getter(name="eksConfigV2")
     def eks_config_v2(self) -> Optional[pulumi.Input['ClusterEksConfigV2Args']]:
         """
-        The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+        The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         """
         return pulumi.get(self, "eks_config_v2")
 
@@ -1033,6 +1033,9 @@ class _ClusterState:
         """
         Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
         """
+        warnings.warn("""Deploy istio using rancher2_app resource instead""", DeprecationWarning)
+        pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using rancher2_app resource instead""")
+
         return pulumi.get(self, "enable_cluster_istio")
 
     @enable_cluster_istio.setter
@@ -1067,7 +1070,7 @@ class _ClusterState:
     @pulumi.getter(name="fleetAgentDeploymentCustomizations")
     def fleet_agent_deployment_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]]:
         """
-        Optional customization for fleet agent
+        Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
         """
         return pulumi.get(self, "fleet_agent_deployment_customizations")
 
@@ -1103,7 +1106,7 @@ class _ClusterState:
     @pulumi.getter(name="gkeConfigV2")
     def gke_config_v2(self) -> Optional[pulumi.Input['ClusterGkeConfigV2Args']]:
         """
-        The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
         """
         return pulumi.get(self, "gke_config_v2")
 
@@ -1115,7 +1118,7 @@ class _ClusterState:
     @pulumi.getter(name="istioEnabled")
     def istio_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+        (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
         """
         return pulumi.get(self, "istio_enabled")
 
@@ -1280,7 +1283,7 @@ class Cluster(pulumi.CustomResource):
         **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enable_cluster_monitoring = false`, `cloud_provider {}`, `name = ""`
         ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
 
-        **Note** Cluster monitoring version `0.2.0` or above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
+        **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
 
         ```python
         import pulumi
@@ -1452,7 +1455,7 @@ class Cluster(pulumi.CustomResource):
             etcd=True,
             worker=True)
         ```
-        ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x or above.
+        ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
 
         ```python
         import pulumi
@@ -1487,7 +1490,7 @@ class Cluster(pulumi.CustomResource):
             cluster_template_id=foo_cluster_template.id,
             cluster_template_revision_id=foo_cluster_template.template_revisions[0].id)
         ```
-        ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x or above.
+        ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
 
         ```python
         import pulumi
@@ -1536,7 +1539,51 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.
+        ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.Cluster("foo",
+            cluster_agent_deployment_customizations=[rancher2.ClusterClusterAgentDeploymentCustomizationArgs(
+                append_tolerations=[rancher2.ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs(
+                    effect="NoSchedule",
+                    key="tolerate/control-plane",
+                    value="true",
+                )],
+                override_affinity=\"\"\"{
+          "nodeAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": {
+              "nodeSelectorTerms": [{
+                "matchExpressions": [{
+                  "key": "not.this/nodepool",
+                  "operator": "In",
+                  "values": [
+                    "true"
+                  ]
+                }]
+              }]
+            }
+          }
+        }
+
+        \"\"\",
+                override_resource_requirements=[rancher2.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs(
+                    cpu_limit="800",
+                    cpu_request="500",
+                    memory_limit="800",
+                    memory_request="500",
+                )],
+            )],
+            description="Terraform cluster with agent customization",
+            rke_config=rancher2.ClusterRkeConfigArgs(
+                network=rancher2.ClusterRkeConfigNetworkArgs(
+                    plugin="canal",
+                ),
+            ))
+        ```
+        ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
 
         ```python
         import pulumi
@@ -1557,7 +1604,7 @@ class Cluster(pulumi.CustomResource):
                 imported=True,
             ))
         ```
-        ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.
+        ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
 
         ```python
         import pulumi
@@ -1598,7 +1645,7 @@ class Cluster(pulumi.CustomResource):
                 public_access=False,
             ))
         ```
-        ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 or above.
+        ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
 
         ```python
         import pulumi
@@ -1633,7 +1680,7 @@ class Cluster(pulumi.CustomResource):
                 public_access=True,
             ))
         ```
-        ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 or above.
+        ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
 
         ```python
         import pulumi
@@ -1700,33 +1747,33 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]] agent_env_vars: Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]] agent_env_vars: Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         :param pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterAksConfigV2Args']] aks_config_v2: The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster (map)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterAgentDeploymentCustomizationArgs']]]] cluster_agent_deployment_customizations: Optional customization for cluster agent
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterAgentDeploymentCustomizationArgs']]]] cluster_agent_deployment_customizations: Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterClusterMonitoringInputArgs']] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterClusterTemplateAnswersArgs']] cluster_template_answers: Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
-        :param pulumi.Input[str] cluster_template_id: Cluster template ID. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterTemplateQuestionArgs']]]] cluster_template_questions: Cluster template questions. Just for Rancher v2.3.x and above (list)
-        :param pulumi.Input[str] cluster_template_revision_id: Cluster template revision ID. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: Cluster default pod security admission configuration template name
+        :param pulumi.Input[pulumi.InputType['ClusterClusterTemplateAnswersArgs']] cluster_template_answers: Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
+        :param pulumi.Input[str] cluster_template_id: Cluster template ID. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterTemplateQuestionArgs']]]] cluster_template_questions: Cluster template questions. For Rancher v2.3.x and above (list)
+        :param pulumi.Input[str] cluster_template_revision_id: Cluster template revision ID. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: Cluster default pod security admission configuration template name (string)
         :param pulumi.Input[str] default_pod_security_policy_template_id: [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
         :param pulumi.Input[str] description: The description for Cluster (string)
-        :param pulumi.Input[str] desired_agent_image: Desired agent image. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[str] desired_auth_image: Desired auth image. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] desired_agent_image: Desired agent image. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] desired_auth_image: Desired auth image. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] docker_root_dir: Desired auth image. For Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         :param pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterEksConfigV2Args']] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterEksConfigV2Args']] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterFleetAgentDeploymentCustomizationArgs']]]] fleet_agent_deployment_customizations: Optional customization for fleet agent
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterFleetAgentDeploymentCustomizationArgs']]]] fleet_agent_deployment_customizations: Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input[str] fleet_workspace_name: Fleet workspace name (string)
         :param pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigV2Args']] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigV2Args']] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
         :param pulumi.Input[str] name: The name of the Cluster (string)
@@ -1749,7 +1796,7 @@ class Cluster(pulumi.CustomResource):
         **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enable_cluster_monitoring = false`, `cloud_provider {}`, `name = ""`
         ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
 
-        **Note** Cluster monitoring version `0.2.0` or above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
+        **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
 
         ```python
         import pulumi
@@ -1921,7 +1968,7 @@ class Cluster(pulumi.CustomResource):
             etcd=True,
             worker=True)
         ```
-        ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x or above.
+        ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
 
         ```python
         import pulumi
@@ -1956,7 +2003,7 @@ class Cluster(pulumi.CustomResource):
             cluster_template_id=foo_cluster_template.id,
             cluster_template_revision_id=foo_cluster_template.template_revisions[0].id)
         ```
-        ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x or above.
+        ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
 
         ```python
         import pulumi
@@ -2005,7 +2052,51 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.
+        ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.Cluster("foo",
+            cluster_agent_deployment_customizations=[rancher2.ClusterClusterAgentDeploymentCustomizationArgs(
+                append_tolerations=[rancher2.ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs(
+                    effect="NoSchedule",
+                    key="tolerate/control-plane",
+                    value="true",
+                )],
+                override_affinity=\"\"\"{
+          "nodeAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": {
+              "nodeSelectorTerms": [{
+                "matchExpressions": [{
+                  "key": "not.this/nodepool",
+                  "operator": "In",
+                  "values": [
+                    "true"
+                  ]
+                }]
+              }]
+            }
+          }
+        }
+
+        \"\"\",
+                override_resource_requirements=[rancher2.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs(
+                    cpu_limit="800",
+                    cpu_request="500",
+                    memory_limit="800",
+                    memory_request="500",
+                )],
+            )],
+            description="Terraform cluster with agent customization",
+            rke_config=rancher2.ClusterRkeConfigArgs(
+                network=rancher2.ClusterRkeConfigNetworkArgs(
+                    plugin="canal",
+                ),
+            ))
+        ```
+        ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
 
         ```python
         import pulumi
@@ -2026,7 +2117,7 @@ class Cluster(pulumi.CustomResource):
                 imported=True,
             ))
         ```
-        ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.
+        ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
 
         ```python
         import pulumi
@@ -2067,7 +2158,7 @@ class Cluster(pulumi.CustomResource):
                 public_access=False,
             ))
         ```
-        ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 or above.
+        ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
 
         ```python
         import pulumi
@@ -2102,7 +2193,7 @@ class Cluster(pulumi.CustomResource):
                 public_access=True,
             ))
         ```
-        ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 or above.
+        ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
 
         ```python
         import pulumi
@@ -2326,38 +2417,38 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]] agent_env_vars: Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]] agent_env_vars: Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         :param pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterAksConfigV2Args']] aks_config_v2: The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster (map)
         :param pulumi.Input[str] ca_cert: TLS CA certificate for etcd service (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterAgentDeploymentCustomizationArgs']]]] cluster_agent_deployment_customizations: Optional customization for cluster agent
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterAgentDeploymentCustomizationArgs']]]] cluster_agent_deployment_customizations: Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterClusterMonitoringInputArgs']] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterClusterRegistrationTokenArgs']] cluster_registration_token: (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterClusterTemplateAnswersArgs']] cluster_template_answers: Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
-        :param pulumi.Input[str] cluster_template_id: Cluster template ID. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterTemplateQuestionArgs']]]] cluster_template_questions: Cluster template questions. Just for Rancher v2.3.x and above (list)
-        :param pulumi.Input[str] cluster_template_revision_id: Cluster template revision ID. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: Cluster default pod security admission configuration template name
+        :param pulumi.Input[pulumi.InputType['ClusterClusterTemplateAnswersArgs']] cluster_template_answers: Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
+        :param pulumi.Input[str] cluster_template_id: Cluster template ID. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterTemplateQuestionArgs']]]] cluster_template_questions: Cluster template questions. For Rancher v2.3.x and above (list)
+        :param pulumi.Input[str] cluster_template_revision_id: Cluster template revision ID. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: Cluster default pod security admission configuration template name (string)
         :param pulumi.Input[str] default_pod_security_policy_template_id: [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
         :param pulumi.Input[str] default_project_id: (Computed) Default project ID for the cluster (string)
         :param pulumi.Input[str] description: The description for Cluster (string)
-        :param pulumi.Input[str] desired_agent_image: Desired agent image. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[str] desired_auth_image: Desired auth image. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] desired_agent_image: Desired agent image. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] desired_auth_image: Desired auth image. For Rancher v2.3.x and above (string)
+        :param pulumi.Input[str] docker_root_dir: Desired auth image. For Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         :param pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterEksConfigV2Args']] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterEksConfigV2Args']] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
         :param pulumi.Input[bool] enable_cluster_istio: Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterFleetAgentDeploymentCustomizationArgs']]]] fleet_agent_deployment_customizations: Optional customization for fleet agent
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterFleetAgentDeploymentCustomizationArgs']]]] fleet_agent_deployment_customizations: Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input[str] fleet_workspace_name: Fleet workspace name (string)
         :param pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigV2Args']] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
-        :param pulumi.Input[bool] istio_enabled: (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigV2Args']] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+        :param pulumi.Input[bool] istio_enabled: (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
         :param pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
@@ -2419,7 +2510,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="agentEnvVars")
     def agent_env_vars(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterAgentEnvVar']]]:
         """
-        Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         """
         return pulumi.get(self, "agent_env_vars")
 
@@ -2459,7 +2550,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterAgentDeploymentCustomizations")
     def cluster_agent_deployment_customizations(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomization']]]:
         """
-        Optional customization for cluster agent
+        Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         """
         return pulumi.get(self, "cluster_agent_deployment_customizations")
 
@@ -2491,7 +2582,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterTemplateAnswers")
     def cluster_template_answers(self) -> pulumi.Output['outputs.ClusterClusterTemplateAnswers']:
         """
-        Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+        Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
         """
         return pulumi.get(self, "cluster_template_answers")
 
@@ -2499,7 +2590,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterTemplateId")
     def cluster_template_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Cluster template ID. Just for Rancher v2.3.x and above (string)
+        Cluster template ID. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "cluster_template_id")
 
@@ -2507,7 +2598,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterTemplateQuestions")
     def cluster_template_questions(self) -> pulumi.Output[Sequence['outputs.ClusterClusterTemplateQuestion']]:
         """
-        Cluster template questions. Just for Rancher v2.3.x and above (list)
+        Cluster template questions. For Rancher v2.3.x and above (list)
         """
         return pulumi.get(self, "cluster_template_questions")
 
@@ -2515,7 +2606,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterTemplateRevisionId")
     def cluster_template_revision_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+        Cluster template revision ID. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "cluster_template_revision_id")
 
@@ -2523,7 +2614,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
     def default_pod_security_admission_configuration_template_name(self) -> pulumi.Output[str]:
         """
-        Cluster default pod security admission configuration template name
+        Cluster default pod security admission configuration template name (string)
         """
         return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
 
@@ -2555,7 +2646,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="desiredAgentImage")
     def desired_agent_image(self) -> pulumi.Output[str]:
         """
-        Desired agent image. Just for Rancher v2.3.x and above (string)
+        Desired agent image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "desired_agent_image")
 
@@ -2563,7 +2654,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="desiredAuthImage")
     def desired_auth_image(self) -> pulumi.Output[str]:
         """
-        Desired auth image. Just for Rancher v2.3.x and above (string)
+        Desired auth image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "desired_auth_image")
 
@@ -2571,7 +2662,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="dockerRootDir")
     def docker_root_dir(self) -> pulumi.Output[str]:
         """
-        Desired auth image. Just for Rancher v2.3.x and above (string)
+        Desired auth image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "docker_root_dir")
 
@@ -2595,7 +2686,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="eksConfigV2")
     def eks_config_v2(self) -> pulumi.Output['outputs.ClusterEksConfigV2']:
         """
-        The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+        The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         """
         return pulumi.get(self, "eks_config_v2")
 
@@ -2613,6 +2704,9 @@ class Cluster(pulumi.CustomResource):
         """
         Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
         """
+        warnings.warn("""Deploy istio using rancher2_app resource instead""", DeprecationWarning)
+        pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using rancher2_app resource instead""")
+
         return pulumi.get(self, "enable_cluster_istio")
 
     @property
@@ -2635,7 +2729,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="fleetAgentDeploymentCustomizations")
     def fleet_agent_deployment_customizations(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomization']]]:
         """
-        Optional customization for fleet agent
+        Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
         """
         return pulumi.get(self, "fleet_agent_deployment_customizations")
 
@@ -2659,7 +2753,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="gkeConfigV2")
     def gke_config_v2(self) -> pulumi.Output[Optional['outputs.ClusterGkeConfigV2']]:
         """
-        The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
         """
         return pulumi.get(self, "gke_config_v2")
 
@@ -2667,7 +2761,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="istioEnabled")
     def istio_enabled(self) -> pulumi.Output[bool]:
         """
-        (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+        (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
         """
         return pulumi.get(self, "istio_enabled")
 

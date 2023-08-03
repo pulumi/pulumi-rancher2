@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement
     {
+        /// <summary>
+        /// The maximum CPU limit for agent (string)
+        /// </summary>
         public readonly string? CpuLimit;
+        /// <summary>
+        /// The minimum CPU required for agent (string)
+        /// </summary>
         public readonly string? CpuRequest;
+        /// <summary>
+        /// The maximum memory limit for agent (string)
+        /// </summary>
         public readonly string? MemoryLimit;
+        /// <summary>
+        /// The minimum memory required for agent (string)
+        /// </summary>
         public readonly string? MemoryRequest;
 
         [OutputConstructor]

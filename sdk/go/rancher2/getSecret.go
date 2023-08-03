@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,6 +70,7 @@ import (
 //
 // ```
 func LookupSecret(ctx *pulumi.Context, args *LookupSecretArgs, opts ...pulumi.InvokeOption) (*LookupSecretResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretResult
 	err := ctx.Invoke("rancher2:index/getSecret:getSecret", args, &rv, opts...)
 	if err != nil {

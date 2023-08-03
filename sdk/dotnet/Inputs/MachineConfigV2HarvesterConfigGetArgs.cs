@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? DiskInfo { get; set; }
 
         /// <summary>
-        /// Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        /// Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         /// </summary>
         [Input("diskSize")]
         public Input<string>? DiskSize { get; set; }
@@ -101,7 +101,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+        /// Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
         /// </summary>
         [Input("vmAffinity")]
         public Input<string>? VmAffinity { get; set; }

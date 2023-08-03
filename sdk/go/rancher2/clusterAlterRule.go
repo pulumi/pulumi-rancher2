@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -99,6 +100,7 @@ func NewClusterAlterRule(ctx *pulumi.Context,
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClusterAlterRule
 	err := ctx.RegisterResource("rancher2:index/clusterAlterRule:ClusterAlterRule", name, args, &resource, opts...)
 	if err != nil {

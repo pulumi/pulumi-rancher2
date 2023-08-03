@@ -162,15 +162,15 @@ def get_etcd_backup(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getEtcdBackup:getEtcdBackup', __args__, opts=opts, typ=GetEtcdBackupResult).value
 
     return AwaitableGetEtcdBackupResult(
-        annotations=__ret__.annotations,
-        backup_config=__ret__.backup_config,
-        cluster_id=__ret__.cluster_id,
-        filename=__ret__.filename,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        manual=__ret__.manual,
-        name=__ret__.name,
-        namespace_id=__ret__.namespace_id)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        backup_config=pulumi.get(__ret__, 'backup_config'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        filename=pulumi.get(__ret__, 'filename'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        manual=pulumi.get(__ret__, 'manual'),
+        name=pulumi.get(__ret__, 'name'),
+        namespace_id=pulumi.get(__ret__, 'namespace_id'))
 
 
 @_utilities.lift_output_func(get_etcd_backup)

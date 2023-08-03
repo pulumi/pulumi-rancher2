@@ -174,16 +174,16 @@ def get_cluster_alert_group(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getClusterAlertGroup:getClusterAlertGroup', __args__, opts=opts, typ=GetClusterAlertGroupResult).value
 
     return AwaitableGetClusterAlertGroupResult(
-        annotations=__ret__.annotations,
-        cluster_id=__ret__.cluster_id,
-        description=__ret__.description,
-        group_interval_seconds=__ret__.group_interval_seconds,
-        group_wait_seconds=__ret__.group_wait_seconds,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        recipients=__ret__.recipients,
-        repeat_interval_seconds=__ret__.repeat_interval_seconds)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        description=pulumi.get(__ret__, 'description'),
+        group_interval_seconds=pulumi.get(__ret__, 'group_interval_seconds'),
+        group_wait_seconds=pulumi.get(__ret__, 'group_wait_seconds'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        recipients=pulumi.get(__ret__, 'recipients'),
+        repeat_interval_seconds=pulumi.get(__ret__, 'repeat_interval_seconds'))
 
 
 @_utilities.lift_output_func(get_cluster_alert_group)

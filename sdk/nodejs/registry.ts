@@ -7,11 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Rancher v2 Registry resource. This can be used to create docker registries for Rancher v2 environments and retrieve their information.
+ * Provides a Rancher v2 Registry resource. This resource creates Kubernetes secrets with the type `kubernetes.io/dockerconfigjson` for authenticating against Docker registries for Rancher v2 environments and retrieving their information.
  *
- * Depending of the availability, there are 2 types of Rancher v2 docker registries:
- * - Project registry: Available to all namespaces in the `projectId`
- * - Namespaced registry: Available to just `namespaceId` in the `projectId`
+ * Depending on the availability, there are 2 types of Rancher v2 Docker registry resources:
+ * - Project registry resource: Available to all namespaces in the `projectId`.
+ * - Namespaced registry resource: Available to `namespaceId` in the `projectId`.
  *
  * ## Example Usage
  *

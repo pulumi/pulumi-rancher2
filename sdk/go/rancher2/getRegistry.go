@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,6 +70,7 @@ import (
 //
 // ```
 func LookupRegistry(ctx *pulumi.Context, args *LookupRegistryArgs, opts ...pulumi.InvokeOption) (*LookupRegistryResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistryResult
 	err := ctx.Invoke("rancher2:index/getRegistry:getRegistry", args, &rv, opts...)
 	if err != nil {

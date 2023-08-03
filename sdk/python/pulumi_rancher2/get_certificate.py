@@ -162,14 +162,14 @@ def get_certificate(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult).value
 
     return AwaitableGetCertificateResult(
-        annotations=__ret__.annotations,
-        certs=__ret__.certs,
-        description=__ret__.description,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        namespace_id=__ret__.namespace_id,
-        project_id=__ret__.project_id)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        certs=pulumi.get(__ret__, 'certs'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        namespace_id=pulumi.get(__ret__, 'namespace_id'),
+        project_id=pulumi.get(__ret__, 'project_id'))
 
 
 @_utilities.lift_output_func(get_certificate)

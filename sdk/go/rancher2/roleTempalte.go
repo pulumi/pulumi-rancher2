@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -143,6 +144,7 @@ func NewRoleTempalte(ctx *pulumi.Context,
 		args = &RoleTempalteArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RoleTempalte
 	err := ctx.RegisterResource("rancher2:index/roleTempalte:RoleTempalte", name, args, &resource, opts...)
 	if err != nil {

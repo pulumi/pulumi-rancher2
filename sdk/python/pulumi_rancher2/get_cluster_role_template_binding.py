@@ -173,16 +173,16 @@ def get_cluster_role_template_binding(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding', __args__, opts=opts, typ=GetClusterRoleTemplateBindingResult).value
 
     return AwaitableGetClusterRoleTemplateBindingResult(
-        annotations=__ret__.annotations,
-        cluster_id=__ret__.cluster_id,
-        group_id=__ret__.group_id,
-        group_principal_id=__ret__.group_principal_id,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        role_template_id=__ret__.role_template_id,
-        user_id=__ret__.user_id,
-        user_principal_id=__ret__.user_principal_id)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        group_id=pulumi.get(__ret__, 'group_id'),
+        group_principal_id=pulumi.get(__ret__, 'group_principal_id'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        role_template_id=pulumi.get(__ret__, 'role_template_id'),
+        user_id=pulumi.get(__ret__, 'user_id'),
+        user_principal_id=pulumi.get(__ret__, 'user_principal_id'))
 
 
 @_utilities.lift_output_func(get_cluster_role_template_binding)

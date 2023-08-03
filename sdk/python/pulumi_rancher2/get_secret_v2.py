@@ -163,16 +163,16 @@ def get_secret_v2(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getSecretV2:getSecretV2', __args__, opts=opts, typ=GetSecretV2Result).value
 
     return AwaitableGetSecretV2Result(
-        annotations=__ret__.annotations,
-        cluster_id=__ret__.cluster_id,
-        data=__ret__.data,
-        id=__ret__.id,
-        immutable=__ret__.immutable,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        namespace=__ret__.namespace,
-        resource_version=__ret__.resource_version,
-        type=__ret__.type)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        data=pulumi.get(__ret__, 'data'),
+        id=pulumi.get(__ret__, 'id'),
+        immutable=pulumi.get(__ret__, 'immutable'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        namespace=pulumi.get(__ret__, 'namespace'),
+        resource_version=pulumi.get(__ret__, 'resource_version'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_secret_v2)

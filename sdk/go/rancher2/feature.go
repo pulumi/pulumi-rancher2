@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,7 +17,7 @@ import (
 // * On create, provider will read Feature from Rancher and update its value. It will return an error if feature doesn't exist
 // * On destroy, provider will not delete feature from Rancher, just from tfstate
 //
-// **Note** Some Rancher features as `fleet`, may force a Rancher reboot once updated. The provider will wait until Rancher is rebooted. If you are modifying more than one feature in a row, and any of them requires a Rancher reboot, `pulumi up` may fail on first run. Run `pulumi up` again should work fine.
+// **Note:** Some Rancher features as `fleet`, may force a Rancher reboot once updated. The provider will wait until Rancher is rebooted. If you are modifying more than one feature in a row, and any of them requires a Rancher reboot, `pulumi up` may fail on first run. Run `pulumi up` again should work fine.
 //
 // ## Example Usage
 //
@@ -63,6 +64,7 @@ func NewFeature(ctx *pulumi.Context,
 		args = &FeatureArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Feature
 	err := ctx.RegisterResource("rancher2:index/feature:Feature", name, args, &resource, opts...)
 	if err != nil {

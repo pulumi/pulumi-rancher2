@@ -100,14 +100,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     public Optional<Output<String>> diskSize() {
@@ -205,14 +205,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+     * Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
      * 
      */
     @Import(name="managedDisks")
     private @Nullable Output<Boolean> managedDisks;
 
     /**
-     * @return Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+     * @return Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> managedDisks() {
@@ -667,7 +667,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
          * 
          * @return builder
          * 
@@ -678,7 +678,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
          * 
          * @return builder
          * 
@@ -814,7 +814,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param managedDisks Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+         * @param managedDisks Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -825,7 +825,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param managedDisks Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+         * @param managedDisks Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
          * 
          * @return builder
          * 

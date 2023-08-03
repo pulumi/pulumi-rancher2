@@ -217,19 +217,19 @@ def get_notifier(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getNotifier:getNotifier', __args__, opts=opts, typ=GetNotifierResult).value
 
     return AwaitableGetNotifierResult(
-        annotations=__ret__.annotations,
-        cluster_id=__ret__.cluster_id,
-        description=__ret__.description,
-        dingtalk_config=__ret__.dingtalk_config,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        msteams_config=__ret__.msteams_config,
-        name=__ret__.name,
-        pagerduty_config=__ret__.pagerduty_config,
-        slack_config=__ret__.slack_config,
-        smtp_config=__ret__.smtp_config,
-        webhook_config=__ret__.webhook_config,
-        wechat_config=__ret__.wechat_config)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        description=pulumi.get(__ret__, 'description'),
+        dingtalk_config=pulumi.get(__ret__, 'dingtalk_config'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        msteams_config=pulumi.get(__ret__, 'msteams_config'),
+        name=pulumi.get(__ret__, 'name'),
+        pagerduty_config=pulumi.get(__ret__, 'pagerduty_config'),
+        slack_config=pulumi.get(__ret__, 'slack_config'),
+        smtp_config=pulumi.get(__ret__, 'smtp_config'),
+        webhook_config=pulumi.get(__ret__, 'webhook_config'),
+        wechat_config=pulumi.get(__ret__, 'wechat_config'))
 
 
 @_utilities.lift_output_func(get_notifier)

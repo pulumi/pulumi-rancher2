@@ -136,14 +136,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+     * RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
      * 
      */
     @Import(name="dns")
     private @Nullable Output<ClusterRkeConfigDnsArgs> dns;
 
     /**
-     * @return RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+     * @return RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterRkeConfigDnsArgs>> dns() {
@@ -579,7 +579,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dns RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+         * @param dns RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dns RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+         * @param dns RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
          * 
          * @return builder
          * 

@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DiskInfo;
         /// <summary>
-        /// Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        /// Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         /// </summary>
         public readonly string? DiskSize;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? UserData;
         /// <summary>
-        /// Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+        /// Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
         /// </summary>
         public readonly string? VmAffinity;
         /// <summary>

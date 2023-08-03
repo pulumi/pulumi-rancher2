@@ -17,14 +17,14 @@ public final class ClusterRkeConfigIngressTolerationArgs extends com.pulumi.reso
     public static final ClusterRkeConfigIngressTolerationArgs Empty = new ClusterRkeConfigIngressTolerationArgs();
 
     /**
-     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
     /**
-     * @return The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     public Optional<Output<String>> effect() {
@@ -47,14 +47,14 @@ public final class ClusterRkeConfigIngressTolerationArgs extends com.pulumi.reso
     }
 
     /**
-     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     * The toleration operator (string)
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+     * @return The toleration operator (string)
      * 
      */
     public Optional<Output<String>> operator() {
@@ -62,14 +62,14 @@ public final class ClusterRkeConfigIngressTolerationArgs extends com.pulumi.reso
     }
 
     /**
-     * The toleration seconds (int)
+     * The number of seconds a pod will stay bound to a node with a matching taint (int)
      * 
      */
     @Import(name="seconds")
     private @Nullable Output<Integer> seconds;
 
     /**
-     * @return The toleration seconds (int)
+     * @return The number of seconds a pod will stay bound to a node with a matching taint (int)
      * 
      */
     public Optional<Output<Integer>> seconds() {
@@ -120,7 +120,7 @@ public final class ClusterRkeConfigIngressTolerationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param effect The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ClusterRkeConfigIngressTolerationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param effect The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class ClusterRkeConfigIngressTolerationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param operator The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+         * @param operator The toleration operator (string)
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ClusterRkeConfigIngressTolerationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param operator The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+         * @param operator The toleration operator (string)
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class ClusterRkeConfigIngressTolerationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param seconds The toleration seconds (int)
+         * @param seconds The number of seconds a pod will stay bound to a node with a matching taint (int)
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ClusterRkeConfigIngressTolerationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param seconds The toleration seconds (int)
+         * @param seconds The number of seconds a pod will stay bound to a node with a matching taint (int)
          * 
          * @return builder
          * 

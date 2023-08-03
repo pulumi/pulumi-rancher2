@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// `amazonec2`, `azure`, `digitalocean`, `harvester`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
     /// 
-    /// **Note** This resource is used by
+    /// **Note:** This resource is used by
     /// 
     /// ## Example Usage
     /// ### Using the Harvester Node Driver
@@ -139,7 +139,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for Machine Config V2 object (map)
         /// 
-        /// **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
+        /// **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
@@ -274,7 +274,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for Machine Config V2 object (map)
         /// 
-        /// **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
+        /// **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         /// </summary>
         public InputMap<object> Labels
         {
@@ -368,7 +368,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for Machine Config V2 object (map)
         /// 
-        /// **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
+        /// **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
         /// </summary>
         public InputMap<object> Labels
         {

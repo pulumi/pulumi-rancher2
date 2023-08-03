@@ -237,21 +237,21 @@ def get_cluster_alter_rule(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getClusterAlterRule:getClusterAlterRule', __args__, opts=opts, typ=GetClusterAlterRuleResult).value
 
     return AwaitableGetClusterAlterRuleResult(
-        annotations=__ret__.annotations,
-        cluster_id=__ret__.cluster_id,
-        event_rule=__ret__.event_rule,
-        group_id=__ret__.group_id,
-        group_interval_seconds=__ret__.group_interval_seconds,
-        group_wait_seconds=__ret__.group_wait_seconds,
-        id=__ret__.id,
-        inherited=__ret__.inherited,
-        labels=__ret__.labels,
-        metric_rule=__ret__.metric_rule,
-        name=__ret__.name,
-        node_rule=__ret__.node_rule,
-        repeat_interval_seconds=__ret__.repeat_interval_seconds,
-        severity=__ret__.severity,
-        system_service_rule=__ret__.system_service_rule)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        event_rule=pulumi.get(__ret__, 'event_rule'),
+        group_id=pulumi.get(__ret__, 'group_id'),
+        group_interval_seconds=pulumi.get(__ret__, 'group_interval_seconds'),
+        group_wait_seconds=pulumi.get(__ret__, 'group_wait_seconds'),
+        id=pulumi.get(__ret__, 'id'),
+        inherited=pulumi.get(__ret__, 'inherited'),
+        labels=pulumi.get(__ret__, 'labels'),
+        metric_rule=pulumi.get(__ret__, 'metric_rule'),
+        name=pulumi.get(__ret__, 'name'),
+        node_rule=pulumi.get(__ret__, 'node_rule'),
+        repeat_interval_seconds=pulumi.get(__ret__, 'repeat_interval_seconds'),
+        severity=pulumi.get(__ret__, 'severity'),
+        system_service_rule=pulumi.get(__ret__, 'system_service_rule'))
 
 
 @_utilities.lift_output_func(get_cluster_alter_rule)

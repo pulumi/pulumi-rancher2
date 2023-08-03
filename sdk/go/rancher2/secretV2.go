@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +66,7 @@ func NewSecretV2(ctx *pulumi.Context,
 		"data",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecretV2
 	err := ctx.RegisterResource("rancher2:index/secretV2:SecretV2", name, args, &resource, opts...)
 	if err != nil {

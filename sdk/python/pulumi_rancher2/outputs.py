@@ -1612,6 +1612,9 @@ class ClusterAksConfig(dict):
         """
         Use `tags` argument instead as []string
         """
+        warnings.warn("""Use tags argument instead as []string""", DeprecationWarning)
+        pulumi.log.warn("""tag is deprecated: Use tags argument instead as []string""")
+
         return pulumi.get(self, "tag")
 
     @property
@@ -2874,6 +2877,11 @@ class ClusterClusterAgentDeploymentCustomization(dict):
                  append_tolerations: Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationAppendToleration']] = None,
                  override_affinity: Optional[str] = None,
                  override_resource_requirements: Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement']] = None):
+        """
+        :param Sequence['ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User defined tolerations to append to agent (list)
+        :param str override_affinity: User defined affinity to override default agent affinity (string)
+        :param Sequence['ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User defined resource requirements to set on the agent (list)
+        """
         if append_tolerations is not None:
             pulumi.set(__self__, "append_tolerations", append_tolerations)
         if override_affinity is not None:
@@ -2884,16 +2892,25 @@ class ClusterClusterAgentDeploymentCustomization(dict):
     @property
     @pulumi.getter(name="appendTolerations")
     def append_tolerations(self) -> Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationAppendToleration']]:
+        """
+        User defined tolerations to append to agent (list)
+        """
         return pulumi.get(self, "append_tolerations")
 
     @property
     @pulumi.getter(name="overrideAffinity")
     def override_affinity(self) -> Optional[str]:
+        """
+        User defined affinity to override default agent affinity (string)
+        """
         return pulumi.get(self, "override_affinity")
 
     @property
     @pulumi.getter(name="overrideResourceRequirements")
     def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement']]:
+        """
+        User defined resource requirements to set on the agent (list)
+        """
         return pulumi.get(self, "override_resource_requirements")
 
 
@@ -2907,9 +2924,9 @@ class ClusterClusterAgentDeploymentCustomizationAppendToleration(dict):
                  value: Optional[str] = None):
         """
         :param str key: The toleration key (string)
-        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
-        :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
-        :param int seconds: The toleration seconds (int)
+        :param str effect: The toleration effect. Default: `\\"NoSchedule\\"` (string)
+        :param str operator: The toleration operator (string)
+        :param int seconds: The number of seconds a pod will stay bound to a node with a matching taint (int)
         :param str value: Rancher agent env var value (string)
         """
         pulumi.set(__self__, "key", key)
@@ -2934,7 +2951,7 @@ class ClusterClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        The toleration effect. Default: `\\"NoSchedule\\"` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -2942,7 +2959,7 @@ class ClusterClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        The toleration operator (string)
         """
         return pulumi.get(self, "operator")
 
@@ -2950,7 +2967,7 @@ class ClusterClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def seconds(self) -> Optional[int]:
         """
-        The toleration seconds (int)
+        The number of seconds a pod will stay bound to a node with a matching taint (int)
         """
         return pulumi.get(self, "seconds")
 
@@ -2993,6 +3010,12 @@ class ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement(dict
                  cpu_request: Optional[str] = None,
                  memory_limit: Optional[str] = None,
                  memory_request: Optional[str] = None):
+        """
+        :param str cpu_limit: The maximum CPU limit for agent (string)
+        :param str cpu_request: The minimum CPU required for agent (string)
+        :param str memory_limit: The maximum memory limit for agent (string)
+        :param str memory_request: The minimum memory required for agent (string)
+        """
         if cpu_limit is not None:
             pulumi.set(__self__, "cpu_limit", cpu_limit)
         if cpu_request is not None:
@@ -3005,21 +3028,33 @@ class ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement(dict
     @property
     @pulumi.getter(name="cpuLimit")
     def cpu_limit(self) -> Optional[str]:
+        """
+        The maximum CPU limit for agent (string)
+        """
         return pulumi.get(self, "cpu_limit")
 
     @property
     @pulumi.getter(name="cpuRequest")
     def cpu_request(self) -> Optional[str]:
+        """
+        The minimum CPU required for agent (string)
+        """
         return pulumi.get(self, "cpu_request")
 
     @property
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[str]:
+        """
+        The maximum memory limit for agent (string)
+        """
         return pulumi.get(self, "memory_limit")
 
     @property
     @pulumi.getter(name="memoryRequest")
     def memory_request(self) -> Optional[str]:
+        """
+        The minimum memory required for agent (string)
+        """
         return pulumi.get(self, "memory_request")
 
 
@@ -3496,9 +3531,9 @@ class ClusterEksConfig(dict):
         :param str secret_key: Secret key for S3 service (string)
         :param str ami: AMI ID to use for the worker nodes instead of the default (string)
         :param bool associate_worker_node_public_ip: Associate public ip EKS worker nodes. Default `true` (bool)
-        :param int desired_nodes: The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+        :param int desired_nodes: The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
         :param str instance_type: The type of machine to use for worker nodes. Default `t2.medium` (string)
-        :param str key_pair_name: Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+        :param str key_pair_name: Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
         :param int maximum_nodes: The maximum number of worker nodes. Default `3` (int)
         :param int minimum_nodes: The minimum number of worker nodes. Default `1` (int)
         :param int node_volume_size: The volume size for each node. Default `20` (int)
@@ -3590,7 +3625,7 @@ class ClusterEksConfig(dict):
     @pulumi.getter(name="desiredNodes")
     def desired_nodes(self) -> Optional[int]:
         """
-        The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+        The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
         """
         return pulumi.get(self, "desired_nodes")
 
@@ -3611,7 +3646,7 @@ class ClusterEksConfig(dict):
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> Optional[str]:
         """
-        Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+        Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
         """
         return pulumi.get(self, "key_pair_name")
 
@@ -4279,6 +4314,11 @@ class ClusterFleetAgentDeploymentCustomization(dict):
                  append_tolerations: Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationAppendToleration']] = None,
                  override_affinity: Optional[str] = None,
                  override_resource_requirements: Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement']] = None):
+        """
+        :param Sequence['ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User defined tolerations to append to agent (list)
+        :param str override_affinity: User defined affinity to override default agent affinity (string)
+        :param Sequence['ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User defined resource requirements to set on the agent (list)
+        """
         if append_tolerations is not None:
             pulumi.set(__self__, "append_tolerations", append_tolerations)
         if override_affinity is not None:
@@ -4289,16 +4329,25 @@ class ClusterFleetAgentDeploymentCustomization(dict):
     @property
     @pulumi.getter(name="appendTolerations")
     def append_tolerations(self) -> Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationAppendToleration']]:
+        """
+        User defined tolerations to append to agent (list)
+        """
         return pulumi.get(self, "append_tolerations")
 
     @property
     @pulumi.getter(name="overrideAffinity")
     def override_affinity(self) -> Optional[str]:
+        """
+        User defined affinity to override default agent affinity (string)
+        """
         return pulumi.get(self, "override_affinity")
 
     @property
     @pulumi.getter(name="overrideResourceRequirements")
     def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement']]:
+        """
+        User defined resource requirements to set on the agent (list)
+        """
         return pulumi.get(self, "override_resource_requirements")
 
 
@@ -4312,9 +4361,9 @@ class ClusterFleetAgentDeploymentCustomizationAppendToleration(dict):
                  value: Optional[str] = None):
         """
         :param str key: The toleration key (string)
-        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
-        :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
-        :param int seconds: The toleration seconds (int)
+        :param str effect: The toleration effect. Default: `\\"NoSchedule\\"` (string)
+        :param str operator: The toleration operator (string)
+        :param int seconds: The number of seconds a pod will stay bound to a node with a matching taint (int)
         :param str value: Rancher agent env var value (string)
         """
         pulumi.set(__self__, "key", key)
@@ -4339,7 +4388,7 @@ class ClusterFleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        The toleration effect. Default: `\\"NoSchedule\\"` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -4347,7 +4396,7 @@ class ClusterFleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        The toleration operator (string)
         """
         return pulumi.get(self, "operator")
 
@@ -4355,7 +4404,7 @@ class ClusterFleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def seconds(self) -> Optional[int]:
         """
-        The toleration seconds (int)
+        The number of seconds a pod will stay bound to a node with a matching taint (int)
         """
         return pulumi.get(self, "seconds")
 
@@ -4398,6 +4447,12 @@ class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement(dict):
                  cpu_request: Optional[str] = None,
                  memory_limit: Optional[str] = None,
                  memory_request: Optional[str] = None):
+        """
+        :param str cpu_limit: The maximum CPU limit for agent (string)
+        :param str cpu_request: The minimum CPU required for agent (string)
+        :param str memory_limit: The maximum memory limit for agent (string)
+        :param str memory_request: The minimum memory required for agent (string)
+        """
         if cpu_limit is not None:
             pulumi.set(__self__, "cpu_limit", cpu_limit)
         if cpu_request is not None:
@@ -4410,21 +4465,33 @@ class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement(dict):
     @property
     @pulumi.getter(name="cpuLimit")
     def cpu_limit(self) -> Optional[str]:
+        """
+        The maximum CPU limit for agent (string)
+        """
         return pulumi.get(self, "cpu_limit")
 
     @property
     @pulumi.getter(name="cpuRequest")
     def cpu_request(self) -> Optional[str]:
+        """
+        The minimum CPU required for agent (string)
+        """
         return pulumi.get(self, "cpu_request")
 
     @property
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[str]:
+        """
+        The maximum memory limit for agent (string)
+        """
         return pulumi.get(self, "memory_limit")
 
     @property
     @pulumi.getter(name="memoryRequest")
     def memory_request(self) -> Optional[str]:
+        """
+        The minimum memory required for agent (string)
+        """
         return pulumi.get(self, "memory_request")
 
 
@@ -6103,7 +6170,7 @@ class ClusterGkeConfigV2NodePoolConfigTaint(dict):
                  key: str,
                  value: str):
         """
-        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        :param str effect: The toleration effect. Default: `\\"NoSchedule\\"` (string)
         :param str key: The toleration key (string)
         :param str value: Rancher agent env var value (string)
         """
@@ -6115,7 +6182,7 @@ class ClusterGkeConfigV2NodePoolConfigTaint(dict):
     @pulumi.getter
     def effect(self) -> str:
         """
-        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        The toleration effect. Default: `\\"NoSchedule\\"` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -6496,10 +6563,10 @@ class ClusterOkeConfig(dict):
         :param int custom_boot_volume_size: Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `node_image` specified. Default `0` (int)
         :param str description: The description for Cluster (string)
         :param bool enable_kubernetes_dashboard: Whether to enable the Kubernetes dashboard. Default `false` (bool)
-        :param bool enable_private_control_plane: Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` Just for Rancher v2.5.10 or above (bool)
+        :param bool enable_private_control_plane: Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
         :param bool enable_private_nodes: Whether nodes have internal IP address only. Default `false` (bool)
         :param int flex_ocpus: Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
-        :param str kms_key_id: The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. Just for Rancher v2.5.9 or above (string)
+        :param str kms_key_id: The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
         :param int limit_node_count: The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
         :param str load_balancer_subnet_name1: The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
         :param str load_balancer_subnet_name2: The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
@@ -6673,7 +6740,7 @@ class ClusterOkeConfig(dict):
     @pulumi.getter(name="enablePrivateControlPlane")
     def enable_private_control_plane(self) -> Optional[bool]:
         """
-        Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` Just for Rancher v2.5.10 or above (bool)
+        Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
         """
         return pulumi.get(self, "enable_private_control_plane")
 
@@ -6697,7 +6764,7 @@ class ClusterOkeConfig(dict):
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[str]:
         """
-        The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. Just for Rancher v2.5.9 or above (string)
+        The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
         """
         return pulumi.get(self, "kms_key_id")
 
@@ -7033,7 +7100,7 @@ class ClusterRkeConfig(dict):
         :param 'ClusterRkeConfigAuthorizationArgs' authorization: Kubernetes cluster authorization (list maxitems:1)
         :param 'ClusterRkeConfigBastionHostArgs' bastion_host: RKE bastion host (list maxitems:1)
         :param 'ClusterRkeConfigCloudProviderArgs' cloud_provider: RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
-        :param 'ClusterRkeConfigDnsArgs' dns: RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+        :param 'ClusterRkeConfigDnsArgs' dns: RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
         :param bool enable_cri_dockerd: Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
         :param bool ignore_docker_version: Ignore docker version. Default `true` (bool)
         :param 'ClusterRkeConfigIngressArgs' ingress: Kubernetes ingress configuration (list maxitems:1)
@@ -7157,7 +7224,7 @@ class ClusterRkeConfig(dict):
     @pulumi.getter
     def dns(self) -> Optional['outputs.ClusterRkeConfigDns']:
         """
-        RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+        RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
         """
         return pulumi.get(self, "dns")
 
@@ -9556,9 +9623,9 @@ class ClusterRkeConfigDnsToleration(dict):
                  value: Optional[str] = None):
         """
         :param str key: The toleration key (string)
-        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
-        :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
-        :param int seconds: The toleration seconds (int)
+        :param str effect: The toleration effect. Default: `\\"NoSchedule\\"` (string)
+        :param str operator: The toleration operator (string)
+        :param int seconds: The number of seconds a pod will stay bound to a node with a matching taint (int)
         :param str value: Rancher agent env var value (string)
         """
         pulumi.set(__self__, "key", key)
@@ -9583,7 +9650,7 @@ class ClusterRkeConfigDnsToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        The toleration effect. Default: `\\"NoSchedule\\"` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -9591,7 +9658,7 @@ class ClusterRkeConfigDnsToleration(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        The toleration operator (string)
         """
         return pulumi.get(self, "operator")
 
@@ -9599,7 +9666,7 @@ class ClusterRkeConfigDnsToleration(dict):
     @pulumi.getter
     def seconds(self) -> Optional[int]:
         """
-        The toleration seconds (int)
+        The number of seconds a pod will stay bound to a node with a matching taint (int)
         """
         return pulumi.get(self, "seconds")
 
@@ -9890,9 +9957,9 @@ class ClusterRkeConfigIngressToleration(dict):
                  value: Optional[str] = None):
         """
         :param str key: The toleration key (string)
-        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
-        :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
-        :param int seconds: The toleration seconds (int)
+        :param str effect: The toleration effect. Default: `\\"NoSchedule\\"` (string)
+        :param str operator: The toleration operator (string)
+        :param int seconds: The number of seconds a pod will stay bound to a node with a matching taint (int)
         :param str value: Rancher agent env var value (string)
         """
         pulumi.set(__self__, "key", key)
@@ -9917,7 +9984,7 @@ class ClusterRkeConfigIngressToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        The toleration effect. Default: `\\"NoSchedule\\"` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -9925,7 +9992,7 @@ class ClusterRkeConfigIngressToleration(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        The toleration operator (string)
         """
         return pulumi.get(self, "operator")
 
@@ -9933,7 +10000,7 @@ class ClusterRkeConfigIngressToleration(dict):
     @pulumi.getter
     def seconds(self) -> Optional[int]:
         """
-        The toleration seconds (int)
+        The number of seconds a pod will stay bound to a node with a matching taint (int)
         """
         return pulumi.get(self, "seconds")
 
@@ -10138,9 +10205,9 @@ class ClusterRkeConfigMonitoringToleration(dict):
                  value: Optional[str] = None):
         """
         :param str key: The toleration key (string)
-        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
-        :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
-        :param int seconds: The toleration seconds (int)
+        :param str effect: The toleration effect. Default: `\\"NoSchedule\\"` (string)
+        :param str operator: The toleration operator (string)
+        :param int seconds: The number of seconds a pod will stay bound to a node with a matching taint (int)
         :param str value: Rancher agent env var value (string)
         """
         pulumi.set(__self__, "key", key)
@@ -10165,7 +10232,7 @@ class ClusterRkeConfigMonitoringToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        The toleration effect. Default: `\\"NoSchedule\\"` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -10173,7 +10240,7 @@ class ClusterRkeConfigMonitoringToleration(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        The toleration operator (string)
         """
         return pulumi.get(self, "operator")
 
@@ -10181,7 +10248,7 @@ class ClusterRkeConfigMonitoringToleration(dict):
     @pulumi.getter
     def seconds(self) -> Optional[int]:
         """
-        The toleration seconds (int)
+        The number of seconds a pod will stay bound to a node with a matching taint (int)
         """
         return pulumi.get(self, "seconds")
 
@@ -11544,9 +11611,9 @@ class ClusterRkeConfigNetworkToleration(dict):
                  value: Optional[str] = None):
         """
         :param str key: The toleration key (string)
-        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
-        :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
-        :param int seconds: The toleration seconds (int)
+        :param str effect: The toleration effect. Default: `\\"NoSchedule\\"` (string)
+        :param str operator: The toleration operator (string)
+        :param int seconds: The number of seconds a pod will stay bound to a node with a matching taint (int)
         :param str value: Rancher agent env var value (string)
         """
         pulumi.set(__self__, "key", key)
@@ -11571,7 +11638,7 @@ class ClusterRkeConfigNetworkToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        The toleration effect. Default: `\\"NoSchedule\\"` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -11579,7 +11646,7 @@ class ClusterRkeConfigNetworkToleration(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        The toleration operator (string)
         """
         return pulumi.get(self, "operator")
 
@@ -11587,7 +11654,7 @@ class ClusterRkeConfigNetworkToleration(dict):
     @pulumi.getter
     def seconds(self) -> Optional[int]:
         """
-        The toleration seconds (int)
+        The number of seconds a pod will stay bound to a node with a matching taint (int)
         """
         return pulumi.get(self, "seconds")
 
@@ -12088,7 +12155,7 @@ class ClusterRkeConfigServicesEtcd(dict):
                  snapshot: Optional[bool] = None,
                  uid: Optional[int] = None):
         """
-        :param 'ClusterRkeConfigServicesEtcdBackupConfigArgs' backup_config: Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
+        :param 'ClusterRkeConfigServicesEtcdBackupConfigArgs' backup_config: Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
         :param str ca_cert: TLS CA certificate for etcd service (string)
         :param str cert: TLS certificate for etcd service (string)
         :param str creation: Creation option for etcd service (string)
@@ -12096,13 +12163,13 @@ class ClusterRkeConfigServicesEtcd(dict):
         :param Mapping[str, Any] extra_args: Extra arguments for RKE Ingress (map)
         :param Sequence[str] extra_binds: Extra binds for etcd service (list)
         :param Sequence[str] extra_envs: Extra environment for etcd service (list)
-        :param int gid: Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
+        :param int gid: Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
         :param str image: Docker image for etcd service (string)
         :param str key: The toleration key (string)
         :param str path: Path for etcd service (string)
         :param str retention: Retention option for etcd service (string)
         :param bool snapshot: Snapshot option for etcd service (bool)
-        :param int uid: Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
+        :param int uid: Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
         """
         if backup_config is not None:
             pulumi.set(__self__, "backup_config", backup_config)
@@ -12139,7 +12206,7 @@ class ClusterRkeConfigServicesEtcd(dict):
     @pulumi.getter(name="backupConfig")
     def backup_config(self) -> Optional['outputs.ClusterRkeConfigServicesEtcdBackupConfig']:
         """
-        Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
+        Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
         """
         return pulumi.get(self, "backup_config")
 
@@ -12203,7 +12270,7 @@ class ClusterRkeConfigServicesEtcd(dict):
     @pulumi.getter
     def gid(self) -> Optional[int]:
         """
-        Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
+        Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
         """
         return pulumi.get(self, "gid")
 
@@ -12251,7 +12318,7 @@ class ClusterRkeConfigServicesEtcd(dict):
     @pulumi.getter
     def uid(self) -> Optional[int]:
         """
-        Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
+        Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
         """
         return pulumi.get(self, "uid")
 
@@ -12292,7 +12359,7 @@ class ClusterRkeConfigServicesEtcdBackupConfig(dict):
         :param int retention: Retention option for etcd service (string)
         :param 'ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs' s3_backup_config: S3 config options for etcd backup (list maxitems:1)
         :param bool safe_timestamp: Safe timestamp for etcd backup. Default: `false` (bool)
-        :param int timeout: Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+        :param int timeout: Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -12351,7 +12418,7 @@ class ClusterRkeConfigServicesEtcdBackupConfig(dict):
     @pulumi.getter
     def timeout(self) -> Optional[int]:
         """
-        Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+        Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
         """
         return pulumi.get(self, "timeout")
 
@@ -12724,18 +12791,6 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin(dict):
                  path: Optional[str] = None):
         """
         :param str configuration: Plugin configuration. (string) Ex:
-               
-               ```python
-               import pulumi
-               ```
-               configuration = <<EOF
-               apiVersion: eventratelimit.admission.k8s.io/v1alpha1
-               kind: Configuration
-               limits:
-               - type: Server
-               burst: 35000
-               qps: 6000
-               EOF
         :param str name: The name of the Cluster (string)
         :param str path: Path for etcd service (string)
         """
@@ -12751,18 +12806,6 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin(dict):
     def configuration(self) -> Optional[str]:
         """
         Plugin configuration. (string) Ex:
-
-        ```python
-        import pulumi
-        ```
-        configuration = <<EOF
-        apiVersion: eventratelimit.admission.k8s.io/v1alpha1
-        kind: Configuration
-        limits:
-        - type: Server
-        burst: 35000
-        qps: 6000
-        EOF
         """
         return pulumi.get(self, "configuration")
 
@@ -12790,18 +12833,6 @@ class ClusterRkeConfigServicesKubeApiAuditLog(dict):
                  enabled: Optional[bool] = None):
         """
         :param 'ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs' configuration: Plugin configuration. (string) Ex:
-               
-               ```python
-               import pulumi
-               ```
-               configuration = <<EOF
-               apiVersion: eventratelimit.admission.k8s.io/v1alpha1
-               kind: Configuration
-               limits:
-               - type: Server
-               burst: 35000
-               qps: 6000
-               EOF
         :param bool enabled: Enable etcd backup (bool)
         """
         if configuration is not None:
@@ -12814,18 +12845,6 @@ class ClusterRkeConfigServicesKubeApiAuditLog(dict):
     def configuration(self) -> Optional['outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration']:
         """
         Plugin configuration. (string) Ex:
-
-        ```python
-        import pulumi
-        ```
-        configuration = <<EOF
-        apiVersion: eventratelimit.admission.k8s.io/v1alpha1
-        kind: Configuration
-        limits:
-        - type: Server
-        burst: 35000
-        qps: 6000
-        EOF
         """
         return pulumi.get(self, "configuration")
 
@@ -12945,18 +12964,6 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
                  enabled: Optional[bool] = None):
         """
         :param str configuration: Plugin configuration. (string) Ex:
-               
-               ```python
-               import pulumi
-               ```
-               configuration = <<EOF
-               apiVersion: eventratelimit.admission.k8s.io/v1alpha1
-               kind: Configuration
-               limits:
-               - type: Server
-               burst: 35000
-               qps: 6000
-               EOF
         :param bool enabled: Enable etcd backup (bool)
         """
         if configuration is not None:
@@ -12969,18 +12976,6 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
     def configuration(self) -> Optional[str]:
         """
         Plugin configuration. (string) Ex:
-
-        ```python
-        import pulumi
-        ```
-        configuration = <<EOF
-        apiVersion: eventratelimit.admission.k8s.io/v1alpha1
-        kind: Configuration
-        limits:
-        - type: Server
-        burst: 35000
-        qps: 6000
-        EOF
         """
         return pulumi.get(self, "configuration")
 
@@ -13561,7 +13556,7 @@ class ClusterRkeConfigUpgradeStrategyDrainInput(dict):
         :param bool force: Force RKE node drain. Default: `false` (bool)
         :param int grace_period: RKE node drain grace period. Default: `-1` (int)
         :param bool ignore_daemon_sets: Ignore RKE daemon sets. Default: `true` (bool)
-        :param int timeout: Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+        :param int timeout: Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
         """
         if delete_local_data is not None:
             pulumi.set(__self__, "delete_local_data", delete_local_data)
@@ -13610,7 +13605,7 @@ class ClusterRkeConfigUpgradeStrategyDrainInput(dict):
     @pulumi.getter
     def timeout(self) -> Optional[int]:
         """
-        Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+        Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
         """
         return pulumi.get(self, "timeout")
 
@@ -19256,6 +19251,11 @@ class ClusterV2ClusterAgentDeploymentCustomization(dict):
                  append_tolerations: Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration']] = None,
                  override_affinity: Optional[str] = None,
                  override_resource_requirements: Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement']] = None):
+        """
+        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User defined tolerations to append to agent (list)
+        :param str override_affinity: User defined affinity to override default agent affinity (string)
+        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User defined resource requirements to set on the agent (list)
+        """
         if append_tolerations is not None:
             pulumi.set(__self__, "append_tolerations", append_tolerations)
         if override_affinity is not None:
@@ -19266,16 +19266,25 @@ class ClusterV2ClusterAgentDeploymentCustomization(dict):
     @property
     @pulumi.getter(name="appendTolerations")
     def append_tolerations(self) -> Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration']]:
+        """
+        User defined tolerations to append to agent (list)
+        """
         return pulumi.get(self, "append_tolerations")
 
     @property
     @pulumi.getter(name="overrideAffinity")
     def override_affinity(self) -> Optional[str]:
+        """
+        User defined affinity to override default agent affinity (string)
+        """
         return pulumi.get(self, "override_affinity")
 
     @property
     @pulumi.getter(name="overrideResourceRequirements")
     def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement']]:
+        """
+        User defined resource requirements to set on the agent (list)
+        """
         return pulumi.get(self, "override_resource_requirements")
 
 
@@ -19288,9 +19297,10 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration(dict):
                  seconds: Optional[int] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The taint key (string)
-        :param str effect: The taint effect. Default: `\\"NoExecute\\"` (string)
-        :param str operator: Machine selector label match expressions operator (string)
+        :param str key: The toleration key (string)
+        :param str effect: The toleration effect. Default: `\\"NoSchedule\\"` (string)
+        :param str operator: The toleration operator (string)
+        :param int seconds: The number of seconds a pod will stay bound to a node with a matching taint (int)
         :param str value: Rancher agent env var value (string)
         """
         pulumi.set(__self__, "key", key)
@@ -19307,7 +19317,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The taint key (string)
+        The toleration key (string)
         """
         return pulumi.get(self, "key")
 
@@ -19315,7 +19325,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The taint effect. Default: `\\"NoExecute\\"` (string)
+        The toleration effect. Default: `\\"NoSchedule\\"` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -19323,13 +19333,16 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        Machine selector label match expressions operator (string)
+        The toleration operator (string)
         """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def seconds(self) -> Optional[int]:
+        """
+        The number of seconds a pod will stay bound to a node with a matching taint (int)
+        """
         return pulumi.get(self, "seconds")
 
     @property
@@ -19371,6 +19384,12 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement(di
                  cpu_request: Optional[str] = None,
                  memory_limit: Optional[str] = None,
                  memory_request: Optional[str] = None):
+        """
+        :param str cpu_limit: The maximum CPU limit for agent (string)
+        :param str cpu_request: The minimum CPU required for agent (string)
+        :param str memory_limit: The maximum memory limit for agent (string)
+        :param str memory_request: The minimum memory required for agent (string)
+        """
         if cpu_limit is not None:
             pulumi.set(__self__, "cpu_limit", cpu_limit)
         if cpu_request is not None:
@@ -19383,21 +19402,33 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement(di
     @property
     @pulumi.getter(name="cpuLimit")
     def cpu_limit(self) -> Optional[str]:
+        """
+        The maximum CPU limit for agent (string)
+        """
         return pulumi.get(self, "cpu_limit")
 
     @property
     @pulumi.getter(name="cpuRequest")
     def cpu_request(self) -> Optional[str]:
+        """
+        The minimum CPU required for agent (string)
+        """
         return pulumi.get(self, "cpu_request")
 
     @property
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[str]:
+        """
+        The maximum memory limit for agent (string)
+        """
         return pulumi.get(self, "memory_limit")
 
     @property
     @pulumi.getter(name="memoryRequest")
     def memory_request(self) -> Optional[str]:
+        """
+        The minimum memory required for agent (string)
+        """
         return pulumi.get(self, "memory_request")
 
 
@@ -19620,6 +19651,11 @@ class ClusterV2FleetAgentDeploymentCustomization(dict):
                  append_tolerations: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration']] = None,
                  override_affinity: Optional[str] = None,
                  override_resource_requirements: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement']] = None):
+        """
+        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User defined tolerations to append to agent (list)
+        :param str override_affinity: User defined affinity to override default agent affinity (string)
+        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User defined resource requirements to set on the agent (list)
+        """
         if append_tolerations is not None:
             pulumi.set(__self__, "append_tolerations", append_tolerations)
         if override_affinity is not None:
@@ -19630,16 +19666,25 @@ class ClusterV2FleetAgentDeploymentCustomization(dict):
     @property
     @pulumi.getter(name="appendTolerations")
     def append_tolerations(self) -> Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration']]:
+        """
+        User defined tolerations to append to agent (list)
+        """
         return pulumi.get(self, "append_tolerations")
 
     @property
     @pulumi.getter(name="overrideAffinity")
     def override_affinity(self) -> Optional[str]:
+        """
+        User defined affinity to override default agent affinity (string)
+        """
         return pulumi.get(self, "override_affinity")
 
     @property
     @pulumi.getter(name="overrideResourceRequirements")
     def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement']]:
+        """
+        User defined resource requirements to set on the agent (list)
+        """
         return pulumi.get(self, "override_resource_requirements")
 
 
@@ -19652,9 +19697,10 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendToleration(dict):
                  seconds: Optional[int] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The taint key (string)
-        :param str effect: The taint effect. Default: `\\"NoExecute\\"` (string)
-        :param str operator: Machine selector label match expressions operator (string)
+        :param str key: The toleration key (string)
+        :param str effect: The toleration effect. Default: `\\"NoSchedule\\"` (string)
+        :param str operator: The toleration operator (string)
+        :param int seconds: The number of seconds a pod will stay bound to a node with a matching taint (int)
         :param str value: Rancher agent env var value (string)
         """
         pulumi.set(__self__, "key", key)
@@ -19671,7 +19717,7 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The taint key (string)
+        The toleration key (string)
         """
         return pulumi.get(self, "key")
 
@@ -19679,7 +19725,7 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The taint effect. Default: `\\"NoExecute\\"` (string)
+        The toleration effect. Default: `\\"NoSchedule\\"` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -19687,13 +19733,16 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        Machine selector label match expressions operator (string)
+        The toleration operator (string)
         """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def seconds(self) -> Optional[int]:
+        """
+        The number of seconds a pod will stay bound to a node with a matching taint (int)
+        """
         return pulumi.get(self, "seconds")
 
     @property
@@ -19735,6 +19784,12 @@ class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement(dict
                  cpu_request: Optional[str] = None,
                  memory_limit: Optional[str] = None,
                  memory_request: Optional[str] = None):
+        """
+        :param str cpu_limit: The maximum CPU limit for agent (string)
+        :param str cpu_request: The minimum CPU required for agent (string)
+        :param str memory_limit: The maximum memory limit for agent (string)
+        :param str memory_request: The minimum memory required for agent (string)
+        """
         if cpu_limit is not None:
             pulumi.set(__self__, "cpu_limit", cpu_limit)
         if cpu_request is not None:
@@ -19747,21 +19802,33 @@ class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement(dict
     @property
     @pulumi.getter(name="cpuLimit")
     def cpu_limit(self) -> Optional[str]:
+        """
+        The maximum CPU limit for agent (string)
+        """
         return pulumi.get(self, "cpu_limit")
 
     @property
     @pulumi.getter(name="cpuRequest")
     def cpu_request(self) -> Optional[str]:
+        """
+        The minimum CPU required for agent (string)
+        """
         return pulumi.get(self, "cpu_request")
 
     @property
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[str]:
+        """
+        The maximum memory limit for agent (string)
+        """
         return pulumi.get(self, "memory_limit")
 
     @property
     @pulumi.getter(name="memoryRequest")
     def memory_request(self) -> Optional[str]:
+        """
+        The minimum memory required for agent (string)
+        """
         return pulumi.get(self, "memory_request")
 
 
@@ -19965,6 +20032,9 @@ class ClusterV2RkeConfig(dict):
         """
         Cluster V2 local auth endpoint (list maxitems:1)
         """
+        warnings.warn("""Use rancher2_cluster_v2.local_auth_endpoint instead""", DeprecationWarning)
+        pulumi.log.warn("""local_auth_endpoint is deprecated: Use rancher2_cluster_v2.local_auth_endpoint instead""")
+
         return pulumi.get(self, "local_auth_endpoint")
 
     @property
@@ -20745,9 +20815,9 @@ class ClusterV2RkeConfigMachinePoolTaint(dict):
                  value: str,
                  effect: Optional[str] = None):
         """
-        :param str key: The taint key (string)
+        :param str key: The toleration key (string)
         :param str value: Rancher agent env var value (string)
-        :param str effect: The taint effect. Default: `\\"NoExecute\\"` (string)
+        :param str effect: The toleration effect. Default: `\\"NoSchedule\\"` (string)
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -20758,7 +20828,7 @@ class ClusterV2RkeConfigMachinePoolTaint(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The taint key (string)
+        The toleration key (string)
         """
         return pulumi.get(self, "key")
 
@@ -20774,7 +20844,7 @@ class ClusterV2RkeConfigMachinePoolTaint(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The taint effect. Default: `\\"NoExecute\\"` (string)
+        The toleration effect. Default: `\\"NoSchedule\\"` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -20884,8 +20954,8 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
                  operator: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
         """
-        :param str key: The taint key (string)
-        :param str operator: Machine selector label match expressions operator (string)
+        :param str key: The toleration key (string)
+        :param str operator: The toleration operator (string)
         :param Sequence[str] values: Machine selector label match expressions values (List string)
         """
         if key is not None:
@@ -20899,7 +20969,7 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The taint key (string)
+        The toleration key (string)
         """
         return pulumi.get(self, "key")
 
@@ -20907,7 +20977,7 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        Machine selector label match expressions operator (string)
+        The toleration operator (string)
         """
         return pulumi.get(self, "operator")
 
@@ -22563,14 +22633,14 @@ class MachineConfigV2AzureConfig(dict):
         :param str client_id: Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param str client_secret: Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param str custom_data: Path to file with custom-data (string)
-        :param str disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        :param str disk_size: Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         :param str dns: A unique DNS label for the public IP adddress (string)
         :param str docker_port: Port number for Docker engine. Default `2376` (string)
         :param str environment: Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
         :param str fault_domain_count: Fault domain count to use for availability set. Default `3` (string)
         :param str image: Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
         :param str location: Azure region to create the virtual machine. Default `westus` (string)
-        :param bool managed_disks: Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        :param bool managed_disks: Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
         :param bool no_public_ip: Do not create a public IP address for the machine. Default `false` (bool)
         :param str nsg: Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
         :param Sequence[str] open_ports: Make the specified port number accessible from the Internet. (list)
@@ -22706,7 +22776,7 @@ class MachineConfigV2AzureConfig(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[str]:
         """
-        Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         """
         return pulumi.get(self, "disk_size")
 
@@ -22762,7 +22832,7 @@ class MachineConfigV2AzureConfig(dict):
     @pulumi.getter(name="managedDisks")
     def managed_disks(self) -> Optional[bool]:
         """
-        Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
         """
         return pulumi.get(self, "managed_disks")
 
@@ -23187,7 +23257,7 @@ class MachineConfigV2HarvesterConfig(dict):
         :param str cpu_count: CPU count, Default `2` (string)
         :param str disk_bus: Use `disk_info` instead
         :param str disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
-        :param str disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        :param str disk_size: Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         :param str image_name: Use `disk_info` instead
         :param str memory_size: Memory size (in GiB), Default `4` (string)
         :param str network_data: NetworkData content of cloud-init, base64 is supported (string)
@@ -23196,7 +23266,7 @@ class MachineConfigV2HarvesterConfig(dict):
         :param str network_name: Use `network_info` instead
         :param str ssh_password: SSH password (string)
         :param str user_data: UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
-        :param str vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+        :param str vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
         """
         pulumi.set(__self__, "ssh_user", ssh_user)
         pulumi.set(__self__, "vm_namespace", vm_namespace)
@@ -23257,6 +23327,9 @@ class MachineConfigV2HarvesterConfig(dict):
         """
         Use `disk_info` instead
         """
+        warnings.warn("""Use disk_info instead""", DeprecationWarning)
+        pulumi.log.warn("""disk_bus is deprecated: Use disk_info instead""")
+
         return pulumi.get(self, "disk_bus")
 
     @property
@@ -23271,8 +23344,11 @@ class MachineConfigV2HarvesterConfig(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[str]:
         """
-        Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         """
+        warnings.warn("""Use disk_info instead""", DeprecationWarning)
+        pulumi.log.warn("""disk_size is deprecated: Use disk_info instead""")
+
         return pulumi.get(self, "disk_size")
 
     @property
@@ -23281,6 +23357,9 @@ class MachineConfigV2HarvesterConfig(dict):
         """
         Use `disk_info` instead
         """
+        warnings.warn("""Use disk_info instead""", DeprecationWarning)
+        pulumi.log.warn("""image_name is deprecated: Use disk_info instead""")
+
         return pulumi.get(self, "image_name")
 
     @property
@@ -23313,6 +23392,9 @@ class MachineConfigV2HarvesterConfig(dict):
         """
         Use `network_info` instead
         """
+        warnings.warn("""Use network_info instead""", DeprecationWarning)
+        pulumi.log.warn("""network_model is deprecated: Use network_info instead""")
+
         return pulumi.get(self, "network_model")
 
     @property
@@ -23321,6 +23403,9 @@ class MachineConfigV2HarvesterConfig(dict):
         """
         Use `network_info` instead
         """
+        warnings.warn("""Use network_info instead""", DeprecationWarning)
+        pulumi.log.warn("""network_name is deprecated: Use network_info instead""")
+
         return pulumi.get(self, "network_name")
 
     @property
@@ -23343,7 +23428,7 @@ class MachineConfigV2HarvesterConfig(dict):
     @pulumi.getter(name="vmAffinity")
     def vm_affinity(self) -> Optional[str]:
         """
-        Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+        Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
         """
         return pulumi.get(self, "vm_affinity")
 
@@ -23755,8 +23840,8 @@ class MachineConfigV2OpenstackConfig(dict):
         :param str user_domain_name: OpenStack user domain name. Conflicts with `user_domain_id` (string)
         :param str username: OpenStack username (string)
         :param str volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
-               > **Note**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-               > **Note**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+               > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+               > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
         :param str volume_id: OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param str volume_name: OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param str volume_size: OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
@@ -24145,8 +24230,8 @@ class MachineConfigV2OpenstackConfig(dict):
     def volume_device_path(self) -> Optional[str]:
         """
         OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
-        > **Note**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-        > **Note**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+        > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+        > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
         """
         return pulumi.get(self, "volume_device_path")
 
@@ -24283,7 +24368,7 @@ class MachineConfigV2VsphereConfig(dict):
         :param str datacenter: vSphere datacenter for docker VM (string)
         :param str datastore: vSphere datastore for docker VM (string)
         :param str datastore_cluster: vSphere datastore cluster for virtual machine (string)
-        :param str disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        :param str disk_size: Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         :param str folder: vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
         :param str hostsystem: vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
         :param str memory_size: Memory size (in GiB), Default `4` (string)
@@ -24466,7 +24551,7 @@ class MachineConfigV2VsphereConfig(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[str]:
         """
-        Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         """
         return pulumi.get(self, "disk_size")
 
@@ -25406,7 +25491,7 @@ class NodeTemplateAmazonec2Config(dict):
         :param bool use_private_address: Force the usage of private IP address. Default `false` (bool)
         :param str userdata: Path to file with cloud-init user data (string)
                
-               > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+               > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         :param str volume_type: Amazon EBS volume type. Default `gp2` (string)
         """
         pulumi.set(__self__, "ami", ami)
@@ -25741,7 +25826,7 @@ class NodeTemplateAmazonec2Config(dict):
         """
         Path to file with cloud-init user data (string)
 
-        > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         """
         return pulumi.get(self, "userdata")
 
@@ -25854,18 +25939,18 @@ class NodeTemplateAzureConfig(dict):
         :param str client_id: Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param str client_secret: Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param str custom_data: Path to file with custom-data (string)
-        :param str disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        :param str disk_size: Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         :param str dns: A unique DNS label for the public IP adddress (string)
         :param str docker_port: Port number for Docker engine. Default `2376` (string)
         :param str environment: Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
         :param str fault_domain_count: Fault domain count to use for availability set. Default `3` (string)
         :param str image: Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
         :param str location: Azure region to create the virtual machine. Default `westus` (string)
-        :param bool managed_disks: Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        :param bool managed_disks: Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
         :param bool no_public_ip: Do not create a public IP address for the machine. Default `false` (bool)
         :param str nsg: Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
         :param Sequence[str] open_ports: Make the specified port number accessible from the Internet. (list)
-        :param str plan: Azure marketplace purchase plan for Azure Virtual Machine. Format is `<publisher>:<product>:<plan>`. Just for Rancher v2.6.3 and above. (string)
+        :param str plan: Azure marketplace purchase plan for Azure Virtual Machine. Format is `<publisher>:<product>:<plan>`. For Rancher v2.6.3 and above. (string)
         :param str private_ip_address: Specify a static private IP address for the machine. (string)
         :param str resource_group: Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
         :param str size: Size for Azure Virtual Machine. Default `Standard_A2` (string)
@@ -25994,7 +26079,7 @@ class NodeTemplateAzureConfig(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[str]:
         """
-        Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         """
         return pulumi.get(self, "disk_size")
 
@@ -26050,7 +26135,7 @@ class NodeTemplateAzureConfig(dict):
     @pulumi.getter(name="managedDisks")
     def managed_disks(self) -> Optional[bool]:
         """
-        Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
         """
         return pulumi.get(self, "managed_disks")
 
@@ -26082,7 +26167,7 @@ class NodeTemplateAzureConfig(dict):
     @pulumi.getter
     def plan(self) -> Optional[str]:
         """
-        Azure marketplace purchase plan for Azure Virtual Machine. Format is `<publisher>:<product>:<plan>`. Just for Rancher v2.6.3 and above. (string)
+        Azure marketplace purchase plan for Azure Virtual Machine. Format is `<publisher>:<product>:<plan>`. For Rancher v2.6.3 and above. (string)
         """
         return pulumi.get(self, "plan")
 
@@ -26256,7 +26341,7 @@ class NodeTemplateDigitaloceanConfig(dict):
         :param str tags: AWS Tags (e.g. key1,value1,key2,value2) (string)
         :param str userdata: Path to file with cloud-init user data (string)
                
-               > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+               > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         """
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
@@ -26397,7 +26482,7 @@ class NodeTemplateDigitaloceanConfig(dict):
         """
         Path to file with cloud-init user data (string)
 
-        > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         """
         return pulumi.get(self, "userdata")
 
@@ -26471,7 +26556,7 @@ class NodeTemplateHarvesterConfig(dict):
         :param str cpu_count: CPU count, Default `2` (string)
         :param str disk_bus: Use `disk_info` instead
         :param str disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
-        :param str disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        :param str disk_size: Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         :param str image_name: Use `disk_info` instead
         :param str memory_size: Memory size (in GiB), Default `4` (string)
         :param str network_data: NetworkData content of cloud-init, base64 is supported (string)
@@ -26480,7 +26565,7 @@ class NodeTemplateHarvesterConfig(dict):
         :param str network_name: Use `network_info` instead
         :param str ssh_password: SSH password (string)
         :param str user_data: UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
-        :param str vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+        :param str vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
         """
         pulumi.set(__self__, "ssh_user", ssh_user)
         pulumi.set(__self__, "vm_namespace", vm_namespace)
@@ -26541,6 +26626,9 @@ class NodeTemplateHarvesterConfig(dict):
         """
         Use `disk_info` instead
         """
+        warnings.warn("""Use disk_info instead""", DeprecationWarning)
+        pulumi.log.warn("""disk_bus is deprecated: Use disk_info instead""")
+
         return pulumi.get(self, "disk_bus")
 
     @property
@@ -26555,8 +26643,11 @@ class NodeTemplateHarvesterConfig(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[str]:
         """
-        Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         """
+        warnings.warn("""Use disk_info instead""", DeprecationWarning)
+        pulumi.log.warn("""disk_size is deprecated: Use disk_info instead""")
+
         return pulumi.get(self, "disk_size")
 
     @property
@@ -26565,6 +26656,9 @@ class NodeTemplateHarvesterConfig(dict):
         """
         Use `disk_info` instead
         """
+        warnings.warn("""Use disk_info instead""", DeprecationWarning)
+        pulumi.log.warn("""image_name is deprecated: Use disk_info instead""")
+
         return pulumi.get(self, "image_name")
 
     @property
@@ -26597,6 +26691,9 @@ class NodeTemplateHarvesterConfig(dict):
         """
         Use `network_info` instead
         """
+        warnings.warn("""Use network_info instead""", DeprecationWarning)
+        pulumi.log.warn("""network_model is deprecated: Use network_info instead""")
+
         return pulumi.get(self, "network_model")
 
     @property
@@ -26605,6 +26702,9 @@ class NodeTemplateHarvesterConfig(dict):
         """
         Use `network_info` instead
         """
+        warnings.warn("""Use network_info instead""", DeprecationWarning)
+        pulumi.log.warn("""network_name is deprecated: Use network_info instead""")
+
         return pulumi.get(self, "network_name")
 
     @property
@@ -26627,7 +26727,7 @@ class NodeTemplateHarvesterConfig(dict):
     @pulumi.getter(name="vmAffinity")
     def vm_affinity(self) -> Optional[str]:
         """
-        Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 or above (string)
+        Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
         """
         return pulumi.get(self, "vm_affinity")
 
@@ -26679,7 +26779,7 @@ class NodeTemplateHetznerConfig(dict):
         :param bool use_private_network: Use private network. Default `false` (bool)
         :param str userdata: Path to file with cloud-init user data (string)
                
-               > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+               > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         :param str volumes: Comma-separated list of volume IDs or names which should be attached to the server (string)
         """
         pulumi.set(__self__, "api_token", api_token)
@@ -26762,7 +26862,7 @@ class NodeTemplateHetznerConfig(dict):
         """
         Path to file with cloud-init user data (string)
 
-        > **Note**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         """
         return pulumi.get(self, "userdata")
 
@@ -27165,7 +27265,7 @@ class NodeTemplateOpennebulaConfig(dict):
         :param str template_name: Name of the Opennbula template to use. Conflicts with `template_id` (string)
         :param str vcpu: VCPUs for the VM (string)
                
-               > **Note**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+               > **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
         """
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "user", user)
@@ -27353,7 +27453,7 @@ class NodeTemplateOpennebulaConfig(dict):
         """
         VCPUs for the VM (string)
 
-        > **Note**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+        > **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
         """
         return pulumi.get(self, "vcpu")
 
@@ -27516,9 +27616,9 @@ class NodeTemplateOpenstackConfig(dict):
         :param str username: OpenStack username (string)
         :param str volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
                
-               > **Note**: `Required*` denotes that either the _name or _id is required but you cannot use both.
+               > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
                
-               > **Note**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+               > **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
         :param str volume_id: OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param str volume_name: OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param str volume_size: OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
@@ -27868,9 +27968,9 @@ class NodeTemplateOpenstackConfig(dict):
         """
         OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
 
-        > **Note**: `Required*` denotes that either the _name or _id is required but you cannot use both.
+        > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
 
-        > **Note**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+        > **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
         """
         return pulumi.get(self, "volume_device_path")
 
@@ -28179,7 +28279,7 @@ class NodeTemplateVsphereConfig(dict):
         :param str datacenter: vSphere datacenter for docker VM (string)
         :param str datastore: vSphere datastore for docker VM (string)
         :param str datastore_cluster: vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
-        :param str disk_size: Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        :param str disk_size: Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         :param str folder: vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
         :param str hostsystem: vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
         :param str memory_size: Memory size (in GiB), Default `4` (string)
@@ -28362,7 +28462,7 @@ class NodeTemplateVsphereConfig(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[str]:
         """
-        Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+        Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
         """
         return pulumi.get(self, "disk_size")
 
@@ -30689,6 +30789,9 @@ class GetClusterAksConfigResult(dict):
     @property
     @pulumi.getter
     def tag(self) -> Mapping[str, Any]:
+        warnings.warn("""Use tags argument instead as []string""", DeprecationWarning)
+        pulumi.log.warn("""tag is deprecated: Use tags argument instead as []string""")
+
         return pulumi.get(self, "tag")
 
     @property
@@ -40661,6 +40764,9 @@ class GetClusterV2RkeConfigResult(dict):
     @property
     @pulumi.getter(name="localAuthEndpoint")
     def local_auth_endpoint(self) -> Optional['outputs.GetClusterV2RkeConfigLocalAuthEndpointResult']:
+        warnings.warn("""Use rancher2_cluster_v2.local_auth_endpoint instead""", DeprecationWarning)
+        pulumi.log.warn("""local_auth_endpoint is deprecated: Use rancher2_cluster_v2.local_auth_endpoint instead""")
+
         return pulumi.get(self, "local_auth_endpoint")
 
     @property

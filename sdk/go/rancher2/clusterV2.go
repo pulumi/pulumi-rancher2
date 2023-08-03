@@ -8,43 +8,10 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is available from Rancher v2.6.0 and above.
-//
-// ## Example Usage
-// ### Creating Rancher v2 custom cluster v2
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-//				DefaultClusterRoleForProjectMembers: pulumi.String("user"),
-//				EnableNetworkPolicy:                 pulumi.Bool(false),
-//				FleetNamespace:                      pulumi.String("fleet-ns"),
-//				KubernetesVersion:                   pulumi.String("v1.21.4+k3s1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// **Note** Once created, get the node command from `rancher2_cluster_v2.foo.cluster_registration_token`
-//
 // ## Import
 //
 // Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
@@ -63,7 +30,7 @@ type ClusterV2 struct {
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
 	// Cluster V2 cloud credential secret name (string)
 	CloudCredentialSecretName pulumi.StringPtrOutput `pulumi:"cloudCredentialSecretName"`
-	// Optional customization for cluster agent
+	// Optional customization for cluster agent (list)
 	ClusterAgentDeploymentCustomizations ClusterV2ClusterAgentDeploymentCustomizationArrayOutput `pulumi:"clusterAgentDeploymentCustomizations"`
 	// (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
 	ClusterRegistrationToken ClusterV2ClusterRegistrationTokenOutput `pulumi:"clusterRegistrationToken"`
@@ -77,7 +44,7 @@ type ClusterV2 struct {
 	DefaultPodSecurityPolicyTemplateName pulumi.StringPtrOutput `pulumi:"defaultPodSecurityPolicyTemplateName"`
 	// Enable k8s network policy at Cluster V2 (bool)
 	EnableNetworkPolicy pulumi.BoolOutput `pulumi:"enableNetworkPolicy"`
-	// Optional customization for fleet agent
+	// Optional customization for fleet agent (list)
 	FleetAgentDeploymentCustomizations ClusterV2FleetAgentDeploymentCustomizationArrayOutput `pulumi:"fleetAgentDeploymentCustomizations"`
 	// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
 	FleetNamespace pulumi.StringPtrOutput `pulumi:"fleetNamespace"`
@@ -112,6 +79,7 @@ func NewClusterV2(ctx *pulumi.Context,
 		"kubeConfig",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClusterV2
 	err := ctx.RegisterResource("rancher2:index/clusterV2:ClusterV2", name, args, &resource, opts...)
 	if err != nil {
@@ -140,7 +108,7 @@ type clusterV2State struct {
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// Cluster V2 cloud credential secret name (string)
 	CloudCredentialSecretName *string `pulumi:"cloudCredentialSecretName"`
-	// Optional customization for cluster agent
+	// Optional customization for cluster agent (list)
 	ClusterAgentDeploymentCustomizations []ClusterV2ClusterAgentDeploymentCustomization `pulumi:"clusterAgentDeploymentCustomizations"`
 	// (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
 	ClusterRegistrationToken *ClusterV2ClusterRegistrationToken `pulumi:"clusterRegistrationToken"`
@@ -154,7 +122,7 @@ type clusterV2State struct {
 	DefaultPodSecurityPolicyTemplateName *string `pulumi:"defaultPodSecurityPolicyTemplateName"`
 	// Enable k8s network policy at Cluster V2 (bool)
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
-	// Optional customization for fleet agent
+	// Optional customization for fleet agent (list)
 	FleetAgentDeploymentCustomizations []ClusterV2FleetAgentDeploymentCustomization `pulumi:"fleetAgentDeploymentCustomizations"`
 	// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
 	FleetNamespace *string `pulumi:"fleetNamespace"`
@@ -181,7 +149,7 @@ type ClusterV2State struct {
 	Annotations pulumi.MapInput
 	// Cluster V2 cloud credential secret name (string)
 	CloudCredentialSecretName pulumi.StringPtrInput
-	// Optional customization for cluster agent
+	// Optional customization for cluster agent (list)
 	ClusterAgentDeploymentCustomizations ClusterV2ClusterAgentDeploymentCustomizationArrayInput
 	// (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
 	ClusterRegistrationToken ClusterV2ClusterRegistrationTokenPtrInput
@@ -195,7 +163,7 @@ type ClusterV2State struct {
 	DefaultPodSecurityPolicyTemplateName pulumi.StringPtrInput
 	// Enable k8s network policy at Cluster V2 (bool)
 	EnableNetworkPolicy pulumi.BoolPtrInput
-	// Optional customization for fleet agent
+	// Optional customization for fleet agent (list)
 	FleetAgentDeploymentCustomizations ClusterV2FleetAgentDeploymentCustomizationArrayInput
 	// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
 	FleetNamespace pulumi.StringPtrInput
@@ -226,7 +194,7 @@ type clusterV2Args struct {
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// Cluster V2 cloud credential secret name (string)
 	CloudCredentialSecretName *string `pulumi:"cloudCredentialSecretName"`
-	// Optional customization for cluster agent
+	// Optional customization for cluster agent (list)
 	ClusterAgentDeploymentCustomizations []ClusterV2ClusterAgentDeploymentCustomization `pulumi:"clusterAgentDeploymentCustomizations"`
 	// Cluster V2 default cluster role for project members (string)
 	DefaultClusterRoleForProjectMembers *string `pulumi:"defaultClusterRoleForProjectMembers"`
@@ -236,7 +204,7 @@ type clusterV2Args struct {
 	DefaultPodSecurityPolicyTemplateName *string `pulumi:"defaultPodSecurityPolicyTemplateName"`
 	// Enable k8s network policy at Cluster V2 (bool)
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
-	// Optional customization for fleet agent
+	// Optional customization for fleet agent (list)
 	FleetAgentDeploymentCustomizations []ClusterV2FleetAgentDeploymentCustomization `pulumi:"fleetAgentDeploymentCustomizations"`
 	// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
 	FleetNamespace *string `pulumi:"fleetNamespace"`
@@ -260,7 +228,7 @@ type ClusterV2Args struct {
 	Annotations pulumi.MapInput
 	// Cluster V2 cloud credential secret name (string)
 	CloudCredentialSecretName pulumi.StringPtrInput
-	// Optional customization for cluster agent
+	// Optional customization for cluster agent (list)
 	ClusterAgentDeploymentCustomizations ClusterV2ClusterAgentDeploymentCustomizationArrayInput
 	// Cluster V2 default cluster role for project members (string)
 	DefaultClusterRoleForProjectMembers pulumi.StringPtrInput
@@ -270,7 +238,7 @@ type ClusterV2Args struct {
 	DefaultPodSecurityPolicyTemplateName pulumi.StringPtrInput
 	// Enable k8s network policy at Cluster V2 (bool)
 	EnableNetworkPolicy pulumi.BoolPtrInput
-	// Optional customization for fleet agent
+	// Optional customization for fleet agent (list)
 	FleetAgentDeploymentCustomizations ClusterV2FleetAgentDeploymentCustomizationArrayInput
 	// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
 	FleetNamespace pulumi.StringPtrInput
@@ -388,7 +356,7 @@ func (o ClusterV2Output) CloudCredentialSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterV2) pulumi.StringPtrOutput { return v.CloudCredentialSecretName }).(pulumi.StringPtrOutput)
 }
 
-// Optional customization for cluster agent
+// Optional customization for cluster agent (list)
 func (o ClusterV2Output) ClusterAgentDeploymentCustomizations() ClusterV2ClusterAgentDeploymentCustomizationArrayOutput {
 	return o.ApplyT(func(v *ClusterV2) ClusterV2ClusterAgentDeploymentCustomizationArrayOutput {
 		return v.ClusterAgentDeploymentCustomizations
@@ -427,7 +395,7 @@ func (o ClusterV2Output) EnableNetworkPolicy() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ClusterV2) pulumi.BoolOutput { return v.EnableNetworkPolicy }).(pulumi.BoolOutput)
 }
 
-// Optional customization for fleet agent
+// Optional customization for fleet agent (list)
 func (o ClusterV2Output) FleetAgentDeploymentCustomizations() ClusterV2FleetAgentDeploymentCustomizationArrayOutput {
 	return o.ApplyT(func(v *ClusterV2) ClusterV2FleetAgentDeploymentCustomizationArrayOutput {
 		return v.FleetAgentDeploymentCustomizations

@@ -197,14 +197,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
      * 
      */
     public Optional<Output<String>> diskSize() {
@@ -808,7 +808,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
          * 
          * @return builder
          * 
@@ -819,7 +819,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. Just for Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
          * 
          * @return builder
          * 

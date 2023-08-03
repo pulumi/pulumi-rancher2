@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -128,6 +129,7 @@ func NewAuthConfigOkta(ctx *pulumi.Context,
 		"spKey",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AuthConfigOkta
 	err := ctx.RegisterResource("rancher2:index/authConfigOkta:AuthConfigOkta", name, args, &resource, opts...)
 	if err != nil {

@@ -16,14 +16,14 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
     public static final ClusterV2RkeConfigMachinePoolTaintArgs Empty = new ClusterV2RkeConfigMachinePoolTaintArgs();
 
     /**
-     * The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+     * The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
     /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     public Optional<Output<String>> effect() {
@@ -31,14 +31,14 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
     }
 
     /**
-     * The taint key (string)
+     * The toleration key (string)
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The taint key (string)
+     * @return The toleration key (string)
      * 
      */
     public Output<String> key() {
@@ -87,7 +87,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param key The taint key (string)
+         * @param key The toleration key (string)
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param key The taint key (string)
+         * @param key The toleration key (string)
          * 
          * @return builder
          * 

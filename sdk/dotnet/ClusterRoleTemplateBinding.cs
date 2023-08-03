@@ -71,7 +71,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for cluster role template binding (map)
         /// 
-        /// **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+        /// **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for cluster role template binding (map)
         /// 
-        /// **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+        /// **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         /// </summary>
         public InputMap<object> Labels
         {
@@ -258,7 +258,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for cluster role template binding (map)
         /// 
-        /// **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+        /// **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         /// </summary>
         public InputMap<object> Labels
         {

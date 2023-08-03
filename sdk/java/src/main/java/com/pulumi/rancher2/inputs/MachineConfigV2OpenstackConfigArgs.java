@@ -573,8 +573,8 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
 
     /**
      * OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
-     * &gt; **Note**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-     * **Note**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+     * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+     * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
      * 
      */
     @Import(name="volumeDevicePath")
@@ -582,8 +582,8 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
 
     /**
      * @return OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
-     * &gt; **Note**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-     * **Note**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+     * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+     * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
      * 
      */
     public Optional<Output<String>> volumeDevicePath() {
@@ -1494,8 +1494,8 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
 
         /**
          * @param volumeDevicePath OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
-         * &gt; **Note**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-         * **Note**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+         * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+         * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
          * 
          * @return builder
          * 
@@ -1507,8 +1507,8 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
 
         /**
          * @param volumeDevicePath OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
-         * &gt; **Note**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-         * **Note**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+         * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+         * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
          * 
          * @return builder
          * 

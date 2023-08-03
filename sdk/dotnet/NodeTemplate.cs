@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, outscale, hetzner and vsphere drivers are supported for node templates.
     /// 
-    /// **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
+    /// **Note:** If you are upgrading to Rancher v2.3.3, please take a look to final section
     /// 
     /// ## Example Usage
     /// 
@@ -322,7 +322,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for Node Template object (map)
         /// 
-        /// **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+        /// **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
@@ -340,7 +340,7 @@ namespace Pulumi.Rancher2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// Node taints. For Rancher v2.3.3 and above (List)
         /// </summary>
         [Output("nodeTaints")]
         public Output<ImmutableArray<Outputs.NodeTemplateNodeTaint>> NodeTaints { get; private set; } = null!;
@@ -596,7 +596,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for Node Template object (map)
         /// 
-        /// **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+        /// **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         /// </summary>
         public InputMap<object> Labels
         {
@@ -620,7 +620,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.NodeTemplateNodeTaintArgs>? _nodeTaints;
 
         /// <summary>
-        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// Node taints. For Rancher v2.3.3 and above (List)
         /// </summary>
         public InputList<Inputs.NodeTemplateNodeTaintArgs> NodeTaints
         {
@@ -842,7 +842,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for Node Template object (map)
         /// 
-        /// **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+        /// **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         /// </summary>
         public InputMap<object> Labels
         {
@@ -866,7 +866,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.NodeTemplateNodeTaintGetArgs>? _nodeTaints;
 
         /// <summary>
-        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// Node taints. For Rancher v2.3.3 and above (List)
         /// </summary>
         public InputList<Inputs.NodeTemplateNodeTaintGetArgs> NodeTaints
         {

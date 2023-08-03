@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
 func LookupStorageClassV2(ctx *pulumi.Context, args *LookupStorageClassV2Args, opts ...pulumi.InvokeOption) (*LookupStorageClassV2Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageClassV2Result
 	err := ctx.Invoke("rancher2:index/getStorageClassV2:getStorageClassV2", args, &rv, opts...)
 	if err != nil {

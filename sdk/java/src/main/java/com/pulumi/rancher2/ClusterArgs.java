@@ -37,14 +37,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     public static final ClusterArgs Empty = new ClusterArgs();
 
     /**
-     * Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     * Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
      * 
      */
     @Import(name="agentEnvVars")
     private @Nullable Output<List<ClusterAgentEnvVarArgs>> agentEnvVars;
 
     /**
-     * @return Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     * @return Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
      * 
      */
     public Optional<Output<List<ClusterAgentEnvVarArgs>>> agentEnvVars() {
@@ -97,14 +97,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional customization for cluster agent
+     * Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
      * 
      */
     @Import(name="clusterAgentDeploymentCustomizations")
     private @Nullable Output<List<ClusterClusterAgentDeploymentCustomizationArgs>> clusterAgentDeploymentCustomizations;
 
     /**
-     * @return Optional customization for cluster agent
+     * @return Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
      * 
      */
     public Optional<Output<List<ClusterClusterAgentDeploymentCustomizationArgs>>> clusterAgentDeploymentCustomizations() {
@@ -142,14 +142,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+     * Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
      * 
      */
     @Import(name="clusterTemplateAnswers")
     private @Nullable Output<ClusterClusterTemplateAnswersArgs> clusterTemplateAnswers;
 
     /**
-     * @return Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+     * @return Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterClusterTemplateAnswersArgs>> clusterTemplateAnswers() {
@@ -157,14 +157,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster template ID. Just for Rancher v2.3.x and above (string)
+     * Cluster template ID. For Rancher v2.3.x and above (string)
      * 
      */
     @Import(name="clusterTemplateId")
     private @Nullable Output<String> clusterTemplateId;
 
     /**
-     * @return Cluster template ID. Just for Rancher v2.3.x and above (string)
+     * @return Cluster template ID. For Rancher v2.3.x and above (string)
      * 
      */
     public Optional<Output<String>> clusterTemplateId() {
@@ -172,14 +172,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster template questions. Just for Rancher v2.3.x and above (list)
+     * Cluster template questions. For Rancher v2.3.x and above (list)
      * 
      */
     @Import(name="clusterTemplateQuestions")
     private @Nullable Output<List<ClusterClusterTemplateQuestionArgs>> clusterTemplateQuestions;
 
     /**
-     * @return Cluster template questions. Just for Rancher v2.3.x and above (list)
+     * @return Cluster template questions. For Rancher v2.3.x and above (list)
      * 
      */
     public Optional<Output<List<ClusterClusterTemplateQuestionArgs>>> clusterTemplateQuestions() {
@@ -187,14 +187,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+     * Cluster template revision ID. For Rancher v2.3.x and above (string)
      * 
      */
     @Import(name="clusterTemplateRevisionId")
     private @Nullable Output<String> clusterTemplateRevisionId;
 
     /**
-     * @return Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+     * @return Cluster template revision ID. For Rancher v2.3.x and above (string)
      * 
      */
     public Optional<Output<String>> clusterTemplateRevisionId() {
@@ -202,14 +202,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster default pod security admission configuration template name
+     * Cluster default pod security admission configuration template name (string)
      * 
      */
     @Import(name="defaultPodSecurityAdmissionConfigurationTemplateName")
     private @Nullable Output<String> defaultPodSecurityAdmissionConfigurationTemplateName;
 
     /**
-     * @return Cluster default pod security admission configuration template name
+     * @return Cluster default pod security admission configuration template name (string)
      * 
      */
     public Optional<Output<String>> defaultPodSecurityAdmissionConfigurationTemplateName() {
@@ -247,14 +247,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Desired agent image. Just for Rancher v2.3.x and above (string)
+     * Desired agent image. For Rancher v2.3.x and above (string)
      * 
      */
     @Import(name="desiredAgentImage")
     private @Nullable Output<String> desiredAgentImage;
 
     /**
-     * @return Desired agent image. Just for Rancher v2.3.x and above (string)
+     * @return Desired agent image. For Rancher v2.3.x and above (string)
      * 
      */
     public Optional<Output<String>> desiredAgentImage() {
@@ -262,14 +262,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Desired auth image. Just for Rancher v2.3.x and above (string)
+     * Desired auth image. For Rancher v2.3.x and above (string)
      * 
      */
     @Import(name="desiredAuthImage")
     private @Nullable Output<String> desiredAuthImage;
 
     /**
-     * @return Desired auth image. Just for Rancher v2.3.x and above (string)
+     * @return Desired auth image. For Rancher v2.3.x and above (string)
      * 
      */
     public Optional<Output<String>> desiredAuthImage() {
@@ -277,14 +277,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Desired auth image. Just for Rancher v2.3.x and above (string)
+     * Desired auth image. For Rancher v2.3.x and above (string)
      * 
      */
     @Import(name="dockerRootDir")
     private @Nullable Output<String> dockerRootDir;
 
     /**
-     * @return Desired auth image. Just for Rancher v2.3.x and above (string)
+     * @return Desired auth image. For Rancher v2.3.x and above (string)
      * 
      */
     public Optional<Output<String>> dockerRootDir() {
@@ -322,14 +322,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     @Import(name="eksConfigV2")
     private @Nullable Output<ClusterEksConfigV2Args> eksConfigV2;
 
     /**
-     * @return The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+     * @return The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterEksConfigV2Args>> eksConfigV2() {
@@ -382,14 +382,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional customization for fleet agent
+     * Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
      * 
      */
     @Import(name="fleetAgentDeploymentCustomizations")
     private @Nullable Output<List<ClusterFleetAgentDeploymentCustomizationArgs>> fleetAgentDeploymentCustomizations;
 
     /**
-     * @return Optional customization for fleet agent
+     * @return Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
      * 
      */
     public Optional<Output<List<ClusterFleetAgentDeploymentCustomizationArgs>>> fleetAgentDeploymentCustomizations() {
@@ -427,14 +427,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     @Import(name="gkeConfigV2")
     private @Nullable Output<ClusterGkeConfigV2Args> gkeConfigV2;
 
     /**
-     * @return The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+     * @return The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterGkeConfigV2Args>> gkeConfigV2() {
@@ -604,7 +604,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agentEnvVars Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+         * @param agentEnvVars Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
          * 
          * @return builder
          * 
@@ -615,7 +615,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agentEnvVars Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+         * @param agentEnvVars Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
          * 
          * @return builder
          * 
@@ -625,7 +625,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agentEnvVars Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+         * @param agentEnvVars Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
          * 
          * @return builder
          * 
@@ -698,7 +698,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent
+         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
          * 
          * @return builder
          * 
@@ -709,7 +709,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent
+         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
          * 
          * @return builder
          * 
@@ -719,7 +719,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent
+         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
          * 
          * @return builder
          * 
@@ -771,7 +771,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterTemplateAnswers Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+         * @param clusterTemplateAnswers Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
          * 
          * @return builder
          * 
@@ -782,7 +782,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterTemplateAnswers Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+         * @param clusterTemplateAnswers Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
          * 
          * @return builder
          * 
@@ -792,7 +792,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterTemplateId Cluster template ID. Just for Rancher v2.3.x and above (string)
+         * @param clusterTemplateId Cluster template ID. For Rancher v2.3.x and above (string)
          * 
          * @return builder
          * 
@@ -803,7 +803,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterTemplateId Cluster template ID. Just for Rancher v2.3.x and above (string)
+         * @param clusterTemplateId Cluster template ID. For Rancher v2.3.x and above (string)
          * 
          * @return builder
          * 
@@ -813,7 +813,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterTemplateQuestions Cluster template questions. Just for Rancher v2.3.x and above (list)
+         * @param clusterTemplateQuestions Cluster template questions. For Rancher v2.3.x and above (list)
          * 
          * @return builder
          * 
@@ -824,7 +824,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterTemplateQuestions Cluster template questions. Just for Rancher v2.3.x and above (list)
+         * @param clusterTemplateQuestions Cluster template questions. For Rancher v2.3.x and above (list)
          * 
          * @return builder
          * 
@@ -834,7 +834,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterTemplateQuestions Cluster template questions. Just for Rancher v2.3.x and above (list)
+         * @param clusterTemplateQuestions Cluster template questions. For Rancher v2.3.x and above (list)
          * 
          * @return builder
          * 
@@ -844,7 +844,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterTemplateRevisionId Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+         * @param clusterTemplateRevisionId Cluster template revision ID. For Rancher v2.3.x and above (string)
          * 
          * @return builder
          * 
@@ -855,7 +855,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterTemplateRevisionId Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+         * @param clusterTemplateRevisionId Cluster template revision ID. For Rancher v2.3.x and above (string)
          * 
          * @return builder
          * 
@@ -865,7 +865,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultPodSecurityAdmissionConfigurationTemplateName Cluster default pod security admission configuration template name
+         * @param defaultPodSecurityAdmissionConfigurationTemplateName Cluster default pod security admission configuration template name (string)
          * 
          * @return builder
          * 
@@ -876,7 +876,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultPodSecurityAdmissionConfigurationTemplateName Cluster default pod security admission configuration template name
+         * @param defaultPodSecurityAdmissionConfigurationTemplateName Cluster default pod security admission configuration template name (string)
          * 
          * @return builder
          * 
@@ -928,7 +928,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredAgentImage Desired agent image. Just for Rancher v2.3.x and above (string)
+         * @param desiredAgentImage Desired agent image. For Rancher v2.3.x and above (string)
          * 
          * @return builder
          * 
@@ -939,7 +939,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredAgentImage Desired agent image. Just for Rancher v2.3.x and above (string)
+         * @param desiredAgentImage Desired agent image. For Rancher v2.3.x and above (string)
          * 
          * @return builder
          * 
@@ -949,7 +949,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredAuthImage Desired auth image. Just for Rancher v2.3.x and above (string)
+         * @param desiredAuthImage Desired auth image. For Rancher v2.3.x and above (string)
          * 
          * @return builder
          * 
@@ -960,7 +960,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredAuthImage Desired auth image. Just for Rancher v2.3.x and above (string)
+         * @param desiredAuthImage Desired auth image. For Rancher v2.3.x and above (string)
          * 
          * @return builder
          * 
@@ -970,7 +970,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dockerRootDir Desired auth image. Just for Rancher v2.3.x and above (string)
+         * @param dockerRootDir Desired auth image. For Rancher v2.3.x and above (string)
          * 
          * @return builder
          * 
@@ -981,7 +981,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dockerRootDir Desired auth image. Just for Rancher v2.3.x and above (string)
+         * @param dockerRootDir Desired auth image. For Rancher v2.3.x and above (string)
          * 
          * @return builder
          * 
@@ -1033,7 +1033,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eksConfigV2 The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+         * @param eksConfigV2 The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1044,7 +1044,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eksConfigV2 The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+         * @param eksConfigV2 The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1117,7 +1117,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent
+         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
          * 
          * @return builder
          * 
@@ -1128,7 +1128,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent
+         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
          * 
          * @return builder
          * 
@@ -1138,7 +1138,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent
+         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
          * 
          * @return builder
          * 
@@ -1190,7 +1190,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gkeConfigV2 The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+         * @param gkeConfigV2 The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1201,7 +1201,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gkeConfigV2 The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+         * @param gkeConfigV2 The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
          * 
          * @return builder
          * 

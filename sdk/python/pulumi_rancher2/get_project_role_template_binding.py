@@ -173,16 +173,16 @@ def get_project_role_template_binding(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding', __args__, opts=opts, typ=GetProjectRoleTemplateBindingResult).value
 
     return AwaitableGetProjectRoleTemplateBindingResult(
-        annotations=__ret__.annotations,
-        group_id=__ret__.group_id,
-        group_principal_id=__ret__.group_principal_id,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        project_id=__ret__.project_id,
-        role_template_id=__ret__.role_template_id,
-        user_id=__ret__.user_id,
-        user_principal_id=__ret__.user_principal_id)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        group_id=pulumi.get(__ret__, 'group_id'),
+        group_principal_id=pulumi.get(__ret__, 'group_principal_id'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        role_template_id=pulumi.get(__ret__, 'role_template_id'),
+        user_id=pulumi.get(__ret__, 'user_id'),
+        user_principal_id=pulumi.get(__ret__, 'user_principal_id'))
 
 
 @_utilities.lift_output_func(get_project_role_template_binding)

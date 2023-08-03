@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupProjectRoleTemplateBinding(ctx *pulumi.Context, args *LookupProjectRoleTemplateBindingArgs, opts ...pulumi.InvokeOption) (*LookupProjectRoleTemplateBindingResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectRoleTemplateBindingResult
 	err := ctx.Invoke("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args, &rv, opts...)
 	if err != nil {

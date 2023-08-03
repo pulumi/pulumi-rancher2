@@ -196,18 +196,18 @@ def get_node_driver(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getNodeDriver:getNodeDriver', __args__, opts=opts, typ=GetNodeDriverResult).value
 
     return AwaitableGetNodeDriverResult(
-        active=__ret__.active,
-        annotations=__ret__.annotations,
-        builtin=__ret__.builtin,
-        checksum=__ret__.checksum,
-        description=__ret__.description,
-        external_id=__ret__.external_id,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        ui_url=__ret__.ui_url,
-        url=__ret__.url,
-        whitelist_domains=__ret__.whitelist_domains)
+        active=pulumi.get(__ret__, 'active'),
+        annotations=pulumi.get(__ret__, 'annotations'),
+        builtin=pulumi.get(__ret__, 'builtin'),
+        checksum=pulumi.get(__ret__, 'checksum'),
+        description=pulumi.get(__ret__, 'description'),
+        external_id=pulumi.get(__ret__, 'external_id'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        ui_url=pulumi.get(__ret__, 'ui_url'),
+        url=pulumi.get(__ret__, 'url'),
+        whitelist_domains=pulumi.get(__ret__, 'whitelist_domains'))
 
 
 @_utilities.lift_output_func(get_node_driver)

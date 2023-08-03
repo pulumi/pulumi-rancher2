@@ -221,20 +221,20 @@ def get_role_template(context: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getRoleTemplate:getRoleTemplate', __args__, opts=opts, typ=GetRoleTemplateResult).value
 
     return AwaitableGetRoleTemplateResult(
-        administrative=__ret__.administrative,
-        annotations=__ret__.annotations,
-        builtin=__ret__.builtin,
-        context=__ret__.context,
-        default_role=__ret__.default_role,
-        description=__ret__.description,
-        external=__ret__.external,
-        hidden=__ret__.hidden,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        locked=__ret__.locked,
-        name=__ret__.name,
-        role_template_ids=__ret__.role_template_ids,
-        rules=__ret__.rules)
+        administrative=pulumi.get(__ret__, 'administrative'),
+        annotations=pulumi.get(__ret__, 'annotations'),
+        builtin=pulumi.get(__ret__, 'builtin'),
+        context=pulumi.get(__ret__, 'context'),
+        default_role=pulumi.get(__ret__, 'default_role'),
+        description=pulumi.get(__ret__, 'description'),
+        external=pulumi.get(__ret__, 'external'),
+        hidden=pulumi.get(__ret__, 'hidden'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        locked=pulumi.get(__ret__, 'locked'),
+        name=pulumi.get(__ret__, 'name'),
+        role_template_ids=pulumi.get(__ret__, 'role_template_ids'),
+        rules=pulumi.get(__ret__, 'rules'))
 
 
 @_utilities.lift_output_func(get_role_template)

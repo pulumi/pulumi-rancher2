@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,7 +64,7 @@ type ClusterRoleTemplateBinding struct {
 	GroupPrincipalId pulumi.StringOutput `pulumi:"groupPrincipalId"`
 	// Labels for cluster role template binding (map)
 	//
-	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The name of the cluster role template binding (string)
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -88,6 +89,7 @@ func NewClusterRoleTemplateBinding(ctx *pulumi.Context,
 	if args.RoleTemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'RoleTemplateId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClusterRoleTemplateBinding
 	err := ctx.RegisterResource("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding", name, args, &resource, opts...)
 	if err != nil {
@@ -120,7 +122,7 @@ type clusterRoleTemplateBindingState struct {
 	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
 	// Labels for cluster role template binding (map)
 	//
-	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the cluster role template binding (string)
 	Name *string `pulumi:"name"`
@@ -143,7 +145,7 @@ type ClusterRoleTemplateBindingState struct {
 	GroupPrincipalId pulumi.StringPtrInput
 	// Labels for cluster role template binding (map)
 	//
-	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels pulumi.MapInput
 	// The name of the cluster role template binding (string)
 	Name pulumi.StringPtrInput
@@ -170,7 +172,7 @@ type clusterRoleTemplateBindingArgs struct {
 	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
 	// Labels for cluster role template binding (map)
 	//
-	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the cluster role template binding (string)
 	Name *string `pulumi:"name"`
@@ -194,7 +196,7 @@ type ClusterRoleTemplateBindingArgs struct {
 	GroupPrincipalId pulumi.StringPtrInput
 	// Labels for cluster role template binding (map)
 	//
-	// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 	Labels pulumi.MapInput
 	// The name of the cluster role template binding (string)
 	Name pulumi.StringPtrInput
@@ -315,7 +317,7 @@ func (o ClusterRoleTemplateBindingOutput) GroupPrincipalId() pulumi.StringOutput
 
 // Labels for cluster role template binding (map)
 //
-// **Note** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
+// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
 func (o ClusterRoleTemplateBindingOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *ClusterRoleTemplateBinding) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }

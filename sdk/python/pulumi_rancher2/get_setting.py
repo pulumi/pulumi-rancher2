@@ -88,9 +88,9 @@ def get_setting(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getSetting:getSetting', __args__, opts=opts, typ=GetSettingResult).value
 
     return AwaitableGetSettingResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        value=__ret__.value)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        value=pulumi.get(__ret__, 'value'))
 
 
 @_utilities.lift_output_func(get_setting)

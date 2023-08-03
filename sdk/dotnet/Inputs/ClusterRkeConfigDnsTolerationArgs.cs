@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigDnsTolerationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        /// The toleration effect. Default: `\"NoSchedule\"` (string)
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
@@ -25,13 +25,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        /// The toleration operator (string)
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
         /// <summary>
-        /// The toleration seconds (int)
+        /// The number of seconds a pod will stay bound to a node with a matching taint (int)
         /// </summary>
         [Input("seconds")]
         public Input<int>? Seconds { get; set; }

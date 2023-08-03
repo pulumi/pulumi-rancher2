@@ -106,7 +106,7 @@ public class ProjectRoleTemplateBinding extends com.pulumi.resources.CustomResou
     /**
      * Labels of the resource (map)
      * 
-     * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+     * **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
      * 
      */
     @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
@@ -115,7 +115,7 @@ public class ProjectRoleTemplateBinding extends com.pulumi.resources.CustomResou
     /**
      * @return Labels of the resource (map)
      * 
-     * **Note** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+     * **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
      * 
      */
     public Output<Map<String,Object>> labels() {

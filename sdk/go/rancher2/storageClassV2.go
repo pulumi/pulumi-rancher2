@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +63,7 @@ func NewStorageClassV2(ctx *pulumi.Context,
 	if args.K8sProvisioner == nil {
 		return nil, errors.New("invalid value for required argument 'K8sProvisioner'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StorageClassV2
 	err := ctx.RegisterResource("rancher2:index/storageClassV2:StorageClassV2", name, args, &resource, opts...)
 	if err != nil {

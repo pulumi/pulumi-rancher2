@@ -64,14 +64,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+     * The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
      * 
      */
     @Import(name="desiredNodes")
     private @Nullable Output<Integer> desiredNodes;
 
     /**
-     * @return The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+     * @return The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
      * 
      */
     public Optional<Output<Integer>> desiredNodes() {
@@ -101,14 +101,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+     * Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
      * 
      */
     @Import(name="keyPairName")
     private @Nullable Output<String> keyPairName;
 
     /**
-     * @return Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+     * @return Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
      * 
      */
     public Optional<Output<String>> keyPairName() {
@@ -401,7 +401,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param desiredNodes The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+         * @param desiredNodes The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param desiredNodes The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+         * @param desiredNodes The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param keyPairName Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+         * @param keyPairName Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param keyPairName Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+         * @param keyPairName Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
          * 
          * @return builder
          * 

@@ -286,7 +286,7 @@ class ClusterTemplate(pulumi.CustomResource):
             )])
         ```
 
-        Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x or above.
+        Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
 
         ```python
         import pulumi
@@ -382,7 +382,7 @@ class ClusterTemplate(pulumi.CustomResource):
             )])
         ```
 
-        Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x or above.
+        Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
 
         ```python
         import pulumi

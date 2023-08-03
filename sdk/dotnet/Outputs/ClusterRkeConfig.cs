@@ -42,7 +42,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProvider? CloudProvider;
         /// <summary>
-        /// RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+        /// RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigDns? Dns;
         /// <summary>

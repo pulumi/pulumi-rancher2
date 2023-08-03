@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * 
  * amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, outscale, hetzner and vsphere drivers are supported for node templates.
  * 
- * **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
+ * **Note:** If you are upgrading to Rancher v2.3.3, please take a look to final section
  * 
  * ## Example Usage
  * ```java
@@ -533,7 +533,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
     /**
      * Labels for Node Template object (map)
      * 
-     * **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+     * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
      * 
      */
     @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
@@ -542,7 +542,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
     /**
      * @return Labels for Node Template object (map)
      * 
-     * **Note** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+     * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
      * 
      */
     public Output<Map<String,Object>> labels() {
@@ -577,14 +577,14 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Node taints. For Rancher v2.3.3 or above (List)
+     * Node taints. For Rancher v2.3.3 and above (List)
      * 
      */
     @Export(name="nodeTaints", refs={List.class,NodeTemplateNodeTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NodeTemplateNodeTaint>> nodeTaints;
 
     /**
-     * @return Node taints. For Rancher v2.3.3 or above (List)
+     * @return Node taints. For Rancher v2.3.3 and above (List)
      * 
      */
     public Output<Optional<List<NodeTemplateNodeTaint>>> nodeTaints() {

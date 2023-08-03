@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * `amazonec2`, `azure`, `digitalocean`, `harvester`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
  * 
- * **Note** This resource is used by
+ * **Note:** This resource is used by
  * 
  * ## Example Usage
  * ### Using the Harvester Node Driver
@@ -230,7 +230,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
     /**
      * Labels for Machine Config V2 object (map)
      * 
-     * **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
+     * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
      * 
      */
     @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
@@ -239,7 +239,7 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return Labels for Machine Config V2 object (map)
      * 
-     * **Note** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
+     * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
      * 
      */
     public Output<Map<String,Object>> labels() {

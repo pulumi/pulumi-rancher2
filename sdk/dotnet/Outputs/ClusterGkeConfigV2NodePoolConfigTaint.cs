@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2NodePoolConfigTaint
     {
         /// <summary>
-        /// The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        /// The toleration effect. Default: `\"NoSchedule\"` (string)
         /// </summary>
         public readonly string Effect;
         /// <summary>

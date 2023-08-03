@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,6 +57,7 @@ func NewConfigMapV2(ctx *pulumi.Context,
 	if args.Data == nil {
 		return nil, errors.New("invalid value for required argument 'Data'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConfigMapV2
 	err := ctx.RegisterResource("rancher2:index/configMapV2:ConfigMapV2", name, args, &resource, opts...)
 	if err != nil {

@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? SafeTimestamp;
         /// <summary>
-        /// Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+        /// Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
         /// </summary>
         public readonly int? Timeout;
 

@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachinePoolTaint {
     /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     private @Nullable String effect;
     /**
-     * @return The taint key (string)
+     * @return The toleration key (string)
      * 
      */
     private String key;
@@ -29,14 +29,14 @@ public final class ClusterV2RkeConfigMachinePoolTaint {
 
     private ClusterV2RkeConfigMachinePoolTaint() {}
     /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
      * 
      */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
     /**
-     * @return The taint key (string)
+     * @return The toleration key (string)
      * 
      */
     public String key() {

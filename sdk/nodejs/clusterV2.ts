@@ -7,26 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is available from Rancher v2.6.0 and above.
- *
- * ## Example Usage
- * ### Creating Rancher v2 custom cluster v2
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher v2 K3S custom Cluster v2
- * const foo = new rancher2.ClusterV2("foo", {
- *     defaultClusterRoleForProjectMembers: "user",
- *     enableNetworkPolicy: false,
- *     fleetNamespace: "fleet-ns",
- *     kubernetesVersion: "v1.21.4+k3s1",
- * });
- * ```
- *
- * **Note** Once created, get the node command from `rancher2_cluster_v2.foo.cluster_registration_token`
- *
  * ## Import
  *
  * Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
@@ -76,7 +56,7 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     public readonly cloudCredentialSecretName!: pulumi.Output<string | undefined>;
     /**
-     * Optional customization for cluster agent
+     * Optional customization for cluster agent (list)
      */
     public readonly clusterAgentDeploymentCustomizations!: pulumi.Output<outputs.ClusterV2ClusterAgentDeploymentCustomization[] | undefined>;
     /**
@@ -104,7 +84,7 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     public readonly enableNetworkPolicy!: pulumi.Output<boolean>;
     /**
-     * Optional customization for fleet agent
+     * Optional customization for fleet agent (list)
      */
     public readonly fleetAgentDeploymentCustomizations!: pulumi.Output<outputs.ClusterV2FleetAgentDeploymentCustomization[] | undefined>;
     /**
@@ -221,7 +201,7 @@ export interface ClusterV2State {
      */
     cloudCredentialSecretName?: pulumi.Input<string>;
     /**
-     * Optional customization for cluster agent
+     * Optional customization for cluster agent (list)
      */
     clusterAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomization>[]>;
     /**
@@ -249,7 +229,7 @@ export interface ClusterV2State {
      */
     enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
-     * Optional customization for fleet agent
+     * Optional customization for fleet agent (list)
      */
     fleetAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomization>[]>;
     /**
@@ -303,7 +283,7 @@ export interface ClusterV2Args {
      */
     cloudCredentialSecretName?: pulumi.Input<string>;
     /**
-     * Optional customization for cluster agent
+     * Optional customization for cluster agent (list)
      */
     clusterAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomization>[]>;
     /**
@@ -323,7 +303,7 @@ export interface ClusterV2Args {
      */
     enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
-     * Optional customization for fleet agent
+     * Optional customization for fleet agent (list)
      */
     fleetAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomization>[]>;
     /**

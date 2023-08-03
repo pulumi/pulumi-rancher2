@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // API Key used to authenticate with the rancher server
 func GetAccessKey(ctx *pulumi.Context) string {
@@ -25,7 +28,7 @@ func GetBootstrap(ctx *pulumi.Context) bool {
 		return v
 	}
 	var value bool
-	if d := getEnvOrDefault(false, parseEnvBool, "RANCHER_BOOTSTRAP"); d != nil {
+	if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "RANCHER_BOOTSTRAP"); d != nil {
 		value = d.(bool)
 	}
 	return value
@@ -43,7 +46,7 @@ func GetInsecure(ctx *pulumi.Context) bool {
 		return v
 	}
 	var value bool
-	if d := getEnvOrDefault(false, parseEnvBool, "RANCHER_INSECURE"); d != nil {
+	if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "RANCHER_INSECURE"); d != nil {
 		value = d.(bool)
 	}
 	return value

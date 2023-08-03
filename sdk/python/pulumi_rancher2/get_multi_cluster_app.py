@@ -233,21 +233,21 @@ def get_multi_cluster_app(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getMultiClusterApp:getMultiClusterApp', __args__, opts=opts, typ=GetMultiClusterAppResult).value
 
     return AwaitableGetMultiClusterAppResult(
-        annotations=__ret__.annotations,
-        answers=__ret__.answers,
-        catalog_name=__ret__.catalog_name,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        members=__ret__.members,
-        name=__ret__.name,
-        revision_history_limit=__ret__.revision_history_limit,
-        revision_id=__ret__.revision_id,
-        roles=__ret__.roles,
-        targets=__ret__.targets,
-        template_name=__ret__.template_name,
-        template_version=__ret__.template_version,
-        template_version_id=__ret__.template_version_id,
-        upgrade_strategies=__ret__.upgrade_strategies)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        answers=pulumi.get(__ret__, 'answers'),
+        catalog_name=pulumi.get(__ret__, 'catalog_name'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        members=pulumi.get(__ret__, 'members'),
+        name=pulumi.get(__ret__, 'name'),
+        revision_history_limit=pulumi.get(__ret__, 'revision_history_limit'),
+        revision_id=pulumi.get(__ret__, 'revision_id'),
+        roles=pulumi.get(__ret__, 'roles'),
+        targets=pulumi.get(__ret__, 'targets'),
+        template_name=pulumi.get(__ret__, 'template_name'),
+        template_version=pulumi.get(__ret__, 'template_version'),
+        template_version_id=pulumi.get(__ret__, 'template_version_id'),
+        upgrade_strategies=pulumi.get(__ret__, 'upgrade_strategies'))
 
 
 @_utilities.lift_output_func(get_multi_cluster_app)

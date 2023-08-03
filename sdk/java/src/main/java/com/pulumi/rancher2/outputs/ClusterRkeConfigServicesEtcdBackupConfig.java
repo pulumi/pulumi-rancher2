@@ -39,7 +39,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfig {
      */
     private @Nullable Boolean safeTimestamp;
     /**
-     * @return Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+     * @return Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
      * 
      */
     private @Nullable Integer timeout;
@@ -81,7 +81,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfig {
         return Optional.ofNullable(this.safeTimestamp);
     }
     /**
-     * @return Timeout in seconds for etcd backup. Default: `300`. Just for Rancher v2.5.6 and above (int)
+     * @return Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
      * 
      */
     public Optional<Integer> timeout() {

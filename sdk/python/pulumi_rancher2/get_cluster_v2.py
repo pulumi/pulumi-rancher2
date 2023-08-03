@@ -252,23 +252,23 @@ def get_cluster_v2(fleet_namespace: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getClusterV2:getClusterV2', __args__, opts=opts, typ=GetClusterV2Result).value
 
     return AwaitableGetClusterV2Result(
-        agent_env_vars=__ret__.agent_env_vars,
-        annotations=__ret__.annotations,
-        cloud_credential_secret_name=__ret__.cloud_credential_secret_name,
-        cluster_registration_token=__ret__.cluster_registration_token,
-        cluster_v1_id=__ret__.cluster_v1_id,
-        default_cluster_role_for_project_members=__ret__.default_cluster_role_for_project_members,
-        default_pod_security_admission_configuration_template_name=__ret__.default_pod_security_admission_configuration_template_name,
-        default_pod_security_policy_template_name=__ret__.default_pod_security_policy_template_name,
-        enable_network_policy=__ret__.enable_network_policy,
-        fleet_namespace=__ret__.fleet_namespace,
-        id=__ret__.id,
-        kube_config=__ret__.kube_config,
-        kubernetes_version=__ret__.kubernetes_version,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        resource_version=__ret__.resource_version,
-        rke_config=__ret__.rke_config)
+        agent_env_vars=pulumi.get(__ret__, 'agent_env_vars'),
+        annotations=pulumi.get(__ret__, 'annotations'),
+        cloud_credential_secret_name=pulumi.get(__ret__, 'cloud_credential_secret_name'),
+        cluster_registration_token=pulumi.get(__ret__, 'cluster_registration_token'),
+        cluster_v1_id=pulumi.get(__ret__, 'cluster_v1_id'),
+        default_cluster_role_for_project_members=pulumi.get(__ret__, 'default_cluster_role_for_project_members'),
+        default_pod_security_admission_configuration_template_name=pulumi.get(__ret__, 'default_pod_security_admission_configuration_template_name'),
+        default_pod_security_policy_template_name=pulumi.get(__ret__, 'default_pod_security_policy_template_name'),
+        enable_network_policy=pulumi.get(__ret__, 'enable_network_policy'),
+        fleet_namespace=pulumi.get(__ret__, 'fleet_namespace'),
+        id=pulumi.get(__ret__, 'id'),
+        kube_config=pulumi.get(__ret__, 'kube_config'),
+        kubernetes_version=pulumi.get(__ret__, 'kubernetes_version'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        resource_version=pulumi.get(__ret__, 'resource_version'),
+        rke_config=pulumi.get(__ret__, 'rke_config'))
 
 
 @_utilities.lift_output_func(get_cluster_v2)

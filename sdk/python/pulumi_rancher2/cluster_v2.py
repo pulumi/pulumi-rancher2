@@ -37,12 +37,12 @@ class ClusterV2Args:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2AgentEnvVarArgs']]] agent_env_vars: Optional Agent Env Vars for Rancher agent (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster V2 (map)
         :param pulumi.Input[str] cloud_credential_secret_name: Cluster V2 cloud credential secret name (string)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Optional customization for cluster agent
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Optional customization for cluster agent (list)
         :param pulumi.Input[str] default_cluster_role_for_project_members: Cluster V2 default cluster role for project members (string)
         :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: Cluster V2 default pod security admission configuration template name (string)
         :param pulumi.Input[str] default_pod_security_policy_template_name: Cluster V2 default pod security policy template name (string)
         :param pulumi.Input[bool] enable_network_policy: Enable k8s network policy at Cluster V2 (bool)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]] fleet_agent_deployment_customizations: Optional customization for fleet agent
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]] fleet_agent_deployment_customizations: Optional customization for fleet agent (list)
         :param pulumi.Input[str] fleet_namespace: The fleet namespace of the Cluster v2. Default: `\\"fleet-default\\"` (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster V2 (map)
         :param pulumi.Input['ClusterV2LocalAuthEndpointArgs'] local_auth_endpoint: Cluster V2 local auth endpoint (list maxitems:1)
@@ -131,7 +131,7 @@ class ClusterV2Args:
     @pulumi.getter(name="clusterAgentDeploymentCustomizations")
     def cluster_agent_deployment_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]]]:
         """
-        Optional customization for cluster agent
+        Optional customization for cluster agent (list)
         """
         return pulumi.get(self, "cluster_agent_deployment_customizations")
 
@@ -191,7 +191,7 @@ class ClusterV2Args:
     @pulumi.getter(name="fleetAgentDeploymentCustomizations")
     def fleet_agent_deployment_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]]]:
         """
-        Optional customization for fleet agent
+        Optional customization for fleet agent (list)
         """
         return pulumi.get(self, "fleet_agent_deployment_customizations")
 
@@ -287,14 +287,14 @@ class _ClusterV2State:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2AgentEnvVarArgs']]] agent_env_vars: Optional Agent Env Vars for Rancher agent (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster V2 (map)
         :param pulumi.Input[str] cloud_credential_secret_name: Cluster V2 cloud credential secret name (string)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Optional customization for cluster agent
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Optional customization for cluster agent (list)
         :param pulumi.Input['ClusterV2ClusterRegistrationTokenArgs'] cluster_registration_token: (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
         :param pulumi.Input[str] cluster_v1_id: (Computed) Cluster v1 id for cluster v2. (e.g to be used with `rancher2_sync`) (string)
         :param pulumi.Input[str] default_cluster_role_for_project_members: Cluster V2 default cluster role for project members (string)
         :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: Cluster V2 default pod security admission configuration template name (string)
         :param pulumi.Input[str] default_pod_security_policy_template_name: Cluster V2 default pod security policy template name (string)
         :param pulumi.Input[bool] enable_network_policy: Enable k8s network policy at Cluster V2 (bool)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]] fleet_agent_deployment_customizations: Optional customization for fleet agent
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]] fleet_agent_deployment_customizations: Optional customization for fleet agent (list)
         :param pulumi.Input[str] fleet_namespace: The fleet namespace of the Cluster v2. Default: `\\"fleet-default\\"` (string)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         :param pulumi.Input[str] kubernetes_version: The kubernetes version of the Cluster v2 (list maxitems:1)
@@ -383,7 +383,7 @@ class _ClusterV2State:
     @pulumi.getter(name="clusterAgentDeploymentCustomizations")
     def cluster_agent_deployment_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]]]:
         """
-        Optional customization for cluster agent
+        Optional customization for cluster agent (list)
         """
         return pulumi.get(self, "cluster_agent_deployment_customizations")
 
@@ -467,7 +467,7 @@ class _ClusterV2State:
     @pulumi.getter(name="fleetAgentDeploymentCustomizations")
     def fleet_agent_deployment_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]]]:
         """
-        Optional customization for fleet agent
+        Optional customization for fleet agent (list)
         """
         return pulumi.get(self, "fleet_agent_deployment_customizations")
 
@@ -594,25 +594,6 @@ class ClusterV2(pulumi.CustomResource):
                  rke_config: Optional[pulumi.Input[pulumi.InputType['ClusterV2RkeConfigArgs']]] = None,
                  __props__=None):
         """
-        Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is available from Rancher v2.6.0 and above.
-
-        ## Example Usage
-        ### Creating Rancher v2 custom cluster v2
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher v2 K3S custom Cluster v2
-        foo = rancher2.ClusterV2("foo",
-            default_cluster_role_for_project_members="user",
-            enable_network_policy=False,
-            fleet_namespace="fleet-ns",
-            kubernetes_version="v1.21.4+k3s1")
-        ```
-
-        **Note** Once created, get the node command from `rancher2_cluster_v2.foo.cluster_registration_token`
-
         ## Import
 
         Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
@@ -626,12 +607,12 @@ class ClusterV2(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterV2AgentEnvVarArgs']]]] agent_env_vars: Optional Agent Env Vars for Rancher agent (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster V2 (map)
         :param pulumi.Input[str] cloud_credential_secret_name: Cluster V2 cloud credential secret name (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterV2ClusterAgentDeploymentCustomizationArgs']]]] cluster_agent_deployment_customizations: Optional customization for cluster agent
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterV2ClusterAgentDeploymentCustomizationArgs']]]] cluster_agent_deployment_customizations: Optional customization for cluster agent (list)
         :param pulumi.Input[str] default_cluster_role_for_project_members: Cluster V2 default cluster role for project members (string)
         :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: Cluster V2 default pod security admission configuration template name (string)
         :param pulumi.Input[str] default_pod_security_policy_template_name: Cluster V2 default pod security policy template name (string)
         :param pulumi.Input[bool] enable_network_policy: Enable k8s network policy at Cluster V2 (bool)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterV2FleetAgentDeploymentCustomizationArgs']]]] fleet_agent_deployment_customizations: Optional customization for fleet agent
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterV2FleetAgentDeploymentCustomizationArgs']]]] fleet_agent_deployment_customizations: Optional customization for fleet agent (list)
         :param pulumi.Input[str] fleet_namespace: The fleet namespace of the Cluster v2. Default: `\\"fleet-default\\"` (string)
         :param pulumi.Input[str] kubernetes_version: The kubernetes version of the Cluster v2 (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster V2 (map)
@@ -646,25 +627,6 @@ class ClusterV2(pulumi.CustomResource):
                  args: ClusterV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is available from Rancher v2.6.0 and above.
-
-        ## Example Usage
-        ### Creating Rancher v2 custom cluster v2
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher v2 K3S custom Cluster v2
-        foo = rancher2.ClusterV2("foo",
-            default_cluster_role_for_project_members="user",
-            enable_network_policy=False,
-            fleet_namespace="fleet-ns",
-            kubernetes_version="v1.21.4+k3s1")
-        ```
-
-        **Note** Once created, get the node command from `rancher2_cluster_v2.foo.cluster_registration_token`
-
         ## Import
 
         Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
@@ -774,14 +736,14 @@ class ClusterV2(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterV2AgentEnvVarArgs']]]] agent_env_vars: Optional Agent Env Vars for Rancher agent (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster V2 (map)
         :param pulumi.Input[str] cloud_credential_secret_name: Cluster V2 cloud credential secret name (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterV2ClusterAgentDeploymentCustomizationArgs']]]] cluster_agent_deployment_customizations: Optional customization for cluster agent
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterV2ClusterAgentDeploymentCustomizationArgs']]]] cluster_agent_deployment_customizations: Optional customization for cluster agent (list)
         :param pulumi.Input[pulumi.InputType['ClusterV2ClusterRegistrationTokenArgs']] cluster_registration_token: (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
         :param pulumi.Input[str] cluster_v1_id: (Computed) Cluster v1 id for cluster v2. (e.g to be used with `rancher2_sync`) (string)
         :param pulumi.Input[str] default_cluster_role_for_project_members: Cluster V2 default cluster role for project members (string)
         :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: Cluster V2 default pod security admission configuration template name (string)
         :param pulumi.Input[str] default_pod_security_policy_template_name: Cluster V2 default pod security policy template name (string)
         :param pulumi.Input[bool] enable_network_policy: Enable k8s network policy at Cluster V2 (bool)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterV2FleetAgentDeploymentCustomizationArgs']]]] fleet_agent_deployment_customizations: Optional customization for fleet agent
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterV2FleetAgentDeploymentCustomizationArgs']]]] fleet_agent_deployment_customizations: Optional customization for fleet agent (list)
         :param pulumi.Input[str] fleet_namespace: The fleet namespace of the Cluster v2. Default: `\\"fleet-default\\"` (string)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         :param pulumi.Input[str] kubernetes_version: The kubernetes version of the Cluster v2 (list maxitems:1)
@@ -844,7 +806,7 @@ class ClusterV2(pulumi.CustomResource):
     @pulumi.getter(name="clusterAgentDeploymentCustomizations")
     def cluster_agent_deployment_customizations(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomization']]]:
         """
-        Optional customization for cluster agent
+        Optional customization for cluster agent (list)
         """
         return pulumi.get(self, "cluster_agent_deployment_customizations")
 
@@ -900,7 +862,7 @@ class ClusterV2(pulumi.CustomResource):
     @pulumi.getter(name="fleetAgentDeploymentCustomizations")
     def fleet_agent_deployment_customizations(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomization']]]:
         """
-        Optional customization for fleet agent
+        Optional customization for fleet agent (list)
         """
         return pulumi.get(self, "fleet_agent_deployment_customizations")
 

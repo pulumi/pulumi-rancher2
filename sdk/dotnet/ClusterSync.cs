@@ -143,7 +143,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
         /// 
-        /// **Note** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
+        /// **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
         /// </summary>
         [Output("stateConfirm")]
         public Output<int?> StateConfirm { get; private set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
         /// 
-        /// **Note** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
+        /// **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
         /// </summary>
         [Input("stateConfirm")]
         public Input<int>? StateConfirm { get; set; }
@@ -335,7 +335,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
         /// 
-        /// **Note** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
+        /// **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
         /// </summary>
         [Input("stateConfirm")]
         public Input<int>? StateConfirm { get; set; }

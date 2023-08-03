@@ -17,14 +17,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
     public static final ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs Empty = new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs();
 
     /**
-     * The taint key (string)
+     * The toleration key (string)
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The taint key (string)
+     * @return The toleration key (string)
      * 
      */
     public Optional<Output<String>> key() {
@@ -32,14 +32,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
     }
 
     /**
-     * Machine selector label match expressions operator (string)
+     * The toleration operator (string)
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return Machine selector label match expressions operator (string)
+     * @return The toleration operator (string)
      * 
      */
     public Optional<Output<String>> operator() {
@@ -88,7 +88,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param key The taint key (string)
+         * @param key The toleration key (string)
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param key The taint key (string)
+         * @param key The toleration key (string)
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param operator Machine selector label match expressions operator (string)
+         * @param operator The toleration operator (string)
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param operator Machine selector label match expressions operator (string)
+         * @param operator The toleration operator (string)
          * 
          * @return builder
          * 

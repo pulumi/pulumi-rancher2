@@ -129,7 +129,7 @@ export class CloudCredential extends pulumi.CustomResource {
      */
     public readonly openstackCredentialConfig!: pulumi.Output<outputs.CloudCredentialOpenstackCredentialConfig | undefined>;
     /**
-     * S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+     * S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
      */
     public readonly s3CredentialConfig!: pulumi.Output<outputs.CloudCredentialS3CredentialConfig | undefined>;
     /**
@@ -239,7 +239,7 @@ export interface CloudCredentialState {
      */
     openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig>;
     /**
-     * S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+     * S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
      */
     s3CredentialConfig?: pulumi.Input<inputs.CloudCredentialS3CredentialConfig>;
     /**
@@ -297,7 +297,7 @@ export interface CloudCredentialArgs {
      */
     openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig>;
     /**
-     * S3 config for the Cloud Credential. Just for Rancher 2.6.0 and above (list maxitems:1)
+     * S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
      */
     s3CredentialConfig?: pulumi.Input<inputs.CloudCredentialS3CredentialConfig>;
     /**

@@ -10,33 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2
 {
     /// <summary>
-    /// Provides a Rancher v2 Cluster v2 resource. This can be used to create RKE2 and K3S Clusters for Rancher v2 environments and retrieve their information. This resource is available from Rancher v2.6.0 and above.
-    /// 
-    /// ## Example Usage
-    /// ### Creating Rancher v2 custom cluster v2
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new rancher v2 K3S custom Cluster v2
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
-    ///     {
-    ///         DefaultClusterRoleForProjectMembers = "user",
-    ///         EnableNetworkPolicy = false,
-    ///         FleetNamespace = "fleet-ns",
-    ///         KubernetesVersion = "v1.21.4+k3s1",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// **Note** Once created, get the node command from `rancher2_cluster_v2.foo.cluster_registration_token`
-    /// 
     /// ## Import
     /// 
     /// Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &amp;lt;FLEET_NAMESPACE&amp;gt;/&amp;lt;CLUSTER_NAME&amp;gt;
@@ -67,7 +40,7 @@ namespace Pulumi.Rancher2
         public Output<string?> CloudCredentialSecretName { get; private set; } = null!;
 
         /// <summary>
-        /// Optional customization for cluster agent
+        /// Optional customization for cluster agent (list)
         /// </summary>
         [Output("clusterAgentDeploymentCustomizations")]
         public Output<ImmutableArray<Outputs.ClusterV2ClusterAgentDeploymentCustomization>> ClusterAgentDeploymentCustomizations { get; private set; } = null!;
@@ -109,7 +82,7 @@ namespace Pulumi.Rancher2
         public Output<bool> EnableNetworkPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Optional customization for fleet agent
+        /// Optional customization for fleet agent (list)
         /// </summary>
         [Output("fleetAgentDeploymentCustomizations")]
         public Output<ImmutableArray<Outputs.ClusterV2FleetAgentDeploymentCustomization>> FleetAgentDeploymentCustomizations { get; private set; } = null!;
@@ -247,7 +220,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs>? _clusterAgentDeploymentCustomizations;
 
         /// <summary>
-        /// Optional customization for cluster agent
+        /// Optional customization for cluster agent (list)
         /// </summary>
         public InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs> ClusterAgentDeploymentCustomizations
         {
@@ -283,7 +256,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationArgs>? _fleetAgentDeploymentCustomizations;
 
         /// <summary>
-        /// Optional customization for fleet agent
+        /// Optional customization for fleet agent (list)
         /// </summary>
         public InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationArgs> FleetAgentDeploymentCustomizations
         {
@@ -375,7 +348,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationGetArgs>? _clusterAgentDeploymentCustomizations;
 
         /// <summary>
-        /// Optional customization for cluster agent
+        /// Optional customization for cluster agent (list)
         /// </summary>
         public InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationGetArgs> ClusterAgentDeploymentCustomizations
         {
@@ -433,7 +406,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationGetArgs>? _fleetAgentDeploymentCustomizations;
 
         /// <summary>
-        /// Optional customization for fleet agent
+        /// Optional customization for fleet agent (list)
         /// </summary>
         public InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationGetArgs> FleetAgentDeploymentCustomizations
         {

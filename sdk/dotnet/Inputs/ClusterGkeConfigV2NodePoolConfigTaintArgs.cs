@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigV2NodePoolConfigTaintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
+        /// The toleration effect. Default: `\"NoSchedule\"` (string)
         /// </summary>
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;

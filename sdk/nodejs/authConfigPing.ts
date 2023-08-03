@@ -76,6 +76,9 @@ export class AuthConfigPing extends pulumi.CustomResource {
      * Enable auth config provider. Default `true` (bool)
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Ping entity ID field (string)
+     */
     public readonly entityIdField!: pulumi.Output<string | undefined>;
     /**
      * Ping group field (string)
@@ -221,6 +224,9 @@ export interface AuthConfigPingState {
      * Enable auth config provider. Default `true` (bool)
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Ping entity ID field (string)
+     */
     entityIdField?: pulumi.Input<string>;
     /**
      * Ping group field (string)
@@ -288,6 +294,9 @@ export interface AuthConfigPingArgs {
      * Enable auth config provider. Default `true` (bool)
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Ping entity ID field (string)
+     */
     entityIdField?: pulumi.Input<string>;
     /**
      * Ping group field (string)

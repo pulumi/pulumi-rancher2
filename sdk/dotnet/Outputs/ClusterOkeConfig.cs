@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? EnableKubernetesDashboard;
         /// <summary>
-        /// Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` Just for Rancher v2.5.10 or above (bool)
+        /// Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
         /// </summary>
         public readonly bool? EnablePrivateControlPlane;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? FlexOcpus;
         /// <summary>
-        /// The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. Just for Rancher v2.5.9 or above (string)
+        /// The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
         /// </summary>
         public readonly string? KmsKeyId;
         /// <summary>

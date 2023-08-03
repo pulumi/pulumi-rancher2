@@ -29,7 +29,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterResult {
     /**
-     * @return (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     * @return (Computed) Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
      * 
      */
     private List<String> agentEnvVars;
@@ -115,7 +115,7 @@ public final class GetClusterResult {
      */
     private GetClusterEksConfig eksConfig;
     /**
-     * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+     * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     private GetClusterEksConfigV2 eksConfigV2;
@@ -141,7 +141,7 @@ public final class GetClusterResult {
      */
     private GetClusterGkeConfig gkeConfig;
     /**
-     * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+     * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     private GetClusterGkeConfigV2 gkeConfigV2;
@@ -189,7 +189,7 @@ public final class GetClusterResult {
 
     private GetClusterResult() {}
     /**
-     * @return (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     * @return (Computed) Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
      * 
      */
     public List<String> agentEnvVars() {
@@ -311,7 +311,7 @@ public final class GetClusterResult {
         return this.eksConfig;
     }
     /**
-     * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+     * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     public GetClusterEksConfigV2 eksConfigV2() {
@@ -349,7 +349,7 @@ public final class GetClusterResult {
         return this.gkeConfig;
     }
     /**
-     * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+     * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     public GetClusterGkeConfigV2 gkeConfigV2() {

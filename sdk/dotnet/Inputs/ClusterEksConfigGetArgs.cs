@@ -41,7 +41,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? AssociateWorkerNodePublicIp { get; set; }
 
         /// <summary>
-        /// The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+        /// The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
         /// </summary>
         [Input("desiredNodes")]
         public Input<int>? DesiredNodes { get; set; }
@@ -56,7 +56,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+        /// Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
