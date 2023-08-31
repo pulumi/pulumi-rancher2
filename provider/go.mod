@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-rancher2/provider/v5
 
-go 1.20
+go 1.21
 
 replace (
 	github.com/crewjam/saml => github.com/crewjam/saml v0.4.1
