@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
@@ -287,6 +288,12 @@ func (i *ClusterAlertRule) ToClusterAlertRuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleOutput)
 }
 
+func (i *ClusterAlertRule) ToOutput(ctx context.Context) pulumix.Output[*ClusterAlertRule] {
+	return pulumix.Output[*ClusterAlertRule]{
+		OutputState: i.ToClusterAlertRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterAlertRuleArrayInput is an input type that accepts ClusterAlertRuleArray and ClusterAlertRuleArrayOutput values.
 // You can construct a concrete instance of `ClusterAlertRuleArrayInput` via:
 //
@@ -310,6 +317,12 @@ func (i ClusterAlertRuleArray) ToClusterAlertRuleArrayOutput() ClusterAlertRuleA
 
 func (i ClusterAlertRuleArray) ToClusterAlertRuleArrayOutputWithContext(ctx context.Context) ClusterAlertRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleArrayOutput)
+}
+
+func (i ClusterAlertRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterAlertRule] {
+	return pulumix.Output[[]*ClusterAlertRule]{
+		OutputState: i.ToClusterAlertRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ClusterAlertRuleMapInput is an input type that accepts ClusterAlertRuleMap and ClusterAlertRuleMapOutput values.
@@ -337,6 +350,12 @@ func (i ClusterAlertRuleMap) ToClusterAlertRuleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleMapOutput)
 }
 
+func (i ClusterAlertRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterAlertRule] {
+	return pulumix.Output[map[string]*ClusterAlertRule]{
+		OutputState: i.ToClusterAlertRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClusterAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlertRuleOutput) ElementType() reflect.Type {
@@ -349,6 +368,12 @@ func (o ClusterAlertRuleOutput) ToClusterAlertRuleOutput() ClusterAlertRuleOutpu
 
 func (o ClusterAlertRuleOutput) ToClusterAlertRuleOutputWithContext(ctx context.Context) ClusterAlertRuleOutput {
 	return o
+}
+
+func (o ClusterAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterAlertRule] {
+	return pulumix.Output[*ClusterAlertRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The cluster alert rule annotations (map)
@@ -435,6 +460,12 @@ func (o ClusterAlertRuleArrayOutput) ToClusterAlertRuleArrayOutputWithContext(ct
 	return o
 }
 
+func (o ClusterAlertRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterAlertRule] {
+	return pulumix.Output[[]*ClusterAlertRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClusterAlertRuleArrayOutput) Index(i pulumi.IntInput) ClusterAlertRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterAlertRule {
 		return vs[0].([]*ClusterAlertRule)[vs[1].(int)]
@@ -453,6 +484,12 @@ func (o ClusterAlertRuleMapOutput) ToClusterAlertRuleMapOutput() ClusterAlertRul
 
 func (o ClusterAlertRuleMapOutput) ToClusterAlertRuleMapOutputWithContext(ctx context.Context) ClusterAlertRuleMapOutput {
 	return o
+}
+
+func (o ClusterAlertRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterAlertRule] {
+	return pulumix.Output[map[string]*ClusterAlertRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterAlertRuleMapOutput) MapIndex(k pulumi.StringInput) ClusterAlertRuleOutput {

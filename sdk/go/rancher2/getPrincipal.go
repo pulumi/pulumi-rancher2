@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 Principal resource.
@@ -102,6 +103,12 @@ func (o GetPrincipalResultOutput) ToGetPrincipalResultOutput() GetPrincipalResul
 
 func (o GetPrincipalResultOutput) ToGetPrincipalResultOutputWithContext(ctx context.Context) GetPrincipalResultOutput {
 	return o
+}
+
+func (o GetPrincipalResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrincipalResult] {
+	return pulumix.Output[GetPrincipalResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

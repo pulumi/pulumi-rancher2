@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
@@ -300,6 +301,12 @@ func (i *CloudCredential) ToCloudCredentialOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CloudCredentialOutput)
 }
 
+func (i *CloudCredential) ToOutput(ctx context.Context) pulumix.Output[*CloudCredential] {
+	return pulumix.Output[*CloudCredential]{
+		OutputState: i.ToCloudCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CloudCredentialArrayInput is an input type that accepts CloudCredentialArray and CloudCredentialArrayOutput values.
 // You can construct a concrete instance of `CloudCredentialArrayInput` via:
 //
@@ -323,6 +330,12 @@ func (i CloudCredentialArray) ToCloudCredentialArrayOutput() CloudCredentialArra
 
 func (i CloudCredentialArray) ToCloudCredentialArrayOutputWithContext(ctx context.Context) CloudCredentialArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudCredentialArrayOutput)
+}
+
+func (i CloudCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]*CloudCredential] {
+	return pulumix.Output[[]*CloudCredential]{
+		OutputState: i.ToCloudCredentialArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CloudCredentialMapInput is an input type that accepts CloudCredentialMap and CloudCredentialMapOutput values.
@@ -350,6 +363,12 @@ func (i CloudCredentialMap) ToCloudCredentialMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CloudCredentialMapOutput)
 }
 
+func (i CloudCredentialMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudCredential] {
+	return pulumix.Output[map[string]*CloudCredential]{
+		OutputState: i.ToCloudCredentialMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CloudCredentialOutput struct{ *pulumi.OutputState }
 
 func (CloudCredentialOutput) ElementType() reflect.Type {
@@ -362,6 +381,12 @@ func (o CloudCredentialOutput) ToCloudCredentialOutput() CloudCredentialOutput {
 
 func (o CloudCredentialOutput) ToCloudCredentialOutputWithContext(ctx context.Context) CloudCredentialOutput {
 	return o
+}
+
+func (o CloudCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudCredential] {
+	return pulumix.Output[*CloudCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AWS config for the Cloud Credential (list maxitems:1)
@@ -462,6 +487,12 @@ func (o CloudCredentialArrayOutput) ToCloudCredentialArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o CloudCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CloudCredential] {
+	return pulumix.Output[[]*CloudCredential]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudCredentialArrayOutput) Index(i pulumi.IntInput) CloudCredentialOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CloudCredential {
 		return vs[0].([]*CloudCredential)[vs[1].(int)]
@@ -480,6 +511,12 @@ func (o CloudCredentialMapOutput) ToCloudCredentialMapOutput() CloudCredentialMa
 
 func (o CloudCredentialMapOutput) ToCloudCredentialMapOutputWithContext(ctx context.Context) CloudCredentialMapOutput {
 	return o
+}
+
+func (o CloudCredentialMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudCredential] {
+	return pulumix.Output[map[string]*CloudCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudCredentialMapOutput) MapIndex(k pulumi.StringInput) CloudCredentialOutput {

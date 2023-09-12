@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Token resource, specifically to create tokens for custom users (i.e. not the 'admin' user configured with the provider config). Custom user tokens can f.e. be used as service account tokens with the Rancher v2 API having limited permissions. To create a custom user token the username/password for the Rancher User must be known.
@@ -301,6 +302,12 @@ func (i *CustomUserToken) ToCustomUserTokenOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CustomUserTokenOutput)
 }
 
+func (i *CustomUserToken) ToOutput(ctx context.Context) pulumix.Output[*CustomUserToken] {
+	return pulumix.Output[*CustomUserToken]{
+		OutputState: i.ToCustomUserTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomUserTokenArrayInput is an input type that accepts CustomUserTokenArray and CustomUserTokenArrayOutput values.
 // You can construct a concrete instance of `CustomUserTokenArrayInput` via:
 //
@@ -324,6 +331,12 @@ func (i CustomUserTokenArray) ToCustomUserTokenArrayOutput() CustomUserTokenArra
 
 func (i CustomUserTokenArray) ToCustomUserTokenArrayOutputWithContext(ctx context.Context) CustomUserTokenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomUserTokenArrayOutput)
+}
+
+func (i CustomUserTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomUserToken] {
+	return pulumix.Output[[]*CustomUserToken]{
+		OutputState: i.ToCustomUserTokenArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CustomUserTokenMapInput is an input type that accepts CustomUserTokenMap and CustomUserTokenMapOutput values.
@@ -351,6 +364,12 @@ func (i CustomUserTokenMap) ToCustomUserTokenMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CustomUserTokenMapOutput)
 }
 
+func (i CustomUserTokenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomUserToken] {
+	return pulumix.Output[map[string]*CustomUserToken]{
+		OutputState: i.ToCustomUserTokenMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomUserTokenOutput struct{ *pulumi.OutputState }
 
 func (CustomUserTokenOutput) ElementType() reflect.Type {
@@ -363,6 +382,12 @@ func (o CustomUserTokenOutput) ToCustomUserTokenOutput() CustomUserTokenOutput {
 
 func (o CustomUserTokenOutput) ToCustomUserTokenOutputWithContext(ctx context.Context) CustomUserTokenOutput {
 	return o
+}
+
+func (o CustomUserTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomUserToken] {
+	return pulumix.Output[*CustomUserToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) Token access key part (string)
@@ -466,6 +491,12 @@ func (o CustomUserTokenArrayOutput) ToCustomUserTokenArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o CustomUserTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomUserToken] {
+	return pulumix.Output[[]*CustomUserToken]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomUserTokenArrayOutput) Index(i pulumi.IntInput) CustomUserTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomUserToken {
 		return vs[0].([]*CustomUserToken)[vs[1].(int)]
@@ -484,6 +515,12 @@ func (o CustomUserTokenMapOutput) ToCustomUserTokenMapOutput() CustomUserTokenMa
 
 func (o CustomUserTokenMapOutput) ToCustomUserTokenMapOutputWithContext(ctx context.Context) CustomUserTokenMapOutput {
 	return o
+}
+
+func (o CustomUserTokenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomUserToken] {
+	return pulumix.Output[map[string]*CustomUserToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomUserTokenMapOutput) MapIndex(k pulumi.StringInput) CustomUserTokenOutput {

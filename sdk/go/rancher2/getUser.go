@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 user
@@ -116,6 +117,12 @@ func (o LookupUserResultOutput) ToLookupUserResultOutput() LookupUserResultOutpu
 
 func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.Context) LookupUserResultOutput {
 	return o
+}
+
+func (o LookupUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupUserResult] {
+	return pulumix.Output[LookupUserResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) Annotations of the resource (map)

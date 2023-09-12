@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -286,6 +287,12 @@ func (i *ClusterSync) ToClusterSyncOutputWithContext(ctx context.Context) Cluste
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncOutput)
 }
 
+func (i *ClusterSync) ToOutput(ctx context.Context) pulumix.Output[*ClusterSync] {
+	return pulumix.Output[*ClusterSync]{
+		OutputState: i.ToClusterSyncOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterSyncArrayInput is an input type that accepts ClusterSyncArray and ClusterSyncArrayOutput values.
 // You can construct a concrete instance of `ClusterSyncArrayInput` via:
 //
@@ -309,6 +316,12 @@ func (i ClusterSyncArray) ToClusterSyncArrayOutput() ClusterSyncArrayOutput {
 
 func (i ClusterSyncArray) ToClusterSyncArrayOutputWithContext(ctx context.Context) ClusterSyncArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncArrayOutput)
+}
+
+func (i ClusterSyncArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterSync] {
+	return pulumix.Output[[]*ClusterSync]{
+		OutputState: i.ToClusterSyncArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ClusterSyncMapInput is an input type that accepts ClusterSyncMap and ClusterSyncMapOutput values.
@@ -336,6 +349,12 @@ func (i ClusterSyncMap) ToClusterSyncMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncMapOutput)
 }
 
+func (i ClusterSyncMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterSync] {
+	return pulumix.Output[map[string]*ClusterSync]{
+		OutputState: i.ToClusterSyncMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClusterSyncOutput struct{ *pulumi.OutputState }
 
 func (ClusterSyncOutput) ElementType() reflect.Type {
@@ -348,6 +367,12 @@ func (o ClusterSyncOutput) ToClusterSyncOutput() ClusterSyncOutput {
 
 func (o ClusterSyncOutput) ToClusterSyncOutputWithContext(ctx context.Context) ClusterSyncOutput {
 	return o
+}
+
+func (o ClusterSyncOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterSync] {
+	return pulumix.Output[*ClusterSync]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The cluster ID that is syncing (string)
@@ -420,6 +445,12 @@ func (o ClusterSyncArrayOutput) ToClusterSyncArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o ClusterSyncArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterSync] {
+	return pulumix.Output[[]*ClusterSync]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClusterSyncArrayOutput) Index(i pulumi.IntInput) ClusterSyncOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterSync {
 		return vs[0].([]*ClusterSync)[vs[1].(int)]
@@ -438,6 +469,12 @@ func (o ClusterSyncMapOutput) ToClusterSyncMapOutput() ClusterSyncMapOutput {
 
 func (o ClusterSyncMapOutput) ToClusterSyncMapOutputWithContext(ctx context.Context) ClusterSyncMapOutput {
 	return o
+}
+
+func (o ClusterSyncMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterSync] {
+	return pulumix.Output[map[string]*ClusterSync]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterSyncMapOutput) MapIndex(k pulumi.StringInput) ClusterSyncOutput {

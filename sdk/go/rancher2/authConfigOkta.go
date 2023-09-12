@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Auth Config OKTA resource. This can be used to configure and enable Auth Config OKTA for Rancher v2 RKE clusters and retrieve their information.
@@ -303,6 +304,12 @@ func (i *AuthConfigOkta) ToAuthConfigOktaOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaOutput)
 }
 
+func (i *AuthConfigOkta) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigOkta] {
+	return pulumix.Output[*AuthConfigOkta]{
+		OutputState: i.ToAuthConfigOktaOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuthConfigOktaArrayInput is an input type that accepts AuthConfigOktaArray and AuthConfigOktaArrayOutput values.
 // You can construct a concrete instance of `AuthConfigOktaArrayInput` via:
 //
@@ -326,6 +333,12 @@ func (i AuthConfigOktaArray) ToAuthConfigOktaArrayOutput() AuthConfigOktaArrayOu
 
 func (i AuthConfigOktaArray) ToAuthConfigOktaArrayOutputWithContext(ctx context.Context) AuthConfigOktaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaArrayOutput)
+}
+
+func (i AuthConfigOktaArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigOkta] {
+	return pulumix.Output[[]*AuthConfigOkta]{
+		OutputState: i.ToAuthConfigOktaArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuthConfigOktaMapInput is an input type that accepts AuthConfigOktaMap and AuthConfigOktaMapOutput values.
@@ -353,6 +366,12 @@ func (i AuthConfigOktaMap) ToAuthConfigOktaMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaMapOutput)
 }
 
+func (i AuthConfigOktaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigOkta] {
+	return pulumix.Output[map[string]*AuthConfigOkta]{
+		OutputState: i.ToAuthConfigOktaMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthConfigOktaOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigOktaOutput) ElementType() reflect.Type {
@@ -365,6 +384,12 @@ func (o AuthConfigOktaOutput) ToAuthConfigOktaOutput() AuthConfigOktaOutput {
 
 func (o AuthConfigOktaOutput) ToAuthConfigOktaOutputWithContext(ctx context.Context) AuthConfigOktaOutput {
 	return o
+}
+
+func (o AuthConfigOktaOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigOkta] {
+	return pulumix.Output[*AuthConfigOkta]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -456,6 +481,12 @@ func (o AuthConfigOktaArrayOutput) ToAuthConfigOktaArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o AuthConfigOktaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigOkta] {
+	return pulumix.Output[[]*AuthConfigOkta]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthConfigOktaArrayOutput) Index(i pulumi.IntInput) AuthConfigOktaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigOkta {
 		return vs[0].([]*AuthConfigOkta)[vs[1].(int)]
@@ -474,6 +505,12 @@ func (o AuthConfigOktaMapOutput) ToAuthConfigOktaMapOutput() AuthConfigOktaMapOu
 
 func (o AuthConfigOktaMapOutput) ToAuthConfigOktaMapOutputWithContext(ctx context.Context) AuthConfigOktaMapOutput {
 	return o
+}
+
+func (o AuthConfigOktaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigOkta] {
+	return pulumix.Output[map[string]*AuthConfigOkta]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthConfigOktaMapOutput) MapIndex(k pulumi.StringInput) AuthConfigOktaOutput {

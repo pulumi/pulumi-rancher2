@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Auth Config ActiveDirectory resource. This can be used to configure and enable Auth Config ActiveDirectory for Rancher v2 RKE clusters and retrieve their information.
@@ -474,6 +475,12 @@ func (i *AuthConfigActiveDirectory) ToAuthConfigActiveDirectoryOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigActiveDirectoryOutput)
 }
 
+func (i *AuthConfigActiveDirectory) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigActiveDirectory] {
+	return pulumix.Output[*AuthConfigActiveDirectory]{
+		OutputState: i.ToAuthConfigActiveDirectoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuthConfigActiveDirectoryArrayInput is an input type that accepts AuthConfigActiveDirectoryArray and AuthConfigActiveDirectoryArrayOutput values.
 // You can construct a concrete instance of `AuthConfigActiveDirectoryArrayInput` via:
 //
@@ -497,6 +504,12 @@ func (i AuthConfigActiveDirectoryArray) ToAuthConfigActiveDirectoryArrayOutput()
 
 func (i AuthConfigActiveDirectoryArray) ToAuthConfigActiveDirectoryArrayOutputWithContext(ctx context.Context) AuthConfigActiveDirectoryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigActiveDirectoryArrayOutput)
+}
+
+func (i AuthConfigActiveDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigActiveDirectory] {
+	return pulumix.Output[[]*AuthConfigActiveDirectory]{
+		OutputState: i.ToAuthConfigActiveDirectoryArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuthConfigActiveDirectoryMapInput is an input type that accepts AuthConfigActiveDirectoryMap and AuthConfigActiveDirectoryMapOutput values.
@@ -524,6 +537,12 @@ func (i AuthConfigActiveDirectoryMap) ToAuthConfigActiveDirectoryMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigActiveDirectoryMapOutput)
 }
 
+func (i AuthConfigActiveDirectoryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigActiveDirectory] {
+	return pulumix.Output[map[string]*AuthConfigActiveDirectory]{
+		OutputState: i.ToAuthConfigActiveDirectoryMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthConfigActiveDirectoryOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigActiveDirectoryOutput) ElementType() reflect.Type {
@@ -536,6 +555,12 @@ func (o AuthConfigActiveDirectoryOutput) ToAuthConfigActiveDirectoryOutput() Aut
 
 func (o AuthConfigActiveDirectoryOutput) ToAuthConfigActiveDirectoryOutputWithContext(ctx context.Context) AuthConfigActiveDirectoryOutput {
 	return o
+}
+
+func (o AuthConfigActiveDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigActiveDirectory] {
+	return pulumix.Output[*AuthConfigActiveDirectory]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -727,6 +752,12 @@ func (o AuthConfigActiveDirectoryArrayOutput) ToAuthConfigActiveDirectoryArrayOu
 	return o
 }
 
+func (o AuthConfigActiveDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigActiveDirectory] {
+	return pulumix.Output[[]*AuthConfigActiveDirectory]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthConfigActiveDirectoryArrayOutput) Index(i pulumi.IntInput) AuthConfigActiveDirectoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigActiveDirectory {
 		return vs[0].([]*AuthConfigActiveDirectory)[vs[1].(int)]
@@ -745,6 +776,12 @@ func (o AuthConfigActiveDirectoryMapOutput) ToAuthConfigActiveDirectoryMapOutput
 
 func (o AuthConfigActiveDirectoryMapOutput) ToAuthConfigActiveDirectoryMapOutputWithContext(ctx context.Context) AuthConfigActiveDirectoryMapOutput {
 	return o
+}
+
+func (o AuthConfigActiveDirectoryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigActiveDirectory] {
+	return pulumix.Output[map[string]*AuthConfigActiveDirectory]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthConfigActiveDirectoryMapOutput) MapIndex(k pulumi.StringInput) AuthConfigActiveDirectoryOutput {

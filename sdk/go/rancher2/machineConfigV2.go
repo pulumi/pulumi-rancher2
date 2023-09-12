@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Machine config v2 resource. This can be used to create Machine Config v2 for Rancher v2 and retrieve their information. This resource is available from Rancher v2.6.0 and above.
@@ -309,6 +310,12 @@ func (i *MachineConfigV2) ToMachineConfigV2OutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigV2Output)
 }
 
+func (i *MachineConfigV2) ToOutput(ctx context.Context) pulumix.Output[*MachineConfigV2] {
+	return pulumix.Output[*MachineConfigV2]{
+		OutputState: i.ToMachineConfigV2OutputWithContext(ctx).OutputState,
+	}
+}
+
 // MachineConfigV2ArrayInput is an input type that accepts MachineConfigV2Array and MachineConfigV2ArrayOutput values.
 // You can construct a concrete instance of `MachineConfigV2ArrayInput` via:
 //
@@ -332,6 +339,12 @@ func (i MachineConfigV2Array) ToMachineConfigV2ArrayOutput() MachineConfigV2Arra
 
 func (i MachineConfigV2Array) ToMachineConfigV2ArrayOutputWithContext(ctx context.Context) MachineConfigV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigV2ArrayOutput)
+}
+
+func (i MachineConfigV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*MachineConfigV2] {
+	return pulumix.Output[[]*MachineConfigV2]{
+		OutputState: i.ToMachineConfigV2ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MachineConfigV2MapInput is an input type that accepts MachineConfigV2Map and MachineConfigV2MapOutput values.
@@ -359,6 +372,12 @@ func (i MachineConfigV2Map) ToMachineConfigV2MapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigV2MapOutput)
 }
 
+func (i MachineConfigV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*MachineConfigV2] {
+	return pulumix.Output[map[string]*MachineConfigV2]{
+		OutputState: i.ToMachineConfigV2MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MachineConfigV2Output struct{ *pulumi.OutputState }
 
 func (MachineConfigV2Output) ElementType() reflect.Type {
@@ -371,6 +390,12 @@ func (o MachineConfigV2Output) ToMachineConfigV2Output() MachineConfigV2Output {
 
 func (o MachineConfigV2Output) ToMachineConfigV2OutputWithContext(ctx context.Context) MachineConfigV2Output {
 	return o
+}
+
+func (o MachineConfigV2Output) ToOutput(ctx context.Context) pulumix.Output[*MachineConfigV2] {
+	return pulumix.Output[*MachineConfigV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
@@ -459,6 +484,12 @@ func (o MachineConfigV2ArrayOutput) ToMachineConfigV2ArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o MachineConfigV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MachineConfigV2] {
+	return pulumix.Output[[]*MachineConfigV2]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MachineConfigV2ArrayOutput) Index(i pulumi.IntInput) MachineConfigV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MachineConfigV2 {
 		return vs[0].([]*MachineConfigV2)[vs[1].(int)]
@@ -477,6 +508,12 @@ func (o MachineConfigV2MapOutput) ToMachineConfigV2MapOutput() MachineConfigV2Ma
 
 func (o MachineConfigV2MapOutput) ToMachineConfigV2MapOutputWithContext(ctx context.Context) MachineConfigV2MapOutput {
 	return o
+}
+
+func (o MachineConfigV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MachineConfigV2] {
+	return pulumix.Output[map[string]*MachineConfigV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachineConfigV2MapOutput) MapIndex(k pulumi.StringInput) MachineConfigV2Output {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
@@ -505,6 +506,12 @@ func (i *PodSecurityPolicyTemplate) ToPodSecurityPolicyTemplateOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateOutput)
 }
 
+func (i *PodSecurityPolicyTemplate) ToOutput(ctx context.Context) pulumix.Output[*PodSecurityPolicyTemplate] {
+	return pulumix.Output[*PodSecurityPolicyTemplate]{
+		OutputState: i.ToPodSecurityPolicyTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PodSecurityPolicyTemplateArrayInput is an input type that accepts PodSecurityPolicyTemplateArray and PodSecurityPolicyTemplateArrayOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateArrayInput` via:
 //
@@ -528,6 +535,12 @@ func (i PodSecurityPolicyTemplateArray) ToPodSecurityPolicyTemplateArrayOutput()
 
 func (i PodSecurityPolicyTemplateArray) ToPodSecurityPolicyTemplateArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateArrayOutput)
+}
+
+func (i PodSecurityPolicyTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*PodSecurityPolicyTemplate] {
+	return pulumix.Output[[]*PodSecurityPolicyTemplate]{
+		OutputState: i.ToPodSecurityPolicyTemplateArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PodSecurityPolicyTemplateMapInput is an input type that accepts PodSecurityPolicyTemplateMap and PodSecurityPolicyTemplateMapOutput values.
@@ -555,6 +568,12 @@ func (i PodSecurityPolicyTemplateMap) ToPodSecurityPolicyTemplateMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateMapOutput)
 }
 
+func (i PodSecurityPolicyTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PodSecurityPolicyTemplate] {
+	return pulumix.Output[map[string]*PodSecurityPolicyTemplate]{
+		OutputState: i.ToPodSecurityPolicyTemplateMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PodSecurityPolicyTemplateOutput struct{ *pulumi.OutputState }
 
 func (PodSecurityPolicyTemplateOutput) ElementType() reflect.Type {
@@ -567,6 +586,12 @@ func (o PodSecurityPolicyTemplateOutput) ToPodSecurityPolicyTemplateOutput() Pod
 
 func (o PodSecurityPolicyTemplateOutput) ToPodSecurityPolicyTemplateOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateOutput {
 	return o
+}
+
+func (o PodSecurityPolicyTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*PodSecurityPolicyTemplate] {
+	return pulumix.Output[*PodSecurityPolicyTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // = (Optional)
@@ -733,6 +758,12 @@ func (o PodSecurityPolicyTemplateArrayOutput) ToPodSecurityPolicyTemplateArrayOu
 	return o
 }
 
+func (o PodSecurityPolicyTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PodSecurityPolicyTemplate] {
+	return pulumix.Output[[]*PodSecurityPolicyTemplate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PodSecurityPolicyTemplateArrayOutput) Index(i pulumi.IntInput) PodSecurityPolicyTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PodSecurityPolicyTemplate {
 		return vs[0].([]*PodSecurityPolicyTemplate)[vs[1].(int)]
@@ -751,6 +782,12 @@ func (o PodSecurityPolicyTemplateMapOutput) ToPodSecurityPolicyTemplateMapOutput
 
 func (o PodSecurityPolicyTemplateMapOutput) ToPodSecurityPolicyTemplateMapOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateMapOutput {
 	return o
+}
+
+func (o PodSecurityPolicyTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PodSecurityPolicyTemplate] {
+	return pulumix.Output[map[string]*PodSecurityPolicyTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PodSecurityPolicyTemplateMapOutput) MapIndex(k pulumi.StringInput) PodSecurityPolicyTemplateOutput {

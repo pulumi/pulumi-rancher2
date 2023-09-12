@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 multiClusterApp resource. This can be used to deploy multiClusterApp on Rancher v2.
@@ -355,6 +356,12 @@ func (i *MultiClusterApp) ToMultiClusterAppOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterAppOutput)
 }
 
+func (i *MultiClusterApp) ToOutput(ctx context.Context) pulumix.Output[*MultiClusterApp] {
+	return pulumix.Output[*MultiClusterApp]{
+		OutputState: i.ToMultiClusterAppOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MultiClusterAppArrayInput is an input type that accepts MultiClusterAppArray and MultiClusterAppArrayOutput values.
 // You can construct a concrete instance of `MultiClusterAppArrayInput` via:
 //
@@ -378,6 +385,12 @@ func (i MultiClusterAppArray) ToMultiClusterAppArrayOutput() MultiClusterAppArra
 
 func (i MultiClusterAppArray) ToMultiClusterAppArrayOutputWithContext(ctx context.Context) MultiClusterAppArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterAppArrayOutput)
+}
+
+func (i MultiClusterAppArray) ToOutput(ctx context.Context) pulumix.Output[[]*MultiClusterApp] {
+	return pulumix.Output[[]*MultiClusterApp]{
+		OutputState: i.ToMultiClusterAppArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MultiClusterAppMapInput is an input type that accepts MultiClusterAppMap and MultiClusterAppMapOutput values.
@@ -405,6 +418,12 @@ func (i MultiClusterAppMap) ToMultiClusterAppMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterAppMapOutput)
 }
 
+func (i MultiClusterAppMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MultiClusterApp] {
+	return pulumix.Output[map[string]*MultiClusterApp]{
+		OutputState: i.ToMultiClusterAppMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MultiClusterAppOutput struct{ *pulumi.OutputState }
 
 func (MultiClusterAppOutput) ElementType() reflect.Type {
@@ -417,6 +436,12 @@ func (o MultiClusterAppOutput) ToMultiClusterAppOutput() MultiClusterAppOutput {
 
 func (o MultiClusterAppOutput) ToMultiClusterAppOutputWithContext(ctx context.Context) MultiClusterAppOutput {
 	return o
+}
+
+func (o MultiClusterAppOutput) ToOutput(ctx context.Context) pulumix.Output[*MultiClusterApp] {
+	return pulumix.Output[*MultiClusterApp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Annotations for multi cluster app object (map)
@@ -508,6 +533,12 @@ func (o MultiClusterAppArrayOutput) ToMultiClusterAppArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o MultiClusterAppArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MultiClusterApp] {
+	return pulumix.Output[[]*MultiClusterApp]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MultiClusterAppArrayOutput) Index(i pulumi.IntInput) MultiClusterAppOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MultiClusterApp {
 		return vs[0].([]*MultiClusterApp)[vs[1].(int)]
@@ -526,6 +557,12 @@ func (o MultiClusterAppMapOutput) ToMultiClusterAppMapOutput() MultiClusterAppMa
 
 func (o MultiClusterAppMapOutput) ToMultiClusterAppMapOutputWithContext(ctx context.Context) MultiClusterAppMapOutput {
 	return o
+}
+
+func (o MultiClusterAppMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MultiClusterApp] {
+	return pulumix.Output[map[string]*MultiClusterApp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MultiClusterAppMapOutput) MapIndex(k pulumi.StringInput) MultiClusterAppOutput {

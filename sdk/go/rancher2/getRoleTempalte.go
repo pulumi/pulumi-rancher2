@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 role template resource.
@@ -126,6 +127,12 @@ func (o LookupRoleTempalteResultOutput) ToLookupRoleTempalteResultOutput() Looku
 
 func (o LookupRoleTempalteResultOutput) ToLookupRoleTempalteResultOutputWithContext(ctx context.Context) LookupRoleTempalteResultOutput {
 	return o
+}
+
+func (o LookupRoleTempalteResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRoleTempalteResult] {
+	return pulumix.Output[LookupRoleTempalteResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) Administrative role template (bool)

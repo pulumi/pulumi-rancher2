@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 setting.
@@ -99,6 +100,12 @@ func (o LookupSettingResultOutput) ToLookupSettingResultOutput() LookupSettingRe
 
 func (o LookupSettingResultOutput) ToLookupSettingResultOutputWithContext(ctx context.Context) LookupSettingResultOutput {
 	return o
+}
+
+func (o LookupSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSettingResult] {
+	return pulumix.Output[LookupSettingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

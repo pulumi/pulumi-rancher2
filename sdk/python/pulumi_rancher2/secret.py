@@ -276,7 +276,6 @@ class Secret(pulumi.CustomResource):
         ```sh
          $ pulumi import rancher2:index/secret:Secret foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;
         ```
-
          `<namespace_id>` is optional, just needed for namespaced secret.
 
         :param str resource_name: The name of the resource.
@@ -309,7 +308,6 @@ class Secret(pulumi.CustomResource):
         ```sh
          $ pulumi import rancher2:index/secret:Secret foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;
         ```
-
          `<namespace_id>` is optional, just needed for namespaced secret.
 
         :param str resource_name: The name of the resource.

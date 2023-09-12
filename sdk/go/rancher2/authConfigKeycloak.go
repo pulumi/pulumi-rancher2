@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Auth Config KeyCloak resource. This can be used to configure and enable Auth Config KeyCloak for Rancher v2 RKE clusters and retrieve their information.
@@ -313,6 +314,12 @@ func (i *AuthConfigKeycloak) ToAuthConfigKeycloakOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigKeycloakOutput)
 }
 
+func (i *AuthConfigKeycloak) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigKeycloak] {
+	return pulumix.Output[*AuthConfigKeycloak]{
+		OutputState: i.ToAuthConfigKeycloakOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuthConfigKeycloakArrayInput is an input type that accepts AuthConfigKeycloakArray and AuthConfigKeycloakArrayOutput values.
 // You can construct a concrete instance of `AuthConfigKeycloakArrayInput` via:
 //
@@ -336,6 +343,12 @@ func (i AuthConfigKeycloakArray) ToAuthConfigKeycloakArrayOutput() AuthConfigKey
 
 func (i AuthConfigKeycloakArray) ToAuthConfigKeycloakArrayOutputWithContext(ctx context.Context) AuthConfigKeycloakArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigKeycloakArrayOutput)
+}
+
+func (i AuthConfigKeycloakArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigKeycloak] {
+	return pulumix.Output[[]*AuthConfigKeycloak]{
+		OutputState: i.ToAuthConfigKeycloakArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuthConfigKeycloakMapInput is an input type that accepts AuthConfigKeycloakMap and AuthConfigKeycloakMapOutput values.
@@ -363,6 +376,12 @@ func (i AuthConfigKeycloakMap) ToAuthConfigKeycloakMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigKeycloakMapOutput)
 }
 
+func (i AuthConfigKeycloakMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigKeycloak] {
+	return pulumix.Output[map[string]*AuthConfigKeycloak]{
+		OutputState: i.ToAuthConfigKeycloakMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthConfigKeycloakOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigKeycloakOutput) ElementType() reflect.Type {
@@ -375,6 +394,12 @@ func (o AuthConfigKeycloakOutput) ToAuthConfigKeycloakOutput() AuthConfigKeycloa
 
 func (o AuthConfigKeycloakOutput) ToAuthConfigKeycloakOutputWithContext(ctx context.Context) AuthConfigKeycloakOutput {
 	return o
+}
+
+func (o AuthConfigKeycloakOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigKeycloak] {
+	return pulumix.Output[*AuthConfigKeycloak]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -471,6 +496,12 @@ func (o AuthConfigKeycloakArrayOutput) ToAuthConfigKeycloakArrayOutputWithContex
 	return o
 }
 
+func (o AuthConfigKeycloakArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigKeycloak] {
+	return pulumix.Output[[]*AuthConfigKeycloak]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthConfigKeycloakArrayOutput) Index(i pulumi.IntInput) AuthConfigKeycloakOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigKeycloak {
 		return vs[0].([]*AuthConfigKeycloak)[vs[1].(int)]
@@ -489,6 +520,12 @@ func (o AuthConfigKeycloakMapOutput) ToAuthConfigKeycloakMapOutput() AuthConfigK
 
 func (o AuthConfigKeycloakMapOutput) ToAuthConfigKeycloakMapOutputWithContext(ctx context.Context) AuthConfigKeycloakMapOutput {
 	return o
+}
+
+func (o AuthConfigKeycloakMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigKeycloak] {
+	return pulumix.Output[map[string]*AuthConfigKeycloak]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthConfigKeycloakMapOutput) MapIndex(k pulumi.StringInput) AuthConfigKeycloakOutput {

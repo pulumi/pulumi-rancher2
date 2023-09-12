@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
@@ -107,6 +108,12 @@ func (o LookupGlobalDnsProviderResultOutput) ToLookupGlobalDnsProviderResultOutp
 
 func (o LookupGlobalDnsProviderResultOutput) ToLookupGlobalDnsProviderResultOutputWithContext(ctx context.Context) LookupGlobalDnsProviderResultOutput {
 	return o
+}
+
+func (o LookupGlobalDnsProviderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGlobalDnsProviderResult] {
+	return pulumix.Output[LookupGlobalDnsProviderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupGlobalDnsProviderResultOutput) AlidnsConfig() GetGlobalDnsProviderAlidnsConfigOutput {

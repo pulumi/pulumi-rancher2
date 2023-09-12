@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
@@ -94,6 +95,12 @@ func (o LookupStorageClassV2ResultOutput) ToLookupStorageClassV2ResultOutput() L
 
 func (o LookupStorageClassV2ResultOutput) ToLookupStorageClassV2ResultOutputWithContext(ctx context.Context) LookupStorageClassV2ResultOutput {
 	return o
+}
+
+func (o LookupStorageClassV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStorageClassV2Result] {
+	return pulumix.Output[LookupStorageClassV2Result]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
