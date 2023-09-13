@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Auth Config ADFS resource. This can be used to configure and enable Auth Config ADFS for Rancher v2 RKE clusters and retrieve their information.
@@ -303,6 +304,12 @@ func (i *AuthConfigAdfs) ToAuthConfigAdfsOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAdfsOutput)
 }
 
+func (i *AuthConfigAdfs) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigAdfs] {
+	return pulumix.Output[*AuthConfigAdfs]{
+		OutputState: i.ToAuthConfigAdfsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuthConfigAdfsArrayInput is an input type that accepts AuthConfigAdfsArray and AuthConfigAdfsArrayOutput values.
 // You can construct a concrete instance of `AuthConfigAdfsArrayInput` via:
 //
@@ -326,6 +333,12 @@ func (i AuthConfigAdfsArray) ToAuthConfigAdfsArrayOutput() AuthConfigAdfsArrayOu
 
 func (i AuthConfigAdfsArray) ToAuthConfigAdfsArrayOutputWithContext(ctx context.Context) AuthConfigAdfsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAdfsArrayOutput)
+}
+
+func (i AuthConfigAdfsArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigAdfs] {
+	return pulumix.Output[[]*AuthConfigAdfs]{
+		OutputState: i.ToAuthConfigAdfsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuthConfigAdfsMapInput is an input type that accepts AuthConfigAdfsMap and AuthConfigAdfsMapOutput values.
@@ -353,6 +366,12 @@ func (i AuthConfigAdfsMap) ToAuthConfigAdfsMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAdfsMapOutput)
 }
 
+func (i AuthConfigAdfsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigAdfs] {
+	return pulumix.Output[map[string]*AuthConfigAdfs]{
+		OutputState: i.ToAuthConfigAdfsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthConfigAdfsOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigAdfsOutput) ElementType() reflect.Type {
@@ -365,6 +384,12 @@ func (o AuthConfigAdfsOutput) ToAuthConfigAdfsOutput() AuthConfigAdfsOutput {
 
 func (o AuthConfigAdfsOutput) ToAuthConfigAdfsOutputWithContext(ctx context.Context) AuthConfigAdfsOutput {
 	return o
+}
+
+func (o AuthConfigAdfsOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigAdfs] {
+	return pulumix.Output[*AuthConfigAdfs]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -456,6 +481,12 @@ func (o AuthConfigAdfsArrayOutput) ToAuthConfigAdfsArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o AuthConfigAdfsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigAdfs] {
+	return pulumix.Output[[]*AuthConfigAdfs]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthConfigAdfsArrayOutput) Index(i pulumi.IntInput) AuthConfigAdfsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigAdfs {
 		return vs[0].([]*AuthConfigAdfs)[vs[1].(int)]
@@ -474,6 +505,12 @@ func (o AuthConfigAdfsMapOutput) ToAuthConfigAdfsMapOutput() AuthConfigAdfsMapOu
 
 func (o AuthConfigAdfsMapOutput) ToAuthConfigAdfsMapOutputWithContext(ctx context.Context) AuthConfigAdfsMapOutput {
 	return o
+}
+
+func (o AuthConfigAdfsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigAdfs] {
+	return pulumix.Output[map[string]*AuthConfigAdfs]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthConfigAdfsMapOutput) MapIndex(k pulumi.StringInput) AuthConfigAdfsOutput {

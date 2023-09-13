@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Auth Config FreeIpa resource. This can be used to configure and enable Auth Config FreeIpa for Rancher v2 RKE clusters and retrieve their information.
@@ -438,6 +439,12 @@ func (i *AuthConfigFreeIpa) ToAuthConfigFreeIpaOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigFreeIpaOutput)
 }
 
+func (i *AuthConfigFreeIpa) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigFreeIpa] {
+	return pulumix.Output[*AuthConfigFreeIpa]{
+		OutputState: i.ToAuthConfigFreeIpaOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuthConfigFreeIpaArrayInput is an input type that accepts AuthConfigFreeIpaArray and AuthConfigFreeIpaArrayOutput values.
 // You can construct a concrete instance of `AuthConfigFreeIpaArrayInput` via:
 //
@@ -461,6 +468,12 @@ func (i AuthConfigFreeIpaArray) ToAuthConfigFreeIpaArrayOutput() AuthConfigFreeI
 
 func (i AuthConfigFreeIpaArray) ToAuthConfigFreeIpaArrayOutputWithContext(ctx context.Context) AuthConfigFreeIpaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigFreeIpaArrayOutput)
+}
+
+func (i AuthConfigFreeIpaArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigFreeIpa] {
+	return pulumix.Output[[]*AuthConfigFreeIpa]{
+		OutputState: i.ToAuthConfigFreeIpaArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuthConfigFreeIpaMapInput is an input type that accepts AuthConfigFreeIpaMap and AuthConfigFreeIpaMapOutput values.
@@ -488,6 +501,12 @@ func (i AuthConfigFreeIpaMap) ToAuthConfigFreeIpaMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigFreeIpaMapOutput)
 }
 
+func (i AuthConfigFreeIpaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigFreeIpa] {
+	return pulumix.Output[map[string]*AuthConfigFreeIpa]{
+		OutputState: i.ToAuthConfigFreeIpaMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthConfigFreeIpaOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigFreeIpaOutput) ElementType() reflect.Type {
@@ -500,6 +519,12 @@ func (o AuthConfigFreeIpaOutput) ToAuthConfigFreeIpaOutput() AuthConfigFreeIpaOu
 
 func (o AuthConfigFreeIpaOutput) ToAuthConfigFreeIpaOutputWithContext(ctx context.Context) AuthConfigFreeIpaOutput {
 	return o
+}
+
+func (o AuthConfigFreeIpaOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigFreeIpa] {
+	return pulumix.Output[*AuthConfigFreeIpa]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -676,6 +701,12 @@ func (o AuthConfigFreeIpaArrayOutput) ToAuthConfigFreeIpaArrayOutputWithContext(
 	return o
 }
 
+func (o AuthConfigFreeIpaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigFreeIpa] {
+	return pulumix.Output[[]*AuthConfigFreeIpa]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthConfigFreeIpaArrayOutput) Index(i pulumi.IntInput) AuthConfigFreeIpaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigFreeIpa {
 		return vs[0].([]*AuthConfigFreeIpa)[vs[1].(int)]
@@ -694,6 +725,12 @@ func (o AuthConfigFreeIpaMapOutput) ToAuthConfigFreeIpaMapOutput() AuthConfigFre
 
 func (o AuthConfigFreeIpaMapOutput) ToAuthConfigFreeIpaMapOutputWithContext(ctx context.Context) AuthConfigFreeIpaMapOutput {
 	return o
+}
+
+func (o AuthConfigFreeIpaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigFreeIpa] {
+	return pulumix.Output[map[string]*AuthConfigFreeIpa]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthConfigFreeIpaMapOutput) MapIndex(k pulumi.StringInput) AuthConfigFreeIpaOutput {

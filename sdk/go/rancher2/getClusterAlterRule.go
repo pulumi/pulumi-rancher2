@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 cluster alert rule.
@@ -131,6 +132,12 @@ func (o LookupClusterAlterRuleResultOutput) ToLookupClusterAlterRuleResultOutput
 
 func (o LookupClusterAlterRuleResultOutput) ToLookupClusterAlterRuleResultOutputWithContext(ctx context.Context) LookupClusterAlterRuleResultOutput {
 	return o
+}
+
+func (o LookupClusterAlterRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClusterAlterRuleResult] {
+	return pulumix.Output[LookupClusterAlterRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The cluster alert rule annotations (map)

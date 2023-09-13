@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 app.
@@ -133,6 +134,12 @@ func (o LookupAppResultOutput) ToLookupAppResultOutput() LookupAppResultOutput {
 
 func (o LookupAppResultOutput) ToLookupAppResultOutputWithContext(ctx context.Context) LookupAppResultOutput {
 	return o
+}
+
+func (o LookupAppResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppResult] {
+	return pulumix.Output[LookupAppResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) Annotations for the catalog (map)

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
@@ -262,6 +263,12 @@ func (i *Notifier) ToNotifierOutputWithContext(ctx context.Context) NotifierOutp
 	return pulumi.ToOutputWithContext(ctx, i).(NotifierOutput)
 }
 
+func (i *Notifier) ToOutput(ctx context.Context) pulumix.Output[*Notifier] {
+	return pulumix.Output[*Notifier]{
+		OutputState: i.ToNotifierOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NotifierArrayInput is an input type that accepts NotifierArray and NotifierArrayOutput values.
 // You can construct a concrete instance of `NotifierArrayInput` via:
 //
@@ -285,6 +292,12 @@ func (i NotifierArray) ToNotifierArrayOutput() NotifierArrayOutput {
 
 func (i NotifierArray) ToNotifierArrayOutputWithContext(ctx context.Context) NotifierArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotifierArrayOutput)
+}
+
+func (i NotifierArray) ToOutput(ctx context.Context) pulumix.Output[[]*Notifier] {
+	return pulumix.Output[[]*Notifier]{
+		OutputState: i.ToNotifierArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NotifierMapInput is an input type that accepts NotifierMap and NotifierMapOutput values.
@@ -312,6 +325,12 @@ func (i NotifierMap) ToNotifierMapOutputWithContext(ctx context.Context) Notifie
 	return pulumi.ToOutputWithContext(ctx, i).(NotifierMapOutput)
 }
 
+func (i NotifierMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Notifier] {
+	return pulumix.Output[map[string]*Notifier]{
+		OutputState: i.ToNotifierMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NotifierOutput struct{ *pulumi.OutputState }
 
 func (NotifierOutput) ElementType() reflect.Type {
@@ -324,6 +343,12 @@ func (o NotifierOutput) ToNotifierOutput() NotifierOutput {
 
 func (o NotifierOutput) ToNotifierOutputWithContext(ctx context.Context) NotifierOutput {
 	return o
+}
+
+func (o NotifierOutput) ToOutput(ctx context.Context) pulumix.Output[*Notifier] {
+	return pulumix.Output[*Notifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Annotations for notifier object (map)
@@ -405,6 +430,12 @@ func (o NotifierArrayOutput) ToNotifierArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o NotifierArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Notifier] {
+	return pulumix.Output[[]*Notifier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NotifierArrayOutput) Index(i pulumi.IntInput) NotifierOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Notifier {
 		return vs[0].([]*Notifier)[vs[1].(int)]
@@ -423,6 +454,12 @@ func (o NotifierMapOutput) ToNotifierMapOutput() NotifierMapOutput {
 
 func (o NotifierMapOutput) ToNotifierMapOutputWithContext(ctx context.Context) NotifierMapOutput {
 	return o
+}
+
+func (o NotifierMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Notifier] {
+	return pulumix.Output[map[string]*Notifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotifierMapOutput) MapIndex(k pulumi.StringInput) NotifierOutput {

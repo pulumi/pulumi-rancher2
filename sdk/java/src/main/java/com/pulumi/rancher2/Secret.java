@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
  * ```sh
  *  $ pulumi import rancher2:index/secret:Secret foo &amp;lt;namespace_id&amp;gt;.&amp;lt;project_id&amp;gt;.&amp;lt;secret_id&amp;gt;
  * ```
- * 
  *  `&lt;namespace_id&gt;` is optional, just needed for namespaced secret.
  * 
  */

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.
@@ -206,6 +207,12 @@ func (i *ClusterDriver) ToClusterDriverOutputWithContext(ctx context.Context) Cl
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverOutput)
 }
 
+func (i *ClusterDriver) ToOutput(ctx context.Context) pulumix.Output[*ClusterDriver] {
+	return pulumix.Output[*ClusterDriver]{
+		OutputState: i.ToClusterDriverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterDriverArrayInput is an input type that accepts ClusterDriverArray and ClusterDriverArrayOutput values.
 // You can construct a concrete instance of `ClusterDriverArrayInput` via:
 //
@@ -229,6 +236,12 @@ func (i ClusterDriverArray) ToClusterDriverArrayOutput() ClusterDriverArrayOutpu
 
 func (i ClusterDriverArray) ToClusterDriverArrayOutputWithContext(ctx context.Context) ClusterDriverArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverArrayOutput)
+}
+
+func (i ClusterDriverArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterDriver] {
+	return pulumix.Output[[]*ClusterDriver]{
+		OutputState: i.ToClusterDriverArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ClusterDriverMapInput is an input type that accepts ClusterDriverMap and ClusterDriverMapOutput values.
@@ -256,6 +269,12 @@ func (i ClusterDriverMap) ToClusterDriverMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverMapOutput)
 }
 
+func (i ClusterDriverMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterDriver] {
+	return pulumix.Output[map[string]*ClusterDriver]{
+		OutputState: i.ToClusterDriverMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClusterDriverOutput struct{ *pulumi.OutputState }
 
 func (ClusterDriverOutput) ElementType() reflect.Type {
@@ -268,6 +287,12 @@ func (o ClusterDriverOutput) ToClusterDriverOutput() ClusterDriverOutput {
 
 func (o ClusterDriverOutput) ToClusterDriverOutputWithContext(ctx context.Context) ClusterDriverOutput {
 	return o
+}
+
+func (o ClusterDriverOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterDriver] {
+	return pulumix.Output[*ClusterDriver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specify the cluster driver state (bool)
@@ -334,6 +359,12 @@ func (o ClusterDriverArrayOutput) ToClusterDriverArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o ClusterDriverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterDriver] {
+	return pulumix.Output[[]*ClusterDriver]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClusterDriverArrayOutput) Index(i pulumi.IntInput) ClusterDriverOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterDriver {
 		return vs[0].([]*ClusterDriver)[vs[1].(int)]
@@ -352,6 +383,12 @@ func (o ClusterDriverMapOutput) ToClusterDriverMapOutput() ClusterDriverMapOutpu
 
 func (o ClusterDriverMapOutput) ToClusterDriverMapOutputWithContext(ctx context.Context) ClusterDriverMapOutput {
 	return o
+}
+
+func (o ClusterDriverMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterDriver] {
+	return pulumix.Output[map[string]*ClusterDriver]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterDriverMapOutput) MapIndex(k pulumi.StringInput) ClusterDriverOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
@@ -306,6 +307,12 @@ func (i *RoleTempalte) ToRoleTempalteOutputWithContext(ctx context.Context) Role
 	return pulumi.ToOutputWithContext(ctx, i).(RoleTempalteOutput)
 }
 
+func (i *RoleTempalte) ToOutput(ctx context.Context) pulumix.Output[*RoleTempalte] {
+	return pulumix.Output[*RoleTempalte]{
+		OutputState: i.ToRoleTempalteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RoleTempalteArrayInput is an input type that accepts RoleTempalteArray and RoleTempalteArrayOutput values.
 // You can construct a concrete instance of `RoleTempalteArrayInput` via:
 //
@@ -329,6 +336,12 @@ func (i RoleTempalteArray) ToRoleTempalteArrayOutput() RoleTempalteArrayOutput {
 
 func (i RoleTempalteArray) ToRoleTempalteArrayOutputWithContext(ctx context.Context) RoleTempalteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleTempalteArrayOutput)
+}
+
+func (i RoleTempalteArray) ToOutput(ctx context.Context) pulumix.Output[[]*RoleTempalte] {
+	return pulumix.Output[[]*RoleTempalte]{
+		OutputState: i.ToRoleTempalteArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RoleTempalteMapInput is an input type that accepts RoleTempalteMap and RoleTempalteMapOutput values.
@@ -356,6 +369,12 @@ func (i RoleTempalteMap) ToRoleTempalteMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RoleTempalteMapOutput)
 }
 
+func (i RoleTempalteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RoleTempalte] {
+	return pulumix.Output[map[string]*RoleTempalte]{
+		OutputState: i.ToRoleTempalteMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RoleTempalteOutput struct{ *pulumi.OutputState }
 
 func (RoleTempalteOutput) ElementType() reflect.Type {
@@ -368,6 +387,12 @@ func (o RoleTempalteOutput) ToRoleTempalteOutput() RoleTempalteOutput {
 
 func (o RoleTempalteOutput) ToRoleTempalteOutputWithContext(ctx context.Context) RoleTempalteOutput {
 	return o
+}
+
+func (o RoleTempalteOutput) ToOutput(ctx context.Context) pulumix.Output[*RoleTempalte] {
+	return pulumix.Output[*RoleTempalte]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Administrative role template. Default `false` (bool)
@@ -449,6 +474,12 @@ func (o RoleTempalteArrayOutput) ToRoleTempalteArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o RoleTempalteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RoleTempalte] {
+	return pulumix.Output[[]*RoleTempalte]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RoleTempalteArrayOutput) Index(i pulumi.IntInput) RoleTempalteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RoleTempalte {
 		return vs[0].([]*RoleTempalte)[vs[1].(int)]
@@ -467,6 +498,12 @@ func (o RoleTempalteMapOutput) ToRoleTempalteMapOutput() RoleTempalteMapOutput {
 
 func (o RoleTempalteMapOutput) ToRoleTempalteMapOutputWithContext(ctx context.Context) RoleTempalteMapOutput {
 	return o
+}
+
+func (o RoleTempalteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RoleTempalte] {
+	return pulumix.Output[map[string]*RoleTempalte]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoleTempalteMapOutput) MapIndex(k pulumi.StringInput) RoleTempalteOutput {

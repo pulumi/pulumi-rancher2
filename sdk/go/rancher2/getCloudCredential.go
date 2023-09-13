@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 Cloud Credential.
@@ -101,6 +102,12 @@ func (o LookupCloudCredentialResultOutput) ToLookupCloudCredentialResultOutput()
 
 func (o LookupCloudCredentialResultOutput) ToLookupCloudCredentialResultOutputWithContext(ctx context.Context) LookupCloudCredentialResultOutput {
 	return o
+}
+
+func (o LookupCloudCredentialResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCloudCredentialResult] {
+	return pulumix.Output[LookupCloudCredentialResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) Annotations for the Cloud Credential (map)

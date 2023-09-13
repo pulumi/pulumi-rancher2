@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher Catalog v2 resource. This can be used to create cluster helm catalogs for Rancher v2 environments and retrieve their information. Catalog v2 resource is available at Rancher v2.5.x and above.
@@ -246,6 +247,12 @@ func (i *CatalogV2) ToCatalogV2OutputWithContext(ctx context.Context) CatalogV2O
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogV2Output)
 }
 
+func (i *CatalogV2) ToOutput(ctx context.Context) pulumix.Output[*CatalogV2] {
+	return pulumix.Output[*CatalogV2]{
+		OutputState: i.ToCatalogV2OutputWithContext(ctx).OutputState,
+	}
+}
+
 // CatalogV2ArrayInput is an input type that accepts CatalogV2Array and CatalogV2ArrayOutput values.
 // You can construct a concrete instance of `CatalogV2ArrayInput` via:
 //
@@ -269,6 +276,12 @@ func (i CatalogV2Array) ToCatalogV2ArrayOutput() CatalogV2ArrayOutput {
 
 func (i CatalogV2Array) ToCatalogV2ArrayOutputWithContext(ctx context.Context) CatalogV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogV2ArrayOutput)
+}
+
+func (i CatalogV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*CatalogV2] {
+	return pulumix.Output[[]*CatalogV2]{
+		OutputState: i.ToCatalogV2ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CatalogV2MapInput is an input type that accepts CatalogV2Map and CatalogV2MapOutput values.
@@ -296,6 +309,12 @@ func (i CatalogV2Map) ToCatalogV2MapOutputWithContext(ctx context.Context) Catal
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogV2MapOutput)
 }
 
+func (i CatalogV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*CatalogV2] {
+	return pulumix.Output[map[string]*CatalogV2]{
+		OutputState: i.ToCatalogV2MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CatalogV2Output struct{ *pulumi.OutputState }
 
 func (CatalogV2Output) ElementType() reflect.Type {
@@ -308,6 +327,12 @@ func (o CatalogV2Output) ToCatalogV2Output() CatalogV2Output {
 
 func (o CatalogV2Output) ToCatalogV2OutputWithContext(ctx context.Context) CatalogV2Output {
 	return o
+}
+
+func (o CatalogV2Output) ToOutput(ctx context.Context) pulumix.Output[*CatalogV2] {
+	return pulumix.Output[*CatalogV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Annotations for the catalog v2 (map)
@@ -399,6 +424,12 @@ func (o CatalogV2ArrayOutput) ToCatalogV2ArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o CatalogV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CatalogV2] {
+	return pulumix.Output[[]*CatalogV2]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CatalogV2ArrayOutput) Index(i pulumi.IntInput) CatalogV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CatalogV2 {
 		return vs[0].([]*CatalogV2)[vs[1].(int)]
@@ -417,6 +448,12 @@ func (o CatalogV2MapOutput) ToCatalogV2MapOutput() CatalogV2MapOutput {
 
 func (o CatalogV2MapOutput) ToCatalogV2MapOutputWithContext(ctx context.Context) CatalogV2MapOutput {
 	return o
+}
+
+func (o CatalogV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CatalogV2] {
+	return pulumix.Output[map[string]*CatalogV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CatalogV2MapOutput) MapIndex(k pulumi.StringInput) CatalogV2Output {

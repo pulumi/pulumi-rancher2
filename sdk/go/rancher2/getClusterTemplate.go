@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 cluster template.
@@ -120,6 +121,12 @@ func (o LookupClusterTemplateResultOutput) ToLookupClusterTemplateResultOutput()
 
 func (o LookupClusterTemplateResultOutput) ToLookupClusterTemplateResultOutputWithContext(ctx context.Context) LookupClusterTemplateResultOutput {
 	return o
+}
+
+func (o LookupClusterTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClusterTemplateResult] {
+	return pulumix.Output[LookupClusterTemplateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) Annotations for the cluster template (map)

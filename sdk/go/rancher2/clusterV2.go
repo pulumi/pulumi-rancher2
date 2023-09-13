@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -277,6 +278,12 @@ func (i *ClusterV2) ToClusterV2OutputWithContext(ctx context.Context) ClusterV2O
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2Output)
 }
 
+func (i *ClusterV2) ToOutput(ctx context.Context) pulumix.Output[*ClusterV2] {
+	return pulumix.Output[*ClusterV2]{
+		OutputState: i.ToClusterV2OutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterV2ArrayInput is an input type that accepts ClusterV2Array and ClusterV2ArrayOutput values.
 // You can construct a concrete instance of `ClusterV2ArrayInput` via:
 //
@@ -300,6 +307,12 @@ func (i ClusterV2Array) ToClusterV2ArrayOutput() ClusterV2ArrayOutput {
 
 func (i ClusterV2Array) ToClusterV2ArrayOutputWithContext(ctx context.Context) ClusterV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ArrayOutput)
+}
+
+func (i ClusterV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterV2] {
+	return pulumix.Output[[]*ClusterV2]{
+		OutputState: i.ToClusterV2ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ClusterV2MapInput is an input type that accepts ClusterV2Map and ClusterV2MapOutput values.
@@ -327,6 +340,12 @@ func (i ClusterV2Map) ToClusterV2MapOutputWithContext(ctx context.Context) Clust
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2MapOutput)
 }
 
+func (i ClusterV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterV2] {
+	return pulumix.Output[map[string]*ClusterV2]{
+		OutputState: i.ToClusterV2MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClusterV2Output struct{ *pulumi.OutputState }
 
 func (ClusterV2Output) ElementType() reflect.Type {
@@ -339,6 +358,12 @@ func (o ClusterV2Output) ToClusterV2Output() ClusterV2Output {
 
 func (o ClusterV2Output) ToClusterV2OutputWithContext(ctx context.Context) ClusterV2Output {
 	return o
+}
+
+func (o ClusterV2Output) ToOutput(ctx context.Context) pulumix.Output[*ClusterV2] {
+	return pulumix.Output[*ClusterV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional Agent Env Vars for Rancher agent (list)
@@ -456,6 +481,12 @@ func (o ClusterV2ArrayOutput) ToClusterV2ArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ClusterV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterV2] {
+	return pulumix.Output[[]*ClusterV2]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClusterV2ArrayOutput) Index(i pulumi.IntInput) ClusterV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterV2 {
 		return vs[0].([]*ClusterV2)[vs[1].(int)]
@@ -474,6 +505,12 @@ func (o ClusterV2MapOutput) ToClusterV2MapOutput() ClusterV2MapOutput {
 
 func (o ClusterV2MapOutput) ToClusterV2MapOutputWithContext(ctx context.Context) ClusterV2MapOutput {
 	return o
+}
+
+func (o ClusterV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterV2] {
+	return pulumix.Output[map[string]*ClusterV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterV2MapOutput) MapIndex(k pulumi.StringInput) ClusterV2Output {

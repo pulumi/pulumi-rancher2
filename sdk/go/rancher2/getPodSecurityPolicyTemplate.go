@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
@@ -230,6 +231,12 @@ func (o LookupPodSecurityPolicyTemplateResultOutput) ToLookupPodSecurityPolicyTe
 
 func (o LookupPodSecurityPolicyTemplateResultOutput) ToLookupPodSecurityPolicyTemplateResultOutputWithContext(ctx context.Context) LookupPodSecurityPolicyTemplateResultOutput {
 	return o
+}
+
+func (o LookupPodSecurityPolicyTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPodSecurityPolicyTemplateResult] {
+	return pulumix.Output[LookupPodSecurityPolicyTemplateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupPodSecurityPolicyTemplateResultOutput) AllowPrivilegeEscalation() pulumi.BoolOutput {

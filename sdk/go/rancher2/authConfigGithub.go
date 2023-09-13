@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Auth Config Github resource. This can be used to configure and enable Auth Config Github for Rancher v2 RKE clusters and retrieve their information.
@@ -235,6 +236,12 @@ func (i *AuthConfigGithub) ToAuthConfigGithubOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubOutput)
 }
 
+func (i *AuthConfigGithub) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigGithub] {
+	return pulumix.Output[*AuthConfigGithub]{
+		OutputState: i.ToAuthConfigGithubOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuthConfigGithubArrayInput is an input type that accepts AuthConfigGithubArray and AuthConfigGithubArrayOutput values.
 // You can construct a concrete instance of `AuthConfigGithubArrayInput` via:
 //
@@ -258,6 +265,12 @@ func (i AuthConfigGithubArray) ToAuthConfigGithubArrayOutput() AuthConfigGithubA
 
 func (i AuthConfigGithubArray) ToAuthConfigGithubArrayOutputWithContext(ctx context.Context) AuthConfigGithubArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubArrayOutput)
+}
+
+func (i AuthConfigGithubArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigGithub] {
+	return pulumix.Output[[]*AuthConfigGithub]{
+		OutputState: i.ToAuthConfigGithubArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuthConfigGithubMapInput is an input type that accepts AuthConfigGithubMap and AuthConfigGithubMapOutput values.
@@ -285,6 +298,12 @@ func (i AuthConfigGithubMap) ToAuthConfigGithubMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubMapOutput)
 }
 
+func (i AuthConfigGithubMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigGithub] {
+	return pulumix.Output[map[string]*AuthConfigGithub]{
+		OutputState: i.ToAuthConfigGithubMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthConfigGithubOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigGithubOutput) ElementType() reflect.Type {
@@ -297,6 +316,12 @@ func (o AuthConfigGithubOutput) ToAuthConfigGithubOutput() AuthConfigGithubOutpu
 
 func (o AuthConfigGithubOutput) ToAuthConfigGithubOutputWithContext(ctx context.Context) AuthConfigGithubOutput {
 	return o
+}
+
+func (o AuthConfigGithubOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigGithub] {
+	return pulumix.Output[*AuthConfigGithub]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -368,6 +393,12 @@ func (o AuthConfigGithubArrayOutput) ToAuthConfigGithubArrayOutputWithContext(ct
 	return o
 }
 
+func (o AuthConfigGithubArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigGithub] {
+	return pulumix.Output[[]*AuthConfigGithub]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthConfigGithubArrayOutput) Index(i pulumi.IntInput) AuthConfigGithubOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigGithub {
 		return vs[0].([]*AuthConfigGithub)[vs[1].(int)]
@@ -386,6 +417,12 @@ func (o AuthConfigGithubMapOutput) ToAuthConfigGithubMapOutput() AuthConfigGithu
 
 func (o AuthConfigGithubMapOutput) ToAuthConfigGithubMapOutputWithContext(ctx context.Context) AuthConfigGithubMapOutput {
 	return o
+}
+
+func (o AuthConfigGithubMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigGithub] {
+	return pulumix.Output[map[string]*AuthConfigGithub]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthConfigGithubMapOutput) MapIndex(k pulumi.StringInput) AuthConfigGithubOutput {
