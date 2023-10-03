@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class GlobalDnsProviderRoute53ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AliDNS Access key (string)
+        /// The AWS Access key (string)
         /// </summary>
         [Input("accessKey", required: true)]
         public Input<string> AccessKey { get; set; } = null!;
@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// The AliDNS Secret key (string)
+        /// The AWS Secret key (string)
         /// </summary>
         [Input("secretKey", required: true)]
         public Input<string> SecretKey { get; set; } = null!;

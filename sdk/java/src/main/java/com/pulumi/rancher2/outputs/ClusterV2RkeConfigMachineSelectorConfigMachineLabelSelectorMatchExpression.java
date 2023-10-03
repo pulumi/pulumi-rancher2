@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
     /**
-     * @return The toleration key (string)
+     * @return Machine selector label match expressions key (string)
      * 
      */
     private @Nullable String key;
     /**
-     * @return The toleration operator (string)
+     * @return Machine selector label match expressions operator (string)
      * 
      */
     private @Nullable String operator;
@@ -30,14 +30,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
 
     private ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression() {}
     /**
-     * @return The toleration key (string)
+     * @return Machine selector label match expressions key (string)
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The toleration operator (string)
+     * @return Machine selector label match expressions operator (string)
      * 
      */
     public Optional<String> operator() {

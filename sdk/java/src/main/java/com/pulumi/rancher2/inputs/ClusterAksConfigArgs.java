@@ -171,14 +171,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+     * The AKS auth base url (string)
      * 
      */
     @Import(name="authBaseUrl")
     private @Nullable Output<String> authBaseUrl;
 
     /**
-     * @return Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+     * @return The AKS auth base url (string)
      * 
      */
     public Optional<Output<String>> authBaseUrl() {
@@ -186,14 +186,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Different resource management API url to use. Default `https://management.azure.com/` (string)
+     * The AKS base url (string)
      * 
      */
     @Import(name="baseUrl")
     private @Nullable Output<String> baseUrl;
 
     /**
-     * @return Different resource management API url to use. Default `https://management.azure.com/` (string)
+     * @return The AKS base url (string)
      * 
      */
     public Optional<Output<String>> baseUrl() {
@@ -231,14 +231,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+     * The AKS node pool count. Default: `1` (int)
      * 
      */
     @Import(name="count")
     private @Nullable Output<Integer> count;
 
     /**
-     * @return Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+     * @return The AKS node pool count. Default: `1` (int)
      * 
      */
     public Optional<Output<Integer>> count() {
@@ -306,14 +306,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     @Import(name="kubernetesVersion", required=true)
     private Output<String> kubernetesVersion;
 
     /**
-     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     public Output<String> kubernetesVersion() {
@@ -321,14 +321,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Allowed values: `basic` (default) `standard` (string)
+     * The AKS load balancer sku (string)
      * 
      */
     @Import(name="loadBalancerSku")
     private @Nullable Output<String> loadBalancerSku;
 
     /**
-     * @return Allowed values: `basic` (default) `standard` (string)
+     * @return The AKS load balancer sku (string)
      * 
      */
     public Optional<Output<String>> loadBalancerSku() {
@@ -336,14 +336,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (string)
+     * Azure Kubernetes cluster location. Default `eastus` (string)
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return (string)
+     * @return Azure Kubernetes cluster location. Default `eastus` (string)
      * 
      */
     public Optional<Output<String>> location() {
@@ -396,14 +396,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Maximum number of pods that can run on a node. Default `110` (int)
+     * The AKS node pool max pods. Default: `110` (int)
      * 
      */
     @Import(name="maxPods")
     private @Nullable Output<Integer> maxPods;
 
     /**
-     * @return Maximum number of pods that can run on a node. Default `110` (int)
+     * @return The AKS node pool max pods. Default: `110` (int)
      * 
      */
     public Optional<Output<Integer>> maxPods() {
@@ -411,14 +411,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+     * The AKS network plugin. Required if `imported=false` (string)
      * 
      */
     @Import(name="networkPlugin")
     private @Nullable Output<String> networkPlugin;
 
     /**
-     * @return Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+     * @return The AKS network plugin. Required if `imported=false` (string)
      * 
      */
     public Optional<Output<String>> networkPlugin() {
@@ -426,14 +426,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Network policy used for building Kubernetes network. Chooses from `calico` (string)
+     * The AKS network policy (string)
      * 
      */
     @Import(name="networkPolicy")
     private @Nullable Output<String> networkPolicy;
 
     /**
-     * @return Network policy used for building Kubernetes network. Chooses from `calico` (string)
+     * @return The AKS network policy (string)
      * 
      */
     public Optional<Output<String>> networkPolicy() {
@@ -441,14 +441,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A CIDR notation IP range from which to assign Kubernetes Pod IPs when \&#34;network plugin\&#34; is specified in \&#34;kubenet\&#34;. Default `172.244.0.0/16` (string)
+     * A CIDR IP range from which to assign Kubernetes Pod IPs (string)
      * 
      */
     @Import(name="podCidr")
     private @Nullable Output<String> podCidr;
 
     /**
-     * @return A CIDR notation IP range from which to assign Kubernetes Pod IPs when \&#34;network plugin\&#34; is specified in \&#34;kubenet\&#34;. Default `172.244.0.0/16` (string)
+     * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
      * 
      */
     public Optional<Output<String>> podCidr() {
@@ -456,14 +456,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (string)
+     * The AKS resource group (string)
      * 
      */
     @Import(name="resourceGroup", required=true)
     private Output<String> resourceGroup;
 
     /**
-     * @return (string)
+     * @return The AKS resource group (string)
      * 
      */
     public Output<String> resourceGroup() {
@@ -471,14 +471,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+     * A CIDR IP range from which to assign Kubernetes Service IPs (string)
      * 
      */
     @Import(name="serviceCidr")
     private @Nullable Output<String> serviceCidr;
 
     /**
-     * @return A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+     * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
      * 
      */
     public Optional<Output<String>> serviceCidr() {
@@ -501,14 +501,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+     * The AKS subnet (string)
      * 
      */
     @Import(name="subnet", required=true)
     private Output<String> subnet;
 
     /**
-     * @return The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+     * @return The AKS subnet (string)
      * 
      */
     public Output<String> subnet() {
@@ -516,14 +516,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (string)
+     * Subscription credentials which uniquely identify Microsoft Azure subscription (string)
      * 
      */
     @Import(name="subscriptionId", required=true)
     private Output<String> subscriptionId;
 
     /**
-     * @return (string)
+     * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
      * 
      */
     public Output<String> subscriptionId() {
@@ -554,14 +554,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+     * The GKE node config tags (List)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+     * @return The GKE node config tags (List)
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -569,14 +569,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (string)
+     * Azure tenant ID to use (string)
      * 
      */
     @Import(name="tenantId", required=true)
     private Output<String> tenantId;
 
     /**
-     * @return (string)
+     * @return Azure tenant ID to use (string)
      * 
      */
     public Output<String> tenantId() {
@@ -584,14 +584,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
      * 
      */
     @Import(name="virtualNetwork", required=true)
     private Output<String> virtualNetwork;
 
     /**
-     * @return The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
      * 
      */
     public Output<String> virtualNetwork() {
@@ -599,14 +599,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * The AKS virtual network resource group (string)
      * 
      */
     @Import(name="virtualNetworkResourceGroup", required=true)
     private Output<String> virtualNetworkResourceGroup;
 
     /**
-     * @return The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * @return The AKS virtual network resource group (string)
      * 
      */
     public Output<String> virtualNetworkResourceGroup() {
@@ -886,7 +886,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param authBaseUrl Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+         * @param authBaseUrl The AKS auth base url (string)
          * 
          * @return builder
          * 
@@ -897,7 +897,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param authBaseUrl Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+         * @param authBaseUrl The AKS auth base url (string)
          * 
          * @return builder
          * 
@@ -907,7 +907,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param baseUrl Different resource management API url to use. Default `https://management.azure.com/` (string)
+         * @param baseUrl The AKS base url (string)
          * 
          * @return builder
          * 
@@ -918,7 +918,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param baseUrl Different resource management API url to use. Default `https://management.azure.com/` (string)
+         * @param baseUrl The AKS base url (string)
          * 
          * @return builder
          * 
@@ -970,7 +970,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param count Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+         * @param count The AKS node pool count. Default: `1` (int)
          * 
          * @return builder
          * 
@@ -981,7 +981,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param count Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+         * @param count The AKS node pool count. Default: `1` (int)
          * 
          * @return builder
          * 
@@ -1075,7 +1075,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
          * 
          * @return builder
          * 
@@ -1086,7 +1086,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
          * 
          * @return builder
          * 
@@ -1096,7 +1096,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param loadBalancerSku Allowed values: `basic` (default) `standard` (string)
+         * @param loadBalancerSku The AKS load balancer sku (string)
          * 
          * @return builder
          * 
@@ -1107,7 +1107,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param loadBalancerSku Allowed values: `basic` (default) `standard` (string)
+         * @param loadBalancerSku The AKS load balancer sku (string)
          * 
          * @return builder
          * 
@@ -1117,7 +1117,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param location (string)
+         * @param location Azure Kubernetes cluster location. Default `eastus` (string)
          * 
          * @return builder
          * 
@@ -1128,7 +1128,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param location (string)
+         * @param location Azure Kubernetes cluster location. Default `eastus` (string)
          * 
          * @return builder
          * 
@@ -1201,7 +1201,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxPods Maximum number of pods that can run on a node. Default `110` (int)
+         * @param maxPods The AKS node pool max pods. Default: `110` (int)
          * 
          * @return builder
          * 
@@ -1212,7 +1212,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxPods Maximum number of pods that can run on a node. Default `110` (int)
+         * @param maxPods The AKS node pool max pods. Default: `110` (int)
          * 
          * @return builder
          * 
@@ -1222,7 +1222,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networkPlugin Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+         * @param networkPlugin The AKS network plugin. Required if `imported=false` (string)
          * 
          * @return builder
          * 
@@ -1233,7 +1233,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networkPlugin Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+         * @param networkPlugin The AKS network plugin. Required if `imported=false` (string)
          * 
          * @return builder
          * 
@@ -1243,7 +1243,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networkPolicy Network policy used for building Kubernetes network. Chooses from `calico` (string)
+         * @param networkPolicy The AKS network policy (string)
          * 
          * @return builder
          * 
@@ -1254,7 +1254,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networkPolicy Network policy used for building Kubernetes network. Chooses from `calico` (string)
+         * @param networkPolicy The AKS network policy (string)
          * 
          * @return builder
          * 
@@ -1264,7 +1264,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param podCidr A CIDR notation IP range from which to assign Kubernetes Pod IPs when \&#34;network plugin\&#34; is specified in \&#34;kubenet\&#34;. Default `172.244.0.0/16` (string)
+         * @param podCidr A CIDR IP range from which to assign Kubernetes Pod IPs (string)
          * 
          * @return builder
          * 
@@ -1275,7 +1275,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param podCidr A CIDR notation IP range from which to assign Kubernetes Pod IPs when \&#34;network plugin\&#34; is specified in \&#34;kubenet\&#34;. Default `172.244.0.0/16` (string)
+         * @param podCidr A CIDR IP range from which to assign Kubernetes Pod IPs (string)
          * 
          * @return builder
          * 
@@ -1285,7 +1285,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceGroup (string)
+         * @param resourceGroup The AKS resource group (string)
          * 
          * @return builder
          * 
@@ -1296,7 +1296,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceGroup (string)
+         * @param resourceGroup The AKS resource group (string)
          * 
          * @return builder
          * 
@@ -1306,7 +1306,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceCidr A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+         * @param serviceCidr A CIDR IP range from which to assign Kubernetes Service IPs (string)
          * 
          * @return builder
          * 
@@ -1317,7 +1317,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceCidr A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+         * @param serviceCidr A CIDR IP range from which to assign Kubernetes Service IPs (string)
          * 
          * @return builder
          * 
@@ -1348,7 +1348,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnet The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+         * @param subnet The AKS subnet (string)
          * 
          * @return builder
          * 
@@ -1359,7 +1359,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnet The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+         * @param subnet The AKS subnet (string)
          * 
          * @return builder
          * 
@@ -1369,7 +1369,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subscriptionId (string)
+         * @param subscriptionId Subscription credentials which uniquely identify Microsoft Azure subscription (string)
          * 
          * @return builder
          * 
@@ -1380,7 +1380,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subscriptionId (string)
+         * @param subscriptionId Subscription credentials which uniquely identify Microsoft Azure subscription (string)
          * 
          * @return builder
          * 
@@ -1419,7 +1419,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+         * @param tags The GKE node config tags (List)
          * 
          * @return builder
          * 
@@ -1430,7 +1430,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+         * @param tags The GKE node config tags (List)
          * 
          * @return builder
          * 
@@ -1440,7 +1440,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+         * @param tags The GKE node config tags (List)
          * 
          * @return builder
          * 
@@ -1450,7 +1450,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tenantId (string)
+         * @param tenantId Azure tenant ID to use (string)
          * 
          * @return builder
          * 
@@ -1461,7 +1461,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tenantId (string)
+         * @param tenantId Azure tenant ID to use (string)
          * 
          * @return builder
          * 
@@ -1471,7 +1471,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param virtualNetwork The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+         * @param virtualNetwork The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
          * 
          * @return builder
          * 
@@ -1482,7 +1482,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param virtualNetwork The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+         * @param virtualNetwork The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
          * 
          * @return builder
          * 
@@ -1492,7 +1492,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param virtualNetworkResourceGroup The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+         * @param virtualNetworkResourceGroup The AKS virtual network resource group (string)
          * 
          * @return builder
          * 
@@ -1503,7 +1503,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param virtualNetworkResourceGroup The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+         * @param virtualNetworkResourceGroup The AKS virtual network resource group (string)
          * 
          * @return builder
          * 

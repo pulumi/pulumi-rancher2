@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,35 +49,72 @@ class ClusterV2Args:
         :param pulumi.Input[str] name: The name of the Cluster v2 (string)
         :param pulumi.Input['ClusterV2RkeConfigArgs'] rke_config: The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
         """
-        pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        ClusterV2Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kubernetes_version=kubernetes_version,
+            agent_env_vars=agent_env_vars,
+            annotations=annotations,
+            cloud_credential_secret_name=cloud_credential_secret_name,
+            cluster_agent_deployment_customizations=cluster_agent_deployment_customizations,
+            default_cluster_role_for_project_members=default_cluster_role_for_project_members,
+            default_pod_security_admission_configuration_template_name=default_pod_security_admission_configuration_template_name,
+            default_pod_security_policy_template_name=default_pod_security_policy_template_name,
+            enable_network_policy=enable_network_policy,
+            fleet_agent_deployment_customizations=fleet_agent_deployment_customizations,
+            fleet_namespace=fleet_namespace,
+            labels=labels,
+            local_auth_endpoint=local_auth_endpoint,
+            name=name,
+            rke_config=rke_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kubernetes_version: pulumi.Input[str],
+             agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2AgentEnvVarArgs']]]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             cloud_credential_secret_name: Optional[pulumi.Input[str]] = None,
+             cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]]] = None,
+             default_cluster_role_for_project_members: Optional[pulumi.Input[str]] = None,
+             default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[str]] = None,
+             default_pod_security_policy_template_name: Optional[pulumi.Input[str]] = None,
+             enable_network_policy: Optional[pulumi.Input[bool]] = None,
+             fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]]] = None,
+             fleet_namespace: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             local_auth_endpoint: Optional[pulumi.Input['ClusterV2LocalAuthEndpointArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             rke_config: Optional[pulumi.Input['ClusterV2RkeConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("kubernetes_version", kubernetes_version)
         if agent_env_vars is not None:
-            pulumi.set(__self__, "agent_env_vars", agent_env_vars)
+            _setter("agent_env_vars", agent_env_vars)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if cloud_credential_secret_name is not None:
-            pulumi.set(__self__, "cloud_credential_secret_name", cloud_credential_secret_name)
+            _setter("cloud_credential_secret_name", cloud_credential_secret_name)
         if cluster_agent_deployment_customizations is not None:
-            pulumi.set(__self__, "cluster_agent_deployment_customizations", cluster_agent_deployment_customizations)
+            _setter("cluster_agent_deployment_customizations", cluster_agent_deployment_customizations)
         if default_cluster_role_for_project_members is not None:
-            pulumi.set(__self__, "default_cluster_role_for_project_members", default_cluster_role_for_project_members)
+            _setter("default_cluster_role_for_project_members", default_cluster_role_for_project_members)
         if default_pod_security_admission_configuration_template_name is not None:
-            pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
+            _setter("default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
         if default_pod_security_policy_template_name is not None:
-            pulumi.set(__self__, "default_pod_security_policy_template_name", default_pod_security_policy_template_name)
+            _setter("default_pod_security_policy_template_name", default_pod_security_policy_template_name)
         if enable_network_policy is not None:
-            pulumi.set(__self__, "enable_network_policy", enable_network_policy)
+            _setter("enable_network_policy", enable_network_policy)
         if fleet_agent_deployment_customizations is not None:
-            pulumi.set(__self__, "fleet_agent_deployment_customizations", fleet_agent_deployment_customizations)
+            _setter("fleet_agent_deployment_customizations", fleet_agent_deployment_customizations)
         if fleet_namespace is not None:
-            pulumi.set(__self__, "fleet_namespace", fleet_namespace)
+            _setter("fleet_namespace", fleet_namespace)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if local_auth_endpoint is not None:
-            pulumi.set(__self__, "local_auth_endpoint", local_auth_endpoint)
+            _setter("local_auth_endpoint", local_auth_endpoint)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if rke_config is not None:
-            pulumi.set(__self__, "rke_config", rke_config)
+            _setter("rke_config", rke_config)
 
     @property
     @pulumi.getter(name="kubernetesVersion")
@@ -304,44 +341,89 @@ class _ClusterV2State:
         :param pulumi.Input[str] resource_version: (Computed) Cluster v2 k8s resource version (string)
         :param pulumi.Input['ClusterV2RkeConfigArgs'] rke_config: The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
         """
+        _ClusterV2State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            agent_env_vars=agent_env_vars,
+            annotations=annotations,
+            cloud_credential_secret_name=cloud_credential_secret_name,
+            cluster_agent_deployment_customizations=cluster_agent_deployment_customizations,
+            cluster_registration_token=cluster_registration_token,
+            cluster_v1_id=cluster_v1_id,
+            default_cluster_role_for_project_members=default_cluster_role_for_project_members,
+            default_pod_security_admission_configuration_template_name=default_pod_security_admission_configuration_template_name,
+            default_pod_security_policy_template_name=default_pod_security_policy_template_name,
+            enable_network_policy=enable_network_policy,
+            fleet_agent_deployment_customizations=fleet_agent_deployment_customizations,
+            fleet_namespace=fleet_namespace,
+            kube_config=kube_config,
+            kubernetes_version=kubernetes_version,
+            labels=labels,
+            local_auth_endpoint=local_auth_endpoint,
+            name=name,
+            resource_version=resource_version,
+            rke_config=rke_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2AgentEnvVarArgs']]]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             cloud_credential_secret_name: Optional[pulumi.Input[str]] = None,
+             cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]]] = None,
+             cluster_registration_token: Optional[pulumi.Input['ClusterV2ClusterRegistrationTokenArgs']] = None,
+             cluster_v1_id: Optional[pulumi.Input[str]] = None,
+             default_cluster_role_for_project_members: Optional[pulumi.Input[str]] = None,
+             default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[str]] = None,
+             default_pod_security_policy_template_name: Optional[pulumi.Input[str]] = None,
+             enable_network_policy: Optional[pulumi.Input[bool]] = None,
+             fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]]] = None,
+             fleet_namespace: Optional[pulumi.Input[str]] = None,
+             kube_config: Optional[pulumi.Input[str]] = None,
+             kubernetes_version: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             local_auth_endpoint: Optional[pulumi.Input['ClusterV2LocalAuthEndpointArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_version: Optional[pulumi.Input[str]] = None,
+             rke_config: Optional[pulumi.Input['ClusterV2RkeConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if agent_env_vars is not None:
-            pulumi.set(__self__, "agent_env_vars", agent_env_vars)
+            _setter("agent_env_vars", agent_env_vars)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if cloud_credential_secret_name is not None:
-            pulumi.set(__self__, "cloud_credential_secret_name", cloud_credential_secret_name)
+            _setter("cloud_credential_secret_name", cloud_credential_secret_name)
         if cluster_agent_deployment_customizations is not None:
-            pulumi.set(__self__, "cluster_agent_deployment_customizations", cluster_agent_deployment_customizations)
+            _setter("cluster_agent_deployment_customizations", cluster_agent_deployment_customizations)
         if cluster_registration_token is not None:
-            pulumi.set(__self__, "cluster_registration_token", cluster_registration_token)
+            _setter("cluster_registration_token", cluster_registration_token)
         if cluster_v1_id is not None:
-            pulumi.set(__self__, "cluster_v1_id", cluster_v1_id)
+            _setter("cluster_v1_id", cluster_v1_id)
         if default_cluster_role_for_project_members is not None:
-            pulumi.set(__self__, "default_cluster_role_for_project_members", default_cluster_role_for_project_members)
+            _setter("default_cluster_role_for_project_members", default_cluster_role_for_project_members)
         if default_pod_security_admission_configuration_template_name is not None:
-            pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
+            _setter("default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
         if default_pod_security_policy_template_name is not None:
-            pulumi.set(__self__, "default_pod_security_policy_template_name", default_pod_security_policy_template_name)
+            _setter("default_pod_security_policy_template_name", default_pod_security_policy_template_name)
         if enable_network_policy is not None:
-            pulumi.set(__self__, "enable_network_policy", enable_network_policy)
+            _setter("enable_network_policy", enable_network_policy)
         if fleet_agent_deployment_customizations is not None:
-            pulumi.set(__self__, "fleet_agent_deployment_customizations", fleet_agent_deployment_customizations)
+            _setter("fleet_agent_deployment_customizations", fleet_agent_deployment_customizations)
         if fleet_namespace is not None:
-            pulumi.set(__self__, "fleet_namespace", fleet_namespace)
+            _setter("fleet_namespace", fleet_namespace)
         if kube_config is not None:
-            pulumi.set(__self__, "kube_config", kube_config)
+            _setter("kube_config", kube_config)
         if kubernetes_version is not None:
-            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+            _setter("kubernetes_version", kubernetes_version)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if local_auth_endpoint is not None:
-            pulumi.set(__self__, "local_auth_endpoint", local_auth_endpoint)
+            _setter("local_auth_endpoint", local_auth_endpoint)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_version is not None:
-            pulumi.set(__self__, "resource_version", resource_version)
+            _setter("resource_version", resource_version)
         if rke_config is not None:
-            pulumi.set(__self__, "rke_config", rke_config)
+            _setter("rke_config", rke_config)
 
     @property
     @pulumi.getter(name="agentEnvVars")
@@ -645,6 +727,10 @@ class ClusterV2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterV2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -688,8 +774,18 @@ class ClusterV2(pulumi.CustomResource):
                 raise TypeError("Missing required property 'kubernetes_version'")
             __props__.__dict__["kubernetes_version"] = kubernetes_version
             __props__.__dict__["labels"] = labels
+            if local_auth_endpoint is not None and not isinstance(local_auth_endpoint, ClusterV2LocalAuthEndpointArgs):
+                local_auth_endpoint = local_auth_endpoint or {}
+                def _setter(key, value):
+                    local_auth_endpoint[key] = value
+                ClusterV2LocalAuthEndpointArgs._configure(_setter, **local_auth_endpoint)
             __props__.__dict__["local_auth_endpoint"] = local_auth_endpoint
             __props__.__dict__["name"] = name
+            if rke_config is not None and not isinstance(rke_config, ClusterV2RkeConfigArgs):
+                rke_config = rke_config or {}
+                def _setter(key, value):
+                    rke_config[key] = value
+                ClusterV2RkeConfigArgs._configure(_setter, **rke_config)
             __props__.__dict__["rke_config"] = rke_config
             __props__.__dict__["cluster_registration_token"] = None
             __props__.__dict__["cluster_v1_id"] = None

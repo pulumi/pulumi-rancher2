@@ -17,12 +17,12 @@ public final class NamespaceResourceQuotaLimit {
      */
     private @Nullable String configMaps;
     /**
-     * @return CPU limit for containers (string)
+     * @return Limit for limits cpu in namespace (string)
      * 
      */
     private @Nullable String limitsCpu;
     /**
-     * @return Memory limit for containers (string)
+     * @return Limit for limits memory in namespace (string)
      * 
      */
     private @Nullable String limitsMemory;
@@ -42,12 +42,12 @@ public final class NamespaceResourceQuotaLimit {
      */
     private @Nullable String replicationControllers;
     /**
-     * @return CPU reservation for containers (string)
+     * @return Limit for requests cpu in namespace (string)
      * 
      */
     private @Nullable String requestsCpu;
     /**
-     * @return Memory reservation for containers (string)
+     * @return Limit for requests memory in namespace (string)
      * 
      */
     private @Nullable String requestsMemory;
@@ -84,14 +84,14 @@ public final class NamespaceResourceQuotaLimit {
         return Optional.ofNullable(this.configMaps);
     }
     /**
-     * @return CPU limit for containers (string)
+     * @return Limit for limits cpu in namespace (string)
      * 
      */
     public Optional<String> limitsCpu() {
         return Optional.ofNullable(this.limitsCpu);
     }
     /**
-     * @return Memory limit for containers (string)
+     * @return Limit for limits memory in namespace (string)
      * 
      */
     public Optional<String> limitsMemory() {
@@ -119,14 +119,14 @@ public final class NamespaceResourceQuotaLimit {
         return Optional.ofNullable(this.replicationControllers);
     }
     /**
-     * @return CPU reservation for containers (string)
+     * @return Limit for requests cpu in namespace (string)
      * 
      */
     public Optional<String> requestsCpu() {
         return Optional.ofNullable(this.requestsCpu);
     }
     /**
-     * @return Memory reservation for containers (string)
+     * @return Limit for requests memory in namespace (string)
      * 
      */
     public Optional<String> requestsMemory() {

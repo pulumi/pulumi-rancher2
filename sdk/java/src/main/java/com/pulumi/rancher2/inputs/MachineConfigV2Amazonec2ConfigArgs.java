@@ -160,14 +160,14 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * AWS instance type. Default `t3a.medium` (string)
+     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return AWS instance type. Default `t3a.medium` (string)
+     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -175,14 +175,14 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+     * OpenStack keypair to use to SSH to the instance (string)
      * 
      */
     @Import(name="keypairName")
     private @Nullable Output<String> keypairName;
 
     /**
-     * @return AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+     * @return OpenStack keypair to use to SSH to the instance (string)
      * 
      */
     public Optional<Output<String>> keypairName() {
@@ -205,14 +205,14 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+     * Enable monitoring for droplet. Default `false` (bool)
      * 
      */
     @Import(name="monitoring")
     private @Nullable Output<Boolean> monitoring;
 
     /**
-     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+     * @return Enable monitoring for droplet. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> monitoring() {
@@ -250,14 +250,14 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * AWS region. (string)
+     * OpenStack region name (string)
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return AWS region. (string)
+     * @return OpenStack region name (string)
      * 
      */
     public Output<String> region() {
@@ -377,14 +377,14 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * SSH Key for Instance (string)
+     * SSH private key contents (string)
      * 
      */
     @Import(name="sshKeyContents")
     private @Nullable Output<String> sshKeyContents;
 
     /**
-     * @return SSH Key for Instance (string)
+     * @return SSH private key contents (string)
      * 
      */
     public Optional<Output<String>> sshKeyContents() {
@@ -392,14 +392,14 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Set the name of the ssh user (string)
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -422,14 +422,14 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<String> tags;
 
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
     public Optional<Output<String>> tags() {
@@ -467,14 +467,14 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Path to file with cloud-init user data (string)
+     * Path to file with cloud-init user-data (string)
      * 
      */
     @Import(name="userdata")
     private @Nullable Output<String> userdata;
 
     /**
-     * @return Path to file with cloud-init user data (string)
+     * @return Path to file with cloud-init user-data (string)
      * 
      */
     public Optional<Output<String>> userdata() {
@@ -482,14 +482,14 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Amazon EBS volume type. Default `gp2` (string)
+     * OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     @Import(name="volumeType")
     private @Nullable Output<String> volumeType;
 
     /**
-     * @return Amazon EBS volume type. Default `gp2` (string)
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     public Optional<Output<String>> volumeType() {
@@ -783,7 +783,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param instanceType AWS instance type. Default `t3a.medium` (string)
+         * @param instanceType Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
          * 
          * @return builder
          * 
@@ -794,7 +794,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param instanceType AWS instance type. Default `t3a.medium` (string)
+         * @param instanceType Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
          * 
          * @return builder
          * 
@@ -804,7 +804,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param keypairName AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+         * @param keypairName OpenStack keypair to use to SSH to the instance (string)
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param keypairName AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+         * @param keypairName OpenStack keypair to use to SSH to the instance (string)
          * 
          * @return builder
          * 
@@ -846,7 +846,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param monitoring Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -857,7 +857,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param monitoring Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -919,7 +919,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region OpenStack region name (string)
          * 
          * @return builder
          * 
@@ -930,7 +930,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region OpenStack region name (string)
          * 
          * @return builder
          * 
@@ -1106,7 +1106,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshKeyContents SSH Key for Instance (string)
+         * @param sshKeyContents SSH private key contents (string)
          * 
          * @return builder
          * 
@@ -1117,7 +1117,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshKeyContents SSH Key for Instance (string)
+         * @param sshKeyContents SSH private key contents (string)
          * 
          * @return builder
          * 
@@ -1127,7 +1127,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
          * 
          * @return builder
          * 
@@ -1138,7 +1138,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
          * 
          * @return builder
          * 
@@ -1169,7 +1169,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx` (list)
          * 
          * @return builder
          * 
@@ -1180,7 +1180,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx` (list)
          * 
          * @return builder
          * 
@@ -1232,7 +1232,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userdata Path to file with cloud-init user data (string)
+         * @param userdata Path to file with cloud-init user-data (string)
          * 
          * @return builder
          * 
@@ -1243,7 +1243,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userdata Path to file with cloud-init user data (string)
+         * @param userdata Path to file with cloud-init user-data (string)
          * 
          * @return builder
          * 
@@ -1253,7 +1253,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeType Amazon EBS volume type. Default `gp2` (string)
+         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
          * 
          * @return builder
          * 
@@ -1264,7 +1264,7 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeType Amazon EBS volume type. Default `gp2` (string)
+         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
          * 
          * @return builder
          * 

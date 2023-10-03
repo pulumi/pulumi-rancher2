@@ -36,14 +36,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+     * The AKS node pool count. Default: `1` (int)
      * 
      */
     @Import(name="count")
     private @Nullable Output<Integer> count;
 
     /**
-     * @return Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+     * @return The AKS node pool count. Default: `1` (int)
      * 
      */
     public Optional<Output<Integer>> count() {
@@ -96,14 +96,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Maximum number of pods that can run on a node. Default `110` (int)
+     * The AKS node pool max pods. Default: `110` (int)
      * 
      */
     @Import(name="maxPods")
     private @Nullable Output<Integer> maxPods;
 
     /**
-     * @return Maximum number of pods that can run on a node. Default `110` (int)
+     * @return The AKS node pool max pods. Default: `110` (int)
      * 
      */
     public Optional<Output<Integer>> maxPods() {
@@ -111,14 +111,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Monitoring deployment rolling update max surge. Default: `1` (int)
+     * The AKS node pool max surge (string), example value: `25%`
      * 
      */
     @Import(name="maxSurge")
     private @Nullable Output<String> maxSurge;
 
     /**
-     * @return Monitoring deployment rolling update max surge. Default: `1` (int)
+     * @return The AKS node pool max surge (string), example value: `25%`
      * 
      */
     public Optional<Output<String>> maxSurge() {
@@ -141,14 +141,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+     * The AKS node group mode. Default: `System` (string)
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+     * @return The AKS node group mode. Default: `System` (string)
      * 
      */
     public Optional<Output<String>> mode() {
@@ -231,14 +231,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool taints (list)
+     * The GKE node config taints (List)
      * 
      */
     @Import(name="taints")
     private @Nullable Output<List<String>> taints;
 
     /**
-     * @return The AKS node pool taints (list)
+     * @return The GKE node config taints (List)
      * 
      */
     public Optional<Output<List<String>>> taints() {
@@ -331,7 +331,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param count Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+         * @param count The AKS node pool count. Default: `1` (int)
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param count Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+         * @param count The AKS node pool count. Default: `1` (int)
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxPods Maximum number of pods that can run on a node. Default `110` (int)
+         * @param maxPods The AKS node pool max pods. Default: `110` (int)
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxPods Maximum number of pods that can run on a node. Default `110` (int)
+         * @param maxPods The AKS node pool max pods. Default: `110` (int)
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxSurge Monitoring deployment rolling update max surge. Default: `1` (int)
+         * @param maxSurge The AKS node pool max surge (string), example value: `25%`
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxSurge Monitoring deployment rolling update max surge. Default: `1` (int)
+         * @param maxSurge The AKS node pool max surge (string), example value: `25%`
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param mode RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+         * @param mode The AKS node group mode. Default: `System` (string)
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param mode RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+         * @param mode The AKS node group mode. Default: `System` (string)
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param taints The AKS node pool taints (list)
+         * @param taints The GKE node config taints (List)
          * 
          * @return builder
          * 
@@ -615,7 +615,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param taints The AKS node pool taints (list)
+         * @param taints The GKE node config taints (List)
          * 
          * @return builder
          * 
@@ -625,7 +625,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param taints The AKS node pool taints (list)
+         * @param taints The GKE node config taints (List)
          * 
          * @return builder
          * 

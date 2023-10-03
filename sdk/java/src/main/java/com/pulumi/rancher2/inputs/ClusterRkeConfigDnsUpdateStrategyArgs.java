@@ -17,14 +17,14 @@ public final class ClusterRkeConfigDnsUpdateStrategyArgs extends com.pulumi.reso
     public static final ClusterRkeConfigDnsUpdateStrategyArgs Empty = new ClusterRkeConfigDnsUpdateStrategyArgs();
 
     /**
-     * Monitoring daemon set rolling update (list Maxitems: 1)
+     * Monitoring deployment rolling update (list Maxitems: 1)
      * 
      */
     @Import(name="rollingUpdate")
     private @Nullable Output<ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs> rollingUpdate;
 
     /**
-     * @return Monitoring daemon set rolling update (list Maxitems: 1)
+     * @return Monitoring deployment rolling update (list Maxitems: 1)
      * 
      */
     public Optional<Output<ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs>> rollingUpdate() {
@@ -32,14 +32,14 @@ public final class ClusterRkeConfigDnsUpdateStrategyArgs extends com.pulumi.reso
     }
 
     /**
-     * RKE strategy for authentication (string)
+     * Monitoring deployment update strategy (string)
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return RKE strategy for authentication (string)
+     * @return Monitoring deployment update strategy (string)
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -72,7 +72,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param rollingUpdate Monitoring daemon set rolling update (list Maxitems: 1)
+         * @param rollingUpdate Monitoring deployment rolling update (list Maxitems: 1)
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param rollingUpdate Monitoring daemon set rolling update (list Maxitems: 1)
+         * @param rollingUpdate Monitoring deployment rolling update (list Maxitems: 1)
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param strategy RKE strategy for authentication (string)
+         * @param strategy Monitoring deployment update strategy (string)
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param strategy RKE strategy for authentication (string)
+         * @param strategy Monitoring deployment update strategy (string)
          * 
          * @return builder
          * 

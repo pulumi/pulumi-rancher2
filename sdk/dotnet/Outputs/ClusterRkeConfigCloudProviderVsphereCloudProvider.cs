@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal? Global;
         /// <summary>
-        /// Kubernetes cluster networking (list maxitems:1)
+        /// The GKE cluster network. Required for create new cluster (string)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork? Network;
         /// <summary>

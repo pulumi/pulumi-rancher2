@@ -47,14 +47,14 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
     }
 
     /**
-     * RKE2 kubernetes version (string)
+     * rancher-monitoring chart version (string)
      * 
      */
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
     /**
-     * @return RKE2 kubernetes version (string)
+     * @return rancher-monitoring chart version (string)
      * 
      */
     public Optional<Output<Integer>> version() {
@@ -130,7 +130,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
         }
 
         /**
-         * @param version RKE2 kubernetes version (string)
+         * @param version rancher-monitoring chart version (string)
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
         }
 
         /**
-         * @param version RKE2 kubernetes version (string)
+         * @param version rancher-monitoring chart version (string)
          * 
          * @return builder
          * 

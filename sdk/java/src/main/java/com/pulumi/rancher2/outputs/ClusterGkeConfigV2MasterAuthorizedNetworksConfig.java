@@ -19,7 +19,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
      */
     private List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
     /**
-     * @return Enable etcd backup (bool)
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -33,7 +33,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
         return this.cidrBlocks;
     }
     /**
-     * @return Enable etcd backup (bool)
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     public Optional<Boolean> enabled() {

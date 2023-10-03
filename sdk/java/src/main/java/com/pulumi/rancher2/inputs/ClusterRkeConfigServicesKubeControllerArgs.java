@@ -34,14 +34,14 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
     }
 
     /**
-     * Extra arguments for RKE Ingress (map)
+     * Extra arguments for scheduler service (map)
      * 
      */
     @Import(name="extraArgs")
     private @Nullable Output<Map<String,Object>> extraArgs;
 
     /**
-     * @return Extra arguments for RKE Ingress (map)
+     * @return Extra arguments for scheduler service (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> extraArgs() {
@@ -49,14 +49,14 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
     }
 
     /**
-     * Extra binds for etcd service (list)
+     * Extra binds for scheduler service (list)
      * 
      */
     @Import(name="extraBinds")
     private @Nullable Output<List<String>> extraBinds;
 
     /**
-     * @return Extra binds for etcd service (list)
+     * @return Extra binds for scheduler service (list)
      * 
      */
     public Optional<Output<List<String>>> extraBinds() {
@@ -64,14 +64,14 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
     }
 
     /**
-     * Extra environment for etcd service (list)
+     * Extra environment for scheduler service (list)
      * 
      */
     @Import(name="extraEnvs")
     private @Nullable Output<List<String>> extraEnvs;
 
     /**
-     * @return Extra environment for etcd service (list)
+     * @return Extra environment for scheduler service (list)
      * 
      */
     public Optional<Output<List<String>>> extraEnvs() {
@@ -79,14 +79,14 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
     }
 
     /**
-     * Docker image for etcd service (string)
+     * Docker image for scheduler service (string)
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Docker image for etcd service (string)
+     * @return Docker image for scheduler service (string)
      * 
      */
     public Optional<Output<String>> image() {
@@ -94,14 +94,14 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
     }
 
     /**
-     * Service Cluster IP Range option for kube API service (string)
+     * Service Cluster ip Range option for kube controller service (string)
      * 
      */
     @Import(name="serviceClusterIpRange")
     private @Nullable Output<String> serviceClusterIpRange;
 
     /**
-     * @return Service Cluster IP Range option for kube API service (string)
+     * @return Service Cluster ip Range option for kube controller service (string)
      * 
      */
     public Optional<Output<String>> serviceClusterIpRange() {
@@ -159,7 +159,7 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
         }
 
         /**
-         * @param extraArgs Extra arguments for RKE Ingress (map)
+         * @param extraArgs Extra arguments for scheduler service (map)
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
         }
 
         /**
-         * @param extraArgs Extra arguments for RKE Ingress (map)
+         * @param extraArgs Extra arguments for scheduler service (map)
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
         }
 
         /**
-         * @param extraBinds Extra binds for etcd service (list)
+         * @param extraBinds Extra binds for scheduler service (list)
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
         }
 
         /**
-         * @param extraBinds Extra binds for etcd service (list)
+         * @param extraBinds Extra binds for scheduler service (list)
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
         }
 
         /**
-         * @param extraBinds Extra binds for etcd service (list)
+         * @param extraBinds Extra binds for scheduler service (list)
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
         }
 
         /**
-         * @param extraEnvs Extra environment for etcd service (list)
+         * @param extraEnvs Extra environment for scheduler service (list)
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
         }
 
         /**
-         * @param extraEnvs Extra environment for etcd service (list)
+         * @param extraEnvs Extra environment for scheduler service (list)
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
         }
 
         /**
-         * @param extraEnvs Extra environment for etcd service (list)
+         * @param extraEnvs Extra environment for scheduler service (list)
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
         }
 
         /**
-         * @param image Docker image for etcd service (string)
+         * @param image Docker image for scheduler service (string)
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
         }
 
         /**
-         * @param image Docker image for etcd service (string)
+         * @param image Docker image for scheduler service (string)
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
         }
 
         /**
-         * @param serviceClusterIpRange Service Cluster IP Range option for kube API service (string)
+         * @param serviceClusterIpRange Service Cluster ip Range option for kube controller service (string)
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ClusterRkeConfigServicesKubeControllerArgs extends com.pulumi
         }
 
         /**
-         * @param serviceClusterIpRange Service Cluster IP Range option for kube API service (string)
+         * @param serviceClusterIpRange Service Cluster ip Range option for kube controller service (string)
          * 
          * @return builder
          * 

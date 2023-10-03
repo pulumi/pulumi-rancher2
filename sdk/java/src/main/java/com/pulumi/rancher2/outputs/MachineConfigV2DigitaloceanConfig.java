@@ -23,7 +23,7 @@ public final class MachineConfigV2DigitaloceanConfig {
      */
     private @Nullable Boolean backups;
     /**
-     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     private @Nullable String image;
@@ -33,7 +33,7 @@ public final class MachineConfigV2DigitaloceanConfig {
      */
     private @Nullable Boolean ipv6;
     /**
-     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+     * @return Enable monitoring for droplet. Default `false` (bool)
      * 
      */
     private @Nullable Boolean monitoring;
@@ -43,17 +43,17 @@ public final class MachineConfigV2DigitaloceanConfig {
      */
     private @Nullable Boolean privateNetworking;
     /**
-     * @return AWS region. (string)
+     * @return OpenStack region name (string)
      * 
      */
     private @Nullable String region;
     /**
-     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
+     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
      * 
      */
     private @Nullable String size;
     /**
-     * @return SSH Key for Instance (string)
+     * @return SSH private key contents (string)
      * 
      */
     private @Nullable String sshKeyContents;
@@ -63,22 +63,22 @@ public final class MachineConfigV2DigitaloceanConfig {
      */
     private @Nullable String sshKeyFingerprint;
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
     private @Nullable String sshPort;
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     private @Nullable String sshUser;
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
     private @Nullable String tags;
     /**
-     * @return Path to file with cloud-init user data (string)
+     * @return Path to file with cloud-init user-data (string)
      * 
      */
     private @Nullable String userdata;
@@ -99,7 +99,7 @@ public final class MachineConfigV2DigitaloceanConfig {
         return Optional.ofNullable(this.backups);
     }
     /**
-     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     public Optional<String> image() {
@@ -113,7 +113,7 @@ public final class MachineConfigV2DigitaloceanConfig {
         return Optional.ofNullable(this.ipv6);
     }
     /**
-     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+     * @return Enable monitoring for droplet. Default `false` (bool)
      * 
      */
     public Optional<Boolean> monitoring() {
@@ -127,21 +127,21 @@ public final class MachineConfigV2DigitaloceanConfig {
         return Optional.ofNullable(this.privateNetworking);
     }
     /**
-     * @return AWS region. (string)
+     * @return OpenStack region name (string)
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
+     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
      * 
      */
     public Optional<String> size() {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return SSH Key for Instance (string)
+     * @return SSH private key contents (string)
      * 
      */
     public Optional<String> sshKeyContents() {
@@ -155,28 +155,28 @@ public final class MachineConfigV2DigitaloceanConfig {
         return Optional.ofNullable(this.sshKeyFingerprint);
     }
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
     public Optional<String> sshPort() {
         return Optional.ofNullable(this.sshPort);
     }
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     public Optional<String> sshUser() {
         return Optional.ofNullable(this.sshUser);
     }
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
     public Optional<String> tags() {
         return Optional.ofNullable(this.tags);
     }
     /**
-     * @return Path to file with cloud-init user data (string)
+     * @return Path to file with cloud-init user-data (string)
      * 
      */
     public Optional<String> userdata() {

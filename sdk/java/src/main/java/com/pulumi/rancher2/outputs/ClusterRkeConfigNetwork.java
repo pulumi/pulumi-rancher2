@@ -47,7 +47,7 @@ public final class ClusterRkeConfigNetwork {
      */
     private @Nullable Integer mtu;
     /**
-     * @return RKE options for authorization (map)
+     * @return RKE options for network (map)
      * 
      */
     private @Nullable Map<String,Object> options;
@@ -57,7 +57,7 @@ public final class ClusterRkeConfigNetwork {
      */
     private @Nullable String plugin;
     /**
-     * @return DNS add-on tolerations (list)
+     * @return Network add-on tolerations (list)
      * 
      */
     private @Nullable List<ClusterRkeConfigNetworkToleration> tolerations;
@@ -104,7 +104,7 @@ public final class ClusterRkeConfigNetwork {
         return Optional.ofNullable(this.mtu);
     }
     /**
-     * @return RKE options for authorization (map)
+     * @return RKE options for network (map)
      * 
      */
     public Map<String,Object> options() {
@@ -118,7 +118,7 @@ public final class ClusterRkeConfigNetwork {
         return Optional.ofNullable(this.plugin);
     }
     /**
-     * @return DNS add-on tolerations (list)
+     * @return Network add-on tolerations (list)
      * 
      */
     public List<ClusterRkeConfigNetworkToleration> tolerations() {

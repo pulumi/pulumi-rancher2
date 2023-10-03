@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class NodeTemplateHarvesterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CPU count, Default `2` (string)
+        /// vSphere CPU number for docker VM. Default `2` (string)
         /// </summary>
         [Input("cpuCount")]
         public Input<string>? CpuCount { get; set; }
@@ -31,19 +31,19 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? DiskInfo { get; set; }
 
         /// <summary>
-        /// Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
         /// </summary>
         [Input("diskSize")]
         public Input<string>? DiskSize { get; set; }
 
         /// <summary>
-        /// Use `disk_info` instead
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
 
         /// <summary>
-        /// Memory size (in GiB), Default `4` (string)
+        /// vSphere size of memory for docker VM (in MB). Default `2048` (string)
         /// </summary>
         [Input("memorySize")]
         public Input<string>? MemorySize { get; set; }
@@ -67,7 +67,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? NetworkModel { get; set; }
 
         /// <summary>
-        /// Use `network_info` instead
+        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
         /// </summary>
         [Input("networkName")]
         public Input<string>? NetworkName { get; set; }
@@ -76,7 +76,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _sshPassword;
 
         /// <summary>
-        /// SSH password (string)
+        /// If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
         /// </summary>
         public Input<string>? SshPassword
         {
@@ -89,7 +89,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
         /// </summary>
         [Input("sshUser", required: true)]
         public Input<string> SshUser { get; set; } = null!;

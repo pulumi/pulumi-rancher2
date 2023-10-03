@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? Mtu;
         /// <summary>
-        /// RKE options for authorization (map)
+        /// RKE options for network (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Options;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Plugin;
         /// <summary>
-        /// DNS add-on tolerations (list)
+        /// Network add-on tolerations (list)
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterRkeConfigNetworkToleration> Tolerations;
         /// <summary>

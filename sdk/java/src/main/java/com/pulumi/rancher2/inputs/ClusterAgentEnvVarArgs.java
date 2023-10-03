@@ -29,14 +29,14 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Rancher agent env var value (string)
+     * The GKE taint value (string)
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Rancher agent env var value (string)
+     * @return The GKE taint value (string)
      * 
      */
     public Output<String> value() {
@@ -90,7 +90,7 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value Rancher agent env var value (string)
+         * @param value The GKE taint value (string)
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value Rancher agent env var value (string)
+         * @param value The GKE taint value (string)
          * 
          * @return builder
          * 

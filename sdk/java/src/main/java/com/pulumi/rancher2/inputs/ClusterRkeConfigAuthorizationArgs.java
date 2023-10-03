@@ -18,14 +18,14 @@ public final class ClusterRkeConfigAuthorizationArgs extends com.pulumi.resource
     public static final ClusterRkeConfigAuthorizationArgs Empty = new ClusterRkeConfigAuthorizationArgs();
 
     /**
-     * RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+     * The AKS node group mode. Default: `System` (string)
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+     * @return The AKS node group mode. Default: `System` (string)
      * 
      */
     public Optional<Output<String>> mode() {
@@ -33,14 +33,14 @@ public final class ClusterRkeConfigAuthorizationArgs extends com.pulumi.resource
     }
 
     /**
-     * RKE options for authorization (map)
+     * RKE options for network (map)
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,Object>> options;
 
     /**
-     * @return RKE options for authorization (map)
+     * @return RKE options for network (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> options() {
@@ -73,7 +73,7 @@ public final class ClusterRkeConfigAuthorizationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param mode RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+         * @param mode The AKS node group mode. Default: `System` (string)
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ClusterRkeConfigAuthorizationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param mode RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+         * @param mode The AKS node group mode. Default: `System` (string)
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ClusterRkeConfigAuthorizationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param options RKE options for authorization (map)
+         * @param options RKE options for network (map)
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ClusterRkeConfigAuthorizationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param options RKE options for authorization (map)
+         * @param options RKE options for network (map)
          * 
          * @return builder
          * 

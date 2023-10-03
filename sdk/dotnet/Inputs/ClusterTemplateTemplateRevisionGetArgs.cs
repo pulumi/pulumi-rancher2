@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ClusterTemplateId { get; set; }
 
         /// <summary>
-        /// Default cluster template revision. Default `false` (bool)
+        /// Default variable value (string)
         /// </summary>
         [Input("default")]
         public Input<bool>? Default { get; set; }

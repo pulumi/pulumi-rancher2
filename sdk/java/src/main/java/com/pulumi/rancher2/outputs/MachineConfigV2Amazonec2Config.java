@@ -60,12 +60,12 @@ public final class MachineConfigV2Amazonec2Config {
      */
     private @Nullable Boolean insecureTransport;
     /**
-     * @return AWS instance type. Default `t3a.medium` (string)
+     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
      * 
      */
     private @Nullable String instanceType;
     /**
-     * @return AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+     * @return OpenStack keypair to use to SSH to the instance (string)
      * 
      */
     private @Nullable String keypairName;
@@ -75,7 +75,7 @@ public final class MachineConfigV2Amazonec2Config {
      */
     private @Nullable String kmsKey;
     /**
-     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+     * @return Enable monitoring for droplet. Default `false` (bool)
      * 
      */
     private @Nullable Boolean monitoring;
@@ -90,7 +90,7 @@ public final class MachineConfigV2Amazonec2Config {
      */
     private @Nullable Boolean privateAddressOnly;
     /**
-     * @return AWS region. (string)
+     * @return OpenStack region name (string)
      * 
      */
     private String region;
@@ -131,12 +131,12 @@ public final class MachineConfigV2Amazonec2Config {
      */
     private @Nullable String spotPrice;
     /**
-     * @return SSH Key for Instance (string)
+     * @return SSH private key contents (string)
      * 
      */
     private @Nullable String sshKeyContents;
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     private @Nullable String sshUser;
@@ -146,7 +146,7 @@ public final class MachineConfigV2Amazonec2Config {
      */
     private String subnetId;
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
     private @Nullable String tags;
@@ -161,12 +161,12 @@ public final class MachineConfigV2Amazonec2Config {
      */
     private @Nullable Boolean usePrivateAddress;
     /**
-     * @return Path to file with cloud-init user data (string)
+     * @return Path to file with cloud-init user-data (string)
      * 
      */
     private @Nullable String userdata;
     /**
-     * @return Amazon EBS volume type. Default `gp2` (string)
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     private @Nullable String volumeType;
@@ -249,14 +249,14 @@ public final class MachineConfigV2Amazonec2Config {
         return Optional.ofNullable(this.insecureTransport);
     }
     /**
-     * @return AWS instance type. Default `t3a.medium` (string)
+     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
      * 
      */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+     * @return OpenStack keypair to use to SSH to the instance (string)
      * 
      */
     public Optional<String> keypairName() {
@@ -270,7 +270,7 @@ public final class MachineConfigV2Amazonec2Config {
         return Optional.ofNullable(this.kmsKey);
     }
     /**
-     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+     * @return Enable monitoring for droplet. Default `false` (bool)
      * 
      */
     public Optional<Boolean> monitoring() {
@@ -291,7 +291,7 @@ public final class MachineConfigV2Amazonec2Config {
         return Optional.ofNullable(this.privateAddressOnly);
     }
     /**
-     * @return AWS region. (string)
+     * @return OpenStack region name (string)
      * 
      */
     public String region() {
@@ -350,14 +350,14 @@ public final class MachineConfigV2Amazonec2Config {
         return Optional.ofNullable(this.spotPrice);
     }
     /**
-     * @return SSH Key for Instance (string)
+     * @return SSH private key contents (string)
      * 
      */
     public Optional<String> sshKeyContents() {
         return Optional.ofNullable(this.sshKeyContents);
     }
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     public Optional<String> sshUser() {
@@ -371,7 +371,7 @@ public final class MachineConfigV2Amazonec2Config {
         return this.subnetId;
     }
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
     public Optional<String> tags() {
@@ -392,14 +392,14 @@ public final class MachineConfigV2Amazonec2Config {
         return Optional.ofNullable(this.usePrivateAddress);
     }
     /**
-     * @return Path to file with cloud-init user data (string)
+     * @return Path to file with cloud-init user-data (string)
      * 
      */
     public Optional<String> userdata() {
         return Optional.ofNullable(this.userdata);
     }
     /**
-     * @return Amazon EBS volume type. Default `gp2` (string)
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     public Optional<String> volumeType() {

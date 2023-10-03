@@ -46,7 +46,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _options;
 
         /// <summary>
-        /// RKE options for authorization (map)
+        /// RKE options for network (map)
         /// </summary>
         public InputMap<object> Options
         {
@@ -64,7 +64,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterRkeConfigNetworkTolerationGetArgs>? _tolerations;
 
         /// <summary>
-        /// DNS add-on tolerations (list)
+        /// Network add-on tolerations (list)
         /// </summary>
         public InputList<Inputs.ClusterRkeConfigNetworkTolerationGetArgs> Tolerations
         {

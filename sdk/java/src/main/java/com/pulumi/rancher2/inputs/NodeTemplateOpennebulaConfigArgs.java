@@ -92,14 +92,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Image ID to use as the VM OS. Conflicts with `image_name` (string)
+     * OpenStack image id to use for the instance. Conflicts with `image_name` (string)
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return Image ID to use as the VM OS. Conflicts with `image_name` (string)
+     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -107,14 +107,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Use `disk_info` instead
+     * OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
     /**
-     * @return Use `disk_info` instead
+     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      */
     public Optional<Output<String>> imageName() {
@@ -167,14 +167,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Use `network_info` instead
+     * Opennebula network to connect the machine to. Conflicts with `network_id` (string)
      * 
      */
     @Import(name="networkName")
     private @Nullable Output<String> networkName;
 
     /**
-     * @return Use `network_info` instead
+     * @return Opennebula network to connect the machine to. Conflicts with `network_id` (string)
      * 
      */
     public Optional<Output<String>> networkName() {
@@ -197,14 +197,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Set the password for the XML-RPC API authentication (string)
+     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
-     * @return Set the password for the XML-RPC API authentication (string)
+     * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     public Output<String> password() {
@@ -212,14 +212,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Set the name of the ssh user (string)
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -453,7 +453,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param imageId Image ID to use as the VM OS. Conflicts with `image_name` (string)
+         * @param imageId OpenStack image id to use for the instance. Conflicts with `image_name` (string)
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param imageId Image ID to use as the VM OS. Conflicts with `image_name` (string)
+         * @param imageId OpenStack image id to use for the instance. Conflicts with `image_name` (string)
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param imageName Use `disk_info` instead
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param imageName Use `disk_info` instead
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
          * 
          * @return builder
          * 
@@ -558,7 +558,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkName Use `network_info` instead
+         * @param networkName Opennebula network to connect the machine to. Conflicts with `network_id` (string)
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkName Use `network_info` instead
+         * @param networkName Opennebula network to connect the machine to. Conflicts with `network_id` (string)
          * 
          * @return builder
          * 
@@ -600,7 +600,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param password Set the password for the XML-RPC API authentication (string)
+         * @param password vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
          * 
          * @return builder
          * 
@@ -611,7 +611,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param password Set the password for the XML-RPC API authentication (string)
+         * @param password vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
          * 
          * @return builder
          * 
@@ -621,7 +621,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -632,7 +632,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 

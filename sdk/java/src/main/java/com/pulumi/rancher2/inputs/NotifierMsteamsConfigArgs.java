@@ -16,14 +16,14 @@ public final class NotifierMsteamsConfigArgs extends com.pulumi.resources.Resour
     public static final NotifierMsteamsConfigArgs Empty = new NotifierMsteamsConfigArgs();
 
     /**
-     * Dingtalk proxy url (string)
+     * Wechat proxy url (string)
      * 
      */
     @Import(name="proxyUrl")
     private @Nullable Output<String> proxyUrl;
 
     /**
-     * @return Dingtalk proxy url (string)
+     * @return Wechat proxy url (string)
      * 
      */
     public Optional<Output<String>> proxyUrl() {
@@ -31,14 +31,14 @@ public final class NotifierMsteamsConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Dingtalk url (string)
+     * Slack url (string)
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return Dingtalk url (string)
+     * @return Slack url (string)
      * 
      */
     public Output<String> url() {
@@ -71,7 +71,7 @@ public final class NotifierMsteamsConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param proxyUrl Dingtalk proxy url (string)
+         * @param proxyUrl Wechat proxy url (string)
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class NotifierMsteamsConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param proxyUrl Dingtalk proxy url (string)
+         * @param proxyUrl Wechat proxy url (string)
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class NotifierMsteamsConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param url Dingtalk url (string)
+         * @param url Slack url (string)
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class NotifierMsteamsConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param url Dingtalk url (string)
+         * @param url Slack url (string)
          * 
          * @return builder
          * 

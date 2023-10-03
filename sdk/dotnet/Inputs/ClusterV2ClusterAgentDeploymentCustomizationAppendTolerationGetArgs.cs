@@ -13,19 +13,19 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The toleration effect. Default: `\"NoSchedule\"` (string)
+        /// The taint effect. Default: `\"NoExecute\"` (string)
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
         /// <summary>
-        /// The toleration key (string)
+        /// Machine selector label match expressions key (string)
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The toleration operator (string)
+        /// Machine selector label match expressions operator (string)
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? Seconds { get; set; }
 
         /// <summary>
-        /// Rancher agent env var value (string)
+        /// The taint value (string)
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

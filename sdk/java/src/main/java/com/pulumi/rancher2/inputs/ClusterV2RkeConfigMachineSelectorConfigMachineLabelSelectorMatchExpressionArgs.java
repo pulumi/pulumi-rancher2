@@ -17,14 +17,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
     public static final ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs Empty = new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs();
 
     /**
-     * The toleration key (string)
+     * Machine selector label match expressions key (string)
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The toleration key (string)
+     * @return Machine selector label match expressions key (string)
      * 
      */
     public Optional<Output<String>> key() {
@@ -32,14 +32,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
     }
 
     /**
-     * The toleration operator (string)
+     * Machine selector label match expressions operator (string)
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return The toleration operator (string)
+     * @return Machine selector label match expressions operator (string)
      * 
      */
     public Optional<Output<String>> operator() {
@@ -88,7 +88,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param key The toleration key (string)
+         * @param key Machine selector label match expressions key (string)
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param key The toleration key (string)
+         * @param key Machine selector label match expressions key (string)
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param operator The toleration operator (string)
+         * @param operator Machine selector label match expressions operator (string)
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param operator The toleration operator (string)
+         * @param operator Machine selector label match expressions operator (string)
          * 
          * @return builder
          * 

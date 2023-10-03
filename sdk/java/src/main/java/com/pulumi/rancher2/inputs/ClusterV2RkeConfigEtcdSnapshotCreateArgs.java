@@ -14,14 +14,14 @@ public final class ClusterV2RkeConfigEtcdSnapshotCreateArgs extends com.pulumi.r
     public static final ClusterV2RkeConfigEtcdSnapshotCreateArgs Empty = new ClusterV2RkeConfigEtcdSnapshotCreateArgs();
 
     /**
-     * Desired certificate rotation generation (int)
+     * ETCD snapshot desired generation (int)
      * 
      */
     @Import(name="generation", required=true)
     private Output<Integer> generation;
 
     /**
-     * @return Desired certificate rotation generation (int)
+     * @return ETCD snapshot desired generation (int)
      * 
      */
     public Output<Integer> generation() {
@@ -53,7 +53,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotCreateArgs extends com.pulumi.r
         }
 
         /**
-         * @param generation Desired certificate rotation generation (int)
+         * @param generation ETCD snapshot desired generation (int)
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotCreateArgs extends com.pulumi.r
         }
 
         /**
-         * @param generation Desired certificate rotation generation (int)
+         * @param generation ETCD snapshot desired generation (int)
          * 
          * @return builder
          * 

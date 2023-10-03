@@ -25,13 +25,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Corp { get; set; } = null!;
 
         /// <summary>
-        /// Slack default recipient (string)
+        /// Wechat default recipient (string)
         /// </summary>
         [Input("defaultRecipient", required: true)]
         public Input<string> DefaultRecipient { get; set; } = null!;
 
         /// <summary>
-        /// Dingtalk proxy url (string)
+        /// Wechat proxy url (string)
         /// </summary>
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _secret;
 
         /// <summary>
-        /// Secret for url sign enable (string)
+        /// Wechat agent ID (string)
         /// </summary>
         public Input<string>? Secret
         {

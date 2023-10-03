@@ -18,7 +18,7 @@ public final class ClusterV2RkeConfigLocalAuthEndpoint {
      */
     private @Nullable String caCerts;
     /**
-     * @return Enable the authorized cluster endpoint. Default `false` (bool)
+     * @return Drain options enabled? Default `true` (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -37,7 +37,7 @@ public final class ClusterV2RkeConfigLocalAuthEndpoint {
         return Optional.ofNullable(this.caCerts);
     }
     /**
-     * @return Enable the authorized cluster endpoint. Default `false` (bool)
+     * @return Drain options enabled? Default `true` (bool)
      * 
      */
     public Optional<Boolean> enabled() {

@@ -66,7 +66,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? CustomData { get; set; }
 
         /// <summary>
-        /// Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
         /// </summary>
         [Input("diskSize")]
         public Input<string>? DiskSize { get; set; }
@@ -78,7 +78,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Dns { get; set; }
 
         /// <summary>
-        /// Port number for Docker engine. Default `2376` (string)
+        /// Docker Port. Default `2376` (string)
         /// </summary>
         [Input("dockerPort")]
         public Input<string>? DockerPort { get; set; }
@@ -96,7 +96,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? FaultDomainCount { get; set; }
 
         /// <summary>
-        /// Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -156,13 +156,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ResourceGroup { get; set; }
 
         /// <summary>
-        /// Size for Azure Virtual Machine. Default `Standard_A2` (string)
+        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
 
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _subscriptionId;
 
         /// <summary>
-        /// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Azure Subscription ID (string)
         /// </summary>
         public Input<string>? SubscriptionId
         {
@@ -208,7 +208,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
+        /// vSphere tags id e.g. `urn:xxx` (list)
         /// </summary>
         [Input("tags")]
         public Input<string>? Tags { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _tenantId;
 
         /// <summary>
-        /// Azure Tenant ID (string)
+        /// OpenStack tenant id. Conflicts with `tenant_name` (string)
         /// </summary>
         public Input<string>? TenantId
         {

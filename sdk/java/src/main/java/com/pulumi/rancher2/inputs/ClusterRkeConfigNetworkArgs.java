@@ -101,14 +101,14 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * RKE options for authorization (map)
+     * RKE options for network (map)
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,Object>> options;
 
     /**
-     * @return RKE options for authorization (map)
+     * @return RKE options for network (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> options() {
@@ -131,14 +131,14 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * DNS add-on tolerations (list)
+     * Network add-on tolerations (list)
      * 
      */
     @Import(name="tolerations")
     private @Nullable Output<List<ClusterRkeConfigNetworkTolerationArgs>> tolerations;
 
     /**
-     * @return DNS add-on tolerations (list)
+     * @return Network add-on tolerations (list)
      * 
      */
     public Optional<Output<List<ClusterRkeConfigNetworkTolerationArgs>>> tolerations() {
@@ -298,7 +298,7 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options RKE options for authorization (map)
+         * @param options RKE options for network (map)
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options RKE options for authorization (map)
+         * @param options RKE options for network (map)
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tolerations DNS add-on tolerations (list)
+         * @param tolerations Network add-on tolerations (list)
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tolerations DNS add-on tolerations (list)
+         * @param tolerations Network add-on tolerations (list)
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tolerations DNS add-on tolerations (list)
+         * @param tolerations Network add-on tolerations (list)
          * 
          * @return builder
          * 

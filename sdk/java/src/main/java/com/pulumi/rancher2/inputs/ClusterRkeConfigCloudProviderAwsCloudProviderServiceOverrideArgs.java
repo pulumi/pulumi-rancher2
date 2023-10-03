@@ -16,14 +16,14 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideA
     public static final ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs Empty = new ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs();
 
     /**
-     * (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return (string)
+     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -91,14 +91,14 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideA
     }
 
     /**
-     * (string)
+     * Registry URL (string)
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return (string)
+     * @return Registry URL (string)
      * 
      */
     public Optional<Output<String>> url() {
@@ -135,7 +135,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideA
         }
 
         /**
-         * @param region (string)
+         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideA
         }
 
         /**
-         * @param region (string)
+         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideA
         }
 
         /**
-         * @param url (string)
+         * @param url Registry URL (string)
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideA
         }
 
         /**
-         * @param url (string)
+         * @param url Registry URL (string)
          * 
          * @return builder
          * 

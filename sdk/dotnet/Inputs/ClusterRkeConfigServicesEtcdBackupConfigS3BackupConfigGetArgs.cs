@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// Access key for S3 service (string)
+        /// The AWS Client ID to use (string)
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -47,13 +47,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Endpoint { get; set; } = null!;
 
         /// <summary>
-        /// (string)
+        /// Folder for S3 service. Available from Rancher v2.2.7 (string)
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
 
         /// <summary>
-        /// (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -62,7 +62,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _secretKey;
 
         /// <summary>
-        /// Secret key for S3 service (string)
+        /// The AWS Client Secret associated with the Client ID (string)
         /// </summary>
         public Input<string>? SecretKey
         {

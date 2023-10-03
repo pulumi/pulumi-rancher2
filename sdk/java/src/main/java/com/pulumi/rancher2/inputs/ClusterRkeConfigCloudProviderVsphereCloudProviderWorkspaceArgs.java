@@ -46,14 +46,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArg
     }
 
     /**
-     * (string)
+     * Folder for S3 service. Available from Rancher v2.2.7 (string)
      * 
      */
     @Import(name="folder", required=true)
     private Output<String> folder;
 
     /**
-     * @return (string)
+     * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
      * 
      */
     public Output<String> folder() {
@@ -161,7 +161,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArg
         }
 
         /**
-         * @param folder (string)
+         * @param folder Folder for S3 service. Available from Rancher v2.2.7 (string)
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArg
         }
 
         /**
-         * @param folder (string)
+         * @param folder Folder for S3 service. Available from Rancher v2.2.7 (string)
          * 
          * @return builder
          * 

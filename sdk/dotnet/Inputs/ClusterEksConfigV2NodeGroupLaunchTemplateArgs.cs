@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// RKE2 kubernetes version (string)
+        /// rancher-monitoring chart version (string)
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

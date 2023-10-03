@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Project ID for GKE cluster (string)
+        /// Project ID to apply answer (string)
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

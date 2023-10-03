@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DefaultDatastore;
         /// <summary>
-        /// (string)
+        /// Folder for S3 service. Available from Rancher v2.2.7 (string)
         /// </summary>
         public readonly string Folder;
         /// <summary>

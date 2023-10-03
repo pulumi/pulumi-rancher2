@@ -67,14 +67,14 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
     }
 
     /**
-     * Default cluster template revision. Default `false` (bool)
+     * Default variable value (string)
      * 
      */
     @Import(name="default")
     private @Nullable Output<Boolean> default_;
 
     /**
-     * @return Default cluster template revision. Default `false` (bool)
+     * @return Default variable value (string)
      * 
      */
     public Optional<Output<Boolean>> default_() {
@@ -252,7 +252,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param default_ Default cluster template revision. Default `false` (bool)
+         * @param default_ Default variable value (string)
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param default_ Default cluster template revision. Default `false` (bool)
+         * @param default_ Default variable value (string)
          * 
          * @return builder
          * 

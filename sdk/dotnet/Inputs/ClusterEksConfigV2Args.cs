@@ -13,15 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterEksConfigV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AKS Cloud Credential ID to use (string)
+        /// The EKS cloud_credential id (string)
         /// </summary>
         [Input("cloudCredentialId", required: true)]
         public Input<string> CloudCredentialId { get; set; } = null!;
 
         /// <summary>
-        /// Is AKS cluster imported? Defaul: `false` (bool)
-        /// 
-        /// The following arguments are supported just for creating new AKS clusters (`imported=false`):
+        /// Is GKE cluster imported? Default: `false` (bool)
         /// </summary>
         [Input("imported")]
         public Input<bool>? Imported { get; set; }
@@ -33,7 +31,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? KmsKey { get; set; }
 
         /// <summary>
-        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
@@ -93,7 +91,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -108,7 +106,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+        /// List of security groups to use for the cluster (list)
         /// </summary>
         public InputList<string> SecurityGroups
         {
@@ -117,7 +115,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+        /// The AWS service role to use (string)
         /// </summary>
         [Input("serviceRole")]
         public Input<string>? ServiceRole { get; set; }
@@ -126,7 +124,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _subnets;
 
         /// <summary>
-        /// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+        /// The EKS node group subnets (list string)
         /// </summary>
         public InputList<string> Subnets
         {
@@ -138,7 +136,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
+        /// The GKE node config tags (List)
         /// </summary>
         public InputMap<object> Tags
         {

@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Whether to enable the Kubernetes dashboard. Default `false` (bool)
+        /// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
         /// </summary>
         public readonly bool? EnableKubernetesDashboard;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? EnablePrivateControlPlane;
         /// <summary>
-        /// Whether nodes have internal IP address only. Default `false` (bool)
+        /// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
         /// </summary>
         public readonly bool? EnablePrivateNodes;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? KmsKeyId;
         /// <summary>
-        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
         public readonly string KubernetesVersion;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string NodeShape;
         /// <summary>
-        /// A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
+        /// A CIDR IP range from which to assign Kubernetes Pod IPs (string)
         /// </summary>
         public readonly string? PodCidr;
         /// <summary>
@@ -106,11 +106,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? QuantityPerSubnet;
         /// <summary>
-        /// (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+        /// A CIDR IP range from which to assign Kubernetes Service IPs (string)
         /// </summary>
         public readonly string? ServiceCidr;
         /// <summary>

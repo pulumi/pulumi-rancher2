@@ -18,14 +18,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
     public static final ClusterRkeConfigServicesEtcdBackupConfigArgs Empty = new ClusterRkeConfigServicesEtcdBackupConfigArgs();
 
     /**
-     * Enable etcd backup (bool)
+     * Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable etcd backup (bool)
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -48,14 +48,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
     }
 
     /**
-     * Retention option for etcd service (string)
+     * Retention for etcd backup. Default `6` (int)
      * 
      */
     @Import(name="retention")
     private @Nullable Output<Integer> retention;
 
     /**
-     * @return Retention option for etcd service (string)
+     * @return Retention for etcd backup. Default `6` (int)
      * 
      */
     public Optional<Output<Integer>> retention() {
@@ -93,14 +93,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
     }
 
     /**
-     * Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
+     * RKE node drain timeout. Default: `60` (int)
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
     /**
-     * @return Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
+     * @return RKE node drain timeout. Default: `60` (int)
      * 
      */
     public Optional<Output<Integer>> timeout() {
@@ -137,7 +137,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
         }
 
         /**
-         * @param enabled Enable etcd backup (bool)
+         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
         }
 
         /**
-         * @param enabled Enable etcd backup (bool)
+         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
         }
 
         /**
-         * @param retention Retention option for etcd service (string)
+         * @param retention Retention for etcd backup. Default `6` (int)
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
         }
 
         /**
-         * @param retention Retention option for etcd service (string)
+         * @param retention Retention for etcd backup. Default `6` (int)
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
         }
 
         /**
-         * @param timeout Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
+         * @param timeout RKE node drain timeout. Default: `60` (int)
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigArgs extends com.pulu
         }
 
         /**
-         * @param timeout Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
+         * @param timeout RKE node drain timeout. Default: `60` (int)
          * 
          * @return builder
          * 

@@ -110,14 +110,14 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * RKE2 kubernetes version (string)
+     * rancher-monitoring chart version (string)
      * 
      */
     @Import(name="version", required=true)
     private Output<String> version;
 
     /**
-     * @return RKE2 kubernetes version (string)
+     * @return rancher-monitoring chart version (string)
      * 
      */
     public Output<String> version() {
@@ -281,7 +281,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param version RKE2 kubernetes version (string)
+         * @param version rancher-monitoring chart version (string)
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param version RKE2 kubernetes version (string)
+         * @param version rancher-monitoring chart version (string)
          * 
          * @return builder
          * 

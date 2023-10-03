@@ -14,14 +14,14 @@ public final class GlobalDnsProviderAlidnsConfigArgs extends com.pulumi.resource
     public static final GlobalDnsProviderAlidnsConfigArgs Empty = new GlobalDnsProviderAlidnsConfigArgs();
 
     /**
-     * The AliDNS Access key (string)
+     * The AWS Access key (string)
      * 
      */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
     /**
-     * @return The AliDNS Access key (string)
+     * @return The AWS Access key (string)
      * 
      */
     public Output<String> accessKey() {
@@ -29,14 +29,14 @@ public final class GlobalDnsProviderAlidnsConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The AliDNS Secret key (string)
+     * The AWS Secret key (string)
      * 
      */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
     /**
-     * @return The AliDNS Secret key (string)
+     * @return The AWS Secret key (string)
      * 
      */
     public Output<String> secretKey() {
@@ -69,7 +69,7 @@ public final class GlobalDnsProviderAlidnsConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accessKey The AliDNS Access key (string)
+         * @param accessKey The AWS Access key (string)
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class GlobalDnsProviderAlidnsConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accessKey The AliDNS Access key (string)
+         * @param accessKey The AWS Access key (string)
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class GlobalDnsProviderAlidnsConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param secretKey The AliDNS Secret key (string)
+         * @param secretKey The AWS Secret key (string)
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class GlobalDnsProviderAlidnsConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param secretKey The AliDNS Secret key (string)
+         * @param secretKey The AWS Secret key (string)
          * 
          * @return builder
          * 

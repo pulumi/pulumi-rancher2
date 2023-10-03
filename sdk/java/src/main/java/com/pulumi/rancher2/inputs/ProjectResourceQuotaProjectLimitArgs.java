@@ -31,14 +31,14 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
     }
 
     /**
-     * CPU limit for containers (string)
+     * Limit for limits cpu in project (string)
      * 
      */
     @Import(name="limitsCpu")
     private @Nullable Output<String> limitsCpu;
 
     /**
-     * @return CPU limit for containers (string)
+     * @return Limit for limits cpu in project (string)
      * 
      */
     public Optional<Output<String>> limitsCpu() {
@@ -46,14 +46,14 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
     }
 
     /**
-     * Memory limit for containers (string)
+     * Limit for limits memory in project (string)
      * 
      */
     @Import(name="limitsMemory")
     private @Nullable Output<String> limitsMemory;
 
     /**
-     * @return Memory limit for containers (string)
+     * @return Limit for limits memory in project (string)
      * 
      */
     public Optional<Output<String>> limitsMemory() {
@@ -106,14 +106,14 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
     }
 
     /**
-     * CPU reservation for containers (string)
+     * Limit for requests cpu in project (string)
      * 
      */
     @Import(name="requestsCpu")
     private @Nullable Output<String> requestsCpu;
 
     /**
-     * @return CPU reservation for containers (string)
+     * @return Limit for requests cpu in project (string)
      * 
      */
     public Optional<Output<String>> requestsCpu() {
@@ -121,14 +121,14 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
     }
 
     /**
-     * Memory reservation for containers (string)
+     * Limit for requests memory in project (string)
      * 
      */
     @Import(name="requestsMemory")
     private @Nullable Output<String> requestsMemory;
 
     /**
-     * @return Memory reservation for containers (string)
+     * @return Limit for requests memory in project (string)
      * 
      */
     public Optional<Output<String>> requestsMemory() {
@@ -264,7 +264,7 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
         }
 
         /**
-         * @param limitsCpu CPU limit for containers (string)
+         * @param limitsCpu Limit for limits cpu in project (string)
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
         }
 
         /**
-         * @param limitsCpu CPU limit for containers (string)
+         * @param limitsCpu Limit for limits cpu in project (string)
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
         }
 
         /**
-         * @param limitsMemory Memory limit for containers (string)
+         * @param limitsMemory Limit for limits memory in project (string)
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
         }
 
         /**
-         * @param limitsMemory Memory limit for containers (string)
+         * @param limitsMemory Limit for limits memory in project (string)
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
         }
 
         /**
-         * @param requestsCpu CPU reservation for containers (string)
+         * @param requestsCpu Limit for requests cpu in project (string)
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
         }
 
         /**
-         * @param requestsCpu CPU reservation for containers (string)
+         * @param requestsCpu Limit for requests cpu in project (string)
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
         }
 
         /**
-         * @param requestsMemory Memory reservation for containers (string)
+         * @param requestsMemory Limit for requests memory in project (string)
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
         }
 
         /**
-         * @param requestsMemory Memory reservation for containers (string)
+         * @param requestsMemory Limit for requests memory in project (string)
          * 
          * @return builder
          * 

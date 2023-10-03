@@ -22,15 +22,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? CreatePrivateIp;
         /// <summary>
-        /// Port number for Docker engine. Default `2376` (string)
+        /// Docker Port. Default `2376` (string)
         /// </summary>
         public readonly string? DockerPort;
         /// <summary>
-        /// Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// AWS instance type. Default `t2.micro` (string)
+        /// Outscale VM type. Default `tinav2.c1r2p3` (string)
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Label;
         /// <summary>
-        /// AWS region. (string)
+        /// AWS region. Default `eu-west-2` (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
@@ -46,11 +46,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? RootPass;
         /// <summary>
-        /// SSH port. Default `22` (string)
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
         /// </summary>
         public readonly string? SshPort;
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SwapSize;
         /// <summary>
-        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
         /// </summary>
         public readonly string? Tags;
         /// <summary>

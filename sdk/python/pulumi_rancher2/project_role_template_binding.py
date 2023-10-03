@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectRoleTemplateBindingArgs', 'ProjectRoleTemplateBinding']
@@ -37,22 +37,47 @@ class ProjectRoleTemplateBindingArgs:
         :param pulumi.Input[str] user_id: The user ID to assign project role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign project role template binding (string)
         """
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "role_template_id", role_template_id)
+        ProjectRoleTemplateBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            role_template_id=role_template_id,
+            annotations=annotations,
+            group_id=group_id,
+            group_principal_id=group_principal_id,
+            labels=labels,
+            name=name,
+            user_id=user_id,
+            user_principal_id=user_principal_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: pulumi.Input[str],
+             role_template_id: pulumi.Input[str],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             group_principal_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             user_principal_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project_id", project_id)
+        _setter("role_template_id", role_template_id)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if group_principal_id is not None:
-            pulumi.set(__self__, "group_principal_id", group_principal_id)
+            _setter("group_principal_id", group_principal_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if user_principal_id is not None:
-            pulumi.set(__self__, "user_principal_id", user_principal_id)
+            _setter("user_principal_id", user_principal_id)
 
     @property
     @pulumi.getter(name="projectId")
@@ -191,24 +216,49 @@ class _ProjectRoleTemplateBindingState:
         :param pulumi.Input[str] user_id: The user ID to assign project role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign project role template binding (string)
         """
+        _ProjectRoleTemplateBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            group_id=group_id,
+            group_principal_id=group_principal_id,
+            labels=labels,
+            name=name,
+            project_id=project_id,
+            role_template_id=role_template_id,
+            user_id=user_id,
+            user_principal_id=user_principal_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             group_principal_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             role_template_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             user_principal_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if group_principal_id is not None:
-            pulumi.set(__self__, "group_principal_id", group_principal_id)
+            _setter("group_principal_id", group_principal_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if role_template_id is not None:
-            pulumi.set(__self__, "role_template_id", role_template_id)
+            _setter("role_template_id", role_template_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if user_principal_id is not None:
-            pulumi.set(__self__, "user_principal_id", user_principal_id)
+            _setter("user_principal_id", user_principal_id)
 
     @property
     @pulumi.getter
@@ -414,6 +464,10 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectRoleTemplateBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -13,62 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterAgentDeploymentCustomizationAppendToleration {
     /**
-     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+     * @return The GKE taint effect (string)
      * 
      */
     private @Nullable String effect;
     /**
-     * @return The toleration key (string)
+     * @return The GKE taint key (string)
      * 
      */
     private String key;
     /**
-     * @return The toleration operator (string)
+     * @return The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
      * 
      */
     private @Nullable String operator;
     /**
-     * @return The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * @return The toleration seconds (int)
      * 
      */
     private @Nullable Integer seconds;
     /**
-     * @return Rancher agent env var value (string)
+     * @return The GKE taint value (string)
      * 
      */
     private @Nullable String value;
 
     private ClusterClusterAgentDeploymentCustomizationAppendToleration() {}
     /**
-     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+     * @return The GKE taint effect (string)
      * 
      */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
     /**
-     * @return The toleration key (string)
+     * @return The GKE taint key (string)
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return The toleration operator (string)
+     * @return The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
      * 
      */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
     /**
-     * @return The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * @return The toleration seconds (int)
      * 
      */
     public Optional<Integer> seconds() {
         return Optional.ofNullable(this.seconds);
     }
     /**
-     * @return Rancher agent env var value (string)
+     * @return The GKE taint value (string)
      * 
      */
     public Optional<String> value() {

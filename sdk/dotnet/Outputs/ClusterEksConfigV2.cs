@@ -14,13 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterEksConfigV2
     {
         /// <summary>
-        /// The AKS Cloud Credential ID to use (string)
+        /// The EKS cloud_credential id (string)
         /// </summary>
         public readonly string CloudCredentialId;
         /// <summary>
-        /// Is AKS cluster imported? Defaul: `false` (bool)
-        /// 
-        /// The following arguments are supported just for creating new AKS clusters (`imported=false`):
+        /// Is GKE cluster imported? Default: `false` (bool)
         /// </summary>
         public readonly bool? Imported;
         /// <summary>
@@ -28,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? KmsKey;
         /// <summary>
-        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
         public readonly string? KubernetesVersion;
         /// <summary>
@@ -56,7 +54,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PublicAccessSources;
         /// <summary>
-        /// (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
@@ -64,19 +62,19 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? SecretsEncryption;
         /// <summary>
-        /// List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+        /// List of security groups to use for the cluster (list)
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroups;
         /// <summary>
-        /// The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+        /// The AWS service role to use (string)
         /// </summary>
         public readonly string? ServiceRole;
         /// <summary>
-        /// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+        /// The EKS node group subnets (list string)
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
-        /// Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
+        /// The GKE node config tags (List)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
 

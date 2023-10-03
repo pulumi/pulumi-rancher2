@@ -29,14 +29,14 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Rancher agent env var value (string)
+     * The taint value (string)
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Rancher agent env var value (string)
+     * @return The taint value (string)
      * 
      */
     public Output<String> value() {
@@ -90,7 +90,7 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param value Rancher agent env var value (string)
+         * @param value The taint value (string)
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param value Rancher agent env var value (string)
+         * @param value The taint value (string)
          * 
          * @return builder
          * 

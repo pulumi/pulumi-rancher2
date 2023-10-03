@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration
     {
         /// <summary>
-        /// The toleration effect. Default: `\"NoSchedule\"` (string)
+        /// The taint effect. Default: `\"NoExecute\"` (string)
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// The toleration key (string)
+        /// Machine selector label match expressions key (string)
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The toleration operator (string)
+        /// Machine selector label match expressions operator (string)
         /// </summary>
         public readonly string? Operator;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? Seconds;
         /// <summary>
-        /// Rancher agent env var value (string)
+        /// The taint value (string)
         /// </summary>
         public readonly string? Value;
 

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigEtcdSnapshotRestore {
     /**
-     * @return Desired certificate rotation generation (int)
+     * @return ETCD snapshot desired generation (int)
      * 
      */
     private Integer generation;
@@ -30,7 +30,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestore {
 
     private ClusterV2RkeConfigEtcdSnapshotRestore() {}
     /**
-     * @return Desired certificate rotation generation (int)
+     * @return ETCD snapshot desired generation (int)
      * 
      */
     public Integer generation() {

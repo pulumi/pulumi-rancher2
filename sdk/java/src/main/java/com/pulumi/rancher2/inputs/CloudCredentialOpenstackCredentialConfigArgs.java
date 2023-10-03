@@ -14,14 +14,14 @@ public final class CloudCredentialOpenstackCredentialConfigArgs extends com.pulu
     public static final CloudCredentialOpenstackCredentialConfigArgs Empty = new CloudCredentialOpenstackCredentialConfigArgs();
 
     /**
-     * OpenStack password (string)
+     * vSphere password (string)
      * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
-     * @return OpenStack password (string)
+     * @return vSphere password (string)
      * 
      */
     public Output<String> password() {
@@ -53,7 +53,7 @@ public final class CloudCredentialOpenstackCredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param password OpenStack password (string)
+         * @param password vSphere password (string)
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class CloudCredentialOpenstackCredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param password OpenStack password (string)
+         * @param password vSphere password (string)
          * 
          * @return builder
          * 

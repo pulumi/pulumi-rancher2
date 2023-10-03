@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Outscale Access Key (string)
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -83,7 +83,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? InsecureTransport { get; set; }
 
         /// <summary>
-        /// AWS instance type. Default `t2.micro` (string)
+        /// Outscale VM type. Default `tinav2.c1r2p3` (string)
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -101,7 +101,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? KmsKey { get; set; }
 
         /// <summary>
-        /// Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+        /// Enable monitoring for droplet. Default `false` (bool)
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
@@ -125,7 +125,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? PrivateAddressOnly { get; set; }
 
         /// <summary>
-        /// AWS region. (string)
+        /// AWS region. Default `eu-west-2` (string)
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _secretKey;
 
         /// <summary>
-        /// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Outscale Secret Key (string)
         /// </summary>
         public Input<string>? SecretKey
         {
@@ -208,7 +208,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? SshKeypath { get; set; }
 
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
@@ -220,7 +220,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> SubnetId { get; set; } = null!;
 
         /// <summary>
-        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
         /// </summary>
         [Input("tags")]
         public Input<string>? Tags { get; set; }
@@ -238,7 +238,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? UsePrivateAddress { get; set; }
 
         /// <summary>
-        /// Path to file with cloud-init user data (string)
+        /// Path to file with cloud-init user-data (string)
         /// 
         /// &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         /// </summary>
@@ -246,7 +246,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Userdata { get; set; }
 
         /// <summary>
-        /// Amazon EBS volume type. Default `gp2` (string)
+        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }

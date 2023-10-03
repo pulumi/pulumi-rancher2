@@ -121,14 +121,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
+     * RKE options for Calico network provider (string)
      * 
      */
     @Import(name="cloudProvider")
     private @Nullable Output<ClusterRkeConfigCloudProviderArgs> cloudProvider;
 
     /**
-     * @return RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
+     * @return RKE options for Calico network provider (string)
      * 
      */
     public Optional<Output<ClusterRkeConfigCloudProviderArgs>> cloudProvider() {
@@ -196,14 +196,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     @Import(name="kubernetesVersion")
     private @Nullable Output<String> kubernetesVersion;
 
     /**
-     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     public Optional<Output<String>> kubernetesVersion() {
@@ -211,14 +211,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Kubernetes cluster monitoring (list maxitems:1)
+     * Is AKS cluster monitoring enabled? (bool)
      * 
      */
     @Import(name="monitoring")
     private @Nullable Output<ClusterRkeConfigMonitoringArgs> monitoring;
 
     /**
-     * @return Kubernetes cluster monitoring (list maxitems:1)
+     * @return Is AKS cluster monitoring enabled? (bool)
      * 
      */
     public Optional<Output<ClusterRkeConfigMonitoringArgs>> monitoring() {
@@ -226,14 +226,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Kubernetes cluster networking (list maxitems:1)
+     * The GKE cluster network. Required for create new cluster (string)
      * 
      */
     @Import(name="network")
     private @Nullable Output<ClusterRkeConfigNetworkArgs> network;
 
     /**
-     * @return Kubernetes cluster networking (list maxitems:1)
+     * @return The GKE cluster network. Required for create new cluster (string)
      * 
      */
     public Optional<Output<ClusterRkeConfigNetworkArgs>> network() {
@@ -301,14 +301,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Use ssh agent auth. Default `false`
+     * Use ssh agent auth. Default `false` (bool)
      * 
      */
     @Import(name="sshAgentAuth")
     private @Nullable Output<Boolean> sshAgentAuth;
 
     /**
-     * @return Use ssh agent auth. Default `false`
+     * @return Use ssh agent auth. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> sshAgentAuth() {
@@ -331,14 +331,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Cluster level SSH private key path (string)
+     * Node SSH private key path (string)
      * 
      */
     @Import(name="sshKeyPath")
     private @Nullable Output<String> sshKeyPath;
 
     /**
-     * @return Cluster level SSH private key path (string)
+     * @return Node SSH private key path (string)
      * 
      */
     public Optional<Output<String>> sshKeyPath() {
@@ -346,14 +346,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * RKE upgrade strategy (list maxitems:1)
+     * K3S upgrade strategy (List maxitems: 1)
      * 
      */
     @Import(name="upgradeStrategy")
     private @Nullable Output<ClusterRkeConfigUpgradeStrategyArgs> upgradeStrategy;
 
     /**
-     * @return RKE upgrade strategy (list maxitems:1)
+     * @return K3S upgrade strategy (List maxitems: 1)
      * 
      */
     public Optional<Output<ClusterRkeConfigUpgradeStrategyArgs>> upgradeStrategy() {
@@ -558,7 +558,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cloudProvider RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
+         * @param cloudProvider RKE options for Calico network provider (string)
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cloudProvider RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
+         * @param cloudProvider RKE options for Calico network provider (string)
          * 
          * @return builder
          * 
@@ -663,7 +663,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
          * 
          * @return builder
          * 
@@ -674,7 +674,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
          * 
          * @return builder
          * 
@@ -684,7 +684,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param monitoring Kubernetes cluster monitoring (list maxitems:1)
+         * @param monitoring Is AKS cluster monitoring enabled? (bool)
          * 
          * @return builder
          * 
@@ -695,7 +695,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param monitoring Kubernetes cluster monitoring (list maxitems:1)
+         * @param monitoring Is AKS cluster monitoring enabled? (bool)
          * 
          * @return builder
          * 
@@ -705,7 +705,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param network Kubernetes cluster networking (list maxitems:1)
+         * @param network The GKE cluster network. Required for create new cluster (string)
          * 
          * @return builder
          * 
@@ -716,7 +716,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param network Kubernetes cluster networking (list maxitems:1)
+         * @param network The GKE cluster network. Required for create new cluster (string)
          * 
          * @return builder
          * 
@@ -830,7 +830,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sshAgentAuth Use ssh agent auth. Default `false`
+         * @param sshAgentAuth Use ssh agent auth. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -841,7 +841,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sshAgentAuth Use ssh agent auth. Default `false`
+         * @param sshAgentAuth Use ssh agent auth. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -872,7 +872,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sshKeyPath Cluster level SSH private key path (string)
+         * @param sshKeyPath Node SSH private key path (string)
          * 
          * @return builder
          * 
@@ -883,7 +883,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sshKeyPath Cluster level SSH private key path (string)
+         * @param sshKeyPath Node SSH private key path (string)
          * 
          * @return builder
          * 
@@ -893,7 +893,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param upgradeStrategy RKE upgrade strategy (list maxitems:1)
+         * @param upgradeStrategy K3S upgrade strategy (List maxitems: 1)
          * 
          * @return builder
          * 
@@ -904,7 +904,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param upgradeStrategy RKE upgrade strategy (list maxitems:1)
+         * @param upgradeStrategy K3S upgrade strategy (List maxitems: 1)
          * 
          * @return builder
          * 

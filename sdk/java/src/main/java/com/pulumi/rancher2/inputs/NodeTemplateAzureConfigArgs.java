@@ -100,14 +100,14 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
     public Optional<Output<String>> diskSize() {
@@ -130,14 +130,14 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Port number for Docker engine. Default `2376` (string)
+     * Docker Port. Default `2376` (string)
      * 
      */
     @Import(name="dockerPort")
     private @Nullable Output<String> dockerPort;
 
     /**
-     * @return Port number for Docker engine. Default `2376` (string)
+     * @return Docker Port. Default `2376` (string)
      * 
      */
     public Optional<Output<String>> dockerPort() {
@@ -175,14 +175,14 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     public Optional<Output<String>> image() {
@@ -310,14 +310,14 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Size for Azure Virtual Machine. Default `Standard_A2` (string)
+     * Digital Ocean size. Default `s-1vcpu-1gb` (string)
      * 
      */
     @Import(name="size")
     private @Nullable Output<String> size;
 
     /**
-     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
+     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
      * 
      */
     public Optional<Output<String>> size() {
@@ -325,14 +325,14 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Set the name of the ssh user (string)
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -415,14 +415,14 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<String> tags;
 
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     public Optional<Output<String>> tags() {
@@ -651,7 +651,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
          * 
          * @return builder
          * 
@@ -662,7 +662,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
          * 
          * @return builder
          * 
@@ -693,7 +693,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dockerPort Port number for Docker engine. Default `2376` (string)
+         * @param dockerPort Docker Port. Default `2376` (string)
          * 
          * @return builder
          * 
@@ -704,7 +704,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dockerPort Port number for Docker engine. Default `2376` (string)
+         * @param dockerPort Docker Port. Default `2376` (string)
          * 
          * @return builder
          * 
@@ -756,7 +756,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
          * 
          * @return builder
          * 
@@ -767,7 +767,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
          * 
          * @return builder
          * 
@@ -955,7 +955,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param size Size for Azure Virtual Machine. Default `Standard_A2` (string)
+         * @param size Digital Ocean size. Default `s-1vcpu-1gb` (string)
          * 
          * @return builder
          * 
@@ -966,7 +966,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param size Size for Azure Virtual Machine. Default `Standard_A2` (string)
+         * @param size Digital Ocean size. Default `s-1vcpu-1gb` (string)
          * 
          * @return builder
          * 
@@ -976,7 +976,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -987,7 +987,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -1102,7 +1102,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
          * 
          * @return builder
          * 
@@ -1113,7 +1113,7 @@ public final class NodeTemplateAzureConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
          * 
          * @return builder
          * 

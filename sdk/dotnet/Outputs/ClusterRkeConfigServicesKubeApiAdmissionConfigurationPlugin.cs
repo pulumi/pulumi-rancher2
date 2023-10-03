@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin
     {
         /// <summary>
-        /// Plugin configuration. (string) Ex:
+        /// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
         /// </summary>
         public readonly string? Configuration;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Path for etcd service (string)
+        /// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         /// </summary>
         public readonly string? Path;
 

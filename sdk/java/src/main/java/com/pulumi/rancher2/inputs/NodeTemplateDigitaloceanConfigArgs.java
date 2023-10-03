@@ -47,14 +47,14 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     public Optional<Output<String>> image() {
@@ -77,14 +77,14 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+     * Enable monitoring for droplet. Default `false` (bool)
      * 
      */
     @Import(name="monitoring")
     private @Nullable Output<Boolean> monitoring;
 
     /**
-     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+     * @return Enable monitoring for droplet. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> monitoring() {
@@ -107,14 +107,14 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * AWS region. (string)
+     * AWS region. Default `eu-west-2` (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return AWS region. (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -122,14 +122,14 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Size for Azure Virtual Machine. Default `Standard_A2` (string)
+     * Digital Ocean size. Default `s-1vcpu-1gb` (string)
      * 
      */
     @Import(name="size")
     private @Nullable Output<String> size;
 
     /**
-     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
+     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
      * 
      */
     public Optional<Output<String>> size() {
@@ -167,14 +167,14 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * SSH port. Default `22` (string)
+     * If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
     @Import(name="sshPort")
     private @Nullable Output<String> sshPort;
 
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<Output<String>> sshPort() {
@@ -182,14 +182,14 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Set the name of the ssh user (string)
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -197,14 +197,14 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<String> tags;
 
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     public Optional<Output<String>> tags() {
@@ -212,7 +212,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Path to file with cloud-init user data (string)
+     * Path to file with cloud-init user-data (string)
      * 
      * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 
@@ -221,7 +221,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
     private @Nullable Output<String> userdata;
 
     /**
-     * @return Path to file with cloud-init user data (string)
+     * @return Path to file with cloud-init user-data (string)
      * 
      * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 
@@ -310,7 +310,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param monitoring Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param monitoring Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param size Size for Azure Virtual Machine. Default `Standard_A2` (string)
+         * @param size Digital Ocean size. Default `s-1vcpu-1gb` (string)
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param size Size for Azure Virtual Machine. Default `Standard_A2` (string)
+         * @param size Digital Ocean size. Default `s-1vcpu-1gb` (string)
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshPort SSH port. Default `22` (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshPort SSH port. Default `22` (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -499,7 +499,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
          * 
          * @return builder
          * 
@@ -531,7 +531,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userdata Path to file with cloud-init user data (string)
+         * @param userdata Path to file with cloud-init user-data (string)
          * 
          * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
          * 
@@ -554,7 +554,7 @@ public final class NodeTemplateDigitaloceanConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userdata Path to file with cloud-init user data (string)
+         * @param userdata Path to file with cloud-init user-data (string)
          * 
          * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
          * 

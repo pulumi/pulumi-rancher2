@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The toleration key (string)
+        /// Machine selector label match expressions key (string)
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The toleration operator (string)
+        /// Machine selector label match expressions operator (string)
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }

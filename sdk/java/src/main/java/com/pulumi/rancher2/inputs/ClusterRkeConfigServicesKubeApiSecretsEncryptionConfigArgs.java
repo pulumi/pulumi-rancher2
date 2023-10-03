@@ -76,14 +76,14 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs ex
     }
 
     /**
-     * Enable etcd backup (bool)
+     * Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable etcd backup (bool)
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -181,7 +181,7 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs ex
         }
 
         /**
-         * @param enabled Enable etcd backup (bool)
+         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs ex
         }
 
         /**
-         * @param enabled Enable etcd backup (bool)
+         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
          * 
          * @return builder
          * 

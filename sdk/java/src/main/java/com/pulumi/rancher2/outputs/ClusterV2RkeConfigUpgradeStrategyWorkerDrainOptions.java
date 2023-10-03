@@ -23,7 +23,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
      */
     private @Nullable Boolean disableEviction;
     /**
-     * @return Enable the authorized cluster endpoint. Default `false` (bool)
+     * @return Drain options enabled? Default `true` (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -74,7 +74,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
         return Optional.ofNullable(this.disableEviction);
     }
     /**
-     * @return Enable the authorized cluster endpoint. Default `false` (bool)
+     * @return Drain options enabled? Default `true` (bool)
      * 
      */
     public Optional<Boolean> enabled() {

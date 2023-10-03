@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// RKE strategy for authentication (string)
+        /// Monitoring deployment update strategy (string)
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }

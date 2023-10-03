@@ -74,11 +74,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? FloatingIpPool;
         /// <summary>
-        /// Image ID to use as the VM OS. Conflicts with `image_name` (string)
+        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
         /// </summary>
         public readonly string? ImageId;
         /// <summary>
-        /// Use `disk_info` instead
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
         /// </summary>
         public readonly string? ImageName;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? NovaNetwork;
         /// <summary>
-        /// Set the password for the XML-RPC API authentication (string)
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public readonly string? Password;
         /// <summary>
@@ -114,7 +114,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? PrivateKeyFile;
         /// <summary>
-        /// AWS region. (string)
+        /// AWS region. Default `eu-west-2` (string)
         /// </summary>
         public readonly string Region;
         /// <summary>
@@ -122,11 +122,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SecGroups;
         /// <summary>
-        /// SSH port. Default `22` (string)
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
         /// </summary>
         public readonly string? SshPort;
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
@@ -142,7 +142,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? UserDataFile;
         /// <summary>
-        /// OpenStack username (string)
+        /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public readonly string? Username;
         /// <summary>
@@ -166,7 +166,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? VolumeSize;
         /// <summary>
-        /// Amazon EBS volume type. Default `gp2` (string)
+        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
         /// </summary>
         public readonly string? VolumeType;
 

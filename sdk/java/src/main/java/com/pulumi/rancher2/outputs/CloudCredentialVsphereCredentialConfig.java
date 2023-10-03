@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CloudCredentialVsphereCredentialConfig {
     /**
-     * @return OpenStack password (string)
+     * @return vSphere password (string)
      * 
      */
     private String password;
@@ -34,7 +34,7 @@ public final class CloudCredentialVsphereCredentialConfig {
 
     private CloudCredentialVsphereCredentialConfig() {}
     /**
-     * @return OpenStack password (string)
+     * @return vSphere password (string)
      * 
      */
     public String password() {

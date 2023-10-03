@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterGkeConfigV2IpAllocationPolicy {
     /**
-     * @return The GKE ip v4 cidr block (string)
+     * @return The GKE cluster ip v4 allocation cidr block (string)
      * 
      */
     private @Nullable String clusterIpv4CidrBlock;
@@ -48,14 +48,14 @@ public final class ClusterGkeConfigV2IpAllocationPolicy {
      */
     private @Nullable String subnetworkName;
     /**
-     * @return Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
+     * @return Use GKE ip aliases? Default: `true` (bool)
      * 
      */
     private @Nullable Boolean useIpAliases;
 
     private ClusterGkeConfigV2IpAllocationPolicy() {}
     /**
-     * @return The GKE ip v4 cidr block (string)
+     * @return The GKE cluster ip v4 allocation cidr block (string)
      * 
      */
     public Optional<String> clusterIpv4CidrBlock() {
@@ -104,7 +104,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicy {
         return Optional.ofNullable(this.subnetworkName);
     }
     /**
-     * @return Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
+     * @return Use GKE ip aliases? Default: `true` (bool)
      * 
      */
     public Optional<Boolean> useIpAliases() {

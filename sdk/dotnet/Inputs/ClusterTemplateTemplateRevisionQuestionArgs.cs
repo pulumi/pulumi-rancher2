@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterTemplateTemplateRevisionQuestionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default cluster template revision. Default `false` (bool)
+        /// Default variable value (string)
         /// </summary>
         [Input("default", required: true)]
         public Input<string> Default { get; set; } = null!;

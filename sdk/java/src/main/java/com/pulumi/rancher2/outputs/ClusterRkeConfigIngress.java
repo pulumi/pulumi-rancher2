@@ -29,7 +29,7 @@ public final class ClusterRkeConfigIngress {
      */
     private @Nullable String dnsPolicy;
     /**
-     * @return Extra arguments for RKE Ingress (map)
+     * @return Extra arguments for scheduler service (map)
      * 
      */
     private @Nullable Map<String,Object> extraArgs;
@@ -49,27 +49,27 @@ public final class ClusterRkeConfigIngress {
      */
     private @Nullable String networkMode;
     /**
-     * @return DNS add-on node selector (map)
+     * @return RKE monitoring node selector (map)
      * 
      */
     private @Nullable Map<String,Object> nodeSelector;
     /**
-     * @return RKE options for authorization (map)
+     * @return RKE options for network (map)
      * 
      */
     private @Nullable Map<String,Object> options;
     /**
-     * @return DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
+     * @return RKE monitoring provider (string)
      * 
      */
     private @Nullable String provider;
     /**
-     * @return DNS add-on tolerations (list)
+     * @return Network add-on tolerations (list)
      * 
      */
     private @Nullable List<ClusterRkeConfigIngressToleration> tolerations;
     /**
-     * @return DNS update strategy (list Maxitems: 1)
+     * @return RKE monitoring update strategy (list Maxitems: 1)
      * 
      */
     private @Nullable ClusterRkeConfigIngressUpdateStrategy updateStrategy;
@@ -90,7 +90,7 @@ public final class ClusterRkeConfigIngress {
         return Optional.ofNullable(this.dnsPolicy);
     }
     /**
-     * @return Extra arguments for RKE Ingress (map)
+     * @return Extra arguments for scheduler service (map)
      * 
      */
     public Map<String,Object> extraArgs() {
@@ -118,35 +118,35 @@ public final class ClusterRkeConfigIngress {
         return Optional.ofNullable(this.networkMode);
     }
     /**
-     * @return DNS add-on node selector (map)
+     * @return RKE monitoring node selector (map)
      * 
      */
     public Map<String,Object> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
     /**
-     * @return RKE options for authorization (map)
+     * @return RKE options for network (map)
      * 
      */
     public Map<String,Object> options() {
         return this.options == null ? Map.of() : this.options;
     }
     /**
-     * @return DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
+     * @return RKE monitoring provider (string)
      * 
      */
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
     }
     /**
-     * @return DNS add-on tolerations (list)
+     * @return Network add-on tolerations (list)
      * 
      */
     public List<ClusterRkeConfigIngressToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
     /**
-     * @return DNS update strategy (list Maxitems: 1)
+     * @return RKE monitoring update strategy (list Maxitems: 1)
      * 
      */
     public Optional<ClusterRkeConfigIngressUpdateStrategy> updateStrategy() {

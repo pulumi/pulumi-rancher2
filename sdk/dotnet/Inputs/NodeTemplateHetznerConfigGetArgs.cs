@@ -29,7 +29,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -71,7 +71,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? UsePrivateNetwork { get; set; }
 
         /// <summary>
-        /// Path to file with cloud-init user data (string)
+        /// Path to file with cloud-init user-data (string)
         /// 
         /// &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         /// </summary>

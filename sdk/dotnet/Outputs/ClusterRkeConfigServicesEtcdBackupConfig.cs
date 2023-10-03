@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigServicesEtcdBackupConfig
     {
         /// <summary>
-        /// Enable etcd backup (bool)
+        /// Enable the authorized cluster endpoint. Default `true` (bool)
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? IntervalHours;
         /// <summary>
-        /// Retention option for etcd service (string)
+        /// Retention for etcd backup. Default `6` (int)
         /// </summary>
         public readonly int? Retention;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? SafeTimestamp;
         /// <summary>
-        /// Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
+        /// RKE node drain timeout. Default: `60` (int)
         /// </summary>
         public readonly int? Timeout;
 

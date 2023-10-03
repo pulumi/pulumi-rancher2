@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterGkeConfigV2NodePoolAutoscaling {
     /**
-     * @return Enable etcd backup (bool)
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
+     * @return The GKE node pool config max node count (int)
      * 
      */
     private @Nullable Integer maxNodeCount;
     /**
-     * @return Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
+     * @return The GKE node pool config min node count (int)
      * 
      */
     private @Nullable Integer minNodeCount;
 
     private ClusterGkeConfigV2NodePoolAutoscaling() {}
     /**
-     * @return Enable etcd backup (bool)
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
+     * @return The GKE node pool config max node count (int)
      * 
      */
     public Optional<Integer> maxNodeCount() {
         return Optional.ofNullable(this.maxNodeCount);
     }
     /**
-     * @return Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
+     * @return The GKE node pool config min node count (int)
      * 
      */
     public Optional<Integer> minNodeCount() {

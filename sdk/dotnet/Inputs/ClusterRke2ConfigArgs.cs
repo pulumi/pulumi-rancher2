@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRke2ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// RKE upgrade strategy (list maxitems:1)
+        /// K3S upgrade strategy (List maxitems: 1)
         /// </summary>
         [Input("upgradeStrategy")]
         public Input<Inputs.ClusterRke2ConfigUpgradeStrategyArgs>? UpgradeStrategy { get; set; }
 
         /// <summary>
-        /// RKE2 kubernetes version (string)
+        /// rancher-monitoring chart version (string)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NotifierMsteamsConfig
     {
         /// <summary>
-        /// Dingtalk proxy url (string)
+        /// Wechat proxy url (string)
         /// </summary>
         public readonly string? ProxyUrl;
         /// <summary>
-        /// Dingtalk url (string)
+        /// Slack url (string)
         /// </summary>
         public readonly string Url;
 

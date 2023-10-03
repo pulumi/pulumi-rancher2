@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigDnsUpdateStrategyRollingUpdateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Monitoring deployment rolling update max surge. Default: `1` (int)
+        /// The AKS node pool max surge (string), example value: `25%`
         /// </summary>
         [Input("maxSurge")]
         public Input<int>? MaxSurge { get; set; }

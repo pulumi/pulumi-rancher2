@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class GlobalDnsProviderRoute53Config
     {
         /// <summary>
-        /// The AliDNS Access key (string)
+        /// The AWS Access key (string)
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? RoleArn;
         /// <summary>
-        /// The AliDNS Secret key (string)
+        /// The AWS Secret key (string)
         /// </summary>
         public readonly string SecretKey;
         /// <summary>

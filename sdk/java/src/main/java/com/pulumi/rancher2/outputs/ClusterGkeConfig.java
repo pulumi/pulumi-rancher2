@@ -32,12 +32,12 @@ public final class ClusterGkeConfig {
      */
     private @Nullable String description;
     /**
-     * @return Size of the disk attached to each node. Default `100` (int)
+     * @return The GKE node config disk size Gb (int)
      * 
      */
     private @Nullable Integer diskSizeGb;
     /**
-     * @return Type of the disk attached to each node (string)
+     * @return The GKE node config disk type (string)
      * 
      */
     private String diskType;
@@ -67,7 +67,7 @@ public final class ClusterGkeConfig {
      */
     private @Nullable Boolean enableHttpLoadBalancing;
     /**
-     * @return Whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * @return Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
      * 
      */
     private @Nullable Boolean enableKubernetesDashboard;
@@ -92,12 +92,12 @@ public final class ClusterGkeConfig {
      */
     private @Nullable Boolean enableNodepoolAutoscaling;
     /**
-     * @return Whether the master&#39;s internal IP address is used as the cluster endpoint. Default `false` (bool)
+     * @return Enable GKE cluster private endpoint. Default: `false` (bool)
      * 
      */
     private @Nullable Boolean enablePrivateEndpoint;
     /**
-     * @return Whether nodes have internal IP address only. Default `false` (bool)
+     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
      * 
      */
     private @Nullable Boolean enablePrivateNodes;
@@ -112,7 +112,7 @@ public final class ClusterGkeConfig {
      */
     private @Nullable Boolean enableStackdriverMonitoring;
     /**
-     * @return The image to use for the worker nodes (string)
+     * @return The GKE node config image type (string)
      * 
      */
     private String imageType;
@@ -167,22 +167,22 @@ public final class ClusterGkeConfig {
      */
     private @Nullable Map<String,Object> labels;
     /**
-     * @return The number of local SSD disks to be attached to the node. Default `0` (int)
+     * @return The GKE node config local ssd count (int)
      * 
      */
     private @Nullable Integer localSsdCount;
     /**
-     * @return Locations for GKE cluster (list)
+     * @return The GKE cluster locations (List)
      * 
      */
     private List<String> locations;
     /**
-     * @return Machine type for GKE cluster (string)
+     * @return The GKE node config machine type (string)
      * 
      */
     private String machineType;
     /**
-     * @return Maintenance window for GKE cluster (string)
+     * @return The GKE cluster maintenance window (string)
      * 
      */
     private String maintenanceWindow;
@@ -192,7 +192,7 @@ public final class ClusterGkeConfig {
      */
     private @Nullable List<String> masterAuthorizedNetworkCidrBlocks;
     /**
-     * @return The IP range in CIDR notation to use for the hosted master network (string)
+     * @return The GKE cluster private master ip v4 cidr block (string)
      * 
      */
     private String masterIpv4CidrBlock;
@@ -202,17 +202,17 @@ public final class ClusterGkeConfig {
      */
     private String masterVersion;
     /**
-     * @return Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
+     * @return The GKE node pool config max node count (int)
      * 
      */
     private @Nullable Integer maxNodeCount;
     /**
-     * @return Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
+     * @return The GKE node pool config min node count (int)
      * 
      */
     private @Nullable Integer minNodeCount;
     /**
-     * @return Kubernetes cluster networking (list maxitems:1)
+     * @return The GKE cluster network. Required for create new cluster (string)
      * 
      */
     private String network;
@@ -232,22 +232,22 @@ public final class ClusterGkeConfig {
      */
     private String nodeVersion;
     /**
-     * @return The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+     * @return The GKE node config oauth scopes (List)
      * 
      */
     private List<String> oauthScopes;
     /**
-     * @return Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+     * @return Enable GKE node config preemptible. Default: `false` (bool)
      * 
      */
     private @Nullable Boolean preemptible;
     /**
-     * @return Project ID for GKE cluster (string)
+     * @return Project ID to apply answer (string)
      * 
      */
     private String projectId;
     /**
-     * @return (string)
+     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
     private @Nullable String region;
@@ -267,17 +267,17 @@ public final class ClusterGkeConfig {
      */
     private String subNetwork;
     /**
-     * @return The AKS node pool taints (list)
+     * @return The GKE node config taints (List)
      * 
      */
     private @Nullable List<String> taints;
     /**
-     * @return Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
+     * @return Use GKE ip aliases? Default: `true` (bool)
      * 
      */
     private @Nullable Boolean useIpAliases;
     /**
-     * @return (string)
+     * @return The GKE cluster zone. Required if `region` not set (string)
      * 
      */
     private @Nullable String zone;
@@ -305,14 +305,14 @@ public final class ClusterGkeConfig {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Size of the disk attached to each node. Default `100` (int)
+     * @return The GKE node config disk size Gb (int)
      * 
      */
     public Optional<Integer> diskSizeGb() {
         return Optional.ofNullable(this.diskSizeGb);
     }
     /**
-     * @return Type of the disk attached to each node (string)
+     * @return The GKE node config disk type (string)
      * 
      */
     public String diskType() {
@@ -354,7 +354,7 @@ public final class ClusterGkeConfig {
         return Optional.ofNullable(this.enableHttpLoadBalancing);
     }
     /**
-     * @return Whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * @return Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
      * 
      */
     public Optional<Boolean> enableKubernetesDashboard() {
@@ -389,14 +389,14 @@ public final class ClusterGkeConfig {
         return Optional.ofNullable(this.enableNodepoolAutoscaling);
     }
     /**
-     * @return Whether the master&#39;s internal IP address is used as the cluster endpoint. Default `false` (bool)
+     * @return Enable GKE cluster private endpoint. Default: `false` (bool)
      * 
      */
     public Optional<Boolean> enablePrivateEndpoint() {
         return Optional.ofNullable(this.enablePrivateEndpoint);
     }
     /**
-     * @return Whether nodes have internal IP address only. Default `false` (bool)
+     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
      * 
      */
     public Optional<Boolean> enablePrivateNodes() {
@@ -417,7 +417,7 @@ public final class ClusterGkeConfig {
         return Optional.ofNullable(this.enableStackdriverMonitoring);
     }
     /**
-     * @return The image to use for the worker nodes (string)
+     * @return The GKE node config image type (string)
      * 
      */
     public String imageType() {
@@ -494,28 +494,28 @@ public final class ClusterGkeConfig {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
-     * @return The number of local SSD disks to be attached to the node. Default `0` (int)
+     * @return The GKE node config local ssd count (int)
      * 
      */
     public Optional<Integer> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
     }
     /**
-     * @return Locations for GKE cluster (list)
+     * @return The GKE cluster locations (List)
      * 
      */
     public List<String> locations() {
         return this.locations;
     }
     /**
-     * @return Machine type for GKE cluster (string)
+     * @return The GKE node config machine type (string)
      * 
      */
     public String machineType() {
         return this.machineType;
     }
     /**
-     * @return Maintenance window for GKE cluster (string)
+     * @return The GKE cluster maintenance window (string)
      * 
      */
     public String maintenanceWindow() {
@@ -529,7 +529,7 @@ public final class ClusterGkeConfig {
         return this.masterAuthorizedNetworkCidrBlocks == null ? List.of() : this.masterAuthorizedNetworkCidrBlocks;
     }
     /**
-     * @return The IP range in CIDR notation to use for the hosted master network (string)
+     * @return The GKE cluster private master ip v4 cidr block (string)
      * 
      */
     public String masterIpv4CidrBlock() {
@@ -543,21 +543,21 @@ public final class ClusterGkeConfig {
         return this.masterVersion;
     }
     /**
-     * @return Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
+     * @return The GKE node pool config max node count (int)
      * 
      */
     public Optional<Integer> maxNodeCount() {
         return Optional.ofNullable(this.maxNodeCount);
     }
     /**
-     * @return Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
+     * @return The GKE node pool config min node count (int)
      * 
      */
     public Optional<Integer> minNodeCount() {
         return Optional.ofNullable(this.minNodeCount);
     }
     /**
-     * @return Kubernetes cluster networking (list maxitems:1)
+     * @return The GKE cluster network. Required for create new cluster (string)
      * 
      */
     public String network() {
@@ -585,28 +585,28 @@ public final class ClusterGkeConfig {
         return this.nodeVersion;
     }
     /**
-     * @return The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+     * @return The GKE node config oauth scopes (List)
      * 
      */
     public List<String> oauthScopes() {
         return this.oauthScopes;
     }
     /**
-     * @return Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+     * @return Enable GKE node config preemptible. Default: `false` (bool)
      * 
      */
     public Optional<Boolean> preemptible() {
         return Optional.ofNullable(this.preemptible);
     }
     /**
-     * @return Project ID for GKE cluster (string)
+     * @return Project ID to apply answer (string)
      * 
      */
     public String projectId() {
         return this.projectId;
     }
     /**
-     * @return (string)
+     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
     public Optional<String> region() {
@@ -634,21 +634,21 @@ public final class ClusterGkeConfig {
         return this.subNetwork;
     }
     /**
-     * @return The AKS node pool taints (list)
+     * @return The GKE node config taints (List)
      * 
      */
     public List<String> taints() {
         return this.taints == null ? List.of() : this.taints;
     }
     /**
-     * @return Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
+     * @return Use GKE ip aliases? Default: `true` (bool)
      * 
      */
     public Optional<Boolean> useIpAliases() {
         return Optional.ofNullable(this.useIpAliases);
     }
     /**
-     * @return (string)
+     * @return The GKE cluster zone. Required if `region` not set (string)
      * 
      */
     public Optional<String> zone() {

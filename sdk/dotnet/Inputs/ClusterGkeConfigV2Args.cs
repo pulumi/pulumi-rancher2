@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterGkeConfigV2ClusterAddonsArgs>? ClusterAddons { get; set; }
 
         /// <summary>
-        /// The GKE ip v4 cidr block (string)
+        /// The GKE cluster ip v4 allocation cidr block (string)
         /// </summary>
         [Input("clusterIpv4CidrBlock")]
         public Input<string>? ClusterIpv4CidrBlock { get; set; }
@@ -53,9 +53,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Is AKS cluster imported? Defaul: `false` (bool)
-        /// 
-        /// The following arguments are supported just for creating new AKS clusters (`imported=false`):
+        /// Is GKE cluster imported? Default: `false` (bool)
         /// </summary>
         [Input("imported")]
         public Input<bool>? Imported { get; set; }
@@ -67,7 +65,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterGkeConfigV2IpAllocationPolicyArgs>? IpAllocationPolicy { get; set; }
 
         /// <summary>
-        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
@@ -88,7 +86,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _locations;
 
         /// <summary>
-        /// Locations for GKE cluster (list)
+        /// The GKE cluster locations (List)
         /// </summary>
         public InputList<string> Locations
         {
@@ -103,7 +101,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? LoggingService { get; set; }
 
         /// <summary>
-        /// Maintenance window for GKE cluster (string)
+        /// The GKE cluster maintenance window (string)
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<string>? MaintenanceWindow { get; set; }
@@ -127,7 +125,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Kubernetes cluster networking (list maxitems:1)
+        /// The GKE cluster network. Required for create new cluster (string)
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -142,7 +140,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterGkeConfigV2NodePoolArgs>? _nodePools;
 
         /// <summary>
-        /// The AKS nnode pools. Required if `imported=false` (list)
+        /// The GKE cluster node pools. Required for create new cluster (List)
         /// </summary>
         public InputList<Inputs.ClusterGkeConfigV2NodePoolArgs> NodePools
         {
@@ -157,13 +155,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterGkeConfigV2PrivateClusterConfigArgs>? PrivateClusterConfig { get; set; }
 
         /// <summary>
-        /// Project ID for GKE cluster (string)
+        /// Project ID to apply answer (string)
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -175,7 +173,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// (string)
+        /// The GKE cluster zone. Required if `region` not set (string)
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

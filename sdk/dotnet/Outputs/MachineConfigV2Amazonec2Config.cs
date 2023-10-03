@@ -51,11 +51,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? InsecureTransport;
         /// <summary>
-        /// AWS instance type. Default `t3a.medium` (string)
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+        /// OpenStack keypair to use to SSH to the instance (string)
         /// </summary>
         public readonly string? KeypairName;
         /// <summary>
@@ -63,7 +63,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? KmsKey;
         /// <summary>
-        /// Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+        /// Enable monitoring for droplet. Default `false` (bool)
         /// </summary>
         public readonly bool? Monitoring;
         /// <summary>
@@ -75,7 +75,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? PrivateAddressOnly;
         /// <summary>
-        /// AWS region. (string)
+        /// OpenStack region name (string)
         /// </summary>
         public readonly string Region;
         /// <summary>
@@ -108,11 +108,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SpotPrice;
         /// <summary>
-        /// SSH Key for Instance (string)
+        /// SSH private key contents (string)
         /// </summary>
         public readonly string? SshKeyContents;
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
@@ -120,7 +120,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string SubnetId;
         /// <summary>
-        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
+        /// vSphere tags id e.g. `urn:xxx` (list)
         /// </summary>
         public readonly string? Tags;
         /// <summary>
@@ -132,11 +132,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? UsePrivateAddress;
         /// <summary>
-        /// Path to file with cloud-init user data (string)
+        /// Path to file with cloud-init user-data (string)
         /// </summary>
         public readonly string? Userdata;
         /// <summary>
-        /// Amazon EBS volume type. Default `gp2` (string)
+        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
         /// </summary>
         public readonly string? VolumeType;
         /// <summary>

@@ -78,7 +78,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ImageId;
         /// <summary>
-        /// Use `disk_info` instead
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
         /// </summary>
         public readonly string? ImageName;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? IpVersion;
         /// <summary>
-        /// AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+        /// OpenStack keypair to use to SSH to the instance (string)
         /// </summary>
         public readonly string? KeypairName;
         /// <summary>
@@ -114,7 +114,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? PrivateKeyFile;
         /// <summary>
-        /// AWS region. (string)
+        /// OpenStack region name (string)
         /// </summary>
         public readonly string Region;
         /// <summary>
@@ -122,11 +122,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SecGroups;
         /// <summary>
-        /// SSH port. Default `22` (string)
+        /// If using a non-B2D image you can specify the ssh port. Default `22` (string)
         /// </summary>
         public readonly string? SshPort;
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
@@ -138,7 +138,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? TenantDomainName;
         /// <summary>
-        /// Azure Tenant ID (string)
+        /// OpenStack tenant id. Conflicts with `tenant_name` (string)
         /// </summary>
         public readonly string? TenantId;
         /// <summary>
@@ -180,7 +180,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? VolumeSize;
         /// <summary>
-        /// Amazon EBS volume type. Default `gp2` (string)
+        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
         /// </summary>
         public readonly string? VolumeType;
 

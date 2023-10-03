@@ -46,7 +46,7 @@ public final class ClusterGkeConfigV2NodePool {
      */
     private String name;
     /**
-     * @return RKE2 kubernetes version (string)
+     * @return rancher-monitoring chart version (string)
      * 
      */
     private String version;
@@ -95,7 +95,7 @@ public final class ClusterGkeConfigV2NodePool {
         return this.name;
     }
     /**
-     * @return RKE2 kubernetes version (string)
+     * @return rancher-monitoring chart version (string)
      * 
      */
     public String version() {

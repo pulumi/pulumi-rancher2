@@ -18,23 +18,23 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ClusterCidr;
         /// <summary>
-        /// Extra arguments for RKE Ingress (map)
+        /// Extra arguments for scheduler service (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? ExtraArgs;
         /// <summary>
-        /// Extra binds for etcd service (list)
+        /// Extra binds for scheduler service (list)
         /// </summary>
         public readonly ImmutableArray<string> ExtraBinds;
         /// <summary>
-        /// Extra environment for etcd service (list)
+        /// Extra environment for scheduler service (list)
         /// </summary>
         public readonly ImmutableArray<string> ExtraEnvs;
         /// <summary>
-        /// Docker image for etcd service (string)
+        /// Docker image for scheduler service (string)
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// Service Cluster IP Range option for kube API service (string)
+        /// Service Cluster ip Range option for kube controller service (string)
         /// </summary>
         public readonly string? ServiceClusterIpRange;
 

@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _extraArgs;
 
         /// <summary>
-        /// Extra arguments for RKE Ingress (map)
+        /// Extra arguments for scheduler service (map)
         /// </summary>
         public InputMap<object> ExtraArgs
         {
@@ -58,7 +58,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _nodeSelector;
 
         /// <summary>
-        /// DNS add-on node selector (map)
+        /// RKE monitoring node selector (map)
         /// </summary>
         public InputMap<object> NodeSelector
         {
@@ -70,7 +70,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _options;
 
         /// <summary>
-        /// RKE options for authorization (map)
+        /// RKE options for network (map)
         /// </summary>
         public InputMap<object> Options
         {
@@ -79,7 +79,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// DNS add-on provider. `kube-dns`, `coredns` (default), and `none` are supported (string)
+        /// RKE monitoring provider (string)
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterRkeConfigIngressTolerationGetArgs>? _tolerations;
 
         /// <summary>
-        /// DNS add-on tolerations (list)
+        /// Network add-on tolerations (list)
         /// </summary>
         public InputList<Inputs.ClusterRkeConfigIngressTolerationGetArgs> Tolerations
         {
@@ -97,7 +97,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// DNS update strategy (list Maxitems: 1)
+        /// RKE monitoring update strategy (list Maxitems: 1)
         /// </summary>
         [Input("updateStrategy")]
         public Input<Inputs.ClusterRkeConfigIngressUpdateStrategyGetArgs>? UpdateStrategy { get; set; }

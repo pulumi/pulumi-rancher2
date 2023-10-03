@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodeTemplateOutscaleConfig {
     /**
-     * @return AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Access Key (string)
      * 
      */
     private String accessKey;
@@ -29,12 +29,12 @@ public final class NodeTemplateOutscaleConfig {
      */
     private @Nullable List<String> extraTagsInstances;
     /**
-     * @return AWS instance type. Default `t2.micro` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     private @Nullable String instanceType;
     /**
-     * @return AWS region. (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     private @Nullable String region;
@@ -54,7 +54,7 @@ public final class NodeTemplateOutscaleConfig {
      */
     private @Nullable String rootDiskType;
     /**
-     * @return AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Secret Key (string)
      * 
      */
     private String secretKey;
@@ -71,7 +71,7 @@ public final class NodeTemplateOutscaleConfig {
 
     private NodeTemplateOutscaleConfig() {}
     /**
-     * @return AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Access Key (string)
      * 
      */
     public String accessKey() {
@@ -92,14 +92,14 @@ public final class NodeTemplateOutscaleConfig {
         return this.extraTagsInstances == null ? List.of() : this.extraTagsInstances;
     }
     /**
-     * @return AWS instance type. Default `t2.micro` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return AWS region. (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public Optional<String> region() {
@@ -127,7 +127,7 @@ public final class NodeTemplateOutscaleConfig {
         return Optional.ofNullable(this.rootDiskType);
     }
     /**
-     * @return AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Secret Key (string)
      * 
      */
     public String secretKey() {

@@ -15,7 +15,7 @@ public final class ClusterV2AgentEnvVar {
      */
     private String name;
     /**
-     * @return Rancher agent env var value (string)
+     * @return The taint value (string)
      * 
      */
     private String value;
@@ -29,7 +29,7 @@ public final class ClusterV2AgentEnvVar {
         return this.name;
     }
     /**
-     * @return Rancher agent env var value (string)
+     * @return The taint value (string)
      * 
      */
     public String value() {

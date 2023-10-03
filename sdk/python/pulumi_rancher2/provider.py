@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -35,30 +35,55 @@ class ProviderArgs:
         :param pulumi.Input[str] timeout: Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
         :param pulumi.Input[str] token_key: API token used to authenticate with the rancher server
         """
-        pulumi.set(__self__, "api_url", api_url)
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_url=api_url,
+            access_key=access_key,
+            bootstrap=bootstrap,
+            ca_certs=ca_certs,
+            insecure=insecure,
+            retries=retries,
+            secret_key=secret_key,
+            timeout=timeout,
+            token_key=token_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_url: pulumi.Input[str],
+             access_key: Optional[pulumi.Input[str]] = None,
+             bootstrap: Optional[pulumi.Input[bool]] = None,
+             ca_certs: Optional[pulumi.Input[str]] = None,
+             insecure: Optional[pulumi.Input[bool]] = None,
+             retries: Optional[pulumi.Input[int]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[str]] = None,
+             token_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_url", api_url)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if bootstrap is None:
             bootstrap = (_utilities.get_env_bool('RANCHER_BOOTSTRAP') or False)
         if bootstrap is not None:
-            pulumi.set(__self__, "bootstrap", bootstrap)
+            _setter("bootstrap", bootstrap)
         if ca_certs is not None:
-            pulumi.set(__self__, "ca_certs", ca_certs)
+            _setter("ca_certs", ca_certs)
         if insecure is None:
             insecure = (_utilities.get_env_bool('RANCHER_INSECURE') or False)
         if insecure is not None:
-            pulumi.set(__self__, "insecure", insecure)
+            _setter("insecure", insecure)
         if retries is not None:
             warnings.warn("""Use timeout instead""", DeprecationWarning)
             pulumi.log.warn("""retries is deprecated: Use timeout instead""")
         if retries is not None:
-            pulumi.set(__self__, "retries", retries)
+            _setter("retries", retries)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if token_key is not None:
-            pulumi.set(__self__, "token_key", token_key)
+            _setter("token_key", token_key)
 
     @property
     @pulumi.getter(name="apiUrl")
@@ -227,6 +252,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -261,9 +290,6 @@ class Provider(pulumi.ProviderResource):
             if insecure is None:
                 insecure = (_utilities.get_env_bool('RANCHER_INSECURE') or False)
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
-            if retries is not None and not opts.urn:
-                warnings.warn("""Use timeout instead""", DeprecationWarning)
-                pulumi.log.warn("""retries is deprecated: Use timeout instead""")
             __props__.__dict__["retries"] = pulumi.Output.from_input(retries).apply(pulumi.runtime.to_json) if retries is not None else None
             __props__.__dict__["secret_key"] = None if secret_key is None else pulumi.Output.secret(secret_key)
             __props__.__dict__["timeout"] = timeout

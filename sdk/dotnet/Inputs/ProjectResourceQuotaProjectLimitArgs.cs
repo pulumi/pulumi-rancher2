@@ -19,13 +19,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ConfigMaps { get; set; }
 
         /// <summary>
-        /// CPU limit for containers (string)
+        /// Limit for limits cpu in project (string)
         /// </summary>
         [Input("limitsCpu")]
         public Input<string>? LimitsCpu { get; set; }
 
         /// <summary>
-        /// Memory limit for containers (string)
+        /// Limit for limits memory in project (string)
         /// </summary>
         [Input("limitsMemory")]
         public Input<string>? LimitsMemory { get; set; }
@@ -49,13 +49,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ReplicationControllers { get; set; }
 
         /// <summary>
-        /// CPU reservation for containers (string)
+        /// Limit for requests cpu in project (string)
         /// </summary>
         [Input("requestsCpu")]
         public Input<string>? RequestsCpu { get; set; }
 
         /// <summary>
-        /// Memory reservation for containers (string)
+        /// Limit for requests memory in project (string)
         /// </summary>
         [Input("requestsMemory")]
         public Input<string>? RequestsMemory { get; set; }

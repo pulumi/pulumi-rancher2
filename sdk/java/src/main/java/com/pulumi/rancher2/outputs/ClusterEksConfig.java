@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterEksConfig {
     /**
-     * @return Access key for S3 service (string)
+     * @return The AWS Client ID to use (string)
      * 
      */
     private String accessKey;
@@ -36,7 +36,7 @@ public final class ClusterEksConfig {
     private @Nullable Integer desiredNodes;
     private @Nullable Boolean ebsEncryption;
     /**
-     * @return The type of machine to use for worker nodes. Default `t2.medium` (string)
+     * @return The EKS node group instance type. Default: `t3.medium` (string)
      * 
      */
     private @Nullable String instanceType;
@@ -46,7 +46,7 @@ public final class ClusterEksConfig {
      */
     private @Nullable String keyPairName;
     /**
-     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     private String kubernetesVersion;
@@ -66,22 +66,22 @@ public final class ClusterEksConfig {
      */
     private @Nullable Integer nodeVolumeSize;
     /**
-     * @return (string)
+     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
     private @Nullable String region;
     /**
-     * @return Secret key for S3 service (string)
+     * @return The AWS Client Secret associated with the Client ID (string)
      * 
      */
     private String secretKey;
     /**
-     * @return List of security groups to use for the cluster. If it&#39;s not specified Rancher will create a new security group (list)
+     * @return List of security groups to use for the cluster (list)
      * 
      */
     private @Nullable List<String> securityGroups;
     /**
-     * @return The service role to use to perform the cluster operations in AWS. If it&#39;s not specified Rancher will create a new service role (string)
+     * @return The AWS service role to use (string)
      * 
      */
     private @Nullable String serviceRole;
@@ -91,24 +91,24 @@ public final class ClusterEksConfig {
      */
     private @Nullable String sessionToken;
     /**
-     * @return List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
+     * @return The EKS node group subnets (list string)
      * 
      */
     private @Nullable List<String> subnets;
     /**
-     * @return Pass user-data to the nodes to perform automated configuration tasks (string)
+     * @return The EKS node group user data (string)
      * 
      */
     private @Nullable String userData;
     /**
-     * @return The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
      * 
      */
     private @Nullable String virtualNetwork;
 
     private ClusterEksConfig() {}
     /**
-     * @return Access key for S3 service (string)
+     * @return The AWS Client ID to use (string)
      * 
      */
     public String accessKey() {
@@ -139,7 +139,7 @@ public final class ClusterEksConfig {
         return Optional.ofNullable(this.ebsEncryption);
     }
     /**
-     * @return The type of machine to use for worker nodes. Default `t2.medium` (string)
+     * @return The EKS node group instance type. Default: `t3.medium` (string)
      * 
      */
     public Optional<String> instanceType() {
@@ -153,7 +153,7 @@ public final class ClusterEksConfig {
         return Optional.ofNullable(this.keyPairName);
     }
     /**
-     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     public String kubernetesVersion() {
@@ -181,28 +181,28 @@ public final class ClusterEksConfig {
         return Optional.ofNullable(this.nodeVolumeSize);
     }
     /**
-     * @return (string)
+     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Secret key for S3 service (string)
+     * @return The AWS Client Secret associated with the Client ID (string)
      * 
      */
     public String secretKey() {
         return this.secretKey;
     }
     /**
-     * @return List of security groups to use for the cluster. If it&#39;s not specified Rancher will create a new security group (list)
+     * @return List of security groups to use for the cluster (list)
      * 
      */
     public List<String> securityGroups() {
         return this.securityGroups == null ? List.of() : this.securityGroups;
     }
     /**
-     * @return The service role to use to perform the cluster operations in AWS. If it&#39;s not specified Rancher will create a new service role (string)
+     * @return The AWS service role to use (string)
      * 
      */
     public Optional<String> serviceRole() {
@@ -216,21 +216,21 @@ public final class ClusterEksConfig {
         return Optional.ofNullable(this.sessionToken);
     }
     /**
-     * @return List of subnets in the virtual network to use. If it&#39;s not specified Rancher will create 3 news subnets (list)
+     * @return The EKS node group subnets (list string)
      * 
      */
     public List<String> subnets() {
         return this.subnets == null ? List.of() : this.subnets;
     }
     /**
-     * @return Pass user-data to the nodes to perform automated configuration tasks (string)
+     * @return The EKS node group user data (string)
      * 
      */
     public Optional<String> userData() {
         return Optional.ofNullable(this.userData);
     }
     /**
-     * @return The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
      * 
      */
     public Optional<String> virtualNetwork() {

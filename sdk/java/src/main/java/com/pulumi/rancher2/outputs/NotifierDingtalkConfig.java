@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotifierDingtalkConfig {
     /**
-     * @return Dingtalk proxy url (string)
+     * @return Wechat proxy url (string)
      * 
      */
     private @Nullable String proxyUrl;
     /**
-     * @return Secret for url sign enable (string)
+     * @return Wechat agent ID (string)
      * 
      */
     private @Nullable String secret;
     /**
-     * @return Dingtalk url (string)
+     * @return Slack url (string)
      * 
      */
     private String url;
 
     private NotifierDingtalkConfig() {}
     /**
-     * @return Dingtalk proxy url (string)
+     * @return Wechat proxy url (string)
      * 
      */
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
     /**
-     * @return Secret for url sign enable (string)
+     * @return Wechat agent ID (string)
      * 
      */
     public Optional<String> secret() {
         return Optional.ofNullable(this.secret);
     }
     /**
-     * @return Dingtalk url (string)
+     * @return Slack url (string)
      * 
      */
     public String url() {

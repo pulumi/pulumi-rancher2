@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ClusterTemplateId;
         /// <summary>
-        /// Default cluster template revision. Default `false` (bool)
+        /// Default variable value (string)
         /// </summary>
         public readonly bool? Default;
         /// <summary>

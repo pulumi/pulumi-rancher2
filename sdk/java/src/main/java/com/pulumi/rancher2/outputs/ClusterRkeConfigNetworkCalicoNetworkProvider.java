@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigNetworkCalicoNetworkProvider {
     /**
-     * @return RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
+     * @return RKE options for Calico network provider (string)
      * 
      */
     private @Nullable String cloudProvider;
 
     private ClusterRkeConfigNetworkCalicoNetworkProvider() {}
     /**
-     * @return RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
+     * @return RKE options for Calico network provider (string)
      * 
      */
     public Optional<String> cloudProvider() {

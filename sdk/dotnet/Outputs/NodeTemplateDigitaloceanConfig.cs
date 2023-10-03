@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? Backups;
         /// <summary>
-        /// Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         /// </summary>
         public readonly string? Image;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? Ipv6;
         /// <summary>
-        /// Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+        /// Enable monitoring for droplet. Default `false` (bool)
         /// </summary>
         public readonly bool? Monitoring;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? PrivateNetworking;
         /// <summary>
-        /// AWS region. (string)
+        /// AWS region. Default `eu-west-2` (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Size for Azure Virtual Machine. Default `Standard_A2` (string)
+        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
         /// </summary>
         public readonly string? Size;
         /// <summary>
@@ -54,19 +54,19 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SshKeyPath;
         /// <summary>
-        /// SSH port. Default `22` (string)
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
         /// </summary>
         public readonly string? SshPort;
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
-        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
         /// </summary>
         public readonly string? Tags;
         /// <summary>
-        /// Path to file with cloud-init user data (string)
+        /// Path to file with cloud-init user-data (string)
         /// 
         /// &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         /// </summary>

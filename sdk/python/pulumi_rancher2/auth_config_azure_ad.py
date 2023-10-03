@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AuthConfigAzureAdArgs', 'AuthConfigAzureAd']
@@ -43,25 +43,58 @@ class AuthConfigAzureAdArgs:
         :param pulumi.Input[str] endpoint: AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         """
-        pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "application_secret", application_secret)
-        pulumi.set(__self__, "auth_endpoint", auth_endpoint)
-        pulumi.set(__self__, "graph_endpoint", graph_endpoint)
-        pulumi.set(__self__, "rancher_url", rancher_url)
-        pulumi.set(__self__, "tenant_id", tenant_id)
-        pulumi.set(__self__, "token_endpoint", token_endpoint)
+        AuthConfigAzureAdArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            application_secret=application_secret,
+            auth_endpoint=auth_endpoint,
+            graph_endpoint=graph_endpoint,
+            rancher_url=rancher_url,
+            tenant_id=tenant_id,
+            token_endpoint=token_endpoint,
+            access_mode=access_mode,
+            allowed_principal_ids=allowed_principal_ids,
+            annotations=annotations,
+            enabled=enabled,
+            endpoint=endpoint,
+            labels=labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: pulumi.Input[str],
+             application_secret: pulumi.Input[str],
+             auth_endpoint: pulumi.Input[str],
+             graph_endpoint: pulumi.Input[str],
+             rancher_url: pulumi.Input[str],
+             tenant_id: pulumi.Input[str],
+             token_endpoint: pulumi.Input[str],
+             access_mode: Optional[pulumi.Input[str]] = None,
+             allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             endpoint: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_id", application_id)
+        _setter("application_secret", application_secret)
+        _setter("auth_endpoint", auth_endpoint)
+        _setter("graph_endpoint", graph_endpoint)
+        _setter("rancher_url", rancher_url)
+        _setter("tenant_id", tenant_id)
+        _setter("token_endpoint", token_endpoint)
         if access_mode is not None:
-            pulumi.set(__self__, "access_mode", access_mode)
+            _setter("access_mode", access_mode)
         if allowed_principal_ids is not None:
-            pulumi.set(__self__, "allowed_principal_ids", allowed_principal_ids)
+            _setter("allowed_principal_ids", allowed_principal_ids)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -256,36 +289,73 @@ class _AuthConfigAzureAdState:
         :param pulumi.Input[str] token_endpoint: AzureAD token endpoint (string)
         :param pulumi.Input[str] type: (Computed) The type of the resource (string)
         """
+        _AuthConfigAzureAdState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_mode=access_mode,
+            allowed_principal_ids=allowed_principal_ids,
+            annotations=annotations,
+            application_id=application_id,
+            application_secret=application_secret,
+            auth_endpoint=auth_endpoint,
+            enabled=enabled,
+            endpoint=endpoint,
+            graph_endpoint=graph_endpoint,
+            labels=labels,
+            name=name,
+            rancher_url=rancher_url,
+            tenant_id=tenant_id,
+            token_endpoint=token_endpoint,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_mode: Optional[pulumi.Input[str]] = None,
+             allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             application_secret: Optional[pulumi.Input[str]] = None,
+             auth_endpoint: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             endpoint: Optional[pulumi.Input[str]] = None,
+             graph_endpoint: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             rancher_url: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             token_endpoint: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_mode is not None:
-            pulumi.set(__self__, "access_mode", access_mode)
+            _setter("access_mode", access_mode)
         if allowed_principal_ids is not None:
-            pulumi.set(__self__, "allowed_principal_ids", allowed_principal_ids)
+            _setter("allowed_principal_ids", allowed_principal_ids)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if application_secret is not None:
-            pulumi.set(__self__, "application_secret", application_secret)
+            _setter("application_secret", application_secret)
         if auth_endpoint is not None:
-            pulumi.set(__self__, "auth_endpoint", auth_endpoint)
+            _setter("auth_endpoint", auth_endpoint)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if graph_endpoint is not None:
-            pulumi.set(__self__, "graph_endpoint", graph_endpoint)
+            _setter("graph_endpoint", graph_endpoint)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if rancher_url is not None:
-            pulumi.set(__self__, "rancher_url", rancher_url)
+            _setter("rancher_url", rancher_url)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if token_endpoint is not None:
-            pulumi.set(__self__, "token_endpoint", token_endpoint)
+            _setter("token_endpoint", token_endpoint)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="accessMode")
@@ -555,6 +625,10 @@ class AuthConfigAzureAd(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AuthConfigAzureAdArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

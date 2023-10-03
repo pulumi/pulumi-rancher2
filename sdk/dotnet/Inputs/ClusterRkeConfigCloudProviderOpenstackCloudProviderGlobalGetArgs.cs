@@ -50,7 +50,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// (string)
+        /// Registry password (string)
         /// </summary>
         public Input<string>? Password
         {
@@ -63,7 +63,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -72,7 +72,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _tenantId;
 
         /// <summary>
-        /// (string)
+        /// Azure tenant ID to use (string)
         /// </summary>
         public Input<string>? TenantId
         {

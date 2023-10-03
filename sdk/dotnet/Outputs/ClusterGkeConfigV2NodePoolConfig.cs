@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2NodePoolConfig
     {
         /// <summary>
-        /// Size of the disk attached to each node. Default `100` (int)
+        /// The GKE node config disk size Gb (int)
         /// </summary>
         public readonly int? DiskSizeGb;
         /// <summary>
-        /// Type of the disk attached to each node (string)
+        /// The GKE node config disk type (string)
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// The image to use for the worker nodes (string)
+        /// The GKE node config image type (string)
         /// </summary>
         public readonly string? ImageType;
         /// <summary>
@@ -30,27 +30,27 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
-        /// The number of local SSD disks to be attached to the node. Default `0` (int)
+        /// The GKE node config local ssd count (int)
         /// </summary>
         public readonly int? LocalSsdCount;
         /// <summary>
-        /// Machine type for GKE cluster (string)
+        /// The GKE node config machine type (string)
         /// </summary>
         public readonly string? MachineType;
         /// <summary>
-        /// The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+        /// The GKE node config oauth scopes (List)
         /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
         /// <summary>
-        /// Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+        /// Enable GKE node config preemptible. Default: `false` (bool)
         /// </summary>
         public readonly bool? Preemptible;
         /// <summary>
-        /// Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
+        /// The GKE node config tags (List)
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// The AKS node pool taints (list)
+        /// The GKE node config taints (List)
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterGkeConfigV2NodePoolConfigTaint> Taints;
 

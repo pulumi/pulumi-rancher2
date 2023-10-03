@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class GlobalDnsProviderAlidnsConfig
     {
         /// <summary>
-        /// The AliDNS Access key (string)
+        /// The AWS Access key (string)
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
-        /// The AliDNS Secret key (string)
+        /// The AWS Secret key (string)
         /// </summary>
         public readonly string SecretKey;
 

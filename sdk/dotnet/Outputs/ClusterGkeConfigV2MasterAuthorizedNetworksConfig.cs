@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> CidrBlocks;
         /// <summary>
-        /// Enable etcd backup (bool)
+        /// Enable the authorized cluster endpoint. Default `true` (bool)
         /// </summary>
         public readonly bool? Enabled;
 

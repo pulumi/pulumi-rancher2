@@ -18,14 +18,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     public static final NodeTemplateAmazonec2ConfigArgs Empty = new NodeTemplateAmazonec2ConfigArgs();
 
     /**
-     * AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Outscale Access Key (string)
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Access Key (string)
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -168,14 +168,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS instance type. Default `t2.micro` (string)
+     * Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return AWS instance type. Default `t2.micro` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -213,14 +213,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+     * Enable monitoring for droplet. Default `false` (bool)
      * 
      */
     @Import(name="monitoring")
     private @Nullable Output<Boolean> monitoring;
 
     /**
-     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+     * @return Enable monitoring for droplet. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> monitoring() {
@@ -258,14 +258,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS region. (string)
+     * AWS region. Default `eu-west-2` (string)
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return AWS region. (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public Output<String> region() {
@@ -318,14 +318,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Outscale Secret Key (string)
      * 
      */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
     /**
-     * @return AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Secret Key (string)
      * 
      */
     public Optional<Output<String>> secretKey() {
@@ -400,14 +400,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Set the name of the ssh user (string)
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -430,14 +430,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<String> tags;
 
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     public Optional<Output<String>> tags() {
@@ -475,7 +475,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Path to file with cloud-init user data (string)
+     * Path to file with cloud-init user-data (string)
      * 
      * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 
@@ -484,7 +484,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     private @Nullable Output<String> userdata;
 
     /**
-     * @return Path to file with cloud-init user data (string)
+     * @return Path to file with cloud-init user-data (string)
      * 
      * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 
@@ -494,14 +494,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Amazon EBS volume type. Default `gp2` (string)
+     * OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     @Import(name="volumeType")
     private @Nullable Output<String> volumeType;
 
     /**
-     * @return Amazon EBS volume type. Default `gp2` (string)
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     public Optional<Output<String>> volumeType() {
@@ -597,7 +597,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accessKey AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param accessKey Outscale Access Key (string)
          * 
          * @return builder
          * 
@@ -608,7 +608,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accessKey AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param accessKey Outscale Access Key (string)
          * 
          * @return builder
          * 
@@ -807,7 +807,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType AWS instance type. Default `t2.micro` (string)
+         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
          * 
          * @return builder
          * 
@@ -818,7 +818,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType AWS instance type. Default `t2.micro` (string)
+         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
          * 
          * @return builder
          * 
@@ -870,7 +870,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param monitoring Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -881,7 +881,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param monitoring Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -943,7 +943,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -954,7 +954,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -1027,7 +1027,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param secretKey AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param secretKey Outscale Secret Key (string)
          * 
          * @return builder
          * 
@@ -1038,7 +1038,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param secretKey AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param secretKey Outscale Secret Key (string)
          * 
          * @return builder
          * 
@@ -1151,7 +1151,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -1162,7 +1162,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -1193,7 +1193,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
          * 
          * @return builder
          * 
@@ -1204,7 +1204,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
          * 
          * @return builder
          * 
@@ -1256,7 +1256,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userdata Path to file with cloud-init user data (string)
+         * @param userdata Path to file with cloud-init user-data (string)
          * 
          * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
          * 
@@ -1269,7 +1269,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userdata Path to file with cloud-init user data (string)
+         * @param userdata Path to file with cloud-init user-data (string)
          * 
          * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
          * 
@@ -1281,7 +1281,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param volumeType Amazon EBS volume type. Default `gp2` (string)
+         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
          * 
          * @return builder
          * 
@@ -1292,7 +1292,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param volumeType Amazon EBS volume type. Default `gp2` (string)
+         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
          * 
          * @return builder
          * 

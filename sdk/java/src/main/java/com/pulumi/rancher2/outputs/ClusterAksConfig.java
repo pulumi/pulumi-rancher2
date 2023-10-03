@@ -67,12 +67,12 @@ public final class ClusterAksConfig {
      */
     private @Nullable String agentVmSize;
     /**
-     * @return Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+     * @return The AKS auth base url (string)
      * 
      */
     private @Nullable String authBaseUrl;
     /**
-     * @return Different resource management API url to use. Default `https://management.azure.com/` (string)
+     * @return The AKS base url (string)
      * 
      */
     private @Nullable String baseUrl;
@@ -87,7 +87,7 @@ public final class ClusterAksConfig {
      */
     private String clientSecret;
     /**
-     * @return Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+     * @return The AKS node pool count. Default: `1` (int)
      * 
      */
     private @Nullable Integer count;
@@ -112,17 +112,17 @@ public final class ClusterAksConfig {
      */
     private @Nullable Boolean enableMonitoring;
     /**
-     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     private String kubernetesVersion;
     /**
-     * @return Allowed values: `basic` (default) `standard` (string)
+     * @return The AKS load balancer sku (string)
      * 
      */
     private @Nullable String loadBalancerSku;
     /**
-     * @return (string)
+     * @return Azure Kubernetes cluster location. Default `eastus` (string)
      * 
      */
     private @Nullable String location;
@@ -142,32 +142,32 @@ public final class ClusterAksConfig {
      */
     private String masterDnsPrefix;
     /**
-     * @return Maximum number of pods that can run on a node. Default `110` (int)
+     * @return The AKS node pool max pods. Default: `110` (int)
      * 
      */
     private @Nullable Integer maxPods;
     /**
-     * @return Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+     * @return The AKS network plugin. Required if `imported=false` (string)
      * 
      */
     private @Nullable String networkPlugin;
     /**
-     * @return Network policy used for building Kubernetes network. Chooses from `calico` (string)
+     * @return The AKS network policy (string)
      * 
      */
     private @Nullable String networkPolicy;
     /**
-     * @return A CIDR notation IP range from which to assign Kubernetes Pod IPs when \&#34;network plugin\&#34; is specified in \&#34;kubenet\&#34;. Default `172.244.0.0/16` (string)
+     * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
      * 
      */
     private @Nullable String podCidr;
     /**
-     * @return (string)
+     * @return The AKS resource group (string)
      * 
      */
     private String resourceGroup;
     /**
-     * @return A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+     * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
      * 
      */
     private @Nullable String serviceCidr;
@@ -177,12 +177,12 @@ public final class ClusterAksConfig {
      */
     private String sshPublicKeyContents;
     /**
-     * @return The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+     * @return The AKS subnet (string)
      * 
      */
     private String subnet;
     /**
-     * @return (string)
+     * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
      * 
      */
     private String subscriptionId;
@@ -196,22 +196,22 @@ public final class ClusterAksConfig {
     @Deprecated /* Use tags argument instead as []string */
     private @Nullable Map<String,Object> tag;
     /**
-     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+     * @return The GKE node config tags (List)
      * 
      */
     private @Nullable List<String> tags;
     /**
-     * @return (string)
+     * @return Azure tenant ID to use (string)
      * 
      */
     private String tenantId;
     /**
-     * @return The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
      * 
      */
     private String virtualNetwork;
     /**
-     * @return The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * @return The AKS virtual network resource group (string)
      * 
      */
     private String virtualNetworkResourceGroup;
@@ -288,14 +288,14 @@ public final class ClusterAksConfig {
         return Optional.ofNullable(this.agentVmSize);
     }
     /**
-     * @return Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+     * @return The AKS auth base url (string)
      * 
      */
     public Optional<String> authBaseUrl() {
         return Optional.ofNullable(this.authBaseUrl);
     }
     /**
-     * @return Different resource management API url to use. Default `https://management.azure.com/` (string)
+     * @return The AKS base url (string)
      * 
      */
     public Optional<String> baseUrl() {
@@ -316,7 +316,7 @@ public final class ClusterAksConfig {
         return this.clientSecret;
     }
     /**
-     * @return Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+     * @return The AKS node pool count. Default: `1` (int)
      * 
      */
     public Optional<Integer> count() {
@@ -351,21 +351,21 @@ public final class ClusterAksConfig {
         return Optional.ofNullable(this.enableMonitoring);
     }
     /**
-     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     public String kubernetesVersion() {
         return this.kubernetesVersion;
     }
     /**
-     * @return Allowed values: `basic` (default) `standard` (string)
+     * @return The AKS load balancer sku (string)
      * 
      */
     public Optional<String> loadBalancerSku() {
         return Optional.ofNullable(this.loadBalancerSku);
     }
     /**
-     * @return (string)
+     * @return Azure Kubernetes cluster location. Default `eastus` (string)
      * 
      */
     public Optional<String> location() {
@@ -393,42 +393,42 @@ public final class ClusterAksConfig {
         return this.masterDnsPrefix;
     }
     /**
-     * @return Maximum number of pods that can run on a node. Default `110` (int)
+     * @return The AKS node pool max pods. Default: `110` (int)
      * 
      */
     public Optional<Integer> maxPods() {
         return Optional.ofNullable(this.maxPods);
     }
     /**
-     * @return Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+     * @return The AKS network plugin. Required if `imported=false` (string)
      * 
      */
     public Optional<String> networkPlugin() {
         return Optional.ofNullable(this.networkPlugin);
     }
     /**
-     * @return Network policy used for building Kubernetes network. Chooses from `calico` (string)
+     * @return The AKS network policy (string)
      * 
      */
     public Optional<String> networkPolicy() {
         return Optional.ofNullable(this.networkPolicy);
     }
     /**
-     * @return A CIDR notation IP range from which to assign Kubernetes Pod IPs when \&#34;network plugin\&#34; is specified in \&#34;kubenet\&#34;. Default `172.244.0.0/16` (string)
+     * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
      * 
      */
     public Optional<String> podCidr() {
         return Optional.ofNullable(this.podCidr);
     }
     /**
-     * @return (string)
+     * @return The AKS resource group (string)
      * 
      */
     public String resourceGroup() {
         return this.resourceGroup;
     }
     /**
-     * @return A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+     * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
      * 
      */
     public Optional<String> serviceCidr() {
@@ -442,14 +442,14 @@ public final class ClusterAksConfig {
         return this.sshPublicKeyContents;
     }
     /**
-     * @return The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+     * @return The AKS subnet (string)
      * 
      */
     public String subnet() {
         return this.subnet;
     }
     /**
-     * @return (string)
+     * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
      * 
      */
     public String subscriptionId() {
@@ -467,28 +467,28 @@ public final class ClusterAksConfig {
         return this.tag == null ? Map.of() : this.tag;
     }
     /**
-     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+     * @return The GKE node config tags (List)
      * 
      */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return (string)
+     * @return Azure tenant ID to use (string)
      * 
      */
     public String tenantId() {
         return this.tenantId;
     }
     /**
-     * @return The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
      * 
      */
     public String virtualNetwork() {
         return this.virtualNetwork;
     }
     /**
-     * @return The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * @return The AKS virtual network resource group (string)
      * 
      */
     public String virtualNetworkResourceGroup() {

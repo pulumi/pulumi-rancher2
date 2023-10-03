@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachinePoolTaint
     {
         /// <summary>
-        /// The toleration effect. Default: `\"NoSchedule\"` (string)
+        /// The taint effect. Default: `\"NoExecute\"` (string)
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// The toleration key (string)
+        /// Machine selector label match expressions key (string)
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Rancher agent env var value (string)
+        /// The taint value (string)
         /// </summary>
         public readonly string Value;
 

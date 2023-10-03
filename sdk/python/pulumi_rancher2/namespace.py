@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,21 +35,44 @@ class NamespaceArgs:
         :param pulumi.Input['NamespaceResourceQuotaArgs'] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
         """
-        pulumi.set(__self__, "project_id", project_id)
+        NamespaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            annotations=annotations,
+            container_resource_limit=container_resource_limit,
+            description=description,
+            labels=labels,
+            name=name,
+            resource_quota=resource_quota,
+            wait_for_cluster=wait_for_cluster,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: pulumi.Input[str],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             container_resource_limit: Optional[pulumi.Input['NamespaceContainerResourceLimitArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_quota: Optional[pulumi.Input['NamespaceResourceQuotaArgs']] = None,
+             wait_for_cluster: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project_id", project_id)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if container_resource_limit is not None:
-            pulumi.set(__self__, "container_resource_limit", container_resource_limit)
+            _setter("container_resource_limit", container_resource_limit)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_quota is not None:
-            pulumi.set(__self__, "resource_quota", resource_quota)
+            _setter("resource_quota", resource_quota)
         if wait_for_cluster is not None:
-            pulumi.set(__self__, "wait_for_cluster", wait_for_cluster)
+            _setter("wait_for_cluster", wait_for_cluster)
 
     @property
     @pulumi.getter(name="projectId")
@@ -170,22 +193,45 @@ class _NamespaceState:
         :param pulumi.Input['NamespaceResourceQuotaArgs'] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
         """
+        _NamespaceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            container_resource_limit=container_resource_limit,
+            description=description,
+            labels=labels,
+            name=name,
+            project_id=project_id,
+            resource_quota=resource_quota,
+            wait_for_cluster=wait_for_cluster,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             container_resource_limit: Optional[pulumi.Input['NamespaceContainerResourceLimitArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             resource_quota: Optional[pulumi.Input['NamespaceResourceQuotaArgs']] = None,
+             wait_for_cluster: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if container_resource_limit is not None:
-            pulumi.set(__self__, "container_resource_limit", container_resource_limit)
+            _setter("container_resource_limit", container_resource_limit)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if resource_quota is not None:
-            pulumi.set(__self__, "resource_quota", resource_quota)
+            _setter("resource_quota", resource_quota)
         if wait_for_cluster is not None:
-            pulumi.set(__self__, "wait_for_cluster", wait_for_cluster)
+            _setter("wait_for_cluster", wait_for_cluster)
 
     @property
     @pulumi.getter
@@ -471,6 +517,10 @@ class Namespace(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NamespaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -494,6 +544,11 @@ class Namespace(pulumi.CustomResource):
             __props__ = NamespaceArgs.__new__(NamespaceArgs)
 
             __props__.__dict__["annotations"] = annotations
+            if container_resource_limit is not None and not isinstance(container_resource_limit, NamespaceContainerResourceLimitArgs):
+                container_resource_limit = container_resource_limit or {}
+                def _setter(key, value):
+                    container_resource_limit[key] = value
+                NamespaceContainerResourceLimitArgs._configure(_setter, **container_resource_limit)
             __props__.__dict__["container_resource_limit"] = container_resource_limit
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
@@ -501,6 +556,11 @@ class Namespace(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            if resource_quota is not None and not isinstance(resource_quota, NamespaceResourceQuotaArgs):
+                resource_quota = resource_quota or {}
+                def _setter(key, value):
+                    resource_quota[key] = value
+                NamespaceResourceQuotaArgs._configure(_setter, **resource_quota)
             __props__.__dict__["resource_quota"] = resource_quota
             __props__.__dict__["wait_for_cluster"] = wait_for_cluster
         super(Namespace, __self__).__init__(

@@ -14,14 +14,14 @@ public final class ClusterGkeConfigV2NodePoolConfigTaintArgs extends com.pulumi.
     public static final ClusterGkeConfigV2NodePoolConfigTaintArgs Empty = new ClusterGkeConfigV2NodePoolConfigTaintArgs();
 
     /**
-     * The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+     * The GKE taint effect (string)
      * 
      */
     @Import(name="effect", required=true)
     private Output<String> effect;
 
     /**
-     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+     * @return The GKE taint effect (string)
      * 
      */
     public Output<String> effect() {
@@ -29,14 +29,14 @@ public final class ClusterGkeConfigV2NodePoolConfigTaintArgs extends com.pulumi.
     }
 
     /**
-     * The toleration key (string)
+     * The GKE taint key (string)
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The toleration key (string)
+     * @return The GKE taint key (string)
      * 
      */
     public Output<String> key() {
@@ -44,14 +44,14 @@ public final class ClusterGkeConfigV2NodePoolConfigTaintArgs extends com.pulumi.
     }
 
     /**
-     * Rancher agent env var value (string)
+     * The GKE taint value (string)
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Rancher agent env var value (string)
+     * @return The GKE taint value (string)
      * 
      */
     public Output<String> value() {
@@ -85,7 +85,7 @@ public final class ClusterGkeConfigV2NodePoolConfigTaintArgs extends com.pulumi.
         }
 
         /**
-         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+         * @param effect The GKE taint effect (string)
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class ClusterGkeConfigV2NodePoolConfigTaintArgs extends com.pulumi.
         }
 
         /**
-         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+         * @param effect The GKE taint effect (string)
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class ClusterGkeConfigV2NodePoolConfigTaintArgs extends com.pulumi.
         }
 
         /**
-         * @param key The toleration key (string)
+         * @param key The GKE taint key (string)
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ClusterGkeConfigV2NodePoolConfigTaintArgs extends com.pulumi.
         }
 
         /**
-         * @param key The toleration key (string)
+         * @param key The GKE taint key (string)
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class ClusterGkeConfigV2NodePoolConfigTaintArgs extends com.pulumi.
         }
 
         /**
-         * @param value Rancher agent env var value (string)
+         * @param value The GKE taint value (string)
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class ClusterGkeConfigV2NodePoolConfigTaintArgs extends com.pulumi.
         }
 
         /**
-         * @param value Rancher agent env var value (string)
+         * @param value The GKE taint value (string)
          * 
          * @return builder
          * 

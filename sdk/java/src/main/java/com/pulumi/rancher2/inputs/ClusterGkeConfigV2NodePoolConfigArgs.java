@@ -22,14 +22,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     public static final ClusterGkeConfigV2NodePoolConfigArgs Empty = new ClusterGkeConfigV2NodePoolConfigArgs();
 
     /**
-     * Size of the disk attached to each node. Default `100` (int)
+     * The GKE node config disk size Gb (int)
      * 
      */
     @Import(name="diskSizeGb")
     private @Nullable Output<Integer> diskSizeGb;
 
     /**
-     * @return Size of the disk attached to each node. Default `100` (int)
+     * @return The GKE node config disk size Gb (int)
      * 
      */
     public Optional<Output<Integer>> diskSizeGb() {
@@ -37,14 +37,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Type of the disk attached to each node (string)
+     * The GKE node config disk type (string)
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return Type of the disk attached to each node (string)
+     * @return The GKE node config disk type (string)
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -52,14 +52,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The image to use for the worker nodes (string)
+     * The GKE node config image type (string)
      * 
      */
     @Import(name="imageType")
     private @Nullable Output<String> imageType;
 
     /**
-     * @return The image to use for the worker nodes (string)
+     * @return The GKE node config image type (string)
      * 
      */
     public Optional<Output<String>> imageType() {
@@ -82,14 +82,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The number of local SSD disks to be attached to the node. Default `0` (int)
+     * The GKE node config local ssd count (int)
      * 
      */
     @Import(name="localSsdCount")
     private @Nullable Output<Integer> localSsdCount;
 
     /**
-     * @return The number of local SSD disks to be attached to the node. Default `0` (int)
+     * @return The GKE node config local ssd count (int)
      * 
      */
     public Optional<Output<Integer>> localSsdCount() {
@@ -97,14 +97,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Machine type for GKE cluster (string)
+     * The GKE node config machine type (string)
      * 
      */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
 
     /**
-     * @return Machine type for GKE cluster (string)
+     * @return The GKE node config machine type (string)
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -112,14 +112,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+     * The GKE node config oauth scopes (List)
      * 
      */
     @Import(name="oauthScopes")
     private @Nullable Output<List<String>> oauthScopes;
 
     /**
-     * @return The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+     * @return The GKE node config oauth scopes (List)
      * 
      */
     public Optional<Output<List<String>>> oauthScopes() {
@@ -127,14 +127,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+     * Enable GKE node config preemptible. Default: `false` (bool)
      * 
      */
     @Import(name="preemptible")
     private @Nullable Output<Boolean> preemptible;
 
     /**
-     * @return Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+     * @return Enable GKE node config preemptible. Default: `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> preemptible() {
@@ -142,14 +142,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+     * The GKE node config tags (List)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+     * @return The GKE node config tags (List)
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -157,14 +157,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The AKS node pool taints (list)
+     * The GKE node config taints (List)
      * 
      */
     @Import(name="taints")
     private @Nullable Output<List<ClusterGkeConfigV2NodePoolConfigTaintArgs>> taints;
 
     /**
-     * @return The AKS node pool taints (list)
+     * @return The GKE node config taints (List)
      * 
      */
     public Optional<Output<List<ClusterGkeConfigV2NodePoolConfigTaintArgs>>> taints() {
@@ -205,7 +205,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param diskSizeGb Size of the disk attached to each node. Default `100` (int)
+         * @param diskSizeGb The GKE node config disk size Gb (int)
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param diskSizeGb Size of the disk attached to each node. Default `100` (int)
+         * @param diskSizeGb The GKE node config disk size Gb (int)
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param diskType Type of the disk attached to each node (string)
+         * @param diskType The GKE node config disk type (string)
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param diskType Type of the disk attached to each node (string)
+         * @param diskType The GKE node config disk type (string)
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param imageType The image to use for the worker nodes (string)
+         * @param imageType The GKE node config image type (string)
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param imageType The image to use for the worker nodes (string)
+         * @param imageType The GKE node config image type (string)
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param localSsdCount The number of local SSD disks to be attached to the node. Default `0` (int)
+         * @param localSsdCount The GKE node config local ssd count (int)
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param localSsdCount The number of local SSD disks to be attached to the node. Default `0` (int)
+         * @param localSsdCount The GKE node config local ssd count (int)
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param machineType Machine type for GKE cluster (string)
+         * @param machineType The GKE node config machine type (string)
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param machineType Machine type for GKE cluster (string)
+         * @param machineType The GKE node config machine type (string)
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param oauthScopes The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+         * @param oauthScopes The GKE node config oauth scopes (List)
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param oauthScopes The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+         * @param oauthScopes The GKE node config oauth scopes (List)
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param oauthScopes The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+         * @param oauthScopes The GKE node config oauth scopes (List)
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param preemptible Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+         * @param preemptible Enable GKE node config preemptible. Default: `false` (bool)
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param preemptible Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+         * @param preemptible Enable GKE node config preemptible. Default: `false` (bool)
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+         * @param tags The GKE node config tags (List)
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+         * @param tags The GKE node config tags (List)
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+         * @param tags The GKE node config tags (List)
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param taints The AKS node pool taints (list)
+         * @param taints The GKE node config taints (List)
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param taints The AKS node pool taints (list)
+         * @param taints The GKE node config taints (List)
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param taints The AKS node pool taints (list)
+         * @param taints The GKE node config taints (List)
          * 
          * @return builder
          * 

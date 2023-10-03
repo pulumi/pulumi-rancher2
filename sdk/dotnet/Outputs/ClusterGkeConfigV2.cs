@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterGkeConfigV2ClusterAddons? ClusterAddons;
         /// <summary>
-        /// The GKE ip v4 cidr block (string)
+        /// The GKE cluster ip v4 allocation cidr block (string)
         /// </summary>
         public readonly string? ClusterIpv4CidrBlock;
         /// <summary>
@@ -34,9 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string GoogleCredentialSecret;
         /// <summary>
-        /// Is AKS cluster imported? Defaul: `false` (bool)
-        /// 
-        /// The following arguments are supported just for creating new AKS clusters (`imported=false`):
+        /// Is GKE cluster imported? Default: `false` (bool)
         /// </summary>
         public readonly bool? Imported;
         /// <summary>
@@ -44,7 +42,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterGkeConfigV2IpAllocationPolicy? IpAllocationPolicy;
         /// <summary>
-        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
         public readonly string? KubernetesVersion;
         /// <summary>
@@ -52,7 +50,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
-        /// Locations for GKE cluster (list)
+        /// The GKE cluster locations (List)
         /// </summary>
         public readonly ImmutableArray<string> Locations;
         /// <summary>
@@ -60,7 +58,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? LoggingService;
         /// <summary>
-        /// Maintenance window for GKE cluster (string)
+        /// The GKE cluster maintenance window (string)
         /// </summary>
         public readonly string? MaintenanceWindow;
         /// <summary>
@@ -76,7 +74,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Kubernetes cluster networking (list maxitems:1)
+        /// The GKE cluster network. Required for create new cluster (string)
         /// </summary>
         public readonly string? Network;
         /// <summary>
@@ -84,7 +82,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? NetworkPolicyEnabled;
         /// <summary>
-        /// The AKS nnode pools. Required if `imported=false` (list)
+        /// The GKE cluster node pools. Required for create new cluster (List)
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterGkeConfigV2NodePool> NodePools;
         /// <summary>
@@ -92,11 +90,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterGkeConfigV2PrivateClusterConfig? PrivateClusterConfig;
         /// <summary>
-        /// Project ID for GKE cluster (string)
+        /// Project ID to apply answer (string)
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
@@ -104,7 +102,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Subnetwork;
         /// <summary>
-        /// (string)
+        /// The GKE cluster zone. Required if `region` not set (string)
         /// </summary>
         public readonly string? Zone;
 

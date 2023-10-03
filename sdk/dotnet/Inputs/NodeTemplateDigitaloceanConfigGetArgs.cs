@@ -35,7 +35,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? Backups { get; set; }
 
         /// <summary>
-        /// Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -47,7 +47,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? Ipv6 { get; set; }
 
         /// <summary>
-        /// Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+        /// Enable monitoring for droplet. Default `false` (bool)
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
@@ -59,13 +59,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? PrivateNetworking { get; set; }
 
         /// <summary>
-        /// AWS region. (string)
+        /// AWS region. Default `eu-west-2` (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Size for Azure Virtual Machine. Default `Standard_A2` (string)
+        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
@@ -93,25 +93,25 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? SshKeyPath { get; set; }
 
         /// <summary>
-        /// SSH port. Default `22` (string)
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
         /// </summary>
         [Input("sshPort")]
         public Input<string>? SshPort { get; set; }
 
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
 
         /// <summary>
-        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
         /// </summary>
         [Input("tags")]
         public Input<string>? Tags { get; set; }
 
         /// <summary>
-        /// Path to file with cloud-init user data (string)
+        /// Path to file with cloud-init user-data (string)
         /// 
         /// &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         /// </summary>

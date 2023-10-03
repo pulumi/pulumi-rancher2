@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NodeTemplateHarvesterConfig
     {
         /// <summary>
-        /// CPU count, Default `2` (string)
+        /// vSphere CPU number for docker VM. Default `2` (string)
         /// </summary>
         public readonly string? CpuCount;
         /// <summary>
@@ -26,15 +26,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DiskInfo;
         /// <summary>
-        /// Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
         /// </summary>
         public readonly string? DiskSize;
         /// <summary>
-        /// Use `disk_info` instead
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
         /// </summary>
         public readonly string? ImageName;
         /// <summary>
-        /// Memory size (in GiB), Default `4` (string)
+        /// vSphere size of memory for docker VM (in MB). Default `2048` (string)
         /// </summary>
         public readonly string? MemorySize;
         /// <summary>
@@ -50,15 +50,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NetworkModel;
         /// <summary>
-        /// Use `network_info` instead
+        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
         /// </summary>
         public readonly string? NetworkName;
         /// <summary>
-        /// SSH password (string)
+        /// If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
         /// </summary>
         public readonly string? SshPassword;
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
         /// </summary>
         public readonly string SshUser;
         /// <summary>

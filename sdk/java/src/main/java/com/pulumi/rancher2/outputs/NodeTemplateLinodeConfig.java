@@ -23,17 +23,17 @@ public final class NodeTemplateLinodeConfig {
      */
     private @Nullable Boolean createPrivateIp;
     /**
-     * @return Port number for Docker engine. Default `2376` (string)
+     * @return Docker Port. Default `2376` (string)
      * 
      */
     private @Nullable String dockerPort;
     /**
-     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     private @Nullable String image;
     /**
-     * @return AWS instance type. Default `t2.micro` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     private @Nullable String instanceType;
@@ -43,7 +43,7 @@ public final class NodeTemplateLinodeConfig {
      */
     private @Nullable String label;
     /**
-     * @return AWS region. (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     private @Nullable String region;
@@ -53,12 +53,12 @@ public final class NodeTemplateLinodeConfig {
      */
     private @Nullable String rootPass;
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
     private @Nullable String sshPort;
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     private @Nullable String sshUser;
@@ -78,7 +78,7 @@ public final class NodeTemplateLinodeConfig {
      */
     private @Nullable String swapSize;
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     private @Nullable String tags;
@@ -109,21 +109,21 @@ public final class NodeTemplateLinodeConfig {
         return Optional.ofNullable(this.createPrivateIp);
     }
     /**
-     * @return Port number for Docker engine. Default `2376` (string)
+     * @return Docker Port. Default `2376` (string)
      * 
      */
     public Optional<String> dockerPort() {
         return Optional.ofNullable(this.dockerPort);
     }
     /**
-     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return AWS instance type. Default `t2.micro` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     public Optional<String> instanceType() {
@@ -137,7 +137,7 @@ public final class NodeTemplateLinodeConfig {
         return Optional.ofNullable(this.label);
     }
     /**
-     * @return AWS region. (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public Optional<String> region() {
@@ -151,14 +151,14 @@ public final class NodeTemplateLinodeConfig {
         return Optional.ofNullable(this.rootPass);
     }
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<String> sshPort() {
         return Optional.ofNullable(this.sshPort);
     }
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<String> sshUser() {
@@ -186,7 +186,7 @@ public final class NodeTemplateLinodeConfig {
         return Optional.ofNullable(this.swapSize);
     }
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     public Optional<String> tags() {

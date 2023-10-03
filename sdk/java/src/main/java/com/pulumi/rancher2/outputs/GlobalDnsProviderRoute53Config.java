@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GlobalDnsProviderRoute53Config {
     /**
-     * @return The AliDNS Access key (string)
+     * @return The AWS Access key (string)
      * 
      */
     private String accessKey;
@@ -32,7 +32,7 @@ public final class GlobalDnsProviderRoute53Config {
      */
     private @Nullable String roleArn;
     /**
-     * @return The AliDNS Secret key (string)
+     * @return The AWS Secret key (string)
      * 
      */
     private String secretKey;
@@ -44,7 +44,7 @@ public final class GlobalDnsProviderRoute53Config {
 
     private GlobalDnsProviderRoute53Config() {}
     /**
-     * @return The AliDNS Access key (string)
+     * @return The AWS Access key (string)
      * 
      */
     public String accessKey() {
@@ -72,7 +72,7 @@ public final class GlobalDnsProviderRoute53Config {
         return Optional.ofNullable(this.roleArn);
     }
     /**
-     * @return The AliDNS Secret key (string)
+     * @return The AWS Secret key (string)
      * 
      */
     public String secretKey() {

@@ -88,12 +88,12 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable String floatingIpPool;
     /**
-     * @return Image ID to use as the VM OS. Conflicts with `image_name` (string)
+     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
      * 
      */
     private @Nullable String imageId;
     /**
-     * @return Use `disk_info` instead
+     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      */
     private @Nullable String imageName;
@@ -128,7 +128,7 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable Boolean novaNetwork;
     /**
-     * @return Set the password for the XML-RPC API authentication (string)
+     * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     private @Nullable String password;
@@ -138,7 +138,7 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable String privateKeyFile;
     /**
-     * @return AWS region. (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     private String region;
@@ -148,12 +148,12 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable String secGroups;
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
     private @Nullable String sshPort;
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     private @Nullable String sshUser;
@@ -173,7 +173,7 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable String userDataFile;
     /**
-     * @return OpenStack username (string)
+     * @return vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     private @Nullable String username;
@@ -202,7 +202,7 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable String volumeSize;
     /**
-     * @return Amazon EBS volume type. Default `gp2` (string)
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     private @Nullable String volumeType;
@@ -314,14 +314,14 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.floatingIpPool);
     }
     /**
-     * @return Image ID to use as the VM OS. Conflicts with `image_name` (string)
+     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
      * 
      */
     public Optional<String> imageId() {
         return Optional.ofNullable(this.imageId);
     }
     /**
-     * @return Use `disk_info` instead
+     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      */
     public Optional<String> imageName() {
@@ -370,7 +370,7 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.novaNetwork);
     }
     /**
-     * @return Set the password for the XML-RPC API authentication (string)
+     * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     public Optional<String> password() {
@@ -384,7 +384,7 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.privateKeyFile);
     }
     /**
-     * @return AWS region. (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public String region() {
@@ -398,14 +398,14 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.secGroups);
     }
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<String> sshPort() {
         return Optional.ofNullable(this.sshPort);
     }
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<String> sshUser() {
@@ -433,7 +433,7 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.userDataFile);
     }
     /**
-     * @return OpenStack username (string)
+     * @return vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     public Optional<String> username() {
@@ -472,7 +472,7 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.volumeSize);
     }
     /**
-     * @return Amazon EBS volume type. Default `gp2` (string)
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     public Optional<String> volumeType() {

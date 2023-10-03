@@ -58,7 +58,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
      */
     private @Nullable String vpc;
     /**
-     * @return (string)
+     * @return The GKE cluster zone. Required if `region` not set (string)
      * 
      */
     private @Nullable String zone;
@@ -128,7 +128,7 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
         return Optional.ofNullable(this.vpc);
     }
     /**
-     * @return (string)
+     * @return The GKE cluster zone. Required if `region` not set (string)
      * 
      */
     public Optional<String> zone() {

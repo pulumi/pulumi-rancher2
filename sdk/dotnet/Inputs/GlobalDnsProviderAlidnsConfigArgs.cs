@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class GlobalDnsProviderAlidnsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AliDNS Access key (string)
+        /// The AWS Access key (string)
         /// </summary>
         [Input("accessKey", required: true)]
         public Input<string> AccessKey { get; set; } = null!;
 
         /// <summary>
-        /// The AliDNS Secret key (string)
+        /// The AWS Secret key (string)
         /// </summary>
         [Input("secretKey", required: true)]
         public Input<string> SecretKey { get; set; } = null!;

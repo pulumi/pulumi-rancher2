@@ -24,12 +24,12 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
      */
     private @Nullable Boolean insecureFlag;
     /**
-     * @return (string)
+     * @return Registry password (string)
      * 
      */
     private @Nullable String password;
     /**
-     * @return Port for bastion host. Default `22` (string)
+     * @return Port for node. Default `22` (string)
      * 
      */
     private @Nullable String port;
@@ -39,7 +39,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
      */
     private @Nullable Integer soapRoundtripCount;
     /**
-     * @return User to connect bastion host (string)
+     * @return Registry user (string)
      * 
      */
     private @Nullable String user;
@@ -60,14 +60,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
         return Optional.ofNullable(this.insecureFlag);
     }
     /**
-     * @return (string)
+     * @return Registry password (string)
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return Port for bastion host. Default `22` (string)
+     * @return Port for node. Default `22` (string)
      * 
      */
     public Optional<String> port() {
@@ -81,7 +81,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
         return Optional.ofNullable(this.soapRoundtripCount);
     }
     /**
-     * @return User to connect bastion host (string)
+     * @return Registry user (string)
      * 
      */
     public Optional<String> user() {

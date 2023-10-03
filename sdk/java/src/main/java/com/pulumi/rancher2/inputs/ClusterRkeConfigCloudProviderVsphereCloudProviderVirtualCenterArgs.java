@@ -47,14 +47,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
     }
 
     /**
-     * (string)
+     * Registry password (string)
      * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
-     * @return (string)
+     * @return Registry password (string)
      * 
      */
     public Output<String> password() {
@@ -62,14 +62,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
     }
 
     /**
-     * Port for bastion host. Default `22` (string)
+     * Port for node. Default `22` (string)
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return Port for bastion host. Default `22` (string)
+     * @return Port for node. Default `22` (string)
      * 
      */
     public Optional<Output<String>> port() {
@@ -92,14 +92,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
     }
 
     /**
-     * User to connect bastion host (string)
+     * Registry user (string)
      * 
      */
     @Import(name="user", required=true)
     private Output<String> user;
 
     /**
-     * @return User to connect bastion host (string)
+     * @return Registry user (string)
      * 
      */
     public Output<String> user() {
@@ -178,7 +178,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param password (string)
+         * @param password Registry password (string)
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param password (string)
+         * @param password Registry password (string)
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param port Port for bastion host. Default `22` (string)
+         * @param port Port for node. Default `22` (string)
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param port Port for bastion host. Default `22` (string)
+         * @param port Port for node. Default `22` (string)
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param user User to connect bastion host (string)
+         * @param user Registry user (string)
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         }
 
         /**
-         * @param user User to connect bastion host (string)
+         * @param user Registry user (string)
          * 
          * @return builder
          * 
