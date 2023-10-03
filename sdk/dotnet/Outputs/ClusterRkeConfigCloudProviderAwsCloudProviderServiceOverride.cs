@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride
     {
         /// <summary>
-        /// (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SigningRegion;
         /// <summary>
-        /// (string)
+        /// Registry URL (string)
         /// </summary>
         public readonly string? Url;
 

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['BootstrapArgs', 'Bootstrap']
@@ -29,18 +29,37 @@ class BootstrapArgs:
         :param pulumi.Input[bool] token_update: Regenerate admin token. Default: `false` (bool)
         :param pulumi.Input[str] ui_default_landing: Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
         """
+        BootstrapArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            initial_password=initial_password,
+            password=password,
+            telemetry=telemetry,
+            token_ttl=token_ttl,
+            token_update=token_update,
+            ui_default_landing=ui_default_landing,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             initial_password: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             telemetry: Optional[pulumi.Input[bool]] = None,
+             token_ttl: Optional[pulumi.Input[int]] = None,
+             token_update: Optional[pulumi.Input[bool]] = None,
+             ui_default_landing: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if initial_password is not None:
-            pulumi.set(__self__, "initial_password", initial_password)
+            _setter("initial_password", initial_password)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if telemetry is not None:
-            pulumi.set(__self__, "telemetry", telemetry)
+            _setter("telemetry", telemetry)
         if token_ttl is not None:
-            pulumi.set(__self__, "token_ttl", token_ttl)
+            _setter("token_ttl", token_ttl)
         if token_update is not None:
-            pulumi.set(__self__, "token_update", token_update)
+            _setter("token_update", token_update)
         if ui_default_landing is not None:
-            pulumi.set(__self__, "ui_default_landing", ui_default_landing)
+            _setter("ui_default_landing", ui_default_landing)
 
     @property
     @pulumi.getter(name="initialPassword")
@@ -147,32 +166,65 @@ class _BootstrapState:
         :param pulumi.Input[str] url: (Computed) URL set as server-url (string)
         :param pulumi.Input[str] user: (Computed) Admin username (string)
         """
+        _BootstrapState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            current_password=current_password,
+            initial_password=initial_password,
+            password=password,
+            telemetry=telemetry,
+            temp_token=temp_token,
+            temp_token_id=temp_token_id,
+            token=token,
+            token_id=token_id,
+            token_ttl=token_ttl,
+            token_update=token_update,
+            ui_default_landing=ui_default_landing,
+            url=url,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             current_password: Optional[pulumi.Input[str]] = None,
+             initial_password: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             telemetry: Optional[pulumi.Input[bool]] = None,
+             temp_token: Optional[pulumi.Input[str]] = None,
+             temp_token_id: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             token_id: Optional[pulumi.Input[str]] = None,
+             token_ttl: Optional[pulumi.Input[int]] = None,
+             token_update: Optional[pulumi.Input[bool]] = None,
+             ui_default_landing: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if current_password is not None:
-            pulumi.set(__self__, "current_password", current_password)
+            _setter("current_password", current_password)
         if initial_password is not None:
-            pulumi.set(__self__, "initial_password", initial_password)
+            _setter("initial_password", initial_password)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if telemetry is not None:
-            pulumi.set(__self__, "telemetry", telemetry)
+            _setter("telemetry", telemetry)
         if temp_token is not None:
-            pulumi.set(__self__, "temp_token", temp_token)
+            _setter("temp_token", temp_token)
         if temp_token_id is not None:
-            pulumi.set(__self__, "temp_token_id", temp_token_id)
+            _setter("temp_token_id", temp_token_id)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if token_id is not None:
-            pulumi.set(__self__, "token_id", token_id)
+            _setter("token_id", token_id)
         if token_ttl is not None:
-            pulumi.set(__self__, "token_ttl", token_ttl)
+            _setter("token_ttl", token_ttl)
         if token_update is not None:
-            pulumi.set(__self__, "token_update", token_update)
+            _setter("token_update", token_update)
         if ui_default_landing is not None:
-            pulumi.set(__self__, "ui_default_landing", ui_default_landing)
+            _setter("ui_default_landing", ui_default_landing)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter(name="currentPassword")
@@ -446,6 +498,10 @@ class Bootstrap(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BootstrapArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

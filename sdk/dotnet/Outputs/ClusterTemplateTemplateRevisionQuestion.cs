@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterTemplateTemplateRevisionQuestion
     {
         /// <summary>
-        /// Default cluster template revision. Default `false` (bool)
+        /// Default variable value (string)
         /// </summary>
         public readonly string Default;
         /// <summary>

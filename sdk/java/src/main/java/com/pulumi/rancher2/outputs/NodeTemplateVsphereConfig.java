@@ -43,7 +43,7 @@ public final class NodeTemplateVsphereConfig {
      */
     private @Nullable String contentLibrary;
     /**
-     * @return CPU count, Default `2` (string)
+     * @return vSphere CPU number for docker VM. Default `2` (string)
      * 
      */
     private @Nullable String cpuCount;
@@ -73,7 +73,7 @@ public final class NodeTemplateVsphereConfig {
      */
     private @Nullable String datastoreCluster;
     /**
-     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
     private @Nullable String diskSize;
@@ -88,7 +88,7 @@ public final class NodeTemplateVsphereConfig {
      */
     private @Nullable String hostsystem;
     /**
-     * @return Memory size (in GiB), Default `4` (string)
+     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
      * 
      */
     private @Nullable String memorySize;
@@ -98,7 +98,7 @@ public final class NodeTemplateVsphereConfig {
      */
     private @Nullable List<String> networks;
     /**
-     * @return Set the password for the XML-RPC API authentication (string)
+     * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     private @Nullable String password;
@@ -108,17 +108,17 @@ public final class NodeTemplateVsphereConfig {
      */
     private @Nullable String pool;
     /**
-     * @return SSH password (string)
+     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
      * 
      */
     private @Nullable String sshPassword;
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
     private @Nullable String sshPort;
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     private @Nullable String sshUser;
@@ -128,12 +128,12 @@ public final class NodeTemplateVsphereConfig {
      */
     private @Nullable String sshUserGroup;
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     private @Nullable List<String> tags;
     /**
-     * @return OpenStack username (string)
+     * @return vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     private @Nullable String username;
@@ -212,7 +212,7 @@ public final class NodeTemplateVsphereConfig {
         return Optional.ofNullable(this.contentLibrary);
     }
     /**
-     * @return CPU count, Default `2` (string)
+     * @return vSphere CPU number for docker VM. Default `2` (string)
      * 
      */
     public Optional<String> cpuCount() {
@@ -254,7 +254,7 @@ public final class NodeTemplateVsphereConfig {
         return Optional.ofNullable(this.datastoreCluster);
     }
     /**
-     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
     public Optional<String> diskSize() {
@@ -275,7 +275,7 @@ public final class NodeTemplateVsphereConfig {
         return Optional.ofNullable(this.hostsystem);
     }
     /**
-     * @return Memory size (in GiB), Default `4` (string)
+     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
      * 
      */
     public Optional<String> memorySize() {
@@ -289,7 +289,7 @@ public final class NodeTemplateVsphereConfig {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return Set the password for the XML-RPC API authentication (string)
+     * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     public Optional<String> password() {
@@ -303,21 +303,21 @@ public final class NodeTemplateVsphereConfig {
         return Optional.ofNullable(this.pool);
     }
     /**
-     * @return SSH password (string)
+     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<String> sshPassword() {
         return Optional.ofNullable(this.sshPassword);
     }
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<String> sshPort() {
         return Optional.ofNullable(this.sshPort);
     }
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<String> sshUser() {
@@ -331,14 +331,14 @@ public final class NodeTemplateVsphereConfig {
         return Optional.ofNullable(this.sshUserGroup);
     }
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return OpenStack username (string)
+     * @return vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     public Optional<String> username() {

@@ -242,14 +242,14 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Image ID to use as the VM OS. Conflicts with `image_name` (string)
+     * OpenStack image id to use for the instance. Conflicts with `image_name` (string)
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return Image ID to use as the VM OS. Conflicts with `image_name` (string)
+     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -257,14 +257,14 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Use `disk_info` instead
+     * OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
     /**
-     * @return Use `disk_info` instead
+     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      */
     public Optional<Output<String>> imageName() {
@@ -362,14 +362,14 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Set the password for the XML-RPC API authentication (string)
+     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Set the password for the XML-RPC API authentication (string)
+     * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     public Optional<Output<String>> password() {
@@ -392,14 +392,14 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS region. (string)
+     * AWS region. Default `eu-west-2` (string)
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return AWS region. (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public Output<String> region() {
@@ -422,14 +422,14 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * SSH port. Default `22` (string)
+     * If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
     @Import(name="sshPort")
     private @Nullable Output<String> sshPort;
 
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<Output<String>> sshPort() {
@@ -437,14 +437,14 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Set the name of the ssh user (string)
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -497,14 +497,14 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * OpenStack username (string)
+     * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return OpenStack username (string)
+     * @return vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     public Optional<Output<String>> username() {
@@ -580,14 +580,14 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Amazon EBS volume type. Default `gp2` (string)
+     * OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     @Import(name="volumeType")
     private @Nullable Output<String> volumeType;
 
     /**
-     * @return Amazon EBS volume type. Default `gp2` (string)
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     public Optional<Output<String>> volumeType() {
@@ -971,7 +971,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param imageId Image ID to use as the VM OS. Conflicts with `image_name` (string)
+         * @param imageId OpenStack image id to use for the instance. Conflicts with `image_name` (string)
          * 
          * @return builder
          * 
@@ -982,7 +982,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param imageId Image ID to use as the VM OS. Conflicts with `image_name` (string)
+         * @param imageId OpenStack image id to use for the instance. Conflicts with `image_name` (string)
          * 
          * @return builder
          * 
@@ -992,7 +992,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param imageName Use `disk_info` instead
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
          * 
          * @return builder
          * 
@@ -1003,7 +1003,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param imageName Use `disk_info` instead
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
          * 
          * @return builder
          * 
@@ -1139,7 +1139,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param password Set the password for the XML-RPC API authentication (string)
+         * @param password vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
          * 
          * @return builder
          * 
@@ -1150,7 +1150,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param password Set the password for the XML-RPC API authentication (string)
+         * @param password vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
          * 
          * @return builder
          * 
@@ -1181,7 +1181,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -1192,7 +1192,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -1223,7 +1223,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshPort SSH port. Default `22` (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -1234,7 +1234,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshPort SSH port. Default `22` (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -1244,7 +1244,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -1255,7 +1255,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -1328,7 +1328,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param username OpenStack username (string)
+         * @param username vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
          * 
          * @return builder
          * 
@@ -1339,7 +1339,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param username OpenStack username (string)
+         * @param username vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
          * 
          * @return builder
          * 
@@ -1441,7 +1441,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param volumeType Amazon EBS volume type. Default `gp2` (string)
+         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
          * 
          * @return builder
          * 
@@ -1452,7 +1452,7 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param volumeType Amazon EBS volume type. Default `gp2` (string)
+         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
          * 
          * @return builder
          * 

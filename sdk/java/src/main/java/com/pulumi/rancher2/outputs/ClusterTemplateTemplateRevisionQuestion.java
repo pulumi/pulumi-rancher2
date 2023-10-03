@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterTemplateTemplateRevisionQuestion {
     /**
-     * @return Default cluster template revision. Default `false` (bool)
+     * @return Default variable value (string)
      * 
      */
     private String default_;
@@ -35,7 +35,7 @@ public final class ClusterTemplateTemplateRevisionQuestion {
 
     private ClusterTemplateTemplateRevisionQuestion() {}
     /**
-     * @return Default cluster template revision. Default `false` (bool)
+     * @return Default variable value (string)
      * 
      */
     public String default_() {

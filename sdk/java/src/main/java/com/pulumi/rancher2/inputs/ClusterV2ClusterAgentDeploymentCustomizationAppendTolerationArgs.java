@@ -17,14 +17,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
     public static final ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs Empty = new ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs();
 
     /**
-     * The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+     * The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
      * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
     /**
-     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+     * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
      * 
      */
     public Optional<Output<String>> effect() {
@@ -32,14 +32,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
     }
 
     /**
-     * The toleration key (string)
+     * Machine selector label match expressions key (string)
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The toleration key (string)
+     * @return Machine selector label match expressions key (string)
      * 
      */
     public Output<String> key() {
@@ -47,14 +47,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
     }
 
     /**
-     * The toleration operator (string)
+     * Machine selector label match expressions operator (string)
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return The toleration operator (string)
+     * @return Machine selector label match expressions operator (string)
      * 
      */
     public Optional<Output<String>> operator() {
@@ -77,14 +77,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
     }
 
     /**
-     * Rancher agent env var value (string)
+     * The taint value (string)
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Rancher agent env var value (string)
+     * @return The taint value (string)
      * 
      */
     public Optional<Output<String>> value() {
@@ -120,7 +120,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param key The toleration key (string)
+         * @param key Machine selector label match expressions key (string)
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param key The toleration key (string)
+         * @param key Machine selector label match expressions key (string)
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param operator The toleration operator (string)
+         * @param operator Machine selector label match expressions operator (string)
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param operator The toleration operator (string)
+         * @param operator Machine selector label match expressions operator (string)
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param value Rancher agent env var value (string)
+         * @param value The taint value (string)
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
         }
 
         /**
-         * @param value Rancher agent env var value (string)
+         * @param value The taint value (string)
          * 
          * @return builder
          * 

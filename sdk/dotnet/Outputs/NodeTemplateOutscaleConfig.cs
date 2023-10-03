@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NodeTemplateOutscaleConfig
     {
         /// <summary>
-        /// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Outscale Access Key (string)
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExtraTagsInstances;
         /// <summary>
-        /// AWS instance type. Default `t2.micro` (string)
+        /// Outscale VM type. Default `tinav2.c1r2p3` (string)
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// AWS region. (string)
+        /// AWS region. Default `eu-west-2` (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? RootDiskType;
         /// <summary>
-        /// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Outscale Secret Key (string)
         /// </summary>
         public readonly string SecretKey;
         /// <summary>

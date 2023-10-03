@@ -23,7 +23,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
      */
     private @Nullable String name;
     /**
-     * @return RKE2 kubernetes version (string)
+     * @return rancher-monitoring chart version (string)
      * 
      */
     private @Nullable Integer version;
@@ -44,7 +44,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return RKE2 kubernetes version (string)
+     * @return rancher-monitoring chart version (string)
      * 
      */
     public Optional<Integer> version() {

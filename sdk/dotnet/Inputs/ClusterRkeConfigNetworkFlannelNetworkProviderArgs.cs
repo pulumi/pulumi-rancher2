@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigNetworkFlannelNetworkProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Iface config Canal network provider (string)
+        /// Iface config Flannel network provider (string)
         /// </summary>
         [Input("iface")]
         public Input<string>? Iface { get; set; }

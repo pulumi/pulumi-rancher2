@@ -40,7 +40,7 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
      */
     private @Nullable String customConfig;
     /**
-     * @return Enable etcd backup (bool)
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -76,7 +76,7 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
         return Optional.ofNullable(this.customConfig);
     }
     /**
-     * @return Enable etcd backup (bool)
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     public Optional<Boolean> enabled() {

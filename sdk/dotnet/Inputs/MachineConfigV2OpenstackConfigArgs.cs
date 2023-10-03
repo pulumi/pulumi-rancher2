@@ -119,7 +119,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Use `disk_info` instead
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
@@ -137,7 +137,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+        /// OpenStack keypair to use to SSH to the instance (string)
         /// </summary>
         [Input("keypairName")]
         public Input<string>? KeypairName { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// AWS region. (string)
+        /// OpenStack region name (string)
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -205,13 +205,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? SecGroups { get; set; }
 
         /// <summary>
-        /// SSH port. Default `22` (string)
+        /// If using a non-B2D image you can specify the ssh port. Default `22` (string)
         /// </summary>
         [Input("sshPort")]
         public Input<string>? SshPort { get; set; }
 
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? TenantDomainName { get; set; }
 
         /// <summary>
-        /// Azure Tenant ID (string)
+        /// OpenStack tenant id. Conflicts with `tenant_name` (string)
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? VolumeSize { get; set; }
 
         /// <summary>
-        /// Amazon EBS volume type. Default `gp2` (string)
+        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }

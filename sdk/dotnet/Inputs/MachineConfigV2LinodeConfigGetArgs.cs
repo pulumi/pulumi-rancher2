@@ -25,19 +25,19 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? CreatePrivateIp { get; set; }
 
         /// <summary>
-        /// Port number for Docker engine. Default `2376` (string)
+        /// Docker Port. Default `2376` (string)
         /// </summary>
         [Input("dockerPort")]
         public Input<string>? DockerPort { get; set; }
 
         /// <summary>
-        /// Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// AWS instance type. Default `t3a.medium` (string)
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// AWS region. (string)
+        /// OpenStack region name (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -71,13 +71,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// SSH port. Default `22` (string)
+        /// If using a non-B2D image you can specify the ssh port. Default `22` (string)
         /// </summary>
         [Input("sshPort")]
         public Input<string>? SshPort { get; set; }
 
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
@@ -101,7 +101,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? SwapSize { get; set; }
 
         /// <summary>
-        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
+        /// vSphere tags id e.g. `urn:xxx` (list)
         /// </summary>
         [Input("tags")]
         public Input<string>? Tags { get; set; }

@@ -17,14 +17,14 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
     public static final ClusterRkeConfigMonitoringTolerationArgs Empty = new ClusterRkeConfigMonitoringTolerationArgs();
 
     /**
-     * The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+     * The GKE taint effect (string)
      * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
     /**
-     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+     * @return The GKE taint effect (string)
      * 
      */
     public Optional<Output<String>> effect() {
@@ -32,14 +32,14 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
     }
 
     /**
-     * The toleration key (string)
+     * The GKE taint key (string)
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The toleration key (string)
+     * @return The GKE taint key (string)
      * 
      */
     public Output<String> key() {
@@ -47,14 +47,14 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
     }
 
     /**
-     * The toleration operator (string)
+     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return The toleration operator (string)
+     * @return The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
      * 
      */
     public Optional<Output<String>> operator() {
@@ -62,14 +62,14 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
     }
 
     /**
-     * The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * The toleration seconds (int)
      * 
      */
     @Import(name="seconds")
     private @Nullable Output<Integer> seconds;
 
     /**
-     * @return The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * @return The toleration seconds (int)
      * 
      */
     public Optional<Output<Integer>> seconds() {
@@ -77,14 +77,14 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
     }
 
     /**
-     * Rancher agent env var value (string)
+     * The GKE taint value (string)
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Rancher agent env var value (string)
+     * @return The GKE taint value (string)
      * 
      */
     public Optional<Output<String>> value() {
@@ -120,7 +120,7 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
         }
 
         /**
-         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+         * @param effect The GKE taint effect (string)
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
         }
 
         /**
-         * @param effect The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+         * @param effect The GKE taint effect (string)
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
         }
 
         /**
-         * @param key The toleration key (string)
+         * @param key The GKE taint key (string)
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
         }
 
         /**
-         * @param key The toleration key (string)
+         * @param key The GKE taint key (string)
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
         }
 
         /**
-         * @param operator The toleration operator (string)
+         * @param operator The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
         }
 
         /**
-         * @param operator The toleration operator (string)
+         * @param operator The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
         }
 
         /**
-         * @param seconds The number of seconds a pod will stay bound to a node with a matching taint (int)
+         * @param seconds The toleration seconds (int)
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
         }
 
         /**
-         * @param seconds The number of seconds a pod will stay bound to a node with a matching taint (int)
+         * @param seconds The toleration seconds (int)
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
         }
 
         /**
-         * @param value Rancher agent env var value (string)
+         * @param value The GKE taint value (string)
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ClusterRkeConfigMonitoringTolerationArgs extends com.pulumi.r
         }
 
         /**
-         * @param value Rancher agent env var value (string)
+         * @param value The GKE taint value (string)
          * 
          * @return builder
          * 

@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigServicesKubeproxy {
     /**
-     * @return Extra arguments for RKE Ingress (map)
+     * @return Extra arguments for scheduler service (map)
      * 
      */
     private @Nullable Map<String,Object> extraArgs;
     /**
-     * @return Extra binds for etcd service (list)
+     * @return Extra binds for scheduler service (list)
      * 
      */
     private @Nullable List<String> extraBinds;
     /**
-     * @return Extra environment for etcd service (list)
+     * @return Extra environment for scheduler service (list)
      * 
      */
     private @Nullable List<String> extraEnvs;
     /**
-     * @return Docker image for etcd service (string)
+     * @return Docker image for scheduler service (string)
      * 
      */
     private @Nullable String image;
 
     private ClusterRkeConfigServicesKubeproxy() {}
     /**
-     * @return Extra arguments for RKE Ingress (map)
+     * @return Extra arguments for scheduler service (map)
      * 
      */
     public Map<String,Object> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
     /**
-     * @return Extra binds for etcd service (list)
+     * @return Extra binds for scheduler service (list)
      * 
      */
     public List<String> extraBinds() {
         return this.extraBinds == null ? List.of() : this.extraBinds;
     }
     /**
-     * @return Extra environment for etcd service (list)
+     * @return Extra environment for scheduler service (list)
      * 
      */
     public List<String> extraEnvs() {
         return this.extraEnvs == null ? List.of() : this.extraEnvs;
     }
     /**
-     * @return Docker image for etcd service (string)
+     * @return Docker image for scheduler service (string)
      * 
      */
     public Optional<String> image() {

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['NodeDriverArgs', 'NodeDriver']
@@ -39,25 +39,54 @@ class NodeDriverArgs:
         :param pulumi.Input[str] ui_url: The URL to load for customized Add Nodes screen for this driver (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelist_domains: Domains to whitelist for the ui (list)
         """
-        pulumi.set(__self__, "active", active)
-        pulumi.set(__self__, "builtin", builtin)
-        pulumi.set(__self__, "url", url)
+        NodeDriverArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            builtin=builtin,
+            url=url,
+            annotations=annotations,
+            checksum=checksum,
+            description=description,
+            external_id=external_id,
+            labels=labels,
+            name=name,
+            ui_url=ui_url,
+            whitelist_domains=whitelist_domains,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: pulumi.Input[bool],
+             builtin: pulumi.Input[bool],
+             url: pulumi.Input[str],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             checksum: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             external_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ui_url: Optional[pulumi.Input[str]] = None,
+             whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("active", active)
+        _setter("builtin", builtin)
+        _setter("url", url)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if checksum is not None:
-            pulumi.set(__self__, "checksum", checksum)
+            _setter("checksum", checksum)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if external_id is not None:
-            pulumi.set(__self__, "external_id", external_id)
+            _setter("external_id", external_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ui_url is not None:
-            pulumi.set(__self__, "ui_url", ui_url)
+            _setter("ui_url", ui_url)
         if whitelist_domains is not None:
-            pulumi.set(__self__, "whitelist_domains", whitelist_domains)
+            _setter("whitelist_domains", whitelist_domains)
 
     @property
     @pulumi.getter
@@ -220,28 +249,57 @@ class _NodeDriverState:
         :param pulumi.Input[str] url: The URL to download the machine driver binary for 64-bit Linux (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelist_domains: Domains to whitelist for the ui (list)
         """
+        _NodeDriverState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            annotations=annotations,
+            builtin=builtin,
+            checksum=checksum,
+            description=description,
+            external_id=external_id,
+            labels=labels,
+            name=name,
+            ui_url=ui_url,
+            url=url,
+            whitelist_domains=whitelist_domains,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: Optional[pulumi.Input[bool]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             builtin: Optional[pulumi.Input[bool]] = None,
+             checksum: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             external_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ui_url: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if builtin is not None:
-            pulumi.set(__self__, "builtin", builtin)
+            _setter("builtin", builtin)
         if checksum is not None:
-            pulumi.set(__self__, "checksum", checksum)
+            _setter("checksum", checksum)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if external_id is not None:
-            pulumi.set(__self__, "external_id", external_id)
+            _setter("external_id", external_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ui_url is not None:
-            pulumi.set(__self__, "ui_url", ui_url)
+            _setter("ui_url", ui_url)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if whitelist_domains is not None:
-            pulumi.set(__self__, "whitelist_domains", whitelist_domains)
+            _setter("whitelist_domains", whitelist_domains)
 
     @property
     @pulumi.getter
@@ -481,6 +539,10 @@ class NodeDriver(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NodeDriverArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

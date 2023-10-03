@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? CaCerts { get; set; }
 
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `false` (bool)
+        /// Drain options enabled? Default `true` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

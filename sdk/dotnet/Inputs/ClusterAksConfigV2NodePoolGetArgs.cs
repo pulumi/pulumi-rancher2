@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+        /// The AKS node pool count. Default: `1` (int)
         /// </summary>
         [Input("count")]
         public Input<int>? Count { get; set; }
@@ -55,13 +55,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? MaxCount { get; set; }
 
         /// <summary>
-        /// Maximum number of pods that can run on a node. Default `110` (int)
+        /// The AKS node pool max pods. Default: `110` (int)
         /// </summary>
         [Input("maxPods")]
         public Input<int>? MaxPods { get; set; }
 
         /// <summary>
-        /// Monitoring deployment rolling update max surge. Default: `1` (int)
+        /// The AKS node pool max surge (string), example value: `25%`
         /// </summary>
         [Input("maxSurge")]
         public Input<string>? MaxSurge { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? MinCount { get; set; }
 
         /// <summary>
-        /// RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+        /// The AKS node group mode. Default: `System` (string)
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _taints;
 
         /// <summary>
-        /// The AKS node pool taints (list)
+        /// The GKE node config taints (List)
         /// </summary>
         public InputList<string> Taints
         {

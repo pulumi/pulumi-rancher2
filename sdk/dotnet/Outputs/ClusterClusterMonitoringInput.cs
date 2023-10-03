@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Answers;
         /// <summary>
-        /// RKE2 kubernetes version (string)
+        /// rancher-monitoring chart version (string)
         /// </summary>
         public readonly string? Version;
 

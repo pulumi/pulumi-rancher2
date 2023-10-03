@@ -22,12 +22,12 @@ public final class NotifierWechatConfig {
      */
     private String corp;
     /**
-     * @return Slack default recipient (string)
+     * @return Wechat default recipient (string)
      * 
      */
     private String defaultRecipient;
     /**
-     * @return Dingtalk proxy url (string)
+     * @return Wechat proxy url (string)
      * 
      */
     private @Nullable String proxyUrl;
@@ -37,7 +37,7 @@ public final class NotifierWechatConfig {
      */
     private @Nullable String recipientType;
     /**
-     * @return Secret for url sign enable (string)
+     * @return Wechat agent ID (string)
      * 
      */
     private String secret;
@@ -58,14 +58,14 @@ public final class NotifierWechatConfig {
         return this.corp;
     }
     /**
-     * @return Slack default recipient (string)
+     * @return Wechat default recipient (string)
      * 
      */
     public String defaultRecipient() {
         return this.defaultRecipient;
     }
     /**
-     * @return Dingtalk proxy url (string)
+     * @return Wechat proxy url (string)
      * 
      */
     public Optional<String> proxyUrl() {
@@ -79,7 +79,7 @@ public final class NotifierWechatConfig {
         return Optional.ofNullable(this.recipientType);
     }
     /**
-     * @return Secret for url sign enable (string)
+     * @return Wechat agent ID (string)
      * 
      */
     public String secret() {

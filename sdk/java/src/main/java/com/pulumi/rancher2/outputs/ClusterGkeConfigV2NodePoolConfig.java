@@ -18,17 +18,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterGkeConfigV2NodePoolConfig {
     /**
-     * @return Size of the disk attached to each node. Default `100` (int)
+     * @return The GKE node config disk size Gb (int)
      * 
      */
     private @Nullable Integer diskSizeGb;
     /**
-     * @return Type of the disk attached to each node (string)
+     * @return The GKE node config disk type (string)
      * 
      */
     private @Nullable String diskType;
     /**
-     * @return The image to use for the worker nodes (string)
+     * @return The GKE node config image type (string)
      * 
      */
     private @Nullable String imageType;
@@ -38,53 +38,53 @@ public final class ClusterGkeConfigV2NodePoolConfig {
      */
     private @Nullable Map<String,Object> labels;
     /**
-     * @return The number of local SSD disks to be attached to the node. Default `0` (int)
+     * @return The GKE node config local ssd count (int)
      * 
      */
     private @Nullable Integer localSsdCount;
     /**
-     * @return Machine type for GKE cluster (string)
+     * @return The GKE node config machine type (string)
      * 
      */
     private @Nullable String machineType;
     /**
-     * @return The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+     * @return The GKE node config oauth scopes (List)
      * 
      */
     private @Nullable List<String> oauthScopes;
     /**
-     * @return Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+     * @return Enable GKE node config preemptible. Default: `false` (bool)
      * 
      */
     private @Nullable Boolean preemptible;
     /**
-     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+     * @return The GKE node config tags (List)
      * 
      */
     private @Nullable List<String> tags;
     /**
-     * @return The AKS node pool taints (list)
+     * @return The GKE node config taints (List)
      * 
      */
     private @Nullable List<ClusterGkeConfigV2NodePoolConfigTaint> taints;
 
     private ClusterGkeConfigV2NodePoolConfig() {}
     /**
-     * @return Size of the disk attached to each node. Default `100` (int)
+     * @return The GKE node config disk size Gb (int)
      * 
      */
     public Optional<Integer> diskSizeGb() {
         return Optional.ofNullable(this.diskSizeGb);
     }
     /**
-     * @return Type of the disk attached to each node (string)
+     * @return The GKE node config disk type (string)
      * 
      */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
     /**
-     * @return The image to use for the worker nodes (string)
+     * @return The GKE node config image type (string)
      * 
      */
     public Optional<String> imageType() {
@@ -98,42 +98,42 @@ public final class ClusterGkeConfigV2NodePoolConfig {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
-     * @return The number of local SSD disks to be attached to the node. Default `0` (int)
+     * @return The GKE node config local ssd count (int)
      * 
      */
     public Optional<Integer> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
     }
     /**
-     * @return Machine type for GKE cluster (string)
+     * @return The GKE node config machine type (string)
      * 
      */
     public Optional<String> machineType() {
         return Optional.ofNullable(this.machineType);
     }
     /**
-     * @return The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+     * @return The GKE node config oauth scopes (List)
      * 
      */
     public List<String> oauthScopes() {
         return this.oauthScopes == null ? List.of() : this.oauthScopes;
     }
     /**
-     * @return Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+     * @return Enable GKE node config preemptible. Default: `false` (bool)
      * 
      */
     public Optional<Boolean> preemptible() {
         return Optional.ofNullable(this.preemptible);
     }
     /**
-     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+     * @return The GKE node config tags (List)
      * 
      */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return The AKS node pool taints (list)
+     * @return The GKE node config taints (List)
      * 
      */
     public List<ClusterGkeConfigV2NodePoolConfigTaint> taints() {

@@ -32,14 +32,14 @@ public final class ClusterRkeConfigAuthenticationArgs extends com.pulumi.resourc
     }
 
     /**
-     * RKE strategy for authentication (string)
+     * Monitoring deployment update strategy (string)
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return RKE strategy for authentication (string)
+     * @return Monitoring deployment update strategy (string)
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -103,7 +103,7 @@ public final class ClusterRkeConfigAuthenticationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param strategy RKE strategy for authentication (string)
+         * @param strategy Monitoring deployment update strategy (string)
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ClusterRkeConfigAuthenticationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param strategy RKE strategy for authentication (string)
+         * @param strategy Monitoring deployment update strategy (string)
          * 
          * @return builder
          * 

@@ -43,17 +43,17 @@ public final class ClusterRkeConfigServicesEtcd {
      */
     private @Nullable List<String> externalUrls;
     /**
-     * @return Extra arguments for RKE Ingress (map)
+     * @return Extra arguments for scheduler service (map)
      * 
      */
     private @Nullable Map<String,Object> extraArgs;
     /**
-     * @return Extra binds for etcd service (list)
+     * @return Extra binds for scheduler service (list)
      * 
      */
     private @Nullable List<String> extraBinds;
     /**
-     * @return Extra environment for etcd service (list)
+     * @return Extra environment for scheduler service (list)
      * 
      */
     private @Nullable List<String> extraEnvs;
@@ -63,22 +63,22 @@ public final class ClusterRkeConfigServicesEtcd {
      */
     private @Nullable Integer gid;
     /**
-     * @return Docker image for etcd service (string)
+     * @return Docker image for scheduler service (string)
      * 
      */
     private @Nullable String image;
     /**
-     * @return The toleration key (string)
+     * @return The GKE taint key (string)
      * 
      */
     private @Nullable String key;
     /**
-     * @return Path for etcd service (string)
+     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     private @Nullable String path;
     /**
-     * @return Retention option for etcd service (string)
+     * @return Retention for etcd backup. Default `6` (int)
      * 
      */
     private @Nullable String retention;
@@ -130,21 +130,21 @@ public final class ClusterRkeConfigServicesEtcd {
         return this.externalUrls == null ? List.of() : this.externalUrls;
     }
     /**
-     * @return Extra arguments for RKE Ingress (map)
+     * @return Extra arguments for scheduler service (map)
      * 
      */
     public Map<String,Object> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
     /**
-     * @return Extra binds for etcd service (list)
+     * @return Extra binds for scheduler service (list)
      * 
      */
     public List<String> extraBinds() {
         return this.extraBinds == null ? List.of() : this.extraBinds;
     }
     /**
-     * @return Extra environment for etcd service (list)
+     * @return Extra environment for scheduler service (list)
      * 
      */
     public List<String> extraEnvs() {
@@ -158,28 +158,28 @@ public final class ClusterRkeConfigServicesEtcd {
         return Optional.ofNullable(this.gid);
     }
     /**
-     * @return Docker image for etcd service (string)
+     * @return Docker image for scheduler service (string)
      * 
      */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return The toleration key (string)
+     * @return The GKE taint key (string)
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return Path for etcd service (string)
+     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return Retention option for etcd service (string)
+     * @return Retention for etcd backup. Default `6` (int)
      * 
      */
     public Optional<String> retention() {

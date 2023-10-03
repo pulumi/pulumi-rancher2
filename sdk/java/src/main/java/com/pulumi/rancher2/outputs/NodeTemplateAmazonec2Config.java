@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodeTemplateAmazonec2Config {
     /**
-     * @return AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Access Key (string)
      * 
      */
     private @Nullable String accessKey;
@@ -64,7 +64,7 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable Boolean insecureTransport;
     /**
-     * @return AWS instance type. Default `t2.micro` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     private @Nullable String instanceType;
@@ -79,7 +79,7 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable String kmsKey;
     /**
-     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+     * @return Enable monitoring for droplet. Default `false` (bool)
      * 
      */
     private @Nullable Boolean monitoring;
@@ -94,7 +94,7 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable Boolean privateAddressOnly;
     /**
-     * @return AWS region. (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     private String region;
@@ -114,7 +114,7 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable String rootSize;
     /**
-     * @return AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Secret Key (string)
      * 
      */
     private @Nullable String secretKey;
@@ -140,7 +140,7 @@ public final class NodeTemplateAmazonec2Config {
     private @Nullable String spotPrice;
     private @Nullable String sshKeypath;
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     private @Nullable String sshUser;
@@ -150,7 +150,7 @@ public final class NodeTemplateAmazonec2Config {
      */
     private String subnetId;
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     private @Nullable String tags;
@@ -165,14 +165,14 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable Boolean usePrivateAddress;
     /**
-     * @return Path to file with cloud-init user data (string)
+     * @return Path to file with cloud-init user-data (string)
      * 
      * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 
      */
     private @Nullable String userdata;
     /**
-     * @return Amazon EBS volume type. Default `gp2` (string)
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     private @Nullable String volumeType;
@@ -189,7 +189,7 @@ public final class NodeTemplateAmazonec2Config {
 
     private NodeTemplateAmazonec2Config() {}
     /**
-     * @return AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Access Key (string)
      * 
      */
     public Optional<String> accessKey() {
@@ -259,7 +259,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.insecureTransport);
     }
     /**
-     * @return AWS instance type. Default `t2.micro` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     public Optional<String> instanceType() {
@@ -280,7 +280,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.kmsKey);
     }
     /**
-     * @return Set this flag to enable CloudWatch monitoring. Deafult `false` (bool)
+     * @return Enable monitoring for droplet. Default `false` (bool)
      * 
      */
     public Optional<Boolean> monitoring() {
@@ -301,7 +301,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.privateAddressOnly);
     }
     /**
-     * @return AWS region. (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public String region() {
@@ -329,7 +329,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.rootSize);
     }
     /**
-     * @return AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Secret Key (string)
      * 
      */
     public Optional<String> secretKey() {
@@ -367,7 +367,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.sshKeypath);
     }
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<String> sshUser() {
@@ -381,7 +381,7 @@ public final class NodeTemplateAmazonec2Config {
         return this.subnetId;
     }
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     public Optional<String> tags() {
@@ -402,7 +402,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.usePrivateAddress);
     }
     /**
-     * @return Path to file with cloud-init user data (string)
+     * @return Path to file with cloud-init user-data (string)
      * 
      * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 
@@ -411,7 +411,7 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.userdata);
     }
     /**
-     * @return Amazon EBS volume type. Default `gp2` (string)
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     public Optional<String> volumeType() {

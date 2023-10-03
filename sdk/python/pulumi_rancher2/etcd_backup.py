@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,21 +35,44 @@ class EtcdBackupArgs:
         :param pulumi.Input[str] name: The name of the Etcd Backup (string)
         :param pulumi.Input[str] namespace_id: Description for the Etcd Backup (string)
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
+        EtcdBackupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            annotations=annotations,
+            backup_config=backup_config,
+            filename=filename,
+            labels=labels,
+            manual=manual,
+            name=name,
+            namespace_id=namespace_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: pulumi.Input[str],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             backup_config: Optional[pulumi.Input['EtcdBackupBackupConfigArgs']] = None,
+             filename: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             manual: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if backup_config is not None:
-            pulumi.set(__self__, "backup_config", backup_config)
+            _setter("backup_config", backup_config)
         if filename is not None:
-            pulumi.set(__self__, "filename", filename)
+            _setter("filename", filename)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if manual is not None:
-            pulumi.set(__self__, "manual", manual)
+            _setter("manual", manual)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace_id is not None:
-            pulumi.set(__self__, "namespace_id", namespace_id)
+            _setter("namespace_id", namespace_id)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -170,22 +193,45 @@ class _EtcdBackupState:
         :param pulumi.Input[str] name: The name of the Etcd Backup (string)
         :param pulumi.Input[str] namespace_id: Description for the Etcd Backup (string)
         """
+        _EtcdBackupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            backup_config=backup_config,
+            cluster_id=cluster_id,
+            filename=filename,
+            labels=labels,
+            manual=manual,
+            name=name,
+            namespace_id=namespace_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             backup_config: Optional[pulumi.Input['EtcdBackupBackupConfigArgs']] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             filename: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             manual: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if backup_config is not None:
-            pulumi.set(__self__, "backup_config", backup_config)
+            _setter("backup_config", backup_config)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if filename is not None:
-            pulumi.set(__self__, "filename", filename)
+            _setter("filename", filename)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if manual is not None:
-            pulumi.set(__self__, "manual", manual)
+            _setter("manual", manual)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace_id is not None:
-            pulumi.set(__self__, "namespace_id", namespace_id)
+            _setter("namespace_id", namespace_id)
 
     @property
     @pulumi.getter
@@ -401,6 +447,10 @@ class EtcdBackup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EtcdBackupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -424,6 +474,11 @@ class EtcdBackup(pulumi.CustomResource):
             __props__ = EtcdBackupArgs.__new__(EtcdBackupArgs)
 
             __props__.__dict__["annotations"] = annotations
+            if backup_config is not None and not isinstance(backup_config, EtcdBackupBackupConfigArgs):
+                backup_config = backup_config or {}
+                def _setter(key, value):
+                    backup_config[key] = value
+                EtcdBackupBackupConfigArgs._configure(_setter, **backup_config)
             __props__.__dict__["backup_config"] = backup_config
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")

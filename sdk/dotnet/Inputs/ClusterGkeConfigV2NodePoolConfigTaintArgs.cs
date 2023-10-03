@@ -13,19 +13,19 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigV2NodePoolConfigTaintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The toleration effect. Default: `\"NoSchedule\"` (string)
+        /// The GKE taint effect (string)
         /// </summary>
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;
 
         /// <summary>
-        /// The toleration key (string)
+        /// The GKE taint key (string)
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Rancher agent env var value (string)
+        /// The GKE taint value (string)
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

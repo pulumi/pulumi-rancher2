@@ -32,14 +32,14 @@ public final class ClusterClusterAuthEndpointArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Enable etcd backup (bool)
+     * Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable etcd backup (bool)
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -109,7 +109,7 @@ public final class ClusterClusterAuthEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Enable etcd backup (bool)
+         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterClusterAuthEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Enable etcd backup (bool)
+         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
          * 
          * @return builder
          * 

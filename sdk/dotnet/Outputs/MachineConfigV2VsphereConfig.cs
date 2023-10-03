@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ContentLibrary;
         /// <summary>
-        /// CPU count, Default `2` (string)
+        /// vSphere CPU number for docker VM. Default `2` (string)
         /// </summary>
         public readonly string? CpuCount;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DatastoreCluster;
         /// <summary>
-        /// Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
         /// </summary>
         public readonly string? DiskSize;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Hostsystem;
         /// <summary>
-        /// Memory size (in GiB), Default `4` (string)
+        /// vSphere size of memory for docker VM (in MB). Default `2048` (string)
         /// </summary>
         public readonly string? MemorySize;
         /// <summary>
@@ -90,15 +90,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Pool;
         /// <summary>
-        /// SSH password (string)
+        /// If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
         /// </summary>
         public readonly string? SshPassword;
         /// <summary>
-        /// SSH port. Default `22` (string)
+        /// If using a non-B2D image you can specify the ssh port. Default `22` (string)
         /// </summary>
         public readonly string? SshPort;
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SshUserGroup;
         /// <summary>
-        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
+        /// vSphere tags id e.g. `urn:xxx` (list)
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>

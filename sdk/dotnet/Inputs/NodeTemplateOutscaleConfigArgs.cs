@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Outscale Access Key (string)
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -53,13 +53,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// AWS instance type. Default `t2.micro` (string)
+        /// Outscale VM type. Default `tinav2.c1r2p3` (string)
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// AWS region. (string)
+        /// AWS region. Default `eu-west-2` (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -86,7 +86,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _secretKey;
 
         /// <summary>
-        /// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Outscale Secret Key (string)
         /// </summary>
         public Input<string>? SecretKey
         {

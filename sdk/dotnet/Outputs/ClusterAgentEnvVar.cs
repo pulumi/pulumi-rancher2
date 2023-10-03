@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Rancher agent env var value (string)
+        /// The GKE taint value (string)
         /// </summary>
         public readonly string Value;
 

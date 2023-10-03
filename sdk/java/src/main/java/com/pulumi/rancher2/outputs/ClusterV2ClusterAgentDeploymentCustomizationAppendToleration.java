@@ -13,17 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration {
     /**
-     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+     * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
      * 
      */
     private @Nullable String effect;
     /**
-     * @return The toleration key (string)
+     * @return Machine selector label match expressions key (string)
      * 
      */
     private String key;
     /**
-     * @return The toleration operator (string)
+     * @return Machine selector label match expressions operator (string)
      * 
      */
     private @Nullable String operator;
@@ -33,28 +33,28 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration 
      */
     private @Nullable Integer seconds;
     /**
-     * @return Rancher agent env var value (string)
+     * @return The taint value (string)
      * 
      */
     private @Nullable String value;
 
     private ClusterV2ClusterAgentDeploymentCustomizationAppendToleration() {}
     /**
-     * @return The toleration effect. Default: `\&#34;NoSchedule\&#34;` (string)
+     * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
      * 
      */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
     /**
-     * @return The toleration key (string)
+     * @return Machine selector label match expressions key (string)
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return The toleration operator (string)
+     * @return Machine selector label match expressions operator (string)
      * 
      */
     public Optional<String> operator() {
@@ -68,7 +68,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration 
         return Optional.ofNullable(this.seconds);
     }
     /**
-     * @return Rancher agent env var value (string)
+     * @return The taint value (string)
      * 
      */
     public Optional<String> value() {

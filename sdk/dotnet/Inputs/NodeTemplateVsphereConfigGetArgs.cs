@@ -55,7 +55,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ContentLibrary { get; set; }
 
         /// <summary>
-        /// CPU count, Default `2` (string)
+        /// vSphere CPU number for docker VM. Default `2` (string)
         /// </summary>
         [Input("cpuCount")]
         public Input<string>? CpuCount { get; set; }
@@ -97,7 +97,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? DatastoreCluster { get; set; }
 
         /// <summary>
-        /// Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
         /// </summary>
         [Input("diskSize")]
         public Input<string>? DiskSize { get; set; }
@@ -115,7 +115,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Hostsystem { get; set; }
 
         /// <summary>
-        /// Memory size (in GiB), Default `4` (string)
+        /// vSphere size of memory for docker VM (in MB). Default `2048` (string)
         /// </summary>
         [Input("memorySize")]
         public Input<string>? MemorySize { get; set; }
@@ -136,7 +136,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// Set the password for the XML-RPC API authentication (string)
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public Input<string>? Password
         {
@@ -158,7 +158,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _sshPassword;
 
         /// <summary>
-        /// SSH password (string)
+        /// If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
         /// </summary>
         public Input<string>? SshPassword
         {
@@ -171,13 +171,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// SSH port. Default `22` (string)
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
         /// </summary>
         [Input("sshPort")]
         public Input<string>? SshPort { get; set; }
 
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// AWS Tags (e.g. key1,value1,key2,value2) (string)
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
         /// </summary>
         public InputList<string> Tags
         {
@@ -201,7 +201,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// OpenStack username (string)
+        /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

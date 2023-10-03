@@ -107,14 +107,14 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * CPU count, Default `2` (string)
+     * vSphere CPU number for docker VM. Default `2` (string)
      * 
      */
     @Import(name="cpuCount")
     private @Nullable Output<String> cpuCount;
 
     /**
-     * @return CPU count, Default `2` (string)
+     * @return vSphere CPU number for docker VM. Default `2` (string)
      * 
      */
     public Optional<Output<String>> cpuCount() {
@@ -197,14 +197,14 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
     public Optional<Output<String>> diskSize() {
@@ -242,14 +242,14 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Memory size (in GiB), Default `4` (string)
+     * vSphere size of memory for docker VM (in MB). Default `2048` (string)
      * 
      */
     @Import(name="memorySize")
     private @Nullable Output<String> memorySize;
 
     /**
-     * @return Memory size (in GiB), Default `4` (string)
+     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
      * 
      */
     public Optional<Output<String>> memorySize() {
@@ -302,14 +302,14 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * SSH password (string)
+     * If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
      * 
      */
     @Import(name="sshPassword")
     private @Nullable Output<String> sshPassword;
 
     /**
-     * @return SSH password (string)
+     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
      * 
      */
     public Optional<Output<String>> sshPassword() {
@@ -317,14 +317,14 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * SSH port. Default `22` (string)
+     * If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
     @Import(name="sshPort")
     private @Nullable Output<String> sshPort;
 
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
     public Optional<Output<String>> sshPort() {
@@ -332,14 +332,14 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Set the name of the ssh user (string)
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -362,14 +362,14 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -672,7 +672,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param cpuCount CPU count, Default `2` (string)
+         * @param cpuCount vSphere CPU number for docker VM. Default `2` (string)
          * 
          * @return builder
          * 
@@ -683,7 +683,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param cpuCount CPU count, Default `2` (string)
+         * @param cpuCount vSphere CPU number for docker VM. Default `2` (string)
          * 
          * @return builder
          * 
@@ -808,7 +808,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
          * 
          * @return builder
          * 
@@ -819,7 +819,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
          * 
          * @return builder
          * 
@@ -871,7 +871,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param memorySize Memory size (in GiB), Default `4` (string)
+         * @param memorySize vSphere size of memory for docker VM (in MB). Default `2048` (string)
          * 
          * @return builder
          * 
@@ -882,7 +882,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param memorySize Memory size (in GiB), Default `4` (string)
+         * @param memorySize vSphere size of memory for docker VM (in MB). Default `2048` (string)
          * 
          * @return builder
          * 
@@ -965,7 +965,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sshPassword SSH password (string)
+         * @param sshPassword If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
          * 
          * @return builder
          * 
@@ -976,7 +976,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sshPassword SSH password (string)
+         * @param sshPassword If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
          * 
          * @return builder
          * 
@@ -986,7 +986,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sshPort SSH port. Default `22` (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22` (string)
          * 
          * @return builder
          * 
@@ -997,7 +997,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sshPort SSH port. Default `22` (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22` (string)
          * 
          * @return builder
          * 
@@ -1007,7 +1007,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
          * 
          * @return builder
          * 
@@ -1018,7 +1018,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
          * 
          * @return builder
          * 
@@ -1049,7 +1049,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx` (list)
          * 
          * @return builder
          * 
@@ -1060,7 +1060,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx` (list)
          * 
          * @return builder
          * 
@@ -1070,7 +1070,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx` (list)
          * 
          * @return builder
          * 

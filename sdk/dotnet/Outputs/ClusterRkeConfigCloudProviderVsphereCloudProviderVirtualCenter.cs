@@ -22,11 +22,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string)
+        /// Registry password (string)
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// Port for bastion host. Default `22` (string)
+        /// Port for node. Default `22` (string)
         /// </summary>
         public readonly string? Port;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? SoapRoundtripCount;
         /// <summary>
-        /// User to connect bastion host (string)
+        /// Registry user (string)
         /// </summary>
         public readonly string User;
 

@@ -14,23 +14,23 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigDnsToleration
     {
         /// <summary>
-        /// The toleration effect. Default: `\"NoSchedule\"` (string)
+        /// The GKE taint effect (string)
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// The toleration key (string)
+        /// The GKE taint key (string)
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The toleration operator (string)
+        /// The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
         /// </summary>
         public readonly string? Operator;
         /// <summary>
-        /// The number of seconds a pod will stay bound to a node with a matching taint (int)
+        /// The toleration seconds (int)
         /// </summary>
         public readonly int? Seconds;
         /// <summary>
-        /// Rancher agent env var value (string)
+        /// The GKE taint value (string)
         /// </summary>
         public readonly string? Value;
 

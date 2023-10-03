@@ -19,7 +19,7 @@ public final class ClusterClusterTemplateAnswers {
      */
     private @Nullable String clusterId;
     /**
-     * @return Project ID for GKE cluster (string)
+     * @return Project ID to apply answer (string)
      * 
      */
     private @Nullable String projectId;
@@ -38,7 +38,7 @@ public final class ClusterClusterTemplateAnswers {
         return Optional.ofNullable(this.clusterId);
     }
     /**
-     * @return Project ID for GKE cluster (string)
+     * @return Project ID to apply answer (string)
      * 
      */
     public Optional<String> projectId() {

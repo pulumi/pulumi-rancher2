@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Rancher agent env var value (string)
+        /// The GKE taint value (string)
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

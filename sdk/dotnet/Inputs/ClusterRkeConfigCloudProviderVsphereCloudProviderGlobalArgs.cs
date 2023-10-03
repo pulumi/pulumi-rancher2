@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// (string)
+        /// Registry password (string)
         /// </summary>
         public Input<string>? Password
         {
@@ -41,7 +41,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Port for bastion host. Default `22` (string)
+        /// Port for node. Default `22` (string)
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
@@ -56,7 +56,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _user;
 
         /// <summary>
-        /// User to connect bastion host (string)
+        /// Registry user (string)
         /// </summary>
         public Input<string>? User
         {

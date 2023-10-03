@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
     /**
-     * @return Access key for S3 service (string)
+     * @return The AWS Client ID to use (string)
      * 
      */
     private @Nullable String accessKey;
@@ -32,24 +32,24 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
      */
     private String endpoint;
     /**
-     * @return (string)
+     * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
      * 
      */
     private @Nullable String folder;
     /**
-     * @return (string)
+     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
     private @Nullable String region;
     /**
-     * @return Secret key for S3 service (string)
+     * @return The AWS Client Secret associated with the Client ID (string)
      * 
      */
     private @Nullable String secretKey;
 
     private ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig() {}
     /**
-     * @return Access key for S3 service (string)
+     * @return The AWS Client ID to use (string)
      * 
      */
     public Optional<String> accessKey() {
@@ -77,21 +77,21 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
         return this.endpoint;
     }
     /**
-     * @return (string)
+     * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
      * 
      */
     public Optional<String> folder() {
         return Optional.ofNullable(this.folder);
     }
     /**
-     * @return (string)
+     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Secret key for S3 service (string)
+     * @return The AWS Client Secret associated with the Client ID (string)
      * 
      */
     public Optional<String> secretKey() {

@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? DefaultDatastore { get; set; }
 
         /// <summary>
-        /// (string)
+        /// Folder for S3 service. Available from Rancher v2.2.7 (string)
         /// </summary>
         [Input("folder", required: true)]
         public Input<string> Folder { get; set; } = null!;

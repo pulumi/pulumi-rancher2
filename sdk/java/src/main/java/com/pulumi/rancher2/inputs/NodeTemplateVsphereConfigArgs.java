@@ -107,14 +107,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * CPU count, Default `2` (string)
+     * vSphere CPU number for docker VM. Default `2` (string)
      * 
      */
     @Import(name="cpuCount")
     private @Nullable Output<String> cpuCount;
 
     /**
-     * @return CPU count, Default `2` (string)
+     * @return vSphere CPU number for docker VM. Default `2` (string)
      * 
      */
     public Optional<Output<String>> cpuCount() {
@@ -197,14 +197,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
     public Optional<Output<String>> diskSize() {
@@ -242,14 +242,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Memory size (in GiB), Default `4` (string)
+     * vSphere size of memory for docker VM (in MB). Default `2048` (string)
      * 
      */
     @Import(name="memorySize")
     private @Nullable Output<String> memorySize;
 
     /**
-     * @return Memory size (in GiB), Default `4` (string)
+     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
      * 
      */
     public Optional<Output<String>> memorySize() {
@@ -272,14 +272,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Set the password for the XML-RPC API authentication (string)
+     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Set the password for the XML-RPC API authentication (string)
+     * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     public Optional<Output<String>> password() {
@@ -302,14 +302,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * SSH password (string)
+     * If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
      * 
      */
     @Import(name="sshPassword")
     private @Nullable Output<String> sshPassword;
 
     /**
-     * @return SSH password (string)
+     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<Output<String>> sshPassword() {
@@ -317,14 +317,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * SSH port. Default `22` (string)
+     * If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
     @Import(name="sshPort")
     private @Nullable Output<String> sshPort;
 
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<Output<String>> sshPort() {
@@ -332,14 +332,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Set the name of the ssh user (string)
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -362,14 +362,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -377,14 +377,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * OpenStack username (string)
+     * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return OpenStack username (string)
+     * @return vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      * 
      */
     public Optional<Output<String>> username() {
@@ -672,7 +672,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cpuCount CPU count, Default `2` (string)
+         * @param cpuCount vSphere CPU number for docker VM. Default `2` (string)
          * 
          * @return builder
          * 
@@ -683,7 +683,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cpuCount CPU count, Default `2` (string)
+         * @param cpuCount vSphere CPU number for docker VM. Default `2` (string)
          * 
          * @return builder
          * 
@@ -808,7 +808,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
          * 
          * @return builder
          * 
@@ -819,7 +819,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
          * 
          * @return builder
          * 
@@ -871,7 +871,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param memorySize Memory size (in GiB), Default `4` (string)
+         * @param memorySize vSphere size of memory for docker VM (in MB). Default `2048` (string)
          * 
          * @return builder
          * 
@@ -882,7 +882,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param memorySize Memory size (in GiB), Default `4` (string)
+         * @param memorySize vSphere size of memory for docker VM (in MB). Default `2048` (string)
          * 
          * @return builder
          * 
@@ -923,7 +923,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param password Set the password for the XML-RPC API authentication (string)
+         * @param password vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
          * 
          * @return builder
          * 
@@ -934,7 +934,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param password Set the password for the XML-RPC API authentication (string)
+         * @param password vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
          * 
          * @return builder
          * 
@@ -965,7 +965,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshPassword SSH password (string)
+         * @param sshPassword If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -976,7 +976,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshPassword SSH password (string)
+         * @param sshPassword If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -986,7 +986,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshPort SSH port. Default `22` (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -997,7 +997,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshPort SSH port. Default `22` (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -1007,7 +1007,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -1018,7 +1018,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -1049,7 +1049,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
          * 
          * @return builder
          * 
@@ -1060,7 +1060,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
          * 
          * @return builder
          * 
@@ -1070,7 +1070,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
          * 
          * @return builder
          * 
@@ -1080,7 +1080,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param username OpenStack username (string)
+         * @param username vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
          * 
          * @return builder
          * 
@@ -1091,7 +1091,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param username OpenStack username (string)
+         * @param username vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
          * 
          * @return builder
          * 

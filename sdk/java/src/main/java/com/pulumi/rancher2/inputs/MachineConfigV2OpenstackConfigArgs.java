@@ -257,14 +257,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Use `disk_info` instead
+     * OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
     /**
-     * @return Use `disk_info` instead
+     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      */
     public Optional<Output<String>> imageName() {
@@ -302,14 +302,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+     * OpenStack keypair to use to SSH to the instance (string)
      * 
      */
     @Import(name="keypairName")
     private @Nullable Output<String> keypairName;
 
     /**
-     * @return AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+     * @return OpenStack keypair to use to SSH to the instance (string)
      * 
      */
     public Optional<Output<String>> keypairName() {
@@ -392,14 +392,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * AWS region. (string)
+     * OpenStack region name (string)
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return AWS region. (string)
+     * @return OpenStack region name (string)
      * 
      */
     public Output<String> region() {
@@ -422,14 +422,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * SSH port. Default `22` (string)
+     * If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
     @Import(name="sshPort")
     private @Nullable Output<String> sshPort;
 
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
     public Optional<Output<String>> sshPort() {
@@ -437,14 +437,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Set the name of the ssh user (string)
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -482,14 +482,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Azure Tenant ID (string)
+     * OpenStack tenant id. Conflicts with `tenant_name` (string)
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return Azure Tenant ID (string)
+     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -636,14 +636,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Amazon EBS volume type. Default `gp2` (string)
+     * OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     @Import(name="volumeType")
     private @Nullable Output<String> volumeType;
 
     /**
-     * @return Amazon EBS volume type. Default `gp2` (string)
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     public Optional<Output<String>> volumeType() {
@@ -1052,7 +1052,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param imageName Use `disk_info` instead
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
          * 
          * @return builder
          * 
@@ -1063,7 +1063,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param imageName Use `disk_info` instead
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
          * 
          * @return builder
          * 
@@ -1115,7 +1115,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param keypairName AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+         * @param keypairName OpenStack keypair to use to SSH to the instance (string)
          * 
          * @return builder
          * 
@@ -1126,7 +1126,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param keypairName AWS keypair to use; requires --amazonec2-ssh-keypath (string)
+         * @param keypairName OpenStack keypair to use to SSH to the instance (string)
          * 
          * @return builder
          * 
@@ -1241,7 +1241,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region OpenStack region name (string)
          * 
          * @return builder
          * 
@@ -1252,7 +1252,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region OpenStack region name (string)
          * 
          * @return builder
          * 
@@ -1283,7 +1283,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshPort SSH port. Default `22` (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22` (string)
          * 
          * @return builder
          * 
@@ -1294,7 +1294,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshPort SSH port. Default `22` (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22` (string)
          * 
          * @return builder
          * 
@@ -1304,7 +1304,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
          * 
          * @return builder
          * 
@@ -1315,7 +1315,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
          * 
          * @return builder
          * 
@@ -1367,7 +1367,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tenantId Azure Tenant ID (string)
+         * @param tenantId OpenStack tenant id. Conflicts with `tenant_name` (string)
          * 
          * @return builder
          * 
@@ -1378,7 +1378,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tenantId Azure Tenant ID (string)
+         * @param tenantId OpenStack tenant id. Conflicts with `tenant_name` (string)
          * 
          * @return builder
          * 
@@ -1581,7 +1581,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeType Amazon EBS volume type. Default `gp2` (string)
+         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
          * 
          * @return builder
          * 
@@ -1592,7 +1592,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeType Amazon EBS volume type. Default `gp2` (string)
+         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
          * 
          * @return builder
          * 

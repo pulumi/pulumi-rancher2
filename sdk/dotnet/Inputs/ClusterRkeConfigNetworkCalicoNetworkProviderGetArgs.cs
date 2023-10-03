@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigNetworkCalicoNetworkProviderGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
+        /// RKE options for Calico network provider (string)
         /// </summary>
         [Input("cloudProvider")]
         public Input<string>? CloudProvider { get; set; }

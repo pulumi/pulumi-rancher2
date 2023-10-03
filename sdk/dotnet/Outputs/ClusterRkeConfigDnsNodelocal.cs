@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? IpAddress;
         /// <summary>
-        /// DNS add-on node selector (map)
+        /// RKE monitoring node selector (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? NodeSelector;
 

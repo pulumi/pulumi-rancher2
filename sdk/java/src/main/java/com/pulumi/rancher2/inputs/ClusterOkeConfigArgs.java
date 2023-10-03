@@ -63,14 +63,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
      * 
      */
     @Import(name="enableKubernetesDashboard")
     private @Nullable Output<Boolean> enableKubernetesDashboard;
 
     /**
-     * @return Whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * @return Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> enableKubernetesDashboard() {
@@ -93,14 +93,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether nodes have internal IP address only. Default `false` (bool)
+     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
      * 
      */
     @Import(name="enablePrivateNodes")
     private @Nullable Output<Boolean> enablePrivateNodes;
 
     /**
-     * @return Whether nodes have internal IP address only. Default `false` (bool)
+     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> enablePrivateNodes() {
@@ -153,14 +153,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     @Import(name="kubernetesVersion", required=true)
     private Output<String> kubernetesVersion;
 
     /**
-     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     public Output<String> kubernetesVersion() {
@@ -288,14 +288,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A CIDR notation IP range from which to assign Kubernetes Pod IPs when \&#34;network plugin\&#34; is specified in \&#34;kubenet\&#34;. Default `172.244.0.0/16` (string)
+     * A CIDR IP range from which to assign Kubernetes Pod IPs (string)
      * 
      */
     @Import(name="podCidr")
     private @Nullable Output<String> podCidr;
 
     /**
-     * @return A CIDR notation IP range from which to assign Kubernetes Pod IPs when \&#34;network plugin\&#34; is specified in \&#34;kubenet\&#34;. Default `172.244.0.0/16` (string)
+     * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
      * 
      */
     public Optional<Output<String>> podCidr() {
@@ -363,14 +363,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return (string)
+     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
     public Output<String> region() {
@@ -378,14 +378,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+     * A CIDR IP range from which to assign Kubernetes Service IPs (string)
      * 
      */
     @Import(name="serviceCidr")
     private @Nullable Output<String> serviceCidr;
 
     /**
-     * @return A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+     * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
      * 
      */
     public Optional<Output<String>> serviceCidr() {
@@ -616,7 +616,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableKubernetesDashboard Whether to enable the Kubernetes dashboard. Default `false` (bool)
+         * @param enableKubernetesDashboard Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -627,7 +627,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableKubernetesDashboard Whether to enable the Kubernetes dashboard. Default `false` (bool)
+         * @param enableKubernetesDashboard Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -658,7 +658,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enablePrivateNodes Whether nodes have internal IP address only. Default `false` (bool)
+         * @param enablePrivateNodes Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -669,7 +669,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enablePrivateNodes Whether nodes have internal IP address only. Default `false` (bool)
+         * @param enablePrivateNodes Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -742,7 +742,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
          * 
          * @return builder
          * 
@@ -753,7 +753,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
          * 
          * @return builder
          * 
@@ -931,7 +931,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param podCidr A CIDR notation IP range from which to assign Kubernetes Pod IPs when \&#34;network plugin\&#34; is specified in \&#34;kubenet\&#34;. Default `172.244.0.0/16` (string)
+         * @param podCidr A CIDR IP range from which to assign Kubernetes Pod IPs (string)
          * 
          * @return builder
          * 
@@ -942,7 +942,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param podCidr A CIDR notation IP range from which to assign Kubernetes Pod IPs when \&#34;network plugin\&#34; is specified in \&#34;kubenet\&#34;. Default `172.244.0.0/16` (string)
+         * @param podCidr A CIDR IP range from which to assign Kubernetes Pod IPs (string)
          * 
          * @return builder
          * 
@@ -1036,7 +1036,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region (string)
+         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
          * 
          * @return builder
          * 
@@ -1047,7 +1047,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region (string)
+         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
          * 
          * @return builder
          * 
@@ -1057,7 +1057,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceCidr A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+         * @param serviceCidr A CIDR IP range from which to assign Kubernetes Service IPs (string)
          * 
          * @return builder
          * 
@@ -1068,7 +1068,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceCidr A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+         * @param serviceCidr A CIDR IP range from which to assign Kubernetes Service IPs (string)
          * 
          * @return builder
          * 

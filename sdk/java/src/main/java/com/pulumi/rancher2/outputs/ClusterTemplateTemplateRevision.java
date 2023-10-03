@@ -33,7 +33,7 @@ public final class ClusterTemplateTemplateRevision {
      */
     private @Nullable String clusterTemplateId;
     /**
-     * @return Default cluster template revision. Default `false` (bool)
+     * @return Default variable value (string)
      * 
      */
     private @Nullable Boolean default_;
@@ -86,7 +86,7 @@ public final class ClusterTemplateTemplateRevision {
         return Optional.ofNullable(this.clusterTemplateId);
     }
     /**
-     * @return Default cluster template revision. Default `false` (bool)
+     * @return Default variable value (string)
      * 
      */
     public Optional<Boolean> default_() {

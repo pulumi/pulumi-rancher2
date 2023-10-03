@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig
     {
         /// <summary>
-        /// Access key for S3 service (string)
+        /// The AWS Client ID to use (string)
         /// </summary>
         public readonly string? AccessKey;
         /// <summary>
@@ -30,15 +30,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// (string)
+        /// Folder for S3 service. Available from Rancher v2.2.7 (string)
         /// </summary>
         public readonly string? Folder;
         /// <summary>
-        /// (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Secret key for S3 service (string)
+        /// The AWS Client Secret associated with the Client ID (string)
         /// </summary>
         public readonly string? SecretKey;
 

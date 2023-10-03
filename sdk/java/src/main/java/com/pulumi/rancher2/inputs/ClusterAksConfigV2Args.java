@@ -21,14 +21,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     public static final ClusterAksConfigV2Args Empty = new ClusterAksConfigV2Args();
 
     /**
-     * Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+     * The AKS auth base url (string)
      * 
      */
     @Import(name="authBaseUrl")
     private @Nullable Output<String> authBaseUrl;
 
     /**
-     * @return Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+     * @return The AKS auth base url (string)
      * 
      */
     public Optional<Output<String>> authBaseUrl() {
@@ -51,14 +51,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Different resource management API url to use. Default `https://management.azure.com/` (string)
+     * The AKS base url (string)
      * 
      */
     @Import(name="baseUrl")
     private @Nullable Output<String> baseUrl;
 
     /**
-     * @return Different resource management API url to use. Default `https://management.azure.com/` (string)
+     * @return The AKS base url (string)
      * 
      */
     public Optional<Output<String>> baseUrl() {
@@ -66,14 +66,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS Cloud Credential ID to use (string)
+     * The EKS cloud_credential id (string)
      * 
      */
     @Import(name="cloudCredentialId", required=true)
     private Output<String> cloudCredentialId;
 
     /**
-     * @return The AKS Cloud Credential ID to use (string)
+     * @return The EKS cloud_credential id (string)
      * 
      */
     public Output<String> cloudCredentialId() {
@@ -111,18 +111,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Is AKS cluster imported? Defaul: `false` (bool)
-     * 
-     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
+     * Is GKE cluster imported? Default: `false` (bool)
      * 
      */
     @Import(name="imported")
     private @Nullable Output<Boolean> imported;
 
     /**
-     * @return Is AKS cluster imported? Defaul: `false` (bool)
-     * 
-     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
+     * @return Is GKE cluster imported? Default: `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> imported() {
@@ -130,14 +126,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     @Import(name="kubernetesVersion")
     private @Nullable Output<String> kubernetesVersion;
 
     /**
-     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     public Optional<Output<String>> kubernetesVersion() {
@@ -175,14 +171,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Allowed values: `basic` (default) `standard` (string)
+     * The AKS load balancer sku (string)
      * 
      */
     @Import(name="loadBalancerSku")
     private @Nullable Output<String> loadBalancerSku;
 
     /**
-     * @return Allowed values: `basic` (default) `standard` (string)
+     * @return The AKS load balancer sku (string)
      * 
      */
     public Optional<Output<String>> loadBalancerSku() {
@@ -220,14 +216,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Kubernetes cluster monitoring (list maxitems:1)
+     * Is AKS cluster monitoring enabled? (bool)
      * 
      */
     @Import(name="monitoring")
     private @Nullable Output<Boolean> monitoring;
 
     /**
-     * @return Kubernetes cluster monitoring (list maxitems:1)
+     * @return Is AKS cluster monitoring enabled? (bool)
      * 
      */
     public Optional<Output<Boolean>> monitoring() {
@@ -280,14 +276,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+     * The AKS network plugin. Required if `imported=false` (string)
      * 
      */
     @Import(name="networkPlugin")
     private @Nullable Output<String> networkPlugin;
 
     /**
-     * @return Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+     * @return The AKS network plugin. Required if `imported=false` (string)
      * 
      */
     public Optional<Output<String>> networkPlugin() {
@@ -310,14 +306,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Network policy used for building Kubernetes network. Chooses from `calico` (string)
+     * The AKS network policy (string)
      * 
      */
     @Import(name="networkPolicy")
     private @Nullable Output<String> networkPolicy;
 
     /**
-     * @return Network policy used for building Kubernetes network. Chooses from `calico` (string)
+     * @return The AKS network policy (string)
      * 
      */
     public Optional<Output<String>> networkPolicy() {
@@ -340,14 +336,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS nnode pools. Required if `imported=false` (list)
+     * The GKE cluster node pools. Required for create new cluster (List)
      * 
      */
     @Import(name="nodePools")
     private @Nullable Output<List<ClusterAksConfigV2NodePoolArgs>> nodePools;
 
     /**
-     * @return The AKS nnode pools. Required if `imported=false` (list)
+     * @return The GKE cluster node pools. Required for create new cluster (List)
      * 
      */
     public Optional<Output<List<ClusterAksConfigV2NodePoolArgs>>> nodePools() {
@@ -370,14 +366,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * (string)
+     * The AKS resource group (string)
      * 
      */
     @Import(name="resourceGroup", required=true)
     private Output<String> resourceGroup;
 
     /**
-     * @return (string)
+     * @return The AKS resource group (string)
      * 
      */
     public Output<String> resourceGroup() {
@@ -400,14 +396,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+     * The AKS subnet (string)
      * 
      */
     @Import(name="subnet")
     private @Nullable Output<String> subnet;
 
     /**
-     * @return The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+     * @return The AKS subnet (string)
      * 
      */
     public Optional<Output<String>> subnet() {
@@ -415,14 +411,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+     * The GKE node config tags (List)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+     * @return The GKE node config tags (List)
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -430,14 +426,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
      * 
      */
     @Import(name="virtualNetwork")
     private @Nullable Output<String> virtualNetwork;
 
     /**
-     * @return The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
      * 
      */
     public Optional<Output<String>> virtualNetwork() {
@@ -445,14 +441,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * The AKS virtual network resource group (string)
      * 
      */
     @Import(name="virtualNetworkResourceGroup")
     private @Nullable Output<String> virtualNetworkResourceGroup;
 
     /**
-     * @return The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+     * @return The AKS virtual network resource group (string)
      * 
      */
     public Optional<Output<String>> virtualNetworkResourceGroup() {
@@ -512,7 +508,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authBaseUrl Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+         * @param authBaseUrl The AKS auth base url (string)
          * 
          * @return builder
          * 
@@ -523,7 +519,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authBaseUrl Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+         * @param authBaseUrl The AKS auth base url (string)
          * 
          * @return builder
          * 
@@ -564,7 +560,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param baseUrl Different resource management API url to use. Default `https://management.azure.com/` (string)
+         * @param baseUrl The AKS base url (string)
          * 
          * @return builder
          * 
@@ -575,7 +571,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param baseUrl Different resource management API url to use. Default `https://management.azure.com/` (string)
+         * @param baseUrl The AKS base url (string)
          * 
          * @return builder
          * 
@@ -585,7 +581,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cloudCredentialId The AKS Cloud Credential ID to use (string)
+         * @param cloudCredentialId The EKS cloud_credential id (string)
          * 
          * @return builder
          * 
@@ -596,7 +592,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cloudCredentialId The AKS Cloud Credential ID to use (string)
+         * @param cloudCredentialId The EKS cloud_credential id (string)
          * 
          * @return builder
          * 
@@ -648,9 +644,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param imported Is AKS cluster imported? Defaul: `false` (bool)
-         * 
-         * The following arguments are supported just for creating new AKS clusters (`imported=false`):
+         * @param imported Is GKE cluster imported? Default: `false` (bool)
          * 
          * @return builder
          * 
@@ -661,9 +655,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param imported Is AKS cluster imported? Defaul: `false` (bool)
-         * 
-         * The following arguments are supported just for creating new AKS clusters (`imported=false`):
+         * @param imported Is GKE cluster imported? Default: `false` (bool)
          * 
          * @return builder
          * 
@@ -673,7 +665,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
          * 
          * @return builder
          * 
@@ -684,7 +676,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
          * 
          * @return builder
          * 
@@ -736,7 +728,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loadBalancerSku Allowed values: `basic` (default) `standard` (string)
+         * @param loadBalancerSku The AKS load balancer sku (string)
          * 
          * @return builder
          * 
@@ -747,7 +739,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loadBalancerSku Allowed values: `basic` (default) `standard` (string)
+         * @param loadBalancerSku The AKS load balancer sku (string)
          * 
          * @return builder
          * 
@@ -799,7 +791,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param monitoring Kubernetes cluster monitoring (list maxitems:1)
+         * @param monitoring Is AKS cluster monitoring enabled? (bool)
          * 
          * @return builder
          * 
@@ -810,7 +802,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param monitoring Kubernetes cluster monitoring (list maxitems:1)
+         * @param monitoring Is AKS cluster monitoring enabled? (bool)
          * 
          * @return builder
          * 
@@ -883,7 +875,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkPlugin Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+         * @param networkPlugin The AKS network plugin. Required if `imported=false` (string)
          * 
          * @return builder
          * 
@@ -894,7 +886,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkPlugin Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+         * @param networkPlugin The AKS network plugin. Required if `imported=false` (string)
          * 
          * @return builder
          * 
@@ -925,7 +917,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkPolicy Network policy used for building Kubernetes network. Chooses from `calico` (string)
+         * @param networkPolicy The AKS network policy (string)
          * 
          * @return builder
          * 
@@ -936,7 +928,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkPolicy Network policy used for building Kubernetes network. Chooses from `calico` (string)
+         * @param networkPolicy The AKS network policy (string)
          * 
          * @return builder
          * 
@@ -967,7 +959,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The AKS nnode pools. Required if `imported=false` (list)
+         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
          * 
          * @return builder
          * 
@@ -978,7 +970,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The AKS nnode pools. Required if `imported=false` (list)
+         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
          * 
          * @return builder
          * 
@@ -988,7 +980,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The AKS nnode pools. Required if `imported=false` (list)
+         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
          * 
          * @return builder
          * 
@@ -1019,7 +1011,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceGroup (string)
+         * @param resourceGroup The AKS resource group (string)
          * 
          * @return builder
          * 
@@ -1030,7 +1022,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceGroup (string)
+         * @param resourceGroup The AKS resource group (string)
          * 
          * @return builder
          * 
@@ -1061,7 +1053,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param subnet The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+         * @param subnet The AKS subnet (string)
          * 
          * @return builder
          * 
@@ -1072,7 +1064,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param subnet The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+         * @param subnet The AKS subnet (string)
          * 
          * @return builder
          * 
@@ -1082,7 +1074,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+         * @param tags The GKE node config tags (List)
          * 
          * @return builder
          * 
@@ -1093,7 +1085,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]` (list)
+         * @param tags The GKE node config tags (List)
          * 
          * @return builder
          * 
@@ -1103,7 +1095,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param virtualNetwork The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+         * @param virtualNetwork The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
          * 
          * @return builder
          * 
@@ -1114,7 +1106,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param virtualNetwork The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+         * @param virtualNetwork The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
          * 
          * @return builder
          * 
@@ -1124,7 +1116,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param virtualNetworkResourceGroup The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+         * @param virtualNetworkResourceGroup The AKS virtual network resource group (string)
          * 
          * @return builder
          * 
@@ -1135,7 +1127,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param virtualNetworkResourceGroup The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+         * @param virtualNetworkResourceGroup The AKS virtual network resource group (string)
          * 
          * @return builder
          * 

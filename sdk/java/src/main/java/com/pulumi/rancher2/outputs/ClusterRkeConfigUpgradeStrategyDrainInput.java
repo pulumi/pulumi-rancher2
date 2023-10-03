@@ -33,7 +33,7 @@ public final class ClusterRkeConfigUpgradeStrategyDrainInput {
      */
     private @Nullable Boolean ignoreDaemonSets;
     /**
-     * @return Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
+     * @return RKE node drain timeout. Default: `60` (int)
      * 
      */
     private @Nullable Integer timeout;
@@ -68,7 +68,7 @@ public final class ClusterRkeConfigUpgradeStrategyDrainInput {
         return Optional.ofNullable(this.ignoreDaemonSets);
     }
     /**
-     * @return Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
+     * @return RKE node drain timeout. Default: `60` (int)
      * 
      */
     public Optional<Integer> timeout() {

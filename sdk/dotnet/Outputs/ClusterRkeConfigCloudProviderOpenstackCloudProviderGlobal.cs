@@ -30,15 +30,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DomainName;
         /// <summary>
-        /// (string)
+        /// Registry password (string)
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// (string)
+        /// Azure tenant ID to use (string)
         /// </summary>
         public readonly string? TenantId;
         /// <summary>

@@ -40,14 +40,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE ip v4 cidr block (string)
+     * The GKE cluster ip v4 allocation cidr block (string)
      * 
      */
     @Import(name="clusterIpv4CidrBlock")
     private @Nullable Output<String> clusterIpv4CidrBlock;
 
     /**
-     * @return The GKE ip v4 cidr block (string)
+     * @return The GKE cluster ip v4 allocation cidr block (string)
      * 
      */
     public Optional<Output<String>> clusterIpv4CidrBlock() {
@@ -100,18 +100,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Is AKS cluster imported? Defaul: `false` (bool)
-     * 
-     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
+     * Is GKE cluster imported? Default: `false` (bool)
      * 
      */
     @Import(name="imported")
     private @Nullable Output<Boolean> imported;
 
     /**
-     * @return Is AKS cluster imported? Defaul: `false` (bool)
-     * 
-     * The following arguments are supported just for creating new AKS clusters (`imported=false`):
+     * @return Is GKE cluster imported? Default: `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> imported() {
@@ -134,14 +130,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     @Import(name="kubernetesVersion")
     private @Nullable Output<String> kubernetesVersion;
 
     /**
-     * @return K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      * 
      */
     public Optional<Output<String>> kubernetesVersion() {
@@ -164,14 +160,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Locations for GKE cluster (list)
+     * The GKE cluster locations (List)
      * 
      */
     @Import(name="locations")
     private @Nullable Output<List<String>> locations;
 
     /**
-     * @return Locations for GKE cluster (list)
+     * @return The GKE cluster locations (List)
      * 
      */
     public Optional<Output<List<String>>> locations() {
@@ -194,14 +190,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Maintenance window for GKE cluster (string)
+     * The GKE cluster maintenance window (string)
      * 
      */
     @Import(name="maintenanceWindow")
     private @Nullable Output<String> maintenanceWindow;
 
     /**
-     * @return Maintenance window for GKE cluster (string)
+     * @return The GKE cluster maintenance window (string)
      * 
      */
     public Optional<Output<String>> maintenanceWindow() {
@@ -254,14 +250,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Kubernetes cluster networking (list maxitems:1)
+     * The GKE cluster network. Required for create new cluster (string)
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return Kubernetes cluster networking (list maxitems:1)
+     * @return The GKE cluster network. Required for create new cluster (string)
      * 
      */
     public Optional<Output<String>> network() {
@@ -284,14 +280,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS nnode pools. Required if `imported=false` (list)
+     * The GKE cluster node pools. Required for create new cluster (List)
      * 
      */
     @Import(name="nodePools")
     private @Nullable Output<List<ClusterGkeConfigV2NodePoolArgs>> nodePools;
 
     /**
-     * @return The AKS nnode pools. Required if `imported=false` (list)
+     * @return The GKE cluster node pools. Required for create new cluster (List)
      * 
      */
     public Optional<Output<List<ClusterGkeConfigV2NodePoolArgs>>> nodePools() {
@@ -314,14 +310,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Project ID for GKE cluster (string)
+     * Project ID to apply answer (string)
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return Project ID for GKE cluster (string)
+     * @return Project ID to apply answer (string)
      * 
      */
     public Output<String> projectId() {
@@ -329,14 +325,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return (string)
+     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -359,14 +355,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * (string)
+     * The GKE cluster zone. Required if `region` not set (string)
      * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
-     * @return (string)
+     * @return The GKE cluster zone. Required if `region` not set (string)
      * 
      */
     public Optional<Output<String>> zone() {
@@ -441,7 +437,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clusterIpv4CidrBlock The GKE ip v4 cidr block (string)
+         * @param clusterIpv4CidrBlock The GKE cluster ip v4 allocation cidr block (string)
          * 
          * @return builder
          * 
@@ -452,7 +448,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clusterIpv4CidrBlock The GKE ip v4 cidr block (string)
+         * @param clusterIpv4CidrBlock The GKE cluster ip v4 allocation cidr block (string)
          * 
          * @return builder
          * 
@@ -525,9 +521,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param imported Is AKS cluster imported? Defaul: `false` (bool)
-         * 
-         * The following arguments are supported just for creating new AKS clusters (`imported=false`):
+         * @param imported Is GKE cluster imported? Default: `false` (bool)
          * 
          * @return builder
          * 
@@ -538,9 +532,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param imported Is AKS cluster imported? Defaul: `false` (bool)
-         * 
-         * The following arguments are supported just for creating new AKS clusters (`imported=false`):
+         * @param imported Is GKE cluster imported? Default: `false` (bool)
          * 
          * @return builder
          * 
@@ -571,7 +563,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
          * 
          * @return builder
          * 
@@ -582,7 +574,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
          * 
          * @return builder
          * 
@@ -613,7 +605,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param locations Locations for GKE cluster (list)
+         * @param locations The GKE cluster locations (List)
          * 
          * @return builder
          * 
@@ -624,7 +616,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param locations Locations for GKE cluster (list)
+         * @param locations The GKE cluster locations (List)
          * 
          * @return builder
          * 
@@ -634,7 +626,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param locations Locations for GKE cluster (list)
+         * @param locations The GKE cluster locations (List)
          * 
          * @return builder
          * 
@@ -665,7 +657,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maintenanceWindow Maintenance window for GKE cluster (string)
+         * @param maintenanceWindow The GKE cluster maintenance window (string)
          * 
          * @return builder
          * 
@@ -676,7 +668,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maintenanceWindow Maintenance window for GKE cluster (string)
+         * @param maintenanceWindow The GKE cluster maintenance window (string)
          * 
          * @return builder
          * 
@@ -749,7 +741,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param network Kubernetes cluster networking (list maxitems:1)
+         * @param network The GKE cluster network. Required for create new cluster (string)
          * 
          * @return builder
          * 
@@ -760,7 +752,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param network Kubernetes cluster networking (list maxitems:1)
+         * @param network The GKE cluster network. Required for create new cluster (string)
          * 
          * @return builder
          * 
@@ -791,7 +783,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The AKS nnode pools. Required if `imported=false` (list)
+         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
          * 
          * @return builder
          * 
@@ -802,7 +794,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The AKS nnode pools. Required if `imported=false` (list)
+         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
          * 
          * @return builder
          * 
@@ -812,7 +804,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The AKS nnode pools. Required if `imported=false` (list)
+         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
          * 
          * @return builder
          * 
@@ -843,7 +835,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param projectId Project ID for GKE cluster (string)
+         * @param projectId Project ID to apply answer (string)
          * 
          * @return builder
          * 
@@ -854,7 +846,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param projectId Project ID for GKE cluster (string)
+         * @param projectId Project ID to apply answer (string)
          * 
          * @return builder
          * 
@@ -864,7 +856,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param region (string)
+         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
          * 
          * @return builder
          * 
@@ -875,7 +867,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param region (string)
+         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
          * 
          * @return builder
          * 
@@ -906,7 +898,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zone (string)
+         * @param zone The GKE cluster zone. Required if `region` not set (string)
          * 
          * @return builder
          * 
@@ -917,7 +909,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zone (string)
+         * @param zone The GKE cluster zone. Required if `region` not set (string)
          * 
          * @return builder
          * 

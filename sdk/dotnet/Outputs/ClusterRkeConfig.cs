@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigBastionHost? BastionHost;
         /// <summary>
-        /// RKE cloud provider [rke-cloud-providers](https://rancher.com/docs/rke/v0.1.x/en/config-options/cloud-providers/) (list maxitems:1)
+        /// RKE options for Calico network provider (string)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProvider? CloudProvider;
         /// <summary>
@@ -58,15 +58,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigIngress? Ingress;
         /// <summary>
-        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
         public readonly string? KubernetesVersion;
         /// <summary>
-        /// Kubernetes cluster monitoring (list maxitems:1)
+        /// Is AKS cluster monitoring enabled? (bool)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigMonitoring? Monitoring;
         /// <summary>
-        /// Kubernetes cluster networking (list maxitems:1)
+        /// The GKE cluster network. Required for create new cluster (string)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigNetwork? Network;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigServices? Services;
         /// <summary>
-        /// Use ssh agent auth. Default `false`
+        /// Use ssh agent auth. Default `false` (bool)
         /// </summary>
         public readonly bool? SshAgentAuth;
         /// <summary>
@@ -94,11 +94,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SshCertPath;
         /// <summary>
-        /// Cluster level SSH private key path (string)
+        /// Node SSH private key path (string)
         /// </summary>
         public readonly string? SshKeyPath;
         /// <summary>
-        /// RKE upgrade strategy (list maxitems:1)
+        /// K3S upgrade strategy (List maxitems: 1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigUpgradeStrategy? UpgradeStrategy;
         /// <summary>

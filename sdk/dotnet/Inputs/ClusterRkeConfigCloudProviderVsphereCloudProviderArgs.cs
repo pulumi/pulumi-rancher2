@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs>? Global { get; set; }
 
         /// <summary>
-        /// Kubernetes cluster networking (list maxitems:1)
+        /// The GKE cluster network. Required for create new cluster (string)
         /// </summary>
         [Input("network")]
         public Input<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs>? Network { get; set; }

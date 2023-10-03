@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotifierMsteamsConfig {
     /**
-     * @return Dingtalk proxy url (string)
+     * @return Wechat proxy url (string)
      * 
      */
     private @Nullable String proxyUrl;
     /**
-     * @return Dingtalk url (string)
+     * @return Slack url (string)
      * 
      */
     private String url;
 
     private NotifierMsteamsConfig() {}
     /**
-     * @return Dingtalk proxy url (string)
+     * @return Wechat proxy url (string)
      * 
      */
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
     /**
-     * @return Dingtalk url (string)
+     * @return Slack url (string)
      * 
      */
     public String url() {

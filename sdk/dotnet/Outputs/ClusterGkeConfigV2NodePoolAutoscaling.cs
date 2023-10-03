@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2NodePoolAutoscaling
     {
         /// <summary>
-        /// Enable etcd backup (bool)
+        /// Enable the authorized cluster endpoint. Default `true` (bool)
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
+        /// The GKE node pool config max node count (int)
         /// </summary>
         public readonly int? MaxNodeCount;
         /// <summary>
-        /// Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
+        /// The GKE node pool config min node count (int)
         /// </summary>
         public readonly int? MinNodeCount;
 

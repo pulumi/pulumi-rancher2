@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _nodeSelector;
 
         /// <summary>
-        /// DNS add-on node selector (map)
+        /// RKE monitoring node selector (map)
         /// </summary>
         public InputMap<object> NodeSelector
         {

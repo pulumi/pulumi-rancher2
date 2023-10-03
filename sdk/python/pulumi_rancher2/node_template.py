@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -75,60 +75,121 @@ class NodeTemplateArgs:
         :param pulumi.Input[bool] use_internal_ip_address: Engine storage driver for the node template (bool)
         :param pulumi.Input['NodeTemplateVsphereConfigArgs'] vsphere_config: vSphere config for the Node Template (list maxitems:1)
         """
+        NodeTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            amazonec2_config=amazonec2_config,
+            annotations=annotations,
+            auth_certificate_authority=auth_certificate_authority,
+            auth_key=auth_key,
+            azure_config=azure_config,
+            cloud_credential_id=cloud_credential_id,
+            description=description,
+            digitalocean_config=digitalocean_config,
+            driver_id=driver_id,
+            engine_env=engine_env,
+            engine_insecure_registries=engine_insecure_registries,
+            engine_install_url=engine_install_url,
+            engine_label=engine_label,
+            engine_opt=engine_opt,
+            engine_registry_mirrors=engine_registry_mirrors,
+            engine_storage_driver=engine_storage_driver,
+            harvester_config=harvester_config,
+            hetzner_config=hetzner_config,
+            labels=labels,
+            linode_config=linode_config,
+            name=name,
+            node_taints=node_taints,
+            opennebula_config=opennebula_config,
+            openstack_config=openstack_config,
+            outscale_config=outscale_config,
+            use_internal_ip_address=use_internal_ip_address,
+            vsphere_config=vsphere_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             amazonec2_config: Optional[pulumi.Input['NodeTemplateAmazonec2ConfigArgs']] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             auth_certificate_authority: Optional[pulumi.Input[str]] = None,
+             auth_key: Optional[pulumi.Input[str]] = None,
+             azure_config: Optional[pulumi.Input['NodeTemplateAzureConfigArgs']] = None,
+             cloud_credential_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             digitalocean_config: Optional[pulumi.Input['NodeTemplateDigitaloceanConfigArgs']] = None,
+             driver_id: Optional[pulumi.Input[str]] = None,
+             engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             engine_insecure_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             engine_install_url: Optional[pulumi.Input[str]] = None,
+             engine_label: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             engine_storage_driver: Optional[pulumi.Input[str]] = None,
+             harvester_config: Optional[pulumi.Input['NodeTemplateHarvesterConfigArgs']] = None,
+             hetzner_config: Optional[pulumi.Input['NodeTemplateHetznerConfigArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             linode_config: Optional[pulumi.Input['NodeTemplateLinodeConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateNodeTaintArgs']]]] = None,
+             opennebula_config: Optional[pulumi.Input['NodeTemplateOpennebulaConfigArgs']] = None,
+             openstack_config: Optional[pulumi.Input['NodeTemplateOpenstackConfigArgs']] = None,
+             outscale_config: Optional[pulumi.Input['NodeTemplateOutscaleConfigArgs']] = None,
+             use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
+             vsphere_config: Optional[pulumi.Input['NodeTemplateVsphereConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if amazonec2_config is not None:
-            pulumi.set(__self__, "amazonec2_config", amazonec2_config)
+            _setter("amazonec2_config", amazonec2_config)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if auth_certificate_authority is not None:
-            pulumi.set(__self__, "auth_certificate_authority", auth_certificate_authority)
+            _setter("auth_certificate_authority", auth_certificate_authority)
         if auth_key is not None:
-            pulumi.set(__self__, "auth_key", auth_key)
+            _setter("auth_key", auth_key)
         if azure_config is not None:
-            pulumi.set(__self__, "azure_config", azure_config)
+            _setter("azure_config", azure_config)
         if cloud_credential_id is not None:
-            pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
+            _setter("cloud_credential_id", cloud_credential_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if digitalocean_config is not None:
-            pulumi.set(__self__, "digitalocean_config", digitalocean_config)
+            _setter("digitalocean_config", digitalocean_config)
         if driver_id is not None:
-            pulumi.set(__self__, "driver_id", driver_id)
+            _setter("driver_id", driver_id)
         if engine_env is not None:
-            pulumi.set(__self__, "engine_env", engine_env)
+            _setter("engine_env", engine_env)
         if engine_insecure_registries is not None:
-            pulumi.set(__self__, "engine_insecure_registries", engine_insecure_registries)
+            _setter("engine_insecure_registries", engine_insecure_registries)
         if engine_install_url is not None:
-            pulumi.set(__self__, "engine_install_url", engine_install_url)
+            _setter("engine_install_url", engine_install_url)
         if engine_label is not None:
-            pulumi.set(__self__, "engine_label", engine_label)
+            _setter("engine_label", engine_label)
         if engine_opt is not None:
-            pulumi.set(__self__, "engine_opt", engine_opt)
+            _setter("engine_opt", engine_opt)
         if engine_registry_mirrors is not None:
-            pulumi.set(__self__, "engine_registry_mirrors", engine_registry_mirrors)
+            _setter("engine_registry_mirrors", engine_registry_mirrors)
         if engine_storage_driver is not None:
-            pulumi.set(__self__, "engine_storage_driver", engine_storage_driver)
+            _setter("engine_storage_driver", engine_storage_driver)
         if harvester_config is not None:
-            pulumi.set(__self__, "harvester_config", harvester_config)
+            _setter("harvester_config", harvester_config)
         if hetzner_config is not None:
-            pulumi.set(__self__, "hetzner_config", hetzner_config)
+            _setter("hetzner_config", hetzner_config)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if linode_config is not None:
-            pulumi.set(__self__, "linode_config", linode_config)
+            _setter("linode_config", linode_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_taints is not None:
-            pulumi.set(__self__, "node_taints", node_taints)
+            _setter("node_taints", node_taints)
         if opennebula_config is not None:
-            pulumi.set(__self__, "opennebula_config", opennebula_config)
+            _setter("opennebula_config", opennebula_config)
         if openstack_config is not None:
-            pulumi.set(__self__, "openstack_config", openstack_config)
+            _setter("openstack_config", openstack_config)
         if outscale_config is not None:
-            pulumi.set(__self__, "outscale_config", outscale_config)
+            _setter("outscale_config", outscale_config)
         if use_internal_ip_address is not None:
-            pulumi.set(__self__, "use_internal_ip_address", use_internal_ip_address)
+            _setter("use_internal_ip_address", use_internal_ip_address)
         if vsphere_config is not None:
-            pulumi.set(__self__, "vsphere_config", vsphere_config)
+            _setter("vsphere_config", vsphere_config)
 
     @property
     @pulumi.getter(name="amazonec2Config")
@@ -521,62 +582,125 @@ class _NodeTemplateState:
         :param pulumi.Input[bool] use_internal_ip_address: Engine storage driver for the node template (bool)
         :param pulumi.Input['NodeTemplateVsphereConfigArgs'] vsphere_config: vSphere config for the Node Template (list maxitems:1)
         """
+        _NodeTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            amazonec2_config=amazonec2_config,
+            annotations=annotations,
+            auth_certificate_authority=auth_certificate_authority,
+            auth_key=auth_key,
+            azure_config=azure_config,
+            cloud_credential_id=cloud_credential_id,
+            description=description,
+            digitalocean_config=digitalocean_config,
+            driver=driver,
+            driver_id=driver_id,
+            engine_env=engine_env,
+            engine_insecure_registries=engine_insecure_registries,
+            engine_install_url=engine_install_url,
+            engine_label=engine_label,
+            engine_opt=engine_opt,
+            engine_registry_mirrors=engine_registry_mirrors,
+            engine_storage_driver=engine_storage_driver,
+            harvester_config=harvester_config,
+            hetzner_config=hetzner_config,
+            labels=labels,
+            linode_config=linode_config,
+            name=name,
+            node_taints=node_taints,
+            opennebula_config=opennebula_config,
+            openstack_config=openstack_config,
+            outscale_config=outscale_config,
+            use_internal_ip_address=use_internal_ip_address,
+            vsphere_config=vsphere_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             amazonec2_config: Optional[pulumi.Input['NodeTemplateAmazonec2ConfigArgs']] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             auth_certificate_authority: Optional[pulumi.Input[str]] = None,
+             auth_key: Optional[pulumi.Input[str]] = None,
+             azure_config: Optional[pulumi.Input['NodeTemplateAzureConfigArgs']] = None,
+             cloud_credential_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             digitalocean_config: Optional[pulumi.Input['NodeTemplateDigitaloceanConfigArgs']] = None,
+             driver: Optional[pulumi.Input[str]] = None,
+             driver_id: Optional[pulumi.Input[str]] = None,
+             engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             engine_insecure_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             engine_install_url: Optional[pulumi.Input[str]] = None,
+             engine_label: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             engine_storage_driver: Optional[pulumi.Input[str]] = None,
+             harvester_config: Optional[pulumi.Input['NodeTemplateHarvesterConfigArgs']] = None,
+             hetzner_config: Optional[pulumi.Input['NodeTemplateHetznerConfigArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             linode_config: Optional[pulumi.Input['NodeTemplateLinodeConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateNodeTaintArgs']]]] = None,
+             opennebula_config: Optional[pulumi.Input['NodeTemplateOpennebulaConfigArgs']] = None,
+             openstack_config: Optional[pulumi.Input['NodeTemplateOpenstackConfigArgs']] = None,
+             outscale_config: Optional[pulumi.Input['NodeTemplateOutscaleConfigArgs']] = None,
+             use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
+             vsphere_config: Optional[pulumi.Input['NodeTemplateVsphereConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if amazonec2_config is not None:
-            pulumi.set(__self__, "amazonec2_config", amazonec2_config)
+            _setter("amazonec2_config", amazonec2_config)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if auth_certificate_authority is not None:
-            pulumi.set(__self__, "auth_certificate_authority", auth_certificate_authority)
+            _setter("auth_certificate_authority", auth_certificate_authority)
         if auth_key is not None:
-            pulumi.set(__self__, "auth_key", auth_key)
+            _setter("auth_key", auth_key)
         if azure_config is not None:
-            pulumi.set(__self__, "azure_config", azure_config)
+            _setter("azure_config", azure_config)
         if cloud_credential_id is not None:
-            pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
+            _setter("cloud_credential_id", cloud_credential_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if digitalocean_config is not None:
-            pulumi.set(__self__, "digitalocean_config", digitalocean_config)
+            _setter("digitalocean_config", digitalocean_config)
         if driver is not None:
-            pulumi.set(__self__, "driver", driver)
+            _setter("driver", driver)
         if driver_id is not None:
-            pulumi.set(__self__, "driver_id", driver_id)
+            _setter("driver_id", driver_id)
         if engine_env is not None:
-            pulumi.set(__self__, "engine_env", engine_env)
+            _setter("engine_env", engine_env)
         if engine_insecure_registries is not None:
-            pulumi.set(__self__, "engine_insecure_registries", engine_insecure_registries)
+            _setter("engine_insecure_registries", engine_insecure_registries)
         if engine_install_url is not None:
-            pulumi.set(__self__, "engine_install_url", engine_install_url)
+            _setter("engine_install_url", engine_install_url)
         if engine_label is not None:
-            pulumi.set(__self__, "engine_label", engine_label)
+            _setter("engine_label", engine_label)
         if engine_opt is not None:
-            pulumi.set(__self__, "engine_opt", engine_opt)
+            _setter("engine_opt", engine_opt)
         if engine_registry_mirrors is not None:
-            pulumi.set(__self__, "engine_registry_mirrors", engine_registry_mirrors)
+            _setter("engine_registry_mirrors", engine_registry_mirrors)
         if engine_storage_driver is not None:
-            pulumi.set(__self__, "engine_storage_driver", engine_storage_driver)
+            _setter("engine_storage_driver", engine_storage_driver)
         if harvester_config is not None:
-            pulumi.set(__self__, "harvester_config", harvester_config)
+            _setter("harvester_config", harvester_config)
         if hetzner_config is not None:
-            pulumi.set(__self__, "hetzner_config", hetzner_config)
+            _setter("hetzner_config", hetzner_config)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if linode_config is not None:
-            pulumi.set(__self__, "linode_config", linode_config)
+            _setter("linode_config", linode_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_taints is not None:
-            pulumi.set(__self__, "node_taints", node_taints)
+            _setter("node_taints", node_taints)
         if opennebula_config is not None:
-            pulumi.set(__self__, "opennebula_config", opennebula_config)
+            _setter("opennebula_config", opennebula_config)
         if openstack_config is not None:
-            pulumi.set(__self__, "openstack_config", openstack_config)
+            _setter("openstack_config", openstack_config)
         if outscale_config is not None:
-            pulumi.set(__self__, "outscale_config", outscale_config)
+            _setter("outscale_config", outscale_config)
         if use_internal_ip_address is not None:
-            pulumi.set(__self__, "use_internal_ip_address", use_internal_ip_address)
+            _setter("use_internal_ip_address", use_internal_ip_address)
         if vsphere_config is not None:
-            pulumi.set(__self__, "vsphere_config", vsphere_config)
+            _setter("vsphere_config", vsphere_config)
 
     @property
     @pulumi.getter(name="amazonec2Config")
@@ -1262,6 +1386,10 @@ class NodeTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NodeTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1303,13 +1431,28 @@ class NodeTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NodeTemplateArgs.__new__(NodeTemplateArgs)
 
+            if amazonec2_config is not None and not isinstance(amazonec2_config, NodeTemplateAmazonec2ConfigArgs):
+                amazonec2_config = amazonec2_config or {}
+                def _setter(key, value):
+                    amazonec2_config[key] = value
+                NodeTemplateAmazonec2ConfigArgs._configure(_setter, **amazonec2_config)
             __props__.__dict__["amazonec2_config"] = amazonec2_config
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["auth_certificate_authority"] = None if auth_certificate_authority is None else pulumi.Output.secret(auth_certificate_authority)
             __props__.__dict__["auth_key"] = None if auth_key is None else pulumi.Output.secret(auth_key)
+            if azure_config is not None and not isinstance(azure_config, NodeTemplateAzureConfigArgs):
+                azure_config = azure_config or {}
+                def _setter(key, value):
+                    azure_config[key] = value
+                NodeTemplateAzureConfigArgs._configure(_setter, **azure_config)
             __props__.__dict__["azure_config"] = azure_config
             __props__.__dict__["cloud_credential_id"] = cloud_credential_id
             __props__.__dict__["description"] = description
+            if digitalocean_config is not None and not isinstance(digitalocean_config, NodeTemplateDigitaloceanConfigArgs):
+                digitalocean_config = digitalocean_config or {}
+                def _setter(key, value):
+                    digitalocean_config[key] = value
+                NodeTemplateDigitaloceanConfigArgs._configure(_setter, **digitalocean_config)
             __props__.__dict__["digitalocean_config"] = digitalocean_config
             __props__.__dict__["driver_id"] = driver_id
             __props__.__dict__["engine_env"] = engine_env
@@ -1319,16 +1462,51 @@ class NodeTemplate(pulumi.CustomResource):
             __props__.__dict__["engine_opt"] = engine_opt
             __props__.__dict__["engine_registry_mirrors"] = engine_registry_mirrors
             __props__.__dict__["engine_storage_driver"] = engine_storage_driver
+            if harvester_config is not None and not isinstance(harvester_config, NodeTemplateHarvesterConfigArgs):
+                harvester_config = harvester_config or {}
+                def _setter(key, value):
+                    harvester_config[key] = value
+                NodeTemplateHarvesterConfigArgs._configure(_setter, **harvester_config)
             __props__.__dict__["harvester_config"] = harvester_config
+            if hetzner_config is not None and not isinstance(hetzner_config, NodeTemplateHetznerConfigArgs):
+                hetzner_config = hetzner_config or {}
+                def _setter(key, value):
+                    hetzner_config[key] = value
+                NodeTemplateHetznerConfigArgs._configure(_setter, **hetzner_config)
             __props__.__dict__["hetzner_config"] = hetzner_config
             __props__.__dict__["labels"] = labels
+            if linode_config is not None and not isinstance(linode_config, NodeTemplateLinodeConfigArgs):
+                linode_config = linode_config or {}
+                def _setter(key, value):
+                    linode_config[key] = value
+                NodeTemplateLinodeConfigArgs._configure(_setter, **linode_config)
             __props__.__dict__["linode_config"] = linode_config
             __props__.__dict__["name"] = name
             __props__.__dict__["node_taints"] = node_taints
+            if opennebula_config is not None and not isinstance(opennebula_config, NodeTemplateOpennebulaConfigArgs):
+                opennebula_config = opennebula_config or {}
+                def _setter(key, value):
+                    opennebula_config[key] = value
+                NodeTemplateOpennebulaConfigArgs._configure(_setter, **opennebula_config)
             __props__.__dict__["opennebula_config"] = opennebula_config
+            if openstack_config is not None and not isinstance(openstack_config, NodeTemplateOpenstackConfigArgs):
+                openstack_config = openstack_config or {}
+                def _setter(key, value):
+                    openstack_config[key] = value
+                NodeTemplateOpenstackConfigArgs._configure(_setter, **openstack_config)
             __props__.__dict__["openstack_config"] = openstack_config
+            if outscale_config is not None and not isinstance(outscale_config, NodeTemplateOutscaleConfigArgs):
+                outscale_config = outscale_config or {}
+                def _setter(key, value):
+                    outscale_config[key] = value
+                NodeTemplateOutscaleConfigArgs._configure(_setter, **outscale_config)
             __props__.__dict__["outscale_config"] = outscale_config
             __props__.__dict__["use_internal_ip_address"] = use_internal_ip_address
+            if vsphere_config is not None and not isinstance(vsphere_config, NodeTemplateVsphereConfigArgs):
+                vsphere_config = vsphere_config or {}
+                def _setter(key, value):
+                    vsphere_config[key] = value
+                NodeTemplateVsphereConfigArgs._configure(_setter, **vsphere_config)
             __props__.__dict__["vsphere_config"] = vsphere_config
             __props__.__dict__["driver"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["authCertificateAuthority", "authKey"])

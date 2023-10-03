@@ -19,7 +19,7 @@ public final class ClusterClusterMonitoringInput {
      */
     private @Nullable Map<String,Object> answers;
     /**
-     * @return RKE2 kubernetes version (string)
+     * @return rancher-monitoring chart version (string)
      * 
      */
     private @Nullable String version;
@@ -33,7 +33,7 @@ public final class ClusterClusterMonitoringInput {
         return this.answers == null ? Map.of() : this.answers;
     }
     /**
-     * @return RKE2 kubernetes version (string)
+     * @return rancher-monitoring chart version (string)
      * 
      */
     public Optional<String> version() {

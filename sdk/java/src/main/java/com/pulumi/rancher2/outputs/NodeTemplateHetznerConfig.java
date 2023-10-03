@@ -20,7 +20,7 @@ public final class NodeTemplateHetznerConfig {
      */
     private String apiToken;
     /**
-     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     private @Nullable String image;
@@ -50,7 +50,7 @@ public final class NodeTemplateHetznerConfig {
      */
     private @Nullable Boolean usePrivateNetwork;
     /**
-     * @return Path to file with cloud-init user data (string)
+     * @return Path to file with cloud-init user-data (string)
      * 
      * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 
@@ -71,7 +71,7 @@ public final class NodeTemplateHetznerConfig {
         return this.apiToken;
     }
     /**
-     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     public Optional<String> image() {
@@ -113,7 +113,7 @@ public final class NodeTemplateHetznerConfig {
         return Optional.ofNullable(this.usePrivateNetwork);
     }
     /**
-     * @return Path to file with cloud-init user data (string)
+     * @return Path to file with cloud-init user-data (string)
      * 
      * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 

@@ -34,11 +34,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DiskResize;
         /// <summary>
-        /// Image ID to use as the VM OS. Conflicts with `image_name` (string)
+        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
         /// </summary>
         public readonly string? ImageId;
         /// <summary>
-        /// Use `disk_info` instead
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
         /// </summary>
         public readonly string? ImageName;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NetworkId;
         /// <summary>
-        /// Use `network_info` instead
+        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
         /// </summary>
         public readonly string? NetworkName;
         /// <summary>
@@ -62,11 +62,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NetworkOwner;
         /// <summary>
-        /// Set the password for the XML-RPC API authentication (string)
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// Set the name of the ssh user (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
         /// </summary>
         public readonly string? SshUser;
         /// <summary>

@@ -97,14 +97,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     }
 
     /**
-     * Extra arguments for RKE Ingress (map)
+     * Extra arguments for scheduler service (map)
      * 
      */
     @Import(name="extraArgs")
     private @Nullable Output<Map<String,Object>> extraArgs;
 
     /**
-     * @return Extra arguments for RKE Ingress (map)
+     * @return Extra arguments for scheduler service (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> extraArgs() {
@@ -112,14 +112,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     }
 
     /**
-     * Extra binds for etcd service (list)
+     * Extra binds for scheduler service (list)
      * 
      */
     @Import(name="extraBinds")
     private @Nullable Output<List<String>> extraBinds;
 
     /**
-     * @return Extra binds for etcd service (list)
+     * @return Extra binds for scheduler service (list)
      * 
      */
     public Optional<Output<List<String>>> extraBinds() {
@@ -127,14 +127,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     }
 
     /**
-     * Extra environment for etcd service (list)
+     * Extra environment for scheduler service (list)
      * 
      */
     @Import(name="extraEnvs")
     private @Nullable Output<List<String>> extraEnvs;
 
     /**
-     * @return Extra environment for etcd service (list)
+     * @return Extra environment for scheduler service (list)
      * 
      */
     public Optional<Output<List<String>>> extraEnvs() {
@@ -157,14 +157,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     }
 
     /**
-     * Docker image for etcd service (string)
+     * Docker image for scheduler service (string)
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Docker image for etcd service (string)
+     * @return Docker image for scheduler service (string)
      * 
      */
     public Optional<Output<String>> image() {
@@ -172,14 +172,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     }
 
     /**
-     * The toleration key (string)
+     * The GKE taint key (string)
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The toleration key (string)
+     * @return The GKE taint key (string)
      * 
      */
     public Optional<Output<String>> key() {
@@ -187,14 +187,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     }
 
     /**
-     * Path for etcd service (string)
+     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return Path for etcd service (string)
+     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     public Optional<Output<String>> path() {
@@ -202,14 +202,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     }
 
     /**
-     * Retention option for etcd service (string)
+     * Retention for etcd backup. Default `6` (int)
      * 
      */
     @Import(name="retention")
     private @Nullable Output<String> retention;
 
     /**
-     * @return Retention option for etcd service (string)
+     * @return Retention for etcd backup. Default `6` (int)
      * 
      */
     public Optional<Output<String>> retention() {
@@ -400,7 +400,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param extraArgs Extra arguments for RKE Ingress (map)
+         * @param extraArgs Extra arguments for scheduler service (map)
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param extraArgs Extra arguments for RKE Ingress (map)
+         * @param extraArgs Extra arguments for scheduler service (map)
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param extraBinds Extra binds for etcd service (list)
+         * @param extraBinds Extra binds for scheduler service (list)
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param extraBinds Extra binds for etcd service (list)
+         * @param extraBinds Extra binds for scheduler service (list)
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param extraBinds Extra binds for etcd service (list)
+         * @param extraBinds Extra binds for scheduler service (list)
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param extraEnvs Extra environment for etcd service (list)
+         * @param extraEnvs Extra environment for scheduler service (list)
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param extraEnvs Extra environment for etcd service (list)
+         * @param extraEnvs Extra environment for scheduler service (list)
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param extraEnvs Extra environment for etcd service (list)
+         * @param extraEnvs Extra environment for scheduler service (list)
          * 
          * @return builder
          * 
@@ -504,7 +504,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param image Docker image for etcd service (string)
+         * @param image Docker image for scheduler service (string)
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param image Docker image for etcd service (string)
+         * @param image Docker image for scheduler service (string)
          * 
          * @return builder
          * 
@@ -525,7 +525,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param key The toleration key (string)
+         * @param key The GKE taint key (string)
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param key The toleration key (string)
+         * @param key The GKE taint key (string)
          * 
          * @return builder
          * 
@@ -546,7 +546,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param path Path for etcd service (string)
+         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param path Path for etcd service (string)
+         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param retention Retention option for etcd service (string)
+         * @param retention Retention for etcd backup. Default `6` (int)
          * 
          * @return builder
          * 
@@ -578,7 +578,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param retention Retention option for etcd service (string)
+         * @param retention Retention for etcd backup. Default `6` (int)
          * 
          * @return builder
          * 

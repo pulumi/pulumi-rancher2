@@ -22,7 +22,7 @@ public final class ClusterAksConfigV2NodePool {
      */
     private @Nullable List<String> availabilityZones;
     /**
-     * @return Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+     * @return The AKS node pool count. Default: `1` (int)
      * 
      */
     private @Nullable Integer count;
@@ -42,12 +42,12 @@ public final class ClusterAksConfigV2NodePool {
      */
     private @Nullable Integer maxCount;
     /**
-     * @return Maximum number of pods that can run on a node. Default `110` (int)
+     * @return The AKS node pool max pods. Default: `110` (int)
      * 
      */
     private @Nullable Integer maxPods;
     /**
-     * @return Monitoring deployment rolling update max surge. Default: `1` (int)
+     * @return The AKS node pool max surge (string), example value: `25%`
      * 
      */
     private @Nullable String maxSurge;
@@ -57,7 +57,7 @@ public final class ClusterAksConfigV2NodePool {
      */
     private @Nullable Integer minCount;
     /**
-     * @return RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+     * @return The AKS node group mode. Default: `System` (string)
      * 
      */
     private @Nullable String mode;
@@ -87,7 +87,7 @@ public final class ClusterAksConfigV2NodePool {
      */
     private @Nullable String osType;
     /**
-     * @return The AKS node pool taints (list)
+     * @return The GKE node config taints (List)
      * 
      */
     private @Nullable List<String> taints;
@@ -106,7 +106,7 @@ public final class ClusterAksConfigV2NodePool {
         return this.availabilityZones == null ? List.of() : this.availabilityZones;
     }
     /**
-     * @return Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+     * @return The AKS node pool count. Default: `1` (int)
      * 
      */
     public Optional<Integer> count() {
@@ -134,14 +134,14 @@ public final class ClusterAksConfigV2NodePool {
         return Optional.ofNullable(this.maxCount);
     }
     /**
-     * @return Maximum number of pods that can run on a node. Default `110` (int)
+     * @return The AKS node pool max pods. Default: `110` (int)
      * 
      */
     public Optional<Integer> maxPods() {
         return Optional.ofNullable(this.maxPods);
     }
     /**
-     * @return Monitoring deployment rolling update max surge. Default: `1` (int)
+     * @return The AKS node pool max surge (string), example value: `25%`
      * 
      */
     public Optional<String> maxSurge() {
@@ -155,7 +155,7 @@ public final class ClusterAksConfigV2NodePool {
         return Optional.ofNullable(this.minCount);
     }
     /**
-     * @return RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+     * @return The AKS node group mode. Default: `System` (string)
      * 
      */
     public Optional<String> mode() {
@@ -197,7 +197,7 @@ public final class ClusterAksConfigV2NodePool {
         return Optional.ofNullable(this.osType);
     }
     /**
-     * @return The AKS node pool taints (list)
+     * @return The GKE node config taints (List)
      * 
      */
     public List<String> taints() {

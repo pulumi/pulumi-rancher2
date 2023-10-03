@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigServicesKubeApiAuditLog {
     /**
-     * @return Plugin configuration. (string) Ex:
+     * @return Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
      * 
      */
     private @Nullable ClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration;
     /**
-     * @return Enable etcd backup (bool)
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     private @Nullable Boolean enabled;
 
     private ClusterRkeConfigServicesKubeApiAuditLog() {}
     /**
-     * @return Plugin configuration. (string) Ex:
+     * @return Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
      * 
      */
     public Optional<ClusterRkeConfigServicesKubeApiAuditLogConfiguration> configuration() {
         return Optional.ofNullable(this.configuration);
     }
     /**
-     * @return Enable etcd backup (bool)
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
      * 
      */
     public Optional<Boolean> enabled() {

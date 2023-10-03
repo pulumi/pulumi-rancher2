@@ -47,14 +47,14 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Port number for Docker engine. Default `2376` (string)
+     * Docker Port. Default `2376` (string)
      * 
      */
     @Import(name="dockerPort")
     private @Nullable Output<String> dockerPort;
 
     /**
-     * @return Port number for Docker engine. Default `2376` (string)
+     * @return Docker Port. Default `2376` (string)
      * 
      */
     public Optional<Output<String>> dockerPort() {
@@ -62,14 +62,14 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     public Optional<Output<String>> image() {
@@ -77,14 +77,14 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS instance type. Default `t3a.medium` (string)
+     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return AWS instance type. Default `t3a.medium` (string)
+     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -107,14 +107,14 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS region. (string)
+     * OpenStack region name (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return AWS region. (string)
+     * @return OpenStack region name (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -137,14 +137,14 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * SSH port. Default `22` (string)
+     * If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
     @Import(name="sshPort")
     private @Nullable Output<String> sshPort;
 
     /**
-     * @return SSH port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
     public Optional<Output<String>> sshPort() {
@@ -152,14 +152,14 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Set the name of the ssh user (string)
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -212,14 +212,14 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<String> tags;
 
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
     public Optional<Output<String>> tags() {
@@ -338,7 +338,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param dockerPort Port number for Docker engine. Default `2376` (string)
+         * @param dockerPort Docker Port. Default `2376` (string)
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param dockerPort Port number for Docker engine. Default `2376` (string)
+         * @param dockerPort Docker Port. Default `2376` (string)
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType AWS instance type. Default `t3a.medium` (string)
+         * @param instanceType Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType AWS instance type. Default `t3a.medium` (string)
+         * @param instanceType Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region OpenStack region name (string)
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region OpenStack region name (string)
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshPort SSH port. Default `22` (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22` (string)
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshPort SSH port. Default `22` (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22` (string)
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx` (list)
          * 
          * @return builder
          * 
@@ -580,7 +580,7 @@ public final class MachineConfigV2LinodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags AWS Tags (e.g. key1,value1,key2,value2) (string)
+         * @param tags vSphere tags id e.g. `urn:xxx` (list)
          * 
          * @return builder
          * 

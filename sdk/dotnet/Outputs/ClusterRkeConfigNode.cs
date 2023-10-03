@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigNode
     {
         /// <summary>
-        /// Address ip for the bastion host (string)
+        /// Address ip for node (string)
         /// </summary>
         public readonly string Address;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NodeId;
         /// <summary>
-        /// Port for bastion host. Default `22` (string)
+        /// Port for node. Default `22` (string)
         /// </summary>
         public readonly string? Port;
         /// <summary>
@@ -46,19 +46,19 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Roles;
         /// <summary>
-        /// Use ssh agent auth. Default `false`
+        /// Use ssh agent auth. Default `false` (bool)
         /// </summary>
         public readonly bool? SshAgentAuth;
         /// <summary>
-        /// Bastion host SSH private key (string)
+        /// Node SSH private key (string)
         /// </summary>
         public readonly string? SshKey;
         /// <summary>
-        /// Cluster level SSH private key path (string)
+        /// Node SSH private key path (string)
         /// </summary>
         public readonly string? SshKeyPath;
         /// <summary>
-        /// User to connect bastion host (string)
+        /// Registry user (string)
         /// </summary>
         public readonly string User;
 

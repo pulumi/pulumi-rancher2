@@ -22,11 +22,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Corp;
         /// <summary>
-        /// Slack default recipient (string)
+        /// Wechat default recipient (string)
         /// </summary>
         public readonly string DefaultRecipient;
         /// <summary>
-        /// Dingtalk proxy url (string)
+        /// Wechat proxy url (string)
         /// </summary>
         public readonly string? ProxyUrl;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? RecipientType;
         /// <summary>
-        /// Secret for url sign enable (string)
+        /// Wechat agent ID (string)
         /// </summary>
         public readonly string Secret;
 

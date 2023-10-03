@@ -14,19 +14,19 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NamespaceContainerResourceLimit
     {
         /// <summary>
-        /// CPU limit for containers (string)
+        /// Limit for limits cpu in namespace (string)
         /// </summary>
         public readonly string? LimitsCpu;
         /// <summary>
-        /// Memory limit for containers (string)
+        /// Limit for limits memory in namespace (string)
         /// </summary>
         public readonly string? LimitsMemory;
         /// <summary>
-        /// CPU reservation for containers (string)
+        /// Limit for requests cpu in namespace (string)
         /// </summary>
         public readonly string? RequestsCpu;
         /// <summary>
-        /// Memory reservation for containers (string)
+        /// Limit for requests memory in namespace (string)
         /// </summary>
         public readonly string? RequestsMemory;
 

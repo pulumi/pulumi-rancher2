@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigDnsUpdateStrategy
     {
         /// <summary>
-        /// Monitoring daemon set rolling update (list Maxitems: 1)
+        /// Monitoring deployment rolling update (list Maxitems: 1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigDnsUpdateStrategyRollingUpdate? RollingUpdate;
         /// <summary>
-        /// RKE strategy for authentication (string)
+        /// Monitoring deployment update strategy (string)
         /// </summary>
         public readonly string? Strategy;
 

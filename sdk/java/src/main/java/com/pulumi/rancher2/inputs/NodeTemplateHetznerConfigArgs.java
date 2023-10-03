@@ -34,14 +34,14 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     public Optional<Output<String>> image() {
@@ -124,7 +124,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Path to file with cloud-init user data (string)
+     * Path to file with cloud-init user-data (string)
      * 
      * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 
@@ -133,7 +133,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> userdata;
 
     /**
-     * @return Path to file with cloud-init user data (string)
+     * @return Path to file with cloud-init user-data (string)
      * 
      * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      * 
@@ -211,7 +211,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param image Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param userdata Path to file with cloud-init user data (string)
+         * @param userdata Path to file with cloud-init user-data (string)
          * 
          * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
          * 
@@ -350,7 +350,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param userdata Path to file with cloud-init user data (string)
+         * @param userdata Path to file with cloud-init user-data (string)
          * 
          * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
          * 

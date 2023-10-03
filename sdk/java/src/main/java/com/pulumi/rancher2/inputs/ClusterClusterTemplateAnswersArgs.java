@@ -33,14 +33,14 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
     }
 
     /**
-     * Project ID for GKE cluster (string)
+     * Project ID to apply answer (string)
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project ID for GKE cluster (string)
+     * @return Project ID to apply answer (string)
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -110,7 +110,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
         }
 
         /**
-         * @param projectId Project ID for GKE cluster (string)
+         * @param projectId Project ID to apply answer (string)
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
         }
 
         /**
-         * @param projectId Project ID for GKE cluster (string)
+         * @param projectId Project ID to apply answer (string)
          * 
          * @return builder
          * 

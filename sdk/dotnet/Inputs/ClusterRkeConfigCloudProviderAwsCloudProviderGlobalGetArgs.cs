@@ -67,7 +67,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Vpc { get; set; }
 
         /// <summary>
-        /// (string)
+        /// The GKE cluster zone. Required if `region` not set (string)
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

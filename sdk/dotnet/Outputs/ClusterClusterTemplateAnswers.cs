@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ClusterId;
         /// <summary>
-        /// Project ID for GKE cluster (string)
+        /// Project ID to apply answer (string)
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>

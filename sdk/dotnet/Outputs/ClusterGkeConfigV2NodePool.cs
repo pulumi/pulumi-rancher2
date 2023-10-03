@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// RKE2 kubernetes version (string)
+        /// rancher-monitoring chart version (string)
         /// </summary>
         public readonly string Version;
 

@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class GlobalDnsProviderAlidnsConfig {
     /**
-     * @return The AliDNS Access key (string)
+     * @return The AWS Access key (string)
      * 
      */
     private String accessKey;
     /**
-     * @return The AliDNS Secret key (string)
+     * @return The AWS Secret key (string)
      * 
      */
     private String secretKey;
 
     private GlobalDnsProviderAlidnsConfig() {}
     /**
-     * @return The AliDNS Access key (string)
+     * @return The AWS Access key (string)
      * 
      */
     public String accessKey() {
         return this.accessKey;
     }
     /**
-     * @return The AliDNS Secret key (string)
+     * @return The AWS Secret key (string)
      * 
      */
     public String secretKey() {

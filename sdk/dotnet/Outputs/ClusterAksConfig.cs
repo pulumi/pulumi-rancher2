@@ -54,11 +54,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? AgentVmSize;
         /// <summary>
-        /// Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+        /// The AKS auth base url (string)
         /// </summary>
         public readonly string? AuthBaseUrl;
         /// <summary>
-        /// Different resource management API url to use. Default `https://management.azure.com/` (string)
+        /// The AKS base url (string)
         /// </summary>
         public readonly string? BaseUrl;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string ClientSecret;
         /// <summary>
-        /// Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+        /// The AKS node pool count. Default: `1` (int)
         /// </summary>
         public readonly int? Count;
         /// <summary>
@@ -90,15 +90,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? EnableMonitoring;
         /// <summary>
-        /// K8s version to deploy. Default: `Rancher default` (string) (Note - if rke_config is set at cluster_template, kubernetes_version must be set to the active cluster version so Rancher can clone the RKE template)
+        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
         public readonly string KubernetesVersion;
         /// <summary>
-        /// Allowed values: `basic` (default) `standard` (string)
+        /// The AKS load balancer sku (string)
         /// </summary>
         public readonly string? LoadBalancerSku;
         /// <summary>
-        /// (string)
+        /// Azure Kubernetes cluster location. Default `eastus` (string)
         /// </summary>
         public readonly string? Location;
         /// <summary>
@@ -114,27 +114,27 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string MasterDnsPrefix;
         /// <summary>
-        /// Maximum number of pods that can run on a node. Default `110` (int)
+        /// The AKS node pool max pods. Default: `110` (int)
         /// </summary>
         public readonly int? MaxPods;
         /// <summary>
-        /// Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+        /// The AKS network plugin. Required if `imported=false` (string)
         /// </summary>
         public readonly string? NetworkPlugin;
         /// <summary>
-        /// Network policy used for building Kubernetes network. Chooses from `calico` (string)
+        /// The AKS network policy (string)
         /// </summary>
         public readonly string? NetworkPolicy;
         /// <summary>
-        /// A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
+        /// A CIDR IP range from which to assign Kubernetes Pod IPs (string)
         /// </summary>
         public readonly string? PodCidr;
         /// <summary>
-        /// (string)
+        /// The AKS resource group (string)
         /// </summary>
         public readonly string ResourceGroup;
         /// <summary>
-        /// A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+        /// A CIDR IP range from which to assign Kubernetes Service IPs (string)
         /// </summary>
         public readonly string? ServiceCidr;
         /// <summary>
@@ -142,11 +142,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string SshPublicKeyContents;
         /// <summary>
-        /// The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+        /// The AKS subnet (string)
         /// </summary>
         public readonly string Subnet;
         /// <summary>
-        /// (string)
+        /// Subscription credentials which uniquely identify Microsoft Azure subscription (string)
         /// </summary>
         public readonly string SubscriptionId;
         /// <summary>
@@ -154,19 +154,19 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tag;
         /// <summary>
-        /// Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
+        /// The GKE node config tags (List)
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// (string)
+        /// Azure tenant ID to use (string)
         /// </summary>
         public readonly string TenantId;
         /// <summary>
-        /// The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
         /// </summary>
         public readonly string VirtualNetwork;
         /// <summary>
-        /// The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+        /// The AKS virtual network resource group (string)
         /// </summary>
         public readonly string VirtualNetworkResourceGroup;
 

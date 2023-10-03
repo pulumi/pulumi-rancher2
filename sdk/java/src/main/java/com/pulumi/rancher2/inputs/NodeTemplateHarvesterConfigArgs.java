@@ -16,14 +16,14 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     public static final NodeTemplateHarvesterConfigArgs Empty = new NodeTemplateHarvesterConfigArgs();
 
     /**
-     * CPU count, Default `2` (string)
+     * vSphere CPU number for docker VM. Default `2` (string)
      * 
      */
     @Import(name="cpuCount")
     private @Nullable Output<String> cpuCount;
 
     /**
-     * @return CPU count, Default `2` (string)
+     * @return vSphere CPU number for docker VM. Default `2` (string)
      * 
      */
     public Optional<Output<String>> cpuCount() {
@@ -69,7 +69,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      * @deprecated
      * Use disk_info instead
@@ -80,7 +80,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      * @deprecated
      * Use disk_info instead
@@ -92,7 +92,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Use `disk_info` instead
+     * OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      * @deprecated
      * Use disk_info instead
@@ -103,7 +103,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     private @Nullable Output<String> imageName;
 
     /**
-     * @return Use `disk_info` instead
+     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
      * 
      * @deprecated
      * Use disk_info instead
@@ -115,14 +115,14 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Memory size (in GiB), Default `4` (string)
+     * vSphere size of memory for docker VM (in MB). Default `2048` (string)
      * 
      */
     @Import(name="memorySize")
     private @Nullable Output<String> memorySize;
 
     /**
-     * @return Memory size (in GiB), Default `4` (string)
+     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
      * 
      */
     public Optional<Output<String>> memorySize() {
@@ -183,7 +183,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Use `network_info` instead
+     * Opennebula network to connect the machine to. Conflicts with `network_id` (string)
      * 
      * @deprecated
      * Use network_info instead
@@ -194,7 +194,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     private @Nullable Output<String> networkName;
 
     /**
-     * @return Use `network_info` instead
+     * @return Opennebula network to connect the machine to. Conflicts with `network_id` (string)
      * 
      * @deprecated
      * Use network_info instead
@@ -206,14 +206,14 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * SSH password (string)
+     * If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
      * 
      */
     @Import(name="sshPassword")
     private @Nullable Output<String> sshPassword;
 
     /**
-     * @return SSH password (string)
+     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
      * 
      */
     public Optional<Output<String>> sshPassword() {
@@ -221,14 +221,14 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Set the name of the ssh user (string)
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     @Import(name="sshUser", required=true)
     private Output<String> sshUser;
 
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
      * 
      */
     public Output<String> sshUser() {
@@ -319,7 +319,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cpuCount CPU count, Default `2` (string)
+         * @param cpuCount vSphere CPU number for docker VM. Default `2` (string)
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cpuCount CPU count, Default `2` (string)
+         * @param cpuCount vSphere CPU number for docker VM. Default `2` (string)
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param diskSize Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param imageName Use `disk_info` instead
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param imageName Use `disk_info` instead
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param memorySize Memory size (in GiB), Default `4` (string)
+         * @param memorySize vSphere size of memory for docker VM (in MB). Default `2048` (string)
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param memorySize Memory size (in GiB), Default `4` (string)
+         * @param memorySize vSphere size of memory for docker VM (in MB). Default `2048` (string)
          * 
          * @return builder
          * 
@@ -540,7 +540,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param networkName Use `network_info` instead
+         * @param networkName Opennebula network to connect the machine to. Conflicts with `network_id` (string)
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param networkName Use `network_info` instead
+         * @param networkName Opennebula network to connect the machine to. Conflicts with `network_id` (string)
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshPassword SSH password (string)
+         * @param sshPassword If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -580,7 +580,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshPassword SSH password (string)
+         * @param sshPassword If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshUser Set the name of the ssh user (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
          * 
          * @return builder
          * 

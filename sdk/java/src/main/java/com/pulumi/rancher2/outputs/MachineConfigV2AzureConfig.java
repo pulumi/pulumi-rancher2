@@ -40,7 +40,7 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable String customData;
     /**
-     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
     private @Nullable String diskSize;
@@ -50,7 +50,7 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable String dns;
     /**
-     * @return Port number for Docker engine. Default `2376` (string)
+     * @return Docker Port. Default `2376` (string)
      * 
      */
     private @Nullable String dockerPort;
@@ -65,7 +65,7 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable String faultDomainCount;
     /**
-     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     private @Nullable String image;
@@ -110,12 +110,12 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable String resourceGroup;
     /**
-     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
+     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
      * 
      */
     private @Nullable String size;
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     private @Nullable String sshUser;
@@ -140,17 +140,17 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable String subnetPrefix;
     /**
-     * @return Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Azure Subscription ID (string)
      * 
      */
     private @Nullable String subscriptionId;
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
     private @Nullable String tags;
     /**
-     * @return Azure Tenant ID (string)
+     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
      * 
      */
     private @Nullable String tenantId;
@@ -211,7 +211,7 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.customData);
     }
     /**
-     * @return Disk size if using managed disk. For Rancher v2.3.x and above. Default `30` (string)
+     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
      * 
      */
     public Optional<String> diskSize() {
@@ -225,7 +225,7 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.dns);
     }
     /**
-     * @return Port number for Docker engine. Default `2376` (string)
+     * @return Docker Port. Default `2376` (string)
      * 
      */
     public Optional<String> dockerPort() {
@@ -246,7 +246,7 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.faultDomainCount);
     }
     /**
-     * @return Azure virtual machine OS image. Default `canonical:UbuntuServer:18.04-LTS:latest` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      * 
      */
     public Optional<String> image() {
@@ -309,14 +309,14 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.resourceGroup);
     }
     /**
-     * @return Size for Azure Virtual Machine. Default `Standard_A2` (string)
+     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
      * 
      */
     public Optional<String> size() {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return Set the name of the ssh user (string)
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
      * 
      */
     public Optional<String> sshUser() {
@@ -351,21 +351,21 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.subnetPrefix);
     }
     /**
-     * @return Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Azure Subscription ID (string)
      * 
      */
     public Optional<String> subscriptionId() {
         return Optional.ofNullable(this.subscriptionId);
     }
     /**
-     * @return AWS Tags (e.g. key1,value1,key2,value2) (string)
+     * @return vSphere tags id e.g. `urn:xxx` (list)
      * 
      */
     public Optional<String> tags() {
         return Optional.ofNullable(this.tags);
     }
     /**
-     * @return Azure Tenant ID (string)
+     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
      * 
      */
     public Optional<String> tenantId() {

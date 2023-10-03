@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? IgnoreDaemonSets;
         /// <summary>
-        /// Timeout in seconds for etcd backup. Default: `300`. For Rancher v2.5.6 and above (int)
+        /// RKE node drain timeout. Default: `60` (int)
         /// </summary>
         public readonly int? Timeout;
 

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AuthConfigActiveDirectoryArgs', 'AuthConfigActiveDirectory']
@@ -83,66 +83,139 @@ class AuthConfigActiveDirectoryArgs:
         :param pulumi.Input[str] user_search_attribute: User search attribute. Default `sAMAccountName|sn|givenName` (string)
         :param pulumi.Input[str] user_search_filter: User search filter (string)
         """
-        pulumi.set(__self__, "servers", servers)
-        pulumi.set(__self__, "service_account_password", service_account_password)
-        pulumi.set(__self__, "service_account_username", service_account_username)
-        pulumi.set(__self__, "test_password", test_password)
-        pulumi.set(__self__, "test_username", test_username)
-        pulumi.set(__self__, "user_search_base", user_search_base)
+        AuthConfigActiveDirectoryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            servers=servers,
+            service_account_password=service_account_password,
+            service_account_username=service_account_username,
+            test_password=test_password,
+            test_username=test_username,
+            user_search_base=user_search_base,
+            access_mode=access_mode,
+            allowed_principal_ids=allowed_principal_ids,
+            annotations=annotations,
+            certificate=certificate,
+            connection_timeout=connection_timeout,
+            default_login_domain=default_login_domain,
+            enabled=enabled,
+            group_dn_attribute=group_dn_attribute,
+            group_member_mapping_attribute=group_member_mapping_attribute,
+            group_member_user_attribute=group_member_user_attribute,
+            group_name_attribute=group_name_attribute,
+            group_object_class=group_object_class,
+            group_search_attribute=group_search_attribute,
+            group_search_base=group_search_base,
+            group_search_filter=group_search_filter,
+            labels=labels,
+            nested_group_membership_enabled=nested_group_membership_enabled,
+            port=port,
+            start_tls=start_tls,
+            tls=tls,
+            user_disabled_bit_mask=user_disabled_bit_mask,
+            user_enabled_attribute=user_enabled_attribute,
+            user_login_attribute=user_login_attribute,
+            user_name_attribute=user_name_attribute,
+            user_object_class=user_object_class,
+            user_search_attribute=user_search_attribute,
+            user_search_filter=user_search_filter,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             servers: pulumi.Input[Sequence[pulumi.Input[str]]],
+             service_account_password: pulumi.Input[str],
+             service_account_username: pulumi.Input[str],
+             test_password: pulumi.Input[str],
+             test_username: pulumi.Input[str],
+             user_search_base: pulumi.Input[str],
+             access_mode: Optional[pulumi.Input[str]] = None,
+             allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             certificate: Optional[pulumi.Input[str]] = None,
+             connection_timeout: Optional[pulumi.Input[int]] = None,
+             default_login_domain: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             group_dn_attribute: Optional[pulumi.Input[str]] = None,
+             group_member_mapping_attribute: Optional[pulumi.Input[str]] = None,
+             group_member_user_attribute: Optional[pulumi.Input[str]] = None,
+             group_name_attribute: Optional[pulumi.Input[str]] = None,
+             group_object_class: Optional[pulumi.Input[str]] = None,
+             group_search_attribute: Optional[pulumi.Input[str]] = None,
+             group_search_base: Optional[pulumi.Input[str]] = None,
+             group_search_filter: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             start_tls: Optional[pulumi.Input[bool]] = None,
+             tls: Optional[pulumi.Input[bool]] = None,
+             user_disabled_bit_mask: Optional[pulumi.Input[int]] = None,
+             user_enabled_attribute: Optional[pulumi.Input[str]] = None,
+             user_login_attribute: Optional[pulumi.Input[str]] = None,
+             user_name_attribute: Optional[pulumi.Input[str]] = None,
+             user_object_class: Optional[pulumi.Input[str]] = None,
+             user_search_attribute: Optional[pulumi.Input[str]] = None,
+             user_search_filter: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("servers", servers)
+        _setter("service_account_password", service_account_password)
+        _setter("service_account_username", service_account_username)
+        _setter("test_password", test_password)
+        _setter("test_username", test_username)
+        _setter("user_search_base", user_search_base)
         if access_mode is not None:
-            pulumi.set(__self__, "access_mode", access_mode)
+            _setter("access_mode", access_mode)
         if allowed_principal_ids is not None:
-            pulumi.set(__self__, "allowed_principal_ids", allowed_principal_ids)
+            _setter("allowed_principal_ids", allowed_principal_ids)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
+            _setter("certificate", certificate)
         if connection_timeout is not None:
-            pulumi.set(__self__, "connection_timeout", connection_timeout)
+            _setter("connection_timeout", connection_timeout)
         if default_login_domain is not None:
-            pulumi.set(__self__, "default_login_domain", default_login_domain)
+            _setter("default_login_domain", default_login_domain)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if group_dn_attribute is not None:
-            pulumi.set(__self__, "group_dn_attribute", group_dn_attribute)
+            _setter("group_dn_attribute", group_dn_attribute)
         if group_member_mapping_attribute is not None:
-            pulumi.set(__self__, "group_member_mapping_attribute", group_member_mapping_attribute)
+            _setter("group_member_mapping_attribute", group_member_mapping_attribute)
         if group_member_user_attribute is not None:
-            pulumi.set(__self__, "group_member_user_attribute", group_member_user_attribute)
+            _setter("group_member_user_attribute", group_member_user_attribute)
         if group_name_attribute is not None:
-            pulumi.set(__self__, "group_name_attribute", group_name_attribute)
+            _setter("group_name_attribute", group_name_attribute)
         if group_object_class is not None:
-            pulumi.set(__self__, "group_object_class", group_object_class)
+            _setter("group_object_class", group_object_class)
         if group_search_attribute is not None:
-            pulumi.set(__self__, "group_search_attribute", group_search_attribute)
+            _setter("group_search_attribute", group_search_attribute)
         if group_search_base is not None:
-            pulumi.set(__self__, "group_search_base", group_search_base)
+            _setter("group_search_base", group_search_base)
         if group_search_filter is not None:
-            pulumi.set(__self__, "group_search_filter", group_search_filter)
+            _setter("group_search_filter", group_search_filter)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if nested_group_membership_enabled is not None:
-            pulumi.set(__self__, "nested_group_membership_enabled", nested_group_membership_enabled)
+            _setter("nested_group_membership_enabled", nested_group_membership_enabled)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if start_tls is not None:
-            pulumi.set(__self__, "start_tls", start_tls)
+            _setter("start_tls", start_tls)
         if tls is not None:
-            pulumi.set(__self__, "tls", tls)
+            _setter("tls", tls)
         if user_disabled_bit_mask is not None:
-            pulumi.set(__self__, "user_disabled_bit_mask", user_disabled_bit_mask)
+            _setter("user_disabled_bit_mask", user_disabled_bit_mask)
         if user_enabled_attribute is not None:
-            pulumi.set(__self__, "user_enabled_attribute", user_enabled_attribute)
+            _setter("user_enabled_attribute", user_enabled_attribute)
         if user_login_attribute is not None:
-            pulumi.set(__self__, "user_login_attribute", user_login_attribute)
+            _setter("user_login_attribute", user_login_attribute)
         if user_name_attribute is not None:
-            pulumi.set(__self__, "user_name_attribute", user_name_attribute)
+            _setter("user_name_attribute", user_name_attribute)
         if user_object_class is not None:
-            pulumi.set(__self__, "user_object_class", user_object_class)
+            _setter("user_object_class", user_object_class)
         if user_search_attribute is not None:
-            pulumi.set(__self__, "user_search_attribute", user_search_attribute)
+            _setter("user_search_attribute", user_search_attribute)
         if user_search_filter is not None:
-            pulumi.set(__self__, "user_search_filter", user_search_filter)
+            _setter("user_search_filter", user_search_filter)
 
     @property
     @pulumi.getter
@@ -617,76 +690,153 @@ class _AuthConfigActiveDirectoryState:
         :param pulumi.Input[str] user_search_base: User search base DN (string)
         :param pulumi.Input[str] user_search_filter: User search filter (string)
         """
+        _AuthConfigActiveDirectoryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_mode=access_mode,
+            allowed_principal_ids=allowed_principal_ids,
+            annotations=annotations,
+            certificate=certificate,
+            connection_timeout=connection_timeout,
+            default_login_domain=default_login_domain,
+            enabled=enabled,
+            group_dn_attribute=group_dn_attribute,
+            group_member_mapping_attribute=group_member_mapping_attribute,
+            group_member_user_attribute=group_member_user_attribute,
+            group_name_attribute=group_name_attribute,
+            group_object_class=group_object_class,
+            group_search_attribute=group_search_attribute,
+            group_search_base=group_search_base,
+            group_search_filter=group_search_filter,
+            labels=labels,
+            name=name,
+            nested_group_membership_enabled=nested_group_membership_enabled,
+            port=port,
+            servers=servers,
+            service_account_password=service_account_password,
+            service_account_username=service_account_username,
+            start_tls=start_tls,
+            test_password=test_password,
+            test_username=test_username,
+            tls=tls,
+            type=type,
+            user_disabled_bit_mask=user_disabled_bit_mask,
+            user_enabled_attribute=user_enabled_attribute,
+            user_login_attribute=user_login_attribute,
+            user_name_attribute=user_name_attribute,
+            user_object_class=user_object_class,
+            user_search_attribute=user_search_attribute,
+            user_search_base=user_search_base,
+            user_search_filter=user_search_filter,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_mode: Optional[pulumi.Input[str]] = None,
+             allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             certificate: Optional[pulumi.Input[str]] = None,
+             connection_timeout: Optional[pulumi.Input[int]] = None,
+             default_login_domain: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             group_dn_attribute: Optional[pulumi.Input[str]] = None,
+             group_member_mapping_attribute: Optional[pulumi.Input[str]] = None,
+             group_member_user_attribute: Optional[pulumi.Input[str]] = None,
+             group_name_attribute: Optional[pulumi.Input[str]] = None,
+             group_object_class: Optional[pulumi.Input[str]] = None,
+             group_search_attribute: Optional[pulumi.Input[str]] = None,
+             group_search_base: Optional[pulumi.Input[str]] = None,
+             group_search_filter: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_account_password: Optional[pulumi.Input[str]] = None,
+             service_account_username: Optional[pulumi.Input[str]] = None,
+             start_tls: Optional[pulumi.Input[bool]] = None,
+             test_password: Optional[pulumi.Input[str]] = None,
+             test_username: Optional[pulumi.Input[str]] = None,
+             tls: Optional[pulumi.Input[bool]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user_disabled_bit_mask: Optional[pulumi.Input[int]] = None,
+             user_enabled_attribute: Optional[pulumi.Input[str]] = None,
+             user_login_attribute: Optional[pulumi.Input[str]] = None,
+             user_name_attribute: Optional[pulumi.Input[str]] = None,
+             user_object_class: Optional[pulumi.Input[str]] = None,
+             user_search_attribute: Optional[pulumi.Input[str]] = None,
+             user_search_base: Optional[pulumi.Input[str]] = None,
+             user_search_filter: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_mode is not None:
-            pulumi.set(__self__, "access_mode", access_mode)
+            _setter("access_mode", access_mode)
         if allowed_principal_ids is not None:
-            pulumi.set(__self__, "allowed_principal_ids", allowed_principal_ids)
+            _setter("allowed_principal_ids", allowed_principal_ids)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
+            _setter("certificate", certificate)
         if connection_timeout is not None:
-            pulumi.set(__self__, "connection_timeout", connection_timeout)
+            _setter("connection_timeout", connection_timeout)
         if default_login_domain is not None:
-            pulumi.set(__self__, "default_login_domain", default_login_domain)
+            _setter("default_login_domain", default_login_domain)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if group_dn_attribute is not None:
-            pulumi.set(__self__, "group_dn_attribute", group_dn_attribute)
+            _setter("group_dn_attribute", group_dn_attribute)
         if group_member_mapping_attribute is not None:
-            pulumi.set(__self__, "group_member_mapping_attribute", group_member_mapping_attribute)
+            _setter("group_member_mapping_attribute", group_member_mapping_attribute)
         if group_member_user_attribute is not None:
-            pulumi.set(__self__, "group_member_user_attribute", group_member_user_attribute)
+            _setter("group_member_user_attribute", group_member_user_attribute)
         if group_name_attribute is not None:
-            pulumi.set(__self__, "group_name_attribute", group_name_attribute)
+            _setter("group_name_attribute", group_name_attribute)
         if group_object_class is not None:
-            pulumi.set(__self__, "group_object_class", group_object_class)
+            _setter("group_object_class", group_object_class)
         if group_search_attribute is not None:
-            pulumi.set(__self__, "group_search_attribute", group_search_attribute)
+            _setter("group_search_attribute", group_search_attribute)
         if group_search_base is not None:
-            pulumi.set(__self__, "group_search_base", group_search_base)
+            _setter("group_search_base", group_search_base)
         if group_search_filter is not None:
-            pulumi.set(__self__, "group_search_filter", group_search_filter)
+            _setter("group_search_filter", group_search_filter)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nested_group_membership_enabled is not None:
-            pulumi.set(__self__, "nested_group_membership_enabled", nested_group_membership_enabled)
+            _setter("nested_group_membership_enabled", nested_group_membership_enabled)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if servers is not None:
-            pulumi.set(__self__, "servers", servers)
+            _setter("servers", servers)
         if service_account_password is not None:
-            pulumi.set(__self__, "service_account_password", service_account_password)
+            _setter("service_account_password", service_account_password)
         if service_account_username is not None:
-            pulumi.set(__self__, "service_account_username", service_account_username)
+            _setter("service_account_username", service_account_username)
         if start_tls is not None:
-            pulumi.set(__self__, "start_tls", start_tls)
+            _setter("start_tls", start_tls)
         if test_password is not None:
-            pulumi.set(__self__, "test_password", test_password)
+            _setter("test_password", test_password)
         if test_username is not None:
-            pulumi.set(__self__, "test_username", test_username)
+            _setter("test_username", test_username)
         if tls is not None:
-            pulumi.set(__self__, "tls", tls)
+            _setter("tls", tls)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if user_disabled_bit_mask is not None:
-            pulumi.set(__self__, "user_disabled_bit_mask", user_disabled_bit_mask)
+            _setter("user_disabled_bit_mask", user_disabled_bit_mask)
         if user_enabled_attribute is not None:
-            pulumi.set(__self__, "user_enabled_attribute", user_enabled_attribute)
+            _setter("user_enabled_attribute", user_enabled_attribute)
         if user_login_attribute is not None:
-            pulumi.set(__self__, "user_login_attribute", user_login_attribute)
+            _setter("user_login_attribute", user_login_attribute)
         if user_name_attribute is not None:
-            pulumi.set(__self__, "user_name_attribute", user_name_attribute)
+            _setter("user_name_attribute", user_name_attribute)
         if user_object_class is not None:
-            pulumi.set(__self__, "user_object_class", user_object_class)
+            _setter("user_object_class", user_object_class)
         if user_search_attribute is not None:
-            pulumi.set(__self__, "user_search_attribute", user_search_attribute)
+            _setter("user_search_attribute", user_search_attribute)
         if user_search_base is not None:
-            pulumi.set(__self__, "user_search_base", user_search_base)
+            _setter("user_search_base", user_search_base)
         if user_search_filter is not None:
-            pulumi.set(__self__, "user_search_filter", user_search_filter)
+            _setter("user_search_filter", user_search_filter)
 
     @property
     @pulumi.getter(name="accessMode")
@@ -1210,6 +1360,10 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AuthConfigActiveDirectoryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

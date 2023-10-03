@@ -62,7 +62,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _extraArgs;
 
         /// <summary>
-        /// Extra arguments for RKE Ingress (map)
+        /// Extra arguments for scheduler service (map)
         /// </summary>
         public InputMap<object> ExtraArgs
         {
@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _extraBinds;
 
         /// <summary>
-        /// Extra binds for etcd service (list)
+        /// Extra binds for scheduler service (list)
         /// </summary>
         public InputList<string> ExtraBinds
         {
@@ -86,7 +86,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _extraEnvs;
 
         /// <summary>
-        /// Extra environment for etcd service (list)
+        /// Extra environment for scheduler service (list)
         /// </summary>
         public InputList<string> ExtraEnvs
         {
@@ -101,7 +101,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? Gid { get; set; }
 
         /// <summary>
-        /// Docker image for etcd service (string)
+        /// Docker image for scheduler service (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -110,7 +110,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _key;
 
         /// <summary>
-        /// The toleration key (string)
+        /// The GKE taint key (string)
         /// </summary>
         public Input<string>? Key
         {
@@ -123,13 +123,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Path for etcd service (string)
+        /// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Retention option for etcd service (string)
+        /// Retention for etcd backup. Default `6` (int)
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }

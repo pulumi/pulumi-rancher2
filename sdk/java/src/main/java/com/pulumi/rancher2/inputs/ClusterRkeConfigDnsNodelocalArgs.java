@@ -33,14 +33,14 @@ public final class ClusterRkeConfigDnsNodelocalArgs extends com.pulumi.resources
     }
 
     /**
-     * DNS add-on node selector (map)
+     * RKE monitoring node selector (map)
      * 
      */
     @Import(name="nodeSelector")
     private @Nullable Output<Map<String,Object>> nodeSelector;
 
     /**
-     * @return DNS add-on node selector (map)
+     * @return RKE monitoring node selector (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> nodeSelector() {
@@ -94,7 +94,7 @@ public final class ClusterRkeConfigDnsNodelocalArgs extends com.pulumi.resources
         }
 
         /**
-         * @param nodeSelector DNS add-on node selector (map)
+         * @param nodeSelector RKE monitoring node selector (map)
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ClusterRkeConfigDnsNodelocalArgs extends com.pulumi.resources
         }
 
         /**
-         * @param nodeSelector DNS add-on node selector (map)
+         * @param nodeSelector RKE monitoring node selector (map)
          * 
          * @return builder
          * 

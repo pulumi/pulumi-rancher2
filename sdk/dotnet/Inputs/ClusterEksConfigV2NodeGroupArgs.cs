@@ -43,7 +43,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The type of machine to use for worker nodes. Default `t2.medium` (string)
+        /// The EKS node group instance type. Default: `t3.medium` (string)
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Audit log max size. Default: `100` (int)
+        /// The EKS node group maximum size. Default `2` (int)
         /// </summary>
         [Input("maxSize")]
         public Input<int>? MaxSize { get; set; }
@@ -130,7 +130,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _subnets;
 
         /// <summary>
-        /// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+        /// The EKS node group subnets (list string)
         /// </summary>
         public InputList<string> Subnets
         {
@@ -142,7 +142,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]` (list)
+        /// The GKE node config tags (List)
         /// </summary>
         public InputMap<object> Tags
         {
@@ -151,13 +151,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Pass user-data to the nodes to perform automated configuration tasks (string)
+        /// The EKS node group user data (string)
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// RKE2 kubernetes version (string)
+        /// rancher-monitoring chart version (string)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

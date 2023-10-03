@@ -62,14 +62,14 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs exte
     }
 
     /**
-     * Audit log max size. Default: `100` (int)
+     * The EKS node group maximum size. Default `2` (int)
      * 
      */
     @Import(name="maxSize")
     private @Nullable Output<Integer> maxSize;
 
     /**
-     * @return Audit log max size. Default: `100` (int)
+     * @return The EKS node group maximum size. Default `2` (int)
      * 
      */
     public Optional<Output<Integer>> maxSize() {
@@ -77,14 +77,14 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs exte
     }
 
     /**
-     * Path for etcd service (string)
+     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return Path for etcd service (string)
+     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     public Optional<Output<String>> path() {
@@ -199,7 +199,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs exte
         }
 
         /**
-         * @param maxSize Audit log max size. Default: `100` (int)
+         * @param maxSize The EKS node group maximum size. Default `2` (int)
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs exte
         }
 
         /**
-         * @param maxSize Audit log max size. Default: `100` (int)
+         * @param maxSize The EKS node group maximum size. Default `2` (int)
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs exte
         }
 
         /**
-         * @param path Path for etcd service (string)
+         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs exte
         }
 
         /**
-         * @param path Path for etcd service (string)
+         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
          * 
          * @return builder
          * 

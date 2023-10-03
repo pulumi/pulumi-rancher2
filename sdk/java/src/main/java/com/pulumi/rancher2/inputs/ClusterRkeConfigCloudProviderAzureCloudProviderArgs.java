@@ -213,14 +213,14 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
     }
 
     /**
-     * Allowed values: `basic` (default) `standard` (string)
+     * The AKS load balancer sku (string)
      * 
      */
     @Import(name="loadBalancerSku")
     private @Nullable Output<String> loadBalancerSku;
 
     /**
-     * @return Allowed values: `basic` (default) `standard` (string)
+     * @return The AKS load balancer sku (string)
      * 
      */
     public Optional<Output<String>> loadBalancerSku() {
@@ -228,14 +228,14 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
     }
 
     /**
-     * (string)
+     * Azure Kubernetes cluster location. Default `eastus` (string)
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return (string)
+     * @return Azure Kubernetes cluster location. Default `eastus` (string)
      * 
      */
     public Optional<Output<String>> location() {
@@ -288,14 +288,14 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
     }
 
     /**
-     * (string)
+     * The AKS resource group (string)
      * 
      */
     @Import(name="resourceGroup")
     private @Nullable Output<String> resourceGroup;
 
     /**
-     * @return (string)
+     * @return The AKS resource group (string)
      * 
      */
     public Optional<Output<String>> resourceGroup() {
@@ -348,14 +348,14 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
     }
 
     /**
-     * (string)
+     * Subscription credentials which uniquely identify Microsoft Azure subscription (string)
      * 
      */
     @Import(name="subscriptionId", required=true)
     private Output<String> subscriptionId;
 
     /**
-     * @return (string)
+     * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
      * 
      */
     public Output<String> subscriptionId() {
@@ -363,14 +363,14 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
     }
 
     /**
-     * (string)
+     * Azure tenant ID to use (string)
      * 
      */
     @Import(name="tenantId", required=true)
     private Output<String> tenantId;
 
     /**
-     * @return (string)
+     * @return Azure tenant ID to use (string)
      * 
      */
     public Output<String> tenantId() {
@@ -778,7 +778,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param loadBalancerSku Allowed values: `basic` (default) `standard` (string)
+         * @param loadBalancerSku The AKS load balancer sku (string)
          * 
          * @return builder
          * 
@@ -789,7 +789,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param loadBalancerSku Allowed values: `basic` (default) `standard` (string)
+         * @param loadBalancerSku The AKS load balancer sku (string)
          * 
          * @return builder
          * 
@@ -799,7 +799,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param location (string)
+         * @param location Azure Kubernetes cluster location. Default `eastus` (string)
          * 
          * @return builder
          * 
@@ -810,7 +810,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param location (string)
+         * @param location Azure Kubernetes cluster location. Default `eastus` (string)
          * 
          * @return builder
          * 
@@ -883,7 +883,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param resourceGroup (string)
+         * @param resourceGroup The AKS resource group (string)
          * 
          * @return builder
          * 
@@ -894,7 +894,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param resourceGroup (string)
+         * @param resourceGroup The AKS resource group (string)
          * 
          * @return builder
          * 
@@ -967,7 +967,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param subscriptionId (string)
+         * @param subscriptionId Subscription credentials which uniquely identify Microsoft Azure subscription (string)
          * 
          * @return builder
          * 
@@ -978,7 +978,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param subscriptionId (string)
+         * @param subscriptionId Subscription credentials which uniquely identify Microsoft Azure subscription (string)
          * 
          * @return builder
          * 
@@ -988,7 +988,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param tenantId (string)
+         * @param tenantId Azure tenant ID to use (string)
          * 
          * @return builder
          * 
@@ -999,7 +999,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param tenantId (string)
+         * @param tenantId Azure tenant ID to use (string)
          * 
          * @return builder
          * 

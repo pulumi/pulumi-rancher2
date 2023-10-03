@@ -13,31 +13,31 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigMonitoringTolerationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The toleration effect. Default: `\"NoSchedule\"` (string)
+        /// The GKE taint effect (string)
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
         /// <summary>
-        /// The toleration key (string)
+        /// The GKE taint key (string)
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The toleration operator (string)
+        /// The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
         /// <summary>
-        /// The number of seconds a pod will stay bound to a node with a matching taint (int)
+        /// The toleration seconds (int)
         /// </summary>
         [Input("seconds")]
         public Input<int>? Seconds { get; set; }
 
         /// <summary>
-        /// Rancher agent env var value (string)
+        /// The GKE taint value (string)
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

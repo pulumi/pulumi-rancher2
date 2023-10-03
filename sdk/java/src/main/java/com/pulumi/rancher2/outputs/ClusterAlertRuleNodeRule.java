@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterAlertRuleNodeRule {
     /**
-     * @return Node rule condition. Supported values : `&#34;cpu&#34; | &#34;mem&#34; | &#34;notready&#34;`. Default: `notready` (string)
+     * @return System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
      * 
      */
     private @Nullable String condition;
@@ -42,7 +42,7 @@ public final class ClusterAlertRuleNodeRule {
 
     private ClusterAlertRuleNodeRule() {}
     /**
-     * @return Node rule condition. Supported values : `&#34;cpu&#34; | &#34;mem&#34; | &#34;notready&#34;`. Default: `notready` (string)
+     * @return System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
      * 
      */
     public Optional<String> condition() {

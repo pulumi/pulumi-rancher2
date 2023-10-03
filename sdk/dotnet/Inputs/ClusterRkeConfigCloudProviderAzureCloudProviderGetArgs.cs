@@ -121,13 +121,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? CloudProviderRateLimitQps { get; set; }
 
         /// <summary>
-        /// Allowed values: `basic` (default) `standard` (string)
+        /// The AKS load balancer sku (string)
         /// </summary>
         [Input("loadBalancerSku")]
         public Input<string>? LoadBalancerSku { get; set; }
 
         /// <summary>
-        /// (string)
+        /// Azure Kubernetes cluster location. Default `eastus` (string)
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? PrimaryScaleSetName { get; set; }
 
         /// <summary>
-        /// (string)
+        /// The AKS resource group (string)
         /// </summary>
         [Input("resourceGroup")]
         public Input<string>? ResourceGroup { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _subscriptionId;
 
         /// <summary>
-        /// (string)
+        /// Subscription credentials which uniquely identify Microsoft Azure subscription (string)
         /// </summary>
         public Input<string>? SubscriptionId
         {
@@ -194,7 +194,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _tenantId;
 
         /// <summary>
-        /// (string)
+        /// Azure tenant ID to use (string)
         /// </summary>
         public Input<string>? TenantId
         {

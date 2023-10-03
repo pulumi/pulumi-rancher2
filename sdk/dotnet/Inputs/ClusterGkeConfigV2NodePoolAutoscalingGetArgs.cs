@@ -13,19 +13,19 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigV2NodePoolAutoscalingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable etcd backup (bool)
+        /// Enable the authorized cluster endpoint. Default `true` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
+        /// The GKE node pool config max node count (int)
         /// </summary>
         [Input("maxNodeCount")]
         public Input<int>? MaxNodeCount { get; set; }
 
         /// <summary>
-        /// Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount. Default `0` (int)
+        /// The GKE node pool config min node count (int)
         /// </summary>
         [Input("minNodeCount")]
         public Input<int>? MinNodeCount { get; set; }

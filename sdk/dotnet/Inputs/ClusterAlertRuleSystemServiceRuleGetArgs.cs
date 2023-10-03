@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterAlertRuleSystemServiceRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Node rule condition. Supported values : `"cpu" | "mem" | "notready"`. Default: `notready` (string)
+        /// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
         /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }

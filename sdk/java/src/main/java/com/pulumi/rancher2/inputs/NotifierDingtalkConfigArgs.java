@@ -16,14 +16,14 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
     public static final NotifierDingtalkConfigArgs Empty = new NotifierDingtalkConfigArgs();
 
     /**
-     * Dingtalk proxy url (string)
+     * Wechat proxy url (string)
      * 
      */
     @Import(name="proxyUrl")
     private @Nullable Output<String> proxyUrl;
 
     /**
-     * @return Dingtalk proxy url (string)
+     * @return Wechat proxy url (string)
      * 
      */
     public Optional<Output<String>> proxyUrl() {
@@ -31,14 +31,14 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Secret for url sign enable (string)
+     * Wechat agent ID (string)
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return Secret for url sign enable (string)
+     * @return Wechat agent ID (string)
      * 
      */
     public Optional<Output<String>> secret() {
@@ -46,14 +46,14 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Dingtalk url (string)
+     * Slack url (string)
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return Dingtalk url (string)
+     * @return Slack url (string)
      * 
      */
     public Output<String> url() {
@@ -87,7 +87,7 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param proxyUrl Dingtalk proxy url (string)
+         * @param proxyUrl Wechat proxy url (string)
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param proxyUrl Dingtalk proxy url (string)
+         * @param proxyUrl Wechat proxy url (string)
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param secret Secret for url sign enable (string)
+         * @param secret Wechat agent ID (string)
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param secret Secret for url sign enable (string)
+         * @param secret Wechat agent ID (string)
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param url Dingtalk url (string)
+         * @param url Slack url (string)
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param url Dingtalk url (string)
+         * @param url Slack url (string)
          * 
          * @return builder
          * 

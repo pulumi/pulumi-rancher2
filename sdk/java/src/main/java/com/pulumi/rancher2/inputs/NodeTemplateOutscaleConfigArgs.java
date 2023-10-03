@@ -18,14 +18,14 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
     public static final NodeTemplateOutscaleConfigArgs Empty = new NodeTemplateOutscaleConfigArgs();
 
     /**
-     * AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Outscale Access Key (string)
      * 
      */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
     /**
-     * @return AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Access Key (string)
      * 
      */
     public Output<String> accessKey() {
@@ -63,14 +63,14 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * AWS instance type. Default `t2.micro` (string)
+     * Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return AWS instance type. Default `t2.micro` (string)
+     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -78,14 +78,14 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * AWS region. (string)
+     * AWS region. Default `eu-west-2` (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return AWS region. (string)
+     * @return AWS region. Default `eu-west-2` (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -138,14 +138,14 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Outscale Secret Key (string)
      * 
      */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
     /**
-     * @return AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Outscale Secret Key (string)
      * 
      */
     public Output<String> secretKey() {
@@ -217,7 +217,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accessKey AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param accessKey Outscale Access Key (string)
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accessKey AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param accessKey Outscale Access Key (string)
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param instanceType AWS instance type. Default `t2.micro` (string)
+         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param instanceType AWS instance type. Default `t2.micro` (string)
+         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param region AWS region. (string)
+         * @param region AWS region. Default `eu-west-2` (string)
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param secretKey AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param secretKey Outscale Secret Key (string)
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param secretKey AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param secretKey Outscale Secret Key (string)
          * 
          * @return builder
          * 
