@@ -55,10 +55,6 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// OpenStack keypair to use to SSH to the instance (string)
-        /// </summary>
-        public readonly string? KeypairName;
-        /// <summary>
         /// Custom KMS key ID using the AWS Managed CMK (string)
         /// </summary>
         public readonly string? KmsKey;
@@ -172,8 +168,6 @@ namespace Pulumi.Rancher2.Outputs
 
             string? instanceType,
 
-            string? keypairName,
-
             string? kmsKey,
 
             bool? monitoring,
@@ -231,7 +225,6 @@ namespace Pulumi.Rancher2.Outputs
             IamInstanceProfile = iamInstanceProfile;
             InsecureTransport = insecureTransport;
             InstanceType = instanceType;
-            KeypairName = keypairName;
             KmsKey = kmsKey;
             Monitoring = monitoring;
             OpenPorts = openPorts;

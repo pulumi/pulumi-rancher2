@@ -81,7 +81,25 @@ class AppArgs:
              template_version: Optional[pulumi.Input[str]] = None,
              values_yaml: Optional[pulumi.Input[str]] = None,
              wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'targetNamespace' in kwargs:
+            target_namespace = kwargs['targetNamespace']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'forceUpgrade' in kwargs:
+            force_upgrade = kwargs['forceUpgrade']
+        if 'revisionId' in kwargs:
+            revision_id = kwargs['revisionId']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if 'valuesYaml' in kwargs:
+            values_yaml = kwargs['valuesYaml']
+
         _setter("catalog_name", catalog_name)
         _setter("project_id", project_id)
         _setter("target_namespace", target_namespace)
@@ -352,7 +370,27 @@ class _AppState:
              template_version: Optional[pulumi.Input[str]] = None,
              values_yaml: Optional[pulumi.Input[str]] = None,
              wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'forceUpgrade' in kwargs:
+            force_upgrade = kwargs['forceUpgrade']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'revisionId' in kwargs:
+            revision_id = kwargs['revisionId']
+        if 'targetNamespace' in kwargs:
+            target_namespace = kwargs['targetNamespace']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if 'valuesYaml' in kwargs:
+            values_yaml = kwargs['valuesYaml']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if answers is not None:

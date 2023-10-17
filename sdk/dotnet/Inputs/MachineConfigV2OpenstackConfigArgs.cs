@@ -268,6 +268,7 @@ namespace Pulumi.Rancher2.Inputs
         /// OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
         /// &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
         /// &gt; **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+        /// &gt; **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
         /// </summary>
         [Input("volumeDevicePath")]
         public Input<string>? VolumeDevicePath { get; set; }

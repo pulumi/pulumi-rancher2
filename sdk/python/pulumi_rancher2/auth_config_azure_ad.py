@@ -75,7 +75,27 @@ class AuthConfigAzureAdArgs:
              enabled: Optional[pulumi.Input[bool]] = None,
              endpoint: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationSecret' in kwargs:
+            application_secret = kwargs['applicationSecret']
+        if 'authEndpoint' in kwargs:
+            auth_endpoint = kwargs['authEndpoint']
+        if 'graphEndpoint' in kwargs:
+            graph_endpoint = kwargs['graphEndpoint']
+        if 'rancherUrl' in kwargs:
+            rancher_url = kwargs['rancherUrl']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'tokenEndpoint' in kwargs:
+            token_endpoint = kwargs['tokenEndpoint']
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'allowedPrincipalIds' in kwargs:
+            allowed_principal_ids = kwargs['allowedPrincipalIds']
+
         _setter("application_id", application_id)
         _setter("application_secret", application_secret)
         _setter("auth_endpoint", auth_endpoint)
@@ -325,7 +345,27 @@ class _AuthConfigAzureAdState:
              tenant_id: Optional[pulumi.Input[str]] = None,
              token_endpoint: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'allowedPrincipalIds' in kwargs:
+            allowed_principal_ids = kwargs['allowedPrincipalIds']
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationSecret' in kwargs:
+            application_secret = kwargs['applicationSecret']
+        if 'authEndpoint' in kwargs:
+            auth_endpoint = kwargs['authEndpoint']
+        if 'graphEndpoint' in kwargs:
+            graph_endpoint = kwargs['graphEndpoint']
+        if 'rancherUrl' in kwargs:
+            rancher_url = kwargs['rancherUrl']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'tokenEndpoint' in kwargs:
+            token_endpoint = kwargs['tokenEndpoint']
+
         if access_mode is not None:
             _setter("access_mode", access_mode)
         if allowed_principal_ids is not None:

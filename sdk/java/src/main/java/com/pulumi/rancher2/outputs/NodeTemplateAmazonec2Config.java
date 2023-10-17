@@ -69,11 +69,6 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable String instanceType;
     /**
-     * @return OpenStack keypair to use to SSH to the instance (string)
-     * 
-     */
-    private @Nullable String keypairName;
-    /**
      * @return Custom KMS key ID using the AWS Managed CMK (string)
      * 
      */
@@ -266,13 +261,6 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return OpenStack keypair to use to SSH to the instance (string)
-     * 
-     */
-    public Optional<String> keypairName() {
-        return Optional.ofNullable(this.keypairName);
-    }
-    /**
      * @return Custom KMS key ID using the AWS Managed CMK (string)
      * 
      */
@@ -452,7 +440,6 @@ public final class NodeTemplateAmazonec2Config {
         private @Nullable String iamInstanceProfile;
         private @Nullable Boolean insecureTransport;
         private @Nullable String instanceType;
-        private @Nullable String keypairName;
         private @Nullable String kmsKey;
         private @Nullable Boolean monitoring;
         private @Nullable List<String> openPorts;
@@ -490,7 +477,6 @@ public final class NodeTemplateAmazonec2Config {
     	      this.iamInstanceProfile = defaults.iamInstanceProfile;
     	      this.insecureTransport = defaults.insecureTransport;
     	      this.instanceType = defaults.instanceType;
-    	      this.keypairName = defaults.keypairName;
     	      this.kmsKey = defaults.kmsKey;
     	      this.monitoring = defaults.monitoring;
     	      this.openPorts = defaults.openPorts;
@@ -569,11 +555,6 @@ public final class NodeTemplateAmazonec2Config {
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder keypairName(@Nullable String keypairName) {
-            this.keypairName = keypairName;
             return this;
         }
         @CustomType.Setter
@@ -710,7 +691,6 @@ public final class NodeTemplateAmazonec2Config {
             o.iamInstanceProfile = iamInstanceProfile;
             o.insecureTransport = insecureTransport;
             o.instanceType = instanceType;
-            o.keypairName = keypairName;
             o.kmsKey = kmsKey;
             o.monitoring = monitoring;
             o.openPorts = openPorts;

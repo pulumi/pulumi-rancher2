@@ -518,6 +518,8 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
      * 
      * &gt; **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
      * 
+     * &gt; **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+     * 
      */
     @Import(name="volumeDevicePath")
     private @Nullable Output<String> volumeDevicePath;
@@ -528,6 +530,8 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
      * &gt; **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
      * 
      * &gt; **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+     * 
+     * &gt; **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
      * 
      */
     public Optional<Output<String>> volumeDevicePath() {
@@ -1355,6 +1359,8 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
          * 
          * &gt; **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
          * 
+         * &gt; **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+         * 
          * @return builder
          * 
          */
@@ -1369,6 +1375,8 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
          * &gt; **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
          * 
          * &gt; **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+         * 
+         * &gt; **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
          * 
          * @return builder
          * 

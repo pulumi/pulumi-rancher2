@@ -12,17 +12,11 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterV2RkeConfigMachineSelectorConfigArgs : global::Pulumi.ResourceArgs
     {
-        [Input("config")]
-        private InputMap<object>? _config;
-
         /// <summary>
-        /// Machine selector config (map)
+        /// Machine selector config. Must be in YAML format (string)
         /// </summary>
-        public InputMap<object> Config
-        {
-            get => _config ?? (_config = new InputMap<object>());
-            set => _config = value;
-        }
+        [Input("config")]
+        public Input<string>? Config { get; set; }
 
         /// <summary>
         /// Machine selector label (list maxitems:1)

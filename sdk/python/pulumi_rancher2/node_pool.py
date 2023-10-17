@@ -77,7 +77,23 @@ class NodePoolArgs:
              node_taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeTaintArgs']]]] = None,
              quantity: Optional[pulumi.Input[int]] = None,
              worker: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'hostnamePrefix' in kwargs:
+            hostname_prefix = kwargs['hostnamePrefix']
+        if 'nodeTemplateId' in kwargs:
+            node_template_id = kwargs['nodeTemplateId']
+        if 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if 'deleteNotReadyAfterSecs' in kwargs:
+            delete_not_ready_after_secs = kwargs['deleteNotReadyAfterSecs']
+        if 'drainBeforeDelete' in kwargs:
+            drain_before_delete = kwargs['drainBeforeDelete']
+        if 'nodeTaints' in kwargs:
+            node_taints = kwargs['nodeTaints']
+
         _setter("cluster_id", cluster_id)
         _setter("hostname_prefix", hostname_prefix)
         _setter("node_template_id", node_template_id)
@@ -323,7 +339,23 @@ class _NodePoolState:
              node_template_id: Optional[pulumi.Input[str]] = None,
              quantity: Optional[pulumi.Input[int]] = None,
              worker: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if 'deleteNotReadyAfterSecs' in kwargs:
+            delete_not_ready_after_secs = kwargs['deleteNotReadyAfterSecs']
+        if 'drainBeforeDelete' in kwargs:
+            drain_before_delete = kwargs['drainBeforeDelete']
+        if 'hostnamePrefix' in kwargs:
+            hostname_prefix = kwargs['hostnamePrefix']
+        if 'nodeTaints' in kwargs:
+            node_taints = kwargs['nodeTaints']
+        if 'nodeTemplateId' in kwargs:
+            node_template_id = kwargs['nodeTemplateId']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if cluster_id is not None:

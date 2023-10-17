@@ -137,7 +137,53 @@ class PodSecurityPolicyTemplateArgs:
              se_linux: Optional[pulumi.Input['PodSecurityPolicyTemplateSeLinuxArgs']] = None,
              supplemental_group: Optional[pulumi.Input['PodSecurityPolicyTemplateSupplementalGroupArgs']] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowPrivilegeEscalation' in kwargs:
+            allow_privilege_escalation = kwargs['allowPrivilegeEscalation']
+        if 'allowedCapabilities' in kwargs:
+            allowed_capabilities = kwargs['allowedCapabilities']
+        if 'allowedCsiDrivers' in kwargs:
+            allowed_csi_drivers = kwargs['allowedCsiDrivers']
+        if 'allowedFlexVolumes' in kwargs:
+            allowed_flex_volumes = kwargs['allowedFlexVolumes']
+        if 'allowedHostPaths' in kwargs:
+            allowed_host_paths = kwargs['allowedHostPaths']
+        if 'allowedProcMountTypes' in kwargs:
+            allowed_proc_mount_types = kwargs['allowedProcMountTypes']
+        if 'allowedUnsafeSysctls' in kwargs:
+            allowed_unsafe_sysctls = kwargs['allowedUnsafeSysctls']
+        if 'defaultAddCapabilities' in kwargs:
+            default_add_capabilities = kwargs['defaultAddCapabilities']
+        if 'defaultAllowPrivilegeEscalation' in kwargs:
+            default_allow_privilege_escalation = kwargs['defaultAllowPrivilegeEscalation']
+        if 'forbiddenSysctls' in kwargs:
+            forbidden_sysctls = kwargs['forbiddenSysctls']
+        if 'fsGroup' in kwargs:
+            fs_group = kwargs['fsGroup']
+        if 'hostIpc' in kwargs:
+            host_ipc = kwargs['hostIpc']
+        if 'hostNetwork' in kwargs:
+            host_network = kwargs['hostNetwork']
+        if 'hostPid' in kwargs:
+            host_pid = kwargs['hostPid']
+        if 'hostPorts' in kwargs:
+            host_ports = kwargs['hostPorts']
+        if 'readOnlyRootFilesystem' in kwargs:
+            read_only_root_filesystem = kwargs['readOnlyRootFilesystem']
+        if 'requiredDropCapabilities' in kwargs:
+            required_drop_capabilities = kwargs['requiredDropCapabilities']
+        if 'runAsGroup' in kwargs:
+            run_as_group = kwargs['runAsGroup']
+        if 'runAsUser' in kwargs:
+            run_as_user = kwargs['runAsUser']
+        if 'runtimeClass' in kwargs:
+            runtime_class = kwargs['runtimeClass']
+        if 'seLinux' in kwargs:
+            se_linux = kwargs['seLinux']
+        if 'supplementalGroup' in kwargs:
+            supplemental_group = kwargs['supplementalGroup']
+
         if allow_privilege_escalation is not None:
             _setter("allow_privilege_escalation", allow_privilege_escalation)
         if allowed_capabilities is not None:
@@ -656,7 +702,53 @@ class _PodSecurityPolicyTemplateState:
              se_linux: Optional[pulumi.Input['PodSecurityPolicyTemplateSeLinuxArgs']] = None,
              supplemental_group: Optional[pulumi.Input['PodSecurityPolicyTemplateSupplementalGroupArgs']] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowPrivilegeEscalation' in kwargs:
+            allow_privilege_escalation = kwargs['allowPrivilegeEscalation']
+        if 'allowedCapabilities' in kwargs:
+            allowed_capabilities = kwargs['allowedCapabilities']
+        if 'allowedCsiDrivers' in kwargs:
+            allowed_csi_drivers = kwargs['allowedCsiDrivers']
+        if 'allowedFlexVolumes' in kwargs:
+            allowed_flex_volumes = kwargs['allowedFlexVolumes']
+        if 'allowedHostPaths' in kwargs:
+            allowed_host_paths = kwargs['allowedHostPaths']
+        if 'allowedProcMountTypes' in kwargs:
+            allowed_proc_mount_types = kwargs['allowedProcMountTypes']
+        if 'allowedUnsafeSysctls' in kwargs:
+            allowed_unsafe_sysctls = kwargs['allowedUnsafeSysctls']
+        if 'defaultAddCapabilities' in kwargs:
+            default_add_capabilities = kwargs['defaultAddCapabilities']
+        if 'defaultAllowPrivilegeEscalation' in kwargs:
+            default_allow_privilege_escalation = kwargs['defaultAllowPrivilegeEscalation']
+        if 'forbiddenSysctls' in kwargs:
+            forbidden_sysctls = kwargs['forbiddenSysctls']
+        if 'fsGroup' in kwargs:
+            fs_group = kwargs['fsGroup']
+        if 'hostIpc' in kwargs:
+            host_ipc = kwargs['hostIpc']
+        if 'hostNetwork' in kwargs:
+            host_network = kwargs['hostNetwork']
+        if 'hostPid' in kwargs:
+            host_pid = kwargs['hostPid']
+        if 'hostPorts' in kwargs:
+            host_ports = kwargs['hostPorts']
+        if 'readOnlyRootFilesystem' in kwargs:
+            read_only_root_filesystem = kwargs['readOnlyRootFilesystem']
+        if 'requiredDropCapabilities' in kwargs:
+            required_drop_capabilities = kwargs['requiredDropCapabilities']
+        if 'runAsGroup' in kwargs:
+            run_as_group = kwargs['runAsGroup']
+        if 'runAsUser' in kwargs:
+            run_as_user = kwargs['runAsUser']
+        if 'runtimeClass' in kwargs:
+            runtime_class = kwargs['runtimeClass']
+        if 'seLinux' in kwargs:
+            se_linux = kwargs['seLinux']
+        if 'supplementalGroup' in kwargs:
+            supplemental_group = kwargs['supplementalGroup']
+
         if allow_privilege_escalation is not None:
             _setter("allow_privilege_escalation", allow_privilege_escalation)
         if allowed_capabilities is not None:

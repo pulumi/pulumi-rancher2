@@ -69,7 +69,23 @@ class ProjectArgs:
              project_monitoring_input: Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']] = None,
              resource_quota: Optional[pulumi.Input['ProjectResourceQuotaArgs']] = None,
              wait_for_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'containerResourceLimit' in kwargs:
+            container_resource_limit = kwargs['containerResourceLimit']
+        if 'enableProjectMonitoring' in kwargs:
+            enable_project_monitoring = kwargs['enableProjectMonitoring']
+        if 'podSecurityPolicyTemplateId' in kwargs:
+            pod_security_policy_template_id = kwargs['podSecurityPolicyTemplateId']
+        if 'projectMonitoringInput' in kwargs:
+            project_monitoring_input = kwargs['projectMonitoringInput']
+        if 'resourceQuota' in kwargs:
+            resource_quota = kwargs['resourceQuota']
+        if 'waitForCluster' in kwargs:
+            wait_for_cluster = kwargs['waitForCluster']
+
         _setter("cluster_id", cluster_id)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -281,7 +297,23 @@ class _ProjectState:
              project_monitoring_input: Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']] = None,
              resource_quota: Optional[pulumi.Input['ProjectResourceQuotaArgs']] = None,
              wait_for_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'containerResourceLimit' in kwargs:
+            container_resource_limit = kwargs['containerResourceLimit']
+        if 'enableProjectMonitoring' in kwargs:
+            enable_project_monitoring = kwargs['enableProjectMonitoring']
+        if 'podSecurityPolicyTemplateId' in kwargs:
+            pod_security_policy_template_id = kwargs['podSecurityPolicyTemplateId']
+        if 'projectMonitoringInput' in kwargs:
+            project_monitoring_input = kwargs['projectMonitoringInput']
+        if 'resourceQuota' in kwargs:
+            resource_quota = kwargs['resourceQuota']
+        if 'waitForCluster' in kwargs:
+            wait_for_cluster = kwargs['waitForCluster']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if cluster_id is not None:

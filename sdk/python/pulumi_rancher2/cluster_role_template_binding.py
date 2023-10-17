@@ -61,7 +61,21 @@ class ClusterRoleTemplateBindingArgs:
              name: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              user_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'roleTemplateId' in kwargs:
+            role_template_id = kwargs['roleTemplateId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupPrincipalId' in kwargs:
+            group_principal_id = kwargs['groupPrincipalId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'userPrincipalId' in kwargs:
+            user_principal_id = kwargs['userPrincipalId']
+
         _setter("cluster_id", cluster_id)
         _setter("role_template_id", role_template_id)
         if annotations is not None:
@@ -240,7 +254,21 @@ class _ClusterRoleTemplateBindingState:
              role_template_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              user_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupPrincipalId' in kwargs:
+            group_principal_id = kwargs['groupPrincipalId']
+        if 'roleTemplateId' in kwargs:
+            role_template_id = kwargs['roleTemplateId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'userPrincipalId' in kwargs:
+            user_principal_id = kwargs['userPrincipalId']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if cluster_id is not None:

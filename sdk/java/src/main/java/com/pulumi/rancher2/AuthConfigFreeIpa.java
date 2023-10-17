@@ -209,6 +209,12 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
     public Output<String> groupSearchBase() {
         return this.groupSearchBase;
     }
+    @Export(name="groupSearchFilter", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> groupSearchFilter;
+
+    public Output<Optional<String>> groupSearchFilter() {
+        return Codegen.optional(this.groupSearchFilter);
+    }
     /**
      * Labels of the resource (map)
      * 
@@ -306,6 +312,12 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      */
     public Output<String> serviceAccountPassword() {
         return this.serviceAccountPassword;
+    }
+    @Export(name="startTls", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> startTls;
+
+    public Output<Boolean> startTls() {
+        return this.startTls;
     }
     /**
      * Password for test access to FreeIpa service (string)
@@ -474,6 +486,12 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      */
     public Output<String> userSearchBase() {
         return this.userSearchBase;
+    }
+    @Export(name="userSearchFilter", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> userSearchFilter;
+
+    public Output<Optional<String>> userSearchFilter() {
+        return Codegen.optional(this.userSearchFilter);
     }
 
     /**

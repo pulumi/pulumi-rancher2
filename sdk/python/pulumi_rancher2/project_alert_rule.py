@@ -77,7 +77,25 @@ class ProjectAlertRuleArgs:
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
              severity: Optional[pulumi.Input[str]] = None,
              workload_rule: Optional[pulumi.Input['ProjectAlertRuleWorkloadRuleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'groupIntervalSeconds' in kwargs:
+            group_interval_seconds = kwargs['groupIntervalSeconds']
+        if 'groupWaitSeconds' in kwargs:
+            group_wait_seconds = kwargs['groupWaitSeconds']
+        if 'metricRule' in kwargs:
+            metric_rule = kwargs['metricRule']
+        if 'podRule' in kwargs:
+            pod_rule = kwargs['podRule']
+        if 'repeatIntervalSeconds' in kwargs:
+            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
+        if 'workloadRule' in kwargs:
+            workload_rule = kwargs['workloadRule']
+
         _setter("group_id", group_id)
         _setter("project_id", project_id)
         if annotations is not None:
@@ -324,7 +342,25 @@ class _ProjectAlertRuleState:
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
              severity: Optional[pulumi.Input[str]] = None,
              workload_rule: Optional[pulumi.Input['ProjectAlertRuleWorkloadRuleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupIntervalSeconds' in kwargs:
+            group_interval_seconds = kwargs['groupIntervalSeconds']
+        if 'groupWaitSeconds' in kwargs:
+            group_wait_seconds = kwargs['groupWaitSeconds']
+        if 'metricRule' in kwargs:
+            metric_rule = kwargs['metricRule']
+        if 'podRule' in kwargs:
+            pod_rule = kwargs['podRule']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'repeatIntervalSeconds' in kwargs:
+            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
+        if 'workloadRule' in kwargs:
+            workload_rule = kwargs['workloadRule']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if group_id is not None:

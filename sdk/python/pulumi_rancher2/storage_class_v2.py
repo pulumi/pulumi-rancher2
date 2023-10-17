@@ -63,7 +63,21 @@ class StorageClassV2Args:
              parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              reclaim_policy: Optional[pulumi.Input[str]] = None,
              volume_binding_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'k8sProvisioner' in kwargs:
+            k8s_provisioner = kwargs['k8sProvisioner']
+        if 'allowVolumeExpansion' in kwargs:
+            allow_volume_expansion = kwargs['allowVolumeExpansion']
+        if 'mountOptions' in kwargs:
+            mount_options = kwargs['mountOptions']
+        if 'reclaimPolicy' in kwargs:
+            reclaim_policy = kwargs['reclaimPolicy']
+        if 'volumeBindingMode' in kwargs:
+            volume_binding_mode = kwargs['volumeBindingMode']
+
         _setter("cluster_id", cluster_id)
         _setter("k8s_provisioner", k8s_provisioner)
         if allow_volume_expansion is not None:
@@ -260,7 +274,23 @@ class _StorageClassV2State:
              reclaim_policy: Optional[pulumi.Input[str]] = None,
              resource_version: Optional[pulumi.Input[str]] = None,
              volume_binding_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowVolumeExpansion' in kwargs:
+            allow_volume_expansion = kwargs['allowVolumeExpansion']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'k8sProvisioner' in kwargs:
+            k8s_provisioner = kwargs['k8sProvisioner']
+        if 'mountOptions' in kwargs:
+            mount_options = kwargs['mountOptions']
+        if 'reclaimPolicy' in kwargs:
+            reclaim_policy = kwargs['reclaimPolicy']
+        if 'resourceVersion' in kwargs:
+            resource_version = kwargs['resourceVersion']
+        if 'volumeBindingMode' in kwargs:
+            volume_binding_mode = kwargs['volumeBindingMode']
+
         if allow_volume_expansion is not None:
             _setter("allow_volume_expansion", allow_volume_expansion)
         if annotations is not None:

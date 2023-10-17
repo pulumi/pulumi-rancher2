@@ -63,7 +63,15 @@ class ClusterDriverArgs:
              name: Optional[pulumi.Input[str]] = None,
              ui_url: Optional[pulumi.Input[str]] = None,
              whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'actualUrl' in kwargs:
+            actual_url = kwargs['actualUrl']
+        if 'uiUrl' in kwargs:
+            ui_url = kwargs['uiUrl']
+        if 'whitelistDomains' in kwargs:
+            whitelist_domains = kwargs['whitelistDomains']
+
         _setter("active", active)
         _setter("builtin", builtin)
         _setter("url", url)
@@ -255,7 +263,15 @@ class _ClusterDriverState:
              ui_url: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'actualUrl' in kwargs:
+            actual_url = kwargs['actualUrl']
+        if 'uiUrl' in kwargs:
+            ui_url = kwargs['uiUrl']
+        if 'whitelistDomains' in kwargs:
+            whitelist_domains = kwargs['whitelistDomains']
+
         if active is not None:
             _setter("active", active)
         if actual_url is not None:

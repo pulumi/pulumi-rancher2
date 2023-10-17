@@ -215,6 +215,13 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.groupSearchBase);
     }
 
+    @Import(name="groupSearchFilter")
+    private @Nullable Output<String> groupSearchFilter;
+
+    public Optional<Output<String>> groupSearchFilter() {
+        return Optional.ofNullable(this.groupSearchFilter);
+    }
+
     /**
      * Labels of the resource (map)
      * 
@@ -318,6 +325,13 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> serviceAccountPassword() {
         return Optional.ofNullable(this.serviceAccountPassword);
+    }
+
+    @Import(name="startTls")
+    private @Nullable Output<Boolean> startTls;
+
+    public Optional<Output<Boolean>> startTls() {
+        return Optional.ofNullable(this.startTls);
     }
 
     /**
@@ -500,6 +514,13 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.userSearchBase);
     }
 
+    @Import(name="userSearchFilter")
+    private @Nullable Output<String> userSearchFilter;
+
+    public Optional<Output<String>> userSearchFilter() {
+        return Optional.ofNullable(this.userSearchFilter);
+    }
+
     private AuthConfigFreeIpaState() {}
 
     private AuthConfigFreeIpaState(AuthConfigFreeIpaState $) {
@@ -516,6 +537,7 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
         this.groupObjectClass = $.groupObjectClass;
         this.groupSearchAttribute = $.groupSearchAttribute;
         this.groupSearchBase = $.groupSearchBase;
+        this.groupSearchFilter = $.groupSearchFilter;
         this.labels = $.labels;
         this.name = $.name;
         this.nestedGroupMembershipEnabled = $.nestedGroupMembershipEnabled;
@@ -523,6 +545,7 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
         this.servers = $.servers;
         this.serviceAccountDistinguishedName = $.serviceAccountDistinguishedName;
         this.serviceAccountPassword = $.serviceAccountPassword;
+        this.startTls = $.startTls;
         this.testPassword = $.testPassword;
         this.testUsername = $.testUsername;
         this.tls = $.tls;
@@ -535,6 +558,7 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
         this.userObjectClass = $.userObjectClass;
         this.userSearchAttribute = $.userSearchAttribute;
         this.userSearchBase = $.userSearchBase;
+        this.userSearchFilter = $.userSearchFilter;
     }
 
     public static Builder builder() {
@@ -838,6 +862,15 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
             return groupSearchBase(Output.of(groupSearchBase));
         }
 
+        public Builder groupSearchFilter(@Nullable Output<String> groupSearchFilter) {
+            $.groupSearchFilter = groupSearchFilter;
+            return this;
+        }
+
+        public Builder groupSearchFilter(String groupSearchFilter) {
+            return groupSearchFilter(Output.of(groupSearchFilter));
+        }
+
         /**
          * @param labels Labels of the resource (map)
          * 
@@ -993,6 +1026,15 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
          */
         public Builder serviceAccountPassword(String serviceAccountPassword) {
             return serviceAccountPassword(Output.of(serviceAccountPassword));
+        }
+
+        public Builder startTls(@Nullable Output<Boolean> startTls) {
+            $.startTls = startTls;
+            return this;
+        }
+
+        public Builder startTls(Boolean startTls) {
+            return startTls(Output.of(startTls));
         }
 
         /**
@@ -1245,6 +1287,15 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
          */
         public Builder userSearchBase(String userSearchBase) {
             return userSearchBase(Output.of(userSearchBase));
+        }
+
+        public Builder userSearchFilter(@Nullable Output<String> userSearchFilter) {
+            $.userSearchFilter = userSearchFilter;
+            return this;
+        }
+
+        public Builder userSearchFilter(String userSearchFilter) {
+            return userSearchFilter(Output.of(userSearchFilter));
         }
 
         public AuthConfigFreeIpaState build() {

@@ -79,7 +79,13 @@ class CatalogArgs:
              scope: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         _setter("url", url)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -345,7 +351,13 @@ class _CatalogState:
              url: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if branch is not None:

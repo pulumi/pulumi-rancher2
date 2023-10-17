@@ -77,7 +77,27 @@ class CloudCredentialArgs:
              openstack_credential_config: Optional[pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs']] = None,
              s3_credential_config: Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']] = None,
              vsphere_credential_config: Optional[pulumi.Input['CloudCredentialVsphereCredentialConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'amazonec2CredentialConfig' in kwargs:
+            amazonec2_credential_config = kwargs['amazonec2CredentialConfig']
+        if 'azureCredentialConfig' in kwargs:
+            azure_credential_config = kwargs['azureCredentialConfig']
+        if 'digitaloceanCredentialConfig' in kwargs:
+            digitalocean_credential_config = kwargs['digitaloceanCredentialConfig']
+        if 'googleCredentialConfig' in kwargs:
+            google_credential_config = kwargs['googleCredentialConfig']
+        if 'harvesterCredentialConfig' in kwargs:
+            harvester_credential_config = kwargs['harvesterCredentialConfig']
+        if 'linodeCredentialConfig' in kwargs:
+            linode_credential_config = kwargs['linodeCredentialConfig']
+        if 'openstackCredentialConfig' in kwargs:
+            openstack_credential_config = kwargs['openstackCredentialConfig']
+        if 's3CredentialConfig' in kwargs:
+            s3_credential_config = kwargs['s3CredentialConfig']
+        if 'vsphereCredentialConfig' in kwargs:
+            vsphere_credential_config = kwargs['vsphereCredentialConfig']
+
         if amazonec2_credential_config is not None:
             _setter("amazonec2_credential_config", amazonec2_credential_config)
         if annotations is not None:
@@ -330,7 +350,27 @@ class _CloudCredentialState:
              openstack_credential_config: Optional[pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs']] = None,
              s3_credential_config: Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']] = None,
              vsphere_credential_config: Optional[pulumi.Input['CloudCredentialVsphereCredentialConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'amazonec2CredentialConfig' in kwargs:
+            amazonec2_credential_config = kwargs['amazonec2CredentialConfig']
+        if 'azureCredentialConfig' in kwargs:
+            azure_credential_config = kwargs['azureCredentialConfig']
+        if 'digitaloceanCredentialConfig' in kwargs:
+            digitalocean_credential_config = kwargs['digitaloceanCredentialConfig']
+        if 'googleCredentialConfig' in kwargs:
+            google_credential_config = kwargs['googleCredentialConfig']
+        if 'harvesterCredentialConfig' in kwargs:
+            harvester_credential_config = kwargs['harvesterCredentialConfig']
+        if 'linodeCredentialConfig' in kwargs:
+            linode_credential_config = kwargs['linodeCredentialConfig']
+        if 'openstackCredentialConfig' in kwargs:
+            openstack_credential_config = kwargs['openstackCredentialConfig']
+        if 's3CredentialConfig' in kwargs:
+            s3_credential_config = kwargs['s3CredentialConfig']
+        if 'vsphereCredentialConfig' in kwargs:
+            vsphere_credential_config = kwargs['vsphereCredentialConfig']
+
         if amazonec2_credential_config is not None:
             _setter("amazonec2_credential_config", amazonec2_credential_config)
         if annotations is not None:

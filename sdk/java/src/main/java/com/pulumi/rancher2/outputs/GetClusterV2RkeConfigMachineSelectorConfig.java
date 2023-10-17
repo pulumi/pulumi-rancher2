@@ -5,21 +5,19 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector;
-import java.lang.Object;
 import java.lang.String;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigMachineSelectorConfig {
-    private @Nullable Map<String,Object> config;
+    private @Nullable String config;
     private @Nullable GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector machineLabelSelector;
 
     private GetClusterV2RkeConfigMachineSelectorConfig() {}
-    public Map<String,Object> config() {
-        return this.config == null ? Map.of() : this.config;
+    public Optional<String> config() {
+        return Optional.ofNullable(this.config);
     }
     public Optional<GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector> machineLabelSelector() {
         return Optional.ofNullable(this.machineLabelSelector);
@@ -34,7 +32,7 @@ public final class GetClusterV2RkeConfigMachineSelectorConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> config;
+        private @Nullable String config;
         private @Nullable GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector machineLabelSelector;
         public Builder() {}
         public Builder(GetClusterV2RkeConfigMachineSelectorConfig defaults) {
@@ -44,7 +42,7 @@ public final class GetClusterV2RkeConfigMachineSelectorConfig {
         }
 
         @CustomType.Setter
-        public Builder config(@Nullable Map<String,Object> config) {
+        public Builder config(@Nullable String config) {
             this.config = config;
             return this;
         }

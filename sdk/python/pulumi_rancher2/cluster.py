@@ -161,7 +161,67 @@ class ClusterArgs:
              rke2_config: Optional[pulumi.Input['ClusterRke2ConfigArgs']] = None,
              rke_config: Optional[pulumi.Input['ClusterRkeConfigArgs']] = None,
              windows_prefered_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'agentEnvVars' in kwargs:
+            agent_env_vars = kwargs['agentEnvVars']
+        if 'aksConfig' in kwargs:
+            aks_config = kwargs['aksConfig']
+        if 'aksConfigV2' in kwargs:
+            aks_config_v2 = kwargs['aksConfigV2']
+        if 'clusterAgentDeploymentCustomizations' in kwargs:
+            cluster_agent_deployment_customizations = kwargs['clusterAgentDeploymentCustomizations']
+        if 'clusterAuthEndpoint' in kwargs:
+            cluster_auth_endpoint = kwargs['clusterAuthEndpoint']
+        if 'clusterMonitoringInput' in kwargs:
+            cluster_monitoring_input = kwargs['clusterMonitoringInput']
+        if 'clusterTemplateAnswers' in kwargs:
+            cluster_template_answers = kwargs['clusterTemplateAnswers']
+        if 'clusterTemplateId' in kwargs:
+            cluster_template_id = kwargs['clusterTemplateId']
+        if 'clusterTemplateQuestions' in kwargs:
+            cluster_template_questions = kwargs['clusterTemplateQuestions']
+        if 'clusterTemplateRevisionId' in kwargs:
+            cluster_template_revision_id = kwargs['clusterTemplateRevisionId']
+        if 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
+            default_pod_security_admission_configuration_template_name = kwargs['defaultPodSecurityAdmissionConfigurationTemplateName']
+        if 'defaultPodSecurityPolicyTemplateId' in kwargs:
+            default_pod_security_policy_template_id = kwargs['defaultPodSecurityPolicyTemplateId']
+        if 'desiredAgentImage' in kwargs:
+            desired_agent_image = kwargs['desiredAgentImage']
+        if 'desiredAuthImage' in kwargs:
+            desired_auth_image = kwargs['desiredAuthImage']
+        if 'dockerRootDir' in kwargs:
+            docker_root_dir = kwargs['dockerRootDir']
+        if 'eksConfig' in kwargs:
+            eks_config = kwargs['eksConfig']
+        if 'eksConfigV2' in kwargs:
+            eks_config_v2 = kwargs['eksConfigV2']
+        if 'enableClusterAlerting' in kwargs:
+            enable_cluster_alerting = kwargs['enableClusterAlerting']
+        if 'enableClusterMonitoring' in kwargs:
+            enable_cluster_monitoring = kwargs['enableClusterMonitoring']
+        if 'enableNetworkPolicy' in kwargs:
+            enable_network_policy = kwargs['enableNetworkPolicy']
+        if 'fleetAgentDeploymentCustomizations' in kwargs:
+            fleet_agent_deployment_customizations = kwargs['fleetAgentDeploymentCustomizations']
+        if 'fleetWorkspaceName' in kwargs:
+            fleet_workspace_name = kwargs['fleetWorkspaceName']
+        if 'gkeConfig' in kwargs:
+            gke_config = kwargs['gkeConfig']
+        if 'gkeConfigV2' in kwargs:
+            gke_config_v2 = kwargs['gkeConfigV2']
+        if 'k3sConfig' in kwargs:
+            k3s_config = kwargs['k3sConfig']
+        if 'okeConfig' in kwargs:
+            oke_config = kwargs['okeConfig']
+        if 'rke2Config' in kwargs:
+            rke2_config = kwargs['rke2Config']
+        if 'rkeConfig' in kwargs:
+            rke_config = kwargs['rkeConfig']
+        if 'windowsPreferedCluster' in kwargs:
+            windows_prefered_cluster = kwargs['windowsPreferedCluster']
+
         if agent_env_vars is not None:
             _setter("agent_env_vars", agent_env_vars)
         if aks_config is not None:
@@ -816,7 +876,81 @@ class _ClusterState:
              rke_config: Optional[pulumi.Input['ClusterRkeConfigArgs']] = None,
              system_project_id: Optional[pulumi.Input[str]] = None,
              windows_prefered_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'agentEnvVars' in kwargs:
+            agent_env_vars = kwargs['agentEnvVars']
+        if 'aksConfig' in kwargs:
+            aks_config = kwargs['aksConfig']
+        if 'aksConfigV2' in kwargs:
+            aks_config_v2 = kwargs['aksConfigV2']
+        if 'caCert' in kwargs:
+            ca_cert = kwargs['caCert']
+        if 'clusterAgentDeploymentCustomizations' in kwargs:
+            cluster_agent_deployment_customizations = kwargs['clusterAgentDeploymentCustomizations']
+        if 'clusterAuthEndpoint' in kwargs:
+            cluster_auth_endpoint = kwargs['clusterAuthEndpoint']
+        if 'clusterMonitoringInput' in kwargs:
+            cluster_monitoring_input = kwargs['clusterMonitoringInput']
+        if 'clusterRegistrationToken' in kwargs:
+            cluster_registration_token = kwargs['clusterRegistrationToken']
+        if 'clusterTemplateAnswers' in kwargs:
+            cluster_template_answers = kwargs['clusterTemplateAnswers']
+        if 'clusterTemplateId' in kwargs:
+            cluster_template_id = kwargs['clusterTemplateId']
+        if 'clusterTemplateQuestions' in kwargs:
+            cluster_template_questions = kwargs['clusterTemplateQuestions']
+        if 'clusterTemplateRevisionId' in kwargs:
+            cluster_template_revision_id = kwargs['clusterTemplateRevisionId']
+        if 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
+            default_pod_security_admission_configuration_template_name = kwargs['defaultPodSecurityAdmissionConfigurationTemplateName']
+        if 'defaultPodSecurityPolicyTemplateId' in kwargs:
+            default_pod_security_policy_template_id = kwargs['defaultPodSecurityPolicyTemplateId']
+        if 'defaultProjectId' in kwargs:
+            default_project_id = kwargs['defaultProjectId']
+        if 'desiredAgentImage' in kwargs:
+            desired_agent_image = kwargs['desiredAgentImage']
+        if 'desiredAuthImage' in kwargs:
+            desired_auth_image = kwargs['desiredAuthImage']
+        if 'dockerRootDir' in kwargs:
+            docker_root_dir = kwargs['dockerRootDir']
+        if 'eksConfig' in kwargs:
+            eks_config = kwargs['eksConfig']
+        if 'eksConfigV2' in kwargs:
+            eks_config_v2 = kwargs['eksConfigV2']
+        if 'enableClusterAlerting' in kwargs:
+            enable_cluster_alerting = kwargs['enableClusterAlerting']
+        if 'enableClusterIstio' in kwargs:
+            enable_cluster_istio = kwargs['enableClusterIstio']
+        if 'enableClusterMonitoring' in kwargs:
+            enable_cluster_monitoring = kwargs['enableClusterMonitoring']
+        if 'enableNetworkPolicy' in kwargs:
+            enable_network_policy = kwargs['enableNetworkPolicy']
+        if 'fleetAgentDeploymentCustomizations' in kwargs:
+            fleet_agent_deployment_customizations = kwargs['fleetAgentDeploymentCustomizations']
+        if 'fleetWorkspaceName' in kwargs:
+            fleet_workspace_name = kwargs['fleetWorkspaceName']
+        if 'gkeConfig' in kwargs:
+            gke_config = kwargs['gkeConfig']
+        if 'gkeConfigV2' in kwargs:
+            gke_config_v2 = kwargs['gkeConfigV2']
+        if 'istioEnabled' in kwargs:
+            istio_enabled = kwargs['istioEnabled']
+        if 'k3sConfig' in kwargs:
+            k3s_config = kwargs['k3sConfig']
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'okeConfig' in kwargs:
+            oke_config = kwargs['okeConfig']
+        if 'rke2Config' in kwargs:
+            rke2_config = kwargs['rke2Config']
+        if 'rkeConfig' in kwargs:
+            rke_config = kwargs['rkeConfig']
+        if 'systemProjectId' in kwargs:
+            system_project_id = kwargs['systemProjectId']
+        if 'windowsPreferedCluster' in kwargs:
+            windows_prefered_cluster = kwargs['windowsPreferedCluster']
+
         if agent_env_vars is not None:
             _setter("agent_env_vars", agent_env_vars)
         if aks_config is not None:

@@ -5,9 +5,7 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.rancher2.outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector;
-import java.lang.Object;
 import java.lang.String;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,10 +13,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachineSelectorConfig {
     /**
-     * @return Machine selector config (map)
+     * @return Machine selector config. Must be in YAML format (string)
      * 
      */
-    private @Nullable Map<String,Object> config;
+    private @Nullable String config;
     /**
      * @return Machine selector label (list maxitems:1)
      * 
@@ -27,11 +25,11 @@ public final class ClusterV2RkeConfigMachineSelectorConfig {
 
     private ClusterV2RkeConfigMachineSelectorConfig() {}
     /**
-     * @return Machine selector config (map)
+     * @return Machine selector config. Must be in YAML format (string)
      * 
      */
-    public Map<String,Object> config() {
-        return this.config == null ? Map.of() : this.config;
+    public Optional<String> config() {
+        return Optional.ofNullable(this.config);
     }
     /**
      * @return Machine selector label (list maxitems:1)
@@ -50,7 +48,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> config;
+        private @Nullable String config;
         private @Nullable ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector machineLabelSelector;
         public Builder() {}
         public Builder(ClusterV2RkeConfigMachineSelectorConfig defaults) {
@@ -60,7 +58,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfig {
         }
 
         @CustomType.Setter
-        public Builder config(@Nullable Map<String,Object> config) {
+        public Builder config(@Nullable String config) {
             this.config = config;
             return this;
         }

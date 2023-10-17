@@ -57,7 +57,17 @@ class NamespaceArgs:
              name: Optional[pulumi.Input[str]] = None,
              resource_quota: Optional[pulumi.Input['NamespaceResourceQuotaArgs']] = None,
              wait_for_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'containerResourceLimit' in kwargs:
+            container_resource_limit = kwargs['containerResourceLimit']
+        if 'resourceQuota' in kwargs:
+            resource_quota = kwargs['resourceQuota']
+        if 'waitForCluster' in kwargs:
+            wait_for_cluster = kwargs['waitForCluster']
+
         _setter("project_id", project_id)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -215,7 +225,17 @@ class _NamespaceState:
              project_id: Optional[pulumi.Input[str]] = None,
              resource_quota: Optional[pulumi.Input['NamespaceResourceQuotaArgs']] = None,
              wait_for_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'containerResourceLimit' in kwargs:
+            container_resource_limit = kwargs['containerResourceLimit']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'resourceQuota' in kwargs:
+            resource_quota = kwargs['resourceQuota']
+        if 'waitForCluster' in kwargs:
+            wait_for_cluster = kwargs['waitForCluster']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if container_resource_limit is not None:

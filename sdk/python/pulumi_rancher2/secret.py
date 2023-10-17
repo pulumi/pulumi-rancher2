@@ -51,7 +51,13 @@ class SecretArgs:
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+
         _setter("data", data)
         _setter("project_id", project_id)
         if annotations is not None:
@@ -190,7 +196,13 @@ class _SecretState:
              name: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if data is not None:

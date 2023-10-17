@@ -79,7 +79,25 @@ class CatalogV2Args:
              service_account: Optional[pulumi.Input[str]] = None,
              service_account_namespace: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'caBundle' in kwargs:
+            ca_bundle = kwargs['caBundle']
+        if 'gitBranch' in kwargs:
+            git_branch = kwargs['gitBranch']
+        if 'gitRepo' in kwargs:
+            git_repo = kwargs['gitRepo']
+        if 'secretName' in kwargs:
+            secret_name = kwargs['secretName']
+        if 'secretNamespace' in kwargs:
+            secret_namespace = kwargs['secretNamespace']
+        if 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if 'serviceAccountNamespace' in kwargs:
+            service_account_namespace = kwargs['serviceAccountNamespace']
+
         _setter("cluster_id", cluster_id)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -349,7 +367,27 @@ class _CatalogV2State:
              service_account: Optional[pulumi.Input[str]] = None,
              service_account_namespace: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caBundle' in kwargs:
+            ca_bundle = kwargs['caBundle']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'gitBranch' in kwargs:
+            git_branch = kwargs['gitBranch']
+        if 'gitRepo' in kwargs:
+            git_repo = kwargs['gitRepo']
+        if 'resourceVersion' in kwargs:
+            resource_version = kwargs['resourceVersion']
+        if 'secretName' in kwargs:
+            secret_name = kwargs['secretName']
+        if 'secretNamespace' in kwargs:
+            secret_namespace = kwargs['secretNamespace']
+        if 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if 'serviceAccountNamespace' in kwargs:
+            service_account_namespace = kwargs['serviceAccountNamespace']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if ca_bundle is not None:

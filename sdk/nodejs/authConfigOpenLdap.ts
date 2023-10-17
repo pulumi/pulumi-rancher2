@@ -89,6 +89,7 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
      * Group search base (string)
      */
     public readonly groupSearchBase!: pulumi.Output<string>;
+    public readonly groupSearchFilter!: pulumi.Output<string | undefined>;
     /**
      * Labels of the resource (map)
      */
@@ -117,6 +118,7 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
      * Service account password for access OpenLdap service (string)
      */
     public readonly serviceAccountPassword!: pulumi.Output<string>;
+    public readonly startTls!: pulumi.Output<boolean>;
     /**
      * Password for test access to OpenLdap service (string)
      */
@@ -165,6 +167,7 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
      * User search base DN (string)
      */
     public readonly userSearchBase!: pulumi.Output<string>;
+    public readonly userSearchFilter!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AuthConfigOpenLdap resource with the given unique name, arguments, and options.
@@ -192,6 +195,7 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
             resourceInputs["groupObjectClass"] = state ? state.groupObjectClass : undefined;
             resourceInputs["groupSearchAttribute"] = state ? state.groupSearchAttribute : undefined;
             resourceInputs["groupSearchBase"] = state ? state.groupSearchBase : undefined;
+            resourceInputs["groupSearchFilter"] = state ? state.groupSearchFilter : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nestedGroupMembershipEnabled"] = state ? state.nestedGroupMembershipEnabled : undefined;
@@ -199,6 +203,7 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
             resourceInputs["servers"] = state ? state.servers : undefined;
             resourceInputs["serviceAccountDistinguishedName"] = state ? state.serviceAccountDistinguishedName : undefined;
             resourceInputs["serviceAccountPassword"] = state ? state.serviceAccountPassword : undefined;
+            resourceInputs["startTls"] = state ? state.startTls : undefined;
             resourceInputs["testPassword"] = state ? state.testPassword : undefined;
             resourceInputs["testUsername"] = state ? state.testUsername : undefined;
             resourceInputs["tls"] = state ? state.tls : undefined;
@@ -211,6 +216,7 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
             resourceInputs["userObjectClass"] = state ? state.userObjectClass : undefined;
             resourceInputs["userSearchAttribute"] = state ? state.userSearchAttribute : undefined;
             resourceInputs["userSearchBase"] = state ? state.userSearchBase : undefined;
+            resourceInputs["userSearchFilter"] = state ? state.userSearchFilter : undefined;
         } else {
             const args = argsOrState as AuthConfigOpenLdapArgs | undefined;
             if ((!args || args.servers === undefined) && !opts.urn) {
@@ -244,12 +250,14 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
             resourceInputs["groupObjectClass"] = args ? args.groupObjectClass : undefined;
             resourceInputs["groupSearchAttribute"] = args ? args.groupSearchAttribute : undefined;
             resourceInputs["groupSearchBase"] = args ? args.groupSearchBase : undefined;
+            resourceInputs["groupSearchFilter"] = args ? args.groupSearchFilter : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["nestedGroupMembershipEnabled"] = args ? args.nestedGroupMembershipEnabled : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["servers"] = args ? args.servers : undefined;
             resourceInputs["serviceAccountDistinguishedName"] = args?.serviceAccountDistinguishedName ? pulumi.secret(args.serviceAccountDistinguishedName) : undefined;
             resourceInputs["serviceAccountPassword"] = args?.serviceAccountPassword ? pulumi.secret(args.serviceAccountPassword) : undefined;
+            resourceInputs["startTls"] = args ? args.startTls : undefined;
             resourceInputs["testPassword"] = args?.testPassword ? pulumi.secret(args.testPassword) : undefined;
             resourceInputs["testUsername"] = args ? args.testUsername : undefined;
             resourceInputs["tls"] = args ? args.tls : undefined;
@@ -261,6 +269,7 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
             resourceInputs["userObjectClass"] = args ? args.userObjectClass : undefined;
             resourceInputs["userSearchAttribute"] = args ? args.userSearchAttribute : undefined;
             resourceInputs["userSearchBase"] = args ? args.userSearchBase : undefined;
+            resourceInputs["userSearchFilter"] = args ? args.userSearchFilter : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -327,6 +336,7 @@ export interface AuthConfigOpenLdapState {
      * Group search base (string)
      */
     groupSearchBase?: pulumi.Input<string>;
+    groupSearchFilter?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
@@ -355,6 +365,7 @@ export interface AuthConfigOpenLdapState {
      * Service account password for access OpenLdap service (string)
      */
     serviceAccountPassword?: pulumi.Input<string>;
+    startTls?: pulumi.Input<boolean>;
     /**
      * Password for test access to OpenLdap service (string)
      */
@@ -403,6 +414,7 @@ export interface AuthConfigOpenLdapState {
      * User search base DN (string)
      */
     userSearchBase?: pulumi.Input<string>;
+    userSearchFilter?: pulumi.Input<string>;
 }
 
 /**
@@ -461,6 +473,7 @@ export interface AuthConfigOpenLdapArgs {
      * Group search base (string)
      */
     groupSearchBase?: pulumi.Input<string>;
+    groupSearchFilter?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
@@ -485,6 +498,7 @@ export interface AuthConfigOpenLdapArgs {
      * Service account password for access OpenLdap service (string)
      */
     serviceAccountPassword: pulumi.Input<string>;
+    startTls?: pulumi.Input<boolean>;
     /**
      * Password for test access to OpenLdap service (string)
      */
@@ -529,4 +543,5 @@ export interface AuthConfigOpenLdapArgs {
      * User search base DN (string)
      */
     userSearchBase: pulumi.Input<string>;
+    userSearchFilter?: pulumi.Input<string>;
 }

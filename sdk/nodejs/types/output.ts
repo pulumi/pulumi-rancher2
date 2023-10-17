@@ -4898,9 +4898,9 @@ export interface ClusterV2RkeConfigMachinePoolTaint {
 
 export interface ClusterV2RkeConfigMachineSelectorConfig {
     /**
-     * Machine selector config (map)
+     * Machine selector config. Must be in YAML format (string)
      */
-    config?: {[key: string]: any};
+    config?: string;
     /**
      * Machine selector label (list maxitems:1)
      */
@@ -7066,7 +7066,7 @@ export interface GetClusterV2RkeConfigMachinePoolTaint {
 }
 
 export interface GetClusterV2RkeConfigMachineSelectorConfig {
-    config?: {[key: string]: any};
+    config?: string;
     machineLabelSelector?: outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector;
 }
 
@@ -7588,10 +7588,6 @@ export interface MachineConfigV2Amazonec2Config {
      * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
      */
     instanceType?: string;
-    /**
-     * OpenStack keypair to use to SSH to the instance (string)
-     */
-    keypairName?: string;
     /**
      * Custom KMS key ID using the AWS Managed CMK (string)
      */
@@ -8164,6 +8160,7 @@ export interface MachineConfigV2OpenstackConfig {
      * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
      * > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
      * > **Note:**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
+     * > **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
      */
     volumeDevicePath?: string;
     /**
@@ -8522,10 +8519,6 @@ export interface NodeTemplateAmazonec2Config {
      * Outscale VM type. Default `tinav2.c1r2p3` (string)
      */
     instanceType?: string;
-    /**
-     * OpenStack keypair to use to SSH to the instance (string)
-     */
-    keypairName?: string;
     /**
      * Custom KMS key ID using the AWS Managed CMK (string)
      */
@@ -9225,6 +9218,8 @@ export interface NodeTemplateOpenstackConfig {
      * > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
      *
      * > **Note:**: `Required**` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
+     *
+     * > **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
      */
     volumeDevicePath?: string;
     /**

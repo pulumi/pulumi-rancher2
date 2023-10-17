@@ -54,7 +54,21 @@ class ClusterSyncArgs:
              wait_alerting: Optional[pulumi.Input[bool]] = None,
              wait_catalogs: Optional[pulumi.Input[bool]] = None,
              wait_monitoring: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'nodePoolIds' in kwargs:
+            node_pool_ids = kwargs['nodePoolIds']
+        if 'stateConfirm' in kwargs:
+            state_confirm = kwargs['stateConfirm']
+        if 'waitAlerting' in kwargs:
+            wait_alerting = kwargs['waitAlerting']
+        if 'waitCatalogs' in kwargs:
+            wait_catalogs = kwargs['waitCatalogs']
+        if 'waitMonitoring' in kwargs:
+            wait_monitoring = kwargs['waitMonitoring']
+
         _setter("cluster_id", cluster_id)
         if node_pool_ids is not None:
             _setter("node_pool_ids", node_pool_ids)
@@ -210,7 +224,27 @@ class _ClusterSyncState:
              wait_alerting: Optional[pulumi.Input[bool]] = None,
              wait_catalogs: Optional[pulumi.Input[bool]] = None,
              wait_monitoring: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'defaultProjectId' in kwargs:
+            default_project_id = kwargs['defaultProjectId']
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'nodePoolIds' in kwargs:
+            node_pool_ids = kwargs['nodePoolIds']
+        if 'stateConfirm' in kwargs:
+            state_confirm = kwargs['stateConfirm']
+        if 'systemProjectId' in kwargs:
+            system_project_id = kwargs['systemProjectId']
+        if 'waitAlerting' in kwargs:
+            wait_alerting = kwargs['waitAlerting']
+        if 'waitCatalogs' in kwargs:
+            wait_catalogs = kwargs['waitCatalogs']
+        if 'waitMonitoring' in kwargs:
+            wait_monitoring = kwargs['waitMonitoring']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if default_project_id is not None:

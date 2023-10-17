@@ -83,7 +83,27 @@ class AppV2Args:
              project_id: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[str]] = None,
              wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'chartName' in kwargs:
+            chart_name = kwargs['chartName']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if 'chartVersion' in kwargs:
+            chart_version = kwargs['chartVersion']
+        if 'cleanupOnFail' in kwargs:
+            cleanup_on_fail = kwargs['cleanupOnFail']
+        if 'disableHooks' in kwargs:
+            disable_hooks = kwargs['disableHooks']
+        if 'disableOpenApiValidation' in kwargs:
+            disable_open_api_validation = kwargs['disableOpenApiValidation']
+        if 'forceUpgrade' in kwargs:
+            force_upgrade = kwargs['forceUpgrade']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         _setter("chart_name", chart_name)
         _setter("cluster_id", cluster_id)
         _setter("namespace", namespace)
@@ -378,7 +398,33 @@ class _AppV2State:
              system_default_registry: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[str]] = None,
              wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'chartName' in kwargs:
+            chart_name = kwargs['chartName']
+        if 'chartVersion' in kwargs:
+            chart_version = kwargs['chartVersion']
+        if 'cleanupOnFail' in kwargs:
+            cleanup_on_fail = kwargs['cleanupOnFail']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'deploymentValues' in kwargs:
+            deployment_values = kwargs['deploymentValues']
+        if 'disableHooks' in kwargs:
+            disable_hooks = kwargs['disableHooks']
+        if 'disableOpenApiValidation' in kwargs:
+            disable_open_api_validation = kwargs['disableOpenApiValidation']
+        if 'forceUpgrade' in kwargs:
+            force_upgrade = kwargs['forceUpgrade']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if 'systemDefaultRegistry' in kwargs:
+            system_default_registry = kwargs['systemDefaultRegistry']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if chart_name is not None:

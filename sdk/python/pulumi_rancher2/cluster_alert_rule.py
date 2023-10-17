@@ -81,7 +81,27 @@ class ClusterAlertRuleArgs:
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
              severity: Optional[pulumi.Input[str]] = None,
              system_service_rule: Optional[pulumi.Input['ClusterAlertRuleSystemServiceRuleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'eventRule' in kwargs:
+            event_rule = kwargs['eventRule']
+        if 'groupIntervalSeconds' in kwargs:
+            group_interval_seconds = kwargs['groupIntervalSeconds']
+        if 'groupWaitSeconds' in kwargs:
+            group_wait_seconds = kwargs['groupWaitSeconds']
+        if 'metricRule' in kwargs:
+            metric_rule = kwargs['metricRule']
+        if 'nodeRule' in kwargs:
+            node_rule = kwargs['nodeRule']
+        if 'repeatIntervalSeconds' in kwargs:
+            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
+        if 'systemServiceRule' in kwargs:
+            system_service_rule = kwargs['systemServiceRule']
+
         _setter("cluster_id", cluster_id)
         _setter("group_id", group_id)
         if annotations is not None:
@@ -346,7 +366,27 @@ class _ClusterAlertRuleState:
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
              severity: Optional[pulumi.Input[str]] = None,
              system_service_rule: Optional[pulumi.Input['ClusterAlertRuleSystemServiceRuleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'eventRule' in kwargs:
+            event_rule = kwargs['eventRule']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupIntervalSeconds' in kwargs:
+            group_interval_seconds = kwargs['groupIntervalSeconds']
+        if 'groupWaitSeconds' in kwargs:
+            group_wait_seconds = kwargs['groupWaitSeconds']
+        if 'metricRule' in kwargs:
+            metric_rule = kwargs['metricRule']
+        if 'nodeRule' in kwargs:
+            node_rule = kwargs['nodeRule']
+        if 'repeatIntervalSeconds' in kwargs:
+            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
+        if 'systemServiceRule' in kwargs:
+            system_service_rule = kwargs['systemServiceRule']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if cluster_id is not None:

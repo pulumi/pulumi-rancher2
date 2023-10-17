@@ -215,6 +215,13 @@ public final class AuthConfigFreeIpaArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.groupSearchBase);
     }
 
+    @Import(name="groupSearchFilter")
+    private @Nullable Output<String> groupSearchFilter;
+
+    public Optional<Output<String>> groupSearchFilter() {
+        return Optional.ofNullable(this.groupSearchFilter);
+    }
+
     /**
      * Labels of the resource (map)
      * 
@@ -303,6 +310,13 @@ public final class AuthConfigFreeIpaArgs extends com.pulumi.resources.ResourceAr
      */
     public Output<String> serviceAccountPassword() {
         return this.serviceAccountPassword;
+    }
+
+    @Import(name="startTls")
+    private @Nullable Output<Boolean> startTls;
+
+    public Optional<Output<Boolean>> startTls() {
+        return Optional.ofNullable(this.startTls);
     }
 
     /**
@@ -470,6 +484,13 @@ public final class AuthConfigFreeIpaArgs extends com.pulumi.resources.ResourceAr
         return this.userSearchBase;
     }
 
+    @Import(name="userSearchFilter")
+    private @Nullable Output<String> userSearchFilter;
+
+    public Optional<Output<String>> userSearchFilter() {
+        return Optional.ofNullable(this.userSearchFilter);
+    }
+
     private AuthConfigFreeIpaArgs() {}
 
     private AuthConfigFreeIpaArgs(AuthConfigFreeIpaArgs $) {
@@ -486,12 +507,14 @@ public final class AuthConfigFreeIpaArgs extends com.pulumi.resources.ResourceAr
         this.groupObjectClass = $.groupObjectClass;
         this.groupSearchAttribute = $.groupSearchAttribute;
         this.groupSearchBase = $.groupSearchBase;
+        this.groupSearchFilter = $.groupSearchFilter;
         this.labels = $.labels;
         this.nestedGroupMembershipEnabled = $.nestedGroupMembershipEnabled;
         this.port = $.port;
         this.servers = $.servers;
         this.serviceAccountDistinguishedName = $.serviceAccountDistinguishedName;
         this.serviceAccountPassword = $.serviceAccountPassword;
+        this.startTls = $.startTls;
         this.testPassword = $.testPassword;
         this.testUsername = $.testUsername;
         this.tls = $.tls;
@@ -503,6 +526,7 @@ public final class AuthConfigFreeIpaArgs extends com.pulumi.resources.ResourceAr
         this.userObjectClass = $.userObjectClass;
         this.userSearchAttribute = $.userSearchAttribute;
         this.userSearchBase = $.userSearchBase;
+        this.userSearchFilter = $.userSearchFilter;
     }
 
     public static Builder builder() {
@@ -806,6 +830,15 @@ public final class AuthConfigFreeIpaArgs extends com.pulumi.resources.ResourceAr
             return groupSearchBase(Output.of(groupSearchBase));
         }
 
+        public Builder groupSearchFilter(@Nullable Output<String> groupSearchFilter) {
+            $.groupSearchFilter = groupSearchFilter;
+            return this;
+        }
+
+        public Builder groupSearchFilter(String groupSearchFilter) {
+            return groupSearchFilter(Output.of(groupSearchFilter));
+        }
+
         /**
          * @param labels Labels of the resource (map)
          * 
@@ -940,6 +973,15 @@ public final class AuthConfigFreeIpaArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder serviceAccountPassword(String serviceAccountPassword) {
             return serviceAccountPassword(Output.of(serviceAccountPassword));
+        }
+
+        public Builder startTls(@Nullable Output<Boolean> startTls) {
+            $.startTls = startTls;
+            return this;
+        }
+
+        public Builder startTls(Boolean startTls) {
+            return startTls(Output.of(startTls));
         }
 
         /**
@@ -1171,6 +1213,15 @@ public final class AuthConfigFreeIpaArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder userSearchBase(String userSearchBase) {
             return userSearchBase(Output.of(userSearchBase));
+        }
+
+        public Builder userSearchFilter(@Nullable Output<String> userSearchFilter) {
+            $.userSearchFilter = userSearchFilter;
+            return this;
+        }
+
+        public Builder userSearchFilter(String userSearchFilter) {
+            return userSearchFilter(Output.of(userSearchFilter));
         }
 
         public AuthConfigFreeIpaArgs build() {

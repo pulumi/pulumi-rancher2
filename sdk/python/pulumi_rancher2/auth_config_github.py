@@ -59,7 +59,17 @@ class AuthConfigGithubArgs:
              hostname: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              tls: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'allowedPrincipalIds' in kwargs:
+            allowed_principal_ids = kwargs['allowedPrincipalIds']
+
         _setter("client_id", client_id)
         _setter("client_secret", client_secret)
         if access_mode is not None:
@@ -242,7 +252,17 @@ class _AuthConfigGithubState:
              name: Optional[pulumi.Input[str]] = None,
              tls: Optional[pulumi.Input[bool]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'allowedPrincipalIds' in kwargs:
+            allowed_principal_ids = kwargs['allowedPrincipalIds']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+
         if access_mode is not None:
             _setter("access_mode", access_mode)
         if allowed_principal_ids is not None:

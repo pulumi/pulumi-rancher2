@@ -73,7 +73,13 @@ class RoleTempalteArgs:
              name: Optional[pulumi.Input[str]] = None,
              role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTempalteRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultRole' in kwargs:
+            default_role = kwargs['defaultRole']
+        if 'roleTemplateIds' in kwargs:
+            role_template_ids = kwargs['roleTemplateIds']
+
         if administrative is not None:
             _setter("administrative", administrative)
         if annotations is not None:
@@ -308,7 +314,13 @@ class _RoleTempalteState:
              name: Optional[pulumi.Input[str]] = None,
              role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTempalteRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultRole' in kwargs:
+            default_role = kwargs['defaultRole']
+        if 'roleTemplateIds' in kwargs:
+            role_template_ids = kwargs['roleTemplateIds']
+
         if administrative is not None:
             _setter("administrative", administrative)
         if annotations is not None:

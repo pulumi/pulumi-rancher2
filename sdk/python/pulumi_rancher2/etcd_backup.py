@@ -57,7 +57,15 @@ class EtcdBackupArgs:
              manual: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'backupConfig' in kwargs:
+            backup_config = kwargs['backupConfig']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+
         _setter("cluster_id", cluster_id)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -215,7 +223,15 @@ class _EtcdBackupState:
              manual: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupConfig' in kwargs:
+            backup_config = kwargs['backupConfig']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if backup_config is not None:

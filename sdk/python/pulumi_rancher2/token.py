@@ -49,7 +49,11 @@ class TokenArgs:
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              renew: Optional[pulumi.Input[bool]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if cluster_id is not None:
@@ -204,7 +208,17 @@ class _TokenState:
              token: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_key is not None:
             _setter("access_key", access_key)
         if annotations is not None:

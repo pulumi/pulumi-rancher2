@@ -50,7 +50,17 @@ class GlobalDnsProviderArgs:
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              route53_config: Optional[pulumi.Input['GlobalDnsProviderRoute53ConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'rootDomain' in kwargs:
+            root_domain = kwargs['rootDomain']
+        if 'alidnsConfig' in kwargs:
+            alidns_config = kwargs['alidnsConfig']
+        if 'cloudflareConfig' in kwargs:
+            cloudflare_config = kwargs['cloudflareConfig']
+        if 'route53Config' in kwargs:
+            route53_config = kwargs['route53Config']
+
         _setter("root_domain", root_domain)
         if alidns_config is not None:
             _setter("alidns_config", alidns_config)
@@ -182,7 +192,19 @@ class _GlobalDnsProviderState:
              name: Optional[pulumi.Input[str]] = None,
              root_domain: Optional[pulumi.Input[str]] = None,
              route53_config: Optional[pulumi.Input['GlobalDnsProviderRoute53ConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alidnsConfig' in kwargs:
+            alidns_config = kwargs['alidnsConfig']
+        if 'cloudflareConfig' in kwargs:
+            cloudflare_config = kwargs['cloudflareConfig']
+        if 'dnsProvider' in kwargs:
+            dns_provider = kwargs['dnsProvider']
+        if 'rootDomain' in kwargs:
+            root_domain = kwargs['rootDomain']
+        if 'route53Config' in kwargs:
+            route53_config = kwargs['route53Config']
+
         if alidns_config is not None:
             _setter("alidns_config", alidns_config)
         if annotations is not None:
