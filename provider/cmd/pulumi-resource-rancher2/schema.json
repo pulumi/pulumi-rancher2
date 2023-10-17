@@ -8583,11 +8583,8 @@
         "rancher2:index/ClusterV2RkeConfigMachineSelectorConfig:ClusterV2RkeConfigMachineSelectorConfig": {
             "properties": {
                 "config": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
-                    },
-                    "description": "Machine selector config (map)\n"
+                    "type": "string",
+                    "description": "Machine selector config. Must be in YAML format (string)\n"
                 },
                 "machineLabelSelector": {
                     "$ref": "#/types/rancher2:index/ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector:ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector",
@@ -9077,10 +9074,6 @@
                 "instanceType": {
                     "type": "string",
                     "description": "Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)\n"
-                },
-                "keypairName": {
-                    "type": "string",
-                    "description": "OpenStack keypair to use to SSH to the instance (string)\n"
                 },
                 "kmsKey": {
                     "type": "string",
@@ -9700,7 +9693,7 @@
                 },
                 "volumeDevicePath": {
                     "type": "string",
-                    "description": "OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)\n\u003e **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.\n\u003e **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.\n"
+                    "description": "OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)\n\u003e **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.\n\u003e **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.\n\u003e **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself\n"
                 },
                 "volumeId": {
                     "type": "string",
@@ -10143,10 +10136,6 @@
                 "instanceType": {
                     "type": "string",
                     "description": "Outscale VM type. Default `tinav2.c1r2p3` (string)\n"
-                },
-                "keypairName": {
-                    "type": "string",
-                    "description": "OpenStack keypair to use to SSH to the instance (string)\n"
                 },
                 "kmsKey": {
                     "type": "string",
@@ -10912,7 +10901,7 @@
                 },
                 "volumeDevicePath": {
                     "type": "string",
-                    "description": "OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)\n\n\u003e **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.\n\n\u003e **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.\n"
+                    "description": "OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)\n\n\u003e **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.\n\n\u003e **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.\n\n\u003e **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself\n"
                 },
                 "volumeId": {
                     "type": "string",
@@ -18868,10 +18857,7 @@
         "rancher2:index/getClusterV2RkeConfigMachineSelectorConfig:getClusterV2RkeConfigMachineSelectorConfig": {
             "properties": {
                 "config": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
-                    }
+                    "type": "string"
                 },
                 "machineLabelSelector": {
                     "$ref": "#/types/rancher2:index/getClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector:getClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector"
@@ -22408,6 +22394,9 @@
                     "type": "string",
                     "description": "Group search base (string)\n"
                 },
+                "groupSearchFilter": {
+                    "type": "string"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -22443,6 +22432,9 @@
                     "type": "string",
                     "description": "Service account password for access FreeIpa service (string)\n",
                     "secret": true
+                },
+                "startTls": {
+                    "type": "boolean"
                 },
                 "testPassword": {
                     "type": "string",
@@ -22492,6 +22484,9 @@
                 "userSearchBase": {
                     "type": "string",
                     "description": "User search base DN (string)\n"
+                },
+                "userSearchFilter": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -22509,6 +22504,7 @@
                 "servers",
                 "serviceAccountDistinguishedName",
                 "serviceAccountPassword",
+                "startTls",
                 "testPassword",
                 "testUsername",
                 "tls",
@@ -22582,6 +22578,9 @@
                     "type": "string",
                     "description": "Group search base (string)\n"
                 },
+                "groupSearchFilter": {
+                    "type": "string"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -22613,6 +22612,9 @@
                     "type": "string",
                     "description": "Service account password for access FreeIpa service (string)\n",
                     "secret": true
+                },
+                "startTls": {
+                    "type": "boolean"
                 },
                 "testPassword": {
                     "type": "string",
@@ -22658,6 +22660,9 @@
                 "userSearchBase": {
                     "type": "string",
                     "description": "User search base DN (string)\n"
+                },
+                "userSearchFilter": {
+                    "type": "string"
                 }
             },
             "requiredInputs": [
@@ -22730,6 +22735,9 @@
                         "type": "string",
                         "description": "Group search base (string)\n"
                     },
+                    "groupSearchFilter": {
+                        "type": "string"
+                    },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
@@ -22765,6 +22773,9 @@
                         "type": "string",
                         "description": "Service account password for access FreeIpa service (string)\n",
                         "secret": true
+                    },
+                    "startTls": {
+                        "type": "boolean"
                     },
                     "testPassword": {
                         "type": "string",
@@ -22814,6 +22825,9 @@
                     "userSearchBase": {
                         "type": "string",
                         "description": "User search base DN (string)\n"
+                    },
+                    "userSearchFilter": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -23566,6 +23580,9 @@
                     "type": "string",
                     "description": "Group search base (string)\n"
                 },
+                "groupSearchFilter": {
+                    "type": "string"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -23601,6 +23618,9 @@
                     "type": "string",
                     "description": "Service account password for access OpenLdap service (string)\n",
                     "secret": true
+                },
+                "startTls": {
+                    "type": "boolean"
                 },
                 "testPassword": {
                     "type": "string",
@@ -23650,6 +23670,9 @@
                 "userSearchBase": {
                     "type": "string",
                     "description": "User search base DN (string)\n"
+                },
+                "userSearchFilter": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -23667,6 +23690,7 @@
                 "servers",
                 "serviceAccountDistinguishedName",
                 "serviceAccountPassword",
+                "startTls",
                 "testPassword",
                 "testUsername",
                 "tls",
@@ -23740,6 +23764,9 @@
                     "type": "string",
                     "description": "Group search base (string)\n"
                 },
+                "groupSearchFilter": {
+                    "type": "string"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -23771,6 +23798,9 @@
                     "type": "string",
                     "description": "Service account password for access OpenLdap service (string)\n",
                     "secret": true
+                },
+                "startTls": {
+                    "type": "boolean"
                 },
                 "testPassword": {
                     "type": "string",
@@ -23816,6 +23846,9 @@
                 "userSearchBase": {
                     "type": "string",
                     "description": "User search base DN (string)\n"
+                },
+                "userSearchFilter": {
+                    "type": "string"
                 }
             },
             "requiredInputs": [
@@ -23888,6 +23921,9 @@
                         "type": "string",
                         "description": "Group search base (string)\n"
                     },
+                    "groupSearchFilter": {
+                        "type": "string"
+                    },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
@@ -23923,6 +23959,9 @@
                         "type": "string",
                         "description": "Service account password for access OpenLdap service (string)\n",
                         "secret": true
+                    },
+                    "startTls": {
+                        "type": "boolean"
                     },
                     "testPassword": {
                         "type": "string",
@@ -23972,6 +24011,9 @@
                     "userSearchBase": {
                         "type": "string",
                         "description": "User search base DN (string)\n"
+                    },
+                    "userSearchFilter": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
