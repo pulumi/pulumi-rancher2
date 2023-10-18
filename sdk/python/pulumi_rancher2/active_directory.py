@@ -155,7 +155,61 @@ class ActiveDirectoryArgs:
              user_object_class: Optional[pulumi.Input[str]] = None,
              user_search_attribute: Optional[pulumi.Input[str]] = None,
              user_search_filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceAccountPassword' in kwargs:
+            service_account_password = kwargs['serviceAccountPassword']
+        if 'serviceAccountUsername' in kwargs:
+            service_account_username = kwargs['serviceAccountUsername']
+        if 'testPassword' in kwargs:
+            test_password = kwargs['testPassword']
+        if 'testUsername' in kwargs:
+            test_username = kwargs['testUsername']
+        if 'userSearchBase' in kwargs:
+            user_search_base = kwargs['userSearchBase']
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'allowedPrincipalIds' in kwargs:
+            allowed_principal_ids = kwargs['allowedPrincipalIds']
+        if 'connectionTimeout' in kwargs:
+            connection_timeout = kwargs['connectionTimeout']
+        if 'defaultLoginDomain' in kwargs:
+            default_login_domain = kwargs['defaultLoginDomain']
+        if 'groupDnAttribute' in kwargs:
+            group_dn_attribute = kwargs['groupDnAttribute']
+        if 'groupMemberMappingAttribute' in kwargs:
+            group_member_mapping_attribute = kwargs['groupMemberMappingAttribute']
+        if 'groupMemberUserAttribute' in kwargs:
+            group_member_user_attribute = kwargs['groupMemberUserAttribute']
+        if 'groupNameAttribute' in kwargs:
+            group_name_attribute = kwargs['groupNameAttribute']
+        if 'groupObjectClass' in kwargs:
+            group_object_class = kwargs['groupObjectClass']
+        if 'groupSearchAttribute' in kwargs:
+            group_search_attribute = kwargs['groupSearchAttribute']
+        if 'groupSearchBase' in kwargs:
+            group_search_base = kwargs['groupSearchBase']
+        if 'groupSearchFilter' in kwargs:
+            group_search_filter = kwargs['groupSearchFilter']
+        if 'nestedGroupMembershipEnabled' in kwargs:
+            nested_group_membership_enabled = kwargs['nestedGroupMembershipEnabled']
+        if 'startTls' in kwargs:
+            start_tls = kwargs['startTls']
+        if 'userDisabledBitMask' in kwargs:
+            user_disabled_bit_mask = kwargs['userDisabledBitMask']
+        if 'userEnabledAttribute' in kwargs:
+            user_enabled_attribute = kwargs['userEnabledAttribute']
+        if 'userLoginAttribute' in kwargs:
+            user_login_attribute = kwargs['userLoginAttribute']
+        if 'userNameAttribute' in kwargs:
+            user_name_attribute = kwargs['userNameAttribute']
+        if 'userObjectClass' in kwargs:
+            user_object_class = kwargs['userObjectClass']
+        if 'userSearchAttribute' in kwargs:
+            user_search_attribute = kwargs['userSearchAttribute']
+        if 'userSearchFilter' in kwargs:
+            user_search_filter = kwargs['userSearchFilter']
+
         _setter("servers", servers)
         _setter("service_account_password", service_account_password)
         _setter("service_account_username", service_account_username)
@@ -766,7 +820,61 @@ class _ActiveDirectoryState:
              user_search_attribute: Optional[pulumi.Input[str]] = None,
              user_search_base: Optional[pulumi.Input[str]] = None,
              user_search_filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'allowedPrincipalIds' in kwargs:
+            allowed_principal_ids = kwargs['allowedPrincipalIds']
+        if 'connectionTimeout' in kwargs:
+            connection_timeout = kwargs['connectionTimeout']
+        if 'defaultLoginDomain' in kwargs:
+            default_login_domain = kwargs['defaultLoginDomain']
+        if 'groupDnAttribute' in kwargs:
+            group_dn_attribute = kwargs['groupDnAttribute']
+        if 'groupMemberMappingAttribute' in kwargs:
+            group_member_mapping_attribute = kwargs['groupMemberMappingAttribute']
+        if 'groupMemberUserAttribute' in kwargs:
+            group_member_user_attribute = kwargs['groupMemberUserAttribute']
+        if 'groupNameAttribute' in kwargs:
+            group_name_attribute = kwargs['groupNameAttribute']
+        if 'groupObjectClass' in kwargs:
+            group_object_class = kwargs['groupObjectClass']
+        if 'groupSearchAttribute' in kwargs:
+            group_search_attribute = kwargs['groupSearchAttribute']
+        if 'groupSearchBase' in kwargs:
+            group_search_base = kwargs['groupSearchBase']
+        if 'groupSearchFilter' in kwargs:
+            group_search_filter = kwargs['groupSearchFilter']
+        if 'nestedGroupMembershipEnabled' in kwargs:
+            nested_group_membership_enabled = kwargs['nestedGroupMembershipEnabled']
+        if 'serviceAccountPassword' in kwargs:
+            service_account_password = kwargs['serviceAccountPassword']
+        if 'serviceAccountUsername' in kwargs:
+            service_account_username = kwargs['serviceAccountUsername']
+        if 'startTls' in kwargs:
+            start_tls = kwargs['startTls']
+        if 'testPassword' in kwargs:
+            test_password = kwargs['testPassword']
+        if 'testUsername' in kwargs:
+            test_username = kwargs['testUsername']
+        if 'userDisabledBitMask' in kwargs:
+            user_disabled_bit_mask = kwargs['userDisabledBitMask']
+        if 'userEnabledAttribute' in kwargs:
+            user_enabled_attribute = kwargs['userEnabledAttribute']
+        if 'userLoginAttribute' in kwargs:
+            user_login_attribute = kwargs['userLoginAttribute']
+        if 'userNameAttribute' in kwargs:
+            user_name_attribute = kwargs['userNameAttribute']
+        if 'userObjectClass' in kwargs:
+            user_object_class = kwargs['userObjectClass']
+        if 'userSearchAttribute' in kwargs:
+            user_search_attribute = kwargs['userSearchAttribute']
+        if 'userSearchBase' in kwargs:
+            user_search_base = kwargs['userSearchBase']
+        if 'userSearchFilter' in kwargs:
+            user_search_filter = kwargs['userSearchFilter']
+
         if access_mode is not None:
             _setter("access_mode", access_mode)
         if allowed_principal_ids is not None:

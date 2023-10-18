@@ -59,7 +59,19 @@ class ProviderArgs:
              secret_key: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[str]] = None,
              token_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiUrl' in kwargs:
+            api_url = kwargs['apiUrl']
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'caCerts' in kwargs:
+            ca_certs = kwargs['caCerts']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'tokenKey' in kwargs:
+            token_key = kwargs['tokenKey']
+
         _setter("api_url", api_url)
         if access_key is not None:
             _setter("access_key", access_key)

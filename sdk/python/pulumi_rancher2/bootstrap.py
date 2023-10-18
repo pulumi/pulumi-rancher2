@@ -47,7 +47,17 @@ class BootstrapArgs:
              token_ttl: Optional[pulumi.Input[int]] = None,
              token_update: Optional[pulumi.Input[bool]] = None,
              ui_default_landing: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'initialPassword' in kwargs:
+            initial_password = kwargs['initialPassword']
+        if 'tokenTtl' in kwargs:
+            token_ttl = kwargs['tokenTtl']
+        if 'tokenUpdate' in kwargs:
+            token_update = kwargs['tokenUpdate']
+        if 'uiDefaultLanding' in kwargs:
+            ui_default_landing = kwargs['uiDefaultLanding']
+
         if initial_password is not None:
             _setter("initial_password", initial_password)
         if password is not None:
@@ -198,7 +208,25 @@ class _BootstrapState:
              ui_default_landing: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'currentPassword' in kwargs:
+            current_password = kwargs['currentPassword']
+        if 'initialPassword' in kwargs:
+            initial_password = kwargs['initialPassword']
+        if 'tempToken' in kwargs:
+            temp_token = kwargs['tempToken']
+        if 'tempTokenId' in kwargs:
+            temp_token_id = kwargs['tempTokenId']
+        if 'tokenId' in kwargs:
+            token_id = kwargs['tokenId']
+        if 'tokenTtl' in kwargs:
+            token_ttl = kwargs['tokenTtl']
+        if 'tokenUpdate' in kwargs:
+            token_update = kwargs['tokenUpdate']
+        if 'uiDefaultLanding' in kwargs:
+            ui_default_landing = kwargs['uiDefaultLanding']
+
         if current_password is not None:
             _setter("current_password", current_password)
         if initial_password is not None:

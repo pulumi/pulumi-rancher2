@@ -51,7 +51,11 @@ class ConfigMapV2Args:
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         _setter("cluster_id", cluster_id)
         _setter("data", data)
         if annotations is not None:
@@ -194,7 +198,13 @@ class _ConfigMapV2State:
              name: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              resource_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'resourceVersion' in kwargs:
+            resource_version = kwargs['resourceVersion']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if cluster_id is not None:

@@ -57,7 +57,11 @@ class CustomUserTokenArgs:
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              renew: Optional[pulumi.Input[bool]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         _setter("password", password)
         _setter("username", username)
         if annotations is not None:
@@ -254,7 +258,21 @@ class _CustomUserTokenState:
              ttl: Optional[pulumi.Input[int]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'tempToken' in kwargs:
+            temp_token = kwargs['tempToken']
+        if 'tempTokenId' in kwargs:
+            temp_token_id = kwargs['tempTokenId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_key is not None:
             _setter("access_key", access_key)
         if annotations is not None:

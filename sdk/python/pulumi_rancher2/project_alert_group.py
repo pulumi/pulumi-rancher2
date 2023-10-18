@@ -61,7 +61,17 @@ class ProjectAlertGroupArgs:
              name: Optional[pulumi.Input[str]] = None,
              recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectAlertGroupRecipientArgs']]]] = None,
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'groupIntervalSeconds' in kwargs:
+            group_interval_seconds = kwargs['groupIntervalSeconds']
+        if 'groupWaitSeconds' in kwargs:
+            group_wait_seconds = kwargs['groupWaitSeconds']
+        if 'repeatIntervalSeconds' in kwargs:
+            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
+
         _setter("project_id", project_id)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -237,7 +247,17 @@ class _ProjectAlertGroupState:
              project_id: Optional[pulumi.Input[str]] = None,
              recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectAlertGroupRecipientArgs']]]] = None,
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupIntervalSeconds' in kwargs:
+            group_interval_seconds = kwargs['groupIntervalSeconds']
+        if 'groupWaitSeconds' in kwargs:
+            group_wait_seconds = kwargs['groupWaitSeconds']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'repeatIntervalSeconds' in kwargs:
+            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if description is not None:

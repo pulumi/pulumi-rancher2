@@ -81,7 +81,21 @@ class MultiClusterAppArgs:
              template_version: Optional[pulumi.Input[str]] = None,
              upgrade_strategy: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyArgs']] = None,
              wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'revisionHistoryLimit' in kwargs:
+            revision_history_limit = kwargs['revisionHistoryLimit']
+        if 'revisionId' in kwargs:
+            revision_id = kwargs['revisionId']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if 'upgradeStrategy' in kwargs:
+            upgrade_strategy = kwargs['upgradeStrategy']
+
         _setter("catalog_name", catalog_name)
         _setter("roles", roles)
         _setter("targets", targets)
@@ -348,7 +362,23 @@ class _MultiClusterAppState:
              template_version_id: Optional[pulumi.Input[str]] = None,
              upgrade_strategy: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyArgs']] = None,
              wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'revisionHistoryLimit' in kwargs:
+            revision_history_limit = kwargs['revisionHistoryLimit']
+        if 'revisionId' in kwargs:
+            revision_id = kwargs['revisionId']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if 'templateVersionId' in kwargs:
+            template_version_id = kwargs['templateVersionId']
+        if 'upgradeStrategy' in kwargs:
+            upgrade_strategy = kwargs['upgradeStrategy']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if answers is not None:

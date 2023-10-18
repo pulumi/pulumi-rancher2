@@ -135,7 +135,55 @@ class NodeTemplateArgs:
              outscale_config: Optional[pulumi.Input['NodeTemplateOutscaleConfigArgs']] = None,
              use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
              vsphere_config: Optional[pulumi.Input['NodeTemplateVsphereConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'amazonec2Config' in kwargs:
+            amazonec2_config = kwargs['amazonec2Config']
+        if 'authCertificateAuthority' in kwargs:
+            auth_certificate_authority = kwargs['authCertificateAuthority']
+        if 'authKey' in kwargs:
+            auth_key = kwargs['authKey']
+        if 'azureConfig' in kwargs:
+            azure_config = kwargs['azureConfig']
+        if 'cloudCredentialId' in kwargs:
+            cloud_credential_id = kwargs['cloudCredentialId']
+        if 'digitaloceanConfig' in kwargs:
+            digitalocean_config = kwargs['digitaloceanConfig']
+        if 'driverId' in kwargs:
+            driver_id = kwargs['driverId']
+        if 'engineEnv' in kwargs:
+            engine_env = kwargs['engineEnv']
+        if 'engineInsecureRegistries' in kwargs:
+            engine_insecure_registries = kwargs['engineInsecureRegistries']
+        if 'engineInstallUrl' in kwargs:
+            engine_install_url = kwargs['engineInstallUrl']
+        if 'engineLabel' in kwargs:
+            engine_label = kwargs['engineLabel']
+        if 'engineOpt' in kwargs:
+            engine_opt = kwargs['engineOpt']
+        if 'engineRegistryMirrors' in kwargs:
+            engine_registry_mirrors = kwargs['engineRegistryMirrors']
+        if 'engineStorageDriver' in kwargs:
+            engine_storage_driver = kwargs['engineStorageDriver']
+        if 'harvesterConfig' in kwargs:
+            harvester_config = kwargs['harvesterConfig']
+        if 'hetznerConfig' in kwargs:
+            hetzner_config = kwargs['hetznerConfig']
+        if 'linodeConfig' in kwargs:
+            linode_config = kwargs['linodeConfig']
+        if 'nodeTaints' in kwargs:
+            node_taints = kwargs['nodeTaints']
+        if 'opennebulaConfig' in kwargs:
+            opennebula_config = kwargs['opennebulaConfig']
+        if 'openstackConfig' in kwargs:
+            openstack_config = kwargs['openstackConfig']
+        if 'outscaleConfig' in kwargs:
+            outscale_config = kwargs['outscaleConfig']
+        if 'useInternalIpAddress' in kwargs:
+            use_internal_ip_address = kwargs['useInternalIpAddress']
+        if 'vsphereConfig' in kwargs:
+            vsphere_config = kwargs['vsphereConfig']
+
         if amazonec2_config is not None:
             _setter("amazonec2_config", amazonec2_config)
         if annotations is not None:
@@ -644,7 +692,55 @@ class _NodeTemplateState:
              outscale_config: Optional[pulumi.Input['NodeTemplateOutscaleConfigArgs']] = None,
              use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
              vsphere_config: Optional[pulumi.Input['NodeTemplateVsphereConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'amazonec2Config' in kwargs:
+            amazonec2_config = kwargs['amazonec2Config']
+        if 'authCertificateAuthority' in kwargs:
+            auth_certificate_authority = kwargs['authCertificateAuthority']
+        if 'authKey' in kwargs:
+            auth_key = kwargs['authKey']
+        if 'azureConfig' in kwargs:
+            azure_config = kwargs['azureConfig']
+        if 'cloudCredentialId' in kwargs:
+            cloud_credential_id = kwargs['cloudCredentialId']
+        if 'digitaloceanConfig' in kwargs:
+            digitalocean_config = kwargs['digitaloceanConfig']
+        if 'driverId' in kwargs:
+            driver_id = kwargs['driverId']
+        if 'engineEnv' in kwargs:
+            engine_env = kwargs['engineEnv']
+        if 'engineInsecureRegistries' in kwargs:
+            engine_insecure_registries = kwargs['engineInsecureRegistries']
+        if 'engineInstallUrl' in kwargs:
+            engine_install_url = kwargs['engineInstallUrl']
+        if 'engineLabel' in kwargs:
+            engine_label = kwargs['engineLabel']
+        if 'engineOpt' in kwargs:
+            engine_opt = kwargs['engineOpt']
+        if 'engineRegistryMirrors' in kwargs:
+            engine_registry_mirrors = kwargs['engineRegistryMirrors']
+        if 'engineStorageDriver' in kwargs:
+            engine_storage_driver = kwargs['engineStorageDriver']
+        if 'harvesterConfig' in kwargs:
+            harvester_config = kwargs['harvesterConfig']
+        if 'hetznerConfig' in kwargs:
+            hetzner_config = kwargs['hetznerConfig']
+        if 'linodeConfig' in kwargs:
+            linode_config = kwargs['linodeConfig']
+        if 'nodeTaints' in kwargs:
+            node_taints = kwargs['nodeTaints']
+        if 'opennebulaConfig' in kwargs:
+            opennebula_config = kwargs['opennebulaConfig']
+        if 'openstackConfig' in kwargs:
+            openstack_config = kwargs['openstackConfig']
+        if 'outscaleConfig' in kwargs:
+            outscale_config = kwargs['outscaleConfig']
+        if 'useInternalIpAddress' in kwargs:
+            use_internal_ip_address = kwargs['useInternalIpAddress']
+        if 'vsphereConfig' in kwargs:
+            vsphere_config = kwargs['vsphereConfig']
+
         if amazonec2_config is not None:
             _setter("amazonec2_config", amazonec2_config)
         if annotations is not None:

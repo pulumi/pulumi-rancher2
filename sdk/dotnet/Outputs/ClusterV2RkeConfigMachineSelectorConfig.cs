@@ -14,9 +14,9 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachineSelectorConfig
     {
         /// <summary>
-        /// Machine selector config (map)
+        /// Machine selector config. Must be in YAML format (string)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Config;
+        public readonly string? Config;
         /// <summary>
         /// Machine selector label (list maxitems:1)
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private ClusterV2RkeConfigMachineSelectorConfig(
-            ImmutableDictionary<string, object>? config,
+            string? config,
 
             Outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector? machineLabelSelector)
         {

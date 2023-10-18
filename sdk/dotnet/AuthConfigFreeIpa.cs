@@ -95,6 +95,9 @@ namespace Pulumi.Rancher2
         [Output("groupSearchBase")]
         public Output<string> GroupSearchBase { get; private set; } = null!;
 
+        [Output("groupSearchFilter")]
+        public Output<string?> GroupSearchFilter { get; private set; } = null!;
+
         /// <summary>
         /// Labels of the resource (map)
         /// </summary>
@@ -136,6 +139,9 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("serviceAccountPassword")]
         public Output<string> ServiceAccountPassword { get; private set; } = null!;
+
+        [Output("startTls")]
+        public Output<bool> StartTls { get; private set; } = null!;
 
         /// <summary>
         /// Password for test access to FreeIpa service (string)
@@ -208,6 +214,9 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("userSearchBase")]
         public Output<string> UserSearchBase { get; private set; } = null!;
+
+        [Output("userSearchFilter")]
+        public Output<string?> UserSearchFilter { get; private set; } = null!;
 
 
         /// <summary>
@@ -362,6 +371,9 @@ namespace Pulumi.Rancher2
         [Input("groupSearchBase")]
         public Input<string>? GroupSearchBase { get; set; }
 
+        [Input("groupSearchFilter")]
+        public Input<string>? GroupSearchFilter { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
 
@@ -429,6 +441,9 @@ namespace Pulumi.Rancher2
                 _serviceAccountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("startTls")]
+        public Input<bool>? StartTls { get; set; }
 
         [Input("testPassword", required: true)]
         private Input<string>? _testPassword;
@@ -505,6 +520,9 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("userSearchBase", required: true)]
         public Input<string> UserSearchBase { get; set; } = null!;
+
+        [Input("userSearchFilter")]
+        public Input<string>? UserSearchFilter { get; set; }
 
         public AuthConfigFreeIpaArgs()
         {
@@ -614,6 +632,9 @@ namespace Pulumi.Rancher2
         [Input("groupSearchBase")]
         public Input<string>? GroupSearchBase { get; set; }
 
+        [Input("groupSearchFilter")]
+        public Input<string>? GroupSearchFilter { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
 
@@ -687,6 +708,9 @@ namespace Pulumi.Rancher2
                 _serviceAccountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("startTls")]
+        public Input<bool>? StartTls { get; set; }
 
         [Input("testPassword")]
         private Input<string>? _testPassword;
@@ -769,6 +793,9 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("userSearchBase")]
         public Input<string>? UserSearchBase { get; set; }
+
+        [Input("userSearchFilter")]
+        public Input<string>? UserSearchFilter { get; set; }
 
         public AuthConfigFreeIpaState()
         {

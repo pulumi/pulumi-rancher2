@@ -334,7 +334,15 @@ class CloudCredentialAmazonec2CredentialConfigArgs:
              access_key: pulumi.Input[str],
              secret_key: pulumi.Input[str],
              default_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'defaultRegion' in kwargs:
+            default_region = kwargs['defaultRegion']
+
         _setter("access_key", access_key)
         _setter("secret_key", secret_key)
         if default_region is not None:
@@ -408,7 +416,17 @@ class CloudCredentialAzureCredentialConfigArgs:
              subscription_id: pulumi.Input[str],
              environment: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'subscriptionId' in kwargs:
+            subscription_id = kwargs['subscriptionId']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         _setter("client_id", client_id)
         _setter("client_secret", client_secret)
         _setter("subscription_id", subscription_id)
@@ -493,7 +511,11 @@ class CloudCredentialDigitaloceanCredentialConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              access_token: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessToken' in kwargs:
+            access_token = kwargs['accessToken']
+
         _setter("access_token", access_token)
 
     @property
@@ -524,7 +546,11 @@ class CloudCredentialGoogleCredentialConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              auth_encoded_json: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authEncodedJson' in kwargs:
+            auth_encoded_json = kwargs['authEncodedJson']
+
         _setter("auth_encoded_json", auth_encoded_json)
 
     @property
@@ -563,7 +589,15 @@ class CloudCredentialHarvesterCredentialConfigArgs:
              cluster_type: pulumi.Input[str],
              kubeconfig_content: pulumi.Input[str],
              cluster_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'kubeconfigContent' in kwargs:
+            kubeconfig_content = kwargs['kubeconfigContent']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         _setter("cluster_type", cluster_type)
         _setter("kubeconfig_content", kubeconfig_content)
         if cluster_id is not None:
@@ -621,7 +655,9 @@ class CloudCredentialLinodeCredentialConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              token: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("token", token)
 
     @property
@@ -652,7 +688,9 @@ class CloudCredentialOpenstackCredentialConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              password: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
 
     @property
@@ -711,7 +749,25 @@ class CloudCredentialS3CredentialConfigArgs:
              default_folder: Optional[pulumi.Input[str]] = None,
              default_region: Optional[pulumi.Input[str]] = None,
              default_skip_ssl_verify: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'defaultBucket' in kwargs:
+            default_bucket = kwargs['defaultBucket']
+        if 'defaultEndpoint' in kwargs:
+            default_endpoint = kwargs['defaultEndpoint']
+        if 'defaultEndpointCa' in kwargs:
+            default_endpoint_ca = kwargs['defaultEndpointCa']
+        if 'defaultFolder' in kwargs:
+            default_folder = kwargs['defaultFolder']
+        if 'defaultRegion' in kwargs:
+            default_region = kwargs['defaultRegion']
+        if 'defaultSkipSslVerify' in kwargs:
+            default_skip_ssl_verify = kwargs['defaultSkipSslVerify']
+
         _setter("access_key", access_key)
         _setter("secret_key", secret_key)
         if default_bucket is not None:
@@ -851,7 +907,11 @@ class CloudCredentialVsphereCredentialConfigArgs:
              username: pulumi.Input[str],
              vcenter: pulumi.Input[str],
              vcenter_port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vcenterPort' in kwargs:
+            vcenter_port = kwargs['vcenterPort']
+
         _setter("password", password)
         _setter("username", username)
         _setter("vcenter", vcenter)
@@ -926,7 +986,9 @@ class ClusterAgentEnvVarArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -1122,7 +1184,77 @@ class ClusterAksConfigArgs:
              service_cidr: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'agentDnsPrefix' in kwargs:
+            agent_dns_prefix = kwargs['agentDnsPrefix']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'masterDnsPrefix' in kwargs:
+            master_dns_prefix = kwargs['masterDnsPrefix']
+        if 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if 'sshPublicKeyContents' in kwargs:
+            ssh_public_key_contents = kwargs['sshPublicKeyContents']
+        if 'subscriptionId' in kwargs:
+            subscription_id = kwargs['subscriptionId']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'virtualNetwork' in kwargs:
+            virtual_network = kwargs['virtualNetwork']
+        if 'virtualNetworkResourceGroup' in kwargs:
+            virtual_network_resource_group = kwargs['virtualNetworkResourceGroup']
+        if 'aadServerAppSecret' in kwargs:
+            aad_server_app_secret = kwargs['aadServerAppSecret']
+        if 'aadTenantId' in kwargs:
+            aad_tenant_id = kwargs['aadTenantId']
+        if 'addClientAppId' in kwargs:
+            add_client_app_id = kwargs['addClientAppId']
+        if 'addServerAppId' in kwargs:
+            add_server_app_id = kwargs['addServerAppId']
+        if 'adminUsername' in kwargs:
+            admin_username = kwargs['adminUsername']
+        if 'agentOsDiskSize' in kwargs:
+            agent_os_disk_size = kwargs['agentOsDiskSize']
+        if 'agentPoolName' in kwargs:
+            agent_pool_name = kwargs['agentPoolName']
+        if 'agentStorageProfile' in kwargs:
+            agent_storage_profile = kwargs['agentStorageProfile']
+        if 'agentVmSize' in kwargs:
+            agent_vm_size = kwargs['agentVmSize']
+        if 'authBaseUrl' in kwargs:
+            auth_base_url = kwargs['authBaseUrl']
+        if 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if 'dnsServiceIp' in kwargs:
+            dns_service_ip = kwargs['dnsServiceIp']
+        if 'dockerBridgeCidr' in kwargs:
+            docker_bridge_cidr = kwargs['dockerBridgeCidr']
+        if 'enableHttpApplicationRouting' in kwargs:
+            enable_http_application_routing = kwargs['enableHttpApplicationRouting']
+        if 'enableMonitoring' in kwargs:
+            enable_monitoring = kwargs['enableMonitoring']
+        if 'loadBalancerSku' in kwargs:
+            load_balancer_sku = kwargs['loadBalancerSku']
+        if 'logAnalyticsWorkspace' in kwargs:
+            log_analytics_workspace = kwargs['logAnalyticsWorkspace']
+        if 'logAnalyticsWorkspaceResourceGroup' in kwargs:
+            log_analytics_workspace_resource_group = kwargs['logAnalyticsWorkspaceResourceGroup']
+        if 'maxPods' in kwargs:
+            max_pods = kwargs['maxPods']
+        if 'networkPlugin' in kwargs:
+            network_plugin = kwargs['networkPlugin']
+        if 'networkPolicy' in kwargs:
+            network_policy = kwargs['networkPolicy']
+        if 'podCidr' in kwargs:
+            pod_cidr = kwargs['podCidr']
+        if 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+
         _setter("agent_dns_prefix", agent_dns_prefix)
         _setter("client_id", client_id)
         _setter("client_secret", client_secret)
@@ -1792,7 +1924,57 @@ class ClusterAksConfigV2Args:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              virtual_network: Optional[pulumi.Input[str]] = None,
              virtual_network_resource_group: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cloudCredentialId' in kwargs:
+            cloud_credential_id = kwargs['cloudCredentialId']
+        if 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if 'resourceLocation' in kwargs:
+            resource_location = kwargs['resourceLocation']
+        if 'authBaseUrl' in kwargs:
+            auth_base_url = kwargs['authBaseUrl']
+        if 'authorizedIpRanges' in kwargs:
+            authorized_ip_ranges = kwargs['authorizedIpRanges']
+        if 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if 'dnsPrefix' in kwargs:
+            dns_prefix = kwargs['dnsPrefix']
+        if 'httpApplicationRouting' in kwargs:
+            http_application_routing = kwargs['httpApplicationRouting']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'linuxAdminUsername' in kwargs:
+            linux_admin_username = kwargs['linuxAdminUsername']
+        if 'linuxSshPublicKey' in kwargs:
+            linux_ssh_public_key = kwargs['linuxSshPublicKey']
+        if 'loadBalancerSku' in kwargs:
+            load_balancer_sku = kwargs['loadBalancerSku']
+        if 'logAnalyticsWorkspaceGroup' in kwargs:
+            log_analytics_workspace_group = kwargs['logAnalyticsWorkspaceGroup']
+        if 'logAnalyticsWorkspaceName' in kwargs:
+            log_analytics_workspace_name = kwargs['logAnalyticsWorkspaceName']
+        if 'networkDnsServiceIp' in kwargs:
+            network_dns_service_ip = kwargs['networkDnsServiceIp']
+        if 'networkDockerBridgeCidr' in kwargs:
+            network_docker_bridge_cidr = kwargs['networkDockerBridgeCidr']
+        if 'networkPlugin' in kwargs:
+            network_plugin = kwargs['networkPlugin']
+        if 'networkPodCidr' in kwargs:
+            network_pod_cidr = kwargs['networkPodCidr']
+        if 'networkPolicy' in kwargs:
+            network_policy = kwargs['networkPolicy']
+        if 'networkServiceCidr' in kwargs:
+            network_service_cidr = kwargs['networkServiceCidr']
+        if 'nodePools' in kwargs:
+            node_pools = kwargs['nodePools']
+        if 'privateCluster' in kwargs:
+            private_cluster = kwargs['privateCluster']
+        if 'virtualNetwork' in kwargs:
+            virtual_network = kwargs['virtualNetwork']
+        if 'virtualNetworkResourceGroup' in kwargs:
+            virtual_network_resource_group = kwargs['virtualNetworkResourceGroup']
+
         _setter("cloud_credential_id", cloud_credential_id)
         _setter("resource_group", resource_group)
         _setter("resource_location", resource_location)
@@ -2273,7 +2455,31 @@ class ClusterAksConfigV2NodePoolArgs:
              os_type: Optional[pulumi.Input[str]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vm_size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZones' in kwargs:
+            availability_zones = kwargs['availabilityZones']
+        if 'enableAutoScaling' in kwargs:
+            enable_auto_scaling = kwargs['enableAutoScaling']
+        if 'maxCount' in kwargs:
+            max_count = kwargs['maxCount']
+        if 'maxPods' in kwargs:
+            max_pods = kwargs['maxPods']
+        if 'maxSurge' in kwargs:
+            max_surge = kwargs['maxSurge']
+        if 'minCount' in kwargs:
+            min_count = kwargs['minCount']
+        if 'orchestratorVersion' in kwargs:
+            orchestrator_version = kwargs['orchestratorVersion']
+        if 'osDiskSizeGb' in kwargs:
+            os_disk_size_gb = kwargs['osDiskSizeGb']
+        if 'osDiskType' in kwargs:
+            os_disk_type = kwargs['osDiskType']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'vmSize' in kwargs:
+            vm_size = kwargs['vmSize']
+
         _setter("name", name)
         if availability_zones is not None:
             _setter("availability_zones", availability_zones)
@@ -2526,7 +2732,15 @@ class ClusterAlertGroupRecipientArgs:
              default_recipient: Optional[pulumi.Input[bool]] = None,
              notifier_type: Optional[pulumi.Input[str]] = None,
              recipient: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notifierId' in kwargs:
+            notifier_id = kwargs['notifierId']
+        if 'defaultRecipient' in kwargs:
+            default_recipient = kwargs['defaultRecipient']
+        if 'notifierType' in kwargs:
+            notifier_type = kwargs['notifierType']
+
         _setter("notifier_id", notifier_id)
         if default_recipient is not None:
             _setter("default_recipient", default_recipient)
@@ -2603,7 +2817,13 @@ class ClusterAlertRuleEventRuleArgs:
              _setter: Callable[[Any, Any], None],
              resource_kind: pulumi.Input[str],
              event_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceKind' in kwargs:
+            resource_kind = kwargs['resourceKind']
+        if 'eventType' in kwargs:
+            event_type = kwargs['eventType']
+
         _setter("resource_kind", resource_kind)
         if event_type is not None:
             _setter("event_type", event_type)
@@ -2664,7 +2884,11 @@ class ClusterAlertRuleMetricRuleArgs:
              threshold_value: pulumi.Input[float],
              comparison: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'thresholdValue' in kwargs:
+            threshold_value = kwargs['thresholdValue']
+
         _setter("duration", duration)
         _setter("expression", expression)
         _setter("threshold_value", threshold_value)
@@ -2765,7 +2989,15 @@ class ClusterAlertRuleNodeRuleArgs:
              mem_threshold: Optional[pulumi.Input[int]] = None,
              node_id: Optional[pulumi.Input[str]] = None,
              selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuThreshold' in kwargs:
+            cpu_threshold = kwargs['cpuThreshold']
+        if 'memThreshold' in kwargs:
+            mem_threshold = kwargs['memThreshold']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         if condition is not None:
             _setter("condition", condition)
         if cpu_threshold is not None:
@@ -2853,7 +3085,9 @@ class ClusterAlertRuleSystemServiceRuleArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              condition: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
 
@@ -2897,7 +3131,15 @@ class ClusterAlterGroupRecipientArgs:
              default_recipient: Optional[pulumi.Input[bool]] = None,
              notifier_type: Optional[pulumi.Input[str]] = None,
              recipient: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notifierId' in kwargs:
+            notifier_id = kwargs['notifierId']
+        if 'defaultRecipient' in kwargs:
+            default_recipient = kwargs['defaultRecipient']
+        if 'notifierType' in kwargs:
+            notifier_type = kwargs['notifierType']
+
         _setter("notifier_id", notifier_id)
         if default_recipient is not None:
             _setter("default_recipient", default_recipient)
@@ -2970,7 +3212,13 @@ class ClusterAlterRuleEventRuleArgs:
              _setter: Callable[[Any, Any], None],
              resource_kind: pulumi.Input[str],
              event_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceKind' in kwargs:
+            resource_kind = kwargs['resourceKind']
+        if 'eventType' in kwargs:
+            event_type = kwargs['eventType']
+
         _setter("resource_kind", resource_kind)
         if event_type is not None:
             _setter("event_type", event_type)
@@ -3021,7 +3269,11 @@ class ClusterAlterRuleMetricRuleArgs:
              threshold_value: pulumi.Input[float],
              comparison: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'thresholdValue' in kwargs:
+            threshold_value = kwargs['thresholdValue']
+
         _setter("duration", duration)
         _setter("expression", expression)
         _setter("threshold_value", threshold_value)
@@ -3103,7 +3355,15 @@ class ClusterAlterRuleNodeRuleArgs:
              mem_threshold: Optional[pulumi.Input[int]] = None,
              node_id: Optional[pulumi.Input[str]] = None,
              selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuThreshold' in kwargs:
+            cpu_threshold = kwargs['cpuThreshold']
+        if 'memThreshold' in kwargs:
+            mem_threshold = kwargs['memThreshold']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         if condition is not None:
             _setter("condition", condition)
         if cpu_threshold is not None:
@@ -3173,7 +3433,9 @@ class ClusterAlterRuleSystemServiceRuleArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              condition: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
 
@@ -3210,7 +3472,15 @@ class ClusterClusterAgentDeploymentCustomizationArgs:
              append_tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs']]]] = None,
              override_affinity: Optional[pulumi.Input[str]] = None,
              override_resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appendTolerations' in kwargs:
+            append_tolerations = kwargs['appendTolerations']
+        if 'overrideAffinity' in kwargs:
+            override_affinity = kwargs['overrideAffinity']
+        if 'overrideResourceRequirements' in kwargs:
+            override_resource_requirements = kwargs['overrideResourceRequirements']
+
         if append_tolerations is not None:
             _setter("append_tolerations", append_tolerations)
         if override_affinity is not None:
@@ -3286,7 +3556,9 @@ class ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs:
              operator: Optional[pulumi.Input[str]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -3385,7 +3657,17 @@ class ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs:
              cpu_request: Optional[pulumi.Input[str]] = None,
              memory_limit: Optional[pulumi.Input[str]] = None,
              memory_request: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuLimit' in kwargs:
+            cpu_limit = kwargs['cpuLimit']
+        if 'cpuRequest' in kwargs:
+            cpu_request = kwargs['cpuRequest']
+        if 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if 'memoryRequest' in kwargs:
+            memory_request = kwargs['memoryRequest']
+
         if cpu_limit is not None:
             _setter("cpu_limit", cpu_limit)
         if cpu_request is not None:
@@ -3467,7 +3749,11 @@ class ClusterClusterAuthEndpointArgs:
              ca_certs: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              fqdn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caCerts' in kwargs:
+            ca_certs = kwargs['caCerts']
+
         if ca_certs is not None:
             _setter("ca_certs", ca_certs)
         if enabled is not None:
@@ -3531,7 +3817,9 @@ class ClusterClusterMonitoringInputArgs:
              _setter: Callable[[Any, Any], None],
              answers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if answers is not None:
             _setter("answers", answers)
         if version is not None:
@@ -3625,7 +3913,23 @@ class ClusterClusterRegistrationTokenArgs:
              node_command: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
              windows_node_command: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'insecureCommand' in kwargs:
+            insecure_command = kwargs['insecureCommand']
+        if 'insecureNodeCommand' in kwargs:
+            insecure_node_command = kwargs['insecureNodeCommand']
+        if 'insecureWindowsNodeCommand' in kwargs:
+            insecure_windows_node_command = kwargs['insecureWindowsNodeCommand']
+        if 'manifestUrl' in kwargs:
+            manifest_url = kwargs['manifestUrl']
+        if 'nodeCommand' in kwargs:
+            node_command = kwargs['nodeCommand']
+        if 'windowsNodeCommand' in kwargs:
+            windows_node_command = kwargs['windowsNodeCommand']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if cluster_id is not None:
@@ -3833,7 +4137,13 @@ class ClusterClusterTemplateAnswersArgs:
              cluster_id: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if project_id is not None:
@@ -3905,7 +4215,9 @@ class ClusterClusterTemplateQuestionArgs:
              variable: pulumi.Input[str],
              required: Optional[pulumi.Input[bool]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("default", default)
         _setter("variable", variable)
         if required is not None:
@@ -4048,7 +4360,41 @@ class ClusterEksConfigArgs:
              subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
              virtual_network: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'associateWorkerNodePublicIp' in kwargs:
+            associate_worker_node_public_ip = kwargs['associateWorkerNodePublicIp']
+        if 'desiredNodes' in kwargs:
+            desired_nodes = kwargs['desiredNodes']
+        if 'ebsEncryption' in kwargs:
+            ebs_encryption = kwargs['ebsEncryption']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'maximumNodes' in kwargs:
+            maximum_nodes = kwargs['maximumNodes']
+        if 'minimumNodes' in kwargs:
+            minimum_nodes = kwargs['minimumNodes']
+        if 'nodeVolumeSize' in kwargs:
+            node_volume_size = kwargs['nodeVolumeSize']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'serviceRole' in kwargs:
+            service_role = kwargs['serviceRole']
+        if 'sessionToken' in kwargs:
+            session_token = kwargs['sessionToken']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'virtualNetwork' in kwargs:
+            virtual_network = kwargs['virtualNetwork']
+
         _setter("access_key", access_key)
         _setter("kubernetes_version", kubernetes_version)
         _setter("secret_key", secret_key)
@@ -4386,7 +4732,31 @@ class ClusterEksConfigV2Args:
              service_role: Optional[pulumi.Input[str]] = None,
              subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cloudCredentialId' in kwargs:
+            cloud_credential_id = kwargs['cloudCredentialId']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'loggingTypes' in kwargs:
+            logging_types = kwargs['loggingTypes']
+        if 'nodeGroups' in kwargs:
+            node_groups = kwargs['nodeGroups']
+        if 'privateAccess' in kwargs:
+            private_access = kwargs['privateAccess']
+        if 'publicAccess' in kwargs:
+            public_access = kwargs['publicAccess']
+        if 'publicAccessSources' in kwargs:
+            public_access_sources = kwargs['publicAccessSources']
+        if 'secretsEncryption' in kwargs:
+            secrets_encryption = kwargs['secretsEncryption']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'serviceRole' in kwargs:
+            service_role = kwargs['serviceRole']
+
         _setter("cloud_credential_id", cloud_credential_id)
         if imported is not None:
             _setter("imported", imported)
@@ -4699,7 +5069,35 @@ class ClusterEksConfigV2NodeGroupArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desiredSize' in kwargs:
+            desired_size = kwargs['desiredSize']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'ec2SshKey' in kwargs:
+            ec2_ssh_key = kwargs['ec2SshKey']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'launchTemplates' in kwargs:
+            launch_templates = kwargs['launchTemplates']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'nodeRole' in kwargs:
+            node_role = kwargs['nodeRole']
+        if 'requestSpotInstances' in kwargs:
+            request_spot_instances = kwargs['requestSpotInstances']
+        if 'resourceTags' in kwargs:
+            resource_tags = kwargs['resourceTags']
+        if 'spotInstanceTypes' in kwargs:
+            spot_instance_types = kwargs['spotInstanceTypes']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+
         _setter("name", name)
         if desired_size is not None:
             _setter("desired_size", desired_size)
@@ -4990,7 +5388,9 @@ class ClusterEksConfigV2NodeGroupLaunchTemplateArgs:
              id: pulumi.Input[str],
              name: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
         if name is not None:
             _setter("name", name)
@@ -5057,7 +5457,15 @@ class ClusterFleetAgentDeploymentCustomizationArgs:
              append_tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs']]]] = None,
              override_affinity: Optional[pulumi.Input[str]] = None,
              override_resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appendTolerations' in kwargs:
+            append_tolerations = kwargs['appendTolerations']
+        if 'overrideAffinity' in kwargs:
+            override_affinity = kwargs['overrideAffinity']
+        if 'overrideResourceRequirements' in kwargs:
+            override_resource_requirements = kwargs['overrideResourceRequirements']
+
         if append_tolerations is not None:
             _setter("append_tolerations", append_tolerations)
         if override_affinity is not None:
@@ -5133,7 +5541,9 @@ class ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs:
              operator: Optional[pulumi.Input[str]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -5232,7 +5642,17 @@ class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs:
              cpu_request: Optional[pulumi.Input[str]] = None,
              memory_limit: Optional[pulumi.Input[str]] = None,
              memory_request: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuLimit' in kwargs:
+            cpu_limit = kwargs['cpuLimit']
+        if 'cpuRequest' in kwargs:
+            cpu_request = kwargs['cpuRequest']
+        if 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if 'memoryRequest' in kwargs:
+            memory_request = kwargs['memoryRequest']
+
         if cpu_limit is not None:
             _setter("cpu_limit", cpu_limit)
         if cpu_request is not None:
@@ -5514,7 +5934,97 @@ class ClusterGkeConfigArgs:
              taints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              use_ip_aliases: Optional[pulumi.Input[bool]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterIpv4Cidr' in kwargs:
+            cluster_ipv4_cidr = kwargs['clusterIpv4Cidr']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'imageType' in kwargs:
+            image_type = kwargs['imageType']
+        if 'ipPolicyClusterIpv4CidrBlock' in kwargs:
+            ip_policy_cluster_ipv4_cidr_block = kwargs['ipPolicyClusterIpv4CidrBlock']
+        if 'ipPolicyClusterSecondaryRangeName' in kwargs:
+            ip_policy_cluster_secondary_range_name = kwargs['ipPolicyClusterSecondaryRangeName']
+        if 'ipPolicyNodeIpv4CidrBlock' in kwargs:
+            ip_policy_node_ipv4_cidr_block = kwargs['ipPolicyNodeIpv4CidrBlock']
+        if 'ipPolicyServicesIpv4CidrBlock' in kwargs:
+            ip_policy_services_ipv4_cidr_block = kwargs['ipPolicyServicesIpv4CidrBlock']
+        if 'ipPolicyServicesSecondaryRangeName' in kwargs:
+            ip_policy_services_secondary_range_name = kwargs['ipPolicyServicesSecondaryRangeName']
+        if 'ipPolicySubnetworkName' in kwargs:
+            ip_policy_subnetwork_name = kwargs['ipPolicySubnetworkName']
+        if 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if 'masterIpv4CidrBlock' in kwargs:
+            master_ipv4_cidr_block = kwargs['masterIpv4CidrBlock']
+        if 'masterVersion' in kwargs:
+            master_version = kwargs['masterVersion']
+        if 'nodePool' in kwargs:
+            node_pool = kwargs['nodePool']
+        if 'nodeVersion' in kwargs:
+            node_version = kwargs['nodeVersion']
+        if 'oauthScopes' in kwargs:
+            oauth_scopes = kwargs['oauthScopes']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if 'subNetwork' in kwargs:
+            sub_network = kwargs['subNetwork']
+        if 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if 'enableAlphaFeature' in kwargs:
+            enable_alpha_feature = kwargs['enableAlphaFeature']
+        if 'enableAutoRepair' in kwargs:
+            enable_auto_repair = kwargs['enableAutoRepair']
+        if 'enableAutoUpgrade' in kwargs:
+            enable_auto_upgrade = kwargs['enableAutoUpgrade']
+        if 'enableHorizontalPodAutoscaling' in kwargs:
+            enable_horizontal_pod_autoscaling = kwargs['enableHorizontalPodAutoscaling']
+        if 'enableHttpLoadBalancing' in kwargs:
+            enable_http_load_balancing = kwargs['enableHttpLoadBalancing']
+        if 'enableKubernetesDashboard' in kwargs:
+            enable_kubernetes_dashboard = kwargs['enableKubernetesDashboard']
+        if 'enableLegacyAbac' in kwargs:
+            enable_legacy_abac = kwargs['enableLegacyAbac']
+        if 'enableMasterAuthorizedNetwork' in kwargs:
+            enable_master_authorized_network = kwargs['enableMasterAuthorizedNetwork']
+        if 'enableNetworkPolicyConfig' in kwargs:
+            enable_network_policy_config = kwargs['enableNetworkPolicyConfig']
+        if 'enableNodepoolAutoscaling' in kwargs:
+            enable_nodepool_autoscaling = kwargs['enableNodepoolAutoscaling']
+        if 'enablePrivateEndpoint' in kwargs:
+            enable_private_endpoint = kwargs['enablePrivateEndpoint']
+        if 'enablePrivateNodes' in kwargs:
+            enable_private_nodes = kwargs['enablePrivateNodes']
+        if 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if 'enableStackdriverMonitoring' in kwargs:
+            enable_stackdriver_monitoring = kwargs['enableStackdriverMonitoring']
+        if 'ipPolicyCreateSubnetwork' in kwargs:
+            ip_policy_create_subnetwork = kwargs['ipPolicyCreateSubnetwork']
+        if 'issueClientCertificate' in kwargs:
+            issue_client_certificate = kwargs['issueClientCertificate']
+        if 'kubernetesDashboard' in kwargs:
+            kubernetes_dashboard = kwargs['kubernetesDashboard']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if 'masterAuthorizedNetworkCidrBlocks' in kwargs:
+            master_authorized_network_cidr_blocks = kwargs['masterAuthorizedNetworkCidrBlocks']
+        if 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+        if 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if 'resourceLabels' in kwargs:
+            resource_labels = kwargs['resourceLabels']
+        if 'useIpAliases' in kwargs:
+            use_ip_aliases = kwargs['useIpAliases']
+
         _setter("cluster_ipv4_cidr", cluster_ipv4_cidr)
         _setter("credential", credential)
         _setter("disk_type", disk_type)
@@ -6340,7 +6850,37 @@ class ClusterGkeConfigV2Args:
              region: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'googleCredentialSecret' in kwargs:
+            google_credential_secret = kwargs['googleCredentialSecret']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'clusterAddons' in kwargs:
+            cluster_addons = kwargs['clusterAddons']
+        if 'clusterIpv4CidrBlock' in kwargs:
+            cluster_ipv4_cidr_block = kwargs['clusterIpv4CidrBlock']
+        if 'enableKubernetesAlpha' in kwargs:
+            enable_kubernetes_alpha = kwargs['enableKubernetesAlpha']
+        if 'ipAllocationPolicy' in kwargs:
+            ip_allocation_policy = kwargs['ipAllocationPolicy']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'loggingService' in kwargs:
+            logging_service = kwargs['loggingService']
+        if 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if 'masterAuthorizedNetworksConfig' in kwargs:
+            master_authorized_networks_config = kwargs['masterAuthorizedNetworksConfig']
+        if 'monitoringService' in kwargs:
+            monitoring_service = kwargs['monitoringService']
+        if 'networkPolicyEnabled' in kwargs:
+            network_policy_enabled = kwargs['networkPolicyEnabled']
+        if 'nodePools' in kwargs:
+            node_pools = kwargs['nodePools']
+        if 'privateClusterConfig' in kwargs:
+            private_cluster_config = kwargs['privateClusterConfig']
+
         _setter("google_credential_secret", google_credential_secret)
         _setter("name", name)
         _setter("project_id", project_id)
@@ -6685,7 +7225,15 @@ class ClusterGkeConfigV2ClusterAddonsArgs:
              horizontal_pod_autoscaling: Optional[pulumi.Input[bool]] = None,
              http_load_balancing: Optional[pulumi.Input[bool]] = None,
              network_policy_config: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'horizontalPodAutoscaling' in kwargs:
+            horizontal_pod_autoscaling = kwargs['horizontalPodAutoscaling']
+        if 'httpLoadBalancing' in kwargs:
+            http_load_balancing = kwargs['httpLoadBalancing']
+        if 'networkPolicyConfig' in kwargs:
+            network_policy_config = kwargs['networkPolicyConfig']
+
         if horizontal_pod_autoscaling is not None:
             _setter("horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         if http_load_balancing is not None:
@@ -6773,7 +7321,25 @@ class ClusterGkeConfigV2IpAllocationPolicyArgs:
              services_secondary_range_name: Optional[pulumi.Input[str]] = None,
              subnetwork_name: Optional[pulumi.Input[str]] = None,
              use_ip_aliases: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterIpv4CidrBlock' in kwargs:
+            cluster_ipv4_cidr_block = kwargs['clusterIpv4CidrBlock']
+        if 'clusterSecondaryRangeName' in kwargs:
+            cluster_secondary_range_name = kwargs['clusterSecondaryRangeName']
+        if 'createSubnetwork' in kwargs:
+            create_subnetwork = kwargs['createSubnetwork']
+        if 'nodeIpv4CidrBlock' in kwargs:
+            node_ipv4_cidr_block = kwargs['nodeIpv4CidrBlock']
+        if 'servicesIpv4CidrBlock' in kwargs:
+            services_ipv4_cidr_block = kwargs['servicesIpv4CidrBlock']
+        if 'servicesSecondaryRangeName' in kwargs:
+            services_secondary_range_name = kwargs['servicesSecondaryRangeName']
+        if 'subnetworkName' in kwargs:
+            subnetwork_name = kwargs['subnetworkName']
+        if 'useIpAliases' in kwargs:
+            use_ip_aliases = kwargs['useIpAliases']
+
         if cluster_ipv4_cidr_block is not None:
             _setter("cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
@@ -6907,7 +7473,11 @@ class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs:
              _setter: Callable[[Any, Any], None],
              cidr_blocks: pulumi.Input[Sequence[pulumi.Input['ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs']]],
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlocks' in kwargs:
+            cidr_blocks = kwargs['cidrBlocks']
+
         _setter("cidr_blocks", cidr_blocks)
         if enabled is not None:
             _setter("enabled", enabled)
@@ -6956,7 +7526,13 @@ class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs:
              _setter: Callable[[Any, Any], None],
              cidr_block: pulumi.Input[str],
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("cidr_block", cidr_block)
         if display_name is not None:
             _setter("display_name", display_name)
@@ -7025,7 +7601,13 @@ class ClusterGkeConfigV2NodePoolArgs:
              config: Optional[pulumi.Input['ClusterGkeConfigV2NodePoolConfigArgs']] = None,
              management: Optional[pulumi.Input['ClusterGkeConfigV2NodePoolManagementArgs']] = None,
              max_pods_constraint: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'initialNodeCount' in kwargs:
+            initial_node_count = kwargs['initialNodeCount']
+        if 'maxPodsConstraint' in kwargs:
+            max_pods_constraint = kwargs['maxPodsConstraint']
+
         _setter("initial_node_count", initial_node_count)
         _setter("name", name)
         _setter("version", version)
@@ -7146,7 +7728,13 @@ class ClusterGkeConfigV2NodePoolAutoscalingArgs:
              enabled: Optional[pulumi.Input[bool]] = None,
              max_node_count: Optional[pulumi.Input[int]] = None,
              min_node_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if max_node_count is not None:
@@ -7242,7 +7830,21 @@ class ClusterGkeConfigV2NodePoolConfigArgs:
              preemptible: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterGkeConfigV2NodePoolConfigTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'imageType' in kwargs:
+            image_type = kwargs['imageType']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if 'oauthScopes' in kwargs:
+            oauth_scopes = kwargs['oauthScopes']
+
         if disk_size_gb is not None:
             _setter("disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -7408,7 +8010,9 @@ class ClusterGkeConfigV2NodePoolConfigTaintArgs:
              effect: pulumi.Input[str],
              key: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("effect", effect)
         _setter("key", key)
         _setter("value", value)
@@ -7469,7 +8073,13 @@ class ClusterGkeConfigV2NodePoolManagementArgs:
              _setter: Callable[[Any, Any], None],
              auto_repair: Optional[pulumi.Input[bool]] = None,
              auto_upgrade: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRepair' in kwargs:
+            auto_repair = kwargs['autoRepair']
+        if 'autoUpgrade' in kwargs:
+            auto_upgrade = kwargs['autoUpgrade']
+
         if auto_repair is not None:
             _setter("auto_repair", auto_repair)
         if auto_upgrade is not None:
@@ -7523,7 +8133,15 @@ class ClusterGkeConfigV2PrivateClusterConfigArgs:
              master_ipv4_cidr_block: pulumi.Input[str],
              enable_private_endpoint: Optional[pulumi.Input[bool]] = None,
              enable_private_nodes: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'masterIpv4CidrBlock' in kwargs:
+            master_ipv4_cidr_block = kwargs['masterIpv4CidrBlock']
+        if 'enablePrivateEndpoint' in kwargs:
+            enable_private_endpoint = kwargs['enablePrivateEndpoint']
+        if 'enablePrivateNodes' in kwargs:
+            enable_private_nodes = kwargs['enablePrivateNodes']
+
         _setter("master_ipv4_cidr_block", master_ipv4_cidr_block)
         if enable_private_endpoint is not None:
             _setter("enable_private_endpoint", enable_private_endpoint)
@@ -7586,7 +8204,11 @@ class ClusterK3sConfigArgs:
              _setter: Callable[[Any, Any], None],
              upgrade_strategy: Optional[pulumi.Input['ClusterK3sConfigUpgradeStrategyArgs']] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'upgradeStrategy' in kwargs:
+            upgrade_strategy = kwargs['upgradeStrategy']
+
         if upgrade_strategy is not None:
             _setter("upgrade_strategy", upgrade_strategy)
         if version is not None:
@@ -7644,7 +8266,17 @@ class ClusterK3sConfigUpgradeStrategyArgs:
              drain_worker_nodes: Optional[pulumi.Input[bool]] = None,
              server_concurrency: Optional[pulumi.Input[int]] = None,
              worker_concurrency: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'drainServerNodes' in kwargs:
+            drain_server_nodes = kwargs['drainServerNodes']
+        if 'drainWorkerNodes' in kwargs:
+            drain_worker_nodes = kwargs['drainWorkerNodes']
+        if 'serverConcurrency' in kwargs:
+            server_concurrency = kwargs['serverConcurrency']
+        if 'workerConcurrency' in kwargs:
+            worker_concurrency = kwargs['workerConcurrency']
+
         if drain_server_nodes is not None:
             _setter("drain_server_nodes", drain_server_nodes)
         if drain_worker_nodes is not None:
@@ -7842,7 +8474,67 @@ class ClusterOkeConfigArgs:
              vcn_compartment_id: Optional[pulumi.Input[str]] = None,
              vcn_name: Optional[pulumi.Input[str]] = None,
              worker_node_ingress_cidr: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'compartmentId' in kwargs:
+            compartment_id = kwargs['compartmentId']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'nodeImage' in kwargs:
+            node_image = kwargs['nodeImage']
+        if 'nodeShape' in kwargs:
+            node_shape = kwargs['nodeShape']
+        if 'privateKeyContents' in kwargs:
+            private_key_contents = kwargs['privateKeyContents']
+        if 'tenancyId' in kwargs:
+            tenancy_id = kwargs['tenancyId']
+        if 'userOcid' in kwargs:
+            user_ocid = kwargs['userOcid']
+        if 'customBootVolumeSize' in kwargs:
+            custom_boot_volume_size = kwargs['customBootVolumeSize']
+        if 'enableKubernetesDashboard' in kwargs:
+            enable_kubernetes_dashboard = kwargs['enableKubernetesDashboard']
+        if 'enablePrivateControlPlane' in kwargs:
+            enable_private_control_plane = kwargs['enablePrivateControlPlane']
+        if 'enablePrivateNodes' in kwargs:
+            enable_private_nodes = kwargs['enablePrivateNodes']
+        if 'flexOcpus' in kwargs:
+            flex_ocpus = kwargs['flexOcpus']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'limitNodeCount' in kwargs:
+            limit_node_count = kwargs['limitNodeCount']
+        if 'loadBalancerSubnetName1' in kwargs:
+            load_balancer_subnet_name1 = kwargs['loadBalancerSubnetName1']
+        if 'loadBalancerSubnetName2' in kwargs:
+            load_balancer_subnet_name2 = kwargs['loadBalancerSubnetName2']
+        if 'nodePoolDnsDomainName' in kwargs:
+            node_pool_dns_domain_name = kwargs['nodePoolDnsDomainName']
+        if 'nodePoolSubnetName' in kwargs:
+            node_pool_subnet_name = kwargs['nodePoolSubnetName']
+        if 'nodePublicKeyContents' in kwargs:
+            node_public_key_contents = kwargs['nodePublicKeyContents']
+        if 'podCidr' in kwargs:
+            pod_cidr = kwargs['podCidr']
+        if 'privateKeyPassphrase' in kwargs:
+            private_key_passphrase = kwargs['privateKeyPassphrase']
+        if 'quantityOfNodeSubnets' in kwargs:
+            quantity_of_node_subnets = kwargs['quantityOfNodeSubnets']
+        if 'quantityPerSubnet' in kwargs:
+            quantity_per_subnet = kwargs['quantityPerSubnet']
+        if 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if 'serviceDnsDomainName' in kwargs:
+            service_dns_domain_name = kwargs['serviceDnsDomainName']
+        if 'skipVcnDelete' in kwargs:
+            skip_vcn_delete = kwargs['skipVcnDelete']
+        if 'vcnCompartmentId' in kwargs:
+            vcn_compartment_id = kwargs['vcnCompartmentId']
+        if 'vcnName' in kwargs:
+            vcn_name = kwargs['vcnName']
+        if 'workerNodeIngressCidr' in kwargs:
+            worker_node_ingress_cidr = kwargs['workerNodeIngressCidr']
+
         _setter("compartment_id", compartment_id)
         _setter("fingerprint", fingerprint)
         _setter("kubernetes_version", kubernetes_version)
@@ -8303,7 +8995,11 @@ class ClusterRke2ConfigArgs:
              _setter: Callable[[Any, Any], None],
              upgrade_strategy: Optional[pulumi.Input['ClusterRke2ConfigUpgradeStrategyArgs']] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'upgradeStrategy' in kwargs:
+            upgrade_strategy = kwargs['upgradeStrategy']
+
         if upgrade_strategy is not None:
             _setter("upgrade_strategy", upgrade_strategy)
         if version is not None:
@@ -8361,7 +9057,17 @@ class ClusterRke2ConfigUpgradeStrategyArgs:
              drain_worker_nodes: Optional[pulumi.Input[bool]] = None,
              server_concurrency: Optional[pulumi.Input[int]] = None,
              worker_concurrency: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'drainServerNodes' in kwargs:
+            drain_server_nodes = kwargs['drainServerNodes']
+        if 'drainWorkerNodes' in kwargs:
+            drain_worker_nodes = kwargs['drainWorkerNodes']
+        if 'serverConcurrency' in kwargs:
+            server_concurrency = kwargs['serverConcurrency']
+        if 'workerConcurrency' in kwargs:
+            worker_concurrency = kwargs['workerConcurrency']
+
         if drain_server_nodes is not None:
             _setter("drain_server_nodes", drain_server_nodes)
         if drain_worker_nodes is not None:
@@ -8523,7 +9229,37 @@ class ClusterRkeConfigArgs:
              ssh_key_path: Optional[pulumi.Input[str]] = None,
              upgrade_strategy: Optional[pulumi.Input['ClusterRkeConfigUpgradeStrategyArgs']] = None,
              win_prefix_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addonJobTimeout' in kwargs:
+            addon_job_timeout = kwargs['addonJobTimeout']
+        if 'addonsIncludes' in kwargs:
+            addons_includes = kwargs['addonsIncludes']
+        if 'bastionHost' in kwargs:
+            bastion_host = kwargs['bastionHost']
+        if 'cloudProvider' in kwargs:
+            cloud_provider = kwargs['cloudProvider']
+        if 'enableCriDockerd' in kwargs:
+            enable_cri_dockerd = kwargs['enableCriDockerd']
+        if 'ignoreDockerVersion' in kwargs:
+            ignore_docker_version = kwargs['ignoreDockerVersion']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'prefixPath' in kwargs:
+            prefix_path = kwargs['prefixPath']
+        if 'privateRegistries' in kwargs:
+            private_registries = kwargs['privateRegistries']
+        if 'sshAgentAuth' in kwargs:
+            ssh_agent_auth = kwargs['sshAgentAuth']
+        if 'sshCertPath' in kwargs:
+            ssh_cert_path = kwargs['sshCertPath']
+        if 'sshKeyPath' in kwargs:
+            ssh_key_path = kwargs['sshKeyPath']
+        if 'upgradeStrategy' in kwargs:
+            upgrade_strategy = kwargs['upgradeStrategy']
+        if 'winPrefixPath' in kwargs:
+            win_prefix_path = kwargs['winPrefixPath']
+
         if addon_job_timeout is not None:
             _setter("addon_job_timeout", addon_job_timeout)
         if addons is not None:
@@ -8867,7 +9603,9 @@ class ClusterRkeConfigAuthenticationArgs:
              _setter: Callable[[Any, Any], None],
              sans: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if sans is not None:
             _setter("sans", sans)
         if strategy is not None:
@@ -8917,7 +9655,9 @@ class ClusterRkeConfigAuthorizationArgs:
              _setter: Callable[[Any, Any], None],
              mode: Optional[pulumi.Input[str]] = None,
              options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if mode is not None:
             _setter("mode", mode)
         if options is not None:
@@ -8983,7 +9723,15 @@ class ClusterRkeConfigBastionHostArgs:
              ssh_agent_auth: Optional[pulumi.Input[bool]] = None,
              ssh_key: Optional[pulumi.Input[str]] = None,
              ssh_key_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sshAgentAuth' in kwargs:
+            ssh_agent_auth = kwargs['sshAgentAuth']
+        if 'sshKey' in kwargs:
+            ssh_key = kwargs['sshKey']
+        if 'sshKeyPath' in kwargs:
+            ssh_key_path = kwargs['sshKeyPath']
+
         _setter("address", address)
         _setter("user", user)
         if port is not None:
@@ -9103,7 +9851,19 @@ class ClusterRkeConfigCloudProviderArgs:
              name: Optional[pulumi.Input[str]] = None,
              openstack_cloud_provider: Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs']] = None,
              vsphere_cloud_provider: Optional[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'awsCloudProvider' in kwargs:
+            aws_cloud_provider = kwargs['awsCloudProvider']
+        if 'azureCloudProvider' in kwargs:
+            azure_cloud_provider = kwargs['azureCloudProvider']
+        if 'customCloudProvider' in kwargs:
+            custom_cloud_provider = kwargs['customCloudProvider']
+        if 'openstackCloudProvider' in kwargs:
+            openstack_cloud_provider = kwargs['openstackCloudProvider']
+        if 'vsphereCloudProvider' in kwargs:
+            vsphere_cloud_provider = kwargs['vsphereCloudProvider']
+
         if aws_cloud_provider is not None:
             _setter("aws_cloud_provider", aws_cloud_provider)
         if azure_cloud_provider is not None:
@@ -9209,7 +9969,13 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderArgs:
              _setter: Callable[[Any, Any], None],
              global_: Optional[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs']] = None,
              service_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'global' in kwargs:
+            global_ = kwargs['global']
+        if 'serviceOverrides' in kwargs:
+            service_overrides = kwargs['serviceOverrides']
+
         if global_ is not None:
             _setter("global_", global_)
         if service_overrides is not None:
@@ -9291,7 +10057,25 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
              subnet_id: Optional[pulumi.Input[str]] = None,
              vpc: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'disableSecurityGroupIngress' in kwargs:
+            disable_security_group_ingress = kwargs['disableSecurityGroupIngress']
+        if 'disableStrictZoneCheck' in kwargs:
+            disable_strict_zone_check = kwargs['disableStrictZoneCheck']
+        if 'elbSecurityGroup' in kwargs:
+            elb_security_group = kwargs['elbSecurityGroup']
+        if 'kubernetesClusterId' in kwargs:
+            kubernetes_cluster_id = kwargs['kubernetesClusterId']
+        if 'kubernetesClusterTag' in kwargs:
+            kubernetes_cluster_tag = kwargs['kubernetesClusterTag']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+
         if disable_security_group_ingress is not None:
             _setter("disable_security_group_ingress", disable_security_group_ingress)
         if disable_strict_zone_check is not None:
@@ -9469,7 +10253,15 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
              signing_name: Optional[pulumi.Input[str]] = None,
              signing_region: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'signingMethod' in kwargs:
+            signing_method = kwargs['signingMethod']
+        if 'signingName' in kwargs:
+            signing_name = kwargs['signingName']
+        if 'signingRegion' in kwargs:
+            signing_region = kwargs['signingRegion']
+
         _setter("service", service)
         if region is not None:
             _setter("region", region)
@@ -9682,7 +10474,63 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
              vm_type: Optional[pulumi.Input[str]] = None,
              vnet_name: Optional[pulumi.Input[str]] = None,
              vnet_resource_group: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aadClientId' in kwargs:
+            aad_client_id = kwargs['aadClientId']
+        if 'aadClientSecret' in kwargs:
+            aad_client_secret = kwargs['aadClientSecret']
+        if 'subscriptionId' in kwargs:
+            subscription_id = kwargs['subscriptionId']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'aadClientCertPassword' in kwargs:
+            aad_client_cert_password = kwargs['aadClientCertPassword']
+        if 'aadClientCertPath' in kwargs:
+            aad_client_cert_path = kwargs['aadClientCertPath']
+        if 'cloudProviderBackoff' in kwargs:
+            cloud_provider_backoff = kwargs['cloudProviderBackoff']
+        if 'cloudProviderBackoffDuration' in kwargs:
+            cloud_provider_backoff_duration = kwargs['cloudProviderBackoffDuration']
+        if 'cloudProviderBackoffExponent' in kwargs:
+            cloud_provider_backoff_exponent = kwargs['cloudProviderBackoffExponent']
+        if 'cloudProviderBackoffJitter' in kwargs:
+            cloud_provider_backoff_jitter = kwargs['cloudProviderBackoffJitter']
+        if 'cloudProviderBackoffRetries' in kwargs:
+            cloud_provider_backoff_retries = kwargs['cloudProviderBackoffRetries']
+        if 'cloudProviderRateLimit' in kwargs:
+            cloud_provider_rate_limit = kwargs['cloudProviderRateLimit']
+        if 'cloudProviderRateLimitBucket' in kwargs:
+            cloud_provider_rate_limit_bucket = kwargs['cloudProviderRateLimitBucket']
+        if 'cloudProviderRateLimitQps' in kwargs:
+            cloud_provider_rate_limit_qps = kwargs['cloudProviderRateLimitQps']
+        if 'loadBalancerSku' in kwargs:
+            load_balancer_sku = kwargs['loadBalancerSku']
+        if 'maximumLoadBalancerRuleCount' in kwargs:
+            maximum_load_balancer_rule_count = kwargs['maximumLoadBalancerRuleCount']
+        if 'primaryAvailabilitySetName' in kwargs:
+            primary_availability_set_name = kwargs['primaryAvailabilitySetName']
+        if 'primaryScaleSetName' in kwargs:
+            primary_scale_set_name = kwargs['primaryScaleSetName']
+        if 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if 'routeTableName' in kwargs:
+            route_table_name = kwargs['routeTableName']
+        if 'securityGroupName' in kwargs:
+            security_group_name = kwargs['securityGroupName']
+        if 'subnetName' in kwargs:
+            subnet_name = kwargs['subnetName']
+        if 'useInstanceMetadata' in kwargs:
+            use_instance_metadata = kwargs['useInstanceMetadata']
+        if 'useManagedIdentityExtension' in kwargs:
+            use_managed_identity_extension = kwargs['useManagedIdentityExtension']
+        if 'vmType' in kwargs:
+            vm_type = kwargs['vmType']
+        if 'vnetName' in kwargs:
+            vnet_name = kwargs['vnetName']
+        if 'vnetResourceGroup' in kwargs:
+            vnet_resource_group = kwargs['vnetResourceGroup']
+
         _setter("aad_client_id", aad_client_id)
         _setter("aad_client_secret", aad_client_secret)
         _setter("subscription_id", subscription_id)
@@ -10118,7 +10966,15 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs:
              load_balancer: Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs']] = None,
              metadata: Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs']] = None,
              route: Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'global' in kwargs:
+            global_ = kwargs['global']
+        if 'blockStorage' in kwargs:
+            block_storage = kwargs['blockStorage']
+        if 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+
         _setter("global_", global_)
         if block_storage is not None:
             _setter("block_storage", block_storage)
@@ -10213,7 +11069,15 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs:
              bs_version: Optional[pulumi.Input[str]] = None,
              ignore_volume_az: Optional[pulumi.Input[bool]] = None,
              trust_device_path: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bsVersion' in kwargs:
+            bs_version = kwargs['bsVersion']
+        if 'ignoreVolumeAz' in kwargs:
+            ignore_volume_az = kwargs['ignoreVolumeAz']
+        if 'trustDevicePath' in kwargs:
+            trust_device_path = kwargs['trustDevicePath']
+
         if bs_version is not None:
             _setter("bs_version", bs_version)
         if ignore_volume_az is not None:
@@ -10309,7 +11173,23 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
              tenant_id: Optional[pulumi.Input[str]] = None,
              tenant_name: Optional[pulumi.Input[str]] = None,
              trust_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authUrl' in kwargs:
+            auth_url = kwargs['authUrl']
+        if 'caFile' in kwargs:
+            ca_file = kwargs['caFile']
+        if 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'tenantName' in kwargs:
+            tenant_name = kwargs['tenantName']
+        if 'trustId' in kwargs:
+            trust_id = kwargs['trustId']
+
         _setter("auth_url", auth_url)
         _setter("password", password)
         _setter("username", username)
@@ -10504,7 +11384,31 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
              monitor_timeout: Optional[pulumi.Input[str]] = None,
              subnet_id: Optional[pulumi.Input[str]] = None,
              use_octavia: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createMonitor' in kwargs:
+            create_monitor = kwargs['createMonitor']
+        if 'floatingNetworkId' in kwargs:
+            floating_network_id = kwargs['floatingNetworkId']
+        if 'lbMethod' in kwargs:
+            lb_method = kwargs['lbMethod']
+        if 'lbProvider' in kwargs:
+            lb_provider = kwargs['lbProvider']
+        if 'lbVersion' in kwargs:
+            lb_version = kwargs['lbVersion']
+        if 'manageSecurityGroups' in kwargs:
+            manage_security_groups = kwargs['manageSecurityGroups']
+        if 'monitorDelay' in kwargs:
+            monitor_delay = kwargs['monitorDelay']
+        if 'monitorMaxRetries' in kwargs:
+            monitor_max_retries = kwargs['monitorMaxRetries']
+        if 'monitorTimeout' in kwargs:
+            monitor_timeout = kwargs['monitorTimeout']
+        if 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if 'useOctavia' in kwargs:
+            use_octavia = kwargs['useOctavia']
+
         if create_monitor is not None:
             _setter("create_monitor", create_monitor)
         if floating_network_id is not None:
@@ -10680,7 +11584,13 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs:
              _setter: Callable[[Any, Any], None],
              request_timeout: Optional[pulumi.Input[int]] = None,
              search_order: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+        if 'searchOrder' in kwargs:
+            search_order = kwargs['searchOrder']
+
         if request_timeout is not None:
             _setter("request_timeout", request_timeout)
         if search_order is not None:
@@ -10726,7 +11636,11 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         if router_id is not None:
             _setter("router_id", router_id)
 
@@ -10774,7 +11688,13 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs:
              disk: Optional[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs']] = None,
              global_: Optional[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs']] = None,
              network: Optional[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'virtualCenters' in kwargs:
+            virtual_centers = kwargs['virtualCenters']
+        if 'global' in kwargs:
+            global_ = kwargs['global']
+
         _setter("virtual_centers", virtual_centers)
         _setter("workspace", workspace)
         if disk is not None:
@@ -10860,7 +11780,11 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              scsi_controller_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scsiControllerType' in kwargs:
+            scsi_controller_type = kwargs['scsiControllerType']
+
         if scsi_controller_type is not None:
             _setter("scsi_controller_type", scsi_controller_type)
 
@@ -10912,7 +11836,13 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs:
              port: Optional[pulumi.Input[str]] = None,
              soap_roundtrip_count: Optional[pulumi.Input[int]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'insecureFlag' in kwargs:
+            insecure_flag = kwargs['insecureFlag']
+        if 'soapRoundtripCount' in kwargs:
+            soap_roundtrip_count = kwargs['soapRoundtripCount']
+
         if datacenters is not None:
             _setter("datacenters", datacenters)
         if insecure_flag is not None:
@@ -11014,7 +11944,11 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              public_network: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publicNetwork' in kwargs:
+            public_network = kwargs['publicNetwork']
+
         if public_network is not None:
             _setter("public_network", public_network)
 
@@ -11066,7 +12000,11 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs:
              user: pulumi.Input[str],
              port: Optional[pulumi.Input[str]] = None,
              soap_roundtrip_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'soapRoundtripCount' in kwargs:
+            soap_roundtrip_count = kwargs['soapRoundtripCount']
+
         _setter("datacenters", datacenters)
         _setter("name", name)
         _setter("password", password)
@@ -11180,7 +12118,13 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
              server: pulumi.Input[str],
              default_datastore: Optional[pulumi.Input[str]] = None,
              resourcepool_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultDatastore' in kwargs:
+            default_datastore = kwargs['defaultDatastore']
+        if 'resourcepoolPath' in kwargs:
+            resourcepool_path = kwargs['resourcepoolPath']
+
         _setter("datacenter", datacenter)
         _setter("folder", folder)
         _setter("server", server)
@@ -11297,7 +12241,19 @@ class ClusterRkeConfigDnsArgs:
              tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigDnsTolerationArgs']]]] = None,
              update_strategy: Optional[pulumi.Input['ClusterRkeConfigDnsUpdateStrategyArgs']] = None,
              upstream_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'linearAutoscalerParams' in kwargs:
+            linear_autoscaler_params = kwargs['linearAutoscalerParams']
+        if 'nodeSelector' in kwargs:
+            node_selector = kwargs['nodeSelector']
+        if 'reverseCidrs' in kwargs:
+            reverse_cidrs = kwargs['reverseCidrs']
+        if 'updateStrategy' in kwargs:
+            update_strategy = kwargs['updateStrategy']
+        if 'upstreamNameservers' in kwargs:
+            upstream_nameservers = kwargs['upstreamNameservers']
+
         if linear_autoscaler_params is not None:
             _setter("linear_autoscaler_params", linear_autoscaler_params)
         if node_selector is not None:
@@ -11457,7 +12413,15 @@ class ClusterRkeConfigDnsLinearAutoscalerParamsArgs:
              min: Optional[pulumi.Input[int]] = None,
              nodes_per_replica: Optional[pulumi.Input[float]] = None,
              prevent_single_point_failure: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'coresPerReplica' in kwargs:
+            cores_per_replica = kwargs['coresPerReplica']
+        if 'nodesPerReplica' in kwargs:
+            nodes_per_replica = kwargs['nodesPerReplica']
+        if 'preventSinglePointFailure' in kwargs:
+            prevent_single_point_failure = kwargs['preventSinglePointFailure']
+
         if cores_per_replica is not None:
             _setter("cores_per_replica", cores_per_replica)
         if max is not None:
@@ -11549,7 +12513,13 @@ class ClusterRkeConfigDnsNodelocalArgs:
              _setter: Callable[[Any, Any], None],
              ip_address: Optional[pulumi.Input[str]] = None,
              node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'nodeSelector' in kwargs:
+            node_selector = kwargs['nodeSelector']
+
         if ip_address is not None:
             _setter("ip_address", ip_address)
         if node_selector is not None:
@@ -11611,7 +12581,9 @@ class ClusterRkeConfigDnsTolerationArgs:
              operator: Optional[pulumi.Input[str]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -11702,7 +12674,11 @@ class ClusterRkeConfigDnsUpdateStrategyArgs:
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional[pulumi.Input['ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs']] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'rollingUpdate' in kwargs:
+            rolling_update = kwargs['rollingUpdate']
+
         if rolling_update is not None:
             _setter("rolling_update", rolling_update)
         if strategy is not None:
@@ -11752,7 +12728,13 @@ class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs:
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[pulumi.Input[int]] = None,
              max_unavailable: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxSurge' in kwargs:
+            max_surge = kwargs['maxSurge']
+        if 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+
         if max_surge is not None:
             _setter("max_surge", max_surge)
         if max_unavailable is not None:
@@ -11838,7 +12820,25 @@ class ClusterRkeConfigIngressArgs:
              provider: Optional[pulumi.Input[str]] = None,
              tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigIngressTolerationArgs']]]] = None,
              update_strategy: Optional[pulumi.Input['ClusterRkeConfigIngressUpdateStrategyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultBackend' in kwargs:
+            default_backend = kwargs['defaultBackend']
+        if 'dnsPolicy' in kwargs:
+            dns_policy = kwargs['dnsPolicy']
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'httpPort' in kwargs:
+            http_port = kwargs['httpPort']
+        if 'httpsPort' in kwargs:
+            https_port = kwargs['httpsPort']
+        if 'networkMode' in kwargs:
+            network_mode = kwargs['networkMode']
+        if 'nodeSelector' in kwargs:
+            node_selector = kwargs['nodeSelector']
+        if 'updateStrategy' in kwargs:
+            update_strategy = kwargs['updateStrategy']
+
         if default_backend is not None:
             _setter("default_backend", default_backend)
         if dns_policy is not None:
@@ -12026,7 +13026,9 @@ class ClusterRkeConfigIngressTolerationArgs:
              operator: Optional[pulumi.Input[str]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -12117,7 +13119,11 @@ class ClusterRkeConfigIngressUpdateStrategyArgs:
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional[pulumi.Input['ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs']] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'rollingUpdate' in kwargs:
+            rolling_update = kwargs['rollingUpdate']
+
         if rolling_update is not None:
             _setter("rolling_update", rolling_update)
         if strategy is not None:
@@ -12163,7 +13169,11 @@ class ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_unavailable: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+
         if max_unavailable is not None:
             _setter("max_unavailable", max_unavailable)
 
@@ -12215,7 +13225,13 @@ class ClusterRkeConfigMonitoringArgs:
              replicas: Optional[pulumi.Input[int]] = None,
              tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigMonitoringTolerationArgs']]]] = None,
              update_strategy: Optional[pulumi.Input['ClusterRkeConfigMonitoringUpdateStrategyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeSelector' in kwargs:
+            node_selector = kwargs['nodeSelector']
+        if 'updateStrategy' in kwargs:
+            update_strategy = kwargs['updateStrategy']
+
         if node_selector is not None:
             _setter("node_selector", node_selector)
         if options is not None:
@@ -12333,7 +13349,9 @@ class ClusterRkeConfigMonitoringTolerationArgs:
              operator: Optional[pulumi.Input[str]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -12424,7 +13442,11 @@ class ClusterRkeConfigMonitoringUpdateStrategyArgs:
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional[pulumi.Input['ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs']] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'rollingUpdate' in kwargs:
+            rolling_update = kwargs['rollingUpdate']
+
         if rolling_update is not None:
             _setter("rolling_update", rolling_update)
         if strategy is not None:
@@ -12474,7 +13496,13 @@ class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs:
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[pulumi.Input[int]] = None,
              max_unavailable: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxSurge' in kwargs:
+            max_surge = kwargs['maxSurge']
+        if 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+
         if max_surge is not None:
             _setter("max_surge", max_surge)
         if max_unavailable is not None:
@@ -12552,7 +13580,19 @@ class ClusterRkeConfigNetworkArgs:
              plugin: Optional[pulumi.Input[str]] = None,
              tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigNetworkTolerationArgs']]]] = None,
              weave_network_provider: Optional[pulumi.Input['ClusterRkeConfigNetworkWeaveNetworkProviderArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aciNetworkProvider' in kwargs:
+            aci_network_provider = kwargs['aciNetworkProvider']
+        if 'calicoNetworkProvider' in kwargs:
+            calico_network_provider = kwargs['calicoNetworkProvider']
+        if 'canalNetworkProvider' in kwargs:
+            canal_network_provider = kwargs['canalNetworkProvider']
+        if 'flannelNetworkProvider' in kwargs:
+            flannel_network_provider = kwargs['flannelNetworkProvider']
+        if 'weaveNetworkProvider' in kwargs:
+            weave_network_provider = kwargs['weaveNetworkProvider']
+
         if aci_network_provider is not None:
             _setter("aci_network_provider", aci_network_provider)
         if calico_network_provider is not None:
@@ -12988,7 +14028,147 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
              use_privileged_container: Optional[pulumi.Input[str]] = None,
              vmm_controller: Optional[pulumi.Input[str]] = None,
              vmm_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apicHosts' in kwargs:
+            apic_hosts = kwargs['apicHosts']
+        if 'apicUserCrt' in kwargs:
+            apic_user_crt = kwargs['apicUserCrt']
+        if 'apicUserKey' in kwargs:
+            apic_user_key = kwargs['apicUserKey']
+        if 'apicUserName' in kwargs:
+            apic_user_name = kwargs['apicUserName']
+        if 'encapType' in kwargs:
+            encap_type = kwargs['encapType']
+        if 'externDynamic' in kwargs:
+            extern_dynamic = kwargs['externDynamic']
+        if 'externStatic' in kwargs:
+            extern_static = kwargs['externStatic']
+        if 'kubeApiVlan' in kwargs:
+            kube_api_vlan = kwargs['kubeApiVlan']
+        if 'l3outExternalNetworks' in kwargs:
+            l3out_external_networks = kwargs['l3outExternalNetworks']
+        if 'mcastRangeEnd' in kwargs:
+            mcast_range_end = kwargs['mcastRangeEnd']
+        if 'mcastRangeStart' in kwargs:
+            mcast_range_start = kwargs['mcastRangeStart']
+        if 'nodeSubnet' in kwargs:
+            node_subnet = kwargs['nodeSubnet']
+        if 'nodeSvcSubnet' in kwargs:
+            node_svc_subnet = kwargs['nodeSvcSubnet']
+        if 'serviceVlan' in kwargs:
+            service_vlan = kwargs['serviceVlan']
+        if 'systemId' in kwargs:
+            system_id = kwargs['systemId']
+        if 'vrfName' in kwargs:
+            vrf_name = kwargs['vrfName']
+        if 'vrfTenant' in kwargs:
+            vrf_tenant = kwargs['vrfTenant']
+        if 'apicRefreshTickerAdjust' in kwargs:
+            apic_refresh_ticker_adjust = kwargs['apicRefreshTickerAdjust']
+        if 'apicRefreshTime' in kwargs:
+            apic_refresh_time = kwargs['apicRefreshTime']
+        if 'apicSubscriptionDelay' in kwargs:
+            apic_subscription_delay = kwargs['apicSubscriptionDelay']
+        if 'controllerLogLevel' in kwargs:
+            controller_log_level = kwargs['controllerLogLevel']
+        if 'disablePeriodicSnatGlobalInfoSync' in kwargs:
+            disable_periodic_snat_global_info_sync = kwargs['disablePeriodicSnatGlobalInfoSync']
+        if 'disableWaitForNetwork' in kwargs:
+            disable_wait_for_network = kwargs['disableWaitForNetwork']
+        if 'dropLogEnable' in kwargs:
+            drop_log_enable = kwargs['dropLogEnable']
+        if 'durationWaitForNetwork' in kwargs:
+            duration_wait_for_network = kwargs['durationWaitForNetwork']
+        if 'enableEndpointSlice' in kwargs:
+            enable_endpoint_slice = kwargs['enableEndpointSlice']
+        if 'epRegistry' in kwargs:
+            ep_registry = kwargs['epRegistry']
+        if 'gbpPodSubnet' in kwargs:
+            gbp_pod_subnet = kwargs['gbpPodSubnet']
+        if 'hostAgentLogLevel' in kwargs:
+            host_agent_log_level = kwargs['hostAgentLogLevel']
+        if 'imagePullPolicy' in kwargs:
+            image_pull_policy = kwargs['imagePullPolicy']
+        if 'imagePullSecret' in kwargs:
+            image_pull_secret = kwargs['imagePullSecret']
+        if 'infraVlan' in kwargs:
+            infra_vlan = kwargs['infraVlan']
+        if 'installIstio' in kwargs:
+            install_istio = kwargs['installIstio']
+        if 'istioProfile' in kwargs:
+            istio_profile = kwargs['istioProfile']
+        if 'kafkaBrokers' in kwargs:
+            kafka_brokers = kwargs['kafkaBrokers']
+        if 'kafkaClientCrt' in kwargs:
+            kafka_client_crt = kwargs['kafkaClientCrt']
+        if 'kafkaClientKey' in kwargs:
+            kafka_client_key = kwargs['kafkaClientKey']
+        if 'maxNodesSvcGraph' in kwargs:
+            max_nodes_svc_graph = kwargs['maxNodesSvcGraph']
+        if 'mtuHeadRoom' in kwargs:
+            mtu_head_room = kwargs['mtuHeadRoom']
+        if 'multusDisable' in kwargs:
+            multus_disable = kwargs['multusDisable']
+        if 'noPriorityClass' in kwargs:
+            no_priority_class = kwargs['noPriorityClass']
+        if 'nodePodIfEnable' in kwargs:
+            node_pod_if_enable = kwargs['nodePodIfEnable']
+        if 'opflexClientSsl' in kwargs:
+            opflex_client_ssl = kwargs['opflexClientSsl']
+        if 'opflexDeviceDeleteTimeout' in kwargs:
+            opflex_device_delete_timeout = kwargs['opflexDeviceDeleteTimeout']
+        if 'opflexLogLevel' in kwargs:
+            opflex_log_level = kwargs['opflexLogLevel']
+        if 'opflexMode' in kwargs:
+            opflex_mode = kwargs['opflexMode']
+        if 'opflexServerPort' in kwargs:
+            opflex_server_port = kwargs['opflexServerPort']
+        if 'overlayVrfName' in kwargs:
+            overlay_vrf_name = kwargs['overlayVrfName']
+        if 'ovsMemoryLimit' in kwargs:
+            ovs_memory_limit = kwargs['ovsMemoryLimit']
+        if 'pbrTrackingNonSnat' in kwargs:
+            pbr_tracking_non_snat = kwargs['pbrTrackingNonSnat']
+        if 'podSubnetChunkSize' in kwargs:
+            pod_subnet_chunk_size = kwargs['podSubnetChunkSize']
+        if 'runGbpContainer' in kwargs:
+            run_gbp_container = kwargs['runGbpContainer']
+        if 'runOpflexServerContainer' in kwargs:
+            run_opflex_server_container = kwargs['runOpflexServerContainer']
+        if 'serviceMonitorInterval' in kwargs:
+            service_monitor_interval = kwargs['serviceMonitorInterval']
+        if 'snatContractScope' in kwargs:
+            snat_contract_scope = kwargs['snatContractScope']
+        if 'snatNamespace' in kwargs:
+            snat_namespace = kwargs['snatNamespace']
+        if 'snatPortRangeEnd' in kwargs:
+            snat_port_range_end = kwargs['snatPortRangeEnd']
+        if 'snatPortRangeStart' in kwargs:
+            snat_port_range_start = kwargs['snatPortRangeStart']
+        if 'snatPortsPerNode' in kwargs:
+            snat_ports_per_node = kwargs['snatPortsPerNode']
+        if 'sriovEnable' in kwargs:
+            sriov_enable = kwargs['sriovEnable']
+        if 'subnetDomainName' in kwargs:
+            subnet_domain_name = kwargs['subnetDomainName']
+        if 'useAciAnywhereCrd' in kwargs:
+            use_aci_anywhere_crd = kwargs['useAciAnywhereCrd']
+        if 'useAciCniPriorityClass' in kwargs:
+            use_aci_cni_priority_class = kwargs['useAciCniPriorityClass']
+        if 'useClusterRole' in kwargs:
+            use_cluster_role = kwargs['useClusterRole']
+        if 'useHostNetnsVolume' in kwargs:
+            use_host_netns_volume = kwargs['useHostNetnsVolume']
+        if 'useOpflexServerVolume' in kwargs:
+            use_opflex_server_volume = kwargs['useOpflexServerVolume']
+        if 'usePrivilegedContainer' in kwargs:
+            use_privileged_container = kwargs['usePrivilegedContainer']
+        if 'vmmController' in kwargs:
+            vmm_controller = kwargs['vmmController']
+        if 'vmmDomain' in kwargs:
+            vmm_domain = kwargs['vmmDomain']
+
         _setter("aep", aep)
         _setter("apic_hosts", apic_hosts)
         _setter("apic_user_crt", apic_user_crt)
@@ -14022,7 +15202,11 @@ class ClusterRkeConfigNetworkCalicoNetworkProviderArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              cloud_provider: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cloudProvider' in kwargs:
+            cloud_provider = kwargs['cloudProvider']
+
         if cloud_provider is not None:
             _setter("cloud_provider", cloud_provider)
 
@@ -14054,7 +15238,9 @@ class ClusterRkeConfigNetworkCanalNetworkProviderArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              iface: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if iface is not None:
             _setter("iface", iface)
 
@@ -14086,7 +15272,9 @@ class ClusterRkeConfigNetworkFlannelNetworkProviderArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              iface: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if iface is not None:
             _setter("iface", iface)
 
@@ -14134,7 +15322,9 @@ class ClusterRkeConfigNetworkTolerationArgs:
              operator: Optional[pulumi.Input[str]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -14221,7 +15411,9 @@ class ClusterRkeConfigNetworkWeaveNetworkProviderArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              password: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
 
     @property
@@ -14296,7 +15488,23 @@ class ClusterRkeConfigNodeArgs:
              ssh_agent_auth: Optional[pulumi.Input[bool]] = None,
              ssh_key: Optional[pulumi.Input[str]] = None,
              ssh_key_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dockerSocket' in kwargs:
+            docker_socket = kwargs['dockerSocket']
+        if 'hostnameOverride' in kwargs:
+            hostname_override = kwargs['hostnameOverride']
+        if 'internalAddress' in kwargs:
+            internal_address = kwargs['internalAddress']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'sshAgentAuth' in kwargs:
+            ssh_agent_auth = kwargs['sshAgentAuth']
+        if 'sshKey' in kwargs:
+            ssh_key = kwargs['sshKey']
+        if 'sshKeyPath' in kwargs:
+            ssh_key_path = kwargs['sshKeyPath']
+
         _setter("address", address)
         _setter("roles", roles)
         _setter("user", user)
@@ -14495,7 +15703,13 @@ class ClusterRkeConfigPrivateRegistryArgs:
              is_default: Optional[pulumi.Input[bool]] = None,
              password: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ecrCredentialPlugin' in kwargs:
+            ecr_credential_plugin = kwargs['ecrCredentialPlugin']
+        if 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+
         _setter("url", url)
         if ecr_credential_plugin is not None:
             _setter("ecr_credential_plugin", ecr_credential_plugin)
@@ -14590,7 +15804,15 @@ class ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs:
              aws_access_key_id: Optional[pulumi.Input[str]] = None,
              aws_secret_access_key: Optional[pulumi.Input[str]] = None,
              aws_session_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'awsAccessKeyId' in kwargs:
+            aws_access_key_id = kwargs['awsAccessKeyId']
+        if 'awsSecretAccessKey' in kwargs:
+            aws_secret_access_key = kwargs['awsSecretAccessKey']
+        if 'awsSessionToken' in kwargs:
+            aws_session_token = kwargs['awsSessionToken']
+
         if aws_access_key_id is not None:
             _setter("aws_access_key_id", aws_access_key_id)
         if aws_secret_access_key is not None:
@@ -14670,7 +15892,13 @@ class ClusterRkeConfigServicesArgs:
              kubelet: Optional[pulumi.Input['ClusterRkeConfigServicesKubeletArgs']] = None,
              kubeproxy: Optional[pulumi.Input['ClusterRkeConfigServicesKubeproxyArgs']] = None,
              scheduler: Optional[pulumi.Input['ClusterRkeConfigServicesSchedulerArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'kubeApi' in kwargs:
+            kube_api = kwargs['kubeApi']
+        if 'kubeController' in kwargs:
+            kube_controller = kwargs['kubeController']
+
         if etcd is not None:
             _setter("etcd", etcd)
         if kube_api is not None:
@@ -14828,7 +16056,21 @@ class ClusterRkeConfigServicesEtcdArgs:
              retention: Optional[pulumi.Input[str]] = None,
              snapshot: Optional[pulumi.Input[bool]] = None,
              uid: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupConfig' in kwargs:
+            backup_config = kwargs['backupConfig']
+        if 'caCert' in kwargs:
+            ca_cert = kwargs['caCert']
+        if 'externalUrls' in kwargs:
+            external_urls = kwargs['externalUrls']
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'extraBinds' in kwargs:
+            extra_binds = kwargs['extraBinds']
+        if 'extraEnvs' in kwargs:
+            extra_envs = kwargs['extraEnvs']
+
         if backup_config is not None:
             _setter("backup_config", backup_config)
         if ca_cert is not None:
@@ -15076,7 +16318,15 @@ class ClusterRkeConfigServicesEtcdBackupConfigArgs:
              s3_backup_config: Optional[pulumi.Input['ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs']] = None,
              safe_timestamp: Optional[pulumi.Input[bool]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'intervalHours' in kwargs:
+            interval_hours = kwargs['intervalHours']
+        if 's3BackupConfig' in kwargs:
+            s3_backup_config = kwargs['s3BackupConfig']
+        if 'safeTimestamp' in kwargs:
+            safe_timestamp = kwargs['safeTimestamp']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if interval_hours is not None:
@@ -15202,7 +16452,17 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
              folder: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              secret_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'customCa' in kwargs:
+            custom_ca = kwargs['customCa']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         _setter("bucket_name", bucket_name)
         _setter("endpoint", endpoint)
         if access_key is not None:
@@ -15360,7 +16620,31 @@ class ClusterRkeConfigServicesKubeApiArgs:
              secrets_encryption_config: Optional[pulumi.Input['ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs']] = None,
              service_cluster_ip_range: Optional[pulumi.Input[str]] = None,
              service_node_port_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'admissionConfiguration' in kwargs:
+            admission_configuration = kwargs['admissionConfiguration']
+        if 'alwaysPullImages' in kwargs:
+            always_pull_images = kwargs['alwaysPullImages']
+        if 'auditLog' in kwargs:
+            audit_log = kwargs['auditLog']
+        if 'eventRateLimit' in kwargs:
+            event_rate_limit = kwargs['eventRateLimit']
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'extraBinds' in kwargs:
+            extra_binds = kwargs['extraBinds']
+        if 'extraEnvs' in kwargs:
+            extra_envs = kwargs['extraEnvs']
+        if 'podSecurityPolicy' in kwargs:
+            pod_security_policy = kwargs['podSecurityPolicy']
+        if 'secretsEncryptionConfig' in kwargs:
+            secrets_encryption_config = kwargs['secretsEncryptionConfig']
+        if 'serviceClusterIpRange' in kwargs:
+            service_cluster_ip_range = kwargs['serviceClusterIpRange']
+        if 'serviceNodePortRange' in kwargs:
+            service_node_port_range = kwargs['serviceNodePortRange']
+
         if admission_configuration is not None:
             _setter("admission_configuration", admission_configuration)
         if always_pull_images is not None:
@@ -15554,7 +16838,11 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs:
              api_version: Optional[pulumi.Input[str]] = None,
              kind: Optional[pulumi.Input[str]] = None,
              plugins: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+
         if api_version is not None:
             _setter("api_version", api_version)
         if kind is not None:
@@ -15622,7 +16910,9 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs:
              configuration: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if configuration is not None:
             _setter("configuration", configuration)
         if name is not None:
@@ -15686,7 +16976,9 @@ class ClusterRkeConfigServicesKubeApiAuditLogArgs:
              _setter: Callable[[Any, Any], None],
              configuration: Optional[pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs']] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if configuration is not None:
             _setter("configuration", configuration)
         if enabled is not None:
@@ -15752,7 +17044,15 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs:
              max_size: Optional[pulumi.Input[int]] = None,
              path: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+        if 'maxBackup' in kwargs:
+            max_backup = kwargs['maxBackup']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+
         if format is not None:
             _setter("format", format)
         if max_age is not None:
@@ -15858,7 +17158,9 @@ class ClusterRkeConfigServicesKubeApiEventRateLimitArgs:
              _setter: Callable[[Any, Any], None],
              configuration: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if configuration is not None:
             _setter("configuration", configuration)
         if enabled is not None:
@@ -15912,7 +17214,11 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
              _setter: Callable[[Any, Any], None],
              custom_config: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customConfig' in kwargs:
+            custom_config = kwargs['customConfig']
+
         if custom_config is not None:
             _setter("custom_config", custom_config)
         if enabled is not None:
@@ -15982,7 +17288,19 @@ class ClusterRkeConfigServicesKubeControllerArgs:
              extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              image: Optional[pulumi.Input[str]] = None,
              service_cluster_ip_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterCidr' in kwargs:
+            cluster_cidr = kwargs['clusterCidr']
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'extraBinds' in kwargs:
+            extra_binds = kwargs['extraBinds']
+        if 'extraEnvs' in kwargs:
+            extra_envs = kwargs['extraEnvs']
+        if 'serviceClusterIpRange' in kwargs:
+            service_cluster_ip_range = kwargs['serviceClusterIpRange']
+
         if cluster_cidr is not None:
             _setter("cluster_cidr", cluster_cidr)
         if extra_args is not None:
@@ -16116,7 +17434,25 @@ class ClusterRkeConfigServicesKubeletArgs:
              generate_serving_certificate: Optional[pulumi.Input[bool]] = None,
              image: Optional[pulumi.Input[str]] = None,
              infra_container_image: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterDnsServer' in kwargs:
+            cluster_dns_server = kwargs['clusterDnsServer']
+        if 'clusterDomain' in kwargs:
+            cluster_domain = kwargs['clusterDomain']
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'extraBinds' in kwargs:
+            extra_binds = kwargs['extraBinds']
+        if 'extraEnvs' in kwargs:
+            extra_envs = kwargs['extraEnvs']
+        if 'failSwapOn' in kwargs:
+            fail_swap_on = kwargs['failSwapOn']
+        if 'generateServingCertificate' in kwargs:
+            generate_serving_certificate = kwargs['generateServingCertificate']
+        if 'infraContainerImage' in kwargs:
+            infra_container_image = kwargs['infraContainerImage']
+
         if cluster_dns_server is not None:
             _setter("cluster_dns_server", cluster_dns_server)
         if cluster_domain is not None:
@@ -16272,7 +17608,15 @@ class ClusterRkeConfigServicesKubeproxyArgs:
              extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              image: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'extraBinds' in kwargs:
+            extra_binds = kwargs['extraBinds']
+        if 'extraEnvs' in kwargs:
+            extra_envs = kwargs['extraEnvs']
+
         if extra_args is not None:
             _setter("extra_args", extra_args)
         if extra_binds is not None:
@@ -16358,7 +17702,15 @@ class ClusterRkeConfigServicesSchedulerArgs:
              extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              image: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'extraBinds' in kwargs:
+            extra_binds = kwargs['extraBinds']
+        if 'extraEnvs' in kwargs:
+            extra_envs = kwargs['extraEnvs']
+
         if extra_args is not None:
             _setter("extra_args", extra_args)
         if extra_binds is not None:
@@ -16444,7 +17796,15 @@ class ClusterRkeConfigUpgradeStrategyArgs:
              drain_input: Optional[pulumi.Input['ClusterRkeConfigUpgradeStrategyDrainInputArgs']] = None,
              max_unavailable_controlplane: Optional[pulumi.Input[str]] = None,
              max_unavailable_worker: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'drainInput' in kwargs:
+            drain_input = kwargs['drainInput']
+        if 'maxUnavailableControlplane' in kwargs:
+            max_unavailable_controlplane = kwargs['maxUnavailableControlplane']
+        if 'maxUnavailableWorker' in kwargs:
+            max_unavailable_worker = kwargs['maxUnavailableWorker']
+
         if drain is not None:
             _setter("drain", drain)
         if drain_input is not None:
@@ -16534,7 +17894,15 @@ class ClusterRkeConfigUpgradeStrategyDrainInputArgs:
              grace_period: Optional[pulumi.Input[int]] = None,
              ignore_daemon_sets: Optional[pulumi.Input[bool]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteLocalData' in kwargs:
+            delete_local_data = kwargs['deleteLocalData']
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if 'ignoreDaemonSets' in kwargs:
+            ignore_daemon_sets = kwargs['ignoreDaemonSets']
+
         if delete_local_data is not None:
             _setter("delete_local_data", delete_local_data)
         if force is not None:
@@ -16682,7 +18050,27 @@ class ClusterSyncNodeArgs:
              roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ssh_user: Optional[pulumi.Input[str]] = None,
              system_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'externalIpAddress' in kwargs:
+            external_ip_address = kwargs['externalIpAddress']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'nodePoolId' in kwargs:
+            node_pool_id = kwargs['nodePoolId']
+        if 'nodeTemplateId' in kwargs:
+            node_template_id = kwargs['nodeTemplateId']
+        if 'providerId' in kwargs:
+            provider_id = kwargs['providerId']
+        if 'requestedHostname' in kwargs:
+            requested_hostname = kwargs['requestedHostname']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'systemInfo' in kwargs:
+            system_info = kwargs['systemInfo']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if capacity is not None:
@@ -16932,7 +18320,15 @@ class ClusterTemplateMemberArgs:
              access_type: Optional[pulumi.Input[str]] = None,
              group_principal_id: Optional[pulumi.Input[str]] = None,
              user_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessType' in kwargs:
+            access_type = kwargs['accessType']
+        if 'groupPrincipalId' in kwargs:
+            group_principal_id = kwargs['groupPrincipalId']
+        if 'userPrincipalId' in kwargs:
+            user_principal_id = kwargs['userPrincipalId']
+
         if access_type is not None:
             _setter("access_type", access_type)
         if group_principal_id is not None:
@@ -17024,7 +18420,13 @@ class ClusterTemplateTemplateRevisionArgs:
              id: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              questions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionQuestionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterConfig' in kwargs:
+            cluster_config = kwargs['clusterConfig']
+        if 'clusterTemplateId' in kwargs:
+            cluster_template_id = kwargs['clusterTemplateId']
+
         _setter("cluster_config", cluster_config)
         _setter("name", name)
         if annotations is not None:
@@ -17209,7 +18611,33 @@ class ClusterTemplateTemplateRevisionClusterConfigArgs:
              enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
              enable_network_policy: Optional[pulumi.Input[bool]] = None,
              windows_prefered_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'rkeConfig' in kwargs:
+            rke_config = kwargs['rkeConfig']
+        if 'clusterAuthEndpoint' in kwargs:
+            cluster_auth_endpoint = kwargs['clusterAuthEndpoint']
+        if 'defaultClusterRoleForProjectMembers' in kwargs:
+            default_cluster_role_for_project_members = kwargs['defaultClusterRoleForProjectMembers']
+        if 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
+            default_pod_security_admission_configuration_template_name = kwargs['defaultPodSecurityAdmissionConfigurationTemplateName']
+        if 'defaultPodSecurityPolicyTemplateId' in kwargs:
+            default_pod_security_policy_template_id = kwargs['defaultPodSecurityPolicyTemplateId']
+        if 'desiredAgentImage' in kwargs:
+            desired_agent_image = kwargs['desiredAgentImage']
+        if 'desiredAuthImage' in kwargs:
+            desired_auth_image = kwargs['desiredAuthImage']
+        if 'dockerRootDir' in kwargs:
+            docker_root_dir = kwargs['dockerRootDir']
+        if 'enableClusterAlerting' in kwargs:
+            enable_cluster_alerting = kwargs['enableClusterAlerting']
+        if 'enableClusterMonitoring' in kwargs:
+            enable_cluster_monitoring = kwargs['enableClusterMonitoring']
+        if 'enableNetworkPolicy' in kwargs:
+            enable_network_policy = kwargs['enableNetworkPolicy']
+        if 'windowsPreferedCluster' in kwargs:
+            windows_prefered_cluster = kwargs['windowsPreferedCluster']
+
         _setter("rke_config", rke_config)
         if cluster_auth_endpoint is not None:
             _setter("cluster_auth_endpoint", cluster_auth_endpoint)
@@ -17397,7 +18825,11 @@ class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs:
              ca_certs: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              fqdn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caCerts' in kwargs:
+            ca_certs = kwargs['caCerts']
+
         if ca_certs is not None:
             _setter("ca_certs", ca_certs)
         if enabled is not None:
@@ -17514,7 +18946,37 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs:
              ssh_key_path: Optional[pulumi.Input[str]] = None,
              upgrade_strategy: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs']] = None,
              win_prefix_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addonJobTimeout' in kwargs:
+            addon_job_timeout = kwargs['addonJobTimeout']
+        if 'addonsIncludes' in kwargs:
+            addons_includes = kwargs['addonsIncludes']
+        if 'bastionHost' in kwargs:
+            bastion_host = kwargs['bastionHost']
+        if 'cloudProvider' in kwargs:
+            cloud_provider = kwargs['cloudProvider']
+        if 'enableCriDockerd' in kwargs:
+            enable_cri_dockerd = kwargs['enableCriDockerd']
+        if 'ignoreDockerVersion' in kwargs:
+            ignore_docker_version = kwargs['ignoreDockerVersion']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'prefixPath' in kwargs:
+            prefix_path = kwargs['prefixPath']
+        if 'privateRegistries' in kwargs:
+            private_registries = kwargs['privateRegistries']
+        if 'sshAgentAuth' in kwargs:
+            ssh_agent_auth = kwargs['sshAgentAuth']
+        if 'sshCertPath' in kwargs:
+            ssh_cert_path = kwargs['sshCertPath']
+        if 'sshKeyPath' in kwargs:
+            ssh_key_path = kwargs['sshKeyPath']
+        if 'upgradeStrategy' in kwargs:
+            upgrade_strategy = kwargs['upgradeStrategy']
+        if 'winPrefixPath' in kwargs:
+            win_prefix_path = kwargs['winPrefixPath']
+
         if addon_job_timeout is not None:
             _setter("addon_job_timeout", addon_job_timeout)
         if addons is not None:
@@ -17785,7 +19247,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs:
              _setter: Callable[[Any, Any], None],
              sans: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if sans is not None:
             _setter("sans", sans)
         if strategy is not None:
@@ -17825,7 +19289,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs:
              _setter: Callable[[Any, Any], None],
              mode: Optional[pulumi.Input[str]] = None,
              options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if mode is not None:
             _setter("mode", mode)
         if options is not None:
@@ -17877,7 +19343,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs:
              ssh_agent_auth: Optional[pulumi.Input[bool]] = None,
              ssh_key: Optional[pulumi.Input[str]] = None,
              ssh_key_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sshAgentAuth' in kwargs:
+            ssh_agent_auth = kwargs['sshAgentAuth']
+        if 'sshKey' in kwargs:
+            ssh_key = kwargs['sshKey']
+        if 'sshKeyPath' in kwargs:
+            ssh_key_path = kwargs['sshKeyPath']
+
         _setter("address", address)
         _setter("user", user)
         if port is not None:
@@ -17974,7 +19448,19 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs:
              name: Optional[pulumi.Input[str]] = None,
              openstack_cloud_provider: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs']] = None,
              vsphere_cloud_provider: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'awsCloudProvider' in kwargs:
+            aws_cloud_provider = kwargs['awsCloudProvider']
+        if 'azureCloudProvider' in kwargs:
+            azure_cloud_provider = kwargs['azureCloudProvider']
+        if 'customCloudProvider' in kwargs:
+            custom_cloud_provider = kwargs['customCloudProvider']
+        if 'openstackCloudProvider' in kwargs:
+            openstack_cloud_provider = kwargs['openstackCloudProvider']
+        if 'vsphereCloudProvider' in kwargs:
+            vsphere_cloud_provider = kwargs['vsphereCloudProvider']
+
         if aws_cloud_provider is not None:
             _setter("aws_cloud_provider", aws_cloud_provider)
         if azure_cloud_provider is not None:
@@ -18061,7 +19547,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloud
              _setter: Callable[[Any, Any], None],
              global_: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs']] = None,
              service_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'global' in kwargs:
+            global_ = kwargs['global']
+        if 'serviceOverrides' in kwargs:
+            service_overrides = kwargs['serviceOverrides']
+
         if global_ is not None:
             _setter("global_", global_)
         if service_overrides is not None:
@@ -18125,7 +19617,25 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloud
              subnet_id: Optional[pulumi.Input[str]] = None,
              vpc: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'disableSecurityGroupIngress' in kwargs:
+            disable_security_group_ingress = kwargs['disableSecurityGroupIngress']
+        if 'disableStrictZoneCheck' in kwargs:
+            disable_strict_zone_check = kwargs['disableStrictZoneCheck']
+        if 'elbSecurityGroup' in kwargs:
+            elb_security_group = kwargs['elbSecurityGroup']
+        if 'kubernetesClusterId' in kwargs:
+            kubernetes_cluster_id = kwargs['kubernetesClusterId']
+        if 'kubernetesClusterTag' in kwargs:
+            kubernetes_cluster_tag = kwargs['kubernetesClusterTag']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+
         if disable_security_group_ingress is not None:
             _setter("disable_security_group_ingress", disable_security_group_ingress)
         if disable_strict_zone_check is not None:
@@ -18265,7 +19775,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloud
              signing_name: Optional[pulumi.Input[str]] = None,
              signing_region: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'signingMethod' in kwargs:
+            signing_method = kwargs['signingMethod']
+        if 'signingName' in kwargs:
+            signing_name = kwargs['signingName']
+        if 'signingRegion' in kwargs:
+            signing_region = kwargs['signingRegion']
+
         _setter("service", service)
         if region is not None:
             _setter("region", region)
@@ -18429,7 +19947,63 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureClo
              vm_type: Optional[pulumi.Input[str]] = None,
              vnet_name: Optional[pulumi.Input[str]] = None,
              vnet_resource_group: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aadClientId' in kwargs:
+            aad_client_id = kwargs['aadClientId']
+        if 'aadClientSecret' in kwargs:
+            aad_client_secret = kwargs['aadClientSecret']
+        if 'subscriptionId' in kwargs:
+            subscription_id = kwargs['subscriptionId']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'aadClientCertPassword' in kwargs:
+            aad_client_cert_password = kwargs['aadClientCertPassword']
+        if 'aadClientCertPath' in kwargs:
+            aad_client_cert_path = kwargs['aadClientCertPath']
+        if 'cloudProviderBackoff' in kwargs:
+            cloud_provider_backoff = kwargs['cloudProviderBackoff']
+        if 'cloudProviderBackoffDuration' in kwargs:
+            cloud_provider_backoff_duration = kwargs['cloudProviderBackoffDuration']
+        if 'cloudProviderBackoffExponent' in kwargs:
+            cloud_provider_backoff_exponent = kwargs['cloudProviderBackoffExponent']
+        if 'cloudProviderBackoffJitter' in kwargs:
+            cloud_provider_backoff_jitter = kwargs['cloudProviderBackoffJitter']
+        if 'cloudProviderBackoffRetries' in kwargs:
+            cloud_provider_backoff_retries = kwargs['cloudProviderBackoffRetries']
+        if 'cloudProviderRateLimit' in kwargs:
+            cloud_provider_rate_limit = kwargs['cloudProviderRateLimit']
+        if 'cloudProviderRateLimitBucket' in kwargs:
+            cloud_provider_rate_limit_bucket = kwargs['cloudProviderRateLimitBucket']
+        if 'cloudProviderRateLimitQps' in kwargs:
+            cloud_provider_rate_limit_qps = kwargs['cloudProviderRateLimitQps']
+        if 'loadBalancerSku' in kwargs:
+            load_balancer_sku = kwargs['loadBalancerSku']
+        if 'maximumLoadBalancerRuleCount' in kwargs:
+            maximum_load_balancer_rule_count = kwargs['maximumLoadBalancerRuleCount']
+        if 'primaryAvailabilitySetName' in kwargs:
+            primary_availability_set_name = kwargs['primaryAvailabilitySetName']
+        if 'primaryScaleSetName' in kwargs:
+            primary_scale_set_name = kwargs['primaryScaleSetName']
+        if 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if 'routeTableName' in kwargs:
+            route_table_name = kwargs['routeTableName']
+        if 'securityGroupName' in kwargs:
+            security_group_name = kwargs['securityGroupName']
+        if 'subnetName' in kwargs:
+            subnet_name = kwargs['subnetName']
+        if 'useInstanceMetadata' in kwargs:
+            use_instance_metadata = kwargs['useInstanceMetadata']
+        if 'useManagedIdentityExtension' in kwargs:
+            use_managed_identity_extension = kwargs['useManagedIdentityExtension']
+        if 'vmType' in kwargs:
+            vm_type = kwargs['vmType']
+        if 'vnetName' in kwargs:
+            vnet_name = kwargs['vnetName']
+        if 'vnetResourceGroup' in kwargs:
+            vnet_resource_group = kwargs['vnetResourceGroup']
+
         _setter("aad_client_id", aad_client_id)
         _setter("aad_client_secret", aad_client_secret)
         _setter("subscription_id", subscription_id)
@@ -18771,7 +20345,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
              load_balancer: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs']] = None,
              metadata: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs']] = None,
              route: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'global' in kwargs:
+            global_ = kwargs['global']
+        if 'blockStorage' in kwargs:
+            block_storage = kwargs['blockStorage']
+        if 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+
         _setter("global_", global_)
         if block_storage is not None:
             _setter("block_storage", block_storage)
@@ -18846,7 +20428,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
              bs_version: Optional[pulumi.Input[str]] = None,
              ignore_volume_az: Optional[pulumi.Input[bool]] = None,
              trust_device_path: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bsVersion' in kwargs:
+            bs_version = kwargs['bsVersion']
+        if 'ignoreVolumeAz' in kwargs:
+            ignore_volume_az = kwargs['ignoreVolumeAz']
+        if 'trustDevicePath' in kwargs:
+            trust_device_path = kwargs['trustDevicePath']
+
         if bs_version is not None:
             _setter("bs_version", bs_version)
         if ignore_volume_az is not None:
@@ -18921,7 +20511,23 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
              tenant_id: Optional[pulumi.Input[str]] = None,
              tenant_name: Optional[pulumi.Input[str]] = None,
              trust_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authUrl' in kwargs:
+            auth_url = kwargs['authUrl']
+        if 'caFile' in kwargs:
+            ca_file = kwargs['caFile']
+        if 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'tenantName' in kwargs:
+            tenant_name = kwargs['tenantName']
+        if 'trustId' in kwargs:
+            trust_id = kwargs['trustId']
+
         _setter("auth_url", auth_url)
         _setter("password", password)
         _setter("username", username)
@@ -19073,7 +20679,31 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
              monitor_timeout: Optional[pulumi.Input[str]] = None,
              subnet_id: Optional[pulumi.Input[str]] = None,
              use_octavia: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createMonitor' in kwargs:
+            create_monitor = kwargs['createMonitor']
+        if 'floatingNetworkId' in kwargs:
+            floating_network_id = kwargs['floatingNetworkId']
+        if 'lbMethod' in kwargs:
+            lb_method = kwargs['lbMethod']
+        if 'lbProvider' in kwargs:
+            lb_provider = kwargs['lbProvider']
+        if 'lbVersion' in kwargs:
+            lb_version = kwargs['lbVersion']
+        if 'manageSecurityGroups' in kwargs:
+            manage_security_groups = kwargs['manageSecurityGroups']
+        if 'monitorDelay' in kwargs:
+            monitor_delay = kwargs['monitorDelay']
+        if 'monitorMaxRetries' in kwargs:
+            monitor_max_retries = kwargs['monitorMaxRetries']
+        if 'monitorTimeout' in kwargs:
+            monitor_timeout = kwargs['monitorTimeout']
+        if 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if 'useOctavia' in kwargs:
+            use_octavia = kwargs['useOctavia']
+
         if create_monitor is not None:
             _setter("create_monitor", create_monitor)
         if floating_network_id is not None:
@@ -19212,7 +20842,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
              _setter: Callable[[Any, Any], None],
              request_timeout: Optional[pulumi.Input[int]] = None,
              search_order: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+        if 'searchOrder' in kwargs:
+            search_order = kwargs['searchOrder']
+
         if request_timeout is not None:
             _setter("request_timeout", request_timeout)
         if search_order is not None:
@@ -19249,7 +20885,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
     def _configure(
              _setter: Callable[[Any, Any], None],
              router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         if router_id is not None:
             _setter("router_id", router_id)
 
@@ -19287,7 +20927,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
              disk: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs']] = None,
              global_: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs']] = None,
              network: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'virtualCenters' in kwargs:
+            virtual_centers = kwargs['virtualCenters']
+        if 'global' in kwargs:
+            global_ = kwargs['global']
+
         _setter("virtual_centers", virtual_centers)
         _setter("workspace", workspace)
         if disk is not None:
@@ -19355,7 +21001,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     def _configure(
              _setter: Callable[[Any, Any], None],
              scsi_controller_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scsiControllerType' in kwargs:
+            scsi_controller_type = kwargs['scsiControllerType']
+
         if scsi_controller_type is not None:
             _setter("scsi_controller_type", scsi_controller_type)
 
@@ -19396,7 +21046,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
              port: Optional[pulumi.Input[str]] = None,
              soap_roundtrip_count: Optional[pulumi.Input[int]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'insecureFlag' in kwargs:
+            insecure_flag = kwargs['insecureFlag']
+        if 'soapRoundtripCount' in kwargs:
+            soap_roundtrip_count = kwargs['soapRoundtripCount']
+
         if datacenters is not None:
             _setter("datacenters", datacenters)
         if insecure_flag is not None:
@@ -19477,7 +21133,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     def _configure(
              _setter: Callable[[Any, Any], None],
              public_network: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publicNetwork' in kwargs:
+            public_network = kwargs['publicNetwork']
+
         if public_network is not None:
             _setter("public_network", public_network)
 
@@ -19521,7 +21181,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
              user: pulumi.Input[str],
              port: Optional[pulumi.Input[str]] = None,
              soap_roundtrip_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'soapRoundtripCount' in kwargs:
+            soap_roundtrip_count = kwargs['soapRoundtripCount']
+
         _setter("datacenters", datacenters)
         _setter("name", name)
         _setter("password", password)
@@ -19613,7 +21277,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
              server: pulumi.Input[str],
              default_datastore: Optional[pulumi.Input[str]] = None,
              resourcepool_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultDatastore' in kwargs:
+            default_datastore = kwargs['defaultDatastore']
+        if 'resourcepoolPath' in kwargs:
+            resourcepool_path = kwargs['resourcepoolPath']
+
         _setter("datacenter", datacenter)
         _setter("folder", folder)
         _setter("server", server)
@@ -19704,7 +21374,19 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs:
              tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgs']]]] = None,
              update_strategy: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs']] = None,
              upstream_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'linearAutoscalerParams' in kwargs:
+            linear_autoscaler_params = kwargs['linearAutoscalerParams']
+        if 'nodeSelector' in kwargs:
+            node_selector = kwargs['nodeSelector']
+        if 'reverseCidrs' in kwargs:
+            reverse_cidrs = kwargs['reverseCidrs']
+        if 'updateStrategy' in kwargs:
+            update_strategy = kwargs['updateStrategy']
+        if 'upstreamNameservers' in kwargs:
+            upstream_nameservers = kwargs['upstreamNameservers']
+
         if linear_autoscaler_params is not None:
             _setter("linear_autoscaler_params", linear_autoscaler_params)
         if node_selector is not None:
@@ -19830,7 +21512,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerPa
              min: Optional[pulumi.Input[int]] = None,
              nodes_per_replica: Optional[pulumi.Input[float]] = None,
              prevent_single_point_failure: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'coresPerReplica' in kwargs:
+            cores_per_replica = kwargs['coresPerReplica']
+        if 'nodesPerReplica' in kwargs:
+            nodes_per_replica = kwargs['nodesPerReplica']
+        if 'preventSinglePointFailure' in kwargs:
+            prevent_single_point_failure = kwargs['preventSinglePointFailure']
+
         if cores_per_replica is not None:
             _setter("cores_per_replica", cores_per_replica)
         if max is not None:
@@ -19903,7 +21593,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs:
              _setter: Callable[[Any, Any], None],
              ip_address: Optional[pulumi.Input[str]] = None,
              node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'nodeSelector' in kwargs:
+            node_selector = kwargs['nodeSelector']
+
         if ip_address is not None:
             _setter("ip_address", ip_address)
         if node_selector is not None:
@@ -19952,7 +21648,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgs:
              operator: Optional[pulumi.Input[str]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -20024,7 +21722,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs']] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'rollingUpdate' in kwargs:
+            rolling_update = kwargs['rollingUpdate']
+
         if rolling_update is not None:
             _setter("rolling_update", rolling_update)
         if strategy is not None:
@@ -20064,7 +21766,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRoll
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[pulumi.Input[int]] = None,
              max_unavailable: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxSurge' in kwargs:
+            max_surge = kwargs['maxSurge']
+        if 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+
         if max_surge is not None:
             _setter("max_surge", max_surge)
         if max_unavailable is not None:
@@ -20131,7 +21839,25 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs:
              provider: Optional[pulumi.Input[str]] = None,
              tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs']]]] = None,
              update_strategy: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultBackend' in kwargs:
+            default_backend = kwargs['defaultBackend']
+        if 'dnsPolicy' in kwargs:
+            dns_policy = kwargs['dnsPolicy']
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'httpPort' in kwargs:
+            http_port = kwargs['httpPort']
+        if 'httpsPort' in kwargs:
+            https_port = kwargs['httpsPort']
+        if 'networkMode' in kwargs:
+            network_mode = kwargs['networkMode']
+        if 'nodeSelector' in kwargs:
+            node_selector = kwargs['nodeSelector']
+        if 'updateStrategy' in kwargs:
+            update_strategy = kwargs['updateStrategy']
+
         if default_backend is not None:
             _setter("default_backend", default_backend)
         if dns_policy is not None:
@@ -20279,7 +22005,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs
              operator: Optional[pulumi.Input[str]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -20351,7 +22079,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgs']] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'rollingUpdate' in kwargs:
+            rolling_update = kwargs['rollingUpdate']
+
         if rolling_update is not None:
             _setter("rolling_update", rolling_update)
         if strategy is not None:
@@ -20388,7 +22120,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_unavailable: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+
         if max_unavailable is not None:
             _setter("max_unavailable", max_unavailable)
 
@@ -20429,7 +22165,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs:
              replicas: Optional[pulumi.Input[int]] = None,
              tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgs']]]] = None,
              update_strategy: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeSelector' in kwargs:
+            node_selector = kwargs['nodeSelector']
+        if 'updateStrategy' in kwargs:
+            update_strategy = kwargs['updateStrategy']
+
         if node_selector is not None:
             _setter("node_selector", node_selector)
         if options is not None:
@@ -20522,7 +22264,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationA
              operator: Optional[pulumi.Input[str]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -20594,7 +22338,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrat
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs']] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'rollingUpdate' in kwargs:
+            rolling_update = kwargs['rollingUpdate']
+
         if rolling_update is not None:
             _setter("rolling_update", rolling_update)
         if strategy is not None:
@@ -20634,7 +22382,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrat
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[pulumi.Input[int]] = None,
              max_unavailable: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxSurge' in kwargs:
+            max_surge = kwargs['maxSurge']
+        if 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+
         if max_surge is not None:
             _setter("max_surge", max_surge)
         if max_unavailable is not None:
@@ -20695,7 +22449,19 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs:
              plugin: Optional[pulumi.Input[str]] = None,
              tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs']]]] = None,
              weave_network_provider: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aciNetworkProvider' in kwargs:
+            aci_network_provider = kwargs['aciNetworkProvider']
+        if 'calicoNetworkProvider' in kwargs:
+            calico_network_provider = kwargs['calicoNetworkProvider']
+        if 'canalNetworkProvider' in kwargs:
+            canal_network_provider = kwargs['canalNetworkProvider']
+        if 'flannelNetworkProvider' in kwargs:
+            flannel_network_provider = kwargs['flannelNetworkProvider']
+        if 'weaveNetworkProvider' in kwargs:
+            weave_network_provider = kwargs['weaveNetworkProvider']
+
         if aci_network_provider is not None:
             _setter("aci_network_provider", aci_network_provider)
         if calico_network_provider is not None:
@@ -21028,7 +22794,147 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProv
              use_privileged_container: Optional[pulumi.Input[str]] = None,
              vmm_controller: Optional[pulumi.Input[str]] = None,
              vmm_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apicHosts' in kwargs:
+            apic_hosts = kwargs['apicHosts']
+        if 'apicUserCrt' in kwargs:
+            apic_user_crt = kwargs['apicUserCrt']
+        if 'apicUserKey' in kwargs:
+            apic_user_key = kwargs['apicUserKey']
+        if 'apicUserName' in kwargs:
+            apic_user_name = kwargs['apicUserName']
+        if 'encapType' in kwargs:
+            encap_type = kwargs['encapType']
+        if 'externDynamic' in kwargs:
+            extern_dynamic = kwargs['externDynamic']
+        if 'externStatic' in kwargs:
+            extern_static = kwargs['externStatic']
+        if 'kubeApiVlan' in kwargs:
+            kube_api_vlan = kwargs['kubeApiVlan']
+        if 'l3outExternalNetworks' in kwargs:
+            l3out_external_networks = kwargs['l3outExternalNetworks']
+        if 'mcastRangeEnd' in kwargs:
+            mcast_range_end = kwargs['mcastRangeEnd']
+        if 'mcastRangeStart' in kwargs:
+            mcast_range_start = kwargs['mcastRangeStart']
+        if 'nodeSubnet' in kwargs:
+            node_subnet = kwargs['nodeSubnet']
+        if 'nodeSvcSubnet' in kwargs:
+            node_svc_subnet = kwargs['nodeSvcSubnet']
+        if 'serviceVlan' in kwargs:
+            service_vlan = kwargs['serviceVlan']
+        if 'systemId' in kwargs:
+            system_id = kwargs['systemId']
+        if 'vrfName' in kwargs:
+            vrf_name = kwargs['vrfName']
+        if 'vrfTenant' in kwargs:
+            vrf_tenant = kwargs['vrfTenant']
+        if 'apicRefreshTickerAdjust' in kwargs:
+            apic_refresh_ticker_adjust = kwargs['apicRefreshTickerAdjust']
+        if 'apicRefreshTime' in kwargs:
+            apic_refresh_time = kwargs['apicRefreshTime']
+        if 'apicSubscriptionDelay' in kwargs:
+            apic_subscription_delay = kwargs['apicSubscriptionDelay']
+        if 'controllerLogLevel' in kwargs:
+            controller_log_level = kwargs['controllerLogLevel']
+        if 'disablePeriodicSnatGlobalInfoSync' in kwargs:
+            disable_periodic_snat_global_info_sync = kwargs['disablePeriodicSnatGlobalInfoSync']
+        if 'disableWaitForNetwork' in kwargs:
+            disable_wait_for_network = kwargs['disableWaitForNetwork']
+        if 'dropLogEnable' in kwargs:
+            drop_log_enable = kwargs['dropLogEnable']
+        if 'durationWaitForNetwork' in kwargs:
+            duration_wait_for_network = kwargs['durationWaitForNetwork']
+        if 'enableEndpointSlice' in kwargs:
+            enable_endpoint_slice = kwargs['enableEndpointSlice']
+        if 'epRegistry' in kwargs:
+            ep_registry = kwargs['epRegistry']
+        if 'gbpPodSubnet' in kwargs:
+            gbp_pod_subnet = kwargs['gbpPodSubnet']
+        if 'hostAgentLogLevel' in kwargs:
+            host_agent_log_level = kwargs['hostAgentLogLevel']
+        if 'imagePullPolicy' in kwargs:
+            image_pull_policy = kwargs['imagePullPolicy']
+        if 'imagePullSecret' in kwargs:
+            image_pull_secret = kwargs['imagePullSecret']
+        if 'infraVlan' in kwargs:
+            infra_vlan = kwargs['infraVlan']
+        if 'installIstio' in kwargs:
+            install_istio = kwargs['installIstio']
+        if 'istioProfile' in kwargs:
+            istio_profile = kwargs['istioProfile']
+        if 'kafkaBrokers' in kwargs:
+            kafka_brokers = kwargs['kafkaBrokers']
+        if 'kafkaClientCrt' in kwargs:
+            kafka_client_crt = kwargs['kafkaClientCrt']
+        if 'kafkaClientKey' in kwargs:
+            kafka_client_key = kwargs['kafkaClientKey']
+        if 'maxNodesSvcGraph' in kwargs:
+            max_nodes_svc_graph = kwargs['maxNodesSvcGraph']
+        if 'mtuHeadRoom' in kwargs:
+            mtu_head_room = kwargs['mtuHeadRoom']
+        if 'multusDisable' in kwargs:
+            multus_disable = kwargs['multusDisable']
+        if 'noPriorityClass' in kwargs:
+            no_priority_class = kwargs['noPriorityClass']
+        if 'nodePodIfEnable' in kwargs:
+            node_pod_if_enable = kwargs['nodePodIfEnable']
+        if 'opflexClientSsl' in kwargs:
+            opflex_client_ssl = kwargs['opflexClientSsl']
+        if 'opflexDeviceDeleteTimeout' in kwargs:
+            opflex_device_delete_timeout = kwargs['opflexDeviceDeleteTimeout']
+        if 'opflexLogLevel' in kwargs:
+            opflex_log_level = kwargs['opflexLogLevel']
+        if 'opflexMode' in kwargs:
+            opflex_mode = kwargs['opflexMode']
+        if 'opflexServerPort' in kwargs:
+            opflex_server_port = kwargs['opflexServerPort']
+        if 'overlayVrfName' in kwargs:
+            overlay_vrf_name = kwargs['overlayVrfName']
+        if 'ovsMemoryLimit' in kwargs:
+            ovs_memory_limit = kwargs['ovsMemoryLimit']
+        if 'pbrTrackingNonSnat' in kwargs:
+            pbr_tracking_non_snat = kwargs['pbrTrackingNonSnat']
+        if 'podSubnetChunkSize' in kwargs:
+            pod_subnet_chunk_size = kwargs['podSubnetChunkSize']
+        if 'runGbpContainer' in kwargs:
+            run_gbp_container = kwargs['runGbpContainer']
+        if 'runOpflexServerContainer' in kwargs:
+            run_opflex_server_container = kwargs['runOpflexServerContainer']
+        if 'serviceMonitorInterval' in kwargs:
+            service_monitor_interval = kwargs['serviceMonitorInterval']
+        if 'snatContractScope' in kwargs:
+            snat_contract_scope = kwargs['snatContractScope']
+        if 'snatNamespace' in kwargs:
+            snat_namespace = kwargs['snatNamespace']
+        if 'snatPortRangeEnd' in kwargs:
+            snat_port_range_end = kwargs['snatPortRangeEnd']
+        if 'snatPortRangeStart' in kwargs:
+            snat_port_range_start = kwargs['snatPortRangeStart']
+        if 'snatPortsPerNode' in kwargs:
+            snat_ports_per_node = kwargs['snatPortsPerNode']
+        if 'sriovEnable' in kwargs:
+            sriov_enable = kwargs['sriovEnable']
+        if 'subnetDomainName' in kwargs:
+            subnet_domain_name = kwargs['subnetDomainName']
+        if 'useAciAnywhereCrd' in kwargs:
+            use_aci_anywhere_crd = kwargs['useAciAnywhereCrd']
+        if 'useAciCniPriorityClass' in kwargs:
+            use_aci_cni_priority_class = kwargs['useAciCniPriorityClass']
+        if 'useClusterRole' in kwargs:
+            use_cluster_role = kwargs['useClusterRole']
+        if 'useHostNetnsVolume' in kwargs:
+            use_host_netns_volume = kwargs['useHostNetnsVolume']
+        if 'useOpflexServerVolume' in kwargs:
+            use_opflex_server_volume = kwargs['useOpflexServerVolume']
+        if 'usePrivilegedContainer' in kwargs:
+            use_privileged_container = kwargs['usePrivilegedContainer']
+        if 'vmmController' in kwargs:
+            vmm_controller = kwargs['vmmController']
+        if 'vmmDomain' in kwargs:
+            vmm_domain = kwargs['vmmDomain']
+
         _setter("aep", aep)
         _setter("apic_hosts", apic_hosts)
         _setter("apic_user_crt", apic_user_crt)
@@ -21837,7 +23743,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkP
     def _configure(
              _setter: Callable[[Any, Any], None],
              cloud_provider: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cloudProvider' in kwargs:
+            cloud_provider = kwargs['cloudProvider']
+
         if cloud_provider is not None:
             _setter("cloud_provider", cloud_provider)
 
@@ -21863,7 +23773,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkPr
     def _configure(
              _setter: Callable[[Any, Any], None],
              iface: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if iface is not None:
             _setter("iface", iface)
 
@@ -21889,7 +23801,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetwork
     def _configure(
              _setter: Callable[[Any, Any], None],
              iface: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if iface is not None:
             _setter("iface", iface)
 
@@ -21927,7 +23841,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs
              operator: Optional[pulumi.Input[str]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -21996,7 +23912,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkPr
     def _configure(
              _setter: Callable[[Any, Any], None],
              password: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
 
     @property
@@ -22057,7 +23975,23 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs:
              ssh_agent_auth: Optional[pulumi.Input[bool]] = None,
              ssh_key: Optional[pulumi.Input[str]] = None,
              ssh_key_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dockerSocket' in kwargs:
+            docker_socket = kwargs['dockerSocket']
+        if 'hostnameOverride' in kwargs:
+            hostname_override = kwargs['hostnameOverride']
+        if 'internalAddress' in kwargs:
+            internal_address = kwargs['internalAddress']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'sshAgentAuth' in kwargs:
+            ssh_agent_auth = kwargs['sshAgentAuth']
+        if 'sshKey' in kwargs:
+            ssh_key = kwargs['sshKey']
+        if 'sshKeyPath' in kwargs:
+            ssh_key_path = kwargs['sshKeyPath']
+
         _setter("address", address)
         _setter("roles", roles)
         _setter("user", user)
@@ -22216,7 +24150,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs:
              is_default: Optional[pulumi.Input[bool]] = None,
              password: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ecrCredentialPlugin' in kwargs:
+            ecr_credential_plugin = kwargs['ecrCredentialPlugin']
+        if 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+
         _setter("url", url)
         if ecr_credential_plugin is not None:
             _setter("ecr_credential_plugin", ecr_credential_plugin)
@@ -22291,7 +24231,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCre
              aws_access_key_id: Optional[pulumi.Input[str]] = None,
              aws_secret_access_key: Optional[pulumi.Input[str]] = None,
              aws_session_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'awsAccessKeyId' in kwargs:
+            aws_access_key_id = kwargs['awsAccessKeyId']
+        if 'awsSecretAccessKey' in kwargs:
+            aws_secret_access_key = kwargs['awsSecretAccessKey']
+        if 'awsSessionToken' in kwargs:
+            aws_session_token = kwargs['awsSessionToken']
+
         if aws_access_key_id is not None:
             _setter("aws_access_key_id", aws_access_key_id)
         if aws_secret_access_key is not None:
@@ -22354,7 +24302,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs:
              kubelet: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs']] = None,
              kubeproxy: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs']] = None,
              scheduler: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'kubeApi' in kwargs:
+            kube_api = kwargs['kubeApi']
+        if 'kubeController' in kwargs:
+            kube_controller = kwargs['kubeController']
+
         if etcd is not None:
             _setter("etcd", etcd)
         if kube_api is not None:
@@ -22477,7 +24431,21 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs:
              retention: Optional[pulumi.Input[str]] = None,
              snapshot: Optional[pulumi.Input[bool]] = None,
              uid: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupConfig' in kwargs:
+            backup_config = kwargs['backupConfig']
+        if 'caCert' in kwargs:
+            ca_cert = kwargs['caCert']
+        if 'externalUrls' in kwargs:
+            external_urls = kwargs['externalUrls']
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'extraBinds' in kwargs:
+            extra_binds = kwargs['extraBinds']
+        if 'extraEnvs' in kwargs:
+            extra_envs = kwargs['extraEnvs']
+
         if backup_config is not None:
             _setter("backup_config", backup_config)
         if ca_cert is not None:
@@ -22675,7 +24643,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupCon
              s3_backup_config: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs']] = None,
              safe_timestamp: Optional[pulumi.Input[bool]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'intervalHours' in kwargs:
+            interval_hours = kwargs['intervalHours']
+        if 's3BackupConfig' in kwargs:
+            s3_backup_config = kwargs['s3BackupConfig']
+        if 'safeTimestamp' in kwargs:
+            safe_timestamp = kwargs['safeTimestamp']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if interval_hours is not None:
@@ -22777,7 +24753,17 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupCon
              folder: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              secret_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'customCa' in kwargs:
+            custom_ca = kwargs['customCa']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         _setter("bucket_name", bucket_name)
         _setter("endpoint", endpoint)
         if access_key is not None:
@@ -22900,7 +24886,31 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs:
              secrets_encryption_config: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs']] = None,
              service_cluster_ip_range: Optional[pulumi.Input[str]] = None,
              service_node_port_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'admissionConfiguration' in kwargs:
+            admission_configuration = kwargs['admissionConfiguration']
+        if 'alwaysPullImages' in kwargs:
+            always_pull_images = kwargs['alwaysPullImages']
+        if 'auditLog' in kwargs:
+            audit_log = kwargs['auditLog']
+        if 'eventRateLimit' in kwargs:
+            event_rate_limit = kwargs['eventRateLimit']
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'extraBinds' in kwargs:
+            extra_binds = kwargs['extraBinds']
+        if 'extraEnvs' in kwargs:
+            extra_envs = kwargs['extraEnvs']
+        if 'podSecurityPolicy' in kwargs:
+            pod_security_policy = kwargs['podSecurityPolicy']
+        if 'secretsEncryptionConfig' in kwargs:
+            secrets_encryption_config = kwargs['secretsEncryptionConfig']
+        if 'serviceClusterIpRange' in kwargs:
+            service_cluster_ip_range = kwargs['serviceClusterIpRange']
+        if 'serviceNodePortRange' in kwargs:
+            service_node_port_range = kwargs['serviceNodePortRange']
+
         if admission_configuration is not None:
             _setter("admission_configuration", admission_configuration)
         if always_pull_images is not None:
@@ -23053,7 +25063,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmiss
              api_version: Optional[pulumi.Input[str]] = None,
              kind: Optional[pulumi.Input[str]] = None,
              plugins: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+
         if api_version is not None:
             _setter("api_version", api_version)
         if kind is not None:
@@ -23110,7 +25124,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmiss
              configuration: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if configuration is not None:
             _setter("configuration", configuration)
         if name is not None:
@@ -23167,7 +25183,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditL
              _setter: Callable[[Any, Any], None],
              configuration: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs']] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if configuration is not None:
             _setter("configuration", configuration)
         if enabled is not None:
@@ -23222,7 +25240,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditL
              max_size: Optional[pulumi.Input[int]] = None,
              path: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+        if 'maxBackup' in kwargs:
+            max_backup = kwargs['maxBackup']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+
         if format is not None:
             _setter("format", format)
         if max_age is not None:
@@ -23309,7 +25335,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventR
              _setter: Callable[[Any, Any], None],
              configuration: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if configuration is not None:
             _setter("configuration", configuration)
         if enabled is not None:
@@ -23355,7 +25383,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecret
              _setter: Callable[[Any, Any], None],
              custom_config: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customConfig' in kwargs:
+            custom_config = kwargs['customConfig']
+
         if custom_config is not None:
             _setter("custom_config", custom_config)
         if enabled is not None:
@@ -23410,7 +25442,19 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControlle
              extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              image: Optional[pulumi.Input[str]] = None,
              service_cluster_ip_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterCidr' in kwargs:
+            cluster_cidr = kwargs['clusterCidr']
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'extraBinds' in kwargs:
+            extra_binds = kwargs['extraBinds']
+        if 'extraEnvs' in kwargs:
+            extra_envs = kwargs['extraEnvs']
+        if 'serviceClusterIpRange' in kwargs:
+            service_cluster_ip_range = kwargs['serviceClusterIpRange']
+
         if cluster_cidr is not None:
             _setter("cluster_cidr", cluster_cidr)
         if extra_args is not None:
@@ -23515,7 +25559,25 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs:
              generate_serving_certificate: Optional[pulumi.Input[bool]] = None,
              image: Optional[pulumi.Input[str]] = None,
              infra_container_image: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterDnsServer' in kwargs:
+            cluster_dns_server = kwargs['clusterDnsServer']
+        if 'clusterDomain' in kwargs:
+            cluster_domain = kwargs['clusterDomain']
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'extraBinds' in kwargs:
+            extra_binds = kwargs['extraBinds']
+        if 'extraEnvs' in kwargs:
+            extra_envs = kwargs['extraEnvs']
+        if 'failSwapOn' in kwargs:
+            fail_swap_on = kwargs['failSwapOn']
+        if 'generateServingCertificate' in kwargs:
+            generate_serving_certificate = kwargs['generateServingCertificate']
+        if 'infraContainerImage' in kwargs:
+            infra_container_image = kwargs['infraContainerImage']
+
         if cluster_dns_server is not None:
             _setter("cluster_dns_server", cluster_dns_server)
         if cluster_domain is not None:
@@ -23638,7 +25700,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs
              extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              image: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'extraBinds' in kwargs:
+            extra_binds = kwargs['extraBinds']
+        if 'extraEnvs' in kwargs:
+            extra_envs = kwargs['extraEnvs']
+
         if extra_args is not None:
             _setter("extra_args", extra_args)
         if extra_binds is not None:
@@ -23706,7 +25776,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs
              extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              image: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'extraArgs' in kwargs:
+            extra_args = kwargs['extraArgs']
+        if 'extraBinds' in kwargs:
+            extra_binds = kwargs['extraBinds']
+        if 'extraEnvs' in kwargs:
+            extra_envs = kwargs['extraEnvs']
+
         if extra_args is not None:
             _setter("extra_args", extra_args)
         if extra_binds is not None:
@@ -23774,7 +25852,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs:
              drain_input: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs']] = None,
              max_unavailable_controlplane: Optional[pulumi.Input[str]] = None,
              max_unavailable_worker: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'drainInput' in kwargs:
+            drain_input = kwargs['drainInput']
+        if 'maxUnavailableControlplane' in kwargs:
+            max_unavailable_controlplane = kwargs['maxUnavailableControlplane']
+        if 'maxUnavailableWorker' in kwargs:
+            max_unavailable_worker = kwargs['maxUnavailableWorker']
+
         if drain is not None:
             _setter("drain", drain)
         if drain_input is not None:
@@ -23845,7 +25931,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainI
              grace_period: Optional[pulumi.Input[int]] = None,
              ignore_daemon_sets: Optional[pulumi.Input[bool]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteLocalData' in kwargs:
+            delete_local_data = kwargs['deleteLocalData']
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if 'ignoreDaemonSets' in kwargs:
+            ignore_daemon_sets = kwargs['ignoreDaemonSets']
+
         if delete_local_data is not None:
             _setter("delete_local_data", delete_local_data)
         if force is not None:
@@ -23930,7 +26024,9 @@ class ClusterTemplateTemplateRevisionQuestionArgs:
              variable: pulumi.Input[str],
              required: Optional[pulumi.Input[bool]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("default", default)
         _setter("variable", variable)
         if required is not None:
@@ -24006,7 +26102,9 @@ class ClusterV2AgentEnvVarArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -24058,7 +26156,15 @@ class ClusterV2ClusterAgentDeploymentCustomizationArgs:
              append_tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs']]]] = None,
              override_affinity: Optional[pulumi.Input[str]] = None,
              override_resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appendTolerations' in kwargs:
+            append_tolerations = kwargs['appendTolerations']
+        if 'overrideAffinity' in kwargs:
+            override_affinity = kwargs['overrideAffinity']
+        if 'overrideResourceRequirements' in kwargs:
+            override_resource_requirements = kwargs['overrideResourceRequirements']
+
         if append_tolerations is not None:
             _setter("append_tolerations", append_tolerations)
         if override_affinity is not None:
@@ -24134,7 +26240,9 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs:
              operator: Optional[pulumi.Input[str]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -24233,7 +26341,17 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArg
              cpu_request: Optional[pulumi.Input[str]] = None,
              memory_limit: Optional[pulumi.Input[str]] = None,
              memory_request: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuLimit' in kwargs:
+            cpu_limit = kwargs['cpuLimit']
+        if 'cpuRequest' in kwargs:
+            cpu_request = kwargs['cpuRequest']
+        if 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if 'memoryRequest' in kwargs:
+            memory_request = kwargs['memoryRequest']
+
         if cpu_limit is not None:
             _setter("cpu_limit", cpu_limit)
         if cpu_request is not None:
@@ -24355,7 +26473,23 @@ class ClusterV2ClusterRegistrationTokenArgs:
              node_command: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
              windows_node_command: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'insecureCommand' in kwargs:
+            insecure_command = kwargs['insecureCommand']
+        if 'insecureNodeCommand' in kwargs:
+            insecure_node_command = kwargs['insecureNodeCommand']
+        if 'insecureWindowsNodeCommand' in kwargs:
+            insecure_windows_node_command = kwargs['insecureWindowsNodeCommand']
+        if 'manifestUrl' in kwargs:
+            manifest_url = kwargs['manifestUrl']
+        if 'nodeCommand' in kwargs:
+            node_command = kwargs['nodeCommand']
+        if 'windowsNodeCommand' in kwargs:
+            windows_node_command = kwargs['windowsNodeCommand']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if cluster_id is not None:
@@ -24563,7 +26697,15 @@ class ClusterV2FleetAgentDeploymentCustomizationArgs:
              append_tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs']]]] = None,
              override_affinity: Optional[pulumi.Input[str]] = None,
              override_resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appendTolerations' in kwargs:
+            append_tolerations = kwargs['appendTolerations']
+        if 'overrideAffinity' in kwargs:
+            override_affinity = kwargs['overrideAffinity']
+        if 'overrideResourceRequirements' in kwargs:
+            override_resource_requirements = kwargs['overrideResourceRequirements']
+
         if append_tolerations is not None:
             _setter("append_tolerations", append_tolerations)
         if override_affinity is not None:
@@ -24639,7 +26781,9 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs:
              operator: Optional[pulumi.Input[str]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -24738,7 +26882,17 @@ class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs:
              cpu_request: Optional[pulumi.Input[str]] = None,
              memory_limit: Optional[pulumi.Input[str]] = None,
              memory_request: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuLimit' in kwargs:
+            cpu_limit = kwargs['cpuLimit']
+        if 'cpuRequest' in kwargs:
+            cpu_request = kwargs['cpuRequest']
+        if 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if 'memoryRequest' in kwargs:
+            memory_request = kwargs['memoryRequest']
+
         if cpu_limit is not None:
             _setter("cpu_limit", cpu_limit)
         if cpu_request is not None:
@@ -24820,7 +26974,11 @@ class ClusterV2LocalAuthEndpointArgs:
              ca_certs: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              fqdn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caCerts' in kwargs:
+            ca_certs = kwargs['caCerts']
+
         if ca_certs is not None:
             _setter("ca_certs", ca_certs)
         if enabled is not None:
@@ -24927,7 +27085,31 @@ class ClusterV2RkeConfigArgs:
              registries: Optional[pulumi.Input['ClusterV2RkeConfigRegistriesArgs']] = None,
              rotate_certificates: Optional[pulumi.Input['ClusterV2RkeConfigRotateCertificatesArgs']] = None,
              upgrade_strategy: Optional[pulumi.Input['ClusterV2RkeConfigUpgradeStrategyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalManifest' in kwargs:
+            additional_manifest = kwargs['additionalManifest']
+        if 'chartValues' in kwargs:
+            chart_values = kwargs['chartValues']
+        if 'etcdSnapshotCreate' in kwargs:
+            etcd_snapshot_create = kwargs['etcdSnapshotCreate']
+        if 'etcdSnapshotRestore' in kwargs:
+            etcd_snapshot_restore = kwargs['etcdSnapshotRestore']
+        if 'localAuthEndpoint' in kwargs:
+            local_auth_endpoint = kwargs['localAuthEndpoint']
+        if 'machineGlobalConfig' in kwargs:
+            machine_global_config = kwargs['machineGlobalConfig']
+        if 'machinePoolDefaults' in kwargs:
+            machine_pool_defaults = kwargs['machinePoolDefaults']
+        if 'machinePools' in kwargs:
+            machine_pools = kwargs['machinePools']
+        if 'machineSelectorConfigs' in kwargs:
+            machine_selector_configs = kwargs['machineSelectorConfigs']
+        if 'rotateCertificates' in kwargs:
+            rotate_certificates = kwargs['rotateCertificates']
+        if 'upgradeStrategy' in kwargs:
+            upgrade_strategy = kwargs['upgradeStrategy']
+
         if additional_manifest is not None:
             _setter("additional_manifest", additional_manifest)
         if chart_values is not None:
@@ -25142,7 +27324,17 @@ class ClusterV2RkeConfigEtcdArgs:
              s3_config: Optional[pulumi.Input['ClusterV2RkeConfigEtcdS3ConfigArgs']] = None,
              snapshot_retention: Optional[pulumi.Input[int]] = None,
              snapshot_schedule_cron: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'disableSnapshots' in kwargs:
+            disable_snapshots = kwargs['disableSnapshots']
+        if 's3Config' in kwargs:
+            s3_config = kwargs['s3Config']
+        if 'snapshotRetention' in kwargs:
+            snapshot_retention = kwargs['snapshotRetention']
+        if 'snapshotScheduleCron' in kwargs:
+            snapshot_schedule_cron = kwargs['snapshotScheduleCron']
+
         if disable_snapshots is not None:
             _setter("disable_snapshots", disable_snapshots)
         if s3_config is not None:
@@ -25240,7 +27432,15 @@ class ClusterV2RkeConfigEtcdS3ConfigArgs:
              folder: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              skip_ssl_verify: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cloudCredentialName' in kwargs:
+            cloud_credential_name = kwargs['cloudCredentialName']
+        if 'endpointCa' in kwargs:
+            endpoint_ca = kwargs['endpointCa']
+        if 'skipSslVerify' in kwargs:
+            skip_ssl_verify = kwargs['skipSslVerify']
+
         _setter("bucket", bucket)
         _setter("endpoint", endpoint)
         if cloud_credential_name is not None:
@@ -25354,7 +27554,9 @@ class ClusterV2RkeConfigEtcdSnapshotCreateArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              generation: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("generation", generation)
 
     @property
@@ -25393,7 +27595,11 @@ class ClusterV2RkeConfigEtcdSnapshotRestoreArgs:
              generation: pulumi.Input[int],
              name: pulumi.Input[str],
              restore_rke_config: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'restoreRkeConfig' in kwargs:
+            restore_rke_config = kwargs['restoreRkeConfig']
+
         _setter("generation", generation)
         _setter("name", name)
         if restore_rke_config is not None:
@@ -25459,7 +27665,11 @@ class ClusterV2RkeConfigLocalAuthEndpointArgs:
              ca_certs: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              fqdn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caCerts' in kwargs:
+            ca_certs = kwargs['caCerts']
+
         if ca_certs is not None:
             _setter("ca_certs", ca_certs)
         if enabled is not None:
@@ -25594,7 +27804,37 @@ class ClusterV2RkeConfigMachinePoolArgs:
              unhealthy_node_timeout_seconds: Optional[pulumi.Input[int]] = None,
              unhealthy_range: Optional[pulumi.Input[str]] = None,
              worker_role: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'machineConfig' in kwargs:
+            machine_config = kwargs['machineConfig']
+        if 'cloudCredentialSecretName' in kwargs:
+            cloud_credential_secret_name = kwargs['cloudCredentialSecretName']
+        if 'controlPlaneRole' in kwargs:
+            control_plane_role = kwargs['controlPlaneRole']
+        if 'drainBeforeDelete' in kwargs:
+            drain_before_delete = kwargs['drainBeforeDelete']
+        if 'etcdRole' in kwargs:
+            etcd_role = kwargs['etcdRole']
+        if 'hostnameLengthLimit' in kwargs:
+            hostname_length_limit = kwargs['hostnameLengthLimit']
+        if 'machineLabels' in kwargs:
+            machine_labels = kwargs['machineLabels']
+        if 'maxUnhealthy' in kwargs:
+            max_unhealthy = kwargs['maxUnhealthy']
+        if 'nodeDrainTimeout' in kwargs:
+            node_drain_timeout = kwargs['nodeDrainTimeout']
+        if 'nodeStartupTimeoutSeconds' in kwargs:
+            node_startup_timeout_seconds = kwargs['nodeStartupTimeoutSeconds']
+        if 'rollingUpdate' in kwargs:
+            rolling_update = kwargs['rollingUpdate']
+        if 'unhealthyNodeTimeoutSeconds' in kwargs:
+            unhealthy_node_timeout_seconds = kwargs['unhealthyNodeTimeoutSeconds']
+        if 'unhealthyRange' in kwargs:
+            unhealthy_range = kwargs['unhealthyRange']
+        if 'workerRole' in kwargs:
+            worker_role = kwargs['workerRole']
+
         _setter("machine_config", machine_config)
         _setter("name", name)
         if annotations is not None:
@@ -25884,7 +28124,11 @@ class ClusterV2RkeConfigMachinePoolDefaultArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              hostname_length_limit: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostnameLengthLimit' in kwargs:
+            hostname_length_limit = kwargs['hostnameLengthLimit']
+
         if hostname_length_limit is not None:
             _setter("hostname_length_limit", hostname_length_limit)
 
@@ -25917,7 +28161,9 @@ class ClusterV2RkeConfigMachinePoolMachineConfigArgs:
              _setter: Callable[[Any, Any], None],
              kind: pulumi.Input[str],
              name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("kind", kind)
         _setter("name", name)
 
@@ -25965,7 +28211,13 @@ class ClusterV2RkeConfigMachinePoolRollingUpdateArgs:
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[pulumi.Input[str]] = None,
              max_unavailable: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxSurge' in kwargs:
+            max_surge = kwargs['maxSurge']
+        if 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+
         if max_surge is not None:
             _setter("max_surge", max_surge)
         if max_unavailable is not None:
@@ -26019,7 +28271,9 @@ class ClusterV2RkeConfigMachinePoolTaintArgs:
              key: pulumi.Input[str],
              value: pulumi.Input[str],
              effect: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
         if effect is not None:
@@ -26065,10 +28319,10 @@ class ClusterV2RkeConfigMachinePoolTaintArgs:
 @pulumi.input_type
 class ClusterV2RkeConfigMachineSelectorConfigArgs:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config: Optional[pulumi.Input[str]] = None,
                  machine_label_selector: Optional[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs']] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] config: Machine selector config (map)
+        :param pulumi.Input[str] config: Machine selector config. Must be in YAML format (string)
         :param pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs'] machine_label_selector: Machine selector label (list maxitems:1)
         """
         ClusterV2RkeConfigMachineSelectorConfigArgs._configure(
@@ -26079,9 +28333,13 @@ class ClusterV2RkeConfigMachineSelectorConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             config: Optional[pulumi.Input[str]] = None,
              machine_label_selector: Optional[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'machineLabelSelector' in kwargs:
+            machine_label_selector = kwargs['machineLabelSelector']
+
         if config is not None:
             _setter("config", config)
         if machine_label_selector is not None:
@@ -26089,14 +28347,14 @@ class ClusterV2RkeConfigMachineSelectorConfigArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def config(self) -> Optional[pulumi.Input[str]]:
         """
-        Machine selector config (map)
+        Machine selector config. Must be in YAML format (string)
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def config(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "config", value)
 
     @property
@@ -26131,7 +28389,13 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs:
              _setter: Callable[[Any, Any], None],
              match_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs']]]] = None,
              match_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'matchExpressions' in kwargs:
+            match_expressions = kwargs['matchExpressions']
+        if 'matchLabels' in kwargs:
+            match_labels = kwargs['matchLabels']
+
         if match_expressions is not None:
             _setter("match_expressions", match_expressions)
         if match_labels is not None:
@@ -26185,7 +28449,9 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
              key: Optional[pulumi.Input[str]] = None,
              operator: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if operator is not None:
@@ -26249,7 +28515,9 @@ class ClusterV2RkeConfigRegistriesArgs:
              _setter: Callable[[Any, Any], None],
              configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigRegistriesConfigArgs']]]] = None,
              mirrors: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigRegistriesMirrorArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if configs is not None:
             _setter("configs", configs)
         if mirrors is not None:
@@ -26311,7 +28579,15 @@ class ClusterV2RkeConfigRegistriesConfigArgs:
              ca_bundle: Optional[pulumi.Input[str]] = None,
              insecure: Optional[pulumi.Input[bool]] = None,
              tls_secret_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authConfigSecretName' in kwargs:
+            auth_config_secret_name = kwargs['authConfigSecretName']
+        if 'caBundle' in kwargs:
+            ca_bundle = kwargs['caBundle']
+        if 'tlsSecretName' in kwargs:
+            tls_secret_name = kwargs['tlsSecretName']
+
         _setter("hostname", hostname)
         if auth_config_secret_name is not None:
             _setter("auth_config_secret_name", auth_config_secret_name)
@@ -26406,7 +28682,9 @@ class ClusterV2RkeConfigRegistriesMirrorArgs:
              hostname: pulumi.Input[str],
              endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              rewrites: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("hostname", hostname)
         if endpoints is not None:
             _setter("endpoints", endpoints)
@@ -26469,7 +28747,9 @@ class ClusterV2RkeConfigRotateCertificatesArgs:
              _setter: Callable[[Any, Any], None],
              generation: pulumi.Input[int],
              services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("generation", generation)
         if services is not None:
             _setter("services", services)
@@ -26526,7 +28806,17 @@ class ClusterV2RkeConfigUpgradeStrategyArgs:
              control_plane_drain_options: Optional[pulumi.Input['ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs']] = None,
              worker_concurrency: Optional[pulumi.Input[str]] = None,
              worker_drain_options: Optional[pulumi.Input['ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'controlPlaneConcurrency' in kwargs:
+            control_plane_concurrency = kwargs['controlPlaneConcurrency']
+        if 'controlPlaneDrainOptions' in kwargs:
+            control_plane_drain_options = kwargs['controlPlaneDrainOptions']
+        if 'workerConcurrency' in kwargs:
+            worker_concurrency = kwargs['workerConcurrency']
+        if 'workerDrainOptions' in kwargs:
+            worker_drain_options = kwargs['workerDrainOptions']
+
         if control_plane_concurrency is not None:
             _setter("control_plane_concurrency", control_plane_concurrency)
         if control_plane_drain_options is not None:
@@ -26632,7 +28922,21 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs:
              ignore_errors: Optional[pulumi.Input[bool]] = None,
              skip_wait_for_delete_timeout_seconds: Optional[pulumi.Input[int]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteEmptyDirData' in kwargs:
+            delete_empty_dir_data = kwargs['deleteEmptyDirData']
+        if 'disableEviction' in kwargs:
+            disable_eviction = kwargs['disableEviction']
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if 'ignoreDaemonSets' in kwargs:
+            ignore_daemon_sets = kwargs['ignoreDaemonSets']
+        if 'ignoreErrors' in kwargs:
+            ignore_errors = kwargs['ignoreErrors']
+        if 'skipWaitForDeleteTimeoutSeconds' in kwargs:
+            skip_wait_for_delete_timeout_seconds = kwargs['skipWaitForDeleteTimeoutSeconds']
+
         if delete_empty_dir_data is not None:
             _setter("delete_empty_dir_data", delete_empty_dir_data)
         if disable_eviction is not None:
@@ -26808,7 +29112,21 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs:
              ignore_errors: Optional[pulumi.Input[bool]] = None,
              skip_wait_for_delete_timeout_seconds: Optional[pulumi.Input[int]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteEmptyDirData' in kwargs:
+            delete_empty_dir_data = kwargs['deleteEmptyDirData']
+        if 'disableEviction' in kwargs:
+            disable_eviction = kwargs['disableEviction']
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if 'ignoreDaemonSets' in kwargs:
+            ignore_daemon_sets = kwargs['ignoreDaemonSets']
+        if 'ignoreErrors' in kwargs:
+            ignore_errors = kwargs['ignoreErrors']
+        if 'skipWaitForDeleteTimeoutSeconds' in kwargs:
+            skip_wait_for_delete_timeout_seconds = kwargs['skipWaitForDeleteTimeoutSeconds']
+
         if delete_empty_dir_data is not None:
             _setter("delete_empty_dir_data", delete_empty_dir_data)
         if disable_eviction is not None:
@@ -26970,7 +29288,15 @@ class EtcdBackupBackupConfigArgs:
              s3_backup_config: Optional[pulumi.Input['EtcdBackupBackupConfigS3BackupConfigArgs']] = None,
              safe_timestamp: Optional[pulumi.Input[bool]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'intervalHours' in kwargs:
+            interval_hours = kwargs['intervalHours']
+        if 's3BackupConfig' in kwargs:
+            s3_backup_config = kwargs['s3BackupConfig']
+        if 'safeTimestamp' in kwargs:
+            safe_timestamp = kwargs['safeTimestamp']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if interval_hours is not None:
@@ -27090,7 +29416,17 @@ class EtcdBackupBackupConfigS3BackupConfigArgs:
              folder: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              secret_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'customCa' in kwargs:
+            custom_ca = kwargs['customCa']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         _setter("bucket_name", bucket_name)
         _setter("endpoint", endpoint)
         if access_key is not None:
@@ -27208,7 +29544,13 @@ class GlobalDnsProviderAlidnsConfigArgs:
              _setter: Callable[[Any, Any], None],
              access_key: pulumi.Input[str],
              secret_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         _setter("access_key", access_key)
         _setter("secret_key", secret_key)
 
@@ -27260,7 +29602,15 @@ class GlobalDnsProviderCloudflareConfigArgs:
              api_email: pulumi.Input[str],
              api_key: pulumi.Input[str],
              proxy_setting: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiEmail' in kwargs:
+            api_email = kwargs['apiEmail']
+        if 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if 'proxySetting' in kwargs:
+            proxy_setting = kwargs['proxySetting']
+
         _setter("api_email", api_email)
         _setter("api_key", api_key)
         if proxy_setting is not None:
@@ -27338,7 +29688,19 @@ class GlobalDnsProviderRoute53ConfigArgs:
              region: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
              zone_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'credentialsPath' in kwargs:
+            credentials_path = kwargs['credentialsPath']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'zoneType' in kwargs:
+            zone_type = kwargs['zoneType']
+
         _setter("access_key", access_key)
         _setter("secret_key", secret_key)
         if credentials_path is not None:
@@ -27454,7 +29816,15 @@ class GlobalRoleRuleArgs:
              resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              verbs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiGroups' in kwargs:
+            api_groups = kwargs['apiGroups']
+        if 'nonResourceUrls' in kwargs:
+            non_resource_urls = kwargs['nonResourceUrls']
+        if 'resourceNames' in kwargs:
+            resource_names = kwargs['resourceNames']
+
         if api_groups is not None:
             _setter("api_groups", api_groups)
         if non_resource_urls is not None:
@@ -27546,7 +29916,6 @@ class MachineConfigV2Amazonec2ConfigArgs:
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  insecure_transport: Optional[pulumi.Input[bool]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 keypair_name: Optional[pulumi.Input[str]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  open_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -27581,7 +29950,6 @@ class MachineConfigV2Amazonec2ConfigArgs:
         :param pulumi.Input[str] iam_instance_profile: AWS IAM Instance Profile (string)
         :param pulumi.Input[bool] insecure_transport: Disable SSL when sending requests (bool)
         :param pulumi.Input[str] instance_type: Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
-        :param pulumi.Input[str] keypair_name: OpenStack keypair to use to SSH to the instance (string)
         :param pulumi.Input[str] kms_key: Custom KMS key ID using the AWS Managed CMK (string)
         :param pulumi.Input[bool] monitoring: Enable monitoring for droplet. Default `false` (bool)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] open_ports: Make the specified port number accessible from the Internet. (list)
@@ -27618,7 +29986,6 @@ class MachineConfigV2Amazonec2ConfigArgs:
             iam_instance_profile=iam_instance_profile,
             insecure_transport=insecure_transport,
             instance_type=instance_type,
-            keypair_name=keypair_name,
             kms_key=kms_key,
             monitoring=monitoring,
             open_ports=open_ports,
@@ -27657,7 +30024,6 @@ class MachineConfigV2Amazonec2ConfigArgs:
              iam_instance_profile: Optional[pulumi.Input[str]] = None,
              insecure_transport: Optional[pulumi.Input[bool]] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
-             keypair_name: Optional[pulumi.Input[str]] = None,
              kms_key: Optional[pulumi.Input[str]] = None,
              monitoring: Optional[pulumi.Input[bool]] = None,
              open_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -27676,7 +30042,61 @@ class MachineConfigV2Amazonec2ConfigArgs:
              use_private_address: Optional[pulumi.Input[bool]] = None,
              userdata: Optional[pulumi.Input[str]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'blockDurationMinutes' in kwargs:
+            block_duration_minutes = kwargs['blockDurationMinutes']
+        if 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if 'encryptEbsVolume' in kwargs:
+            encrypt_ebs_volume = kwargs['encryptEbsVolume']
+        if 'httpEndpoint' in kwargs:
+            http_endpoint = kwargs['httpEndpoint']
+        if 'httpTokens' in kwargs:
+            http_tokens = kwargs['httpTokens']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'insecureTransport' in kwargs:
+            insecure_transport = kwargs['insecureTransport']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if 'openPorts' in kwargs:
+            open_ports = kwargs['openPorts']
+        if 'privateAddressOnly' in kwargs:
+            private_address_only = kwargs['privateAddressOnly']
+        if 'requestSpotInstance' in kwargs:
+            request_spot_instance = kwargs['requestSpotInstance']
+        if 'rootSize' in kwargs:
+            root_size = kwargs['rootSize']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'securityGroupReadonly' in kwargs:
+            security_group_readonly = kwargs['securityGroupReadonly']
+        if 'sessionToken' in kwargs:
+            session_token = kwargs['sessionToken']
+        if 'spotPrice' in kwargs:
+            spot_price = kwargs['spotPrice']
+        if 'sshKeyContents' in kwargs:
+            ssh_key_contents = kwargs['sshKeyContents']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'useEbsOptimizedInstance' in kwargs:
+            use_ebs_optimized_instance = kwargs['useEbsOptimizedInstance']
+        if 'usePrivateAddress' in kwargs:
+            use_private_address = kwargs['usePrivateAddress']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         _setter("ami", ami)
         _setter("region", region)
         _setter("security_groups", security_groups)
@@ -27703,8 +30123,6 @@ class MachineConfigV2Amazonec2ConfigArgs:
             _setter("insecure_transport", insecure_transport)
         if instance_type is not None:
             _setter("instance_type", instance_type)
-        if keypair_name is not None:
-            _setter("keypair_name", keypair_name)
         if kms_key is not None:
             _setter("kms_key", kms_key)
         if monitoring is not None:
@@ -27930,18 +30348,6 @@ class MachineConfigV2Amazonec2ConfigArgs:
     @instance_type.setter
     def instance_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_type", value)
-
-    @property
-    @pulumi.getter(name="keypairName")
-    def keypair_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        OpenStack keypair to use to SSH to the instance (string)
-        """
-        return pulumi.get(self, "keypair_name")
-
-    @keypair_name.setter
-    def keypair_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "keypair_name", value)
 
     @property
     @pulumi.getter(name="kmsKey")
@@ -28298,7 +30704,57 @@ class MachineConfigV2AzureConfigArgs:
              use_private_ip: Optional[pulumi.Input[bool]] = None,
              use_public_ip_standard_sku: Optional[pulumi.Input[bool]] = None,
              vnet: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratedNetworking' in kwargs:
+            accelerated_networking = kwargs['acceleratedNetworking']
+        if 'availabilitySet' in kwargs:
+            availability_set = kwargs['availabilitySet']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'dockerPort' in kwargs:
+            docker_port = kwargs['dockerPort']
+        if 'faultDomainCount' in kwargs:
+            fault_domain_count = kwargs['faultDomainCount']
+        if 'managedDisks' in kwargs:
+            managed_disks = kwargs['managedDisks']
+        if 'noPublicIp' in kwargs:
+            no_public_ip = kwargs['noPublicIp']
+        if 'openPorts' in kwargs:
+            open_ports = kwargs['openPorts']
+        if 'privateAddressOnly' in kwargs:
+            private_address_only = kwargs['privateAddressOnly']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'staticPublicIp' in kwargs:
+            static_public_ip = kwargs['staticPublicIp']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'subnetPrefix' in kwargs:
+            subnet_prefix = kwargs['subnetPrefix']
+        if 'subscriptionId' in kwargs:
+            subscription_id = kwargs['subscriptionId']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'updateDomainCount' in kwargs:
+            update_domain_count = kwargs['updateDomainCount']
+        if 'usePrivateIp' in kwargs:
+            use_private_ip = kwargs['usePrivateIp']
+        if 'usePublicIpStandardSku' in kwargs:
+            use_public_ip_standard_sku = kwargs['usePublicIpStandardSku']
+
         if accelerated_networking is not None:
             _setter("accelerated_networking", accelerated_networking)
         if availability_set is not None:
@@ -28824,7 +31280,21 @@ class MachineConfigV2DigitaloceanConfigArgs:
              ssh_user: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[str]] = None,
              userdata: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessToken' in kwargs:
+            access_token = kwargs['accessToken']
+        if 'privateNetworking' in kwargs:
+            private_networking = kwargs['privateNetworking']
+        if 'sshKeyContents' in kwargs:
+            ssh_key_contents = kwargs['sshKeyContents']
+        if 'sshKeyFingerprint' in kwargs:
+            ssh_key_fingerprint = kwargs['sshKeyFingerprint']
+        if 'sshPort' in kwargs:
+            ssh_port = kwargs['sshPort']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+
         if access_token is not None:
             _setter("access_token", access_token)
         if backups is not None:
@@ -29094,7 +31564,39 @@ class MachineConfigV2HarvesterConfigArgs:
              ssh_password: Optional[pulumi.Input[str]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
              vm_affinity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'vmNamespace' in kwargs:
+            vm_namespace = kwargs['vmNamespace']
+        if 'cpuCount' in kwargs:
+            cpu_count = kwargs['cpuCount']
+        if 'diskBus' in kwargs:
+            disk_bus = kwargs['diskBus']
+        if 'diskInfo' in kwargs:
+            disk_info = kwargs['diskInfo']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if 'networkData' in kwargs:
+            network_data = kwargs['networkData']
+        if 'networkInfo' in kwargs:
+            network_info = kwargs['networkInfo']
+        if 'networkModel' in kwargs:
+            network_model = kwargs['networkModel']
+        if 'networkName' in kwargs:
+            network_name = kwargs['networkName']
+        if 'sshPassword' in kwargs:
+            ssh_password = kwargs['sshPassword']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'vmAffinity' in kwargs:
+            vm_affinity = kwargs['vmAffinity']
+
         _setter("ssh_user", ssh_user)
         _setter("vm_namespace", vm_namespace)
         if cpu_count is not None:
@@ -29410,7 +31912,29 @@ class MachineConfigV2LinodeConfigArgs:
              tags: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
              ua_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authorizedUsers' in kwargs:
+            authorized_users = kwargs['authorizedUsers']
+        if 'createPrivateIp' in kwargs:
+            create_private_ip = kwargs['createPrivateIp']
+        if 'dockerPort' in kwargs:
+            docker_port = kwargs['dockerPort']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'rootPass' in kwargs:
+            root_pass = kwargs['rootPass']
+        if 'sshPort' in kwargs:
+            ssh_port = kwargs['sshPort']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'stackscriptData' in kwargs:
+            stackscript_data = kwargs['stackscriptData']
+        if 'swapSize' in kwargs:
+            swap_size = kwargs['swapSize']
+        if 'uaPrefix' in kwargs:
+            ua_prefix = kwargs['uaPrefix']
+
         if authorized_users is not None:
             _setter("authorized_users", authorized_users)
         if create_private_ip is not None:
@@ -29723,6 +32247,7 @@ class MachineConfigV2OpenstackConfigArgs:
         :param pulumi.Input[str] volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
                > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
                > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+               > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
         :param pulumi.Input[str] volume_id: OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param pulumi.Input[str] volume_name: OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param pulumi.Input[str] volume_size: OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
@@ -29818,7 +32343,83 @@ class MachineConfigV2OpenstackConfigArgs:
              volume_name: Optional[pulumi.Input[str]] = None,
              volume_size: Optional[pulumi.Input[str]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authUrl' in kwargs:
+            auth_url = kwargs['authUrl']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'activeTimeout' in kwargs:
+            active_timeout = kwargs['activeTimeout']
+        if 'applicationCredentialId' in kwargs:
+            application_credential_id = kwargs['applicationCredentialId']
+        if 'applicationCredentialName' in kwargs:
+            application_credential_name = kwargs['applicationCredentialName']
+        if 'applicationCredentialSecret' in kwargs:
+            application_credential_secret = kwargs['applicationCredentialSecret']
+        if 'bootFromVolume' in kwargs:
+            boot_from_volume = kwargs['bootFromVolume']
+        if 'configDrive' in kwargs:
+            config_drive = kwargs['configDrive']
+        if 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if 'flavorName' in kwargs:
+            flavor_name = kwargs['flavorName']
+        if 'floatingIpPool' in kwargs:
+            floating_ip_pool = kwargs['floatingIpPool']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'keypairName' in kwargs:
+            keypair_name = kwargs['keypairName']
+        if 'netId' in kwargs:
+            net_id = kwargs['netId']
+        if 'netName' in kwargs:
+            net_name = kwargs['netName']
+        if 'novaNetwork' in kwargs:
+            nova_network = kwargs['novaNetwork']
+        if 'privateKeyFile' in kwargs:
+            private_key_file = kwargs['privateKeyFile']
+        if 'secGroups' in kwargs:
+            sec_groups = kwargs['secGroups']
+        if 'sshPort' in kwargs:
+            ssh_port = kwargs['sshPort']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'tenantDomainId' in kwargs:
+            tenant_domain_id = kwargs['tenantDomainId']
+        if 'tenantDomainName' in kwargs:
+            tenant_domain_name = kwargs['tenantDomainName']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'tenantName' in kwargs:
+            tenant_name = kwargs['tenantName']
+        if 'userDataFile' in kwargs:
+            user_data_file = kwargs['userDataFile']
+        if 'userDomainId' in kwargs:
+            user_domain_id = kwargs['userDomainId']
+        if 'userDomainName' in kwargs:
+            user_domain_name = kwargs['userDomainName']
+        if 'volumeDevicePath' in kwargs:
+            volume_device_path = kwargs['volumeDevicePath']
+        if 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+        if 'volumeName' in kwargs:
+            volume_name = kwargs['volumeName']
+        if 'volumeSize' in kwargs:
+            volume_size = kwargs['volumeSize']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         _setter("auth_url", auth_url)
         _setter("availability_zone", availability_zone)
         _setter("region", region)
@@ -30352,6 +32953,7 @@ class MachineConfigV2OpenstackConfigArgs:
         OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
         > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
         > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+        > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
         """
         return pulumi.get(self, "volume_device_path")
 
@@ -30543,7 +33145,47 @@ class MachineConfigV2VsphereConfigArgs:
              vapp_transport: Optional[pulumi.Input[str]] = None,
              vcenter: Optional[pulumi.Input[str]] = None,
              vcenter_port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'boot2dockerUrl' in kwargs:
+            boot2docker_url = kwargs['boot2dockerUrl']
+        if 'cloneFrom' in kwargs:
+            clone_from = kwargs['cloneFrom']
+        if 'cloudConfig' in kwargs:
+            cloud_config = kwargs['cloudConfig']
+        if 'contentLibrary' in kwargs:
+            content_library = kwargs['contentLibrary']
+        if 'cpuCount' in kwargs:
+            cpu_count = kwargs['cpuCount']
+        if 'creationType' in kwargs:
+            creation_type = kwargs['creationType']
+        if 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if 'datastoreCluster' in kwargs:
+            datastore_cluster = kwargs['datastoreCluster']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if 'sshPassword' in kwargs:
+            ssh_password = kwargs['sshPassword']
+        if 'sshPort' in kwargs:
+            ssh_port = kwargs['sshPort']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'sshUserGroup' in kwargs:
+            ssh_user_group = kwargs['sshUserGroup']
+        if 'vappIpAllocationPolicy' in kwargs:
+            vapp_ip_allocation_policy = kwargs['vappIpAllocationPolicy']
+        if 'vappIpProtocol' in kwargs:
+            vapp_ip_protocol = kwargs['vappIpProtocol']
+        if 'vappProperties' in kwargs:
+            vapp_properties = kwargs['vappProperties']
+        if 'vappTransport' in kwargs:
+            vapp_transport = kwargs['vappTransport']
+        if 'vcenterPort' in kwargs:
+            vcenter_port = kwargs['vcenterPort']
+
         if boot2docker_url is not None:
             _setter("boot2docker_url", boot2docker_url)
         if cfgparams is not None:
@@ -31003,7 +33645,13 @@ class MultiClusterAppAnswerArgs:
              cluster_id: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if project_id is not None:
@@ -31071,7 +33719,15 @@ class MultiClusterAppMemberArgs:
              access_type: Optional[pulumi.Input[str]] = None,
              group_principal_id: Optional[pulumi.Input[str]] = None,
              user_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessType' in kwargs:
+            access_type = kwargs['accessType']
+        if 'groupPrincipalId' in kwargs:
+            group_principal_id = kwargs['groupPrincipalId']
+        if 'userPrincipalId' in kwargs:
+            user_principal_id = kwargs['userPrincipalId']
+
         if access_type is not None:
             _setter("access_type", access_type)
         if group_principal_id is not None:
@@ -31143,7 +33799,15 @@ class MultiClusterAppTargetArgs:
              app_id: Optional[pulumi.Input[str]] = None,
              health_state: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'healthState' in kwargs:
+            health_state = kwargs['healthState']
+
         _setter("project_id", project_id)
         if app_id is not None:
             _setter("app_id", app_id)
@@ -31216,7 +33880,11 @@ class MultiClusterAppUpgradeStrategyArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyRollingUpdateArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'rollingUpdate' in kwargs:
+            rolling_update = kwargs['rollingUpdate']
+
         if rolling_update is not None:
             _setter("rolling_update", rolling_update)
 
@@ -31252,7 +33920,11 @@ class MultiClusterAppUpgradeStrategyRollingUpdateArgs:
              _setter: Callable[[Any, Any], None],
              batch_size: Optional[pulumi.Input[int]] = None,
              interval: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'batchSize' in kwargs:
+            batch_size = kwargs['batchSize']
+
         if batch_size is not None:
             _setter("batch_size", batch_size)
         if interval is not None:
@@ -31310,7 +33982,17 @@ class NamespaceContainerResourceLimitArgs:
              limits_memory: Optional[pulumi.Input[str]] = None,
              requests_cpu: Optional[pulumi.Input[str]] = None,
              requests_memory: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'limitsCpu' in kwargs:
+            limits_cpu = kwargs['limitsCpu']
+        if 'limitsMemory' in kwargs:
+            limits_memory = kwargs['limitsMemory']
+        if 'requestsCpu' in kwargs:
+            requests_cpu = kwargs['requestsCpu']
+        if 'requestsMemory' in kwargs:
+            requests_memory = kwargs['requestsMemory']
+
         if limits_cpu is not None:
             _setter("limits_cpu", limits_cpu)
         if limits_memory is not None:
@@ -31384,7 +34066,9 @@ class NamespaceResourceQuotaArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              limit: pulumi.Input['NamespaceResourceQuotaLimitArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("limit", limit)
 
     @property
@@ -31464,7 +34148,29 @@ class NamespaceResourceQuotaLimitArgs:
              services: Optional[pulumi.Input[str]] = None,
              services_load_balancers: Optional[pulumi.Input[str]] = None,
              services_node_ports: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configMaps' in kwargs:
+            config_maps = kwargs['configMaps']
+        if 'limitsCpu' in kwargs:
+            limits_cpu = kwargs['limitsCpu']
+        if 'limitsMemory' in kwargs:
+            limits_memory = kwargs['limitsMemory']
+        if 'persistentVolumeClaims' in kwargs:
+            persistent_volume_claims = kwargs['persistentVolumeClaims']
+        if 'replicationControllers' in kwargs:
+            replication_controllers = kwargs['replicationControllers']
+        if 'requestsCpu' in kwargs:
+            requests_cpu = kwargs['requestsCpu']
+        if 'requestsMemory' in kwargs:
+            requests_memory = kwargs['requestsMemory']
+        if 'requestsStorage' in kwargs:
+            requests_storage = kwargs['requestsStorage']
+        if 'servicesLoadBalancers' in kwargs:
+            services_load_balancers = kwargs['servicesLoadBalancers']
+        if 'servicesNodePorts' in kwargs:
+            services_node_ports = kwargs['servicesNodePorts']
+
         if config_maps is not None:
             _setter("config_maps", config_maps)
         if limits_cpu is not None:
@@ -31675,7 +34381,11 @@ class NodePoolNodeTaintArgs:
              value: pulumi.Input[str],
              effect: Optional[pulumi.Input[str]] = None,
              time_added: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'timeAdded' in kwargs:
+            time_added = kwargs['timeAdded']
+
         _setter("key", key)
         _setter("value", value)
         if effect is not None:
@@ -31751,7 +34461,6 @@ class NodeTemplateAmazonec2ConfigArgs:
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  insecure_transport: Optional[pulumi.Input[bool]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 keypair_name: Optional[pulumi.Input[str]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  open_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -31787,7 +34496,6 @@ class NodeTemplateAmazonec2ConfigArgs:
         :param pulumi.Input[str] iam_instance_profile: AWS IAM Instance Profile (string)
         :param pulumi.Input[bool] insecure_transport: Disable SSL when sending requests (bool)
         :param pulumi.Input[str] instance_type: Outscale VM type. Default `tinav2.c1r2p3` (string)
-        :param pulumi.Input[str] keypair_name: OpenStack keypair to use to SSH to the instance (string)
         :param pulumi.Input[str] kms_key: Custom KMS key ID using the AWS Managed CMK (string)
         :param pulumi.Input[bool] monitoring: Enable monitoring for droplet. Default `false` (bool)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] open_ports: Make the specified port number accessible from the Internet. (list)
@@ -31826,7 +34534,6 @@ class NodeTemplateAmazonec2ConfigArgs:
             iam_instance_profile=iam_instance_profile,
             insecure_transport=insecure_transport,
             instance_type=instance_type,
-            keypair_name=keypair_name,
             kms_key=kms_key,
             monitoring=monitoring,
             open_ports=open_ports,
@@ -31865,7 +34572,6 @@ class NodeTemplateAmazonec2ConfigArgs:
              iam_instance_profile: Optional[pulumi.Input[str]] = None,
              insecure_transport: Optional[pulumi.Input[bool]] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
-             keypair_name: Optional[pulumi.Input[str]] = None,
              kms_key: Optional[pulumi.Input[str]] = None,
              monitoring: Optional[pulumi.Input[bool]] = None,
              open_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -31884,7 +34590,61 @@ class NodeTemplateAmazonec2ConfigArgs:
              use_private_address: Optional[pulumi.Input[bool]] = None,
              userdata: Optional[pulumi.Input[str]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'blockDurationMinutes' in kwargs:
+            block_duration_minutes = kwargs['blockDurationMinutes']
+        if 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if 'encryptEbsVolume' in kwargs:
+            encrypt_ebs_volume = kwargs['encryptEbsVolume']
+        if 'httpEndpoint' in kwargs:
+            http_endpoint = kwargs['httpEndpoint']
+        if 'httpTokens' in kwargs:
+            http_tokens = kwargs['httpTokens']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'insecureTransport' in kwargs:
+            insecure_transport = kwargs['insecureTransport']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if 'openPorts' in kwargs:
+            open_ports = kwargs['openPorts']
+        if 'privateAddressOnly' in kwargs:
+            private_address_only = kwargs['privateAddressOnly']
+        if 'requestSpotInstance' in kwargs:
+            request_spot_instance = kwargs['requestSpotInstance']
+        if 'rootSize' in kwargs:
+            root_size = kwargs['rootSize']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'securityGroupReadonly' in kwargs:
+            security_group_readonly = kwargs['securityGroupReadonly']
+        if 'sessionToken' in kwargs:
+            session_token = kwargs['sessionToken']
+        if 'spotPrice' in kwargs:
+            spot_price = kwargs['spotPrice']
+        if 'sshKeypath' in kwargs:
+            ssh_keypath = kwargs['sshKeypath']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'useEbsOptimizedInstance' in kwargs:
+            use_ebs_optimized_instance = kwargs['useEbsOptimizedInstance']
+        if 'usePrivateAddress' in kwargs:
+            use_private_address = kwargs['usePrivateAddress']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         _setter("ami", ami)
         _setter("region", region)
         _setter("security_groups", security_groups)
@@ -31911,8 +34671,6 @@ class NodeTemplateAmazonec2ConfigArgs:
             _setter("insecure_transport", insecure_transport)
         if instance_type is not None:
             _setter("instance_type", instance_type)
-        if keypair_name is not None:
-            _setter("keypair_name", keypair_name)
         if kms_key is not None:
             _setter("kms_key", kms_key)
         if monitoring is not None:
@@ -32141,18 +34899,6 @@ class NodeTemplateAmazonec2ConfigArgs:
     @instance_type.setter
     def instance_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_type", value)
-
-    @property
-    @pulumi.getter(name="keypairName")
-    def keypair_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        OpenStack keypair to use to SSH to the instance (string)
-        """
-        return pulumi.get(self, "keypair_name")
-
-    @keypair_name.setter
-    def keypair_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "keypair_name", value)
 
     @property
     @pulumi.getter(name="kmsKey")
@@ -32507,7 +35253,53 @@ class NodeTemplateAzureConfigArgs:
              use_private_ip: Optional[pulumi.Input[bool]] = None,
              use_public_ip_standard_sku: Optional[pulumi.Input[bool]] = None,
              vnet: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratedNetworking' in kwargs:
+            accelerated_networking = kwargs['acceleratedNetworking']
+        if 'availabilitySet' in kwargs:
+            availability_set = kwargs['availabilitySet']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'dockerPort' in kwargs:
+            docker_port = kwargs['dockerPort']
+        if 'faultDomainCount' in kwargs:
+            fault_domain_count = kwargs['faultDomainCount']
+        if 'managedDisks' in kwargs:
+            managed_disks = kwargs['managedDisks']
+        if 'noPublicIp' in kwargs:
+            no_public_ip = kwargs['noPublicIp']
+        if 'openPorts' in kwargs:
+            open_ports = kwargs['openPorts']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'staticPublicIp' in kwargs:
+            static_public_ip = kwargs['staticPublicIp']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'subnetPrefix' in kwargs:
+            subnet_prefix = kwargs['subnetPrefix']
+        if 'subscriptionId' in kwargs:
+            subscription_id = kwargs['subscriptionId']
+        if 'updateDomainCount' in kwargs:
+            update_domain_count = kwargs['updateDomainCount']
+        if 'usePrivateIp' in kwargs:
+            use_private_ip = kwargs['usePrivateIp']
+        if 'usePublicIpStandardSku' in kwargs:
+            use_public_ip_standard_sku = kwargs['usePublicIpStandardSku']
+
         if accelerated_networking is not None:
             _setter("accelerated_networking", accelerated_networking)
         if availability_set is not None:
@@ -33021,7 +35813,21 @@ class NodeTemplateDigitaloceanConfigArgs:
              ssh_user: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[str]] = None,
              userdata: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessToken' in kwargs:
+            access_token = kwargs['accessToken']
+        if 'privateNetworking' in kwargs:
+            private_networking = kwargs['privateNetworking']
+        if 'sshKeyFingerprint' in kwargs:
+            ssh_key_fingerprint = kwargs['sshKeyFingerprint']
+        if 'sshKeyPath' in kwargs:
+            ssh_key_path = kwargs['sshKeyPath']
+        if 'sshPort' in kwargs:
+            ssh_port = kwargs['sshPort']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+
         if access_token is not None:
             _setter("access_token", access_token)
         if backups is not None:
@@ -33293,7 +36099,39 @@ class NodeTemplateHarvesterConfigArgs:
              ssh_password: Optional[pulumi.Input[str]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
              vm_affinity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'vmNamespace' in kwargs:
+            vm_namespace = kwargs['vmNamespace']
+        if 'cpuCount' in kwargs:
+            cpu_count = kwargs['cpuCount']
+        if 'diskBus' in kwargs:
+            disk_bus = kwargs['diskBus']
+        if 'diskInfo' in kwargs:
+            disk_info = kwargs['diskInfo']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if 'networkData' in kwargs:
+            network_data = kwargs['networkData']
+        if 'networkInfo' in kwargs:
+            network_info = kwargs['networkInfo']
+        if 'networkModel' in kwargs:
+            network_model = kwargs['networkModel']
+        if 'networkName' in kwargs:
+            network_name = kwargs['networkName']
+        if 'sshPassword' in kwargs:
+            ssh_password = kwargs['sshPassword']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'vmAffinity' in kwargs:
+            vm_affinity = kwargs['vmAffinity']
+
         _setter("ssh_user", ssh_user)
         _setter("vm_namespace", vm_namespace)
         if cpu_count is not None:
@@ -33583,7 +36421,19 @@ class NodeTemplateHetznerConfigArgs:
              use_private_network: Optional[pulumi.Input[bool]] = None,
              userdata: Optional[pulumi.Input[str]] = None,
              volumes: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiToken' in kwargs:
+            api_token = kwargs['apiToken']
+        if 'serverLabels' in kwargs:
+            server_labels = kwargs['serverLabels']
+        if 'serverLocation' in kwargs:
+            server_location = kwargs['serverLocation']
+        if 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+        if 'usePrivateNetwork' in kwargs:
+            use_private_network = kwargs['usePrivateNetwork']
+
         _setter("api_token", api_token)
         if image is not None:
             _setter("image", image)
@@ -33788,7 +36638,29 @@ class NodeTemplateLinodeConfigArgs:
              tags: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
              ua_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authorizedUsers' in kwargs:
+            authorized_users = kwargs['authorizedUsers']
+        if 'createPrivateIp' in kwargs:
+            create_private_ip = kwargs['createPrivateIp']
+        if 'dockerPort' in kwargs:
+            docker_port = kwargs['dockerPort']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'rootPass' in kwargs:
+            root_pass = kwargs['rootPass']
+        if 'sshPort' in kwargs:
+            ssh_port = kwargs['sshPort']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'stackscriptData' in kwargs:
+            stackscript_data = kwargs['stackscriptData']
+        if 'swapSize' in kwargs:
+            swap_size = kwargs['swapSize']
+        if 'uaPrefix' in kwargs:
+            ua_prefix = kwargs['uaPrefix']
+
         if authorized_users is not None:
             _setter("authorized_users", authorized_users)
         if create_private_ip is not None:
@@ -34042,7 +36914,11 @@ class NodeTemplateNodeTaintArgs:
              value: pulumi.Input[str],
              effect: Optional[pulumi.Input[str]] = None,
              time_added: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'timeAdded' in kwargs:
+            time_added = kwargs['timeAdded']
+
         _setter("key", key)
         _setter("value", value)
         if effect is not None:
@@ -34188,7 +37064,37 @@ class NodeTemplateOpennebulaConfigArgs:
              template_id: Optional[pulumi.Input[str]] = None,
              template_name: Optional[pulumi.Input[str]] = None,
              vcpu: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'xmlRpcUrl' in kwargs:
+            xml_rpc_url = kwargs['xmlRpcUrl']
+        if 'b2dSize' in kwargs:
+            b2d_size = kwargs['b2dSize']
+        if 'devPrefix' in kwargs:
+            dev_prefix = kwargs['devPrefix']
+        if 'disableVnc' in kwargs:
+            disable_vnc = kwargs['disableVnc']
+        if 'diskResize' in kwargs:
+            disk_resize = kwargs['diskResize']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'imageOwner' in kwargs:
+            image_owner = kwargs['imageOwner']
+        if 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if 'networkName' in kwargs:
+            network_name = kwargs['networkName']
+        if 'networkOwner' in kwargs:
+            network_owner = kwargs['networkOwner']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+
         _setter("password", password)
         _setter("user", user)
         _setter("xml_rpc_url", xml_rpc_url)
@@ -34536,6 +37442,8 @@ class NodeTemplateOpenstackConfigArgs:
                > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
                
                > **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+               
+               > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
         :param pulumi.Input[str] volume_id: OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param pulumi.Input[str] volume_name: OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param pulumi.Input[str] volume_size: OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
@@ -34623,7 +37531,75 @@ class NodeTemplateOpenstackConfigArgs:
              volume_name: Optional[pulumi.Input[str]] = None,
              volume_size: Optional[pulumi.Input[str]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authUrl' in kwargs:
+            auth_url = kwargs['authUrl']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'activeTimeout' in kwargs:
+            active_timeout = kwargs['activeTimeout']
+        if 'applicationCredentialId' in kwargs:
+            application_credential_id = kwargs['applicationCredentialId']
+        if 'applicationCredentialName' in kwargs:
+            application_credential_name = kwargs['applicationCredentialName']
+        if 'applicationCredentialSecret' in kwargs:
+            application_credential_secret = kwargs['applicationCredentialSecret']
+        if 'bootFromVolume' in kwargs:
+            boot_from_volume = kwargs['bootFromVolume']
+        if 'configDrive' in kwargs:
+            config_drive = kwargs['configDrive']
+        if 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if 'flavorName' in kwargs:
+            flavor_name = kwargs['flavorName']
+        if 'floatingIpPool' in kwargs:
+            floating_ip_pool = kwargs['floatingIpPool']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'keypairName' in kwargs:
+            keypair_name = kwargs['keypairName']
+        if 'netId' in kwargs:
+            net_id = kwargs['netId']
+        if 'netName' in kwargs:
+            net_name = kwargs['netName']
+        if 'novaNetwork' in kwargs:
+            nova_network = kwargs['novaNetwork']
+        if 'privateKeyFile' in kwargs:
+            private_key_file = kwargs['privateKeyFile']
+        if 'secGroups' in kwargs:
+            sec_groups = kwargs['secGroups']
+        if 'sshPort' in kwargs:
+            ssh_port = kwargs['sshPort']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'tenantName' in kwargs:
+            tenant_name = kwargs['tenantName']
+        if 'userDataFile' in kwargs:
+            user_data_file = kwargs['userDataFile']
+        if 'volumeDevicePath' in kwargs:
+            volume_device_path = kwargs['volumeDevicePath']
+        if 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+        if 'volumeName' in kwargs:
+            volume_name = kwargs['volumeName']
+        if 'volumeSize' in kwargs:
+            volume_size = kwargs['volumeSize']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         _setter("auth_url", auth_url)
         _setter("availability_zone", availability_zone)
         _setter("region", region)
@@ -35103,6 +38079,8 @@ class NodeTemplateOpenstackConfigArgs:
         > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
 
         > **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+
+        > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
         """
         return pulumi.get(self, "volume_device_path")
 
@@ -35214,7 +38192,29 @@ class NodeTemplateOutscaleConfigArgs:
              root_disk_type: Optional[pulumi.Input[str]] = None,
              security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              source_omi: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'extraTagsAlls' in kwargs:
+            extra_tags_alls = kwargs['extraTagsAlls']
+        if 'extraTagsInstances' in kwargs:
+            extra_tags_instances = kwargs['extraTagsInstances']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'rootDiskIops' in kwargs:
+            root_disk_iops = kwargs['rootDiskIops']
+        if 'rootDiskSize' in kwargs:
+            root_disk_size = kwargs['rootDiskSize']
+        if 'rootDiskType' in kwargs:
+            root_disk_type = kwargs['rootDiskType']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'sourceOmi' in kwargs:
+            source_omi = kwargs['sourceOmi']
+
         _setter("access_key", access_key)
         _setter("secret_key", secret_key)
         if extra_tags_alls is not None:
@@ -35504,7 +38504,47 @@ class NodeTemplateVsphereConfigArgs:
              vapp_transport: Optional[pulumi.Input[str]] = None,
              vcenter: Optional[pulumi.Input[str]] = None,
              vcenter_port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'boot2dockerUrl' in kwargs:
+            boot2docker_url = kwargs['boot2dockerUrl']
+        if 'cloneFrom' in kwargs:
+            clone_from = kwargs['cloneFrom']
+        if 'cloudConfig' in kwargs:
+            cloud_config = kwargs['cloudConfig']
+        if 'contentLibrary' in kwargs:
+            content_library = kwargs['contentLibrary']
+        if 'cpuCount' in kwargs:
+            cpu_count = kwargs['cpuCount']
+        if 'creationType' in kwargs:
+            creation_type = kwargs['creationType']
+        if 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if 'datastoreCluster' in kwargs:
+            datastore_cluster = kwargs['datastoreCluster']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if 'sshPassword' in kwargs:
+            ssh_password = kwargs['sshPassword']
+        if 'sshPort' in kwargs:
+            ssh_port = kwargs['sshPort']
+        if 'sshUser' in kwargs:
+            ssh_user = kwargs['sshUser']
+        if 'sshUserGroup' in kwargs:
+            ssh_user_group = kwargs['sshUserGroup']
+        if 'vappIpAllocationPolicy' in kwargs:
+            vapp_ip_allocation_policy = kwargs['vappIpAllocationPolicy']
+        if 'vappIpProtocol' in kwargs:
+            vapp_ip_protocol = kwargs['vappIpProtocol']
+        if 'vappProperties' in kwargs:
+            vapp_properties = kwargs['vappProperties']
+        if 'vappTransport' in kwargs:
+            vapp_transport = kwargs['vappTransport']
+        if 'vcenterPort' in kwargs:
+            vcenter_port = kwargs['vcenterPort']
+
         if boot2docker_url is not None:
             _setter("boot2docker_url", boot2docker_url)
         if cfgparams is not None:
@@ -35964,7 +39004,11 @@ class NotifierDingtalkConfigArgs:
              url: pulumi.Input[str],
              proxy_url: Optional[pulumi.Input[str]] = None,
              secret: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'proxyUrl' in kwargs:
+            proxy_url = kwargs['proxyUrl']
+
         _setter("url", url)
         if proxy_url is not None:
             _setter("proxy_url", proxy_url)
@@ -36027,7 +39071,11 @@ class NotifierMsteamsConfigArgs:
              _setter: Callable[[Any, Any], None],
              url: pulumi.Input[str],
              proxy_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'proxyUrl' in kwargs:
+            proxy_url = kwargs['proxyUrl']
+
         _setter("url", url)
         if proxy_url is not None:
             _setter("proxy_url", proxy_url)
@@ -36076,7 +39124,13 @@ class NotifierPagerdutyConfigArgs:
              _setter: Callable[[Any, Any], None],
              service_key: pulumi.Input[str],
              proxy_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceKey' in kwargs:
+            service_key = kwargs['serviceKey']
+        if 'proxyUrl' in kwargs:
+            proxy_url = kwargs['proxyUrl']
+
         _setter("service_key", service_key)
         if proxy_url is not None:
             _setter("proxy_url", proxy_url)
@@ -36129,7 +39183,13 @@ class NotifierSlackConfigArgs:
              default_recipient: pulumi.Input[str],
              url: pulumi.Input[str],
              proxy_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultRecipient' in kwargs:
+            default_recipient = kwargs['defaultRecipient']
+        if 'proxyUrl' in kwargs:
+            proxy_url = kwargs['proxyUrl']
+
         _setter("default_recipient", default_recipient)
         _setter("url", url)
         if proxy_url is not None:
@@ -36211,7 +39271,11 @@ class NotifierSmtpConfigArgs:
              password: Optional[pulumi.Input[str]] = None,
              tls: Optional[pulumi.Input[bool]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultRecipient' in kwargs:
+            default_recipient = kwargs['defaultRecipient']
+
         _setter("default_recipient", default_recipient)
         _setter("host", host)
         _setter("port", port)
@@ -36327,7 +39391,11 @@ class NotifierWebhookConfigArgs:
              _setter: Callable[[Any, Any], None],
              url: pulumi.Input[str],
              proxy_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'proxyUrl' in kwargs:
+            proxy_url = kwargs['proxyUrl']
+
         _setter("url", url)
         if proxy_url is not None:
             _setter("proxy_url", proxy_url)
@@ -36392,7 +39460,15 @@ class NotifierWechatConfigArgs:
              secret: pulumi.Input[str],
              proxy_url: Optional[pulumi.Input[str]] = None,
              recipient_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultRecipient' in kwargs:
+            default_recipient = kwargs['defaultRecipient']
+        if 'proxyUrl' in kwargs:
+            proxy_url = kwargs['proxyUrl']
+        if 'recipientType' in kwargs:
+            recipient_type = kwargs['recipientType']
+
         _setter("agent", agent)
         _setter("corp", corp)
         _setter("default_recipient", default_recipient)
@@ -36490,7 +39566,9 @@ class PodSecurityPolicyTemplateAllowedCsiDriverArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
 
     @property
@@ -36518,7 +39596,9 @@ class PodSecurityPolicyTemplateAllowedFlexVolumeArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              driver: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("driver", driver)
 
     @property
@@ -36550,7 +39630,13 @@ class PodSecurityPolicyTemplateAllowedHostPathArgs:
              _setter: Callable[[Any, Any], None],
              path_prefix: pulumi.Input[str],
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pathPrefix' in kwargs:
+            path_prefix = kwargs['pathPrefix']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         _setter("path_prefix", path_prefix)
         if read_only is not None:
             _setter("read_only", read_only)
@@ -36599,7 +39685,9 @@ class PodSecurityPolicyTemplateFsGroupArgs:
              _setter: Callable[[Any, Any], None],
              ranges: Optional[pulumi.Input[Sequence[pulumi.Input['PodSecurityPolicyTemplateFsGroupRangeArgs']]]] = None,
              rule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if ranges is not None:
             _setter("ranges", ranges)
         if rule is not None:
@@ -36649,7 +39737,9 @@ class PodSecurityPolicyTemplateFsGroupRangeArgs:
              _setter: Callable[[Any, Any], None],
              max: pulumi.Input[int],
              min: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("max", max)
         _setter("min", min)
 
@@ -36697,7 +39787,9 @@ class PodSecurityPolicyTemplateHostPortArgs:
              _setter: Callable[[Any, Any], None],
              max: pulumi.Input[int],
              min: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("max", max)
         _setter("min", min)
 
@@ -36745,7 +39837,9 @@ class PodSecurityPolicyTemplateRunAsGroupArgs:
              _setter: Callable[[Any, Any], None],
              rule: pulumi.Input[str],
              ranges: Optional[pulumi.Input[Sequence[pulumi.Input['PodSecurityPolicyTemplateRunAsGroupRangeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("rule", rule)
         if ranges is not None:
             _setter("ranges", ranges)
@@ -36794,7 +39888,9 @@ class PodSecurityPolicyTemplateRunAsGroupRangeArgs:
              _setter: Callable[[Any, Any], None],
              max: pulumi.Input[int],
              min: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("max", max)
         _setter("min", min)
 
@@ -36842,7 +39938,9 @@ class PodSecurityPolicyTemplateRunAsUserArgs:
              _setter: Callable[[Any, Any], None],
              rule: pulumi.Input[str],
              ranges: Optional[pulumi.Input[Sequence[pulumi.Input['PodSecurityPolicyTemplateRunAsUserRangeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("rule", rule)
         if ranges is not None:
             _setter("ranges", ranges)
@@ -36891,7 +39989,9 @@ class PodSecurityPolicyTemplateRunAsUserRangeArgs:
              _setter: Callable[[Any, Any], None],
              max: pulumi.Input[int],
              min: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("max", max)
         _setter("min", min)
 
@@ -36939,7 +40039,13 @@ class PodSecurityPolicyTemplateRuntimeClassArgs:
              _setter: Callable[[Any, Any], None],
              allowed_runtime_class_names: pulumi.Input[Sequence[pulumi.Input[str]]],
              default_runtime_class_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedRuntimeClassNames' in kwargs:
+            allowed_runtime_class_names = kwargs['allowedRuntimeClassNames']
+        if 'defaultRuntimeClassName' in kwargs:
+            default_runtime_class_name = kwargs['defaultRuntimeClassName']
+
         _setter("allowed_runtime_class_names", allowed_runtime_class_names)
         if default_runtime_class_name is not None:
             _setter("default_runtime_class_name", default_runtime_class_name)
@@ -36988,7 +40094,11 @@ class PodSecurityPolicyTemplateSeLinuxArgs:
              _setter: Callable[[Any, Any], None],
              rule: pulumi.Input[str],
              se_linux_option: Optional[pulumi.Input['PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'seLinuxOption' in kwargs:
+            se_linux_option = kwargs['seLinuxOption']
+
         _setter("rule", rule)
         if se_linux_option is not None:
             _setter("se_linux_option", se_linux_option)
@@ -37045,7 +40155,9 @@ class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs:
              role: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if level is not None:
             _setter("level", level)
         if role is not None:
@@ -37123,7 +40235,9 @@ class PodSecurityPolicyTemplateSupplementalGroupArgs:
              _setter: Callable[[Any, Any], None],
              ranges: Optional[pulumi.Input[Sequence[pulumi.Input['PodSecurityPolicyTemplateSupplementalGroupRangeArgs']]]] = None,
              rule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if ranges is not None:
             _setter("ranges", ranges)
         if rule is not None:
@@ -37173,7 +40287,9 @@ class PodSecurityPolicyTemplateSupplementalGroupRangeArgs:
              _setter: Callable[[Any, Any], None],
              max: pulumi.Input[int],
              min: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("max", max)
         _setter("min", min)
 
@@ -37228,7 +40344,15 @@ class ProjectAlertGroupRecipientArgs:
              default_recipient: Optional[pulumi.Input[bool]] = None,
              notifier_type: Optional[pulumi.Input[str]] = None,
              recipient: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notifierId' in kwargs:
+            notifier_id = kwargs['notifierId']
+        if 'defaultRecipient' in kwargs:
+            default_recipient = kwargs['defaultRecipient']
+        if 'notifierType' in kwargs:
+            notifier_type = kwargs['notifierType']
+
         _setter("notifier_id", notifier_id)
         if default_recipient is not None:
             _setter("default_recipient", default_recipient)
@@ -37314,7 +40438,11 @@ class ProjectAlertRuleMetricRuleArgs:
              threshold_value: pulumi.Input[float],
              comparison: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'thresholdValue' in kwargs:
+            threshold_value = kwargs['thresholdValue']
+
         _setter("duration", duration)
         _setter("expression", expression)
         _setter("threshold_value", threshold_value)
@@ -37411,7 +40539,15 @@ class ProjectAlertRulePodRuleArgs:
              condition: Optional[pulumi.Input[str]] = None,
              restart_interval_seconds: Optional[pulumi.Input[int]] = None,
              restart_times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'podId' in kwargs:
+            pod_id = kwargs['podId']
+        if 'restartIntervalSeconds' in kwargs:
+            restart_interval_seconds = kwargs['restartIntervalSeconds']
+        if 'restartTimes' in kwargs:
+            restart_times = kwargs['restartTimes']
+
         _setter("pod_id", pod_id)
         if condition is not None:
             _setter("condition", condition)
@@ -37492,7 +40628,13 @@ class ProjectAlertRuleWorkloadRuleArgs:
              available_percentage: Optional[pulumi.Input[int]] = None,
              selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              workload_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availablePercentage' in kwargs:
+            available_percentage = kwargs['availablePercentage']
+        if 'workloadId' in kwargs:
+            workload_id = kwargs['workloadId']
+
         if available_percentage is not None:
             _setter("available_percentage", available_percentage)
         if selector is not None:
@@ -37564,7 +40706,17 @@ class ProjectContainerResourceLimitArgs:
              limits_memory: Optional[pulumi.Input[str]] = None,
              requests_cpu: Optional[pulumi.Input[str]] = None,
              requests_memory: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'limitsCpu' in kwargs:
+            limits_cpu = kwargs['limitsCpu']
+        if 'limitsMemory' in kwargs:
+            limits_memory = kwargs['limitsMemory']
+        if 'requestsCpu' in kwargs:
+            requests_cpu = kwargs['requestsCpu']
+        if 'requestsMemory' in kwargs:
+            requests_memory = kwargs['requestsMemory']
+
         if limits_cpu is not None:
             _setter("limits_cpu", limits_cpu)
         if limits_memory is not None:
@@ -37642,7 +40794,9 @@ class ProjectProjectMonitoringInputArgs:
              _setter: Callable[[Any, Any], None],
              answers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if answers is not None:
             _setter("answers", answers)
         if version is not None:
@@ -37692,7 +40846,13 @@ class ProjectResourceQuotaArgs:
              _setter: Callable[[Any, Any], None],
              namespace_default_limit: pulumi.Input['ProjectResourceQuotaNamespaceDefaultLimitArgs'],
              project_limit: pulumi.Input['ProjectResourceQuotaProjectLimitArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namespaceDefaultLimit' in kwargs:
+            namespace_default_limit = kwargs['namespaceDefaultLimit']
+        if 'projectLimit' in kwargs:
+            project_limit = kwargs['projectLimit']
+
         _setter("namespace_default_limit", namespace_default_limit)
         _setter("project_limit", project_limit)
 
@@ -37785,7 +40945,29 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
              services: Optional[pulumi.Input[str]] = None,
              services_load_balancers: Optional[pulumi.Input[str]] = None,
              services_node_ports: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configMaps' in kwargs:
+            config_maps = kwargs['configMaps']
+        if 'limitsCpu' in kwargs:
+            limits_cpu = kwargs['limitsCpu']
+        if 'limitsMemory' in kwargs:
+            limits_memory = kwargs['limitsMemory']
+        if 'persistentVolumeClaims' in kwargs:
+            persistent_volume_claims = kwargs['persistentVolumeClaims']
+        if 'replicationControllers' in kwargs:
+            replication_controllers = kwargs['replicationControllers']
+        if 'requestsCpu' in kwargs:
+            requests_cpu = kwargs['requestsCpu']
+        if 'requestsMemory' in kwargs:
+            requests_memory = kwargs['requestsMemory']
+        if 'requestsStorage' in kwargs:
+            requests_storage = kwargs['requestsStorage']
+        if 'servicesLoadBalancers' in kwargs:
+            services_load_balancers = kwargs['servicesLoadBalancers']
+        if 'servicesNodePorts' in kwargs:
+            services_node_ports = kwargs['servicesNodePorts']
+
         if config_maps is not None:
             _setter("config_maps", config_maps)
         if limits_cpu is not None:
@@ -38033,7 +41215,29 @@ class ProjectResourceQuotaProjectLimitArgs:
              services: Optional[pulumi.Input[str]] = None,
              services_load_balancers: Optional[pulumi.Input[str]] = None,
              services_node_ports: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configMaps' in kwargs:
+            config_maps = kwargs['configMaps']
+        if 'limitsCpu' in kwargs:
+            limits_cpu = kwargs['limitsCpu']
+        if 'limitsMemory' in kwargs:
+            limits_memory = kwargs['limitsMemory']
+        if 'persistentVolumeClaims' in kwargs:
+            persistent_volume_claims = kwargs['persistentVolumeClaims']
+        if 'replicationControllers' in kwargs:
+            replication_controllers = kwargs['replicationControllers']
+        if 'requestsCpu' in kwargs:
+            requests_cpu = kwargs['requestsCpu']
+        if 'requestsMemory' in kwargs:
+            requests_memory = kwargs['requestsMemory']
+        if 'requestsStorage' in kwargs:
+            requests_storage = kwargs['requestsStorage']
+        if 'servicesLoadBalancers' in kwargs:
+            services_load_balancers = kwargs['servicesLoadBalancers']
+        if 'servicesNodePorts' in kwargs:
+            services_node_ports = kwargs['servicesNodePorts']
+
         if config_maps is not None:
             _setter("config_maps", config_maps)
         if limits_cpu is not None:
@@ -38240,7 +41444,9 @@ class RegistryRegistryArgs:
              address: pulumi.Input[str],
              password: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("address", address)
         if password is not None:
             _setter("password", password)
@@ -38315,7 +41521,15 @@ class RoleTempalteRuleArgs:
              resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              verbs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiGroups' in kwargs:
+            api_groups = kwargs['apiGroups']
+        if 'nonResourceUrls' in kwargs:
+            non_resource_urls = kwargs['nonResourceUrls']
+        if 'resourceNames' in kwargs:
+            resource_names = kwargs['resourceNames']
+
         if api_groups is not None:
             _setter("api_groups", api_groups)
         if non_resource_urls is not None:
@@ -38419,7 +41633,15 @@ class RoleTemplateRuleArgs:
              resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              verbs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiGroups' in kwargs:
+            api_groups = kwargs['apiGroups']
+        if 'nonResourceUrls' in kwargs:
+            non_resource_urls = kwargs['nonResourceUrls']
+        if 'resourceNames' in kwargs:
+            resource_names = kwargs['resourceNames']
+
         if api_groups is not None:
             _setter("api_groups", api_groups)
         if non_resource_urls is not None:
@@ -38510,7 +41732,11 @@ class GetNotifierDingtalkConfigArgs:
              url: str,
              proxy_url: Optional[str] = None,
              secret: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'proxyUrl' in kwargs:
+            proxy_url = kwargs['proxyUrl']
+
         _setter("url", url)
         if proxy_url is not None:
             _setter("proxy_url", proxy_url)
@@ -38560,7 +41786,11 @@ class GetNotifierMsteamsConfigArgs:
              _setter: Callable[[Any, Any], None],
              url: str,
              proxy_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'proxyUrl' in kwargs:
+            proxy_url = kwargs['proxyUrl']
+
         _setter("url", url)
         if proxy_url is not None:
             _setter("proxy_url", proxy_url)
@@ -38599,7 +41829,9 @@ class GetPodSecurityPolicyTemplateAllowedCsiDriverArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
 
     @property
@@ -38627,7 +41859,9 @@ class GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              driver: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("driver", driver)
 
     @property
@@ -38655,7 +41889,13 @@ class GetPodSecurityPolicyTemplateAllowedHostPathArgs:
              _setter: Callable[[Any, Any], None],
              path_prefix: str,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pathPrefix' in kwargs:
+            path_prefix = kwargs['pathPrefix']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         _setter("path_prefix", path_prefix)
         if read_only is not None:
             _setter("read_only", read_only)
@@ -38694,7 +41934,9 @@ class GetPodSecurityPolicyTemplateFsGroupArgs:
              _setter: Callable[[Any, Any], None],
              ranges: Sequence['GetPodSecurityPolicyTemplateFsGroupRangeArgs'],
              rule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("ranges", ranges)
         if rule is not None:
             _setter("rule", rule)
@@ -38733,7 +41975,9 @@ class GetPodSecurityPolicyTemplateFsGroupRangeArgs:
              _setter: Callable[[Any, Any], None],
              max: int,
              min: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("max", max)
         _setter("min", min)
 
@@ -38771,7 +42015,9 @@ class GetPodSecurityPolicyTemplateHostPortArgs:
              _setter: Callable[[Any, Any], None],
              max: int,
              min: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("max", max)
         _setter("min", min)
 
@@ -38809,7 +42055,9 @@ class GetPodSecurityPolicyTemplateRunAsGroupArgs:
              _setter: Callable[[Any, Any], None],
              rule: str,
              ranges: Optional[Sequence['GetPodSecurityPolicyTemplateRunAsGroupRangeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("rule", rule)
         if ranges is not None:
             _setter("ranges", ranges)
@@ -38848,7 +42096,9 @@ class GetPodSecurityPolicyTemplateRunAsGroupRangeArgs:
              _setter: Callable[[Any, Any], None],
              max: int,
              min: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("max", max)
         _setter("min", min)
 
@@ -38886,7 +42136,9 @@ class GetPodSecurityPolicyTemplateRunAsUserArgs:
              _setter: Callable[[Any, Any], None],
              rule: str,
              ranges: Optional[Sequence['GetPodSecurityPolicyTemplateRunAsUserRangeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("rule", rule)
         if ranges is not None:
             _setter("ranges", ranges)
@@ -38925,7 +42177,9 @@ class GetPodSecurityPolicyTemplateRunAsUserRangeArgs:
              _setter: Callable[[Any, Any], None],
              max: int,
              min: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("max", max)
         _setter("min", min)
 
@@ -38963,7 +42217,13 @@ class GetPodSecurityPolicyTemplateRuntimeClassArgs:
              _setter: Callable[[Any, Any], None],
              allowed_runtime_class_names: Sequence[str],
              default_runtime_class_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedRuntimeClassNames' in kwargs:
+            allowed_runtime_class_names = kwargs['allowedRuntimeClassNames']
+        if 'defaultRuntimeClassName' in kwargs:
+            default_runtime_class_name = kwargs['defaultRuntimeClassName']
+
         _setter("allowed_runtime_class_names", allowed_runtime_class_names)
         if default_runtime_class_name is not None:
             _setter("default_runtime_class_name", default_runtime_class_name)
@@ -39002,7 +42262,11 @@ class GetPodSecurityPolicyTemplateSeLinuxArgs:
              _setter: Callable[[Any, Any], None],
              rule: str,
              se_linux_option: Optional['GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'seLinuxOption' in kwargs:
+            se_linux_option = kwargs['seLinuxOption']
+
         _setter("rule", rule)
         if se_linux_option is not None:
             _setter("se_linux_option", se_linux_option)
@@ -39047,7 +42311,9 @@ class GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs:
              role: Optional[str] = None,
              type: Optional[str] = None,
              user: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if level is not None:
             _setter("level", level)
         if role is not None:
@@ -39109,7 +42375,9 @@ class GetPodSecurityPolicyTemplateSupplementalGroupArgs:
              _setter: Callable[[Any, Any], None],
              ranges: Sequence['GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs'],
              rule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("ranges", ranges)
         if rule is not None:
             _setter("rule", rule)
@@ -39148,7 +42416,9 @@ class GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs:
              _setter: Callable[[Any, Any], None],
              max: int,
              min: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("max", max)
         _setter("min", min)
 

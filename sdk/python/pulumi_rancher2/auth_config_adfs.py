@@ -75,7 +75,29 @@ class AuthConfigAdfsArgs:
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayNameField' in kwargs:
+            display_name_field = kwargs['displayNameField']
+        if 'groupsField' in kwargs:
+            groups_field = kwargs['groupsField']
+        if 'idpMetadataContent' in kwargs:
+            idp_metadata_content = kwargs['idpMetadataContent']
+        if 'rancherApiHost' in kwargs:
+            rancher_api_host = kwargs['rancherApiHost']
+        if 'spCert' in kwargs:
+            sp_cert = kwargs['spCert']
+        if 'spKey' in kwargs:
+            sp_key = kwargs['spKey']
+        if 'uidField' in kwargs:
+            uid_field = kwargs['uidField']
+        if 'userNameField' in kwargs:
+            user_name_field = kwargs['userNameField']
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'allowedPrincipalIds' in kwargs:
+            allowed_principal_ids = kwargs['allowedPrincipalIds']
+
         _setter("display_name_field", display_name_field)
         _setter("groups_field", groups_field)
         _setter("idp_metadata_content", idp_metadata_content)
@@ -324,7 +346,29 @@ class _AuthConfigAdfsState:
              type: Optional[pulumi.Input[str]] = None,
              uid_field: Optional[pulumi.Input[str]] = None,
              user_name_field: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'allowedPrincipalIds' in kwargs:
+            allowed_principal_ids = kwargs['allowedPrincipalIds']
+        if 'displayNameField' in kwargs:
+            display_name_field = kwargs['displayNameField']
+        if 'groupsField' in kwargs:
+            groups_field = kwargs['groupsField']
+        if 'idpMetadataContent' in kwargs:
+            idp_metadata_content = kwargs['idpMetadataContent']
+        if 'rancherApiHost' in kwargs:
+            rancher_api_host = kwargs['rancherApiHost']
+        if 'spCert' in kwargs:
+            sp_cert = kwargs['spCert']
+        if 'spKey' in kwargs:
+            sp_key = kwargs['spKey']
+        if 'uidField' in kwargs:
+            uid_field = kwargs['uidField']
+        if 'userNameField' in kwargs:
+            user_name_field = kwargs['userNameField']
+
         if access_mode is not None:
             _setter("access_mode", access_mode)
         if allowed_principal_ids is not None:

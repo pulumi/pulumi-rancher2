@@ -39,7 +39,9 @@ class FeatureArgs:
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if annotations is not None:
             _setter("annotations", annotations)
         if labels is not None:
@@ -126,7 +128,9 @@ class _FeatureState:
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if annotations is not None:
             _setter("annotations", annotations)
         if labels is not None:

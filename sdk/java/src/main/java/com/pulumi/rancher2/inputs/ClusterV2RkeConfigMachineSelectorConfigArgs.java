@@ -6,9 +6,7 @@ package com.pulumi.rancher2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs;
-import java.lang.Object;
 import java.lang.String;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,17 +17,17 @@ public final class ClusterV2RkeConfigMachineSelectorConfigArgs extends com.pulum
     public static final ClusterV2RkeConfigMachineSelectorConfigArgs Empty = new ClusterV2RkeConfigMachineSelectorConfigArgs();
 
     /**
-     * Machine selector config (map)
+     * Machine selector config. Must be in YAML format (string)
      * 
      */
     @Import(name="config")
-    private @Nullable Output<Map<String,Object>> config;
+    private @Nullable Output<String> config;
 
     /**
-     * @return Machine selector config (map)
+     * @return Machine selector config. Must be in YAML format (string)
      * 
      */
-    public Optional<Output<Map<String,Object>>> config() {
+    public Optional<Output<String>> config() {
         return Optional.ofNullable(this.config);
     }
 
@@ -74,23 +72,23 @@ public final class ClusterV2RkeConfigMachineSelectorConfigArgs extends com.pulum
         }
 
         /**
-         * @param config Machine selector config (map)
+         * @param config Machine selector config. Must be in YAML format (string)
          * 
          * @return builder
          * 
          */
-        public Builder config(@Nullable Output<Map<String,Object>> config) {
+        public Builder config(@Nullable Output<String> config) {
             $.config = config;
             return this;
         }
 
         /**
-         * @param config Machine selector config (map)
+         * @param config Machine selector config. Must be in YAML format (string)
          * 
          * @return builder
          * 
          */
-        public Builder config(Map<String,Object> config) {
+        public Builder config(String config) {
             return config(Output.of(config));
         }
 

@@ -77,7 +77,27 @@ class NotifierArgs:
              smtp_config: Optional[pulumi.Input['NotifierSmtpConfigArgs']] = None,
              webhook_config: Optional[pulumi.Input['NotifierWebhookConfigArgs']] = None,
              wechat_config: Optional[pulumi.Input['NotifierWechatConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'dingtalkConfig' in kwargs:
+            dingtalk_config = kwargs['dingtalkConfig']
+        if 'msteamsConfig' in kwargs:
+            msteams_config = kwargs['msteamsConfig']
+        if 'pagerdutyConfig' in kwargs:
+            pagerduty_config = kwargs['pagerdutyConfig']
+        if 'sendResolved' in kwargs:
+            send_resolved = kwargs['sendResolved']
+        if 'slackConfig' in kwargs:
+            slack_config = kwargs['slackConfig']
+        if 'smtpConfig' in kwargs:
+            smtp_config = kwargs['smtpConfig']
+        if 'webhookConfig' in kwargs:
+            webhook_config = kwargs['webhookConfig']
+        if 'wechatConfig' in kwargs:
+            wechat_config = kwargs['wechatConfig']
+
         _setter("cluster_id", cluster_id)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -325,7 +345,27 @@ class _NotifierState:
              smtp_config: Optional[pulumi.Input['NotifierSmtpConfigArgs']] = None,
              webhook_config: Optional[pulumi.Input['NotifierWebhookConfigArgs']] = None,
              wechat_config: Optional[pulumi.Input['NotifierWechatConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'dingtalkConfig' in kwargs:
+            dingtalk_config = kwargs['dingtalkConfig']
+        if 'msteamsConfig' in kwargs:
+            msteams_config = kwargs['msteamsConfig']
+        if 'pagerdutyConfig' in kwargs:
+            pagerduty_config = kwargs['pagerdutyConfig']
+        if 'sendResolved' in kwargs:
+            send_resolved = kwargs['sendResolved']
+        if 'slackConfig' in kwargs:
+            slack_config = kwargs['slackConfig']
+        if 'smtpConfig' in kwargs:
+            smtp_config = kwargs['smtpConfig']
+        if 'webhookConfig' in kwargs:
+            webhook_config = kwargs['webhookConfig']
+        if 'wechatConfig' in kwargs:
+            wechat_config = kwargs['wechatConfig']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if cluster_id is not None:

@@ -46,7 +46,9 @@ class UserArgs:
              enabled: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
         _setter("username", username)
         if annotations is not None:
@@ -167,7 +169,11 @@ class _UserState:
              password: Optional[pulumi.Input[str]] = None,
              principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'principalIds' in kwargs:
+            principal_ids = kwargs['principalIds']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if enabled is not None:

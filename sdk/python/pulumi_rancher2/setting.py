@@ -39,7 +39,9 @@ class SettingArgs:
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("value", value)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -125,7 +127,9 @@ class _SettingState:
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if annotations is not None:
             _setter("annotations", annotations)
         if labels is not None:

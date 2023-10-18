@@ -85,7 +85,33 @@ class ClusterV2Args:
              local_auth_endpoint: Optional[pulumi.Input['ClusterV2LocalAuthEndpointArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              rke_config: Optional[pulumi.Input['ClusterV2RkeConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'agentEnvVars' in kwargs:
+            agent_env_vars = kwargs['agentEnvVars']
+        if 'cloudCredentialSecretName' in kwargs:
+            cloud_credential_secret_name = kwargs['cloudCredentialSecretName']
+        if 'clusterAgentDeploymentCustomizations' in kwargs:
+            cluster_agent_deployment_customizations = kwargs['clusterAgentDeploymentCustomizations']
+        if 'defaultClusterRoleForProjectMembers' in kwargs:
+            default_cluster_role_for_project_members = kwargs['defaultClusterRoleForProjectMembers']
+        if 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
+            default_pod_security_admission_configuration_template_name = kwargs['defaultPodSecurityAdmissionConfigurationTemplateName']
+        if 'defaultPodSecurityPolicyTemplateName' in kwargs:
+            default_pod_security_policy_template_name = kwargs['defaultPodSecurityPolicyTemplateName']
+        if 'enableNetworkPolicy' in kwargs:
+            enable_network_policy = kwargs['enableNetworkPolicy']
+        if 'fleetAgentDeploymentCustomizations' in kwargs:
+            fleet_agent_deployment_customizations = kwargs['fleetAgentDeploymentCustomizations']
+        if 'fleetNamespace' in kwargs:
+            fleet_namespace = kwargs['fleetNamespace']
+        if 'localAuthEndpoint' in kwargs:
+            local_auth_endpoint = kwargs['localAuthEndpoint']
+        if 'rkeConfig' in kwargs:
+            rke_config = kwargs['rkeConfig']
+
         _setter("kubernetes_version", kubernetes_version)
         if agent_env_vars is not None:
             _setter("agent_env_vars", agent_env_vars)
@@ -385,7 +411,41 @@ class _ClusterV2State:
              name: Optional[pulumi.Input[str]] = None,
              resource_version: Optional[pulumi.Input[str]] = None,
              rke_config: Optional[pulumi.Input['ClusterV2RkeConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'agentEnvVars' in kwargs:
+            agent_env_vars = kwargs['agentEnvVars']
+        if 'cloudCredentialSecretName' in kwargs:
+            cloud_credential_secret_name = kwargs['cloudCredentialSecretName']
+        if 'clusterAgentDeploymentCustomizations' in kwargs:
+            cluster_agent_deployment_customizations = kwargs['clusterAgentDeploymentCustomizations']
+        if 'clusterRegistrationToken' in kwargs:
+            cluster_registration_token = kwargs['clusterRegistrationToken']
+        if 'clusterV1Id' in kwargs:
+            cluster_v1_id = kwargs['clusterV1Id']
+        if 'defaultClusterRoleForProjectMembers' in kwargs:
+            default_cluster_role_for_project_members = kwargs['defaultClusterRoleForProjectMembers']
+        if 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
+            default_pod_security_admission_configuration_template_name = kwargs['defaultPodSecurityAdmissionConfigurationTemplateName']
+        if 'defaultPodSecurityPolicyTemplateName' in kwargs:
+            default_pod_security_policy_template_name = kwargs['defaultPodSecurityPolicyTemplateName']
+        if 'enableNetworkPolicy' in kwargs:
+            enable_network_policy = kwargs['enableNetworkPolicy']
+        if 'fleetAgentDeploymentCustomizations' in kwargs:
+            fleet_agent_deployment_customizations = kwargs['fleetAgentDeploymentCustomizations']
+        if 'fleetNamespace' in kwargs:
+            fleet_namespace = kwargs['fleetNamespace']
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'localAuthEndpoint' in kwargs:
+            local_auth_endpoint = kwargs['localAuthEndpoint']
+        if 'resourceVersion' in kwargs:
+            resource_version = kwargs['resourceVersion']
+        if 'rkeConfig' in kwargs:
+            rke_config = kwargs['rkeConfig']
+
         if agent_env_vars is not None:
             _setter("agent_env_vars", agent_env_vars)
         if annotations is not None:

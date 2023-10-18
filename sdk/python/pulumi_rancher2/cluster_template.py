@@ -49,7 +49,11 @@ class ClusterTemplateArgs:
              members: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'templateRevisions' in kwargs:
+            template_revisions = kwargs['templateRevisions']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if description is not None:
@@ -176,7 +180,13 @@ class _ClusterTemplateState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultRevisionId' in kwargs:
+            default_revision_id = kwargs['defaultRevisionId']
+        if 'templateRevisions' in kwargs:
+            template_revisions = kwargs['templateRevisions']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if default_revision_id is not None:

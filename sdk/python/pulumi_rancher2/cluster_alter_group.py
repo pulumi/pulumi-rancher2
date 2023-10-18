@@ -61,7 +61,17 @@ class ClusterAlterGroupArgs:
              name: Optional[pulumi.Input[str]] = None,
              recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAlterGroupRecipientArgs']]]] = None,
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'groupIntervalSeconds' in kwargs:
+            group_interval_seconds = kwargs['groupIntervalSeconds']
+        if 'groupWaitSeconds' in kwargs:
+            group_wait_seconds = kwargs['groupWaitSeconds']
+        if 'repeatIntervalSeconds' in kwargs:
+            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
+
         _setter("cluster_id", cluster_id)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -237,7 +247,17 @@ class _ClusterAlterGroupState:
              name: Optional[pulumi.Input[str]] = None,
              recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAlterGroupRecipientArgs']]]] = None,
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'groupIntervalSeconds' in kwargs:
+            group_interval_seconds = kwargs['groupIntervalSeconds']
+        if 'groupWaitSeconds' in kwargs:
+            group_wait_seconds = kwargs['groupWaitSeconds']
+        if 'repeatIntervalSeconds' in kwargs:
+            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if cluster_id is not None:

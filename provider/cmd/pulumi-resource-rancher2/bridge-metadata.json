@@ -5029,7 +5029,6 @@
                 "iamInstanceProfile": "iam_instance_profile",
                 "insecureTransport": "insecure_transport",
                 "instanceType": "instance_type",
-                "keypairName": "keypair_name",
                 "kmsKey": "kms_key",
                 "openPorts": "open_port",
                 "privateAddressOnly": "private_address_only",
@@ -5224,7 +5223,6 @@
                 "iamInstanceProfile": "iam_instance_profile",
                 "insecureTransport": "insecure_transport",
                 "instanceType": "instance_type",
-                "keypairName": "keypair_name",
                 "kmsKey": "kms_key",
                 "openPorts": "open_port",
                 "privateAddressOnly": "private_address_only",
@@ -5624,9 +5622,11 @@
                 "groupObjectClass": "group_object_class",
                 "groupSearchAttribute": "group_search_attribute",
                 "groupSearchBase": "group_search_base",
+                "groupSearchFilter": "group_search_filter",
                 "nestedGroupMembershipEnabled": "nested_group_membership_enabled",
                 "serviceAccountDistinguishedName": "service_account_distinguished_name",
                 "serviceAccountPassword": "service_account_password",
+                "startTls": "start_tls",
                 "testPassword": "test_password",
                 "testUsername": "test_username",
                 "userDisabledBitMask": "user_disabled_bit_mask",
@@ -5636,7 +5636,8 @@
                 "userNameAttribute": "user_name_attribute",
                 "userObjectClass": "user_object_class",
                 "userSearchAttribute": "user_search_attribute",
-                "userSearchBase": "user_search_base"
+                "userSearchBase": "user_search_base",
+                "userSearchFilter": "user_search_filter"
             },
             "rancher2:index/authConfigGithub:AuthConfigGithub": {
                 "accessMode": "access_mode",
@@ -5680,9 +5681,11 @@
                 "groupObjectClass": "group_object_class",
                 "groupSearchAttribute": "group_search_attribute",
                 "groupSearchBase": "group_search_base",
+                "groupSearchFilter": "group_search_filter",
                 "nestedGroupMembershipEnabled": "nested_group_membership_enabled",
                 "serviceAccountDistinguishedName": "service_account_distinguished_name",
                 "serviceAccountPassword": "service_account_password",
+                "startTls": "start_tls",
                 "testPassword": "test_password",
                 "testUsername": "test_username",
                 "userDisabledBitMask": "user_disabled_bit_mask",
@@ -5692,7 +5695,8 @@
                 "userNameAttribute": "user_name_attribute",
                 "userObjectClass": "user_object_class",
                 "userSearchAttribute": "user_search_attribute",
-                "userSearchBase": "user_search_base"
+                "userSearchBase": "user_search_base",
+                "userSearchFilter": "user_search_filter"
             },
             "rancher2:index/authConfigPing:AuthConfigPing": {
                 "accessMode": "access_mode",

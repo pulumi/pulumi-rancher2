@@ -89,12 +89,6 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// OpenStack keypair to use to SSH to the instance (string)
-        /// </summary>
-        [Input("keypairName")]
-        public Input<string>? KeypairName { get; set; }
-
-        /// <summary>
         /// Custom KMS key ID using the AWS Managed CMK (string)
         /// </summary>
         [Input("kmsKey")]

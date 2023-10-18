@@ -49,7 +49,11 @@ class GlobalRoleArgs:
              name: Optional[pulumi.Input[str]] = None,
              new_user_default: Optional[pulumi.Input[bool]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'newUserDefault' in kwargs:
+            new_user_default = kwargs['newUserDefault']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if description is not None:
@@ -176,7 +180,11 @@ class _GlobalRoleState:
              name: Optional[pulumi.Input[str]] = None,
              new_user_default: Optional[pulumi.Input[bool]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'newUserDefault' in kwargs:
+            new_user_default = kwargs['newUserDefault']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if builtin is not None:

@@ -183,21 +183,6 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * OpenStack keypair to use to SSH to the instance (string)
-     * 
-     */
-    @Import(name="keypairName")
-    private @Nullable Output<String> keypairName;
-
-    /**
-     * @return OpenStack keypair to use to SSH to the instance (string)
-     * 
-     */
-    public Optional<Output<String>> keypairName() {
-        return Optional.ofNullable(this.keypairName);
-    }
-
-    /**
      * Custom KMS key ID using the AWS Managed CMK (string)
      * 
      */
@@ -552,7 +537,6 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.insecureTransport = $.insecureTransport;
         this.instanceType = $.instanceType;
-        this.keypairName = $.keypairName;
         this.kmsKey = $.kmsKey;
         this.monitoring = $.monitoring;
         this.openPorts = $.openPorts;
@@ -825,27 +809,6 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
          */
         public Builder instanceType(String instanceType) {
             return instanceType(Output.of(instanceType));
-        }
-
-        /**
-         * @param keypairName OpenStack keypair to use to SSH to the instance (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder keypairName(@Nullable Output<String> keypairName) {
-            $.keypairName = keypairName;
-            return this;
-        }
-
-        /**
-         * @param keypairName OpenStack keypair to use to SSH to the instance (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder keypairName(String keypairName) {
-            return keypairName(Output.of(keypairName));
         }
 
         /**

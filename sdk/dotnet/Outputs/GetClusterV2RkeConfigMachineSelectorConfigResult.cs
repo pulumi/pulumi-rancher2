@@ -13,12 +13,12 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterV2RkeConfigMachineSelectorConfigResult
     {
-        public readonly ImmutableDictionary<string, object>? Config;
+        public readonly string? Config;
         public readonly Outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorResult? MachineLabelSelector;
 
         [OutputConstructor]
         private GetClusterV2RkeConfigMachineSelectorConfigResult(
-            ImmutableDictionary<string, object>? config,
+            string? config,
 
             Outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorResult? machineLabelSelector)
         {

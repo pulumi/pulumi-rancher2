@@ -33,9 +33,11 @@ class AuthConfigOpenLdapArgs:
                  group_object_class: Optional[pulumi.Input[str]] = None,
                  group_search_attribute: Optional[pulumi.Input[str]] = None,
                  group_search_base: Optional[pulumi.Input[str]] = None,
+                 group_search_filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 start_tls: Optional[pulumi.Input[bool]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
                  user_disabled_bit_mask: Optional[pulumi.Input[int]] = None,
                  user_enabled_attribute: Optional[pulumi.Input[str]] = None,
@@ -43,7 +45,8 @@ class AuthConfigOpenLdapArgs:
                  user_member_attribute: Optional[pulumi.Input[str]] = None,
                  user_name_attribute: Optional[pulumi.Input[str]] = None,
                  user_object_class: Optional[pulumi.Input[str]] = None,
-                 user_search_attribute: Optional[pulumi.Input[str]] = None):
+                 user_search_attribute: Optional[pulumi.Input[str]] = None,
+                 user_search_filter: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AuthConfigOpenLdap resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: OpenLdap servers list (list)
@@ -98,9 +101,11 @@ class AuthConfigOpenLdapArgs:
             group_object_class=group_object_class,
             group_search_attribute=group_search_attribute,
             group_search_base=group_search_base,
+            group_search_filter=group_search_filter,
             labels=labels,
             nested_group_membership_enabled=nested_group_membership_enabled,
             port=port,
+            start_tls=start_tls,
             tls=tls,
             user_disabled_bit_mask=user_disabled_bit_mask,
             user_enabled_attribute=user_enabled_attribute,
@@ -109,6 +114,7 @@ class AuthConfigOpenLdapArgs:
             user_name_attribute=user_name_attribute,
             user_object_class=user_object_class,
             user_search_attribute=user_search_attribute,
+            user_search_filter=user_search_filter,
         )
     @staticmethod
     def _configure(
@@ -132,9 +138,11 @@ class AuthConfigOpenLdapArgs:
              group_object_class: Optional[pulumi.Input[str]] = None,
              group_search_attribute: Optional[pulumi.Input[str]] = None,
              group_search_base: Optional[pulumi.Input[str]] = None,
+             group_search_filter: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
              port: Optional[pulumi.Input[int]] = None,
+             start_tls: Optional[pulumi.Input[bool]] = None,
              tls: Optional[pulumi.Input[bool]] = None,
              user_disabled_bit_mask: Optional[pulumi.Input[int]] = None,
              user_enabled_attribute: Optional[pulumi.Input[str]] = None,
@@ -143,7 +151,62 @@ class AuthConfigOpenLdapArgs:
              user_name_attribute: Optional[pulumi.Input[str]] = None,
              user_object_class: Optional[pulumi.Input[str]] = None,
              user_search_attribute: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             user_search_filter: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceAccountDistinguishedName' in kwargs:
+            service_account_distinguished_name = kwargs['serviceAccountDistinguishedName']
+        if 'serviceAccountPassword' in kwargs:
+            service_account_password = kwargs['serviceAccountPassword']
+        if 'testPassword' in kwargs:
+            test_password = kwargs['testPassword']
+        if 'testUsername' in kwargs:
+            test_username = kwargs['testUsername']
+        if 'userSearchBase' in kwargs:
+            user_search_base = kwargs['userSearchBase']
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'allowedPrincipalIds' in kwargs:
+            allowed_principal_ids = kwargs['allowedPrincipalIds']
+        if 'connectionTimeout' in kwargs:
+            connection_timeout = kwargs['connectionTimeout']
+        if 'groupDnAttribute' in kwargs:
+            group_dn_attribute = kwargs['groupDnAttribute']
+        if 'groupMemberMappingAttribute' in kwargs:
+            group_member_mapping_attribute = kwargs['groupMemberMappingAttribute']
+        if 'groupMemberUserAttribute' in kwargs:
+            group_member_user_attribute = kwargs['groupMemberUserAttribute']
+        if 'groupNameAttribute' in kwargs:
+            group_name_attribute = kwargs['groupNameAttribute']
+        if 'groupObjectClass' in kwargs:
+            group_object_class = kwargs['groupObjectClass']
+        if 'groupSearchAttribute' in kwargs:
+            group_search_attribute = kwargs['groupSearchAttribute']
+        if 'groupSearchBase' in kwargs:
+            group_search_base = kwargs['groupSearchBase']
+        if 'groupSearchFilter' in kwargs:
+            group_search_filter = kwargs['groupSearchFilter']
+        if 'nestedGroupMembershipEnabled' in kwargs:
+            nested_group_membership_enabled = kwargs['nestedGroupMembershipEnabled']
+        if 'startTls' in kwargs:
+            start_tls = kwargs['startTls']
+        if 'userDisabledBitMask' in kwargs:
+            user_disabled_bit_mask = kwargs['userDisabledBitMask']
+        if 'userEnabledAttribute' in kwargs:
+            user_enabled_attribute = kwargs['userEnabledAttribute']
+        if 'userLoginAttribute' in kwargs:
+            user_login_attribute = kwargs['userLoginAttribute']
+        if 'userMemberAttribute' in kwargs:
+            user_member_attribute = kwargs['userMemberAttribute']
+        if 'userNameAttribute' in kwargs:
+            user_name_attribute = kwargs['userNameAttribute']
+        if 'userObjectClass' in kwargs:
+            user_object_class = kwargs['userObjectClass']
+        if 'userSearchAttribute' in kwargs:
+            user_search_attribute = kwargs['userSearchAttribute']
+        if 'userSearchFilter' in kwargs:
+            user_search_filter = kwargs['userSearchFilter']
+
         _setter("servers", servers)
         _setter("service_account_distinguished_name", service_account_distinguished_name)
         _setter("service_account_password", service_account_password)
@@ -176,12 +239,16 @@ class AuthConfigOpenLdapArgs:
             _setter("group_search_attribute", group_search_attribute)
         if group_search_base is not None:
             _setter("group_search_base", group_search_base)
+        if group_search_filter is not None:
+            _setter("group_search_filter", group_search_filter)
         if labels is not None:
             _setter("labels", labels)
         if nested_group_membership_enabled is not None:
             _setter("nested_group_membership_enabled", nested_group_membership_enabled)
         if port is not None:
             _setter("port", port)
+        if start_tls is not None:
+            _setter("start_tls", start_tls)
         if tls is not None:
             _setter("tls", tls)
         if user_disabled_bit_mask is not None:
@@ -198,6 +265,8 @@ class AuthConfigOpenLdapArgs:
             _setter("user_object_class", user_object_class)
         if user_search_attribute is not None:
             _setter("user_search_attribute", user_search_attribute)
+        if user_search_filter is not None:
+            _setter("user_search_filter", user_search_filter)
 
     @property
     @pulumi.getter
@@ -428,6 +497,15 @@ class AuthConfigOpenLdapArgs:
         pulumi.set(self, "group_search_base", value)
 
     @property
+    @pulumi.getter(name="groupSearchFilter")
+    def group_search_filter(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "group_search_filter")
+
+    @group_search_filter.setter
+    def group_search_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_search_filter", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -462,6 +540,15 @@ class AuthConfigOpenLdapArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="startTls")
+    def start_tls(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "start_tls")
+
+    @start_tls.setter
+    def start_tls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "start_tls", value)
 
     @property
     @pulumi.getter
@@ -559,6 +646,15 @@ class AuthConfigOpenLdapArgs:
     def user_search_attribute(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_search_attribute", value)
 
+    @property
+    @pulumi.getter(name="userSearchFilter")
+    def user_search_filter(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_search_filter")
+
+    @user_search_filter.setter
+    def user_search_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_search_filter", value)
+
 
 @pulumi.input_type
 class _AuthConfigOpenLdapState:
@@ -576,6 +672,7 @@ class _AuthConfigOpenLdapState:
                  group_object_class: Optional[pulumi.Input[str]] = None,
                  group_search_attribute: Optional[pulumi.Input[str]] = None,
                  group_search_base: Optional[pulumi.Input[str]] = None,
+                 group_search_filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
@@ -583,6 +680,7 @@ class _AuthConfigOpenLdapState:
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_distinguished_name: Optional[pulumi.Input[str]] = None,
                  service_account_password: Optional[pulumi.Input[str]] = None,
+                 start_tls: Optional[pulumi.Input[bool]] = None,
                  test_password: Optional[pulumi.Input[str]] = None,
                  test_username: Optional[pulumi.Input[str]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
@@ -594,7 +692,8 @@ class _AuthConfigOpenLdapState:
                  user_name_attribute: Optional[pulumi.Input[str]] = None,
                  user_object_class: Optional[pulumi.Input[str]] = None,
                  user_search_attribute: Optional[pulumi.Input[str]] = None,
-                 user_search_base: Optional[pulumi.Input[str]] = None):
+                 user_search_base: Optional[pulumi.Input[str]] = None,
+                 user_search_filter: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AuthConfigOpenLdap resources.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -645,6 +744,7 @@ class _AuthConfigOpenLdapState:
             group_object_class=group_object_class,
             group_search_attribute=group_search_attribute,
             group_search_base=group_search_base,
+            group_search_filter=group_search_filter,
             labels=labels,
             name=name,
             nested_group_membership_enabled=nested_group_membership_enabled,
@@ -652,6 +752,7 @@ class _AuthConfigOpenLdapState:
             servers=servers,
             service_account_distinguished_name=service_account_distinguished_name,
             service_account_password=service_account_password,
+            start_tls=start_tls,
             test_password=test_password,
             test_username=test_username,
             tls=tls,
@@ -664,6 +765,7 @@ class _AuthConfigOpenLdapState:
             user_object_class=user_object_class,
             user_search_attribute=user_search_attribute,
             user_search_base=user_search_base,
+            user_search_filter=user_search_filter,
         )
     @staticmethod
     def _configure(
@@ -681,6 +783,7 @@ class _AuthConfigOpenLdapState:
              group_object_class: Optional[pulumi.Input[str]] = None,
              group_search_attribute: Optional[pulumi.Input[str]] = None,
              group_search_base: Optional[pulumi.Input[str]] = None,
+             group_search_filter: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
@@ -688,6 +791,7 @@ class _AuthConfigOpenLdapState:
              servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              service_account_distinguished_name: Optional[pulumi.Input[str]] = None,
              service_account_password: Optional[pulumi.Input[str]] = None,
+             start_tls: Optional[pulumi.Input[bool]] = None,
              test_password: Optional[pulumi.Input[str]] = None,
              test_username: Optional[pulumi.Input[str]] = None,
              tls: Optional[pulumi.Input[bool]] = None,
@@ -700,7 +804,62 @@ class _AuthConfigOpenLdapState:
              user_object_class: Optional[pulumi.Input[str]] = None,
              user_search_attribute: Optional[pulumi.Input[str]] = None,
              user_search_base: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             user_search_filter: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'allowedPrincipalIds' in kwargs:
+            allowed_principal_ids = kwargs['allowedPrincipalIds']
+        if 'connectionTimeout' in kwargs:
+            connection_timeout = kwargs['connectionTimeout']
+        if 'groupDnAttribute' in kwargs:
+            group_dn_attribute = kwargs['groupDnAttribute']
+        if 'groupMemberMappingAttribute' in kwargs:
+            group_member_mapping_attribute = kwargs['groupMemberMappingAttribute']
+        if 'groupMemberUserAttribute' in kwargs:
+            group_member_user_attribute = kwargs['groupMemberUserAttribute']
+        if 'groupNameAttribute' in kwargs:
+            group_name_attribute = kwargs['groupNameAttribute']
+        if 'groupObjectClass' in kwargs:
+            group_object_class = kwargs['groupObjectClass']
+        if 'groupSearchAttribute' in kwargs:
+            group_search_attribute = kwargs['groupSearchAttribute']
+        if 'groupSearchBase' in kwargs:
+            group_search_base = kwargs['groupSearchBase']
+        if 'groupSearchFilter' in kwargs:
+            group_search_filter = kwargs['groupSearchFilter']
+        if 'nestedGroupMembershipEnabled' in kwargs:
+            nested_group_membership_enabled = kwargs['nestedGroupMembershipEnabled']
+        if 'serviceAccountDistinguishedName' in kwargs:
+            service_account_distinguished_name = kwargs['serviceAccountDistinguishedName']
+        if 'serviceAccountPassword' in kwargs:
+            service_account_password = kwargs['serviceAccountPassword']
+        if 'startTls' in kwargs:
+            start_tls = kwargs['startTls']
+        if 'testPassword' in kwargs:
+            test_password = kwargs['testPassword']
+        if 'testUsername' in kwargs:
+            test_username = kwargs['testUsername']
+        if 'userDisabledBitMask' in kwargs:
+            user_disabled_bit_mask = kwargs['userDisabledBitMask']
+        if 'userEnabledAttribute' in kwargs:
+            user_enabled_attribute = kwargs['userEnabledAttribute']
+        if 'userLoginAttribute' in kwargs:
+            user_login_attribute = kwargs['userLoginAttribute']
+        if 'userMemberAttribute' in kwargs:
+            user_member_attribute = kwargs['userMemberAttribute']
+        if 'userNameAttribute' in kwargs:
+            user_name_attribute = kwargs['userNameAttribute']
+        if 'userObjectClass' in kwargs:
+            user_object_class = kwargs['userObjectClass']
+        if 'userSearchAttribute' in kwargs:
+            user_search_attribute = kwargs['userSearchAttribute']
+        if 'userSearchBase' in kwargs:
+            user_search_base = kwargs['userSearchBase']
+        if 'userSearchFilter' in kwargs:
+            user_search_filter = kwargs['userSearchFilter']
+
         if access_mode is not None:
             _setter("access_mode", access_mode)
         if allowed_principal_ids is not None:
@@ -727,6 +886,8 @@ class _AuthConfigOpenLdapState:
             _setter("group_search_attribute", group_search_attribute)
         if group_search_base is not None:
             _setter("group_search_base", group_search_base)
+        if group_search_filter is not None:
+            _setter("group_search_filter", group_search_filter)
         if labels is not None:
             _setter("labels", labels)
         if name is not None:
@@ -741,6 +902,8 @@ class _AuthConfigOpenLdapState:
             _setter("service_account_distinguished_name", service_account_distinguished_name)
         if service_account_password is not None:
             _setter("service_account_password", service_account_password)
+        if start_tls is not None:
+            _setter("start_tls", start_tls)
         if test_password is not None:
             _setter("test_password", test_password)
         if test_username is not None:
@@ -765,6 +928,8 @@ class _AuthConfigOpenLdapState:
             _setter("user_search_attribute", user_search_attribute)
         if user_search_base is not None:
             _setter("user_search_base", user_search_base)
+        if user_search_filter is not None:
+            _setter("user_search_filter", user_search_filter)
 
     @property
     @pulumi.getter(name="accessMode")
@@ -923,6 +1088,15 @@ class _AuthConfigOpenLdapState:
         pulumi.set(self, "group_search_base", value)
 
     @property
+    @pulumi.getter(name="groupSearchFilter")
+    def group_search_filter(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "group_search_filter")
+
+    @group_search_filter.setter
+    def group_search_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_search_filter", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -1005,6 +1179,15 @@ class _AuthConfigOpenLdapState:
     @service_account_password.setter
     def service_account_password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account_password", value)
+
+    @property
+    @pulumi.getter(name="startTls")
+    def start_tls(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "start_tls")
+
+    @start_tls.setter
+    def start_tls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "start_tls", value)
 
     @property
     @pulumi.getter(name="testPassword")
@@ -1150,6 +1333,15 @@ class _AuthConfigOpenLdapState:
     def user_search_base(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_search_base", value)
 
+    @property
+    @pulumi.getter(name="userSearchFilter")
+    def user_search_filter(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_search_filter")
+
+    @user_search_filter.setter
+    def user_search_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_search_filter", value)
+
 
 class AuthConfigOpenLdap(pulumi.CustomResource):
     @overload
@@ -1169,12 +1361,14 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
                  group_object_class: Optional[pulumi.Input[str]] = None,
                  group_search_attribute: Optional[pulumi.Input[str]] = None,
                  group_search_base: Optional[pulumi.Input[str]] = None,
+                 group_search_filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_distinguished_name: Optional[pulumi.Input[str]] = None,
                  service_account_password: Optional[pulumi.Input[str]] = None,
+                 start_tls: Optional[pulumi.Input[bool]] = None,
                  test_password: Optional[pulumi.Input[str]] = None,
                  test_username: Optional[pulumi.Input[str]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
@@ -1186,6 +1380,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
                  user_object_class: Optional[pulumi.Input[str]] = None,
                  user_search_attribute: Optional[pulumi.Input[str]] = None,
                  user_search_base: Optional[pulumi.Input[str]] = None,
+                 user_search_filter: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Auth Config OpenLdap resource. This can be used to configure and enable Auth Config OpenLdap for Rancher v2 RKE clusters and retrieve their information.
@@ -1268,12 +1463,14 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
                  group_object_class: Optional[pulumi.Input[str]] = None,
                  group_search_attribute: Optional[pulumi.Input[str]] = None,
                  group_search_base: Optional[pulumi.Input[str]] = None,
+                 group_search_filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_distinguished_name: Optional[pulumi.Input[str]] = None,
                  service_account_password: Optional[pulumi.Input[str]] = None,
+                 start_tls: Optional[pulumi.Input[bool]] = None,
                  test_password: Optional[pulumi.Input[str]] = None,
                  test_username: Optional[pulumi.Input[str]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
@@ -1285,6 +1482,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
                  user_object_class: Optional[pulumi.Input[str]] = None,
                  user_search_attribute: Optional[pulumi.Input[str]] = None,
                  user_search_base: Optional[pulumi.Input[str]] = None,
+                 user_search_filter: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1307,6 +1505,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
             __props__.__dict__["group_object_class"] = group_object_class
             __props__.__dict__["group_search_attribute"] = group_search_attribute
             __props__.__dict__["group_search_base"] = group_search_base
+            __props__.__dict__["group_search_filter"] = group_search_filter
             __props__.__dict__["labels"] = labels
             __props__.__dict__["nested_group_membership_enabled"] = nested_group_membership_enabled
             __props__.__dict__["port"] = port
@@ -1319,6 +1518,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
             if service_account_password is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_password'")
             __props__.__dict__["service_account_password"] = None if service_account_password is None else pulumi.Output.secret(service_account_password)
+            __props__.__dict__["start_tls"] = start_tls
             if test_password is None and not opts.urn:
                 raise TypeError("Missing required property 'test_password'")
             __props__.__dict__["test_password"] = None if test_password is None else pulumi.Output.secret(test_password)
@@ -1336,6 +1536,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
             if user_search_base is None and not opts.urn:
                 raise TypeError("Missing required property 'user_search_base'")
             __props__.__dict__["user_search_base"] = user_search_base
+            __props__.__dict__["user_search_filter"] = user_search_filter
             __props__.__dict__["name"] = None
             __props__.__dict__["type"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["certificate", "serviceAccountDistinguishedName", "serviceAccountPassword", "testPassword"])
@@ -1363,6 +1564,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
             group_object_class: Optional[pulumi.Input[str]] = None,
             group_search_attribute: Optional[pulumi.Input[str]] = None,
             group_search_base: Optional[pulumi.Input[str]] = None,
+            group_search_filter: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1370,6 +1572,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
             servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_account_distinguished_name: Optional[pulumi.Input[str]] = None,
             service_account_password: Optional[pulumi.Input[str]] = None,
+            start_tls: Optional[pulumi.Input[bool]] = None,
             test_password: Optional[pulumi.Input[str]] = None,
             test_username: Optional[pulumi.Input[str]] = None,
             tls: Optional[pulumi.Input[bool]] = None,
@@ -1381,7 +1584,8 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
             user_name_attribute: Optional[pulumi.Input[str]] = None,
             user_object_class: Optional[pulumi.Input[str]] = None,
             user_search_attribute: Optional[pulumi.Input[str]] = None,
-            user_search_base: Optional[pulumi.Input[str]] = None) -> 'AuthConfigOpenLdap':
+            user_search_base: Optional[pulumi.Input[str]] = None,
+            user_search_filter: Optional[pulumi.Input[str]] = None) -> 'AuthConfigOpenLdap':
         """
         Get an existing AuthConfigOpenLdap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1439,6 +1643,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
         __props__.__dict__["group_object_class"] = group_object_class
         __props__.__dict__["group_search_attribute"] = group_search_attribute
         __props__.__dict__["group_search_base"] = group_search_base
+        __props__.__dict__["group_search_filter"] = group_search_filter
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["nested_group_membership_enabled"] = nested_group_membership_enabled
@@ -1446,6 +1651,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
         __props__.__dict__["servers"] = servers
         __props__.__dict__["service_account_distinguished_name"] = service_account_distinguished_name
         __props__.__dict__["service_account_password"] = service_account_password
+        __props__.__dict__["start_tls"] = start_tls
         __props__.__dict__["test_password"] = test_password
         __props__.__dict__["test_username"] = test_username
         __props__.__dict__["tls"] = tls
@@ -1458,6 +1664,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
         __props__.__dict__["user_object_class"] = user_object_class
         __props__.__dict__["user_search_attribute"] = user_search_attribute
         __props__.__dict__["user_search_base"] = user_search_base
+        __props__.__dict__["user_search_filter"] = user_search_filter
         return AuthConfigOpenLdap(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1565,6 +1772,11 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
         return pulumi.get(self, "group_search_base")
 
     @property
+    @pulumi.getter(name="groupSearchFilter")
+    def group_search_filter(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "group_search_filter")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
@@ -1619,6 +1831,11 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
         Service account password for access OpenLdap service (string)
         """
         return pulumi.get(self, "service_account_password")
+
+    @property
+    @pulumi.getter(name="startTls")
+    def start_tls(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "start_tls")
 
     @property
     @pulumi.getter(name="testPassword")
@@ -1715,4 +1932,9 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
         User search base DN (string)
         """
         return pulumi.get(self, "user_search_base")
+
+    @property
+    @pulumi.getter(name="userSearchFilter")
+    def user_search_filter(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "user_search_filter")
 

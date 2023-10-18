@@ -55,7 +55,15 @@ class GlobalDnsArgs:
              name: Optional[pulumi.Input[str]] = None,
              project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'providerId' in kwargs:
+            provider_id = kwargs['providerId']
+        if 'multiClusterAppId' in kwargs:
+            multi_cluster_app_id = kwargs['multiClusterAppId']
+        if 'projectIds' in kwargs:
+            project_ids = kwargs['projectIds']
+
         _setter("fqdn", fqdn)
         _setter("provider_id", provider_id)
         if annotations is not None:
@@ -212,7 +220,15 @@ class _GlobalDnsState:
              project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              provider_id: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'multiClusterAppId' in kwargs:
+            multi_cluster_app_id = kwargs['multiClusterAppId']
+        if 'projectIds' in kwargs:
+            project_ids = kwargs['projectIds']
+        if 'providerId' in kwargs:
+            provider_id = kwargs['providerId']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if fqdn is not None:

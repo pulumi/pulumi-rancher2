@@ -44,7 +44,8 @@ type AuthConfigOpenLdap struct {
 	// Group search attribute. Default `cn` (string)
 	GroupSearchAttribute pulumi.StringOutput `pulumi:"groupSearchAttribute"`
 	// Group search base (string)
-	GroupSearchBase pulumi.StringOutput `pulumi:"groupSearchBase"`
+	GroupSearchBase   pulumi.StringOutput    `pulumi:"groupSearchBase"`
+	GroupSearchFilter pulumi.StringPtrOutput `pulumi:"groupSearchFilter"`
 	// Labels of the resource (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
@@ -59,6 +60,7 @@ type AuthConfigOpenLdap struct {
 	ServiceAccountDistinguishedName pulumi.StringOutput `pulumi:"serviceAccountDistinguishedName"`
 	// Service account password for access OpenLdap service (string)
 	ServiceAccountPassword pulumi.StringOutput `pulumi:"serviceAccountPassword"`
+	StartTls               pulumi.BoolOutput   `pulumi:"startTls"`
 	// Password for test access to OpenLdap service (string)
 	TestPassword pulumi.StringOutput `pulumi:"testPassword"`
 	// Username for test access to OpenLdap service (string)
@@ -82,7 +84,8 @@ type AuthConfigOpenLdap struct {
 	// User search attribute. Default `uid|sn|givenName` (string)
 	UserSearchAttribute pulumi.StringOutput `pulumi:"userSearchAttribute"`
 	// User search base DN (string)
-	UserSearchBase pulumi.StringOutput `pulumi:"userSearchBase"`
+	UserSearchBase   pulumi.StringOutput    `pulumi:"userSearchBase"`
+	UserSearchFilter pulumi.StringPtrOutput `pulumi:"userSearchFilter"`
 }
 
 // NewAuthConfigOpenLdap registers a new resource with the given unique name, arguments, and options.
@@ -177,7 +180,8 @@ type authConfigOpenLdapState struct {
 	// Group search attribute. Default `cn` (string)
 	GroupSearchAttribute *string `pulumi:"groupSearchAttribute"`
 	// Group search base (string)
-	GroupSearchBase *string `pulumi:"groupSearchBase"`
+	GroupSearchBase   *string `pulumi:"groupSearchBase"`
+	GroupSearchFilter *string `pulumi:"groupSearchFilter"`
 	// Labels of the resource (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
@@ -192,6 +196,7 @@ type authConfigOpenLdapState struct {
 	ServiceAccountDistinguishedName *string `pulumi:"serviceAccountDistinguishedName"`
 	// Service account password for access OpenLdap service (string)
 	ServiceAccountPassword *string `pulumi:"serviceAccountPassword"`
+	StartTls               *bool   `pulumi:"startTls"`
 	// Password for test access to OpenLdap service (string)
 	TestPassword *string `pulumi:"testPassword"`
 	// Username for test access to OpenLdap service (string)
@@ -215,7 +220,8 @@ type authConfigOpenLdapState struct {
 	// User search attribute. Default `uid|sn|givenName` (string)
 	UserSearchAttribute *string `pulumi:"userSearchAttribute"`
 	// User search base DN (string)
-	UserSearchBase *string `pulumi:"userSearchBase"`
+	UserSearchBase   *string `pulumi:"userSearchBase"`
+	UserSearchFilter *string `pulumi:"userSearchFilter"`
 }
 
 type AuthConfigOpenLdapState struct {
@@ -244,7 +250,8 @@ type AuthConfigOpenLdapState struct {
 	// Group search attribute. Default `cn` (string)
 	GroupSearchAttribute pulumi.StringPtrInput
 	// Group search base (string)
-	GroupSearchBase pulumi.StringPtrInput
+	GroupSearchBase   pulumi.StringPtrInput
+	GroupSearchFilter pulumi.StringPtrInput
 	// Labels of the resource (map)
 	Labels pulumi.MapInput
 	// (Computed) The name of the resource (string)
@@ -259,6 +266,7 @@ type AuthConfigOpenLdapState struct {
 	ServiceAccountDistinguishedName pulumi.StringPtrInput
 	// Service account password for access OpenLdap service (string)
 	ServiceAccountPassword pulumi.StringPtrInput
+	StartTls               pulumi.BoolPtrInput
 	// Password for test access to OpenLdap service (string)
 	TestPassword pulumi.StringPtrInput
 	// Username for test access to OpenLdap service (string)
@@ -282,7 +290,8 @@ type AuthConfigOpenLdapState struct {
 	// User search attribute. Default `uid|sn|givenName` (string)
 	UserSearchAttribute pulumi.StringPtrInput
 	// User search base DN (string)
-	UserSearchBase pulumi.StringPtrInput
+	UserSearchBase   pulumi.StringPtrInput
+	UserSearchFilter pulumi.StringPtrInput
 }
 
 func (AuthConfigOpenLdapState) ElementType() reflect.Type {
@@ -315,7 +324,8 @@ type authConfigOpenLdapArgs struct {
 	// Group search attribute. Default `cn` (string)
 	GroupSearchAttribute *string `pulumi:"groupSearchAttribute"`
 	// Group search base (string)
-	GroupSearchBase *string `pulumi:"groupSearchBase"`
+	GroupSearchBase   *string `pulumi:"groupSearchBase"`
+	GroupSearchFilter *string `pulumi:"groupSearchFilter"`
 	// Labels of the resource (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Nested group membership enable. Default `false` (bool)
@@ -328,6 +338,7 @@ type authConfigOpenLdapArgs struct {
 	ServiceAccountDistinguishedName string `pulumi:"serviceAccountDistinguishedName"`
 	// Service account password for access OpenLdap service (string)
 	ServiceAccountPassword string `pulumi:"serviceAccountPassword"`
+	StartTls               *bool  `pulumi:"startTls"`
 	// Password for test access to OpenLdap service (string)
 	TestPassword string `pulumi:"testPassword"`
 	// Username for test access to OpenLdap service (string)
@@ -349,7 +360,8 @@ type authConfigOpenLdapArgs struct {
 	// User search attribute. Default `uid|sn|givenName` (string)
 	UserSearchAttribute *string `pulumi:"userSearchAttribute"`
 	// User search base DN (string)
-	UserSearchBase string `pulumi:"userSearchBase"`
+	UserSearchBase   string  `pulumi:"userSearchBase"`
+	UserSearchFilter *string `pulumi:"userSearchFilter"`
 }
 
 // The set of arguments for constructing a AuthConfigOpenLdap resource.
@@ -379,7 +391,8 @@ type AuthConfigOpenLdapArgs struct {
 	// Group search attribute. Default `cn` (string)
 	GroupSearchAttribute pulumi.StringPtrInput
 	// Group search base (string)
-	GroupSearchBase pulumi.StringPtrInput
+	GroupSearchBase   pulumi.StringPtrInput
+	GroupSearchFilter pulumi.StringPtrInput
 	// Labels of the resource (map)
 	Labels pulumi.MapInput
 	// Nested group membership enable. Default `false` (bool)
@@ -392,6 +405,7 @@ type AuthConfigOpenLdapArgs struct {
 	ServiceAccountDistinguishedName pulumi.StringInput
 	// Service account password for access OpenLdap service (string)
 	ServiceAccountPassword pulumi.StringInput
+	StartTls               pulumi.BoolPtrInput
 	// Password for test access to OpenLdap service (string)
 	TestPassword pulumi.StringInput
 	// Username for test access to OpenLdap service (string)
@@ -413,7 +427,8 @@ type AuthConfigOpenLdapArgs struct {
 	// User search attribute. Default `uid|sn|givenName` (string)
 	UserSearchAttribute pulumi.StringPtrInput
 	// User search base DN (string)
-	UserSearchBase pulumi.StringInput
+	UserSearchBase   pulumi.StringInput
+	UserSearchFilter pulumi.StringPtrInput
 }
 
 func (AuthConfigOpenLdapArgs) ElementType() reflect.Type {
@@ -592,6 +607,10 @@ func (o AuthConfigOpenLdapOutput) GroupSearchBase() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.GroupSearchBase }).(pulumi.StringOutput)
 }
 
+func (o AuthConfigOpenLdapOutput) GroupSearchFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringPtrOutput { return v.GroupSearchFilter }).(pulumi.StringPtrOutput)
+}
+
 // Labels of the resource (map)
 func (o AuthConfigOpenLdapOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
@@ -625,6 +644,10 @@ func (o AuthConfigOpenLdapOutput) ServiceAccountDistinguishedName() pulumi.Strin
 // Service account password for access OpenLdap service (string)
 func (o AuthConfigOpenLdapOutput) ServiceAccountPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.ServiceAccountPassword }).(pulumi.StringOutput)
+}
+
+func (o AuthConfigOpenLdapOutput) StartTls() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.BoolOutput { return v.StartTls }).(pulumi.BoolOutput)
 }
 
 // Password for test access to OpenLdap service (string)
@@ -685,6 +708,10 @@ func (o AuthConfigOpenLdapOutput) UserSearchAttribute() pulumi.StringOutput {
 // User search base DN (string)
 func (o AuthConfigOpenLdapOutput) UserSearchBase() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringOutput { return v.UserSearchBase }).(pulumi.StringOutput)
+}
+
+func (o AuthConfigOpenLdapOutput) UserSearchFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringPtrOutput { return v.UserSearchFilter }).(pulumi.StringPtrOutput)
 }
 
 type AuthConfigOpenLdapArrayOutput struct{ *pulumi.OutputState }

@@ -71,7 +71,27 @@ class MachineConfigV2Args:
              linode_config: Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']] = None,
              openstack_config: Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']] = None,
              vsphere_config: Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'generateName' in kwargs:
+            generate_name = kwargs['generateName']
+        if 'amazonec2Config' in kwargs:
+            amazonec2_config = kwargs['amazonec2Config']
+        if 'azureConfig' in kwargs:
+            azure_config = kwargs['azureConfig']
+        if 'digitaloceanConfig' in kwargs:
+            digitalocean_config = kwargs['digitaloceanConfig']
+        if 'fleetNamespace' in kwargs:
+            fleet_namespace = kwargs['fleetNamespace']
+        if 'harvesterConfig' in kwargs:
+            harvester_config = kwargs['harvesterConfig']
+        if 'linodeConfig' in kwargs:
+            linode_config = kwargs['linodeConfig']
+        if 'openstackConfig' in kwargs:
+            openstack_config = kwargs['openstackConfig']
+        if 'vsphereConfig' in kwargs:
+            vsphere_config = kwargs['vsphereConfig']
+
         _setter("generate_name", generate_name)
         if amazonec2_config is not None:
             _setter("amazonec2_config", amazonec2_config)
@@ -299,7 +319,29 @@ class _MachineConfigV2State:
              openstack_config: Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']] = None,
              resource_version: Optional[pulumi.Input[str]] = None,
              vsphere_config: Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'amazonec2Config' in kwargs:
+            amazonec2_config = kwargs['amazonec2Config']
+        if 'azureConfig' in kwargs:
+            azure_config = kwargs['azureConfig']
+        if 'digitaloceanConfig' in kwargs:
+            digitalocean_config = kwargs['digitaloceanConfig']
+        if 'fleetNamespace' in kwargs:
+            fleet_namespace = kwargs['fleetNamespace']
+        if 'generateName' in kwargs:
+            generate_name = kwargs['generateName']
+        if 'harvesterConfig' in kwargs:
+            harvester_config = kwargs['harvesterConfig']
+        if 'linodeConfig' in kwargs:
+            linode_config = kwargs['linodeConfig']
+        if 'openstackConfig' in kwargs:
+            openstack_config = kwargs['openstackConfig']
+        if 'resourceVersion' in kwargs:
+            resource_version = kwargs['resourceVersion']
+        if 'vsphereConfig' in kwargs:
+            vsphere_config = kwargs['vsphereConfig']
+
         if amazonec2_config is not None:
             _setter("amazonec2_config", amazonec2_config)
         if annotations is not None:

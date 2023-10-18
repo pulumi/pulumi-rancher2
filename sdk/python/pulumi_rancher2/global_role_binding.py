@@ -49,7 +49,15 @@ class GlobalRoleBindingArgs:
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'globalRoleId' in kwargs:
+            global_role_id = kwargs['globalRoleId']
+        if 'groupPrincipalId' in kwargs:
+            group_principal_id = kwargs['groupPrincipalId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("global_role_id", global_role_id)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -175,7 +183,15 @@ class _GlobalRoleBindingState:
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'globalRoleId' in kwargs:
+            global_role_id = kwargs['globalRoleId']
+        if 'groupPrincipalId' in kwargs:
+            group_principal_id = kwargs['groupPrincipalId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if global_role_id is not None:
