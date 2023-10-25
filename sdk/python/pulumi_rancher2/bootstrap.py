@@ -47,15 +47,15 @@ class BootstrapArgs:
              token_ttl: Optional[pulumi.Input[int]] = None,
              token_update: Optional[pulumi.Input[bool]] = None,
              ui_default_landing: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'initialPassword' in kwargs:
+        if initial_password is None and 'initialPassword' in kwargs:
             initial_password = kwargs['initialPassword']
-        if 'tokenTtl' in kwargs:
+        if token_ttl is None and 'tokenTtl' in kwargs:
             token_ttl = kwargs['tokenTtl']
-        if 'tokenUpdate' in kwargs:
+        if token_update is None and 'tokenUpdate' in kwargs:
             token_update = kwargs['tokenUpdate']
-        if 'uiDefaultLanding' in kwargs:
+        if ui_default_landing is None and 'uiDefaultLanding' in kwargs:
             ui_default_landing = kwargs['uiDefaultLanding']
 
         if initial_password is not None:
@@ -208,23 +208,23 @@ class _BootstrapState:
              ui_default_landing: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'currentPassword' in kwargs:
+        if current_password is None and 'currentPassword' in kwargs:
             current_password = kwargs['currentPassword']
-        if 'initialPassword' in kwargs:
+        if initial_password is None and 'initialPassword' in kwargs:
             initial_password = kwargs['initialPassword']
-        if 'tempToken' in kwargs:
+        if temp_token is None and 'tempToken' in kwargs:
             temp_token = kwargs['tempToken']
-        if 'tempTokenId' in kwargs:
+        if temp_token_id is None and 'tempTokenId' in kwargs:
             temp_token_id = kwargs['tempTokenId']
-        if 'tokenId' in kwargs:
+        if token_id is None and 'tokenId' in kwargs:
             token_id = kwargs['tokenId']
-        if 'tokenTtl' in kwargs:
+        if token_ttl is None and 'tokenTtl' in kwargs:
             token_ttl = kwargs['tokenTtl']
-        if 'tokenUpdate' in kwargs:
+        if token_update is None and 'tokenUpdate' in kwargs:
             token_update = kwargs['tokenUpdate']
-        if 'uiDefaultLanding' in kwargs:
+        if ui_default_landing is None and 'uiDefaultLanding' in kwargs:
             ui_default_landing = kwargs['uiDefaultLanding']
 
         if current_password is not None:
@@ -424,44 +424,7 @@ class Bootstrap(pulumi.CustomResource):
                  ui_default_landing: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2_bootstrap
-        admin = rancher2.Bootstrap("admin",
-            password="blahblah",
-            telemetry=True)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2_bootstrap for Rancher v2.6.0 and above
-        admin = rancher2.Bootstrap("admin",
-            initial_password="<INSTALL_PASSWORD>",
-            password="blahblah",
-            telemetry=True)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Provider bootstrap config with alias
-        bootstrap = rancher2.Provider("bootstrap",
-            api_url="https://rancher.my-domain.com",
-            bootstrap=True)
-        # Create a new rancher2_bootstrap using bootstrap provider config
-        admin = rancher2.Bootstrap("admin",
-            password="blahblah",
-            telemetry=True,
-            opts=pulumi.ResourceOptions(provider="rancher2.bootstrap"))
-        ```
-
+        Create a Bootstrap resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] initial_password: Initial password for Admin user. Default: `admin` (string)
@@ -478,44 +441,7 @@ class Bootstrap(pulumi.CustomResource):
                  args: Optional[BootstrapArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2_bootstrap
-        admin = rancher2.Bootstrap("admin",
-            password="blahblah",
-            telemetry=True)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2_bootstrap for Rancher v2.6.0 and above
-        admin = rancher2.Bootstrap("admin",
-            initial_password="<INSTALL_PASSWORD>",
-            password="blahblah",
-            telemetry=True)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Provider bootstrap config with alias
-        bootstrap = rancher2.Provider("bootstrap",
-            api_url="https://rancher.my-domain.com",
-            bootstrap=True)
-        # Create a new rancher2_bootstrap using bootstrap provider config
-        admin = rancher2.Bootstrap("admin",
-            password="blahblah",
-            telemetry=True,
-            opts=pulumi.ResourceOptions(provider="rancher2.bootstrap"))
-        ```
-
+        Create a Bootstrap resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BootstrapArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -13,60 +13,12 @@ namespace Pulumi.Rancher2
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 app.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var rancher2 = Rancher2.GetApp.Invoke(new()
-        ///     {
-        ///         Name = "foo",
-        ///         ProjectId = "&lt;project_id&gt;",
-        ///         TargetNamespace = "&lt;namespace_name&gt;",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("rancher2:index/getApp:getApp", args ?? new GetAppArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 app.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var rancher2 = Rancher2.GetApp.Invoke(new()
-        ///     {
-        ///         Name = "foo",
-        ///         ProjectId = "&lt;project_id&gt;",
-        ///         TargetNamespace = "&lt;namespace_name&gt;",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppResult>("rancher2:index/getApp:getApp", args ?? new GetAppInvokeArgs(), options.WithDefaults());

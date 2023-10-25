@@ -17,41 +17,6 @@ import (
 //
 // When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooUser, err := rancher2.NewUser(ctx, "fooUser", &rancher2.UserArgs{
-//				Username: pulumi.String("foo"),
-//				Password: pulumi.String("changeme"),
-//				Enabled:  pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = rancher2.NewGlobalRoleBinding(ctx, "fooGlobalRoleBinding", &rancher2.GlobalRoleBindingArgs{
-//				GlobalRoleId: pulumi.String("user-base"),
-//				UserId:       fooUser.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // # Users can be imported using the Rancher User ID

@@ -46,18 +46,22 @@ class RegistryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
-             registries: pulumi.Input[Sequence[pulumi.Input['RegistryRegistryArgs']]],
+             project_id: Optional[pulumi.Input[str]] = None,
+             registries: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryRegistryArgs']]]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'namespaceId' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if registries is None:
+            raise TypeError("Missing 'registries' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
 
         _setter("project_id", project_id)
@@ -198,11 +202,11 @@ class _RegistryState:
              namespace_id: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
              registries: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryRegistryArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
 
         if annotations is not None:
@@ -325,39 +329,6 @@ class Registry(pulumi.CustomResource):
         - Project registry resource: Available to all namespaces in the `project_id`.
         - Namespaced registry resource: Available to `namespace_id` in the `project_id`.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Project Registry
-        foo = rancher2.Registry("foo",
-            description="Terraform registry foo",
-            project_id="<project_id>",
-            registries=[rancher2.RegistryRegistryArgs(
-                address="test.io",
-                password="pass",
-                username="user",
-            )])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Namespaced Registry
-        foo = rancher2.Registry("foo",
-            description="Terraform registry foo",
-            namespace_id="<namespace_id>",
-            project_id="<project_id>",
-            registries=[rancher2.RegistryRegistryArgs(
-                address="test.io",
-                password="pass",
-                username="user2",
-            )])
-        ```
-
         ## Import
 
         Registries can be imported using the registry ID in the format `<namespace_id>.<project_id>.<registry_id>`
@@ -389,39 +360,6 @@ class Registry(pulumi.CustomResource):
         Depending on the availability, there are 2 types of Rancher v2 Docker registry resources:
         - Project registry resource: Available to all namespaces in the `project_id`.
         - Namespaced registry resource: Available to `namespace_id` in the `project_id`.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Project Registry
-        foo = rancher2.Registry("foo",
-            description="Terraform registry foo",
-            project_id="<project_id>",
-            registries=[rancher2.RegistryRegistryArgs(
-                address="test.io",
-                password="pass",
-                username="user",
-            )])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Namespaced Registry
-        foo = rancher2.Registry("foo",
-            description="Terraform registry foo",
-            namespace_id="<namespace_id>",
-            project_id="<project_id>",
-            registries=[rancher2.RegistryRegistryArgs(
-                address="test.io",
-                password="pass",
-                username="user2",
-            )])
-        ```
 
         ## Import
 

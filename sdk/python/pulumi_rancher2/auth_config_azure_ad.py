@@ -62,38 +62,52 @@ class AuthConfigAzureAdArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
-             application_secret: pulumi.Input[str],
-             auth_endpoint: pulumi.Input[str],
-             graph_endpoint: pulumi.Input[str],
-             rancher_url: pulumi.Input[str],
-             tenant_id: pulumi.Input[str],
-             token_endpoint: pulumi.Input[str],
+             application_id: Optional[pulumi.Input[str]] = None,
+             application_secret: Optional[pulumi.Input[str]] = None,
+             auth_endpoint: Optional[pulumi.Input[str]] = None,
+             graph_endpoint: Optional[pulumi.Input[str]] = None,
+             rancher_url: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             token_endpoint: Optional[pulumi.Input[str]] = None,
              access_mode: Optional[pulumi.Input[str]] = None,
              allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              endpoint: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationSecret' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if application_secret is None and 'applicationSecret' in kwargs:
             application_secret = kwargs['applicationSecret']
-        if 'authEndpoint' in kwargs:
+        if application_secret is None:
+            raise TypeError("Missing 'application_secret' argument")
+        if auth_endpoint is None and 'authEndpoint' in kwargs:
             auth_endpoint = kwargs['authEndpoint']
-        if 'graphEndpoint' in kwargs:
+        if auth_endpoint is None:
+            raise TypeError("Missing 'auth_endpoint' argument")
+        if graph_endpoint is None and 'graphEndpoint' in kwargs:
             graph_endpoint = kwargs['graphEndpoint']
-        if 'rancherUrl' in kwargs:
+        if graph_endpoint is None:
+            raise TypeError("Missing 'graph_endpoint' argument")
+        if rancher_url is None and 'rancherUrl' in kwargs:
             rancher_url = kwargs['rancherUrl']
-        if 'tenantId' in kwargs:
+        if rancher_url is None:
+            raise TypeError("Missing 'rancher_url' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'tokenEndpoint' in kwargs:
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+        if token_endpoint is None and 'tokenEndpoint' in kwargs:
             token_endpoint = kwargs['tokenEndpoint']
-        if 'accessMode' in kwargs:
+        if token_endpoint is None:
+            raise TypeError("Missing 'token_endpoint' argument")
+        if access_mode is None and 'accessMode' in kwargs:
             access_mode = kwargs['accessMode']
-        if 'allowedPrincipalIds' in kwargs:
+        if allowed_principal_ids is None and 'allowedPrincipalIds' in kwargs:
             allowed_principal_ids = kwargs['allowedPrincipalIds']
 
         _setter("application_id", application_id)
@@ -345,25 +359,25 @@ class _AuthConfigAzureAdState:
              tenant_id: Optional[pulumi.Input[str]] = None,
              token_endpoint: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessMode' in kwargs:
+        if access_mode is None and 'accessMode' in kwargs:
             access_mode = kwargs['accessMode']
-        if 'allowedPrincipalIds' in kwargs:
+        if allowed_principal_ids is None and 'allowedPrincipalIds' in kwargs:
             allowed_principal_ids = kwargs['allowedPrincipalIds']
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationSecret' in kwargs:
+        if application_secret is None and 'applicationSecret' in kwargs:
             application_secret = kwargs['applicationSecret']
-        if 'authEndpoint' in kwargs:
+        if auth_endpoint is None and 'authEndpoint' in kwargs:
             auth_endpoint = kwargs['authEndpoint']
-        if 'graphEndpoint' in kwargs:
+        if graph_endpoint is None and 'graphEndpoint' in kwargs:
             graph_endpoint = kwargs['graphEndpoint']
-        if 'rancherUrl' in kwargs:
+        if rancher_url is None and 'rancherUrl' in kwargs:
             rancher_url = kwargs['rancherUrl']
-        if 'tenantId' in kwargs:
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'tokenEndpoint' in kwargs:
+        if token_endpoint is None and 'tokenEndpoint' in kwargs:
             token_endpoint = kwargs['tokenEndpoint']
 
         if access_mode is not None:
@@ -598,23 +612,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
                  token_endpoint: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Auth Config AzureAD
-        azuread = rancher2.AuthConfigAzureAd("azuread",
-            application_id="<AZUREAD_APP_ID>",
-            application_secret="<AZUREAD_APP_SECRET>",
-            auth_endpoint="<AZUREAD_AUTH_ENDPOINT>",
-            graph_endpoint="<AZUREAD_GRAPH_ENDPOINT>",
-            rancher_url="<RANCHER_URL>",
-            tenant_id="<AZUREAD_TENANT_ID>",
-            token_endpoint="<AZUREAD_TOKEN_ENDPOINT>")
-        ```
-
+        Create a AuthConfigAzureAd resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -638,23 +636,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
                  args: AuthConfigAzureAdArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Auth Config AzureAD
-        azuread = rancher2.AuthConfigAzureAd("azuread",
-            application_id="<AZUREAD_APP_ID>",
-            application_secret="<AZUREAD_APP_SECRET>",
-            auth_endpoint="<AZUREAD_AUTH_ENDPOINT>",
-            graph_endpoint="<AZUREAD_GRAPH_ENDPOINT>",
-            rancher_url="<RANCHER_URL>",
-            tenant_id="<AZUREAD_TENANT_ID>",
-            token_endpoint="<AZUREAD_TOKEN_ENDPOINT>")
-        ```
-
+        Create a AuthConfigAzureAd resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AuthConfigAzureAdArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

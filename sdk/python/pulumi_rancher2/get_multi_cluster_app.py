@@ -215,15 +215,6 @@ def get_multi_cluster_app(name: Optional[str] = None,
     """
     Use this data source to retrieve information about a Rancher v2 multi cluster app.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_multi_cluster_app(name="foo")
-    ```
-
 
     :param str name: The multi cluster app name (string)
     """
@@ -255,15 +246,6 @@ def get_multi_cluster_app_output(name: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMultiClusterAppResult]:
     """
     Use this data source to retrieve information about a Rancher v2 multi cluster app.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_multi_cluster_app(name="foo")
-    ```
 
 
     :param str name: The multi cluster app name (string)

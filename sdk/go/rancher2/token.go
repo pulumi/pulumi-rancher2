@@ -19,34 +19,6 @@ import (
 // - scoped: valid for just a specific cluster (`clusterId` should be provided).
 //
 // Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.NewToken(ctx, "foo", &rancher2.TokenArgs{
-//				ClusterId:   pulumi.String("<cluster-id>"),
-//				Description: pulumi.String("foo token"),
-//				Ttl:         pulumi.Int(1200),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Token struct {
 	pulumi.CustomResourceState
 

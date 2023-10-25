@@ -12,66 +12,6 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new Rancher2 Project
-    ///     var fooProject = new Rancher2.Project("fooProject", new()
-    ///     {
-    ///         ClusterId = "&lt;cluster_id&gt;",
-    ///         Description = "Terraform project ",
-    ///         ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
-    ///         {
-    ///             ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
-    ///             {
-    ///                 LimitsCpu = "2000m",
-    ///                 LimitsMemory = "2000Mi",
-    ///                 RequestsStorage = "2Gi",
-    ///             },
-    ///             NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
-    ///             {
-    ///                 LimitsCpu = "500m",
-    ///                 LimitsMemory = "500Mi",
-    ///                 RequestsStorage = "1Gi",
-    ///             },
-    ///         },
-    ///         ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
-    ///         {
-    ///             LimitsCpu = "20m",
-    ///             LimitsMemory = "20Mi",
-    ///             RequestsCpu = "1m",
-    ///             RequestsMemory = "1Mi",
-    ///         },
-    ///     });
-    /// 
-    ///     // Create a new Rancher2 Project Alert Group
-    ///     var fooProjectAlertGroup = new Rancher2.ProjectAlertGroup("fooProjectAlertGroup", new()
-    ///     {
-    ///         Description = "Terraform project alert group",
-    ///         ProjectId = fooProject.Id,
-    ///         GroupIntervalSeconds = 300,
-    ///         RepeatIntervalSeconds = 3600,
-    ///     });
-    /// 
-    ///     // Create a new Rancher2 Project Alert Rule
-    ///     var fooProjectAlertRule = new Rancher2.ProjectAlertRule("fooProjectAlertRule", new()
-    ///     {
-    ///         ProjectId = fooProjectAlertGroup.ProjectId,
-    ///         GroupId = fooProjectAlertGroup.Id,
-    ///         GroupIntervalSeconds = 600,
-    ///         RepeatIntervalSeconds = 6000,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Project Alert Rule can be imported using the Rancher project alert rule ID

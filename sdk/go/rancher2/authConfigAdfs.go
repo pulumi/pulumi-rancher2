@@ -16,39 +16,6 @@ import (
 // Provides a Rancher v2 Auth Config ADFS resource. This can be used to configure and enable Auth Config ADFS for Rancher v2 RKE clusters and retrieve their information.
 //
 // In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.NewAuthConfigAdfs(ctx, "adfs", &rancher2.AuthConfigAdfsArgs{
-//				DisplayNameField:   pulumi.String("<DISPLAY_NAME_FIELD>"),
-//				GroupsField:        pulumi.String("<GROUPS_FIELD>"),
-//				IdpMetadataContent: pulumi.String("<IDP_METADATA_CONTENT>"),
-//				RancherApiHost:     pulumi.String("https://<RANCHER_API_HOST>"),
-//				SpCert:             pulumi.String("<SP_CERT>"),
-//				SpKey:              pulumi.String("<SP_KEY>"),
-//				UidField:           pulumi.String("<UID_FIELD>"),
-//				UserNameField:      pulumi.String("<USER_NAME_FIELD>"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type AuthConfigAdfs struct {
 	pulumi.CustomResourceState
 

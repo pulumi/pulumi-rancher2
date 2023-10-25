@@ -52,8 +52,8 @@ class ClusterRoleTemplateBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             role_template_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             role_template_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              group_id: Optional[pulumi.Input[str]] = None,
              group_principal_id: Optional[pulumi.Input[str]] = None,
@@ -61,19 +61,23 @@ class ClusterRoleTemplateBindingArgs:
              name: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              user_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'roleTemplateId' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if role_template_id is None and 'roleTemplateId' in kwargs:
             role_template_id = kwargs['roleTemplateId']
-        if 'groupId' in kwargs:
+        if role_template_id is None:
+            raise TypeError("Missing 'role_template_id' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupPrincipalId' in kwargs:
+        if group_principal_id is None and 'groupPrincipalId' in kwargs:
             group_principal_id = kwargs['groupPrincipalId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
-        if 'userPrincipalId' in kwargs:
+        if user_principal_id is None and 'userPrincipalId' in kwargs:
             user_principal_id = kwargs['userPrincipalId']
 
         _setter("cluster_id", cluster_id)
@@ -254,19 +258,19 @@ class _ClusterRoleTemplateBindingState:
              role_template_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              user_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupPrincipalId' in kwargs:
+        if group_principal_id is None and 'groupPrincipalId' in kwargs:
             group_principal_id = kwargs['groupPrincipalId']
-        if 'roleTemplateId' in kwargs:
+        if role_template_id is None and 'roleTemplateId' in kwargs:
             role_template_id = kwargs['roleTemplateId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
-        if 'userPrincipalId' in kwargs:
+        if user_principal_id is None and 'userPrincipalId' in kwargs:
             user_principal_id = kwargs['userPrincipalId']
 
         if annotations is not None:
@@ -417,19 +421,6 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
         """
         Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 Cluster Role Template Binding
-        foo = rancher2.ClusterRoleTemplateBinding("foo",
-            cluster_id="<cluster_id>",
-            role_template_id="<role_template_id>",
-            user_id="<user_id>")
-        ```
-
         ## Import
 
         Cluster Role Template Bindings can be imported using the Rancher cluster Role Template Binding ID
@@ -460,19 +451,6 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 Cluster Role Template Binding
-        foo = rancher2.ClusterRoleTemplateBinding("foo",
-            cluster_id="<cluster_id>",
-            role_template_id="<role_template_id>",
-            user_id="<user_id>")
-        ```
 
         ## Import
 

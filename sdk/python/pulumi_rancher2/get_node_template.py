@@ -228,15 +228,6 @@ def get_node_template(name: Optional[str] = None,
     """
     Use this data source to retrieve information about a Rancher v2 Node Template resource.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_node_template(name="foo")
-    ```
-
 
     :param str name: The name of the Node Template (string)
     :param bool use_internal_ip_address: (Computed) Engine storage driver for the node template (bool)
@@ -272,15 +263,6 @@ def get_node_template_output(name: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeTemplateResult]:
     """
     Use this data source to retrieve information about a Rancher v2 Node Template resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_node_template(name="foo")
-    ```
 
 
     :param str name: The name of the Node Template (string)

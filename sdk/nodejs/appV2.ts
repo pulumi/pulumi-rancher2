@@ -7,24 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new Rancher2 App V2 using
- * const foo = new rancher2.AppV2("foo", {
- *     clusterId: "<CLUSTER_ID>",
- *     namespace: "cattle-monitoring-system",
- *     repoName: "rancher-charts",
- *     chartName: "rancher-monitoring",
- *     chartVersion: "9.4.200",
- *     values: fs.readFileSync("values.yaml"),
- * });
- * ```
- *
  * ## Import
  *
  * V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.

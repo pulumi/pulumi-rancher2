@@ -10,29 +10,6 @@ import * as utilities from "./utilities";
  * Depending of the availability, there are 2 types of Rancher v2 secrets:
  * - Project secret: Available to all namespaces in the `projectId`
  * - Namespaced secret: Available to just `namespaceId` in the `projectId`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getSecret({
- *     name: "<name>",
- *     projectId: "<project_id>",
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getSecret({
- *     name: "<name>",
- *     namespaceId: "<namespace_id>",
- *     projectId: "<project_id>",
- * });
- * ```
  */
 export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
 
@@ -96,29 +73,6 @@ export interface GetSecretResult {
  * Depending of the availability, there are 2 types of Rancher v2 secrets:
  * - Project secret: Available to all namespaces in the `projectId`
  * - Namespaced secret: Available to just `namespaceId` in the `projectId`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getSecret({
- *     name: "<name>",
- *     projectId: "<project_id>",
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getSecret({
- *     name: "<name>",
- *     namespaceId: "<namespace_id>",
- *     projectId: "<project_id>",
- * });
- * ```
  */
 export function getSecretOutput(args: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
     return pulumi.output(args).apply((a: any) => getSecret(a, opts))

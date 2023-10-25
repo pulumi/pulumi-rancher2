@@ -9,24 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Global Role resource. This can be used to create Global Role for Rancher v2 and retrieve their information.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Global Role
- * const foo = new rancher2.GlobalRole("foo", {
- *     description: "Terraform global role acceptance test",
- *     newUserDefault: true,
- *     rules: [{
- *         apiGroups: ["*"],
- *         resources: ["secrets"],
- *         verbs: ["create"],
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Global Role can be imported using the Rancher Global Role ID

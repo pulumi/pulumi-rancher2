@@ -67,8 +67,8 @@ class ClusterAlterRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             group_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              event_rule: Optional[pulumi.Input['ClusterAlterRuleEventRuleArgs']] = None,
              group_interval_seconds: Optional[pulumi.Input[int]] = None,
@@ -81,25 +81,29 @@ class ClusterAlterRuleArgs:
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
              severity: Optional[pulumi.Input[str]] = None,
              system_service_rule: Optional[pulumi.Input['ClusterAlterRuleSystemServiceRuleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'groupId' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'eventRule' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if event_rule is None and 'eventRule' in kwargs:
             event_rule = kwargs['eventRule']
-        if 'groupIntervalSeconds' in kwargs:
+        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
             group_interval_seconds = kwargs['groupIntervalSeconds']
-        if 'groupWaitSeconds' in kwargs:
+        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
             group_wait_seconds = kwargs['groupWaitSeconds']
-        if 'metricRule' in kwargs:
+        if metric_rule is None and 'metricRule' in kwargs:
             metric_rule = kwargs['metricRule']
-        if 'nodeRule' in kwargs:
+        if node_rule is None and 'nodeRule' in kwargs:
             node_rule = kwargs['nodeRule']
-        if 'repeatIntervalSeconds' in kwargs:
+        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
             repeat_interval_seconds = kwargs['repeatIntervalSeconds']
-        if 'systemServiceRule' in kwargs:
+        if system_service_rule is None and 'systemServiceRule' in kwargs:
             system_service_rule = kwargs['systemServiceRule']
 
         _setter("cluster_id", cluster_id)
@@ -366,25 +370,25 @@ class _ClusterAlterRuleState:
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
              severity: Optional[pulumi.Input[str]] = None,
              system_service_rule: Optional[pulumi.Input['ClusterAlterRuleSystemServiceRuleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'eventRule' in kwargs:
+        if event_rule is None and 'eventRule' in kwargs:
             event_rule = kwargs['eventRule']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupIntervalSeconds' in kwargs:
+        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
             group_interval_seconds = kwargs['groupIntervalSeconds']
-        if 'groupWaitSeconds' in kwargs:
+        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
             group_wait_seconds = kwargs['groupWaitSeconds']
-        if 'metricRule' in kwargs:
+        if metric_rule is None and 'metricRule' in kwargs:
             metric_rule = kwargs['metricRule']
-        if 'nodeRule' in kwargs:
+        if node_rule is None and 'nodeRule' in kwargs:
             node_rule = kwargs['nodeRule']
-        if 'repeatIntervalSeconds' in kwargs:
+        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
             repeat_interval_seconds = kwargs['repeatIntervalSeconds']
-        if 'systemServiceRule' in kwargs:
+        if system_service_rule is None and 'systemServiceRule' in kwargs:
             system_service_rule = kwargs['systemServiceRule']
 
         if annotations is not None:
@@ -613,20 +617,6 @@ class ClusterAlterRule(pulumi.CustomResource):
         """
         Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 Cluster Alert Group
-        foo = rancher2.ClusterAlertGroup("foo",
-            cluster_id="<cluster_id>",
-            description="Terraform cluster alert group",
-            group_interval_seconds=300,
-            repeat_interval_seconds=3600)
-        ```
-
         ## Import
 
         Cluster Alert Group can be imported using the Rancher cluster alert group ID
@@ -660,20 +650,6 @@ class ClusterAlterRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 Cluster Alert Group
-        foo = rancher2.ClusterAlertGroup("foo",
-            cluster_id="<cluster_id>",
-            description="Terraform cluster alert group",
-            group_interval_seconds=300,
-            repeat_interval_seconds=3600)
-        ```
 
         ## Import
 
@@ -730,11 +706,7 @@ class ClusterAlterRule(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
-            if event_rule is not None and not isinstance(event_rule, ClusterAlterRuleEventRuleArgs):
-                event_rule = event_rule or {}
-                def _setter(key, value):
-                    event_rule[key] = value
-                ClusterAlterRuleEventRuleArgs._configure(_setter, **event_rule)
+            event_rule = _utilities.configure(event_rule, ClusterAlterRuleEventRuleArgs, True)
             __props__.__dict__["event_rule"] = event_rule
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
@@ -743,26 +715,14 @@ class ClusterAlterRule(pulumi.CustomResource):
             __props__.__dict__["group_wait_seconds"] = group_wait_seconds
             __props__.__dict__["inherited"] = inherited
             __props__.__dict__["labels"] = labels
-            if metric_rule is not None and not isinstance(metric_rule, ClusterAlterRuleMetricRuleArgs):
-                metric_rule = metric_rule or {}
-                def _setter(key, value):
-                    metric_rule[key] = value
-                ClusterAlterRuleMetricRuleArgs._configure(_setter, **metric_rule)
+            metric_rule = _utilities.configure(metric_rule, ClusterAlterRuleMetricRuleArgs, True)
             __props__.__dict__["metric_rule"] = metric_rule
             __props__.__dict__["name"] = name
-            if node_rule is not None and not isinstance(node_rule, ClusterAlterRuleNodeRuleArgs):
-                node_rule = node_rule or {}
-                def _setter(key, value):
-                    node_rule[key] = value
-                ClusterAlterRuleNodeRuleArgs._configure(_setter, **node_rule)
+            node_rule = _utilities.configure(node_rule, ClusterAlterRuleNodeRuleArgs, True)
             __props__.__dict__["node_rule"] = node_rule
             __props__.__dict__["repeat_interval_seconds"] = repeat_interval_seconds
             __props__.__dict__["severity"] = severity
-            if system_service_rule is not None and not isinstance(system_service_rule, ClusterAlterRuleSystemServiceRuleArgs):
-                system_service_rule = system_service_rule or {}
-                def _setter(key, value):
-                    system_service_rule[key] = value
-                ClusterAlterRuleSystemServiceRuleArgs._configure(_setter, **system_service_rule)
+            system_service_rule = _utilities.configure(system_service_rule, ClusterAlterRuleSystemServiceRuleArgs, True)
             __props__.__dict__["system_service_rule"] = system_service_rule
         super(ClusterAlterRule, __self__).__init__(
             'rancher2:index/clusterAlterRule:ClusterAlterRule',

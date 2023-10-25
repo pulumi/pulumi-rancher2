@@ -13,56 +13,12 @@ namespace Pulumi.Rancher2
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Rancher2.GetPodSecurityPolicyTemplate.Invoke(new()
-        ///     {
-        ///         Name = "foo",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPodSecurityPolicyTemplateResult> InvokeAsync(GetPodSecurityPolicyTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Rancher2.GetPodSecurityPolicyTemplate.Invoke(new()
-        ///     {
-        ///         Name = "foo",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPodSecurityPolicyTemplateResult> Invoke(GetPodSecurityPolicyTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateInvokeArgs(), options.WithDefaults());

@@ -67,10 +67,10 @@ class AppArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             catalog_name: pulumi.Input[str],
-             project_id: pulumi.Input[str],
-             target_namespace: pulumi.Input[str],
-             template_name: pulumi.Input[str],
+             catalog_name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             target_namespace: Optional[pulumi.Input[str]] = None,
+             template_name: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              answers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -81,23 +81,31 @@ class AppArgs:
              template_version: Optional[pulumi.Input[str]] = None,
              values_yaml: Optional[pulumi.Input[str]] = None,
              wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogName' in kwargs:
+        if catalog_name is None and 'catalogName' in kwargs:
             catalog_name = kwargs['catalogName']
-        if 'projectId' in kwargs:
+        if catalog_name is None:
+            raise TypeError("Missing 'catalog_name' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'targetNamespace' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if target_namespace is None and 'targetNamespace' in kwargs:
             target_namespace = kwargs['targetNamespace']
-        if 'templateName' in kwargs:
+        if target_namespace is None:
+            raise TypeError("Missing 'target_namespace' argument")
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'forceUpgrade' in kwargs:
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if force_upgrade is None and 'forceUpgrade' in kwargs:
             force_upgrade = kwargs['forceUpgrade']
-        if 'revisionId' in kwargs:
+        if revision_id is None and 'revisionId' in kwargs:
             revision_id = kwargs['revisionId']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
-        if 'valuesYaml' in kwargs:
+        if values_yaml is None and 'valuesYaml' in kwargs:
             values_yaml = kwargs['valuesYaml']
 
         _setter("catalog_name", catalog_name)
@@ -370,25 +378,25 @@ class _AppState:
              template_version: Optional[pulumi.Input[str]] = None,
              values_yaml: Optional[pulumi.Input[str]] = None,
              wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogName' in kwargs:
+        if catalog_name is None and 'catalogName' in kwargs:
             catalog_name = kwargs['catalogName']
-        if 'externalId' in kwargs:
+        if external_id is None and 'externalId' in kwargs:
             external_id = kwargs['externalId']
-        if 'forceUpgrade' in kwargs:
+        if force_upgrade is None and 'forceUpgrade' in kwargs:
             force_upgrade = kwargs['forceUpgrade']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'revisionId' in kwargs:
+        if revision_id is None and 'revisionId' in kwargs:
             revision_id = kwargs['revisionId']
-        if 'targetNamespace' in kwargs:
+        if target_namespace is None and 'targetNamespace' in kwargs:
             target_namespace = kwargs['targetNamespace']
-        if 'templateName' in kwargs:
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
-        if 'valuesYaml' in kwargs:
+        if values_yaml is None and 'valuesYaml' in kwargs:
             values_yaml = kwargs['valuesYaml']
 
         if annotations is not None:
@@ -635,56 +643,6 @@ class App(pulumi.CustomResource):
 
         Note: In case of multiple resource modifications in a row, `rollback` has preference over `upgrade`.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 App
-        foo = rancher2.App("foo",
-            answers={
-                "foo": "bar",
-                "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
-                "ingress_host": "test.xip.io",
-            },
-            catalog_name="<catalog_name>",
-            description="Foo app",
-            project_id="<project_id>",
-            target_namespace="<namespace_name>",
-            template_name="<template_name>",
-            template_version="<template_version>")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 App in a new namespace
-        foo_namespace = rancher2.Namespace("fooNamespace",
-            description="Foo namespace",
-            project_id="<project_id>",
-            resource_quota=rancher2.NamespaceResourceQuotaArgs(
-                limit=rancher2.NamespaceResourceQuotaLimitArgs(
-                    limits_cpu="100m",
-                    limits_memory="100Mi",
-                    requests_storage="1Gi",
-                ),
-            ))
-        foo_app = rancher2.App("fooApp",
-            catalog_name="<catalog_name>",
-            description="Foo app",
-            project_id="<project_id>",
-            template_name="<template_name>",
-            template_version="<template_version>",
-            target_namespace=foo_namespace.id,
-            answers={
-                "ingress_host": "test.xip.io",
-                "foo": "bar",
-                "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
-            })
-        ```
-
         ## Import
 
         Apps can be imported using the app ID in the format `<project_id>:<app_name>`
@@ -727,56 +685,6 @@ class App(pulumi.CustomResource):
         - `Rollback`: If `revision_id` argument is provided or modified the app will be rolled back accordingly. A new `revision_id` will be generated in Rancher. It will also generate a non-empty pulumi preview that will require manual .tf file intervention. Use carefully.
 
         Note: In case of multiple resource modifications in a row, `rollback` has preference over `upgrade`.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 App
-        foo = rancher2.App("foo",
-            answers={
-                "foo": "bar",
-                "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
-                "ingress_host": "test.xip.io",
-            },
-            catalog_name="<catalog_name>",
-            description="Foo app",
-            project_id="<project_id>",
-            target_namespace="<namespace_name>",
-            template_name="<template_name>",
-            template_version="<template_version>")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 App in a new namespace
-        foo_namespace = rancher2.Namespace("fooNamespace",
-            description="Foo namespace",
-            project_id="<project_id>",
-            resource_quota=rancher2.NamespaceResourceQuotaArgs(
-                limit=rancher2.NamespaceResourceQuotaLimitArgs(
-                    limits_cpu="100m",
-                    limits_memory="100Mi",
-                    requests_storage="1Gi",
-                ),
-            ))
-        foo_app = rancher2.App("fooApp",
-            catalog_name="<catalog_name>",
-            description="Foo app",
-            project_id="<project_id>",
-            template_name="<template_name>",
-            template_version="<template_version>",
-            target_namespace=foo_namespace.id,
-            answers={
-                "ingress_host": "test.xip.io",
-                "foo": "bar",
-                "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
-            })
-        ```
 
         ## Import
 

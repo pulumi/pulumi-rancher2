@@ -64,7 +64,7 @@ class NotifierArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dingtalk_config: Optional[pulumi.Input['NotifierDingtalkConfigArgs']] = None,
@@ -77,25 +77,27 @@ class NotifierArgs:
              smtp_config: Optional[pulumi.Input['NotifierSmtpConfigArgs']] = None,
              webhook_config: Optional[pulumi.Input['NotifierWebhookConfigArgs']] = None,
              wechat_config: Optional[pulumi.Input['NotifierWechatConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'dingtalkConfig' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if dingtalk_config is None and 'dingtalkConfig' in kwargs:
             dingtalk_config = kwargs['dingtalkConfig']
-        if 'msteamsConfig' in kwargs:
+        if msteams_config is None and 'msteamsConfig' in kwargs:
             msteams_config = kwargs['msteamsConfig']
-        if 'pagerdutyConfig' in kwargs:
+        if pagerduty_config is None and 'pagerdutyConfig' in kwargs:
             pagerduty_config = kwargs['pagerdutyConfig']
-        if 'sendResolved' in kwargs:
+        if send_resolved is None and 'sendResolved' in kwargs:
             send_resolved = kwargs['sendResolved']
-        if 'slackConfig' in kwargs:
+        if slack_config is None and 'slackConfig' in kwargs:
             slack_config = kwargs['slackConfig']
-        if 'smtpConfig' in kwargs:
+        if smtp_config is None and 'smtpConfig' in kwargs:
             smtp_config = kwargs['smtpConfig']
-        if 'webhookConfig' in kwargs:
+        if webhook_config is None and 'webhookConfig' in kwargs:
             webhook_config = kwargs['webhookConfig']
-        if 'wechatConfig' in kwargs:
+        if wechat_config is None and 'wechatConfig' in kwargs:
             wechat_config = kwargs['wechatConfig']
 
         _setter("cluster_id", cluster_id)
@@ -345,25 +347,25 @@ class _NotifierState:
              smtp_config: Optional[pulumi.Input['NotifierSmtpConfigArgs']] = None,
              webhook_config: Optional[pulumi.Input['NotifierWebhookConfigArgs']] = None,
              wechat_config: Optional[pulumi.Input['NotifierWechatConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'dingtalkConfig' in kwargs:
+        if dingtalk_config is None and 'dingtalkConfig' in kwargs:
             dingtalk_config = kwargs['dingtalkConfig']
-        if 'msteamsConfig' in kwargs:
+        if msteams_config is None and 'msteamsConfig' in kwargs:
             msteams_config = kwargs['msteamsConfig']
-        if 'pagerdutyConfig' in kwargs:
+        if pagerduty_config is None and 'pagerdutyConfig' in kwargs:
             pagerduty_config = kwargs['pagerdutyConfig']
-        if 'sendResolved' in kwargs:
+        if send_resolved is None and 'sendResolved' in kwargs:
             send_resolved = kwargs['sendResolved']
-        if 'slackConfig' in kwargs:
+        if slack_config is None and 'slackConfig' in kwargs:
             slack_config = kwargs['slackConfig']
-        if 'smtpConfig' in kwargs:
+        if smtp_config is None and 'smtpConfig' in kwargs:
             smtp_config = kwargs['smtpConfig']
-        if 'webhookConfig' in kwargs:
+        if webhook_config is None and 'webhookConfig' in kwargs:
             webhook_config = kwargs['webhookConfig']
-        if 'wechatConfig' in kwargs:
+        if wechat_config is None and 'wechatConfig' in kwargs:
             wechat_config = kwargs['wechatConfig']
 
         if annotations is not None:
@@ -572,23 +574,6 @@ class Notifier(pulumi.CustomResource):
         """
         Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Notifier
-        foo = rancher2.Notifier("foo",
-            cluster_id="<cluster_id>",
-            description="Terraform notifier acceptance test",
-            pagerduty_config=rancher2.NotifierPagerdutyConfigArgs(
-                proxy_url="http://proxy.test.io",
-                service_key="XXXXXXXX",
-            ),
-            send_resolved=True)
-        ```
-
         ## Import
 
         Notifiers can be imported using the Rancher nNtifier ID
@@ -621,23 +606,6 @@ class Notifier(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Notifier
-        foo = rancher2.Notifier("foo",
-            cluster_id="<cluster_id>",
-            description="Terraform notifier acceptance test",
-            pagerduty_config=rancher2.NotifierPagerdutyConfigArgs(
-                proxy_url="http://proxy.test.io",
-                service_key="XXXXXXXX",
-            ),
-            send_resolved=True)
-        ```
 
         ## Import
 
@@ -693,50 +661,22 @@ class Notifier(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["description"] = description
-            if dingtalk_config is not None and not isinstance(dingtalk_config, NotifierDingtalkConfigArgs):
-                dingtalk_config = dingtalk_config or {}
-                def _setter(key, value):
-                    dingtalk_config[key] = value
-                NotifierDingtalkConfigArgs._configure(_setter, **dingtalk_config)
+            dingtalk_config = _utilities.configure(dingtalk_config, NotifierDingtalkConfigArgs, True)
             __props__.__dict__["dingtalk_config"] = dingtalk_config
             __props__.__dict__["labels"] = labels
-            if msteams_config is not None and not isinstance(msteams_config, NotifierMsteamsConfigArgs):
-                msteams_config = msteams_config or {}
-                def _setter(key, value):
-                    msteams_config[key] = value
-                NotifierMsteamsConfigArgs._configure(_setter, **msteams_config)
+            msteams_config = _utilities.configure(msteams_config, NotifierMsteamsConfigArgs, True)
             __props__.__dict__["msteams_config"] = msteams_config
             __props__.__dict__["name"] = name
-            if pagerduty_config is not None and not isinstance(pagerduty_config, NotifierPagerdutyConfigArgs):
-                pagerduty_config = pagerduty_config or {}
-                def _setter(key, value):
-                    pagerduty_config[key] = value
-                NotifierPagerdutyConfigArgs._configure(_setter, **pagerduty_config)
+            pagerduty_config = _utilities.configure(pagerduty_config, NotifierPagerdutyConfigArgs, True)
             __props__.__dict__["pagerduty_config"] = pagerduty_config
             __props__.__dict__["send_resolved"] = send_resolved
-            if slack_config is not None and not isinstance(slack_config, NotifierSlackConfigArgs):
-                slack_config = slack_config or {}
-                def _setter(key, value):
-                    slack_config[key] = value
-                NotifierSlackConfigArgs._configure(_setter, **slack_config)
+            slack_config = _utilities.configure(slack_config, NotifierSlackConfigArgs, True)
             __props__.__dict__["slack_config"] = slack_config
-            if smtp_config is not None and not isinstance(smtp_config, NotifierSmtpConfigArgs):
-                smtp_config = smtp_config or {}
-                def _setter(key, value):
-                    smtp_config[key] = value
-                NotifierSmtpConfigArgs._configure(_setter, **smtp_config)
+            smtp_config = _utilities.configure(smtp_config, NotifierSmtpConfigArgs, True)
             __props__.__dict__["smtp_config"] = smtp_config
-            if webhook_config is not None and not isinstance(webhook_config, NotifierWebhookConfigArgs):
-                webhook_config = webhook_config or {}
-                def _setter(key, value):
-                    webhook_config[key] = value
-                NotifierWebhookConfigArgs._configure(_setter, **webhook_config)
+            webhook_config = _utilities.configure(webhook_config, NotifierWebhookConfigArgs, True)
             __props__.__dict__["webhook_config"] = webhook_config
-            if wechat_config is not None and not isinstance(wechat_config, NotifierWechatConfigArgs):
-                wechat_config = wechat_config or {}
-                def _setter(key, value):
-                    wechat_config[key] = value
-                NotifierWechatConfigArgs._configure(_setter, **wechat_config)
+            wechat_config = _utilities.configure(wechat_config, NotifierWechatConfigArgs, True)
             __props__.__dict__["wechat_config"] = wechat_config
         super(Notifier, __self__).__init__(
             'rancher2:index/notifier:Notifier',

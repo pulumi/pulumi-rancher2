@@ -22,52 +22,6 @@ import (
 // Tokens can only be created for a Rancher User with at least the `user-base` global role binding in order to enable user login.
 //
 // Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooUser, err := rancher2.NewUser(ctx, "fooUser", &rancher2.UserArgs{
-//				Username: pulumi.String("foo"),
-//				Password: pulumi.String("changeme"),
-//				Enabled:  pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = rancher2.NewGlobalRoleBinding(ctx, "foo-login", &rancher2.GlobalRoleBindingArgs{
-//				GlobalRoleId: pulumi.String("user-base"),
-//				UserId:       fooUser.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = rancher2.NewCustomUserToken(ctx, "fooCustomUserToken", &rancher2.CustomUserTokenArgs{
-//				Username:    fooUser.Username,
-//				Password:    fooUser.Password,
-//				Description: pulumi.String("foo token"),
-//				Ttl:         pulumi.Int(0),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				foo_login,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type CustomUserToken struct {
 	pulumi.CustomResourceState
 

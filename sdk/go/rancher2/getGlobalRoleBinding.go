@@ -13,33 +13,6 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 global role binding.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupGlobalRoleBinding(ctx, &rancher2.LookupGlobalRoleBindingArgs{
-//				GlobalRoleId: pulumi.StringRef("foo_id"),
-//				Name:         "foo",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupGlobalRoleBinding(ctx *pulumi.Context, args *LookupGlobalRoleBindingArgs, opts ...pulumi.InvokeOption) (*LookupGlobalRoleBindingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalRoleBindingResult

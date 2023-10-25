@@ -133,15 +133,6 @@ def get_cluster_template(annotations: Optional[Mapping[str, Any]] = None,
 
     Cluster Templates are available from Rancher v2.3.x and above.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_cluster_template(name="foo")
-    ```
-
 
     :param Mapping[str, Any] annotations: (Computed) Annotations for the cluster template (map)
     :param Mapping[str, Any] labels: (Computed) Labels for the cluster template (map)
@@ -176,15 +167,6 @@ def get_cluster_template_output(annotations: Optional[pulumi.Input[Optional[Mapp
     Use this data source to retrieve information about a Rancher v2 cluster template.
 
     Cluster Templates are available from Rancher v2.3.x and above.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_cluster_template(name="foo")
-    ```
 
 
     :param Mapping[str, Any] annotations: (Computed) Annotations for the cluster template (map)

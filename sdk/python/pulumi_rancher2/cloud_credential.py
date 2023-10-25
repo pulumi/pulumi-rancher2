@@ -77,25 +77,25 @@ class CloudCredentialArgs:
              openstack_credential_config: Optional[pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs']] = None,
              s3_credential_config: Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']] = None,
              vsphere_credential_config: Optional[pulumi.Input['CloudCredentialVsphereCredentialConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'amazonec2CredentialConfig' in kwargs:
+        if amazonec2_credential_config is None and 'amazonec2CredentialConfig' in kwargs:
             amazonec2_credential_config = kwargs['amazonec2CredentialConfig']
-        if 'azureCredentialConfig' in kwargs:
+        if azure_credential_config is None and 'azureCredentialConfig' in kwargs:
             azure_credential_config = kwargs['azureCredentialConfig']
-        if 'digitaloceanCredentialConfig' in kwargs:
+        if digitalocean_credential_config is None and 'digitaloceanCredentialConfig' in kwargs:
             digitalocean_credential_config = kwargs['digitaloceanCredentialConfig']
-        if 'googleCredentialConfig' in kwargs:
+        if google_credential_config is None and 'googleCredentialConfig' in kwargs:
             google_credential_config = kwargs['googleCredentialConfig']
-        if 'harvesterCredentialConfig' in kwargs:
+        if harvester_credential_config is None and 'harvesterCredentialConfig' in kwargs:
             harvester_credential_config = kwargs['harvesterCredentialConfig']
-        if 'linodeCredentialConfig' in kwargs:
+        if linode_credential_config is None and 'linodeCredentialConfig' in kwargs:
             linode_credential_config = kwargs['linodeCredentialConfig']
-        if 'openstackCredentialConfig' in kwargs:
+        if openstack_credential_config is None and 'openstackCredentialConfig' in kwargs:
             openstack_credential_config = kwargs['openstackCredentialConfig']
-        if 's3CredentialConfig' in kwargs:
+        if s3_credential_config is None and 's3CredentialConfig' in kwargs:
             s3_credential_config = kwargs['s3CredentialConfig']
-        if 'vsphereCredentialConfig' in kwargs:
+        if vsphere_credential_config is None and 'vsphereCredentialConfig' in kwargs:
             vsphere_credential_config = kwargs['vsphereCredentialConfig']
 
         if amazonec2_credential_config is not None:
@@ -350,25 +350,25 @@ class _CloudCredentialState:
              openstack_credential_config: Optional[pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs']] = None,
              s3_credential_config: Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']] = None,
              vsphere_credential_config: Optional[pulumi.Input['CloudCredentialVsphereCredentialConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'amazonec2CredentialConfig' in kwargs:
+        if amazonec2_credential_config is None and 'amazonec2CredentialConfig' in kwargs:
             amazonec2_credential_config = kwargs['amazonec2CredentialConfig']
-        if 'azureCredentialConfig' in kwargs:
+        if azure_credential_config is None and 'azureCredentialConfig' in kwargs:
             azure_credential_config = kwargs['azureCredentialConfig']
-        if 'digitaloceanCredentialConfig' in kwargs:
+        if digitalocean_credential_config is None and 'digitaloceanCredentialConfig' in kwargs:
             digitalocean_credential_config = kwargs['digitaloceanCredentialConfig']
-        if 'googleCredentialConfig' in kwargs:
+        if google_credential_config is None and 'googleCredentialConfig' in kwargs:
             google_credential_config = kwargs['googleCredentialConfig']
-        if 'harvesterCredentialConfig' in kwargs:
+        if harvester_credential_config is None and 'harvesterCredentialConfig' in kwargs:
             harvester_credential_config = kwargs['harvesterCredentialConfig']
-        if 'linodeCredentialConfig' in kwargs:
+        if linode_credential_config is None and 'linodeCredentialConfig' in kwargs:
             linode_credential_config = kwargs['linodeCredentialConfig']
-        if 'openstackCredentialConfig' in kwargs:
+        if openstack_credential_config is None and 'openstackCredentialConfig' in kwargs:
             openstack_credential_config = kwargs['openstackCredentialConfig']
-        if 's3CredentialConfig' in kwargs:
+        if s3_credential_config is None and 's3CredentialConfig' in kwargs:
             s3_credential_config = kwargs['s3CredentialConfig']
-        if 'vsphereCredentialConfig' in kwargs:
+        if vsphere_credential_config is None and 'vsphereCredentialConfig' in kwargs:
             vsphere_credential_config = kwargs['vsphereCredentialConfig']
 
         if amazonec2_credential_config is not None:
@@ -593,34 +593,6 @@ class CloudCredential(pulumi.CustomResource):
 
         amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Cloud Credential
-        foo = rancher2.CloudCredential("foo",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ),
-            description="foo test")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
-        # Create a new Cloud Credential for an imported Harvester cluster
-        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
-            cluster_type="imported",
-            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
-        ))
-        ```
-
         ## Import
 
         Cloud Credential can be imported using the Cloud Credential ID and the Driver name. bash
@@ -657,34 +629,6 @@ class CloudCredential(pulumi.CustomResource):
         Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
 
         amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Cloud Credential
-        foo = rancher2.CloudCredential("foo",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ),
-            description="foo test")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
-        # Create a new Cloud Credential for an imported Harvester cluster
-        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
-            cluster_type="imported",
-            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
-        ))
-        ```
 
         ## Import
 
@@ -737,63 +681,27 @@ class CloudCredential(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudCredentialArgs.__new__(CloudCredentialArgs)
 
-            if amazonec2_credential_config is not None and not isinstance(amazonec2_credential_config, CloudCredentialAmazonec2CredentialConfigArgs):
-                amazonec2_credential_config = amazonec2_credential_config or {}
-                def _setter(key, value):
-                    amazonec2_credential_config[key] = value
-                CloudCredentialAmazonec2CredentialConfigArgs._configure(_setter, **amazonec2_credential_config)
+            amazonec2_credential_config = _utilities.configure(amazonec2_credential_config, CloudCredentialAmazonec2CredentialConfigArgs, True)
             __props__.__dict__["amazonec2_credential_config"] = amazonec2_credential_config
             __props__.__dict__["annotations"] = annotations
-            if azure_credential_config is not None and not isinstance(azure_credential_config, CloudCredentialAzureCredentialConfigArgs):
-                azure_credential_config = azure_credential_config or {}
-                def _setter(key, value):
-                    azure_credential_config[key] = value
-                CloudCredentialAzureCredentialConfigArgs._configure(_setter, **azure_credential_config)
+            azure_credential_config = _utilities.configure(azure_credential_config, CloudCredentialAzureCredentialConfigArgs, True)
             __props__.__dict__["azure_credential_config"] = azure_credential_config
             __props__.__dict__["description"] = description
-            if digitalocean_credential_config is not None and not isinstance(digitalocean_credential_config, CloudCredentialDigitaloceanCredentialConfigArgs):
-                digitalocean_credential_config = digitalocean_credential_config or {}
-                def _setter(key, value):
-                    digitalocean_credential_config[key] = value
-                CloudCredentialDigitaloceanCredentialConfigArgs._configure(_setter, **digitalocean_credential_config)
+            digitalocean_credential_config = _utilities.configure(digitalocean_credential_config, CloudCredentialDigitaloceanCredentialConfigArgs, True)
             __props__.__dict__["digitalocean_credential_config"] = digitalocean_credential_config
-            if google_credential_config is not None and not isinstance(google_credential_config, CloudCredentialGoogleCredentialConfigArgs):
-                google_credential_config = google_credential_config or {}
-                def _setter(key, value):
-                    google_credential_config[key] = value
-                CloudCredentialGoogleCredentialConfigArgs._configure(_setter, **google_credential_config)
+            google_credential_config = _utilities.configure(google_credential_config, CloudCredentialGoogleCredentialConfigArgs, True)
             __props__.__dict__["google_credential_config"] = google_credential_config
-            if harvester_credential_config is not None and not isinstance(harvester_credential_config, CloudCredentialHarvesterCredentialConfigArgs):
-                harvester_credential_config = harvester_credential_config or {}
-                def _setter(key, value):
-                    harvester_credential_config[key] = value
-                CloudCredentialHarvesterCredentialConfigArgs._configure(_setter, **harvester_credential_config)
+            harvester_credential_config = _utilities.configure(harvester_credential_config, CloudCredentialHarvesterCredentialConfigArgs, True)
             __props__.__dict__["harvester_credential_config"] = harvester_credential_config
             __props__.__dict__["labels"] = labels
-            if linode_credential_config is not None and not isinstance(linode_credential_config, CloudCredentialLinodeCredentialConfigArgs):
-                linode_credential_config = linode_credential_config or {}
-                def _setter(key, value):
-                    linode_credential_config[key] = value
-                CloudCredentialLinodeCredentialConfigArgs._configure(_setter, **linode_credential_config)
+            linode_credential_config = _utilities.configure(linode_credential_config, CloudCredentialLinodeCredentialConfigArgs, True)
             __props__.__dict__["linode_credential_config"] = linode_credential_config
             __props__.__dict__["name"] = name
-            if openstack_credential_config is not None and not isinstance(openstack_credential_config, CloudCredentialOpenstackCredentialConfigArgs):
-                openstack_credential_config = openstack_credential_config or {}
-                def _setter(key, value):
-                    openstack_credential_config[key] = value
-                CloudCredentialOpenstackCredentialConfigArgs._configure(_setter, **openstack_credential_config)
+            openstack_credential_config = _utilities.configure(openstack_credential_config, CloudCredentialOpenstackCredentialConfigArgs, True)
             __props__.__dict__["openstack_credential_config"] = openstack_credential_config
-            if s3_credential_config is not None and not isinstance(s3_credential_config, CloudCredentialS3CredentialConfigArgs):
-                s3_credential_config = s3_credential_config or {}
-                def _setter(key, value):
-                    s3_credential_config[key] = value
-                CloudCredentialS3CredentialConfigArgs._configure(_setter, **s3_credential_config)
+            s3_credential_config = _utilities.configure(s3_credential_config, CloudCredentialS3CredentialConfigArgs, True)
             __props__.__dict__["s3_credential_config"] = s3_credential_config
-            if vsphere_credential_config is not None and not isinstance(vsphere_credential_config, CloudCredentialVsphereCredentialConfigArgs):
-                vsphere_credential_config = vsphere_credential_config or {}
-                def _setter(key, value):
-                    vsphere_credential_config[key] = value
-                CloudCredentialVsphereCredentialConfigArgs._configure(_setter, **vsphere_credential_config)
+            vsphere_credential_config = _utilities.configure(vsphere_credential_config, CloudCredentialVsphereCredentialConfigArgs, True)
             __props__.__dict__["vsphere_credential_config"] = vsphere_credential_config
             __props__.__dict__["driver"] = None
         super(CloudCredential, __self__).__init__(

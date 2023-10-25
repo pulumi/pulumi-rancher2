@@ -8,17 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 multi cluster app.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getMultiClusterApp({
- *     name: "foo",
- * });
- * ```
  */
 export function getMultiClusterApp(args: GetMultiClusterAppArgs, opts?: pulumi.InvokeOptions): Promise<GetMultiClusterAppResult> {
 
@@ -102,17 +91,6 @@ export interface GetMultiClusterAppResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 multi cluster app.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getMultiClusterApp({
- *     name: "foo",
- * });
- * ```
  */
 export function getMultiClusterAppOutput(args: GetMultiClusterAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMultiClusterAppResult> {
     return pulumi.output(args).apply((a: any) => getMultiClusterApp(a, opts))

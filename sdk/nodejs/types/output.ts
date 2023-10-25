@@ -3465,10 +3465,6 @@ export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
 export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
     /**
      * Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
      */
     customConfig?: string;
     /**

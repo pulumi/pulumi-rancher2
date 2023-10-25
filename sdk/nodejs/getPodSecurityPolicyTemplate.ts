@@ -8,17 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getPodSecurityPolicyTemplate({
- *     name: "foo",
- * });
- * ```
  */
 export function getPodSecurityPolicyTemplate(args: GetPodSecurityPolicyTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetPodSecurityPolicyTemplateResult> {
 
@@ -209,17 +198,6 @@ export interface GetPodSecurityPolicyTemplateResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getPodSecurityPolicyTemplate({
- *     name: "foo",
- * });
- * ```
  */
 export function getPodSecurityPolicyTemplateOutput(args: GetPodSecurityPolicyTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPodSecurityPolicyTemplateResult> {
     return pulumi.output(args).apply((a: any) => getPodSecurityPolicyTemplate(a, opts))

@@ -9,32 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new rancher2 Auth Config AzureAD
-    ///     var azuread = new Rancher2.AuthConfigAzureAd("azuread", new()
-    ///     {
-    ///         ApplicationId = "&lt;AZUREAD_APP_ID&gt;",
-    ///         ApplicationSecret = "&lt;AZUREAD_APP_SECRET&gt;",
-    ///         AuthEndpoint = "&lt;AZUREAD_AUTH_ENDPOINT&gt;",
-    ///         GraphEndpoint = "&lt;AZUREAD_GRAPH_ENDPOINT&gt;",
-    ///         RancherUrl = "&lt;RANCHER_URL&gt;",
-    ///         TenantId = "&lt;AZUREAD_TENANT_ID&gt;",
-    ///         TokenEndpoint = "&lt;AZUREAD_TOKEN_ENDPOINT&gt;",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [Rancher2ResourceType("rancher2:index/authConfigAzureAd:AuthConfigAzureAd")]
     public partial class AuthConfigAzureAd : global::Pulumi.CustomResource
     {

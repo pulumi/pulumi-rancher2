@@ -43,19 +43,21 @@ class GlobalRoleBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             global_role_id: pulumi.Input[str],
+             global_role_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              group_principal_id: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'globalRoleId' in kwargs:
+        if global_role_id is None and 'globalRoleId' in kwargs:
             global_role_id = kwargs['globalRoleId']
-        if 'groupPrincipalId' in kwargs:
+        if global_role_id is None:
+            raise TypeError("Missing 'global_role_id' argument")
+        if group_principal_id is None and 'groupPrincipalId' in kwargs:
             group_principal_id = kwargs['groupPrincipalId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         _setter("global_role_id", global_role_id)
@@ -183,13 +185,13 @@ class _GlobalRoleBindingState:
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'globalRoleId' in kwargs:
+        if global_role_id is None and 'globalRoleId' in kwargs:
             global_role_id = kwargs['globalRoleId']
-        if 'groupPrincipalId' in kwargs:
+        if group_principal_id is None and 'groupPrincipalId' in kwargs:
             group_principal_id = kwargs['groupPrincipalId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         if annotations is not None:
@@ -295,22 +297,6 @@ class GlobalRoleBinding(pulumi.CustomResource):
         """
         Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Global Role Binding using user_id
-        foo = rancher2.GlobalRoleBinding("foo",
-            global_role_id="admin",
-            user_id="user-XXXXX")
-        # Create a new rancher2 Global Role Binding using group_principal_id
-        foo2 = rancher2.GlobalRoleBinding("foo2",
-            global_role_id="admin",
-            group_principal_id="local://g-XXXXX")
-        ```
-
         ## Import
 
         Global Role Bindings can be imported using the Rancher Global Role Binding ID
@@ -338,22 +324,6 @@ class GlobalRoleBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Global Role Binding using user_id
-        foo = rancher2.GlobalRoleBinding("foo",
-            global_role_id="admin",
-            user_id="user-XXXXX")
-        # Create a new rancher2 Global Role Binding using group_principal_id
-        foo2 = rancher2.GlobalRoleBinding("foo2",
-            global_role_id="admin",
-            group_principal_id="local://g-XXXXX")
-        ```
 
         ## Import
 

@@ -119,12 +119,12 @@ class AuthConfigOpenLdapArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             servers: pulumi.Input[Sequence[pulumi.Input[str]]],
-             service_account_distinguished_name: pulumi.Input[str],
-             service_account_password: pulumi.Input[str],
-             test_password: pulumi.Input[str],
-             test_username: pulumi.Input[str],
-             user_search_base: pulumi.Input[str],
+             servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_account_distinguished_name: Optional[pulumi.Input[str]] = None,
+             service_account_password: Optional[pulumi.Input[str]] = None,
+             test_password: Optional[pulumi.Input[str]] = None,
+             test_username: Optional[pulumi.Input[str]] = None,
+             user_search_base: Optional[pulumi.Input[str]] = None,
              access_mode: Optional[pulumi.Input[str]] = None,
              allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -152,59 +152,71 @@ class AuthConfigOpenLdapArgs:
              user_object_class: Optional[pulumi.Input[str]] = None,
              user_search_attribute: Optional[pulumi.Input[str]] = None,
              user_search_filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceAccountDistinguishedName' in kwargs:
+        if servers is None:
+            raise TypeError("Missing 'servers' argument")
+        if service_account_distinguished_name is None and 'serviceAccountDistinguishedName' in kwargs:
             service_account_distinguished_name = kwargs['serviceAccountDistinguishedName']
-        if 'serviceAccountPassword' in kwargs:
+        if service_account_distinguished_name is None:
+            raise TypeError("Missing 'service_account_distinguished_name' argument")
+        if service_account_password is None and 'serviceAccountPassword' in kwargs:
             service_account_password = kwargs['serviceAccountPassword']
-        if 'testPassword' in kwargs:
+        if service_account_password is None:
+            raise TypeError("Missing 'service_account_password' argument")
+        if test_password is None and 'testPassword' in kwargs:
             test_password = kwargs['testPassword']
-        if 'testUsername' in kwargs:
+        if test_password is None:
+            raise TypeError("Missing 'test_password' argument")
+        if test_username is None and 'testUsername' in kwargs:
             test_username = kwargs['testUsername']
-        if 'userSearchBase' in kwargs:
+        if test_username is None:
+            raise TypeError("Missing 'test_username' argument")
+        if user_search_base is None and 'userSearchBase' in kwargs:
             user_search_base = kwargs['userSearchBase']
-        if 'accessMode' in kwargs:
+        if user_search_base is None:
+            raise TypeError("Missing 'user_search_base' argument")
+        if access_mode is None and 'accessMode' in kwargs:
             access_mode = kwargs['accessMode']
-        if 'allowedPrincipalIds' in kwargs:
+        if allowed_principal_ids is None and 'allowedPrincipalIds' in kwargs:
             allowed_principal_ids = kwargs['allowedPrincipalIds']
-        if 'connectionTimeout' in kwargs:
+        if connection_timeout is None and 'connectionTimeout' in kwargs:
             connection_timeout = kwargs['connectionTimeout']
-        if 'groupDnAttribute' in kwargs:
+        if group_dn_attribute is None and 'groupDnAttribute' in kwargs:
             group_dn_attribute = kwargs['groupDnAttribute']
-        if 'groupMemberMappingAttribute' in kwargs:
+        if group_member_mapping_attribute is None and 'groupMemberMappingAttribute' in kwargs:
             group_member_mapping_attribute = kwargs['groupMemberMappingAttribute']
-        if 'groupMemberUserAttribute' in kwargs:
+        if group_member_user_attribute is None and 'groupMemberUserAttribute' in kwargs:
             group_member_user_attribute = kwargs['groupMemberUserAttribute']
-        if 'groupNameAttribute' in kwargs:
+        if group_name_attribute is None and 'groupNameAttribute' in kwargs:
             group_name_attribute = kwargs['groupNameAttribute']
-        if 'groupObjectClass' in kwargs:
+        if group_object_class is None and 'groupObjectClass' in kwargs:
             group_object_class = kwargs['groupObjectClass']
-        if 'groupSearchAttribute' in kwargs:
+        if group_search_attribute is None and 'groupSearchAttribute' in kwargs:
             group_search_attribute = kwargs['groupSearchAttribute']
-        if 'groupSearchBase' in kwargs:
+        if group_search_base is None and 'groupSearchBase' in kwargs:
             group_search_base = kwargs['groupSearchBase']
-        if 'groupSearchFilter' in kwargs:
+        if group_search_filter is None and 'groupSearchFilter' in kwargs:
             group_search_filter = kwargs['groupSearchFilter']
-        if 'nestedGroupMembershipEnabled' in kwargs:
+        if nested_group_membership_enabled is None and 'nestedGroupMembershipEnabled' in kwargs:
             nested_group_membership_enabled = kwargs['nestedGroupMembershipEnabled']
-        if 'startTls' in kwargs:
+        if start_tls is None and 'startTls' in kwargs:
             start_tls = kwargs['startTls']
-        if 'userDisabledBitMask' in kwargs:
+        if user_disabled_bit_mask is None and 'userDisabledBitMask' in kwargs:
             user_disabled_bit_mask = kwargs['userDisabledBitMask']
-        if 'userEnabledAttribute' in kwargs:
+        if user_enabled_attribute is None and 'userEnabledAttribute' in kwargs:
             user_enabled_attribute = kwargs['userEnabledAttribute']
-        if 'userLoginAttribute' in kwargs:
+        if user_login_attribute is None and 'userLoginAttribute' in kwargs:
             user_login_attribute = kwargs['userLoginAttribute']
-        if 'userMemberAttribute' in kwargs:
+        if user_member_attribute is None and 'userMemberAttribute' in kwargs:
             user_member_attribute = kwargs['userMemberAttribute']
-        if 'userNameAttribute' in kwargs:
+        if user_name_attribute is None and 'userNameAttribute' in kwargs:
             user_name_attribute = kwargs['userNameAttribute']
-        if 'userObjectClass' in kwargs:
+        if user_object_class is None and 'userObjectClass' in kwargs:
             user_object_class = kwargs['userObjectClass']
-        if 'userSearchAttribute' in kwargs:
+        if user_search_attribute is None and 'userSearchAttribute' in kwargs:
             user_search_attribute = kwargs['userSearchAttribute']
-        if 'userSearchFilter' in kwargs:
+        if user_search_filter is None and 'userSearchFilter' in kwargs:
             user_search_filter = kwargs['userSearchFilter']
 
         _setter("servers", servers)
@@ -805,59 +817,59 @@ class _AuthConfigOpenLdapState:
              user_search_attribute: Optional[pulumi.Input[str]] = None,
              user_search_base: Optional[pulumi.Input[str]] = None,
              user_search_filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessMode' in kwargs:
+        if access_mode is None and 'accessMode' in kwargs:
             access_mode = kwargs['accessMode']
-        if 'allowedPrincipalIds' in kwargs:
+        if allowed_principal_ids is None and 'allowedPrincipalIds' in kwargs:
             allowed_principal_ids = kwargs['allowedPrincipalIds']
-        if 'connectionTimeout' in kwargs:
+        if connection_timeout is None and 'connectionTimeout' in kwargs:
             connection_timeout = kwargs['connectionTimeout']
-        if 'groupDnAttribute' in kwargs:
+        if group_dn_attribute is None and 'groupDnAttribute' in kwargs:
             group_dn_attribute = kwargs['groupDnAttribute']
-        if 'groupMemberMappingAttribute' in kwargs:
+        if group_member_mapping_attribute is None and 'groupMemberMappingAttribute' in kwargs:
             group_member_mapping_attribute = kwargs['groupMemberMappingAttribute']
-        if 'groupMemberUserAttribute' in kwargs:
+        if group_member_user_attribute is None and 'groupMemberUserAttribute' in kwargs:
             group_member_user_attribute = kwargs['groupMemberUserAttribute']
-        if 'groupNameAttribute' in kwargs:
+        if group_name_attribute is None and 'groupNameAttribute' in kwargs:
             group_name_attribute = kwargs['groupNameAttribute']
-        if 'groupObjectClass' in kwargs:
+        if group_object_class is None and 'groupObjectClass' in kwargs:
             group_object_class = kwargs['groupObjectClass']
-        if 'groupSearchAttribute' in kwargs:
+        if group_search_attribute is None and 'groupSearchAttribute' in kwargs:
             group_search_attribute = kwargs['groupSearchAttribute']
-        if 'groupSearchBase' in kwargs:
+        if group_search_base is None and 'groupSearchBase' in kwargs:
             group_search_base = kwargs['groupSearchBase']
-        if 'groupSearchFilter' in kwargs:
+        if group_search_filter is None and 'groupSearchFilter' in kwargs:
             group_search_filter = kwargs['groupSearchFilter']
-        if 'nestedGroupMembershipEnabled' in kwargs:
+        if nested_group_membership_enabled is None and 'nestedGroupMembershipEnabled' in kwargs:
             nested_group_membership_enabled = kwargs['nestedGroupMembershipEnabled']
-        if 'serviceAccountDistinguishedName' in kwargs:
+        if service_account_distinguished_name is None and 'serviceAccountDistinguishedName' in kwargs:
             service_account_distinguished_name = kwargs['serviceAccountDistinguishedName']
-        if 'serviceAccountPassword' in kwargs:
+        if service_account_password is None and 'serviceAccountPassword' in kwargs:
             service_account_password = kwargs['serviceAccountPassword']
-        if 'startTls' in kwargs:
+        if start_tls is None and 'startTls' in kwargs:
             start_tls = kwargs['startTls']
-        if 'testPassword' in kwargs:
+        if test_password is None and 'testPassword' in kwargs:
             test_password = kwargs['testPassword']
-        if 'testUsername' in kwargs:
+        if test_username is None and 'testUsername' in kwargs:
             test_username = kwargs['testUsername']
-        if 'userDisabledBitMask' in kwargs:
+        if user_disabled_bit_mask is None and 'userDisabledBitMask' in kwargs:
             user_disabled_bit_mask = kwargs['userDisabledBitMask']
-        if 'userEnabledAttribute' in kwargs:
+        if user_enabled_attribute is None and 'userEnabledAttribute' in kwargs:
             user_enabled_attribute = kwargs['userEnabledAttribute']
-        if 'userLoginAttribute' in kwargs:
+        if user_login_attribute is None and 'userLoginAttribute' in kwargs:
             user_login_attribute = kwargs['userLoginAttribute']
-        if 'userMemberAttribute' in kwargs:
+        if user_member_attribute is None and 'userMemberAttribute' in kwargs:
             user_member_attribute = kwargs['userMemberAttribute']
-        if 'userNameAttribute' in kwargs:
+        if user_name_attribute is None and 'userNameAttribute' in kwargs:
             user_name_attribute = kwargs['userNameAttribute']
-        if 'userObjectClass' in kwargs:
+        if user_object_class is None and 'userObjectClass' in kwargs:
             user_object_class = kwargs['userObjectClass']
-        if 'userSearchAttribute' in kwargs:
+        if user_search_attribute is None and 'userSearchAttribute' in kwargs:
             user_search_attribute = kwargs['userSearchAttribute']
-        if 'userSearchBase' in kwargs:
+        if user_search_base is None and 'userSearchBase' in kwargs:
             user_search_base = kwargs['userSearchBase']
-        if 'userSearchFilter' in kwargs:
+        if user_search_filter is None and 'userSearchFilter' in kwargs:
             user_search_filter = kwargs['userSearchFilter']
 
         if access_mode is not None:

@@ -12,33 +12,6 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new rancher2 Global Role Binding using user_id
-    ///     var foo = new Rancher2.GlobalRoleBinding("foo", new()
-    ///     {
-    ///         GlobalRoleId = "admin",
-    ///         UserId = "user-XXXXX",
-    ///     });
-    /// 
-    ///     // Create a new rancher2 Global Role Binding using group_principal_id
-    ///     var foo2 = new Rancher2.GlobalRoleBinding("foo2", new()
-    ///     {
-    ///         GlobalRoleId = "admin",
-    ///         GroupPrincipalId = "local://g-XXXXX",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Global Role Bindings can be imported using the Rancher Global Role Binding ID

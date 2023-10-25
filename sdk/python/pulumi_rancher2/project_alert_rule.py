@@ -64,8 +64,8 @@ class ProjectAlertRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_id: pulumi.Input[str],
-             project_id: pulumi.Input[str],
+             group_id: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              group_interval_seconds: Optional[pulumi.Input[int]] = None,
              group_wait_seconds: Optional[pulumi.Input[int]] = None,
@@ -77,23 +77,27 @@ class ProjectAlertRuleArgs:
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
              severity: Optional[pulumi.Input[str]] = None,
              workload_rule: Optional[pulumi.Input['ProjectAlertRuleWorkloadRuleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'projectId' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'groupIntervalSeconds' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
             group_interval_seconds = kwargs['groupIntervalSeconds']
-        if 'groupWaitSeconds' in kwargs:
+        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
             group_wait_seconds = kwargs['groupWaitSeconds']
-        if 'metricRule' in kwargs:
+        if metric_rule is None and 'metricRule' in kwargs:
             metric_rule = kwargs['metricRule']
-        if 'podRule' in kwargs:
+        if pod_rule is None and 'podRule' in kwargs:
             pod_rule = kwargs['podRule']
-        if 'repeatIntervalSeconds' in kwargs:
+        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
             repeat_interval_seconds = kwargs['repeatIntervalSeconds']
-        if 'workloadRule' in kwargs:
+        if workload_rule is None and 'workloadRule' in kwargs:
             workload_rule = kwargs['workloadRule']
 
         _setter("group_id", group_id)
@@ -342,23 +346,23 @@ class _ProjectAlertRuleState:
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
              severity: Optional[pulumi.Input[str]] = None,
              workload_rule: Optional[pulumi.Input['ProjectAlertRuleWorkloadRuleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupIntervalSeconds' in kwargs:
+        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
             group_interval_seconds = kwargs['groupIntervalSeconds']
-        if 'groupWaitSeconds' in kwargs:
+        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
             group_wait_seconds = kwargs['groupWaitSeconds']
-        if 'metricRule' in kwargs:
+        if metric_rule is None and 'metricRule' in kwargs:
             metric_rule = kwargs['metricRule']
-        if 'podRule' in kwargs:
+        if pod_rule is None and 'podRule' in kwargs:
             pod_rule = kwargs['podRule']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'repeatIntervalSeconds' in kwargs:
+        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
             repeat_interval_seconds = kwargs['repeatIntervalSeconds']
-        if 'workloadRule' in kwargs:
+        if workload_rule is None and 'workloadRule' in kwargs:
             workload_rule = kwargs['workloadRule']
 
         if annotations is not None:
@@ -567,48 +571,6 @@ class ProjectAlertRule(pulumi.CustomResource):
         """
         Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 Project
-        foo_project = rancher2.Project("fooProject",
-            cluster_id="<cluster_id>",
-            description="Terraform project ",
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="500m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-            ),
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ))
-        # Create a new Rancher2 Project Alert Group
-        foo_project_alert_group = rancher2.ProjectAlertGroup("fooProjectAlertGroup",
-            description="Terraform project alert group",
-            project_id=foo_project.id,
-            group_interval_seconds=300,
-            repeat_interval_seconds=3600)
-        # Create a new Rancher2 Project Alert Rule
-        foo_project_alert_rule = rancher2.ProjectAlertRule("fooProjectAlertRule",
-            project_id=foo_project_alert_group.project_id,
-            group_id=foo_project_alert_group.id,
-            group_interval_seconds=600,
-            repeat_interval_seconds=6000)
-        ```
-
         ## Import
 
         Project Alert Rule can be imported using the Rancher project alert rule ID
@@ -641,48 +603,6 @@ class ProjectAlertRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 Project
-        foo_project = rancher2.Project("fooProject",
-            cluster_id="<cluster_id>",
-            description="Terraform project ",
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="500m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-            ),
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ))
-        # Create a new Rancher2 Project Alert Group
-        foo_project_alert_group = rancher2.ProjectAlertGroup("fooProjectAlertGroup",
-            description="Terraform project alert group",
-            project_id=foo_project.id,
-            group_interval_seconds=300,
-            repeat_interval_seconds=3600)
-        # Create a new Rancher2 Project Alert Rule
-        foo_project_alert_rule = rancher2.ProjectAlertRule("fooProjectAlertRule",
-            project_id=foo_project_alert_group.project_id,
-            group_id=foo_project_alert_group.id,
-            group_interval_seconds=600,
-            repeat_interval_seconds=6000)
-        ```
 
         ## Import
 
@@ -741,29 +661,17 @@ class ProjectAlertRule(pulumi.CustomResource):
             __props__.__dict__["group_wait_seconds"] = group_wait_seconds
             __props__.__dict__["inherited"] = inherited
             __props__.__dict__["labels"] = labels
-            if metric_rule is not None and not isinstance(metric_rule, ProjectAlertRuleMetricRuleArgs):
-                metric_rule = metric_rule or {}
-                def _setter(key, value):
-                    metric_rule[key] = value
-                ProjectAlertRuleMetricRuleArgs._configure(_setter, **metric_rule)
+            metric_rule = _utilities.configure(metric_rule, ProjectAlertRuleMetricRuleArgs, True)
             __props__.__dict__["metric_rule"] = metric_rule
             __props__.__dict__["name"] = name
-            if pod_rule is not None and not isinstance(pod_rule, ProjectAlertRulePodRuleArgs):
-                pod_rule = pod_rule or {}
-                def _setter(key, value):
-                    pod_rule[key] = value
-                ProjectAlertRulePodRuleArgs._configure(_setter, **pod_rule)
+            pod_rule = _utilities.configure(pod_rule, ProjectAlertRulePodRuleArgs, True)
             __props__.__dict__["pod_rule"] = pod_rule
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["repeat_interval_seconds"] = repeat_interval_seconds
             __props__.__dict__["severity"] = severity
-            if workload_rule is not None and not isinstance(workload_rule, ProjectAlertRuleWorkloadRuleArgs):
-                workload_rule = workload_rule or {}
-                def _setter(key, value):
-                    workload_rule[key] = value
-                ProjectAlertRuleWorkloadRuleArgs._configure(_setter, **workload_rule)
+            workload_rule = _utilities.configure(workload_rule, ProjectAlertRuleWorkloadRuleArgs, True)
             __props__.__dict__["workload_rule"] = workload_rule
         super(ProjectAlertRule, __self__).__init__(
             'rancher2:index/projectAlertRule:ProjectAlertRule',

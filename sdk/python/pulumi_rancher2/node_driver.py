@@ -56,9 +56,9 @@ class NodeDriverArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             active: pulumi.Input[bool],
-             builtin: pulumi.Input[bool],
-             url: pulumi.Input[str],
+             active: Optional[pulumi.Input[bool]] = None,
+             builtin: Optional[pulumi.Input[bool]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              checksum: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -67,13 +67,19 @@ class NodeDriverArgs:
              name: Optional[pulumi.Input[str]] = None,
              ui_url: Optional[pulumi.Input[str]] = None,
              whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'externalId' in kwargs:
+        if active is None:
+            raise TypeError("Missing 'active' argument")
+        if builtin is None:
+            raise TypeError("Missing 'builtin' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if external_id is None and 'externalId' in kwargs:
             external_id = kwargs['externalId']
-        if 'uiUrl' in kwargs:
+        if ui_url is None and 'uiUrl' in kwargs:
             ui_url = kwargs['uiUrl']
-        if 'whitelistDomains' in kwargs:
+        if whitelist_domains is None and 'whitelistDomains' in kwargs:
             whitelist_domains = kwargs['whitelistDomains']
 
         _setter("active", active)
@@ -285,13 +291,13 @@ class _NodeDriverState:
              ui_url: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'externalId' in kwargs:
+        if external_id is None and 'externalId' in kwargs:
             external_id = kwargs['externalId']
-        if 'uiUrl' in kwargs:
+        if ui_url is None and 'uiUrl' in kwargs:
             ui_url = kwargs['uiUrl']
-        if 'whitelistDomains' in kwargs:
+        if whitelist_domains is None and 'whitelistDomains' in kwargs:
             whitelist_domains = kwargs['whitelistDomains']
 
         if active is not None:
@@ -470,24 +476,6 @@ class NodeDriver(pulumi.CustomResource):
         """
         Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Node Driver
-        foo = rancher2.NodeDriver("foo",
-            active=True,
-            builtin=False,
-            checksum="0x0",
-            description="Foo description",
-            external_id="foo_external",
-            ui_url="local://ui",
-            url="local://",
-            whitelist_domains=["*.foo.com"])
-        ```
-
         ## Import
 
         Node Driver can be imported using the Rancher Node Driver ID
@@ -518,24 +506,6 @@ class NodeDriver(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Node Driver
-        foo = rancher2.NodeDriver("foo",
-            active=True,
-            builtin=False,
-            checksum="0x0",
-            description="Foo description",
-            external_id="foo_external",
-            ui_url="local://ui",
-            url="local://",
-            whitelist_domains=["*.foo.com"])
-        ```
 
         ## Import
 

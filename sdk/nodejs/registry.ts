@@ -13,41 +13,6 @@ import * as utilities from "./utilities";
  * - Project registry resource: Available to all namespaces in the `projectId`.
  * - Namespaced registry resource: Available to `namespaceId` in the `projectId`.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Project Registry
- * const foo = new rancher2.Registry("foo", {
- *     description: "Terraform registry foo",
- *     projectId: "<project_id>",
- *     registries: [{
- *         address: "test.io",
- *         password: "pass",
- *         username: "user",
- *     }],
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Namespaced Registry
- * const foo = new rancher2.Registry("foo", {
- *     description: "Terraform registry foo",
- *     namespaceId: "<namespace_id>",
- *     projectId: "<project_id>",
- *     registries: [{
- *         address: "test.io",
- *         password: "pass",
- *         username: "user2",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Registries can be imported using the registry ID in the format `<namespace_id>.<project_id>.<registry_id>`

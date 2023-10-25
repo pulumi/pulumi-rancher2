@@ -9,53 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher V2 Global DNS Provider resource. This can be used to create Global DNS Providers for Rancher V2. Supported Global DNS Providers: `alidns, cloudflare, route53`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Global DNS Provider - alidns
- * const foo = new rancher2.GlobalDnsProvider("foo", {
- *     alidnsConfig: {
- *         accessKey: "YYYYYYYYYYYYYYYYYYYY",
- *         secretKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
- *     },
- *     rootDomain: "example.com",
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Global DNS Provider - cloudflare
- * const foo = new rancher2.GlobalDnsProvider("foo", {
- *     cloudflareConfig: {
- *         apiEmail: "test@test.local",
- *         apiKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
- *         proxySetting: true,
- *     },
- *     rootDomain: "example.com",
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Global DNS Provider - route53
- * const foo = new rancher2.GlobalDnsProvider("foo", {
- *     rootDomain: "example.com",
- *     route53Config: {
- *         accessKey: "YYYYYYYYYYYYYYYYYYYY",
- *         region: "us-east-1",
- *         secretKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
- *         zoneType: "private",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Global DNS Providers can be imported using the Rancher Global DNS Provider ID

@@ -49,17 +49,21 @@ class CustomUserTokenArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: pulumi.Input[str],
-             username: pulumi.Input[str],
+             password: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              cluster_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              renew: Optional[pulumi.Input[bool]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
 
         _setter("password", password)
@@ -258,19 +262,19 @@ class _CustomUserTokenState:
              ttl: Optional[pulumi.Input[int]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'tempToken' in kwargs:
+        if temp_token is None and 'tempToken' in kwargs:
             temp_token = kwargs['tempToken']
-        if 'tempTokenId' in kwargs:
+        if temp_token_id is None and 'tempTokenId' in kwargs:
             temp_token_id = kwargs['tempTokenId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         if access_key is not None:
@@ -540,28 +544,6 @@ class CustomUserToken(pulumi.CustomResource):
 
         Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a rancher2 Token
-        foo_user = rancher2.User("fooUser",
-            username="foo",
-            password="changeme",
-            enabled=True)
-        foo_login = rancher2.GlobalRoleBinding("foo-login",
-            global_role_id="user-base",
-            user_id=foo_user.id)
-        foo_custom_user_token = rancher2.CustomUserToken("fooCustomUserToken",
-            username=foo_user.username,
-            password=foo_user.password,
-            description="foo token",
-            ttl=0,
-            opts=pulumi.ResourceOptions(depends_on=[foo_login]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: (Computed) Annotations of the token (map)
@@ -591,28 +573,6 @@ class CustomUserToken(pulumi.CustomResource):
         Tokens can only be created for a Rancher User with at least the `user-base` global role binding in order to enable user login.
 
         Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a rancher2 Token
-        foo_user = rancher2.User("fooUser",
-            username="foo",
-            password="changeme",
-            enabled=True)
-        foo_login = rancher2.GlobalRoleBinding("foo-login",
-            global_role_id="user-base",
-            user_id=foo_user.id)
-        foo_custom_user_token = rancher2.CustomUserToken("fooCustomUserToken",
-            username=foo_user.username,
-            password=foo_user.password,
-            description="foo token",
-            ttl=0,
-            opts=pulumi.ResourceOptions(depends_on=[foo_login]))
-        ```
 
         :param str resource_name: The name of the resource.
         :param CustomUserTokenArgs args: The arguments to use to populate this resource's properties.

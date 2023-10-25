@@ -17,25 +17,6 @@ namespace Pulumi.Rancher2
     /// * On destroy, provider will not delete feature from Rancher, just from tfstate
     /// 
     /// **Note:** Some Rancher features as `fleet`, may force a Rancher reboot once updated. The provider will wait until Rancher is rebooted. If you are modifying more than one feature in a row, and any of them requires a Rancher reboot, `pulumi up` may fail on first run. Run `pulumi up` again should work fine.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new rancher2 Feature
-    ///     var fleet = new Rancher2.Feature("fleet", new()
-    ///     {
-    ///         Value = "&lt;VALUE&gt;",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/feature:Feature")]
     public partial class Feature : global::Pulumi.CustomResource

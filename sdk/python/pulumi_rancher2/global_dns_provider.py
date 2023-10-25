@@ -43,22 +43,24 @@ class GlobalDnsProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             root_domain: pulumi.Input[str],
+             root_domain: Optional[pulumi.Input[str]] = None,
              alidns_config: Optional[pulumi.Input['GlobalDnsProviderAlidnsConfigArgs']] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              cloudflare_config: Optional[pulumi.Input['GlobalDnsProviderCloudflareConfigArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              route53_config: Optional[pulumi.Input['GlobalDnsProviderRoute53ConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rootDomain' in kwargs:
+        if root_domain is None and 'rootDomain' in kwargs:
             root_domain = kwargs['rootDomain']
-        if 'alidnsConfig' in kwargs:
+        if root_domain is None:
+            raise TypeError("Missing 'root_domain' argument")
+        if alidns_config is None and 'alidnsConfig' in kwargs:
             alidns_config = kwargs['alidnsConfig']
-        if 'cloudflareConfig' in kwargs:
+        if cloudflare_config is None and 'cloudflareConfig' in kwargs:
             cloudflare_config = kwargs['cloudflareConfig']
-        if 'route53Config' in kwargs:
+        if route53_config is None and 'route53Config' in kwargs:
             route53_config = kwargs['route53Config']
 
         _setter("root_domain", root_domain)
@@ -192,17 +194,17 @@ class _GlobalDnsProviderState:
              name: Optional[pulumi.Input[str]] = None,
              root_domain: Optional[pulumi.Input[str]] = None,
              route53_config: Optional[pulumi.Input['GlobalDnsProviderRoute53ConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alidnsConfig' in kwargs:
+        if alidns_config is None and 'alidnsConfig' in kwargs:
             alidns_config = kwargs['alidnsConfig']
-        if 'cloudflareConfig' in kwargs:
+        if cloudflare_config is None and 'cloudflareConfig' in kwargs:
             cloudflare_config = kwargs['cloudflareConfig']
-        if 'dnsProvider' in kwargs:
+        if dns_provider is None and 'dnsProvider' in kwargs:
             dns_provider = kwargs['dnsProvider']
-        if 'rootDomain' in kwargs:
+        if root_domain is None and 'rootDomain' in kwargs:
             root_domain = kwargs['rootDomain']
-        if 'route53Config' in kwargs:
+        if route53_config is None and 'route53Config' in kwargs:
             route53_config = kwargs['route53Config']
 
         if alidns_config is not None:
@@ -326,50 +328,6 @@ class GlobalDnsProvider(pulumi.CustomResource):
         """
         Provides a Rancher V2 Global DNS Provider resource. This can be used to create Global DNS Providers for Rancher V2. Supported Global DNS Providers: `alidns, cloudflare, route53`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Global DNS Provider - alidns
-        foo = rancher2.GlobalDnsProvider("foo",
-            alidns_config=rancher2.GlobalDnsProviderAlidnsConfigArgs(
-                access_key="YYYYYYYYYYYYYYYYYYYY",
-                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-            ),
-            root_domain="example.com")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Global DNS Provider - cloudflare
-        foo = rancher2.GlobalDnsProvider("foo",
-            cloudflare_config=rancher2.GlobalDnsProviderCloudflareConfigArgs(
-                api_email="test@test.local",
-                api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                proxy_setting=True,
-            ),
-            root_domain="example.com")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Global DNS Provider - route53
-        foo = rancher2.GlobalDnsProvider("foo",
-            root_domain="example.com",
-            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
-                access_key="YYYYYYYYYYYYYYYYYYYY",
-                region="us-east-1",
-                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                zone_type="private",
-            ))
-        ```
-
         ## Import
 
         Global DNS Providers can be imported using the Rancher Global DNS Provider ID
@@ -393,50 +351,6 @@ class GlobalDnsProvider(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher V2 Global DNS Provider resource. This can be used to create Global DNS Providers for Rancher V2. Supported Global DNS Providers: `alidns, cloudflare, route53`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Global DNS Provider - alidns
-        foo = rancher2.GlobalDnsProvider("foo",
-            alidns_config=rancher2.GlobalDnsProviderAlidnsConfigArgs(
-                access_key="YYYYYYYYYYYYYYYYYYYY",
-                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-            ),
-            root_domain="example.com")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Global DNS Provider - cloudflare
-        foo = rancher2.GlobalDnsProvider("foo",
-            cloudflare_config=rancher2.GlobalDnsProviderCloudflareConfigArgs(
-                api_email="test@test.local",
-                api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                proxy_setting=True,
-            ),
-            root_domain="example.com")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Global DNS Provider - route53
-        foo = rancher2.GlobalDnsProvider("foo",
-            root_domain="example.com",
-            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
-                access_key="YYYYYYYYYYYYYYYYYYYY",
-                region="us-east-1",
-                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                zone_type="private",
-            ))
-        ```
 
         ## Import
 
@@ -481,29 +395,17 @@ class GlobalDnsProvider(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GlobalDnsProviderArgs.__new__(GlobalDnsProviderArgs)
 
-            if alidns_config is not None and not isinstance(alidns_config, GlobalDnsProviderAlidnsConfigArgs):
-                alidns_config = alidns_config or {}
-                def _setter(key, value):
-                    alidns_config[key] = value
-                GlobalDnsProviderAlidnsConfigArgs._configure(_setter, **alidns_config)
+            alidns_config = _utilities.configure(alidns_config, GlobalDnsProviderAlidnsConfigArgs, True)
             __props__.__dict__["alidns_config"] = alidns_config
             __props__.__dict__["annotations"] = annotations
-            if cloudflare_config is not None and not isinstance(cloudflare_config, GlobalDnsProviderCloudflareConfigArgs):
-                cloudflare_config = cloudflare_config or {}
-                def _setter(key, value):
-                    cloudflare_config[key] = value
-                GlobalDnsProviderCloudflareConfigArgs._configure(_setter, **cloudflare_config)
+            cloudflare_config = _utilities.configure(cloudflare_config, GlobalDnsProviderCloudflareConfigArgs, True)
             __props__.__dict__["cloudflare_config"] = cloudflare_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             if root_domain is None and not opts.urn:
                 raise TypeError("Missing required property 'root_domain'")
             __props__.__dict__["root_domain"] = root_domain
-            if route53_config is not None and not isinstance(route53_config, GlobalDnsProviderRoute53ConfigArgs):
-                route53_config = route53_config or {}
-                def _setter(key, value):
-                    route53_config[key] = value
-                GlobalDnsProviderRoute53ConfigArgs._configure(_setter, **route53_config)
+            route53_config = _utilities.configure(route53_config, GlobalDnsProviderRoute53ConfigArgs, True)
             __props__.__dict__["route53_config"] = route53_config
             __props__.__dict__["dns_provider"] = None
         super(GlobalDnsProvider, __self__).__init__(

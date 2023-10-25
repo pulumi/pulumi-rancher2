@@ -16,63 +16,6 @@ import * as utilities from "./utilities";
  *
  * Note: In case of multiple resource modification in a row, `rollback` has preference.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Multi Cluster App
- * const foo = new rancher2.MultiClusterApp("foo", {
- *     answers: [{
- *         values: {
- *             ingressHost: "test.xip.io",
- *         },
- *     }],
- *     catalogName: "<catalog_name>",
- *     roles: ["project-member"],
- *     targets: [{
- *         projectId: "<project_id>",
- *     }],
- *     templateName: "<template_name>",
- *     templateVersion: "<template_version>",
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Multi Cluster App overriding answers
- * const foo = new rancher2.MultiClusterApp("foo", {
- *     answers: [
- *         {
- *             values: {
- *                 ingressHost: "test.xip.io",
- *             },
- *         },
- *         {
- *             projectId: "<project_id2>",
- *             values: {
- *                 ingressHost: "test2.xip.io",
- *             },
- *         },
- *     ],
- *     catalogName: "<catalog_name>",
- *     roles: ["project-member"],
- *     targets: [
- *         {
- *             projectId: "<project_id1>",
- *         },
- *         {
- *             projectId: "<project_id2>",
- *         },
- *     ],
- *     templateName: "<template_name>",
- *     templateVersion: "<template_version>",
- * });
- * ```
- *
  * ## Import
  *
  * Multi cluster app can be imported using the multi cluster app ID in the format `<multi_cluster_app_name>`

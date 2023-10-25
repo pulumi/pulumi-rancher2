@@ -14,34 +14,6 @@ namespace Pulumi.Rancher2
     /// 
     /// When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new rancher2 User
-    ///     var fooUser = new Rancher2.User("fooUser", new()
-    ///     {
-    ///         Username = "foo",
-    ///         Password = "changeme",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    ///     // Create a new rancher2 global_role_binding for User
-    ///     var fooGlobalRoleBinding = new Rancher2.GlobalRoleBinding("fooGlobalRoleBinding", new()
-    ///     {
-    ///         GlobalRoleId = "user-base",
-    ///         UserId = fooUser.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Users can be imported using the Rancher User ID

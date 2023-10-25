@@ -161,65 +161,65 @@ class ClusterArgs:
              rke2_config: Optional[pulumi.Input['ClusterRke2ConfigArgs']] = None,
              rke_config: Optional[pulumi.Input['ClusterRkeConfigArgs']] = None,
              windows_prefered_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'agentEnvVars' in kwargs:
+        if agent_env_vars is None and 'agentEnvVars' in kwargs:
             agent_env_vars = kwargs['agentEnvVars']
-        if 'aksConfig' in kwargs:
+        if aks_config is None and 'aksConfig' in kwargs:
             aks_config = kwargs['aksConfig']
-        if 'aksConfigV2' in kwargs:
+        if aks_config_v2 is None and 'aksConfigV2' in kwargs:
             aks_config_v2 = kwargs['aksConfigV2']
-        if 'clusterAgentDeploymentCustomizations' in kwargs:
+        if cluster_agent_deployment_customizations is None and 'clusterAgentDeploymentCustomizations' in kwargs:
             cluster_agent_deployment_customizations = kwargs['clusterAgentDeploymentCustomizations']
-        if 'clusterAuthEndpoint' in kwargs:
+        if cluster_auth_endpoint is None and 'clusterAuthEndpoint' in kwargs:
             cluster_auth_endpoint = kwargs['clusterAuthEndpoint']
-        if 'clusterMonitoringInput' in kwargs:
+        if cluster_monitoring_input is None and 'clusterMonitoringInput' in kwargs:
             cluster_monitoring_input = kwargs['clusterMonitoringInput']
-        if 'clusterTemplateAnswers' in kwargs:
+        if cluster_template_answers is None and 'clusterTemplateAnswers' in kwargs:
             cluster_template_answers = kwargs['clusterTemplateAnswers']
-        if 'clusterTemplateId' in kwargs:
+        if cluster_template_id is None and 'clusterTemplateId' in kwargs:
             cluster_template_id = kwargs['clusterTemplateId']
-        if 'clusterTemplateQuestions' in kwargs:
+        if cluster_template_questions is None and 'clusterTemplateQuestions' in kwargs:
             cluster_template_questions = kwargs['clusterTemplateQuestions']
-        if 'clusterTemplateRevisionId' in kwargs:
+        if cluster_template_revision_id is None and 'clusterTemplateRevisionId' in kwargs:
             cluster_template_revision_id = kwargs['clusterTemplateRevisionId']
-        if 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
+        if default_pod_security_admission_configuration_template_name is None and 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
             default_pod_security_admission_configuration_template_name = kwargs['defaultPodSecurityAdmissionConfigurationTemplateName']
-        if 'defaultPodSecurityPolicyTemplateId' in kwargs:
+        if default_pod_security_policy_template_id is None and 'defaultPodSecurityPolicyTemplateId' in kwargs:
             default_pod_security_policy_template_id = kwargs['defaultPodSecurityPolicyTemplateId']
-        if 'desiredAgentImage' in kwargs:
+        if desired_agent_image is None and 'desiredAgentImage' in kwargs:
             desired_agent_image = kwargs['desiredAgentImage']
-        if 'desiredAuthImage' in kwargs:
+        if desired_auth_image is None and 'desiredAuthImage' in kwargs:
             desired_auth_image = kwargs['desiredAuthImage']
-        if 'dockerRootDir' in kwargs:
+        if docker_root_dir is None and 'dockerRootDir' in kwargs:
             docker_root_dir = kwargs['dockerRootDir']
-        if 'eksConfig' in kwargs:
+        if eks_config is None and 'eksConfig' in kwargs:
             eks_config = kwargs['eksConfig']
-        if 'eksConfigV2' in kwargs:
+        if eks_config_v2 is None and 'eksConfigV2' in kwargs:
             eks_config_v2 = kwargs['eksConfigV2']
-        if 'enableClusterAlerting' in kwargs:
+        if enable_cluster_alerting is None and 'enableClusterAlerting' in kwargs:
             enable_cluster_alerting = kwargs['enableClusterAlerting']
-        if 'enableClusterMonitoring' in kwargs:
+        if enable_cluster_monitoring is None and 'enableClusterMonitoring' in kwargs:
             enable_cluster_monitoring = kwargs['enableClusterMonitoring']
-        if 'enableNetworkPolicy' in kwargs:
+        if enable_network_policy is None and 'enableNetworkPolicy' in kwargs:
             enable_network_policy = kwargs['enableNetworkPolicy']
-        if 'fleetAgentDeploymentCustomizations' in kwargs:
+        if fleet_agent_deployment_customizations is None and 'fleetAgentDeploymentCustomizations' in kwargs:
             fleet_agent_deployment_customizations = kwargs['fleetAgentDeploymentCustomizations']
-        if 'fleetWorkspaceName' in kwargs:
+        if fleet_workspace_name is None and 'fleetWorkspaceName' in kwargs:
             fleet_workspace_name = kwargs['fleetWorkspaceName']
-        if 'gkeConfig' in kwargs:
+        if gke_config is None and 'gkeConfig' in kwargs:
             gke_config = kwargs['gkeConfig']
-        if 'gkeConfigV2' in kwargs:
+        if gke_config_v2 is None and 'gkeConfigV2' in kwargs:
             gke_config_v2 = kwargs['gkeConfigV2']
-        if 'k3sConfig' in kwargs:
+        if k3s_config is None and 'k3sConfig' in kwargs:
             k3s_config = kwargs['k3sConfig']
-        if 'okeConfig' in kwargs:
+        if oke_config is None and 'okeConfig' in kwargs:
             oke_config = kwargs['okeConfig']
-        if 'rke2Config' in kwargs:
+        if rke2_config is None and 'rke2Config' in kwargs:
             rke2_config = kwargs['rke2Config']
-        if 'rkeConfig' in kwargs:
+        if rke_config is None and 'rkeConfig' in kwargs:
             rke_config = kwargs['rkeConfig']
-        if 'windowsPreferedCluster' in kwargs:
+        if windows_prefered_cluster is None and 'windowsPreferedCluster' in kwargs:
             windows_prefered_cluster = kwargs['windowsPreferedCluster']
 
         if agent_env_vars is not None:
@@ -876,79 +876,79 @@ class _ClusterState:
              rke_config: Optional[pulumi.Input['ClusterRkeConfigArgs']] = None,
              system_project_id: Optional[pulumi.Input[str]] = None,
              windows_prefered_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'agentEnvVars' in kwargs:
+        if agent_env_vars is None and 'agentEnvVars' in kwargs:
             agent_env_vars = kwargs['agentEnvVars']
-        if 'aksConfig' in kwargs:
+        if aks_config is None and 'aksConfig' in kwargs:
             aks_config = kwargs['aksConfig']
-        if 'aksConfigV2' in kwargs:
+        if aks_config_v2 is None and 'aksConfigV2' in kwargs:
             aks_config_v2 = kwargs['aksConfigV2']
-        if 'caCert' in kwargs:
+        if ca_cert is None and 'caCert' in kwargs:
             ca_cert = kwargs['caCert']
-        if 'clusterAgentDeploymentCustomizations' in kwargs:
+        if cluster_agent_deployment_customizations is None and 'clusterAgentDeploymentCustomizations' in kwargs:
             cluster_agent_deployment_customizations = kwargs['clusterAgentDeploymentCustomizations']
-        if 'clusterAuthEndpoint' in kwargs:
+        if cluster_auth_endpoint is None and 'clusterAuthEndpoint' in kwargs:
             cluster_auth_endpoint = kwargs['clusterAuthEndpoint']
-        if 'clusterMonitoringInput' in kwargs:
+        if cluster_monitoring_input is None and 'clusterMonitoringInput' in kwargs:
             cluster_monitoring_input = kwargs['clusterMonitoringInput']
-        if 'clusterRegistrationToken' in kwargs:
+        if cluster_registration_token is None and 'clusterRegistrationToken' in kwargs:
             cluster_registration_token = kwargs['clusterRegistrationToken']
-        if 'clusterTemplateAnswers' in kwargs:
+        if cluster_template_answers is None and 'clusterTemplateAnswers' in kwargs:
             cluster_template_answers = kwargs['clusterTemplateAnswers']
-        if 'clusterTemplateId' in kwargs:
+        if cluster_template_id is None and 'clusterTemplateId' in kwargs:
             cluster_template_id = kwargs['clusterTemplateId']
-        if 'clusterTemplateQuestions' in kwargs:
+        if cluster_template_questions is None and 'clusterTemplateQuestions' in kwargs:
             cluster_template_questions = kwargs['clusterTemplateQuestions']
-        if 'clusterTemplateRevisionId' in kwargs:
+        if cluster_template_revision_id is None and 'clusterTemplateRevisionId' in kwargs:
             cluster_template_revision_id = kwargs['clusterTemplateRevisionId']
-        if 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
+        if default_pod_security_admission_configuration_template_name is None and 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
             default_pod_security_admission_configuration_template_name = kwargs['defaultPodSecurityAdmissionConfigurationTemplateName']
-        if 'defaultPodSecurityPolicyTemplateId' in kwargs:
+        if default_pod_security_policy_template_id is None and 'defaultPodSecurityPolicyTemplateId' in kwargs:
             default_pod_security_policy_template_id = kwargs['defaultPodSecurityPolicyTemplateId']
-        if 'defaultProjectId' in kwargs:
+        if default_project_id is None and 'defaultProjectId' in kwargs:
             default_project_id = kwargs['defaultProjectId']
-        if 'desiredAgentImage' in kwargs:
+        if desired_agent_image is None and 'desiredAgentImage' in kwargs:
             desired_agent_image = kwargs['desiredAgentImage']
-        if 'desiredAuthImage' in kwargs:
+        if desired_auth_image is None and 'desiredAuthImage' in kwargs:
             desired_auth_image = kwargs['desiredAuthImage']
-        if 'dockerRootDir' in kwargs:
+        if docker_root_dir is None and 'dockerRootDir' in kwargs:
             docker_root_dir = kwargs['dockerRootDir']
-        if 'eksConfig' in kwargs:
+        if eks_config is None and 'eksConfig' in kwargs:
             eks_config = kwargs['eksConfig']
-        if 'eksConfigV2' in kwargs:
+        if eks_config_v2 is None and 'eksConfigV2' in kwargs:
             eks_config_v2 = kwargs['eksConfigV2']
-        if 'enableClusterAlerting' in kwargs:
+        if enable_cluster_alerting is None and 'enableClusterAlerting' in kwargs:
             enable_cluster_alerting = kwargs['enableClusterAlerting']
-        if 'enableClusterIstio' in kwargs:
+        if enable_cluster_istio is None and 'enableClusterIstio' in kwargs:
             enable_cluster_istio = kwargs['enableClusterIstio']
-        if 'enableClusterMonitoring' in kwargs:
+        if enable_cluster_monitoring is None and 'enableClusterMonitoring' in kwargs:
             enable_cluster_monitoring = kwargs['enableClusterMonitoring']
-        if 'enableNetworkPolicy' in kwargs:
+        if enable_network_policy is None and 'enableNetworkPolicy' in kwargs:
             enable_network_policy = kwargs['enableNetworkPolicy']
-        if 'fleetAgentDeploymentCustomizations' in kwargs:
+        if fleet_agent_deployment_customizations is None and 'fleetAgentDeploymentCustomizations' in kwargs:
             fleet_agent_deployment_customizations = kwargs['fleetAgentDeploymentCustomizations']
-        if 'fleetWorkspaceName' in kwargs:
+        if fleet_workspace_name is None and 'fleetWorkspaceName' in kwargs:
             fleet_workspace_name = kwargs['fleetWorkspaceName']
-        if 'gkeConfig' in kwargs:
+        if gke_config is None and 'gkeConfig' in kwargs:
             gke_config = kwargs['gkeConfig']
-        if 'gkeConfigV2' in kwargs:
+        if gke_config_v2 is None and 'gkeConfigV2' in kwargs:
             gke_config_v2 = kwargs['gkeConfigV2']
-        if 'istioEnabled' in kwargs:
+        if istio_enabled is None and 'istioEnabled' in kwargs:
             istio_enabled = kwargs['istioEnabled']
-        if 'k3sConfig' in kwargs:
+        if k3s_config is None and 'k3sConfig' in kwargs:
             k3s_config = kwargs['k3sConfig']
-        if 'kubeConfig' in kwargs:
+        if kube_config is None and 'kubeConfig' in kwargs:
             kube_config = kwargs['kubeConfig']
-        if 'okeConfig' in kwargs:
+        if oke_config is None and 'okeConfig' in kwargs:
             oke_config = kwargs['okeConfig']
-        if 'rke2Config' in kwargs:
+        if rke2_config is None and 'rke2Config' in kwargs:
             rke2_config = kwargs['rke2Config']
-        if 'rkeConfig' in kwargs:
+        if rke_config is None and 'rkeConfig' in kwargs:
             rke_config = kwargs['rkeConfig']
-        if 'systemProjectId' in kwargs:
+        if system_project_id is None and 'systemProjectId' in kwargs:
             system_project_id = kwargs['systemProjectId']
-        if 'windowsPreferedCluster' in kwargs:
+        if windows_prefered_cluster is None and 'windowsPreferedCluster' in kwargs:
             windows_prefered_cluster = kwargs['windowsPreferedCluster']
 
         if agent_env_vars is not None:
@@ -1579,461 +1579,6 @@ class Cluster(pulumi.CustomResource):
         ## Example Usage
 
         **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enable_cluster_monitoring = false`, `cloud_provider {}`, `name = ""`
-        ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
-
-        **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 RKE Cluster
-        foo_custom = rancher2.Cluster("foo-custom",
-            cluster_monitoring_input=rancher2.ClusterClusterMonitoringInputArgs(
-                answers={
-                    "exporter-kubelets.https": True,
-                    "exporter-node.enabled": True,
-                    "exporter-node.ports.metrics.port": 9796,
-                    "exporter-node.resources.limits.cpu": "200m",
-                    "exporter-node.resources.limits.memory": "200Mi",
-                    "grafana.persistence.enabled": False,
-                    "grafana.persistence.size": "10Gi",
-                    "grafana.persistence.storageClass": "default",
-                    "operator.resources.limits.memory": "500Mi",
-                    "prometheus.persistence.enabled": "false",
-                    "prometheus.persistence.size": "50Gi",
-                    "prometheus.persistence.storageClass": "default",
-                    "prometheus.persistent.useReleaseName": "true",
-                    "prometheus.resources.core.limits.cpu": "1000m",
-                    "prometheus.resources.core.limits.memory": "1500Mi",
-                    "prometheus.resources.core.requests.cpu": "750m",
-                    "prometheus.resources.core.requests.memory": "750Mi",
-                    "prometheus.retention": "12h",
-                },
-                version="0.1.0",
-            ),
-            description="Foo rancher2 custom cluster",
-            enable_cluster_monitoring=True,
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
-        ```
-        ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 RKE Cluster
-        foo_custom_cluster = rancher2.Cluster("foo-customCluster",
-            description="Foo rancher2 custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ),
-            enable_cluster_monitoring=True,
-            cluster_monitoring_input=rancher2.ClusterClusterMonitoringInputArgs(
-                answers={
-                    "exporter-kubelets.https": True,
-                    "exporter-node.enabled": True,
-                    "exporter-node.ports.metrics.port": 9796,
-                    "exporter-node.resources.limits.cpu": "200m",
-                    "exporter-node.resources.limits.memory": "200Mi",
-                    "grafana.persistence.enabled": False,
-                    "grafana.persistence.size": "10Gi",
-                    "grafana.persistence.storageClass": "default",
-                    "operator.resources.limits.memory": "500Mi",
-                    "prometheus.persistence.enabled": "false",
-                    "prometheus.persistence.size": "50Gi",
-                    "prometheus.persistence.storageClass": "default",
-                    "prometheus.persistent.useReleaseName": "true",
-                    "prometheus.resources.core.limits.cpu": "1000m",
-                    "prometheus.resources.core.limits.memory": "1500Mi",
-                    "prometheus.resources.core.requests.cpu": "750m",
-                    "prometheus.resources.core.requests.memory": "750Mi",
-                    "prometheus.retention": "12h",
-                },
-                version="0.1.0",
-            ))
-        # Create a new rancher2 Cluster Sync for foo-custom cluster
-        foo_custom_cluster_sync = rancher2.ClusterSync("foo-customClusterSync",
-            cluster_id=foo_custom_cluster.id,
-            wait_monitoring=foo_custom_cluster.enable_cluster_monitoring)
-        # Create a new rancher2 Namespace
-        foo_istio = rancher2.Namespace("foo-istio",
-            project_id=foo_custom_cluster_sync.system_project_id,
-            description="istio namespace")
-        # Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
-        istio = rancher2.App("istio",
-            catalog_name="system-library",
-            description="Terraform app acceptance test",
-            project_id=foo_istio.project_id,
-            template_name="rancher-istio",
-            template_version="0.1.1",
-            target_namespace=foo_istio.id,
-            answers={
-                "certmanager.enabled": False,
-                "enableCRDs": True,
-                "galley.enabled": True,
-                "gateways.enabled": False,
-                "gateways.istio-ingressgateway.resources.limits.cpu": "2000m",
-                "gateways.istio-ingressgateway.resources.limits.memory": "1024Mi",
-                "gateways.istio-ingressgateway.resources.requests.cpu": "100m",
-                "gateways.istio-ingressgateway.resources.requests.memory": "128Mi",
-                "gateways.istio-ingressgateway.type": "NodePort",
-                "global.monitoring.type": "cluster-monitoring",
-                "global.rancher.clusterId": foo_custom_cluster_sync.cluster_id,
-                "istio_cni.enabled": "false",
-                "istiocoredns.enabled": "false",
-                "kiali.enabled": "true",
-                "mixer.enabled": "true",
-                "mixer.policy.enabled": "true",
-                "mixer.policy.resources.limits.cpu": "4800m",
-                "mixer.policy.resources.limits.memory": "4096Mi",
-                "mixer.policy.resources.requests.cpu": "1000m",
-                "mixer.policy.resources.requests.memory": "1024Mi",
-                "mixer.telemetry.resources.limits.cpu": "4800m",
-                "mixer.telemetry.resources.limits.memory": "4096Mi",
-                "mixer.telemetry.resources.requests.cpu": "1000m",
-                "mixer.telemetry.resources.requests.memory": "1024Mi",
-                "mtls.enabled": False,
-                "nodeagent.enabled": False,
-                "pilot.enabled": True,
-                "pilot.resources.limits.cpu": "1000m",
-                "pilot.resources.limits.memory": "4096Mi",
-                "pilot.resources.requests.cpu": "500m",
-                "pilot.resources.requests.memory": "2048Mi",
-                "pilot.traceSampling": "1",
-                "security.enabled": True,
-                "sidecarInjectorWebhook.enabled": True,
-                "tracing.enabled": True,
-                "tracing.jaeger.resources.limits.cpu": "500m",
-                "tracing.jaeger.resources.limits.memory": "1024Mi",
-                "tracing.jaeger.resources.requests.cpu": "100m",
-                "tracing.jaeger.resources.requests.memory": "100Mi",
-            })
-        ```
-        ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 RKE Cluster
-        foo_custom = rancher2.Cluster("foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
-        # Create a new rancher2 Node Template
-        foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
-            description="foo test",
-            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-                ami="<AMI_ID>",
-                region="<REGION>",
-                security_groups=["<AWS_SECURITY_GROUP>"],
-                subnet_id="<SUBNET_ID>",
-                vpc_id="<VPC_ID>",
-                zone="<ZONE>",
-            ))
-        # Create a new rancher2 Node Pool
-        foo_node_pool = rancher2.NodePool("fooNodePool",
-            cluster_id=foo_custom.id,
-            hostname_prefix="foo-cluster-0",
-            node_template_id=foo_node_template.id,
-            quantity=3,
-            control_plane=True,
-            etcd=True,
-            worker=True)
-        ```
-        ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 cluster template
-        foo_cluster_template = rancher2.ClusterTemplate("fooClusterTemplate",
-            members=[rancher2.ClusterTemplateMemberArgs(
-                access_type="owner",
-                user_principal_id="local://user-XXXXX",
-            )],
-            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
-                name="V1",
-                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
-                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
-                            plugin="canal",
-                        ),
-                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
-                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
-                                creation="6h",
-                                retention="24h",
-                            ),
-                        ),
-                    ),
-                ),
-                default=True,
-            )],
-            description="Test cluster template v2")
-        # Create a new rancher2 RKE Cluster from template
-        foo_cluster = rancher2.Cluster("fooCluster",
-            cluster_template_id=foo_cluster_template.id,
-            cluster_template_revision_id=foo_cluster_template.template_revisions[0].id)
-        ```
-        ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo = rancher2.Cluster("foo",
-            description="Terraform custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-                services=rancher2.ClusterRkeConfigServicesArgs(
-                    etcd=rancher2.ClusterRkeConfigServicesEtcdArgs(
-                        creation="6h",
-                        retention="24h",
-                    ),
-                    kube_api=rancher2.ClusterRkeConfigServicesKubeApiArgs(
-                        audit_log=rancher2.ClusterRkeConfigServicesKubeApiAuditLogArgs(
-                            configuration=rancher2.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs(
-                                format="json",
-                                max_age=5,
-                                max_backup=5,
-                                max_size=100,
-                                path="-",
-                                policy=\"\"\"apiVersion: audit.k8s.io/v1
-        kind: Policy
-        metadata:
-          creationTimestamp: null
-        omitStages:
-        - RequestReceived
-        rules:
-        - level: RequestResponse
-          resources:
-          - resources:
-            - pods
-
-        \"\"\",
-                            ),
-                            enabled=True,
-                        ),
-                    ),
-                ),
-                upgrade_strategy=rancher2.ClusterRkeConfigUpgradeStrategyArgs(
-                    drain=True,
-                    max_unavailable_worker="20%",
-                ),
-            ))
-        ```
-        ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo = rancher2.Cluster("foo",
-            cluster_agent_deployment_customizations=[rancher2.ClusterClusterAgentDeploymentCustomizationArgs(
-                append_tolerations=[rancher2.ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs(
-                    effect="NoSchedule",
-                    key="tolerate/control-plane",
-                    value="true",
-                )],
-                override_affinity=\"\"\"{
-          "nodeAffinity": {
-            "requiredDuringSchedulingIgnoredDuringExecution": {
-              "nodeSelectorTerms": [{
-                "matchExpressions": [{
-                  "key": "not.this/nodepool",
-                  "operator": "In",
-                  "values": [
-                    "true"
-                  ]
-                }]
-              }]
-            }
-          }
-        }
-
-        \"\"\",
-                override_resource_requirements=[rancher2.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs(
-                    cpu_limit="800",
-                    cpu_request="500",
-                    memory_limit="800",
-                    memory_request="500",
-                )],
-            )],
-            description="Terraform cluster with agent customization",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
-        ```
-        ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
-            description="foo test",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ))
-        foo_cluster = rancher2.Cluster("fooCluster",
-            description="Terraform EKS cluster",
-            eks_config_v2=rancher2.ClusterEksConfigV2Args(
-                cloud_credential_id=foo_cloud_credential.id,
-                name="<CLUSTER_NAME>",
-                region="<EKS_REGION>",
-                imported=True,
-            ))
-        ```
-        ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
-            description="foo test",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ))
-        foo_cluster = rancher2.Cluster("fooCluster",
-            description="Terraform EKS cluster",
-            eks_config_v2=rancher2.ClusterEksConfigV2Args(
-                cloud_credential_id=foo_cloud_credential.id,
-                region="<EKS_REGION>",
-                kubernetes_version="1.24",
-                logging_types=[
-                    "audit",
-                    "api",
-                ],
-                node_groups=[
-                    rancher2.ClusterEksConfigV2NodeGroupArgs(
-                        name="node_group1",
-                        instance_type="t3.medium",
-                        desired_size=3,
-                        max_size=5,
-                    ),
-                    rancher2.ClusterEksConfigV2NodeGroupArgs(
-                        name="node_group2",
-                        instance_type="m5.xlarge",
-                        desired_size=2,
-                        max_size=3,
-                        node_role="arn:aws:iam::role/test-NodeInstanceRole",
-                    ),
-                ],
-                private_access=True,
-                public_access=False,
-            ))
-        ```
-        ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
-            description="foo test",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ))
-        foo_cluster = rancher2.Cluster("fooCluster",
-            description="Terraform EKS cluster",
-            eks_config_v2=rancher2.ClusterEksConfigV2Args(
-                cloud_credential_id=foo_cloud_credential.id,
-                region="<EKS_REGION>",
-                kubernetes_version="1.24",
-                logging_types=[
-                    "audit",
-                    "api",
-                ],
-                node_groups=[rancher2.ClusterEksConfigV2NodeGroupArgs(
-                    desired_size=3,
-                    max_size=5,
-                    name="node_group1",
-                    launch_templates=[rancher2.ClusterEksConfigV2NodeGroupLaunchTemplateArgs(
-                        id="<EC2_LAUNCH_TEMPLATE_ID>",
-                        version=1,
-                    )],
-                )],
-                private_access=True,
-                public_access=True,
-            ))
-        ```
-        ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_aks = rancher2.CloudCredential("foo-aks", azure_credential_config=rancher2.CloudCredentialAzureCredentialConfigArgs(
-            client_id="<CLIENT_ID>",
-            client_secret="<CLIENT_SECRET>",
-            subscription_id="<SUBSCRIPTION_ID>",
-        ))
-        foo = rancher2.Cluster("foo",
-            description="Terraform AKS cluster",
-            aks_config_v2=rancher2.ClusterAksConfigV2Args(
-                cloud_credential_id=foo_aks.id,
-                resource_group="<RESOURCE_GROUP>",
-                resource_location="<RESOURCE_LOCATION>",
-                dns_prefix="<DNS_PREFIX>",
-                kubernetes_version="1.24.6",
-                network_plugin="<NETWORK_PLUGIN>",
-                node_pools=[
-                    rancher2.ClusterAksConfigV2NodePoolArgs(
-                        availability_zones=[
-                            "1",
-                            "2",
-                            "3",
-                        ],
-                        name="<NODEPOOL_NAME_1>",
-                        mode="System",
-                        count=1,
-                        orchestrator_version="1.21.2",
-                        os_disk_size_gb=128,
-                        vm_size="Standard_DS2_v2",
-                    ),
-                    rancher2.ClusterAksConfigV2NodePoolArgs(
-                        availability_zones=[
-                            "1",
-                            "2",
-                            "3",
-                        ],
-                        name="<NODEPOOL_NAME_2>",
-                        count=1,
-                        mode="User",
-                        orchestrator_version="1.21.2",
-                        os_disk_size_gb=128,
-                        vm_size="Standard_DS2_v2",
-                        max_surge="25%",
-                        labels={
-                            "test1": "data1",
-                            "test2": "data2",
-                        },
-                        taints=["none:PreferNoSchedule"],
-                    ),
-                ],
-            ))
-        ```
 
         ## Import
 
@@ -2092,461 +1637,6 @@ class Cluster(pulumi.CustomResource):
         ## Example Usage
 
         **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enable_cluster_monitoring = false`, `cloud_provider {}`, `name = ""`
-        ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
-
-        **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 RKE Cluster
-        foo_custom = rancher2.Cluster("foo-custom",
-            cluster_monitoring_input=rancher2.ClusterClusterMonitoringInputArgs(
-                answers={
-                    "exporter-kubelets.https": True,
-                    "exporter-node.enabled": True,
-                    "exporter-node.ports.metrics.port": 9796,
-                    "exporter-node.resources.limits.cpu": "200m",
-                    "exporter-node.resources.limits.memory": "200Mi",
-                    "grafana.persistence.enabled": False,
-                    "grafana.persistence.size": "10Gi",
-                    "grafana.persistence.storageClass": "default",
-                    "operator.resources.limits.memory": "500Mi",
-                    "prometheus.persistence.enabled": "false",
-                    "prometheus.persistence.size": "50Gi",
-                    "prometheus.persistence.storageClass": "default",
-                    "prometheus.persistent.useReleaseName": "true",
-                    "prometheus.resources.core.limits.cpu": "1000m",
-                    "prometheus.resources.core.limits.memory": "1500Mi",
-                    "prometheus.resources.core.requests.cpu": "750m",
-                    "prometheus.resources.core.requests.memory": "750Mi",
-                    "prometheus.retention": "12h",
-                },
-                version="0.1.0",
-            ),
-            description="Foo rancher2 custom cluster",
-            enable_cluster_monitoring=True,
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
-        ```
-        ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 RKE Cluster
-        foo_custom_cluster = rancher2.Cluster("foo-customCluster",
-            description="Foo rancher2 custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ),
-            enable_cluster_monitoring=True,
-            cluster_monitoring_input=rancher2.ClusterClusterMonitoringInputArgs(
-                answers={
-                    "exporter-kubelets.https": True,
-                    "exporter-node.enabled": True,
-                    "exporter-node.ports.metrics.port": 9796,
-                    "exporter-node.resources.limits.cpu": "200m",
-                    "exporter-node.resources.limits.memory": "200Mi",
-                    "grafana.persistence.enabled": False,
-                    "grafana.persistence.size": "10Gi",
-                    "grafana.persistence.storageClass": "default",
-                    "operator.resources.limits.memory": "500Mi",
-                    "prometheus.persistence.enabled": "false",
-                    "prometheus.persistence.size": "50Gi",
-                    "prometheus.persistence.storageClass": "default",
-                    "prometheus.persistent.useReleaseName": "true",
-                    "prometheus.resources.core.limits.cpu": "1000m",
-                    "prometheus.resources.core.limits.memory": "1500Mi",
-                    "prometheus.resources.core.requests.cpu": "750m",
-                    "prometheus.resources.core.requests.memory": "750Mi",
-                    "prometheus.retention": "12h",
-                },
-                version="0.1.0",
-            ))
-        # Create a new rancher2 Cluster Sync for foo-custom cluster
-        foo_custom_cluster_sync = rancher2.ClusterSync("foo-customClusterSync",
-            cluster_id=foo_custom_cluster.id,
-            wait_monitoring=foo_custom_cluster.enable_cluster_monitoring)
-        # Create a new rancher2 Namespace
-        foo_istio = rancher2.Namespace("foo-istio",
-            project_id=foo_custom_cluster_sync.system_project_id,
-            description="istio namespace")
-        # Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
-        istio = rancher2.App("istio",
-            catalog_name="system-library",
-            description="Terraform app acceptance test",
-            project_id=foo_istio.project_id,
-            template_name="rancher-istio",
-            template_version="0.1.1",
-            target_namespace=foo_istio.id,
-            answers={
-                "certmanager.enabled": False,
-                "enableCRDs": True,
-                "galley.enabled": True,
-                "gateways.enabled": False,
-                "gateways.istio-ingressgateway.resources.limits.cpu": "2000m",
-                "gateways.istio-ingressgateway.resources.limits.memory": "1024Mi",
-                "gateways.istio-ingressgateway.resources.requests.cpu": "100m",
-                "gateways.istio-ingressgateway.resources.requests.memory": "128Mi",
-                "gateways.istio-ingressgateway.type": "NodePort",
-                "global.monitoring.type": "cluster-monitoring",
-                "global.rancher.clusterId": foo_custom_cluster_sync.cluster_id,
-                "istio_cni.enabled": "false",
-                "istiocoredns.enabled": "false",
-                "kiali.enabled": "true",
-                "mixer.enabled": "true",
-                "mixer.policy.enabled": "true",
-                "mixer.policy.resources.limits.cpu": "4800m",
-                "mixer.policy.resources.limits.memory": "4096Mi",
-                "mixer.policy.resources.requests.cpu": "1000m",
-                "mixer.policy.resources.requests.memory": "1024Mi",
-                "mixer.telemetry.resources.limits.cpu": "4800m",
-                "mixer.telemetry.resources.limits.memory": "4096Mi",
-                "mixer.telemetry.resources.requests.cpu": "1000m",
-                "mixer.telemetry.resources.requests.memory": "1024Mi",
-                "mtls.enabled": False,
-                "nodeagent.enabled": False,
-                "pilot.enabled": True,
-                "pilot.resources.limits.cpu": "1000m",
-                "pilot.resources.limits.memory": "4096Mi",
-                "pilot.resources.requests.cpu": "500m",
-                "pilot.resources.requests.memory": "2048Mi",
-                "pilot.traceSampling": "1",
-                "security.enabled": True,
-                "sidecarInjectorWebhook.enabled": True,
-                "tracing.enabled": True,
-                "tracing.jaeger.resources.limits.cpu": "500m",
-                "tracing.jaeger.resources.limits.memory": "1024Mi",
-                "tracing.jaeger.resources.requests.cpu": "100m",
-                "tracing.jaeger.resources.requests.memory": "100Mi",
-            })
-        ```
-        ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 RKE Cluster
-        foo_custom = rancher2.Cluster("foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
-        # Create a new rancher2 Node Template
-        foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
-            description="foo test",
-            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-                ami="<AMI_ID>",
-                region="<REGION>",
-                security_groups=["<AWS_SECURITY_GROUP>"],
-                subnet_id="<SUBNET_ID>",
-                vpc_id="<VPC_ID>",
-                zone="<ZONE>",
-            ))
-        # Create a new rancher2 Node Pool
-        foo_node_pool = rancher2.NodePool("fooNodePool",
-            cluster_id=foo_custom.id,
-            hostname_prefix="foo-cluster-0",
-            node_template_id=foo_node_template.id,
-            quantity=3,
-            control_plane=True,
-            etcd=True,
-            worker=True)
-        ```
-        ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 cluster template
-        foo_cluster_template = rancher2.ClusterTemplate("fooClusterTemplate",
-            members=[rancher2.ClusterTemplateMemberArgs(
-                access_type="owner",
-                user_principal_id="local://user-XXXXX",
-            )],
-            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
-                name="V1",
-                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
-                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
-                            plugin="canal",
-                        ),
-                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
-                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
-                                creation="6h",
-                                retention="24h",
-                            ),
-                        ),
-                    ),
-                ),
-                default=True,
-            )],
-            description="Test cluster template v2")
-        # Create a new rancher2 RKE Cluster from template
-        foo_cluster = rancher2.Cluster("fooCluster",
-            cluster_template_id=foo_cluster_template.id,
-            cluster_template_revision_id=foo_cluster_template.template_revisions[0].id)
-        ```
-        ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo = rancher2.Cluster("foo",
-            description="Terraform custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-                services=rancher2.ClusterRkeConfigServicesArgs(
-                    etcd=rancher2.ClusterRkeConfigServicesEtcdArgs(
-                        creation="6h",
-                        retention="24h",
-                    ),
-                    kube_api=rancher2.ClusterRkeConfigServicesKubeApiArgs(
-                        audit_log=rancher2.ClusterRkeConfigServicesKubeApiAuditLogArgs(
-                            configuration=rancher2.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs(
-                                format="json",
-                                max_age=5,
-                                max_backup=5,
-                                max_size=100,
-                                path="-",
-                                policy=\"\"\"apiVersion: audit.k8s.io/v1
-        kind: Policy
-        metadata:
-          creationTimestamp: null
-        omitStages:
-        - RequestReceived
-        rules:
-        - level: RequestResponse
-          resources:
-          - resources:
-            - pods
-
-        \"\"\",
-                            ),
-                            enabled=True,
-                        ),
-                    ),
-                ),
-                upgrade_strategy=rancher2.ClusterRkeConfigUpgradeStrategyArgs(
-                    drain=True,
-                    max_unavailable_worker="20%",
-                ),
-            ))
-        ```
-        ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo = rancher2.Cluster("foo",
-            cluster_agent_deployment_customizations=[rancher2.ClusterClusterAgentDeploymentCustomizationArgs(
-                append_tolerations=[rancher2.ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs(
-                    effect="NoSchedule",
-                    key="tolerate/control-plane",
-                    value="true",
-                )],
-                override_affinity=\"\"\"{
-          "nodeAffinity": {
-            "requiredDuringSchedulingIgnoredDuringExecution": {
-              "nodeSelectorTerms": [{
-                "matchExpressions": [{
-                  "key": "not.this/nodepool",
-                  "operator": "In",
-                  "values": [
-                    "true"
-                  ]
-                }]
-              }]
-            }
-          }
-        }
-
-        \"\"\",
-                override_resource_requirements=[rancher2.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs(
-                    cpu_limit="800",
-                    cpu_request="500",
-                    memory_limit="800",
-                    memory_request="500",
-                )],
-            )],
-            description="Terraform cluster with agent customization",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
-        ```
-        ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
-            description="foo test",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ))
-        foo_cluster = rancher2.Cluster("fooCluster",
-            description="Terraform EKS cluster",
-            eks_config_v2=rancher2.ClusterEksConfigV2Args(
-                cloud_credential_id=foo_cloud_credential.id,
-                name="<CLUSTER_NAME>",
-                region="<EKS_REGION>",
-                imported=True,
-            ))
-        ```
-        ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
-            description="foo test",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ))
-        foo_cluster = rancher2.Cluster("fooCluster",
-            description="Terraform EKS cluster",
-            eks_config_v2=rancher2.ClusterEksConfigV2Args(
-                cloud_credential_id=foo_cloud_credential.id,
-                region="<EKS_REGION>",
-                kubernetes_version="1.24",
-                logging_types=[
-                    "audit",
-                    "api",
-                ],
-                node_groups=[
-                    rancher2.ClusterEksConfigV2NodeGroupArgs(
-                        name="node_group1",
-                        instance_type="t3.medium",
-                        desired_size=3,
-                        max_size=5,
-                    ),
-                    rancher2.ClusterEksConfigV2NodeGroupArgs(
-                        name="node_group2",
-                        instance_type="m5.xlarge",
-                        desired_size=2,
-                        max_size=3,
-                        node_role="arn:aws:iam::role/test-NodeInstanceRole",
-                    ),
-                ],
-                private_access=True,
-                public_access=False,
-            ))
-        ```
-        ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
-            description="foo test",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ))
-        foo_cluster = rancher2.Cluster("fooCluster",
-            description="Terraform EKS cluster",
-            eks_config_v2=rancher2.ClusterEksConfigV2Args(
-                cloud_credential_id=foo_cloud_credential.id,
-                region="<EKS_REGION>",
-                kubernetes_version="1.24",
-                logging_types=[
-                    "audit",
-                    "api",
-                ],
-                node_groups=[rancher2.ClusterEksConfigV2NodeGroupArgs(
-                    desired_size=3,
-                    max_size=5,
-                    name="node_group1",
-                    launch_templates=[rancher2.ClusterEksConfigV2NodeGroupLaunchTemplateArgs(
-                        id="<EC2_LAUNCH_TEMPLATE_ID>",
-                        version=1,
-                    )],
-                )],
-                private_access=True,
-                public_access=True,
-            ))
-        ```
-        ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_aks = rancher2.CloudCredential("foo-aks", azure_credential_config=rancher2.CloudCredentialAzureCredentialConfigArgs(
-            client_id="<CLIENT_ID>",
-            client_secret="<CLIENT_SECRET>",
-            subscription_id="<SUBSCRIPTION_ID>",
-        ))
-        foo = rancher2.Cluster("foo",
-            description="Terraform AKS cluster",
-            aks_config_v2=rancher2.ClusterAksConfigV2Args(
-                cloud_credential_id=foo_aks.id,
-                resource_group="<RESOURCE_GROUP>",
-                resource_location="<RESOURCE_LOCATION>",
-                dns_prefix="<DNS_PREFIX>",
-                kubernetes_version="1.24.6",
-                network_plugin="<NETWORK_PLUGIN>",
-                node_pools=[
-                    rancher2.ClusterAksConfigV2NodePoolArgs(
-                        availability_zones=[
-                            "1",
-                            "2",
-                            "3",
-                        ],
-                        name="<NODEPOOL_NAME_1>",
-                        mode="System",
-                        count=1,
-                        orchestrator_version="1.21.2",
-                        os_disk_size_gb=128,
-                        vm_size="Standard_DS2_v2",
-                    ),
-                    rancher2.ClusterAksConfigV2NodePoolArgs(
-                        availability_zones=[
-                            "1",
-                            "2",
-                            "3",
-                        ],
-                        name="<NODEPOOL_NAME_2>",
-                        count=1,
-                        mode="User",
-                        orchestrator_version="1.21.2",
-                        os_disk_size_gb=128,
-                        vm_size="Standard_DS2_v2",
-                        max_surge="25%",
-                        labels={
-                            "test1": "data1",
-                            "test2": "data2",
-                        },
-                        taints=["none:PreferNoSchedule"],
-                    ),
-                ],
-            ))
-        ```
 
         ## Import
 
@@ -2619,37 +1709,17 @@ class Cluster(pulumi.CustomResource):
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
             __props__.__dict__["agent_env_vars"] = agent_env_vars
-            if aks_config is not None and not isinstance(aks_config, ClusterAksConfigArgs):
-                aks_config = aks_config or {}
-                def _setter(key, value):
-                    aks_config[key] = value
-                ClusterAksConfigArgs._configure(_setter, **aks_config)
+            aks_config = _utilities.configure(aks_config, ClusterAksConfigArgs, True)
             __props__.__dict__["aks_config"] = aks_config
-            if aks_config_v2 is not None and not isinstance(aks_config_v2, ClusterAksConfigV2Args):
-                aks_config_v2 = aks_config_v2 or {}
-                def _setter(key, value):
-                    aks_config_v2[key] = value
-                ClusterAksConfigV2Args._configure(_setter, **aks_config_v2)
+            aks_config_v2 = _utilities.configure(aks_config_v2, ClusterAksConfigV2Args, True)
             __props__.__dict__["aks_config_v2"] = aks_config_v2
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["cluster_agent_deployment_customizations"] = cluster_agent_deployment_customizations
-            if cluster_auth_endpoint is not None and not isinstance(cluster_auth_endpoint, ClusterClusterAuthEndpointArgs):
-                cluster_auth_endpoint = cluster_auth_endpoint or {}
-                def _setter(key, value):
-                    cluster_auth_endpoint[key] = value
-                ClusterClusterAuthEndpointArgs._configure(_setter, **cluster_auth_endpoint)
+            cluster_auth_endpoint = _utilities.configure(cluster_auth_endpoint, ClusterClusterAuthEndpointArgs, True)
             __props__.__dict__["cluster_auth_endpoint"] = cluster_auth_endpoint
-            if cluster_monitoring_input is not None and not isinstance(cluster_monitoring_input, ClusterClusterMonitoringInputArgs):
-                cluster_monitoring_input = cluster_monitoring_input or {}
-                def _setter(key, value):
-                    cluster_monitoring_input[key] = value
-                ClusterClusterMonitoringInputArgs._configure(_setter, **cluster_monitoring_input)
+            cluster_monitoring_input = _utilities.configure(cluster_monitoring_input, ClusterClusterMonitoringInputArgs, True)
             __props__.__dict__["cluster_monitoring_input"] = cluster_monitoring_input
-            if cluster_template_answers is not None and not isinstance(cluster_template_answers, ClusterClusterTemplateAnswersArgs):
-                cluster_template_answers = cluster_template_answers or {}
-                def _setter(key, value):
-                    cluster_template_answers[key] = value
-                ClusterClusterTemplateAnswersArgs._configure(_setter, **cluster_template_answers)
+            cluster_template_answers = _utilities.configure(cluster_template_answers, ClusterClusterTemplateAnswersArgs, True)
             __props__.__dict__["cluster_template_answers"] = cluster_template_answers
             __props__.__dict__["cluster_template_id"] = cluster_template_id
             __props__.__dict__["cluster_template_questions"] = cluster_template_questions
@@ -2661,60 +1731,28 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["desired_auth_image"] = desired_auth_image
             __props__.__dict__["docker_root_dir"] = docker_root_dir
             __props__.__dict__["driver"] = driver
-            if eks_config is not None and not isinstance(eks_config, ClusterEksConfigArgs):
-                eks_config = eks_config or {}
-                def _setter(key, value):
-                    eks_config[key] = value
-                ClusterEksConfigArgs._configure(_setter, **eks_config)
+            eks_config = _utilities.configure(eks_config, ClusterEksConfigArgs, True)
             __props__.__dict__["eks_config"] = eks_config
-            if eks_config_v2 is not None and not isinstance(eks_config_v2, ClusterEksConfigV2Args):
-                eks_config_v2 = eks_config_v2 or {}
-                def _setter(key, value):
-                    eks_config_v2[key] = value
-                ClusterEksConfigV2Args._configure(_setter, **eks_config_v2)
+            eks_config_v2 = _utilities.configure(eks_config_v2, ClusterEksConfigV2Args, True)
             __props__.__dict__["eks_config_v2"] = eks_config_v2
             __props__.__dict__["enable_cluster_alerting"] = enable_cluster_alerting
             __props__.__dict__["enable_cluster_monitoring"] = enable_cluster_monitoring
             __props__.__dict__["enable_network_policy"] = enable_network_policy
             __props__.__dict__["fleet_agent_deployment_customizations"] = fleet_agent_deployment_customizations
             __props__.__dict__["fleet_workspace_name"] = fleet_workspace_name
-            if gke_config is not None and not isinstance(gke_config, ClusterGkeConfigArgs):
-                gke_config = gke_config or {}
-                def _setter(key, value):
-                    gke_config[key] = value
-                ClusterGkeConfigArgs._configure(_setter, **gke_config)
+            gke_config = _utilities.configure(gke_config, ClusterGkeConfigArgs, True)
             __props__.__dict__["gke_config"] = gke_config
-            if gke_config_v2 is not None and not isinstance(gke_config_v2, ClusterGkeConfigV2Args):
-                gke_config_v2 = gke_config_v2 or {}
-                def _setter(key, value):
-                    gke_config_v2[key] = value
-                ClusterGkeConfigV2Args._configure(_setter, **gke_config_v2)
+            gke_config_v2 = _utilities.configure(gke_config_v2, ClusterGkeConfigV2Args, True)
             __props__.__dict__["gke_config_v2"] = gke_config_v2
-            if k3s_config is not None and not isinstance(k3s_config, ClusterK3sConfigArgs):
-                k3s_config = k3s_config or {}
-                def _setter(key, value):
-                    k3s_config[key] = value
-                ClusterK3sConfigArgs._configure(_setter, **k3s_config)
+            k3s_config = _utilities.configure(k3s_config, ClusterK3sConfigArgs, True)
             __props__.__dict__["k3s_config"] = k3s_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if oke_config is not None and not isinstance(oke_config, ClusterOkeConfigArgs):
-                oke_config = oke_config or {}
-                def _setter(key, value):
-                    oke_config[key] = value
-                ClusterOkeConfigArgs._configure(_setter, **oke_config)
+            oke_config = _utilities.configure(oke_config, ClusterOkeConfigArgs, True)
             __props__.__dict__["oke_config"] = oke_config
-            if rke2_config is not None and not isinstance(rke2_config, ClusterRke2ConfigArgs):
-                rke2_config = rke2_config or {}
-                def _setter(key, value):
-                    rke2_config[key] = value
-                ClusterRke2ConfigArgs._configure(_setter, **rke2_config)
+            rke2_config = _utilities.configure(rke2_config, ClusterRke2ConfigArgs, True)
             __props__.__dict__["rke2_config"] = rke2_config
-            if rke_config is not None and not isinstance(rke_config, ClusterRkeConfigArgs):
-                rke_config = rke_config or {}
-                def _setter(key, value):
-                    rke_config[key] = value
-                ClusterRkeConfigArgs._configure(_setter, **rke_config)
+            rke_config = _utilities.configure(rke_config, ClusterRkeConfigArgs, True)
             __props__.__dict__["rke_config"] = rke_config
             __props__.__dict__["windows_prefered_cluster"] = windows_prefered_cluster
             __props__.__dict__["ca_cert"] = None

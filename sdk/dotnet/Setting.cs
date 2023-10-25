@@ -16,25 +16,6 @@ namespace Pulumi.Rancher2
     /// 
     /// On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new rancher2 Setting
-    ///     var foo = new Rancher2.Setting("foo", new()
-    ///     {
-    ///         Value = "&lt;VALUE&gt;",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Setting can be imported using the Rancher setting ID.

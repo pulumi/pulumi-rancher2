@@ -7,55 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher V2 Global DNS resource. This can be used to create Global DNS records for Rancher V2.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Global DNS Provider
- * const fooGlobalDnsProvider = new rancher2.GlobalDnsProvider("fooGlobalDnsProvider", {
- *     rootDomain: "example.com",
- *     route53Config: {
- *         accessKey: "YYYYYYYYYYYYYYYYYYYY",
- *         secretKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
- *         zoneType: "private",
- *         region: "us-east-1",
- *     },
- * });
- * // Create a new rancher2 Global DNS using project IDs
- * const fooGlobalDns = new rancher2.GlobalDns("fooGlobalDns", {
- *     fqdn: "foo.example.com",
- *     providerId: fooGlobalDnsProvider.id,
- *     projectIds: [
- *         "project1",
- *         "project2",
- *     ],
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Global DNS Provider
- * const fooGlobalDnsProvider = new rancher2.GlobalDnsProvider("fooGlobalDnsProvider", {
- *     rootDomain: "example.com",
- *     route53Config: {
- *         accessKey: "YYYYYYYYYYYYYYYYYYYY",
- *         secretKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
- *         zoneType: "private",
- *         region: "us-east-1",
- *     },
- * });
- * // Create a new rancher2 Global DNS using MultiClusterApp ID
- * const fooGlobalDns = new rancher2.GlobalDns("fooGlobalDns", {
- *     fqdn: "foo.example.com",
- *     providerId: fooGlobalDnsProvider.id,
- *     multiClusterAppId: "<MCA_ID>",
- * });
- * ```
- *
  * ## Import
  *
  * Global DNS Entry can be imported using the Rancher Global DNS ID

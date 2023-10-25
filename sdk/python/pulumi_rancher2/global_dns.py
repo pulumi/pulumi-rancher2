@@ -47,21 +47,25 @@ class GlobalDnsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fqdn: pulumi.Input[str],
-             provider_id: pulumi.Input[str],
+             fqdn: Optional[pulumi.Input[str]] = None,
+             provider_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              multi_cluster_app_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'providerId' in kwargs:
+        if fqdn is None:
+            raise TypeError("Missing 'fqdn' argument")
+        if provider_id is None and 'providerId' in kwargs:
             provider_id = kwargs['providerId']
-        if 'multiClusterAppId' in kwargs:
+        if provider_id is None:
+            raise TypeError("Missing 'provider_id' argument")
+        if multi_cluster_app_id is None and 'multiClusterAppId' in kwargs:
             multi_cluster_app_id = kwargs['multiClusterAppId']
-        if 'projectIds' in kwargs:
+        if project_ids is None and 'projectIds' in kwargs:
             project_ids = kwargs['projectIds']
 
         _setter("fqdn", fqdn)
@@ -220,13 +224,13 @@ class _GlobalDnsState:
              project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              provider_id: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'multiClusterAppId' in kwargs:
+        if multi_cluster_app_id is None and 'multiClusterAppId' in kwargs:
             multi_cluster_app_id = kwargs['multiClusterAppId']
-        if 'projectIds' in kwargs:
+        if project_ids is None and 'projectIds' in kwargs:
             project_ids = kwargs['projectIds']
-        if 'providerId' in kwargs:
+        if provider_id is None and 'providerId' in kwargs:
             provider_id = kwargs['providerId']
 
         if annotations is not None:
@@ -360,51 +364,6 @@ class GlobalDns(pulumi.CustomResource):
         """
         Provides a Rancher V2 Global DNS resource. This can be used to create Global DNS records for Rancher V2.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Global DNS Provider
-        foo_global_dns_provider = rancher2.GlobalDnsProvider("fooGlobalDnsProvider",
-            root_domain="example.com",
-            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
-                access_key="YYYYYYYYYYYYYYYYYYYY",
-                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                zone_type="private",
-                region="us-east-1",
-            ))
-        # Create a new rancher2 Global DNS using project IDs
-        foo_global_dns = rancher2.GlobalDns("fooGlobalDns",
-            fqdn="foo.example.com",
-            provider_id=foo_global_dns_provider.id,
-            project_ids=[
-                "project1",
-                "project2",
-            ])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Global DNS Provider
-        foo_global_dns_provider = rancher2.GlobalDnsProvider("fooGlobalDnsProvider",
-            root_domain="example.com",
-            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
-                access_key="YYYYYYYYYYYYYYYYYYYY",
-                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                zone_type="private",
-                region="us-east-1",
-            ))
-        # Create a new rancher2 Global DNS using MultiClusterApp ID
-        foo_global_dns = rancher2.GlobalDns("fooGlobalDns",
-            fqdn="foo.example.com",
-            provider_id=foo_global_dns_provider.id,
-            multi_cluster_app_id="<MCA_ID>")
-        ```
-
         ## Import
 
         Global DNS Entry can be imported using the Rancher Global DNS ID
@@ -432,51 +391,6 @@ class GlobalDns(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher V2 Global DNS resource. This can be used to create Global DNS records for Rancher V2.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Global DNS Provider
-        foo_global_dns_provider = rancher2.GlobalDnsProvider("fooGlobalDnsProvider",
-            root_domain="example.com",
-            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
-                access_key="YYYYYYYYYYYYYYYYYYYY",
-                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                zone_type="private",
-                region="us-east-1",
-            ))
-        # Create a new rancher2 Global DNS using project IDs
-        foo_global_dns = rancher2.GlobalDns("fooGlobalDns",
-            fqdn="foo.example.com",
-            provider_id=foo_global_dns_provider.id,
-            project_ids=[
-                "project1",
-                "project2",
-            ])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Global DNS Provider
-        foo_global_dns_provider = rancher2.GlobalDnsProvider("fooGlobalDnsProvider",
-            root_domain="example.com",
-            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
-                access_key="YYYYYYYYYYYYYYYYYYYY",
-                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                zone_type="private",
-                region="us-east-1",
-            ))
-        # Create a new rancher2 Global DNS using MultiClusterApp ID
-        foo_global_dns = rancher2.GlobalDns("fooGlobalDns",
-            fqdn="foo.example.com",
-            provider_id=foo_global_dns_provider.id,
-            multi_cluster_app_id="<MCA_ID>")
-        ```
 
         ## Import
 

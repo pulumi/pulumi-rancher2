@@ -50,7 +50,7 @@ class ProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_url: pulumi.Input[str],
+             api_url: Optional[pulumi.Input[str]] = None,
              access_key: Optional[pulumi.Input[str]] = None,
              bootstrap: Optional[pulumi.Input[bool]] = None,
              ca_certs: Optional[pulumi.Input[str]] = None,
@@ -59,17 +59,19 @@ class ProviderArgs:
              secret_key: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[str]] = None,
              token_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiUrl' in kwargs:
+        if api_url is None and 'apiUrl' in kwargs:
             api_url = kwargs['apiUrl']
-        if 'accessKey' in kwargs:
+        if api_url is None:
+            raise TypeError("Missing 'api_url' argument")
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'caCerts' in kwargs:
+        if ca_certs is None and 'caCerts' in kwargs:
             ca_certs = kwargs['caCerts']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'tokenKey' in kwargs:
+        if token_key is None and 'tokenKey' in kwargs:
             token_key = kwargs['tokenKey']
 
         _setter("api_url", api_url)

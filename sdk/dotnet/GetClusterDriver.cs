@@ -13,56 +13,12 @@ namespace Pulumi.Rancher2
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Rancher2.GetClusterDriver.Invoke(new()
-        ///     {
-        ///         Name = "foo",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterDriverResult> InvokeAsync(GetClusterDriverArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Rancher2.GetClusterDriver.Invoke(new()
-        ///     {
-        ///         Name = "foo",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterDriverResult> Invoke(GetClusterDriverInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverInvokeArgs(), options.WithDefaults());

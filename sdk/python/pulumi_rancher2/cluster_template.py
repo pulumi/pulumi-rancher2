@@ -49,9 +49,9 @@ class ClusterTemplateArgs:
              members: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'templateRevisions' in kwargs:
+        if template_revisions is None and 'templateRevisions' in kwargs:
             template_revisions = kwargs['templateRevisions']
 
         if annotations is not None:
@@ -180,11 +180,11 @@ class _ClusterTemplateState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultRevisionId' in kwargs:
+        if default_revision_id is None and 'defaultRevisionId' in kwargs:
             default_revision_id = kwargs['defaultRevisionId']
-        if 'templateRevisions' in kwargs:
+        if template_revisions is None and 'templateRevisions' in kwargs:
             template_revisions = kwargs['templateRevisions']
 
         if annotations is not None:
@@ -304,74 +304,6 @@ class ClusterTemplate(pulumi.CustomResource):
 
         Cluster Templates are available from Rancher v2.3.x and above.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Cluster Template
-        foo = rancher2.ClusterTemplate("foo",
-            description="Terraform cluster template foo",
-            members=[rancher2.ClusterTemplateMemberArgs(
-                access_type="owner",
-                user_principal_id="local://user-XXXXX",
-            )],
-            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
-                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
-                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
-                            plugin="canal",
-                        ),
-                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
-                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
-                                creation="6h",
-                                retention="24h",
-                            ),
-                        ),
-                    ),
-                ),
-                default=True,
-                name="V1",
-            )])
-        ```
-
-        Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Cluster Template
-        foo = rancher2.ClusterTemplate("foo",
-            description="Terraform cluster template foo",
-            members=[rancher2.ClusterTemplateMemberArgs(
-                access_type="owner",
-                user_principal_id="local://user-XXXXX",
-            )],
-            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
-                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
-                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
-                            plugin="canal",
-                        ),
-                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
-                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
-                                creation="6h",
-                                retention="24h",
-                            ),
-                        ),
-                        upgrade_strategy=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs(
-                            drain=True,
-                            max_unavailable_worker="20%",
-                        ),
-                    ),
-                ),
-                default=True,
-                name="V1",
-            )])
-        ```
-
         ## Import
 
         Cluster Template can be imported using the rancher Cluster Template ID
@@ -399,74 +331,6 @@ class ClusterTemplate(pulumi.CustomResource):
         Provides a Rancher v2 Cluster Template resource. This can be used to create Cluster Templates for Rancher v2 RKE clusters and retrieve their information.
 
         Cluster Templates are available from Rancher v2.3.x and above.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Cluster Template
-        foo = rancher2.ClusterTemplate("foo",
-            description="Terraform cluster template foo",
-            members=[rancher2.ClusterTemplateMemberArgs(
-                access_type="owner",
-                user_principal_id="local://user-XXXXX",
-            )],
-            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
-                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
-                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
-                            plugin="canal",
-                        ),
-                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
-                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
-                                creation="6h",
-                                retention="24h",
-                            ),
-                        ),
-                    ),
-                ),
-                default=True,
-                name="V1",
-            )])
-        ```
-
-        Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Cluster Template
-        foo = rancher2.ClusterTemplate("foo",
-            description="Terraform cluster template foo",
-            members=[rancher2.ClusterTemplateMemberArgs(
-                access_type="owner",
-                user_principal_id="local://user-XXXXX",
-            )],
-            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
-                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
-                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
-                            plugin="canal",
-                        ),
-                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
-                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
-                                creation="6h",
-                                retention="24h",
-                            ),
-                        ),
-                        upgrade_strategy=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs(
-                            drain=True,
-                            max_unavailable_worker="20%",
-                        ),
-                    ),
-                ),
-                default=True,
-                name="V1",
-            )])
-        ```
 
         ## Import
 

@@ -13,33 +13,6 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
-//				FleetNamespace: pulumi.StringRef("fleet-ns"),
-//				Name:           "foo",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupClusterV2(ctx *pulumi.Context, args *LookupClusterV2Args, opts ...pulumi.InvokeOption) (*LookupClusterV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterV2Result

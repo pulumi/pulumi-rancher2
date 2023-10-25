@@ -60,7 +60,7 @@ class MachineConfigV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             generate_name: pulumi.Input[str],
+             generate_name: Optional[pulumi.Input[str]] = None,
              amazonec2_config: Optional[pulumi.Input['MachineConfigV2Amazonec2ConfigArgs']] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              azure_config: Optional[pulumi.Input['MachineConfigV2AzureConfigArgs']] = None,
@@ -71,25 +71,27 @@ class MachineConfigV2Args:
              linode_config: Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']] = None,
              openstack_config: Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']] = None,
              vsphere_config: Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'generateName' in kwargs:
+        if generate_name is None and 'generateName' in kwargs:
             generate_name = kwargs['generateName']
-        if 'amazonec2Config' in kwargs:
+        if generate_name is None:
+            raise TypeError("Missing 'generate_name' argument")
+        if amazonec2_config is None and 'amazonec2Config' in kwargs:
             amazonec2_config = kwargs['amazonec2Config']
-        if 'azureConfig' in kwargs:
+        if azure_config is None and 'azureConfig' in kwargs:
             azure_config = kwargs['azureConfig']
-        if 'digitaloceanConfig' in kwargs:
+        if digitalocean_config is None and 'digitaloceanConfig' in kwargs:
             digitalocean_config = kwargs['digitaloceanConfig']
-        if 'fleetNamespace' in kwargs:
+        if fleet_namespace is None and 'fleetNamespace' in kwargs:
             fleet_namespace = kwargs['fleetNamespace']
-        if 'harvesterConfig' in kwargs:
+        if harvester_config is None and 'harvesterConfig' in kwargs:
             harvester_config = kwargs['harvesterConfig']
-        if 'linodeConfig' in kwargs:
+        if linode_config is None and 'linodeConfig' in kwargs:
             linode_config = kwargs['linodeConfig']
-        if 'openstackConfig' in kwargs:
+        if openstack_config is None and 'openstackConfig' in kwargs:
             openstack_config = kwargs['openstackConfig']
-        if 'vsphereConfig' in kwargs:
+        if vsphere_config is None and 'vsphereConfig' in kwargs:
             vsphere_config = kwargs['vsphereConfig']
 
         _setter("generate_name", generate_name)
@@ -319,27 +321,27 @@ class _MachineConfigV2State:
              openstack_config: Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']] = None,
              resource_version: Optional[pulumi.Input[str]] = None,
              vsphere_config: Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'amazonec2Config' in kwargs:
+        if amazonec2_config is None and 'amazonec2Config' in kwargs:
             amazonec2_config = kwargs['amazonec2Config']
-        if 'azureConfig' in kwargs:
+        if azure_config is None and 'azureConfig' in kwargs:
             azure_config = kwargs['azureConfig']
-        if 'digitaloceanConfig' in kwargs:
+        if digitalocean_config is None and 'digitaloceanConfig' in kwargs:
             digitalocean_config = kwargs['digitaloceanConfig']
-        if 'fleetNamespace' in kwargs:
+        if fleet_namespace is None and 'fleetNamespace' in kwargs:
             fleet_namespace = kwargs['fleetNamespace']
-        if 'generateName' in kwargs:
+        if generate_name is None and 'generateName' in kwargs:
             generate_name = kwargs['generateName']
-        if 'harvesterConfig' in kwargs:
+        if harvester_config is None and 'harvesterConfig' in kwargs:
             harvester_config = kwargs['harvesterConfig']
-        if 'linodeConfig' in kwargs:
+        if linode_config is None and 'linodeConfig' in kwargs:
             linode_config = kwargs['linodeConfig']
-        if 'openstackConfig' in kwargs:
+        if openstack_config is None and 'openstackConfig' in kwargs:
             openstack_config = kwargs['openstackConfig']
-        if 'resourceVersion' in kwargs:
+        if resource_version is None and 'resourceVersion' in kwargs:
             resource_version = kwargs['resourceVersion']
-        if 'vsphereConfig' in kwargs:
+        if vsphere_config is None and 'vsphereConfig' in kwargs:
             vsphere_config = kwargs['vsphereConfig']
 
         if amazonec2_config is not None:
@@ -566,57 +568,6 @@ class MachineConfigV2(pulumi.CustomResource):
 
         **Note:** This resource is used by
 
-        ## Example Usage
-        ### Using the Harvester Node Driver
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
-        # Create a new Cloud Credential for an imported Harvester cluster
-        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
-            cluster_type="imported",
-            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
-        ))
-        # Create a new rancher2 machine config v2 using harvester node_driver
-        foo_harvester_v2 = rancher2.MachineConfigV2("foo-harvester-v2",
-            generate_name="foo-harvester-v2",
-            harvester_config=rancher2.MachineConfigV2HarvesterConfigArgs(
-                vm_namespace="default",
-                cpu_count="2",
-                memory_size="4",
-                disk_info=\"\"\"    {
-                "disks": [{
-                    "imageName": "harvester-public/image-57hzg",
-                    "size": 40,
-                    "bootOrder": 1
-                }]
-            }
-            EOF,
-            networkInfo = <<EOF
-            {
-                "interfaces": [{
-                    "networkName": "harvester-public/vlan1"
-                }]
-            }
-            EOF,
-            sshUser = "ubuntu",
-            userData = <<EOF
-            package_update: true
-            packages:
-              - qemu-guest-agent
-              - iptables
-            runcmd:
-              - - systemctl
-                - enable
-                - '--now'
-                - qemu-guest-agent.service
-        \"\"\",
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['MachineConfigV2Amazonec2ConfigArgs']] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
@@ -645,57 +596,6 @@ class MachineConfigV2(pulumi.CustomResource):
         `amazonec2`, `azure`, `digitalocean`, `harvester`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
 
         **Note:** This resource is used by
-
-        ## Example Usage
-        ### Using the Harvester Node Driver
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
-        # Create a new Cloud Credential for an imported Harvester cluster
-        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
-            cluster_type="imported",
-            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
-        ))
-        # Create a new rancher2 machine config v2 using harvester node_driver
-        foo_harvester_v2 = rancher2.MachineConfigV2("foo-harvester-v2",
-            generate_name="foo-harvester-v2",
-            harvester_config=rancher2.MachineConfigV2HarvesterConfigArgs(
-                vm_namespace="default",
-                cpu_count="2",
-                memory_size="4",
-                disk_info=\"\"\"    {
-                "disks": [{
-                    "imageName": "harvester-public/image-57hzg",
-                    "size": 40,
-                    "bootOrder": 1
-                }]
-            }
-            EOF,
-            networkInfo = <<EOF
-            {
-                "interfaces": [{
-                    "networkName": "harvester-public/vlan1"
-                }]
-            }
-            EOF,
-            sshUser = "ubuntu",
-            userData = <<EOF
-            package_update: true
-            packages:
-              - qemu-guest-agent
-              - iptables
-            runcmd:
-              - - systemctl
-                - enable
-                - '--now'
-                - qemu-guest-agent.service
-        \"\"\",
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param MachineConfigV2Args args: The arguments to use to populate this resource's properties.
@@ -736,53 +636,25 @@ class MachineConfigV2(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MachineConfigV2Args.__new__(MachineConfigV2Args)
 
-            if amazonec2_config is not None and not isinstance(amazonec2_config, MachineConfigV2Amazonec2ConfigArgs):
-                amazonec2_config = amazonec2_config or {}
-                def _setter(key, value):
-                    amazonec2_config[key] = value
-                MachineConfigV2Amazonec2ConfigArgs._configure(_setter, **amazonec2_config)
+            amazonec2_config = _utilities.configure(amazonec2_config, MachineConfigV2Amazonec2ConfigArgs, True)
             __props__.__dict__["amazonec2_config"] = amazonec2_config
             __props__.__dict__["annotations"] = annotations
-            if azure_config is not None and not isinstance(azure_config, MachineConfigV2AzureConfigArgs):
-                azure_config = azure_config or {}
-                def _setter(key, value):
-                    azure_config[key] = value
-                MachineConfigV2AzureConfigArgs._configure(_setter, **azure_config)
+            azure_config = _utilities.configure(azure_config, MachineConfigV2AzureConfigArgs, True)
             __props__.__dict__["azure_config"] = azure_config
-            if digitalocean_config is not None and not isinstance(digitalocean_config, MachineConfigV2DigitaloceanConfigArgs):
-                digitalocean_config = digitalocean_config or {}
-                def _setter(key, value):
-                    digitalocean_config[key] = value
-                MachineConfigV2DigitaloceanConfigArgs._configure(_setter, **digitalocean_config)
+            digitalocean_config = _utilities.configure(digitalocean_config, MachineConfigV2DigitaloceanConfigArgs, True)
             __props__.__dict__["digitalocean_config"] = digitalocean_config
             __props__.__dict__["fleet_namespace"] = fleet_namespace
             if generate_name is None and not opts.urn:
                 raise TypeError("Missing required property 'generate_name'")
             __props__.__dict__["generate_name"] = generate_name
-            if harvester_config is not None and not isinstance(harvester_config, MachineConfigV2HarvesterConfigArgs):
-                harvester_config = harvester_config or {}
-                def _setter(key, value):
-                    harvester_config[key] = value
-                MachineConfigV2HarvesterConfigArgs._configure(_setter, **harvester_config)
+            harvester_config = _utilities.configure(harvester_config, MachineConfigV2HarvesterConfigArgs, True)
             __props__.__dict__["harvester_config"] = harvester_config
             __props__.__dict__["labels"] = labels
-            if linode_config is not None and not isinstance(linode_config, MachineConfigV2LinodeConfigArgs):
-                linode_config = linode_config or {}
-                def _setter(key, value):
-                    linode_config[key] = value
-                MachineConfigV2LinodeConfigArgs._configure(_setter, **linode_config)
+            linode_config = _utilities.configure(linode_config, MachineConfigV2LinodeConfigArgs, True)
             __props__.__dict__["linode_config"] = linode_config
-            if openstack_config is not None and not isinstance(openstack_config, MachineConfigV2OpenstackConfigArgs):
-                openstack_config = openstack_config or {}
-                def _setter(key, value):
-                    openstack_config[key] = value
-                MachineConfigV2OpenstackConfigArgs._configure(_setter, **openstack_config)
+            openstack_config = _utilities.configure(openstack_config, MachineConfigV2OpenstackConfigArgs, True)
             __props__.__dict__["openstack_config"] = openstack_config
-            if vsphere_config is not None and not isinstance(vsphere_config, MachineConfigV2VsphereConfigArgs):
-                vsphere_config = vsphere_config or {}
-                def _setter(key, value):
-                    vsphere_config[key] = value
-                MachineConfigV2VsphereConfigArgs._configure(_setter, **vsphere_config)
+            vsphere_config = _utilities.configure(vsphere_config, MachineConfigV2VsphereConfigArgs, True)
             __props__.__dict__["vsphere_config"] = vsphere_config
             __props__.__dict__["kind"] = None
             __props__.__dict__["name"] = None
