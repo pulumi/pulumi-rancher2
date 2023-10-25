@@ -6,6 +6,18 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 global role binding.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getGlobalRoleBinding({
+ *     globalRoleId: "foo_id",
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getGlobalRoleBinding(args: GetGlobalRoleBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalRoleBindingResult> {
 
@@ -59,6 +71,18 @@ export interface GetGlobalRoleBindingResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 global role binding.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getGlobalRoleBinding({
+ *     globalRoleId: "foo_id",
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getGlobalRoleBindingOutput(args: GetGlobalRoleBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalRoleBindingResult> {
     return pulumi.output(args).apply((a: any) => getGlobalRoleBinding(a, opts))

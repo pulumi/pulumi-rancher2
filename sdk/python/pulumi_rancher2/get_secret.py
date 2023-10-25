@@ -130,6 +130,25 @@ def get_secret(name: Optional[str] = None,
     - Project secret: Available to all namespaces in the `project_id`
     - Namespaced secret: Available to just `namespace_id` in the `project_id`
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_secret(name="<name>",
+        project_id="<project_id>")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_secret(name="<name>",
+        namespace_id="<namespace_id>",
+        project_id="<project_id>")
+    ```
+
 
     :param str name: The name of the secret (string)
     :param str namespace_id: The namespace id where to assign the namespaced secret (string)
@@ -164,6 +183,25 @@ def get_secret_output(name: Optional[pulumi.Input[str]] = None,
     Depending of the availability, there are 2 types of Rancher v2 secrets:
     - Project secret: Available to all namespaces in the `project_id`
     - Namespaced secret: Available to just `namespace_id` in the `project_id`
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_secret(name="<name>",
+        project_id="<project_id>")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_secret(name="<name>",
+        namespace_id="<namespace_id>",
+        project_id="<project_id>")
+    ```
 
 
     :param str name: The name of the secret (string)

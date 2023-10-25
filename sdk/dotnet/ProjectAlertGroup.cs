@@ -12,6 +12,28 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new Rancher2 Project Alert Group
+    ///     var foo = new Rancher2.ProjectAlertGroup("foo", new()
+    ///     {
+    ///         Description = "Terraform project alert group",
+    ///         GroupIntervalSeconds = 300,
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         RepeatIntervalSeconds = 3600,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Project Alert Group can be imported using the Rancher project alert group ID

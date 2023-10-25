@@ -15,6 +15,652 @@ namespace Pulumi.Rancher2
     /// ## Example Usage
     /// 
     /// **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enable_cluster_monitoring = false`, `cloud_provider {}`, `name = ""`
+    /// ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
+    /// 
+    /// **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 RKE Cluster
+    ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
+    ///     {
+    ///         ClusterMonitoringInput = new Rancher2.Inputs.ClusterClusterMonitoringInputArgs
+    ///         {
+    ///             Answers = 
+    ///             {
+    ///                 { "exporter-kubelets.https", true },
+    ///                 { "exporter-node.enabled", true },
+    ///                 { "exporter-node.ports.metrics.port", 9796 },
+    ///                 { "exporter-node.resources.limits.cpu", "200m" },
+    ///                 { "exporter-node.resources.limits.memory", "200Mi" },
+    ///                 { "grafana.persistence.enabled", false },
+    ///                 { "grafana.persistence.size", "10Gi" },
+    ///                 { "grafana.persistence.storageClass", "default" },
+    ///                 { "operator.resources.limits.memory", "500Mi" },
+    ///                 { "prometheus.persistence.enabled", "false" },
+    ///                 { "prometheus.persistence.size", "50Gi" },
+    ///                 { "prometheus.persistence.storageClass", "default" },
+    ///                 { "prometheus.persistent.useReleaseName", "true" },
+    ///                 { "prometheus.resources.core.limits.cpu", "1000m" },
+    ///                 { "prometheus.resources.core.limits.memory", "1500Mi" },
+    ///                 { "prometheus.resources.core.requests.cpu", "750m" },
+    ///                 { "prometheus.resources.core.requests.memory", "750Mi" },
+    ///                 { "prometheus.retention", "12h" },
+    ///             },
+    ///             Version = "0.1.0",
+    ///         },
+    ///         Description = "Foo rancher2 custom cluster",
+    ///         EnableClusterMonitoring = true,
+    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///         {
+    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
+    ///             {
+    ///                 Plugin = "canal",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 RKE Cluster
+    ///     var foo_customCluster = new Rancher2.Cluster("foo-customCluster", new()
+    ///     {
+    ///         Description = "Foo rancher2 custom cluster",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///         {
+    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
+    ///             {
+    ///                 Plugin = "canal",
+    ///             },
+    ///         },
+    ///         EnableClusterMonitoring = true,
+    ///         ClusterMonitoringInput = new Rancher2.Inputs.ClusterClusterMonitoringInputArgs
+    ///         {
+    ///             Answers = 
+    ///             {
+    ///                 { "exporter-kubelets.https", true },
+    ///                 { "exporter-node.enabled", true },
+    ///                 { "exporter-node.ports.metrics.port", 9796 },
+    ///                 { "exporter-node.resources.limits.cpu", "200m" },
+    ///                 { "exporter-node.resources.limits.memory", "200Mi" },
+    ///                 { "grafana.persistence.enabled", false },
+    ///                 { "grafana.persistence.size", "10Gi" },
+    ///                 { "grafana.persistence.storageClass", "default" },
+    ///                 { "operator.resources.limits.memory", "500Mi" },
+    ///                 { "prometheus.persistence.enabled", "false" },
+    ///                 { "prometheus.persistence.size", "50Gi" },
+    ///                 { "prometheus.persistence.storageClass", "default" },
+    ///                 { "prometheus.persistent.useReleaseName", "true" },
+    ///                 { "prometheus.resources.core.limits.cpu", "1000m" },
+    ///                 { "prometheus.resources.core.limits.memory", "1500Mi" },
+    ///                 { "prometheus.resources.core.requests.cpu", "750m" },
+    ///                 { "prometheus.resources.core.requests.memory", "750Mi" },
+    ///                 { "prometheus.retention", "12h" },
+    ///             },
+    ///             Version = "0.1.0",
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Cluster Sync for foo-custom cluster
+    ///     var foo_customClusterSync = new Rancher2.ClusterSync("foo-customClusterSync", new()
+    ///     {
+    ///         ClusterId = foo_customCluster.Id,
+    ///         WaitMonitoring = foo_customCluster.EnableClusterMonitoring,
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Namespace
+    ///     var foo_istio = new Rancher2.Namespace("foo-istio", new()
+    ///     {
+    ///         ProjectId = foo_customClusterSync.SystemProjectId,
+    ///         Description = "istio namespace",
+    ///     });
+    /// 
+    ///     // Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
+    ///     var istio = new Rancher2.App("istio", new()
+    ///     {
+    ///         CatalogName = "system-library",
+    ///         Description = "Terraform app acceptance test",
+    ///         ProjectId = foo_istio.ProjectId,
+    ///         TemplateName = "rancher-istio",
+    ///         TemplateVersion = "0.1.1",
+    ///         TargetNamespace = foo_istio.Id,
+    ///         Answers = 
+    ///         {
+    ///             { "certmanager.enabled", false },
+    ///             { "enableCRDs", true },
+    ///             { "galley.enabled", true },
+    ///             { "gateways.enabled", false },
+    ///             { "gateways.istio-ingressgateway.resources.limits.cpu", "2000m" },
+    ///             { "gateways.istio-ingressgateway.resources.limits.memory", "1024Mi" },
+    ///             { "gateways.istio-ingressgateway.resources.requests.cpu", "100m" },
+    ///             { "gateways.istio-ingressgateway.resources.requests.memory", "128Mi" },
+    ///             { "gateways.istio-ingressgateway.type", "NodePort" },
+    ///             { "global.monitoring.type", "cluster-monitoring" },
+    ///             { "global.rancher.clusterId", foo_customClusterSync.ClusterId },
+    ///             { "istio_cni.enabled", "false" },
+    ///             { "istiocoredns.enabled", "false" },
+    ///             { "kiali.enabled", "true" },
+    ///             { "mixer.enabled", "true" },
+    ///             { "mixer.policy.enabled", "true" },
+    ///             { "mixer.policy.resources.limits.cpu", "4800m" },
+    ///             { "mixer.policy.resources.limits.memory", "4096Mi" },
+    ///             { "mixer.policy.resources.requests.cpu", "1000m" },
+    ///             { "mixer.policy.resources.requests.memory", "1024Mi" },
+    ///             { "mixer.telemetry.resources.limits.cpu", "4800m" },
+    ///             { "mixer.telemetry.resources.limits.memory", "4096Mi" },
+    ///             { "mixer.telemetry.resources.requests.cpu", "1000m" },
+    ///             { "mixer.telemetry.resources.requests.memory", "1024Mi" },
+    ///             { "mtls.enabled", false },
+    ///             { "nodeagent.enabled", false },
+    ///             { "pilot.enabled", true },
+    ///             { "pilot.resources.limits.cpu", "1000m" },
+    ///             { "pilot.resources.limits.memory", "4096Mi" },
+    ///             { "pilot.resources.requests.cpu", "500m" },
+    ///             { "pilot.resources.requests.memory", "2048Mi" },
+    ///             { "pilot.traceSampling", "1" },
+    ///             { "security.enabled", true },
+    ///             { "sidecarInjectorWebhook.enabled", true },
+    ///             { "tracing.enabled", true },
+    ///             { "tracing.jaeger.resources.limits.cpu", "500m" },
+    ///             { "tracing.jaeger.resources.limits.memory", "1024Mi" },
+    ///             { "tracing.jaeger.resources.requests.cpu", "100m" },
+    ///             { "tracing.jaeger.resources.requests.memory", "100Mi" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 RKE Cluster
+    ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
+    ///     {
+    ///         Description = "Foo rancher2 custom cluster",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///         {
+    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
+    ///             {
+    ///                 Plugin = "canal",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Node Template
+    ///     var fooNodeTemplate = new Rancher2.NodeTemplate("fooNodeTemplate", new()
+    ///     {
+    ///         Description = "foo test",
+    ///         Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
+    ///         {
+    ///             AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
+    ///             SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///             Ami = "&lt;AMI_ID&gt;",
+    ///             Region = "&lt;REGION&gt;",
+    ///             SecurityGroups = new[]
+    ///             {
+    ///                 "&lt;AWS_SECURITY_GROUP&gt;",
+    ///             },
+    ///             SubnetId = "&lt;SUBNET_ID&gt;",
+    ///             VpcId = "&lt;VPC_ID&gt;",
+    ///             Zone = "&lt;ZONE&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Node Pool
+    ///     var fooNodePool = new Rancher2.NodePool("fooNodePool", new()
+    ///     {
+    ///         ClusterId = foo_custom.Id,
+    ///         HostnamePrefix = "foo-cluster-0",
+    ///         NodeTemplateId = fooNodeTemplate.Id,
+    ///         Quantity = 3,
+    ///         ControlPlane = true,
+    ///         Etcd = true,
+    ///         Worker = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 cluster template
+    ///     var fooClusterTemplate = new Rancher2.ClusterTemplate("fooClusterTemplate", new()
+    ///     {
+    ///         Members = new[]
+    ///         {
+    ///             new Rancher2.Inputs.ClusterTemplateMemberArgs
+    ///             {
+    ///                 AccessType = "owner",
+    ///                 UserPrincipalId = "local://user-XXXXX",
+    ///             },
+    ///         },
+    ///         TemplateRevisions = new[]
+    ///         {
+    ///             new Rancher2.Inputs.ClusterTemplateTemplateRevisionArgs
+    ///             {
+    ///                 Name = "V1",
+    ///                 ClusterConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigArgs
+    ///                 {
+    ///                     RkeConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs
+    ///                     {
+    ///                         Network = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs
+    ///                         {
+    ///                             Plugin = "canal",
+    ///                         },
+    ///                         Services = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs
+    ///                         {
+    ///                             Etcd = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs
+    ///                             {
+    ///                                 Creation = "6h",
+    ///                                 Retention = "24h",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Default = true,
+    ///             },
+    ///         },
+    ///         Description = "Test cluster template v2",
+    ///     });
+    /// 
+    ///     // Create a new rancher2 RKE Cluster from template
+    ///     var fooCluster = new Rancher2.Cluster("fooCluster", new()
+    ///     {
+    ///         ClusterTemplateId = fooClusterTemplate.Id,
+    ///         ClusterTemplateRevisionId = fooClusterTemplate.TemplateRevisions.Apply(templateRevisions =&gt; templateRevisions[0].Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.Cluster("foo", new()
+    ///     {
+    ///         Description = "Terraform custom cluster",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///         {
+    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
+    ///             {
+    ///                 Plugin = "canal",
+    ///             },
+    ///             Services = new Rancher2.Inputs.ClusterRkeConfigServicesArgs
+    ///             {
+    ///                 Etcd = new Rancher2.Inputs.ClusterRkeConfigServicesEtcdArgs
+    ///                 {
+    ///                     Creation = "6h",
+    ///                     Retention = "24h",
+    ///                 },
+    ///                 KubeApi = new Rancher2.Inputs.ClusterRkeConfigServicesKubeApiArgs
+    ///                 {
+    ///                     AuditLog = new Rancher2.Inputs.ClusterRkeConfigServicesKubeApiAuditLogArgs
+    ///                     {
+    ///                         Configuration = new Rancher2.Inputs.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs
+    ///                         {
+    ///                             Format = "json",
+    ///                             MaxAge = 5,
+    ///                             MaxBackup = 5,
+    ///                             MaxSize = 100,
+    ///                             Path = "-",
+    ///                             Policy = @"apiVersion: audit.k8s.io/v1
+    /// kind: Policy
+    /// metadata:
+    ///   creationTimestamp: null
+    /// omitStages:
+    /// - RequestReceived
+    /// rules:
+    /// - level: RequestResponse
+    ///   resources:
+    ///   - resources:
+    ///     - pods
+    /// 
+    /// ",
+    ///                         },
+    ///                         Enabled = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             UpgradeStrategy = new Rancher2.Inputs.ClusterRkeConfigUpgradeStrategyArgs
+    ///             {
+    ///                 Drain = true,
+    ///                 MaxUnavailableWorker = "20%",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.Cluster("foo", new()
+    ///     {
+    ///         ClusterAgentDeploymentCustomizations = new[]
+    ///         {
+    ///             new Rancher2.Inputs.ClusterClusterAgentDeploymentCustomizationArgs
+    ///             {
+    ///                 AppendTolerations = new[]
+    ///                 {
+    ///                     new Rancher2.Inputs.ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs
+    ///                     {
+    ///                         Effect = "NoSchedule",
+    ///                         Key = "tolerate/control-plane",
+    ///                         Value = "true",
+    ///                     },
+    ///                 },
+    ///                 OverrideAffinity = @"{
+    ///   ""nodeAffinity"": {
+    ///     ""requiredDuringSchedulingIgnoredDuringExecution"": {
+    ///       ""nodeSelectorTerms"": [{
+    ///         ""matchExpressions"": [{
+    ///           ""key"": ""not.this/nodepool"",
+    ///           ""operator"": ""In"",
+    ///           ""values"": [
+    ///             ""true""
+    ///           ]
+    ///         }]
+    ///       }]
+    ///     }
+    ///   }
+    /// }
+    /// 
+    /// ",
+    ///                 OverrideResourceRequirements = new[]
+    ///                 {
+    ///                     new Rancher2.Inputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs
+    ///                     {
+    ///                         CpuLimit = "800",
+    ///                         CpuRequest = "500",
+    ///                         MemoryLimit = "800",
+    ///                         MemoryRequest = "500",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Description = "Terraform cluster with agent customization",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///         {
+    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
+    ///             {
+    ///                 Plugin = "canal",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fooCloudCredential = new Rancher2.CloudCredential("fooCloudCredential", new()
+    ///     {
+    ///         Description = "foo test",
+    ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
+    ///         {
+    ///             AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
+    ///             SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     var fooCluster = new Rancher2.Cluster("fooCluster", new()
+    ///     {
+    ///         Description = "Terraform EKS cluster",
+    ///         EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args
+    ///         {
+    ///             CloudCredentialId = fooCloudCredential.Id,
+    ///             Name = "&lt;CLUSTER_NAME&gt;",
+    ///             Region = "&lt;EKS_REGION&gt;",
+    ///             Imported = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fooCloudCredential = new Rancher2.CloudCredential("fooCloudCredential", new()
+    ///     {
+    ///         Description = "foo test",
+    ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
+    ///         {
+    ///             AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
+    ///             SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     var fooCluster = new Rancher2.Cluster("fooCluster", new()
+    ///     {
+    ///         Description = "Terraform EKS cluster",
+    ///         EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args
+    ///         {
+    ///             CloudCredentialId = fooCloudCredential.Id,
+    ///             Region = "&lt;EKS_REGION&gt;",
+    ///             KubernetesVersion = "1.24",
+    ///             LoggingTypes = new[]
+    ///             {
+    ///                 "audit",
+    ///                 "api",
+    ///             },
+    ///             NodeGroups = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.ClusterEksConfigV2NodeGroupArgs
+    ///                 {
+    ///                     Name = "node_group1",
+    ///                     InstanceType = "t3.medium",
+    ///                     DesiredSize = 3,
+    ///                     MaxSize = 5,
+    ///                 },
+    ///                 new Rancher2.Inputs.ClusterEksConfigV2NodeGroupArgs
+    ///                 {
+    ///                     Name = "node_group2",
+    ///                     InstanceType = "m5.xlarge",
+    ///                     DesiredSize = 2,
+    ///                     MaxSize = 3,
+    ///                     NodeRole = "arn:aws:iam::role/test-NodeInstanceRole",
+    ///                 },
+    ///             },
+    ///             PrivateAccess = true,
+    ///             PublicAccess = false,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fooCloudCredential = new Rancher2.CloudCredential("fooCloudCredential", new()
+    ///     {
+    ///         Description = "foo test",
+    ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
+    ///         {
+    ///             AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
+    ///             SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     var fooCluster = new Rancher2.Cluster("fooCluster", new()
+    ///     {
+    ///         Description = "Terraform EKS cluster",
+    ///         EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args
+    ///         {
+    ///             CloudCredentialId = fooCloudCredential.Id,
+    ///             Region = "&lt;EKS_REGION&gt;",
+    ///             KubernetesVersion = "1.24",
+    ///             LoggingTypes = new[]
+    ///             {
+    ///                 "audit",
+    ///                 "api",
+    ///             },
+    ///             NodeGroups = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.ClusterEksConfigV2NodeGroupArgs
+    ///                 {
+    ///                     DesiredSize = 3,
+    ///                     MaxSize = 5,
+    ///                     Name = "node_group1",
+    ///                     LaunchTemplates = new[]
+    ///                     {
+    ///                         new Rancher2.Inputs.ClusterEksConfigV2NodeGroupLaunchTemplateArgs
+    ///                         {
+    ///                             Id = "&lt;EC2_LAUNCH_TEMPLATE_ID&gt;",
+    ///                             Version = 1,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             PrivateAccess = true,
+    ///             PublicAccess = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo_aks = new Rancher2.CloudCredential("foo-aks", new()
+    ///     {
+    ///         AzureCredentialConfig = new Rancher2.Inputs.CloudCredentialAzureCredentialConfigArgs
+    ///         {
+    ///             ClientId = "&lt;CLIENT_ID&gt;",
+    ///             ClientSecret = "&lt;CLIENT_SECRET&gt;",
+    ///             SubscriptionId = "&lt;SUBSCRIPTION_ID&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     var foo = new Rancher2.Cluster("foo", new()
+    ///     {
+    ///         Description = "Terraform AKS cluster",
+    ///         AksConfigV2 = new Rancher2.Inputs.ClusterAksConfigV2Args
+    ///         {
+    ///             CloudCredentialId = foo_aks.Id,
+    ///             ResourceGroup = "&lt;RESOURCE_GROUP&gt;",
+    ///             ResourceLocation = "&lt;RESOURCE_LOCATION&gt;",
+    ///             DnsPrefix = "&lt;DNS_PREFIX&gt;",
+    ///             KubernetesVersion = "1.24.6",
+    ///             NetworkPlugin = "&lt;NETWORK_PLUGIN&gt;",
+    ///             NodePools = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.ClusterAksConfigV2NodePoolArgs
+    ///                 {
+    ///                     AvailabilityZones = new[]
+    ///                     {
+    ///                         "1",
+    ///                         "2",
+    ///                         "3",
+    ///                     },
+    ///                     Name = "&lt;NODEPOOL_NAME_1&gt;",
+    ///                     Mode = "System",
+    ///                     Count = 1,
+    ///                     OrchestratorVersion = "1.21.2",
+    ///                     OsDiskSizeGb = 128,
+    ///                     VmSize = "Standard_DS2_v2",
+    ///                 },
+    ///                 new Rancher2.Inputs.ClusterAksConfigV2NodePoolArgs
+    ///                 {
+    ///                     AvailabilityZones = new[]
+    ///                     {
+    ///                         "1",
+    ///                         "2",
+    ///                         "3",
+    ///                     },
+    ///                     Name = "&lt;NODEPOOL_NAME_2&gt;",
+    ///                     Count = 1,
+    ///                     Mode = "User",
+    ///                     OrchestratorVersion = "1.21.2",
+    ///                     OsDiskSizeGb = 128,
+    ///                     VmSize = "Standard_DS2_v2",
+    ///                     MaxSurge = "25%",
+    ///                     Labels = 
+    ///                     {
+    ///                         { "test1", "data1" },
+    ///                         { "test2", "data2" },
+    ///                     },
+    ///                     Taints = new[]
+    ///                     {
+    ///                         "none:PreferNoSchedule",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

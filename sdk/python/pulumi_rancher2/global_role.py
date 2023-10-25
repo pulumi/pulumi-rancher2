@@ -300,6 +300,23 @@ class GlobalRole(pulumi.CustomResource):
         """
         Provides a Rancher v2 Global Role resource. This can be used to create Global Role for Rancher v2 and retrieve their information.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global Role
+        foo = rancher2.GlobalRole("foo",
+            description="Terraform global role acceptance test",
+            new_user_default=True,
+            rules=[rancher2.GlobalRoleRuleArgs(
+                api_groups=["*"],
+                resources=["secrets"],
+                verbs=["create"],
+            )])
+        ```
+
         ## Import
 
         Global Role can be imported using the Rancher Global Role ID
@@ -325,6 +342,23 @@ class GlobalRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Global Role resource. This can be used to create Global Role for Rancher v2 and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global Role
+        foo = rancher2.GlobalRole("foo",
+            description="Terraform global role acceptance test",
+            new_user_default=True,
+            rules=[rancher2.GlobalRoleRuleArgs(
+                api_groups=["*"],
+                resources=["secrets"],
+                verbs=["create"],
+            )])
+        ```
 
         ## Import
 

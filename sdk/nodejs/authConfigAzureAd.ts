@@ -4,6 +4,25 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Auth Config AzureAD
+ * const azuread = new rancher2.AuthConfigAzureAd("azuread", {
+ *     applicationId: "<AZUREAD_APP_ID>",
+ *     applicationSecret: "<AZUREAD_APP_SECRET>",
+ *     authEndpoint: "<AZUREAD_AUTH_ENDPOINT>",
+ *     graphEndpoint: "<AZUREAD_GRAPH_ENDPOINT>",
+ *     rancherUrl: "<RANCHER_URL>",
+ *     tenantId: "<AZUREAD_TENANT_ID>",
+ *     tokenEndpoint: "<AZUREAD_TOKEN_ENDPOINT>",
+ * });
+ * ```
+ */
 export class AuthConfigAzureAd extends pulumi.CustomResource {
     /**
      * Get an existing AuthConfigAzureAd resource's state with the given name, ID, and optional extra

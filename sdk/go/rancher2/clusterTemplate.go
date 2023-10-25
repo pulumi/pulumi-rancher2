@@ -16,6 +16,112 @@ import (
 //
 // Cluster Templates are available from Rancher v2.3.x and above.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterTemplate(ctx, "foo", &rancher2.ClusterTemplateArgs{
+//				Description: pulumi.String("Terraform cluster template foo"),
+//				Members: rancher2.ClusterTemplateMemberArray{
+//					&rancher2.ClusterTemplateMemberArgs{
+//						AccessType:      pulumi.String("owner"),
+//						UserPrincipalId: pulumi.String("local://user-XXXXX"),
+//					},
+//				},
+//				TemplateRevisions: rancher2.ClusterTemplateTemplateRevisionArray{
+//					&rancher2.ClusterTemplateTemplateRevisionArgs{
+//						ClusterConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs{
+//							RkeConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
+//								Network: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
+//									Plugin: pulumi.String("canal"),
+//								},
+//								Services: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{
+//									Etcd: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{
+//										Creation:  pulumi.String("6h"),
+//										Retention: pulumi.String("24h"),
+//									},
+//								},
+//							},
+//						},
+//						Default: pulumi.Bool(true),
+//						Name:    pulumi.String("V1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterTemplate(ctx, "foo", &rancher2.ClusterTemplateArgs{
+//				Description: pulumi.String("Terraform cluster template foo"),
+//				Members: rancher2.ClusterTemplateMemberArray{
+//					&rancher2.ClusterTemplateMemberArgs{
+//						AccessType:      pulumi.String("owner"),
+//						UserPrincipalId: pulumi.String("local://user-XXXXX"),
+//					},
+//				},
+//				TemplateRevisions: rancher2.ClusterTemplateTemplateRevisionArray{
+//					&rancher2.ClusterTemplateTemplateRevisionArgs{
+//						ClusterConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs{
+//							RkeConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
+//								Network: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
+//									Plugin: pulumi.String("canal"),
+//								},
+//								Services: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{
+//									Etcd: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{
+//										Creation:  pulumi.String("6h"),
+//										Retention: pulumi.String("24h"),
+//									},
+//								},
+//								UpgradeStrategy: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs{
+//									Drain:                pulumi.Bool(true),
+//									MaxUnavailableWorker: pulumi.String("20%"),
+//								},
+//							},
+//						},
+//						Default: pulumi.Bool(true),
+//						Name:    pulumi.String("V1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # Cluster Template can be imported using the rancher Cluster Template ID

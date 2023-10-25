@@ -292,6 +292,23 @@ class User(pulumi.CustomResource):
 
         When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 User
+        foo_user = rancher2.User("fooUser",
+            username="foo",
+            password="changeme",
+            enabled=True)
+        # Create a new rancher2 global_role_binding for User
+        foo_global_role_binding = rancher2.GlobalRoleBinding("fooGlobalRoleBinding",
+            global_role_id="user-base",
+            user_id=foo_user.id)
+        ```
+
         ## Import
 
         Users can be imported using the Rancher User ID
@@ -318,6 +335,23 @@ class User(pulumi.CustomResource):
         Provides a Rancher v2 User resource. This can be used to create Users for Rancher v2 environments and retrieve their information.
 
         When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 User
+        foo_user = rancher2.User("fooUser",
+            username="foo",
+            password="changeme",
+            enabled=True)
+        # Create a new rancher2 global_role_binding for User
+        foo_global_role_binding = rancher2.GlobalRoleBinding("fooGlobalRoleBinding",
+            global_role_id="user-base",
+            user_id=foo_user.id)
+        ```
 
         ## Import
 

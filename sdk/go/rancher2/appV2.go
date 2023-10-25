@@ -15,6 +15,47 @@ import (
 
 // Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewAppV2(ctx, "foo", &rancher2.AppV2Args{
+//				ClusterId:    pulumi.String("<CLUSTER_ID>"),
+//				Namespace:    pulumi.String("cattle-monitoring-system"),
+//				RepoName:     pulumi.String("rancher-charts"),
+//				ChartName:    pulumi.String("rancher-monitoring"),
+//				ChartVersion: pulumi.String("9.4.200"),
+//				Values:       readFileOrPanic("values.yaml"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.

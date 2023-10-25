@@ -11,6 +11,37 @@ import * as utilities from "./utilities";
  *
  * amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Cloud Credential
+ * const foo = new rancher2.CloudCredential("foo", {
+ *     amazonec2CredentialConfig: {
+ *         accessKey: "<AWS_ACCESS_KEY>",
+ *         secretKey: "<AWS_SECRET_KEY>",
+ *     },
+ *     description: "foo test",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo-harvesterClusterV2 = rancher2.getClusterV2({
+ *     name: "foo-harvester",
+ * });
+ * // Create a new Cloud Credential for an imported Harvester cluster
+ * const foo_harvesterCloudCredential = new rancher2.CloudCredential("foo-harvesterCloudCredential", {harvesterCredentialConfig: {
+ *     clusterId: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.clusterV1Id),
+ *     clusterType: "imported",
+ *     kubeconfigContent: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.kubeConfig),
+ * }});
+ * ```
+ *
  * ## Import
  *
  * Cloud Credential can be imported using the Cloud Credential ID and the Driver name. bash

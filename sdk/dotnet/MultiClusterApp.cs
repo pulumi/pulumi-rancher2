@@ -19,6 +19,100 @@ namespace Pulumi.Rancher2
     /// 
     /// Note: In case of multiple resource modification in a row, `rollback` has preference.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 Multi Cluster App
+    ///     var foo = new Rancher2.MultiClusterApp("foo", new()
+    ///     {
+    ///         Answers = new[]
+    ///         {
+    ///             new Rancher2.Inputs.MultiClusterAppAnswerArgs
+    ///             {
+    ///                 Values = 
+    ///                 {
+    ///                     { "ingressHost", "test.xip.io" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         CatalogName = "&lt;catalog_name&gt;",
+    ///         Roles = new[]
+    ///         {
+    ///             "project-member",
+    ///         },
+    ///         Targets = new[]
+    ///         {
+    ///             new Rancher2.Inputs.MultiClusterAppTargetArgs
+    ///             {
+    ///                 ProjectId = "&lt;project_id&gt;",
+    ///             },
+    ///         },
+    ///         TemplateName = "&lt;template_name&gt;",
+    ///         TemplateVersion = "&lt;template_version&gt;",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 Multi Cluster App overriding answers
+    ///     var foo = new Rancher2.MultiClusterApp("foo", new()
+    ///     {
+    ///         Answers = new[]
+    ///         {
+    ///             new Rancher2.Inputs.MultiClusterAppAnswerArgs
+    ///             {
+    ///                 Values = 
+    ///                 {
+    ///                     { "ingressHost", "test.xip.io" },
+    ///                 },
+    ///             },
+    ///             new Rancher2.Inputs.MultiClusterAppAnswerArgs
+    ///             {
+    ///                 ProjectId = "&lt;project_id2&gt;",
+    ///                 Values = 
+    ///                 {
+    ///                     { "ingressHost", "test2.xip.io" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         CatalogName = "&lt;catalog_name&gt;",
+    ///         Roles = new[]
+    ///         {
+    ///             "project-member",
+    ///         },
+    ///         Targets = new[]
+    ///         {
+    ///             new Rancher2.Inputs.MultiClusterAppTargetArgs
+    ///             {
+    ///                 ProjectId = "&lt;project_id1&gt;",
+    ///             },
+    ///             new Rancher2.Inputs.MultiClusterAppTargetArgs
+    ///             {
+    ///                 ProjectId = "&lt;project_id2&gt;",
+    ///             },
+    ///         },
+    ///         TemplateName = "&lt;template_name&gt;",
+    ///         TemplateVersion = "&lt;template_version&gt;",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Multi cluster app can be imported using the multi cluster app ID in the format `&lt;multi_cluster_app_name&gt;`

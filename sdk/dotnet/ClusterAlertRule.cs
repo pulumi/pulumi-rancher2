@@ -12,6 +12,37 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new Rancher2 Cluster Alert Group
+    ///     var fooClusterAlertGroup = new Rancher2.ClusterAlertGroup("fooClusterAlertGroup", new()
+    ///     {
+    ///         ClusterId = "&lt;cluster_id&gt;",
+    ///         Description = "Terraform cluster alert group",
+    ///         GroupIntervalSeconds = 300,
+    ///         RepeatIntervalSeconds = 3600,
+    ///     });
+    /// 
+    ///     // Create a new Rancher2 Cluster Alert Rule
+    ///     var fooClusterAlertRule = new Rancher2.ClusterAlertRule("fooClusterAlertRule", new()
+    ///     {
+    ///         ClusterId = fooClusterAlertGroup.ClusterId,
+    ///         GroupId = fooClusterAlertGroup.Id,
+    ///         GroupIntervalSeconds = 600,
+    ///         RepeatIntervalSeconds = 6000,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cluster Alert Rule can be imported using the Rancher cluster alert rule ID

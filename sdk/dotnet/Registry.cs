@@ -16,6 +16,63 @@ namespace Pulumi.Rancher2
     /// - Project registry resource: Available to all namespaces in the `project_id`.
     /// - Namespaced registry resource: Available to `namespace_id` in the `project_id`.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 Project Registry
+    ///     var foo = new Rancher2.Registry("foo", new()
+    ///     {
+    ///         Description = "Terraform registry foo",
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         Registries = new[]
+    ///         {
+    ///             new Rancher2.Inputs.RegistryRegistryArgs
+    ///             {
+    ///                 Address = "test.io",
+    ///                 Password = "pass",
+    ///                 Username = "user",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 Namespaced Registry
+    ///     var foo = new Rancher2.Registry("foo", new()
+    ///     {
+    ///         Description = "Terraform registry foo",
+    ///         NamespaceId = "&lt;namespace_id&gt;",
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         Registries = new[]
+    ///         {
+    ///             new Rancher2.Inputs.RegistryRegistryArgs
+    ///             {
+    ///                 Address = "test.io",
+    ///                 Password = "pass",
+    ///                 Username = "user2",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Registries can be imported using the registry ID in the format `&lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;`

@@ -328,6 +328,50 @@ class GlobalDnsProvider(pulumi.CustomResource):
         """
         Provides a Rancher V2 Global DNS Provider resource. This can be used to create Global DNS Providers for Rancher V2. Supported Global DNS Providers: `alidns, cloudflare, route53`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider - alidns
+        foo = rancher2.GlobalDnsProvider("foo",
+            alidns_config=rancher2.GlobalDnsProviderAlidnsConfigArgs(
+                access_key="YYYYYYYYYYYYYYYYYYYY",
+                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            ),
+            root_domain="example.com")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider - cloudflare
+        foo = rancher2.GlobalDnsProvider("foo",
+            cloudflare_config=rancher2.GlobalDnsProviderCloudflareConfigArgs(
+                api_email="test@test.local",
+                api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                proxy_setting=True,
+            ),
+            root_domain="example.com")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider - route53
+        foo = rancher2.GlobalDnsProvider("foo",
+            root_domain="example.com",
+            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
+                access_key="YYYYYYYYYYYYYYYYYYYY",
+                region="us-east-1",
+                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                zone_type="private",
+            ))
+        ```
+
         ## Import
 
         Global DNS Providers can be imported using the Rancher Global DNS Provider ID
@@ -351,6 +395,50 @@ class GlobalDnsProvider(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher V2 Global DNS Provider resource. This can be used to create Global DNS Providers for Rancher V2. Supported Global DNS Providers: `alidns, cloudflare, route53`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider - alidns
+        foo = rancher2.GlobalDnsProvider("foo",
+            alidns_config=rancher2.GlobalDnsProviderAlidnsConfigArgs(
+                access_key="YYYYYYYYYYYYYYYYYYYY",
+                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            ),
+            root_domain="example.com")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider - cloudflare
+        foo = rancher2.GlobalDnsProvider("foo",
+            cloudflare_config=rancher2.GlobalDnsProviderCloudflareConfigArgs(
+                api_email="test@test.local",
+                api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                proxy_setting=True,
+            ),
+            root_domain="example.com")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider - route53
+        foo = rancher2.GlobalDnsProvider("foo",
+            root_domain="example.com",
+            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
+                access_key="YYYYYYYYYYYYYYYYYYYY",
+                region="us-east-1",
+                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                zone_type="private",
+            ))
+        ```
 
         ## Import
 

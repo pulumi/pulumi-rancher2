@@ -492,6 +492,85 @@ class Project(pulumi.CustomResource):
         """
         Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Project
+        foo = rancher2.Project("foo",
+            cluster_id="<CLUSTER_ID>",
+            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
+            ),
+            resource_quota=rancher2.ProjectResourceQuotaArgs(
+                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="500Mi",
+                    requests_storage="1Gi",
+                ),
+                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="2000Mi",
+                    requests_storage="2Gi",
+                ),
+            ))
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Project enabling and customizing monitoring
+        foo = rancher2.Project("foo",
+            cluster_id="<CLUSTER_ID>",
+            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
+            ),
+            enable_project_monitoring=True,
+            project_monitoring_input=rancher2.ProjectProjectMonitoringInputArgs(
+                answers={
+                    "exporter-kubelets.https": True,
+                    "exporter-node.enabled": True,
+                    "exporter-node.ports.metrics.port": 9796,
+                    "exporter-node.resources.limits.cpu": "200m",
+                    "exporter-node.resources.limits.memory": "200Mi",
+                    "grafana.persistence.enabled": False,
+                    "grafana.persistence.size": "10Gi",
+                    "grafana.persistence.storageClass": "default",
+                    "operator.resources.limits.memory": "500Mi",
+                    "prometheus.persistence.enabled": "false",
+                    "prometheus.persistence.size": "50Gi",
+                    "prometheus.persistence.storageClass": "default",
+                    "prometheus.persistent.useReleaseName": "true",
+                    "prometheus.resources.core.limits.cpu": "1000m",
+                    "prometheus.resources.core.limits.memory": "1500Mi",
+                    "prometheus.resources.core.requests.cpu": "750m",
+                    "prometheus.resources.core.requests.memory": "750Mi",
+                    "prometheus.retention": "12h",
+                },
+            ),
+            resource_quota=rancher2.ProjectResourceQuotaArgs(
+                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="500Mi",
+                    requests_storage="1Gi",
+                ),
+                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="2000Mi",
+                    requests_storage="2Gi",
+                ),
+            ))
+        ```
+
         ## Import
 
         Projects can be imported using the Rancher Project ID
@@ -522,6 +601,85 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Project
+        foo = rancher2.Project("foo",
+            cluster_id="<CLUSTER_ID>",
+            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
+            ),
+            resource_quota=rancher2.ProjectResourceQuotaArgs(
+                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="500Mi",
+                    requests_storage="1Gi",
+                ),
+                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="2000Mi",
+                    requests_storage="2Gi",
+                ),
+            ))
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Project enabling and customizing monitoring
+        foo = rancher2.Project("foo",
+            cluster_id="<CLUSTER_ID>",
+            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
+            ),
+            enable_project_monitoring=True,
+            project_monitoring_input=rancher2.ProjectProjectMonitoringInputArgs(
+                answers={
+                    "exporter-kubelets.https": True,
+                    "exporter-node.enabled": True,
+                    "exporter-node.ports.metrics.port": 9796,
+                    "exporter-node.resources.limits.cpu": "200m",
+                    "exporter-node.resources.limits.memory": "200Mi",
+                    "grafana.persistence.enabled": False,
+                    "grafana.persistence.size": "10Gi",
+                    "grafana.persistence.storageClass": "default",
+                    "operator.resources.limits.memory": "500Mi",
+                    "prometheus.persistence.enabled": "false",
+                    "prometheus.persistence.size": "50Gi",
+                    "prometheus.persistence.storageClass": "default",
+                    "prometheus.persistent.useReleaseName": "true",
+                    "prometheus.resources.core.limits.cpu": "1000m",
+                    "prometheus.resources.core.limits.memory": "1500Mi",
+                    "prometheus.resources.core.requests.cpu": "750m",
+                    "prometheus.resources.core.requests.memory": "750Mi",
+                    "prometheus.retention": "12h",
+                },
+            ),
+            resource_quota=rancher2.ProjectResourceQuotaArgs(
+                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="500Mi",
+                    requests_storage="1Gi",
+                ),
+                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="2000Mi",
+                    requests_storage="2Gi",
+                ),
+            ))
+        ```
 
         ## Import
 

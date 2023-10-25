@@ -10,6 +10,17 @@ import * as utilities from "./utilities";
  * Use this data source to retrieve information about a Rancher v2 cluster template.
  *
  * Cluster Templates are available from Rancher v2.3.x and above.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterTemplate({
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
 
@@ -76,6 +87,17 @@ export interface GetClusterTemplateResult {
  * Use this data source to retrieve information about a Rancher v2 cluster template.
  *
  * Cluster Templates are available from Rancher v2.3.x and above.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterTemplate({
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getClusterTemplateOutput(args: GetClusterTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterTemplateResult> {
     return pulumi.output(args).apply((a: any) => getClusterTemplate(a, opts))

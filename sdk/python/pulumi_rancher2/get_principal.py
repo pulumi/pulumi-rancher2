@@ -68,6 +68,15 @@ def get_principal(name: Optional[str] = None,
     """
     Use this data source to retrieve information about a Rancher v2 Principal resource.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_principal(name="user@example.com")
+    ```
+
 
     :param str name: The full name of the principal (string)
     :param str type: The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)
@@ -90,6 +99,15 @@ def get_principal_output(name: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrincipalResult]:
     """
     Use this data source to retrieve information about a Rancher v2 Principal resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_principal(name="user@example.com")
+    ```
 
 
     :param str name: The full name of the principal (string)

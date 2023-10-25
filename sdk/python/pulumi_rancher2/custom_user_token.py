@@ -544,6 +544,28 @@ class CustomUserToken(pulumi.CustomResource):
 
         Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a rancher2 Token
+        foo_user = rancher2.User("fooUser",
+            username="foo",
+            password="changeme",
+            enabled=True)
+        foo_login = rancher2.GlobalRoleBinding("foo-login",
+            global_role_id="user-base",
+            user_id=foo_user.id)
+        foo_custom_user_token = rancher2.CustomUserToken("fooCustomUserToken",
+            username=foo_user.username,
+            password=foo_user.password,
+            description="foo token",
+            ttl=0,
+            opts=pulumi.ResourceOptions(depends_on=[foo_login]))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: (Computed) Annotations of the token (map)
@@ -573,6 +595,28 @@ class CustomUserToken(pulumi.CustomResource):
         Tokens can only be created for a Rancher User with at least the `user-base` global role binding in order to enable user login.
 
         Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a rancher2 Token
+        foo_user = rancher2.User("fooUser",
+            username="foo",
+            password="changeme",
+            enabled=True)
+        foo_login = rancher2.GlobalRoleBinding("foo-login",
+            global_role_id="user-base",
+            user_id=foo_user.id)
+        foo_custom_user_token = rancher2.CustomUserToken("fooCustomUserToken",
+            username=foo_user.username,
+            password=foo_user.password,
+            description="foo token",
+            ttl=0,
+            opts=pulumi.ResourceOptions(depends_on=[foo_login]))
+        ```
 
         :param str resource_name: The name of the resource.
         :param CustomUserTokenArgs args: The arguments to use to populate this resource's properties.

@@ -364,6 +364,51 @@ class GlobalDns(pulumi.CustomResource):
         """
         Provides a Rancher V2 Global DNS resource. This can be used to create Global DNS records for Rancher V2.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider
+        foo_global_dns_provider = rancher2.GlobalDnsProvider("fooGlobalDnsProvider",
+            root_domain="example.com",
+            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
+                access_key="YYYYYYYYYYYYYYYYYYYY",
+                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                zone_type="private",
+                region="us-east-1",
+            ))
+        # Create a new rancher2 Global DNS using project IDs
+        foo_global_dns = rancher2.GlobalDns("fooGlobalDns",
+            fqdn="foo.example.com",
+            provider_id=foo_global_dns_provider.id,
+            project_ids=[
+                "project1",
+                "project2",
+            ])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider
+        foo_global_dns_provider = rancher2.GlobalDnsProvider("fooGlobalDnsProvider",
+            root_domain="example.com",
+            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
+                access_key="YYYYYYYYYYYYYYYYYYYY",
+                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                zone_type="private",
+                region="us-east-1",
+            ))
+        # Create a new rancher2 Global DNS using MultiClusterApp ID
+        foo_global_dns = rancher2.GlobalDns("fooGlobalDns",
+            fqdn="foo.example.com",
+            provider_id=foo_global_dns_provider.id,
+            multi_cluster_app_id="<MCA_ID>")
+        ```
+
         ## Import
 
         Global DNS Entry can be imported using the Rancher Global DNS ID
@@ -391,6 +436,51 @@ class GlobalDns(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher V2 Global DNS resource. This can be used to create Global DNS records for Rancher V2.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider
+        foo_global_dns_provider = rancher2.GlobalDnsProvider("fooGlobalDnsProvider",
+            root_domain="example.com",
+            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
+                access_key="YYYYYYYYYYYYYYYYYYYY",
+                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                zone_type="private",
+                region="us-east-1",
+            ))
+        # Create a new rancher2 Global DNS using project IDs
+        foo_global_dns = rancher2.GlobalDns("fooGlobalDns",
+            fqdn="foo.example.com",
+            provider_id=foo_global_dns_provider.id,
+            project_ids=[
+                "project1",
+                "project2",
+            ])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider
+        foo_global_dns_provider = rancher2.GlobalDnsProvider("fooGlobalDnsProvider",
+            root_domain="example.com",
+            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
+                access_key="YYYYYYYYYYYYYYYYYYYY",
+                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                zone_type="private",
+                region="us-east-1",
+            ))
+        # Create a new rancher2 Global DNS using MultiClusterApp ID
+        foo_global_dns = rancher2.GlobalDns("fooGlobalDns",
+            fqdn="foo.example.com",
+            provider_id=foo_global_dns_provider.id,
+            multi_cluster_app_id="<MCA_ID>")
+        ```
 
         ## Import
 

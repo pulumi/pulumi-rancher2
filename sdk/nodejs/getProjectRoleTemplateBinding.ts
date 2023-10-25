@@ -6,6 +6,18 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 project role template binding.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getProjectRoleTemplateBinding({
+ *     name: "foo",
+ *     projectId: "foo_id",
+ * });
+ * ```
  */
 export function getProjectRoleTemplateBinding(args: GetProjectRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectRoleTemplateBindingResult> {
 
@@ -73,6 +85,18 @@ export interface GetProjectRoleTemplateBindingResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 project role template binding.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getProjectRoleTemplateBinding({
+ *     name: "foo",
+ *     projectId: "foo_id",
+ * });
+ * ```
  */
 export function getProjectRoleTemplateBindingOutput(args: GetProjectRoleTemplateBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectRoleTemplateBindingResult> {
     return pulumi.output(args).apply((a: any) => getProjectRoleTemplateBinding(a, opts))

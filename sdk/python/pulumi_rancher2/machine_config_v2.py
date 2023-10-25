@@ -568,6 +568,57 @@ class MachineConfigV2(pulumi.CustomResource):
 
         **Note:** This resource is used by
 
+        ## Example Usage
+        ### Using the Harvester Node Driver
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
+        # Create a new Cloud Credential for an imported Harvester cluster
+        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
+            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
+            cluster_type="imported",
+            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
+        ))
+        # Create a new rancher2 machine config v2 using harvester node_driver
+        foo_harvester_v2 = rancher2.MachineConfigV2("foo-harvester-v2",
+            generate_name="foo-harvester-v2",
+            harvester_config=rancher2.MachineConfigV2HarvesterConfigArgs(
+                vm_namespace="default",
+                cpu_count="2",
+                memory_size="4",
+                disk_info=\"\"\"    {
+                "disks": [{
+                    "imageName": "harvester-public/image-57hzg",
+                    "size": 40,
+                    "bootOrder": 1
+                }]
+            }
+            EOF,
+            networkInfo = <<EOF
+            {
+                "interfaces": [{
+                    "networkName": "harvester-public/vlan1"
+                }]
+            }
+            EOF,
+            sshUser = "ubuntu",
+            userData = <<EOF
+            package_update: true
+            packages:
+              - qemu-guest-agent
+              - iptables
+            runcmd:
+              - - systemctl
+                - enable
+                - '--now'
+                - qemu-guest-agent.service
+        \"\"\",
+            ))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['MachineConfigV2Amazonec2ConfigArgs']] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
@@ -596,6 +647,57 @@ class MachineConfigV2(pulumi.CustomResource):
         `amazonec2`, `azure`, `digitalocean`, `harvester`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
 
         **Note:** This resource is used by
+
+        ## Example Usage
+        ### Using the Harvester Node Driver
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
+        # Create a new Cloud Credential for an imported Harvester cluster
+        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
+            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
+            cluster_type="imported",
+            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
+        ))
+        # Create a new rancher2 machine config v2 using harvester node_driver
+        foo_harvester_v2 = rancher2.MachineConfigV2("foo-harvester-v2",
+            generate_name="foo-harvester-v2",
+            harvester_config=rancher2.MachineConfigV2HarvesterConfigArgs(
+                vm_namespace="default",
+                cpu_count="2",
+                memory_size="4",
+                disk_info=\"\"\"    {
+                "disks": [{
+                    "imageName": "harvester-public/image-57hzg",
+                    "size": 40,
+                    "bootOrder": 1
+                }]
+            }
+            EOF,
+            networkInfo = <<EOF
+            {
+                "interfaces": [{
+                    "networkName": "harvester-public/vlan1"
+                }]
+            }
+            EOF,
+            sshUser = "ubuntu",
+            userData = <<EOF
+            package_update: true
+            packages:
+              - qemu-guest-agent
+              - iptables
+            runcmd:
+              - - systemctl
+                - enable
+                - '--now'
+                - qemu-guest-agent.service
+        \"\"\",
+            ))
+        ```
 
         :param str resource_name: The name of the resource.
         :param MachineConfigV2Args args: The arguments to use to populate this resource's properties.

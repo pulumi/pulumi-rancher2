@@ -17,6 +17,47 @@ namespace Pulumi.Rancher2
         /// Depending of the availability, there are 2 types of Rancher v2 docker registries:
         /// - Project registry: Available to all namespaces in the `project_id`
         /// - Namespaced registry: Available to just `namespace_id` in the `project_id`
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetRegistry.Invoke(new()
+        ///     {
+        ///         Name = "&lt;name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetRegistry.Invoke(new()
+        ///     {
+        ///         Name = "&lt;name&gt;",
+        ///         NamespaceId = "&lt;namespace_id&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryResult> InvokeAsync(GetRegistryArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistryResult>("rancher2:index/getRegistry:getRegistry", args ?? new GetRegistryArgs(), options.WithDefaults());
@@ -27,6 +68,47 @@ namespace Pulumi.Rancher2
         /// Depending of the availability, there are 2 types of Rancher v2 docker registries:
         /// - Project registry: Available to all namespaces in the `project_id`
         /// - Namespaced registry: Available to just `namespace_id` in the `project_id`
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetRegistry.Invoke(new()
+        ///     {
+        ///         Name = "&lt;name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetRegistry.Invoke(new()
+        ///     {
+        ///         Name = "&lt;name&gt;",
+        ///         NamespaceId = "&lt;namespace_id&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegistryResult> Invoke(GetRegistryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryResult>("rancher2:index/getRegistry:getRegistry", args ?? new GetRegistryInvokeArgs(), options.WithDefaults());

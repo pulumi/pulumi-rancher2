@@ -7,6 +7,26 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new Rancher2 Global Catalog
+ * const foo_global = new rancher2.Catalog("foo-global", {url: "https://<CATALOG_URL>"});
+ * // Create a new Rancher2 Cluster Catalog
+ * const foo_cluster = new rancher2.Catalog("foo-cluster", {
+ *     scope: "cluster",
+ *     url: "https://<CATALOG_URL>",
+ * });
+ * // Create a new Rancher2 Project Catalog
+ * const foo_project = new rancher2.Catalog("foo-project", {
+ *     scope: "project",
+ *     url: "https://<CATALOG_URL>",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Catalogs can be imported using the Rancher Catalog ID and its scope.

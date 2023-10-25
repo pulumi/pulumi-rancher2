@@ -13,6 +13,33 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 notifier.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.LookupNotifier(ctx, &rancher2.LookupNotifierArgs{
+//				ClusterId: "<cluster_id>",
+//				Name:      "foo",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupNotifier(ctx *pulumi.Context, args *LookupNotifierArgs, opts ...pulumi.InvokeOption) (*LookupNotifierResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotifierResult

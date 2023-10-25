@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 Node Pool resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getNodePool({
+ *     clusterId: rancher2_cluster["foo-custom"].id,
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getNodePool(args: GetNodePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetNodePoolResult> {
 
@@ -87,6 +99,18 @@ export interface GetNodePoolResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 Node Pool resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getNodePool({
+ *     clusterId: rancher2_cluster["foo-custom"].id,
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getNodePoolOutput(args: GetNodePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodePoolResult> {
     return pulumi.output(args).apply((a: any) => getNodePool(a, opts))

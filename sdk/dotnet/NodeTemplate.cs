@@ -16,6 +16,184 @@ namespace Pulumi.Rancher2
     /// 
     /// **Note:** If you are upgrading to Rancher v2.3.3, please take a look to final section
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 Node Template up to Rancher 2.1.x
+    ///     var foo = new Rancher2.NodeTemplate("foo", new()
+    ///     {
+    ///         Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
+    ///         {
+    ///             AccessKey = "AWS_ACCESS_KEY",
+    ///             Ami = "&lt;AMI_ID&gt;",
+    ///             Region = "&lt;REGION&gt;",
+    ///             SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///             SecurityGroups = new[]
+    ///             {
+    ///                 "&lt;AWS_SECURITY_GROUP&gt;",
+    ///             },
+    ///             SubnetId = "&lt;SUBNET_ID&gt;",
+    ///             VpcId = "&lt;VPC_ID&gt;",
+    ///             Zone = "&lt;ZONE&gt;",
+    ///         },
+    ///         Description = "foo test",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 Node Template from Rancher 2.2.x
+    ///     var fooCloudCredential = new Rancher2.CloudCredential("fooCloudCredential", new()
+    ///     {
+    ///         Description = "foo test",
+    ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
+    ///         {
+    ///             AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
+    ///             SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     var fooNodeTemplate = new Rancher2.NodeTemplate("fooNodeTemplate", new()
+    ///     {
+    ///         Description = "foo test",
+    ///         CloudCredentialId = fooCloudCredential.Id,
+    ///         Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
+    ///         {
+    ///             Ami = "&lt;AMI_ID&gt;",
+    ///             Region = "&lt;REGION&gt;",
+    ///             SecurityGroups = new[]
+    ///             {
+    ///                 "&lt;AWS_SECURITY_GROUP&gt;",
+    ///             },
+    ///             SubnetId = "&lt;SUBNET_ID&gt;",
+    ///             VpcId = "&lt;VPC_ID&gt;",
+    ///             Zone = "&lt;ZONE&gt;",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Using the Harvester Node Driver
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo_harvesterClusterV2 = Rancher2.GetClusterV2.Invoke(new()
+    ///     {
+    ///         Name = "foo-harvester",
+    ///     });
+    /// 
+    ///     // Create a new Cloud Credential for an imported Harvester cluster
+    ///     var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvesterCloudCredential", new()
+    ///     {
+    ///         HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
+    ///         {
+    ///             ClusterId = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.ClusterV1Id)),
+    ///             ClusterType = "imported",
+    ///             KubeconfigContent = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.KubeConfig)),
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Node Template using harvester node_driver
+    ///     var foo_harvesterNodeTemplate = new Rancher2.NodeTemplate("foo-harvesterNodeTemplate", new()
+    ///     {
+    ///         CloudCredentialId = foo_harvesterCloudCredential.Id,
+    ///         EngineInstallUrl = "https://releases.rancher.com/install-docker/20.10.sh",
+    ///         HarvesterConfig = new Rancher2.Inputs.NodeTemplateHarvesterConfigArgs
+    ///         {
+    ///             VmNamespace = "default",
+    ///             CpuCount = "2",
+    ///             MemorySize = "4",
+    ///             DiskInfo = @"    {
+    ///         ""disks"": [{
+    ///             ""imageName"": ""harvester-public/image-57hzg"",
+    ///             ""size"": 40,
+    ///             ""bootOrder"": 1
+    ///         }]
+    ///     }
+    ///     EOF,
+    ///     networkInfo = &lt;&lt;EOF
+    ///     {
+    ///         ""interfaces"": [{
+    ///             ""networkName"": ""harvester-public/vlan1""
+    ///         }]
+    ///     }
+    ///     EOF,
+    ///     sshUser = ""ubuntu"",
+    ///     userData = &lt;&lt;EOF
+    ///     package_update: true
+    ///     packages:
+    ///       - qemu-guest-agent
+    ///       - iptables
+    ///     runcmd:
+    ///       - - systemctl
+    ///         - enable
+    ///         - '--now'
+    ///         - qemu-guest-agent.service
+    /// ",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Using the Hetzner Node Driver
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 Node Template using hetzner node_driver
+    ///     var hetznerNodeDriver = new Rancher2.NodeDriver("hetznerNodeDriver", new()
+    ///     {
+    ///         Active = true,
+    ///         Builtin = false,
+    ///         UiUrl = "https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
+    ///         Url = "https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz",
+    ///         WhitelistDomains = new[]
+    ///         {
+    ///             "storage.googleapis.com",
+    ///         },
+    ///     });
+    /// 
+    ///     var myHetznerNodeTemplate = new Rancher2.NodeTemplate("myHetznerNodeTemplate", new()
+    ///     {
+    ///         DriverId = hetznerNodeDriver.Id,
+    ///         HetznerConfig = new Rancher2.Inputs.NodeTemplateHetznerConfigArgs
+    ///         {
+    ///             ApiToken = "XXXXXXXXXX",
+    ///             Image = "ubuntu-18.04",
+    ///             ServerLocation = "nbg1",
+    ///             ServerType = "cx11",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Node Template can be imported using the Rancher Node Template ID

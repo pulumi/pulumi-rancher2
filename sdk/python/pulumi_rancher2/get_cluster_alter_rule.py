@@ -214,6 +214,16 @@ def get_cluster_alter_rule(cluster_id: Optional[str] = None,
     """
     Use this data source to retrieve information about a Rancher v2 cluster alert rule.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_alter_rule(cluster_id="<cluster_id>",
+        name="<cluster_alert_rule_name>")
+    ```
+
 
     :param str cluster_id: The cluster id where create cluster alert rule (string)
     :param Mapping[str, Any] labels: (Computed) The cluster alert rule labels (map)
@@ -251,6 +261,16 @@ def get_cluster_alter_rule_output(cluster_id: Optional[pulumi.Input[str]] = None
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterAlterRuleResult]:
     """
     Use this data source to retrieve information about a Rancher v2 cluster alert rule.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_alter_rule(cluster_id="<cluster_id>",
+        name="<cluster_alert_rule_name>")
+    ```
 
 
     :param str cluster_id: The cluster id where create cluster alert rule (string)

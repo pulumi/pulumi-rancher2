@@ -13,6 +13,32 @@ import (
 )
 
 // Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.LookupGlobalDnsProvider(ctx, &rancher2.LookupGlobalDnsProviderArgs{
+//				Name: "foo",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGlobalDnsProvider(ctx *pulumi.Context, args *LookupGlobalDnsProviderArgs, opts ...pulumi.InvokeOption) (*LookupGlobalDnsProviderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalDnsProviderResult

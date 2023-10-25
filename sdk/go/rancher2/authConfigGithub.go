@@ -16,6 +16,33 @@ import (
 // Provides a Rancher v2 Auth Config Github resource. This can be used to configure and enable Auth Config Github for Rancher v2 RKE clusters and retrieve their information.
 //
 // In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewAuthConfigGithub(ctx, "github", &rancher2.AuthConfigGithubArgs{
+//				ClientId:     pulumi.String("<GITHUB_CLIENT_ID>"),
+//				ClientSecret: pulumi.String("<GITHUB_CLIENT_SECRET>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AuthConfigGithub struct {
 	pulumi.CustomResourceState
 

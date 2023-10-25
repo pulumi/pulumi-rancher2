@@ -17494,6 +17494,10 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] custom_config: Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[bool] enabled: Enable the authorized cluster endpoint. Default `true` (bool)
         """
         ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs._configure(
@@ -17521,6 +17525,10 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
     def custom_config(self) -> Optional[pulumi.Input[str]]:
         """
         Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "custom_config")
 

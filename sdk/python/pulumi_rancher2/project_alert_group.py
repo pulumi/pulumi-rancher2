@@ -406,6 +406,20 @@ class ProjectAlertGroup(pulumi.CustomResource):
         """
         Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 Project Alert Group
+        foo = rancher2.ProjectAlertGroup("foo",
+            description="Terraform project alert group",
+            group_interval_seconds=300,
+            project_id="<project_id>",
+            repeat_interval_seconds=3600)
+        ```
+
         ## Import
 
         Project Alert Group can be imported using the Rancher project alert group ID
@@ -434,6 +448,20 @@ class ProjectAlertGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 Project Alert Group
+        foo = rancher2.ProjectAlertGroup("foo",
+            description="Terraform project alert group",
+            group_interval_seconds=300,
+            project_id="<project_id>",
+            repeat_interval_seconds=3600)
+        ```
 
         ## Import
 

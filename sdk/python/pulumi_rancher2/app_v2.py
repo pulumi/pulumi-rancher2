@@ -713,6 +713,22 @@ class AppV2(pulumi.CustomResource):
         """
         Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 App V2 using
+        foo = rancher2.AppV2("foo",
+            cluster_id="<CLUSTER_ID>",
+            namespace="cattle-monitoring-system",
+            repo_name="rancher-charts",
+            chart_name="rancher-monitoring",
+            chart_version="9.4.200",
+            values=(lambda path: open(path).read())("values.yaml"))
+        ```
+
         ## Import
 
         V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.
@@ -747,6 +763,22 @@ class AppV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 App V2 using
+        foo = rancher2.AppV2("foo",
+            cluster_id="<CLUSTER_ID>",
+            namespace="cattle-monitoring-system",
+            repo_name="rancher-charts",
+            chart_name="rancher-monitoring",
+            chart_version="9.4.200",
+            values=(lambda path: open(path).read())("values.yaml"))
+        ```
 
         ## Import
 

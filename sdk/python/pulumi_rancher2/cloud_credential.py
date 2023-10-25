@@ -593,6 +593,34 @@ class CloudCredential(pulumi.CustomResource):
 
         amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Cloud Credential
+        foo = rancher2.CloudCredential("foo",
+            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
+                access_key="<AWS_ACCESS_KEY>",
+                secret_key="<AWS_SECRET_KEY>",
+            ),
+            description="foo test")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
+        # Create a new Cloud Credential for an imported Harvester cluster
+        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
+            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
+            cluster_type="imported",
+            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
+        ))
+        ```
+
         ## Import
 
         Cloud Credential can be imported using the Cloud Credential ID and the Driver name. bash
@@ -629,6 +657,34 @@ class CloudCredential(pulumi.CustomResource):
         Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
 
         amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Cloud Credential
+        foo = rancher2.CloudCredential("foo",
+            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
+                access_key="<AWS_ACCESS_KEY>",
+                secret_key="<AWS_SECRET_KEY>",
+            ),
+            description="foo test")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
+        # Create a new Cloud Credential for an imported Harvester cluster
+        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
+            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
+            cluster_type="imported",
+            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
+        ))
+        ```
 
         ## Import
 

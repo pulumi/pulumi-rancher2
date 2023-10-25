@@ -202,6 +202,16 @@ def get_project_alert_rule(labels: Optional[Mapping[str, Any]] = None,
     """
     Use this data source to retrieve information about a Rancher v2 project alert rule.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_project_alert_rule(name="<project_alert_rule_name>",
+        project_id="<project_id>")
+    ```
+
 
     :param Mapping[str, Any] labels: (Computed) The project alert rule labels (map)
     :param str name: The project alert rule name (string)
@@ -238,6 +248,16 @@ def get_project_alert_rule_output(labels: Optional[pulumi.Input[Optional[Mapping
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectAlertRuleResult]:
     """
     Use this data source to retrieve information about a Rancher v2 project alert rule.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_project_alert_rule(name="<project_alert_rule_name>",
+        project_id="<project_id>")
+    ```
 
 
     :param Mapping[str, Any] labels: (Computed) The project alert rule labels (map)

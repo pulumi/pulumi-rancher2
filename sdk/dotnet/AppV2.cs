@@ -12,6 +12,31 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new Rancher2 App V2 using
+    ///     var foo = new Rancher2.AppV2("foo", new()
+    ///     {
+    ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+    ///         Namespace = "cattle-monitoring-system",
+    ///         RepoName = "rancher-charts",
+    ///         ChartName = "rancher-monitoring",
+    ///         ChartVersion = "9.4.200",
+    ///         Values = File.ReadAllText("values.yaml"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `&lt;namespace&gt;/&lt;application_name&gt;`.

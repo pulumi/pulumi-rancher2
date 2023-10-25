@@ -329,6 +329,39 @@ class Registry(pulumi.CustomResource):
         - Project registry resource: Available to all namespaces in the `project_id`.
         - Namespaced registry resource: Available to `namespace_id` in the `project_id`.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Project Registry
+        foo = rancher2.Registry("foo",
+            description="Terraform registry foo",
+            project_id="<project_id>",
+            registries=[rancher2.RegistryRegistryArgs(
+                address="test.io",
+                password="pass",
+                username="user",
+            )])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Namespaced Registry
+        foo = rancher2.Registry("foo",
+            description="Terraform registry foo",
+            namespace_id="<namespace_id>",
+            project_id="<project_id>",
+            registries=[rancher2.RegistryRegistryArgs(
+                address="test.io",
+                password="pass",
+                username="user2",
+            )])
+        ```
+
         ## Import
 
         Registries can be imported using the registry ID in the format `<namespace_id>.<project_id>.<registry_id>`
@@ -360,6 +393,39 @@ class Registry(pulumi.CustomResource):
         Depending on the availability, there are 2 types of Rancher v2 Docker registry resources:
         - Project registry resource: Available to all namespaces in the `project_id`.
         - Namespaced registry resource: Available to `namespace_id` in the `project_id`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Project Registry
+        foo = rancher2.Registry("foo",
+            description="Terraform registry foo",
+            project_id="<project_id>",
+            registries=[rancher2.RegistryRegistryArgs(
+                address="test.io",
+                password="pass",
+                username="user",
+            )])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Namespaced Registry
+        foo = rancher2.Registry("foo",
+            description="Terraform registry foo",
+            namespace_id="<namespace_id>",
+            project_id="<project_id>",
+            registries=[rancher2.RegistryRegistryArgs(
+                address="test.io",
+                password="pass",
+                username="user2",
+            )])
+        ```
 
         ## Import
 

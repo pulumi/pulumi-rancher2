@@ -12,6 +12,39 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new Rancher2 Global Catalog
+    ///     var foo_global = new Rancher2.Catalog("foo-global", new()
+    ///     {
+    ///         Url = "https://&lt;CATALOG_URL&gt;",
+    ///     });
+    /// 
+    ///     // Create a new Rancher2 Cluster Catalog
+    ///     var foo_cluster = new Rancher2.Catalog("foo-cluster", new()
+    ///     {
+    ///         Scope = "cluster",
+    ///         Url = "https://&lt;CATALOG_URL&gt;",
+    ///     });
+    /// 
+    ///     // Create a new Rancher2 Project Catalog
+    ///     var foo_project = new Rancher2.Catalog("foo-project", new()
+    ///     {
+    ///         Scope = "project",
+    ///         Url = "https://&lt;CATALOG_URL&gt;",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Catalogs can be imported using the Rancher Catalog ID and its scope.

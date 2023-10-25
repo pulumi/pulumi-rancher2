@@ -612,6 +612,26 @@ class ClusterAlertRule(pulumi.CustomResource):
         """
         Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 Cluster Alert Group
+        foo_cluster_alert_group = rancher2.ClusterAlertGroup("fooClusterAlertGroup",
+            cluster_id="<cluster_id>",
+            description="Terraform cluster alert group",
+            group_interval_seconds=300,
+            repeat_interval_seconds=3600)
+        # Create a new Rancher2 Cluster Alert Rule
+        foo_cluster_alert_rule = rancher2.ClusterAlertRule("fooClusterAlertRule",
+            cluster_id=foo_cluster_alert_group.cluster_id,
+            group_id=foo_cluster_alert_group.id,
+            group_interval_seconds=600,
+            repeat_interval_seconds=6000)
+        ```
+
         ## Import
 
         Cluster Alert Rule can be imported using the Rancher cluster alert rule ID
@@ -645,6 +665,26 @@ class ClusterAlertRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 Cluster Alert Group
+        foo_cluster_alert_group = rancher2.ClusterAlertGroup("fooClusterAlertGroup",
+            cluster_id="<cluster_id>",
+            description="Terraform cluster alert group",
+            group_interval_seconds=300,
+            repeat_interval_seconds=3600)
+        # Create a new Rancher2 Cluster Alert Rule
+        foo_cluster_alert_rule = rancher2.ClusterAlertRule("fooClusterAlertRule",
+            cluster_id=foo_cluster_alert_group.cluster_id,
+            group_id=foo_cluster_alert_group.id,
+            group_interval_seconds=600,
+            repeat_interval_seconds=6000)
+        ```
 
         ## Import
 

@@ -13,6 +13,32 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 Principal resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.GetPrincipal(ctx, &rancher2.GetPrincipalArgs{
+//				Name: "user@example.com",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPrincipal(ctx *pulumi.Context, args *GetPrincipalArgs, opts ...pulumi.InvokeOption) (*GetPrincipalResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrincipalResult

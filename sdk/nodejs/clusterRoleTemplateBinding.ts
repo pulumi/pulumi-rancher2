@@ -7,6 +7,20 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new Rancher2 Cluster Role Template Binding
+ * const foo = new rancher2.ClusterRoleTemplateBinding("foo", {
+ *     clusterId: "<cluster_id>",
+ *     roleTemplateId: "<role_template_id>",
+ *     userId: "<user_id>",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cluster Role Template Bindings can be imported using the Rancher cluster Role Template Binding ID

@@ -6,6 +6,17 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getNodeDriver({
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getNodeDriver(args: GetNodeDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeDriverResult> {
 
@@ -79,6 +90,17 @@ export interface GetNodeDriverResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getNodeDriver({
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getNodeDriverOutput(args: GetNodeDriverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeDriverResult> {
     return pulumi.output(args).apply((a: any) => getNodeDriver(a, opts))

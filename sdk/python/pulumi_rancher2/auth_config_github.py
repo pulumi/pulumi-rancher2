@@ -443,6 +443,18 @@ class AuthConfigGithub(pulumi.CustomResource):
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Auth Config Github
+        github = rancher2.AuthConfigGithub("github",
+            client_id="<GITHUB_CLIENT_ID>",
+            client_secret="<GITHUB_CLIENT_SECRET>")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -465,6 +477,18 @@ class AuthConfigGithub(pulumi.CustomResource):
         Provides a Rancher v2 Auth Config Github resource. This can be used to configure and enable Auth Config Github for Rancher v2 RKE clusters and retrieve their information.
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Auth Config Github
+        github = rancher2.AuthConfigGithub("github",
+            client_id="<GITHUB_CLIENT_ID>",
+            client_secret="<GITHUB_CLIENT_SECRET>")
+        ```
 
         :param str resource_name: The name of the resource.
         :param AuthConfigGithubArgs args: The arguments to use to populate this resource's properties.

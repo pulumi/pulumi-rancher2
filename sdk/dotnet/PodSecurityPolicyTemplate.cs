@@ -12,6 +12,159 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 PodSecurityPolicyTemplate
+    ///     var foo = new Rancher2.PodSecurityPolicyTemplate("foo", new()
+    ///     {
+    ///         AllowPrivilegeEscalation = false,
+    ///         AllowedCsiDrivers = new[]
+    ///         {
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedCsiDriverArgs
+    ///             {
+    ///                 Name = "something",
+    ///             },
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedCsiDriverArgs
+    ///             {
+    ///                 Name = "something-else",
+    ///             },
+    ///         },
+    ///         AllowedFlexVolumes = new[]
+    ///         {
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedFlexVolumeArgs
+    ///             {
+    ///                 Driver = "something",
+    ///             },
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedFlexVolumeArgs
+    ///             {
+    ///                 Driver = "something-else",
+    ///             },
+    ///         },
+    ///         AllowedHostPaths = new[]
+    ///         {
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedHostPathArgs
+    ///             {
+    ///                 PathPrefix = "/",
+    ///                 ReadOnly = true,
+    ///             },
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedHostPathArgs
+    ///             {
+    ///                 PathPrefix = "//",
+    ///                 ReadOnly = false,
+    ///             },
+    ///         },
+    ///         AllowedProcMountTypes = new[]
+    ///         {
+    ///             "Default",
+    ///         },
+    ///         DefaultAllowPrivilegeEscalation = false,
+    ///         Description = "Terraform PodSecurityPolicyTemplate acceptance test - update",
+    ///         FsGroup = new Rancher2.Inputs.PodSecurityPolicyTemplateFsGroupArgs
+    ///         {
+    ///             Ranges = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateFsGroupRangeArgs
+    ///                 {
+    ///                     Max = 100,
+    ///                     Min = 0,
+    ///                 },
+    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateFsGroupRangeArgs
+    ///                 {
+    ///                     Max = 100,
+    ///                     Min = 0,
+    ///                 },
+    ///             },
+    ///             Rule = "MustRunAs",
+    ///         },
+    ///         HostIpc = false,
+    ///         HostNetwork = false,
+    ///         HostPid = false,
+    ///         HostPorts = new[]
+    ///         {
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateHostPortArgs
+    ///             {
+    ///                 Max = 65535,
+    ///                 Min = 0,
+    ///             },
+    ///             new Rancher2.Inputs.PodSecurityPolicyTemplateHostPortArgs
+    ///             {
+    ///                 Max = 8080,
+    ///                 Min = 1024,
+    ///             },
+    ///         },
+    ///         Privileged = false,
+    ///         ReadOnlyRootFilesystem = false,
+    ///         RequiredDropCapabilities = new[]
+    ///         {
+    ///             "something",
+    ///         },
+    ///         RunAsGroup = new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsGroupArgs
+    ///         {
+    ///             Ranges = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsGroupRangeArgs
+    ///                 {
+    ///                     Max = 100,
+    ///                     Min = 1,
+    ///                 },
+    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsGroupRangeArgs
+    ///                 {
+    ///                     Max = 1024,
+    ///                     Min = 2,
+    ///                 },
+    ///             },
+    ///             Rule = "MustRunAs",
+    ///         },
+    ///         RunAsUser = new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsUserArgs
+    ///         {
+    ///             Ranges = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsUserRangeArgs
+    ///                 {
+    ///                     Max = 100,
+    ///                     Min = 1,
+    ///                 },
+    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsUserRangeArgs
+    ///                 {
+    ///                     Max = 1024,
+    ///                     Min = 2,
+    ///                 },
+    ///             },
+    ///             Rule = "MustRunAs",
+    ///         },
+    ///         RuntimeClass = new Rancher2.Inputs.PodSecurityPolicyTemplateRuntimeClassArgs
+    ///         {
+    ///             AllowedRuntimeClassNames = new[]
+    ///             {
+    ///                 "something",
+    ///             },
+    ///             DefaultRuntimeClassName = "something",
+    ///         },
+    ///         SeLinux = new Rancher2.Inputs.PodSecurityPolicyTemplateSeLinuxArgs
+    ///         {
+    ///             Rule = "RunAsAny",
+    ///         },
+    ///         SupplementalGroup = new Rancher2.Inputs.PodSecurityPolicyTemplateSupplementalGroupArgs
+    ///         {
+    ///             Rule = "RunAsAny",
+    ///         },
+    ///         Volumes = new[]
+    ///         {
+    ///             "azureFile",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// PodSecurityPolicyTemplate can be imported using the Rancher PodSecurityPolicyTemplate Name

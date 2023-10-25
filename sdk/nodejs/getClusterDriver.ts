@@ -6,6 +6,17 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterDriver({
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getClusterDriver(args: GetClusterDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterDriverResult> {
 
@@ -75,6 +86,17 @@ export interface GetClusterDriverResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterDriver({
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getClusterDriverOutput(args: GetClusterDriverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterDriverResult> {
     return pulumi.output(args).apply((a: any) => getClusterDriver(a, opts))

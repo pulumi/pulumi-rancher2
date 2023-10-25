@@ -8,6 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 role template resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getRoleTemplate({
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getRoleTemplate(args: GetRoleTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTemplateResult> {
 
@@ -89,6 +100,17 @@ export interface GetRoleTemplateResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 role template resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getRoleTemplate({
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getRoleTemplateOutput(args: GetRoleTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleTemplateResult> {
     return pulumi.output(args).apply((a: any) => getRoleTemplate(a, opts))
