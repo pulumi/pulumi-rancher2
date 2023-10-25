@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 etcd backup.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getEtcdBackup({
+ *     clusterId: "<CLUSTER_ID>",
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getEtcdBackup(args: GetEtcdBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetEtcdBackupResult> {
 
@@ -69,6 +81,18 @@ export interface GetEtcdBackupResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 etcd backup.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getEtcdBackup({
+ *     clusterId: "<CLUSTER_ID>",
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getEtcdBackupOutput(args: GetEtcdBackupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEtcdBackupResult> {
     return pulumi.output(args).apply((a: any) => getEtcdBackup(a, opts))

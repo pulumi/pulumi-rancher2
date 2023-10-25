@@ -13,6 +13,33 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 project alert rule.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.LookupProjectAlertRule(ctx, &rancher2.LookupProjectAlertRuleArgs{
+//				Name:      "<project_alert_rule_name>",
+//				ProjectId: "<project_id>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupProjectAlertRule(ctx *pulumi.Context, args *LookupProjectAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupProjectAlertRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectAlertRuleResult

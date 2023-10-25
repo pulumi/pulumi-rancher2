@@ -15,6 +15,40 @@ import (
 
 // Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewGlobalRoleBinding(ctx, "foo", &rancher2.GlobalRoleBindingArgs{
+//				GlobalRoleId: pulumi.String("admin"),
+//				UserId:       pulumi.String("user-XXXXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewGlobalRoleBinding(ctx, "foo2", &rancher2.GlobalRoleBindingArgs{
+//				GlobalRoleId:     pulumi.String("admin"),
+//				GroupPrincipalId: pulumi.String("local://g-XXXXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # Global Role Bindings can be imported using the Rancher Global Role Binding ID

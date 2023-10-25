@@ -13,6 +13,32 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 role template resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.LookupRoleTemplate(ctx, &rancher2.LookupRoleTemplateArgs{
+//				Name: "foo",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRoleTemplate(ctx *pulumi.Context, args *LookupRoleTemplateArgs, opts ...pulumi.InvokeOption) (*LookupRoleTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleTemplateResult

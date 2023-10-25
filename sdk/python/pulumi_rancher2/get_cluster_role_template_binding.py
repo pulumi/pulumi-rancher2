@@ -150,6 +150,16 @@ def get_cluster_role_template_binding(cluster_id: Optional[str] = None,
     """
     Use this data source to retrieve information about a Rancher v2 cluster role template binding.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_role_template_binding(cluster_id="foo_id",
+        name="foo")
+    ```
+
 
     :param str cluster_id: The cluster id where bind cluster role template (string)
     :param str name: The name of the cluster role template binding (string)
@@ -182,6 +192,16 @@ def get_cluster_role_template_binding_output(cluster_id: Optional[pulumi.Input[s
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterRoleTemplateBindingResult]:
     """
     Use this data source to retrieve information about a Rancher v2 cluster role template binding.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_role_template_binding(cluster_id="foo_id",
+        name="foo")
+    ```
 
 
     :param str cluster_id: The cluster id where bind cluster role template (string)

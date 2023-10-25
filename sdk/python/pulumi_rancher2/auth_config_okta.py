@@ -621,6 +621,24 @@ class AuthConfigOkta(pulumi.CustomResource):
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Auth Config OKTA
+        okta = rancher2.AuthConfigOkta("okta",
+            display_name_field="<DISPLAY_NAME_FIELD>",
+            groups_field="<GROUPS_FIELD>",
+            idp_metadata_content="<IDP_METADATA_CONTENT>",
+            rancher_api_host="https://<RANCHER_API_HOST>",
+            sp_cert="<SP_CERT>",
+            sp_key="<SP_KEY>",
+            uid_field="<UID_FIELD>",
+            user_name_field="<USER_NAME_FIELD>")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -647,6 +665,24 @@ class AuthConfigOkta(pulumi.CustomResource):
         Provides a Rancher v2 Auth Config OKTA resource. This can be used to configure and enable Auth Config OKTA for Rancher v2 RKE clusters and retrieve their information.
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Auth Config OKTA
+        okta = rancher2.AuthConfigOkta("okta",
+            display_name_field="<DISPLAY_NAME_FIELD>",
+            groups_field="<GROUPS_FIELD>",
+            idp_metadata_content="<IDP_METADATA_CONTENT>",
+            rancher_api_host="https://<RANCHER_API_HOST>",
+            sp_cert="<SP_CERT>",
+            sp_key="<SP_KEY>",
+            uid_field="<UID_FIELD>",
+            user_name_field="<USER_NAME_FIELD>")
+        ```
 
         :param str resource_name: The name of the resource.
         :param AuthConfigOktaArgs args: The arguments to use to populate this resource's properties.

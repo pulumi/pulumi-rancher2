@@ -612,7 +612,23 @@ class AuthConfigAzureAd(pulumi.CustomResource):
                  token_endpoint: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a AuthConfigAzureAd resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Auth Config AzureAD
+        azuread = rancher2.AuthConfigAzureAd("azuread",
+            application_id="<AZUREAD_APP_ID>",
+            application_secret="<AZUREAD_APP_SECRET>",
+            auth_endpoint="<AZUREAD_AUTH_ENDPOINT>",
+            graph_endpoint="<AZUREAD_GRAPH_ENDPOINT>",
+            rancher_url="<RANCHER_URL>",
+            tenant_id="<AZUREAD_TENANT_ID>",
+            token_endpoint="<AZUREAD_TOKEN_ENDPOINT>")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -636,7 +652,23 @@ class AuthConfigAzureAd(pulumi.CustomResource):
                  args: AuthConfigAzureAdArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AuthConfigAzureAd resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Auth Config AzureAD
+        azuread = rancher2.AuthConfigAzureAd("azuread",
+            application_id="<AZUREAD_APP_ID>",
+            application_secret="<AZUREAD_APP_SECRET>",
+            auth_endpoint="<AZUREAD_AUTH_ENDPOINT>",
+            graph_endpoint="<AZUREAD_GRAPH_ENDPOINT>",
+            rancher_url="<RANCHER_URL>",
+            tenant_id="<AZUREAD_TENANT_ID>",
+            token_endpoint="<AZUREAD_TOKEN_ENDPOINT>")
+        ```
+
         :param str resource_name: The name of the resource.
         :param AuthConfigAzureAdArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

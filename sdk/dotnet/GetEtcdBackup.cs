@@ -13,12 +13,58 @@ namespace Pulumi.Rancher2
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 etcd backup.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetEtcdBackup.Invoke(new()
+        ///     {
+        ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEtcdBackupResult> InvokeAsync(GetEtcdBackupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 etcd backup.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetEtcdBackup.Invoke(new()
+        ///     {
+        ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEtcdBackupResult> Invoke(GetEtcdBackupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupInvokeArgs(), options.WithDefaults());

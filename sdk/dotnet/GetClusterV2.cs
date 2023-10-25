@@ -13,12 +13,58 @@ namespace Pulumi.Rancher2
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 cluster.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetClusterV2.Invoke(new()
+        ///     {
+        ///         FleetNamespace = "fleet-ns",
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterV2Result> InvokeAsync(GetClusterV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterV2Result>("rancher2:index/getClusterV2:getClusterV2", args ?? new GetClusterV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 cluster.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetClusterV2.Invoke(new()
+        ///     {
+        ///         FleetNamespace = "fleet-ns",
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterV2Result> Invoke(GetClusterV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterV2Result>("rancher2:index/getClusterV2:getClusterV2", args ?? new GetClusterV2InvokeArgs(), options.WithDefaults());

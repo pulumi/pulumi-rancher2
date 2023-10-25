@@ -192,6 +192,16 @@ def get_notifier(cluster_id: Optional[str] = None,
     """
     Use this data source to retrieve information about a Rancher v2 notifier.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_notifier(cluster_id="<cluster_id>",
+        name="foo")
+    ```
+
 
     :param str cluster_id: The cluster id where create notifier (string)
     :param pulumi.InputType['GetNotifierDingtalkConfigArgs'] dingtalk_config: (Computed) Dingtalk config for notifier (list maxitems:1)
@@ -230,6 +240,16 @@ def get_notifier_output(cluster_id: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotifierResult]:
     """
     Use this data source to retrieve information about a Rancher v2 notifier.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_notifier(cluster_id="<cluster_id>",
+        name="foo")
+    ```
 
 
     :param str cluster_id: The cluster id where create notifier (string)

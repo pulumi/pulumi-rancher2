@@ -14,6 +14,46 @@ import (
 
 // Provides a Rancher v2 Global Role resource. This can be used to create Global Role for Rancher v2 and retrieve their information.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewGlobalRole(ctx, "foo", &rancher2.GlobalRoleArgs{
+//				Description:    pulumi.String("Terraform global role acceptance test"),
+//				NewUserDefault: pulumi.Bool(true),
+//				Rules: rancher2.GlobalRoleRuleArray{
+//					&rancher2.GlobalRoleRuleArgs{
+//						ApiGroups: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						Resources: pulumi.StringArray{
+//							pulumi.String("secrets"),
+//						},
+//						Verbs: pulumi.StringArray{
+//							pulumi.String("create"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # Global Role can be imported using the Rancher Global Role ID

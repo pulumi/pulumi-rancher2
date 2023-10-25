@@ -9,6 +9,74 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2_bootstrap
+    ///     var admin = new Rancher2.Bootstrap("admin", new()
+    ///     {
+    ///         Password = "blahblah",
+    ///         Telemetry = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2_bootstrap for Rancher v2.6.0 and above
+    ///     var admin = new Rancher2.Bootstrap("admin", new()
+    ///     {
+    ///         InitialPassword = "&lt;INSTALL_PASSWORD&gt;",
+    ///         Password = "blahblah",
+    ///         Telemetry = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Provider bootstrap config with alias
+    ///     var bootstrap = new Rancher2.Provider("bootstrap", new()
+    ///     {
+    ///         ApiUrl = "https://rancher.my-domain.com",
+    ///         Bootstrap = true,
+    ///     });
+    /// 
+    ///     // Create a new rancher2_bootstrap using bootstrap provider config
+    ///     var admin = new Rancher2.Bootstrap("admin", new()
+    ///     {
+    ///         Password = "blahblah",
+    ///         Telemetry = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = "rancher2.bootstrap",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [Rancher2ResourceType("rancher2:index/bootstrap:Bootstrap")]
     public partial class Bootstrap : global::Pulumi.CustomResource
     {

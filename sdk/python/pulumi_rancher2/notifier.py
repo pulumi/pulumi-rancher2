@@ -574,6 +574,23 @@ class Notifier(pulumi.CustomResource):
         """
         Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Notifier
+        foo = rancher2.Notifier("foo",
+            cluster_id="<cluster_id>",
+            description="Terraform notifier acceptance test",
+            pagerduty_config=rancher2.NotifierPagerdutyConfigArgs(
+                proxy_url="http://proxy.test.io",
+                service_key="XXXXXXXX",
+            ),
+            send_resolved=True)
+        ```
+
         ## Import
 
         Notifiers can be imported using the Rancher nNtifier ID
@@ -606,6 +623,23 @@ class Notifier(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Notifier
+        foo = rancher2.Notifier("foo",
+            cluster_id="<cluster_id>",
+            description="Terraform notifier acceptance test",
+            pagerduty_config=rancher2.NotifierPagerdutyConfigArgs(
+                proxy_url="http://proxy.test.io",
+                service_key="XXXXXXXX",
+            ),
+            send_resolved=True)
+        ```
 
         ## Import
 

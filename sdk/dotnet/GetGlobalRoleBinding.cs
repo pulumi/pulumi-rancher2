@@ -13,12 +13,58 @@ namespace Pulumi.Rancher2
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 global role binding.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetGlobalRoleBinding.Invoke(new()
+        ///     {
+        ///         GlobalRoleId = "foo_id",
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGlobalRoleBindingResult> InvokeAsync(GetGlobalRoleBindingArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 global role binding.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetGlobalRoleBinding.Invoke(new()
+        ///     {
+        ///         GlobalRoleId = "foo_id",
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGlobalRoleBindingResult> Invoke(GetGlobalRoleBindingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingInvokeArgs(), options.WithDefaults());

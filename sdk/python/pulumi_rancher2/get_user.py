@@ -129,6 +129,15 @@ def get_user(is_external: Optional[bool] = None,
     """
     Use this data source to retrieve information about a Rancher v2 user
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_user(username="foo")
+    ```
+
 
     :param bool is_external: Set is the user if the user is external. Default: `false` (bool)
     :param str name: The name of the user (string)
@@ -159,6 +168,15 @@ def get_user_output(is_external: Optional[pulumi.Input[Optional[bool]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
     Use this data source to retrieve information about a Rancher v2 user
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_user(username="foo")
+    ```
 
 
     :param bool is_external: Set is the user if the user is external. Default: `false` (bool)

@@ -424,7 +424,44 @@ class Bootstrap(pulumi.CustomResource):
                  ui_default_landing: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Bootstrap resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2_bootstrap
+        admin = rancher2.Bootstrap("admin",
+            password="blahblah",
+            telemetry=True)
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2_bootstrap for Rancher v2.6.0 and above
+        admin = rancher2.Bootstrap("admin",
+            initial_password="<INSTALL_PASSWORD>",
+            password="blahblah",
+            telemetry=True)
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Provider bootstrap config with alias
+        bootstrap = rancher2.Provider("bootstrap",
+            api_url="https://rancher.my-domain.com",
+            bootstrap=True)
+        # Create a new rancher2_bootstrap using bootstrap provider config
+        admin = rancher2.Bootstrap("admin",
+            password="blahblah",
+            telemetry=True,
+            opts=pulumi.ResourceOptions(provider="rancher2.bootstrap"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] initial_password: Initial password for Admin user. Default: `admin` (string)
@@ -441,7 +478,44 @@ class Bootstrap(pulumi.CustomResource):
                  args: Optional[BootstrapArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Bootstrap resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2_bootstrap
+        admin = rancher2.Bootstrap("admin",
+            password="blahblah",
+            telemetry=True)
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2_bootstrap for Rancher v2.6.0 and above
+        admin = rancher2.Bootstrap("admin",
+            initial_password="<INSTALL_PASSWORD>",
+            password="blahblah",
+            telemetry=True)
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Provider bootstrap config with alias
+        bootstrap = rancher2.Provider("bootstrap",
+            api_url="https://rancher.my-domain.com",
+            bootstrap=True)
+        # Create a new rancher2_bootstrap using bootstrap provider config
+        admin = rancher2.Bootstrap("admin",
+            password="blahblah",
+            telemetry=True,
+            opts=pulumi.ResourceOptions(provider="rancher2.bootstrap"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param BootstrapArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

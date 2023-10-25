@@ -330,6 +330,15 @@ def get_pod_security_policy_template(allow_privilege_escalation: Optional[bool] 
     """
     Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_pod_security_policy_template(name="foo")
+    ```
+
 
     :param bool allow_privilege_escalation: = (Optional)
     :param Sequence[str] allowed_capabilities: (list)
@@ -455,6 +464,15 @@ def get_pod_security_policy_template_output(allow_privilege_escalation: Optional
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPodSecurityPolicyTemplateResult]:
     """
     Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_pod_security_policy_template(name="foo")
+    ```
 
 
     :param bool allow_privilege_escalation: = (Optional)

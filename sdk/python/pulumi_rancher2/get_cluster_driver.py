@@ -164,6 +164,15 @@ def get_cluster_driver(name: Optional[str] = None,
     """
     Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_driver(name="foo")
+    ```
+
 
     :param str name: Name of the cluster driver (string)
     :param str url: The URL to download the machine driver binary for 64-bit Linux (string)
@@ -194,6 +203,15 @@ def get_cluster_driver_output(name: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterDriverResult]:
     """
     Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_driver(name="foo")
+    ```
 
 
     :param str name: Name of the cluster driver (string)

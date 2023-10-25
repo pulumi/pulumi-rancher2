@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 cluster alert group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterAlertGroup({
+ *     clusterId: "<cluster_id>",
+ *     name: "<cluster_alert_group_name>",
+ * });
+ * ```
  */
 export function getClusterAlertGroup(args: GetClusterAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlertGroupResult> {
 
@@ -73,6 +85,18 @@ export interface GetClusterAlertGroupResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 cluster alert group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getClusterAlertGroup({
+ *     clusterId: "<cluster_id>",
+ *     name: "<cluster_alert_group_name>",
+ * });
+ * ```
  */
 export function getClusterAlertGroupOutput(args: GetClusterAlertGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAlertGroupResult> {
     return pulumi.output(args).apply((a: any) => getClusterAlertGroup(a, opts))

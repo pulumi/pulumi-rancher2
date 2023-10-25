@@ -15,6 +15,75 @@ namespace Pulumi.Rancher2
     /// `amazonec2`, `azure`, `digitalocean`, `harvester`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
     /// 
     /// **Note:** This resource is used by
+    /// 
+    /// ## Example Usage
+    /// ### Using the Harvester Node Driver
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo_harvesterClusterV2 = Rancher2.GetClusterV2.Invoke(new()
+    ///     {
+    ///         Name = "foo-harvester",
+    ///     });
+    /// 
+    ///     // Create a new Cloud Credential for an imported Harvester cluster
+    ///     var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvesterCloudCredential", new()
+    ///     {
+    ///         HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
+    ///         {
+    ///             ClusterId = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.ClusterV1Id)),
+    ///             ClusterType = "imported",
+    ///             KubeconfigContent = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.KubeConfig)),
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new rancher2 machine config v2 using harvester node_driver
+    ///     var foo_harvester_v2 = new Rancher2.MachineConfigV2("foo-harvester-v2", new()
+    ///     {
+    ///         GenerateName = "foo-harvester-v2",
+    ///         HarvesterConfig = new Rancher2.Inputs.MachineConfigV2HarvesterConfigArgs
+    ///         {
+    ///             VmNamespace = "default",
+    ///             CpuCount = "2",
+    ///             MemorySize = "4",
+    ///             DiskInfo = @"    {
+    ///         ""disks"": [{
+    ///             ""imageName"": ""harvester-public/image-57hzg"",
+    ///             ""size"": 40,
+    ///             ""bootOrder"": 1
+    ///         }]
+    ///     }
+    ///     EOF,
+    ///     networkInfo = &lt;&lt;EOF
+    ///     {
+    ///         ""interfaces"": [{
+    ///             ""networkName"": ""harvester-public/vlan1""
+    ///         }]
+    ///     }
+    ///     EOF,
+    ///     sshUser = ""ubuntu"",
+    ///     userData = &lt;&lt;EOF
+    ///     package_update: true
+    ///     packages:
+    ///       - qemu-guest-agent
+    ///       - iptables
+    ///     runcmd:
+    ///       - - systemctl
+    ///         - enable
+    ///         - '--now'
+    ///         - qemu-guest-agent.service
+    /// ",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/machineConfigV2:MachineConfigV2")]
     public partial class MachineConfigV2 : global::Pulumi.CustomResource

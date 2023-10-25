@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 project alert rule.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getProjectAlertRule({
+ *     name: "<project_alert_rule_name>",
+ *     projectId: "<project_id>",
+ * });
+ * ```
  */
 export function getProjectAlertRule(args: GetProjectAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertRuleResult> {
 
@@ -94,6 +106,18 @@ export interface GetProjectAlertRuleResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 project alert rule.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getProjectAlertRule({
+ *     name: "<project_alert_rule_name>",
+ *     projectId: "<project_id>",
+ * });
+ * ```
  */
 export function getProjectAlertRuleOutput(args: GetProjectAlertRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectAlertRuleResult> {
     return pulumi.output(args).apply((a: any) => getProjectAlertRule(a, opts))

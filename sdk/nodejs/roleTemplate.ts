@@ -11,6 +11,42 @@ import * as utilities from "./utilities";
  *
  * `cluster` and `project` scopes are supported for role templates.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 cluster Role Template
+ * const foo = new rancher2.RoleTemplate("foo", {
+ *     context: "cluster",
+ *     defaultRole: true,
+ *     description: "Terraform role template acceptance test",
+ *     rules: [{
+ *         apiGroups: ["*"],
+ *         resources: ["secrets"],
+ *         verbs: ["create"],
+ *     }],
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 project Role Template
+ * const foo = new rancher2.RoleTemplate("foo", {
+ *     context: "project",
+ *     defaultRole: true,
+ *     description: "Terraform role template acceptance test",
+ *     rules: [{
+ *         apiGroups: ["*"],
+ *         resources: ["secrets"],
+ *         verbs: ["create"],
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Role Template can be imported using the Rancher Role Template ID

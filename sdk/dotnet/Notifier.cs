@@ -12,6 +12,32 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 Notifier
+    ///     var foo = new Rancher2.Notifier("foo", new()
+    ///     {
+    ///         ClusterId = "&lt;cluster_id&gt;",
+    ///         Description = "Terraform notifier acceptance test",
+    ///         PagerdutyConfig = new Rancher2.Inputs.NotifierPagerdutyConfigArgs
+    ///         {
+    ///             ProxyUrl = "http://proxy.test.io",
+    ///             ServiceKey = "XXXXXXXX",
+    ///         },
+    ///         SendResolved = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Notifiers can be imported using the Rancher nNtifier ID

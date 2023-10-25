@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 notifier.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getNotifier({
+ *     clusterId: "<cluster_id>",
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getNotifier(args: GetNotifierArgs, opts?: pulumi.InvokeOptions): Promise<GetNotifierResult> {
 
@@ -95,6 +107,18 @@ export interface GetNotifierResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 notifier.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getNotifier({
+ *     clusterId: "<cluster_id>",
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getNotifierOutput(args: GetNotifierOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotifierResult> {
     return pulumi.output(args).apply((a: any) => getNotifier(a, opts))

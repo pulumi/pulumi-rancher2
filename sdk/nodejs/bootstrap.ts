@@ -4,6 +4,50 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2_bootstrap
+ * const admin = new rancher2.Bootstrap("admin", {
+ *     password: "blahblah",
+ *     telemetry: true,
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2_bootstrap for Rancher v2.6.0 and above
+ * const admin = new rancher2.Bootstrap("admin", {
+ *     initialPassword: "<INSTALL_PASSWORD>",
+ *     password: "blahblah",
+ *     telemetry: true,
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Provider bootstrap config with alias
+ * const bootstrap = new rancher2.Provider("bootstrap", {
+ *     apiUrl: "https://rancher.my-domain.com",
+ *     bootstrap: true,
+ * });
+ * // Create a new rancher2_bootstrap using bootstrap provider config
+ * const admin = new rancher2.Bootstrap("admin", {
+ *     password: "blahblah",
+ *     telemetry: true,
+ * }, {
+ *     provider: "rancher2.bootstrap",
+ * });
+ * ```
+ */
 export class Bootstrap extends pulumi.CustomResource {
     /**
      * Get an existing Bootstrap resource's state with the given name, ID, and optional extra

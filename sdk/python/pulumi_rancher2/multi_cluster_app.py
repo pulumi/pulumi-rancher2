@@ -629,6 +629,61 @@ class MultiClusterApp(pulumi.CustomResource):
 
         Note: In case of multiple resource modification in a row, `rollback` has preference.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Multi Cluster App
+        foo = rancher2.MultiClusterApp("foo",
+            answers=[rancher2.MultiClusterAppAnswerArgs(
+                values={
+                    "ingressHost": "test.xip.io",
+                },
+            )],
+            catalog_name="<catalog_name>",
+            roles=["project-member"],
+            targets=[rancher2.MultiClusterAppTargetArgs(
+                project_id="<project_id>",
+            )],
+            template_name="<template_name>",
+            template_version="<template_version>")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Multi Cluster App overriding answers
+        foo = rancher2.MultiClusterApp("foo",
+            answers=[
+                rancher2.MultiClusterAppAnswerArgs(
+                    values={
+                        "ingressHost": "test.xip.io",
+                    },
+                ),
+                rancher2.MultiClusterAppAnswerArgs(
+                    project_id="<project_id2>",
+                    values={
+                        "ingressHost": "test2.xip.io",
+                    },
+                ),
+            ],
+            catalog_name="<catalog_name>",
+            roles=["project-member"],
+            targets=[
+                rancher2.MultiClusterAppTargetArgs(
+                    project_id="<project_id1>",
+                ),
+                rancher2.MultiClusterAppTargetArgs(
+                    project_id="<project_id2>",
+                ),
+            ],
+            template_name="<template_name>",
+            template_version="<template_version>")
+        ```
+
         ## Import
 
         Multi cluster app can be imported using the multi cluster app ID in the format `<multi_cluster_app_name>`
@@ -669,6 +724,61 @@ class MultiClusterApp(pulumi.CustomResource):
         - `Update`: If any other argument is modified the app will be upgraded.
 
         Note: In case of multiple resource modification in a row, `rollback` has preference.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Multi Cluster App
+        foo = rancher2.MultiClusterApp("foo",
+            answers=[rancher2.MultiClusterAppAnswerArgs(
+                values={
+                    "ingressHost": "test.xip.io",
+                },
+            )],
+            catalog_name="<catalog_name>",
+            roles=["project-member"],
+            targets=[rancher2.MultiClusterAppTargetArgs(
+                project_id="<project_id>",
+            )],
+            template_name="<template_name>",
+            template_version="<template_version>")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Multi Cluster App overriding answers
+        foo = rancher2.MultiClusterApp("foo",
+            answers=[
+                rancher2.MultiClusterAppAnswerArgs(
+                    values={
+                        "ingressHost": "test.xip.io",
+                    },
+                ),
+                rancher2.MultiClusterAppAnswerArgs(
+                    project_id="<project_id2>",
+                    values={
+                        "ingressHost": "test2.xip.io",
+                    },
+                ),
+            ],
+            catalog_name="<catalog_name>",
+            roles=["project-member"],
+            targets=[
+                rancher2.MultiClusterAppTargetArgs(
+                    project_id="<project_id1>",
+                ),
+                rancher2.MultiClusterAppTargetArgs(
+                    project_id="<project_id2>",
+                ),
+            ],
+            template_name="<template_name>",
+            template_version="<template_version>")
+        ```
 
         ## Import
 

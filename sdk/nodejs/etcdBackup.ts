@@ -11,6 +11,32 @@ import * as utilities from "./utilities";
  *
  * The `rancher2.EtcdBackup` resource is used to define extra etcd backups for a `rancher2.Cluster`, which will be created as a local or S3 backup in accordance with the etcd backup config for the cluster. The main etcd backup config for the cluster should be set on the cluster config
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Etcd Backup
+ * const foo = new rancher2.EtcdBackup("foo", {
+ *     backupConfig: {
+ *         enabled: true,
+ *         intervalHours: 20,
+ *         retention: 10,
+ *         s3BackupConfig: {
+ *             accessKey: "access_key",
+ *             bucketName: "bucket_name",
+ *             endpoint: "endpoint",
+ *             folder: "/folder",
+ *             region: "region",
+ *             secretKey: "secret_key",
+ *         },
+ *     },
+ *     clusterId: "<CLUSTER_ID>",
+ *     filename: "<FILENAME>",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Etcd Backup can be imported using the Rancher etcd backup ID

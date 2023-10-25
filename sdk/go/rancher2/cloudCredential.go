@@ -16,6 +16,70 @@ import (
 //
 // amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
+//				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
+//					AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
+//					SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
+//				},
+//				Description: pulumi.String("foo test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
+//				Name: "foo-harvester",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
+//				HarvesterCredentialConfig: &rancher2.CloudCredentialHarvesterCredentialConfigArgs{
+//					ClusterId:         *pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
+//					ClusterType:       pulumi.String("imported"),
+//					KubeconfigContent: *pulumi.String(foo_harvesterClusterV2.KubeConfig),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Credential can be imported using the Cloud Credential ID and the Driver name. bash

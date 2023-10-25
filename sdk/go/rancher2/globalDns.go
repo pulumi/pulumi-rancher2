@@ -15,6 +15,87 @@ import (
 
 // Provides a Rancher V2 Global DNS resource. This can be used to create Global DNS records for Rancher V2.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, "fooGlobalDnsProvider", &rancher2.GlobalDnsProviderArgs{
+//				RootDomain: pulumi.String("example.com"),
+//				Route53Config: &rancher2.GlobalDnsProviderRoute53ConfigArgs{
+//					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
+//					SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
+//					ZoneType:  pulumi.String("private"),
+//					Region:    pulumi.String("us-east-1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewGlobalDns(ctx, "fooGlobalDns", &rancher2.GlobalDnsArgs{
+//				Fqdn:       pulumi.String("foo.example.com"),
+//				ProviderId: fooGlobalDnsProvider.ID(),
+//				ProjectIds: pulumi.StringArray{
+//					pulumi.String("project1"),
+//					pulumi.String("project2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, "fooGlobalDnsProvider", &rancher2.GlobalDnsProviderArgs{
+//				RootDomain: pulumi.String("example.com"),
+//				Route53Config: &rancher2.GlobalDnsProviderRoute53ConfigArgs{
+//					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
+//					SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
+//					ZoneType:  pulumi.String("private"),
+//					Region:    pulumi.String("us-east-1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewGlobalDns(ctx, "fooGlobalDns", &rancher2.GlobalDnsArgs{
+//				Fqdn:              pulumi.String("foo.example.com"),
+//				ProviderId:        fooGlobalDnsProvider.ID(),
+//				MultiClusterAppId: pulumi.String("<MCA_ID>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # Global DNS Entry can be imported using the Rancher Global DNS ID

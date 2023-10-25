@@ -9,6 +9,25 @@ import * as utilities from "./utilities";
  *
  * When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 User
+ * const fooUser = new rancher2.User("fooUser", {
+ *     username: "foo",
+ *     password: "changeme",
+ *     enabled: true,
+ * });
+ * // Create a new rancher2 global_role_binding for User
+ * const fooGlobalRoleBinding = new rancher2.GlobalRoleBinding("fooGlobalRoleBinding", {
+ *     globalRoleId: "user-base",
+ *     userId: fooUser.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Users can be imported using the Rancher User ID

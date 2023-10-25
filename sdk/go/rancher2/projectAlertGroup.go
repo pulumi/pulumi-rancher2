@@ -15,6 +15,35 @@ import (
 
 // Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewProjectAlertGroup(ctx, "foo", &rancher2.ProjectAlertGroupArgs{
+//				Description:           pulumi.String("Terraform project alert group"),
+//				GroupIntervalSeconds:  pulumi.Int(300),
+//				ProjectId:             pulumi.String("<project_id>"),
+//				RepeatIntervalSeconds: pulumi.Int(3600),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # Project Alert Group can be imported using the Rancher project alert group ID

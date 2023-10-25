@@ -411,6 +411,20 @@ class ClusterAlterGroup(pulumi.CustomResource):
         """
         Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 Cluster Alert Group
+        foo = rancher2.ClusterAlertGroup("foo",
+            cluster_id="<cluster_id>",
+            description="Terraform cluster alert group",
+            group_interval_seconds=300,
+            repeat_interval_seconds=3600)
+        ```
+
         ## Import
 
         Cluster Alert Group can be imported using the Rancher cluster alert group ID
@@ -439,6 +453,20 @@ class ClusterAlterGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 Cluster Alert Group
+        foo = rancher2.ClusterAlertGroup("foo",
+            cluster_id="<cluster_id>",
+            description="Terraform cluster alert group",
+            group_interval_seconds=300,
+            repeat_interval_seconds=3600)
+        ```
 
         ## Import
 

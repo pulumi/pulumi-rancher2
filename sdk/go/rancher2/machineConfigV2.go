@@ -18,6 +18,83 @@ import (
 // `amazonec2`, `azure`, `digitalocean`, `harvester`, `linode`, `openstack`, and `vsphere` cloud providers are supported for machine config V2
 //
 // **Note:** This resource is used by
+//
+// ## Example Usage
+// ### Using the Harvester Node Driver
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
+//				Name: "foo-harvester",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
+//				HarvesterCredentialConfig: &rancher2.CloudCredentialHarvesterCredentialConfigArgs{
+//					ClusterId:         *pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
+//					ClusterType:       pulumi.String("imported"),
+//					KubeconfigContent: *pulumi.String(foo_harvesterClusterV2.KubeConfig),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewMachineConfigV2(ctx, "foo-harvester-v2", &rancher2.MachineConfigV2Args{
+//				GenerateName: pulumi.String("foo-harvester-v2"),
+//				HarvesterConfig: &rancher2.MachineConfigV2HarvesterConfigArgs{
+//					VmNamespace: pulumi.String("default"),
+//					CpuCount:    pulumi.String("2"),
+//					MemorySize:  pulumi.String("4"),
+//					DiskInfo: pulumi.String(`    {
+//	        "disks": [{
+//	            "imageName": "harvester-public/image-57hzg",
+//	            "size": 40,
+//	            "bootOrder": 1
+//	        }]
+//	    }
+//	    EOF,
+//	    networkInfo = <<EOF
+//	    {
+//	        "interfaces": [{
+//	            "networkName": "harvester-public/vlan1"
+//	        }]
+//	    }
+//	    EOF,
+//	    sshUser = "ubuntu",
+//	    userData = <<EOF
+//	    package_update: true
+//	    packages:
+//	      - qemu-guest-agent
+//	      - iptables
+//	    runcmd:
+//	      - - systemctl
+//	        - enable
+//	        - '--now'
+//	        - qemu-guest-agent.service
+//
+// `),
+//
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type MachineConfigV2 struct {
 	pulumi.CustomResourceState
 

@@ -426,6 +426,19 @@ class Token(pulumi.CustomResource):
 
         Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Token scoped
+        foo = rancher2.Token("foo",
+            cluster_id="<cluster-id>",
+            description="foo token",
+            ttl=1200)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: (Computed) Annotations of the token (map)
@@ -451,6 +464,19 @@ class Token(pulumi.CustomResource):
         - scoped: valid for just a specific cluster (`cluster_id` should be provided).
 
         Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Token scoped
+        foo = rancher2.Token("foo",
+            cluster_id="<cluster-id>",
+            description="foo token",
+            ttl=1200)
+        ```
 
         :param str resource_name: The name of the resource.
         :param TokenArgs args: The arguments to use to populate this resource's properties.

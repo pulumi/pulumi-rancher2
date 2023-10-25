@@ -15,6 +15,28 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher v2 cluster template.
         /// 
         /// Cluster Templates are available from Rancher v2.3.x and above.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetClusterTemplate.Invoke(new()
+        ///     {
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterTemplateResult> InvokeAsync(GetClusterTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateArgs(), options.WithDefaults());
@@ -23,6 +45,28 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher v2 cluster template.
         /// 
         /// Cluster Templates are available from Rancher v2.3.x and above.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetClusterTemplate.Invoke(new()
+        ///     {
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterTemplateResult> Invoke(GetClusterTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateInvokeArgs(), options.WithDefaults());

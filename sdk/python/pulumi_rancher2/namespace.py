@@ -369,6 +369,62 @@ class Namespace(pulumi.CustomResource):
         """
         Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Namespace
+        foo = rancher2.Namespace("foo",
+            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
+            ),
+            description="foo namespace",
+            project_id="<PROJECT_ID>",
+            resource_quota=rancher2.NamespaceResourceQuotaArgs(
+                limit=rancher2.NamespaceResourceQuotaLimitArgs(
+                    limits_cpu="100m",
+                    limits_memory="100Mi",
+                    requests_storage="1Gi",
+                ),
+            ))
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Cluster 
+        foo_custom = rancher2.Cluster("foo-custom",
+            description="Foo rancher2 custom cluster",
+            rke_config=rancher2.ClusterRkeConfigArgs(
+                network=rancher2.ClusterRkeConfigNetworkArgs(
+                    plugin="canal",
+                ),
+            ))
+        # Create a new rancher2 Namespace assigned to default cluster project
+        foo = rancher2.Namespace("foo",
+            project_id=foo_custom.default_project_id,
+            description="foo namespace",
+            resource_quota=rancher2.NamespaceResourceQuotaArgs(
+                limit=rancher2.NamespaceResourceQuotaLimitArgs(
+                    limits_cpu="100m",
+                    limits_memory="100Mi",
+                    requests_storage="1Gi",
+                ),
+            ),
+            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
+            ))
+        ```
+
         ## Import
 
         Namespaces can be imported using the namespace ID in the format `<project_id>.<namespace_id>`
@@ -402,6 +458,62 @@ class Namespace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Namespace
+        foo = rancher2.Namespace("foo",
+            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
+            ),
+            description="foo namespace",
+            project_id="<PROJECT_ID>",
+            resource_quota=rancher2.NamespaceResourceQuotaArgs(
+                limit=rancher2.NamespaceResourceQuotaLimitArgs(
+                    limits_cpu="100m",
+                    limits_memory="100Mi",
+                    requests_storage="1Gi",
+                ),
+            ))
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Cluster 
+        foo_custom = rancher2.Cluster("foo-custom",
+            description="Foo rancher2 custom cluster",
+            rke_config=rancher2.ClusterRkeConfigArgs(
+                network=rancher2.ClusterRkeConfigNetworkArgs(
+                    plugin="canal",
+                ),
+            ))
+        # Create a new rancher2 Namespace assigned to default cluster project
+        foo = rancher2.Namespace("foo",
+            project_id=foo_custom.default_project_id,
+            description="foo namespace",
+            resource_quota=rancher2.NamespaceResourceQuotaArgs(
+                limit=rancher2.NamespaceResourceQuotaLimitArgs(
+                    limits_cpu="100m",
+                    limits_memory="100Mi",
+                    requests_storage="1Gi",
+                ),
+            ),
+            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
+            ))
+        ```
 
         ## Import
 

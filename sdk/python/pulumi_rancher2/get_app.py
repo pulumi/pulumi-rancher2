@@ -199,6 +199,17 @@ def get_app(annotations: Optional[Mapping[str, Any]] = None,
     """
     Use this data source to retrieve information about a Rancher v2 app.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    rancher2 = rancher2.get_app(name="foo",
+        project_id="<project_id>",
+        target_namespace="<namespace_name>")
+    ```
+
 
     :param Mapping[str, Any] annotations: (Computed) Annotations for the catalog (map)
     :param str name: The app name (string)
@@ -238,6 +249,17 @@ def get_app_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, Any]
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppResult]:
     """
     Use this data source to retrieve information about a Rancher v2 app.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    rancher2 = rancher2.get_app(name="foo",
+        project_id="<project_id>",
+        target_namespace="<namespace_name>")
+    ```
 
 
     :param Mapping[str, Any] annotations: (Computed) Annotations for the catalog (map)

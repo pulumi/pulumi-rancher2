@@ -421,6 +421,19 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         """
         Provides a Rancher v2 Project Role Template Binding resource. This can be used to create Project Role Template Bindings for Rancher v2 environments and retrieve their information.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Project Role Template Binding
+        foo = rancher2.ProjectRoleTemplateBinding("foo",
+            project_id="<project_id>",
+            role_template_id="<role_template_id>",
+            user_id="<user_id>")
+        ```
+
         ## Import
 
         Project Role Template Bindings can be imported using the Rancher Project Role Template Binding ID
@@ -451,6 +464,19 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Project Role Template Binding resource. This can be used to create Project Role Template Bindings for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Project Role Template Binding
+        foo = rancher2.ProjectRoleTemplateBinding("foo",
+            project_id="<project_id>",
+            role_template_id="<role_template_id>",
+            user_id="<user_id>")
+        ```
 
         ## Import
 

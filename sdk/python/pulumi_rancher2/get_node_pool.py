@@ -187,6 +187,16 @@ def get_node_pool(cluster_id: Optional[str] = None,
     """
     Use this data source to retrieve information about a Rancher v2 Node Pool resource.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_node_pool(cluster_id=rancher2_cluster["foo-custom"]["id"],
+        name="foo")
+    ```
+
 
     :param str cluster_id: The RKE cluster id to use Node Pool (string)
     :param str name: The name of the Node Pool (string)
@@ -222,6 +232,16 @@ def get_node_pool_output(cluster_id: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodePoolResult]:
     """
     Use this data source to retrieve information about a Rancher v2 Node Pool resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_node_pool(cluster_id=rancher2_cluster["foo-custom"]["id"],
+        name="foo")
+    ```
 
 
     :param str cluster_id: The RKE cluster id to use Node Pool (string)

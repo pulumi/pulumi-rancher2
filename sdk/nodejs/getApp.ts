@@ -6,6 +6,19 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 app.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const rancher2 = rancher2.getApp({
+ *     name: "foo",
+ *     projectId: "<project_id>",
+ *     targetNamespace: "<namespace_name>",
+ * });
+ * ```
  */
 export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResult> {
 
@@ -94,6 +107,19 @@ export interface GetAppResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 app.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const rancher2 = rancher2.getApp({
+ *     name: "foo",
+ *     projectId: "<project_id>",
+ *     targetNamespace: "<namespace_name>",
+ * });
+ * ```
  */
 export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResult> {
     return pulumi.output(args).apply((a: any) => getApp(a, opts))

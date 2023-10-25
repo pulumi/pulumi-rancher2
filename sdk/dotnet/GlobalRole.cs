@@ -12,6 +12,44 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Global Role resource. This can be used to create Global Role for Rancher v2 and retrieve their information.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 Global Role
+    ///     var foo = new Rancher2.GlobalRole("foo", new()
+    ///     {
+    ///         Description = "Terraform global role acceptance test",
+    ///         NewUserDefault = true,
+    ///         Rules = new[]
+    ///         {
+    ///             new Rancher2.Inputs.GlobalRoleRuleArgs
+    ///             {
+    ///                 ApiGroups = new[]
+    ///                 {
+    ///                     "*",
+    ///                 },
+    ///                 Resources = new[]
+    ///                 {
+    ///                     "secrets",
+    ///                 },
+    ///                 Verbs = new[]
+    ///                 {
+    ///                     "create",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Global Role can be imported using the Rancher Global Role ID

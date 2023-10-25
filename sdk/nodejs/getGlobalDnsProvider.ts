@@ -8,6 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getGlobalDnsProvider({
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getGlobalDnsProvider(args: GetGlobalDnsProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalDnsProviderResult> {
 
@@ -55,6 +66,17 @@ export interface GetGlobalDnsProviderResult {
 }
 /**
  * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getGlobalDnsProvider({
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getGlobalDnsProviderOutput(args: GetGlobalDnsProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalDnsProviderResult> {
     return pulumi.output(args).apply((a: any) => getGlobalDnsProvider(a, opts))

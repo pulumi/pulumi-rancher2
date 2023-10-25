@@ -207,6 +207,16 @@ class Setting(pulumi.CustomResource):
 
         On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Setting
+        foo = rancher2.Setting("foo", value="<VALUE>")
+        ```
+
         ## Import
 
         Setting can be imported using the Rancher setting ID.
@@ -234,6 +244,16 @@ class Setting(pulumi.CustomResource):
         On create, if setting already exists, provider will import it and update its value.
 
         On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Setting
+        foo = rancher2.Setting("foo", value="<VALUE>")
+        ```
 
         ## Import
 

@@ -8,6 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 global role resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getGlobalRole({
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getGlobalRole(args: GetGlobalRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalRoleResult> {
 
@@ -63,6 +74,17 @@ export interface GetGlobalRoleResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 global role resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = rancher2.getGlobalRole({
+ *     name: "foo",
+ * });
+ * ```
  */
 export function getGlobalRoleOutput(args: GetGlobalRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalRoleResult> {
     return pulumi.output(args).apply((a: any) => getGlobalRole(a, opts))

@@ -130,6 +130,25 @@ def get_certificate(name: Optional[str] = None,
     - Project certificate: Available to all namespaces in the `project_id`
     - Namespaced certificate: Available to just `namespace_id` in the `project_id`
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_certificate(name="<name>",
+        project_id="<project_id>")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_certificate(name="<name>",
+        namespace_id="<namespace_id>",
+        project_id="<project_id>")
+    ```
+
 
     :param str name: The name of the certificate (string)
     :param str namespace_id: The namespace id where to assign the namespaced certificate (string)
@@ -164,6 +183,25 @@ def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
     Depending of the availability, there are 2 types of Rancher v2 certificates:
     - Project certificate: Available to all namespaces in the `project_id`
     - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_certificate(name="<name>",
+        project_id="<project_id>")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_certificate(name="<name>",
+        namespace_id="<namespace_id>",
+        project_id="<project_id>")
+    ```
 
 
     :param str name: The name of the certificate (string)
